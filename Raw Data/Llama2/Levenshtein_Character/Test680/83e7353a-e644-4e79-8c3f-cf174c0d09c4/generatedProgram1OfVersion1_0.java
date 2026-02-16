@@ -1,0 +1,54 @@
+class Solution {
+    /**
+     * Get the first occurrence (position starts from 0) of a string within a given string.
+     *
+     * @param haystack The string to search within.
+     * @param needle   The string to search for.
+     * @return The index of the first occurrence of needle within haystack, or -1 if needle is not found.
+     */
+    public int strStr(String haystack, String needle) {
+        if (needle.isEmpty()) {
+            return 0;
+        }
+
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (haystack.substring(i, i + needle.length()).equals(needle)) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String haystack1 = "hello";
+        String needle1 = "ll";
+        int result1 = solution.strStr(haystack1, needle1);
+        System.out.println(result1); // Output: 2
+
+        String haystack2 = "aaaaa";
+        String needle2 = "bba";
+        int result2 = solution.strStr(haystack2, needle2);
+        System.out.println(result2); // Output: -1
+
+
+        String haystack3 = "";
+        String needle3 = "";
+        int result3 = solution.strStr(haystack3, needle3);
+        System.out.println(result3); // Output: 0
+
+        String haystack4 = "a";
+        String needle4 = "a";
+        int result4 = solution.strStr(haystack4, needle4);
+        System.out.println(result4); // Output: 0
+
+
+        String haystack5 = "mississippi";
+        String needle5 = "issip";
+        int result5 = solution.strStr(haystack5, needle5);
+        System.out.println(result5); // Output: 4        
+    }
+}

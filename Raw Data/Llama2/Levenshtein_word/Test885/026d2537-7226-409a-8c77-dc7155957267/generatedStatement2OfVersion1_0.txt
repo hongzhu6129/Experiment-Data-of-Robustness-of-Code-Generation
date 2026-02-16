@@ -1,0 +1,25 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| 1 | 10 | 20 | 30 | 20.0 | Basic positive numbers |
+| 2 | -5 | 0 | 5 | 0.0 | Including negative and zero |
+| 3 | 0 | 0 | 0 | 0.0 | All zeros |
+| 4 | 1.5 | 2.5 | 3.5 | 2.5 | Decimal numbers |
+| 5 | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | 2.147483647E9 | Large positive integers (potential overflow if using `int` instead of `double` - using `double` handles it correctly) |
+| 6 | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE | -2.147483648E9 | Large negative integers (potential overflow if using `int`) |
+| 7 | Double.MAX_VALUE | 1 | 1 | Double.POSITIVE_INFINITY | Extremely large number, resulting in infinity |
+| 8 | Double.MIN_VALUE | 0 | 0 | Double.MIN_VALUE / 3  (a very small positive double) | Extremely small positive number |
+| 9 | Double.NaN | 1 | 2 | NaN | Handling NaN input |
+
+
+
+**How to Run the Test Cases:**
+
+While you could manually enter these values into the console, a better approach for testing is to create automated tests (unit tests).  Here's a simple example using JUnit:
+

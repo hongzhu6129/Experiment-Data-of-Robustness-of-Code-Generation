@@ -1,0 +1,9 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Type Casting:** Fermat numbers grow very rapidly.  Even `long` (64-bit integer) will not be able to hold the larger Fermat numbers accurately.  The code uses explicit casting to `long`, which means that after a certain point, the results will overflow and become incorrect.  This is unavoidable with primitive integer types in Java for very large numbers.
+
+2. **BigInteger (for accurate representation):**  If you need to represent these large Fermat numbers accurately, you must use `BigInteger`.  Here's the improved version using `BigInteger`:
+

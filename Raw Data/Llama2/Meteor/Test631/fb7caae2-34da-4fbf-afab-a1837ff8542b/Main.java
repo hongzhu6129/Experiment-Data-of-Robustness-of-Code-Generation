@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the input strings
+        String sourceString = scanner.nextLine();
+        String targetString = scanner.nextLine();
+
+        // Create a boolean array to store whether each character in the source string is contained in the target string
+        boolean[] isContained = new boolean[sourceString.length()];
+
+        // Iterate over the characters in the source string
+        for (int i = 0; i < sourceString.length(); i++) {
+            // Check if the character is contained in the target string
+            if (targetString.indexOf(sourceString.charAt(i)) != -1) {
+                // If the character is contained, set the corresponding element in the isContained array to true
+                isContained[i] = true;
+            }
+        }
+
+        // Print the characters in the source string that are contained in the target string
+        for (int i = 0; i < sourceString.length(); i++) {
+            if (isContained[i]) {
+                System.out.print(sourceString.charAt(i));
+            }
+        }
+
+        System.out.println();
+    }
+}

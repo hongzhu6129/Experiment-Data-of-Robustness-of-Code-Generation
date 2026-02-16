@@ -1,0 +1,50 @@
+import java.util.TreeMap;
+
+public class TreeTimeline {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to represent the timeline. 
+        // TreeMap is used because it stores keys in sorted order, which is suitable for a timeline.
+        TreeMap<Integer, String> timeline = new TreeMap<>();
+
+        // Associate values with keys (representing time points)
+        timeline.put(1950, "First event");
+        timeline.put(1960, "Second event");
+        timeline.put(1975, "Third event");
+        timeline.put(1980, "Fourth event");
+        timeline.put(2000, "Fifth event");
+
+
+        // Print the timeline to demonstrate association
+        System.out.println("Timeline:");
+        for (Integer year : timeline.keySet()) { // Iterate through the years (keys)
+            String event = timeline.get(year);  // Retrieve the associated event (value)
+            System.out.println(year + ": " + event);
+        }
+
+        // Example of adding/updating an event
+        timeline.put(1975, "Updated third event"); // If the key exists, the value is updated
+
+
+        System.out.println("\nTimeline after update:");
+        // Enhanced for loop (easier to read)
+        for (var entry : timeline.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+
+        // Example of getting a specific event
+        String event1960 = timeline.get(1960);
+        System.out.println("\nEvent in 1960: " + event1960); // Output: Event in 1960: Second event
+
+         // Handle a case where the key is not present
+        String event1965 = timeline.get(1965);
+        if(event1965 != null){
+            System.out.println("Event in 1965: " + event1965);
+        } else {
+            System.out.println("No event found for 1965"); // This will be printed.
+        }
+
+
+    }
+}

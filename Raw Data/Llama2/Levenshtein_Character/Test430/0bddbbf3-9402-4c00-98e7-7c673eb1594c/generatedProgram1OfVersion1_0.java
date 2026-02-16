@@ -1,0 +1,48 @@
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class Solution {
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example usage:
+        Node root = new Node(3);
+        root.left = new Node(9);
+        root.right = new Node(20);
+        root.right.left = new Node(15);
+        root.right.right = new Node(7);
+
+
+        System.out.println("Maximum depth of the tree is: " + solution.maxDepth(root)); // Output: 3
+
+
+        // Another example (a skewed tree):
+        Node root2 = new Node(1);
+        root2.left = new Node(2);
+        root2.left.left = new Node(3);
+        root2.left.left.left = new Node(4);
+
+
+        System.out.println("Maximum depth of the skewed tree is: " + solution.maxDepth(root2)); // Output: 4
+    }
+}
+

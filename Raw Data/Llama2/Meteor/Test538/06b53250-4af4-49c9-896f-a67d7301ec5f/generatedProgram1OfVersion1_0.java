@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckMapKey {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> map = new HashMap<>();
+        map.put("apple", 1);
+        map.put("banana", 2);
+        map.put("orange", 3);
+
+        // Key to test
+        String key1 = "banana";
+        String key2 = "grape";
+
+        // Test if the map contains mappings for the specified keys
+        if (map.containsKey(key1)) {
+            System.out.println("The map contains a mapping for the key: " + key1);
+        } else {
+            System.out.println("The map does not contain a mapping for the key: " + key1);
+        }
+
+        if (map.containsKey(key2)) {
+            System.out.println("The map contains a mapping for the key: " + key2);
+        } else {
+            System.out.println("The map does not contain a mapping for the key: " + key2);
+        }
+
+
+        // Demonstrating getOrDefault for safe retrieval.  If the key isn't present, it returns the default value.
+        int value = map.getOrDefault("grape", -1); // -1 will be returned if "grape" isn't a key.
+        System.out.println("Value for 'grape' (or default): " + value);
+
+
+         value = map.getOrDefault("banana", -1); // 2 will be returned as "banana" is a key.
+        System.out.println("Value for 'banana' (or default): " + value);
+    }
+}

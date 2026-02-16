@@ -1,0 +1,34 @@
+public class CanonicalString {
+
+    public static void main(String[] args) {
+
+        // Using intern() method to get the canonical representation
+
+        String str1 = "Hello";
+        String str2 = new String("Hello");
+        String str3 = str2.intern(); // Returns the canonical representation
+
+        System.out.println("str1 == str2: " + (str1 == str2)); // false, different objects
+        System.out.println("str1 == str3: " + (str1 == str3)); // true, same object (canonical)
+        System.out.println("str2 == str3: " + (str2 == str3)); // false, different objects
+
+
+        // Another Example with concatenation:
+
+        String s1 = "Java";
+        String s2 = "is";
+        String s3 = "cool";
+        String s4 = s1 + s2 + s3; // This usually creates a new String object
+        String s5 = "Javaiscoo"; // Literal, in the String pool (canonical)
+        String s6 = s4.intern(); // Get the canonical representation of s4
+
+
+        System.out.println("s4 == s5: " + (s4 == s5)); // likely false (depends on compiler/JVM optimizations)
+        System.out.println("s4 == s6: " + (s4 == s6)); // false, different objects 
+        System.out.println("s5 == s6: " + (s5 == s6)); // true,  s6 now refers to the canonical "Javaiscool"
+
+        String s7 = "Javais" + "cool"; // Constant concatenation at compile time - IN the pool
+        System.out.println("s5 == s7: " + (s5 == s7)); // true
+
+    }
+}

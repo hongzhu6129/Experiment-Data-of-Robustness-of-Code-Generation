@@ -1,0 +1,41 @@
+import java.util.LinkedList;
+
+public class GetLastElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        // Check if the list is empty
+        if (linkedList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            // Retrieve the last element using peekLast()
+            String lastElement = linkedList.peekLast(); 
+
+            // Print the last element
+            System.out.println("Last element: " + lastElement);
+
+            // Verify that the element was not removed by printing the list
+            System.out.println("Linked List after peekLast(): " + linkedList);
+        }
+
+
+        // Example with an empty list:
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        if (emptyList.isEmpty()) {
+            System.out.println("The empty list is empty.");  // This will be printed.
+        } else {
+            Integer last = emptyList.peekLast();
+            System.out.println("Last element of empty list: " + last); // This won't execute.
+        }
+
+
+    }
+}

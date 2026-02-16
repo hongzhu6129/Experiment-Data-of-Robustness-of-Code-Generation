@@ -1,0 +1,16 @@
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class LastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the last day of the current month
+        LocalDate lastDayOfMonth = currentDate.with(TemporalAdjusters.lastDayOfMonth());
+
+        // Print the last day of the month
+        System.out.println("Last day of the current month: " + lastDayOfMonth);
+    }
+}

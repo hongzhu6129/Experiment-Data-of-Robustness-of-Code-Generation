@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Tributaries (ExecutorService):**  The code now uses `ExecutorService` with a fixed thread pool of 2 threads (you can adjust this number) to sort the list in ascending and descending order concurrently.  This leverages multi-threading, which can be beneficial for larger lists.
+2. **List Copying:** The code creates copies of the original `strings` list inside each tributary task.  This prevents race conditions where one thread modifies the list while another is sorting it.
+3. **Future:** `Future` objects are used to retrieve the results of the asynchronous sorting tasks.  `future.get()` blocks until the result is available.
+4. **Shutdown Executor:**  It's essential to shut down the `ExecutorService` after it's finished to prevent resource leaks.  `executor.shutdown()` is added to do this.
+5. **Clearer Output:** The output is formatted for better readability, clearly indicating ascending and descending order.
+6. **Error Handling:**  The `main` method now declares `throws Exception` to handle potential exceptions from the `Future.get()` method (e.g., `InterruptedException` or `ExecutionException`). In a real application, you would want more robust exception handling.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `StringSorter.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then, compile the code using:
+   

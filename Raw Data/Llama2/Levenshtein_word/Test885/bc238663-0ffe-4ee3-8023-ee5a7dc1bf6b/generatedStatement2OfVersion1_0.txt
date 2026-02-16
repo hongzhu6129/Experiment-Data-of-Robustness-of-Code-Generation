@@ -1,0 +1,55 @@
+
+
+
+## Test Cases
+
+Here are some test cases covering normal scenarios, edge cases, and error handling:
+
+**1. Normal Cases:**
+
+* **Input:** 2, 3, 4
+* **Expected Output:** 9.666666666666666
+* **Reason:** (4 + 9 + 16) / 3 = 9.666...
+
+* **Input:** 0, 0, 0
+* **Expected Output:** 0.0
+* **Reason:** (0 + 0 + 0) / 3 = 0
+
+* **Input:** 10, 20, 30
+* **Expected Output:** 466.6666666666667
+* **Reason:** (100 + 400 + 900) / 3 = 466.666...
+
+
+**2. Edge Cases:**
+
+* **Input:** Integer.MAX_VALUE, 0, 0
+* **Expected Output:** 7.450580596923828E18  (Very large number - handles large inputs)
+
+* **Input:** 1, 1, 1
+* **Expected Output:** 1.0
+
+
+
+
+**3. Error/Negative Cases:**
+
+* **Input:** -1, 2, 3
+* **Expected Output:** "Error: Input numbers must be non-negative."  (Handles negative input)
+
+* **Input:** 0, -5, 10
+* **Expected Output:** "Error: Input numbers must be non-negative." (Handles negative input)
+
+* **Input:** 2.5, 3, 4  (If you were allowing floating-point input � currently it's designed for integers).  If the Scanner gets a floating point number where it expects an int, it will throw an `InputMismatchException`, which you might want to handle separately.
+
+
+
+**How to Run the Tests:**
+
+You can run these test cases by:
+
+1.  Manually entering the input values when prompted.
+2.  Creating a separate test class using a testing framework like JUnit (recommended for more extensive testing and automated testing within your development environment).  JUnit allows you to write formal test methods and assert that the output is what you expect.  This would be much better than manual testing for larger projects.
+
+
+Example of a JUnit test (add JUnit to your project):
+

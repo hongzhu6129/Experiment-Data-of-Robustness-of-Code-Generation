@@ -1,0 +1,44 @@
+class Solution {
+    /**
+     * Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+     * You must implement a solution with a linear runtime complexity and use only constant extra space.
+     *
+     * Example 1:
+     * Input: nums = [2,2,1]
+     * Output: 1
+     *
+     * Example 2:
+     * Input: nums = [4,1,2,1,2]
+     * Output: 4
+     *
+     * Example 3:
+     * Input: nums = [1]
+     * Output: 1
+     */
+    public static void main(String[] args) {
+        int[] nums1 = {2, 2, 1};
+        int result1 = getSingleNumber(nums1);
+        System.out.println(result1); // Output: 1
+
+        int[] nums2 = {4, 1, 2, 1, 2};
+        int result2 = getSingleNumber(nums2);
+        System.out.println(result2); // Output: 4
+
+        int[] nums3 = {1};
+        int result3 = getSingleNumber(nums3);
+        System.out.println(result3); // Output: 1
+
+        int[] nums4 = {1,1,2,2,4,3,3};
+        int result4 = getSingleNumber(nums4);
+        System.out.println(result4);
+    }
+
+
+    public static int getSingleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+}

@@ -1,0 +1,33 @@
+class LinearSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 5, 8, 12, 15, 19, 23, 27, 30};
+        int target = 15;
+
+        int index = Linear_Search(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+          // Test case 2: Element not present
+        target = 25;  // An element not in the array
+        index = Linear_Search(arr, target);
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+    private static int Linear_Search(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i; // Return the index if the element is found
+            }
+        }
+        return -1; // Return -1 if the element is not found
+    }
+}

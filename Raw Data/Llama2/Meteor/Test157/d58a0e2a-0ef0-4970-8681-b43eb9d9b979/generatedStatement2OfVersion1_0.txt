@@ -1,0 +1,38 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 12345
+   - Expected Output: 15
+
+2. **Negative Number:**
+   - Input: -9876
+   - Expected Output: 30
+
+3. **Single Digit Number:**
+   - Input: 7
+   - Expected Output: 7
+
+4. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+5. **Large Number:**
+   - Input: 1234567890
+   - Expected Output: 45
+
+6. **Number with repeating digits:**
+   - Input: 77777
+   - Expected Output: 35
+
+
+**Explanation of Corner Cases and Considerations:**
+
+* **Negative Numbers:** The code uses `Math.abs(n)` to handle negative numbers correctly.  The sum of digits should be the same regardless of the sign.
+* **Zero:** Zero is a special case where the loop should terminate immediately, and the sum should be 0. The code handles this correctly.
+* **Large Numbers:**  The code works with large numbers within the `int` data type's range. If you anticipate numbers exceeding this range, consider using `long` instead.
+* **Integer Overflow (Less Likely with digit sums, but good practice):**  If you were performing operations other than summing digits and were concerned about the possibility of intermediate results exceeding the `int` or `long` range, you might want to incorporate checks or use `BigInteger`.  For digit sums, overflow is unlikely because the sum of digits is generally much smaller than the number itself.
+
+
+This revised response provides a complete Java program, incorporates error handling for non-integer input (though it assumes correct input in the test cases section), and includes a comprehensive set of test cases covering corner and edge cases.  It also explains why each test case is important.

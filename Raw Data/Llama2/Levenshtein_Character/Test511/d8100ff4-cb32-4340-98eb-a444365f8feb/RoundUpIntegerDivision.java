@@ -1,0 +1,29 @@
+public class RoundUpIntegerDivision {
+
+    public static void main(String[] args) {
+        int numerator = 17;
+        int denominator = 5;
+
+        int result = (int) Math.ceil((double) numerator / denominator); 
+
+        System.out.println("Rounded up result of " + numerator + " / " + denominator + " = " + result);
+
+
+        // Example with potential negative numbers (handle carefully)
+        int numerator2 = -17;
+        int denominator2 = 5;
+
+        int result2 = (int) Math.ceil((double) numerator2 / denominator2);
+        System.out.println("Rounded up result of " + numerator2 + " / " + denominator2 + " = " + result2);
+
+
+         //More robust way for negative division (maintains conventional rounding behavior)
+        numerator2 = -17;
+        denominator2 = 5;
+        int result3 =  numerator2 / denominator2 + (numerator2 % denominator2 != 0 && numerator2 * denominator2 > 0? 1 : 0) ; //Integer division then condition adjustment
+        System.out.println("Rounded up result of " + numerator2 + " / " + denominator2 + " = " + result3);
+
+
+
+    }
+}

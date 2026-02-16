@@ -1,0 +1,45 @@
+public class ArrayChecker {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5, 3};
+        int num1 = 3;
+        System.out.println("Array 1 covers " + num1 + " next to each other or separated by one element: " + checkArray(arr1, num1));
+
+        int[] arr2 = {1, 2, 3, 3, 5, 3};
+        int num2 = 3;
+        System.out.println("Array 2 covers " + num2 + " next to each other or separated by one element: " + checkArray(arr2, num2));
+
+        int[] arr3 = {1, 2, 3, 4, 5, 6};
+        int num3 = 7;
+        System.out.println("Array 3 covers " + num3 + " next to each other or separated by one element: " + checkArray(arr3, num3));
+
+
+        int[] arr4 = {1, 3, 1, 4, 1, 6};
+        int num4 = 1;
+        System.out.println("Array 4 covers " + num4 + " next to each other or separated by one element: " + checkArray(arr4, num4));
+
+
+        int[] arr5 = {1, 2, 1};
+        int num5 = 1;
+        System.out.println("Array 5 covers " + num5 + " next to each other or separated by one element: " + checkArray(arr5, num5)); // True
+
+        int[] arr6 = {1, 1};
+        int num6 = 1;
+        System.out.println("Array 6 covers " + num6 + " next to each other or separated by one element: " + checkArray(arr6, num6)); // True
+
+    }
+
+    public static boolean checkArray(int[] arr, int num) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == num && arr[i + 1] == num) {
+                return true;
+            }
+        }
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i] == num && arr[i + 2] == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

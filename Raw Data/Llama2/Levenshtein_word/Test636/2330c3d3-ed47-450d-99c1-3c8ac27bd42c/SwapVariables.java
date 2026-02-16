@@ -1,0 +1,54 @@
+public class SwapVariables {
+
+    public static void main(String[] args) {
+        // Method 1: Using a temporary variable
+        int a = 10;
+        int b = 20;
+
+        System.out.println("Before swapping (using temp variable): a = " + a + ", b = " + b);
+
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("After swapping (using temp variable): a = " + a + ", b = " + b);
+
+
+        // Method 2: Using addition and subtraction (for numbers only)
+        int x = 5;
+        int y = 15;
+
+        System.out.println("\nBefore swapping (using + and -): x = " + x + ", y = " + y);
+
+        x = x + y; // x now holds the sum
+        y = x - y; // y now holds the original x
+        x = x - y; // x now holds the original y
+
+        System.out.println("After swapping (using + and -): x = " + x + ", y = " + y);
+
+
+
+        // Method 3: Using bitwise XOR (for numbers only) *Most efficient
+        int p = 7;
+        int q = 25;
+
+
+        System.out.println("\nBefore swapping (using XOR): p = " + p + ", q = " + q);
+        p = p ^ q;
+        q = p ^ q;
+        p = p ^ q;
+
+        System.out.println("After swapping (using XOR): p = " + p + ", q = " + q);
+
+
+
+        // "Paper a face" - assuming a very basic text-based face
+        System.out.println("\nPaper face:");
+        System.out.println("  -----");
+        System.out.println(" | o o |");
+        System.out.println(" |  -  |");
+        System.out.println(" | \\_/ |");
+        System.out.println("  -----");
+
+    }
+}

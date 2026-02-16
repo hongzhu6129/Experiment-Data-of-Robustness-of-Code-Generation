@@ -1,0 +1,21 @@
+import java.util.TreeMap;
+
+public class ClearTreeMap {
+
+    public static void main(String[] args) {
+        // Create a sample TreeMap (representing a timeline)
+        TreeMap<Integer, String> timeline = new TreeMap<>();
+        timeline.put(1, "Event A");
+        timeline.put(5, "Event B");
+        timeline.put(2, "Event C");
+        timeline.put(10, "Event D");
+
+
+        System.out.println("Timeline before clearing: " + timeline);
+
+        // Delete all elements from the TreeMap
+        timeline.clear();
+
+        System.out.println("Timeline after clearing: " + timeline); 
+    }
+}

@@ -1,0 +1,13 @@
+public class Main {
+    public static void main(String[] args) {
+        String inputString = "pythonpyt";
+
+        if (inputString.length() % 2 == 0) { // Check if the string is even
+            int halfLength = inputString.length() / 2;
+            String firstHalf = inputString.substring(0, halfLength);
+            System.out.println(firstHalf);
+        } else {
+            System.out.println("The input string is not even.");
+        }
+    }
+}

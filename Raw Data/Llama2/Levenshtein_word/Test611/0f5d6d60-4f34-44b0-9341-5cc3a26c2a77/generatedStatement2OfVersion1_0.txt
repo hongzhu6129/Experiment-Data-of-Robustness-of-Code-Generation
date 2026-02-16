@@ -1,0 +1,10 @@
+
+
+
+Key improvements in this code:
+
+- **Handles `null` and empty input:** The `endWithmOrn` method now correctly handles cases where the input string is `null` or empty (after trimming whitespace), returning 0 in these situations.
+- **Uses regex for word boundaries:**  The regex pattern `\\b\\w+[mnMN]\\b` now includes `\\b` (word boundary) to ensure that it only matches whole words ending in 'm' or 'n'.  This prevents partial matches like "hammer" or "running".
+- **Case-insensitive matching:** The regex character class `[mnMN]` handles both lowercase and uppercase 'm' and 'n'.
+- **Clearer variable names:**  Using names like `text1`, `count1`, etc. in `main` makes the test cases easier to understand.
+- **More comprehensive testing:** The `main` method includes tests with `null`, empty, and mixed-case inputs to demonstrate the robustness of the code.

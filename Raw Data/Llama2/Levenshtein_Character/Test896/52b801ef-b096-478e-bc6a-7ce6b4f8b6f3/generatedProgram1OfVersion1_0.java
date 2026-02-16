@@ -1,0 +1,33 @@
+import java.util.TreeSet;
+
+public class RemoveLastTreeSetElement {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some elements
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Print the initial TreeSet
+        System.out.println("Initial TreeSet: " + numbers);
+
+        // Check if the TreeSet is empty before attempting removal
+        if (!numbers.isEmpty()) {
+            // Retrieve and remove the last element
+            Integer lastElement = numbers.pollLast();
+
+            // Print the removed element and the updated TreeSet
+            if (lastElement != null) {  //Handle potential null if the set was empty
+                System.out.println("Removed last element: " + lastElement);
+                System.out.println("Updated TreeSet: " + numbers);
+            }
+        } else {
+            System.out.println("TreeSet is empty. Cannot remove last element.");
+        }
+    }
+}

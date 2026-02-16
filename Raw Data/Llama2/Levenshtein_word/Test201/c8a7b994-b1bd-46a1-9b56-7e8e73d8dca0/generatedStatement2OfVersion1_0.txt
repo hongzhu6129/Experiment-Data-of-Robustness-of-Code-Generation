@@ -1,0 +1,29 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner and edge cases:
+
+| Test Case | Decimal Input | Expected Octal Output | Notes                                     |
+| --------- | ------------- | --------------------- | ---------------------------------------- |
+| 1        | 15            | 17                    | Example from the prompt                    |
+| 2        | 0             | 0                     | Zero input                              |
+| 3        | 1             | 1                     | Single digit input                       |
+| 4        | 8             | 10                    | Tests the base case                      |
+| 5        | 63            | 77                    | Maximum decimal representable by two octal digits |
+| 6        | 511           | 777                   | Maximum decimal representable by three octal digits |
+| 7        | 2147483647   | 17777777777           | Maximum positive integer for a 32-bit signed int. Tests the upper limit. | 
+| 8        | -1            |  Error/Exception handling (depending on how you want to manage negative input)  | Negative input. This should ideally be handled, either by returning an error message or by representing the octal equivalent of the two's complement representation if you want to handle negative numbers. |
+
+
+**Explanation of Test Cases and Improvements:**
+
+* **Zero and One:** Testing these basic values ensures the logic handles the simplest cases correctly.
+* **Eight:** This checks the base case where the octal representation shifts to two digits.
+* **63 and 511:** These test the boundaries of two and three octal digit representations.
+* **Integer.MAX_VALUE:**  Tests the upper limit of integer input.
+* **Negative Input (-1):** The original code didn't handle negative numbers.  The added explanation now suggests either returning an error or representing the octal equivalent of two's complement if you need to support negative numbers.  How you handle negative input depends on the specific requirements of your program. You could throw an exception, return a special value (e.g., -1), or indeed use the two's complement method to convert.
+
+
+This improved version and the extended test cases will help you more thoroughly validate the `DecimalToOctal` program. Remember to consider how your application *should* handle negative input based on its purpose.

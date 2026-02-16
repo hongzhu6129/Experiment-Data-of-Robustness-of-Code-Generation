@@ -1,0 +1,31 @@
+
+
+
+**Test Cases (Including Corner Cases):**
+
+1. **Valid Octal Numbers:**
+   - Input: 123  Output: 001010011
+   - Input: 705  Output: 111000101
+   - Input: 42   Output: 100010
+   - Input: 1    Output: 001
+
+2. **Corner Cases:**
+   - Input: 0    Output: 0
+   - Input: "" (Empty String) Output: Input cannot be empty.
+   - Input: 876 (Invalid Octal) Output: Invalid octal number. Digits must be between 0 and 7.
+   - Input: 12a (Invalid Octal) Output: Invalid octal number. Digits must be between 0 and 7.
+   - Input: a very large octal number (e.g., a number with 20 digits)  Output: The octal number is too large to handle. (This tests for overflow and uses the `try-catch` block.)
+
+3. **Leading Zeros:**
+   - Input: 000123 Output: 001010011 (Handles leading zeros correctly)
+
+
+**How to Run and Test:**
+
+1. Save the code as `OctalToBinary.java`.
+2. Compile: `javac OctalToBinary.java`
+3. Run: `java OctalToBinary`
+4. Enter the test case input when prompted.
+
+
+This improved version adds input validation, handles corner cases explicitly, and manages potential overflow with a `try-catch` block, making it more robust and user-friendly. It also uses a `long` to accommodate larger octal inputs, as requested.

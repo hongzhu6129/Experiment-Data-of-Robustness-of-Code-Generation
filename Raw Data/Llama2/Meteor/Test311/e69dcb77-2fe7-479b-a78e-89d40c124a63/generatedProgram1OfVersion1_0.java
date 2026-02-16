@@ -1,0 +1,47 @@
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "World";
+        String str3 = "Java";
+
+        // Using endsWith() method
+        boolean endsWithStr2 = str1.endsWith(str2);
+        boolean endsWithStr3 = str1.endsWith(str3);
+
+        System.out.println("\"" + str1 + "\" ends with \"" + str2 + "\"? " + endsWithStr2);
+        System.out.println("\"" + str1 + "\" ends with \"" + str3 + "\"? " + endsWithStr3);
+
+
+        // Demonstrating without using endsWith() - for educational purposes
+        //  (Generally, using endsWith() is preferred for conciseness and clarity)
+
+        String str4 = "This is a test";
+        String str5 = "test";
+
+        boolean endsWithStr5Manual = checkEndsWith(str4, str5);
+        System.out.println("\"" + str4 + "\" ends with \"" + str5 + "\"? " + endsWithStr5Manual);
+
+    }
+
+
+    // Manual implementation of endsWith functionality (for learning/demonstration)
+    private static boolean checkEndsWith(String mainString, String suffix) {
+        if (suffix.length() > mainString.length()) {
+            return false;
+        }
+
+        int mainLen = mainString.length();
+        int suffixLen = suffix.length();
+
+
+        for (int i = 0; i < suffixLen; i++) {
+            if (mainString.charAt(mainLen - suffixLen + i) != suffix.charAt(i)) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+}

@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SwapArrayListElements {
+
+    public static void main(String[] args) {
+        // Create an ArrayList
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        System.out.println("Original ArrayList: " + numbers);
+
+        // Swap elements at index 1 and 3  (2 and 4 in this example)
+        int index1 = 1;
+        int index2 = 3;
+
+        // Check for valid indices
+        if (index1 >= 0 && index1 < numbers.size() && index2 >= 0 && index2 < numbers.size()) {
+            Collections.swap(numbers, index1, index2);  // Simplest way to swap
+            System.out.println("ArrayList after swapping: " + numbers);
+
+            // Alternatively, using a temporary variable (more general for other data structures)
+            /*
+            Integer temp = numbers.get(index1);
+            numbers.set(index1, numbers.get(index2));
+            numbers.set(index2, temp);
+            System.out.println("ArrayList after swapping (manual method): " + numbers);
+            */
+
+
+        } else {
+            System.out.println("Invalid indices for swapping.");
+        }
+
+
+
+       // Example with String ArrayList:
+
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        System.out.println("\nOriginal String ArrayList: " + names);
+
+        int stringIndex1 = 0;
+        int stringIndex2 = 2;
+
+         if (stringIndex1 >= 0 && stringIndex1 < names.size() && stringIndex2 >= 0 && stringIndex2 < names.size()) {
+            Collections.swap(names, stringIndex1, stringIndex2);
+            System.out.println("String ArrayList after swapping: " + names);
+         }  else {
+            System.out.println("Invalid indices for swapping.");
+         }
+
+    }
+}

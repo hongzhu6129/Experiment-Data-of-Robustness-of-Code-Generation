@@ -1,0 +1,42 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Hex Input:**
+   - Input: `1A`
+   - Expected Output: `32`
+
+2. **Valid Hex with Leading Zeros:**
+    - Input: `000F`
+    - Expected Output: `17`
+
+
+3. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Empty Input:**
+   - Input: ` ` (just a space, or nothing at all)
+   - Expected Output: `0`
+
+5. **Invalid Hex Characters:**
+   - Input: `G3`
+   - Expected Output: `Invalid hexadecimal input.`
+
+6. **Mixed Case Input:**
+   - Input:  `aBcDeF`
+   - Expected Output: `12657357`
+
+7. **Large Hex Input (check for overflow):**
+    - Input: `FFFFFFFFFFFFFFFF` (16 Fs, maximum for a long)
+    - Expected Output: `1777777777777777777777`
+
+8. **Overflow Hex Input:**
+     - Input: `10000000000000000` (larger than what fits in a long)
+     - Expected Output: `Hexadecimal value too large for conversion.`
+
+
+
+
+This improved version addresses corner cases like empty input, overflow during hex-to-decimal conversion, and includes error handling for invalid hex characters, providing more robust and reliable conversion. Also it adheres to the constraint of only using the `main` method.

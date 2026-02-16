@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Empty Array:**  Added a check at the start of `removeDuplicates` to handle the case where the input array is empty. This prevents potential `ArrayIndexOutOfBoundsException`.
+
+2. **Clearer Variable Naming:** Changed `k` to `uniqueIndex` for better readability. `uniqueIndex` clearly represents the index where the next unique element should be placed.
+
+3. **Returns Length of Unique Subarray:** The function now correctly returns the length of the subarray containing unique elements (`uniqueIndex + 1`). This is important because the original array is modified in-place, and you need to know how many elements are actually unique.
+
+4. **Demonstrative `main` Method:** Included a `main` method with example arrays to show how to use the `removeDuplicates` method and how to extract the unique subarray using `Arrays.copyOfRange`.
+
+5. **In-Place Modification + Returning Length:**  The function modifies the array in-place (as the question suggested using only the provided method signatures), but importantly, it *also* returns the length of the updated subarray. This is the standard and most efficient approach for this kind of problem.
+
+6. **Comprehensive Test Cases:** Added test cases in `main` to demonstrate handling of empty arrays and already unique arrays.  This helps verify the correctness of the code.

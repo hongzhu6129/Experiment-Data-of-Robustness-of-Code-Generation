@@ -1,0 +1,34 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                   |
+|-----------|---------|---------|---------|----------------|----------------------------------------|
+| 1        | 10      | 20      | 30      | 20.0          | General case                            |
+| 2        | 0       | 0       | 0       | 0.0           | All zeros                               |
+| 3        | -5      | 10      | 15      | 6.666666666666667 | Negative number included                |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5           | Decimal numbers                         |
+| 5        | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | Infinity or Exception        | Overflow (potential issue, handle carefully) |
+| 6        | Integer.MIN_VALUE | Integer.MIN_VALUE| Integer.MIN_VALUE| -Infinity or Exception       | Underflow (potential issue, handle carefully)|
+| 7        | Double.MAX_VALUE  | 0        | 0        | Infinity or Exception     | Overflow with double                     |
+| 8         | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE / 3 (very small number) | Handling very small double values |
+|9| 10 | 20 | Double.NaN | NaN | NaN input results in NaN output|
+
+
+**How to run the test cases (Manually):**
+
+1.  Compile the Java code: `javac AverageCalculator.java`
+2.  Run the program multiple times, entering the input values for each test case: `java AverageCalculator`
+
+
+**Important Considerations for Robust Code:**
+
+* **Input Validation:** While the provided code works for basic cases, a robust program should include input validation to handle invalid input (e.g., non-numeric characters) gracefully.  You can use a `try-catch` block to handle potential `InputMismatchException` if the user enters something that's not a number.
+* **Overflow/Underflow:**  Be aware of the limitations of integer and floating-point data types.  For real-world applications where very large or very small numbers might be input, consider using `BigDecimal` for more precise calculations.
+* **NaN Handling:**  Consider how to handle `NaN` (Not a Number) values if they might be input or result from calculations.
+
+
+This improved version demonstrates better input handling and NaN checks:
+

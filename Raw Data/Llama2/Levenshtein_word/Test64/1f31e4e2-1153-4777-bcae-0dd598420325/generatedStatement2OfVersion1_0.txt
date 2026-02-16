@@ -1,0 +1,29 @@
+
+
+
+**Test Cases and Corner Cases:**
+
+1. **Empty File:** `/home/students/abc.txt` (Create an empty file named abc.txt). Expected output: 0 bytes.
+
+2. **Regular File:** `/home/students/test.txt` (Create a file with some content).  Expected output: The actual size of the file in bytes.
+
+3. **Non-existent File:** `nonexistent_file.txt`. Expected output: An error message indicating the file was not found and a size of -1.
+
+4. **Empty File Path:** `""`. Expected output:  An error message (most likely an InvalidPathException) and -1.
+
+5. **Null File Path:** `null`.  Expected output:  A `NullPointerException` caught by the try-catch block, an error message, and -1.
+
+6. **Very Large File:** `/path/to/very/large/file.txt`. (If possible, create a very large file, several GBs, to test how the `Files.size()` method handles it.  This tests for potential integer overflow issues if you were using older, less robust file size methods).
+
+7. **Directory (Not a File):** `/path/to/a/directory` (Create a directory). Expected output: An error message (likely a `IOException: Is a directory`) and -1.  This is important to test because attempting to get the "size" of a directory doesn't make sense in the same way as a file.
+
+**Key Improvements in this Code:**
+
+* **Error Handling:**  Uses a try-catch block to handle `IOExceptions`, which can occur if the file doesn't exist, there are permissions issues, or other I/O problems arise.
+* **Returns -1 on Error:** The function returns -1 to clearly indicate that there was an error in getting the file size.  This makes it easier for the calling code to handle errors.
+* **Uses `Files.size()`:**  Uses the `Files.size()` method from the `java.nio.file` package. This method is generally more efficient and robust for getting file sizes, especially for large files, compared to older approaches.
+* **Clearer Output:** The output now includes the file path along with the size or error message, making it easier to understand the results of each test case.
+* **Comprehensive Test Cases:** Covers a good range of scenarios, including corner cases like empty paths, null paths, and directories.
+
+
+Remember to replace the example file paths with valid paths on your system and create the necessary files and directories for testing.

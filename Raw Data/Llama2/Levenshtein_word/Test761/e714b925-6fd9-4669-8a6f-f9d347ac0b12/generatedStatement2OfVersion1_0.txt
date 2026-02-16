@@ -1,0 +1,13 @@
+
+
+
+Key improvements in this version:
+
+* **Handles Locale:** Uses `WeekFields.of(Locale.getDefault())` to ensure the code works correctly in different regions where the first day of the week might not be Monday.
+* **Handles 53rd Week Correctly:**  The `try-catch` block prevents the code from crashing if the 53rd week doesn't exist in the current year/locale.  It gracefully stops calculating weeks when it encounters an invalid week number.
+* **Clearer Output:**  The output is formatted to show "Week X: StartDate - EndDate".
+* **More Efficient:**  Calculating the last day of the week by adding 6 days to the first day is more efficient than using another `with()` and `TemporalAdjuster`.
+
+
+Example Output (will vary depending on the current date and locale):
+

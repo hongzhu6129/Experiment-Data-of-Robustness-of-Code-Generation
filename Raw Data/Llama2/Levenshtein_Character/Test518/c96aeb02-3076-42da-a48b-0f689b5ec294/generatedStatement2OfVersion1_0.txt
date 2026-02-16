@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   Input: 255
+   Expected Output: FF
+
+2. **Zero:**
+   Input: 0
+   Expected Output: 0  (This is a corner case - handles zero correctly)
+
+3. **Negative Number:**
+   Input: -10
+   Expected Output: FFFFFFF6 (Java handles negative numbers using two's complement, resulting in a large hexadecimal representation)
+
+4. **Large Positive Number:**
+   Input: 123456789
+   Expected Output: 75BCD15
+
+5. **Small Positive Number:**
+   Input: 10
+   Expected Output: A
+
+6. **Number with leading zeros (in decimal):**
+  Input: 00123 // Leading zeros in input
+  Expected Output: 7B (The program should correctly ignore leading zeros in the decimal input)
+
+7. **Max Integer Value:**
+   Input: 2147483647 (Integer.MAX_VALUE)
+   Expected Output: 7FFFFFFF
+
+
+**How to run the test cases:**
+
+1. **Manually:** You can run the program and enter each input value as prompted.  Compare the output with the expected output.
+
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit.  Here's a basic example of how you would write JUnit tests:
+

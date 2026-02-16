@@ -1,0 +1,21 @@
+import java.util.TreeSet;
+
+public class TreeSetSize {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add("apple");
+        treeSet.add("banana");
+        treeSet.add("orange");
+        treeSet.add("grape");
+
+        // Get the number of elements in the TreeSet
+        int size = treeSet.size();
+
+        // Print the size
+        System.out.println("The number of elements in the TreeSet is: " + size); 
+    }
+}

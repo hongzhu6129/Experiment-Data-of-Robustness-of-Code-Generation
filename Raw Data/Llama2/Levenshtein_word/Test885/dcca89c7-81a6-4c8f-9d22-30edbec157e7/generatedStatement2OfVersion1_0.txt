@@ -1,0 +1,45 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -10, -20, -30
+   - Expected Output: -20.0
+
+3. **Mixed Positive and Negative Numbers:**
+   - Input: -10, 20, 30
+   - Expected Output: 13.333333333333334
+
+4. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+
+6. **Small Numbers (Close to zero):**
+   - Input: 0.1, 0.2, 0.3
+   - Expected Output: 0.2
+
+7. **Combination of Integer and Decimal Input (though the program takes integers, it's good to validate handling with user input):**  If a user enters decimal numbers, the `nextInt()` method will throw an `InputMismatchException`. You might want to enhance the program to handle this more gracefully by using `nextDouble()` and casting to `int` if needed or providing an error message to the user.
+
+8. **Integer Overflow (Corner Case):**  
+   - Input: Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE
+   - This will likely result in an incorrect average due to integer overflow during the sum calculation. Using `long` for the sum would mitigate this but may still have limitations.
+
+
+
+**How to Run the Test Cases:**
+
+You can either manually enter the inputs when prompted by the program or modify the `main` method to automatically run these tests:
+
+
+

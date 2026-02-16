@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        float inputFloat = scanner.nextFloat();
+
+        float roundedFloat = round_num(inputFloat);
+        System.out.println(roundedFloat);
+        scanner.close();
+
+    }
+
+
+    public static float round_num(float num) {
+        return Math.round(num);
+    }
+}

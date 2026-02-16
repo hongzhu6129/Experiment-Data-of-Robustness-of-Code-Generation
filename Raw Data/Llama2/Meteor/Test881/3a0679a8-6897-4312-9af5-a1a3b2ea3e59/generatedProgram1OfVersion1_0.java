@@ -1,0 +1,78 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class LastModifiedDate {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using java.io.File (legacy but still works)
+        File file1 = new File("example.txt"); // Replace with your file path
+        if (file1.exists()) {
+            long lastModifiedMillis = file1.lastModified(); // Milliseconds since epoch
+            Date lastModifiedDate = new Date(lastModifiedMillis);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Customize date format
+            String formattedDate = sdf.format(lastModifiedDate);
+
+            System.out.println("Last Modified Date (Method 1): " + formattedDate);
+
+
+            // Demonstrating converting milliseconds to a more readable format (e.g., days, hours, minutes ago)
+            long currentTimeMillis = System.currentTimeMillis();
+            long timeDifferenceMillis = currentTimeMillis - lastModifiedMillis;
+
+            long seconds = timeDifferenceMillis / 1000;
+            long minutes = seconds / 60;
+            long hours = minutes / 60;
+            long days = hours / 24;
+
+
+            if (days > 0) {
+                 System.out.println("Modified " + days + " day(s) ago");
+            } else if (hours > 0) {
+                System.out.println("Modified " + hours + " hour(s) ago");
+            } else if (minutes > 0) {
+                System.out.println("Modified " + minutes + " minute(s) ago");
+            } else {
+                System.out.println("Modified " + seconds + " second(s) ago");
+            }
+
+        } else {
+            System.out.println("File not found.");
+        }
+
+
+
+
+        // Method 2: Using java.nio.file (more modern approach)
+        Path path2 = Paths.get("example.txt"); // Replace with your file path
+        try {
+            BasicFileAttributes attributes = Files.readAttributes(path2, BasicFileAttributes.class);
+            FileTime lastModifiedTime = attributes.lastModifiedTime();
+
+            System.out.println("Last Modified Date (Method 2): " + lastModifiedTime); // Default format
+
+            // Convert FileTime to a Date object for more formatting options:
+            long lastModifiedTimeMillis = lastModifiedTime.toMillis();
+            Date lastModifiedDate2 = new Date(lastModifiedTimeMillis);
+            SimpleDateFormat sdf2 = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss"); // Example format
+            String formattedDate2 = sdf2.format(lastModifiedDate2);
+
+            System.out.println("Formatted Last Modified Date (Method 2): " + formattedDate2);
+
+
+
+        } catch (IOException e) {
+            System.err.println("Error reading file attributes: " + e.getMessage());
+        }
+       
+    }
+}
+

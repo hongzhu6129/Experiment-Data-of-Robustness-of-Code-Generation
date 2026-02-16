@@ -1,0 +1,37 @@
+import java.util.List;
+import java.util.Arrays;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "banana", "apricot", "avocado", "orange");
+        char startingLetter = 'a';
+
+        long count = strings.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+
+        // Example with different list and starting letter
+        List<String> strings2 = Arrays.asList("Hello", "World", "How", "are", "you");
+        char startingLetter2 = 'H';
+
+         count = strings2.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter2)))
+                .count();
+        System.out.println("Number of strings starting with '" + startingLetter2 + "': " + count);
+
+          //Example with empty List
+          List<String> emptyList = Arrays.asList();
+          char startingLetter3 = 'Z';
+
+          count = emptyList.stream()
+                  .filter(s -> s.startsWith(String.valueOf(startingLetter3)))
+                  .count();
+          System.out.println("Number of strings starting with '" + startingLetter3 + "' in empty list: " + count);
+
+
+    }
+}

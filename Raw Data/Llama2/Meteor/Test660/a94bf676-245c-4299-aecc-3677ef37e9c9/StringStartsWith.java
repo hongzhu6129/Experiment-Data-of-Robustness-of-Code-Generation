@@ -1,0 +1,39 @@
+public class StringStartsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String prefix1 = "Hello";
+        String prefix2 = "World";
+
+        // Using startsWith() method
+        boolean startsWithHello = str1.startsWith(prefix1);
+        boolean startsWithWorld = str1.startsWith(prefix2);
+
+        System.out.println("\"" + str1 + "\" starts with \"" + prefix1 + "\"? " + startsWithHello); // Output: true
+        System.out.println("\"" + str1 + "\" starts with \"" + prefix2 + "\"? " + startsWithWorld); // Output: false
+
+
+        // Demonstrating startsWith(prefix, offset) - checks from a specific index
+        String str2 = "Programming is fun";
+        String prefix3 = "is";
+        boolean startsWithIsFromIndex10 = str2.startsWith(prefix3, 10);
+
+        System.out.println("\"" + str2 + "\" starts with \"" + prefix3 + "\" from index 10? " + startsWithIsFromIndex10); // Output: true
+
+
+         // Handling null and empty strings (important to avoid NullPointerExceptions)
+        String str3 = null;
+        String str4 = "";
+        String prefix4 = "Test";
+
+        // Safe way to check with null or empty strings:
+        boolean safeCheck1 =  str3 != null && str3.startsWith(prefix4);  // avoids NullPointerException
+        boolean safeCheck2 = str4 != null && str4.startsWith(prefix4);
+
+        System.out.println("Null string starts with \"" + prefix4 + "\"? " + safeCheck1); //false
+        System.out.println("Empty string starts with \"" + prefix4 + "\"? " + safeCheck2); //false
+
+
+
+    }
+}

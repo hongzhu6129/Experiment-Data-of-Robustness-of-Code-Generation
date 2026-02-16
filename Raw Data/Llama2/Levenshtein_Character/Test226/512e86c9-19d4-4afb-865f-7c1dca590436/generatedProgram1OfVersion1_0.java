@@ -1,0 +1,32 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+
+public class TodaysDateAtMidnight {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using LocalDate and LocalTime
+        LocalDate today = LocalDate.now();
+        LocalTime midnight = LocalTime.MIDNIGHT;
+        LocalDateTime todayAtMidnight = LocalDateTime.of(today, midnight);
+        System.out.println("Today at midnight (Method 1): " + todayAtMidnight);
+
+        // Method 2: Using LocalDateTime and truncatedTo
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime todayAtMidnight2 = now.truncatedTo(LocalDate.RESOLUTION); // Truncates to the day
+        System.out.println("Today at midnight (Method 2): " + todayAtMidnight2);
+
+
+        // Method 3: Using java.util.Calendar (older approach, but still valid)
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        calendar.set(java.util.Calendar.MINUTE, 0);
+        calendar.set(java.util.Calendar.SECOND, 0);
+        calendar.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date date = calendar.getTime();
+        System.out.println("Today at midnight (Method 3): " + date);
+
+
+    }
+}

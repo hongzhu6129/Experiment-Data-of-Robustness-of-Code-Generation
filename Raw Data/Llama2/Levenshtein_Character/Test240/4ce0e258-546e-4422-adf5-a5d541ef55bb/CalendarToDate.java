@@ -1,0 +1,28 @@
+import java.util.Calendar;
+import java.util.Date;
+
+public class CalendarToDate {
+
+    public static void main(String[] args) {
+
+        // Get the current date and time using Calendar
+        Calendar calendar = Calendar.getInstance();
+
+        // Create a Date object from the Calendar instance
+        Date currentDate = calendar.getTime();
+
+        // Print the current date
+        System.out.println("Current Date: " + currentDate);
+
+
+        // Example of setting a specific date using Calendar:
+        calendar.set(Calendar.YEAR, 2024);
+        calendar.set(Calendar.MONTH, Calendar.JANUARY); // Month is 0-indexed (0 = January)
+        calendar.set(Calendar.DAY_OF_MONTH, 15);
+
+        Date specificDate = calendar.getTime();
+        System.out.println("Specific Date: " + specificDate);
+
+
+    }
+}

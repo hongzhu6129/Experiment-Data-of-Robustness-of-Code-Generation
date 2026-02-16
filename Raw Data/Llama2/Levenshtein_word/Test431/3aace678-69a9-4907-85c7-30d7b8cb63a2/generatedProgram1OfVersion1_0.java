@@ -1,0 +1,59 @@
+import java.util.TreeMap;
+
+public class SearchTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap with some data
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+
+
+        // Search for a specific key
+        int keyToSearch = 3;
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key " + keyToSearch + " found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key " + keyToSearch + " not found in the TreeMap.");
+        }
+
+        // Search for a specific value
+        String valueToSearch = "Four";
+        if (treeMap.containsValue(valueToSearch)) {
+            System.out.println("Value " + valueToSearch + " found in the TreeMap.");
+
+            // If you need to find the *key* associated with a value (less efficient):
+            for (Integer key : treeMap.keySet()) {
+                if (treeMap.get(key).equals(valueToSearch)) {
+                    System.out.println("Key associated with value " + valueToSearch + ": " + key);
+                    break; // Stop after finding the first match
+                }
+            }
+
+
+        } else {
+            System.out.println("Value " + valueToSearch + " not found in the TreeMap.");
+        }
+
+
+         // Search for a key using ceilingKey() (finds the least key greater than or equal to the given key)
+        int ceilingKey = treeMap.ceilingKey(2); 
+        if (ceilingKey != null) {
+             System.out.println("Ceiling key for 2: " + ceilingKey); // Output: 2
+        }
+
+        // Search for a key using floorKey() (finds the greatest key less than or equal to the given key)
+        int floorKey = treeMap.floorKey(2);
+        if (floorKey != null) {
+            System.out.println("Floor key for 2: " + floorKey); // Output: 2
+        }
+
+
+
+    }
+}

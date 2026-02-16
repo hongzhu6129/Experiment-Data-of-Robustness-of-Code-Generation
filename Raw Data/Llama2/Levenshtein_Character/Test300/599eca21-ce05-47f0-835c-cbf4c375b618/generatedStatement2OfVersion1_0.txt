@@ -1,0 +1,24 @@
+
+
+**Explanation and Key Improvements:**
+
+1. **`FileWriter(filePath, true)`:**  The `true` argument in the `FileWriter` constructor is crucial. It tells Java to open the file in *append* mode. Without it, the file will be overwritten.
+
+2. **`BufferedWriter`:**  Using a `BufferedWriter` significantly improves performance, especially when writing larger amounts of data. It buffers the output before writing it to the file, reducing the number of I/O operations.
+
+3. **`try-with-resources`:** This ensures that the `BufferedWriter` is automatically closed, even if an exception occurs.  This prevents resource leaks.
+
+4. **Error Handling:** The `try-catch` block handles potential `IOExceptions` that might occur during file operations (e.g., file not found, permissions issues).  It provides a more robust solution.
+
+5. **`newLine()` (Optional):** The `writer.newLine()` adds a newline character before appending the new text. This is often what you want to avoid having the appended text run directly into the existing content.  Remove this line if you don't need the newline.
+
+6. **Clearer File Path:** The code now uses a placeholder `filePath` variable.  Make sure to replace `"path/to/your/file.txt"` with the actual path to your file.  You can also make the file path an argument passed into the `main` method if desired.
+
+7. **Informative Output:** The code provides messages indicating success or failure.
+
+
+**How to Use:**
+
+1. **Replace `path/to/your/file.txt`:** Change the `filePath` variable to the correct path to your existing file.
+2. **Compile and Run:** Compile the Java code and then run it. The text specified in `textToAppend` will be appended to the file.
+3. **Check Your File:** Open the file to verify that the text has been appended correctly.

@@ -1,0 +1,21 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5}; // Example array
+        int elementToFind = 5; // Example element
+
+        int firstOccurrence = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == elementToFind) {
+                firstOccurrence = i;
+                break; // Exit loop after the first occurrence is found
+            }
+        }
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " is not found in the array.");
+        }
+    }
+}

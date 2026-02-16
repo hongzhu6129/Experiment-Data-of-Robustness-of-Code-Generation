@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Variable Names:** Use `m` and `n` for rows and columns, making the code more readable.
+2. **Return an Array:** The `Saddleback` function returns an `int[]` to represent the row and column index of the target.  `{-1, -1}` indicates the target wasn't found.
+3. **Boundary Checks:** The `while` loop condition `row < m && col >= 0` prevents going out of bounds.
+4. **Simplified Logic:** The code directly compares `matrix[row][col]` with `target` and adjusts `row` or `col` accordingly, making the logic more concise.
+5. **Example Usage:** The `main` method demonstrates how to use the `Saddleback` function and handles the case where the target is not found.
+6. **Added Test Case:** A second test case with a target value that is *not* present in the matrix is included to demonstrate the not-found handling.
+
+
+
+**How Saddleback Search Works:**
+
+Saddleback search (or a variation of it) is efficient for sorted matrices because it eliminates a portion of the search space with each comparison.  It starts at the top-right corner.
+
+* If the current element is smaller than the target, the entire row can be eliminated (move down).
+* If the current element is larger than the target, the entire column can be eliminated (move left).
+
+
+
+This approach is generally faster than a linear search in a 2D sorted matrix, especially for larger matrices. Its time complexity is O(m + n) which is better than O(m*n) of a linear search.

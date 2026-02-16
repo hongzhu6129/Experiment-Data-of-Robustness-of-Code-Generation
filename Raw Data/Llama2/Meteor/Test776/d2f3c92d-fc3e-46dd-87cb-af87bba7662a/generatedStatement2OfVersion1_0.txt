@@ -1,0 +1,38 @@
+
+
+**Test Cases:**
+
+1. **Positive Side Length:**
+   - Input: 5
+   - Expected Output: ~64.95
+
+2. **Small Positive Side Length:**
+   - Input: 0.5
+   - Expected Output: ~0.6495
+
+3. **Large Positive Side Length:**
+   - Input: 100
+   - Expected Output: ~25980.76
+
+4. **Zero Side Length (Corner Case):**
+   - Input: 0
+   - Expected Output: "Invalid input. Side length must be a positive number." (Program should terminate)
+
+5. **Negative Side Length (Corner Case):**
+   - Input: -5
+   - Expected Output: "Invalid input. Side length must be a positive number." (Program should terminate)
+
+6. **Non-Numeric Input (Corner Case):**
+    - Input: abc  (or any non-numeric value).
+    - Expected behavior. The program will likely throw an `InputMismatchException`. While the provided code doesn't explicitly handle this, robust programs would include a `try-catch` block to gracefully handle such input errors.  This would prevent the program from crashing and allow you to provide a more user-friendly error message.
+
+**How to Run the Test Cases:**
+
+1. **Save:** Save the Java code as `HexagonArea.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the command: `javac HexagonArea.java`
+3. **Run:** Execute the compiled program using: `java HexagonArea`
+4. **Input:** Enter the test case input values when prompted.
+5. **Verify:** Check if the output matches the expected output for each test case.
+
+
+This enhanced version includes error handling for invalid input (negative or zero side lengths), making the program more robust.  Consider adding a `try-catch` block within the `main` method to handle potential `InputMismatchException` if a user enters non-numeric input. Although the prompt requested minimizing methods, exception handling is crucial for real-world applications.

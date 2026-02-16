@@ -1,0 +1,44 @@
+public class Staircase {
+
+    public static void main(String[] args) {
+        int g = 10; // Example number of coins
+
+        int rows = 0;
+        int coinsUsed = 0;
+        int currentRowCoins = 0;
+
+        while (coinsUsed + currentRowCoins +1<= g) {
+            rows++;
+            currentRowCoins++;
+            coinsUsed += currentRowCoins;
+        
+        }
+
+        // Print the staircase
+        int coinsInRow = 1;
+        int coinsLeft = g;
+
+        for (int i = 1; i <= rows; i++) {
+            for (int j = 1; j <= coinsInRow ; j++) {
+
+                if(coinsLeft > 0){
+                    System.out.print("* ");
+                    coinsLeft--;
+                }
+
+
+            }
+            System.out.println();
+            coinsInRow++;
+        }
+
+          if(coinsLeft > 0){
+              for(int i = 0 ; i < coinsLeft; i++){
+                  System.out.print("* ");
+              }
+               System.out.println();
+          }
+
+
+    }
+}

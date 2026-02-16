@@ -1,0 +1,28 @@
+
+
+
+**Test Cases (including corner and edge cases):**
+
+1. **Normal Cases:**
+   - Check if numbers like 3, 6, 9 (for divisibility by 3) are printed.
+   - Check if numbers like 5, 10, 20 (for divisibility by 5) are printed.
+   - Check if numbers like 15, 30, 45 (for divisibility by both 3 and 5) are printed.
+
+2. **Edge Cases:**
+   - **Lower Bound (1):**  1 is not divisible by 3, 5 or both. Verify it's not printed in any of the lists.
+   - **Upper Bound (100):** 100 is divisible by 5.  Verify it's printed in the "divisible by 5" list but not in others. 99 is divisible by 3. Verify it's printed in the "divisible by 3" list.
+
+3. **Corner Cases:**
+   - **Zero:**  Although the problem specifies 1 to 100, test with 0 as input to `printDivisibleBy` and `printDivisibleByBoth` separately. It should not cause any errors (0 is divisible by all integers except 0 itself).   The program should handle this gracefully (most likely by not printing 0 as it's outside the specified range). 
+   - **Negative Numbers:** While not explicitly stated in the problem, test with a few small negative numbers for `printDivisibleBy` and `printDivisibleByBoth`. It should still work correctly according to the divisibility rules (e.g., -3 is divisible by 3, -10 is divisible by 5). However, since the loop is designed for 1 to 100 these won't be within the loop range.
+   - **Large Divisors:** Test `printDivisibleBy` with a divisor larger than 100 (e.g., 150). No numbers between 1 and 100 should be printed.
+
+
+
+**How to Run the Test Cases:**
+
+You could create a separate test class (using JUnit or TestNG, which are standard Java testing frameworks), but for simple cases like this, you could also modify the `main` method temporarily to include these test values and manually verify the output against your expectations.
+
+
+Example of adding a test case to the `main` method (not ideal for larger projects but OK for quick checks):
+

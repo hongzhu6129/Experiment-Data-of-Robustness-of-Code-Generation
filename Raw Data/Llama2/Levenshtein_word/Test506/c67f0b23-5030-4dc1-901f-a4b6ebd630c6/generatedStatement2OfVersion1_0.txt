@@ -1,0 +1,29 @@
+
+
+
+Key improvements and explanations in this revised code:
+
+1. **Handles 0 Remainder Correctly:** The crucial fix is in the `if (rem == 0)` block. When the remainder is 0, it means we have a multiple of 26 (like 26, 52, etc.).  We need to append 'Z' and also importantly, subtract 1 from `n` *before* dividing by 26.  This is because 'Z' represents a value of 26, and we've effectively "used up" that 26.
+
+2. **StringBuilder for Efficiency:** Using `StringBuilder` is significantly more efficient than string concatenation (using `+` or `concat`) within a loop, especially as the column number gets larger. `StringBuilder` modifies the string in place, avoiding the creation of many intermediate string objects.
+
+3. **Clearer Variable Names:** Using `columnName` instead of `colName` improves readability slightly.
+
+4. **Comprehensive Test Cases:** The `main` method includes test cases covering key edge cases (1, 26, 27, 28, 52, 701, 702, 703 and larger numbers) to demonstrate the correctness of the code.
+
+
+How it Works (Example):
+
+Let's trace how it calculates the column name for 702 (ZZ):
+
+- **n = 702:**
+    - rem = 702 % 26 = 0
+    - columnName = "Z"
+    - n = (702 / 26) - 1 = 26
+
+- **n = 26:**
+    - rem = 26 % 26 = 0
+    - columnName = "ZZ"
+    - n = (26 / 26) - 1 = 0
+
+- Loop terminates because n is now 0.  The result is "ZZ".

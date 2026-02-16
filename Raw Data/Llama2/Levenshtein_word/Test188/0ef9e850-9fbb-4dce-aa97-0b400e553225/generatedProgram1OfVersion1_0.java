@@ -1,0 +1,25 @@
+public class AlphabetIndex {
+
+    public static void main(String[] args) {
+
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        for (int i = 0; i < alphabet.length(); i++) {
+            char currentChar = alphabet.charAt(i);
+            int index = i; // Index starts from 0
+
+            System.out.println("Character: " + currentChar + ", Index: " + index);
+        }
+
+        // Alternatively, to demonstrate getting the index given a specific character
+        char specificChar = 'j';  // Example: Find the index of 'j'
+        int specificIndex = alphabet.indexOf(specificChar);
+
+        if (specificIndex != -1) { // -1 means the character isn't found
+            System.out.println("\nIndex of '" + specificChar + "': " + specificIndex);
+        } else {
+            System.out.println("\nCharacter '" + specificChar + "' not found in the alphabet.");
+        }
+
+    }
+}

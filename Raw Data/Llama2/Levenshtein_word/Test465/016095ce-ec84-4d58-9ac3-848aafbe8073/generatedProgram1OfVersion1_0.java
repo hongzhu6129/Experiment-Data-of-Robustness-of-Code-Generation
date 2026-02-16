@@ -1,0 +1,44 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class IterateHashMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        HashMap<String, Integer> names = new HashMap<>();
+        names.put("Alice", 25);
+        names.put("Bob", 30);
+        names.put("Charlie", 28);
+        names.put("David", 32);
+
+
+        // Method 1: Iterating using a for-each loop and entrySet()
+        System.out.println("Iterating using entrySet():");
+        for (Map.Entry<String, Integer> entry : names.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+        // Method 2: Iterating using keySet() and get()
+        System.out.println("\nIterating using keySet():");
+        for (String key : names.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + names.get(key));
+        }
+
+        // Method 3: Iterating using forEach() and a lambda expression (Java 8+)
+        System.out.println("\nIterating using forEach():");
+        names.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
+
+
+        //Method 4: Iterating using an Iterator and entrySet() (more flexible but less common now)
+        /*
+        System.out.println("\nIterating using an Iterator:");
+        Iterator<Map.Entry<String, Integer>> iterator = names.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+        */
+
+    }
+}

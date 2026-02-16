@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckEmptyMap {
+
+    public static void main(String[] args) {
+        // Example 1: Empty map
+        Map<String, Integer> map1 = new HashMap<>();
+        System.out.println("Is map1 empty? " + map1.isEmpty()); // Output: true
+
+        // Example 2: Non-empty map
+        Map<String, Integer> map2 = new HashMap<>();
+        map2.put("apple", 1);
+        map2.put("banana", 2);
+        System.out.println("Is map2 empty? " + map2.isEmpty()); // Output: false
+
+
+        //More concise examples showing different ways to create maps and check emptiness
+        Map<String, Integer> emptyMap = new HashMap<>();
+        System.out.println("Empty map is empty: " + emptyMap.isEmpty()); //true
+
+
+        Map<String, Integer> nonEmptyMap = new HashMap<>() {{
+            put("one", 1);
+        }};
+        System.out.println("Non-empty map is empty: " + nonEmptyMap.isEmpty()); //false
+
+
+
+        Map<String, Integer> anotherEmptyMap = Map.of(); //Java 9+  - immutable empty map
+        System.out.println("Another empty map (immutable) is empty: " + anotherEmptyMap.isEmpty()); //true
+
+
+       Map<String, Integer> anotherNonEmptyMap = Map.of("one", 1, "two", 2); //Java 9+ - immutable non-empty map
+        System.out.println("Another non-empty map (immutable) is empty: " + anotherNonEmptyMap.isEmpty()); //false
+    }
+}

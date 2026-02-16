@@ -1,0 +1,55 @@
+public class CocktailSort {
+
+    void cocktailSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped = true;
+        int start = 0;
+        int end = n - 1;
+
+        while (swapped) {
+            // Forward pass (like bubble sort)
+            swapped = false;
+            for (int i = start; i < end; ++i) {
+                if (arr[i] > arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // If nothing moved, then array is sorted.
+            if (!swapped)
+                break;
+
+            // Otherwise, reset the swapped flag so that it can be used in the next stage
+            swapped = false;
+
+            // Move the end point back by one, because item at the end is in its rightful spot
+            end--;
+
+            // Backward pass (reverse bubble sort)
+            for (int i = end - 1; i >= start; i--) {
+                if (arr[i] > arr[i + 1]) {
+                    int temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // Move the start point forward by one, because item at the start is in its rightful spot
+            start++;
+        }
+    }
+
+    public static void main(String[] args) {
+        CocktailSort sorter = new CocktailSort();
+        int[] arr = {5, 1, 4, 2, 8, 0, 2};
+        sorter.cocktailSort(arr);
+        System.out.print("Sorted array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}

@@ -1,0 +1,29 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckEmptyMap {
+
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        Map<String, Integer> map1 = new HashMap<>();
+        Map<String, Integer> map2 = new HashMap<>();
+        map2.put("One", 1);
+        map2.put("Two", 2);
+
+
+        // Check if the map is empty using isEmpty()
+        boolean isEmpty1 = map1.isEmpty();
+        boolean isEmpty2 = map2.isEmpty();
+
+
+        // Print the results
+        System.out.println("Is map1 empty? " + isEmpty1); // Output: true
+        System.out.println("Is map2 empty? " + isEmpty2); // Output: false
+
+
+
+         //Alternatively, you can check if the size is 0:
+        System.out.println("Is map1 empty? " + (map1.size() == 0)); // Output: true
+        System.out.println("Is map2 empty? " + (map2.size() == 0)); // Output: false
+    }
+}

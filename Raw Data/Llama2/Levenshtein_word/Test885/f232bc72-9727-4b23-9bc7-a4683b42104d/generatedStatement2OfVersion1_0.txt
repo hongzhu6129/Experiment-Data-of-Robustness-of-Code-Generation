@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1. Positive Numbers | 10, 20, 30 | 20.0 |
+| 2. Negative Numbers | -10, -20, -30 | -20.0 |
+| 3. Mixed Numbers | -5, 15, 25 | 11.666666666666666 |  // Demonstrates handling of mixed signs
+| 4. Zeroes | 0, 0, 0 | 0.0 | // All zeros
+| 5. Large Numbers | 1000000, 2000000, 3000000 | 2000000.0 | // Handles large values
+| 6. Decimal Numbers | 2.5, 5.7, 8.2 | 5.466666666666667 | // Handles decimal input
+| 7.  Edge Case: Two large and one small | 1e10, 1e10, 1 | 6.666666666666667E9 | // Checks for potential loss of precision with very different magnitudes
+| 8. Edge Case: Integer Overflow (unlikely with doubles but good practice to consider if using ints) |  Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity | // Checks behavior with extremely large numbers
+
+
+**How to Run the Test Cases (Manually):**
+
+1.  Compile the Java code: `javac AverageCalculator.java`
+2.  Run the code from your terminal.  The program will prompt you for the three numbers. Enter the input values from each test case and verify that the output matches the expected output.
+
+
+**Automated Testing (Recommended):**
+
+For more rigorous testing, consider using a testing framework like JUnit. Here's an example using JUnit 5:
+
+

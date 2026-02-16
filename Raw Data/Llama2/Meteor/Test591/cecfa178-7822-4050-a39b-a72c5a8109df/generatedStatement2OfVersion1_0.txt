@@ -1,0 +1,21 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Examples:** Demonstrates getting both the current year and information about a specific year.
+
+2. **Multiple Approaches:** Shows how to get the current year using both `Year.now()` and `LocalDate.now().getYear()`.
+
+3. **Specific Year Information:**  Illustrates getting whether a year is a leap year and its length using `Year.isLeap()` and `Year.length()`.
+
+4. **`YearMonth` Example:** Added an example of how to work with a specific month in a given year using `YearMonth`. This shows how to get the length of a specific month, which is often useful in date/time calculations.
+
+5. **Robust Input Handling:** Includes a `try-catch` block to demonstrate how to handle potential errors when getting year input from the command line.  This is *crucial* for real-world applications to prevent crashes due to bad input. It catches `ArrayIndexOutOfBoundsException` (if no argument is provided), `NumberFormatException` (if the input is not an integer), and `DateTimeException` (if the year is out of the valid range).
+
+
+To compile and run:
+
+1. Save the code as `CurrentYearInfo.java`.
+2. Compile: `javac CurrentYearInfo.java`
+3. Run:  `java CurrentYearInfo 2025` (replace `2025` with any year you want to test as input or omit it to use the default current year handling)

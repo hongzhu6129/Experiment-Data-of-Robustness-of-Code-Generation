@@ -1,0 +1,65 @@
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 23, 12, 9, 30, 2, 50};
+        int k1 = 3;
+        findKLargest(arr1, k1); // Output: 50 30 23
+
+        int[] arr2 = {11, 5, 22, 1, 15, 9};
+        int k2 = 2;
+        findKLargest(arr2, k2); // Output: 22 15
+
+
+        int[] arr3 = {7, 4, 6, 3, 9, 1};
+        int k3 = 6; //Edge case where K is equal to the array length
+        findKLargest(arr3, k3); //output 9 7 6 4 3 1
+
+
+        int[] arr4 = {7, 4, 6, 3, 9, 1};
+        int k4 = 7; //Edge case where K is greater than the array length. Should gracefully handle this
+        findKLargest(arr4, k4); //output 9 7 6 4 3 1
+
+
+        int[] arr5 = {};
+        int k5 = 2; //Edge case: Empty array
+        findKLargest(arr5, k5); // No Output
+
+    }
+
+
+    public static void findKLargest(int[] arr, int k) {
+
+        if(arr == null || arr.length == 0) return; //Handle empty or null array
+
+
+        k = Math.min(k, arr.length); //Adjust k if it exceeds array length
+
+
+        // Use a min-heap (PriorityQueue in Java) to efficiently track the k largest elements.
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num); //Add element to heap
+            if (minHeap.size() > k) {
+                minHeap.poll(); //Remove smallest element if heap size exceeds k
+            }
+        }
+
+        // Convert the heap to an array and sort in descending order (largest to smallest).
+
+        Integer[] kLargestArray = minHeap.toArray(new Integer[0]);
+        Arrays.sort(kLargestArray, (a,b) -> b - a); // Reverse sort
+
+
+
+        //Print output
+        for(int num : kLargestArray){
+            System.out.print(num + " ");
+        }
+
+        System.out.println();
+    }
+}

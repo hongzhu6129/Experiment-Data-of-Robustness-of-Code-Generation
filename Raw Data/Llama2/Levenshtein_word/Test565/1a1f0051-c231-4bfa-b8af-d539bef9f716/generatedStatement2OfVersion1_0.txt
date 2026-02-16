@@ -1,0 +1,10 @@
+
+
+
+Key improvements in this version:
+
+* **Handles negative numbers:** The code now correctly checks if negative numbers are cubes (e.g., -8 is the cube of -2).
+* **More robust cube root calculation:** Uses binary search which is more efficient, especially for larger numbers, and avoids the potential floating-point precision issues of `Math.cbrt()`.
+* **Clearer code structure:**  Separates the `isCube` logic into a helper function for better readability and organization.
+* **Commented-out user input example:** Shows how to get input from the user, including basic error handling (you'd likely want more robust input validation in a real application).
+* **Integer overflow avoidance:** Uses `low + (high - low) / 2` to calculate the `mid` point in binary search to prevent potential overflow issues with very large numbers.

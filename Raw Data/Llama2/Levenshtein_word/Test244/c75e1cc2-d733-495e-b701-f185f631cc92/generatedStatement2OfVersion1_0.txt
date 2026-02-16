@@ -1,0 +1,35 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Reason/Corner Case |
+|---|---|---|---|---|
+| 1 | 5 | 3 | 15 | Basic positive numbers |
+| 2 | -2 | 4 | -8 | One negative number |
+| 3 | -7 | -6 | 42 | Two negative numbers |
+| 4 | 0 | 10 | 0 | Multiplication by zero |
+| 5 | 10 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 | Maximum positive long value |
+| 8 | -9223372036854775808 | 1 | -9223372036854775808 | Minimum negative long value |
+| 9 | 9223372036854775807 | 2 | -2 | Overflow (positive * positive = negative) |
+| 10 | -9223372036854775808 | -1 | -9223372036854775808 | Overflow (negative * negative = negative) |
+| 11 | 1234567890 | 9876543210 | 12193263111263526900 | Large numbers |
+| 12 | 2147483647 | 2 | 4294967294 | Maximum integer value multiplied by 2 (overflows if using int) |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:**  Multiplying by zero always results in zero.
+* **Maximum/Minimum Long Values:**  Testing these boundary values ensures that the program correctly handles the largest and smallest possible `long` values in Java.
+* **Overflow:** When the product of two numbers exceeds the maximum value that a `long` can hold, overflow occurs. The result will be incorrect (it wraps around). Test cases 9 and 10 demonstrate this.  This is why it is important to use `long` instead of `int` if you anticipate potentially large products.
+* **Large Numbers:** Test case 11 uses large numbers to further verify the correctness of the multiplication.
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by running the program and entering the inputs.  For more automated testing, you could use a testing framework like JUnit.  In JUnit, you'd write test methods like this:
+

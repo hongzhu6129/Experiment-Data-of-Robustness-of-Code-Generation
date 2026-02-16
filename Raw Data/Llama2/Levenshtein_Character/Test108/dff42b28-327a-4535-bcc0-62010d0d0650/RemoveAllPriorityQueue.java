@@ -1,0 +1,31 @@
+import java.util.PriorityQueue;
+
+public class RemoveAllPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some elements
+        pq.add(10);
+        pq.add(20);
+        pq.add(15);
+        pq.add(5);
+        pq.add(25);
+
+
+        System.out.println("Original PriorityQueue: " + pq);
+
+
+        // Remove all elements from the PriorityQueue.  There are a few ways to do this.
+        // Method 1: Using clear()
+        pq.clear(); 
+
+        // Method 2: Repeatedly removing the head until the queue is empty (less efficient)
+        // while (!pq.isEmpty()) {
+        //     pq.poll(); 
+        // }
+
+        System.out.println("PriorityQueue after removing all elements: " + pq); 
+    }
+}

@@ -1,0 +1,19 @@
+public class RoundUpIntegerDivision {
+
+    public static void main(String[] args) {
+        int numerator = 7;
+        int denominator = 3;
+
+        int result = (int) Math.ceil((double) numerator / denominator);
+
+        System.out.println("Result of rounding up " + numerator + " / " + denominator + ": " + result);
+
+
+        // More examples
+        System.out.println("Result of rounding up 10 / 4: " + (int) Math.ceil((double) 10 / 4)); // Output: 3
+        System.out.println("Result of rounding up 5 / 2: " + (int) Math.ceil((double) 5 / 2));  // Output: 3
+        System.out.println("Result of rounding up 9 / 3: " + (int) Math.ceil((double) 9 / 3));  // Output: 3 (already whole, no change)
+        System.out.println("Result of rounding up 1 / 5: " + (int) Math.ceil((double) 1 / 5));  // Output: 1
+
+    }
+}

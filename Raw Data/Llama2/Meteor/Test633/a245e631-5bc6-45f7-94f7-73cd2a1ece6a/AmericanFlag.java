@@ -1,0 +1,27 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section
+        for (int i = 0; i < 6; i++) {
+            // Print the stars
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" =================================\n");
+
+            // Print the red stripe (represented by an empty line since we can't print in color)
+            for (int j = 0; j < 6; j++) {
+               //Stars are only on odd lines in the top section
+               if (i%2==0) System.out.print("* ");  
+            }
+            
+             System.out.print(" =================================\n"); 
+        }
+
+
+        // Print the solid red section (represented by "=")
+        for (int i = 0; i < 6; i++) {
+            System.out.print("==================================\n");
+        }
+    }
+}

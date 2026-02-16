@@ -1,0 +1,51 @@
+import java.util.TreeSet;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int givenKey1 = 25;
+        Integer result1 = getLeastKeyGreaterThanOrEqualTo(treeSet, givenKey1);
+        System.out.println("Least key greater than or equal to " + givenKey1 + ": " + result1); // Output: 30
+
+        int givenKey2 = 15;
+        Integer result2 = getLeastKeyGreaterThanOrEqualTo(treeSet, givenKey2);
+        System.out.println("Least key greater than or equal to " + givenKey2 + ": " + result2); // Output: 20
+
+
+        int givenKey3 = 5;
+        Integer result3 = getLeastKeyGreaterThanOrEqualTo(treeSet, givenKey3);
+        System.out.println("Least key greater than or equal to " + givenKey3 + ": " + result3); // Output: 10
+
+        int givenKey4 = 60;
+        Integer result4 = getLeastKeyGreaterThanOrEqualTo(treeSet, givenKey4);
+        System.out.println("Least key greater than or equal to " + givenKey4 + ": " + result4); // Output: null
+
+
+         TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        String givenKey5 = "apricot";
+        String result5 = getLeastKeyGreaterThanOrEqualTo(stringTreeSet, givenKey5);
+        System.out.println("Least key greater than or equal to " + givenKey5 + ": " + result5); // Output: banana
+
+
+        String givenKey6 = "apple";
+        String result6 = getLeastKeyGreaterThanOrEqualTo(stringTreeSet, givenKey6);
+        System.out.println("Least key greater than or equal to " + givenKey6 + ": " + result6); // Output: apple
+    }
+
+    public static <T extends Comparable<T>> T getLeastKeyGreaterThanOrEqualTo(TreeSet<T> set, T key) {
+
+        return set.ceiling(key); 
+    }
+}

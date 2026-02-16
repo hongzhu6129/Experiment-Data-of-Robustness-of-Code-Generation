@@ -1,0 +1,38 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueFirstElement {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+
+        // Retrieve the first element (smallest element in a min-heap)
+        if (!pq.isEmpty()) {
+            Integer firstElement = pq.peek(); 
+            System.out.println("First element (smallest): " + firstElement);
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+
+         // Example with Strings (natural ordering - lexicographical)
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.add("Zebra");
+        stringPQ.add("Apple");
+        stringPQ.add("Banana");
+
+        if (!stringPQ.isEmpty()) {
+            String firstString = stringPQ.peek();
+            System.out.println("First string (lexicographically smallest): " + firstString);
+        } else {
+            System.out.println("String PriorityQueue is empty.");
+        }
+
+
+    }
+}

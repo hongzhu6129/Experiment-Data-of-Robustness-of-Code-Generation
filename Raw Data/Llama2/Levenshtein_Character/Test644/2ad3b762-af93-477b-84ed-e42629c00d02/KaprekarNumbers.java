@@ -1,0 +1,43 @@
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        int count = 0;
+        for (int i = 1; i < 1000; i++) {
+            if (isKaprekar(i)) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+        System.out.println("\n" + count + " kaprekar numbers.");
+    }
+
+    private static boolean isKaprekar(int num) {
+        long square = (long) num * num;
+        String sqStr = String.valueOf(square);
+        int numDigits = sqStr.length();
+
+        for (int i = 1; i < numDigits; i++) {
+            String[] parts = split_num(sqStr, i);
+            if (parts[1].equals("0")) continue; // Avoid adding zero right part
+
+            try {
+                int rightPart = Integer.parseInt(parts[1]);
+                int leftPart = parts[0].isEmpty() ? 0 : Integer.parseInt(parts[0]); // Handle single-digit squares like 1*1 = 1
+                if (rightPart + leftPart == num) {
+                    return true;
+                }
+            } catch (NumberFormatException ignored) {
+                // Handle cases where parts are too large to be parsed as integers
+            }
+        }
+        return false;
+
+    }
+
+
+    private static String[] split_num(String numStr, int index) {
+        String left = numStr.substring(0, numStr.length() - index);
+        String right = numStr.substring(numStr.length() - index);
+        return new String[]{left, right};
+    }
+}

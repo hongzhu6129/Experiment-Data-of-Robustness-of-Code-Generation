@@ -1,0 +1,93 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class FindNumbersLessThanSeven {
+
+    public static void main(String[] args) {
+        // Example tree:
+        //      8
+        //     / \
+        //    3   10
+        //   / \    \
+        //  1   6    14
+        //     / \   /
+        //    4   7  13 
+
+        TreeNode root = new TreeNode(8);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(10);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(6);
+        root.right.right = new TreeNode(14);
+        root.left.right.left = new TreeNode(4);
+        root.left.right.right = new TreeNode(7);
+        root.right.right.left = new TreeNode(13);
+
+
+
+        System.out.print("Numbers less than 7 in the tree (BFS): ");
+        findLessThanSevenBFS(root, 7);
+        System.out.println();
+
+
+        System.out.print("Numbers less than 7 in the tree (DFS): ");
+        findLessThanSevenDFS(root, 7);
+        System.out.println();
+    }
+
+    // Breadth-First Search (BFS) approach
+    public static void findLessThanSevenBFS(TreeNode root, int target) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+
+            if (current.val < target) {
+                System.out.print(current.val + " ");
+            }
+
+            if (current.left != null) {
+                queue.offer(current.left);
+            }
+            if (current.right != null) {
+                queue.offer(current.right);
+            }
+        }
+    }
+
+    // Depth-First Search (DFS) approach (Inorder traversal)
+    public static void findLessThanSevenDFS(TreeNode root, int target) {
+       if (root == null) {
+            return;
+        }
+
+        findLessThanSevenDFS(root.left, target); // Explore left subtree
+
+        if (root.val < target) {
+            System.out.print(root.val + " ");
+        }
+
+        findLessThanSevenDFS(root.right, target); // Explore right subtree
+
+    }
+}
+
+
+
+
+

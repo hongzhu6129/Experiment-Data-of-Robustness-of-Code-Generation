@@ -1,0 +1,30 @@
+public class StringToNumber {
+
+    public static void main(String[] args) {
+
+        String str = "12345";
+        String strFloat = "123.45";
+        String strLong = "9876543210"; 
+        String strDouble = "3.141592653589793";
+
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer Value: " + intValue);
+
+            long longValue = Long.parseLong(strLong);
+            System.out.println("Long Value: " + longValue);
+
+
+            float floatValue = Float.parseFloat(strFloat);
+            System.out.println("Float Value: " + floatValue);
+
+
+            double doubleValue = Double.parseDouble(strDouble);
+            System.out.println("Double Value: " + doubleValue);
+
+
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid string format for conversion.");
+        }
+    }
+}

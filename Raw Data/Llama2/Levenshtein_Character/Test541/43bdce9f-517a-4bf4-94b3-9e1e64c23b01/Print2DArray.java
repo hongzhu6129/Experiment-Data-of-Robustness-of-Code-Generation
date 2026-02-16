@@ -1,0 +1,21 @@
+public class Print2DArray {
+
+    public static void main(String[] args) {
+        boolean[][] algebraArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        // Iterate through the rows
+        for (int i = 0; i < algebraArray.length; i++) {
+            // Iterate through the columns in each row
+            for (int j = 0; j < algebraArray[i].length; j++) {
+                // Print the element (t for true, f for false)
+                System.out.print(algebraArray[i][j] ? "t " : "f "); 
+            }
+            // Move to the next line after each row
+            System.out.println();
+        }
+    }
+}

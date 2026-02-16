@@ -1,0 +1,26 @@
+public class StringContainsSequence {
+
+    public static void main(String[] args) {
+        String str1 = "PHP Exercises and Python Exercises";
+        String seq1 = "and";
+        String seq2 = "exercises";
+
+        System.out.println("\"" + str1 + "\" contains \"" + seq1 + "\"? " + containsSequence(str1, seq1));
+        System.out.println("\"" + str1 + "\" contains \"" + seq2 + "\"? " + containsSequence(str1, seq2));
+
+
+        String str2 = "example.com";
+        String seq3 = ".com";
+        String seq4 = "com";
+
+        System.out.println("\"" + str2 + "\" contains \"" + seq3 + "\"? " + containsSequence(str2, seq3));
+        System.out.println("\"" + str2 + "\" contains \"" + seq4 + "\"? " + containsSequence(str2, seq4));
+
+
+
+    }
+
+    public static boolean containsSequence(String str, String seq) {
+        return str.contains(seq);
+    }
+}

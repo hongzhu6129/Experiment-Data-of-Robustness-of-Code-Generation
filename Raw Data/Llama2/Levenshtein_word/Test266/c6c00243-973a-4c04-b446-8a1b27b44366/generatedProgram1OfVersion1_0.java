@@ -1,0 +1,59 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFileLineByLine {
+
+    public static void main(String[] args) {
+
+        // 1. Specify the file path.
+        String filePath = "path/to/your/file.txt"; // Replace with your file's path
+
+        // 2. Use try-with-resources to automatically close the resources.
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            // 3. Read the file line by line.
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // 4. Process each line.  Here, we simply print it.
+                System.out.println(line); 
+            }
+
+        } catch (IOException e) {
+            // 5. Handle potential exceptions (e.g., file not found).
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+
+
+/* **Explanation and Educational Notes:**
+
+* **File Path:** The `filePath` variable stores the location of the file you want to read.  Make sure to replace `"path/to/your/file.txt"` with the actual path.  If the file is in the same directory as your Java code, you can just use the filename (e.g., "my_file.txt").
+
+* **try-with-resources:** The `try (BufferedReader...){ ... }`  is a crucial construct in Java for handling resources that need to be closed, such as files.  It ensures that the `BufferedReader` is automatically closed even if an exception occurs, preventing resource leaks.
+
+* **BufferedReader:**  `BufferedReader` is used to read text from a character-input stream (in this case, a `FileReader`). It provides buffering, which makes reading more efficient.  The `FileReader` connects to the actual file.
+
+* **readLine():**  The `reader.readLine()` method reads a single line of text from the file. It returns the line as a `String`, or `null` if the end of the file has been reached.
+
+* **while loop:** The `while` loop continues reading lines from the file until `readLine()` returns `null`, indicating the end of the file.
+
+* **System.out.println():** Inside the loop, `System.out.println(line)` prints the current line read from the file to the console. You can replace this with any other code that processes the line as needed.
+
+* **catch block:**  The `catch (IOException e)` block handles potential `IOExceptions` that might occur during file reading (e.g., if the file doesn't exist or there are permission issues).  It prints an error message to the console. It's essential to handle exceptions gracefully in any I/O operation.
+
+* **Error Stream (System.err):**  Using `System.err.println()` is good practice for printing error messages, as it directs them to the standard error stream, which is often handled separately from the standard output stream (`System.out`).
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadFileLineByLine.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac ReadFileLineByLine.java`
+3. **Run:**  `java ReadFileLineByLine`
+
+
+Make sure the file you specify in `filePath` exists and is accessible by your Java program.*/
+
+

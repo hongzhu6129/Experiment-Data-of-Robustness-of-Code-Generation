@@ -1,0 +1,19 @@
+public class Pattern {
+
+    public static void main(String[] args) {
+        System.out.println("j        a       v       a");
+        System.out.println("j       a a      v v     a a");
+        System.out.println("j      a   a     v v    a   a");
+        System.out.println("j     a     a    v v   a     a");
+        System.out.println("j    a       a   v v  a       a");
+        System.out.println("j   a         a  v v a         a");
+        System.out.println("j  aaaaaaaaa  v v aaaaaaaaaa");
+        System.out.println("jj a         a v va         a");
+        System.out.println("j  a         a  v v  a         a");
+        System.out.println("j   a       a   v v   a       a");
+        System.out.println("j    a     a    v v    a     a");
+        System.out.println("j      a   a     v v     a   a");
+        System.out.println("j       a a      v v      a a");
+        System.out.println("j        a       v        a");
+    }
+}

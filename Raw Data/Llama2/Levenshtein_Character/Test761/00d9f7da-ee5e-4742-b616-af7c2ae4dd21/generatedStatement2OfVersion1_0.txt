@@ -1,0 +1,16 @@
+
+
+
+
+Explanation and how it addresses the error:
+
+1. **Error Context:** The error "invalid literal for int() with base 10: 'computer'" arises when you attempt to convert a non-numeric string into an integer.
+
+2. **Handling the Error:**  The code demonstrates the use of a `try-catch` block.  The `try` block attempts the conversion using `Integer.parseInt()`. If the string is not a valid integer, a `NumberFormatException` is thrown.  The `catch` block handles this exception, prints an error message, and allows the program to continue processing other elements.
+
+3. **Storing Valid Integers:** The code uses a `validIntegers` counter and `System.arraycopy()` to create a new array containing only the valid integers parsed from the string array. This ensures that the `sort()` method operates only on valid integer data.
+
+4. **Sorting and Printing:**  The `sort()` method (using `Arrays.sort()`) sorts the valid integers.  The code then prints the sorted array.
+
+
+This revised version demonstrates how to handle the error gracefully, avoiding program crashes and providing useful feedback to the user. It also demonstrates the `sort()` method's functionality with a simple integer array.

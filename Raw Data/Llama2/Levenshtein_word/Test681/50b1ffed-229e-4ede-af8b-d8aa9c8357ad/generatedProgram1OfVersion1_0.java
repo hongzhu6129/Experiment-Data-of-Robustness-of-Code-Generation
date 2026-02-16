@@ -1,0 +1,38 @@
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanGiven {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        Integer key1 = 4;
+        Integer higherKey1 = treeMap.higherKey(key1);
+        System.out.println("Least key greater than " + key1 + ": " + higherKey1); // Output: 5
+
+        Integer key2 = 9;
+        Integer higherKey2 = treeMap.higherKey(key2);
+        System.out.println("Least key greater than " + key2 + ": " + higherKey2); // Output: null
+
+
+        // Example with different data types:
+        TreeMap<Double, String> treeMap2 = new TreeMap<>();
+        treeMap2.put(1.1, "One Point One");
+        treeMap2.put(2.5, "Two Point Five");
+        treeMap2.put(3.8, "Three Point Eight");
+
+        Double key3 = 2.7;
+        Double higherKey3 = treeMap2.higherKey(key3);
+        System.out.println("Least key greater than " + key3 + ": " + higherKey3); // Output: 3.8
+
+         Double key4 = 4.0;
+        Double higherKey4 = treeMap2.higherKey(key4);
+        System.out.println("Least key greater than " + key4 + ": " + higherKey4); // Output: null
+    }
+}

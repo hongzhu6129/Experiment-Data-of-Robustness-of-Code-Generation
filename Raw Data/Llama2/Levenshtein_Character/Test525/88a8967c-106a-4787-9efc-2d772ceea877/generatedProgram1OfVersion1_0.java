@@ -1,0 +1,34 @@
+class Solution {
+    /**
+     * Displays the middle character(s) of a string.
+     *
+     * @param str The input string.
+     * @return The middle character(s) of the string.
+     *         - If the string is empty, returns an empty string.
+     *         - If the string has an odd length, returns the single middle character.
+     *         - If the string has an even length, returns the two middle characters.
+     */
+    public static String middle(String str) {
+        if (str.isEmpty()) {
+            return "";
+        }
+
+        int len = str.length();
+        int middleIndex = len / 2;
+
+        if (len % 2 == 0) { // Even length
+            return str.substring(middleIndex - 1, middleIndex + 1);
+        } else { // Odd length
+            return str.substring(middleIndex, middleIndex + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(middle("Hello")); // l
+        System.out.println(middle("Java")); // av
+        System.out.println(middle("coding")); // di
+        System.out.println(middle("A")); // A
+        System.out.println(middle("")); // (empty string)
+
+    }
+}

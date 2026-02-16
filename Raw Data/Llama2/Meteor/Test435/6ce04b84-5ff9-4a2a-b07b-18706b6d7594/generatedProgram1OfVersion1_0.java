@@ -1,0 +1,15 @@
+public class EnvironmentVariables {
+
+    public static void main(String[] args) {
+        // Get the values of the environment variables.
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // Or "TMP" on some systems
+        String username = System.getenv("USERNAME"); // Or "USER" on some systems
+
+
+        // Print the values.  Handle the case where an environment variable might not be set.
+        System.out.println("PATH: " + (path != null ? path : "Not set"));
+        System.out.println("TEMP: " + (temp != null ? temp : "Not set"));
+        System.out.println("USERNAME: " + (username != null ? username : "Not set"));
+    }
+}

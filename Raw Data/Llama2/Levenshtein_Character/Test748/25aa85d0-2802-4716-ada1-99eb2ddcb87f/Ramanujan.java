@@ -1,0 +1,33 @@
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // Example: Check up to 1729 (the Hardy-Ramanujan number)
+
+        for (int a = 1; a <= n; a++) {
+            int count = 0;
+            for (int i = 1; i * i * i < a; i++) {
+                int a3 = i * i * i;
+                int b3 = a - a3;
+                int b = (int) Math.round(Math.cbrt(b3)); // Calculate integer cube root
+
+                if (b * b * b == b3) { // Check if b3 is a perfect cube
+                    for (int j = i + 1; j * j * j < a; j++) {
+                        int c3 = j * j * j;
+                        int d3 = a - c3;
+                        int d = (int) Math.round(Math.cbrt(d3)); // Calculate integer cube root
+                        if (d * d * d == d3) { // Check if d3 is a perfect cube
+                            count++;
+                            if(count == 1) { // only print the number 'a' once it has been established as the sum of two cubes in two different ways
+                                System.out.println(a + " can be expressed as the sum of two cubes in two (or more) different ways.");
+                                break; // no need to continue searching for more ways for this specific 'a'
+                            }
+                        }
+
+                    }
+                }
+                if (count > 0) break; // Exit inner loop if a solution is found for the current 'a' value
+            }
+           
+        }
+    }
+}

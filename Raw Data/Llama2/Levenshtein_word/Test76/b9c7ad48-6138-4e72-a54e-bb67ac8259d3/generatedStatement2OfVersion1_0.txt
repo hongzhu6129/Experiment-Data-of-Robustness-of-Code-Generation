@@ -1,0 +1,20 @@
+
+
+
+Explanation within the `main` method constraints:
+
+1. **TreeMap Creation:**  We create a `TreeMap` to store the key-value pairs. `TreeMap` is used because it automatically sorts entries by key, which is essential for efficient floor entry lookup.
+
+2. **Adding Entries:** Key-value pairs are added to the map using `map.put()`.
+
+3. **`floorEntry()` Method:** The crucial part is the `map.floorEntry(key)` method.  This method efficiently finds the entry associated with the greatest key less than or equal to the given `key`.  It returns a `Map.Entry` object (containing the key-value pair) or `null` if no such key exists.
+
+4. **Outputting the Result:**  The `printFloorEntry()` helper function handles printing the entry or `null` in a formatted way.  This is necessary because trying to directly print  `entry.getKey()` or `entry.getValue()` when `entry` is `null` would cause a `NullPointerException`.
+
+
+Key improvements in this version:
+
+- **Clarity:**  The helper function makes the logic within `main` more readable.
+- **Error Handling:** The `null` check prevents potential `NullPointerExceptions`.
+- **Example Usage:**  Multiple examples within `main` demonstrate different scenarios.
+- **Conciseness:**  The code is more focused and avoids unnecessary complexity.

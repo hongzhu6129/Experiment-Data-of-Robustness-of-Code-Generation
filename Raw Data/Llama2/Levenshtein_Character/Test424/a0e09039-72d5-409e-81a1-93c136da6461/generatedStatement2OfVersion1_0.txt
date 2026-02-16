@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1 | 10, 20, 30 | 20.0 |
+| 2 | 0, 0, 0 | 0.0 |
+| 3 | -10, 20, 5 | 5.0 |
+| 4 | 1.5, 2.5, 3.0 | 2.3333333333333335 |  // Handling decimals
+| 5 | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | 2.147483647E9 (or overflow handled) | // Integer Overflow check (important)
+| 6 | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | -2.147483648E9 (or overflow handled)| // Integer Underflow check (important)
+| 7 | Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity | // Double Overflow - expect Infinity
+| 8 | Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE | 1.0E-323 (very small value)| //  Double Min Value
+| 9 | Double.NaN, 10, 20  | NaN | // Handling NaN
+
+
+**Explanation of Corner Cases:**
+
+* **Integer Overflow/Underflow (Cases 5 & 6):**  If you use `int` instead of `double`,  very large or very small integer inputs can cause overflow or underflow, resulting in incorrect results. Using `double` handles a much wider range of values.
+* **Double Overflow (Case 7):** Adding the maximum double value multiple times results in `Infinity`. This is the expected behavior in Java.
+* **Double Min Value (Case 8):**  This tests how the program handles very small double values.
+* **NaN (Case 9):** If any of the inputs are `NaN` (Not a Number), the result of the calculation will also be `NaN`. It's important to be aware of this behavior.
+
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by inputting the values into the program. For more automated testing, you can use JUnit or other testing frameworks in Java.  Here's a very simple example of how you might manually check a test case:
+
+

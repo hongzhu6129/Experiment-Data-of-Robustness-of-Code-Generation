@@ -1,0 +1,46 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class FloorEntry {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs.
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put some key-value pairs into the TreeMap.
+        treeMap.put(1, "One");
+        treeMap.put(5, "Five");
+        treeMap.put(10, "Ten");
+        treeMap.put(15, "Fifteen");
+        treeMap.put(20, "Twenty");
+
+        // Get the key-value mapping associated with the greatest key less than or equal to 12.
+        Map.Entry<Integer, String> entry = treeMap.floorEntry(12);
+
+        // Print the result.  Handle the case where no such key exists.
+        if (entry != null) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        } else {
+            System.out.println("No key-value mapping found for the given key.");
+        }
+
+
+        // Test with a key that exists:
+        entry = treeMap.floorEntry(10);
+        if (entry != null) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        } else {
+            System.out.println("No key-value mapping found for the given key.");
+        }
+
+        //Test with a key less than the smallest key
+        entry = treeMap.floorEntry(0);
+        if (entry != null) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        } else {
+            System.out.println("No key-value mapping found for the given key.");
+        }
+
+
+    }
+}

@@ -1,0 +1,23 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes JUnit tests, which are essential for verifying correctness. The  `@Test` annotation marks the test methods.  `assertEquals()` asserts that the calculated values match the expected values.
+* **Floating-Point Comparisons:** When comparing floating-point numbers (like the results of `calculatePerimeter()` and `calculateArea()`), you should use a delta or tolerance (e.g., `1e-10`) because direct equality checks can fail due to tiny rounding errors.
+* **Corner Case: Zero Radius:**  A test case for a radius of 0 is included.
+* **Corner Case: Large Radius:** Added a test with a large radius to check for potential overflow or other issues.
+* **Corner Case: Negative Radius:** The original code didn't handle negative radii. Now, there are two options demonstrated:
+    * **Throwing an Exception:** The preferred way to handle invalid input is to throw an `IllegalArgumentException`. This makes the error explicit.
+    * **Alternative Handling (Returning 0):**  The `testNegativeRadiusAlternativeHandling` test shows an alternative where the `Circle` constructor is modified to default radius to 0 if a negative value is provided.  This approach is less robust, but sometimes useful depending on how you want to handle errors.
+* **Clearer Output in `main()`:** The `main` method's output is more descriptive.
+
+
+How to run JUnit tests:
+
+1. **IDE:** If you are using an IDE like IntelliJ IDEA or Eclipse, they have built-in support for running JUnit tests. Right-click on the test class or method and select "Run".
+2. **Command Line:** Compile and run the tests from the command line using a build tool like Maven or Gradle (if configured). You can also run the tests directly using the `java` command if you have JUnit on your classpath.
+
+
+
+This improved version is more robust, testable, and handles corner cases, which are crucial for writing reliable software.

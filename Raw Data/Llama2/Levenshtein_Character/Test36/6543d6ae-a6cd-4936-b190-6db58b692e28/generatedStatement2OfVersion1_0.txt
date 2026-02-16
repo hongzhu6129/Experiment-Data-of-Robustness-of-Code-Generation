@@ -1,0 +1,14 @@
+
+
+**Test Cases and Corner Cases (Conceptual - since visual output is being tested):**
+
+While you can't directly unit test the output of `System.out.println()` in a traditional sense (you'd need to redirect output streams, which is beyond the scope of a simple example),  you can still think about test scenarios to ensure the face is printed correctly:
+
+1. **Basic Functionality:**  Run the program and visually verify that the face is printed as expected, including correct spacing and characters.  This is the most straightforward test.
+
+2. **Character Encoding:**  If you were to use special characters (e.g., Unicode emojis for eyes), ensure your environment (console, IDE) supports the character set correctly.  A mismatch might lead to distorted output or incorrect characters.  While not a direct code test, this is an important environmental consideration.
+
+3. **Output Redirection:**  (More advanced) If you wanted a more automated test, you could redirect the standard output to a file or string buffer. Then, you could compare the captured output with the expected output string. Libraries like `System.setOut()` and `ByteArrayOutputStream` could be used for this.
+
+4. **String Modification (Hypothetical):** Imagine if the `printFace()` method took arguments to customize the face (e.g., different eyes, mouth). Then, you could write unit tests:
+   

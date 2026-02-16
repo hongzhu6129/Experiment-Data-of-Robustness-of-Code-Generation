@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **HashMap for Counts:** `charCounts` stores the count of each character encountered so far.
+2. **Queue for Order:**  `inOrderChars` is a queue to maintain the order in which characters were first seen.  This is crucial for finding the *first* non-repeating character.
+3. **Stream Processing:** The code iterates through the input stream, character by character.
+4. **Updating Counts:**  The count for the current character is updated in the `charCounts` map.
+5. **Adding to Queue:** If a character is encountered for the first time (count is 1), it's added to the `inOrderChars` queue.
+6. **Removing Repeats:** The `while` loop removes characters from the *front* of the queue if their count has become greater than 1 (meaning they are now repeating).
+7. **Printing:** After processing each character, the code either prints the character at the front of the queue (the current first non-repeating character) or prints '-' if the queue is empty (no non-repeating characters).
+8. **Clearer Output:**  A newline is printed after processing the entire stream for cleaner output.
+
+
+
+**Example Output (for the given sample string "aaabccddeeffg"):**
+

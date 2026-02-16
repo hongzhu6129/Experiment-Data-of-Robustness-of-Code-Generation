@@ -1,0 +1,14 @@
+
+
+
+This code does the following:
+
+1. **Gets all available time zone IDs:** `TimeZone.getAvailableIDs()` retrieves an array of strings representing all known time zones.
+2. **Sorts the IDs:** `Arrays.sort(availableIDs)` sorts the array alphabetically, making the output easier to read.
+3. **Prints the time zones:** It iterates through the sorted IDs. Inside the loop:
+    - It gets the `TimeZone` object for the current ID: `TimeZone.getTimeZone(id)`.
+    - **Filters and prints relevant time zones:** It checks if the ID starts with "Etc/UTC" or "Etc/GMT". These prefixes usually indicate time zones related to UTC or GMT.  It also includes explicit checks for "UTC," "GMT", and "GMT0". This helps ensure only the main UTC and GMT zones are printed.
+    - It prints the ID and the display name of the time zone for clear identification.  The display name is a more user-friendly representation.
+
+
+This improved version provides a more focused output, highlighting the UTC and GMT time zones explicitly.  It also adds sorting for readability and uses the display name to offer a friendlier representation.

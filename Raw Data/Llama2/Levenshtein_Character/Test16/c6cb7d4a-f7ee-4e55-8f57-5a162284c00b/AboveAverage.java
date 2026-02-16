@@ -1,0 +1,52 @@
+import java.util.Arrays;
+
+public class AboveAverage {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] numbers1 = {1, 2, 3, 4, 5};
+        findNumbersGreaterThanAverage(numbers1); // Output: 3 4 5
+
+        int[] numbers2 = {5, 10, 15, 20};
+        findNumbersGreaterThanAverage(numbers2); // Output: 20
+
+        int[] numbers3 = {1, 1, 1, 1};
+        findNumbersGreaterThanAverage(numbers3); // Output:  (None greater)
+
+        int[] numbers4 = {}; // Empty array
+        findNumbersGreaterThanAverage(numbers4); // Output: (Handles empty case gracefully)
+
+
+    }
+
+    public static void findNumbersGreaterThanAverage(int[] arr) {
+        if (arr == null || arr.length == 0) {  // Handle empty or null array
+            System.out.println("(Empty array)");
+            return;
+        }
+
+
+        double sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        double average = sum / arr.length;
+
+
+        boolean foundGreater = false; // Flag to track if any numbers are greater
+
+        for (int num : arr) {
+            if (num > average) {
+                System.out.print(num + " ");
+                foundGreater = true;
+            }
+        }
+
+        if (!foundGreater) {
+            System.out.println("(None greater)"); // Indicate if no numbers are above average
+        } else {
+            System.out.println(); // Newline for formatting
+        }
+
+    }
+}

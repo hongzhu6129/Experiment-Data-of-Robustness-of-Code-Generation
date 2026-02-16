@@ -1,0 +1,36 @@
+public class IncreasingAdjacentNumbers {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        System.out.println("Array 1 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr1)); // Output: true
+
+        int[] arr2 = {1, 2, 1, 2, 3};
+        System.out.println("Array 2 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr2)); // Output: false
+
+        int[] arr3 = {5, 4, 3, 2, 1};
+        System.out.println("Array 3 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr3)); // Output: false
+
+        int[] arr4 = {1, 2, 4, 5, 6}; //Only two are adjacent and increasing
+        System.out.println("Array 4 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr4)); // Output: false
+
+        int[] arr5 = {};
+        System.out.println("Array 5 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr5)); // Output: false
+
+         int[] arr6 = {1,2,3};
+        System.out.println("Array 6 contains three increasing adjacent numbers: " + containsThreeIncreasingAdjacent(arr6)); // Output: true
+    }
+
+    public static boolean containsThreeIncreasingAdjacent(int[] arr) {
+        if (arr == null || arr.length < 3) {
+            return false;
+        }
+
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i] + 1 == arr[i + 1] && arr[i + 1] + 1 == arr[i + 2]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}

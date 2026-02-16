@@ -1,0 +1,32 @@
+public class StringWithoutMatch {
+
+    public String withoutMatch(String str) {
+        if (str.length() < 2) {
+            return str;
+        }
+
+        String firstTwo = str.substring(0, 2);
+        String lastTwo = str.substring(str.length() - 2);
+
+        if (firstTwo.equals(lastTwo)) {
+            return str.substring(2);
+        } else {
+            return str;
+        }
+    }
+
+    public static void main(String[] args) {
+        StringWithoutMatch obj = new StringWithoutMatch();
+
+        System.out.println(obj.withoutMatch("HelloHe")); // Output: lloHe
+        System.out.println(obj.withoutMatch("Hello")); // Output: Hello
+        System.out.println(obj.withoutMatch("He")); // Output: He
+        System.out.println(obj.withoutMatch("H"));  // Output: H
+        System.out.println(obj.withoutMatch("abaaba")); // Output: baaba
+        System.out.println(obj.withoutMatch("abcab")); // Output: abcab
+        System.out.println(obj.withoutMatch("xx")); // Output: 
+        System.out.println(obj.withoutMatch("")); // Output: 
+        System.out.println(obj.withoutMatch("edited")); // Output: edited
+
+    }
+}

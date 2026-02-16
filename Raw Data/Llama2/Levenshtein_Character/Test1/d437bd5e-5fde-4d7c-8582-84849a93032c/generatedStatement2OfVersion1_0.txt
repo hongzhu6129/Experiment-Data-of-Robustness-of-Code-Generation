@@ -1,0 +1,13 @@
+
+
+
+Key Points about Shallow Copies:
+
+* **Shared References:**  A shallow copy creates a new map object, but the *values* within the map are still references to the same objects as in the original map.  This is why modifying a value in the original map affects the shallow copy (and vice versa for mutable shallow copies).
+* **`clone()` method:** The `clone()` method in `HashMap` creates a shallow copy.
+* **`putAll()` method:** The `putAll()` method provides another way to create a shallow copy.
+* **`Map.copyOf()` (Java 9+):**  Creates an *unmodifiable* shallow copy.  Attempts to modify the resulting map will throw an `UnsupportedOperationException`.
+* **Deep Copy (Contrast):** If you need a completely independent copy where changes to one map do *not* affect the other, you'll need to create a *deep copy*. This involves creating copies of the objects within the map as well.
+
+
+This revised answer provides a complete and runnable example within a single `main` method, demonstrating different shallow copy techniques and the implications of shared references.  It also explains the important difference between shallow and deep copies.

@@ -1,0 +1,70 @@
+import java.util.Arrays;
+
+public class KthSmallestLargest {
+
+    public static void main(String[] args) {
+        int[] arr = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr.length);
+            return;
+        }
+
+
+        Arrays.sort(arr);
+
+        System.out.println("Kth smallest element: " + arr[k - 1]);
+        System.out.println("Kth largest element: " + arr[arr.length - k]);
+
+
+        // Example usage with different array and k
+        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int k2 = 5;
+
+         if (k2 <= 0 || k2 > arr2.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr2.length);
+            return;
+        }
+
+        Arrays.sort(arr2);
+
+        System.out.println("Kth smallest element: " + arr2[k2 - 1]);
+        System.out.println("Kth largest element: " + arr2[arr2.length - k2]);
+
+
+
+        //Edge case examples
+        int[] arr3 = {1};
+        int k3 = 1;
+
+        if (k3 <= 0 || k3 > arr3.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr3.length);
+            return;
+        }
+
+
+        Arrays.sort(arr3);
+
+        System.out.println("Kth smallest element: " + arr3[k3 - 1]);
+        System.out.println("Kth largest element: " + arr3[arr3.length - k3]);
+
+
+
+
+        int[] arr4 = {5,2,9,1,5,6};
+        int k4 = 2;
+
+
+        if (k4 <= 0 || k4 > arr4.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr4.length);
+            return;
+        }
+
+        Arrays.sort(arr4);
+
+
+        System.out.println("Kth smallest element: " + arr4[k4 - 1]);
+        System.out.println("Kth largest element: " + arr4[arr4.length - k4]);
+    }
+}

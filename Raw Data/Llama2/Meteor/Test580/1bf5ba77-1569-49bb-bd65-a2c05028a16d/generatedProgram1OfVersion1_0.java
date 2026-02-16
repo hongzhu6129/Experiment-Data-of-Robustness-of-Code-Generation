@@ -1,0 +1,74 @@
+import java.util.Arrays;
+
+public class RadixSort {
+
+    public static void sort(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+
+        int max = Arrays.stream(arr).max().getAsInt();
+        int exp = 1;
+        while (max / exp > 0) {
+            countingSortByDigit(arr, arr.length, exp, 10); // Base 10 radix sort
+            exp *= 10;
+        }
+    }
+
+    public static void sort(int[] arr, int radix) { // Allows for different radixes
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+
+        int max = Arrays.stream(arr).max().getAsInt();
+        int exp = 1;
+        while (max / exp > 0) {
+            countingSortByDigit(arr, arr.length, exp, radix);
+            exp *= radix;
+        }
+    }
+
+
+    private static void countingSortByDigit(int[] arr, int n, int exp, int radix) {
+        int[] output = new int[n];
+        int[] count = new int[radix];
+
+        for (int i = 0; i < n; i++) {
+            count[(arr[i] / exp) % radix]++;
+        }
+
+        for (int i = 1; i < radix; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % radix] - 1] = arr[i];
+            count[(arr[i] / exp) % radix]--;
+        }
+
+        System.arraycopy(output, 0, arr, 0, n);
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {170, 45, 75, 90, 802, 24, 2, 66};
+        System.out.println("Unsorted array: " + Arrays.toString(arr));
+        sort(arr);
+        System.out.println("Sorted array (base 10): " + Arrays.toString(arr));
+
+        int[] arr2 = {170, 45, 75, 90, 15, 24, 2, 66};
+        System.out.println("Unsorted array: " + Arrays.toString(arr2));
+        sort(arr2, 5); // Example of sorting with base 5.
+        System.out.println("Sorted array (base 5): " + Arrays.toString(arr2));
+
+
+        // Demonstrating the error handling (this is where YOUR error would occur if you tried to parse "computer" as an int)
+        String[] strArr = {"123", "456", "computer", "789"};
+        try {
+             int[] intArr = Arrays.stream(strArr).mapToInt(Integer::parseInt).toArray();
+             sort(intArr); // This wouldn't be reached if there's a parsing error
+        } catch (NumberFormatException e) {
+            System.err.println("Error: invalid literal for int() with base 10: 'computer'"); // Handling the specific error you mentioned.
+        }
+    }
+}

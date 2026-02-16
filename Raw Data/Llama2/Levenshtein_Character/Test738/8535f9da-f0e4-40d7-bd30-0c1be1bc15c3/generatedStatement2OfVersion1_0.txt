@@ -1,0 +1,26 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1      | num2      | Expected Output                   | Notes                                   |
+|-----------|-----------|-----------|-----------------------------------|----------------------------------------|
+| 1        | 5         | 10        | 50                                | Positive numbers                         |
+| 2        | -3        | 7         | -21                               | Negative and positive number            |
+| 3        | 0         | 15        | 0                                 | Zero multiplied by any number is zero   |
+| 4        | -8        | -4        | 32                                | Two negative numbers                    |
+| 5        | 1000000   | 1000000   | 1000000000000                      | Large numbers (potential overflow with int) |
+| 6        | 9223372036854775807 | 1 | 9223372036854775807 |  Long.MAX_VALUE * 1                   |
+| 7        | 9223372036854775807 | 2 | -2                              | Overflow (Long.MAX_VALUE * 2)        |
+| 8        | -9223372036854775808| -1 | -9223372036854775808| Long.MIN_VALUE * -1 (still in range)|
+| 9 | -9223372036854775808| 2 | 0                                | Overflow (Long.MIN_VALUE * 2) |
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can input these values directly into the program when prompted.
+
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit.  Here's a basic example using JUnit 5:
+

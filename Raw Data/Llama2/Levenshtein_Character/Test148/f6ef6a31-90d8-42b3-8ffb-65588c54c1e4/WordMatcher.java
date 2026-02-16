@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class WordMatcher {
+
+    static void checkExistance(String word, String item) {
+        char[] wordChars = word.toCharArray();
+        Arrays.sort(wordChars);
+        char[] itemChars = item.toCharArray();
+        Arrays.sort(itemChars);
+
+        String sortedWord = new String(wordChars);
+        String sortedItem = new String(itemChars);
+
+        if (sortedItem.contains(sortedWord)) {
+            System.out.println(item);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        List<String> items = new ArrayList<>(Arrays.asList("sunday", "geeksforgeeks", "utensils", "just", "sss", "sun", "program"));
+        String word = "sun";
+
+        System.out.println("Items containing all characters of '" + word + "':");
+
+        for (String item : items) {
+            checkExistance(word, item); // Check each item against the word
+        }
+    }
+}
+
+
+
+

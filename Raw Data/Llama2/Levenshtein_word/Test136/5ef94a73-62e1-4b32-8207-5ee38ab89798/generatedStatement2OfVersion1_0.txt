@@ -1,0 +1,37 @@
+
+
+
+**Test Cases:**
+
+**Valid Octal Inputs:**
+
+1. **Input:** 123  **Expected Output:** 53
+2. **Input:** 777  **Expected Output:** 1FF
+3. **Input:** 0  **Expected Output:** 0
+4. **Input:** 10  **Expected Output:** 8
+5. **Input:** 7000 **Expected Output:** E00
+6. **Input:** 1234567 **Expected Output:** 15997B
+
+**Invalid Octal Inputs (Corner/Edge Cases):**
+
+1. **Input:** 80  **Expected Output:** Invalid input: Invalid octal digit
+2. **Input:** 999  **Expected Output:** Invalid input: Invalid octal digit
+3. **Input:** abc  **Expected Output:** Invalid input: Invalid octal digit
+4. **Input:** 123a **Expected Output:** Invalid input: Invalid octal digit
+5. **Input:** -123  **Expected Output:** Invalid input: Invalid octal digit  (Negative numbers are not handled as standard octal)
+6. **Input:**   (Empty string) **Expected Output:**  Hexadecimal equivalent: 0 (Handles empty string as 0 which is reasonable behavior)
+7. **Input:** 123 456 (Octal with space) **Expected Output:** Invalid input: Invalid octal digit (Handles spaces within the input, flagging it as an invalid input)
+
+
+**Explanation of the Code and Improvements:**
+
+1. **Direct `toHexString`:** The code now uses `Integer.toHexString()` after converting the octal to decimal. This simplifies the hexadecimal conversion significantly.
+2. **Input Validation:** It includes robust error handling for invalid octal digits. It checks each character to ensure it's a valid octal digit (0-7).
+3. **Clear Error Messages:**  Provides informative error messages to the user when the input is invalid.
+4. **Handles Leading Zeroes:** Correctly handles leading zeroes in the octal input.
+5. **UpperCase Hex Output:** Uses `toUpperCase()` to output the hexadecimal result in uppercase, which is a common convention.
+6. **No Unnecessary Methods:**  Adheres to the requirement of not using methods other than `main`.
+7. **`try-catch` block:** The code is enclosed within a `try-catch` block to handle `NumberFormatException` that might occur due to invalid input, preventing the program from crashing.
+
+
+This improved version is more robust, user-friendly, and efficient while still meeting the original requirements.  The test cases cover a wider range of scenarios, including important edge cases, ensuring that the code works correctly in various situations.

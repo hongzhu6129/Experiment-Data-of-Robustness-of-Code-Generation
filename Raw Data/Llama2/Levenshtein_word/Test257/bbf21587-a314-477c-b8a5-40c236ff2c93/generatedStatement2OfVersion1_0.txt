@@ -1,0 +1,24 @@
+
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:** The most important addition is the inclusion of JUnit tests.  This allows for automated testing of the `Circle` class's methods.  Testing is crucial for ensuring code correctness.
+
+* **Test Cases:**  The tests cover several important cases:
+    * **Positive Radius:**  Verifies correct calculations for a typical radius.
+    * **Zero Radius:** A boundary case that should result in zero area and perimeter.
+    * **Large Radius:** Tests behavior with very large numbers to check for potential overflow or precision issues. (Note the adjusted delta in the assertions for large numbers).
+    * **Negative Radius:** This is now an important corner case.  A negative radius doesn't make sense geometrically.  The updated `Circle` constructor throws an `IllegalArgumentException` for negative input, and the test verifies this behavior using `assertThrows`.
+
+* **Double Comparison:** When comparing floating-point numbers (like `double`), you should never use exact equality (`==`). Due to the way floating-point numbers are represented, there can be tiny rounding errors.  The tests use `assertEquals` with a `delta` (tolerance) value to account for these potential inaccuracies.
+
+* **Clearer Output:**  The `main` method now prints the radius, area, and perimeter with labels for better readability.
+
+* **Encapsulation (Minor):** The `radius` field in the `Circle` class can be made `private` to encapsulate the internal state of the object. Access can then be provided via getter methods if needed.  I've shown this in the improved code.
+
+
+How to Run JUnit Tests:
+
+If you are using an IDE like IntelliJ or Eclipse, you should be able to right-click on the test class or methods and select "Run".  If using the command line, you'll need to ensure you have JUnit on your classpath and then use a test runner (like the one included with JUnit).  Refer to JUnit documentation for details on how to set this up.

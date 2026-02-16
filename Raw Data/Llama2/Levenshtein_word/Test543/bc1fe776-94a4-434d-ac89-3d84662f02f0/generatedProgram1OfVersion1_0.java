@@ -1,0 +1,38 @@
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 4, 5, 6, 10, 7, 8, 9};
+        int lastIndexOf10 = -1;
+
+        // Find the index of the last occurrence of 10
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                lastIndexOf10 = i;
+            }
+        }
+
+        // Create the new array only if 10 exists in the original array
+        if (lastIndexOf10 != -1 && lastIndexOf10 < originalArray.length -1 ) {
+            int newArrayLength = originalArray.length - (lastIndexOf10 + 1);
+            int[] newArray = new int[newArrayLength];
+            
+            // Populate the new array
+            for (int i = 0; i < newArrayLength; i++) {
+                newArray[i] = originalArray[lastIndexOf10 + 1 + i];
+            }
+            
+            // Print the new array (for verification)
+            System.out.print("New array: ");
+            for (int num : newArray) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("10 is not found in the array or it's the last element. No new array created.");
+        }
+    }
+}
+
+
+
+

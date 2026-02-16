@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class CheckArrayListEmpty {
+
+    public static void main(String[] args) {
+
+        // Create an empty ArrayList
+        ArrayList<String> list1 = new ArrayList<>();
+
+        // Check if the ArrayList is empty
+        if (list1.isEmpty()) {
+            System.out.println("list1 is empty");
+        } else {
+            System.out.println("list1 is not empty"); 
+        }
+
+        // Create an ArrayList with elements
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+        // Check if the ArrayList is empty
+        if (list2.isEmpty()) {
+            System.out.println("list2 is empty");
+        } else {
+            System.out.println("list2 is not empty");
+        }
+    }
+}

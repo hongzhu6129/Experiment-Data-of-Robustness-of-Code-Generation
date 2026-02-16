@@ -1,0 +1,12 @@
+
+
+
+Key Improvements in this Version:
+
+* **Handles Invalid Keys:**  Checks if the key (studentId) exists in the `TreeMap` before attempting to update. This prevents `NullPointerExceptions`.  Provides a message if the key is invalid.
+* **Prevents Downgrading:**  The `graduateGrade` method now enforces that grades can only be improved.  It will not update if the `newGrade` is lower than the `currentGrade`. It explains the grade precedence logic clearly.
+* **Clearer Output:**  More informative output messages tell the user what actions were taken (or not taken).
+* **More Robust Grade Comparison (Optional):**  You could  replace the individual `if/else if` comparisons with a more general method to compare letter grades if your grading system is more complex (e.g., "+", "-", etc.)
+
+
+This revised code provides a more complete and practical solution for graduating grades in a `TreeMap`.

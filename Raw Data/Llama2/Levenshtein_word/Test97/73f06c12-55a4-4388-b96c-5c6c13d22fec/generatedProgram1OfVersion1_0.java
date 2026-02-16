@@ -1,0 +1,21 @@
+public class BooleanArrayPrinter {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "k " : "f "); // k for true, f for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}

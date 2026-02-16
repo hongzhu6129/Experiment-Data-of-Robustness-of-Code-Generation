@@ -1,0 +1,28 @@
+
+
+**Test Cases (including corner cases):**
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1 | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2 | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 3 | 0 | 10 | 10 | -10 | 0 | 0 | 0 |
+| 4 | 10 | 0 | 10 | 10 | 0 | Division by zero | Division by zero |  // Corner case: Division by zero
+| 5 | 0 | 0 | 0 | 0 | 0 | Division by zero | Division by zero | // Corner case: Both numbers are zero
+| 6 | Double.MAX_VALUE | 1 | Double.MAX_VALUE + 1 (May overflow) | Double.MAX_VALUE -1 | Double.MAX_VALUE | Double.MAX_VALUE |  NaN (Not a Number) | // Corner case: Overflow potential
+| 7 | Double.MIN_VALUE | Double.MIN_VALUE | 0 or very small number close to 0 | 0 | Double.MIN_VALUE * Double.MIN_VALUE (very small positive number) | 1 | 0 | //Corner case: Very small numbers
+| 8 | 5 | -2 | 3 | 7 | -10 | -2.5 | 1 | // Negative numbers
+| 9 | 7.5 | 2.5 | 10 | 5 | 18.75 | 3 | 0 | // Floating-point numbers
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero:**  The code explicitly handles division by zero, preventing runtime errors. It prints a message indicating the error.
+* **Both Numbers Zero:** Handles the case where both inputs are zero.  Division by zero is still an issue.
+* **Overflow (Double.MAX_VALUE):**  Adding to `Double.MAX_VALUE` may result in overflow. Java handles this by returning `Infinity` or `-Infinity` depending on the signs. Similarly, multiplying `Double.MAX_VALUE` by a number greater than 1 can also lead to overflow.
+* **Very Small Numbers (Double.MIN_VALUE):** Operations with very small numbers can sometimes result in unexpected behavior due to the limitations of floating-point representation.
+* **Negative Numbers:** Test cases with negative inputs verify that the program correctly handles subtraction, multiplication, division, and remainder operations with negative numbers.
+
+
+By testing your program with these cases, you can ensure that it performs correctly under various conditions, including situations that could lead to errors or unexpected behavior.  It's good practice to include a variety of test cases when developing any program.

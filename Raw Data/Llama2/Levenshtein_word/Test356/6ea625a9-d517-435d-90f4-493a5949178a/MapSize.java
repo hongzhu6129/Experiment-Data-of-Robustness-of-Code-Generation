@@ -1,0 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapSize {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Get the size of the map
+        int mapSize = myMap.size();
+
+        // Print the size
+        System.out.println("The size of the map is: " + mapSize);
+    }
+}

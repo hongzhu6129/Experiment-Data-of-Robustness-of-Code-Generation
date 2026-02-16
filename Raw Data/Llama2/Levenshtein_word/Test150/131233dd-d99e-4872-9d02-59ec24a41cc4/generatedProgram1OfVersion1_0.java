@@ -1,0 +1,57 @@
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.NavigableMap;
+
+public class ReverseMapKeys {
+
+    public static void main(String[] args) {
+
+        // 1. Create a TreeMap (automatically sorts keys in ascending order)
+        Map<Integer, String> studentScores = new TreeMap<>();
+        studentScores.put(101, "Alice");
+        studentScores.put(105, "Bob");
+        studentScores.put(102, "Charlie");
+        studentScores.put(103, "David");
+
+        System.out.println("Original Map: " + studentScores);
+
+
+        // 2. Get a reverse view of the keys using descendingKeySet()
+        NavigableMap<Integer, String> navigableMap = new TreeMap<>(studentScores); //  TreeMap implements NavigableMap
+        Set<Integer> reverseKeys = navigableMap.descendingKeySet();
+
+
+
+        // 3. Iterate through the reverse keys and print them 
+        System.out.print("Keys in Reverse Order: ");
+        for (Integer key : reverseKeys) {
+            System.out.print(key + " ");
+        }
+        System.out.println();
+
+
+
+        // 4. (Optional) Get a reverse view of the entire map (keys and values) using descendingMap()
+        NavigableMap<Integer, String> reversedMap = navigableMap.descendingMap();
+        System.out.println("Reversed Map (Keys and Values): " + reversedMap);
+
+
+
+        // Example with String keys (natural ordering):
+        Map<String, Integer> productPrices = new TreeMap<>();
+        productPrices.put("Apple", 1);
+        productPrices.put("Banana", 0);
+        productPrices.put("Orange", 2);
+
+        NavigableMap<String, Integer> navigableProductPrices = new TreeMap<>(productPrices);
+        Set<String> reversedProductKeys = navigableProductPrices.descendingKeySet();
+
+        System.out.print("Product Keys in Reverse Order: ");
+        for (String key : reversedProductKeys) {
+            System.out.print(key + " ");
+        }
+        System.out.println();
+
+    }
+}

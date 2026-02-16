@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSecondElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Print the original ArrayList
+        System.out.println("Original ArrayList: " + fruits);
+
+        // Replace the second element (index 1) with "Mango"
+        String newElement = "Mango";
+
+        if (fruits.size() >= 2) { // Check if there's at least a second element
+            fruits.set(1, newElement);
+
+            // Print the updated ArrayList
+            System.out.println("Updated ArrayList: " + fruits);
+        } else {
+            System.out.println("The ArrayList does not have a second element to replace.");
+        }
+
+
+        // Example with integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        
+        System.out.println("Original Integer ArrayList: " + numbers);
+
+        int newNumber = 25;
+         if (numbers.size() >= 2) {
+             numbers.set(1, newNumber);
+              System.out.println("Updated Integer ArrayList: " + numbers);
+         }  else {
+            System.out.println("The Integer ArrayList does not have a second element to replace.");
+        }
+    }
+}

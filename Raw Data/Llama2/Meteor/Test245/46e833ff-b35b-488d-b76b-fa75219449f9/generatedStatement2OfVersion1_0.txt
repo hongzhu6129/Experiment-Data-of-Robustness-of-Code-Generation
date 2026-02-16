@@ -1,0 +1,26 @@
+
+
+
+
+Key Improvements and Explanations:
+
+* **BigInteger:**  Uses `BigInteger` to handle potentially very large results of multiplying multiple binary numbers. This avoids integer overflow issues.
+* **Input Validation:**  Added a check using a regular expression `binaryNumber.matches("[01]+")` to ensure that each input string is a valid binary number (contains only 0s and 1s). This makes the code more robust.
+* **Clearer Error Handling:** Uses `IllegalArgumentException` to signal invalid binary string inputs and provides better error messages.
+* **Comprehensive Test Cases:** Includes more test cases to cover:
+    * Regular multiplication.
+    * Multiplication with zero.
+    * Single binary number input.
+    * Very large binary numbers.
+    * Empty input array (corner case).
+    * Invalid binary string input (corner case - containing a non-binary character 'a').
+
+
+How to Compile and Run:
+
+1. Save the code as `MultiplyBinaryNumbers.java`.
+2. Compile: `javac MultiplyBinaryNumbers.java`
+3. Run: `java MultiplyBinaryNumbers`
+
+
+The output will show the results of the test cases, including the expected outputs and any caught exceptions.  The corner case test with the invalid input demonstrates the improved error handling.

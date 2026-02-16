@@ -1,0 +1,32 @@
+
+
+
+**Test Cases (Conceptual - these would need to be adapted for a real testing framework like JUnit):**
+
+
+1. **Standard Case (Java Installed):**  Run the program on a system with a standard Java installation (JDK or JRE) in the system PATH. Expected output: "Java is installed on this system."
+
+2. **Java Not Installed:** Run the program on a system where Java is not installed at all. Expected output: "Java is not installed on this system."
+
+3. **Java in Non-Standard Location (Corner Case):**
+   * Temporarily remove Java from the system PATH (if you know how to do this safely.  Restore it afterwards!).  Expected output: "Java is not installed on this system." (because it can't be found by simply typing 'java').
+   * This demonstrates that the code relies on Java being accessible in the standard system path.
+
+
+4. **Java Version Check (Refinement - optional):**
+   *  Modify the `isJavaInstalled()` method to also extract the Java version number (using regular expressions on the output of `java -version`) and compare it against a required minimum version. This would be useful in situations where specific Java features are needed.
+
+5. **Interruption (Corner Case - difficult to test directly):**  Simulate a scenario where the `process.waitFor()` method is interrupted (e.g., by another thread). This might be challenging to test directly, but the `InterruptedException` handling in the `catch` block ensures the program doesn't crash.
+
+6. **Permissions Issue (Corner Case - depends on the system):** Run the program as a user with limited system permissions who might not have access to execute the `java -version` command.  The expected outcome depends on the system's security policy, but the program should handle any `IOException` gracefully.
+
+
+**How to improve the detection:**
+
+* **Check the `JAVA_HOME` environment variable:** In addition to checking the PATH, you could look for the `JAVA_HOME` environment variable, which is often set to the Java installation directory.
+
+
+**Important Note on Exit Codes:**  Relying solely on the exit code (e.g., `process.waitFor() == 0`) might not be completely reliable.  Some systems or configurations might return a success code even if Java isn't truly present. It's best to combine exit code checking with analyzing the output of `java -version`.
+
+
+Using a dedicated testing framework (JUnit, TestNG) is highly recommended for robust testing of Java programs. These frameworks provide tools to automate test execution and verify results.

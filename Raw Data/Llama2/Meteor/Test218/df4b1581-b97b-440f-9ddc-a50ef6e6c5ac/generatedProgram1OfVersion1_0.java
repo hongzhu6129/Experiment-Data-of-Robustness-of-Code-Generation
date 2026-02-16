@@ -1,0 +1,47 @@
+import java.util.LinkedList;
+
+public class ReplaceElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Replace an element at a specific index
+        int indexToReplace = 1; // Replace element at index 1 (Banana)
+        String newElement = "Mango";
+
+        if (indexToReplace >= 0 && indexToReplace < linkedList.size()) {
+            linkedList.set(indexToReplace, newElement);
+            System.out.println("LinkedList after replacing element at index " + indexToReplace + ": " + linkedList);
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (linkedList.size() - 1));
+        }
+
+
+
+        // Example of replacing the first occurrence of a specific element
+        String elementToReplace = "Orange"; // Replace the first occurrence of "Orange"
+        String replacementElement = "Peach";
+
+        if (linkedList.contains(elementToReplace)) {
+
+            int index = linkedList.indexOf(elementToReplace) ;
+            linkedList.set(index, replacementElement);
+
+            System.out.println("LinkedList after replacing first occurrence of '" + elementToReplace + "': " + linkedList);
+
+        } else {
+            System.out.println("Element '" + elementToReplace + "' not found in the LinkedList.");
+        }
+
+
+    }
+}

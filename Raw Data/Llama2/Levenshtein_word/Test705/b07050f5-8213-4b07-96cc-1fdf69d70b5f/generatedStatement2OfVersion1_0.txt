@@ -1,0 +1,50 @@
+
+
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Positive Integer:**  Input: 7
+   Expected Output: Multiplication table of 7 up to 11.
+
+2. **Negative Integer:** Input: -5
+   Expected Output: Multiplication table of -5 up to 11.
+
+3. **Zero:** Input: 0
+   Expected Output: Multiplication table of 0 (all results will be 0).
+
+
+**Corner/Edge Cases:**
+
+4. **Large Positive Integer:** Input: 100000  (or any large number within the `int` range)
+   Expected Output: Multiplication table of 100000 up to 11.  This tests the program's ability to handle large numbers.
+
+5. **Large Negative Integer:** Input: -100000 (or any large negative number within the `int` range)
+   Expected Output: Multiplication table of -100000 up to 11.
+
+
+6. **Integer.MAX_VALUE:**  Input: 2147483647 (The largest possible `int` value)
+    Expected Output: Multiplication table.  Tests for potential overflow issues (though the multiplication in this specific case shouldn't overflow until i=2, which we don't reach).
+
+7. **Integer.MIN_VALUE:** Input: -2147483648 (The smallest possible `int` value)
+    Expected Output: Multiplication table. Tests for potential overflow with negative numbers. (overflow would occur at i=2 in this case too).
+
+
+
+**Invalid Input Cases (handled by the input validation):**
+
+8. **Non-Integer Input:** Input: abc, 1.5, etc.
+   Expected Behavior: The program should print an error message like "Invalid input. Please enter an integer." and prompt the user to enter a valid integer again.  This is crucial to make your program robust.
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering each test case input manually and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit to write automated tests. This is the standard practice in software development.  Here's a simple example using JUnit:
+
+
+

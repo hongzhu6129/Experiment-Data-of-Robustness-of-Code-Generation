@@ -1,0 +1,12 @@
+
+
+
+Key improvements in this version:
+
+* **Handles Nanoseconds Properly:** Uses `toNanosPart()` for accurate nanosecond differences.  The previous approach using `toNanos()` could give incorrect results due to the total nanoseconds exceeding the `long` range when there are a significant number of hours or days between the dates.
+* **Clearer Output:**  Output is formatted for better readability.
+* **Error Handling:** Includes a `try-catch` block to gracefully handle potential `DateTimeParseException` if the input date strings are not in the correct format.
+* **Uses `Duration` Effectively:**  Leverages `Duration`'s methods for obtaining various time units.
+
+
+This revised code accurately calculates the difference, handles nanoseconds correctly, and provides more robust error handling.

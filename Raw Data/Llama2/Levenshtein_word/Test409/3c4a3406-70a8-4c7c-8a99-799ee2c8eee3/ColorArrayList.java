@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ColorArrayList {
+
+    public static void main(String[] args) {
+
+        // 1. Create an ArrayList of Strings
+        List<String> colors = new ArrayList<>();
+
+        // 2. Add some colors to the ArrayList
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+
+        // 3. Print out the entire collection using a for-each loop
+        System.out.println("Colors in the ArrayList:");
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+
+        //  Alternative printing method using a for loop with index:
+        System.out.println("\nColors (using index-based loop):");
+        for (int i = 0; i < colors.size(); i++) {
+            System.out.println("Color at index " + i + ": " + colors.get(i));
+        }
+
+        // Another alternative:  Printing using the toString() method (simple output).
+        System.out.println("\nColors (using toString()):");
+        System.out.println(colors);
+
+
+
+         // Example of removing an element:
+        colors.remove("Green"); // Remove by value
+
+        System.out.println("\nColors after removing \"Green\":");
+        System.out.println(colors);
+
+
+        // Example of checking if an element exists
+        if(colors.contains("Blue")){
+            System.out.println("\nBlue is present in the ArrayList");
+        }
+
+
+        // Example of getting the size of the ArrayList
+        System.out.println("\nSize of the ArrayList: "+ colors.size());
+
+        // Example of clearing the ArrayList
+        colors.clear();
+        System.out.println("\nArrayList after clearing: "+ colors);
+
+
+    }
+}

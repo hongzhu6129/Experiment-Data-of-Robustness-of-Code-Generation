@@ -1,0 +1,48 @@
+public class CheckArrayEnds {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 1, 2, 3};
+        int l1 = 3;
+        System.out.println("Array 1 Result: " + checkSameEnds(arr1, l1)); // Output: true
+
+        int[] arr2 = {1, 2, 3, 4, 5, 6};
+        int l2 = 2;
+        System.out.println("Array 2 Result: " + checkSameEnds(arr2, l2)); // Output: false
+
+        int[] arr3 = {1, 2, 3, 1, 2, 3};
+        int l3 = 3;
+        System.out.println("Array 3 Result: " + checkSameEnds(arr3, l3)); // Output: true
+
+        int[] arr4 = {7};
+        int l4 = 1;
+        System.out.println("Array 4 Result: " + checkSameEnds(arr4, l4)); // Output: true
+
+        int[] arr5 = {1, 2, 3};
+        int l5 = 0;
+        System.out.println("Array 5 Result: " + checkSameEnds(arr5, l5)); // Output: true
+
+        int[] arr6 = {1, 2, 3};
+        int l6 = 4; // l is greater than array length
+        System.out.println("Array 6 Result: " + checkSameEnds(arr6, l6)); // Output: false
+
+
+    }
+
+    public static boolean checkSameEnds(int[] arr, int l) {
+        if (l > arr.length || l < 0) {
+            return false; // Handle cases where l is invalid
+        }
+        
+        if (l == 0) {
+            return true; // If l is 0, the condition is trivially true
+        }
+
+
+        for (int i = 0; i < l; i++) {
+            if (arr[i] != arr[arr.length - l + i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}

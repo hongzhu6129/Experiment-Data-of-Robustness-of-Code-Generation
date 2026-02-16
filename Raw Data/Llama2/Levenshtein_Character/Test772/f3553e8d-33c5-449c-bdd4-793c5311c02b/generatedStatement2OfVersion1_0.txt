@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:**  The code now correctly handles empty (`{}`) and `null` arrays, returning 0 as expected and avoiding `NullPointerExceptions`.
+
+2. **Clearer Variable Names:** `uniqueCount` is a more descriptive name than `k`.
+
+3. **In-Place Modification:** The function modifies the original `nums` array directly as required by the problem (though it also prints the relevant portion for clarity in `main`).
+
+4. **Comprehensive `main` method:** Includes more test cases, including edge cases, and prints the updated array contents (the first `uniqueCount` elements) along with the length.
+
+5. **`Arrays.copyOfRange()` in main:** Uses  `Arrays.copyOfRange`  to neatly print only the relevant part of the modified array (the first `len` elements) in the main method.  This avoids printing the "garbage" values that remain in the later part of the array after duplicates are removed. This is important for clarity, but it's crucial to understand that  `removeDuplicates` *itself* is still correctly modifying the array in place.
+
+
+This improved version is more robust, efficient, and demonstrates good coding practices. It fulfills all the requirements of the problem and handles potential issues effectively.

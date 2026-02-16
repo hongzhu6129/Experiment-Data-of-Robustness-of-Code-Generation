@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations in this revised code:
+
+1. **Interval Class:** Encapsulates start and end within an `Interval` class, promoting better organization.  The `toString()` method makes printing the results easier.
+
+2. **Comparator for Sorting:**  Uses a `Comparator` with the `Collections.sort()` method to sort the intervals based on their start times. This is crucial for the merging logic to work correctly.
+
+3. **Clearer Merging Logic:** The merging logic is now more straightforward. It iterates through the sorted intervals, comparing the current interval's end with the next interval's start.  It merges if they overlap, otherwise, it adds the current interval to the `merged` list and moves to the next.
+
+4. **Handles Edge Cases:**  Includes a check at the beginning to handle `null` or empty input lists gracefully.  It also correctly adds the last processed interval after the loop.
+
+5. **Example Usage in `main`:** Demonstrates how to create `Interval` objects, add them to a list, call the `merge` function, and print the results.  It also includes an example of overlapping intervals to show the merging in action.
+
+
+This revised code is more robust, easier to understand, and follows good object-oriented principles. It adheres to the specified method signatures.

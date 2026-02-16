@@ -1,0 +1,23 @@
+
+
+
+Explanation and improvements:
+
+1. **Error Handling:** The code includes a `try-catch` block to handle potential `IOExceptions` that may occur during file reading.  It prints an error message if a problem is encountered.
+
+2. **Command-Line Arguments:** The program now correctly takes the file names as command-line arguments, making it more user-friendly. It also checks if the correct number of arguments is provided and prints usage instructions if not.
+
+3. **Comparison Logic:**  The core logic is within the `while` loop. It reads lines from both files simultaneously using `BufferedReader`.
+   - It handles the case where one file is shorter than the other. If one file reaches the end before the other, the shorter file is considered lexicographically smaller.
+   - It uses `line1.compareTo(line2)` which is Java's built-in string comparison method. This method provides a lexicographical comparison. 
+   - The loop breaks as soon as a difference is found, optimizing the process � no need to read the entire files if a difference is detected early on.
+
+
+4. **Output:** The program prints a clear message indicating which file is lexicographically first or if they are equal.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CompareFilesLexicographically.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile:
+   

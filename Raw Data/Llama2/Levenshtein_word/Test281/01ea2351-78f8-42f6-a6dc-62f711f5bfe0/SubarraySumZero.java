@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SubarraySumZero {
+
+    /**
+     * Finds the indices of the first and last elements of a subarray with a sum of zero.
+     *
+     * @param arr The input array of integers.
+     * @return A List containing the start and end indices of the subarray, or an empty list if no such subarray exists.
+     */
+    public static List<Integer> subarraySum(int[] arr) {
+        List<Integer> result = new ArrayList<>();
+        if (arr == null || arr.length == 0) {
+            return result; // Return empty list for null or empty input
+        }
+
+        // Use a HashMap to store cumulative sums and their corresponding indices.
+        java.util.HashMap<Integer, Integer> sumMap = new java.util.HashMap<>();
+
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+
+            if (sum == 0) {
+                // If the cumulative sum is zero, the subarray starts from index 0 and ends at the current index.
+                result.add(0);
+                result.add(i);
+                return result;
+            }
+
+            if (sumMap.containsKey(sum)) {
+                // If the cumulative sum is already present in the map, it means a subarray with a sum of zero exists.
+                result.add(sumMap.get(sum) + 1);
+                result.add(i);
+                return result;
+            }
+
+            sumMap.put(sum, i);
+        }
+
+        return result; // Return empty list if no subarray with sum zero is found.
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr1 = {4, 2, -3, 1, 6};
+        List<Integer> result1 = subarraySum(arr1);
+        System.out.println("Subarray with sum zero (arr1): " + result1); // Output: [1, 3]
+
+        int[] arr2 = {1, 2, 3, 4, 5};
+        List<Integer> result2 = subarraySum(arr2);
+        System.out.println("Subarray with sum zero (arr2): " + result2);  // Output: [] (empty list)
+
+
+        int[] arr3 = {-3, 2, 3, -2, 1, -1};
+        List<Integer> result3 = subarraySum(arr3);
+        System.out.println("Subarray with sum zero (arr3): " + result3); // Output: [0, 5] (or possibly [0,2])
+
+        int[] arr4 = null;  // Test null input
+        List<Integer> result4 = subarraySum(arr4);
+        System.out.println("Subarray with sum zero (arr4): " + result4); // Output: []
+
+        int[] arr5 = {}; // Test empty input
+        List<Integer> result5 = subarraySum(arr5);
+        System.out.println("Subarray with sum zero (arr5): " + result5); // Output: []
+    }
+}

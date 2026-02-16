@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+        numbers.add(30);
+
+        // Element to search for
+        int searchElement = 15;
+
+        // Search for the element using contains()
+        if (numbers.contains(searchElement)) {
+            System.out.println(searchElement + " is found in the ArrayList at index " + numbers.indexOf(searchElement));
+        } else {
+            System.out.println(searchElement + " is not found in the ArrayList.");
+        }
+
+
+        // Example of searching for an element that doesn't exist.
+        searchElement = 42; // A number we know is not in the list.
+        if (numbers.contains(searchElement)) {
+            System.out.println(searchElement + " is found in the ArrayList.");
+        } else {
+            System.out.println(searchElement + " is not found in the ArrayList.");
+        }
+
+        // Example with Strings
+        List<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        String searchName = "Bob";
+
+        if (names.contains(searchName)) {
+            System.out.println(searchName + " is found in the ArrayList at index: " + names.indexOf(searchName) );
+        } else {
+            System.out.println(searchName + " is not found in the ArrayList.");
+        }
+
+
+
+    }
+}

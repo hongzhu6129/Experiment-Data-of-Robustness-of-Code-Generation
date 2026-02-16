@@ -1,0 +1,38 @@
+
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `101101`
+   - Expected Output: `55`
+
+2. **Leading Zeros:**
+   - Input: `000111`
+   - Expected Output: `7`
+
+3. **Single Digit:**
+   - Input: `1`
+   - Expected Output: `1`
+
+4. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+5. **Large Binary:**
+   - Input: `1111111111111111111111111111111` (31 ones - Max for signed int as decimal intermediate)
+   - Expected Output: `7777777777`
+
+6. **Empty String (Corner Case):**
+   - Input: ``
+   - Expected Output: `Invalid input: Empty string.`
+
+7. **Invalid Characters (Corner Case):**
+   - Input: `101201`
+   - Expected Output: `Invalid input: Not a binary number.`
+
+8.  **Very Large Binary (to demonstrate potential overflow if using `int` for `decimal`):**
+   - Input: `111111111111111111111111111111111111111111111111111111111111111` (63 ones - Max for signed `long`)  
+   - Expected Output: (Correct octal representation if using `long` for `decimal`. Demonstrates why `long` is used). With int, you get incorrect output due to overflow.
+
+
+These test cases cover different scenarios, including valid binary numbers, leading zeros, single digits, zero, large numbers, empty input, and invalid input to thoroughly verify the correctness of the program. Make sure you test with *very* large binary numbers to ensure using `long` for the `decimal` variable avoids overflow.

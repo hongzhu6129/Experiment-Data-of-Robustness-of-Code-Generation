@@ -1,0 +1,17 @@
+
+
+
+**Explanation and Important Notes:**
+
+1. **`Calendar.getMaximum(field)`:**  This method returns the maximum value for the *given field* (e.g., YEAR, MONTH) supported by the `Calendar` class.  It does **not** give you the maximum value based on the current date.  For instance, `calendar.getMaximum(Calendar.YEAR)` will be a very large number, not the current year.
+
+2. **`Calendar.getActualMaximum(field)`:** This method is essential when you want the maximum value *for the current date's context*. For example, `calendar.getActualMaximum(Calendar.DAY_OF_MONTH)` gives you the last day of the *current* month.
+
+3. **Month Indexing:**  `Calendar` uses 0-indexed months (January = 0, February = 1, ..., December = 11). `calendar.getMaximum(Calendar.MONTH)` will always return 11.
+
+4. **Week of Year:** The maximum week of the year can be 52, 53, or even 54 in rare cases, depending on the week numbering rules and the specific year (leap years can affect this).  Use `getActualMaximum(Calendar.WEEK_OF_YEAR)` for the current year or set a specific year using `calendar.set(Calendar.YEAR, year)` before calling `getActualMaximum`.
+
+5. **Day of Month:** The maximum day of the month varies (28, 29, 30, or 31). Use `getActualMaximum(Calendar.DAY_OF_MONTH)` to get the correct value for the current month.
+
+
+The improved code provides both `getMaximum()` (for the absolute maximums) and `getActualMaximum()` (for the context-specific maximums, which are likely what you need in most real-world scenarios).  It also includes an example demonstrating how to handle a specific year.

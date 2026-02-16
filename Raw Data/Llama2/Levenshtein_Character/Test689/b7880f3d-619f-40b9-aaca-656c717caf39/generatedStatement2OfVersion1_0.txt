@@ -1,0 +1,24 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering regular scenarios and corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1.0 (or 1.0 depending on implementation. Java's remainder operator follows the sign of the dividend) |
+| 3. Mixed Signs | 10 | -2 | 8 | 12 | -20 | -5 | 0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | Division by zero error | Division by zero error |
+| 6. Large Numbers | 1000000000 | 1000 | 1000001000 | 999999000 | 1000000000000 | 1000000 | 0 |
+| 7. Decimal Numbers | 5.5 | 2.2 | 7.7 | 3.3 | 12.1 | 2.5 | 0.0 (be mindful of floating-point precision issues)|
+| 8. Integer overflow (Corner Case) | Integer.MAX_VALUE | 1 | Integer.MIN_VALUE | Integer.MAX_VALUE - 1 |  - | -  | - (Results will overflow. Test how your code handles this.) |
+| 9. Integer underflow (Corner Case) | Integer.MIN_VALUE | -1 | Integer.MAX_VALUE | Integer.MIN_VALUE + 1 |  - | - (Results will overflow) | - (Java's remainder operator can give unexpected results here due to underflow)|
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:**  Enter the values for `num1` and `num2` as prompted by the program and verify the output against the expected values in the table.
+2. **Automated Testing (Recommended):** Create unit tests using a testing framework like JUnit. This will make the testing process more robust and repeatable. Example (using JUnit 5):
+

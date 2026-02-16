@@ -1,0 +1,7 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hope to Java");
+        System.out.println("Learning Java now");
+        System.out.println("Programming is fun");
+    }
+}

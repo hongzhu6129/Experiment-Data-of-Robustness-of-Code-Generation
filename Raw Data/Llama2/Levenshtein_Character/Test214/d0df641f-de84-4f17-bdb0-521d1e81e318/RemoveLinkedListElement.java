@@ -1,0 +1,52 @@
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("apple");
+        linkedList.add("banana");
+        linkedList.add("cherry");
+        linkedList.add("date");
+        linkedList.add("elderberry");
+
+        // Index of the element to remove (e.g., 2 to remove "cherry")
+        int indexToRemove = 2;
+
+        // Remove and return the element at the specified index.
+        String removedElement = removeElementAtIndex(linkedList, indexToRemove);
+
+        // Print the removed element and the updated LinkedList
+        if (removedElement != null) {
+            System.out.println("Removed element: " + removedElement);
+            System.out.println("Updated LinkedList: " + linkedList);
+        }
+
+
+        //Example demonstrating edge cases (removing element that doesn't exist)
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        Integer removed = removeElementAtIndex(numbers, 10); //Trying to remove index 10
+
+        if (removed != null) {
+            System.out.println("Removed element: " + removed);
+        } else {
+            System.out.println("Could not remove element (index out of bounds)");
+        }
+
+        System.out.println("Updated LinkedList: " + numbers);
+    }
+
+    private static <T> T removeElementAtIndex(LinkedList<T> list, int index) {
+        if (index >= 0 && index < list.size()) {
+            return list.remove(index); // LinkedList's remove() method handles the removal efficiently
+        } else {
+            return null; // Or throw an exception if that's the preferred error handling 
+        }
+    }
+}
+
+

@@ -1,0 +1,30 @@
+public class StringFromCharArray {
+
+    public static void main(String[] args) {
+
+        // Sample character array
+        char[] charArray = {'H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd', '!'};
+
+        // Method 1: Using String constructor
+        String str1 = new String(charArray);
+        System.out.println("String created using String constructor: " + str1);
+
+        // Method 2: Using String.valueOf()
+        String str2 = String.valueOf(charArray);
+        System.out.println("String created using String.valueOf(): " + str2);
+
+
+        // Example creating a string from a portion of the array
+        String str3 = new String(charArray, 0, 5); // Creates string from index 0 to 4 (5 characters)
+        System.out.println("String created from a sub-array: " + str3);
+
+
+         // Example with a null character array. Handles gracefully and doesn't throw an exception.
+        char[] nullCharArray = null;
+        String str4 = String.valueOf(nullCharArray); // String.valueOf handles null and returns "null" string.
+        System.out.println("String created from a null char array: " + str4); // Output: null
+
+
+
+    }
+}

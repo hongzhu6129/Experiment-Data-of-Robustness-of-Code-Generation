@@ -1,0 +1,29 @@
+class Solution {
+
+    /**
+     * Calculates the area of a pentagon.
+     *
+     * @param n The number of sides of the pentagon. For a regular pentagon, n=5.
+     * @param s The length of a side of the pentagon.
+     * @return The area of the pentagon.
+     */
+    public static double pentagon_area(int n, double s) {
+        return (n * s * s) / (4 * Math.tan(Math.PI / n));
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        int n = 5; // Number of sides (for a pentagon)
+        double s = 7; // Side length
+
+        double area = pentagon_area(n, s);
+        System.out.println("Area of pentagon: " + area);
+
+
+        // Another Example
+         n = 5;
+         s = 10;
+        area = pentagon_area(n,s);
+        System.out.println("Area of pentagon: "+area);
+    }
+}
