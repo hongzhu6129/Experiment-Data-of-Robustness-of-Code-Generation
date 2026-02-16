@@ -1,0 +1,33 @@
+import java.util.Arrays;
+
+public class StringPermutation {
+
+    public static void main(String[] args) {
+        String str1 = "abcd";
+        String str2 = "badc";
+        String str3 = "abce";
+
+        System.out.println(str1 + " is a permutation of " + str2 + ": " + stringPermutation(str1, str2)); // Output: true
+        System.out.println(str1 + " is a permutation of " + str3 + ": " + stringPermutation(str1, str3)); // Output: false
+
+
+        System.out.println(stringPermutation("","")); // Output: true
+        System.out.println(stringPermutation("","a")); // Output: false
+
+
+    }
+
+    public static boolean stringPermutation(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        return Arrays.equals(charArray1, charArray2);
+    }
+}

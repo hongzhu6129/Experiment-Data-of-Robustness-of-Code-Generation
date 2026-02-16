@@ -1,0 +1,44 @@
+import java.util.Arrays;
+
+public class SwapFirstAndLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray1 = {1, 2, 3, 4, 5};
+        int[] newArray1 = swapFirstAndLast(originalArray1);
+        System.out.println("Original Array: " + Arrays.toString(originalArray1));
+        System.out.println("New Array: " + Arrays.toString(newArray1));
+
+
+        int[] originalArray2 = {1};
+        int[] newArray2 = swapFirstAndLast(originalArray2);
+        System.out.println("Original Array: " + Arrays.toString(originalArray2));
+        System.out.println("New Array: " + Arrays.toString(newArray2));
+
+        int[] originalArray3 = {1, 2};
+        int[] newArray3 = swapFirstAndLast(originalArray3);
+        System.out.println("Original Array: " + Arrays.toString(originalArray3));
+        System.out.println("New Array: " + Arrays.toString(newArray3));
+
+    }
+
+    public static int[] swapFirstAndLast(int[] originalArray) {
+        if (originalArray == null || originalArray.length < 1) {
+            return new int[0]; // Return empty array if input is invalid
+        }
+        
+
+        int[] newArray = Arrays.copyOf(originalArray, originalArray.length);
+
+        if (newArray.length > 1) {  // Swap only if array length is more than 1
+            int temp = newArray[0];
+            newArray[0] = newArray[newArray.length - 1];
+            newArray[newArray.length - 1] = temp;
+        }
+
+        return newArray;
+    }
+}
+
+
+

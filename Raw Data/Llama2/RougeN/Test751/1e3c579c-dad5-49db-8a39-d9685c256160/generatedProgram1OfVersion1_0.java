@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class CreateStringWithCharArray {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the character array from the user.
+        System.out.print("Enter a character array: ");
+        char[] charArray = scanner.nextLine().toCharArray();
+
+        // Create a String object with the character array.
+        String string = new String(charArray);
+
+        // Print the String object.
+        System.out.println("The String object is: " + string);
+    }
+}

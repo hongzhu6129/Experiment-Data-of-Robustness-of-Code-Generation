@@ -1,0 +1,52 @@
+public class RoundUpIntegerDivision {
+
+    public static void main(String[] args) {
+
+        // Demonstrating rounding up integer division using Math.ceil()
+
+        int numerator1 = 10;
+        int denominator1 = 3;
+        int result1 = (int) Math.ceil((double) numerator1 / denominator1); // Cast to double for accurate division
+        System.out.println(numerator1 + " / " + denominator1 + " rounded up = " + result1); // Output: 4
+
+
+        int numerator2 = 7;
+        int denominator2 = 2;
+        int result2 = (int) Math.ceil((double) numerator2 / denominator2); 
+        System.out.println(numerator2 + " / " + denominator2 + " rounded up = " + result2); // Output: 4
+
+
+
+        // Demonstrating a more efficient approach when dealing only with positive integers
+        // Using modified integer arithmetic
+
+        int numerator3 = 17;
+        int denominator3 = 4;
+        int result3 = (numerator3 + denominator3 - 1) / denominator3;  // No casting needed
+        System.out.println(numerator3 + " / " + denominator3 + " rounded up = " + result3); // Output: 5
+
+
+        int numerator4 = 8;
+        int denominator4 = 5;
+        int result4 = (numerator4 + denominator4 - 1) / denominator4;
+        System.out.println(numerator4 + " / " + denominator4 + " rounded up = " + result4);  // Output: 2
+
+
+        //Important Note about negative numbers:  If the numerator or denominator might be negative,
+        //using Math.ceil is generally safer and easier to reason about.  The integer arithmetic
+        //trick shown above works reliably only with positive integers.
+
+        System.out.println("Be cautious with negative numbers. Math.ceil() is recommended for those cases.");
+
+        int numerator5 = -7;
+        int denominator5 = 3;
+
+        // Correct using Math.ceil:
+        int result5 = (int) Math.ceil((double) numerator5 / denominator5); // Output: -2
+        System.out.println(numerator5 + " / " + denominator5 + " rounded up = " + result5);
+
+        // Incorrect using integer arithmetic:
+        int incorrectResult = (numerator5 + denominator5 - 1) / denominator5;  // Output: -2, which is wrong mathematically, as we want -2
+        System.out.println("(INCORRECT RESULT using int arithmetic) "+numerator5 + " / " + denominator5 + " rounded up = " + incorrectResult);
+    }
+}

@@ -1,0 +1,18 @@
+public class StringConcat {
+
+    public static void main(String[] args) {
+
+        String str1 = "Python";
+        String str2 = "Tutorial";
+
+        if (str1.length() < 1 || str2.length() < 1) {
+            System.out.println("String length must be 1 and above.");
+        } else {
+            String newStr1 = str1.substring(1); // Extract substring from index 1 to end
+            String newStr2 = str2.substring(1); // Extract substring from index 1 to end
+
+            String concatenatedString = newStr1 + newStr2;
+            System.out.println(concatenatedString); 
+        }
+    }
+}

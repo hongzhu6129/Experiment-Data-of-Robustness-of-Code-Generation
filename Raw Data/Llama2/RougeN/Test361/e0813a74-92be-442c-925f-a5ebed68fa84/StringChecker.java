@@ -1,0 +1,46 @@
+public class StringChecker {
+
+    public boolean isAndTheEquality(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+
+        int andCount = 0;
+        int theCount = 0;
+
+        // Using indexOf to find all occurrences
+        int index = 0;
+        while ((index = str.indexOf("and", index)) != -1) {
+            andCount++;
+            index++; // Increment to avoid infinite loop
+        }
+
+        index = 0; 
+        while ((index = str.indexOf("the", index)) != -1) {
+            theCount++;
+            index++;
+        }
+
+
+        return andCount == theCount && andCount > 0; // Must have equal and positive counts
+
+    }
+
+    public static void main(String[] args) {
+        StringChecker checker = new StringChecker();
+
+        String test1 = "The and and the and they and band and end the";
+        String test2 =  "and the and the";
+        String test3 = "and the or the and"; 
+        String test4 = "the";
+        String test5 = "";
+
+
+
+        System.out.println("\" " + test1 + " \" - and/the equal counts: " + checker.isAndTheEquality(test1)); //  false
+        System.out.println("\" " + test2 + " \" - and/the equal counts: " + checker.isAndTheEquality(test2)); // true
+        System.out.println("\" " + test3 + " \" - and/the equal counts: " + checker.isAndTheEquality(test3)); // true
+        System.out.println("\" " + test4 + " \" - and/the equal counts: " + checker.isAndTheEquality(test4)); // false
+        System.out.println("\" " + test5 + " \" - and/the equal counts: " + checker.isAndTheEquality(test5)); // false
+    }
+}

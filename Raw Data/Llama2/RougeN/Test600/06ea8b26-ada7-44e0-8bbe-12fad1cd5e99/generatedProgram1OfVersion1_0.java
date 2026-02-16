@@ -1,0 +1,37 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(7);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] arr1 = new Integer[pq.size()];
+        pq.toArray(arr1);
+        System.out.println("Method 1: " + Arrays.toString(arr1));
+
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] arr2 = pq.toArray();
+        Integer[] arr3 = Arrays.copyOf(arr2, arr2.length, Integer[].class); // Convert to Integer array
+        System.out.println("Method 2: " + Arrays.toString(arr3));
+
+        //Note: The order of elements in the array may not correspond to the priority order 
+        //because toArray() doesn't guarantee any specific order.  If you need 
+        //to maintain priority order, you'd need to poll elements from the queue one by one.
+        Integer[] arr4 = new Integer[pq.size()];
+        for (int i = 0; i < arr4.length; i++) {
+            arr4[i] = pq.poll(); // Removes and retrieves head (smallest element)
+        }
+
+         System.out.println("Method 3 (maintains order): " + Arrays.toString(arr4));
+
+    }
+}

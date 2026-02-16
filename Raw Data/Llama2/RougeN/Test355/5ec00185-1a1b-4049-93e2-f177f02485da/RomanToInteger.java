@@ -1,0 +1,78 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class RomanToInteger {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String roman1 = "IX";
+        int integer1 = romanToInt(roman1);
+        System.out.println(roman1 + " = " + integer1); // Output: IX = 9
+
+        String roman2 = "LVIII";
+        int integer2 = romanToInt(roman2);
+        System.out.println(roman2 + " = " + integer2); // Output: LVIII = 58
+
+        String roman3 = "MCMXCIV";
+        int integer3 = romanToInt(roman3);
+        System.out.println(roman3 + " = " + integer3); // Output: MCMXCIV = 1994
+
+
+        // Explanation and Educational Comments within the main method:
+        System.out.println("\nExplanation:");
+        System.out.println("Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.");
+        System.out.println("Symbol       Value");
+        System.out.println("I             1");
+        System.out.println("V             5");
+        System.out.println("X             10");
+        System.out.println("L             50");
+        System.out.println("C             100");
+        System.out.println("D             500");
+        System.out.println("M             1000");
+
+        System.out.println("\nGenerally, symbols are placed from left to right with the highest value first. However, there are six instances where subtraction is used:");
+        System.out.println("I can be placed before V (5) and X (10) to make 4 and 9. ");
+        System.out.println("X can be placed before L (50) and C (100) to make 40 and 90. ");
+        System.out.println("C can be placed before D (500) and M (1000) to make 400 and 900.");
+
+
+        System.out.println("\nThe Algorithm:");
+        System.out.println("1. Create a map to store the values of Roman numerals.");
+        System.out.println("2. Initialize the result to 0.");
+        System.out.println("3. Iterate through the Roman numeral string from right to left.");
+        System.out.println("4. If the current value is less than the next value (e.g., IV), subtract the current value from the result.");
+        System.out.println("5. Otherwise, add the current value to the result.");
+
+       
+
+    }
+
+
+    public static int romanToInt(String s) {
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0; // Keep track of the previous value
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currentValue = romanMap.get(s.charAt(i));
+
+            if (currentValue < prevValue) {
+                result -= currentValue; // Subtraction case (e.g., IV)
+            } else {
+                result += currentValue;
+            }
+
+            prevValue = currentValue; 
+        }
+
+        return result;
+    }
+}

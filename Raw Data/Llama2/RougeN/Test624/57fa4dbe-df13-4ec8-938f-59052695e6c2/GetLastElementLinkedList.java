@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+
+public class GetLastElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some books to the list
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+        books.add("To Kill a Mockingbird");
+        books.add("1984");
+
+
+        // Check if the list is empty before trying to get the last element
+        if (!books.isEmpty()) {
+            String lastBook = books.peekLast(); // Retrieve the last element without removing it. 
+            System.out.println("The last book in the list is: " + lastBook);
+            System.out.println("The list still contains: " + books); // Verify the list is unchanged
+
+        } else {
+            System.out.println("The list is empty.");
+        }
+
+
+
+        // Example with an integer list
+          LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+
+         if (!numbers.isEmpty()) {
+            Integer lastNumber = numbers.peekLast();
+            System.out.println("The last number in the list is: " + lastNumber);
+            System.out.println("The list still contains: " + numbers);
+
+        } else {
+            System.out.println("The number list is empty.");
+        }
+    }
+}

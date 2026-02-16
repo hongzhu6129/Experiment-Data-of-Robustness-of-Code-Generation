@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSecondElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Print the original ArrayList
+        System.out.println("Original ArrayList: " + fruits);
+
+        // Replace the second element (index 1) with "Mango"
+        String newElement = "Mango";
+
+        if (fruits.size() >= 2) {  // Check if there's at least a second element
+            fruits.set(1, newElement); 
+
+            // Print the updated ArrayList
+            System.out.println("Updated ArrayList: " + fruits);
+        } else {
+            System.out.println("The ArrayList does not have a second element to replace.");
+        }
+
+
+
+         // Example with integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        System.out.println("Original numbers: " + numbers);
+
+        int newNumber = 25;
+        if (numbers.size() >= 2) {
+            numbers.set(1, newNumber);
+            System.out.println("Updated numbers: " + numbers);
+        } else {
+            System.out.println("The numbers list does not have a second element to replace.");
+        }
+
+
+
+
+        // Example with an empty list
+        List<String> emptyList = new ArrayList<>();
+        System.out.println("Original emptyList: " + emptyList);
+
+        String elementToAdd = "First";
+        if (emptyList.size() >= 2) {
+            emptyList.set(1, elementToAdd); // This won't execute
+            System.out.println("Updated emptyList: " + emptyList);
+        } else {
+            System.out.println("The emptyList does not have a second element to replace.");
+        }
+
+
+          // Example with only one element
+         List<String> oneElementList = new ArrayList<>();
+         oneElementList.add("Single");
+         System.out.println("Original oneElementList: " + oneElementList);
+
+
+         if (oneElementList.size() >=2 ) {
+             oneElementList.set(1, "Second"); //This won't execute
+
+             System.out.println("Updated oneElementList: " + oneElementList);
+         } else {
+             System.out.println("The oneElementList does not have a second element to replace.");
+         }
+    }
+}

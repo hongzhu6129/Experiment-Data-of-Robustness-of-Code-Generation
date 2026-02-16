@@ -1,0 +1,52 @@
+public class Check10Then20 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 10, 20, 30};
+        System.out.println("Array 1: " + check10Then20(arr1)); // Expected: true
+
+        int[] arr2 = {20, 10, 20, 30};
+        System.out.println("Array 2: " + check10Then20(arr2)); // Expected: true
+
+        int[] arr3 = {10, 20, 10, 20};
+        System.out.println("Array 3: " + check10Then20(arr3)); // Expected: true
+
+        int[] arr4 = {10, 10, 20, 20};
+        System.out.println("Array 4: " + check10Then20(arr4)); // Expected: true
+
+
+        int[] arr5 = {1, 20, 30, 40};
+        System.out.println("Array 5: " + check10Then20(arr5)); // Expected: false
+
+        int[] arr6 = {10, 1, 2, 3};
+        System.out.println("Array 6: " + check10Then20(arr6)); // Expected: false
+
+        int[] arr7 = {20, 20, 20, 20};
+        System.out.println("Array 7: " + check10Then20(arr7)); // Expected: false
+
+        int[] arr8 = {10, 10, 10, 10};
+        System.out.println("Array 8: " + check10Then20(arr8)); // Expected: false
+
+        int[] arr9 = {};
+        System.out.println("Array 9: " + check10Then20(arr9)); // Expected: false
+       
+    }
+
+
+    public static boolean check10Then20(int[] arr) {
+        boolean found10 = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                found10 = true;
+            }
+             if (found10) { // Only start checking for 20 *after* a 10 has been found
+                for (int j = i + 1; j < arr.length; j++) {  // Start checking from the next position after finding a 10.
+                    if (arr[j] == 20) {
+                        return true; 
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}

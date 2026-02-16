@@ -1,0 +1,22 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Regular Expressions:** The code now uses regular expressions (`Pattern` and `Matcher`) to efficiently extract numbers from the string.  The pattern `\\d+` matches one or more consecutive digits. This handles cases where numbers have more than one digit and are interspersed with non-digit characters.
+
+2. **Error Handling (Implicit):** `Integer.parseInt()` will throw a `NumberFormatException` if it encounters a non-numeric string.  However, because our regular expression *only* matches digits, this is very unlikely to happen, making explicit `try-catch` blocks unnecessary in this specific case.
+
+3. **Clearer Variable Names:** More descriptive variable names (e.g., `inputString`, `sum`) improve readability.
+
+4. **Example Cases in `main()`:** The `main` method now demonstrates the code's behavior with several different input strings, including cases with multiple numbers, no numbers, and spaces between numbers.
+
+
+**How it Works:**
+
+* The `sumOfTheNumbers` method takes the input string.
+* It creates a `Pattern` object representing the regular expression `\d+`.
+* It creates a `Matcher` object to find matches of the pattern within the input string.
+* The `while (matcher.find())` loop iterates through each match found.
+* Inside the loop, `matcher.group()` retrieves the matched substring (the number), `Integer.parseInt()` converts it to an integer, and it's added to the `sum`.
+* Finally, the method returns the total sum.

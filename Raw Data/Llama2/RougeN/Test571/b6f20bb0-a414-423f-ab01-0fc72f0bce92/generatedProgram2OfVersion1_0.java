@@ -1,0 +1,6 @@
+// ... in your testing code ...
+
+double distance = calculateDistance(25, 35, 35.5, 25.5);  // Call your distance calculation function
+assert Math.abs(distance - 1480.0848451069087) < 0.001 : "Test case 1 failed";  // Check within a tolerance
+
+// ... other test cases ...

@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 outside the valid range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; 
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+
+        if (n < 0 || k < 0) {
+            System.out.println("Invalid input: n and k must be non-negative.");
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+
+             System.out.print("Enter the value of n2: ");
+            int n2 = scanner.nextInt();
+
+            System.out.print("Enter the value of k2: ");
+             int k2 = scanner.nextInt();
+
+              if (n2 < 0 || k2 < 0) {
+                 System.out.println("Invalid input: n2 and k2 must be non-negative.");
+              } else {
+                 long coefficient2 = binomial_Coefficient(n2, k2);
+                  System.out.println("The binomial coefficient C(" + n2 + ", " + k2 + ") is: " + coefficient2);
+       
+                 if (coefficient > coefficient2) {
+                   System.out.println("C(" + n + ", " + k + ") is greater than C(" + n2 + ", " + k2 + ")");
+                  } else if (coefficient < coefficient2) {
+                    System.out.println("C(" + n + ", " + k + ") is less than C(" + n2 + ", " + k2 + ")");
+                   } else {
+                     System.out.println("C(" + n + ", " + k + ") is equal to C(" + n2 + ", " + k2 + ")");
+                    }
+               }
+        }
+
+        scanner.close();
+    }
+}

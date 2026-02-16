@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class CopyLinkedList {
+
+    public static void main(String[] args) {
+        // Create the original linked list
+        LinkedList<Integer> originalList = new LinkedList<>();
+        originalList.add(1);
+        originalList.add(2);
+        originalList.add(3);
+        originalList.add(4);
+        originalList.add(5);
+
+        // Method 1: Using the LinkedList constructor (most efficient)
+        LinkedList<Integer> copiedList1 = new LinkedList<>(originalList);
+
+        // Method 2: Using addAll()
+        LinkedList<Integer> copiedList2 = new LinkedList<>();
+        copiedList2.addAll(originalList);
+
+
+        // Method 3: Iterating and adding elements manually (less efficient)
+        LinkedList<Integer> copiedList3 = new LinkedList<>();
+        for (Integer element : originalList) {
+            copiedList3.add(element); 
+        }
+
+        // Print the original and copied lists to verify
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+        System.out.println("Copied List 2 (addAll): " + copiedList2);
+        System.out.println("Copied List 3 (Iteration): " + copiedList3);
+
+
+        // Demonstrate modifying one list doesn't affect the others (shallow copy)
+        copiedList1.removeFirst(); // Remove the first element from copiedList1
+        System.out.println("\nAfter modification:");
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+
+       
+    }
+}

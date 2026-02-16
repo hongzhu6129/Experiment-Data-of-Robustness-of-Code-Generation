@@ -1,0 +1,42 @@
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array of integers, removes duplicate elements in-place such that each unique element appears only once.
+     * The relative order of the elements should be kept the same.
+     *
+     * @param nums The sorted array of integers.
+     * @return The length of the updated array containing only unique elements.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position for placing unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++; // Move to the next position for a unique element
+                nums[uniqueIndex] = nums[i]; // Place the unique element
+            }
+        }
+
+        return uniqueIndex + 1; // Return the length of the updated array
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated array length: " + len1); // Output: 2
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated array length: " + len2); // Output: 5
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: [0, 1, 2, 3, 4]
+    }
+}

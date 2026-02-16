@@ -1,0 +1,26 @@
+public class Main {
+    public static void main(String[] args) {
+
+        // Swap two variables (using a temporary variable)
+        int a = 10;
+        int b = 20;
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("After swapping: a = " + a + ", b = " + b);
+
+
+
+        // Print a face
+        System.out.println(" +\"\"\"\"\"+ ");
+        System.out.println("[| o o |]");
+        System.out.println(" |  ^  | ");
+        System.out.println(" | '-' | ");
+        System.out.println(" +-----+ ");
+
+    }
+}

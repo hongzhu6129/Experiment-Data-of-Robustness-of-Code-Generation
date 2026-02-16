@@ -1,0 +1,32 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Binary 1 | Binary 2 | Expected Output | Notes                       |
+| --------- | -------- | -------- | --------------- | --------------------------- |
+| 1        | "11"     | "10"     | "110"           | Basic multiplication        |
+| 2        | "101"    | "11"     | "1111"          |                             |
+| 3        | "0"      | "111"    | "0"             | Multiplication with zero    |
+| 4        | "1101"   | "0"      | "0"             | Multiplication with zero    |
+| 5        | "1"      | "1"      | "1"             | Multiplication with one     |
+| 6        | "1111"   | "1111"   | "11100001"      | Larger binary numbers      |
+| 7        | "10000"  | "100"    | "1000000"       | Handling leading zeros       |  // Even if input has leading zeros, they are handled.
+| 8        | "111111" | "1"      | "111111"       | Multiplication with one     |
+| 9        | "10"     | "100000" | "1000000"       |                             |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Multiplication with Zero (Test Cases 3 & 4):**  Any number multiplied by zero results in zero.
+* **Multiplication with One (Test Cases 5 & 8):** Any number multiplied by one results in the same number.
+* **Handling Leading Zeros (Test Case 7):** The `binaryToDecimal` function correctly handles leading zeros in the input binary strings.  The logic processes the string from right to left, calculating the decimal equivalent regardless of leading zeros.
+
+
+**How to Run the Tests:**
+
+You can manually enter these test cases into the program's console input or (better practice) create a separate test class (using JUnit or TestNG) to automate the test execution. An automated test approach is much more robust and maintainable for larger projects.  Here's a basic example of how you might structure a JUnit test:
+
+

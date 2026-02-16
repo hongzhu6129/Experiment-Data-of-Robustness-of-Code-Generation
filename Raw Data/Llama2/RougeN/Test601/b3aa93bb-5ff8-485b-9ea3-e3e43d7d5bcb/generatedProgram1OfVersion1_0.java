@@ -1,0 +1,32 @@
+import java.util.HashSet;
+import java.util.TreeSet;
+
+public class CloneHashSetToTreeSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+        hashSet.add("apple");
+        hashSet.add("banana");
+        hashSet.add("orange");
+        hashSet.add("grape");
+
+
+        // Clone HashSet to TreeSet (Method 1: Using constructor)
+        TreeSet<String> treeSet1 = new TreeSet<>(hashSet);
+
+        // Print the TreeSet
+        System.out.println("TreeSet 1 (using constructor): " + treeSet1);
+
+
+        // Clone HashSet to TreeSet (Method 2: addAll())
+        TreeSet<String> treeSet2 = new TreeSet<>();
+        treeSet2.addAll(hashSet);
+
+         // Print the TreeSet
+        System.out.println("TreeSet 2 (using addAll): " + treeSet2);
+
+
+
+    }
+}

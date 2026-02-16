@@ -1,0 +1,16 @@
+
+
+
+This code demonstrates:
+
+1. **String Literals:**  `String str1 = "hello";` creates a string literal.  String literals are automatically interned (added to the string pool), meaning there's only one instance of "hello" in memory.
+
+2. **String Objects:** `String str2 = new String("hello");` creates a *new* String object in the heap, even though the content is "hello".  It's *not* automatically interned.
+
+3. **`intern()`:** `String str3 = str2.intern();` explicitly interns `str2`.  This checks if "hello" already exists in the string pool.  If it does (which it does because of `str1`), `intern()` returns a reference to the existing "hello" in the pool. If it didn't exist, "hello" would be added to the pool and a reference to it would be returned.
+
+
+The comparisons using `==` (reference equality) show that `str1` and `str3` refer to the *same* object in memory (the canonical representation), while `str2` initially refers to a separate object. After `intern()` is called on `str2`,  `str2` and `str3` also refer to the same object in the string pool.
+
+
+The additional examples demonstrate other important nuances of `String.intern()`, particularly how string literals are treated and how  `intern()` will return existing canonical strings if a match is found in the string pool.

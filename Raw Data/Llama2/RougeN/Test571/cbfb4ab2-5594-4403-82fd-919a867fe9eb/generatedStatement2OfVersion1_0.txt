@@ -1,0 +1,67 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0  (Longitude is irrelevant at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0   (Longitude is irrelevant at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's diameter * pi / 2 )
+
+
+4. **Opposite Sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 (180 degrees away in longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's diameter * pi / 2)
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Distance: ~10007.54 km (approximately Earth's circumference / 4)
+
+6. **Points near the International Date Line:**
+   - lat1: 20
+   - lon1: 179
+   - lat2: 20
+   - lon2: -179
+   - Expected Distance: Small value (as they are close despite the longitude difference)
+
+
+7. **Invalid Input (for robustness testing - your program should handle these gracefully):**
+   - lat1: "abc"  (Non-numeric input)
+   - lon1: 91     (Latitude out of range)
+   - lat2: -91    (Latitude out of range)
+   - lon2: 181    (Longitude out of range)
+
+
+**How to Test:**
+
+You can manually input these test cases into your program or, better yet, create automated tests using a testing framework like JUnit.  JUnit would allow you to systematically run these test cases and verify the output against the expected values.  This is good programming practice and helps ensure code correctness and maintainability.
+
+
+
+Example JUnit test (using asserts):
+
+

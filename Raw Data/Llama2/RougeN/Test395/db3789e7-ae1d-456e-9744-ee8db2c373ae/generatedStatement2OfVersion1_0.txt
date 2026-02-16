@@ -1,0 +1,35 @@
+
+
+Test cases:
+
+* **Normal case:**
+    * Input:
+        * strings = {"abc", "def", "ghi"}
+        * proportions = {1, 2, 3}
+    * Expected output:
+        * "[abc, defdef, ghighighi]"
+* **Corner cases:**
+    * **Empty input arrays:**
+        * Input:
+            * strings = {}
+            * proportions = {}
+        * Expected output:
+            * "[]"
+    * **Null elements in input arrays:**
+        * Input:
+            * strings = {"abc", null, "ghi"}
+            * proportions = {1, 0, 3}
+        * Expected output:
+            * "[abc, null, ghighighi]"
+    * **Invalid proportions:**
+        * Input:
+            * strings = {"abc", "def", "ghi"}
+            * proportions = {1, -2, 3}
+        * Expected output:
+            * IllegalArgumentException: Invalid proportion
+    * **Zero proportions:**
+        * Input:
+            * strings = {"abc", "def", "ghi"}
+            * proportions = {1, 0, 3}
+        * Expected output:
+            * "[abc, null, ghighighi]"

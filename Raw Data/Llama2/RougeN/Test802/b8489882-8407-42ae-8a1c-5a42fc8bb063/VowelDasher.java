@@ -1,0 +1,44 @@
+public class VowelDasher {
+
+    public static void main(String[] args) {
+        String inputString = "hello world";
+        String result = validate(inputString);
+        System.out.println(result); // Output: h-e-ll-o- w-o-rld
+
+        inputString = "programming";
+        result = validate(inputString);
+        System.out.println(result); // Output: pr-o-gr-a-mm-i-ng
+
+        inputString = ""; // Empty string
+        result = validate(inputString);
+        System.out.println(result); // Output: 
+
+
+        inputString = "rhythm"; // No vowels
+        result = validate(inputString);
+        System.out.println(result);  // Output: rhythm
+
+     }
+
+    public static String validate(String str) {
+        if (str == null) {
+            return null; // Or handle null input as needed
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (isVowel(c)) {
+                sb.append('-').append(c).append('-');
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        c = Character.toLowerCase(c); // Case-insensitive check
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}
+

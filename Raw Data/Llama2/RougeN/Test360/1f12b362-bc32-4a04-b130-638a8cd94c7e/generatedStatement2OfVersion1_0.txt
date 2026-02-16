@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` method:** This helper method calculates the Fermat number for a given `n`. It uses `Math.pow()` to compute 2^(2^n) and then adds 1.  The result is cast to `long` because Fermat numbers grow very large quickly.
+
+2. **Looping for the first 10:** The `main` method now loops from `n = 0` to `n = 9` (inclusive) to calculate and display the first 10 Fermat numbers.
+
+3. **Casting to Double:** The `fermatNumber` (long) is cast to a `double` before printing.  This is done because the prompt explicitly requests the output in the format "3.0", "5.0", etc. The comparisons themselves aren't being performed numerically; the output is just being formatted in a specific decimal representation.
+
+4. **Output Format:** The `System.out.println()` statement prints the double value followed by ".0" to match the desired output format.
+
+5. **Handling Overflow:**  Fermat numbers become extremely large very quickly.  While using `long` allows us to represent some of the initial Fermat numbers, it will eventually overflow for larger values of `n`.  If you needed to work with arbitrarily large Fermat numbers, you would have to use `BigInteger`.
+
+
+**Example Output:**
+

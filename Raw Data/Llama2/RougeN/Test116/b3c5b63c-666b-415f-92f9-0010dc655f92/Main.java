@@ -1,0 +1,84 @@
+public class Main {
+    public static void main(String[] args) {
+        // Swapping two variables
+        int a = 10;
+        int b = 20;
+
+        System.out.println("Before swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        // Swapping using a temporary variable
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("\nAfter swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+
+        // Printing a face
+        System.out.println("\nPrinting a face:");
+        System.out.println(" +\"\"\"\"\"+ ");
+        System.out.println("[| o o |]");
+        System.out.println(" |  ^  | ");
+        System.out.println(" | '-' | ");
+        System.out.println(" +-----+ ");
+
+
+
+         //Swapping without temporary variable (using addition and subtraction)
+         int x = 5;
+         int y = 10;
+
+         System.out.println("\nBefore swapping (without temp):");
+         System.out.println("x = " + x);
+         System.out.println("y = " + y);
+
+
+         x = x + y;  
+         y = x - y;  
+         x = x - y; 
+
+         System.out.println("\nAfter swapping (without temp):");
+         System.out.println("x = " + x);
+         System.out.println("y = " + y);
+
+        //Swapping without temporary variable (using multiplication and division - be careful of 0!)
+        int p = 7;
+        int q = 14;
+
+
+        System.out.println("\nBefore swapping (without temp - mult/div):");
+        System.out.println("p = " + p);
+        System.out.println("q = " + q);
+
+        p = p * q;
+        q = p / q;
+        p = p / q;
+
+        System.out.println("\nAfter swapping (without temp - mult/div):");
+        System.out.println("p = " + p);
+        System.out.println("q = " + q);
+
+
+          //Swapping without temporary variable (using bitwise XOR - most efficient)
+
+        int m = 22;
+        int n = 44;
+
+        System.out.println("\nBefore swapping (without temp - XOR):");
+        System.out.println("m = " + m);
+        System.out.println("n = " + n);
+
+
+        m = m ^ n;
+        n = m ^ n;
+        m = m ^ n;
+
+        System.out.println("\nAfter swapping (without temp - XOR):");
+        System.out.println("m = " + m);
+        System.out.println("n = " + n);
+    }
+}

@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class CountSmallerNumbers {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 7, 8, 9};
+        int[] arr2 = {0, 4, 10};
+        ArrayList<Integer> result = count_smaller_number(arr1, arr2);
+        for (int count : result) {
+            System.out.print(count + " ");
+        }
+    }
+
+    public static ArrayList<Integer> count_smaller_number(int[] arr1, int[] arr2) {
+        ArrayList<Integer> counts = new ArrayList<>();
+        for (int num : arr2) {
+            counts.add(temp(arr1, num));
+        }
+        return counts;
+    }
+
+    private static int temp(int[] arr, int target) {
+        int count = 0;
+        for (int num : arr) {
+            if (num < target) {
+                count++;
+            }
+        }
+        return count;
+    }
+}

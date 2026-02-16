@@ -1,0 +1,61 @@
+import java.util.Arrays;
+
+class ExponentialSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 4, 10, 40};
+        int x = 10;
+        int result = exponentialSearch(arr, x);
+        if (result < 0) {
+            System.out.println("Element is not present in array");
+        } else {
+            System.out.println("Element is present at index " + result);
+        }
+
+        arr = new int[]{2, 3, 4, 10, 40};
+        x = 15; // Element not present
+        result = exponentialSearch(arr, x);
+        if (result < 0) {
+            System.out.println("Element is not present in array");
+        } else {
+            System.out.println("Element is present at index " + result);
+        }
+
+        arr = new int[]{2}; // Single element array
+        x = 2;
+        result = exponentialSearch(arr, x);
+        if (result < 0) {
+            System.out.println("Element is not present in array");
+        } else {
+            System.out.println("Element is present at index " + result);
+        }
+
+
+        arr = new int[]{}; //Empty array
+        x = 2;
+        result = exponentialSearch(arr, x);
+        if (result < 0) {
+            System.out.println("Element is not present in array");
+        } else {
+            System.out.println("Element is present at index " + result);
+        }
+    }
+
+
+    private static int exponentialSearch(int[] arr, int x) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        if (arr[0] == x) {
+            return 0;
+        }
+
+        int i = 1;
+        while (i < arr.length && arr[i] <= x) {
+            i = i * 2;
+        }
+
+        return Arrays.binarySearch(arr, Math.min(i, arr.length) / 2 , Math.min(i, arr.length), x);
+    }
+}

@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search:** The core logic is in the `Saddleback` method. It starts from the top-right corner of the matrix.  If the current element is smaller than the target, it moves down (to a larger element). If the current element is larger than the target, it moves left (to a smaller element). This leverages the sorted nature of the rows and columns.
+
+2. **Return an Array:** `Saddleback` returns an `int[]` to store both the row and column index of the target.  If the target is not found, it returns `{-1, -1}` to indicate failure.
+
+3. **Clearer Output:** The `main` method now provides more informative output, printing the row and column if found, and a "not found" message otherwise.
+
+4. **Example Usage:** The `main` method includes example usage with a sample 2D array and a target value.  It also demonstrates a case where the target isn't found.
+
+5. **Error Handling:**  The code implicitly handles cases where the input array is empty or null (though it would be good practice to add explicit checks in a real-world scenario).
+
+
+**How Saddleback Search Works (in more detail):**
+
+Imagine the 2D array as a terrain where each element's value represents its height. The algorithm starts at a "peak" (top-right corner).  It then efficiently "descends" the terrain towards the target value. The sorted rows and columns guarantee that moving down increases values, and moving left decreases values, allowing the search to converge on the target. This makes Saddleback search particularly efficient for sorted 2D arrays.

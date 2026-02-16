@@ -1,0 +1,49 @@
+
+
+
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `d`
+
+2. **Valid Binary Input with Leading Zeros:**
+   - Input: `0001101`
+   - Expected Output: `d`
+
+3. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Large Binary Input:**
+   - Input: `1111111111111111` (16 ones)
+   - Expected Output: `ffff`
+
+5. **Invalid Binary Input (contains other characters):**
+   - Input: `1101a`
+   - Expected Output: `Invalid binary input. Please enter a string of 0s and 1s.`
+
+6. **Invalid Binary Input (empty string):**
+   - Input: `` (empty string)
+   - Expected Output:  (The program will handle this gracefully due to the  `hex = "0";` line)  Output: `0`
+
+7. **Invalid Binary Input (only whitespace):**
+    - Input: `   ` (spaces)
+    - Expected Output: (The program will handle this gracefully due to the  `hex = "0";` line after the loop completes without setting `hex`) Output: `0`
+
+
+
+**Explanation of Improvements:**
+
+* **Handles Invalid Input:** The code now explicitly checks for non-binary characters in the input string and prints an error message if found.  It also handles empty strings gracefully.
+* **Handles Leading Zeros:** The code correctly processes binary numbers with leading zeros.
+* **Handles Zero Input:**  Specifically included handling for the input "0" to ensure it outputs "0".
+* **Uses `char` Casting for Hexadecimal Conversion:** Uses a more efficient and concise way to convert the remainder to hexadecimal characters ('a' to 'f') using character arithmetic.
+* **Resource Management:** The `Scanner` is closed using `input.close()` to release the resource.
+
+
+
+
+
+This improved version addresses potential errors, handles edge cases, and provides clearer output for invalid input, making it a more robust solution.

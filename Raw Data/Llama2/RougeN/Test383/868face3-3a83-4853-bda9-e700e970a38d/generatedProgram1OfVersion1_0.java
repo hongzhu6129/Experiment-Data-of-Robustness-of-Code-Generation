@@ -1,0 +1,23 @@
+public class Operations {
+
+    public static void main(String[] args) {
+        System.out.println(-5 + 8 * 6); // a. -5 + 8 * 6
+        System.out.println((55 + 9) % 9); // b. (55+9) % 9
+        System.out.println(20 + -3 * 5 / 8); // c. 20 + -3*5 / 8
+        System.out.println(5 + 15 / 3 * 2 - 8 % 3); // d. 5 + 15 / 3 * 2 - 8 % 3 (Corrected based on standard operator precedence)
+
+
+        //Clarification for expected output 43 1 19 13:
+        //The provided expected outputs (43 1 19 13) seem incorrect based on Java's operator precedence.
+        //Let's break down expression 'd' step-by-step with correct precedence:
+        //1. 15 / 3 = 5
+        //2. 5 * 2 = 10
+        //3. 8 % 3 = 2
+        //4. 5 + 10 - 2 = 13
+
+
+        // If you intended a different order of operations for 'd' (like maybe (15/3)%(2-8%3)) 
+        //to get those expected results, then you would require explicit parenthesis to force that specific evaluation order in Java.
+
+    }
+}

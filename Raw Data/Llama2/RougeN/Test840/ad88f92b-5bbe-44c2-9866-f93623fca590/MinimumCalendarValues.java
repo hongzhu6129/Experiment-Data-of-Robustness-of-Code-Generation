@@ -1,0 +1,40 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinimumCalendarValues {
+
+    public static void main(String[] args) {
+        Calendar calendar = new GregorianCalendar(); // Creates a default calendar (Gregorian) with the current date and time
+
+        // Get minimum values - Note: These are constants representing the minimum values the fields CAN hold, 
+        // not necessarily the minimum values FOR the current date.
+        int minYear = calendar.getMinimum(Calendar.YEAR);
+        int minMonth = calendar.getMinimum(Calendar.MONTH);
+        int minWeekOfYear = calendar.getMinimum(Calendar.WEEK_OF_YEAR);
+        int minDayOfMonth = calendar.getMinimum(Calendar.DAY_OF_MONTH);
+        int minDayOfYear = calendar.getMinimum(Calendar.DAY_OF_YEAR);
+
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month: " + minMonth);  // Note: Month starts from 0 (January)
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+        System.out.println("Minimum Day of Year: " + minDayOfYear);
+
+
+        // To clarify, if you want the first day of the current month or year, use these:
+        calendar.set(Calendar.DAY_OF_MONTH, 1);  // Sets to the first day of the current month
+        System.out.println("First Day of Current Month: " + calendar.getTime());
+
+        calendar.set(Calendar.DAY_OF_YEAR, 1); // Sets to the first day of the current year
+        System.out.println("First Day of Current Year: " + calendar.getTime());
+
+
+        // Get actual minimum values supported (if required - less common):
+        int actualMinYear = calendar.getActualMinimum(Calendar.YEAR); // Gregorian Calendar's minimum
+        System.out.println("Actual Minimum Supported Year (Gregorian Calendar): " + actualMinYear);
+
+
+
+    }
+}

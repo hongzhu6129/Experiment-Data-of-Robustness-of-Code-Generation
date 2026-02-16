@@ -1,0 +1,62 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class CompareFilesLexicographically {
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java CompareFilesLexicographically <file1> <file2>");
+            return;
+        }
+
+        String file1Path = args[0];
+        String file2Path = args[1];
+
+        try (BufferedReader reader1 = new BufferedReader(new FileReader(file1Path));
+             BufferedReader reader2 = new BufferedReader(new FileReader(file2Path))) {
+
+            String line1;
+            String line2;
+            int comparisonResult = 0;
+
+
+            while (true) {
+                line1 = reader1.readLine();
+                line2 = reader2.readLine();
+
+                // Handle cases where one file is shorter than the other
+                if (line1 == null && line2 == null) {
+                    break; // Both files have reached the end
+                } else if (line1 == null) {
+                    comparisonResult = -1; // File 1 is shorter
+                    break;
+                } else if (line2 == null) {
+                    comparisonResult = 1; // File 2 is shorter
+                    break;
+                }
+
+                comparisonResult = line1.compareTo(line2);
+                if (comparisonResult != 0) {
+                    break; // Found a difference
+                }
+
+
+            }
+
+
+
+            if (comparisonResult < 0) {
+                System.out.println("File 1 comes before File 2 lexicographically.");
+            } else if (comparisonResult > 0) {
+                System.out.println("File 2 comes before File 1 lexicographically.");
+            } else {
+                System.out.println("File 1 and File 2 are lexicographically equal.");
+            }
+
+
+        } catch (IOException e) {
+            System.err.println("Error reading files: " + e.getMessage());
+        }
+    }
+}

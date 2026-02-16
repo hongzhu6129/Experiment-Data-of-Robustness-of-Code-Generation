@@ -1,0 +1,31 @@
+public class RemoveCharacters {
+
+    public static void main(String[] args) {
+        String inputString = "abracadabra";
+        String charsToRemove1 = "b";
+        String charsToRemove2 = "ac";
+
+        removeSetofCharacters(inputString, charsToRemove1, charsToRemove2);
+
+        inputString = "cab";
+        removeSetofCharacters(inputString, charsToRemove1, charsToRemove2);
+
+
+    }
+
+    public static void removeSetofCharacters(String inputString, String charsToRemove1, String charsToRemove2) {
+        String result = inputString;
+
+        // Remove characters in charsToRemove1
+        for (char c : charsToRemove1.toCharArray()) {
+            result = result.replace(String.valueOf(c), "");
+        }
+
+        // Remove characters in charsToRemove2
+        for (char c : charsToRemove2.toCharArray()) {
+            result = result.replace(String.valueOf(c), "");
+        }
+
+        System.out.println(result);
+    }
+}

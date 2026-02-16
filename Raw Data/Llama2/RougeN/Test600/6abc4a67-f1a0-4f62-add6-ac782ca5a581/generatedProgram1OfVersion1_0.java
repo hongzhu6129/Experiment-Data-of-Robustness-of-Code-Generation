@@ -1,0 +1,25 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Convert the PriorityQueue to an array
+        Integer[] array = priorityQueue.toArray(new Integer[0]); // Use toArray(T[] a) for type safety
+
+        // Print the array elements
+        System.out.print("Array elements: ");
+        for (Integer element : array) {
+            System.out.print(element + " ");
+        }
+    }
+}

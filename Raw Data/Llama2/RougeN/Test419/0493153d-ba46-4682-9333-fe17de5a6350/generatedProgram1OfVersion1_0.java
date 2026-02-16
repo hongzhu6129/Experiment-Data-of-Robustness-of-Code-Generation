@@ -1,0 +1,37 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put some elements to the map
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+        // Get the portion of the map whose keys are greater than or equal to 3
+        SortedMap<Integer, String> tailMap = treeMap.tailMap(3);
+
+        // Print the tail map
+        System.out.println("Tail Map: " + tailMap);
+
+
+        // Example with a key that doesn't exist:
+        SortedMap<Integer, String> tailMap2 = treeMap.tailMap(33); //Key 33 isn't there
+        System.out.println("Tail Map 2 (from non-existent key): " + tailMap2); // Prints an empty map if no keys are >= 33
+
+
+        //Example demonstrating inclusivity:
+         treeMap.put(3, "Three updated!"); // Update value associated with 3
+
+         SortedMap<Integer, String> tailMap3 = treeMap.tailMap(3);
+        System.out.println("Tail Map 3 (showing inclusivity): " + tailMap3);  // Includes the entry with key 3 and the updated value.
+
+    }
+}

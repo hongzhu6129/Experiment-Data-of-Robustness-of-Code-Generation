@@ -1,0 +1,22 @@
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur during file reading. This is crucial for robust code.  It prints an informative error message if something goes wrong.
+
+2. **End-of-File Check:**  The `if (line == null)` condition inside the loop checks if the end of the file has been reached *before* trying to print a line. This prevents a `NullPointerException` if the file has fewer than 3 lines.
+
+3. **Clearer File Path:**  The `filePath` variable makes it easy to change the file you're reading from.  **Remember to replace `"your_file_path.txt"` with the actual path to your file.**
+
+4. **Try-with-resources:** The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` is automatically closed, even if exceptions occur.  This is best practice for resource management.
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `ReadFirst3Lines.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac ReadFirst3Lines.java`
+3. **Run:**  Execute the compiled code: `java ReadFirst3Lines`
+
+Make sure the file you specify in `filePath` exists and is readable by the Java program.
+
+
+

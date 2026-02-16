@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+1. **`cbrt()` for Efficiency:** The most significant change is using `Math.cbrt(num)` to calculate the cube root directly.  This is much more efficient than looping or using `Math.pow()` with fractional exponents, especially for larger numbers.
+
+2. **Integer Casting:** Because `cbrt()` returns a `double`, we cast the result to an `int` to get the integer part of the cube root. This is essential for correctly comparing the cube of the integer root with the original number.
+
+3. **Handling Negative Numbers:** The code now correctly handles negative input values by checking the cube of the absolute value if the input is negative.  The cube of a negative number is negative, so this ensures the program works for all integer inputs.
+
+4. **Clearer Output:**  The output message is changed from "honeycomb" (which seemed to be a typo) to the more accurate "cube".
+
+5. **Helper Function:** The `isPerfectCube()` function is introduced to encapsulate the cube-checking logic, making the `main` method cleaner and more readable.  This is good programming practice.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac CubeChecker.java`
+3. **Run:**  Execute the compiled program: `java CubeChecker`
+
+
+
+You can change the value of `num` in the `main` method to test with different numbers.  If you want to take input from the user, you would replace the line `int num = 8;` with something like this:
+

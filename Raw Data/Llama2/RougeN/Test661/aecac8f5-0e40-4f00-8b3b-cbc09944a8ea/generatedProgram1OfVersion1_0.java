@@ -1,0 +1,23 @@
+import java.util.HashSet;
+
+public class RemoveAllFromHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Print the initial HashSet
+        System.out.println("Initial HashSet: " + hashSet);
+
+        // Remove all elements from the HashSet
+        hashSet.clear();
+
+        // Print the HashSet after removing all elements
+        System.out.println("HashSet after removing all elements: " + hashSet); 
+    }
+}

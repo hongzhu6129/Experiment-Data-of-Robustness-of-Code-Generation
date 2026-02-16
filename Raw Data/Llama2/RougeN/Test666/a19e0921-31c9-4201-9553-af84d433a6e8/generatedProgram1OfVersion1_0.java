@@ -1,0 +1,46 @@
+import java.util.TreeMap;
+
+public class FloorKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+
+
+        int key1 = 25;
+        String value1 = map.floorEntry(key1).getValue(); // Returns "Twenty"
+        System.out.println("Key: " + key1 + ", Value: " + value1);
+
+        int key2 = 15;
+        String value2 = map.floorEntry(key2).getValue(); // Returns "Ten"
+
+        System.out.println("Key: " + key2 + ", Value: " + value2);
+
+
+
+        int key3 = 5;
+        if (map.floorEntry(key3) != null) { // Check if a key exists
+            String value3 = map.floorEntry(key3).getValue();
+            System.out.println("Key: " + key3 + ", Value: " + value3);
+        } else {
+            System.out.println("No key less than or equal to " + key3 + " found.");
+        }
+
+         int key4 = 55;
+        if (map.floorEntry(key4) != null) { // Check if a key exists
+            String value4 = map.floorEntry(key4).getValue();
+            System.out.println("Key: " + key4 + ", Value: " + value4);
+        } else {
+            System.out.println("No key less than or equal to " + key4 + " found.");
+        }
+
+
+
+
+    }
+}

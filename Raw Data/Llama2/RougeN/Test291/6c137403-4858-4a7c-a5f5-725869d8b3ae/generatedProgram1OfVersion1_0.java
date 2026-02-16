@@ -1,0 +1,40 @@
+public class CheckTwenty {
+
+    public static void main(String[] args) {
+        int[] arr1 = {20, 10, 30, 20, 5, 20};
+        System.out.println("Array 1: " + checkTwenty(arr1)); // Output: true
+
+        int[] arr2 = {20, 20, 20, 10, 5};
+        System.out.println("Array 2: " + checkTwenty(arr2)); // Output: false
+
+        int[] arr3 = {20, 10, 20, 5, 20, 6};
+        System.out.println("Array 3: " + checkTwenty(arr3)); // Output: true
+
+        int[] arr4 = {10, 5, 30, 20};
+        System.out.println("Array 4: " + checkTwenty(arr4)); // Output: false
+
+        int[] arr5 = {20, 20, 5, 20};
+        System.out.println("Array 5: " + checkTwenty(arr5)); // Output: false
+
+        int[] arr6 = {20, 10, 20, 20, 5};
+         System.out.println("Array 6: " + checkTwenty(arr6)); // Output: false
+    }
+
+
+    public static boolean checkTwenty(int[] arr) {
+        int count = 0;
+        boolean adjacent = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 20) {
+                count++;
+                if (i > 0 && arr[i - 1] == 20) {
+                    adjacent = true;
+                    break; // No need to continue if adjacent 20s are found
+                }
+            }
+        }
+
+        return count == 3 && !adjacent;
+    }
+}

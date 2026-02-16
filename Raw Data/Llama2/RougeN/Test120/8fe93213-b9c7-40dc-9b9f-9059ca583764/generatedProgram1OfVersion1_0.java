@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * Given a column number (integer value), return its corresponding Excel column name.
+     *
+     * @param n The column number (1-based index).
+     * @return The Excel column name.
+     *
+     * Examples:
+     * Column(1) == "A"
+     * Column(28) == "AB"
+     * Column(701) == "ZY"
+     * Column(2147483647) == "FXSHRXW" 
+     */
+    public static String Column(int n) {
+        StringBuilder sb = new StringBuilder();
+
+        while (n > 0) {
+            n--; // Adjust n to be 0-indexed for modulo operation
+            int remainder = n % 26;
+            sb.insert(0, (char) ('A' + remainder));
+            n /= 26;
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Column(1));  // Output: A
+        System.out.println(Column(28)); // Output: AB
+        System.out.println(Column(701)); // Output: ZY
+        System.out.println(Column(2147483647)); // Output: FXSHRXW
+    }
+}

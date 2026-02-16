@@ -1,0 +1,51 @@
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Kaprekar numbers less than 1000:");
+        int count = 0;
+        for (int i = 1; i < 1000; i++) {
+            if (isKaprekar(i)) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+        System.out.println("\n" + count + " kaprekar numbers.");
+    }
+
+    private static boolean isKaprekar(int num) {
+        long square = (long) num * num;
+        String sqStr = String.valueOf(square);
+        int numDigits = sqStr.length();
+
+        for (int i = 1; i < numDigits; i++) {
+            String[] parts = split_num(sqStr, i);
+            if (parts[1].length() > 0 &&  // Handle cases like 1
+               !parts[0].equals("0") &&     // Prevent leading zero issues when converting to int.
+               !parts[1].equals("0")) {     // Prevent all zeros in right part (like n=1).
+                try {
+                    int right = Integer.parseInt(parts[1]);
+                    int left = Integer.parseInt(parts[0]);
+
+                    if (right + left == num) {
+                        return true;
+                    }
+                } catch (NumberFormatException e) {
+                    // Handle potential parsing errors (though unlikely with this logic)
+                    return false; 
+                }
+            }
+
+        }
+        return false;
+    }
+
+
+    private static String[] split_num(String numStr, int splitIndex) {
+        String left = numStr.substring(0, splitIndex);
+        String right = numStr.substring(splitIndex);
+        return new String[]{left, right};
+    }
+}
+
+
+

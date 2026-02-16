@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ShuffleArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList
+        ArrayList<String> arrayList = new ArrayList<>();
+
+        // Add elements to the ArrayList
+        arrayList.add("Apple");
+        arrayList.add("Banana");
+        arrayList.add("Orange");
+        arrayList.add("Grape");
+        arrayList.add("Mango");
+
+
+        // Print the original ArrayList
+        System.out.println("Original ArrayList: " + arrayList);
+
+        // Shuffle the ArrayList using Collections.shuffle()
+        Collections.shuffle(arrayList);
+
+        // Print the shuffled ArrayList
+        System.out.println("Shuffled ArrayList: " + arrayList);
+
+
+        //Example with Integer ArrayList
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+        System.out.println("\nOriginal Integer ArrayList: " + numbers);
+        Collections.shuffle(numbers);
+        System.out.println("Shuffled Integer ArrayList: " + numbers);
+    }
+}
