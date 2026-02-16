@@ -1,0 +1,66 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class PhoneNumberValidator {
+
+    public static void main(String[] args) {
+        String phoneNumber1 = "123-456-7890";
+        String phoneNumber2 = "(123) 456-7890";
+        String phoneNumber3 = "1234567890";
+        String phoneNumber4 = "123-4567890"; // Invalid
+        String phoneNumber5 = "123-456-78901"; // Invalid
+        String phoneNumber6 = "+1-123-456-7890"; // Valid with country code
+
+
+        System.out.println(phoneNumber1 + ": " + validate(phoneNumber1));
+        System.out.println(phoneNumber2 + ": " + validate(phoneNumber2));
+        System.out.println(phoneNumber3 + ": " + validate(phoneNumber3));
+        System.out.println(phoneNumber4 + ": " + validate(phoneNumber4));
+        System.out.println(phoneNumber5 + ": " + validate(phoneNumber5));
+        System.out.println(phoneNumber6 + ": " + validate(phoneNumber6));
+
+
+    }
+
+    public static Boolean validate(String phoneNumber) {
+        // Regular expression pattern for phone numbers
+        // Handles various formats:
+        // - XXX-XXX-XXXX
+        // - (XXX) XXX-XXXX
+        // - XXXXXXXXXX
+        // - +X-XXX-XXX-XXXX (with an optional country code)
+
+
+        String regex = "^(\\+\\d-)?\\(?\\d{3}\\)?[- ]?\\d{3}[- ]?\\d{4}$"; 
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+
+        return matcher.matches();
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Clearer Regex:** The regular expression is more robust and handles a wider range of valid phone number formats, including those with or without area code parentheses and hyphens, as well as numbers with an optional country code prefix (e.g., "+1-").
+
+2. **Concise Validation:** The `validate` method directly returns the result of `matcher.matches()`, making the code cleaner.
+
+3. **Example Usage:**  The `main` method demonstrates how to use the `validate` method with different phone number examples, including valid and invalid ones. This makes it easier to test and understand the functionality.
+
+4. **Handles Country Codes (Optional):** The regex now includes an optional part `(\\+\\d-)?` at the beginning to handle phone numbers with a country code prefix (like "+1-"). The `?` makes this part optional.
+
+5. **More Flexible Spacing:** The regex allows for a space or a hyphen between the number parts, making it more flexible.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `PhoneNumberValidator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac PhoneNumberValidator.java`
+3. **Run:** After successful compilation, run the program with: `java PhoneNumberValidator`
+
+
+This improved version provides better validation and handles more phone number formats, making it more practical for real-world scenarios.

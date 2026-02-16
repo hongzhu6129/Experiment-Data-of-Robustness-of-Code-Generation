@@ -1,0 +1,58 @@
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseWordsInString {
+
+    public void reverseEachWordInString(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            System.out.println(""); // Handle empty or null input
+            return;
+        }
+
+        List<String> words = Arrays.asList(str.split("\\s+")); // Split into words
+        Collections.reverse(words); // Reverse the order of words
+
+        StringBuilder reversedString = new StringBuilder();
+        for (String word : words) {
+            StringBuilder reversedWord = new StringBuilder(word).reverse(); // Reverse each word
+            reversedString.append(reversedWord).append(" ");
+        }
+
+        System.out.println(reversedString.toString().trim()); // Print the reversed string
+    }
+
+
+    public static void main(String[] args) {
+        ReverseWordsInString reverser = new ReverseWordsInString();
+
+        reverser.reverseEachWordInString("This is a test string"); // Example usage
+        reverser.reverseEachWordInString("Hello World"); // Another example
+        reverser.reverseEachWordInString(""); // Empty string
+        reverser.reverseEachWordInString(null); // Null string
+        reverser.reverseEachWordInString("OneWord"); // Single word
+        reverser.reverseEachWordInString(" Leading and trailing spaces "); // Spaces
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Null and Empty Input:** The code now explicitly handles `null` and empty strings, printing an empty string in these cases to avoid `NullPointerException` or unnecessary processing.
+
+2. **Uses `split("\\s+")`:**  This splits the string based on one or more whitespace characters, which is more robust than just a single space. It handles multiple spaces between words correctly.
+
+3. **`Collections.reverse()`:** Uses the built-in `Collections.reverse()` method to efficiently reverse the list of words.
+
+4. **StringBuilder for Efficiency:** Uses `StringBuilder` for building the reversed string, which is much more efficient than repeated string concatenation.
+
+5. **Trimmed Output:** The `trim()` method is used to remove any leading or trailing spaces from the final reversed string for cleaner output.
+
+6. **Comprehensive Examples:** The `main` method includes various test cases (empty string, null, single word, spaces) to demonstrate the robustness of the code.
+
+7. **Clearer Variable Names:** More descriptive variable names (`reversedString`, `reversedWord`) improve code readability.
+
+
+This improved version is more robust, efficient, and adheres to best practices for string manipulation in Java.  It also specifically addresses the method signature requirements of the prompt.

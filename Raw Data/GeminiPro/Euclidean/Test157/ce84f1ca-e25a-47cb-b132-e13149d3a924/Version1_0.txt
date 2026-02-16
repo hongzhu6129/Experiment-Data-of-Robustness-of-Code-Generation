@@ -1,0 +1,52 @@
+```java
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class CanonicalProportional {
+
+    public static void main(String[] args) {
+        try {
+            // Get the class of the minor object
+            Class<?> minorClass = Class.forName("MinorObject");
+
+            // Get the field of the minor object that holds the canonical proportional
+            Field canonicalProportionalField = minorClass.getDeclaredField("canonicalProportional");
+
+            // Get the getter method for the canonical proportional field
+            Method getCanonicalProportionalMethod = minorClass.getDeclaredMethod("getCanonicalProportional");
+
+            // Create an instance of the minor object
+            Object minorObject = minorClass.newInstance();
+
+            // Set the canonical proportional field of the minor object
+            canonicalProportionalField.set(minorObject, 0.5);
+
+            // Get the canonical proportional of the minor object
+            double canonicalProportional = (double) getCanonicalProportionalMethod.invoke(minorObject);
+
+            // Print the canonical proportional
+            System.out.println("Canonical proportional: " + canonicalProportional);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+**Test cases:**
+
+**Corner cases:**
+
+* **Empty MinorObject:** Create a MinorObject with no attributes and check if the exception is thrown.
+
+* **Null CanonicalProportional:** Set the canonicalProportional field of the MinorObject to null and check if the exception is thrown.
+
+**Boundary cases:**
+
+* **CanonicalProportional 1:** Set the canonicalProportional field of the MinorObject to 1 and check if the getter method returns 1.
+
+* **CanonicalProportional 0:** Set the canonicalProportional field of the MinorObject to 0 and check if the getter method returns 0.
+
+**Functional cases:**
+
+* **Valid CanonicalProportional:** Set the canonicalProportional field of the MinorObject to a valid value and check if the getter method returns the correct value.

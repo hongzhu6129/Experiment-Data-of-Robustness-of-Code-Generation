@@ -1,0 +1,66 @@
+```java
+import java.util.TreeSet;
+
+public class LowerValueInTreeSet {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> greenSet = new TreeSet<>();
+        greenSet.add(10);
+        greenSet.add(20);
+        greenSet.add(30);
+        greenSet.add(40);
+        greenSet.add(50);
+
+        int element = 35;
+
+        Integer lowerValue = greenSet.lower(element);
+
+        if (lowerValue != null) {
+            System.out.println("Element lower than " + element + " in the green set: " + lowerValue);
+        } else {
+            System.out.println("No element lower than " + element + " found in the green set.");
+        }
+
+
+        // Another example with a different element
+        element = 15;
+        lowerValue = greenSet.lower(element);
+
+        if (lowerValue != null) {
+            System.out.println("Element lower than " + element + " in the green set: " + lowerValue);
+        } else {
+            System.out.println("No element lower than " + element + " found in the green set.");
+        }
+
+
+        // Example with String TreeSet
+         TreeSet<String> stringSet = new TreeSet<>();
+        stringSet.add("apple");
+        stringSet.add("banana");
+        stringSet.add("orange");
+        stringSet.add("grape");
+
+        String targetString = "mango";
+        String lowerString = stringSet.lower(targetString);
+
+
+        if (lowerString != null) {
+            System.out.println("String lower than " + targetString + " in the set: " + lowerString);
+        } else {
+            System.out.println("No string lower than " + targetString + " found in the set.");
+        }
+
+         targetString = "banana";
+         lowerString = stringSet.lower(targetString);
+
+
+        if (lowerString != null) {
+            System.out.println("String lower than " + targetString + " in the set: " + lowerString);
+        } else {
+            System.out.println("No string lower than " + targetString + " found in the set.");
+        }
+
+    }
+}
+```

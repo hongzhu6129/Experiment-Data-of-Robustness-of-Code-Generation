@@ -1,0 +1,66 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth)
+                return (leftDepth + 1);
+            else
+                return (rightDepth + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.right.left = new Node(6); // Added a deeper node for demonstration
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+    }
+}
+```
+
+
+Explanation:
+
+1. **Node Class:** Represents a node in the binary tree.  It has `data`, `left` child, and `right` child.
+
+2. **maxDepth(Node node):**
+   - This recursive method calculates the maximum depth of the binary tree.
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:** 
+     - Recursively calculate the depth of the left subtree (`leftDepth`).
+     - Recursively calculate the depth of the right subtree (`rightDepth`).
+     - Return the maximum of `leftDepth` and `rightDepth`, plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates a sample binary tree.
+   - Calls the `maxDepth()` method to calculate and print the maximum depth.
+
+
+How the recursion works:
+
+The `maxDepth()` function explores the tree in a depth-first manner. It goes as deep as it can down one branch, then backtracks and explores another branch.  At each node, it compares the depths of its left and right subtrees and returns the larger one plus one.  The final result is the maximum depth found during the entire traversal.

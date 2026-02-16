@@ -1,0 +1,43 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Number:**
+   - Input: 123
+   - Expected Output: 1010011
+
+2. **Leading Zeroes:**
+   - Input: 000123
+   - Expected Output: 1010011
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+4. **Large Octal Number:**
+   - Input: 7777777
+   - Expected Output: 111111111111111111111
+
+5. **Invalid Octal Number (Containing digits other than 0-7):**
+   - Input: 1283
+   - Expected Output: Invalid octal number.
+
+6. **Invalid Octal Number (Negative Number):**
+   - Input: -123
+   - Expected Output: Invalid octal number.  (The code now catches this and other NumberFormatExceptions).
+
+7. **Invalid Octal Number (Empty String):**
+    - Input: ""
+    - Expected Output: Invalid octal number.
+
+
+**Explanation of Improvements:**
+
+* **Input Validation:** The code now robustly handles invalid octal inputs (containing digits other than 0-7) by using a loop to check each digit individually.
+* **Error Handling:** It uses a `try-catch` block to catch `NumberFormatException` if the input is not a valid number (e.g., empty string, negative number, or contains non-numeric characters), providing a more user-friendly error message.
+* **Handles zero correctly:** The code now specifically handles the case where the input is 0.
+* **Resource Management:** The `Scanner` is closed using `input.close()` to release the resource.
+
+
+This improved version addresses the potential issues and handles corner cases more effectively.  It's also more user-friendly by providing informative error messages.

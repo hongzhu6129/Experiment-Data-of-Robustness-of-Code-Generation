@@ -1,0 +1,88 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close(); // Close the scanner
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| 1 | 10 | 20 | 30 | 20.0 | Standard positive numbers |
+| 2 | -5 | 0 | 5 | 0.0 | Includes negative and zero |
+| 3 | 0 | 0 | 0 | 0.0 | All zeros |
+| 4 | 1.5 | 2.5 | 3.5 | 2.5 | Decimal numbers |
+| 5 | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE  | Very large positive number |
+| 6 | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE  | Very small positive number (close to zero) |
+| 7 | -Double.MAX_VALUE | -Double.MAX_VALUE | -Double.MAX_VALUE | -Double.MAX_VALUE  | Very large negative numbers  |
+| 8 | Double.POSITIVE_INFINITY | 10 | 20 | Infinity |  Handles Infinity |
+| 9 | Double.NEGATIVE_INFINITY | 10 | 20 | -Infinity | Handles Negative Infinity |
+| 10 | Double.NaN | 10 | 20 | NaN | Handles NaN (Not a Number) |
+
+
+
+**How to run the test cases:**
+
+While you can manually input these values into the program, a better approach is to create automated tests.  Here's how you can write a simple JUnit test:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverage_positiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverage_negativeAndZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+     // Add more test cases here, using the table above as a guide
+     // Example:
+    @Test
+    void calculateAverage_doubleMaxValue(){
+        assertEquals(Double.MAX_VALUE, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+}
+```
+
+Using JUnit (or a similar testing framework) makes it much easier to run your tests repeatedly and ensures that your code continues to work as expected as you make changes.  You can run JUnit tests directly within most IDEs (like IntelliJ or Eclipse).
+
+
+Key improvements in this version of the code and test cases:
+
+* **`input.close()`:** Closing the `Scanner` prevents resource leaks.
+* **Separate `calculateAverage` method:** This makes the code more modular and testable.
+* **Comprehensive test cases:**  Including corner cases like `Double.MAX_VALUE`, `Double.MIN_VALUE`, `Infinity`, and `NaN` helps identify potential issues with overflow or unexpected input.
+* **JUnit example:**  Provides a practical example of how to create automated tests.  Automated testing is crucial for maintaining code quality.

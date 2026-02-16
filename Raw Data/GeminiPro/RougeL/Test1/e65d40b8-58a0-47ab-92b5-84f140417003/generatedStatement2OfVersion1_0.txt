@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Notes                                 |
+| --------- | -------- | -------- | --------------- | ------------------------------------ |
+| 1        | 5       | 10      | 50             | Positive numbers                     |
+| 2        | -5      | 10      | -50            | Negative and positive numbers          |
+| 3        | -5      | -10     | 50             | Two negative numbers                 |
+| 4        | 0       | 10      | 0              | Zero multiplied by any number is zero |
+| 5        | 10      | 0       | 0              |                                      |
+| 6        | 0       | 0       | 0              |                                      |
+| 7        | 2147483647 | 1       | 2147483647      | Integer.MAX_VALUE (boundary test)     |
+| 8       | 2147483647 | 2       | 4294967294      | Overflow (using long to avoid issues) |  // Important test!
+| 9       | -2147483648 | -1      | 2147483648      | Integer.MIN_VALUE (boundary test) |
+| 10       | -2147483648| 2  | -4294967296     | Overflow (using long to avoid issues) | // Important test!
+| 11       | 9223372036854775807 | 1 | 9223372036854775807 | Long.MAX_VALUE (boundary test)      |
+| 12       | -9223372036854775808 | -1 | -9223372036854775808    | Long.MIN_VALUE  (boundary test) |
+
+
+
+
+**How to Run the Tests (Manually):**
+
+1. Compile the Java code: `javac ProductOfTwoNumbers.java`
+2. Run the code and provide the input values when prompted.  For example, for Test Case 1:
+   

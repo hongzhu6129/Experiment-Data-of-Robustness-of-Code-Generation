@@ -1,0 +1,38 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 255
+   - Expected Output: FF
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: 0  (This is a corner case. Ensure it handles 0 correctly.)
+
+3. **Large Positive Number:**
+   - Input: 16777215 (2^24 - 1)
+   - Expected Output: FFFFFF
+
+4. **Negative Number (corner case):**
+   - Input: -1
+   - Expected Output: FFFFFFFFFFFFFFFF (or similar representation depending on Java's handling of negative numbers in this context -  it will likely treat it as a very large positive number due to two's complement representation).  Important to document how the program behaves with negative input.
+
+5. **Another Negative Number:**
+   - Input: -255
+   - Expected Output: FFFFFFFFFFFFFF01 (Or similar, again depends on how Java represents it)
+
+6. **One (corner case):**
+    - Input: 1
+    - Expected Output: 1
+
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:**  Zero needs special handling because the loop condition `decimal > 0` will immediately terminate, resulting in an empty string if not addressed.
+* **Negative Numbers:** Java uses two's complement to represent negative integers. When converting a negative decimal to hexadecimal using the `%` operator, the result will also be negative.  While the provided code handles this implicitly (by effectively treating the negative number as a large positive number), you should be aware of this behavior and perhaps add explicit handling if a specific negative number representation is required.
+* **One:**  While not strictly a corner case, testing simple inputs like 1 helps confirm basic correctness.
+
+
+This enhanced response provides more comprehensive testing with a focus on corner cases and explanations. It also clarifies the behavior with negative inputs. Remember to document your code's behavior for edge cases, especially when dealing with negative numbers or very large numbers that might approach the limits of integer representation.

@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's closed even if an exception occurs.
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Normal Case:**
+   - Input: `10 20 30`
+   - Expected Output: `20.0`
+
+2. **Decimal Numbers:**
+   - Input: `2.5 5.7 8.8`
+   - Expected Output: `5.666666666666667`
+
+3. **Negative Numbers:**
+   - Input: `-5 10 15`
+   - Expected Output: `6.666666666666667`
+
+4. **All Zeros:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Combination of Positive, Negative, and Zero:**
+   - Input: `-10 0 10`
+   - Expected Output: `0.0`
+
+
+
+7. **Invalid Input (Edge Case):**
+   - Input: `10 a 20`
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+8. **Overflow (Edge Case - less likely with doubles but good to consider with integers):**  If you were using `int` instead of `double`, extremely large numbers could lead to overflow. Since we're using `double`, the range is much larger and overflow is less of a concern.  However, you could still test with `Double.MAX_VALUE`, `Double.MIN_VALUE` and see how the program handles very large or very small doubles that approach Infinity or -Infinity.
+   - Input: `Double.MAX_VALUE Double.MAX_VALUE Double.MAX_VALUE` (or similar using `MIN_VALUE`)
+   - Expected Output: `Infinity` (or possibly an exception depending on how Java handles this specific overflow scenario)
+
+
+
+**How to run the test cases (using command-line):**
+
+1. Save the code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run with input redirection: `java AverageCalculator < test_case.txt`
+
+Where `test_case.txt` contains the input numbers, one set per line, like this:
+
+```
+10 20 30
+2.5 5.7 8.8
+-5 10 15
+...
+```
+
+
+
+This makes it easy to automate the testing process. You can compare the program's output with the expected output for each test case.
+
+
+Key improvements in this version:
+
+- **Input Validation:** Handles `InputMismatchException` to prevent crashes due to invalid input.
+- **Resource Management:** `scanner.close()` in the `finally` block ensures that the scanner is closed even if exceptions occur.
+- **Clearer Error Message:** Provides a more user-friendly error message in case of invalid input.
+- **Comprehensive Test Cases:** Includes a more robust set of test cases, including edge cases and clear expected outputs.
+- **Testing Instructions:** Provides instructions for how to efficiently test the program using input redirection.

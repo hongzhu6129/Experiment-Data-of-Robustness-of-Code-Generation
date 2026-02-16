@@ -1,0 +1,76 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueComparison {
+
+    public static void main(String[] args) {
+        // Create two priority queues: one using natural ordering (min-heap),
+        // and one using a custom comparator (max-heap).
+
+        // Min-Heap (Natural Ordering)
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        // Max-Heap (Custom Comparator - using lambda expression)
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a); 
+
+        // Add elements to both queues
+        int[] numbers = {5, 2, 8, 1, 9, 4, 7, 3, 6};
+
+        for (int num : numbers) {
+            minHeap.add(num);
+            maxHeap.add(num);
+        }
+
+
+        // Demonstrate retrieval order (poll)
+        System.out.println("Min-Heap (Natural Ordering):");
+        while (!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll() + " "); // Retrieves and removes the head (smallest element)
+        }
+        System.out.println("\n");
+
+        System.out.println("Max-Heap (Custom Comparator):");
+        while (!maxHeap.isEmpty()) {
+            System.out.print(maxHeap.poll() + " "); // Retrieves and removes the head (largest element)
+        }
+        System.out.println("\n");
+
+
+        // Demonstrate peek operation (look at the head without removing)
+        minHeap.addAll(java.util.Arrays.asList(numbers)); // Re-populate for demonstration
+        maxHeap.addAll(java.util.Arrays.asList(numbers));
+
+
+        System.out.println("Min-Heap peek: " + minHeap.peek());
+        System.out.println("Max-Heap peek: " + maxHeap.peek());
+
+
+        // Demonstrate contains operation
+        System.out.println("Min-Heap contains 5: " + minHeap.contains(5));
+        System.out.println("Max-Heap contains 5: " + maxHeap.contains(5));
+
+
+
+        // Size and isEmpty
+        System.out.println("Min-Heap size: " + minHeap.size());
+        System.out.println("Max-Heap size: " + maxHeap.size());
+
+        System.out.println("Min-Heap is empty: " + minHeap.isEmpty()); // Should be false
+        minHeap.clear();  // Remove all elements
+        System.out.println("Min-Heap is empty (after clear): " + minHeap.isEmpty()); // Should be true
+
+
+
+
+        // Example with Strings (natural ordering is lexicographical)
+        PriorityQueue<String> stringPriorityQueue = new PriorityQueue<>();
+        stringPriorityQueue.add("apple");
+        stringPriorityQueue.add("banana");
+        stringPriorityQueue.add("orange");
+
+        System.out.println("\nString Priority Queue (Natural Ordering):");
+        while (!stringPriorityQueue.isEmpty()) {
+            System.out.print(stringPriorityQueue.poll() + " ");
+        }
+
+    }
+}

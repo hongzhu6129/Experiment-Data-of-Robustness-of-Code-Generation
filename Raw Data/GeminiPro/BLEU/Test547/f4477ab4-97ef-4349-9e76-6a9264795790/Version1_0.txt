@@ -1,0 +1,72 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadPlainTextFile {
+
+    public static void main(String[] args) {
+        // 1. Specify the file path.
+        String filePath = "path/to/your/textfile.txt"; // Replace with the actual path
+
+        // 2. Use try-with-resources to handle file opening and closing automatically.
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            // 3. Read the file line by line.
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // 4. Process each line (e.g., print it).
+                System.out.println(line); 
+
+                //  Further processing can be done here, like:
+                //  - Splitting the line into words.
+                //  - Storing the lines in a data structure (List, array).
+                //  - Searching for specific patterns.
+                //  - ...
+            }
+
+        } catch (IOException e) {
+            // 5. Handle potential exceptions (e.g., file not found).
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+            // You might want to log the exception or take other appropriate actions.
+        }
+
+        System.out.println("File reading complete.");
+    }
+}
+
+
+```
+
+
+**Explanation and Educational Points:**
+
+1. **File Path:**  The `filePath` variable stores the location of your text file.  Make sure to replace `"path/to/your/textfile.txt"` with the correct path.  You can use relative paths (from your project's directory) or absolute paths.
+
+
+2. **Try-with-resources:** This ensures that the `BufferedReader` and `FileReader` are closed automatically, even if exceptions occur.  This is crucial for proper file handling and preventing resource leaks.
+
+
+3. **BufferedReader:** `BufferedReader` reads the file efficiently, buffering the input for better performance.  `FileReader` is used to create a stream from the file.
+
+
+4. **Reading Line by Line:** The `readLine()` method reads one line at a time from the file and returns it as a `String`. The loop continues until `readLine()` returns `null`, indicating the end of the file.
+
+
+5. **Processing Each Line:** Inside the loop, you can do whatever you need with each line of text. The example simply prints each line to the console.
+
+
+6. **Exception Handling:** The `catch` block handles any `IOException` that might occur (e.g., the file doesn't exist or there's a permission problem). It's important to handle these exceptions gracefully to prevent your program from crashing.
+
+
+7. **File Reading Complete Message:** This is a simple way to indicate that the file has been processed entirely.
+
+
+**To Compile and Run:**
+
+1. Save the code as `ReadPlainTextFile.java`.
+2. Compile: `javac ReadPlainTextFile.java`
+3. Run: `java ReadPlainTextFile`
+
+
+Make sure you have a text file at the path you specify in the code.

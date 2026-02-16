@@ -1,0 +1,85 @@
+```java
+public class FirstUniqueChar {
+
+    public static void main(String[] args) {
+        String str = "wresource";
+        int index = first_Uniq_Char(str);
+        System.out.println("Original string: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+        // Additional test cases (optional):
+        System.out.println(first_Uniq_Char("loveleetcode")); // Expected: 2
+        System.out.println(first_Uniq_Char("aabb")); // Expected: -1 (If you want to handle cases with no unique chars)
+        System.out.println(first_Uniq_Char("dddccdbba")); // Expected: 8
+
+    }
+
+    public static int first_Uniq_Char(String s) {
+        int[] charCount = new int[26]; // Assuming only lowercase English alphabet characters
+
+        // Count the occurrences of each character
+        for (char c : s.toCharArray()) {
+            charCount[c - 'a']++;
+        }
+
+        // Find the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1; // Return -1 if no unique character is found (Optional, depends on the requirements)
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Takes a sample string `str`.
+   - Calls the `first_Uniq_Char` method to get the index of the first unique character.
+   - Prints the original string and the index.
+
+2. **`first_Uniq_Char` method:**
+   - Creates an integer array `charCount` of size 26 to store the frequency of each lowercase English alphabet character.  We are making this assumption to keep the solution within the character limit. A more robust approach is discussed below.
+   - Iterates through the input string `s`:
+     - For each character `c`, it increments the corresponding count in `charCount` based on its position in the alphabet ( `c - 'a'` converts the character to its alphabetical index 0-25).
+   - Iterates through the string `s` again:
+     - For each character, it checks if its count in `charCount` is equal to 1.
+     - If the count is 1 (meaning it's a unique character), the method returns the index `i`.
+   - If the loop completes without finding a unique character, it returns -1 (You can modify this to throw an exception or return a different value if needed).
+
+
+**More Robust Approach (handling all Unicode characters):**
+
+If you need to handle all possible Unicode characters, use a `HashMap` instead of a fixed-size array:
+
+```java
+import java.util.HashMap;
+
+public class FirstUniqueCharUnicode {
+    // ... (main method remains the same)
+
+    public static int first_Uniq_Char(String s) {
+        HashMap<Character, Integer> charCount = new HashMap<>();
+
+        // Count character occurrences
+        for (char c : s.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        // Find the first unique character
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+
+        return -1; 
+    }
+}
+```
+
+This version can handle strings with any Unicode characters, not just lowercase English letters.

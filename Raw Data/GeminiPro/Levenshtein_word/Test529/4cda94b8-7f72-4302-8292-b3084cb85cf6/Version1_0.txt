@@ -1,0 +1,27 @@
+```java
+public class NarcissisticNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Narcissistic numbers between 1 and 1000:");
+        for (int i = 1; i <= 1000; i++) {
+            if (isNarcissistic(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static boolean isNarcissistic(int number) {
+        int numDigits = String.valueOf(number).length();
+        int sum = 0;
+        int temp = number;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += Math.pow(digit, numDigits);
+            temp /= 10;
+        }
+
+        return sum == number;
+    }
+}
+```

@@ -1,0 +1,46 @@
+```java
+public class ExcelColumnName {
+
+    public static String Column(int n) {
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = n % 26;
+
+            if (rem == 0) {
+                columnName.insert(0, 'Z');
+                n = (n / 26) - 1;
+            } else {
+                columnName.insert(0, (char)('A' + rem - 1));
+                n = n / 26;
+            }
+        }
+        return columnName.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Column Name for 1: " + Column(1)); // A
+        System.out.println("Column Name for 28: " + Column(28)); // AB
+        System.out.println("Column Name for 701: " + Column(701)); // ZY
+        System.out.println("Column Name for 52: " + Column(52)); // AZ
+        System.out.println("Column Name for 702: " + Column(702)); // ZZ
+        System.out.println("Column Name for 703: " + Column(703)); // AAA        
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles 0 Remainder Correctly:** The crucial improvement addresses the case where `n % 26` is 0.  When the remainder is 0, it signifies that the corresponding character should be 'Z', and we need to adjust `n` by subtracting 1 before dividing by 26. This prevents off-by-one errors, especially when dealing with numbers like 26, 52, etc.
+
+2. **`StringBuilder` for Efficiency:**  Using `StringBuilder` for constructing the column name is more efficient than repeated string concatenation (using `+`).  `StringBuilder` modifies the string in place, whereas string concatenation creates new string objects in each iteration, which is less performant.
+
+3. **Clearer Variable Names:** Using `columnName` instead of just `s` improves readability.
+
+4. **Comprehensive Test Cases:** The `main` method includes more test cases to demonstrate the correctness of the solution for different input values, including edge cases and larger numbers.  This helps in thorough verification.
+
+5. **Insert at Beginning:** Using `columnName.insert(0, ...)` is important because we're building the string from right to left (least significant digit to most significant).  The `insert(0, ...)` method ensures that characters are added to the beginning of the string to create the correct order.
+
+
+This improved version is more robust, efficient, and easier to understand. It accurately generates Excel column names for a wide range of input column numbers.

@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class DaysBetweenYears {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first year: ");
+        int year1 = scanner.nextInt();
+        System.out.print("Enter the second year: ");
+        int year2 = scanner.nextInt();
+
+        if (year1 > year2) {
+            int temp = year1;
+            year1 = year2;
+            year2 = temp; // Ensure year1 is always smaller or equal to year2
+        }
+
+        int totalDays = 0;
+        for (int year = year1; year < year2; year++) {
+            totalDays += number_of_days(year);
+        }
+
+        System.out.println("The number of days between " + year1 + " and " + year2 + " is: " + totalDays);
+        scanner.close();
+    }
+
+    public static int number_of_days(int year) {
+        if (is_Leap_Year(year)) {
+            return 366;
+        } else {
+            return 365;
+        }
+    }
+
+    public static boolean is_Leap_Year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+}
+```
+
+
+Explanation and improvements:
+
+1. **Input Validation (Added):** The code now uses a `Scanner` to get input from the user. It also includes a check to ensure that `year1` is always less than or equal to `year2` by swapping them if necessary.  This makes the logic simpler and handles cases where the user enters the years in reverse order.
+
+2. **Loop for Calculation:** The `main` method now uses a `for` loop to iterate through the years between `year1` (inclusive) and `year2` (exclusive). This is crucial to calculate the total number of days correctly.
+
+3. **Clearer Output:** The output message now clearly states the range of years being considered.
+
+4. **Closed Scanner:**  The `scanner.close()` statement has been added to release the system resources used by the scanner.  This is good practice.
+
+5. **`number_of_days` Method:** This method correctly returns the number of days in a given year based on whether it is a leap year or not.
+
+6. **`is_Leap_Year` Method:**  This method correctly implements the logic to determine if a year is a leap year.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `DaysBetweenYears.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run the command `javac DaysBetweenYears.java`.
+3. **Run:** After successful compilation, run the command `java DaysBetweenYears`. The program will prompt you to enter the two years.
+
+
+Example Usage:
+
+```
+Enter the first year: 2000
+Enter the second year: 2004
+The number of days between 2000 and 2004 is: 1461 
+```

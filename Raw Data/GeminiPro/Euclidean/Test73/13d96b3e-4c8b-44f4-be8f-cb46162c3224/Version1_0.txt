@@ -1,0 +1,37 @@
+```java
+public class StringStartsWith {
+
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String prefix = "Hello";
+
+        boolean startsWithPrefix = str.startsWith(prefix);
+
+        if (startsWithPrefix) {
+            System.out.println("\"" + str + "\" starts with \"" + prefix + "\"");
+        } else {
+            System.out.println("\"" + str + "\" does not start with \"" + prefix + "\"");
+        }
+
+
+        //More examples for testing
+        checkStartsWith("This is a test", "This");  // True
+        checkStartsWith("This is a test", "That");  // False
+        checkStartsWith("Testing 123", "Test");     // True
+        checkStartsWith("  Whitespace", "  ");       // True  (Handles leading whitespace)
+        checkStartsWith("Empty", "");                // True (Empty string starts with empty string)
+
+
+
+    }
+
+    // Helper function to encapsulate the check (not strictly necessary, but improves readability for multiple tests)
+    private static void checkStartsWith(String str, String prefix) {
+        if (str.startsWith(prefix)) {
+            System.out.println("\"" + str + "\" starts with \"" + prefix + "\"");
+        } else {
+            System.out.println("\"" + str + "\" does not start with \"" + prefix + "\"");
+        }
+    }
+}
+```

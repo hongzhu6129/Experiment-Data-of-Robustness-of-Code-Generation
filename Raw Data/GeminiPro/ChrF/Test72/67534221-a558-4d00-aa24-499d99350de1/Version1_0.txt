@@ -1,0 +1,39 @@
+```java
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str = "programming"; // Example string
+
+        if (str.length() <= 3) {
+            System.out.println("String length must be greater than 3.");
+            return; 
+        }
+
+        String lastThree = str.substring(str.length() - 3);
+        String modifiedStr = lastThree + str + lastThree;
+
+        System.out.println(modifiedStr);
+
+
+        // More test cases (within main method)
+        test("Hello");  // Should print: lloHellollo
+        test("Java"); // Should print: avaJavaava
+        test("ab"); // Should print String length must be greater than 3.
+
+
+    }
+
+
+    // Helper method for testing (to keep main clean - good practice!)
+    public static void test(String str) {
+        if (str.length() <= 3) {
+            System.out.println("String length must be greater than 3.");
+            return;
+        }
+        String lastThree = str.substring(str.length() - 3);
+        String modifiedStr = lastThree + str + lastThree;
+        System.out.println(modifiedStr);
+    }
+}
+
+```

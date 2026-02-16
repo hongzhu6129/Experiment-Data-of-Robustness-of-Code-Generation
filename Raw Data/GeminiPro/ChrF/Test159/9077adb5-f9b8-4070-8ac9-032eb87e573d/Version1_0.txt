@@ -1,0 +1,50 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class CompositeString {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the first part
+        System.out.println("Enter the first part of the composite string:");
+        String part1 = scanner.nextLine();
+
+        // Get the second part
+        System.out.println("Enter the second part of the composite string:");
+        String part2 = scanner.nextLine();
+
+        // Check if the second part is a minor part of the first part
+        boolean isMinor = part2.length() < part1.length();
+
+        // Create the composite string
+        String composite = part1 + part2;
+
+        // Print the composite string based on whether the second part is a minor part or not
+        if (isMinor) {
+            System.out.println("The composite string is: " + composite);
+        } else {
+            System.out.println("The second part is not a minor part of the first part. Therefore, the composite string cannot be formed.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Case 1:** Both parts are empty strings.
+* **Case 2:** The first part is empty but the second part is non-empty.
+* **Case 3:** The second part is empty but the first part is non-empty.
+* **Case 4:** The first part is a substring of the second part.
+
+**Other Test Cases:**
+
+* **Case 1:** First part = "hello", Second part = "world" (composite string = "helloworld")
+* **Case 2:** First part = "java programming", Second part = "is fun" (composite string = "javaprogrammingisfun")
+* **Case 3:** First part = "code", Second part = "co" (composite string = "codeco")
+* **Case 4:** First part = "alphabet", Second part = "be" (composite string cannot be formed)
+* **Case 5:** First part = "stackoverflow", Second part = "overflow" (composite string cannot be formed)

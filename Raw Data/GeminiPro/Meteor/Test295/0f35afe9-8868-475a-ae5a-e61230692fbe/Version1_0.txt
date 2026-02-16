@@ -1,0 +1,74 @@
+```java
+public class MoveString {
+
+    public static void moveString(String str, int n) {
+        if (n == 0) {
+            System.out.println(str);
+        } else {
+            char ch = str.charAt(0);
+            String ros = str.substring(1);
+            moveString(ros, n - 1);
+            System.out.println(ch + ros);
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "abc";
+        int n = 2;
+        moveString(str, n);
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* Empty string
+* String with only one character
+* n = 0
+
+**General Cases:**
+
+* String with multiple characters
+* n > 0
+* n = length of the string
+
+**Sample Input and Output:**
+
+**Test Case 1:**
+
+* Input: str = "abc", n = 2
+* Output:
+```
+bc
+cba
+```
+
+**Test Case 2:**
+
+* Input: str = "", n = 3
+* Output:
+```
+
+```
+
+**Test Case 3:**
+
+* Input: str = "a", n = 1
+* Output:
+```
+a
+```
+
+**Test Case 4:**
+
+* Input: str = "abcdef", n = 4
+* Output:
+```
+efabc
+defabc
+cdefab
+bcdef
+abcdef
+```

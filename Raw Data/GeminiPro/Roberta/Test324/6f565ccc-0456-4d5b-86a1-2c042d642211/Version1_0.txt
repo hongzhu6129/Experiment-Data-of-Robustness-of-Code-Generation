@@ -1,0 +1,49 @@
+```java
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using the + operator
+        String str1 = "Hello";
+        String str2 = " World";
+        String result1 = str1 + str2; 
+        System.out.println("Concatenated string (using +): " + result1); // Output: Hello World
+
+        // Method 2: Using the concat() method
+        String str3 = "Java";
+        String str4 = " Programming";
+        String result2 = str3.concat(str4);
+        System.out.println("Concatenated string (using concat()): " + result2); // Output: Java Programming
+
+        // Method 3: Using StringBuilder (more efficient for multiple concatenations)
+        StringBuilder sb = new StringBuilder("This is ");
+        sb.append("a ");
+        sb.append("StringBuilder ");
+        sb.append("example.");
+        String result3 = sb.toString();
+        System.out.println("Concatenated string (using StringBuilder): " + result3); // Output: This is a StringBuilder example.
+
+        // Method 4:  Using String.format (for more complex formatting)
+        String name = "Alice";
+        int age = 30;
+        String result4 = String.format("My name is %s and I am %d years old.", name, age);
+        System.out.println("Formatted string: " + result4); // Output: My name is Alice and I am 30 years old.
+
+
+        //Important Note on String Immutability:
+        //Strings in Java are immutable, which means that the original string is not modified
+        //when you perform concatenation. Instead, a new string object is created in memory.
+        //For multiple concatenations in a loop,  StringBuilder or StringBuffer are much more efficient 
+        //as they modify the string in place rather than creating new objects repeatedly.
+
+
+        // Example demonstrating String immutability
+        String originalString = "Original";
+        String concatenatedString = originalString + " Appended";
+        System.out.println("Original String: " + originalString); // Output: Original (unchanged)
+        System.out.println("Concatenated String: " + concatenatedString); // Output: Original Appended
+
+
+    }
+}
+```

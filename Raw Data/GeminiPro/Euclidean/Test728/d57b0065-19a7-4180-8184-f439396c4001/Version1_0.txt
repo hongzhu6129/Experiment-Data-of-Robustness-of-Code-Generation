@@ -1,0 +1,72 @@
+```java
+import java.util.Arrays;
+
+public class BinarySearch {
+
+    public static int binarySearch(int[] arr, int target) {
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2; // Avoid potential overflow
+
+            if (arr[mid] == target) {
+                return mid; // Element found at index mid
+            } else if (arr[mid] < target) {
+                low = mid + 1; // Search in the right half
+            } else {
+                high = mid - 1; // Search in the left half
+            }
+        }
+
+        return -1; // Element not found
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int target = 23;
+
+
+        // Ensure the array is sorted; binary search requires a sorted array
+        Arrays.sort(arr); //  Important! Sort if the input might not be sorted.
+
+
+        int index = binarySearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+        // Example with an unsorted array (demonstrates the importance of sorting):
+         int[] unsortedArr = {5, 2, 9, 1, 5, 6};
+         target = 9;
+
+         Arrays.sort(unsortedArr); // Sort before using binary search!
+         index = binarySearch(unsortedArr, target);
+        
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+}
+```
+
+
+
+Key Improvements in this code:
+
+* **Handles Unsorted Arrays:** The `main` method now demonstrates how to handle potentially unsorted arrays by sorting them with `Arrays.sort(arr)` before calling `binarySearch`. This is crucial because binary search only works on sorted data.
+
+* **Overflow Prevention:** The calculation of `mid` is improved to `mid = low + (high - low) / 2`. This prevents potential integer overflow issues that could occur with the previous `(low + high) / 2` calculation if `low` and `high` were very large.
+
+* **Clearer Comments:** The comments explain the logic and the importance of sorting.
+
+* **More Comprehensive Examples:**  The `main` method provides multiple examples, including one with an unsorted array, to highlight the requirement of a sorted array for binary search to function correctly.
+
+
+Now, this code is more robust, efficient, and clearly demonstrates the correct implementation of binary search in Java.

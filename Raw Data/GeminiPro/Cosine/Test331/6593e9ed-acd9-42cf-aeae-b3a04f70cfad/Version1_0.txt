@@ -1,0 +1,46 @@
+```java
+public class CompareStringsIgnoreCase {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "Hello";
+        String str3 = "world";
+
+        // Using equalsIgnoreCase()
+        boolean areEqual12 = str1.equalsIgnoreCase(str2);
+        boolean areEqual13 = str1.equalsIgnoreCase(str3);
+
+        System.out.println("\"" + str1 + "\" equals \"" + str2 + "\"? " + areEqual12);  // Output: true
+        System.out.println("\"" + str1 + "\" equals \"" + str3 + "\"? " + areEqual13);  // Output: false
+
+
+        //Demonstrating more cases
+        String str4 = "Java Programming";
+        String str5 = "java programming";
+        String str6 = "  Java Programming  "; // with leading and trailing spaces
+
+        System.out.println("\"" + str4 + "\" equals \"" + str5 + "\"? " + str4.equalsIgnoreCase(str5)); // Output: true
+
+        //Trimming whitespace before comparison
+        System.out.println("\"" + str4 + "\" equals \"" + str6.trim() + "\"? " + str4.equalsIgnoreCase(str6.trim())); // Output: true
+
+
+        // Handling null
+        String str7 = null;
+
+        // Using equalsIgnoreCase directly with null can cause NullPointerException.
+        // Use Objects.equals() to handle nulls safely.
+        boolean areEqual17 = java.util.Objects.equals(str1, str7) ; // Using Objects.equals() handles null
+        System.out.println("\"" + str1 + "\" equals \"" + str7 + "\"? " + areEqual17); //Output: false
+
+        boolean areEqual47IgnoreCase = (str7 != null && str4 != null) ? str4.equalsIgnoreCase(str7) : (str4 == null && str7 == null) ; // Conditional check for nulls
+
+        System.out.println("\"" + str4 + "\" equalsIgnoreCase \"" + str7 + "\"? " + areEqual47IgnoreCase); // Output: false
+
+
+
+
+
+    }
+}
+```

@@ -1,0 +1,35 @@
+```java
+public class AntiprismNumbers {
+
+    public static void main(String[] args) {
+        displayFirst50AntiprismNumbers();
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+
+    public static void displayFirst50AntiprismNumbers() {
+        for (int i = 1; i <= 50; i++) {
+            int antiprismNumber = i * (2 * i - 1) ; //Formula for antiprism numbers
+            System.out.println(antiprismNumber);
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **`getPentagonalNumber(int n)`:** This method calculates the nth pentagonal number using the formula: `n * (3 * n - 1) / 2`. Although the problem description mentions pentagonal numbers and their properties, it actually asks for *antiprism numbers*.  The prompt is a bit misleading in this regard.  So, this method isn't actually needed for the core problem (calculating antiprism numbers).
+
+2. **`displayFirst50AntiprismNumbers()`:**  This method is the heart of the solution.  It iterates from 1 to 50 (inclusive). In each iteration:
+   - It calculates the ith antiprism number using the formula `i * (2 * i - 1)`.
+   - It prints the calculated antiprism number to the console.
+
+3. **`main(String[] args)`:** The `main` method simply calls `displayFirst50AntiprismNumbers()` to start the process of calculating and displaying the first 50 antiprism numbers.
+
+
+Key Improvement (Addressing Prompt Misdirection):
+
+The initial prompt confused pentagonal and antiprism numbers. The corrected code now calculates *antiprism* numbers, as requested.  The `getPentagonalNumber` method remains, but it is unused. If the intention was *actually* to involve pentagonal numbers somehow, the problem description would need to be rewritten to clarify the relationship between pentagonal and antiprism numbers in the desired calculation.

@@ -1,0 +1,42 @@
+```java
+import java.util.TreeSet;
+
+public class NumbersLessThanSevenInTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet to store numbers. TreeSets automatically sort elements.
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some numbers to the TreeSet (including some greater than and less than 7)
+        numbers.add(9);
+        numbers.add(2);
+        numbers.add(5);
+        numbers.add(12);
+        numbers.add(1);
+        numbers.add(7); // 7 itself will be included in the TreeSet
+
+
+        // Find numbers less than 7 (exclusive of 7)
+        TreeSet<Integer> lessThanSeven = (TreeSet<Integer>) numbers.headSet(7); 
+
+        // Print the numbers less than 7
+        System.out.println("Numbers less than 7: " + lessThanSeven);
+
+
+        //Alternatively, you can iterate and print: (this includes 7 if present)
+        System.out.print("Numbers less than or equal to 7 (iterative approach): ");
+        for (Integer num : numbers) {
+            if (num <= 7) {  //Or < 7 to exclude 7
+                System.out.print(num + " ");
+            } else {
+                break; //TreeSet is sorted, so we can stop once we hit a number greater than 7 for efficiency
+            }
+        }
+         System.out.println(); //Newline for cleaner output
+
+
+
+
+    }
+}
+```

@@ -1,0 +1,55 @@
+```java
+public class PenultimateWord {
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide a sentence as input.");
+            return;
+        }
+
+        String sentence = String.join(" ", args); 
+        sentence = sentence.trim(); // Remove leading/trailing whitespace
+
+        if (sentence.isEmpty()) {
+            System.out.println("Input sentence is empty.");
+            return;
+        }
+
+
+        int lastSpaceIndex = sentence.lastIndexOf(' ');
+
+        if (lastSpaceIndex == -1) { // Only one word
+            System.out.println("There is no penultimate word.");
+        } else {
+            int secondLastSpaceIndex = sentence.lastIndexOf(' ', lastSpaceIndex - 1);
+            String penultimateWord;
+            if (secondLastSpaceIndex == -1) { // Two words
+                penultimateWord = sentence.substring(0, lastSpaceIndex);
+            } else { // More than two words
+                penultimateWord = sentence.substring(secondLastSpaceIndex + 1, lastSpaceIndex);
+            }
+            System.out.println(penultimateWord);
+        }
+
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Handles Command-Line Arguments:** The code now uses `String.join(" ", args)` to correctly combine all command-line arguments into a single sentence string.  This is crucial for handling sentences with spaces.
+2. **Input Validation:** It checks for empty input sentences and sentences with only one word (where there would be no penultimate word). This makes the code more robust.
+3. **Trim Whitespace:** The `trim()` method removes any leading or trailing whitespace from the input sentence, which prevents errors caused by extra spaces.
+4. **Clearer Logic:** The code uses `lastIndexOf()` to find the spaces, making the logic for finding the second-to-last word cleaner.
+5. **Handles Two-Word Sentences:** It correctly handles the case where the sentence contains only two words.
+6. **No External Libraries:** The code adheres to the requirement of not using any functions other than `main`.
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `PenultimateWord.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac PenultimateWord.java`
+3. **Run:** Execute the compiled code with a sentence as input: `java PenultimateWord This is a test sentence`
+
+
+The output will be: `test`.

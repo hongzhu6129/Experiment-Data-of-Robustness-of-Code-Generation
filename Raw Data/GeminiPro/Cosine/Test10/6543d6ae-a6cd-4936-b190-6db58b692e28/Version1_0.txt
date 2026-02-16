@@ -1,0 +1,57 @@
+```java
+public class PrintFace {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  | '-' |\n  +-----+");
+    }
+}
+```
+
+**Test Cases and Corner Cases (Conceptual - since visual output is being tested):**
+
+While you can't directly unit test the output of `System.out.println()` in a traditional sense (you'd need to redirect output streams, which is beyond the scope of a simple example),  you can still think about test scenarios to ensure the face is printed correctly:
+
+1. **Basic Functionality:**  Run the program and visually verify that the face is printed as expected, including correct spacing and characters.  This is the most straightforward test.
+
+2. **Character Encoding:**  If you were to use special characters (e.g., Unicode emojis for eyes), ensure your environment (console, IDE) supports the character set correctly.  A mismatch might lead to distorted output or incorrect characters.  While not a direct code test, this is an important environmental consideration.
+
+3. **Output Redirection:**  (More advanced) If you wanted a more automated test, you could redirect the standard output to a file or string buffer. Then, you could compare the captured output with the expected output string. Libraries like `System.setOut()` and `ByteArrayOutputStream` could be used for this.
+
+4. **String Modification (Hypothetical):** Imagine if the `printFace()` method took arguments to customize the face (e.g., different eyes, mouth). Then, you could write unit tests:
+   ```java
+   @Test
+   public void testSadFace() {
+       ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // For capturing output
+       System.setOut(new PrintStream(outContent));
+
+       PrintFace.printFace("x", "x", "(");  // Hypothetical method to customize face parts
+
+       String expectedOutput = "  +\"\"\"\"\"+\n [| x x |]\n  |  ^  |\n  | ( |\n  +-----+";
+       assertEquals(expectedOutput, outContent.toString());
+
+       System.setOut(System.out); // Restore standard output
+   }
+   ```
+
+
+Since the provided example is simple, visual inspection is usually enough.  The more complex your output generation becomes (e.g., dynamic face parts, different sizes), the more you should consider more robust testing approaches like output redirection or string comparisons.
+
+
+**How to Run the Java Code:**
+
+1. **Save:** Save the code as `PrintFace.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it:
+   ```bash
+   javac PrintFace.java 
+   ```
+3. **Run:**
+   ```bash
+   java PrintFace
+   ```
+
+
+This will print the face to your console.

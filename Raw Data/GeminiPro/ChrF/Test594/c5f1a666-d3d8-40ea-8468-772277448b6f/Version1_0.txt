@@ -1,0 +1,50 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveFirstLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some elements to the list
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+        books.add("To Kill a Mockingbird");
+        books.add("1984");
+
+
+        if (!books.isEmpty()) {
+            String removedBook = books.removeFirst();  // Remove and retrieve the first element
+
+            System.out.println("Removed book: " + removedBook);
+
+            System.out.println("Updated LinkedList: " + books);
+        } else {
+            System.out.println("The LinkedList is empty. Nothing to remove.");
+        }
+
+
+
+        // Demonstrating alternative using pollFirst() which returns null if empty
+        LinkedList<String> emptyBooks = new LinkedList<>(); // Empty list example
+
+        String polledBook = emptyBooks.pollFirst(); // Safe for empty lists
+
+        if(polledBook != null) {
+            System.out.println("Polled book (from empty list example): " + polledBook); // Won't execute in this case
+        } else {
+            System.out.println("The LinkedList (emptyBooks) was empty, pollFirst() returned null.");
+        }
+
+
+        String anotherPolledBook = books.pollFirst();// books now has 3 elements
+
+        if(anotherPolledBook != null) {
+            System.out.println("Another polled book: "+ anotherPolledBook);
+            System.out.println("Updated LinkedList (after second poll): " + books);
+        }
+    }
+}
+
+```

@@ -1,0 +1,61 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSort {
+
+    public static void main(String[] args) {
+        // Using a Comparator via lambda expression for descending order
+        TreeMap<String, Integer> treeMapDesc = new TreeMap<>( (s1, s2) -> compare(s2, s1)); 
+
+        treeMapDesc.put("apple", 1);
+        treeMapDesc.put("banana", 2);
+        treeMapDesc.put("orange", 3);
+        treeMapDesc.put("grape", 4);
+
+        System.out.println("Descending order TreeMap:");
+        System.out.println(treeMapDesc);
+
+
+        // Using a Comparator via method reference for ascending order
+        TreeMap<String, Integer> treeMapAsc = new TreeMap<>(TreeMapSort::compare); // Method reference
+
+        treeMapAsc.put("apple", 1);
+        treeMapAsc.put("banana", 2);
+        treeMapAsc.put("orange", 3);
+        treeMapAsc.put("grape", 4);
+
+
+        System.out.println("\nAscending order TreeMap:");
+        System.out.println(treeMapAsc);
+
+
+    }
+
+
+    public static int compare(String s1, String s2) {
+        // Basic string comparison for ascending order
+        return s1.compareTo(s2); 
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Comparator Usage:**  The code now effectively demonstrates how to use a `Comparator` with a `TreeMap`.
+   - **Lambda Expression for Descending Order:**  A lambda expression `(s1, s2) -> compare(s2, s1)` is used to create a `Comparator` that sorts in descending order.  Notice the reversed arguments in the lambda's call to `compare()`.
+   - **Method Reference for Ascending Order:**  A method reference `TreeMapSort::compare` provides a concise way to use the `compare` method directly as a `Comparator` for ascending order.
+2. **Clearer Examples:** The code includes separate `TreeMap` instances to illustrate both ascending and descending sorting. This makes it easier to understand the effect of the different `Comparator` implementations.
+3. **Conciseness and Readability:** The code is more concise and readable, focusing on the core concepts of using a `Comparator` with `TreeMap`.
+4. **Adherence to Method Signature Requirements:** The code strictly adheres to the requested `main` and `compare` method signatures.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TreeMapSort.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac TreeMapSort.java`
+3. **Run:** Execute the compiled code: `java TreeMapSort`
+
+
+This improved version provides a clear and concise demonstration of sorting a `TreeMap` using a custom `Comparator` implemented through both a lambda expression and a method reference, all while adhering to the specified method signatures.

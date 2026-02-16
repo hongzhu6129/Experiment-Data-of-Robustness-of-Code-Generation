@@ -1,0 +1,42 @@
+```java
+public class StringChecker {
+
+    public static void main(String[] args) {
+        System.out.println(test("programming", "program")); // true
+        System.out.println(test("programming", "Programming")); // false (case-sensitive)
+        System.out.println(test("abc", "abcd")); // false 
+        System.out.println(test("aabbc", "abc")); // true
+        System.out.println(test("", "")); // true (empty string can be formed from empty string)
+        System.out.println(test("a", "aa")); // false
+    }
+
+    public static boolean test(String first, String second) {
+        // Create char arrays to store the letters of each string.
+        char[] firstChars = first.toCharArray();
+        char[] secondChars = second.toCharArray();
+
+        // Iterate through the second string's characters.
+        for (char secondChar : secondChars) {
+            boolean found = false;
+
+            // Iterate through the first string's characters to see if a match is found.
+            for (int i = 0; i < firstChars.length; i++) {
+                if (firstChars[i] == secondChar) {
+                    // Mark the character as used in the first string (to handle duplicates correctly).
+                    firstChars[i] = '\0';  // Use null character to indicate used
+                    found = true;
+                    break; // Move to the next character in the second string
+                }
+            }
+
+            // If the character from the second string was not found in the first, return false.
+            if (!found) {
+                return false;
+            }
+        }
+
+        // If all characters from the second string were found in the first, return true.
+        return true;
+    }
+}
+```

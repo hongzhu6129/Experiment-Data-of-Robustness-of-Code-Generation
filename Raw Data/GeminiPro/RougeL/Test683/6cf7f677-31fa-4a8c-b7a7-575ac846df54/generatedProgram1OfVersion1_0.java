@@ -1,0 +1,51 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        float floatNumber = 123.456789f;
+        int decimalPlaces = 2;
+
+        // Using BigDecimal for accurate rounding
+        BigDecimal bd = new BigDecimal(Float.toString(floatNumber));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP); // HALF_UP for standard rounding
+        float roundedFloat = bd.floatValue();
+
+        System.out.println("Original float: " + floatNumber);
+        System.out.println("Rounded float to " + decimalPlaces + " decimals: " + roundedFloat);
+
+
+        // Example with different decimal places and a different float:
+        floatNumber = 987.654321f;
+        decimalPlaces = 4;
+        bd = new BigDecimal(Float.toString(floatNumber));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
+        roundedFloat = bd.floatValue();
+        System.out.println("\nOriginal float: " + floatNumber);
+        System.out.println("Rounded float to " + decimalPlaces + " decimals: " + roundedFloat);
+
+
+        // Example demonstrating rounding with HALF_EVEN (Banker's rounding)
+        floatNumber = 2.5f;  // Demonstrates the difference between HALF_UP and HALF_EVEN
+        decimalPlaces = 0;
+        bd = new BigDecimal(Float.toString(floatNumber));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_EVEN);
+        roundedFloat = bd.floatValue();
+        System.out.println("\nOriginal float: " + floatNumber);
+        System.out.println("Rounded float to " + decimalPlaces + " decimals (HALF_EVEN): " + roundedFloat);
+
+
+        floatNumber = 3.5f;  // Demonstrates the difference between HALF_UP and HALF_EVEN
+        decimalPlaces = 0;
+        bd = new BigDecimal(Float.toString(floatNumber));
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_EVEN);
+        roundedFloat = bd.floatValue();
+        System.out.println("\nOriginal float: " + floatNumber);
+        System.out.println("Rounded float to " + decimalPlaces + " decimals (HALF_EVEN): " + roundedFloat);
+
+
+
+
+    }
+}

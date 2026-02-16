@@ -1,0 +1,85 @@
+```java
+import java.util.Arrays;
+
+public class SplitSortingArray {
+
+    public static int[] split_sorting_array(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            // Find a negative number from the right
+            while (left < right && arr[right] >= 0) {
+                right--;
+            }
+
+            // Find a positive number from the left
+            while (left < right && arr[left] < 0) {
+                left++;
+            }
+
+            // Swap if necessary
+            if (left < right) {
+                swap(arr, left, right);
+                left++;
+                right--;
+            }
+        }
+        return arr;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, -2, 3, -4, 5, -6};
+        int[] result1 = split_sorting_array(arr1);
+        System.out.println(Arrays.toString(result1)); // Expected output (order may vary): [-6, -4, -2, 1, 3, 5]
+
+        int[] arr2 = {-1, -2, -3, 4, 5, 6};
+        int[] result2 = split_sorting_array(arr2);
+        System.out.println(Arrays.toString(result2)); // Expected output (order may vary): [-3, -2, -1, 4, 5, 6]
+
+
+        int[] arr3 = {1, 2, 3, 4, 5, 6};
+        int[] result3 = split_sorting_array(arr3);
+        System.out.println(Arrays.toString(result3)); // Expected output: [1, 2, 3, 4, 5, 6]
+
+        int[] arr4 = {-1, -2, -3, -4, -5, -6};
+        int[] result4= split_sorting_array(arr4);
+        System.out.println(Arrays.toString(result4)); // Expected output: [-1, -2, -3, -4, -5, -6]
+
+
+        int [] arr5 = {0, 1, -1};
+        int[] result5= split_sorting_array(arr5);
+        System.out.println(Arrays.toString(result5)); // Expected output (order may vary): [-1, 0, 1] or [-1, 1, 0] (0 can be on either side)
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles all negative, all positive, and mixed arrays correctly.**
+* **Efficiently partitions the array using a two-pointer approach.**  It avoids unnecessary swaps.
+* **Clearer and more concise code.**
+* **Includes comprehensive test cases in `main` to demonstrate functionality.**  The test cases cover various scenarios, including all positive, all negative, and mixed arrays.
+* **Addresses the placement of zeros.** The code now handles zero values correctly (they can end up on either side as the requirements don't specify a strict placement for zeros).
+
+
+Explanation:
+
+1. **`split_sorting_array(int[] arr)`:**
+   - Initializes two pointers, `left` and `right`, at the beginning and end of the array.
+   - Uses a `while` loop to iterate as long as `left` is less than `right`.
+   - Inside the loop, it finds the next negative number from the right and the next positive number from the left.
+   - If `left` is still less than `right` after finding these numbers (meaning they're out of place), it swaps them using the `swap` method.
+   - Continues this process until the pointers meet or cross, effectively partitioning the array.
+
+2. **`swap(int[] arr, int i, int j)`:**  A helper function to swap two elements in the array.
+
+3. **`main(String[] args)`:**  Contains test cases to demonstrate the functionality of the `split_sorting_array` method with different input arrays. The output shows the partitioned arrays.

@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close(); // Close the scanner to prevent resource leaks
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering normal scenarios, edge cases, and potential issues:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Decimal Numbers:**
+   - Input: 2.5, 5.7, 10.8
+   - Expected Output: 6.333333333333333
+
+3. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+4. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Mixed Positive and Negative:**
+   - Input: -5, 10, 5
+   - Expected Output: 3.3333333333333335
+
+6. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+7. **Small Numbers:**
+   - Input: 0.0001, 0.0002, 0.0003
+   - Expected Output: 2.0E-4 (or 0.0002)
+
+
+**How to Run Test Cases:**
+
+You could manually enter these values when prompted by the program. A better approach for more extensive testing would be to create automated unit tests (using JUnit or a similar framework). Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testDecimalNumbers() {
+        assertEquals(6.333333333333333, AverageCalculator.calculateAverage(2.5, 5.7, 10.8));
+    }
+     // ... Add more test cases here ...
+}
+
+```
+
+This makes testing more systematic and repeatable, especially as your program becomes more complex.  Remember to add the JUnit library to your project if you choose this approach.
+
+
+Key Improvements in the code:
+
+* **`input.close()`:** Closing the `Scanner` prevents resource leaks.
+* **`3.0` instead of `3`:** Ensures floating-point division for more accurate results.
+* **Test Cases:**  Provides comprehensive testing to validate correctness.
+* **JUnit Example:** Shows how to automate tests for better development practices.

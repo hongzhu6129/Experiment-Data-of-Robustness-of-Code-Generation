@@ -1,0 +1,30 @@
+
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30   **Expected Output:** 20.0
+2. **Input:** 1.5, 2.5, 3.5   **Expected Output:** 2.5
+3. **Input:** -5, 0, 5   **Expected Output:** 0.0
+
+**Edge Cases/Corner Cases:**
+
+4. **Input:** 0, 0, 0   **Expected Output:** 0.0
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE   **Expected Output:** 2.147483647E9  (Handles large numbers, potential overflow if integer division was used)
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE  **Expected Output:** -2.147483648E9 (Handles large negative numbers)
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE  **Expected Output:**  1.7976931348623157E308 (Handles extremely large double values)
+8. **Input:** 1, 2, Double.NaN    **Expected Output:** NaN (Handles NaN input correctly)
+
+
+**Invalid Input Cases:**
+
+9. **Input:** 1, 2, abc   **Expected Output:** "Invalid input. Please enter numbers only." (Handles non-numeric input)
+10. **Input:** 1, 2   **Expected Output:**  (The program will likely throw an exception because it expects three inputs.  The `InputMismatchException` won't be caught because it happens *before* the `try` block in the original code.  I've updated the code above to correctly handle this inside the `try`).
+
+
+**How to Run the Tests:**
+
+You can manually test the program by running it and entering the input values.  For more automated testing, you can use a testing framework like JUnit.  Here's a very basic example of how you *could* structure a JUnit test (you'll need to add the JUnit library to your project):
+

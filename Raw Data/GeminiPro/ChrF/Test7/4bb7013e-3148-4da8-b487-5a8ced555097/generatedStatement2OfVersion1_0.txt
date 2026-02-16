@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering normal scenarios and corner/edge cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output |
+|---|---|---|---|---|
+| Normal Case 1 | 10 | 20 | 30 | 20.0 |
+| Normal Case 2 | 1.5 | 2.5 | 3.5 | 2.5 |
+| Normal Case 3| -5 | 0 | 5 | 0.0 |
+| Zero Input | 0 | 0 | 0 | 0.0 |
+| Negative Numbers | -10 | -20 | -30 | -20.0 |
+| Large Numbers | 100000 | 200000 | 300000 | 200000.0 |
+| Decimal Numbers | 1.23 | 4.56 | 7.89 | 4.56 |
+| Integer Overflow (potential issue - handled by doubles) | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE |  (double)Integer.MAX_VALUE /3 + (double)Integer.MAX_VALUE/3 + Integer.MAX_VALUE/3 |  // Will handle this correctly due to using doubles.
+| Double Max Value | Double.MAX_VALUE | 10 | 20 | Infinity | // Expecting Infinity as a result
+| Double Min Value| Double.MIN_VALUE | 0 | 0 | Double.MIN_VALUE / 3.0 |
+| NaN Input | Double.NaN | 10 | 20 | NaN | // Expecting NaN
+
+
+
+**How to Run the Tests:**
+
+You can manually test these by running the program and entering the input values.  For more automated testing, consider using a testing framework like JUnit.  Here's a simple JUnit example:
+
+

@@ -1,0 +1,41 @@
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AppendToFile {
+
+    public static void main(String[] args) {
+        String filePath = "my_file.txt"; // Replace with your file path
+        String textToAppend = "This is the text to append.\n"; // Text to add
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(textToAppend);
+            System.out.println("Text appended successfully!");
+        } catch (IOException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **`FileWriter(filePath, true)`:** The crucial change is the use of the `FileWriter` constructor with two arguments.  The `true` argument enables *append mode*.  This tells the `FileWriter` to add the new text to the end of the existing file rather than overwriting it.
+
+2. **`BufferedWriter`:**  Using a `BufferedWriter` is highly recommended for file I/O as it significantly improves performance by buffering the writes.
+
+3. **Try-with-resources:** The `try (BufferedWriter writer = ...)` syntax uses try-with-resources. This ensures that the `BufferedWriter` is automatically closed even if an exception occurs, preventing resource leaks.
+
+4. **Error Handling:** The `catch (IOException e)` block handles potential `IOExceptions` that might occur during file operations and prints an informative error message.
+
+5. **Clearer Variable Names:** More descriptive variable names like `filePath` and `textToAppend` improve readability.
+
+**How to run:**
+
+1. **Save:** Save the code as `AppendToFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac AppendToFile.java`
+3. **Run:** Execute the compiled code: `java AppendToFile`
+
+Make sure the file specified by `filePath` ("my_file.txt" in this example) exists in the same directory where you run the program, or provide the full path to the file if it's located elsewhere.  If the file doesn't exist, it will be created.  Subsequent runs will append to the existing file.

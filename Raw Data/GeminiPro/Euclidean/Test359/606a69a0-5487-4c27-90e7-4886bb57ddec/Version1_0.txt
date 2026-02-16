@@ -1,0 +1,93 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CheckWordExistence {
+
+    static void checkExistance(String word, String availableChars) {
+        char[] wordChars = word.toCharArray();
+        Arrays.sort(wordChars);
+        char[] availableCharsArray = availableChars.toLowerCase().toCharArray();
+        Arrays.sort(availableCharsArray);
+
+        List<String> availableWords = new ArrayList<>();
+
+        // Iterate through possible word lengths
+        for (int len = 1; len <= word.length(); len++) {
+            findWords(wordChars, availableCharsArray, "", len, availableWords);
+        }
+
+        if (availableWords.isEmpty()) {
+            System.out.println("No words found using the available characters.");
+        } else {
+            System.out.println("Available words: " + availableWords);
+        }
+    }
+
+    static void findWords(char[] wordChars, char[] availableChars, String currentWord, int len, List<String> availableWords) {
+        if (len == 0) {
+            char[] currentWordChars = currentWord.toCharArray();
+            Arrays.sort(currentWordChars);
+            if (isSubset(currentWordChars, availableChars) && !availableWords.contains(currentWord) && isValidWord(currentWord) ) { // Check for duplicates too
+                availableWords.add(currentWord);
+            }
+
+            return;
+        }
+
+
+
+        for (char wordChar : wordChars) {
+            findWords(wordChars, availableChars, currentWord + wordChar, len - 1, availableWords);
+        }
+
+    }
+
+
+    //Helper function to determine if a word is valid
+    static boolean isValidWord(String word){
+        if (word.equals("a") || word.equals("i")) return true; // Handle single letter words 'a' and 'i'
+        if(word.length() < 2) return false; // Exclude single letters others than a or i
+        return true; // Placeholder for more elaborate dictionary check 
+                      // (consider using a HashSet loaded with a word list)
+    }
+
+
+    static boolean isSubset(char[] wordChars, char[] availableChars) {
+        int i = 0, j = 0;
+        while (i < wordChars.length && j < availableChars.length) {
+            if (wordChars[i] == availableChars[j]) {
+                i++; 
+            }
+            j++;
+        }
+        return i == wordChars.length;
+    }
+
+    public static void main(String[] args) {
+        String word = "working";
+        String availableChars = "workingor";
+        checkExistance(word, availableChars);
+
+         word = "abbc";
+         availableChars = "abc";
+        checkExistance(word, availableChars);
+
+
+         word = "working";
+         availableChars = "knirowg";
+        checkExistance(word, availableChars);
+
+        word = "aid";
+        availableChars = "iand";
+        checkExistance(word, availableChars);
+
+
+    }
+}
+
+
+
+
+```

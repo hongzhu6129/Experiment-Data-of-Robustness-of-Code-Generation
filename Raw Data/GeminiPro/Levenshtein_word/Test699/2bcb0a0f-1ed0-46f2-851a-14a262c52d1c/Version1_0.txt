@@ -1,0 +1,68 @@
+```java
+import java.util.Arrays;
+
+public class SieveOfEratosthenes {
+
+    private static int[] generatePrimes(int n) {
+        // Create a boolean array "prime[0..n]" and initialize
+        // all entries it as true. A value in prime[i] will
+        // finally be false if i is Not a prime, else true.
+        boolean[] prime = new boolean[n + 1];
+        Arrays.fill(prime, true);
+
+        for (int p = 2; p * p <= n; p++) {
+            // If prime[p] is not changed, then it is a prime
+            if (prime[p]) {
+                // Update all multiples of p
+                for (int i = p * p; i <= n; i += p)
+                    prime[i] = false;
+            }
+        }
+
+        // Count the number of primes
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                count++;
+            }
+        }
+
+        // Create an array to store the prime numbers
+        int[] primes = new int[count];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primes[index++] = i;
+            }
+        }
+
+        return primes;
+    }
+
+    public static void main(String[] args) {
+        int n = 50; // Example: Find primes up to 50 (You can change this value)
+        int[] primes = generatePrimes(n);
+
+        System.out.print("Prime numbers up to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println(); 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:** Comments explain the logic, making the code easier to understand.  Variable names are more descriptive.
+* **Efficiency:** The outer loop now iterates only up to the square root of `n` (`p * p <= n`), which is a standard optimization for the Sieve of Eratosthenes.  This significantly reduces the number of iterations needed.
+* **Correctness:** The inner loop starts at `p * p` because multiples of `p` smaller than `p * p` will have already been marked as composite by smaller prime factors.
+* **Proper Array Handling:** The code correctly calculates the number of primes before creating the `primes` array, avoiding potential `ArrayIndexOutOfBoundsException` or wasted space.
+* **Example Usage in `main`:**  Provides a clear example of how to use the `generatePrimes` method.
+* **Output Formatting:** Added a newline at the end of the output for cleaner display.
+
+
+
+
+This improved version addresses the efficiency and correctness concerns while adhering to the requested method signatures.

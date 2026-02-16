@@ -1,0 +1,30 @@
+```java
+public class RemoveWord {
+
+    public static void main(String[] args) {
+        String text = "This is a sample text with a repeated word.";
+        String wordToRemove = "a";
+
+        String result = test(text, wordToRemove);
+        System.out.println(result); // Output: This is  sample text with  repeated word.
+
+
+        text = "Another example with multiple occurrences of the word.";
+        wordToRemove = "the";
+        result = test(text, wordToRemove);
+        System.out.println(result); // Output: Another example with multiple occurrences of  word.
+
+         text = "No word to remove in this text.";
+        wordToRemove = "nonexistent";
+        result = test(text, wordToRemove);
+        System.out.println(result); // Output: No word to remove in this text.
+
+
+    }
+
+    public static String test(String text, String wordToRemove) {
+        // Using replaceAll with word boundaries (\b) to ensure only whole words are replaced.
+        return text.replaceAll("\\b" + wordToRemove + "\\b", ""); 
+    }
+}
+```

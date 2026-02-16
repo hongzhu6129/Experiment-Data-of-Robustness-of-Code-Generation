@@ -1,0 +1,76 @@
+```java
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<Integer, String> studentScores = new TreeMap<>();
+
+        // Populate the map with some sample data
+        studentScores.put(10, "Alice");
+        studentScores.put(20, "Bob");
+        studentScores.put(30, "Charlie");
+        studentScores.put(40, "David");
+        studentScores.put(50, "Eve");
+        studentScores.put(60, "Frank");
+
+        // Define the start and end keys for the submap (inclusive)
+        int startKey = 20; 
+        int endKey = 50;
+
+        // Get the submap using subMap(fromKey, toKey) - inclusive
+        NavigableMap<Integer, String> subMapInclusive = studentScores.subMap(startKey, true, endKey, true);
+
+
+        // Print the original map
+        System.out.println("Original Map:");
+        printMap(studentScores);
+
+        // Print the inclusive submap 
+        System.out.println("\nInclusive Submap (from " + startKey + " to " + endKey + "):");
+        printMap(subMapInclusive);
+
+
+
+        // Get the submap using subMap(fromKey, toKey) - exclusive
+        NavigableMap<Integer, String> subMapExclusive = studentScores.subMap(startKey, false, endKey, false);
+
+        // Print the exclusive submap
+        System.out.println("\nExclusive Submap (from " + startKey + " to " + endKey + "):");
+        printMap(subMapExclusive);
+
+
+        // Important Note about subMap: Changes to the submap are reflected in the original map, and vice-versa.
+        subMapInclusive.put(25, "George"); // Add to submap
+
+        System.out.println("\nOriginal Map after modification through submap:");
+        printMap(studentScores); // "George" will also be in studentScores
+
+
+        // headMap and tailMap Examples (for completeness):
+        NavigableMap<Integer, String> headMap = studentScores.headMap(40, true); // Less than or equal to 40
+        System.out.println("\nheadMap (<= 40):");
+        printMap(headMap);
+
+
+        NavigableMap<Integer, String> tailMap = studentScores.tailMap(40, false); // Greater than 40
+        System.out.println("\ntailMap (> 40):");
+        printMap(tailMap);
+    }
+
+
+
+    // Helper function to print the map
+    public static void printMap(NavigableMap<Integer, String> map) {
+        for (Integer key : map.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + map.get(key));
+        }
+    }
+}
+
+
+
+```

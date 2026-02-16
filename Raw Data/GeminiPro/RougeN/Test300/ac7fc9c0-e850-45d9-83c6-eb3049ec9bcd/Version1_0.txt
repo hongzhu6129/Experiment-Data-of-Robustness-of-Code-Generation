@@ -1,0 +1,67 @@
+```java
+public class CountZeroBits {
+
+    public static int countBitsTozeroBasedOnString(int n) {
+        String binaryString = Integer.toBinaryString(n);
+        int zeroCount = 0;
+        for (char bit : binaryString.toCharArray()) {
+            if (bit == '0') {
+                zeroCount++;
+            }
+        }
+        return zeroCount;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 10;
+        int zeroCount1 = countBitsTozeroBasedOnString(num1);
+        System.out.println("Number of zero bits in " + num1 + ": " + zeroCount1); // Output: 1
+
+        int num2 = 0;
+        int zeroCount2 = countBitsTozeroBasedOnString(num2);
+        System.out.println("Number of zero bits in " + num2 + ": " + zeroCount2); // Output: 1 (or 32 if you want leading zeros)
+
+
+        int num3 = 7;
+        int zeroCount3 = countBitsTozeroBasedOnString(num3);
+        System.out.println("Number of zero bits in " + num3 + ": " + zeroCount3); // Output: 0
+
+
+        int num4 = 16;  // Example with more leading zeros
+        int zeroCount4 = countBitsTozeroBasedOnString(num4);
+        System.out.println("Number of zero bits in " + num4 + ": " + zeroCount4); // Output: 4
+
+
+
+    }
+}
+```
+
+**Explanation and Handling Leading Zeros:**
+
+1. **`countBitsTozeroBasedOnString(int n)`:**
+   - Takes an integer `n` as input.
+   - Converts `n` to its binary string representation using `Integer.toBinaryString(n)`.
+   - Iterates through each character (bit) in the binary string.
+   - Increments `zeroCount` if the character is '0'.
+   - Returns the final `zeroCount`.
+
+2. **`main(String[] args)`:**
+   - Provides example usage with different integer inputs.
+   - Prints the number of zero bits for each example.
+
+**Important Note about Leading Zeros:**
+
+The `Integer.toBinaryString()` method *doesn't* include leading zeros.  If you want to consider the full 32-bit representation (including leading zeros for positive numbers), you would need to modify the code slightly.  Here's how:
+
+```java
+public static int countBitsTozeroBasedOnString(int n) {
+    String binaryString = String.format("%32s", Integer.toBinaryString(n)).replace(' ', '0'); // Pad with zeros
+    // ... rest of the method remains the same ...
+}
+```
+
+This uses `String.format("%32s", ...)` to create a 32-character string, padding with spaces as needed. Then `.replace(' ', '0')` replaces those spaces with zeros, giving you the full 32-bit representation with leading zeros.
+
+
+Choose the version (with or without leading zero handling) that best suits your specific requirements. The examples in the `main` method demonstrate the difference.

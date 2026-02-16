@@ -1,0 +1,56 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinimumCalendarValues {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        Calendar calendar = new GregorianCalendar();
+
+        // Calculate the previous date (subtract one day)
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+
+        // Get minimum values for year, month, week of year, and day of month
+        int minYear = calendar.getActualMinimum(Calendar.YEAR);
+        int minMonth = calendar.getActualMinimum(Calendar.MONTH);
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR);
+        int minDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month: " + minMonth); // Month starts from 0 (January)
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+
+
+        //  Demonstrating how to get the previous day's actual values (for context/comparison)
+        int previousYear = calendar.get(Calendar.YEAR);
+        int previousMonth = calendar.get(Calendar.MONTH);  // January is 0
+        int previousWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR); // Note:  Week of year can be tricky across years.
+        int previousDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        System.out.println("\nPrevious Day's Values (For Comparison):");
+        System.out.println("Previous Year: " + previousYear);
+        System.out.println("Previous Month: " + (previousMonth));  // Adding 1 for user readability
+        System.out.println("Previous Week of Year: " + previousWeekOfYear);
+        System.out.println("Previous Day of Month: " + previousDayOfMonth);
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Get Current Calendar Instance:** We create a `GregorianCalendar` object to represent the current date and time.
+
+2. **Calculate Previous Date:**  We use `calendar.add(Calendar.DAY_OF_MONTH, -1)` to subtract one day from the current date, effectively getting the previous day.
+
+3. **Get Minimum Values:** We use `calendar.getActualMinimum(field)` to get the minimum possible value for each field (YEAR, MONTH, WEEK_OF_YEAR, DAY_OF_MONTH). This represents the lowest possible value the calendar field can have, not the value of the previous day.
+
+4. **Print Results:** The minimum values are printed to the console.
+
+5. **Previous Day's Values (For Comparison):**  The code also demonstrates how to get the actual *values* for the previous day (year, month, week, day) so you can compare them to the minimums.  It's important to understand that the minimums are *not* necessarily the same as the previous day's values.  The minimum for day of month will always be 1, the minimum for month will always be 0 (January).
+
+
+**Important Note about Week of Year:**  Be careful when interpreting `WEEK_OF_YEAR`. It's calculated based on the locale and calendar rules.  A week might start on Sunday or Monday depending on the locale, and the first week of the year might be partial. The minimum value for `WEEK_OF_YEAR` is often 1, but its actual interpretation depends on these factors.

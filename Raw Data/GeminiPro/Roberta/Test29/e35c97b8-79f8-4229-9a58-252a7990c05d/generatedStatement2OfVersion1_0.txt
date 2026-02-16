@@ -1,0 +1,45 @@
+
+
+**Test Cases:**
+
+1. **Positive Side Length:**
+   - Input: `5`
+   - Expected Output: `64.9519052838329` (approximately)
+
+2. **Zero Side Length (Corner Case):**
+   - Input: `0`
+   - Expected Output: `Side length must be positive.`
+
+3. **Negative Side Length (Corner Case):**
+   - Input: `-3`
+   - Expected Output: `Side length must be positive.`
+
+4. **Small Side Length:**
+   - Input: `0.5`
+   - Expected Output: `0.649519052838329` (approximately)
+
+5. **Large Side Length:**
+   - Input: `100`
+   - Expected Output: `25980.76211353316` (approximately)
+
+6. **Decimal Side Length:**
+   - Input: `2.75`
+   - Expected Output: `19.225361650199822` (approximately)
+
+
+
+**Explanation of Corner Cases and how they are handled:**
+
+* **Zero Side Length:** A hexagon with a side length of zero doesn't exist, so the program should handle this case. The code checks if `side <= 0` and prints an error message if true.
+* **Negative Side Length:**  A negative side length is also geometrically invalid. The code handles this the same way as the zero side length case.
+
+
+**Improvements in the code:**
+
+* **Input Validation:** The code now checks for invalid input (zero or negative side length) and provides a user-friendly error message.
+* **Scanner Closure:** Added `input.close()` to release the scanner resource.  This is good practice to prevent resource leaks, although less critical in a simple program like this.
+* **Clearer Output:** The output message is more descriptive.
+* **Direct Calculation in `main`:**  The requirement to avoid methods other than `main` is met.  All the calculation is performed within `main`.
+
+
+This improved version is more robust and provides a better user experience.  It addresses the corner cases and follows best practices for input handling.

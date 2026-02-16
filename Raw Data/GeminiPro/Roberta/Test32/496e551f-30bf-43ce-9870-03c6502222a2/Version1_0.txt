@@ -1,0 +1,132 @@
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters++;
+            } else if (Character.isWhitespace(c)) {
+                spaces++;
+            } else if (Character.isDigit(c)) {
+                numbers++;
+            } else {
+                others++;
+            }
+        }
+
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Other characters: " + others);
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   Input:  `aa kiu, i swd skieo 236587.`
+   Expected Output:
+   ```
+   Letters: 16
+   Spaces: 5
+   Numbers: 6
+   Other characters: 2
+   ```
+
+2. **Empty String:**
+   Input: ``
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 0
+   Other characters: 0
+   ```
+
+3. **Only Spaces:**
+   Input: `     `
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 5
+   Numbers: 0
+   Other characters: 0
+   ```
+
+4. **Only Numbers:**
+   Input: `1234567890`
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 10
+   Other characters: 0
+   ```
+
+5. **Only Letters:**
+   Input: `HelloWorld`
+   Expected Output:
+   ```
+   Letters: 10
+   Spaces: 0
+   Numbers: 0
+   Other characters: 0
+   ```
+
+6. **Special Characters:**
+   Input: `!@#$%^&*()`
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 0
+   Other characters: 10
+   ```
+
+7. **Mixed Case with Unicode:**
+   Input: `H�llo W�rld 123!@#`  (Includes Unicode characters)
+   Expected Output:
+   ```
+   Letters: 10
+   Spaces: 2
+   Numbers: 3
+   Other characters: 3
+   ```
+
+8. **String with Leading/Trailing Spaces:**
+   Input: `   Hello World   `
+   Expected Output:
+   ```
+   Letters: 10
+   Spaces: 6
+   Numbers: 0
+   Other characters: 0
+   ```
+
+
+**How to Run the Test Cases (Manually):**
+
+1. Compile the Java code: `javac CharacterCounter.java`
+2. Run the program: `java CharacterCounter`
+3. Enter the input string when prompted and verify the output against the expected output.
+
+
+
+These test cases cover a good range of scenarios and will help ensure that your `CharacterCounter` program is robust and correctly handles different types of input.  You could automate these tests using a testing framework like JUnit, which is the standard for Java testing.  Let me know if you'd like to see how to do that.

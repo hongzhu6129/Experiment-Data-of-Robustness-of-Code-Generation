@@ -1,0 +1,56 @@
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Check if two arguments are provided
+        if (args.length != 2) {
+            System.out.println("Please provide two numbers as arguments.");
+            return; // Exit the program if not enough arguments are provided
+        }
+
+        try {
+            // Parse the input arguments as integers
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[1]);
+
+            // Calculate the product
+            int product = num1 * num2;
+
+            // Display the result in the specified format
+            System.out.println(num1 + " x " + num2 + " = " + product);
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter valid numbers.");
+        }
+    }
+}
+```
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `Main.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac Main.java 
+   ```
+3. **Run:** Execute the compiled code with the two numbers as command-line arguments:
+   ```bash
+   java Main 25 5
+   ```
+
+   This will output:
+   ```
+   25 x 5 = 125
+   ```
+
+**Explanation:**
+
+* **`public static void main(String[] args)`:** This is the main method where the program execution begins.  The `String[] args` parameter allows you to receive command-line arguments.
+* **Input Validation:** The code first checks if exactly two arguments are provided using `args.length`. If not, it prints an error message and exits gracefully using `return`.  It also includes a `try-catch` block to handle potential `NumberFormatException` if the user enters non-numeric input.
+* **Parsing Arguments:** `Integer.parseInt()` converts the string arguments (`args[0]` and `args[1]`) into integers.
+* **Calculation:** The product is calculated using `num1 * num2`.
+* **Output:**  `System.out.println()` displays the result in the desired format.
+
+
+This improved version handles invalid input and ensures that the program behaves correctly even if the user doesn't provide the expected input.  It's always good practice to validate user input, especially when working with command-line arguments.
+

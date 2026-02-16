@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's closed even if an exception occurs.
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the `AverageCalculator` program:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30  **Expected Output:** 20.0
+2. **Input:** 5.5, 10.5, 15.0  **Expected Output:** 10.333333333333334
+3. **Input:** -5, 0, 5  **Expected Output:** 0.0
+
+**Edge/Corner Cases:**
+
+4. **Input:** 0, 0, 0  **Expected Output:** 0.0  (Testing all zeros)
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE **Expected Output:** 2.147483647E9 (Testing large positive numbers, check for overflow - the result might not be precise due to limitations of double precision)
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE **Expected Output:** -2.147483648E9  (Testing large negative numbers, check for underflow)
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Infinity (Testing Double max values)
+8. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE **Expected Output:** 1.6940658945086005E-315 (Testing Double min values)
+
+
+**Invalid Input Cases:**
+
+9. **Input:** 10, a, 20  **Expected Output:** "Invalid input. Please enter numbers only." (Testing non-numeric input)
+10. **Input:** 10, 20   **Expected Output:**  The program will likely throw a `NoSuchElementException` because it expects three inputs. (Testing insufficient input)
+
+
+**How to Run the Tests:**
+
+You can run these test cases a couple of ways:
+
+* **Manually:**  Compile and run the Java code, and enter the input values as prompted.  Compare the output with the expected output.
+* **Automated Testing (Recommended):**  Use a testing framework like JUnit.  This is the more robust and professional approach, especially for larger projects.
+
+
+**Example JUnit Test (Partial):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testZeroes() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+
+    // Add more tests for other cases...
+}
+```
+
+
+By using a testing framework like JUnit, you can systematically test your code and ensure that it behaves correctly under various conditions. This is essential for creating reliable software.

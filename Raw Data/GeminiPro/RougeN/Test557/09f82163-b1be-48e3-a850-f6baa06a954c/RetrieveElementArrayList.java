@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+
+public class RetrieveElementArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> colors = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+
+        // Specify the index of the element to retrieve
+        int index = 2;
+
+        // Check if the index is valid
+        if (index >= 0 && index < colors.size()) {
+            // Retrieve the element at the specified index
+            String element = colors.get(index);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + index + ": " + element); 
+        } else {
+            System.out.println("Invalid index.");
+        }
+
+
+        //Example with int arrayList
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        int numIndex = 1;
+
+        if(numIndex >=0 && numIndex < numbers.size()) {
+            Integer number = numbers.get(numIndex);
+            System.out.println("Number at index " + numIndex + ": " + number);
+        } else {
+            System.out.println("Invalid index for number list.");
+        }
+    }
+}

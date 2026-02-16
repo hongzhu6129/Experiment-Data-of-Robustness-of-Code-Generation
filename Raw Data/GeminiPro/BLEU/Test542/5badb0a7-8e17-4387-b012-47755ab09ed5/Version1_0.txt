@@ -1,0 +1,88 @@
+```java
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class FileLastModifiedDate {
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide the file path as a command-line argument.");
+            return;
+        }
+
+        String filePath = args[0];
+
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            System.out.println("File not found: " + filePath);
+            return;
+        }
+
+        try {
+            // Method 1: Using BasicFileAttributes (preferred for more detailed info)
+            BasicFileAttributes attributes = Files.readAttributes(Paths.get(filePath), BasicFileAttributes.class);
+            FileTime lastModifiedTime = attributes.lastModifiedTime();
+            
+             //Convert to a Date object for easier formatting if needed.
+             Date lastModifiedDate = new Date(lastModifiedTime.toMillis());
+
+            //  Method 2: Using File.lastModified() (simpler, but less info)
+            // long lastModifiedMillis = file.lastModified(); 
+            // Date lastModifiedDate = new Date(lastModifiedMillis);
+
+
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Customize the format as needed
+            String formattedDate = dateFormat.format(lastModifiedDate);
+
+
+            System.out.println("Last Modified Date (using BasicFileAttributes): " + formattedDate);
+
+             // Method 2 output: Less versatile, but works if you just want the milliseconds.
+            // System.out.println("Last Modified Date (using file.lastModified()): " + lastModifiedDate);
+            
+
+
+
+        } catch (IOException e) {
+            System.err.println("Error reading file attributes: " + e.getMessage());
+        }
+    }
+}
+
+
+```
+
+
+To compile and run:
+
+1. **Save:** Save the code as `FileLastModifiedDate.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac FileLastModifiedDate.java
+   ```
+3. **Run:** Execute the compiled class, providing the file path as a command-line argument:
+   ```bash
+   java FileLastModifiedDate /path/to/your/file.txt  // Replace with the actual path
+   ```
+
+
+Key improvements:
+
+- **Handles missing file:** Checks if the file exists and prints an error message if it doesn't.
+- **Clearer output:**  Uses `System.out` for normal output and `System.err` for error messages.
+- **Two methods demonstrated:** Shows how to get the last modified date using both `BasicFileAttributes` (preferred) and `File.lastModified()`. The `BasicFileAttributes` approach provides more detailed information about the file and is generally recommended.
+- **Date formatting:** Includes date formatting using `SimpleDateFormat` to make the output more readable.  You can customize the format string if needed.
+- **Command-line argument:** Takes the file path as a command-line argument, making it more flexible.
+- **Exception handling:**  Includes a `try-catch` block to handle potential `IOExceptions`.
+
+
+
+

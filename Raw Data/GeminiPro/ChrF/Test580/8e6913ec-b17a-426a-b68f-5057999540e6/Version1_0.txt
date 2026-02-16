@@ -1,0 +1,52 @@
+```java
+import java.util.LinkedList;
+
+public class InsertInLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Index where to insert (0-based)
+        int indexToInsert = 1;
+
+        // Insert the element at the specified index
+        if (indexToInsert >= 0 && indexToInsert <= linkedList.size()) {  // Check for valid index
+            linkedList.add(indexToInsert, elementToInsert);
+            System.out.println("LinkedList after insertion: " + linkedList);
+        } else {
+            System.out.println("Invalid index. Insertion failed.");
+        }
+
+
+        // Example with an invalid index (out of bounds)
+        indexToInsert = 5; //Invalid index
+        if (indexToInsert >= 0 && indexToInsert <= linkedList.size()) { 
+            linkedList.add(indexToInsert, "Mango");
+            System.out.println("LinkedList after insertion: " + linkedList);
+        } else {
+            System.out.println("Invalid index. Insertion failed.");
+        }
+
+
+        // Example inserting at beginning (index 0)
+        linkedList.add(0, "Kiwi");
+        System.out.println("LinkedList after insertion at beginning: " + linkedList);
+
+        // Example inserting at end (index = linkedList.size())
+        linkedList.add(linkedList.size(), "Watermelon");
+        System.out.println("LinkedList after insertion at end: " + linkedList);
+
+
+
+    }
+}
+```

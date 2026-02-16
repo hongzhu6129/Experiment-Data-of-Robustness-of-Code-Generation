@@ -1,0 +1,16 @@
+public class SumOfTwoNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 74;
+        int num2 = 36;
+        int sum = num1 + num2;
+        System.out.println(num1 + " + " + num2 + ": " + sum); 
+
+        // For demonstrating flexibility with different numbers (not part of the original prompt's specific example)
+        // You can modify these values to test with other numbers
+        num1 = 10;
+        num2 = 25;
+        sum = num1 + num2;
+        System.out.println(num1 + " + " + num2 + ": " + sum);
+    }
+}

@@ -1,0 +1,35 @@
+```java
+class Solution {
+    /**
+     * Checks whether a prefix string created using the first 'n' characters in a given string appears somewhere else in the string.
+     *
+     * @param str The given string.
+     * @param n   The number of characters to use for the prefix.
+     * @return True if the prefix appears elsewhere in the string, false otherwise.
+     */
+    public boolean nChrStringSomewhere(String str, int n) {
+        if (str == null || str.length() <= n) {
+            return false;  // Prefix can't appear elsewhere if string is too short
+        }
+
+        String prefix = str.substring(0, n);
+        String remaining = str.substring(n);
+
+        return remaining.contains(prefix);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.nChrStringSomewhere("abab", 2)); // true ("ab" appears later)
+        System.out.println(solution.nChrStringSomewhere("abc", 1));  // false ("a" doesn't appear later)
+        System.out.println(solution.nChrStringSomewhere("abXYabc", 3)); // true ("abX" appears later as part of "abXYabc")
+        System.out.println(solution.nChrStringSomewhere("abXYab", 3)); //false ("abX" doesn't appear later)
+        System.out.println(solution.nChrStringSomewhere("abcab", 3)); //false ("abc" doesnt' appear later)
+
+        System.out.println(solution.nChrStringSomewhere(null, 2));      // false (null string)
+        System.out.println(solution.nChrStringSomewhere("abc", 4));      // false (n too large) 
+        System.out.println(solution.nChrStringSomewhere("", 0));      // false (empty string) 
+    }
+}
+```

@@ -1,0 +1,44 @@
+```java
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+
+        String str1 = "Hello"; // First string
+        String str2 = " World!"; // Second string
+
+        // Method 1: Using the + operator
+        String concatenatedString1 = str1 + str2;
+        System.out.println("Concatenated string (using +): " + concatenatedString1);
+
+
+        // Method 2: Using concat() method
+        String concatenatedString2 = str1.concat(str2);
+        System.out.println("Concatenated string (using concat()): " + concatenatedString2);
+
+
+        // Example with user input (for demonstration only - not required by problem)
+        // In a real application, handle potential exceptions (e.g., NullPointerException)
+
+        if (args.length >= 2) {  // Check if at least two command-line arguments are provided
+            String userStr1 = args[0];
+            String userStr2 = args[1];
+            String concatenatedUserString = userStr1.concat(userStr2);
+            System.out.println("Concatenated user-provided strings: " + concatenatedUserString);
+        } else {
+            System.out.println("Please provide two strings as command-line arguments.");
+        }
+
+    }
+}
+```
+
+
+To compile and run:
+
+1. **Save:** Save the code as `StringConcatenation.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac StringConcatenation.java`
+3. **Run:**  `java StringConcatenation` (This will use the default "Hello" and " World!" strings).
+4. **Run with user input:**  `java StringConcatenation "First String" "Second String"`  (Replace with your desired strings.  Use double quotes if the strings contain spaces).
+
+
+This revised answer adheres strictly to the requirement of using only the `public static void main(String[] args)` method signature.  It demonstrates string concatenation using both the `+` operator and the `concat()` method and includes an example of handling command-line arguments (for a slightly more interactive demonstration, though not strictly required by the original problem).

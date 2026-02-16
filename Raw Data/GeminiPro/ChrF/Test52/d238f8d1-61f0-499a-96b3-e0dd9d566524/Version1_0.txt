@@ -1,0 +1,92 @@
+```java
+import java.util.Arrays;
+
+public class PenultimateWord {
+
+    public static String findPenultimateWord(String sentence) {
+        if (sentence == null || sentence.trim().isEmpty()) {
+            return ""; // Handle null or empty sentences
+        }
+
+        String[] words = sentence.trim().split("\\s+"); // Split by whitespace, trimming leading/trailing spaces
+
+        if (words.length < 2) {
+            return ""; // Handle sentences with fewer than two words
+        }
+
+        return words[words.length - 2];
+    }
+
+    public static void main(String[] args) {
+        // Test cases:
+        String[] sentences = {
+                "This is a test sentence",
+                "Hello world",
+                "  Leading and trailing spaces  ",
+                "SingleWord",
+                "",
+                null,
+                "  ",
+                "one two three four five",
+                "  multiple   spaces between  ",
+                "  Hello  world  again   "
+        };
+
+        String[] expectedOutputs = {
+                "test",
+                "Hello",
+                "and",
+                "",
+                "",
+                "",
+                "",
+                "four",
+                "spaces",
+                "world"
+
+        };
+
+
+        for (int i = 0; i < sentences.length; i++) {
+            String result = findPenultimateWord(sentences[i]);
+            String expected = expectedOutputs[i];
+
+            System.out.println("Input: \"" + sentences[i] + "\"");
+            System.out.println("Output: \"" + result + "\"");
+            System.out.println("Expected: \"" + expected + "\"");
+            System.out.println(result.equals(expected) ? "PASSED" : "FAILED");
+            System.out.println();
+        }
+    }
+}
+
+
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Null and Empty:** The code now explicitly handles `null` and empty (or all-whitespace) sentences by returning an empty string. This is important for robustness.
+
+2. **Trimming Whitespace:**  The `trim()` method removes leading and trailing whitespace from the input sentence.  This prevents incorrect splitting due to extra spaces at the beginning or end.
+
+3. **Splitting by Whitespace:**  The `split("\\s+")` method splits the sentence by one or more whitespace characters. This handles cases where there are multiple spaces between words.
+
+4. **Handles Sentences with Fewer Than Two Words:** The code checks if the array of words has at least two elements. If not (e.g., a single-word sentence or an empty sentence after trimming), it returns an empty string.
+
+5. **Clearer Test Cases:** The test cases are now more organized, including corner cases and showing the expected output for each.  The `main` method now iterates through the test cases and clearly indicates whether each test passed or failed.
+
+
+
+**Key Corner Cases Covered:**
+
+* **Null sentence:**  `null`
+* **Empty sentence:** `""`
+* **Whitespace-only sentence:** `"  "`
+* **Single-word sentence:** `"SingleWord"`
+* **Sentences with leading/trailing spaces:** `"  Leading and trailing spaces  "`
+* **Sentences with multiple spaces between words:** `"  multiple   spaces between  "`
+
+
+
+This improved version is more robust and handles a wider range of input scenarios correctly. The comprehensive test cases ensure that the function works as expected under various conditions.

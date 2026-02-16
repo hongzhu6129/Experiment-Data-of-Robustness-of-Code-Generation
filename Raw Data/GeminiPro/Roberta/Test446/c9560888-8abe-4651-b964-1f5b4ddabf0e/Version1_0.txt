@@ -1,0 +1,65 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
+public class WeeklyDates {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Define the week fields (e.g., first day of the week) based on your locale
+        //  Using Locale.US for Sunday as the first day of the week (common in US)
+        WeekFields weekFields = WeekFields.of(Locale.US); //  Change Locale as needed
+
+
+        // Calculate the first day of the current week
+        LocalDate firstDayOfWeek = currentDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)); // Using Sunday as start
+
+        // Calculate the last day of the current week (Saturday)
+        LocalDate lastDayOfWeek = firstDayOfWeek.plusDays(6);
+
+
+        // Print the first and last days of the current week
+        System.out.println("Current week:");
+        System.out.println("First day: " + firstDayOfWeek);
+        System.out.println("Last day: " + lastDayOfWeek);
+
+        System.out.println("--------------------");
+
+
+        // Example: Calculate for several weeks (e.g., next 4 weeks):
+        for (int i = 1; i <= 4; i++) {
+            firstDayOfWeek = firstDayOfWeek.plusWeeks(1);
+            lastDayOfWeek = firstDayOfWeek.plusDays(6);
+
+            System.out.println("Week " + (i+1) + ":"); // +1 to not start at week 0
+            System.out.println("First day: " + firstDayOfWeek);
+            System.out.println("Last day: " + lastDayOfWeek);
+        }
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Locale Handling:** The code now uses `WeekFields.of(Locale.US)` (or any other `Locale`) to correctly determine the first day of the week based on cultural conventions. This is essential for internationalization.  Change the `Locale` if your week starts on a different day (e.g., `Locale.FRANCE` for Monday).
+
+2. **Clearer Calculations:** The calculations for the first and last days of the week are more concise using `TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)` and `plusDays(6)`.
+
+3. **Example for Multiple Weeks:** The code demonstrates how to calculate the first and last days for several subsequent weeks using a loop.
+
+4. **Output Formatting:** The output is formatted more clearly to show which week the dates belong to.
+
+5. **Comments:**  Comments explain the purpose of each section of code.
+
+
+How to use for different start-of-week days:
+
+* **Monday:** `WeekFields weekFields = WeekFields.of(Locale.FRANCE);` (or another locale where Monday is the first day of the week).  Then use `TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)`.
+* **Other days:** Adjust the `DayOfWeek` accordingly in the `TemporalAdjusters` (e.g., `DayOfWeek.TUESDAY`, `DayOfWeek.WEDNESDAY`, etc.).

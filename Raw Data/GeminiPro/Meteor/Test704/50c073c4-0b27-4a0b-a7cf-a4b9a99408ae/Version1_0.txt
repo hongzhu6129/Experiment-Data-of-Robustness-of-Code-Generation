@@ -1,0 +1,45 @@
+```java
+class Solution {
+    /**
+     * Calculates e^x using the Taylor series expansion up to n terms.
+     *
+     * @param n The number of terms to use in the Taylor series.
+     * @param x The exponent.
+     * @return The approximate value of e^x.
+     */
+    static float Taylor_exponential(int n, float x) {
+        float sum = 1.0f; // Initialize sum with the first term (x^0/0!)
+
+        for (int i = 1; i <= n; i++) {
+            float term = 1.0f;
+            for (int j = 1; j <= i; j++) {
+                term *= x / j;  // Calculate x^i / i! iteratively
+            }
+            sum += term; 
+        }
+        return sum;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 10; // Number of terms
+        float x = 2.0f; // Exponent
+
+        float result = Taylor_exponential(n, x);
+        System.out.println("e^" + x + " (using " + n + " terms): " + result);
+
+
+        n = 15;
+        x = -1f;
+        result = Taylor_exponential(n,x);
+        System.out.println("e^" + x + " (using " + n + " terms): " + result);
+
+
+        n = 20;
+        x = 0f;
+        result = Taylor_exponential(n,x);
+        System.out.println("e^" + x + " (using " + n + " terms): " + result);
+        
+    }
+}
+```

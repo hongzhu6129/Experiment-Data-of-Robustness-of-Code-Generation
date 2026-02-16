@@ -1,0 +1,122 @@
+```java
+import java.util.Scanner;
+
+public class DistanceBetweenTwoPoints {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Given Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106  (Near Perth, Australia)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (approximately Earth's circumference / 4)
+
+6. **Points close together:**
+    - lat1: 40.7128
+    - lon1: -74.0060 (New York City)
+    - lat2: 40.7306
+    - lon2: -73.9352 (Brooklyn)
+    - Expected Output: ~8.5 km (approx.)
+
+
+7. **Date Line Crossing (West to East):**
+    - lat1: 0
+    - lon1: 179
+    - lat2: 0
+    - lon2: -179
+    - Expected Output: ~40.03 km (Small distance because points are close despite crossing the date line)
+
+8. **Date Line Crossing (East to West):**
+    - lat1: 0
+    - lon1: -179
+    - lat2: 0
+    - lon2: 179
+    - Expected Output: ~40.03 km
+
+
+These test cases cover a good range of scenarios, including points at extreme latitudes, points on the equator, points close together, and points on opposite sides of the Earth, as well as handling the date line crossing correctly.  When testing, be aware that due to floating-point arithmetic, there might be slight variations in the results compared to the expected values.  Using `assertEquals` with a delta (tolerance) is recommended for such tests in unit testing frameworks like JUnit.
+
+
+Example of a JUnit test (adapt as needed):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DistanceBetweenTwoPointsTest {
+
+    @Test
+    void testGivenExample() {
+        assertEquals(1480.0848451069087, DistanceBetweenTwoPoints.calculateDistance(25, 35, 35.5, 25.5), 0.001); // Delta for tolerance
+    }
+
+    // Add more test methods for other test cases
+
+     // Example of a utility method to simplify test cases (add to DistanceBetweenTwoPoints class)
+     public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+          double earthRadius = 6371.01;
+          lat1 = Math.toRadians(lat1);
+          lon1 = Math.toRadians(lon1);
+          lat2 = Math.toRadians(lat2);
+          lon2 = Math.toRadians(lon2);
+          return earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+    }
+}
+```

@@ -1,0 +1,48 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the stars section
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) { // Rows with stars and stripes
+                for (int j = 0; j < 6; j++) {
+                    System.out.print("* ");
+                }
+                System.out.print("  "); // Space between stars and stripes
+                for (int j = 0; j < 34; j++) {
+                    System.out.print("=");
+                }
+            } else { // Rows with only stripes
+                for(int j=0; j < 46; j++) {
+                     System.out.print("=");
+                }
+
+            }
+            System.out.println(); // New line after each row
+        }
+
+
+        // Print the stripes section
+        for (int i = 0; i < 6; i++) {
+             for(int j=0; j < 46; j++) {
+                     System.out.print("=");
+                }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+This code will print an approximate representation of the American flag to the console using asterisks for the stars and equal signs for the stripes.  The proportions aren't perfect because of character limitations on the screen, but it captures the general layout.   Key improvements over previous attempts:
+
+* **Handles both star rows and stripe rows:**  The logic now correctly alternates between rows with stars and stripes and rows with just stripes.
+* **Spacing between stars and stripes:** Adds spacing to visually separate the star field from the stripes in the appropriate rows.
+* **Consistent stripe width:**  The stripes now extend the full width of the flag.
+* **Simplified and clearer code:** Uses fewer nested loops and more straightforward logic.
+
+
+
+
+
+

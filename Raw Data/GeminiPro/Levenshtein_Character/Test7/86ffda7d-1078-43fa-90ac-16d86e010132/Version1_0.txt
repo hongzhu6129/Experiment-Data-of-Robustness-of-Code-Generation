@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 to ensure floating-point division
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1. Positive Numbers | 10, 20, 30 | 20.0 |
+| 2. Negative Numbers | -10, -20, -30 | -20.0 |
+| 3. Mixed Numbers | -5, 15, 25 | 11.666666666666666 |  // Demonstrates floating-point result
+| 4. Zeroes | 0, 0, 0 | 0.0 |
+| 5. Large Numbers | 1000000, 2000000, 3000000 | 2000000.0 |
+| 6. Small Numbers | 0.001, 0.002, 0.003 | 0.002 |
+| 7.  Integer Overflow (Corner Case) | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | Positive Infinity or Exception (depends on how Java handles overflow) |
+| 8. Integer Underflow (Corner Case) | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | Negative Infinity or Exception |
+| 9.  Doubles with very large differences in magnitude (Corner Case)| 1.0e300, 1.0, 1.0 |  1.0E300 (effectively dominated by the largest number) |
+| 10. NaN Input (Corner Case) | Double.NaN, 10, 20  | NaN |
+
+
+
+**How to Run the Test Cases (using JUnit - recommended):**
+
+1. **Add JUnit to your project:**  If you're using an IDE like IntelliJ or Eclipse, this is usually a simple process (search for "add JUnit library" in your IDE's help).  Alternatively, you can manually include the JUnit JAR file in your project's classpath.
+
+2. **Create a test class:**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    // Add tests for the other cases similarly...
+    @Test
+    void testIntegerOverflow() {
+         assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE)); // Or check for an exception
+    }
+     // ... more tests
+}
+```
+
+3. **Run the tests:** Your IDE will have a way to run JUnit tests.  This will execute each `@Test` method and report whether the assertions passed or failed.
+
+
+By using JUnit (or a similar testing framework), you can easily automate the process of testing your code and ensure that it works correctly for a variety of inputs, including edge cases and potential error conditions. This greatly improves the reliability and maintainability of your code.

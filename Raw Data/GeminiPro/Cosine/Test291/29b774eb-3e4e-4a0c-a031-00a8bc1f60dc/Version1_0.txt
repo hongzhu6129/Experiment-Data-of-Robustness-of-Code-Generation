@@ -1,0 +1,58 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean element : row) {
+                System.out.print(element ? "t " : "f "); // Print 't' for true and 'f' for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+**Explanation and Key Improvements:**
+
+1. **`main` Method:**  The `main` method now initializes a sample 2D boolean array and calls the `printBooleanArray` method to handle the printing logic.
+
+2. **`printBooleanArray` Method:** This helper method takes the 2D boolean array as input.  It uses nested enhanced `for` loops (also known as for-each loops) to iterate through the array:
+   - The outer loop iterates through each row of the array.
+   - The inner loop iterates through each boolean element within a row.
+
+3. **Conditional Printing:** Inside the inner loop, the ternary operator (`condition ? value_if_true : value_if_false`) is used to print "t" if the boolean element is `true` and "f" if it's `false`.  This makes the output more concise and readable.
+
+4. **Newlines:** `System.out.println()` is used after each row is printed to ensure the output is formatted correctly as a 2D array.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `PrintBooleanArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac PrintBooleanArray.java
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java PrintBooleanArray
+   ```
+
+This will print the boolean array to the console, with 't' representing `true` and 'f' representing `false`, formatted nicely as a 2D array.
+
+
+**Example Output (for the sample array):**
+
+```
+t f t 
+f t f 
+t t f 
+```

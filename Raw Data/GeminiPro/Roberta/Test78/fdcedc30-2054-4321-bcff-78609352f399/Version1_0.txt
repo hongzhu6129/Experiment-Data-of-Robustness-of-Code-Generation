@@ -1,0 +1,43 @@
+```java
+public class CheckSecurityManagerAndEnvVariables {
+
+    public static void main(String[] args) {
+
+        // 7. Check if a security manager is established
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("Security Manager is established.");
+        } else {
+            System.out.println("Security Manager is NOT established.");
+        }
+
+        System.out.println("--------------------");
+
+        // 90. Get environment variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP");  // Or System.getenv("TMP") depending on the OS
+        String username = System.getenv("USERNAME"); // or USER on some systems
+
+
+        // Handle potential nulls (environment variables might not be set)
+        System.out.println("PATH: " + (path != null ? path : "Not set"));
+        System.out.println("TEMP: " + (temp != null ? temp : "Not set"));
+        System.out.println("USERNAME: " + (username != null ? username : "Not set"));
+    }
+}
+```
+
+
+Explanation:
+
+**7. Check Security Manager:**
+
+* `System.getSecurityManager()` returns the current security manager or `null` if none is set.
+* We check if the returned value is `null` to determine if a security manager is active.
+
+**90. Get Environment Variables:**
+
+* `System.getenv(String name)` retrieves the value of the specified environment variable.
+* We use this method to get the values of "PATH", "TEMP" (or "TMP"), and "USERNAME".
+* **Important:** Environment variables are case-sensitive on some operating systems (e.g., Linux/macOS), but case-insensitive on others (e.g., Windows). "TEMP" and "TMP" are often used interchangeably, but it's best to check your OS documentation. Similarly,  "USERNAME" or "USER" might be used for the username.
+* **Handling Nulls:**  Environment variables are not guaranteed to be set.  The code includes a check for `null` to avoid a `NullPointerException` if a variable isn't defined. It prints "Not set" if the variable is not found.

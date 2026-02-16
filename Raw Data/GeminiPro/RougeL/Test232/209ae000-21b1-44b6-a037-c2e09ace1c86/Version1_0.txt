@@ -1,0 +1,66 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+
+    /**
+     * Removes duplicate elements from a sorted array in-place.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the updated array without duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated array length: " + len1); // Output: 2
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated array length: " + len2); // Output: 5
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: [0, 1, 2, 3, 4]
+
+         int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated array length: " + len3); // Output: 0
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: []
+
+
+        int[] nums4 = null; // Test with null input
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated array length: " + len4); // Output: 0
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:** `uniqueIndex` is used instead of `j` to improve readability.  This makes the code's purpose more self-explanatory.
+2. **Handles Edge Cases:** The code now explicitly handles the cases of an empty or null input array, preventing potential `NullPointerException` errors.
+3. **In-Place Modification:** The `removeDuplicates` method modifies the original array `nums` directly as requested by LeetCode.  The elements beyond the `uniqueIndex` are not relevant anymore.
+4. **Return Value:**  The function correctly returns the length of the updated array (the number of unique elements).
+5. **Comprehensive Testing in `main`:** The `main` method demonstrates the function's usage with various test cases, including empty and null arrays,  and it now prints the updated array content using `Arrays.copyOfRange` to clearly visualize the results.  This ensures that the code is robust and works as intended in different scenarios.
+
+
+
+This improved version addresses the potential issues of the previous version and follows LeetCode's in-place modification requirement while adhering to the specified method signatures.

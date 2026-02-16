@@ -1,0 +1,97 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class Rectangle {
+    double length;
+    double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double calculateArea() {
+        return length * width;
+    }
+
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+
+    public static void printAreaAndPerimeter(double length, double width) {
+        if (length <= 0 || width <= 0) {
+            System.out.println("Invalid dimensions. Length and width must be positive values.");
+            return; // Or throw an exception if appropriate for your application
+        }
+        
+        Rectangle rectangle = new Rectangle(length, width);
+        double area = rectangle.calculateArea();
+        double perimeter = rectangle.calculatePerimeter();
+
+        System.out.println("Area: " + area);
+        System.out.println("Perimeter: " + perimeter);
+    }
+
+
+    public static void main(String[] args) {
+        // Test cases (you can add more)
+        printAreaAndPerimeter(5, 10);       // Normal case
+        printAreaAndPerimeter(2.5, 7.8);    // Decimal values
+        printAreaAndPerimeter(0, 5);        // Zero length
+        printAreaAndPerimeter(-5, 10);      // Negative length
+        printAreaAndPerimeter(5, -10);      // Negative width
+        printAreaAndPerimeter(Double.MAX_VALUE, 1); // Large value
+    }
+}
+
+
+class RectangleTest {
+    @Test
+    void testCalculateArea() {
+        Rectangle rectangle = new Rectangle(5, 10);
+        assertEquals(50, rectangle.calculateArea());
+    }
+
+
+    @Test
+    void testCalculatePerimeter() {
+        Rectangle rectangle = new Rectangle(5, 10);
+        assertEquals(30, rectangle.calculatePerimeter());
+
+    }
+
+    @Test
+    void testZeroLength() {
+       Rectangle.printAreaAndPerimeter(0,5);
+    }
+
+    @Test
+    void testNegativeLength() {
+        Rectangle.printAreaAndPerimeter(-5, 10);
+    }
+
+
+    @Test
+    void testLargeValues() {
+        Rectangle.printAreaAndPerimeter(Double.MAX_VALUE, 1);
+    }
+
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Object-Oriented Approach:** The code now uses a `Rectangle` class, which is more organized and reusable.
+2. **Input Validation:**  The `printAreaAndPerimeter` method now checks for invalid inputs (zero or negative length/width) and prints an error message. This prevents unexpected calculations or crashes.
+3. **Clearer Output:** The output is formatted to clearly label the area and perimeter.
+4. **Test Cases:** The `main` method includes several test cases, demonstrating usage with different inputs, including corner cases (zero, negative, and large values).
+5. **JUnit Tests:** I've added a separate `RectangleTest` class that uses JUnit 5 to demonstrate how to write unit tests for the `Rectangle` class. This is best practice for robust code.  The tests cover normal cases, and importantly, also test the corner/error cases.  You'd typically run these tests using a testing framework (like in an IDE or with build tools like Maven or Gradle).
+
+
+
+**How to Run the JUnit Tests:**
+
+The easiest way to run JUnit tests is within an IDE (like IntelliJ IDEA, Eclipse, or NetBeans) that has built-in support for JUnit.  If you're using a command-line build tool (Maven or Gradle), these tools also provide ways to run tests.  The specifics will depend on your setup.

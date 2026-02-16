@@ -1,0 +1,52 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveFirstTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some elements
+        treeSet.add(5);
+        treeSet.add(2);
+        treeSet.add(8);
+        treeSet.add(1);
+        treeSet.add(9);
+
+        // Print the original TreeSet
+        System.out.println("Original TreeSet: " + treeSet);
+
+        // Retrieve and discard the first element
+        if (!treeSet.isEmpty()) {
+            Integer firstElement = treeSet.pollFirst();
+            System.out.println("Removed first element: " + firstElement);
+        } else {
+            System.out.println("TreeSet is empty. Cannot remove first element.");
+        }
+
+        // Print the TreeSet after removing the first element
+        System.out.println("TreeSet after removal: " + treeSet);
+
+         // Example with Strings
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        System.out.println("Original String TreeSet: " + stringTreeSet);
+
+        if (!stringTreeSet.isEmpty()) {
+            String firstString = stringTreeSet.pollFirst();
+            System.out.println("Removed first string: " + firstString);
+        } else {
+             System.out.println("String TreeSet is empty. Cannot remove first string.");
+        }
+
+        System.out.println("String TreeSet after removal: " + stringTreeSet);
+
+
+    }
+}
+```
+

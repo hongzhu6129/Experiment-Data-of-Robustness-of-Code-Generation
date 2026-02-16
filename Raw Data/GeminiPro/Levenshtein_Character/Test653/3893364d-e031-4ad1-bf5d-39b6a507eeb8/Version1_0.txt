@@ -1,0 +1,37 @@
+```java
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Collection;
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class TimelineValues {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to represent the timeline (you can use any NavigableMap implementation)
+        NavigableMap<ZonedDateTime, String> timeline = new TreeMap<>();
+
+        // Add some events to the timeline with ZonedDateTime keys and String values
+        timeline.put(ZonedDateTime.of(LocalDateTime.of(2024, Month.JANUARY, 10, 10, 0), ZoneId.of("UTC")), "Event 1");
+        timeline.put(ZonedDateTime.of(LocalDateTime.of(2024, Month.FEBRUARY, 15, 12, 0), ZoneId.of("UTC")), "Event 2");
+        timeline.put(ZonedDateTime.of(LocalDateTime.of(2024, Month.MARCH, 20, 9, 0), ZoneId.of("UTC")), "Event 3");
+
+        // Get a collection view of the values
+        Collection<String> values = timeline.values();
+
+        // Print the values
+        for (String value : values) {
+            System.out.println(value);
+        }
+
+         //Demonstrates the NavigableMap nature of the example (Optional -  just to illustrate additional functionality)
+        ZonedDateTime searchKey = ZonedDateTime.of(LocalDateTime.of(2024, Month.FEBRUARY, 1, 12, 0), ZoneId.of("UTC"));
+        System.out.println("\nEvent Before Feb 1st : " + timeline.floorEntry(searchKey));
+        System.out.println("Event On or After Feb 1st : " + timeline.ceilingEntry(searchKey));
+
+
+    }
+}
+```

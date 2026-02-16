@@ -1,0 +1,15 @@
+
+
+**Test Cases (Conceptual - since output is visual):**
+
+1. **Basic Test:**  Run the program and visually verify that the face prints correctly. It should resemble a simple smiley face.
+
+2. **Character Encoding Test:**  Run the program on different systems/terminals with potentially different character encodings. Ensure the characters (", [, ], |, o, ^, -, +) display correctly and the face structure is maintained.  This tests for potential issues with special character representation.
+
+3. **Output Redirection Test (Optional, for advanced testing):** Redirect the program's output to a file and then compare the file content with the expected output string. This allows for automated testing.  Example (in a *nix-like shell): `java PrintFace > output.txt`  Then compare `output.txt` with the expected face string.
+
+4. **Whitespace Sensitivity Test (Not Applicable in this specific case):** While not strictly a corner case, in some output formatting scenarios, extra or missing spaces can disrupt the visual appearance.  In this simple face program, extra whitespace inside the string literals won't significantly affect the output because `println` prints the entire string as-is.  However, if you were building the face string dynamically, you'd need to be careful about whitespace.
+
+
+**Example of Automated Testing (using JUnit - a Java testing framework):**
+

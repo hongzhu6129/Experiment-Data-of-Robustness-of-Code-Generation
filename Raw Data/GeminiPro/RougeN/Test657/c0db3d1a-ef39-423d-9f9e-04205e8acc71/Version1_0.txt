@@ -1,0 +1,51 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Search for a specific key
+        String searchKey = "Orange"; 
+        if (treeMap.containsKey(searchKey)) {
+            System.out.println("Key \"" + searchKey + "\" found. Value: " + treeMap.get(searchKey));
+        } else {
+            System.out.println("Key \"" + searchKey + "\" not found in the TreeMap.");
+        }
+
+        // Search for a key that doesn't exist
+        searchKey = "Mango";
+        if (treeMap.containsKey(searchKey)) {
+            System.out.println("Key \"" + searchKey + "\" found. Value: " + treeMap.get(searchKey));
+        } else {
+            System.out.println("Key \"" + searchKey + "\" not found in the TreeMap.");
+        }
+
+
+        //Search for a value (less efficient - requires iterating)
+        int searchValue = 2;
+        String foundKey = null;
+        for (String key : treeMap.keySet()) {
+            if (treeMap.get(key).equals(searchValue)) {
+                foundKey = key;
+                break; // Stop searching once found
+            }
+        }
+
+        if (foundKey != null) {
+            System.out.println("Value " + searchValue + " found for key: " + foundKey);
+        } else {
+            System.out.println("Value " + searchValue + " not found in the TreeMap.");
+        }
+
+    }
+}
+```

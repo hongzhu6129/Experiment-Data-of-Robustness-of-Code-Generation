@@ -1,0 +1,41 @@
+```java
+class Solution {
+    /**
+     * Checks if a given string contains the string "pop" where the middle 'o' can be any character.
+     *
+     * @param str The input string.
+     * @return True if the string contains the pattern, false otherwise.
+     */
+    public boolean popInTheString(String str) {
+        if (str == null || str.length() < 3) {
+            return false;
+        }
+
+        for (int i = 0; i <= str.length() - 3; i++) {
+            if (str.charAt(i) == 'p' && str.charAt(i + 2) == 'p') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.popInTheString("abcpipda")); // true
+        System.out.println(solution.popInTheString("abcppoda")); // true
+        System.out.println(solution.popInTheString("abcppopa")); // true
+        System.out.println(solution.popInTheString("abcppda")); // false
+        System.out.println(solution.popInTheString("abcda"));   // false
+        System.out.println(solution.popInTheString("pop"));     // true
+        System.out.println(solution.popInTheString("ppp"));     // true
+        System.out.println(solution.popInTheString("pp"));      // false
+        System.out.println(solution.popInTheString("p"));      // false
+        System.out.println(solution.popInTheString(""));       // false
+        System.out.println(solution.popInTheString(null));     // false
+
+
+    }
+}
+```

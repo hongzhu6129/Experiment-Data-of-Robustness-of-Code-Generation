@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations in this code:
+
+1. **Error Handling:**  The code checks for invalid input (negative `n` or `k`) and handles the cases where `k` is out of the valid range (0 to `n`).
+
+2. **Optimization:** It uses the symmetry property of binomial coefficients (`nCk = nC(n-k)`) to reduce calculations when `k` is greater than `n/2`. This makes the calculation more efficient.
+
+3. **Overflow Prevention:** The calculation within the loop `result = result * (n - i + 1) / i` is structured to minimize the risk of integer overflow by performing the multiplication before the division.  It's a standard technique for binomial coefficient computations.
+
+4. **Clearer User Input:**  The `main` method uses a `Scanner` to get user input, making it more user-friendly.  It prompts the user clearly for the values of `n` and `k`.
+
+5. **Informative Output:**  The output clearly states the calculated binomial coefficient and the input values.
+
+6. **Resource Management:** The `Scanner` is closed at the end using `scanner.close()` to release the resource.

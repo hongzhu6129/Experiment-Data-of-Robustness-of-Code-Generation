@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class LargestOfTwo {
+
+    public static int findLargest(int num1, int num2) {
+        return Math.max(num1, num2); 
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        int largest = findLargest(num1, num2);
+        System.out.println("The largest number is: " + largest);
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output |
+|---|---|---|---|
+| Positive Numbers | 10 | 5 | 10 |
+| Negative Numbers | -5 | -10 | -5 |
+| Zero and Positive | 0 | 7 | 7 |
+| Zero and Negative | 0 | -3 | 0 |
+| Both Zero | 0 | 0 | 0 |
+| Equal Positive Numbers | 15 | 15 | 15 |
+| Equal Negative Numbers | -8 | -8 | -8 |
+| Positive and Negative | 6 | -2 | 6 |
+| Negative and Positive | -4 | 9 | 9 |
+| Large Positive Numbers | 100000 | 50000 | 100000 |  // Testing with large positive values.
+| Large Negative Numbers | -100000 | -50000 | -50000 | // Testing with large negative values
+| Integer.MAX_VALUE and Integer.MIN_VALUE | Integer.MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE | //Extreme values
+
+
+**How to run the test cases:**
+
+You can manually input these values when prompted by the program, or you can create a separate test class (using JUnit or TestNG) to automate the testing process. An automated approach is preferred for larger projects.
+
+
+Example using JUnit (you'll need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LargestOfTwoTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(10, LargestOfTwo.findLargest(10, 5));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-5, LargestOfTwo.findLargest(-5, -10));
+    }
+
+    // Add more tests for the remaining test cases.  
+    @Test
+    void testEqualPositive() {
+      assertEquals(15, LargestOfTwo.findLargest(15, 15));
+    }
+
+
+    @Test
+    void testLargePositive() {
+      assertEquals(100000, LargestOfTwo.findLargest(100000, 50000));
+    }
+
+     @Test
+    void testExtremeValues() {
+      assertEquals(Integer.MAX_VALUE, LargestOfTwo.findLargest(Integer.MAX_VALUE, Integer.MIN_VALUE));
+    }
+
+    // ... and so on for the rest
+}
+```
+
+This will allow you to easily run all your tests and quickly identify any issues in your `findLargest` method.  The `assertEquals` method checks if the expected value matches the actual result returned by your function.
+

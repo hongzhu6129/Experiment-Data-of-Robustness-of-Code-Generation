@@ -1,0 +1,70 @@
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                // Split the line into parts based on whitespace
+                String[] parts = line.split("\\s+"); // Split by whitespace
+
+                for (String part : parts) {
+                    try {
+                        int num = Integer.parseInt(part);
+                        System.out.println("Integer: " + num);
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid integer: " + part);
+                        // Handle the error appropriately, e.g., skip the invalid part,
+                        // assign a default value, or terminate the program. 
+                        // The choice depends on the specific requirements.
+
+                        // Example of skipping the invalid part:
+                        // continue; // goes to the next 'part' in the loop.
+
+                         //Example of terminating for any invalid input
+                        // return; //Exits the main method, stopping the program.
+
+
+                        //Example of assigning a default value:
+                        // int num = -1; // Or any other default you want
+                        // System.out.println("Using default value for: " + part + " => " + num);
+
+                    }
+                }
+            }
+        } finally {
+            scanner.close();
+        }
+    }
+}
+```
+
+
+**Explanation of the Error and Solution**
+
+The error "invalid literal for int() with base 10: '\r[|'" happens when you try to convert a string that isn't a valid integer (base 10) into an integer using `Integer.parseInt()`.  Characters like '\r' (carriage return), '[' and '|' are not valid digits.
+
+The solution is to:
+
+
+1. **Proper Input Handling:** The most common cause is issues with how you're reading input.  The provided code uses a `Scanner` and splits the input line by whitespace.  This handles cases where the invalid characters are mixed with valid integers on the same line.
+
+2. **`try-catch` Block:** The `try-catch` block is crucial. Inside the `try` block, you attempt to convert the string to an integer. If `Integer.parseInt()` encounters an invalid character, it throws a `NumberFormatException`. The `catch` block handles this exception.
+
+3. **Error Handling within the `catch`:**  You have several options in the `catch` block depending on how you want to deal with bad input:
+   - **Skip the invalid part:**  Use `continue;`  to proceed to the next part of the input. This is the example in the provided code.
+   - **Terminate the program:**  Use `return;` to stop the program entirely if any invalid input is encountered.
+   - **Assign a default value:** Assign a default value (like -1 or 0) to the integer variable if the conversion fails. This allows your program to continue running even with bad input.
+   - **Print an error message (as shown):** Inform the user that there was an issue with their input.
+
+
+**How to Use the Code:**
+
+1. **Save:** Save the code as `Main.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Compile the code using:  `javac Main.java`
+3. **Run:** Run the compiled code: `java Main`
+4. **Input:** Enter your input, pressing Enter after each line.  The program will process each line, handling any invalid integer inputs according to the error handling logic in the `catch` block.

@@ -1,0 +1,27 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class RetainSameElements {
+
+    public static void main(String[] args) {
+        // Create two sample sets
+        Set<String> set1 = new HashSet<>();
+        set1.add("apple");
+        set1.add("banana");
+        set1.add("orange");
+        set1.add("grape");
+
+        Set<String> set2 = new HashSet<>();
+        set2.add("banana");
+        set2.add("grape");
+        set2.add("kiwi");
+        set2.add("mango");
+
+        // Retain elements that are common to both sets in set1
+        set1.retainAll(set2);
+
+
+        // Print the updated set1 (containing only the common elements)
+        System.out.println("Common elements: " + set1); 
+    }
+}

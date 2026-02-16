@@ -1,0 +1,55 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPoint {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+        linkedList.add("Date");
+        linkedList.add("Elderberry");
+
+        // Specify the starting point (e.g., index 2)
+        int startIndex = 2;
+
+        // Iterate through the LinkedList from the specified point using a ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startIndex);
+
+        System.out.println("Iterating from index " + startIndex + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        // Example demonstrating iterating backwards from a point:
+        System.out.println("\nIterating backwards from index " + startIndex + ":");
+
+         iterator = linkedList.listIterator(startIndex); // Reset to start index
+
+        while (iterator.hasPrevious()) { // Use hasPrevious() and previous()
+            System.out.println(iterator.previous()); 
+        }
+
+         //Handling invalid startIndex:
+        startIndex = 10; // Invalid index (out of bounds)
+
+        try {
+            iterator = linkedList.listIterator(startIndex);
+            System.out.println("\nIterating from index " + startIndex + ":");
+
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid start index. " + e.getMessage());
+        }
+
+
+    }
+}
+```

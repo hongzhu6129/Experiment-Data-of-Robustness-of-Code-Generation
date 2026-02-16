@@ -1,0 +1,56 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first date (yyyy-MM-dd):");
+        String date1String = scanner.nextLine();
+
+        System.out.println("Enter the second date (yyyy-MM-dd):");
+        String date2String = scanner.nextLine();
+
+        try {
+            LocalDate date1 = LocalDate.parse(date1String, DateTimeFormatter.ISO_DATE);
+            LocalDate date2 = LocalDate.parse(date2String, DateTimeFormatter.ISO_DATE);
+
+            Period period = Period.between(date1, date2);
+
+            System.out.println("Difference:");
+            System.out.println("Years: " + period.getYears());
+            System.out.println("Months: " + period.getMonths());
+           // System.out.println("Days: " + period.getDays()); //While the question didn't ask for days, uncomment this to see days as well
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Input Validation:**  The `try-catch` block handles `DateTimeParseException` to gracefully manage invalid date inputs from the user. This prevents the program from crashing and provides helpful feedback.
+* **Clear Prompts:** The `System.out.println()` statements guide the user on how to enter the dates correctly.
+* **ISO 8601 Date Format:**  Uses the standard `yyyy-MM-dd` format for parsing and output, which is a widely recognized and unambiguous format.
+* **`java.time` API:**  Leverages the modern `java.time` API (introduced in Java 8) for date and time handling. This API is significantly improved over the older `Date` and `Calendar` classes.
+* **Resource Management:** The `scanner.close()` statement closes the `Scanner` to release system resources. While not strictly essential in this simple example, it's good practice.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DateDifference.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac DateDifference.java`
+3. **Run:** Execute the compiled program: `java DateDifference`
+
+
+The program will then prompt you to enter the two dates.  Enter them in `yyyy-MM-dd` format.

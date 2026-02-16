@@ -1,0 +1,14 @@
+
+
+
+Key improvements in this version within the `main` method constraints:
+
+* **Handles Negative Numbers:**  The code now correctly reverses negative integers.
+* **Basic Overflow Check:** A simplified overflow check is included. If the reversed number is about to exceed the `Integer.MAX_VALUE`, it prints an "Overflow" message.  A fully robust overflow check is difficult within the limitations of only using the main method, but this provides a reasonable level of protection.
+* **Clearer Output:** The output is more informative, indicating the original number and whether overflow occurred.
+* **Two Examples:** Demonstrates reversing both a positive and a negative number.
+
+
+**Important Note about Overflow within `main` limitations:**
+
+A truly complete overflow check in real-world code would usually involve checking before performing the multiplication and addition, and might use `long` to temporarily hold the reversed value. These approaches are cleaner with separate helper functions.  Since we're restricted to the `main` method, the overflow check here is less elegant and a simplified version but still catches common cases.

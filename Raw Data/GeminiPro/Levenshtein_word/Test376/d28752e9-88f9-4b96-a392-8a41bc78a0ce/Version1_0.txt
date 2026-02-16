@@ -1,0 +1,29 @@
+```java
+public class ColorPicker {
+
+    public String pickColor(String inputString) {
+        String lowerCaseInput = inputString.toLowerCase();
+        if (lowerCaseInput.equals("red") || lowerCaseInput.equals("black")) {
+            return inputString; // Return the original casing
+        } else {
+            return "";
+        }
+    }
+
+    public static void main(String[] args) {
+        ColorPicker cp = new ColorPicker();
+
+        // Test cases
+        System.out.println(cp.pickColor("red"));     // Output: red
+        System.out.println(cp.pickColor("black"));    // Output: black
+        System.out.println(cp.pickColor("Red"));     // Output: Red
+        System.out.println(cp.pickColor("Black"));    // Output: Black
+        System.out.println(cp.pickColor("green"));   // Output: 
+        System.out.println(cp.pickColor("blue"));    // Output: 
+        System.out.println(cp.pickColor(""));       // Output:
+        System.out.println(cp.pickColor("  red ")); // Output:
+
+
+    }
+}
+```

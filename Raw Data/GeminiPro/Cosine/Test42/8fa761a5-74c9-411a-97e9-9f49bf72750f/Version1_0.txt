@@ -1,0 +1,81 @@
+```java
+import java.util.Scanner;
+
+public class EvenNumberChecker {
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        if (isEven(number)) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is not even (odd).");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input | Expected Output | Reason |
+|---|---|---|---|
+| Positive Even | 10 | 10 is even. | Basic even number check. |
+| Positive Odd | 7 | 7 is not even (odd). | Basic odd number check. |
+| Zero | 0 | 0 is even. | Zero is considered even. |
+| Negative Even | -8 | -8 is even. | Even property holds for negative numbers. |
+| Negative Odd | -15 | -15 is not even (odd). | Odd property holds for negative numbers. |
+| Large Positive Even | 2147483646 (Integer.MAX_VALUE - 1) | 2147483646 is even. |  Testing with a large positive even number close to the maximum integer value. |
+| Large Positive Odd | 2147483647 (Integer.MAX_VALUE) | 2147483647 is not even (odd). |  Testing with the maximum integer value, which is odd. |
+| Large Negative Even | -2147483648 (Integer.MIN_VALUE) | -2147483648 is even. | Testing with the minimum integer value, which is even. |
+| Large Negative Odd | -2147483647 (Integer.MIN_VALUE + 1) | -2147483647 is not even (odd). | Testing with a large negative odd number close to the minimum integer value. |
+
+
+
+**How to run the tests (Manually):**
+
+1.  **Compile:** Save the code as `EvenNumberChecker.java` and compile it using a Java compiler: `javac EvenNumberChecker.java`
+2.  **Run:** Execute the compiled code: `java EvenNumberChecker`
+3.  **Input:** Enter each test case input when prompted.
+4.  **Verify:** Check if the output matches the expected output.
+
+
+
+**How to Automate Testing (using JUnit - Optional):**
+
+JUnit is a popular testing framework for Java.  Here's how you could use it to automate the tests:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EvenNumberCheckerTest {
+
+    @Test
+    void testIsEven() {
+        assertTrue(EvenNumberChecker.isEven(10));
+        assertFalse(EvenNumberChecker.isEven(7));
+        assertTrue(EvenNumberChecker.isEven(0));
+        assertTrue(EvenNumberChecker.isEven(-8));
+        assertFalse(EvenNumberChecker.isEven(-15));
+        assertTrue(EvenNumberChecker.isEven(Integer.MAX_VALUE - 1));
+        assertFalse(EvenNumberChecker.isEven(Integer.MAX_VALUE));
+        assertTrue(EvenNumberChecker.isEven(Integer.MIN_VALUE));
+        assertFalse(EvenNumberChecker.isEven(Integer.MIN_VALUE + 1));
+
+
+    }
+}
+```
+
+You would need to add JUnit to your project to run these tests.  Most IDEs (like IntelliJ or Eclipse) have built-in support for running JUnit tests.  Automated testing is highly recommended for larger projects.

@@ -1,0 +1,87 @@
+```java
+public class SwapVariables {
+
+    public static void main(String[] args) {
+
+        // Test case 1: Positive integers
+        int a = 10;
+        int b = 20;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b; // b now holds the sum
+        a = b - a; // a now holds the original value of b
+        b = b - a; // b now holds the original value of a
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+
+        // Test case 2: Negative integers
+        a = -5;
+        b = -15;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b;
+        a = b - a;
+        b = b - a;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+
+        // Test case 3: One positive, one negative
+        a = 7;
+        b = -3;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b;
+        a = b - a;
+        b = b - a;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+        // Test case 4: Zero values
+        a = 0;
+        b = 10;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b;
+        a = b - a;
+        b = b - a;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+        a = 5;
+        b = 0;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b;
+        a = b - a;
+        b = b - a;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+
+        // Test case 5: Large numbers (to check for potential overflow.  While this method *can* overflow,
+        // using addition/subtraction minimizes the risk compared to multiplication/division.)
+        a = Integer.MAX_VALUE;
+        b = Integer.MIN_VALUE;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        b = a + b; // Potential overflow here!
+        a = b - a; 
+        b = b - a; 
+        System.out.println("After swap: a = " + a + ", b = " + b);
+
+
+
+
+        // Using a temporary variable (more robust, handles overflow properly):  Demonstrating a safer alternative
+        a = Integer.MAX_VALUE;
+        b = Integer.MIN_VALUE;
+        System.out.println("Before swap (using temp): a = " + a + ", b = " + b);
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("After swap (using temp): a = " + a + ", b = " + b);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Clearer Test Cases:**  The test cases are now more organized and cover a wider range of scenarios, including positive, negative, zero, and large values (to illustrate a potential overflow issue).
+* **Comments:** Comments explain each test case and the logic behind the swapping method.
+* **Overflow Consideration:** The code highlights the potential for integer overflow when using the addition/subtraction method with extremely large or small numbers. *Crucially*, a more robust solution using a temporary variable is also provided which avoids the overflow problem entirely.
+* **Output Clarity:** The `println` statements are formatted to make the output easier to read and understand.
+
+
+This revised answer provides a more complete and educational example of swapping variables in Java, including a discussion of important considerations like integer overflow.  It also demonstrates a safer, more generally applicable technique using a temporary variable.

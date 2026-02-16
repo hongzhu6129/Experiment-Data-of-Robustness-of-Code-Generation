@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        String hex = "";
+        char[] hexChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            hex = hexChars[remainder] + hex;  // Prepend the hex character
+            decimal /= 16;
+        }
+        return hex;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+        String hexadecimal = function(decimal);
+        System.out.println("Hexadecimal equivalent: " + hexadecimal);
+        scanner.close();
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+| Decimal Input | Expected Hexadecimal Output | Notes                                  |
+|---------------|---------------------------|---------------------------------------|
+| 0            | 0                         | Corner case: zero input              |
+| 1            | 1                         | Basic test case                       |
+| 10           | A                         | Testing A-F output                   |
+| 15           | F                         | Testing the highest single-digit hex |
+| 16           | 10                        | Testing two-digit hex output         |
+| 255          | FF                        | Testing maximum value for two digits  |
+| 256          | 100                       | Testing three-digit hex output        |
+| 4095         | FFF                       | Testing maximum value for three digits |
+| -1           | (Handle appropriately)   | Corner case: negative input. You might want to throw an exception or handle it differently.  For this example, I'm assuming you print an error message |
+| Integer.MAX_VALUE | 7FFFFFFF                  | Corner case: maximum integer value    |
+| Integer.MIN_VALUE | 80000000                  | Corner case: minimum integer value     |
+
+
+
+**How to run the test cases:**
+
+1. **Manual testing:**  You can manually input these decimal numbers and verify the output against the expected hexadecimal values.
+
+2. **Automated testing (recommended):**  Create a separate test class using a testing framework like JUnit.  Here's a basic example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DecimalToHexadecimalTest {
+
+    @Test
+    void testZero() {
+        assertEquals("0", DecimalToHexadecimal.function(0));
+    }
+
+    @Test
+    void testOne() {
+        assertEquals("1", DecimalToHexadecimal.function(1));
+    }
+
+    @Test
+    void testTen() {
+        assertEquals("A", DecimalToHexadecimal.function(10));
+    }
+
+     // ... add more test cases similarly
+
+    @Test
+    void testNegative() {
+        // Example of handling negative input by expecting an exception
+        assertThrows(IllegalArgumentException.class, () -> DecimalToHexadecimal.function(-1)); // Assuming you throw an exception
+    }
+
+    @Test
+    void testMaxValue(){
+        assertEquals("7FFFFFFF", DecimalToHexadecimal.function(Integer.MAX_VALUE));
+    }
+
+
+}
+```
+
+Automated testing makes it much easier to run the tests repeatedly and ensures correctness as you modify the code.  It is standard practice in software development.

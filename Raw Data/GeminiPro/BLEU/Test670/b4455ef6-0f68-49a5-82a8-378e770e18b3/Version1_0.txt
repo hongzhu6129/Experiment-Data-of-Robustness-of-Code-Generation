@@ -1,0 +1,82 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        System.out.println("TreeMap: " + treeMap);
+
+
+        System.out.println("Greatest key strictly less than 25: " + getGreatestKeyLessThan(treeMap, 25)); // Output: 20
+        System.out.println("Greatest key strictly less than 10: " + getGreatestKeyLessThan(treeMap, 10)); // Output: null
+        System.out.println("Greatest key strictly less than 5: " + getGreatestKeyLessThan(treeMap, 5));  // Output: null
+        System.out.println("Greatest key strictly less than 55: " + getGreatestKeyLessThan(treeMap, 55)); // Output: 50
+
+        // Example with String keys:
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        System.out.println("\nString TreeMap: " + stringTreeMap);
+        System.out.println("Greatest key strictly less than 'mango': " + getGreatestKeyLessThan(stringTreeMap, "mango")); // Output: orange
+        System.out.println("Greatest key strictly less than 'apple': " + getGreatestKeyLessThan(stringTreeMap, "apple")); // Output: null
+
+
+
+    }
+
+
+
+    public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        return treeMap.lowerKey(key); //TreeMap's lowerKey method directly provides the desired functionality.
+
+    }
+}
+```
+
+
+Explanation using main method examples:
+
+1. **Create a TreeMap:** A `TreeMap` is used because it automatically stores keys in sorted order, which makes it efficient to find the greatest key less than a given key.
+
+2. **Populate the TreeMap:**  We add some key-value pairs.  The example demonstrates both Integer and String keys to show the generic nature of the `getGreatestKeyLessThan` method.
+
+3. **Call `getGreatestKeyLessThan`:** The method is called with various test cases to illustrate different scenarios:
+   - A key present in the map (e.g., 25).
+   - A key that exists in the map, and where we want the immediately lower key (e.g., 10).
+   - Keys smaller than any key in the map (e.g., 5).
+   - A key greater than any key in the map (e.g., 55).
+
+4. **Print the Results:** The returned key (or `null` if no such key exists) is printed to the console.
+
+
+The `getGreatestKeyLessThan` Method:
+
+The core logic is extremely simple thanks to the `TreeMap`'s built-in `lowerKey()` method:
+
+```java
+public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> treeMap, K key) {
+    if (treeMap == null || treeMap.isEmpty()) { // Handle null or empty map
+        return null;
+    }
+
+    return treeMap.lowerKey(key);  // Direct use of lowerKey() for efficiency
+}
+```
+
+- **Generics:** `<K, V>` makes the method work with any key-value type combination.
+- **Null/Empty Check:** The code handles cases where the input `treeMap` is `null` or empty.
+- **`lowerKey()`:**  This `TreeMap` method directly returns the greatest key strictly less than the given `key`. If no such key exists, it returns `null`.  This is precisely what the problem statement requires, making the code very concise and efficient.

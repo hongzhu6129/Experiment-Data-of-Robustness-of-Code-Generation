@@ -1,0 +1,87 @@
+```java
+import java.util.Scanner;
+
+public class SwapVariables {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first variable:");
+        int a = scanner.nextInt();
+
+        System.out.println("Enter the second variable:");
+        int b = scanner.nextInt();
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+        // Swapping using a temporary variable
+        int temp = a;
+        a = b;
+        b = temp;
+
+
+        System.out.println("After swapping: a = " + a + ", b = " + b);
+         scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+**Test Cases:**
+
+1. **General Case:**
+   - Input: a = 5, b = 10
+   - Expected Output: Before swapping: a = 5, b = 10
+                     After swapping: a = 10, b = 5
+
+2. **Zero Values:**
+   - Input: a = 0, b = 15
+   - Expected Output: Before swapping: a = 0, b = 15
+                     After swapping: a = 15, b = 0
+
+3. **Negative Values:**
+   - Input: a = -3, b = 7
+   - Expected Output: Before swapping: a = -3, b = 7
+                     After swapping: a = 7, b = -3
+
+4. **Identical Values:**  (This is a corner case�though simple, it's important to ensure identical values are handled correctly)
+   - Input: a = 5, b = 5
+   - Expected Output: Before swapping: a = 5, b = 5
+                     After swapping: a = 5, b = 5
+
+5. **Large Values:** (Tests potential integer overflow if you were using a smaller data type, though `int` is unlikely to overflow in typical scenarios)
+   - Input: a = 2147483647, b = -2147483648  (Integer.MAX_VALUE and Integer.MIN_VALUE)
+   - Expected Output: Before swapping: a = 2147483647, b = -2147483648
+                     After swapping: a = -2147483648, b = 2147483647
+
+
+
+**How to Run the Test Cases:**
+
+You can manually input these test values when prompted by the program.  For more automated testing, you would typically use a testing framework like JUnit.  Here's a very simple example of how you might structure a JUnit test (you would need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SwapVariablesTest {
+
+    @Test
+    void testGeneralCase() {
+        // Set up - not really needed here since main() handles input
+        // Execution and Assertion
+        //  (In real JUnit tests, you wouldn't typically test main() directly 
+        //   because of the console I/O.  You'd create a separate swap() method)
+        //  This example demonstrates the concept.  Realistically, you'd redirect System.out
+        //  to test console output if you absolutely needed to test main().
+
+        // ... (logic to simulate input and capture output) ...
+    }
+
+    // ... other test methods for different cases ...
+
+}
+```
+
+
+This improved answer provides a more robust set of test cases and gives a basic idea of how you would structure tests using JUnit for a more professional approach.  Remember to always handle resource closing (like the `Scanner`) to avoid resource leaks.

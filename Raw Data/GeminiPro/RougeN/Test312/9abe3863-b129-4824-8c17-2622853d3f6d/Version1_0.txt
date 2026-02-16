@@ -1,0 +1,93 @@
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int d) {
+        val = d;
+        next = null;
+    }
+}
+
+public class DeleteMiddleNode {
+
+    public static void main(String[] args) {
+        // Example usage:
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        System.out.println("Original List:");
+        printList(head);
+
+        // Delete the node with value 3 (middle node in this case)
+        deleteNode(head.next.next); 
+
+        System.out.println("List after deleting 3:");
+        printList(head);
+
+
+        //Another example - deleting the first node:
+        ListNode head2 = new ListNode(10);
+        head2.next = new ListNode(20);
+        head2.next.next = new ListNode(30);
+        System.out.println("\nOriginal List 2:");
+        printList(head2);
+        deleteNode(head2);
+        System.out.println("List 2 after deleting 10:");
+        printList(head2);
+
+
+         //Another example - deleting the last node. You'd pass the second to last node in this case
+        ListNode head3 = new ListNode(100);
+        head3.next = new ListNode(200);
+        head3.next.next = new ListNode(300);
+        System.out.println("\nOriginal List 3:");
+        printList(head3);
+        deleteNode(head3.next);
+        System.out.println("List 3 after deleting 200 (effectively last node):");
+        printList(head3);
+
+
+    }
+
+    public static void deleteNode(ListNode node) {
+        if (node == null || node.next == null) {  //Handle cases where node is null or last node (can't delete using this method)
+             return; // or throw an exception as appropriate for your application
+        }
+        
+        node.val = node.next.val; // Copy the data from the next node
+        node.next = node.next.next; // Update the next pointer to skip the next node
+    }
+
+    static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:**  The `deleteNode` method now checks if the node is `null` or the last node.  Since the provided method signature doesn't give us access to the `head`,  we can't delete the last node directly (or the only node in a 1-element list).  The current code returns in those cases. You might want to throw an exception instead, depending on how you want to handle these scenarios.
+
+
+2. **Clearer Examples:** The `main` method now includes more examples: deleting a middle node, deleting the first node (demonstrates how to call the method), and deleting the last node case and explaining how it needs to be handled.
+
+
+3. **Comments:** Added comments to improve readability and explain the logic.
+
+
+4. **ListNode Class:** Included the `ListNode` class definition for completeness.
+
+
+**How to use `deleteNode` for last node (workaround):**
+
+Since you can't directly delete the last node using the given method signature, to effectively remove the last node, you would call `deleteNode` on the *second-to-last* node.  This will copy the value of the last node into the second-to-last node and then remove the last node's link.  The last node will become unreachable (effectively deleted, although it might still exist in memory if other references point to it).  The example with `head3` in the `main` method demonstrates this.

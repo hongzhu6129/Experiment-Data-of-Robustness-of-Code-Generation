@@ -1,0 +1,22 @@
+public class StringFromArray {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using String constructor
+        char[] charArray1 = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+        String str1 = new String(charArray1);
+        System.out.println("String from char array (Method 1): " + str1);
+
+        // Method 2: Using String.valueOf()
+        char[] charArray2 = {'J', 'a', 'v', 'a'};
+        String str2 = String.valueOf(charArray2);
+        System.out.println("String from char array (Method 2): " + str2);
+
+
+        // Example with a portion of the array
+        char[] charArray3 = {'A', 'B', 'C', 'D', 'E', 'F'};
+        String str3 = new String(charArray3, 1, 3); // Start at index 1, take 3 characters
+        System.out.println("String from a portion of the char array: " + str3); // Output: BCD
+
+    }
+}

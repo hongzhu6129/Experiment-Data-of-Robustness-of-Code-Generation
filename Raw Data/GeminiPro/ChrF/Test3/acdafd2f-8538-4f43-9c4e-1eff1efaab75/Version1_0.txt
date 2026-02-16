@@ -1,0 +1,108 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Positive Integer:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication table of 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication table of 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Integer:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication table of -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+```
+
+**4. Large Positive Integer:**  (Tests potential overflow if using `byte` or `short` - though this code uses `int` which is fine)
+
+* **Input:** 12345
+* **Expected Output:**  (Verify the calculations are correct)
+```
+Multiplication table of 12345:
+12345 x 1 = 12345
+...
+12345 x 10 = 123450
+```
+
+
+**5. Large Negative Integer:** (similar overflow check as above)
+
+* **Input:** -98765
+* **Expected Output:** (Verify calculations)
+```
+Multiplication table of -98765:
+-98765 x 1 = -98765
+...
+-98765 x 10 = -987650
+```
+
+These test cases cover positive, negative, zero, and large magnitude integers, ensuring the program handles different input scenarios correctly.  They also implicitly test the loop logic to ensure it iterates the correct number of times.
+
+
+If you were handling input from a file or other source where invalid input (non-integer) is possible, you should add error handling (a `try...catch` block) to catch `InputMismatchException` and provide appropriate feedback to the user. This makes the program more robust.
+

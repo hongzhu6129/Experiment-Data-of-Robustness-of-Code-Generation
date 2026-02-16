@@ -1,0 +1,35 @@
+```java
+import java.util.Scanner;
+
+public class StringContains {
+
+    /**
+     * Checks if the second string contains the first string.
+     *
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return True if str2 contains str1, false otherwise.
+     */
+    public static boolean is_str_contains(String str1, String str2) {
+        return str2.contains(str1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.print("Input second string: ");
+        String str2 = scanner.nextLine();
+
+        if (is_str_contains(str1, str2)) {
+            System.out.println("if the second string contains the first one? true");  // or "Yes"
+        } else {
+            System.out.println("if the second string contains the first one? false"); // or "No"
+        }
+
+        scanner.close(); 
+    }
+}
+```

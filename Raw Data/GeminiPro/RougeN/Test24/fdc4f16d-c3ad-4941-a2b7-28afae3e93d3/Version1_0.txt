@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class HexToBinary {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a hexadecimal number: ");
+        String hexString = scanner.nextLine().toUpperCase();
+
+        String binaryString = "";
+        boolean isValidHex = true;
+
+
+        for (int i = 0; i < hexString.length(); i++) {
+            char hexChar = hexString.charAt(i);
+            String binaryDigit;
+
+            switch (hexChar) {
+                case '0': binaryDigit = "0000"; break;
+                case '1': binaryDigit = "0001"; break;
+                case '2': binaryDigit = "0010"; break;
+                case '3': binaryDigit = "0011"; break;
+                case '4': binaryDigit = "0100"; break;
+                case '5': binaryDigit = "0101"; break;
+                case '6': binaryDigit = "0110"; break;
+                case '7': binaryDigit = "0111"; break;
+                case '8': binaryDigit = "1000"; break;
+                case '9': binaryDigit = "1001"; break;
+                case 'A': binaryDigit = "1010"; break;
+                case 'B': binaryDigit = "1011"; break;
+                case 'C': binaryDigit = "1100"; break;
+                case 'D': binaryDigit = "1101"; break;
+                case 'E': binaryDigit = "1110"; break;
+                case 'F': binaryDigit = "1111"; break;
+                default: 
+                    isValidHex = false; 
+                    binaryDigit = ""; // Or handle the invalid character in some other way.
+                    break;
+            }
+
+            if (!isValidHex) {
+                break; // Exit the loop if an invalid character is found
+            }
+            binaryString += binaryDigit; 
+        }
+
+        if (isValidHex) {
+             System.out.println("Binary equivalent: " + binaryString);
+        } else {
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+| Hex Input     | Expected Binary Output | Notes                                   |
+|--------------|-----------------------|----------------------------------------|
+| 0            | 0000                   | Basic test case                       |
+| 1            | 0001                   | Basic test case                       |
+| F            | 1111                   | Basic test case                       |
+| A            | 1010                   | Test uppercase input                   |
+| a            | 1010                   | Test lowercase input                   |
+| 1A          | 00011010                | Test combined hex digits             |
+| FF          | 11111111                | Test combined hex digits             |
+| 1F2         | 000111110010             | Longer hex number                      |
+| CAFE        | 1100101011111110        | Even longer hex number                |
+| ""          |                        | Empty input (should handle gracefully)  |
+| G           | Invalid hexadecimal input.| Invalid character                   |
+| 1G          | Invalid hexadecimal input.| Invalid character within valid ones |
+| 1A G        | Invalid hexadecimal input.| Invalid character with spaces        |
+
+
+
+**Key improvements and explanations:**
+
+* **Handles invalid input:**  The code now checks for invalid hexadecimal characters and displays an appropriate message.
+* **Case-insensitive:**  Handles both uppercase and lowercase hexadecimal input.
+* **Clearer error handling:**  Uses a `boolean` flag (`isValidHex`) to manage invalid input and exits the loop immediately if an invalid character is encountered, preventing incorrect output.
+* **Direct conversion in `switch`:** Simplifies the code by performing the hex-to-binary conversion directly within the `switch` statement.
+* **Resource management:** Closes the `Scanner` using `scanner.close()` to release the resource.
+
+
+This improved version addresses the potential issues and provides a more robust and user-friendly solution.  The test cases cover a wider range of scenarios, including edge cases and error conditions.

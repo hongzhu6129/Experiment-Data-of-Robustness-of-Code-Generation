@@ -1,0 +1,42 @@
+```java
+import java.util.PriorityQueue;
+
+public class AddAllElementsToSamePriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add some elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(10);
+        priorityQueue.add(3);
+        priorityQueue.add(7);
+
+
+        // Adding all elements of a priority queue back to itself effectively does nothing.
+        // Priority queues inherently maintain their elements in a sorted order based on their natural ordering or a provided Comparator.
+        //  So adding the same elements again won't change the order or content. 
+        //  The elements will be dequeued according to their priority and added back maintaining the same queue.
+
+        PriorityQueue<Integer> tempQueue = new PriorityQueue<>();
+
+        // Demonstrate by moving elements to a temporary queue and back
+        while (!priorityQueue.isEmpty()) {
+            tempQueue.add(priorityQueue.poll());
+        }
+        while (!tempQueue.isEmpty()) {
+            priorityQueue.add(tempQueue.poll());
+        }
+
+        // Print the PriorityQueue to verify (it will remain the same)
+        System.out.print("PriorityQueue: ");
+        while (!priorityQueue.isEmpty()) {
+            System.out.print(priorityQueue.poll() + " ");
+        } // Output will be : PriorityQueue: 1 3 5 7 10 
+
+        System.out.println(); // Add a newline at the end
+    }
+}
+```

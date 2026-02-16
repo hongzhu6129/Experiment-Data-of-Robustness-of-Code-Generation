@@ -1,0 +1,145 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the Java program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Coordinates:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+4. **Opposite sides of the Earth:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Near Antipodal Points (not exactly opposite but close):**
+    - lat1: 45
+    - lon1: -70
+    - lat2: -44.5 // Almost opposite latitude
+    - lon2: 111   // Roughly opposite longitude  (-70 + 180 = 110)
+    - Expected output: Close to, but slightly less than, Earth's circumference / 2
+
+6. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 20
+   - lat2: 0
+   - lon2: -160 
+   - Expected Output: ~17744.74 km
+
+
+7. **Invalid Input (Optional):**  You could add error handling to your program to test invalid input:
+   - lat1: 91 (out of range)
+   - ...
+
+
+
+**How to Run Test Cases:**
+
+You can manually enter these test cases into the console or (better yet) modify the Java program to accept command-line arguments or read inputs from a file to automate the testing process.  This would give you more consistent and efficient testing.  For example, you could create a text file with the test cases and then read them in one by one.
+
+
+Example of testing with file input (modify your `EarthDistance.java`):
+
+```java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+// ... (rest of your code)
+
+public static void main(String[] args) throws FileNotFoundException {
+
+     if (args.length > 0) { // Check for filename argument
+         File inputFile = new File(args[0]);
+         Scanner fileScanner = new Scanner(inputFile);
+
+
+         while (fileScanner.hasNextDouble()) { // Process each line in the file
+             double lat1 = Math.toRadians(fileScanner.nextDouble());
+             double lon1 = Math.toRadians(fileScanner.nextDouble());
+             double lat2 = Math.toRadians(fileScanner.nextDouble());
+             double lon2 = Math.toRadians(fileScanner.nextDouble());
+
+              // ... (rest of your distance calculation and output)
+         }
+         fileScanner.close(); 
+     } else {  // Use standard input if no file specified
+        Scanner input = new Scanner(System.in);
+        // ... (your original code for interactive input) 
+        input.close();
+     }
+
+
+
+}
+```
+
+Now you could create a `test_cases.txt` file with your test data, one set of coordinates per line:
+
+```
+25 35 35.5 25.5
+40 -74 40 -74
+// ... rest of your test data
+```
+
+And then run your program like this:
+
+```bash
+java EarthDistance test_cases.txt
+```
+
+
+This will allow you to test your program with various inputs efficiently.  Remember to compare the output of your program with the expected results to verify its correctness.

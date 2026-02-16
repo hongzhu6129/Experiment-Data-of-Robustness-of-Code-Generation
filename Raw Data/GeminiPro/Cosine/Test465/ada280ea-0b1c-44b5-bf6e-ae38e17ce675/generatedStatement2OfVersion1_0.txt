@@ -1,0 +1,28 @@
+
+
+
+Here's how the code works:
+
+1. **Import necessary classes:**
+   - `java.time.LocalDateTime`: For working with date and time.
+   - `java.time.format.DateTimeFormatter`: For formatting the date and time output.
+   - `java.util.Scanner`: For getting user input.
+
+2. **Get user input:**
+   - Prompts the user to enter the number of hours and minutes to subtract.
+
+3. **Get the current date and time:**
+   - `LocalDateTime currentDateTime = LocalDateTime.now();` gets the current date and time.
+
+4. **Calculate the past date and time:**
+   - `LocalDateTime pastDateTime = currentDateTime.minusHours(hoursToSubtract).minusMinutes(minutesToSubtract);` subtracts the specified hours and minutes from the current date and time.
+
+5. **Format the date and time:**
+   - `DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");` creates a formatter to specify the desired output format (year-month-day hour:minute:second).
+   - `String formattedDateTime = pastDateTime.format(formatter);` formats the `pastDateTime` according to the specified format.
+
+6. **Print the result:**
+   - Displays the calculated past date and time in the formatted string.
+
+7. **Close the scanner:**
+   - `scanner.close();` closes the `Scanner` to release resources. This is good practice to prevent resource leaks.

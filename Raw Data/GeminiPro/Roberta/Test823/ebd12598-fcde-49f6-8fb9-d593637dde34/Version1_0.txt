@@ -1,0 +1,53 @@
+```java
+public class SumOfTwoNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 74;
+        int num2 = 36;
+        int sum = num1 + num2;
+
+        System.out.println(num1 + " + " + num2 + ": " + sum); 
+
+        //  Alternative using command line arguments for flexibility:
+
+        if (args.length == 2) { // Check if two arguments are provided
+            try {
+                int arg1 = Integer.parseInt(args[0]);
+                int arg2 = Integer.parseInt(args[1]);
+                int argSum = arg1 + arg2;
+                System.out.println(arg1 + " + " + arg2 + ": " + argSum);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please provide two integers as arguments.");
+            }
+        }
+
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **Variables:**  We declare integer variables `num1`, `num2`, and `sum` to store the two numbers and their sum.
+
+2. **Assignment:**  We assign the values 74 and 36 to `num1` and `num2`, respectively.
+
+3. **Addition Operator:** The `+` operator performs addition.  The result of `num1 + num2` is stored in the `sum` variable.
+
+4. **Printing the Result:** `System.out.println()` is used to display the output to the console.  We concatenate (join) strings and the value of `sum` to create a meaningful output message.
+
+5. **Command-line arguments:**  The `args` array in `main()` allows you to pass values to your program from the command line.  The code demonstrates how to use this for more flexible input.  
+   - It checks if two arguments are provided using `args.length`.
+   - `Integer.parseInt()` converts the string arguments to integers.
+   - A `try-catch` block handles potential `NumberFormatException` if the user enters non-numeric arguments.
+
+
+**How to compile and run (using command-line arguments):**
+
+1. **Save:** Save the code as `SumOfTwoNumbers.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac SumOfTwoNumbers.java`
+3. **Run (with hardcoded values):**  `java SumOfTwoNumbers`
+4. **Run (with command-line arguments):** `java SumOfTwoNumbers 123 456`  (Replace 123 and 456 with any two integers you want to add).
+
+
+This revised answer provides a clear, educational explanation and demonstrates how to make the program more interactive by accepting command-line input.

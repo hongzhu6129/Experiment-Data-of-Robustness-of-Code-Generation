@@ -1,0 +1,39 @@
+
+
+
+**Test Cases:**
+
+**1. Positive Cases (Two or more matching rightmost digits):**
+
+* Input: 12, 22, 34  Output: true
+* Input: 107, 207, 307 Output: true
+* Input: 5, 15, 25   Output: true
+* Input: 100, 200, 300 Output: true (0 is a valid rightmost digit)
+* Input: 1, 1, 1   Output: true (All three same)
+
+
+**2. Negative Cases (No matching rightmost digits):**
+
+* Input: 1, 2, 3    Output: false
+* Input: 11, 22, 33 Output: false
+* Input: 101, 102, 103 Output: false
+
+
+
+**3. Corner Cases:**
+
+* Input: 0, 0, 0      Output: true (All zeros)
+* Input: 0, 10, 20    Output: true (Zeros involved)
+* Input: 1, 11, 111   Output: true
+* Input: 2, 2, 3      Output: true
+* Input: 123456789, 9, 19  Output: true (Large numbers, focus is only on rightmost digit)
+
+
+**4. Invalid Input Cases (Error Handling):**
+
+* Input: -1, 2, 3 (Negative numbers) - The code now explicitly checks for non-negative inputs and handles this error.
+* Input: 1, a, 3   (Non-integer input) -  The `Scanner.nextInt()` method will throw an `InputMismatchException` which you can handle with a try-catch block if more robust error handling is desired. (The current code relies on the Scanner to throw the exception; this is sufficient for basic programs).
+
+
+
+By testing your code against these cases, you can ensure that the `function` and the overall program work correctly in various scenarios, including situations where you expect `true` and situations where you expect `false`.  Don't forget to test the corner cases, as they can often reveal hidden bugs.

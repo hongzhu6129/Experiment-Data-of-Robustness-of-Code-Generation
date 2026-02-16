@@ -1,0 +1,72 @@
+The error "invalid literal for int() with base 10: 'anagram'" occurs in Java when you try to convert a string that is not a valid integer representation (like "anagram") into an integer using `Integer.parseInt()`.  Here's how to address this, using different method signatures to handle the situation gracefully.
+
+```java
+public class StringToIntConversion {
+
+
+    public int convertStringToInt(String numStr) {
+        try {
+            return Integer.parseInt(numStr);
+        } catch (NumberFormatException e) {
+            // Handle the error appropriately
+            return -1; // Or throw a custom exception, log the error, etc. 
+        }
+    }
+
+
+    public int convertStringToIntOrDefault(String numStr, int defaultValue) {
+         try {
+            return Integer.parseInt(numStr);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
+    }
+
+
+    public Integer convertStringToIntOrNull(String numStr) {
+        try {
+            return Integer.parseInt(numStr);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        StringToIntConversion converter = new StringToIntConversion();
+
+        System.out.println(converter.convertStringToInt("123"));       // Output: 123
+        System.out.println(converter.convertStringToInt("anagram"));   // Output: -1
+
+        System.out.println(converter.convertStringToIntOrDefault("456", 0)); // Output: 456
+        System.out.println(converter.convertStringToIntOrDefault("invalid", 0)); // Output: 0
+
+
+        System.out.println(converter.convertStringToIntOrNull("789"));  // Output: 789
+        System.out.println(converter.convertStringToIntOrNull("bad_number")); // Output: null
+
+
+
+    }
+}
+
+```
+
+
+**Explanation of Methods and how they prevent the error:**
+
+1. **`convertStringToInt(String numStr)`:** This method uses a `try-catch` block.  `Integer.parseInt()` is attempted within the `try` block. If `numStr` is not a valid integer, a `NumberFormatException` is caught, and the method returns -1 (you can change this to any default value or other error handling logic).
+
+2. **`convertStringToIntOrDefault(String numStr, int defaultValue)`:**  This method provides more flexibility.  It takes a `defaultValue` as a second argument. If the string cannot be converted, this default value is returned.
+
+3. **`convertStringToIntOrNull(String numStr)`:** This method returns `null` if the conversion fails.  This can be helpful if you want to check for null later in your code to determine if the conversion was successful.
+
+
+**Key improvements:**
+
+* **Error Handling:** The code no longer crashes due to the exception. It handles the error gracefully and continues execution.
+* **Flexibility:**  The methods offer different ways to deal with invalid inputs, whether it's returning a default value or `null`.
+* **Clarity:** The code is more readable and understandable due to the separation of the conversion logic and error handling.
+
+
+Remember to choose the method that best suits your needs and how you intend to handle potential invalid inputs in your application.  Returning `null` often requires explicit null checks later in your code, while using a default value might mask errors if you're not careful. Using a sentinel value like -1 requires you to be aware of the possibility and handle it specifically.

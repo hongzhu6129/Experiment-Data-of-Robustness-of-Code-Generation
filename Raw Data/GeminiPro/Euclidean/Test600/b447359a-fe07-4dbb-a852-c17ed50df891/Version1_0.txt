@@ -1,0 +1,53 @@
+```java
+import java.util.LinkedList;
+
+public class CheckEmptyLinkedList {
+
+    public static void main(String[] args) {
+        // Example 1: Empty linked list
+        LinkedList<Integer> list1 = new LinkedList<>();
+        checkEmpty(list1);
+
+        // Example 2: Non-empty linked list
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+        checkEmpty(list2);
+
+
+        //Example 3: Using isEmpty() directly in main (alternative approach)
+        LinkedList<String> list3 = new LinkedList<>();
+        System.out.println("List 3 is empty: " + list3.isEmpty());
+
+
+        LinkedList<String> list4 = new LinkedList<>();
+        list4.add("hello");
+        System.out.println("List 4 is empty: " + list4.isEmpty());
+
+    }
+
+    public static void checkEmpty(LinkedList<?> list) { 
+        if (list.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **Import LinkedList:**  `import java.util.LinkedList;` imports the necessary class for working with linked lists.
+
+2. **main Method:** The `main` method is the entry point of the program.
+
+3. **Create Linked Lists:** Two linked lists are created: `list1` (initially empty) and `list2` (populated with elements).
+
+4. **checkEmpty Method:** This method takes a `LinkedList` of any type (`<?>` is a wildcard) as input. Inside the method, `list.isEmpty()` is used to check if the list is empty.  The appropriate message is printed to the console.
+
+5. **Calling checkEmpty:**  The `checkEmpty` method is called with both `list1` and `list2` to demonstrate the check on both an empty and a non-empty list.
+
+6. **Alternative Approach (Directly in main):** The examples with `list3` and `list4` show how you can use `list.isEmpty()` directly within the `main` method without needing a separate `checkEmpty` method. This is often more concise if you only need to check emptiness in a single place.

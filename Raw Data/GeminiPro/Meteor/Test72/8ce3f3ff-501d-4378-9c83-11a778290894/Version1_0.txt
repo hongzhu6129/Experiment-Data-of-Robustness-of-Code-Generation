@@ -1,0 +1,36 @@
+```java
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str1 = "Python";
+        String str2 = "JS";
+        String str3 = "Code";
+
+        modifyAndPrint(str1);
+        modifyAndPrint(str2);
+        modifyAndPrint(str3);
+
+
+        // Additional test cases as per prompt requirements (length > 3)
+        modifyAndPrint("Programming");
+        modifyAndPrint("Algorithm"); 
+        modifyAndPrint("JavaScript");
+        modifyAndPrint("abcdef");  // Edge case, exactly length 6
+
+
+
+
+    }
+
+    public static void modifyAndPrint(String str) {
+        int len = str.length();
+        if (len > 3) {
+            String lastThree = str.substring(len - 3);
+            String modifiedStr = lastThree + str + lastThree;
+            System.out.println(modifiedStr);
+        } else {
+            System.out.println("String length must be greater than 3.");
+        }
+    }
+}
+```

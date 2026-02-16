@@ -1,0 +1,52 @@
+```java
+class Solution {
+    /**
+     * Checks if a string has pq-balance, meaning it contains at least one 'q' 
+     * directly after each 'p', and no 'q' appears before a 'p'.
+     *
+     * @param s The input string.
+     * @return True if the string has pq-balance, false otherwise.
+     */
+    public boolean pqBalanceString(String s) {
+        if (s == null || s.isEmpty()) {
+            return true; // Empty string is considered balanced
+        }
+
+        boolean seenP = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == 'p') {
+                seenP = true;
+                if (i == s.length() - 1 || s.charAt(i + 1) != 'q') {
+                    return false; // 'p' not followed by 'q'
+                }
+                i++; // Skip the 'q' as we've already processed it
+            } else if (c == 'q') {
+                if (!seenP) {
+                    return false; // 'q' before any 'p'
+                }
+            }
+        }
+
+        return true;
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String[] testCases = {
+                "pq", "pqq", "pqqq", "ppqpq", "ppqqq", "qp", "p", "q", "", "prq", "pqr", "ppq", "ppqp" , "pqp"
+        };
+
+        for (String testCase : testCases) {
+            boolean isBalanced = solution.pqBalanceString(testCase);
+            System.out.println("Input: \"" + testCase + "\", pq-balanced: " + isBalanced);
+        }
+    }
+}
+
+
+
+```

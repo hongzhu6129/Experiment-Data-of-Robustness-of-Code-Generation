@@ -1,0 +1,22 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **TreeSet Usage:** The code now uses a `TreeSet` which automatically stores elements in sorted order. This makes finding elements less than a certain value more efficient.
+
+2. **`headSet()` Method:**  The most efficient way to get elements less than a value in a `TreeSet` is the `headSet()` method.  It returns a *view* of the portion of the `TreeSet` whose elements are strictly less than the specified element. The example shows how to use it.
+
+3. **Inclusive vs. Exclusive:** `headSet(7)` is exclusive (it does *not* include 7 itself).  The code demonstrates how to achieve inclusivity if needed (using `headSet(7, true)` and then removing 7 or using streams and filtering).
+
+4. **Looping (for demonstration):**  A loop is included to illustrate the basic comparison logic, but `headSet()` is generally preferred for efficiency with `TreeSet`.
+
+5. **Java 8 Streams:** The example also shows how to accomplish the same thing with Java 8 streams (for those interested in more advanced techniques), which is a functional approach.
+
+6. **Clearer Output:** The output is formatted to clearly show the original `TreeSet` and the results of each method.
+
+7. **Comments:** Added comments throughout to explain each part of the code.
+
+
+
+This improved version is more educational, demonstrates best practices, and provides several ways to achieve the desired outcome.  It highlights the power of `TreeSet` and its specialized methods for working with sorted sets.

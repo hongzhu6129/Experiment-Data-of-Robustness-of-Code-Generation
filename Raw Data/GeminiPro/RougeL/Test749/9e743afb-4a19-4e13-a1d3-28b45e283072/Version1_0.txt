@@ -1,0 +1,51 @@
+```java
+class Solution {
+    /**
+     * Removes all vowels (a, e, i, o, u, A, E, I, O, U) from a given string.
+     *
+     * @param inputString The input string.
+     * @return The updated string with vowels removed.
+     */
+    public static String validate(String inputString) {
+        if (inputString == null) {
+            return null; 
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if (!isVowel(c)) {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1;
+    }
+
+    public static void main(String[] args) {
+        String testString1 = "Hello World";
+        String result1 = validate(testString1);
+        System.out.println("Original String: " + testString1);
+        System.out.println("Updated String: " + result1); // Output: Hll Wrld
+
+
+        String testString2 = "This is a test string.";
+        String result2 = validate(testString2);
+        System.out.println("Original String: " + testString2);
+        System.out.println("Updated String: " + result2); // Output: Ths s  tst strng.
+
+        String testString3 = null; // Test with null input
+        String result3 = validate(testString3);
+        System.out.println("Original String: " + testString3);
+        System.out.println("Updated String: " + result3); // Output: null
+        
+
+        String testString4 = ""; // Test with an empty string
+        String result4 = validate(testString4);
+        System.out.println("Original String: " + testString4);
+        System.out.println("Updated String: " + result4); // Output: (empty string)
+    }
+}
+```

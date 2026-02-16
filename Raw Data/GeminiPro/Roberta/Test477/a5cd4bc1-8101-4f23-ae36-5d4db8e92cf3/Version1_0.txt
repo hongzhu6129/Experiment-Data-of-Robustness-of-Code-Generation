@@ -1,0 +1,42 @@
+```java
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+
+        // Display current date without time
+        LocalDate currentDate = LocalDate.now();
+        System.out.println("Current Date: " + currentDate);
+
+        // Display current time 
+        LocalTime currentTime = LocalTime.now();
+        System.out.println("Current Time: " + currentTime);
+
+
+        // Change time without date (demonstration)
+        LocalDateTime now = LocalDateTime.now();
+        LocalTime newTime = LocalTime.of(10, 30, 0); // Example new time: 10:30:00
+        LocalDateTime changedDateTime = now.with(newTime); 
+
+        System.out.println("Original Date and Time: " + now);
+        System.out.println("Changed Date and Time (Time Only Modified): " + changedDateTime);
+
+
+
+		//Formatting examples (optional - if you need specific formats)
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = currentDate.format(dateFormatter);
+        System.out.println("Formatted Date: " + formattedDate);
+
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = currentTime.format(timeFormatter);
+        System.out.println("Formatted Time: " + formattedTime);
+
+
+    }
+}
+```

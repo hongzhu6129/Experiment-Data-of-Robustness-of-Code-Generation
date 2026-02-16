@@ -1,0 +1,55 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FileToArray {
+
+    public static void main(String[] args) {
+        // Replace "your_file.txt" with the actual path to your text file.
+        String filePath = "your_file.txt"; 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            List<String> lines = new ArrayList<>();  // Use a List to store lines dynamically
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+
+            // Convert the List to an array if you absolutely need an array
+            String[] linesArray = lines.toArray(new String[0]);
+
+            // Print the array (or process it as needed)
+            System.out.println(Arrays.toString(linesArray)); 
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code is now enclosed in a `try-catch` block to handle potential `IOExceptions` that might occur during file reading. This prevents the program from crashing if the file doesn't exist or is inaccessible.
+2. **Dynamic Sizing with ArrayList:** Instead of a fixed-size array, it uses an `ArrayList` to store the lines.  `ArrayList` grows dynamically as you add elements, making it more efficient and flexible.
+3. **Converting to Array (If Necessary):**  If you absolutely need a String array at the end, the code shows how to convert the `ArrayList` to a `String[]` using `lines.toArray(new String[0])`.
+4. **Clearer Output:** The `Arrays.toString()` method is used to print the contents of the array in a readable format.
+5. **Resource Management (try-with-resources):** The `BufferedReader` is declared within a `try-with-resources` block.  This ensures that the `BufferedReader` is automatically closed even if exceptions occur, preventing resource leaks.
+6. **Comments:**  Comments have been added to explain the code.
+
+**How to Use:**
+
+1. **Create a text file:** Create a text file named `your_file.txt` (or whatever name you choose in the code).
+2. **Add text:** Put the text you want to store in the file, with each line on a separate line.
+3. **Compile and run:** Save the Java code as `FileToArray.java` and compile it using a Java compiler (like `javac FileToArray.java`). Then, run the compiled class file (`java FileToArray`).
+4. **Output:** The program will print the contents of the file, with each line as a separate element in the array.
+
+
+
+This improved version is more robust, efficient, and follows best practices for Java file handling.

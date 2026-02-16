@@ -1,0 +1,71 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int target = 5;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Signatures:** The code adheres strictly to the requested `main` and `Saddleback` method signatures.
+
+2. **Saddleback Search Algorithm:** The `Saddleback` function efficiently searches the sorted 2D array. It starts from the top-right corner.  If the current element is smaller than the target, it moves down (to a larger element).  If the current element is larger than the target, it moves left (to a smaller element).
+
+3. **Return Array for Coordinates:**  The `Saddleback` function returns an `int[]` to represent the row and column indices of the target. If the target is not found, it returns `{-1, -1}`.
+
+4. **Clear Output:**  The `main` function provides clear output indicating whether the target was found and its coordinates.
+
+5. **Example Usage:** The `main` function demonstrates how to use the `Saddleback` function with a sample matrix and target value.
+
+6. **Comments:**  Added comments to explain the logic and improve readability.
+
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SaddlebackSearch.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile using: `javac SaddlebackSearch.java`
+3. **Run:**  Execute the compiled code: `java SaddlebackSearch`
+
+
+This improved version addresses the requirements, is more efficient, and is easier to understand and use.

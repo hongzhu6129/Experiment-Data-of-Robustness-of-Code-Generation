@@ -1,0 +1,59 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the Priority Queue:");
+
+        // Method 1: Iterating using a while loop and poll() (destructive)
+        //  This removes elements from the queue
+        /*
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); 
+        }
+        */
+
+        // Method 2: Iterating using a for-each loop (non-destructive)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+         //Method 3: Using toString() method (non-destructive)
+        // System.out.println(colorQueue.toString()); //Less readable format.
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Import `PriorityQueue`:** The `java.util.PriorityQueue` class is imported to use priority queue functionality.
+
+2. **Create a `PriorityQueue`:** A `PriorityQueue` named `colorQueue` is created to store strings (colors in this case).  By default, a `PriorityQueue` orders elements in their natural order (for Strings, this is lexicographical/alphabetical order).
+
+3. **Add Elements:** The `add()` method is used to insert colors into the queue.
+
+4. **Print Elements (Non-Destructive):**
+   - **Method 2 (Recommended):** A for-each loop is the simplest and clearest way to iterate through the elements *without removing them* from the queue. 
+   - **Method 3:** `toString()` can also be used, but the output format is less readable (e.g., `[Blue, Green, Orange, Red, Yellow]`).
+
+
+5. **Print Elements (Destructive - if you want to remove elements as you print):**
+   - **Method 1:** Using a `while` loop and the `poll()` method removes and returns the head (highest priority element) of the queue until the queue is empty.  If you don't want to modify the original queue, avoid this method.
+
+
+
+This improved version provides more options for printing the elements and explains the difference between destructive and non-destructive methods.  It also clearly demonstrates how to use a `PriorityQueue` with strings.

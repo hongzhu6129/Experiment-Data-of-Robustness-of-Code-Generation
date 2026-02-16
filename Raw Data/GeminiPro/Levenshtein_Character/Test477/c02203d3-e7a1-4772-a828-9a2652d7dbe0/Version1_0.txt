@@ -1,0 +1,24 @@
+```java
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        System.out.println("Current Date: " + currentDate);
+
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+
+        // Format the time to remove the date part (if any is accidentally included due to system settings)
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss"); // 24-hour format
+        String formattedTime = currentTime.format(timeFormatter); 
+
+        System.out.println("Current Time: " + formattedTime);
+
+    }
+}
+```

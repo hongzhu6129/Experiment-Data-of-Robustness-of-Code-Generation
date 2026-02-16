@@ -1,0 +1,48 @@
+```java
+public class StringCombination {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+
+        System.out.println(function(str1, str2)); // Output: Hld
+
+        str1 = "";
+        str2 = "Java";
+        System.out.println(function(str1, str2)); // Output: #Ja
+
+        str1 = "Python";
+        str2 = "";
+        System.out.println(function(str1, str2)); // Output: Pn#
+
+        str1 = "";
+        str2 = "";
+        System.out.println(function(str1, str2)); // Output: ##
+
+        str1 = "a";
+        str2 = "b";
+        System.out.println(function(str1,str2)); // Output: ab
+        
+        str1 = "ab";
+        str2 = "cd";
+        System.out.println(function(str1,str2)); // Output: ad
+    }
+
+    public static String function(String str1, String str2) {
+        char firstChar1 = (str1.length() > 0) ? str1.charAt(0) : '#';
+        char lastChar2 = (str2.length() > 0) ? str2.charAt(str2.length() - 1) : '#';
+
+
+          String result = "" + firstChar1;
+        if (str2.length() > 0) {
+            result += lastChar2;
+
+        }
+           else{
+               result+="#";
+           }
+
+        return result;
+    }
+}
+```

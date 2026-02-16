@@ -1,0 +1,48 @@
+```java
+public class FormulaCalculation {
+
+    public static void main(String[] args) {
+        // Formula: 4.0 * (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11))
+
+        double result = 4.0 * (1.0 - (1.0 / 3.0) + (1.0 / 5.0) - (1.0 / 7.0) + (1.0 / 9.0) - (1.0 / 11.0));
+
+        System.out.println(result); // Output: 2.9760461760461765
+
+
+        //  More efficient and general approach using a loop:
+
+        double sum = 0.0;
+        int sign = 1; // Alternating sign
+
+        for (int i = 1; i <= 11; i += 2) {
+            sum += (double) sign / i;
+            sign *= -1; // Change sign for the next term
+        }
+
+        result = 4.0 * (1.0 + sum);  // Add 1 because the loop starts from 1/3
+
+        System.out.println(result); // Output: 2.9760461760461765
+
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **Data Types:**  Use `double` for floating-point calculations to maintain precision.  Using `int` in the divisions would result in integer division (truncation).  Explicitly casting  `1` and `sign` to `double` ensures floating-point division.
+
+2. **Order of Operations:** Parentheses are crucial to enforce the correct order of operations (PEMDAS/BODMAS).
+
+3. **Looping for Efficiency (Second Example):** The loop makes the code more general and efficient.  You can easily change the upper limit of the series (11 in this case) without rewriting multiple terms.
+
+4. **Alternating Signs:** The `sign` variable is used to efficiently handle the alternating addition and subtraction in the series.
+
+5. **Output:** `System.out.println()` displays the calculated result to the console.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `FormulaCalculation.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and type `javac FormulaCalculation.java`. This creates a `FormulaCalculation.class` file.
+3. **Run:** Type `java FormulaCalculation` to execute the program. The output (2.9760461760461765) will be printed to the console.

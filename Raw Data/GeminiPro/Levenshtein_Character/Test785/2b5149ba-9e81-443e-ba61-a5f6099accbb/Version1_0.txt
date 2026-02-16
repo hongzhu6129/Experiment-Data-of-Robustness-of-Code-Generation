@@ -1,0 +1,66 @@
+```java
+public class DecimalToOctal {
+
+    public static void main(String[] args) {
+        int decimal = 15;
+
+        // Use Integer.toOctalString() for direct conversion
+        String octal = Integer.toOctalString(decimal);
+
+        System.out.println("Decimal number: " + decimal);
+        System.out.println("Octal number is: " + octal);
+
+
+
+        // Alternatively, manually convert using a loop and modulo operator
+        decimal = 15; // Reset for demonstration
+        octal = "";  // Reset for demonstration
+
+        int remainder;
+        while (decimal > 0) {
+            remainder = decimal % 8;
+            octal = remainder + octal; // Prepend the remainder (building from right to left)
+            decimal = decimal / 8;
+        }
+
+
+        System.out.println("Decimal number: " + 15); // Using 15 directly for clarity in this example.
+        System.out.println("Octal number is (manual method): " + octal);
+
+        // Example with user input (requires exception handling in a real application)
+        if (args.length > 0) {
+            try {
+                decimal = Integer.parseInt(args[0]);
+                octal = Integer.toOctalString(decimal);
+                System.out.println("Decimal number (from input): " + decimal);
+                System.out.println("Octal number is (from input): " + octal);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please enter a valid integer.");
+            }
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Direct Conversion using `Integer.toOctalString()`:** This is the most straightforward and efficient way to convert to octal.
+
+2. **Manual Conversion (for learning):** The code now demonstrates how to convert manually using a loop and modulo operator.  This helps illustrate the conversion process. It correctly prepends the remainders to build the octal string from right to left.
+
+3. **Clearer Output:**  The output now clearly labels the decimal and octal values.
+
+4. **Example with User Input:** The code includes an example of how to handle user input (from command-line arguments).  It also includes basic error handling using a `try-catch` block to catch potential `NumberFormatException` if the user enters non-numeric input.
+
+5. **Comments:**  More comments are added to explain the code's logic.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DecimalToOctal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac DecimalToOctal.java`
+3. **Run:** `java DecimalToOctal`  (This will use the hardcoded value of 15).
+4. **Run with input:** `java DecimalToOctal 77` (This will convert 77 to octal).

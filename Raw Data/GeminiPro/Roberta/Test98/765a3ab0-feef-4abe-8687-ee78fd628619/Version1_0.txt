@@ -1,0 +1,69 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        buildStaircase(n);
+    }
+
+    public static void buildStaircase(int n) {
+        int row = 1;
+        int coinsUsed = 0;
+
+        while (coinsUsed + row <= n) {
+            // Print the current row
+            for (int i = 0; i < row; i++) {
+                System.out.print("* ");
+            }
+            System.out.println(); // New line
+
+            coinsUsed += row;
+            row++;
+        }
+
+        // Handle remaining coins (if any)
+        if (coinsUsed < n) {
+            for (int i = 0; i < n - coinsUsed; i++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - Sets an example `n` value (number of coins).
+   - Calls `buildStaircase` to construct and print the staircase.
+
+2. **`buildStaircase` method:**
+   - Initializes `row` to 1 (starts with a row of 1 coin).
+   - Initializes `coinsUsed` to 0 (keeps track of coins placed).
+   - Uses a `while` loop: continues as long as adding the next row's coins (`coinsUsed + row`) doesn't exceed the total number of coins (`n`).
+   - **Inside the loop:**
+     - Prints the current row:  A nested `for` loop prints `* ` (an asterisk and a space) `row` times. Then a `println()` adds a newline.
+     - Updates `coinsUsed` by adding the number of coins in the current row (`row`).
+     - Increments `row` for the next row.
+   - **After the loop:**
+     - Handles remaining coins: If `coinsUsed` is less than `n`, there are some coins left. Another `for` loop prints the remaining coins (asterisks).  This is necessary because the last row might be incomplete.
+
+
+How it meets the requirements:
+
+- **Staircase shape:**  The nested loop and `println()` create the staircase structure.
+- **k-th row has k coins:** The outer loop ensures that row 1 has 1 coin, row 2 has 2 coins, row 3 has 3 coins, and so on, as long as there are enough coins.
+- **Handles remaining coins:** The code after the `while` loop makes sure that any leftover coins are placed in a final (possibly incomplete) row.
+
+
+Example Output (n = 10):
+
+```
+* 
+* * 
+* * * 
+* * * * 
+```

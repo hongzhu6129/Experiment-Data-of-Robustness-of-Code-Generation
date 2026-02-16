@@ -1,0 +1,40 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class AppendToHashMap {
+
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("Apple", 1);
+        hashMap.put("Banana", 2);
+        hashMap.put("Orange", 3);
+
+        // Element to append
+        String keyToAppend = "Grape";
+        int valueToAppend = 4;
+
+
+        // Append the element.  Since HashMaps don't have a concept of "end"
+        // (they are unordered), we simply add the new key-value pair. 
+        hashMap.put(keyToAppend, valueToAppend);
+
+
+
+        // Print the updated HashMap
+        System.out.println("Updated HashMap:");
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+
+        // Example with possible duplicate key (it will overwrite):
+        System.out.println("\nExample with duplicate key append:");
+        hashMap.put("Apple", 5); // Overwrites the existing value for "Apple"
+
+        for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+    }
+}

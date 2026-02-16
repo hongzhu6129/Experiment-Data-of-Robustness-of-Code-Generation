@@ -1,0 +1,43 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+public class CombinedDateTime {
+
+    public static void main(String[] args) {
+
+        // Get the current date and time in the default locale
+        LocalDateTime now = LocalDateTime.now();
+
+        // Get the current locale 
+        Locale currentLocale = Locale.getDefault();
+
+        // Combine locale and datetime into a custom object (using a record for simplicity)
+        CombinedData combined = new CombinedData(currentLocale, now);
+
+
+        // Demonstrate accessing the data (you can customize the formatting as needed)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", currentLocale); // Locale-sensitive formatting
+        System.out.println("Locale: " + combined.locale().getDisplayName());
+        System.out.println("Date and Time: " + combined.dateTime().format(formatter));
+
+
+
+        // Example with a specific locale (e.g., German):
+        Locale germanLocale = Locale.GERMANY;
+        LocalDateTime anotherTime = LocalDateTime.of(2024, 12, 25, 10, 30); // Example date and time
+
+        CombinedData combinedGerman = new CombinedData(germanLocale, anotherTime);
+
+        DateTimeFormatter germanFormatter = DateTimeFormatter.ofPattern("EEEE, d. MMMM yyyy HH:mm:ss", germanLocale);
+        System.out.println("\nGerman Locale: " + combinedGerman.locale().getDisplayName());
+        System.out.println("Date and Time (German): " + combinedGerman.dateTime().format(germanFormatter));
+    }
+
+
+    // Record to store the combined data (Java 14+).  For older Java versions use a regular class.
+    private record CombinedData(Locale locale, LocalDateTime dateTime) {} 
+
+}
+```

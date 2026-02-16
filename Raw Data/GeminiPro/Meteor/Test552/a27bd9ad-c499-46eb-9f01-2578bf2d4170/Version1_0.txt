@@ -1,0 +1,56 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFirstThreeLines {
+
+    public static void main(String[] args) {
+        String filePath = ""; // Replace with the actual file path
+
+        if (args.length > 0) {
+            filePath = args[0];
+        } else {
+            System.err.println("Please provide the file path as a command-line argument.");
+            return; // Exit if no file path is provided
+        }
+
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            for (int i = 0; i < 3; i++) {
+                String line = reader.readLine();
+                if (line == null) { // Check for end of file before reaching 3 lines
+                    break; 
+                }
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `ReadFirstThreeLines.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac ReadFirstThreeLines.java 
+   ```
+3. **Run:**  Execute the compiled code, providing the file path as a command-line argument:
+   ```bash
+   java ReadFirstThreeLines /path/to/your/file.txt 
+   ```
+   Replace `/path/to/your/file.txt` with the actual path to the file you want to read.
+
+**Key improvements in this version:**
+
+* **Handles command-line arguments:**  The code now takes the file path as a command-line argument, making it more flexible.  It also provides a helpful error message if the argument is missing.
+* **Handles files with fewer than 3 lines:** The `if (line == null)` check prevents a `NullPointerException` if the file has fewer than three lines. It gracefully stops reading when it reaches the end of the file.
+* **Uses try-with-resources:** This ensures that the `BufferedReader` is automatically closed, even if exceptions occur, preventing resource leaks.
+* **Clearer error handling:** The `catch` block provides a more informative error message if there's a problem reading the file.
+
+
+This improved version is more robust and user-friendly.

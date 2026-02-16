@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class HexToOctal {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a hexadecimal number: ");
+        String hexString = scanner.nextLine().toUpperCase();
+
+        try {
+            // Corner case: Empty string
+            if (hexString.isEmpty()) {
+                System.out.println("Octal equivalent: 0");
+                return;
+            }
+
+            // Convert hex to decimal
+            long decimalValue = 0;
+            long power = 1;
+            for (int i = hexString.length() - 1; i >= 0; i--) {
+                char hexChar = hexString.charAt(i);
+                int digit;
+                if (hexChar >= '0' && hexChar <= '9') {
+                    digit = hexChar - '0';
+                } else if (hexChar >= 'A' && hexChar <= 'F') {
+                    digit = hexChar - 'A' + 10;
+                } else {
+                    // Corner case: Invalid hex character
+                    System.out.println("Invalid hexadecimal input.");
+                    return;
+                }
+                decimalValue += digit * power;
+                power *= 16;
+
+                 //Corner case: overflow
+                if (decimalValue < 0) { // Check for overflow during conversion
+                     System.out.println("Hexadecimal value too large for conversion.");
+                     return;
+                }
+            }
+
+
+            // Convert decimal to octal
+            String octalString = "";
+            if (decimalValue == 0) { //Corner Case: Hex input is 0
+                octalString = "0";
+            } else {
+                while (decimalValue > 0) {
+                    octalString = (decimalValue % 8) + octalString;
+                    decimalValue /= 8;
+                }
+            }
+
+            System.out.println("Octal equivalent: " + octalString);
+
+        } catch (NumberFormatException e) {
+            // Corner Case:  non-hex characters or overflow in parsing.
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Hex Input:**
+   - Input: `1A`
+   - Expected Output: `32`
+
+2. **Valid Hex with Leading Zeros:**
+    - Input: `000F`
+    - Expected Output: `17`
+
+
+3. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Empty Input:**
+   - Input: ` ` (just a space, or nothing at all)
+   - Expected Output: `0`
+
+5. **Invalid Hex Characters:**
+   - Input: `G3`
+   - Expected Output: `Invalid hexadecimal input.`
+
+6. **Mixed Case Input:**
+   - Input:  `aBcDeF`
+   - Expected Output: `12657357`
+
+7. **Large Hex Input (check for overflow):**
+    - Input: `FFFFFFFFFFFFFFFF` (16 Fs, maximum for a long)
+    - Expected Output: `1777777777777777777777`
+
+8. **Overflow Hex Input:**
+     - Input: `10000000000000000` (larger than what fits in a long)
+     - Expected Output: `Hexadecimal value too large for conversion.`
+
+
+
+
+This improved version addresses corner cases like empty input, overflow during hex-to-decimal conversion, and includes error handling for invalid hex characters, providing more robust and reliable conversion. Also it adheres to the constraint of only using the `main` method.

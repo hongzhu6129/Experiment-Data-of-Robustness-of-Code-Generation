@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        String input = scanner.nextLine();
+
+        // Split the input string into an array of words
+        String[] words = input.split(" ");
+
+        // Find the longest word in the array
+        String longestWord = "";
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+
+        // Print the longest word
+        System.out.println(longestWord);
+    }
+}
+```
+
+### Test Cases
+
+**Corner Cases:**
+
+* Empty string
+* String with only one word
+
+**Regular Cases:**
+
+* String with multiple words of different lengths
+* String with multiple words of the same length
+* String with punctuation and special characters
+* String with words in different cases
+
+### Expected Output
+
+* For the empty string: ""
+* For the string "a": "a"
+* For the string "hello world": "world"
+* For the string "the quick brown fox jumps over the lazy dog": "jumps"
+* For the string "The Quick Brown Fox Jumps Over The Lazy Dog": "Jumps"
+* For the string "hello, world!": "world"

@@ -1,0 +1,126 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Positive Number:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication Table for 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+7 x 11 = 77
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication Table for 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+0 x 11 = 0
+```
+
+**3. Negative Number:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication Table for -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+-5 x 11 = -55
+```
+
+
+**4. Large Number:**
+
+* **Input:** 12345  (Tests handling of larger numbers)
+* **Expected Output:** (Verify the calculations are correct)
+
+
+**5.  Invalid Input (Non-Integer):**
+
+* **Input:**  hello  (or any non-numeric input)
+* **Expected Behavior:** The program should gracefully handle this, either by displaying an error message or prompting the user to enter a valid integer.  The current code will throw an `InputMismatchException`. You could improve it with error handling like this:
+
+```java
+import java.util.InputMismatchException; // Import for exception handling
+// ... (rest of the code)
+
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int num;
+
+    while (true) {  // Loop until valid input
+        System.out.print("Enter an integer: ");
+        try {
+            num = scanner.nextInt();
+            break; // Exit loop if input is valid
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Clear the invalid input from the scanner
+        }
+    }
+
+    printMultiplicationTable(num);
+    scanner.close();
+}
+
+// ... (rest of the code)
+```
+
+
+By including these different kinds of test cases, you can thoroughly test your program and ensure it functions correctly under various conditions.  The improved version with error handling makes it more robust against bad user input.

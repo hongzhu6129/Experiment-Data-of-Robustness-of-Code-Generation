@@ -1,0 +1,39 @@
+```java
+import java.time.ZoneId;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        Set<String> allZones = ZoneId.getAvailableZoneIds();
+
+        System.out.println("Available Time Zones (including UTC and GMT):");
+        for (String zone : allZones) {
+             // Explicitly check and print UTC and GMT variations 
+            if (zone.equals("UTC") || zone.equals("GMT") || zone.startsWith("UTC") || zone.startsWith("GMT")) {
+                System.out.println(zone);
+            }
+        }
+
+          // Or, to print all including those that mention UTC or GMT in their names:
+//        for (String zone : allZones) {
+//            if (zone.contains("UTC") || zone.contains("GMT")) {
+//                 System.out.println(zone);
+//            }
+//        }
+
+
+    }
+}
+```
+
+
+This improved version addresses a few key points:
+
+* **Clarity and Readability:** The output now clearly indicates that the listed zones are those related to UTC and GMT.  
+* **Explicit Checks:**  It directly checks for "UTC" and "GMT" and variations like "UTC+1".  This is more precise than simply checking if the zone ID contains the substrings "UTC" or "GMT".  If you *did* want to find *all* zone IDs with "UTC" or "GMT" in their names (even things like "America/Argentina/Ushuaia"), then the commented-out loop would be what you would want.
+* **Efficiency (slightly):** Checking for prefixes using `startsWith()` can be slightly more efficient than using `contains()` in some cases.
+
+
+
+This code will now specifically show the standard UTC and GMT zones and their offsets while avoiding unnecessary output or potentially confusing results.

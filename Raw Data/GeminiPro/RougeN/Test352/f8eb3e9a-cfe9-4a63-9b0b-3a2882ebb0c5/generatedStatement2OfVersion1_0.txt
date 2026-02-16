@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Structure:** The code adheres strictly to the specified method signatures: `main`, `permutationWithRepeation`, and `showPermutation`.
+
+2. **Recursive Approach:** The `showPermutation` method uses recursion to generate permutations.
+
+3. **Base Case:** The `if (prefix.length() == str.length())` condition serves as the base case for the recursion. When the prefix reaches the length of the original string, it means a full permutation has been formed, so it's printed.
+
+4. **Iteration for Repetition:** The `for` loop inside `showPermutation` iterates through all characters of the input string `str`.  This is how repetition is achieved. In each recursive call, *any* character from `str` can be added to the `prefix`.  
+
+5. **Building the Permutation:**  The `prefix + str.charAt(i)` part builds the permutation incrementally. In each recursive call, a character from `str` is appended to the current `prefix`.
+
+**Example Usage and Output (for "abc"):**
+
+If you run the code with the sample string "abc", the output will be:
+

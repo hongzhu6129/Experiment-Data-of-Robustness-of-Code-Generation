@@ -1,0 +1,63 @@
+```java
+import java.util.Arrays;
+
+public class StringDuplicates {
+
+    static void CountCharacters(String str, int[] charCounts) {
+        str = str.toLowerCase(); // Case-insensitive counting
+        for (char c : str.toCharArray()) {
+            if (Character.isLetter(c)) {
+                charCounts[c - 'a']++;
+            }
+        }
+    }
+
+    static void showDuplicates(String str) {
+        int[] charCounts = new int[26]; // Assuming only lowercase English letters
+
+        CountCharacters(str, charCounts);
+
+        System.out.print("Duplicate characters in \"" + str + "\": ");
+        boolean foundDuplicates = false;
+        for (int i = 0; i < 26; i++) {
+            if (charCounts[i] > 1) {
+                System.out.print((char) ('a' + i) + " ");
+                foundDuplicates = true;
+            }
+        }
+
+        if (!foundDuplicates) {
+            System.out.print("No duplicates found.");
+        }
+        System.out.println(); 
+
+    }
+
+    public static void main(String[] args) {
+        showDuplicates("programming"); // Example usage 1
+        showDuplicates("Java"); // Example usage 2
+        showDuplicates("Mississippi"); // Example usage 3 with uppercase and mixed case
+        showDuplicates("abcd"); // Example with no duplicates
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Case-Insensitive Counting:** The `CountCharacters` method now converts the input string to lowercase using `str.toLowerCase()`. This ensures that 'P' and 'p' are considered the same character.
+
+2. **Clearer Output:** The `showDuplicates` method now provides clearer output messages, including the original string and a message when no duplicates are found.
+
+3. **Character Validation:**  The `Character.isLetter(c)` check in `CountCharacters` now ensures that only letters are counted, avoiding potential `ArrayIndexOutOfBoundsException` if special characters or numbers are present.
+
+4. **Example Usages in `main`:**  The `main` method demonstrates the usage of `showDuplicates` with various inputs, including those with uppercase letters, mixed cases, and strings without duplicates.
+
+5. **Comments:** Added comments to explain the logic and the purpose of each part of the code.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `StringDuplicates.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac StringDuplicates.java`
+3. **Run:**  After successful compilation, run the program: `java StringDuplicates`

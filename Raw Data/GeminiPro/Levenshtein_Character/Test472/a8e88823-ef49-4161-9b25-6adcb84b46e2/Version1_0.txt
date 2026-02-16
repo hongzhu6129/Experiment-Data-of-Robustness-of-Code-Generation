@@ -1,0 +1,63 @@
+```java
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class ExtractDate {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the date string (e.g., yyyy-MM-dd): ");
+        String dateString = scanner.nextLine();
+
+        try {
+            // Define the expected date format
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            // Parse the date string
+            LocalDate date = LocalDate.parse(dateString, formatter);
+
+            // Extract year, month, and day
+            int year = date.getYear();
+            int month = date.getMonthValue();
+            int day = date.getDayOfMonth();
+
+            System.out.println("Year: " + year);
+            System.out.println("Month: " + month);
+            System.out.println("Day: " + day);
+
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+        scanner.close(); // Close the scanner
+
+    }
+}
+```
+
+
+Here's how this code works within the constraints of a single `main` method:
+
+1. **Input:**  It uses a `Scanner` to get the date string from the user.
+2. **Date Formatting:** It defines a `DateTimeFormatter` with the pattern "yyyy-MM-dd" to specify the expected format.
+3. **Parsing:** `LocalDate.parse()` attempts to convert the input string into a `LocalDate` object.  The `try-catch` block handles potential `DateTimeParseException` if the input is not in the correct format.
+4. **Extraction:** If the parsing is successful, it extracts the year, month, and day using `getYear()`, `getMonthValue()`, and `getDayOfMonth()` respectively.
+5. **Output:** It prints the extracted components.
+6. **Error Handling:** If the date format is invalid, it prints an error message.
+7. **Resource Management:** It closes the `Scanner` to release the resource.
+
+
+
+**Example Usage:**
+
+```
+Enter the date string (e.g., yyyy-MM-dd): 2024-11-20
+Year: 2024
+Month: 11
+Day: 20
+
+Enter the date string (e.g., yyyy-MM-dd):  2024/11/20  // Incorrect format
+Invalid date format. Please use yyyy-MM-dd.
+```

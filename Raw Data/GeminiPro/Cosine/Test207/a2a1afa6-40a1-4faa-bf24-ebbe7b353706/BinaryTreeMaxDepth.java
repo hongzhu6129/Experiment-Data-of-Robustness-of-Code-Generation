@@ -1,0 +1,49 @@
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Get the depth of the left and right subtrees
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Return the larger depth + 1 (for the current node)
+            return Math.max(leftDepth, rightDepth) + 1;
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        // Constructing a sample binary tree
+        Node root = new Node(3);
+        root.left = new Node(9);
+        root.right = new Node(20);
+        root.right.left = new Node(15);
+        root.right.right = new Node(7);
+
+
+        System.out.println("Maximum depth of the tree is: " + tree.maxDepth(root));
+
+
+        // Another example (a more skewed tree)
+        Node root2 = new Node(1);
+        root2.right = new Node(2);
+        root2.right.right = new Node(3);
+        root2.right.right.right = new Node(4);
+
+        System.out.println("Maximum depth of the second tree is: " + tree.maxDepth(root2));
+    }
+}
+

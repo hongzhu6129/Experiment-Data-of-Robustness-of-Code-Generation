@@ -1,0 +1,49 @@
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String originalString = "programming"; // Example string
+
+        if (originalString.length() > 3) {
+            String lastThree = originalString.substring(originalString.length() - 3);
+            String sevenChars = "abcdefg"; // Seven characters to add
+
+            String modifiedString = sevenChars + lastThree + sevenChars;
+
+            System.out.println("Modified string: " + modifiedString);
+        } else {
+            System.out.println("String length must be greater than 3.");
+        }
+
+
+
+         originalString = "python"; // Example string
+
+        if (originalString.length() > 3) {
+            String lastThree = originalString.substring(originalString.length() - 3);
+            String sevenChars = "abcdefg"; // Seven characters to add
+
+            String modifiedString = sevenChars + lastThree + sevenChars;
+
+            System.out.println("Modified string: " + modifiedString);
+        } else {
+            System.out.println("String length must be greater than 3.");
+        }
+
+
+
+        originalString = "coding"; // Example string
+
+        if (originalString.length() > 3) {
+            String lastThree = originalString.substring(originalString.length() - 3);
+            String sevenChars = "abcdefg"; // Seven characters to add
+
+            String modifiedString = sevenChars + lastThree + sevenChars;
+
+            System.out.println("Modified string: " + modifiedString);
+        } else {
+            System.out.println("String length must be greater than 3.");
+        }
+
+
+    }
+}

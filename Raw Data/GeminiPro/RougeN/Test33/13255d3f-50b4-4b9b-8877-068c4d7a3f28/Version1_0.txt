@@ -1,0 +1,71 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        int count = 0;
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) {
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                        count++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + count);
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Case:**
+
+* **Input:**  `digits = {1, 2, 3, 4}` (as in the code)
+* **Expected Output:** 24 unique three-digit numbers (all permutations of 1, 2, 3, 4 taken 3 at a time), and the count should be 24.
+
+**2. Repeated Digits (Corner Case):**
+
+* **Input:** `digits = {1, 1, 2, 3}` 
+* **Expected Output:**  18 unique three-digit numbers.  The count should be 18.  (There will be fewer unique numbers because of the repetition).  For example, 112 and 113 will be included, but there won't be two versions of numbers like 121 (because the two 1s are treated as interchangeable).
+
+**3. Fewer Digits (Corner Case):**
+
+* **Input:** `digits = {1, 2, 3}`
+* **Expected Output:** 6 unique three-digit numbers (all permutations), and the count should be 6.
+
+**4. More Digits (Edge Case/Extension):**
+
+* **Input:** `digits = {1, 2, 3, 4, 5}`
+* **Expected Output:** 60 unique three-digit numbers, and the count should be 60.  (5 * 4 * 3 = 60)
+
+**5. Digits Including Zero (Corner/Important Case):**
+
+* **Input:**  `digits = {0, 1, 2, 3}`
+* **Expected Output:**  18 unique *three*-digit numbers.  This is crucial.  Numbers like "012" should be printed as "12" and not be considered a three-digit number. The count should be 18.  The leading zero case should be handled correctly. You might need to adjust the code slightly to account for this if you want to strictly enforce 3-digit output (e.g., not print two-digit numbers when a zero leads).
+
+
+
+**How to Run the Tests:**
+
+1. **Modify the `main` method:**  Change the `digits` array in your `main` method to test the different cases.
+2. **Run the Code:** Compile and run the Java code.  Compare the output with the expected output for each test case.
+
+
+By running these test cases, you can ensure that your program works correctly under various conditions and handles potential issues like repeated digits and leading zeros appropriately.

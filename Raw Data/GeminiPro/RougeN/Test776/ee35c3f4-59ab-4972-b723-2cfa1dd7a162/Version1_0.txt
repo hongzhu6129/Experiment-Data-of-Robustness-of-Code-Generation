@@ -1,0 +1,67 @@
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Calculate and print the average of three numbers
+        double num1 = 10; // Example numbers, you can change these
+        double num2 = 20;
+        double num3 = 30;
+        double average = (num1 + num2 + num3) / 3;
+        System.out.println("The average of " + num1 + ", " + num2 + ", and " + num3 + " is: " + average);
+
+
+        // Calculate and print the area and perimeter of a rectangle
+        double width = 5.5;
+        double height = 8.5;
+        double area = width * height;
+        double perimeter = 2 * (width + height);
+
+        System.out.println("Area of the rectangle: " + area);
+        System.out.println("Perimeter of the rectangle: " + perimeter);
+    }
+}
+```
+
+
+There are a few ways to take actual user input if you needed to do that within `main`:
+
+1. **Using Scanner:** (Most common for simple input)
+
+   ```java
+   import java.util.Scanner; // Import the Scanner class
+
+   public static void main(String[] args) {
+       Scanner input = new Scanner(System.in); // Create a Scanner object
+
+       System.out.print("Enter the first number: ");
+       double num1 = input.nextDouble();
+
+       System.out.print("Enter the second number: ");
+       double num2 = input.nextDouble();
+
+       System.out.print("Enter the third number: ");
+       double num3 = input.nextDouble();
+
+       // ... rest of the code (calculate and print average)
+       input.close(); // Close the scanner when done
+   }
+   ```
+
+2. **Using Command-Line Arguments:** (If input is provided when running the program)
+
+   ```java
+   public static void main(String[] args) {
+       if (args.length == 3) { // Check if 3 arguments were provided
+           double num1 = Double.parseDouble(args[0]);
+           double num2 = Double.parseDouble(args[1]);
+           double num3 = Double.parseDouble(args[2]);
+
+           // ... rest of the code (calculate and print average)
+       } else {
+           System.out.println("Please provide three numbers as command-line arguments.");
+       }
+   }
+   ```
+
+   To run with command-line arguments, you would compile and then execute from the terminal like this: `java Main 10 20 30` (replacing `10 20 30` with your desired inputs).

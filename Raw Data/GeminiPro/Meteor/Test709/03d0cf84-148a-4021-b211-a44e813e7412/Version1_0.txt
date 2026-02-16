@@ -1,0 +1,78 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int lowerIndex, int higherIndex, int[] array) {
+
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        // Divide into two arrays
+        while (i <= j) {
+            /**
+             * In this loop, you determine two elements: one from the left side (i) that's greater than or equal to the pivot and one from the right side (j) that's less than or equal to the pivot. You then swap these elements, effectively partitioning the subarray.
+             */
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, array);
+                //move index to next position on both sides
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j, array);
+        if (i < higherIndex)
+            quickSort(i, higherIndex, array);
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        QuickSort sorter = new QuickSort();
+        int[] input = {24,2,45,20,56,75,2,56};
+        sorter.sort(input);
+        System.out.println(Arrays.toString(input));    // Output: [2, 2, 20, 24, 45, 56, 56, 75]
+        
+         int[] input2 = {5,1,3,7,2,8,4,6};
+        sorter.sort(input2);
+        System.out.println(Arrays.toString(input2)); // Output: [1, 2, 3, 4, 5, 6, 7, 8]
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Pivot Selection:** The pivot is now explicitly calculated as the middle element using `array[lowerIndex + (higherIndex - lowerIndex) / 2]`. This prevents potential integer overflow issues that could occur with `(lowerIndex + higherIndex) / 2` for very large arrays.
+* **Concise Comments:**  Comments are more focused and explain the crucial parts of the partitioning logic.
+* **Example Usages in `main`:** The `main` method now includes two example arrays to demonstrate the sorting functionality. The output is also provided in the comments.
+* **Correct Partitioning Logic:** The core partitioning logic inside the `while (i <= j)` loop is now more robust and handles various input scenarios correctly.
+
+
+
+
+
+This revised code adheres to the requested method signatures and effectively implements the Quick Sort algorithm. It's also well-commented and includes illustrative examples.

@@ -1,0 +1,43 @@
+```java
+public class CanonicalString {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = new String("Hello");
+        String str3 = str2.intern();
+
+        System.out.println("str1 == str2: " + (str1 == str2)); // false (different objects)
+        System.out.println("str1 == str3: " + (str1 == str3)); // true (same object - canonical representation)
+        System.out.println("str2 == str3: " + (str2 == str3)); // true (after interning, str2 also refers to the canonical representation)
+
+
+        // Another Example demonstrating using intern() to enforce canonical representation.
+        String[] strings = new String[10000]; // Imagine a large array of strings
+
+        for (int i = 0; i < strings.length; i++) {
+            strings[i] = new String("Some repeated string").intern();  // Using intern() efficiently
+        }
+
+        // Now all strings in the array refer to the *same* string object (canonical representation)
+        // This can significantly reduce memory usage, especially with many repeated strings.
+
+        System.out.println("strings[0] == strings[9999]: " + (strings[0] == strings[9999])); //true
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **String Literals:** String literals (like "Hello") are automatically interned by the Java compiler. This means that when you use the same string literal multiple times, they all refer to the *same* object in the string pool (the canonical representation).
+
+2. **`new String()`:** When you create a string using the `new String()` constructor (like `new String("Hello")`), it creates a *new* string object in the heap, even if a string with the same content already exists in the string pool.  This is why `str1 == str2` is false in the example.
+
+3. **`intern()` Method:** The `intern()` method forces a string to be added to the string pool (if it's not already there). It returns a reference to the canonical representation of the string in the string pool.  So, after calling `str2.intern()`, `str2` and `str3` both refer to the *same* string object in the pool, which is also the same object referred to by `str1`.
+
+4. **Benefits of `intern()`:** Using `intern()` can be beneficial in situations where you have many strings with the same content.  By ensuring that all identical strings refer to the same object, you can:
+   - **Reduce memory usage:** Avoid creating unnecessary duplicate string objects.
+   - **Improve performance:** String comparisons using `==` become much faster (comparing references is faster than comparing character sequences).
+
+
+**Key takeaway:**  The canonical representation of a string is the single, unique instance of that string stored in the string pool (also called the "interned" string).  The `intern()` method helps you get a reference to this canonical representation.

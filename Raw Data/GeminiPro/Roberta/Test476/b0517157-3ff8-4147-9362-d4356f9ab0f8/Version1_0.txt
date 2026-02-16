@@ -1,0 +1,74 @@
+```java
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class StringToDateAndTime {
+
+    public static void main(String[] args) {
+
+        // String to Date and Time
+        String dateTimeString = "2023-10-27T10:30:00"; // Example ISO-8601 format
+        String dateString = "2023-10-27";             // Example date-only
+        String timeString = "10:30:00";             // Example time-only
+
+
+        try {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, dateTimeFormatter);
+            System.out.println("Date and Time: " + dateTime);
+
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
+            LocalDate date = LocalDate.parse(dateString, dateFormatter);
+            System.out.println("Date only: " + date);
+
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
+            LocalTime time = LocalTime.parse(timeString, timeFormatter);
+            System.out.println("Time only: " + time);
+
+
+            //Custom format example:
+            DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+            String customDateString = "10/27/2023 10:30:00";
+            LocalDateTime customDateTime = LocalDateTime.parse(customDateString, customFormatter);
+            System.out.println("Custom formatted date and time: " + customDateTime);
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing date/time: " + e.getMessage());
+        }
+
+
+
+        // Date and Time to String
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Example format
+        String formattedDateTime = currentDateTime.format(formatter);
+        String formattedDate = currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        String formattedTime = currentTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
+
+        System.out.println("Formatted Date and Time: " + formattedDateTime);
+        System.out.println("Formatted Date: " + formattedDate);
+        System.out.println("Formatted Time: " + formattedTime);
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles exceptions:** Uses a `try-catch` block to gracefully handle `DateTimeParseException` if the input string is not in the expected format. This prevents the program from crashing.
+* **Clearer formatting:** Uses `DateTimeFormatter` for both parsing and formatting, making the code easier to understand and maintain.
+* **Handles date, time and datetime separately**:  Shows examples for parsing and formatting date only, time only, and combined date and time values.
+* **Illustrates custom formatting:** Demonstrates how to parse and format dates and times using custom patterns.
+* **Uses modern Java time API:** Leverages the `java.time` package (introduced in Java 8) for better date and time handling.  Avoids the older, less robust `Date` and `Calendar` classes.
+* **Comments:** Explains the code's purpose and the different parts.
+
+
+This improved version is more robust, easier to read, and provides a better understanding of how to convert between strings and dates/times in Java.

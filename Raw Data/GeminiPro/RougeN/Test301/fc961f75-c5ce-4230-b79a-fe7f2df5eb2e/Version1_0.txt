@@ -1,0 +1,77 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class LexicographicRank {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a string: ");
+        String str = scanner.nextLine();
+
+        long rank = calculateRank(str);
+        System.out.println("The lexicographic rank of the string is: " + rank);
+    }
+
+    private static long calculateRank(String str) {
+        int n = str.length();
+        long[] fact = new long[n + 1];
+
+        fact[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            fact[i] = i * fact[i - 1];
+        }
+
+        long rank = 1;
+        int[] count = new int[256];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < str.charAt(i); j++) {
+                rank += count[j] * fact[n - i - 1];
+            }
+            count[str.charAt(i)]++;
+        }
+
+        return rank;
+    }
+}
+```
+
+**Test Cases:**
+
+**Test Case 1:**
+Input: "abc"
+Output: 27
+
+**Test Case 2:**
+Input: "cba"
+Output: 720
+
+**Test Case 3:**
+Input: "abcabc"
+Output: 241681
+
+**Test Case 4:**
+Input: "hello"
+Output: 559871
+
+**Test Case 5:**
+Input: "zzz"
+Output: 26
+
+**Test Case 6:**
+Input: "a"
+Output: 1
+
+**Test Case 7:**
+Input: ""
+Output: 1
+
+**Test Case 8:**
+Input: "123"
+Output: 3
+
+**Test Case 9:**
+Input: "zaxyb"
+Output: 215634

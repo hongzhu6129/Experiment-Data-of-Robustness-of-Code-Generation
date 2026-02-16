@@ -1,0 +1,73 @@
+```java
+class Node {
+    int data;
+    Node left, middle, right;
+
+    public Node(int item) {
+        data = item;
+        left = middle = right = null;
+    }
+}
+
+public class TernaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftDepth = maxDepth(node.left);
+            int middleDepth = maxDepth(node.middle);
+            int rightDepth = maxDepth(node.right);
+
+            return Math.max(leftDepth, Math.max(middleDepth, rightDepth)) + 1; 
+        }
+    }
+
+
+    public static void main(String[] args) {
+        TernaryTreeMaxDepth tree = new TernaryTreeMaxDepth();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.middle = new Node(3);
+        root.right = new Node(4);
+        root.left.left = new Node(5);
+        root.left.middle = new Node(6); // Added middle child to demonstrate ternary structure
+        root.middle.right = new Node(7); // Added right child to demonstrate ternary structure
+
+        System.out.println("Maximum depth of the ternary tree is: " + tree.maxDepth(root));
+
+         //Another example
+        Node root2 = null;
+        System.out.println("Maximum depth of the empty ternary tree is: " + tree.maxDepth(root2)); // Should print 0
+
+        Node root3 = new Node(10);
+        System.out.println("Maximum depth of the single node ternary tree is: " + tree.maxDepth(root3)); // Should print 1
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Node Class:** Defines the structure of a node in the ternary tree. Each node has data and pointers to left, middle, and right children.
+
+2. **maxDepth(Node node):** 
+   - This recursive method calculates the maximum depth.
+   - **Base Case:** If the node is null (empty subtree), the depth is 0.
+   - **Recursive Step:**  It recursively calculates the depth of the left, middle, and right subtrees. Then, it returns the maximum of these depths + 1 (to account for the current node).
+
+3. **main() Method:**
+   - Creates instances of the `TernaryTreeMaxDepth` class and `Node` objects to build example ternary trees.
+   - Calls the `maxDepth()` method to calculate and print the maximum depth of the created trees.
+   - Added additional test cases (empty tree, single node tree) to demonstrate the correctness of the `maxDepth()` method in different scenarios.
+
+
+**Key Improvements over simpler solutions:**
+
+- **Handles Null Nodes:** The base case `if (node == null)` correctly handles empty trees or subtrees, preventing `NullPointerExceptions`.
+- **Clearer Recursive Logic:** The use of `Math.max()` simplifies the comparison of depths and makes the code more readable.
+- **Demonstrates Ternary Structure:** The examples in `main()` now show how to create and work with true ternary trees (nodes having potentially three children).
+- **Thorough Testing:** The inclusion of multiple test cases helps verify the function's correctness in various scenarios.
+
+
+This improved code provides a robust and clear solution to finding the maximum depth of a ternary tree in Java.

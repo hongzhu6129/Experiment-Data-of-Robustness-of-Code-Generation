@@ -1,0 +1,61 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (NavigableMap implementation)
+        NavigableMap<Integer, String> originalMap = new TreeMap<>();
+
+        // Populate the map with some data
+        originalMap.put(1, "One");
+        originalMap.put(2, "Two");
+        originalMap.put(3, "Three");
+        originalMap.put(4, "Four");
+        originalMap.put(5, "Five");
+        originalMap.put(6, "Six");
+
+        // Define the start and end keys for the submap
+        int startKey = 2; // Inclusive
+        int endKey = 5;   // Exclusive
+
+
+        // Method 1: subMap (inclusive start, exclusive end)
+        NavigableMap<Integer, String> subMap = originalMap.subMap(startKey, true, endKey, false); 
+
+        System.out.println("Submap (inclusive start, exclusive end): " + subMap);
+
+
+        // Method 2: headMap (keys less than or equal to endKey - exclusive)
+        // If you want a range up to a certain key (exclusive):
+
+        NavigableMap<Integer, String> headMapExclusive = originalMap.headMap(endKey, false);
+        System.out.println("HeadMap (exclusive end): " + headMapExclusive);
+
+
+         // Method 3: tailMap (keys greater than or equal to startKey - inclusive)
+        // If you want a range starting from a key (inclusive) to the end:
+        NavigableMap<Integer, String> tailMapInclusive = originalMap.tailMap(startKey, true);
+        System.out.println("TailMap (inclusive start): " + tailMapInclusive);
+
+
+
+         // Example showing how changes to the submap affect the original map.
+        // Be very careful with this because if you want a true copy, you need to create a new map.
+        subMap.put(7,"Seven"); // This will throw an IllegalArgumentException as 7 is outside the range [2,5)
+        //subMap.remove(3);  // This would remove 3 from both subMap AND originalMap!
+
+       System.out.println("Original map after modification through submap: " + originalMap);
+
+
+
+        // Create an independent copy of the submap to avoid modifying original
+         NavigableMap<Integer,String> independentSubmap = new TreeMap<>(originalMap.subMap(startKey, true, endKey, false));
+         independentSubmap.put(7, "Seven"); // Allowed because it's a separate map.
+        System.out.println("Independent Submap: " + independentSubmap);
+        System.out.println("Original Map (unchanged): " + originalMap);
+
+
+
+    }
+}

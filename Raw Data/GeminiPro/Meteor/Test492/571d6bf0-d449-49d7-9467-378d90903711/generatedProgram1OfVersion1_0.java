@@ -1,0 +1,24 @@
+public class PrintChars {
+
+    public static void main(String[] args) {
+        // Example usage:
+        print_Chars('a', 'f', 3);  // Prints a c e
+        print_Chars('A', 'Z', 5);  // Prints A F K P U Z 
+        print_Chars('z', 'a', 2); // Prints z x v t r p n l j h f d b
+        print_Chars('J', 'C', 1); // Prints J I H G F E D C
+    }
+
+
+    public static void print_Chars(char ch1, char ch2, int skip) {
+        if (ch1 < ch2) {
+            for (char c = ch1; c <= ch2; c += skip) {
+                System.out.print(c + " ");
+            }
+        } else {
+            for (char c = ch1; c >= ch2; c -= skip) {
+                System.out.print(c + " ");
+            }
+        }
+        System.out.println(); // Print a newline at the end
+    }
+}

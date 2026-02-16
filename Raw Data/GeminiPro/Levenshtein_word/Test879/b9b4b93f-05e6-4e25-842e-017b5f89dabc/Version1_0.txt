@@ -1,0 +1,53 @@
+```java
+public class Main {
+    public static void main(String[] args) {
+        String inputString = "### "; 
+
+        try {
+            int parsedInt = Integer.parseInt(inputString.trim()); // Trim whitespace
+            System.out.println("Parsed integer: " + parsedInt);
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Invalid input string. Cannot convert '" + inputString + "' to an integer.");
+            // Handle the error appropriately, e.g., log it, exit the program, or prompt the user for valid input.
+        }
+
+
+
+        // Demonstrating more robust input handling using a regular expression:
+        String anotherInput = " 1234 "; // Example with leading and trailing spaces and a valid integer
+        String numericPart = anotherInput.trim().replaceAll("[^0-9]", ""); //Extract only numeric characters
+
+        if (!numericPart.isEmpty()) {
+            try {
+                int parsedInt2 = Integer.parseInt(numericPart);
+                System.out.println("Parsed integer (using regex): " + parsedInt2);
+            } catch (NumberFormatException e) {
+                System.err.println("Error: Even after cleaning, the string '" + anotherInput + "' is not a valid integer.");
+            }
+
+        } else {
+            System.err.println("Error: Input string '" + anotherInput + "' does not contain any digits.");
+        }
+
+
+    }
+}
+```
+
+
+**Explanation and How to Avoid the Error:**
+
+The error "invalid literal for int() with base 10" occurs when you try to convert a string to an integer using `Integer.parseInt()`, but the string doesn't represent a valid integer.  Common causes include:
+
+1. **Non-numeric characters:**  The string contains letters, symbols (like `#` in your example), or spaces.
+2. **Leading/trailing whitespace:**  Spaces before or after the number can cause the error.
+3. **Empty strings:** Trying to parse an empty string "".
+
+**Solutions demonstrated in the code:**
+
+* **`trim()`:** The `inputString.trim()` method removes leading and trailing whitespace, which solves issue #2.  If your input might have spaces around the actual number, always use `trim()`.
+* **Error Handling (`try-catch`):** The `try-catch` block is crucial.  It prevents your program from crashing if the input is invalid.  Inside the `catch` block, you can handle the error gracefully (e.g., print an error message, ask for new input, or log the error).
+* **Input Validation (Regular Expression):**  The more robust approach is to actively validate and clean the input string *before* attempting to parse it. The example code uses a regular expression `replaceAll("[^0-9]", "")` to remove any character that is *not* a digit (0-9). This is a more comprehensive solution to handle various invalid characters and spaces within the input string.  If, after cleaning, the string is empty, we handle that case as well, as an empty string is also not parsable as an integer.
+
+
+By using these techniques, you can avoid the "invalid literal for int()" error and make your code more robust. Always validate user input or any input coming from external sources (files, databases, etc.) to prevent runtime errors.

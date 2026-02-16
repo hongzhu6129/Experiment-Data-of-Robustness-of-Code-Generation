@@ -1,0 +1,91 @@
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class CheckJavaInstallation {
+
+    public static boolean isJavaInstalled() {
+        try {
+            // Execute a simple java command (version check)
+            Process process = Runtime.getRuntime().exec("java -version");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream())); // Version info is on errorStream
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Look for a specific string indicating Java presence (adapt as needed)
+                if (line.contains("java version") || line.contains("openjdk version")) { 
+                    return true;
+                }
+            }
+
+            // If no "java version" string is found, Java might not be in the PATH. Try "java.exe" (Windows)
+            if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                process = Runtime.getRuntime().exec("java.exe -version"); // Windows specific
+                reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                while ((line = reader.readLine()) != null) {
+                     if (line.contains("java version") || line.contains("openjdk version")) { 
+                        return true;
+                    }
+                }
+
+            }
+
+
+        } catch (IOException e) {
+            // An IOException likely means Java is not installed or accessible
+            return false;
+        }
+
+
+        return false; // Java was not detected using these methods
+    }
+
+    public static void main(String[] args) {
+        if (isJavaInstalled()) {
+            System.out.println("Java is installed on this system.");
+        } else {
+            System.out.println("Java is not installed or not accessible in the system's PATH.");
+        }
+    }
+}
+```
+
+
+## Test Cases and Corner Cases:
+
+**1. Standard Case (Java is installed and in PATH):**
+
+* **Expected Output:** "Java is installed on this system."
+* **How to Test:**  Run the program on a system where Java is properly installed and configured (JAVA_HOME and PATH variables set correctly).
+
+**2. Java Not Installed:**
+
+* **Expected Output:** "Java is not installed or not accessible in the system's PATH."
+* **How to Test:** Run the program on a system where Java is definitely not installed.  Alternatively, temporarily rename the `java` or `java.exe` executable in your system's PATH to simulate Java not being found.
+
+**3. Java Installed but not in PATH (Linux/macOS):**
+
+* **Expected Output:** "Java is not installed or not accessible in the system's PATH."
+* **How to Test:**  
+    * Temporarily remove Java's bin directory from your PATH environment variable.
+    * Run the Java program.
+    * Restore your PATH afterward.
+
+**4. Java Installed but not in PATH (Windows):**  This is handled by the check for `java.exe`.
+
+* **Expected Output:**  "Java is installed on this system." (if `java.exe` is findable in standard install locations)  OR "Java is not installed..." if Java was installed in a non-standard location and neither `java` nor `java.exe` are on the PATH.
+* **How to Test:** Similar to Linux/macOS, remove or rename the `java.exe` from the PATH.
+
+**5. Java Different Version (OpenJDK):**
+
+* **Expected Output:**  "Java is installed on this system."
+* **How to Test:** Run the code on a system with OpenJDK instead of Oracle JDK. The code now checks for both "java version" and "openjdk version".
+
+**6. Permissions Issues (Edge Case, less common):**
+
+* **Expected Output:**  Could be either "Java is installed..." or "Java is not installed..." depending on the specific permissions problem.
+* **How to Test:**  This is difficult to test reliably. You might try (with caution and administrative privileges) modifying the permissions on the `java` executable to make it non-executable by the current user.
+
+
+These test cases cover the most likely scenarios and some corner cases to ensure the `isJavaInstalled()` method works reliably across different systems and configurations.  It's always best to test on a variety of actual machines if possible.

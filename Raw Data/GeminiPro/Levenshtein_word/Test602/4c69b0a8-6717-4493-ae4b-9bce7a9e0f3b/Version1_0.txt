@@ -1,0 +1,49 @@
+```java
+import java.util.HashSet;
+
+public class AddToEndHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Element to be added to the end (Note: HashSet doesn't have a defined order)
+        String elementToAdd = "Grape";
+
+
+        // HashSet doesn't guarantee insertion order, so "adding to the end" isn't directly possible.
+        //  However, we can add the element. The output when iterating may or may not show
+        // it as the last element.
+        hashSet.add(elementToAdd); 
+
+
+        // Print the HashSet to see if the element has been added (order not guaranteed)
+        System.out.println("HashSet after adding 'Grape': " + hashSet);
+
+
+        // If you *need* a specific order, use a LinkedHashSet:
+
+        java.util.LinkedHashSet<String> linkedHashSet = new java.util.LinkedHashSet<>();
+        linkedHashSet.add("Apple");
+        linkedHashSet.add("Banana");
+        linkedHashSet.add("Orange");
+        linkedHashSet.add("Grape"); // Added to the end, maintaining insertion order.
+
+        System.out.println("LinkedHashSet after adding 'Grape': " + linkedHashSet);
+
+
+    }
+}
+```
+
+
+Explanation of why "end" doesn't apply to HashSet and the LinkedHashSet alternative:
+
+* **HashSet:**  A `HashSet` is implemented using a hash table.  It does not maintain any specific order of elements. The order you see when printing a `HashSet` might change over time or with different Java versions as it depends on the hash codes of the elements and the internal implementation of the `HashSet`.  Therefore, the concept of "adding to the end" doesn't apply. You simply add an element, and it's stored according to its hash code.
+
+* **LinkedHashSet:**  If you need to preserve the order in which elements were added, use a `LinkedHashSet`.  It maintains a doubly-linked list running through all elements in the set. This ensures that iteration order reflects insertion order, so you can effectively add to the "end" (meaning adding as the last element inserted).

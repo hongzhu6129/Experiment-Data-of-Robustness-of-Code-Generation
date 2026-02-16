@@ -1,0 +1,138 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void printMultiplicationTable(int num) {
+        if (num == 0) {
+            System.out.println("Multiplication table of 0 is all zeros.");
+            return; // Handle the 0 case explicitly.
+        }
+
+        System.out.println("Multiplication table of " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        printMultiplicationTable(number);
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to test the `printMultiplicationTable` method:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+3. **Zero:**  (Corner Case)
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table of 0 is all zeros. 
+     ```
+
+4. **Large Positive Number:**
+   - Input: `12345`
+   - Expected Output (partial):
+     ```
+     Multiplication table of 12345:
+     12345 x 1 = 12345
+     12345 x 2 = 24690
+     ...
+     12345 x 10 = 123450
+     ```
+
+5. **Large Negative Number:**
+   - Input: `-98765`
+   - Expected Output (partial):
+     ```
+     Multiplication table of -98765:
+     -98765 x 1 = -98765
+     -98765 x 2 = -197530
+     ...
+     -98765 x 10 = -987650
+     ```
+
+**How to Run Test Cases (Manually):**
+
+1. Compile the Java code: `javac MultiplicationTable.java`
+2. Run the code and provide input when prompted: `java MultiplicationTable`
+
+
+**Automated Testing (Recommended - Using JUnit):**
+
+For more robust testing, use a testing framework like JUnit.  Here's an example JUnit test class:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testMultiplicationTable(7, "Multiplication table of 7:\n7 x 1 = 7\n7 x 2 = 14\n... (rest of the table)\n7 x 10 = 70\n"); // Replace ... with the full table if needed
+    }
+
+    @Test
+    void testNegativeNumber() {
+        testMultiplicationTable(-5, "Multiplication table of -5:\n-5 x 1 = -5\n-5 x 2 = -10\n... (rest of the table)\n-5 x 10 = -50\n");
+    }
+
+    @Test
+    void testZero() { // Corner case
+        testMultiplicationTable(0, "Multiplication table of 0 is all zeros.\n"); 
+    }
+
+     // ... Add more test cases (large positive, large negative)
+
+
+    private void testMultiplicationTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // Capture console output
+        System.setOut(new PrintStream(outContent)); 
+
+        MultiplicationTable.printMultiplicationTable(input);
+        String actualOutput = outContent.toString();
+
+        // You might need to adjust the assertion slightly if you have line breaks in your expected output
+        assertTrue(actualOutput.contains(expectedOutput.replace("\n", System.lineSeparator()))); // Use contains for partial matching.
+
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+With JUnit, you can automate your testing process and easily run all your test cases with a single command. This makes testing much more efficient and reliable.

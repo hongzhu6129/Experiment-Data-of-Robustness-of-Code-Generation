@@ -1,0 +1,40 @@
+class Solution {
+    /**
+     * Given a string of length two or more, return a new string that swaps the last two characters.
+     *
+     * @param str The input string.
+     * @return The string with the last two characters swapped.
+     * @throws IllegalArgumentException if the string is less than two characters long.
+     */
+    public String lastTwo(String str) {
+        if (str.length() < 2) {
+            throw new IllegalArgumentException("String length must be 2 or more");
+        }
+
+        char[] charArray = str.toCharArray();
+        int len = charArray.length;
+
+        char temp = charArray[len - 1];
+        charArray[len - 1] = charArray[len - 2];
+        charArray[len - 2] = temp;
+
+        return new String(charArray);
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.lastTwo("coding")); // Expected: codnig
+        System.out.println(solution.lastTwo("cat")); // Expected: cta
+        System.out.println(solution.lastTwo("ab")); // Expected: ba
+        
+
+        // Test with invalid input (less than 2 characters) -  You can comment this out if you don't want to handle exceptions in main
+        try {
+             System.out.println(solution.lastTwo("a")); 
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception caught: " + e.getMessage()); // Expected: Exception caught: String length must be 2 or more
+        }
+    }
+}

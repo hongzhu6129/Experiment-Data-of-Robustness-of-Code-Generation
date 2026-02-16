@@ -1,0 +1,45 @@
+import java.util.TreeSet;
+
+public class AddTreeSets {
+
+    public static void main(String[] args) {
+        // Create the first TreeSet (source)
+        TreeSet<String> treeSet1 = new TreeSet<>();
+        treeSet1.add("Red");
+        treeSet1.add("Green");
+        treeSet1.add("Blue");
+
+        // Create the second TreeSet (destination)
+        TreeSet<String> treeSet2 = new TreeSet<>();
+        treeSet2.add("Yellow");
+        treeSet2.add("Orange");
+
+
+        // Add all elements from treeSet1 to treeSet2
+        treeSet2.addAll(treeSet1);
+
+        // Print the combined TreeSet (treeSet2)
+        System.out.println("Combined TreeSet: " + treeSet2);
+
+
+        //Demonstrating other ways to add elements (though addAll is most efficient for adding a whole collection)
+        TreeSet<Integer> numbers1 = new TreeSet<>();
+        numbers1.add(1);
+        numbers1.add(2);
+
+        TreeSet<Integer> numbers2 = new TreeSet<>();
+        numbers2.add(3);
+        numbers2.add(4);
+
+
+        //Adding individual elements (less efficient if you have a lot to add)
+        for (Integer num : numbers1) {
+            numbers2.add(num);  //add() method
+        }
+
+        System.out.println("Combined Number TreeSet (using add in loop): " + numbers2);
+
+
+
+    }
+}

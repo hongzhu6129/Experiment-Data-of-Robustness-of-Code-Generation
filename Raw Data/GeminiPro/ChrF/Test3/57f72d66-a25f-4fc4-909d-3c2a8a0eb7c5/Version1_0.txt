@@ -1,0 +1,109 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication table of " + num + ":");
+
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 11 = 77
+     ```
+
+2. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 11 = -55
+     ```
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 11 = 0 
+     ```
+
+4. **Large Positive Number:**  (Tests for potential integer overflow if the multiplication results in a number greater than `Integer.MAX_VALUE`. However, since we are only going up to 11, overflow is unlikely unless you use a `byte` or `short` to store the number).
+   - Input: `2147483647` (Integer.MAX_VALUE)
+   - Expected Output: (Will print correctly up to a point, then might have unexpected behavior if overflow occurs with the multiplication.)
+
+5. **Large Negative Number:** (Similar overflow concerns as above).
+   - Input: `-2147483648` (Integer.MIN_VALUE)
+   - Expected Output: (Will print correctly up to a point, then might have unexpected behavior if overflow occurs)
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:**  You can run the program and manually enter the test case inputs.  Compare the output with the expected output.
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit.  Here's a basic example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testMultiplicationTable(7, "Multiplication table of 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n7 x 11 = 77\n");
+    }
+
+    // Add tests for other cases (negative, zero, large numbers) similarly
+
+    private void testMultiplicationTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        MultiplicationTable.printMultiplicationTable(input); 
+
+        assertEquals(expectedOutput, outputStream.toString());
+
+        // Restore System.out
+        System.setOut(System.out); 
+    }
+}
+```
+
+
+This JUnit test captures the printed output and compares it with the expected output, making testing much more efficient and reliable.  You would add similar test methods for your other test cases.  Make sure you have JUnit set up in your project.

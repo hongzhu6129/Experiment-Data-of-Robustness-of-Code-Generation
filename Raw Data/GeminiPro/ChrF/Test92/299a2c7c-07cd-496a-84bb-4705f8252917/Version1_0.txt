@@ -1,0 +1,73 @@
+```java
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 4, 5, 6, 10, 7, 8, 9};
+        int[] newArray = createArrayAfterLast10(originalArray);
+
+        if (newArray != null) {
+            System.out.print("New array: ");
+            for (int element : newArray) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("No elements found after the last 10.");
+        }
+
+
+        // Test case 2: No 10 in the array
+        int[] originalArray2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] newArray2 = createArrayAfterLast10(originalArray2);
+
+        if (newArray2 != null) {
+            System.out.print("New array 2: ");  // This should not print
+            for (int element : newArray2) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("No elements found after the last 10 in array 2."); // This should print
+        }
+
+
+        // Test case 3: 10 is the last element
+        int[] originalArray3 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] newArray3 = createArrayAfterLast10(originalArray3);
+
+        if (newArray3 != null) {
+            System.out.print("New array 3: ");  // This should not print
+            for (int element : newArray3) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("No elements found after the last 10 in array 3."); // This should print
+        }
+
+    }
+
+    public static int[] createArrayAfterLast10(int[] arr) {
+        int lastIndexOf10 = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                lastIndexOf10 = i;
+            }
+        }
+
+        if (lastIndexOf10 == -1 || lastIndexOf10 == arr.length - 1) {
+            return null; // No 10 found or 10 is the last element
+        }
+
+        int newArrayLength = arr.length - lastIndexOf10 - 1;
+        int[] newArray = new int[newArrayLength];
+
+        for (int i = 0; i < newArrayLength; i++) {
+            newArray[i] = arr[lastIndexOf10 + 1 + i];
+        }
+
+        return newArray;
+    }
+}
+```

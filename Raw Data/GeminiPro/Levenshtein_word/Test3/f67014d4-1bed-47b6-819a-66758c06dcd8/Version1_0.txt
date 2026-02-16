@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Number:**
+   - Input: 7
+   - Expected Output: Multiplication table of 7 from 7x1 to 7x10.
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: Multiplication table of 0 (all results will be 0).  This is a corner case.
+
+3. **Negative Number:**
+   - Input: -5
+   - Expected Output: Multiplication table of -5 from -5x1 to -5x10.
+
+4. **Large Positive Number:**
+   - Input: 10000  (or any other large number)
+   - Expected Output: Multiplication table of 10000. Tests for potential overflow issues (though Java's `int` type can handle this range).
+
+5. **Large Negative Number:**
+   - Input: -10000 (or any other large negative number)
+   - Expected Output: Multiplication table of -10000.
+
+6. **One:**
+   - Input: 1
+   - Expected Output: Multiplication table of 1 (results will be 1 to 10).  This is a base case.
+
+7. **Ten:**  (As specifically requested in the prompt)
+   - Input: 10
+   - Expected Output: Multiplication table of 10.
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:**  You can run the program multiple times, entering each test case input manually and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  For more robust testing, use a testing framework like JUnit.  Here's a basic example of how you might write a JUnit test:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testMultiplicationTable(7, "7 x 1 = 7\n7 x 2 = 14\n...7 x 10 = 70\n"); // ... represents the other lines
+    }
+
+    // ... other test methods for zero, negative, large numbers, etc.
+
+    private void testMultiplicationTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent)); 
+
+        // Simulate user input
+        try (Scanner scanner = new Scanner(String.valueOf(input))) {
+            MultiplicationTable.main(new String[0]); // Assuming your main method is in MultiplicationTable class.
+        }
+
+        String actualOutput = outContent.toString().replaceAll("\\r",""); // Normalize line endings
+
+        // Use assertEquals or other assertions provided by JUnit
+         assertTrue(actualOutput.contains(expectedOutput)); // Contains because of console output variances
+    }
+
+ }
+```
+
+Remember to replace `"..."` in the test case with the full expected output string. This JUnit example will capture the console output and compare it with your expected output, making testing much more efficient and reliable.  You'll need to add the JUnit library to your project.

@@ -1,0 +1,68 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted array in-place and returns the new length.
+     *
+     * @param nums The sorted array of integers.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index for placing unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+        
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4 + ", Array: " + (nums4==null ? "null": Arrays.toString(Arrays.copyOfRange(nums4, 0,len4)) )); // Output: 0, null
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles empty arrays and `null` input, returning 0 in both cases.
+
+2. **In-Place Modification:** The `removeDuplicates` method modifies the input array `nums` directly, removing duplicates in-place.  
+
+3. **Clearer Variable Names:**  `uniqueIndex` is used to make the logic easier to follow.
+
+4. **Efficient Approach:** The code uses a single loop to iterate through the array, making it an efficient O(n) solution.
+
+5. **Comprehensive `main` Method:** The `main` method includes multiple test cases (including edge cases) to demonstrate the functionality and validate the correctness of the `removeDuplicates` method. 
+
+6. **Clearer Output:** The output in the `main` method is now more descriptive, showing both the new length and the modified array (up to the new length) using `Arrays.copyOfRange`. This prevents printing the unchanged portion of the original array.
+
+
+
+This improved version adheres to the prompt's method signature requirements, handles edge cases, provides clear explanations, and demonstrates efficient and correct functionality.
+

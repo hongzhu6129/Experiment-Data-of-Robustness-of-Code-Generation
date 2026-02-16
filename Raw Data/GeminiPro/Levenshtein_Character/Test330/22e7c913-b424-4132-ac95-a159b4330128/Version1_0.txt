@@ -1,0 +1,40 @@
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+        // Example string objects
+        String str1 = "Hello";
+        String str2 = "Hello";
+        String str3 = new String("Hello"); // Creating a new object explicitly
+        String str4 = "World";
+
+
+        // Using .equals() method (recommended for content comparison)
+        System.out.println("str1.equals(str2): " + str1.equals(str2)); // Output: true
+        System.out.println("str1.equals(str3): " + str1.equals(str3)); // Output: true
+        System.out.println("str1.equals(str4): " + str1.equals(str4)); // Output: false
+
+
+        // Using == operator (compares object references, not necessarily content) 
+        System.out.println("str1 == str2: " + (str1 == str2));      // Output: true (because of string interning)
+        System.out.println("str1 == str3: " + (str1 == str3));      // Output: false (different object references)
+        System.out.println("str1 == str4: " + (str1 == str4));      // Output: false
+
+
+        //  Another Example (demonstrating importance of .equals())
+        String str5 = new String("Example");
+        String str6 = new String("Example");
+        System.out.println("str5.equals(str6): " + str5.equals(str6)); // Output: true
+        System.out.println("str5 == str6: " + (str5 == str6));       // Output: false (different objects, even with same content)
+
+
+
+         /* Key takeaway:
+        Always use .equals() to compare the actual character content of String objects.
+        The == operator compares references (memory locations), which can be misleading when dealing with Strings, especially if created using the 'new' keyword. */
+
+
+
+    }
+}
+```

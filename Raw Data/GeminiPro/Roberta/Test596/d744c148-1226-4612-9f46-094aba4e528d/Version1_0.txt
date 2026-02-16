@@ -1,0 +1,83 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListLastElement {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList of Strings
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add some elements
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        // Check if the list is empty
+        if (languages.isEmpty()) {
+            System.out.println("The linked list is empty.");
+            return; // Exit if the list is empty
+        }
+
+
+        // Method 1: Using peekLast()
+        String lastElement = languages.peekLast();
+        System.out.println("Last element (using peekLast()): " + lastElement);
+
+
+        // Method 2: Using get() with size() - 1 (index of last element)
+        lastElement = languages.get(languages.size() - 1); 
+        System.out.println("Last element (using get()): " + lastElement);
+
+
+
+        // Demonstrate that the elements are still in the list
+        System.out.println("Linked list after retrieving last element:");
+        for (String language : languages) {
+            System.out.println(language);
+        }
+
+
+
+        // Example of handling an empty list gracefully (more concisely):
+         LinkedList<Integer> numbers = new LinkedList<>();
+         Integer lastNumber =  (numbers.isEmpty()) ? null : numbers.peekLast(); // Use a ternary operator
+
+
+        if(lastNumber != null){
+            System.out.println("Last number: " + lastNumber);
+        } else {
+            System.out.println("The numbers list is empty.");
+        }
+
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Create a LinkedList:**  A `LinkedList` of Strings is created and populated with some sample data.
+
+2. **Check for Empty List:** We first check if the list is empty using `isEmpty()`.  If it is, we print a message and exit the program using `return`.  This is crucial to avoid `NoSuchElementException` if you try to access an element from an empty list.
+
+3. **Method 1: `peekLast()`:**  The `peekLast()` method retrieves the last element of the `LinkedList` *without* removing it.
+
+4. **Method 2: `get()`:** You can also get the last element using the `get()` method by providing the index. The last element's index is `size() - 1`.
+
+5. **Print the List:** The code then prints the entire list to demonstrate that the last element has *not* been removed after using `peekLast()` or `get()`.
+
+
+6. **Handling Empty Lists (Improved Example):**  The final example with the `numbers` list shows a more concise way to handle potentially empty lists using the ternary operator.  It avoids a separate `if` block by directly assigning `null` to `lastNumber` if the list is empty.
+
+
+Key Improvements over a basic solution:
+
+* **Handles empty lists:** Prevents runtime errors by checking for empty lists.
+* **Clearly demonstrates non-destructive retrieval:** Shows that the last element is retrieved but not removed.
+* **Provides multiple methods:** Shows `peekLast()` and `get()` for retrieving the last element.
+* **Includes a more concise approach:** The `numbers` example demonstrates a streamlined way to deal with potential nulls from empty lists.

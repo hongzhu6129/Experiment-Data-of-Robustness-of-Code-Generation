@@ -1,0 +1,61 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumberChecker {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = sumOfSquaresOfDigits(n);
+        }
+
+        return n == 1;
+    }
+
+    private static int sumOfSquaresOfDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt (and a few more)
+        System.out.println("7 is happy: " + isHappy_number(7)); // True
+        System.out.println("10 is happy: " + isHappy_number(10)); // True
+        System.out.println("13 is happy: " + isHappy_number(13)); // True
+        System.out.println("2 is happy: " + isHappy_number(2)); // False
+        System.out.println("4 is happy: " + isHappy_number(4)); // False
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **HashSet for Cycle Detection:** The `isHappy_number` method now uses a `HashSet` called `seen` to keep track of numbers encountered during the process. This efficiently detects cycles. If a number is already in `seen`, it indicates a cycle, and the number is not happy.
+
+2. **Clearer Loop Condition:** The `while` loop condition is more concise: `n != 1 && !seen.contains(n)`. It continues as long as the number isn't 1 and hasn't been seen before.
+
+3. **Helper Function:** The `sumOfSquaresOfDigits` function is extracted to improve code readability and organization. It calculates the sum of squares of digits for a given number.
+
+4. **Return Boolean Directly:** The `isHappy_number` method directly returns `n == 1` after the loop, making the logic clearer.
+
+5. **Main Method with Examples:** The `main` method demonstrates how to use the `isHappy_number` function with example numbers, including the ones from your prompt, and prints clear output.
+
+
+This revised code is more efficient, readable, and adheres to best practices for happy number checking.

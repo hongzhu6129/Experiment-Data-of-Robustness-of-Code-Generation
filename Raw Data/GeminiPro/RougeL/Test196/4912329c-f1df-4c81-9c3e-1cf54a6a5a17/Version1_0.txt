@@ -1,0 +1,68 @@
+**Java Program:**
+
+```java
+import java.util.*;
+
+public class LanguageReplacingSpecificCharacter {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter a string:");
+        String inputString = input.nextLine();
+
+        // Get the character to replace
+        System.out.println("Enter the character to replace:");
+        char replaceChar = input.next().charAt(0);
+
+        // Get the replacement character
+        System.out.println("Enter the replacement character:");
+        char replacementChar = input.next().charAt(0);
+
+        // Replace all occurrences of the character in the string
+        String replacedString = inputString.replace(replaceChar, replacementChar);
+
+        // Print the replaced string
+        System.out.println("The replaced string is: " + replacedString);
+    }
+}
+```
+
+**Sample Output:**
+
+```
+Enter a string:
+The network languages 'd needed could using is: java.
+
+Enter the character to replace:
+'
+
+Enter the replacement character:
+a
+
+The replaced string is: The network languages ad needed could using is: java.
+```
+
+**Test Cases with Corner Cases:**
+
+**Test Case 1:**
+
+* Input String: "Hello world"
+* Replace Character: 'o'
+* Replacement Character: 'a'
+* Expected Output: "Halla warld"
+
+**Test Case 2:**
+
+* Input String: "" (empty string)
+* Replace Character: 'x'
+* Replacement Character: 'y'
+* Expected Output: ""
+
+**Test Case 3:**
+
+* Input String: null
+* Replace Character: 'a'
+* Replacement Character: 'b'
+* Expected Output: NullPointerException

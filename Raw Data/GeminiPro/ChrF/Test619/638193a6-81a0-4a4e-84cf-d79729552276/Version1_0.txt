@@ -1,0 +1,37 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetClone {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> originalTreeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        originalTreeSet.add("Apple");
+        originalTreeSet.add("Banana");
+        originalTreeSet.add("Orange");
+        originalTreeSet.add("Grape");
+
+        // Clone the TreeSet using the constructor
+        TreeSet<String> clonedTreeSet = new TreeSet<>(originalTreeSet);
+
+
+        // Print the original TreeSet
+        System.out.println("Original TreeSet: " + originalTreeSet);
+
+        // Print the cloned TreeSet
+        System.out.println("Cloned TreeSet: " + clonedTreeSet);
+
+
+        // Modify the original TreeSet (to demonstrate they are independent)
+        originalTreeSet.remove("Banana");
+
+        System.out.println("Original TreeSet after modification: " + originalTreeSet);
+        System.out.println("Cloned TreeSet after modification of original: " + clonedTreeSet);
+
+
+
+    }
+}
+```

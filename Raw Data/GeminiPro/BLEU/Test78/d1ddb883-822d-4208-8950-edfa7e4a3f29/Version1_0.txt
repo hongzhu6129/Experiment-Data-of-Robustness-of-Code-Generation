@@ -1,0 +1,61 @@
+```java
+public class CheckSecurityManagerAndEnvVariables {
+
+    public static void main(String[] args) {
+
+        // 5. Check if a security manager is established
+        SecurityManager sm = System.getSecurityManager();
+        if (sm != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        // 90. Get environment variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // Or TMP on some systems
+        String username = System.getenv("USERNAME"); // Or USER on some systems like Linux/macOS
+
+
+        if (path != null) {
+            System.out.println("PATH: " + path);
+        } else {
+            System.out.println("PATH environment variable not found.");
+        }
+
+
+        if (temp != null) {
+            System.out.println("TEMP: " + temp);
+        } else {
+            System.out.println("TEMP environment variable not found."); // Could also try TMP
+        }
+
+
+        if (username != null) {
+            System.out.println("USERNAME: " + username); 
+        } else {
+            System.out.println("USERNAME environment variable not found."); // Could also try USER
+        }
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Clearer Output:** The output now explicitly states whether a security manager is present or not.  It also handles the case where an environment variable is not found, rather than printing `null`.
+* **Cross-Platform Compatibility:** For the `TEMP` and `USERNAME` environment variables, the code now acknowledges that different operating systems might use slightly different names (e.g., `TMP` instead of `TEMP`, `USER` instead of `USERNAME`).  It provides suggestions for alternatives if the primary variable isn't found.
+* **Error Handling (for environment variables):** Checks if the environment variables are null before printing them to avoid NullPointerExceptions.
+* **Conciseness:** The code remains concise and easy to understand.
+* **Best Practices:** Uses `System.getenv()` which is the recommended way to access environment variables in Java.
+
+
+To compile and run:
+
+1. Save the code as `CheckSecurityManagerAndEnvVariables.java`.
+2. Compile: `javac CheckSecurityManagerAndEnvVariables.java`
+3. Run: `java CheckSecurityManagerAndEnvVariables`
+
+
+The output will show whether a security manager is set and the values of the specified environment variables (or a message if they are not defined).

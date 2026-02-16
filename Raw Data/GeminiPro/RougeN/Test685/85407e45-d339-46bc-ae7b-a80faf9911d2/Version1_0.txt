@@ -1,0 +1,77 @@
+```java
+public class ReverseInteger {
+
+    public static void main(String[] args) {
+        int num = 12345; // Example integer
+        int reversedNum = 0;
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+
+        System.out.println("Reversed Number: " + reversedNum);
+
+
+        //Handling overflow (demonstration - more robust checks could be implemented)
+        num = Integer.MAX_VALUE; // Example integer near maximum limit
+        reversedNum = 0;
+        boolean overflow = false;
+
+        while (num != 0) {
+            int digit = num % 10;
+            if (reversedNum > Integer.MAX_VALUE / 10 || (reversedNum == Integer.MAX_VALUE / 10 && digit > 7)) {
+                overflow = true;
+                break; // Stop if overflow occurs
+            }
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+
+        if (overflow) {
+            System.out.println("Overflow occurred during reversal.");
+        } else {
+            System.out.println("Reversed Number (with overflow handling): " + reversedNum);
+        }
+
+         // Similar handling for the negative minimum bound
+        num = Integer.MIN_VALUE;
+        reversedNum = 0;
+        overflow = false;
+
+        while (num != 0) {
+            int digit = num % 10;
+            if (reversedNum < Integer.MIN_VALUE / 10 || (reversedNum == Integer.MIN_VALUE / 10 && digit < -8)) {
+                overflow = true;
+                break;
+            }
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+
+        }
+
+        if(overflow){
+            System.out.println("Overflow occurred during reversal.");
+        } else {
+            System.out.println("Reversed Number (with overflow handling, negative case): " + reversedNum);
+        }
+    }
+}
+
+```
+
+
+Key improvements in this version:
+
+* **Overflow Handling:**  The code now demonstrates basic overflow handling.  If the reversed number becomes larger than `Integer.MAX_VALUE` or smaller than `Integer.MIN_VALUE`, it detects the overflow.  In a real-world application, you might want to throw an exception or return a specific error code in case of overflow.
+* **Clarity and Comments:** The code is better commented, explaining the logic and the purpose of overflow checks.
+* **Negative Number Handling:**  The original response didn't handle negative numbers correctly during overflow checks.  This is now fixed.
+* **Example Usage:**  The `main` method demonstrates how to use the reversal logic with different inputs, including a positive number, a number close to the maximum limit, and a negative number close to the minimum limit.
+
+
+**Explanation of Overflow Handling:**
+
+When reversing a large integer, the result might exceed the capacity of an `int`.  For example, reversing `1534236469` would result in a number larger than `Integer.MAX_VALUE`.  
+
+The overflow checks work by anticipating the next multiplication by 10. Before performing `reversedNum * 10`, the code checks if `reversedNum` is already greater than `Integer.MAX_VALUE / 10`.  If it is, multiplying by 10 will definitely cause an overflow. The additional check `(reversedNum == Integer.MAX_VALUE / 10 && digit > 7)` handles the edge case where `reversedNum` is equal to `Integer.MAX_VALUE/10`.  In this case, an overflow occurs only if the last digit (`digit`) is greater than 7.   Similar logic is applied for `Integer.MIN_VALUE` and negative numbers.

@@ -1,0 +1,44 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            // Calculate the Fermat number using Math.pow and explicit casting to long
+            long fermatNumber = (long) (Math.pow(2, Math.pow(2, n)) + 1); 
+
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Data Type:**  Fermat numbers grow very rapidly.  `int` is too small to hold even the 5th Fermat number.  We must use `long` to store the results.  However, even `long` will overflow beyond the 9th Fermat Number.
+2. **Calculation:** The formula for a Fermat number is 2^(2^n) + 1.  We can calculate this directly using `Math.pow()` but need to be mindful of the order of operations.
+3. **Output:** The code now prints the first 10 Fermat numbers as requested.
+4. **Overflow Handling (Important):**  After the 9th Fermat number, `long` will overflow and produce incorrect results.  For a more robust solution, you would need to use `BigInteger` which can handle arbitrarily large integers. Here's an example of how to use `BigInteger`:
+
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers (using BigInteger):");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger two = BigInteger.valueOf(2);
+            BigInteger exponent = two.pow(n);         // 2^n
+            BigInteger fermatNumber = two.pow(exponent.intValueExact()).add(BigInteger.ONE);  // More accurate
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+The `BigInteger` version is essential if you intend to calculate larger Fermat numbers accurately.  The first version (using `long`) is only suitable for the first few.

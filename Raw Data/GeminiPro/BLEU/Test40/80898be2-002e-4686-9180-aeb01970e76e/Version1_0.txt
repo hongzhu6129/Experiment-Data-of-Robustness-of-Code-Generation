@@ -1,0 +1,134 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime(String format) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String format = "yyyy/MM/dd HH:mm:ss.SSS"; // Example format
+        String currentDateTime = getCurrentDateTime(format);
+        System.out.println(currentDateTime);
+
+
+        // Demonstrating different formats
+        System.out.println(getCurrentDateTime("yyyy-MM-dd")); // Output: YYYY-MM-DD
+        System.out.println(getCurrentDateTime("HH:mm:ss")); // Output: HH:MM:SS
+        System.out.println(getCurrentDateTime("EEEE, MMMM dd, yyyy")); // Output: DayOfWeek, Month DD, YYYY
+        System.out.println(getCurrentDateTime("MM/dd/yy")); // Output: MM/DD/YY  (Two-digit year)
+
+    }
+}
+```
+
+
+## Test Cases
+
+Here are some test cases covering normal operation and corner/edge cases:
+
+**1. Standard Format Test:**
+
+```java
+@Test
+public void testStandardFormat() {
+    String expectedFormat = "yyyy/MM/dd HH:mm:ss.SSS";
+    String dateTimeString = CurrentDateTime.getCurrentDateTime(expectedFormat);
+
+    // Assert that the returned string matches the expected format.  A simple way is to check if it can be parsed back:
+    try {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(expectedFormat);
+        LocalDateTime.parse(dateTimeString, formatter); // No exception = success
+    } catch (Exception e) {
+        fail("Date time string doesn't match the expected format: " + e.getMessage());  // Use JUnit's fail() or similar
+    }
+}
+```
+
+**2. Invalid Format Test:**
+
+```java
+@Test
+public void testInvalidFormat() {
+    // Example of an invalid format string
+    String invalidFormat = "yyyy/MM/dd HH:mm:ss.SSSSSS"; // Too many milliseconds
+
+    try {
+        CurrentDateTime.getCurrentDateTime(invalidFormat);
+        fail("Expected an exception for invalid format, but none was thrown");
+    } catch (java.time.format.DateTimeParseException e) {
+        // Expected exception - test passes. You can add more specific checks if necessary
+        // e.g., assertEquals("...", e.getMessage());
+    }
+}
+
+```
+
+
+
+**3. Empty Format String:**
+
+```java
+@Test
+public void testEmptyFormatString() {
+    // Should ideally handle empty format strings gracefully and not crash.
+    try {
+        String dateTimeString = CurrentDateTime.getCurrentDateTime("");
+        // Maybe assert that the returned string is empty or uses a default format?
+        assertTrue(dateTimeString.isEmpty() || dateTimeString.matches(".*\\d.*")); // Check if it contains numbers
+
+    } catch (Exception e) {
+        fail("Empty format string should not cause a crash: " + e.getMessage());
+    }
+
+}
+
+```
+
+**4. Null Format String:**
+
+
+```java
+@Test
+public void testNullFormatString() {
+    // Null should be handled without a crash.
+    try {
+        String dateTimeString = CurrentDateTime.getCurrentDateTime(null);
+
+        // Determine what the behavior should be for null.  Should it throw an exception or return a default format?
+        assertNull(dateTimeString); // or assertNotNull(dateTimeString);  Depending on your intended behavior
+
+    } catch (NullPointerException e) { // or another appropriate exception type
+        // Expected exception - test passes.
+    }
+}
+```
+
+
+
+
+**5.  Two-Digit Year Format (Edge Case):**
+
+```java
+@Test
+public void testTwoDigitYear() {
+    String format = "MM/dd/yy";  // Two-digit year
+    String dateTimeString = CurrentDateTime.getCurrentDateTime(format);
+
+    // Parse back to verify the format but consider the year part
+    try {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        formatter.parse(dateTimeString); // No exception means format is correct syntactically
+    } catch (Exception e) {
+        fail("Date time string doesn't match the two-digit year format: " + e.getMessage()); 
+    }
+}
+
+```
+
+
+These tests use JUnit's `@Test`, `fail()`, `assertTrue()`, `assertNull()`, etc. Adapt these to your testing framework if you're not using JUnit.  The key is to test various scenarios, including valid and invalid format strings, and handle potential null or empty inputs gracefully.

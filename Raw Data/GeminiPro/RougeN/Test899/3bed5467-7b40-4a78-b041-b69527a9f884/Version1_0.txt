@@ -1,0 +1,62 @@
+```java
+public class FirstUniqueChar {
+
+    public static void main(String[] args) {
+        String str = "wresource";
+        int index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+        str = "aabbccddeeffg"; // Example with a unique character later in the string
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "loveleetcode"; // Example with repeating unique characters
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+    }
+
+    public static int first_Uniq_Char(String s) {
+        int[] charCount = new int[26]; // Assuming only lowercase English alphabet characters
+
+        // Count the occurrences of each character
+        for (char c : s.toCharArray()) {
+            charCount[c - 'a']++;
+        }
+
+        // Find the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1; // Should not reach here as we assume at least one unique character exists
+    }
+}
+```
+
+
+Output:
+
+```
+Original String: wresource
+First unique character of the above: 0
+Original String: aabbccddeeffg
+First unique character of the above: 12
+Original String: loveleetcode
+First unique character of the above: 2
+```
+
+
+Key improvements in this version:
+
+* **Handles all lowercase English alphabet characters:**  Uses an array of size 26 to store character counts.
+* **Clearer variable names:**  `charCount` is more descriptive than `freq`.
+* **Returns -1 if no unique character is found:** Though the prompt specifies there will always be a unique character,  it's good practice to handle edge cases, even if they are not expected.
+* **Added more test cases in `main`:** Demonstrates the function's behavior with different string inputs, including cases where the unique character appears later in the string or when there are multiple unique characters (it correctly finds the *first* unique one).
+* **Efficiency:**  The code is efficient, performing the task in linear time, O(n), where n is the length of the string. It makes a single pass to count character frequencies and another single pass to find the first unique character.

@@ -1,0 +1,52 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapSetView {
+
+    public static void main(String[] args) {
+
+        // Create a HashMap
+        Map<String, Integer> studentScores = new HashMap<>();
+
+        // Put some key-value pairs into the map
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+        studentScores.put("David", 80);
+
+
+        // Get a Set view of the mappings contained in the map
+        Set<Map.Entry<String, Integer>> entrySet = studentScores.entrySet();
+
+
+        // Iterate over the set and print each entry (key-value pair)
+        System.out.println("Set view of map entries:");
+        for (Map.Entry<String, Integer> entry : entrySet) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+
+        // Demonstrating modifications through the Set view (optional):
+        //  Modifying the map through the set view will reflect in the original map, and vice-versa.
+
+        // Remove an entry through the Set view:
+        entrySet.removeIf(entry -> entry.getKey().equals("Bob")); 
+
+        System.out.println("\nMap after removing 'Bob' through the Set view:");
+        for (Map.Entry<String, Integer> entry : entrySet) { // Iterate using the Set view
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+       // Add an entry using the map (will be reflected in the set view):
+       studentScores.put("Eve", 92);
+        System.out.println("\nMap after adding 'Eve' directly to the map:");
+
+        // You could also loop through the set here to see the change.
+        for (String key : studentScores.keySet()) { // Iterating using the original map (keySet)
+            System.out.println("Key: " + key + ", Value: " + studentScores.get(key));
+        }
+
+
+    }
+}

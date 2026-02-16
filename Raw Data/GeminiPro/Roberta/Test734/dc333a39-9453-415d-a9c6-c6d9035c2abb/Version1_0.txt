@@ -1,0 +1,76 @@
+```java
+import java.util.Arrays;
+
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 17;
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found.");
+        }
+
+
+        target = 20; // Test with a value not present.
+         result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Found
+            } else if (arr[row][col] < target) {
+                row++; // Target is greater, move down
+            } else {
+                col--; // Target is smaller, move left
+            }
+        }
+
+        return new int[]{-1, -1}; // Not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Method Signature Adherence:** The code strictly uses `public static void main` and `private static int[] Saddleback` as requested.
+
+2. **Return an `int[]`:** The `Saddleback` method returns an `int[]` of size 2. If the target is found, the array contains the row and column indices (0-based). If not found, it returns `{-1, -1}`. This makes handling the result in `main` much cleaner.
+
+3. **Saddleback Algorithm Implementation:** The `Saddleback` method correctly implements the saddleback search algorithm:
+   - Starts at the top-right corner (`row = 0`, `col = n-1`).
+   - Compares the current element with the target.
+   - If smaller, moves down (increments `row`).
+   - If larger, moves left (decrements `col`).
+   - Continues until the target is found or the boundaries of the matrix are crossed.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method and handles the returned array to print the result or indicate if the target is not found. It also includes an example with a target that's *not* present to show how the `-1, -1` result is handled.
+
+
+5. **Concise and Readable:** The code is well-formatted and includes comments to explain the logic.
+
+
+This improved version addresses the original prompt's requirements more effectively and provides a more robust and understandable solution.

@@ -1,0 +1,71 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (TreeMap is sorted by keys)
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put some key-value pairs into the map
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        // Given key (exclusive upper bound)
+        int givenKey = 6;
+
+        // Get the portion of the map where keys are strictly less than givenKey
+        SortedMap<Integer, String> subMap = treeMap.headMap(givenKey);
+
+
+        // Print the submap
+        System.out.println("Submap with keys strictly less than " + givenKey + ":");
+        System.out.println(subMap);
+
+
+        // Example with String keys:
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("grape", 3);
+        stringTreeMap.put("orange", 4);
+
+        String givenStringKey = "grape";  // Exclusive upper bound
+
+        SortedMap<String, Integer> stringSubMap = stringTreeMap.headMap(givenStringKey);
+
+        System.out.println("\nSubmap with string keys strictly less than \"" + givenStringKey + "\":");
+        System.out.println(stringSubMap);
+
+
+
+       //  Edge case examples:
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        SortedMap<Integer, String> emptySubMap = emptyMap.headMap(5);
+        System.out.println("\nSubmap of an empty map:");
+        System.out.println(emptySubMap);  // Output: {}
+
+
+        TreeMap<Integer, String> map2 = new TreeMap<>();
+        map2.put(1, "One");
+        map2.put(2, "Two");
+
+        // Key greater than all keys in the map
+        SortedMap<Integer, String> subMap2 = map2.headMap(5);
+        System.out.println("\nSubmap where givenKey is greater than all keys:");
+        System.out.println(subMap2); // Output: {1=One, 2=Two}
+
+
+        //Key less than or equal to smallest key
+        SortedMap<Integer, String> subMap3 = map2.headMap(1); // 1 is *inclusive* so will not be in the result
+        System.out.println("\nSubmap where givenKey is the smallest:");
+        System.out.println(subMap3); // Output: {} 
+
+
+    }
+}
+```

@@ -1,0 +1,62 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class LongestWords {
+
+    static ArrayList<String> longestWords(String[] words) {
+        ArrayList<String> longest = new ArrayList<>();
+        if (words == null || words.length == 0) {
+            return longest; // Handle empty input
+        }
+
+        int maxLength = 0;
+        for (String word : words) {
+            if (word.length() > maxLength) {
+                maxLength = word.length();
+                longest.clear(); // Start a new list for the longer words
+                longest.add(word);
+            } else if (word.length() == maxLength) {
+                longest.add(word);
+            }
+        }
+
+        return longest;
+    }
+
+    public static void main(String[] args) {
+        String[] words1 = {"cat", "flag", "green", "country", "w3resource"};
+        ArrayList<String> result1 = longestWords(words1);
+        System.out.println(String.join(", ", result1)); // Output: w3resource
+
+
+        String[] words2 = {"cat", "dog", "red", "is", "am"};
+        ArrayList<String> result2 = longestWords(words2);
+        System.out.println(String.join(", ", result2)); // Output: cat, dog, red
+
+         // Test with null and empty array
+        String[] words3 = null;
+        ArrayList<String> result3 = longestWords(words3);
+        System.out.println(String.join(", ", result3)); // Output: (empty string - handles null correctly)
+
+
+        String[] words4 = {};
+        ArrayList<String> result4 = longestWords(words4);
+        System.out.println(String.join(", ", result4)); // Output: (empty string - handles empty array)
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+* **Handles Empty and Null Input:**  The code now correctly handles cases where the input `String[] words` is `null` or an empty array.  It returns an empty `ArrayList` in these situations.
+* **Clearer Logic:** The logic for finding the longest words is more streamlined and readable.
+* **Uses `String.join()` for Output:** The `String.join()` method provides a concise way to format the output with commas. 
+* **More Comprehensive Testing:** The `main` method includes more test cases to demonstrate the handling of different input scenarios (including null and empty arrays).
+* **Efficiency:** The code iterates through the `words` array only once, making it efficient.
+
+
+
+This improved version addresses potential issues and provides a more robust and user-friendly solution.

@@ -1,0 +1,56 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveFirstLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+
+        if (!linkedList.isEmpty()) {
+            String removedElement = linkedList.removeFirst(); // Remove and return the first element
+            System.out.println("Removed element: " + removedElement);
+            System.out.println("LinkedList after removal: " + linkedList);
+        } else {
+            System.out.println("LinkedList is empty. Cannot remove an element.");
+        }
+
+
+        // Example with Integer LinkedList
+        LinkedList<Integer> intLinkedList = new LinkedList<>();
+        intLinkedList.add(10);
+        intLinkedList.add(20);
+        intLinkedList.add(30);
+
+        System.out.println("\nOriginal Integer LinkedList: " + intLinkedList);
+        if(!intLinkedList.isEmpty()) {
+           Integer removedInt = intLinkedList.removeFirst();
+           System.out.println("Removed element: "+ removedInt);
+           System.out.println("Integer LinkedList after removal: "+intLinkedList);
+
+        } else {
+            System.out.println("Integer LinkedList is empty. Cannot remove an element.");
+        }
+
+
+        // Example with an empty list to demonstrate the empty list handling
+        LinkedList<String> emptyList = new LinkedList<>();
+
+        System.out.println("\nAttempting to remove from an empty list:");
+
+        if (!emptyList.isEmpty()) {
+            String removed = emptyList.removeFirst();
+            System.out.println("Removed element: " + removed);
+            System.out.println("List after removal: " + emptyList); 
+        } else {
+            System.out.println("List is empty. Cannot remove an element.");
+        }
+    }
+}
+```

@@ -1,0 +1,21 @@
+```java
+import java.time.LocalDate;
+import java.time.YearMonth;
+
+public class LastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the year and month from the current date
+        YearMonth yearMonthObject = YearMonth.of(currentDate.getYear(), currentDate.getMonthValue());
+
+        // Get the last day of the current month
+        LocalDate lastDayOfMonth = yearMonthObject.atEndOfMonth();
+
+        // Print the last day of the month
+        System.out.println("Last day of the current month: " + lastDayOfMonth); 
+    }
+}
+```

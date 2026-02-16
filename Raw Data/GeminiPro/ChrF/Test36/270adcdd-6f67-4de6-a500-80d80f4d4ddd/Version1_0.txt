@@ -1,0 +1,70 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky.");
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider a few aspects for testing:
+
+1. **Correct Output Format:** Verify that the output exactly matches the desired format, including capitalization, punctuation, and indentation (tabs).  The provided code already ensures this.
+
+2. **Empty String:** While not an input, we can consider what happens if parts of the string were empty.  The program should still function correctly, just printing potentially empty lines or lines with only whitespace.  Let's modify the program slightly to demonstrate this and then test it:
+
+```java
+public class TwinkleTwinkleModified {
+
+    public static void printTwinkleTwinkle(String line1, String line2, String line3, String line4) {
+        System.out.println(line1);
+        System.out.println("\t" + line2);
+        System.out.println("\t\t" + line3);
+        System.out.println("\t\t" + line4);
+        System.out.println(line1);
+        System.out.println("\t" + line2);
+    }
+
+    public static void main(String[] args) {
+        // Normal case
+        printTwinkleTwinkle("Twinkle, twinkle, little star,", "How I wonder what you are!", "Up above the world so high,", "Like a diamond in the sky.");
+
+        // Empty string test cases
+        System.out.println("\nTest with empty strings:");
+        printTwinkleTwinkle("", "", "", "");
+        printTwinkleTwinkle("First line", "", "Third line", "");
+        printTwinkleTwinkle(null, null, null, null); //Null string test case
+    }
+}
+
+```
+
+Now, when you run this modified version, you'll see how it handles empty or null strings, confirming that it doesn't crash and produces the expected (though perhaps less meaningful) output.
+
+
+
+3. **Unicode Characters:** Although not strictly a corner case, it's good practice to test with Unicode characters to ensure your program handles them correctly.  Try replacing some words with characters from other languages:
+
+```java
+printTwinkleTwinkle("Brilla, brilla, peque�a estrella,", "�C�mo me pregunto qu� eres?", "Arriba sobre el mundo tan alto,", "Como un diamante en el cielo."); // Spanish
+```
+
+This helps ensure your output encoding and handling of different character sets are correct.
+
+
+
+By testing these variations, you gain more confidence that your program is robust and behaves as expected under different conditions. Although this program is simple, these testing principles are applicable to more complex Java programs as well.
+

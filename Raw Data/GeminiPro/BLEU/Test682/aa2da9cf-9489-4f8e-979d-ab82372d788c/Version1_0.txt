@@ -1,0 +1,71 @@
+```java
+public class CheckInteger {
+
+    public static void main(String[] args) {
+        double num1 = 10.0;
+        double num2 = 10.5;
+        double num3 = -5.0;
+        double num4 = 0.0;
+
+        System.out.println(num1 + " is integer? " + isInteger(num1));
+        System.out.println(num2 + " is integer? " + isInteger(num2));
+        System.out.println(num3 + " is integer? " + isInteger(num3));
+        System.out.println(num4 + " is integer? " + isInteger(num4));
+
+        // Example with command line arguments if provided
+        if (args.length > 0) {
+             try {
+                double argNum = Double.parseDouble(args[0]);
+                System.out.println(argNum + " is integer? " + isInteger(argNum));
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: Please provide a valid double number as a command line argument.");
+            }
+        }
+    }
+
+    private static boolean isInteger(double num) {
+        return num == (int) num;
+    }
+}
+```
+
+
+Explanation:
+
+1. **`isInteger(double num)` method:**
+   - This method takes a `double` as input.
+   - It casts the `double` to an `int` using `(int) num`. This truncates the decimal part.
+   - It then compares the original `double` with the truncated `int` value.  If they are equal, it means the double represented a whole number (integer).
+
+2. **`main` method:**
+   - We declare some sample `double` variables for testing.
+   - We call the `isInteger` method for each variable and print the result.
+   - The code also handles command line arguments:
+     - It checks if any arguments are provided (`args.length > 0`).
+     - If an argument is provided, it attempts to parse it as a `double` using `Double.parseDouble()`.
+     - If parsing is successful, it calls `isInteger` and prints the result.
+     - If parsing fails (e.g., the user enters text instead of a number), it catches the `NumberFormatException` and prints an error message.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CheckInteger.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac CheckInteger.java`
+3. **Run:** `java CheckInteger` (This will run with the sample values in the code).
+4. **Run with command-line argument:**  `java CheckInteger 12.75` (This will test the number 12.75).
+
+
+Output examples:
+
+```
+10.0 is integer? true
+10.5 is integer? false
+-5.0 is integer? true
+0.0 is integer? true
+
+// If you run with: java CheckInteger 12.75
+12.75 is integer? false 
+
+//If you run with: java CheckInteger hello
+Invalid input: Please provide a valid double number as a command line argument.
+```

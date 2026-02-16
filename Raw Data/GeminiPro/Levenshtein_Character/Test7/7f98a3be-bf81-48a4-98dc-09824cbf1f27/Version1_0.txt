@@ -1,0 +1,68 @@
+```java
+import java.util.Scanner;
+
+public class PartAverage {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double partAverage = calculatePartAverage(num1, num2, num3);
+
+        System.out.println("Part average: " + partAverage);
+        scanner.close(); 
+    }
+
+    public static double calculatePartAverage(double num1, double num2, double num3) {
+        // Calculate the sum of the two smallest numbers.
+        double sumOfTwoSmallest = 0;
+         if (num1 <= num2 && num1 <= num3) {
+            sumOfTwoSmallest = (num2 <= num3) ? num1 + num2 : num1 + num3;
+        } else if (num2 <= num1 && num2 <= num3) {
+             sumOfTwoSmallest = (num1 <= num3) ? num1 + num2 : num2 + num3;
+        } else { // num3 is smallest
+             sumOfTwoSmallest = (num1 <= num2) ? num1 + num3 : num2 + num3;
+        }
+        return sumOfTwoSmallest / 2.0;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1 | 10, 20, 30 | 15.0 |
+| 2 | 30, 20, 10 | 15.0 |
+| 3 | 20, 10, 30 | 15.0 |
+| 4 | 10, 10, 20 | 10.0 |  // Two smallest are equal
+| 5 | 20, 10, 10 | 10.0 | // Two smallest are equal
+| 6 | 10, 20, 10 | 10.0 |// Two smallest are equal
+| 7 | 10, 10, 10 | 10.0 | // All equal
+| 8 | -10, 20, 30 | 5.0 | // Negative number
+| 9 | 0, 0, 0 | 0.0 | // All zeros
+| 10 | Double.MAX_VALUE, 10, 20 | 15.0 | // Large number
+| 11 | Double.MIN_VALUE, 10, 20 | Double.MIN_VALUE / 2.0 + 10  | // Very small number (Might cause issues with precision in some cases, depending on exactly how Java handles these very small doubles)
+
+
+
+**Explanation of Improvements and Corner Case Handling:**
+
+* **Clearer Variable Names:**  Using names like `sumOfTwoSmallest` improves readability.
+* **Corrected Logic for Finding Smallest Two:** The previous logic had flaws. The updated code correctly finds the two smallest numbers in all scenarios.
+* **Handles Equal Numbers:**  The code now correctly handles cases where two or all three input numbers are equal.
+* **Handles Negative Numbers and Zero:** The code works correctly with negative numbers and zero.
+* **Handles Large Numbers:**  The code includes a test case with `Double.MAX_VALUE` to check for potential overflow or other issues with extremely large numbers. Note that Java's `double` type can represent extremely large and small values.
+* **Addresses Potential Precision Issues with `Double.MIN_VALUE`:**  The test case using `Double.MIN_VALUE` is included because operations with very small numbers can sometimes lead to unexpected behavior due to the way floating-point numbers are represented. The expected output in that case needs to take into account how the addition with a relatively larger value is affected.
+* **Resource Management:** The `scanner.close()` statement is added to release the scanner resource.
+
+
+
+This improved version is more robust and handles a wider range of inputs correctly. The test cases are also more comprehensive and cover more corner cases.

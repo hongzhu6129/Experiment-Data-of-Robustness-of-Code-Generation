@@ -1,0 +1,14 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Comparator Class:** The `LockComparator` class implements the `Comparator<String>` interface.  This is how you provide custom sorting logic to the `TreeMap`.
+
+2. **compare Method:**  The `compare(String lock1, String lock2)` method is the heart of the comparator. It receives two lock names (strings) and returns:
+   - A negative integer if `lock1` should come before `lock2`.
+   - Zero if `lock1` and `lock2` are considered equal for sorting.
+   - A positive integer if `lock1` should come after `lock2`.
+
+3. **TreeMap Initialization:**  The `TreeMap` is initialized with an instance of the `LockComparator`:
+   

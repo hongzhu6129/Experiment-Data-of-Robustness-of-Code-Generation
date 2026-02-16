@@ -1,0 +1,46 @@
+```java
+import java.util.Scanner;
+
+public class NasdaqMonth {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the Nasdaq data.
+        String nasdaqData = scanner.nextLine();
+
+        // Split the Nasdaq data into an array of strings.
+        String[] nasdaqDataSplit = nasdaqData.split(",");
+
+        // Get the month from the Nasdaq data.
+        String month = nasdaqDataSplit[0];
+
+        // Print the month.
+        System.out.println(month);
+    }
+}
+```
+
+Test Cases:
+
+```
+**Test Case 1**
+Input: 2023-01-01,12345.67
+Output: 2023-01
+
+**Test Case 2**
+Input: 2023-12-31,98765.43
+Output: 2023-12
+
+**Test Case 3**
+Input: 1999-03-08,45678.90
+Output: 1999-03
+
+**Test Case 4**
+Input: 2000-02-29,34567.89
+Output: 2000-02
+
+**Test Case 5**
+Input: 2024-08-15,23456.78
+Output: 2024-08
+```

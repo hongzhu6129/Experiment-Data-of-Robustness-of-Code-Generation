@@ -1,0 +1,53 @@
+import java.util.TreeSet;
+
+public class LeastSetGreaterThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(40);
+
+        Integer key1 = 25;
+        Integer result1 = getLeastSetGreaterThanOrEqual(set, key1);
+        System.out.println("Least set greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        Integer key2 = 10;
+        Integer result2 = getLeastSetGreaterThanOrEqual(set, key2);
+        System.out.println("Least set greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+
+        Integer key3 = 45;
+        Integer result3 = getLeastSetGreaterThanOrEqual(set, key3);
+        System.out.println("Least set greater than or equal to " + key3 + ": " + result3); // Output: null
+
+
+        TreeSet<String> stringSet = new TreeSet<>();
+        stringSet.add("apple");
+        stringSet.add("banana");
+        stringSet.add("orange");
+
+        String key4 = "grape";
+        String result4 = getLeastSetGreaterThanOrEqual(stringSet, key4);
+        System.out.println("Least set greater than or equal to " + key4 + ": " + result4); // Output: orange
+
+
+        String key5 = "apricot"; // Comes before "apple"
+        String result5 = getLeastSetGreaterThanOrEqual(stringSet, key5);
+        System.out.println("Least set greater than or equal to " + key5 + ": " + result5); // Output: apple
+
+    }
+
+
+    public static <T extends Comparable<T>> T getLeastSetGreaterThanOrEqual(TreeSet<T> set, T key) {
+        if (set == null || set.isEmpty()) {
+            return null;
+        }
+        return set.ceiling(key); // ceiling() directly gives the least element >= key, or null if none exists
+    }
+}
+
+
+

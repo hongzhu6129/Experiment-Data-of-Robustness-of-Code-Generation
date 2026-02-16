@@ -1,0 +1,52 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = (long) Math.pow(2, Math.pow(2, n)) + 1;
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **`public static void main(String[] args)`:** This is the standard entry point for Java programs.
+2. **`System.out.println(...)`:** This line prints an introductory message to the console.
+3. **`for (int n = 0; n < 10; n++)`:**  This loop iterates 10 times, calculating the Fermat number for each value of `n` from 0 to 9.
+4. **`long fermatNumber = (long) Math.pow(2, Math.pow(2, n)) + 1;`:**  This is the core of the calculation.
+   - `Math.pow(2, n)` calculates 2 raised to the power of `n`.
+   - `Math.pow(2, ...)` calculates 2 raised to the power of the previous result (2^n).
+   - `+ 1` adds 1 to the result, completing the Fermat number formula.
+   - `(long)` casts the result to `long`. This is crucial because Fermat numbers grow very quickly, and `int` would overflow for even small values of `n`.  `long` provides a larger range, but even it will eventually be insufficient for larger Fermat numbers.
+5. **`System.out.println(fermatNumber);`:**  This line prints the calculated Fermat number for the current value of `n`.
+
+
+**Important Considerations:**
+
+* **Overflow:**  As mentioned, Fermat numbers grow extremely rapidly. Even `long` will not be able to hold the exact values for n > 4. For n = 5 and beyond, you'll see incorrect results due to overflow.  To handle arbitrarily large numbers, you would need to use the `BigInteger` class in Java.
+* **Efficiency:** The repeated calls to `Math.pow()` can be slightly inefficient.  For a more optimized approach (especially if you were working with `BigInteger`), you could calculate powers of 2 iteratively.
+
+
+If you want to handle large Fermat numbers correctly using `BigInteger`:
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger two = BigInteger.valueOf(2);
+            BigInteger exponent = two.pow(n);  // 2^n
+            BigInteger fermatNumber = two.pow(exponent.intValue()).add(BigInteger.ONE);  // 2^(2^n) + 1
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```

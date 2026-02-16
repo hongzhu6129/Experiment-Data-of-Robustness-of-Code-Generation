@@ -1,0 +1,75 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Define date format
+
+        LocalDate date1 = null;
+        LocalDate date2 = null;
+
+        // Input validation loop for date1
+        while (date1 == null) {
+            System.out.print("Enter the first date (yyyy-MM-dd): ");
+            String date1Str = scanner.nextLine();
+            try {
+                date1 = LocalDate.parse(date1Str, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+            }
+        }
+
+
+        // Input validation loop for date2
+        while (date2 == null) {
+            System.out.print("Enter the second date (yyyy-MM-dd): ");
+            String date2Str = scanner.nextLine();
+            try {
+                date2 = LocalDate.parse(date2Str, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+            }
+        }
+
+
+        Period period = Period.between(date1, date2); // Calculate the period between dates
+
+
+        int years = period.getYears();
+        int months = period.getMonths();
+
+
+        System.out.println("Difference: " + years + " years, " + months + " months");
+
+
+        scanner.close();
+
+
+
+    }
+}
+```
+
+
+Key improvements in this revised code:
+
+* **Clearer Prompts and Error Handling:**  The code provides specific prompts for date input and includes error handling using a `try-catch` block to manage potential `DateTimeParseException` if the user enters an invalid date format.  It loops until a valid date is entered.
+* **`Period` for Accurate Calculation:** It uses `Period.between()` for accurate calculation of years and months, addressing potential inaccuracies in manual calculations involving days and months.
+* **Explicit Date Format:**  It explicitly defines the date format (`yyyy-MM-dd`) and uses `DateTimeFormatter` to ensure consistent parsing.
+* **Resource Management:** The `Scanner` is closed at the end using `scanner.close()` to release the resource.
+
+
+Example Usage:
+
+```
+Enter the first date (yyyy-MM-dd): 2022-01-15
+Enter the second date (yyyy-MM-dd): 2024-03-20
+Difference: 2 years, 2 months 
+```

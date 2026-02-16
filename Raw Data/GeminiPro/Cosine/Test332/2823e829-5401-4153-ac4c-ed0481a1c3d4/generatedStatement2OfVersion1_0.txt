@@ -1,0 +1,23 @@
+
+
+
+Explanation:
+
+1. **Import necessary classes:**
+   - `java.time.LocalDateTime`: Represents a date and time.
+   - `java.time.format.DateTimeFormatter`: Used for formatting dates and times.
+
+2. **Get current date and time:**
+   - `LocalDateTime currentDateTime = LocalDateTime.now();` gets the current date and time and stores it in a `LocalDateTime` object.
+
+3. **Define the format:**
+   - `DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");` creates a `DateTimeFormatter` object with the specified pattern. The pattern string uses symbols to represent different parts of the date and time (e.g., `yyyy` for year, `MM` for month, `dd` for day, `HH` for hour, `mm` for minute, `ss` for second).
+
+4. **Format the date and time:**
+   - `String formattedDateTime = currentDateTime.format(formatter);` applies the formatter to the `currentDateTime` object to create a formatted string.
+
+5. **Print the formatted date and time:**
+   - `System.out.println("Current Date and Time: " + formattedDateTime);` prints the formatted string to the console.
+
+
+The code also includes additional examples showing different formatting patterns, including formatting just the date, just the time, and using the ISO 8601 format.  Refer to the Java documentation for `DateTimeFormatter` for a complete list of the pattern symbols you can use.

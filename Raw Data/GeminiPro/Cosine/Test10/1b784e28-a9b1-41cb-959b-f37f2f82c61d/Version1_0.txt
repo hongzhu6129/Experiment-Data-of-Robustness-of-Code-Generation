@@ -1,0 +1,53 @@
+```java
+public class PrintFace {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases (While you can't directly unit test output to console like this, these demonstrate different usage scenarios and potential corner/edge cases you'd consider if you were building a more complex system that generated such output):**
+
+1. **Basic Test:**  Simply call the `printFace()` method.  This verifies the basic functionality.
+
+2. **Redirection (Not a Java test, but a shell concept):** Run the program and redirect the output to a file. This allows you to examine the output programmatically if you need to in a more advanced scenario.  e.g., `java PrintFace > output.txt`. Then you could compare `output.txt` with an expected output file.
+
+3. **Character Encoding (More relevant for file output):** If you were writing this face to a file, you might want to test with different character encodings (UTF-8, UTF-16, etc.) to ensure the special characters display correctly.  This becomes especially relevant for internationalization where you might be using a broader range of characters.
+
+4. **Integration (Hypothetical):** Imagine you were using `printFace()` as part of a larger system. For example, a game that prints different faces based on character emotions. You would test the integration of `printFace()` within that larger system.  Perhaps by mocking the output stream and verifying that `printFace()` was called with the correct parameters (if it were modified to take parameters like emotion).
+
+5. **Modification for Different Faces (Example of extending the code):**
+   ```java
+   public static void printFace(String emotion) {
+       String mouth = "";
+       switch (emotion) {
+           case "happy": mouth = " |  ^  |"; break;
+           case "sad": mouth = " |  _  |"; break;
+           default: mouth = " | '-' |";
+       }
+       System.out.println("  +\"\"\"\"+");
+       System.out.println(" [| o o |]");
+       System.out.println(mouth); // Using the emotion-based mouth
+       System.out.println("  +-----+");
+   }
+
+   public static void main(String[] args) {
+       printFace("happy");
+       printFace("sad");
+       printFace("neutral"); // Default case
+   }
+   ```
+   Here, you would test each emotion to ensure the correct face is printed.  This demonstrates how you could add more complex logic and then test the different branches.
+
+
+While the initial `printFace()` is simple, these examples illustrate how testing approaches evolve as the complexity of the code increases.  For simple output to console, visual inspection is usually enough, but the concepts of redirection and integration testing are valuable for more complex systems.  The "Modification" example shows how easily the code could be extended, and how those extensions would necessitate more thorough testing.
+

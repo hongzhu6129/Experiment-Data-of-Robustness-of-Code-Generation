@@ -1,0 +1,42 @@
+```java
+public class SumTwoNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 74;
+        int num2 = 36;
+        int sum = num1 + num2;
+        System.out.println(sum); // Output: 110
+
+
+        // You can also take input from command line arguments if needed:
+         if (args.length == 2) {
+            try {
+                int arg1 = Integer.parseInt(args[0]);
+                int arg2 = Integer.parseInt(args[1]);
+                System.out.println(arg1 + arg2); 
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please provide two integers as command line arguments.");
+            }
+        } 
+    }
+}
+```
+
+**Explanation:**
+
+1. **Hardcoded Values:** The first part of the `main` method demonstrates the sum of two hardcoded integer values (74 and 36).  The result is stored in the `sum` variable and then printed to the console.
+
+2. **Command-Line Arguments (Optional):** The second part shows how to make the program more flexible by accepting the two numbers as command-line arguments.
+
+   - `args.length == 2`:  This checks if exactly two arguments have been provided.
+   - `Integer.parseInt()`: This converts the string arguments (from the command line) into integer values.
+   - `try-catch`: This handles potential `NumberFormatException` errors that could occur if the user provides non-numeric input.
+
+**How to run with command-line arguments:**
+
+1. **Compile:** `javac SumTwoNumbers.java`
+2. **Run:** `java SumTwoNumbers 123 456` (Replace 123 and 456 with your desired numbers)
+
+
+This improved version allows you to calculate the sum of any two integers you provide when running the program.  If you don't provide any command-line arguments, it defaults to calculating 74 + 36.
+

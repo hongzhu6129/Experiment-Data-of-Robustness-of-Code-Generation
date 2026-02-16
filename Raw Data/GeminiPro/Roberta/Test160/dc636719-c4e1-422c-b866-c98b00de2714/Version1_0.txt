@@ -1,0 +1,51 @@
+```java
+import java.util.Scanner;
+
+public class StringStartsWith {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input strings
+        System.out.println("Enter the first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.println("Enter the second string: ");
+        String str2 = scanner.nextLine();
+
+        // Check if the first string starts with the second string
+        boolean startsWith = str1.startsWith(str2);
+
+        // Print the result
+        if (startsWith) {
+            System.out.println("The first string starts with the second string.");
+        } else {
+            System.out.println("The first string does not start with the second string.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Valid test cases:**
+    * Input: "Hello", "He"
+    * Output: "The first string starts with the second string."
+    * Input: "Java is fun", "Java"
+    * Output: "The first string starts with the second string."
+    * Input: "12345", "12"
+    * Output: "The first string starts with the second string."
+* **Invalid test cases:**
+    * Input: "Hello", "World"
+    * Output: "The first string does not start with the second string."
+    * Input: "Java is fun", "Python"
+    * Output: "The first string does not start with the second string."
+    * Input: "12345", "6789"
+    * Output: "The first string does not start with the second string."
+* **Corner cases:**
+    * Input: "", ""
+    * Output: "The first string starts with the second string."
+    * Input: "Hello", ""
+    * Output: "The first string starts with the second string."
+    * Input: "", "World"
+    * Output: "The first string does not start with the second string."

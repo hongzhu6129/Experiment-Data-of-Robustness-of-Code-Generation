@@ -1,0 +1,136 @@
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters++;
+            } else if (Character.isWhitespace(c)) {
+                spaces++;
+            } else if (Character.isDigit(c)) {
+                numbers++;
+            } else {
+                others++;
+            }
+        }
+
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Other characters: " + others);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: `"aa kiu, i swd skieo 236587."`
+   - Expected Output: Letters: 16, Spaces: 5, Numbers: 6, Other: 2
+
+2. **Empty String:**
+   - Input: `""`
+   - Expected Output: Letters: 0, Spaces: 0, Numbers: 0, Other: 0
+
+3. **Only Letters:**
+   - Input: `"HelloWorld"`
+   - Expected Output: Letters: 10, Spaces: 0, Numbers: 0, Other: 0
+
+4. **Only Spaces:**
+   - Input: `"     "`
+   - Expected Output: Letters: 0, Spaces: 5, Numbers: 0, Other: 0
+
+5. **Only Numbers:**
+   - Input: `"1234567890"`
+   - Expected Output: Letters: 0, Spaces: 0, Numbers: 10, Other: 0
+
+6. **Only Special Characters:**
+   - Input: `"!@#$%^&*()"`
+   - Expected Output: Letters: 0, Spaces: 0, Numbers: 0, Other: 10
+
+7. **Mixed Case with Unicode:**
+   - Input: `"H�llo W�rld 123 !@#$"`  (Includes Unicode characters)
+   - Expected Output: Letters: 10, Spaces: 2, Numbers: 3, Other: 5
+
+
+8. **String with leading/trailing spaces:**
+   - Input: `"   This string has leading and trailing spaces   "`
+   - Expected Output: Letters: 31, Spaces: 10, Numbers: 0, Other: 0
+
+9. **String with multiple consecutive spaces:**
+    - Input: `"This  string  has  multiple   spaces"`
+    - Expected Output: Letters: 24, Spaces: 7, Numbers: 0, Other: 0
+
+
+**How to Run Test Cases (Manually):**
+
+1. Compile the Java code: `javac CharacterCounter.java`
+2. Run the program: `java CharacterCounter`
+3. Enter the test input string when prompted.
+4. Compare the output with the expected output.
+
+
+
+**Automated Testing (Recommended):**
+
+For more robust testing, consider using a testing framework like JUnit.  Here's a basic example:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class CharacterCounterTest {
+
+    private String runTest(String input) {  // Helper function to run the program with specific input
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+
+        CharacterCounter.main(new String[0]); // Run main method
+
+        System.setIn(System.in); // Restore System.in
+        System.setOut(System.out); // Restore System.out
+
+        return outContent.toString(); // Return program's output as String
+    }
+
+
+    @Test
+    void testNormalCase() {
+        String output = runTest("aa kiu, i swd skieo 236587.\n");
+        assertTrue(output.contains("Letters: 16"));
+        assertTrue(output.contains("Spaces: 5"));
+        assertTrue(output.contains("Numbers: 6"));
+        assertTrue(output.contains("Other characters: 2"));
+    }
+
+
+    // Add more @Test methods for the other test cases...
+    // ... (See examples in the previous section how to structure the tests)
+    
+}
+```
+
+This JUnit example shows how to automate the testing process and make it more efficient and reliable.  You would add more `@Test` methods for each of the test cases described above.  To run JUnit tests, you'll need to add the JUnit library to your project.  Many IDEs have built-in support for running JUnit tests.

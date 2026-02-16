@@ -1,0 +1,82 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k.");
+            return;
+        }
+
+
+        // Method 1: Using Sorting (Time complexity: O(n log n))
+        int[] arrSorted = Arrays.copyOf(arr, arr.length); // Create a copy to avoid modifying the original
+        Arrays.sort(arrSorted);
+        System.out.print("K Largest elements (using sorting): ");
+        for (int i = arrSorted.length - k; i < arrSorted.length; i++) {
+            System.out.print(arrSorted[i] + " ");
+        }
+        System.out.println();
+
+
+        // Method 2: Using a Min-Heap (Priority Queue) (Time complexity: O(n log k))
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : arr) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Remove the smallest element if the size exceeds k
+            }
+        }
+        System.out.print("K Largest elements (using min-heap): ");
+        while (!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll() + " "); // Retrieve and remove elements in ascending order
+        }
+        System.out.println();
+
+
+
+        //Method 3: Using QuickSelect (Average Time complexity: O(n), Worst case: O(n^2)): This one is more complex to implement within the constraints of only using a main method, so I've demonstrated the easier methods above.
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Method 1: Sorting:**
+   - Sort the array in ascending order using `Arrays.sort()`.
+   - The last `k` elements of the sorted array will be the `k` largest elements.
+
+2. **Method 2: Min-Heap (Priority Queue):**
+   - Use a `PriorityQueue` (which is implemented as a min-heap in Java) to store the `k` largest elements encountered so far.
+   - Iterate through the array:
+     - If the heap size is less than `k`, add the current element to the heap.
+     - If the heap size is equal to `k` and the current element is greater than the smallest element in the heap (the root of the min-heap), remove the smallest element and add the current element.
+   - After iterating through the array, the elements remaining in the heap will be the `k` largest elements.  Retrieving the elements from a `PriorityQueue` will give them to you in ascending order (because it is a *min-*heap), so be aware of the order if that matters for your particular use case.
+
+3. **Method 3: QuickSelect (Not implemented in the above code due to complexity):**
+   - QuickSelect is an algorithm based on the QuickSort algorithm, which can find the kth smallest (or largest) element in an array efficiently on average.  It's generally the most efficient approach if you only need the kth largest element and don't need all k largest elements in sorted order.  However, since we have the constraint of implementing everything within the `main` method, it becomes cumbersome to implement recursive helper functions that QuickSelect typically requires.
+
+
+
+
+Example Usage (in the `main` method itself):
+
+```java
+int[] arr = {1, 23, 12, 9, 30, 2, 50};
+int k = 3;
+// ... (code from above) ...
+```
+
+Output:
+
+```
+K Largest elements (using sorting): 23 30 50 
+K Largest elements (using min-heap): 23 30 50 
+```

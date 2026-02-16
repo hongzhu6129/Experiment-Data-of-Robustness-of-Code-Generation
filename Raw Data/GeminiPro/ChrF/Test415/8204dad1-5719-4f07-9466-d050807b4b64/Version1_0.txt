@@ -1,0 +1,40 @@
+```java
+class Solution {
+    /**
+     * Checks if the first instance of any character is immediately followed by the same character.
+     *
+     * @param str The input string.
+     * @return True if any character appears twice consecutively for the first time, false otherwise.
+     */
+    boolean appearTwice(String str) {
+        if (str == null || str.length() < 2) {
+            return false;
+        }
+
+        for (int i = 0; i < str.length() - 1; i++) {
+            char currentChar = str.charAt(i);
+            if (str.charAt(i + 1) == currentChar) {
+                //Check if it's the first instance
+                if (str.substring(0, i).indexOf(currentChar) == -1) {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.appearTwice("aba")); //false
+        System.out.println(solution.appearTwice("aabb"));  // true
+        System.out.println(solution.appearTwice("aabbc")); // true 'b'
+        System.out.println(solution.appearTwice("abc"));   //false
+        System.out.println(solution.appearTwice("abbc"));  // true 
+        System.out.println(solution.appearTwice(""));  //false
+        System.out.println(solution.appearTwice("a"));  //false
+
+        
+    }
+}
+```

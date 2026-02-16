@@ -1,0 +1,51 @@
+```java
+public class AmicableNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 220;
+        int num2 = 284;
+
+        int sum1 = sumProperDivisors(num1);
+        int sum2 = sumProperDivisors(num2);
+
+        if (sum1 == num2 && sum2 == num1) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+
+
+        num1 = 17296;
+        num2 = 18416;
+        sum1 = sumProperDivisors(num1);
+        sum2 = sumProperDivisors(num2);
+         if (sum1 == num2 && sum2 == num1) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+
+
+
+         num1 = 220;
+        num2 = 221;
+        sum1 = sumProperDivisors(num1);
+        sum2 = sumProperDivisors(num2);
+         if (sum1 == num2 && sum2 == num1) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+    }
+
+    private static int sumProperDivisors(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+}
+```

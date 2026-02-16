@@ -1,0 +1,70 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins. You can change this.
+
+        int currentRow = 1;
+        int coinsInCurrentRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            // Print spaces for alignment
+            for (int i = 0; i < (n - currentRow ) ; i++) { // Adjust spacing as needed
+                System.out.print(" ");
+            }
+
+            // Print coins for the current row
+            while (coinsInCurrentRow < currentRow && coinsUsed < n) {
+                System.out.print("* "); // Or any other coin representation
+                coinsInCurrentRow++;
+                coinsUsed++;
+            }
+
+            System.out.println(); // New line after each row
+            currentRow++;
+            coinsInCurrentRow = 0;
+           
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **Initialization:**
+   - `n`:  Represents the total number of coins available.
+   - `currentRow`: Keeps track of the current row number (starts at 1).
+   - `coinsInCurrentRow`: Counts the number of coins placed in the current row.
+   - `coinsUsed`: Keeps track of the total number of coins used so far.
+
+2. **Outer Loop (while coinsUsed < n):**
+   - This loop continues as long as there are coins left to place.
+
+3. **Inner Loop 1 (Spacing):**
+   - Prints leading spaces to create the staircase alignment.  The spacing formula ensures the right alignment.
+
+4. **Inner Loop 2 (Placing Coins):**
+   - Prints `*` (or your chosen coin symbol) `currentRow` times in the current row, unless we run out of coins (`coinsUsed < n`).
+   - Increments `coinsInCurrentRow` and `coinsUsed`.
+
+5. **Newline:**
+   - `System.out.println()` moves to the next line after completing each row.
+
+6. **Update for Next Row:**
+   - Increments `currentRow` to move to the next row.
+   - Resets `coinsInCurrentRow` to 0 for the new row.
+
+
+
+
+Example Output (n = 10):
+
+```
+          * 
+        * * 
+      * * * 
+    * * * * 
+  * * * * *
+```

@@ -1,0 +1,17 @@
+import java.math.BigInteger;
+
+public class AddBinary {
+
+    public static void main(String[] args) {
+        String binary1 = "10";
+        String binary2 = "11";
+
+        // Using BigInteger for handling large binary numbers
+        BigInteger num1 = new BigInteger(binary1, 2);
+        BigInteger num2 = new BigInteger(binary2, 2);
+
+        BigInteger sum = num1.add(num2);
+
+        System.out.println("Sum of two binary numbers: " + sum.toString(2)); 
+    }
+}

@@ -1,0 +1,64 @@
+```java
+import java.util.TreeSet;
+import java.util.NavigableSet;
+
+public class ReverseTreeSet {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet (naturally sorted in ascending order)
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(5);
+        treeSet.add(2);
+        treeSet.add(8);
+        treeSet.add(1);
+        treeSet.add(9);
+
+        System.out.println("Original TreeSet (ascending order): " + treeSet);
+
+
+        // Method 1: Using descendingSet() for a reverse view
+        NavigableSet<Integer> reverseTreeSet = treeSet.descendingSet(); 
+
+        System.out.println("Reversed TreeSet (descending order - view): " + reverseTreeSet);
+
+        // Modification to the reverse view affects the original TreeSet.
+        reverseTreeSet.add(7); // Add 7 to both
+        System.out.println("Original TreeSet after modification through reverse view: " + treeSet);
+
+
+
+        // Method 2:  Iterating in reverse using descendingIterator()
+
+        System.out.print("Reversed TreeSet (descending iteration): ");
+        var descendingIterator = treeSet.descendingIterator();
+        while (descendingIterator.hasNext()) {
+            System.out.print(descendingIterator.next() + " ");
+        }
+        System.out.println();  // Newline
+
+
+         // Illustrating the 'view' concept:
+        reverseTreeSet.remove(9); // Remove 9 from both!
+        System.out.println("Original TreeSet after removal through reverse view: " + treeSet);
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **TreeSet Basics:** `TreeSet` in Java stores elements in a sorted order (by default, ascending) using a tree-like structure.  It implements the `NavigableSet` interface.
+
+2. **`descendingSet()`:** This method is the most convenient way to get a *reverse view* of the `TreeSet`. It returns a `NavigableSet` that represents the same elements but in descending order.  **Crucially, this is a *view*, not a copy.** Any modifications made to the reversed set are reflected in the original `TreeSet` and vice versa.
+
+3. **`descendingIterator()`:**  This method provides an iterator that traverses the `TreeSet` in descending order.  It's useful when you need to iterate through the elements in reverse without creating a separate view.
+
+4. **View vs. Copy:** The example code emphasizes the distinction between a *view* and a *copy*. The `descendingSet()` method creates a view, so changes made through the view affect the original set. If you need a completely independent reversed copy, you'd have to create a new `TreeSet` and add the elements in reverse order manually.
+
+
+**How to run this code:**
+
+1. Save the code as `ReverseTreeSet.java`.
+2. Compile: `javac ReverseTreeSet.java`
+3. Run: `java ReverseTreeSet`

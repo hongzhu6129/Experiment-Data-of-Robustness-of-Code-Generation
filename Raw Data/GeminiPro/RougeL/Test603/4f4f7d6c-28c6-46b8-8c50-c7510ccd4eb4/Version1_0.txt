@@ -1,0 +1,45 @@
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Method 1: Using an enhanced for loop (for-each loop)
+        System.out.println("Iterating using enhanced for loop:");
+        for (String element : hashSet) {
+            System.out.println(element);
+        }
+        System.out.println();
+
+
+        // Method 2: Using an Iterator
+        System.out.println("Iterating using an Iterator:");
+        Iterator<String> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+        System.out.println();
+
+         // Method 3: Java 8+ using streams and forEach 
+        System.out.println("Iterating using Java 8 streams:");
+        hashSet.stream().forEach(System.out::println);
+
+
+
+    }
+}
+```

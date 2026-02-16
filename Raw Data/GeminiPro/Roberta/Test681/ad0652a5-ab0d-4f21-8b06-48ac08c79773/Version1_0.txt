@@ -1,0 +1,53 @@
+```java
+public class DoubleParts {
+
+    public static void main(String[] args) {
+        double num = 123.456;
+
+        // Get the whole part (integer part)
+        int wholePart = (int) num;
+
+        // Get the rotational part (fractional part)
+        double rotationalPart = num - wholePart;
+
+        System.out.println("Original Number: " + num);
+        System.out.println("Whole Part: " + wholePart);
+        System.out.println("Rotational Part: " + rotationalPart);
+
+
+        // Example with a negative number
+        double negativeNum = -987.654;
+        int wholePartNegative = (int) negativeNum;
+        double rotationalPartNegative = negativeNum - wholePartNegative;
+
+        System.out.println("\nOriginal Number (negative): " + negativeNum);
+        System.out.println("Whole Part: " + wholePartNegative);
+        System.out.println("Rotational Part: " + rotationalPartNegative);
+
+
+        // Demonstrating String formatting for cleaner output (optional)
+        double num2 = 12.345;
+        System.out.printf("\nFormatted Example: %.2f has whole part %d and rotational part %.3f\n",
+                num2, (int) num2, num2 - (int) num2);
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Casting to int:** The simplest way to get the whole part of a `double` is to cast it to an `int`. This truncates the decimal portion.
+
+2. **Subtraction for Rotational Part:**  Subtracting the whole part (integer) from the original `double` leaves the rotational (fractional) part.
+
+3. **Handling Negative Numbers:**  The code now includes an example with a negative number to show that the logic works correctly in those cases as well.  Casting a negative `double` to `int` rounds towards zero (e.g., -987.654 becomes -987).
+
+4. **Optional Formatting:**  The final example uses `printf` to show how you can format the output to a specific number of decimal places for better readability if needed.  `%.2f` formats the double to 2 decimal places, and `%d` formats the integer.  `%.3f` formats to 3 decimal places.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DoubleParts.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac DoubleParts.java`
+3. **Run:**  Execute the compiled code: `java DoubleParts`

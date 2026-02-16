@@ -1,0 +1,57 @@
+```java
+public class MoveZeros {
+
+    public static int[] move_zero(int[] arr) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If element encountered is non-zero, then
+        // replace the element at index 'count' with this element
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                arr[count++] = arr[i]; // here count is incremented
+            }
+        }
+
+        // Now all non-zero elements have been shifted to front and 'count' is
+        // set as index of first 0. Make all elements 0 from count to end.
+        while (count < arr.length) {
+            arr[count++] = 0;
+        }
+        return arr;
+    }
+
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {0, 3, 4, 0, 1, 2, 5, 0};
+        int[] result = move_zero(arr);
+
+        System.out.print("result: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+**Explanation and why `swap` isn't used:**
+
+The most efficient way to move all zeros to the end of the array doesn't require swapping individual elements multiple times.  The provided solution uses a two-pointer approach (though `count` acts like the second pointer):
+
+1. **`count` tracks the position to place the next non-zero element.**  It starts at 0.
+2. **Iterate through the array:**
+   - If the current element is non-zero, place it at the `count` index and increment `count`.
+3. **Fill the remaining positions with zeros:** After the first loop, `count` will be at the index where the zeros should start. Fill the rest of the array (from `count` to the end) with zeros.
+
+This avoids unnecessary swaps and achieves the result in a single pass through the array, making it more efficient than a swap-based approach.  Therefore, the `swap` method, while provided in the signature requirements, is not actually needed for the optimal solution.

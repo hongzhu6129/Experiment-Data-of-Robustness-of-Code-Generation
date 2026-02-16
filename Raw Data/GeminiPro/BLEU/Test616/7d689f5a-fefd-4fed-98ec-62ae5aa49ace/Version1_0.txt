@@ -1,0 +1,40 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetAdder {
+
+    public static void main(String[] args) {
+        // Create the first TreeSet (source)
+        TreeSet<Integer> sourceTreeSet = new TreeSet<>();
+        sourceTreeSet.add(10);
+        sourceTreeSet.add(20);
+        sourceTreeSet.add(30);
+        sourceTreeSet.add(40);
+        sourceTreeSet.add(50);
+
+        // Create the second TreeSet (destination)
+        TreeSet<Integer> destinationTreeSet = new TreeSet<>();
+        destinationTreeSet.add(60);
+        destinationTreeSet.add(70);
+        destinationTreeSet.add(80);
+
+        // Add all elements from sourceTreeSet to destinationTreeSet
+        destinationTreeSet.addAll(sourceTreeSet);
+
+        // Print the updated destinationTreeSet
+        System.out.println("Destination TreeSet after adding elements: " + destinationTreeSet);
+
+
+        // Example with Strings (to show it works with other types):
+        TreeSet<String> sourceStrings = new TreeSet<>();
+        sourceStrings.add("apple");
+        sourceStrings.add("banana");
+
+        TreeSet<String> destStrings = new TreeSet<>();
+        destStrings.add("cherry");
+
+        destStrings.addAll(sourceStrings);
+        System.out.println("Destination String TreeSet: " + destStrings);
+    }
+}
+```

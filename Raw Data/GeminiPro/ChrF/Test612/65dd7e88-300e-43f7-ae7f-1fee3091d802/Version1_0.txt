@@ -1,0 +1,95 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CompareArrays {
+
+    public static void main(String[] args) {
+        // Example arrays
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {3, 5, 6, 7, 8};
+
+        // Find common elements (retain)
+        List<Integer> commonElements = new ArrayList<>();
+        for (int element1 : array1) {
+            for (int element2 : array2) {
+                if (element1 == element2) {
+                    commonElements.add(element1);
+                    break; // Move to the next element of array1 once a match is found
+                }
+            }
+        }
+
+        System.out.println("Common elements (retain): " + commonElements);
+
+
+        // Find elements that are in array1 but not in array2 (break/difference)
+        List<Integer> differenceElements = new ArrayList<>();
+        for (int element1 : array1) {
+            boolean found = false;
+            for (int element2 : array2) {
+                if (element1 == element2) {
+                    found = true;
+                    break; // Exit inner loop once a match is found
+                }
+            }
+            if (!found) {
+                differenceElements.add(element1);
+            }
+        }
+
+        System.out.println("Elements in array1 but not in array2 (break/difference): " + differenceElements);
+
+
+
+        // Demonstrating with Integer arrays (for more complex objects, equals() would be essential)
+        Integer[] array3 = {1, 2, 3, 4, null};
+        Integer[] array4 = {3, null, 5, 1};
+
+        List<Integer> commonElementsInteger = new ArrayList<>();
+        for (Integer element1 : array3) {
+            for (Integer element2 : array4) {
+                if (element1 == element2 ) { // Uses == for Integer objects for demonstration (generally use .equals for objects) 
+                   commonElementsInteger.add(element1);
+                   break;
+                }
+             }
+        }
+         System.out.println("Common elements Integer arrays: " + commonElementsInteger);
+
+
+        // Example with Strings (requires .equals() for comparison)
+        String[] stringArray1 = {"apple", "banana", "orange"};
+        String[] stringArray2 = {"orange", "grape", "apple"};
+
+        List<String> commonStrings = new ArrayList<>();
+        for (String str1 : stringArray1) {
+            for (String str2 : stringArray2) {
+                if (str1.equals(str2)) { // Correct string comparison
+                    commonStrings.add(str1);
+                    break;
+                }
+            }
+        }
+        System.out.println("Common strings: " + commonStrings);
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clarity and Comments:** Added comments to explain the logic and purpose of each section of code.
+2. **`break` Statement:** Demonstrates the correct use of `break` to exit the inner loop once a match is found, improving efficiency.  Without the `break` in the common elements section, you'd add the same element multiple times if it appeared multiple times in the second array.
+3. **`retain` (Common Elements):**  Clearly implements the "retain" logic by finding and storing elements present in both arrays.
+4. **`break`/`difference` (Elements in One but Not the Other):** Implements the logic for finding elements present in the first array but not the second.
+5. **Integer Array Example:** Added an example with `Integer` arrays to illustrate the usage of `==` vs. `.equals()` .  Note: While I use `==` in the example for simplicity to check even for `null`s,  in real-world scenarios, `.equals()`  is generally preferred for object comparisons. 
+6. **String Array Example:** Added an example with `String` arrays, showcasing the correct way to compare strings using `.equals()`.  This highlights the importance of using the appropriate comparison method based on the data type.
+
+
+
+This revised code provides a much clearer, more complete, and more correct solution to the problem while adhering to the requested `main` method structure.

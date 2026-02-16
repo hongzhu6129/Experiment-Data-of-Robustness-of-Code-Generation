@@ -1,0 +1,46 @@
+```java
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetMinimum {
+
+    public static void main(String[] args) {
+        // Create a HashSet of integers
+        Set<Integer> numbers = new HashSet<>();
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.add(9);
+        numbers.add(4);
+
+        // Check if the set is empty
+        if (numbers.isEmpty()) {
+            System.out.println("HashSet is empty. Cannot find the minimum element.");
+            return; // Exit the program
+        }
+
+
+        // Method 1: Using Collections.min() (most straightforward)
+        int min1 = Collections.min(numbers);
+        System.out.println("Minimum element (using Collections.min()): " + min1);
+
+        // Method 2: Iterating through the HashSet (demonstrative)
+        int min2 = Integer.MAX_VALUE; // Initialize with the maximum possible integer value
+        for (int num : numbers) {
+            if (num < min2) {
+                min2 = num;
+            }
+        }
+        System.out.println("Minimum element (using iteration): " + min2);
+
+          // Method 3: Java Stream (Java 8 and above). Elegant and concise.
+        int min3 = numbers.stream().min(Integer::compare).orElse(Integer.MAX_VALUE); // Handle empty set.
+        System.out.println("Minimum element (using streams): " + min3);
+
+
+
+    }
+}
+```

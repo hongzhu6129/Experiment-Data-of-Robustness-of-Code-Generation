@@ -1,0 +1,33 @@
+```java
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double sum1 = 0.0;
+        double sum2 = 0.0;
+
+        // Calculate the first sum (up to 1/11)
+        for (int i = 1; i <= 11; i += 2) {
+            if (i == 3 || i == 7 || i == 11) {
+                sum1 -= 1.0 / i;
+            } else {
+                sum1 += 1.0 / i;
+            }
+        }
+        double pi1 = 4 * sum1;
+
+        // Calculate the second sum (up to 1/13)
+        for (int i = 1; i <= 13; i += 2) {
+            if (i == 3 || i == 7 || i == 11) {
+                sum2 -= 1.0 / i;
+            } else {
+                sum2 += 1.0 / i;
+            }
+        }
+        double pi2 = 4 * sum2;
+
+        System.out.println("Approximation 1 (up to 1/11): " + pi1);
+        System.out.println("Approximation 2 (up to 1/13): " + pi2);
+
+    }
+}
+```

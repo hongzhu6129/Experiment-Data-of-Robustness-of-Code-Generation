@@ -1,0 +1,43 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmptyArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> books = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        books.add("The Lord of the Rings");
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+
+        System.out.println("Original ArrayList: " + books);
+
+
+        // Method 1: Using clear()
+        books.clear(); 
+
+        System.out.println("ArrayList after using clear(): " + books);
+
+
+
+        //  Method 2: Re-initializing (creates a new empty list, less efficient if you intend to reuse the variable)
+        books = new ArrayList<>();  // Assign a new empty ArrayList
+
+        System.out.println("ArrayList after re-initialization: " + books);
+
+
+        // Method 3: Using removeAll() (more general, useful if you want to remove specific elements based on a condition)
+        books.add("1984"); // Add an element back
+        books.add("Brave New World");
+
+        books.removeAll(books); // Removes all elements that are in 'books' (which is all of them)
+        System.out.println("ArrayList after using removeAll(): " + books);
+
+
+    }
+}
+```

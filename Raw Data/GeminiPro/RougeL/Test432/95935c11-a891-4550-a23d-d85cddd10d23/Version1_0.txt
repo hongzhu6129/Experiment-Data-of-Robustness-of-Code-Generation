@@ -1,0 +1,104 @@
+```java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
+
+public class SumEvenOdd {
+
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        // Example list � populate as needed
+        for (int i = 1; i <= 20; i++) {
+            numbers.add(i);
+        }
+
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+
+        SumCalculator sumCalculator = new SumCalculator(numbers, 0, numbers.size());
+
+        Result result = forkJoinPool.invoke(sumCalculator);
+
+        System.out.println("Sum of even numbers: " + result.evenSum);
+        System.out.println("Sum of odd numbers: " + result.oddSum);
+
+    }
+
+
+    private static class SumCalculator extends RecursiveTask<Result> {
+        private final List<Integer> numbers;
+        private final int start;
+        private final int end;
+
+        public SumCalculator(List<Integer> numbers, int start, int end) {
+            this.numbers = numbers;
+            this.start = start;
+            this.end = end;
+        }
+
+        @Override
+        protected Result compute() {
+            if (end - start <= 10) {  // Threshold for sequential processing
+                int evenSum = 0;
+                int oddSum = 0;
+
+                for (int i = start; i < end; i++) {
+                    if (numbers.get(i) % 2 == 0) {
+                        evenSum += numbers.get(i);
+                    } else {
+                        oddSum += numbers.get(i);
+                    }
+                }
+
+                return new Result(evenSum, oddSum);
+            } else {  // Recursive split
+                int mid = (start + end) / 2;
+
+                SumCalculator leftTask = new SumCalculator(numbers, start, mid);
+                SumCalculator rightTask = new SumCalculator(numbers, mid, end);
+
+
+                rightTask.fork();  // Asynchronous execution
+
+
+                Result leftResult = leftTask.compute();
+                Result rightResult = rightTask.join();
+
+                return new Result(
+                        leftResult.evenSum + rightResult.evenSum,
+                        leftResult.oddSum + rightResult.oddSum
+                );
+
+
+            }
+
+        }
+
+
+    }
+
+    private static class Result {  // Helper class to hold both sums
+        int evenSum;
+        int oddSum;
+
+        public Result(int evenSum, int oddSum) {
+            this.evenSum = evenSum;
+            this.oddSum = oddSum;
+        }
+    }
+
+}
+```
+
+
+Key improvements in this version:
+
+- **Clearer Recursive Structure:** The `compute()` method now clearly shows the base case (sequential calculation) and the recursive step (splitting the task).
+- **Asynchronous Execution:**  Uses `fork()` and `join()` for proper parallel execution, improving performance.
+- **Result Class:**  A dedicated `Result` class simplifies the handling of the even and odd sums, making the code cleaner and easier to understand.
+- **Threshold for Sequential Processing:**  Introduces a threshold (`10` in this example) to switch to sequential processing for smaller sub-problems, avoiding excessive overhead from creating too many tasks.  You can adjust this value based on your data and system.
+- **Comments and Explanations:**  Added more comments to explain the logic and important parts of the code.
+- **Error Handling:** While not strictly part of the original request, consider adding basic error handling (e.g., checking for null or empty lists) in a production-ready version.
+
+
+This revised code provides a much more robust and efficient implementation using Fork/Join for calculating the sum of even and odd numbers in a list.

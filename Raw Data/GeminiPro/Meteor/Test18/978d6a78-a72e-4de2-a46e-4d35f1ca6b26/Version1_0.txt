@@ -1,0 +1,87 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+
+        try {
+            int decimal = 0;
+            int power = 0;
+
+            // Convert binary to decimal
+            for (int i = binary.length() - 1; i >= 0; i--) {
+                if (binary.charAt(i) == '1') {
+                    decimal += Math.pow(2, power);
+                } else if (binary.charAt(i) != '0') {
+                    System.out.println("Invalid binary number."); // Handle invalid input
+                    return; 
+                }
+                power++;
+            }
+
+            // Convert decimal to hexadecimal
+            String hex = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit = (remainder < 10) ? (char) (remainder + '0') : (char) (remainder - 10 + 'A');
+                hex = hexDigit + hex;
+                decimal /= 16;
+            }
+            if (hex.equals("")) { // Handle case where input is 0
+                System.out.println("Hexadecimal equivalent: 0");
+            } else {
+                System.out.println("Hexadecimal equivalent: " + hex);
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input."); // Handle any potential exceptions
+        }
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+1. **Valid Binary Number:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal equivalent: D`
+
+2. **Leading Zeros:**
+   - Input: `0001101`
+   - Expected Output: `Hexadecimal equivalent: D`
+
+3. **Binary Number with Zero:**
+   - Input: `1000`
+   - Expected Output: `Hexadecimal equivalent: 8`
+
+4. **Zero:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal equivalent: 0`
+
+
+5. **Invalid Binary Number (Contains other digits):**
+   - Input: `1121`
+   - Expected Output: `Invalid binary number.`
+
+6. **Invalid Binary Number (Empty String):**
+   - Input: `` (empty string)
+   - Expected Output:  `Hexadecimal equivalent: 0` (because decimal will initially be 0) � Alternatively, you could specifically check for an empty string and print an "invalid input" message.
+
+
+7. **Large Binary Number:**
+   - Input: `1111111111111111` (16 ones)
+   - Expected Output: `Hexadecimal equivalent: FFFF`
+
+8. **Very Large Binary Number (to check for potential overflow issues):**
+   - Input:  A very long string of 1s (e.g., 64 ones)
+   - Expected Output: The correct hexadecimal equivalent or, if `int` overflows, unexpected behavior (which highlights a limitation � consider using `long` for very large binary inputs).
+
+
+These test cases cover various scenarios, including valid binary inputs, invalid inputs, edge cases (zero, empty string), and a large binary number to test for potential overflow issues if the input binary string is extremely long.  Remember that using `int` limits the size of the binary number you can handle. If you anticipate very large binary numbers, use `long` instead.

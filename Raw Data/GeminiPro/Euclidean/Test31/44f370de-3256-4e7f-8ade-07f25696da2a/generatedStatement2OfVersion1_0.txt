@@ -1,0 +1,64 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90   (North Pole)
+   - lon1: 0
+   - lat2: -90  (South Pole)
+   - lon2: 0    (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Antipodes (Opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110  (180 degrees opposite longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points near the International Date Line:**
+   - lat1: 0
+   - lon1: 179
+   - lat2: 0
+   - lon2: -179
+   - Expected Distance: ~222.64 km (small distance because they are close despite the longitude difference)
+
+
+6. **Points at the equator with 90 degrees longitude difference:**
+    - lat1: 0
+    - lon1: 0
+    - lat2: 0
+    - lon2: 90
+    - Expected Distance: ~10007.54 (approximately Earth's circumference/4)
+
+
+
+7. **Invalid Input:**
+   - lat1: "abc" (or any non-numeric input)  
+   - The program should handle this gracefully and either exit with an error message or prompt the user to re-enter valid input.  Use a `try-catch` block around your `input.nextDouble()` calls to catch `InputMismatchException`.
+
+
+
+
+**How to Run the Tests:**
+
+You can manually enter these values into your program to verify the results.  For more automated testing, consider using a Java testing framework like JUnit.  With JUnit, you could write test methods that call a function that calculates the distance and then use `assertEquals()` to check if the calculated distance matches the expected distance within a certain tolerance (due to floating-point precision). Example of JUnit Test (you would put more test cases in this class):
+
+
+

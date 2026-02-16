@@ -1,0 +1,55 @@
+```java
+import java.util.Arrays;
+
+public class StreamAverage {
+
+    static void streamAvg(float[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            System.out.println("No numbers provided.");
+            return;
+        }
+
+        float sum = 0;
+        int count = 0;
+
+        for (float num : numbers) {
+            sum = getAvg(sum, num, count + 1); 
+            count++;
+        }
+
+        System.out.println("Average: " + sum);
+    }
+
+    static float getAvg(float currentSum, float newNumber, int count) {
+         return (currentSum * (count - 1) + newNumber) / count;
+    }
+
+    public static void main(String[] args) {
+        float[] numbers1 = {10, 20, 30, 40, 50};
+        streamAvg(numbers1);  // Output: Average: 30.0
+
+        float[] numbers2 = {2.5f, 4.8f, 1.2f, 6.7f};
+        streamAvg(numbers2);  // Output: Average: 3.8
+
+        float[] numbers3 = {}; // Empty array
+        streamAvg(numbers3);  // Output: No numbers provided.
+
+         float[] numbers4 = null; // Null array
+        streamAvg(numbers4);  // Output: No numbers provided.
+
+
+
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. Handling Empty/Null Input:  The `streamAvg` method now explicitly handles cases where the input array is `null` or empty, preventing potential `NullPointerException` or `ArithmeticException`.  It prints a clear message indicating no numbers were provided.
+2. Iterative Calculation with `getAvg`: The `streamAvg` method iterates through the `numbers` array. In each iteration, it calls `getAvg` to update the running average.
+3. `getAvg` Logic: The `getAvg` method now implements an iterative calculation. Critically, it correctly handles integer division issues that could arise in intermediate calculations.
+4. Clear Output: The `streamAvg` method now prints a user-friendly message indicating the calculated average. 
+
+
+This revised version addresses the edge cases, provides more accurate calculations, and generates clearer output, making it a more robust and informative solution.

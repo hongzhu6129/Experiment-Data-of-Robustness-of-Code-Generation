@@ -1,0 +1,75 @@
+```java
+import java.util.HashSet;
+
+public class CompareHashSets {
+
+    public static void main(String[] args) {
+        // Create two HashSets
+        HashSet<String> set1 = new HashSet<>();
+        HashSet<String> set2 = new HashSet<>();
+
+        // Populate the sets with some data
+        set1.add("apple");
+        set1.add("banana");
+        set1.add("orange");
+
+        set2.add("banana");
+        set2.add("orange");
+        set2.add("grape");
+
+
+        // 1. Check if sets are equal (contain exactly the same elements)
+        boolean isEqual = set1.equals(set2);
+        System.out.println("Sets are equal: " + isEqual);
+
+
+        // 2. Check if one set is a subset of another
+        boolean isSubset = set1.containsAll(set2); // Check if set1 contains all elements of set2
+        System.out.println("set2 is a subset of set1: " + isSubset);
+
+        isSubset = set2.containsAll(set1); // Check if set2 contains all elements of set1
+        System.out.println("set1 is a subset of set2: " + isSubset);
+
+
+        // 3. Find the common elements (intersection)
+        HashSet<String> intersection = new HashSet<>(set1); // Create a copy of set1
+        intersection.retainAll(set2); // retainAll modifies the set to keep only the common elements
+        System.out.println("Common elements (intersection): " + intersection);
+
+
+        // 4. Find the union of the sets
+        HashSet<String> union = new HashSet<>(set1); // Create a copy of set1
+        union.addAll(set2); // addAll adds all elements of set2 to the union set
+        System.out.println("Union of sets: " + union);
+
+
+        // 5. Find the elements that are in set1 but not in set2 (difference)
+        HashSet<String> difference = new HashSet<>(set1);
+        difference.removeAll(set2);
+        System.out.println("Elements in set1 but not in set2: " + difference);
+
+
+
+        //Example using integers:
+         HashSet<Integer> set3 = new HashSet<>();
+         HashSet<Integer> set4 = new HashSet<>();
+
+         set3.add(1);
+         set3.add(2);
+         set3.add(3);
+
+         set4.add(2);
+         set4.add(3);
+         set4.add(4);
+
+         boolean isEqualInt = set3.equals(set4);
+         System.out.println("Integer sets are equal: "+isEqualInt);
+
+         HashSet<Integer> intersectionInt = new HashSet<>(set3);
+         intersectionInt.retainAll(set4);
+         System.out.println("Common Integer elements (intersection): "+ intersectionInt);
+
+
+    }
+}
+```

@@ -1,0 +1,37 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to thoroughly test the `calculateAverage` method:
+
+1. **Normal Case:**
+   - Input: `num1 = 10`, `num2 = 20`, `num3 = 30`
+   - Expected Output: `20.0`
+
+2. **Zero Values:**
+   - Input: `num1 = 0`, `num2 = 0`, `num3 = 0`
+   - Expected Output: `0.0`
+
+3. **Negative Numbers:**
+   - Input: `num1 = -10`, `num2 = -20`, `num3 = -30`
+   - Expected Output: `-20.0`
+
+4. **Mixed Positive and Negative:**
+   - Input: `num1 = -10`, `num2 = 20`, `num3 = 30`
+   - Expected Output: `13.333333333333334`
+
+
+5. **Large Numbers:**
+   - Input: `num1 = 1000000000`, `num2 = 2000000000`, `num3 = 3000000000`
+   - Expected Output: `2.0E9`  (2 billion - test for handling large values)
+
+6. **Decimal Numbers:**
+   - Input: `num1 = 2.5`, `num2 = 3.7`, `num3 = 1.8`
+   - Expected Output: `2.6666666666666665`
+
+7. **Edge Case (potential overflow with integers, not an issue with doubles but good to consider if you were using ints):**
+   If you were using `int` instead of `double`, very large integers could potentially cause overflow.  With doubles, this is much less of a concern, but it's good practice to think about these limits.  Since we're using doubles, this isn't a practical issue here, but it's worth noting.
+
+
+**How to run these tests (example using JUnit - a popular Java testing framework):**
+

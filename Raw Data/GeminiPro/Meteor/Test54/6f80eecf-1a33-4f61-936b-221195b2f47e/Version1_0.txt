@@ -1,0 +1,86 @@
+```java
+import java.util.Scanner;
+
+public class LargestOfTwo {
+
+    public static int findLargest(int num1, int num2) {
+        return Math.max(num1, num2); 
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        int largest = findLargest(num1, num2);
+        System.out.println("The largest number is: " + largest);
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output |
+|---|---|---|---|
+| Positive Numbers | 10 | 5 | 10 |
+| Negative Numbers | -5 | -10 | -5 |
+| Zero and Positive | 0 | 5 | 5 |
+| Zero and Negative | 0 | -5 | 0 |
+| Both Zero | 0 | 0 | 0 |
+| Equal Positive Numbers | 5 | 5 | 5 |
+| Equal Negative Numbers | -5 | -5 | -5 |
+| Large Positive and Small Negative | 1000 | -1 | 1000 |
+| Small Positive and Large Negative | 1 | -1000 | 1 |
+| Integer.MAX_VALUE and Integer.MIN_VALUE | Integer.MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE |
+| Integer.MAX_VALUE and a smaller positive number | Integer.MAX_VALUE | 10000 | Integer.MAX_VALUE |
+| Integer.MIN_VALUE and a larger negative number | Integer.MIN_VALUE | -1 | -1 |
+
+
+
+**How to Run Test Cases (Manually):**
+
+1. **Compile:**  `javac LargestOfTwo.java`
+2. **Run:** `java LargestOfTwo`
+3. Enter the input values when prompted.  Compare the output with the expected output in the table.
+
+
+
+**How to Automate Test Cases (using JUnit - recommended):**
+
+Create a separate test file (e.g., `LargestOfTwoTest.java`):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LargestOfTwoTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(10, LargestOfTwo.findLargest(10, 5));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-5, LargestOfTwo.findLargest(-5, -10));
+    }
+
+    // ... Add more test methods for the other test cases ...
+
+    @Test
+    void testIntegerMaxMin() {
+        assertEquals(Integer.MAX_VALUE, LargestOfTwo.findLargest(Integer.MAX_VALUE, Integer.MIN_VALUE));
+    }
+}
+```
+
+Then, you would use a build tool (like Maven or Gradle) or your IDE's JUnit runner to execute these tests automatically.  Automated testing is much more efficient and less prone to errors than manual testing.

@@ -1,0 +1,45 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still perform some basic tests:
+
+1. **Standard Output Test:** Verify that the program produces the exact desired output format shown in the prompt.  Run the program and visually compare the output.
+
+2. **Whitespace Test (Corner Case):**  Ensure that the whitespace (tabs and newlines) are correctly placed.  A subtle error could be an extra space or a missing tab.  One way to test this thoroughly would be to redirect the output to a file and then compare it to a file containing the expected output character by character.  This could be done with a diff tool or a small script. Example (using bash):
+
+   ```bash
+   java TwinkleTwinkle > output.txt
+   diff output.txt expected_output.txt 
+   ```
+
+   Where `expected_output.txt` contains:
+
+   ```
+   Twinkle, twinkle, little star,
+   	How I wonder what you are!
+   		Up above the world so high,
+   		Like a diamond in the sky.
+   ```
+
+3. **Unicode/Character Encoding Test (Corner Case):** Though less likely to be an issue with this specific poem, it's good practice to consider character encoding.  If the poem contained special characters (e.g., accented characters, emojis), you'd want to make sure your output environment (console, IDE) and the Java program are using compatible character encodings (usually UTF-8) to avoid character corruption.  You could create a modified version of the poem with some Unicode characters for testing.
+
+4. **Method Call Test (For larger programs):**  If the `printTwinkleTwinkle()` method was part of a larger program, you might have separate unit tests to ensure that it's being called from other parts of the code correctly (e.g., at the right time or with the right parameters if it took any). Although not directly relevant to this simple example, this is good software engineering practice to keep in mind.
+
+
+These tests cover the most important aspects of this program's correctness, especially given its simplicity.  For more complex programs that handle input or have more logic, more sophisticated testing would be necessary.
+

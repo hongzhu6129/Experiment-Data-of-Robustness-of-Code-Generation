@@ -1,0 +1,46 @@
+```java
+public class AddDashesToVowels {
+
+    public static void main(String[] args) {
+        String inputString = "hello world";
+        String result = validate(inputString);
+        System.out.println(result); // Output: h-e-ll-o- w-o-rld
+
+        inputString = "coding";
+        result = validate(inputString);
+        System.out.println(result); // Output: c-o-d-i-ng
+
+        inputString = "AEIOUaeiou";
+        result = validate(inputString);
+        System.out.println(result); // Output: -A- -E- -I- -O- -U- -a- -e- -i- -o- -u-
+
+
+        inputString = ""; // Empty string
+        result = validate(inputString);
+        System.out.println(result); // Output:
+
+
+        inputString = "rhythm"; // No vowels
+        result = validate(inputString);
+        System.out.println(result); // Output: rhythm
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null) {  // Handle null input gracefully
+            return null; 
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if ("AEIOUaeiou".indexOf(c) != -1) {
+                result.append("-");
+                result.append(c);
+                result.append("-");
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+}
+```

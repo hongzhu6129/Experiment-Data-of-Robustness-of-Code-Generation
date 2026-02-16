@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToDecimal {
+
+    public static int functionone(String binary) {
+        int decimal = 0;
+        int power = 0;
+
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            char digit = binary.charAt(i);
+            if (digit == '1') {
+                decimal += Math.pow(2, power);
+            } else if (digit != '0') {  // Handle invalid input (non-binary characters)
+                return -1; // Indicate an error
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = scanner.nextLine();
+
+        int decimal = functionone(binary);
+
+        if (decimal != -1) {
+            System.out.println("Decimal number: " + decimal);
+        } else {
+            System.out.println("Invalid binary input.");
+        }
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+**Valid Binary Inputs:**
+
+1. **Input:** "100"
+   **Expected Output:** 4
+
+2. **Input:** "1011"
+   **Expected Output:** 11
+
+3. **Input:** "11111111"
+   **Expected Output:** 255
+
+4. **Input:** "0"  // Zero
+   **Expected Output:** 0
+
+5. **Input:** "1"  // One
+   **Expected Output:** 1
+
+
+**Invalid Binary Inputs (Corner/Edge Cases):**
+
+1. **Input:** ""  // Empty string
+   **Expected Output:** 0  (Could also handle this as an error if you prefer)
+
+2. **Input:** "10a0"  // Contains a non-binary character
+   **Expected Output:** Invalid binary input.
+
+3. **Input:** "2101" // Contains a non-binary character
+   **Expected Output:** Invalid binary input.
+
+4. **Input:** "   100  " // Leading and trailing spaces (the scanner's nextLine() handles this, but it's good to test).
+   **Expected Output:** 4
+
+
+5. **Input:** "111111111111111111111111111111111111111111111111111111111111111" // Very long binary string (potential for overflow, which the code doesn't explicitly handle, but it's a test case to be aware of).  The output will likely be incorrect due to integer overflow.
+
+
+
+**How to Run the Test Cases:**
+
+You can either manually enter these inputs when prompted or (better yet) create a set of automated tests using JUnit or a similar testing framework.  Automated tests are much more efficient and reliable, especially for regression testing as you develop your code further.
+
+
+**Key Improvements in the Code:**
+
+* **Error Handling:** The `functionone` method now returns -1 to indicate an invalid binary input (containing non-binary characters).  The `main` method checks for this and prints an appropriate error message.
+* **Clarity and Comments:** Added comments to explain the logic and the handling of invalid input.
+* **Testability:** The separation of the conversion logic into `functionone` makes it much easier to test the core functionality independently.
+
+
+This revised version is more robust and provides better handling of potential errors. Remember that integer overflow is still a potential issue with very long binary strings, and you might want to add explicit handling for that if your application requires it.  Using `BigInteger` for arbitrarily large binary numbers could be a good way to handle such cases if needed.

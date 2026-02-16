@@ -1,0 +1,52 @@
+```java
+public class SubstringExample {
+
+    public static void main(String[] args) {
+
+        String str = "This is a test string";
+        int startIndex = 10;
+        int endIndex = 15;
+
+
+        //Handle potential errors.  If the start or end are out of bounds or invalid, print an error and exit.
+        if (startIndex < 0 || endIndex > str.length() || startIndex >= endIndex) {
+            System.out.println("Invalid start or end indices.");
+            return; // Exit the program
+        }
+
+
+
+        String subStr = str.substring(startIndex, endIndex);
+
+        System.out.println("Original string: " + str);
+        System.out.println("Substring: " + subStr);
+
+
+        // Example with different indices
+        startIndex = 0;
+        endIndex = 4;
+        if (startIndex < 0 || endIndex > str.length() || startIndex >= endIndex) {
+            System.out.println("Invalid start or end indices.");
+            return; // Exit the program
+        }
+        subStr = str.substring(startIndex, endIndex);
+        System.out.println("Substring 2 : " + subStr);
+
+
+
+        //Another example demonstrating error handling.
+        startIndex = 5;
+        endIndex = 3; //invalid, endIndex should be greater than or equal to startIndex.
+
+        if (startIndex < 0 || endIndex > str.length() || startIndex >= endIndex) {
+            System.out.println("Invalid start or end indices.");
+            return; // Exit the program
+        }
+        subStr = str.substring(startIndex, endIndex); //This line won't execute because of the return statement in error handling.
+        System.out.println("Substring 3: " + subStr); // This won't execute either
+
+
+
+    }
+}
+```

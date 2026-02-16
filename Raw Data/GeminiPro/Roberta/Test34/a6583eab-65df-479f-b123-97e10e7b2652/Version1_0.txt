@@ -1,0 +1,84 @@
+```java
+import java.nio.charset.Charset;
+import java.util.SortedMap;
+
+public class ListAvailableCharsets {
+
+    public static void listAvailableCharsets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        System.out.println("Available Character Sets:");
+        for (String charsetName : charsets.keySet()) {
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + ": " + charset.displayName());
+            // Optionally print aliases:
+            // System.out.println("  Aliases: " + charset.aliases());
+        }
+    }
+
+    public static void main(String[] args) {
+        listAvailableCharsets();
+
+
+        // Test cases (demonstration -  these don't have specific assertions. You'd use a testing framework like JUnit for that)
+        testGetCharset("UTF-8");        // Common case
+        testGetCharset("ISO-8859-1");  // Another common case
+        testGetCharset("UTF-32");      // Less common
+        testGetCharset("invalid-charset"); // Corner case: Invalid charset name
+        testGetCharset("");             // Corner case: Empty charset name
+        testGetCharset(null);            // Corner case: Null charset name
+
+    }
+
+    // Helper function for test cases
+    public static void testGetCharset(String charsetName) {
+        try {
+            Charset charset = Charset.forName(charsetName);
+            System.out.println("Charset for '" + charsetName + "': " + charset.displayName());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error getting charset for '" + charsetName + "': " + e.getMessage());
+        }
+
+    }
+
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Uses `Charset.availableCharsets()`:**  This method directly provides a `SortedMap` of available charsets, making the code much simpler and more efficient.
+
+2. **Clearer Output:**  The output now includes both the canonical name (e.g., "UTF-8") and the display name (e.g., "UTF-8") of each charset. This makes it easier to understand the results.
+
+3. **Optional Alias Printing:**  The code includes a commented-out line that would print the aliases for each character set. Uncomment if you need that information.
+
+4. **Test Cases:** The `main` method now demonstrates several test cases, including:
+   - Valid charset names (common and less common).
+   - Corner cases: Invalid charset name, empty string, and `null`.
+   - The `testGetCharset` helper function handles the `Charset.forName()` call and potential `IllegalArgumentException` gracefully.
+
+**How to Run and Test:**
+
+1. **Save:** Save the code as `ListAvailableCharsets.java`.
+2. **Compile:** Open a terminal or command prompt and compile the code:
+   ```bash
+   javac ListAvailableCharsets.java
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java ListAvailableCharsets
+   ```
+
+The output will list the available character sets on your system and the results of the test cases.  The test cases are demonstrative � for proper testing, integrate with a testing framework (JUnit is recommended).
+
+
+**Key Improvements over Previous Versions:**
+
+- **No longer relies on the `CharsetEncoder` class:** The previous versions used `CharsetEncoder` unnecessarily, which made the code more complex. The `Charset.availableCharsets()` method is the correct and more straightforward approach.
+- **Handles exceptions correctly:**  The `testGetCharset` function demonstrates proper exception handling.
+- **More informative output:** The output clearly distinguishes between canonical and display names.
+- **Clearer test cases:** The test cases are separated and more descriptive.
+
+
+This revised version is more concise, efficient, and robust. It addresses the original requirements and includes valuable test cases to ensure correctness.

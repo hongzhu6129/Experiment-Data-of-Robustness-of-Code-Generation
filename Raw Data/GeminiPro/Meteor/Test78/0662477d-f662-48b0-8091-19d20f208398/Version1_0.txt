@@ -1,0 +1,60 @@
+```java
+public class EnvironmentAndSecurityManager {
+
+    public static void main(String[] args) {
+
+        // 10. Check for Security Manager
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        // 90. Get Environment Variables
+        System.out.println("PATH: " + System.getenv("PATH"));
+        System.out.println("TEMP: " + System.getenv("TEMP"));
+        System.out.println("USERNAME: " + System.getenv("USERNAME"));
+
+
+        // More robust way to handle potentially null environment variables:
+        String path = System.getenv("PATH");
+        if (path != null) {
+            System.out.println("PATH: " + path);
+        } else {
+            System.out.println("PATH environment variable not set.");
+        }
+
+
+         String temp = System.getenv("TEMP");
+        if (temp != null) {
+            System.out.println("TEMP: " + temp);
+        } else {
+            System.out.println("TEMP environment variable not set.");
+        }
+
+
+
+        String username = System.getenv("USERNAME");
+        if (username != null) {
+            System.out.println("USERNAME: " + username);
+        } else {
+            System.out.println("USERNAME environment variable not set.");
+        }
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles null environment variables:** The original code would throw a `NullPointerException` if an environment variable wasn't set.  This version uses `if (variable != null)` checks to prevent this, printing a message if the variable isn't defined. This makes the code more robust and prevents crashes.
+* **Clearer Output:**  The output is now more informative, specifically stating which environment variables are being printed.
+* **Combined into a single `main` method:**  Both problem solutions are now integrated into one `main` method, as requested.
+
+
+
+This revised code addresses the potential `NullPointerException`, provides more informative output, and is contained entirely within the `main` method.

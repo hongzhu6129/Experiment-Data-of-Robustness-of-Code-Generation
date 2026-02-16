@@ -1,0 +1,48 @@
+```java
+import java.util.TimeZone;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+
+        Set<String> availableIDs = TimeZone.getAvailableIDs();
+
+        System.out.println("Available Time Zones (UTC/GMT):");
+
+        for (String id : availableIDs) {
+            // Filter for UTC and GMT zones. Simpler approach than checking raw offsets 
+            // since some zones might share the same offset but have different rules.
+            if (id.startsWith("UTC") || id.startsWith("GMT") || id.contains("Etc/")) { 
+                TimeZone tz = TimeZone.getTimeZone(id);
+                System.out.println(id + " (Raw Offset: " + tz.getRawOffset() + ")");
+            }
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Get Available IDs:**  `TimeZone.getAvailableIDs()` returns a `Set` containing all the available time zone IDs as strings.
+
+2. **Iterate and Filter:** The code iterates through the set of available IDs.  It filters for time zones starting with "UTC", "GMT", or containing "Etc/". The "Etc/" time zones generally represent pure offsets from UTC (like Etc/UTC, Etc/GMT+1, Etc/GMT-5). While not strictly "named" time zones, they are relevant in the context of representing UTC and GMT offsets.
+
+3. **Get TimeZone Object:** Inside the loop, `TimeZone.getTimeZone(id)` gets a `TimeZone` object for the current ID.
+
+4. **Print Information:**  The code prints the time zone ID and its raw offset (in milliseconds) from UTC. The raw offset is the difference between UTC and the time zone *without* considering daylight saving time.
+
+
+**Key improvements over simply listing all zones:**
+
+* **Filtering:** Only UTC/GMT related zones are displayed, making the output more focused on the requirement.
+* **Raw Offset Information:** Including the raw offset gives a clear indication of the time difference from UTC.
+* **Handles "Etc/" Zones:**  Includes the "Etc/" zones that represent pure UTC offsets.
+
+
+**To compile and run:**
+
+1. Save the code as `TimeZones.java`.
+2. Compile: `javac TimeZones.java`
+3. Run: `java TimeZones`

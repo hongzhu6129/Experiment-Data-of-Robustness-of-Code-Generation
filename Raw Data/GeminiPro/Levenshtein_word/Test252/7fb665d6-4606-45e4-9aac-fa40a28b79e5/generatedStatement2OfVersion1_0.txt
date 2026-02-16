@@ -1,0 +1,11 @@
+
+
+
+Key improvements in this code:
+
+- **Handles edge cases:** It correctly handles empty (`{}`) and `null` input arrays.
+- **Clearer variable naming:** `uniqueIndex` is more descriptive.
+- **Comprehensive comments:**  The comments explain the logic clearly.
+- **`Arrays.copyOfRange()` in `main`:** This is crucial!  The `removeDuplicates` function modifies the original array *in-place*.  The original array still has the same length; only the *beginning* portion is now relevant. `Arrays.copyOfRange` creates a *new* array containing only the unique elements. This avoids printing out the "garbage" values that remain in the original array after the unique elements.
+- **More test cases:** Includes tests for common scenarios and edge cases.
+- **Avoids `NullPointerException`:**  The `main` method now correctly handles the `null` array case to prevent a `NullPointerException`.

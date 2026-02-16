@@ -1,0 +1,40 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapAssociateValue {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Associate values with keys
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Print the TreeMap to verify the associations
+        System.out.println("TreeMap: " + treeMap);
+
+
+        // Example of associating a new value with an existing key (overwrites the previous value)
+        treeMap.put("Banana", 10);  // Banana's value is now 10
+
+        System.out.println("TreeMap after update: " + treeMap);
+
+
+        // Example demonstrating that put() returns the previous value associated with the key
+        //  (or null if there was no previous mapping)
+        Integer oldValue = treeMap.put("Orange", 50); // Orange's value becomes 50
+        System.out.println("Old value for Orange: " + oldValue); // Prints 3
+
+        oldValue = treeMap.put("Mango", 6); // Mango is a new entry
+        System.out.println("Old value for Mango: " + oldValue); // Prints null
+
+
+        System.out.println("Final TreeMap: " + treeMap);
+
+
+    }
+}
+```

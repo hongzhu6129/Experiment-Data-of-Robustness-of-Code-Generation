@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = (num1 + num2 + num3) / 3;
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| 1 | 10 | 20 | 30 | 20.0 | Basic positive numbers |
+| 2 | -5 | 0 | 5 | 0.0 | Including negative and zero |
+| 3 | 0 | 0 | 0 | 0.0 | All zeros |
+| 4 | 1.5 | 2.5 | 3.5 | 2.5 | Decimal numbers |
+| 5 | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | 2.147483647E9 | Large positive integers (potential overflow if using `int` instead of `double` - using `double` handles it correctly) |
+| 6 | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE | -2.147483648E9 | Large negative integers (potential overflow if using `int`) |
+| 7 | Double.MAX_VALUE | 1 | 1 | Double.POSITIVE_INFINITY | Extremely large number, resulting in infinity |
+| 8 | Double.MIN_VALUE | 0 | 0 | Double.MIN_VALUE / 3  (a very small positive double) | Extremely small positive number |
+| 9 | Double.NaN | 1 | 2 | NaN | Handling NaN input |
+
+
+
+**How to Run the Test Cases:**
+
+While you could manually enter these values into the console, a better approach for testing is to create automated tests (unit tests).  Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30)); // Example using a helper method
+    }
+
+    @Test
+    void testNegativeAndZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+    // Add more test cases following the same pattern
+
+    // Helper method to make testing easier (not part of the original class)
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+By creating unit tests like this, you can easily and repeatedly test your code with various inputs, ensuring it functions correctly under different conditions.  You can then integrate these tests into a build system like Maven or Gradle to run them automatically as part of your development process.

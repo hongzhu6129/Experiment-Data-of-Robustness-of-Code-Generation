@@ -1,0 +1,31 @@
+```java
+public class LargestFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {1, 5, 3};
+        int largest1 = findLargestFirstLast(arr1);
+        System.out.println("Largest of first and last elements: " + largest1); // Output: 3
+
+        int[] arr2 = {7, 2, 9};
+        int largest2 = findLargestFirstLast(arr2);
+        System.out.println("Largest of first and last elements: " + largest2); // Output: 9
+
+        int[] arr3 = {4, 6, 4};
+        int largest3 = findLargestFirstLast(arr3);
+        System.out.println("Largest of first and last elements: " + largest3); // Output: 4
+
+
+
+    }
+
+    public static int findLargestFirstLast(int[] arr) {
+        if (arr == null || arr.length < 3) {  // Handle invalid input (null or less than 3 elements)
+          return -1; // Or throw an exception as needed
+        }
+        int first = arr[0];
+        int last = arr[arr.length - 1];
+        return Math.max(first, last); // Use Math.max for conciseness
+    }
+}
+```

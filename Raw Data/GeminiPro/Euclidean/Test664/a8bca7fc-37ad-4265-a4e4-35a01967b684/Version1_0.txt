@@ -1,0 +1,58 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class FloorKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put some key-value pairs into the TreeMap
+        treeMap.put(1, "One");
+        treeMap.put(5, "Five");
+        treeMap.put(10, "Ten");
+        treeMap.put(15, "Fifteen");
+        treeMap.put(20, "Twenty");
+
+
+        // Test cases
+        int key1 = 8;
+        Map.Entry<Integer, String> entry1 = treeMap.floorEntry(key1);
+        printResult(key1, entry1); // Expected: 5 -> Five
+
+        int key2 = 1;
+        Map.Entry<Integer, String> entry2 = treeMap.floorEntry(key2);
+        printResult(key2, entry2); // Expected: 1 -> One
+
+        int key3 = 25;
+        Map.Entry<Integer, String> entry3 = treeMap.floorEntry(key3);
+        printResult(key3, entry3); // Expected: 20 -> Twenty
+
+        int key4 = 0;
+        Map.Entry<Integer, String> entry4 = treeMap.floorEntry(key4);
+        printResult(key4, entry4); // Expected: null
+
+
+        // Demonstrating with other data types (e.g., String keys)
+        TreeMap<String, Double> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1.0);
+        stringTreeMap.put("banana", 2.0);
+        stringTreeMap.put("cherry", 3.0);
+
+        String stringKey = "blueberry";
+        Map.Entry<String, Double> stringEntry = stringTreeMap.floorEntry(stringKey);
+        printResult(stringKey, stringEntry); // Expected: banana -> 2.0
+
+
+    }
+
+    private static <K, V> void printResult(K key, Map.Entry<K, V> entry) {
+        if (entry != null) {
+            System.out.println(key + " -> " + entry.getKey() + " -> " + entry.getValue());
+        } else {
+            System.out.println(key + " -> null");
+        }
+    }
+}
+```

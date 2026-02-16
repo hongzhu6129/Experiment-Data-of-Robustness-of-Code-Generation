@@ -1,0 +1,43 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmptyArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        System.out.println("Original ArrayList: " + fruits);
+
+        // Method 1: Using clear()
+        fruits.clear(); 
+        System.out.println("ArrayList after clear(): " + fruits);
+
+
+        //  Method 2:  Re-initializing (creates a new, empty list)
+        fruits = new ArrayList<>(); // Less efficient if you want to keep the same object reference
+        System.out.println("ArrayList after re-initialization: " + fruits);
+
+
+        // Method 3: Using removeAll (More general - removes a specified collection)
+        // Useful if you need to remove a subset based on another collection
+        fruits.add("Grape");
+        fruits.add("Mango");
+        List<String> toRemove = new ArrayList<>();
+        toRemove.add("Grape");
+        toRemove.add("Mango");
+        fruits.removeAll(toRemove);
+        System.out.println("ArrayList after removeAll(): " + fruits);
+
+
+    }
+}
+```
+

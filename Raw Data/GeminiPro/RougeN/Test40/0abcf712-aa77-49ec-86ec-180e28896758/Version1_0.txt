@@ -1,0 +1,88 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Now: " + getCurrentDateTime());
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Test:**
+
+* **Expected Output:** A date and time string in the format "yyyy/MM/dd HH:mm:ss.SSS".  The year, month, day, hour, minute, second, and milliseconds should reflect the current time when the program is run.
+
+**2. Time Zone Change Test (Indirect):**
+
+* **How to Test:**  While you can't directly set the system clock for a pure unit test, run the program in different time zones (if possible) or at times very close to the beginning/end of a day, hour, minute, etc.  This indirectly tests the program's ability to handle different time zone offsets and potential edge cases around time transitions.
+* **Expected Output:** The output should always correctly reflect the *local* date and time according to the system's current time zone.
+
+**3.  DST Transition (Indirect - Challenging to automate):**
+
+* **How to Test:** (Extremely difficult to automate) Ideally, run the program right before and right after a Daylight Saving Time transition.  
+* **Expected Output:**  The output should handle the time shift correctly.  The hour should change appropriately, and there should be no errors or exceptions.
+
+
+**4.  Year Change (Indirect):**
+
+* **How to Test:** (Difficult to automate fully). If possible, run the code very close to midnight on December 31st.
+* **Expected Output:** The year should roll over correctly to the next year at midnight.
+
+**5. Performance Test (Less critical for this specific problem but good practice):**
+
+* **How to Test:** Call `getCurrentDateTime()` repeatedly in a loop (e.g., 10,000 times) and measure the execution time.
+* **Expected Output:**  The execution time should be reasonably fast.  This tests for any unexpected performance bottlenecks within the date/time formatting.
+
+
+
+**Example of a (partial) JUnit Test (Timezone and DST transitions would require more advanced mocking):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTimeTest {
+
+    @Test
+    public void testCurrentDateTimeFormat() {
+        // This is a simplified test, as we can't truly control system time easily.
+        String currentDateTime = CurrentDateTime.getCurrentDateTime();
+        // Check that the returned string matches the expected format.
+        assertTrue(currentDateTime.matches("\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}")); 
+
+        // A more robust (but more complex) approach would involve mocking
+        // the system clock to test edge cases (like year/day changes).
+    }
+
+
+
+     @Test
+    public void testDateTimeFormattingLogic() { // More controlled test of formatting
+        LocalDateTime specificTime = LocalDateTime.of(2024, 12, 31, 23, 59, 59, 999000000);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+        String formattedDateTime = specificTime.format(formatter);
+        assertEquals("2024/12/31 23:59:59.999", formattedDateTime);
+
+        specificTime = LocalDateTime.of(2025, 1, 1, 0, 0, 0, 0);
+        formattedDateTime = specificTime.format(formatter);
+        assertEquals("2025/01/01 00:00:00.000", formattedDateTime);
+
+    }
+}
+
+```
+
+
+This provides more comprehensive testing and includes a more robust JUnit example.  Remember to include JUnit (e.g., JUnit 5) in your project to run these tests.

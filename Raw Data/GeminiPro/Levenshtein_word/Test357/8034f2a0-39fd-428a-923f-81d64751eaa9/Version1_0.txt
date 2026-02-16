@@ -1,0 +1,91 @@
+```java
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty() || n <= 0) {
+            System.out.println("Invalid input.");
+            return;
+        }
+
+        int len = str.length();
+        int partSize = len / n;  // Calculate the size of each part
+        int remainder = len % n; // Calculate any remaining characters
+
+        int startIndex = 0;
+        for (int i = 0; i < n; i++) {
+            int endIndex = startIndex + partSize; // Basic end index
+
+            // Distribute remainder across parts
+            if (remainder > 0) {
+                endIndex++;
+                remainder--;
+            }
+
+
+            System.out.println(str.substring(startIndex, endIndex)); //Print each part
+            startIndex = endIndex;
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcdefghijklmnopqrstuvwxyz";
+        int n1 = 3;
+        System.out.println("Splitting \"" + str1 + "\" into " + n1 + " parts:");
+        splitString(str1, n1);
+
+        System.out.println("\n-----\n");
+
+        String str2 = "programming";
+        int n2 = 4;
+        System.out.println("Splitting \"" + str2 + "\" into " + n2 + " parts:");
+        splitString(str2, n2);
+
+
+        System.out.println("\n-----\n");
+        String str3 = "java";
+        int n3 = 2;
+         System.out.println("Splitting \"" + str3 + "\" into " + n3 + " parts:");
+        splitString(str3, n3);
+
+
+        System.out.println("\n-----\n"); // Edge case: n > string length
+
+        String str4 = "test";
+        int n4 = 5;
+        System.out.println("Splitting \"" + str4 + "\" into " + n4 + " parts:");
+        splitString(str4, n4);
+
+
+
+        System.out.println("\n-----\n"); // Edge case: empty string
+
+        String str5 = "";
+        int n5 = 3;
+        System.out.println("Splitting \"" + str5 + "\" into " + n5 + " parts:");
+        splitString(str5, n5);
+
+        System.out.println("\n-----\n"); // Edge case: n=0
+
+
+        String str6 = "example";
+        int n6 = 0;
+        System.out.println("Splitting \"" + str6 + "\" into " + n6 + " parts:");
+        splitString(str6, n6);
+    }
+}
+```
+
+
+
+Key improvements:
+
+* **Handles edge cases:** The code now checks for `null` or empty strings and `n <= 0`, preventing errors.
+* **Distributes remainder:**  The extra characters are distributed as evenly as possible among the parts.
+* **Clearer output:** The `main` method includes examples and labels the output for better understanding.
+* **More robust:**  Uses `substring` properly to avoid potential `IndexOutOfBoundsException`.
+
+
+
+
+
+

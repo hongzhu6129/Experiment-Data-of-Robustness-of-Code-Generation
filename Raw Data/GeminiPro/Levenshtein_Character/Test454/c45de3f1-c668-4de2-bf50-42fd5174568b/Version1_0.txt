@@ -1,0 +1,79 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+public class DateComparison {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate date 1 year ago
+        LocalDate dateBefore1Year = currentDate.minus(Period.ofYears(1));
+
+        // Calculate date 1 year from now
+        LocalDate dateAfter1Year = currentDate.plus(Period.ofYears(1));
+
+        // Format dates for output  (Optional, for better readability)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedCurrentDate = currentDate.format(formatter);
+        String formattedDateBefore = dateBefore1Year.format(formatter);
+        String formattedDateAfter = dateAfter1Year.format(formatter);
+
+
+        System.out.println("Current Date: " + formattedCurrentDate);
+        System.out.println("Date 1 year ago: " + formattedDateBefore);
+        System.out.println("Date 1 year from now: " + formattedDateAfter);
+
+
+        // Comparisons (Examples)
+
+        // Is the current date after the date 1 year ago? (Should always be true)
+        if (currentDate.isAfter(dateBefore1Year)) {
+            System.out.println("Current date is after the date 1 year ago.");
+        }
+
+        // Is the current date before the date 1 year from now? (Should always be true)
+        if (currentDate.isBefore(dateAfter1Year)) {
+            System.out.println("Current date is before the date 1 year from now.");
+        }
+
+
+        // More comparison examples � adapt as needed:
+
+        // Check if a date is equal to another
+        if (currentDate.isEqual(LocalDate.parse("2024-08-16"))) { // Example date
+            System.out.println("Current date is 2024-08-16");
+        }
+
+        // Calculate the difference between dates (in years, months, days)
+        Period difference = Period.between(dateBefore1Year, currentDate);
+        System.out.println("Difference between date 1 year ago and current date: " + difference.getYears() + " years, " + difference.getMonths() + " months, " + difference.getDays() + " days");
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Uses `java.time`:**  The modern Java date/time API (`java.time`) is used (specifically `LocalDate`, `Period`, and `DateTimeFormatter`).  Avoid the older `Date` and `Calendar` classes as they are more problematic.
+
+2. **Clearer Variable Names:** More descriptive variable names (e.g., `dateBefore1Year`, `currentDate`) improve readability.
+
+3. **Formatting (Optional):**  `DateTimeFormatter` is used to format the dates into a more readable `yyyy-MM-dd` format.  This is optional, but recommended.
+
+4. **Comparison Examples:**  The code demonstrates how to compare dates using `isAfter()`, `isBefore()`, and `isEqual()`.  I've included an example of calculating the difference between dates using `Period.between()`.
+
+5. **Comments:**  Comments explain the important parts of the code.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DateComparison.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac DateComparison.java`
+3. **Run:** `java DateComparison`
+
+
+This improved version is more robust, readable, and uses best practices for working with dates and times in Java.

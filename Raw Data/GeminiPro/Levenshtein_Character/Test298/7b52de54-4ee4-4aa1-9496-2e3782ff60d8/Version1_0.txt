@@ -1,0 +1,27 @@
+```java
+import java.util.Arrays;
+
+public class KthSmallestLargest {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 4, 17, 7, 25, 3, 100};
+        int k = 3; // Find the 3rd smallest and largest
+
+        System.out.println("Original Array: " + Arrays.toString(originalArray));
+
+        if (k > 0 && k <= originalArray.length) {
+            int[] sortedArray = Arrays.copyOf(originalArray, originalArray.length);
+            Arrays.sort(sortedArray);
+
+            int kthSmallest = sortedArray[k - 1];
+            int kthLargest = sortedArray[sortedArray.length - k];
+
+            System.out.println("K'th smallest element of the said array: " + kthSmallest);
+            System.out.println("K'th largest element of the said array: " + kthLargest);
+
+        } else {
+            System.out.println("Invalid value of k. k should be between 1 and " + originalArray.length);
+        }
+    }
+}
+```

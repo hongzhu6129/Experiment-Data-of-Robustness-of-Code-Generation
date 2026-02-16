@@ -1,0 +1,19 @@
+
+
+
+
+**Test Cases:**
+
+While there aren't traditional "corner cases" for a simple printing program like this (it doesn't take input that could cause errors), we can consider a few aspects for testing:
+
+1. **Correct Output Format:**  Verify that the output precisely matches the required format, including capitalization, punctuation, spacing, and the use of tabs (`\t`) for indentation.  Visual inspection is usually sufficient.  You could, in a more complex program, use string comparison to check the output against the expected output.
+
+2. **Character Encoding:**  Although less likely an issue in modern environments, you might (especially if dealing with internationalization) want to ensure that the character encoding is handled correctly so that special characters like commas, apostrophes, and even non-English characters are printed as expected.
+
+3. **Redirect Output to File:** Test redirecting the output to a file and verify the file content.  This is useful if you were to integrate this code into a larger system where output might not go directly to the console.   In a command-line environment, you would do something like: `java TwinkleTwinkle > output.txt`.
+
+
+4. **Method Call within Another Class:** If you were to use the `printTwinkleTwinkle()` method in another class, test to make sure it functions as intended when called externally.  This tests the public access modifier.  Example:
+
+
+   

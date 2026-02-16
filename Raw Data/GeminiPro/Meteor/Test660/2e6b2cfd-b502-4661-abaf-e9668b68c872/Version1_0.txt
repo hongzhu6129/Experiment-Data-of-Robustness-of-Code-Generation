@@ -1,0 +1,65 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSortComparator {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("grape", 3);
+        treeMap.put("orange", 4);
+        treeMap.put("kiwi", 5);
+
+        // Print the sorted TreeMap
+        System.out.println(treeMap);
+
+
+        //Example with reversed order (longest strings first)
+        TreeMap<String, Integer> reversedTreeMap = new TreeMap<>(new StringLengthComparator().reversed()); //Use reversed()
+
+        reversedTreeMap.put("apple", 1);
+        reversedTreeMap.put("banana", 2);
+        reversedTreeMap.put("grape", 3);
+        reversedTreeMap.put("orange", 4);
+        reversedTreeMap.put("kiwi", 5);
+
+        System.out.println(reversedTreeMap);
+    }
+
+    // Custom Comparator class to compare strings based on length
+    static class StringLengthComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            return Integer.compare(s1.length(), s2.length()); // Sort by string length
+        }
+    }
+
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Comparator Class:** The `StringLengthComparator` class implements the `Comparator<String>` interface.  This is crucial for custom sorting logic.
+
+2. **compare Method:** The `compare(String s1, String s2)` method inside the `StringLengthComparator` now uses `Integer.compare(s1.length(), s2.length())`. This is a concise and preferred way to compare lengths as it handles potential integer overflow issues correctly.
+
+3. **TreeMap Creation:**  The `TreeMap` is initialized with an instance of the `StringLengthComparator`:  `TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());`.  This tells the `TreeMap` to use your custom sorting logic.
+
+4. **Reversed Order (Optional):** The example also shows how to easily reverse the sorting order using `reversed()`: `new TreeMap<>(new StringLengthComparator().reversed());`
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TreeMapSortComparator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac TreeMapSortComparator.java`
+3. **Run:** Execute the compiled code: `java TreeMapSortComparator`
+
+
+
+The output will show the TreeMap entries sorted first by string length (shortest to longest), and then in the second example, sorted by string length from longest to shortest.

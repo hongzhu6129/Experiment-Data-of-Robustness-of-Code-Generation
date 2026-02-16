@@ -1,0 +1,28 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringValidator {
+
+    public static void main(String[] args) {
+        String testString1 = "HelloWorld123";
+        String testString2 = "HelloWorld!";
+        String testString3 = "hello";
+        String testString4 = "12345";
+
+        System.out.println("\"" + testString1 + "\" is valid: " + validate(testString1)); // Output: true
+        System.out.println("\"" + testString2 + "\" is valid: " + validate(testString2)); // Output: false
+        System.out.println("\"" + testString3 + "\" is valid: " + validate(testString3)); // Output: true
+        System.out.println("\"" + testString4 + "\" is valid: " + validate(testString4)); // Output: true
+
+    }
+
+    public static boolean validate(String str) {
+        // Regular expression to match only a-z, A-Z, and 0-9
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$"); //* means zero or more occurrences
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+
+    }
+}
+```

@@ -1,0 +1,43 @@
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseWords {
+
+    public static String WordsInReverse(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            return ""; // Handle empty or null input
+        }
+
+        List<String> words = Arrays.asList(str.trim().split("\\s+")); // Split into words based on whitespace
+        Collections.reverse(words); // Reverse the list of words
+        return String.join(" ", words); // Join the words back with spaces
+    }
+
+    public static void main(String[] args) {
+        String inputString1 = "This is a sample string";
+        String reversedString1 = WordsInReverse(inputString1);
+        System.out.println("Reversed string 1: " + reversedString1);  // Output: string sample a is This
+
+        String inputString2 = "  leading and trailing spaces   ";
+        String reversedString2 = WordsInReverse(inputString2);
+        System.out.println("Reversed string 2: " + reversedString2); // Output: spaces trailing and leading
+
+        String inputString3 = null;
+        String reversedString3 = WordsInReverse(inputString3);
+        System.out.println("Reversed string 3: " + reversedString3); // Output:  (Empty string)
+
+        String inputString4 = "";
+        String reversedString4 = WordsInReverse(inputString4);
+        System.out.println("Reversed string 4: " + reversedString4); // Output: (Empty string)
+
+
+         String inputString5 = "single";
+        String reversedString5 = WordsInReverse(inputString5);
+        System.out.println("Reversed string 5: " + reversedString5); // Output: single
+
+
+    }
+}
+```

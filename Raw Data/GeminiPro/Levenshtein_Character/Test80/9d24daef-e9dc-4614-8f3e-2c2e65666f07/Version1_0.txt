@@ -1,0 +1,65 @@
+```java
+public class ExecutionTime {
+
+    public static void main(String[] args) {
+        // Record the start time in nanoseconds
+        long startTime = System.nanoTime();
+
+        // The code to be measured goes here
+        // Example: Calculate the sum of numbers from 1 to 1000000
+        long sum = 0;
+        for (int i = 1; i <= 1000000; i++) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum); // Print the result (optional)
+
+
+        // More code to be measured could go here...
+        String testString = "";
+        for (int i = 0; i < 100000; i++) {
+            testString += "a"; // Simulate some string operations
+        }
+
+        // Record the end time in nanoseconds
+        long endTime = System.nanoTime();
+
+        // Calculate the elapsed time in nanoseconds
+        long elapsedTime = endTime - startTime;
+
+        System.out.println("Execution time in nanoseconds: " + elapsedTime);
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer separation of concerns:** The code to be measured is placed within the timing block, making it easy to change or add more code to measure without modifying the timing logic.
+* **More realistic example:** The example code now includes a loop and a calculation, which is more representative of real-world code than a simple print statement.
+* **Illustrates multiple code blocks:** Demonstrates that you can measure the combined execution time of several pieces of code within the `main` method.
+* **Simpler output:** Prints only the execution time, making it easier to analyze the results.
+
+
+
+
+
+To measure a specific portion of code, enclose it between `startTime` and `endTime`.  For example:
+
+```java
+        long startTime2 = System.nanoTime();
+
+        // Code block 2 to measure
+         String testString = "";
+        for (int i = 0; i < 100000; i++) {
+            testString += "a"; // Simulate some string operations
+        }
+
+
+        long endTime2 = System.nanoTime();
+
+        long elapsedTime2 = endTime2 - startTime2;
+        System.out.println("Execution time of Code block 2 in nanoseconds: " + elapsedTime2);
+```

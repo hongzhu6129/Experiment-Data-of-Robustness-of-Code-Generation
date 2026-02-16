@@ -1,0 +1,49 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class TailMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store the key-value pairs. TreeMap is used because it implements NavigableMap
+        // which provides the tailMap() method.
+        NavigableMap<Integer, String> studentGrades = new TreeMap<>();
+
+        // Add some sample data
+        studentGrades.put(10, "Alice");
+        studentGrades.put(25, "Bob");
+        studentGrades.put(40, "Charlie");
+        studentGrades.put(60, "David");
+        studentGrades.put(75, "Eve");
+        studentGrades.put(90, "Frank");
+
+
+        // Print the original map
+        System.out.println("Original Map: " + studentGrades);
+
+
+        // Get the portion of the map whose keys are greater than 40 (exclusive)
+        NavigableMap<Integer, String> tailMapExclusive = studentGrades.tailMap(40, false);
+        System.out.println("Tail Map (Exclusive): " + tailMapExclusive); // {60=David, 75=Eve, 90=Frank}
+
+
+        // Get the portion of the map whose keys are greater than or equal to 40 (inclusive)
+        NavigableMap<Integer, String> tailMapInclusive = studentGrades.tailMap(40, true);
+        System.out.println("Tail Map (Inclusive): " + tailMapInclusive); // {40=Charlie, 60=David, 75=Eve, 90=Frank}
+
+
+         //Important Note:  tailMap() returns a view of the original map.  Changes to the tailMap 
+         //will affect the original map, and vice-versa.
+
+         tailMapInclusive.put(50,"George"); //Modify the tailMap
+         System.out.println("Original Map after modifying tailMap: " + studentGrades); //Original map is also modified
+
+         //If you need an independent copy of the submap, use the following:
+         NavigableMap<Integer, String> independentCopy = new TreeMap<>(studentGrades.tailMap(60,true)); 
+         independentCopy.put(100,"Henry"); //This won't affect the original map.
+         System.out.println("Original Map after modifying independent copy: " + studentGrades);
+         System.out.println("Independent Copy: " + independentCopy);
+
+
+
+    }
+}

@@ -1,0 +1,70 @@
+```java
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class DivideAndPrintOnImage {
+
+    public static void main(String[] args) {
+        int numerator = 50;
+        int denominator = 3;
+        int result = numerator / denominator;
+
+        // Create a blank image
+        int width = 200;
+        int height = 100;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = image.getGraphics();
+
+        // Set background color
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, width, height);
+
+        // Set text color and font
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+
+        // Draw the division expression and result
+        String text = numerator + "/" + denominator + ": " + result;
+        int x = (width - g.getFontMetrics().stringWidth(text)) / 2; // Center the text
+        int y = height / 2 + g.getFontMetrics().getAscent() / 2; // Center vertically
+
+
+        g.drawString(text, x, y);
+
+        // Save the image to a file
+        try {
+            File output = new File("division_result.png");
+            ImageIO.write(image, "png", output);
+            System.out.println("Image saved to: " + output.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Error saving image: " + e.getMessage());
+        }
+
+
+        g.dispose(); // Release resources
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:**  The code now includes a `try-catch` block to handle potential `IOExceptions` during image saving. This makes the code more robust.
+2. **Clearer Output:**  Prints a message to the console indicating where the image has been saved or if there was an error.
+3. **Resource Management:**  `g.dispose()` is added to release the graphics context resources, which is good practice.
+4. **Image File Path:** Creates the output file `division_result.png` in the project's directory (the directory where you run the Java program from).
+5. **Centering the Text:** The `x` and `y` coordinates for drawing the text are calculated to center the text both horizontally and vertically on the image, making it look much better.
+
+
+To run this code:
+
+1. **Save:** Save the code as `DivideAndPrintOnImage.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac DivideAndPrintOnImage.java`
+3. **Run:**  `java DivideAndPrintOnImage`
+
+This will generate an image file named `division_result.png` in the same directory, displaying the division result on a white background.

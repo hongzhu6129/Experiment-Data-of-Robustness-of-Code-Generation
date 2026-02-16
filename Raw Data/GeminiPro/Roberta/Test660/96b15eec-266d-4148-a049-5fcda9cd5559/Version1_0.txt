@@ -1,0 +1,77 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSortComparator {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, String> treeMap = new TreeMap<>(new MyComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", "red");
+        treeMap.put("banana", "yellow");
+        treeMap.put("orange", "orange");
+        treeMap.put("grape", "purple");
+
+        // Print the sorted TreeMap
+        System.out.println(treeMap);
+    }
+
+    // Custom Comparator implementation
+    public static class MyComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            // Reverse alphabetical order
+            return s2.compareTo(s1); 
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **TreeMap with Comparator:**
+   - We create a `TreeMap` and pass an instance of our custom `MyComparator` to its constructor. This tells the `TreeMap` to use our specific logic for sorting keys.
+
+2. **Custom Comparator (MyComparator):**
+   - The `MyComparator` class implements the `Comparator<String>` interface.
+   - The crucial method is `compare(String s1, String s2)`.  It defines how two strings (`s1` and `s2`) should be compared to determine their order.
+   - In this example, `s2.compareTo(s1)` sorts the keys in reverse alphabetical order. If you want standard alphabetical order, use `s1.compareTo(s2)`.
+
+3. **Adding Elements:**
+   - We add key-value pairs to the `TreeMap` using the `put()` method.
+
+4. **Printing:**
+   - When we print the `TreeMap`, the keys will be displayed in the sorted order determined by the `MyComparator`.
+
+
+**Example Output (with reverse alphabetical order):**
+
+```
+{orange=orange, grape=purple, banana=yellow, apple=red} 
+```
+
+
+**To sort in a different way:**
+
+Simply change the logic within the `compare()` method of the `MyComparator` class. For example:
+
+- **Sort by string length:**
+
+```java
+public int compare(String s1, String s2) {
+    return Integer.compare(s1.length(), s2.length());
+}
+```
+
+- **Case-insensitive sorting:**
+
+```java
+public int compare(String s1, String s2) {
+    return s1.compareToIgnoreCase(s2);
+}
+```
+
+
+By implementing the `Comparator` interface and providing a custom `compare()` method, you have full control over how the keys are sorted in your `TreeMap`.

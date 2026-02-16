@@ -1,0 +1,56 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to be removed
+        String elementToRemove = "Orange";
+
+        // Remove the specified element
+        boolean removed = linkedList.remove(elementToRemove); // Removes the first occurence
+
+        if (removed) {
+            System.out.println("LinkedList after removing " + elementToRemove + ": " + linkedList);
+        } else {
+            System.out.println(elementToRemove + " not found in the LinkedList.");
+        }
+
+
+        //Demonstrate removing by index:
+         linkedList.add("Orange"); //Add it back for this example
+
+        int indexToRemove = 2; // Remove element at index 2 (which is now the *second* "Orange")
+
+        try {
+            String removedElement = linkedList.remove(indexToRemove);
+             System.out.println("LinkedList after removing element at index " + indexToRemove + " (" + removedElement + "): " + linkedList);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index: " + indexToRemove);
+        }
+
+
+        // Removing all occurrences of an element (if needed)
+        linkedList.add("Banana"); //Adding back "Banana" for demonstration
+
+        while (linkedList.remove("Banana")) { // Keep removing "Banana" until it's no longer found. The remove() method returns true if an element was removed.
+             // Loop continues as long as "Banana" is found and removed
+        }
+
+        System.out.println("LinkedList after removing all occurrences of 'Banana': " + linkedList);
+    }
+}
+```

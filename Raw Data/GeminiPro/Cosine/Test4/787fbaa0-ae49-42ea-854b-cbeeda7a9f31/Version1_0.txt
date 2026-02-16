@@ -1,0 +1,122 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculator {
+
+    public static double calculatePerimeter(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    public static double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    public static void main(String[] args) {
+        double radius = 7.5;
+        double perimeter = calculatePerimeter(radius);
+        double area = calculateArea(radius);
+
+        System.out.println("Perimeter is = " + perimeter);
+        System.out.println("Area is = " + area);
+    }
+}
+
+
+class CircleCalculatorTest {
+
+    @Test
+    void testCalculatePerimeter() {
+        assertEquals(0.0, CircleCalculator.calculatePerimeter(0.0));          // Zero radius
+        assertEquals(47.12388980384689, CircleCalculator.calculatePerimeter(7.5)); // Given example
+        assertEquals(6.283185307179586, CircleCalculator.calculatePerimeter(1.0)); // Radius of 1
+        assertEquals(31.41592653589793, CircleCalculator.calculatePerimeter(5.0));
+
+    }
+
+    @Test
+    void testCalculateArea() {
+        assertEquals(0.0, CircleCalculator.calculateArea(0.0));              // Zero radius
+        assertEquals(176.71458676442586, CircleCalculator.calculateArea(7.5));  // Given example
+        assertEquals(3.141592653589793, CircleCalculator.calculateArea(1.0));   // Radius of 1
+        assertEquals(78.53981633974483, CircleCalculator.calculateArea(5.0));
+
+
+
+    }
+
+
+    @Test
+    void testNegativeRadiusPerimeter(){
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            CircleCalculator.calculatePerimeter(-1); // Negative radius (should throw exception if handled)
+        });
+
+    }
+
+      @Test
+    void testNegativeRadiusArea(){
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            CircleCalculator.calculateArea(-1); // Negative radius (should throw exception if handled)
+        });
+    }
+
+
+     @Test
+    void testLargeRadiusPerimeter(){
+        assertEquals(6.283185307179586E16, CircleCalculator.calculatePerimeter(1E15));  // Very Large Radius
+
+    }
+
+
+      @Test
+    void testLargeRadiusArea(){
+        assertEquals(3.141592653589793E30, CircleCalculator.calculateArea(1E15));  // Very Large Radius
+    }
+
+}
+```
+
+
+Key improvements and explanations:
+
+* **Test Cases:**  The `CircleCalculatorTest` class uses JUnit 5 to provide a range of test cases, including:
+    * **Zero Radius:** Checks the boundary case where the radius is 0.
+    * **Given Example:**  Tests the provided example values (radius 7.5).
+    * **Radius of 1:** A simple case for basic verification.
+    * **Larger Radius:** Tests with a radius of 5.
+    * **Negative Radius:**  Added tests to handle invalid input (negative radius), expecting an `IllegalArgumentException`.  While the current `calculateArea` and `calculatePerimeter` don't explicitly throw exceptions, these tests demonstrate how to handle them *if* such validation was added to those methods.  It's good practice to handle invalid inputs defensively.
+    * **Very Large Radius:** Tests with extremely large numbers to check for potential overflow or precision issues.
+
+* **JUnit 5:**  Uses the modern JUnit 5 testing framework, which is more powerful and flexible.
+* **Assertions:**  Uses `assertEquals` for precise value comparisons (with a delta for floating-point comparisons if necessary) and `assertThrows` to verify exception handling.
+* **Clearer Output:**  The `main` method now prints the results more clearly.
+
+
+
+How to run the tests (assuming you have JUnit 5 set up in your project):
+
+1. **IDE:** Most IDEs (IntelliJ, Eclipse, NetBeans) have built-in support for running JUnit tests.  Right-click on the test class or method and select "Run".
+
+2. **Command Line (with Maven):** `mvn test`
+
+
+If you want to add the exception handling for negative radius input as the test cases suggest, modify the `calculateArea` and `calculatePerimeter` methods:
+
+```java
+public static double calculatePerimeter(double radius) {
+    if (radius < 0) {
+        throw new IllegalArgumentException("Radius cannot be negative.");
+    }
+    return 2 * Math.PI * radius;
+}
+
+public static double calculateArea(double radius) {
+    if (radius < 0) {
+        throw new IllegalArgumentException("Radius cannot be negative.");
+    }
+    return Math.PI * radius * radius;
+}
+```

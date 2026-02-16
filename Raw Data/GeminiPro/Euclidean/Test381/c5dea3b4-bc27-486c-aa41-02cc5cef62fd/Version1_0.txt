@@ -1,0 +1,32 @@
+```java
+public class StringManipulation {
+
+    public String withoutMacth(String str) {
+        if (str.length() < 2) {
+            return str; // Handle strings shorter than 2
+        }
+
+        String firstTwo = str.substring(0, 2);
+        String lastTwo = str.substring(str.length() - 2);
+
+        if (firstTwo.equals(lastTwo)) {
+            return str.substring(2);
+        } else {
+            return str;
+        }
+    }
+
+    public static void main(String[] args) {
+        StringManipulation sm = new StringManipulation();
+
+        System.out.println(sm.withoutMacth("HelloHe")); // Output: lloHe
+        System.out.println(sm.withoutMacth("abXYab"));  // Output: XYab
+        System.out.println(sm.withoutMacth("Hi"));     // Output: Hi  (string length < 2)
+        System.out.println(sm.withoutMacth("x"));      // Output: x   (string length < 2)
+        System.out.println(sm.withoutMacth("abba"));   // Output: ba
+        System.out.println(sm.withoutMacth("abcab"));  // Output: abcab (doesn't match)
+
+
+    }
+}
+```

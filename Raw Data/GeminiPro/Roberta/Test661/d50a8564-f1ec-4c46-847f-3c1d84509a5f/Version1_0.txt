@@ -1,0 +1,55 @@
+```java
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+public class GreatestAndLeastKeyMap {
+
+    public static void main(String[] args) {
+        // Example usage:
+        Map<Integer, String> myMap = new HashMap<>();
+        myMap.put(1, "One");
+        myMap.put(5, "Five");
+        myMap.put(2, "Two");
+        myMap.put(10, "Ten");
+        myMap.put(-3, "Minus Three");
+
+
+        if (myMap.isEmpty()) {
+            System.out.println("Map is empty. Cannot find greatest and least keys.");
+            return; 
+        }
+
+        // Find the greatest and least keys
+        int greatestKey = Collections.max(myMap.keySet());
+        int leastKey = Collections.min(myMap.keySet());
+
+        // Get the associated values
+        String greatestValue = myMap.get(greatestKey);
+        String leastValue = myMap.get(leastKey);
+
+        System.out.println("Greatest Key: " + greatestKey + ", Value: " + greatestValue);
+        System.out.println("Least Key: " + leastKey + ", Value: " + leastValue);
+
+
+        // Example with other data types (String keys):
+        Map<String, Double> stringKeyMap = new HashMap<>();
+        stringKeyMap.put("apple", 1.5);
+        stringKeyMap.put("banana", 0.75);
+        stringKeyMap.put("orange", 1.2);
+
+        if (!stringKeyMap.isEmpty()) {
+             String greatestStringKey = Collections.max(stringKeyMap.keySet());
+             String leastStringKey = Collections.min(stringKeyMap.keySet());
+
+            System.out.println("Greatest String Key: " + greatestStringKey + ", Value: " + stringKeyMap.get(greatestStringKey));
+            System.out.println("Least String Key: " + leastStringKey + ", Value: " + stringKeyMap.get(leastStringKey));
+        } else {
+            System.out.println("String Key Map is empty.");
+        }
+
+
+
+    }
+}
+```

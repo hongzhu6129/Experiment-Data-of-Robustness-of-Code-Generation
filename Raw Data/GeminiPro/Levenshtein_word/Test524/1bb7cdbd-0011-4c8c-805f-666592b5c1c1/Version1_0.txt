@@ -1,0 +1,59 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input handling (assuming input is provided as a command-line argument)
+        if (args.length != 1) {
+            System.out.println("Usage: java CubeChecker <number>");
+            return;
+        }
+
+        try {
+            int number = Integer.parseInt(args[0]);
+
+            // Efficient Cube Check using Math.cbrt() and casting
+            double cubeRoot = Math.cbrt(number);
+            if (cubeRoot == (int) cubeRoot) {
+                System.out.println("Number is a cube.");
+            } else {
+                System.out.println("Number is not a cube.");
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Input Handling:** The code now checks if a command-line argument is provided.  It prints usage instructions if no argument is given or if more than one argument is given. This makes the program more robust.
+
+2. **Error Handling (NumberFormatException):**  The `try-catch` block handles the potential `NumberFormatException` that can occur if the user enters something that's not an integer.
+
+3. **Efficient Cube Check:** The most efficient way to check if a number is a perfect cube is using `Math.cbrt()` (cube root) and then checking if the result is an integer. This avoids unnecessary loops or iterations.
+
+**How to run this from the command line:**
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac CubeChecker.java`
+3. **Run:**  Execute the compiled code with the number you want to check as a command-line argument: `java CubeChecker 8` (for example).  Replace `8` with any other number you want to test.
+
+
+**Example Output:**
+
+```
+java CubeChecker 8
+Number is a cube.
+
+java CubeChecker 9
+Number is not a cube.
+
+java CubeChecker abc
+Invalid input. Please enter an integer.
+
+java CubeChecker
+Usage: java CubeChecker <number>
+```

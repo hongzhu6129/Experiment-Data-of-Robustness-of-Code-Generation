@@ -1,0 +1,69 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of a side of the hexagon: ");
+        double side = input.nextDouble();
+
+        // Handle invalid input (side length cannot be negative or zero)
+        if (side <= 0) {
+            System.out.println("Invalid input. Side length must be positive.");
+            return; // Exit the program
+        }
+
+
+        double area = (3 * Math.sqrt(3) * side * side) / 2;
+
+        System.out.println("The area of the hexagon is: " + area);
+
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: `side = 5`
+   - Expected Output: `The area of the hexagon is: 64.9519052838329`
+
+2. **Zero Side Length:**
+   - Input: `side = 0`
+   - Expected Output: `Invalid input. Side length must be positive.`
+
+3. **Negative Side Length:**
+   - Input: `side = -2`
+   - Expected Output: `Invalid input. Side length must be positive.`
+
+4. **Large Side Length:**
+   - Input: `side = 1000`
+   - Expected Output: `The area of the hexagon is: 2598076.211353316` (Tests for potential overflow issues, though doubles have a wide range)
+
+
+5. **Small Side Length:**
+   - Input: `side = 0.001`
+   - Expected Output:  `The area of the hexagon is: 2.598076211353316E-6` (Tests handling of small values).
+
+
+**How to Run the Test Cases:**
+
+Since all the logic is in the `main` method, the easiest way to test these cases is to:
+
+1. Compile the Java code: `javac HexagonArea.java`
+2. Run the compiled code from your terminal: `java HexagonArea`
+3. Enter the input values when prompted by the program.
+
+
+**Important Considerations when not using methods (other than main):**
+
+* **Code Duplication:** If you needed to calculate the hexagon area multiple times in a larger program, you'd have to duplicate the formula, which isn't ideal.  Methods promote reusability and maintainability.
+* **Testability:** Testing individual parts of the logic becomes harder.  Methods allow you to isolate and test specific functionalities.
+* **Readability:**  As programs grow larger, using only `main` can make the code harder to understand and maintain.  Methods break down complex tasks into smaller, manageable units.
+
+
+While this example fulfills the requirement of using only `main`, in real-world applications, it's highly recommended to use methods for better code structure, reusability, and maintainability.
+

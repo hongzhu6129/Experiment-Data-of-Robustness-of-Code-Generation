@@ -1,0 +1,40 @@
+
+
+**Test Cases:**
+
+1. **Basic Case:**
+   - Input: `digits = {1, 2, 3, 4}`
+   - Expected Output: 24 three-digit numbers (all permutations of 1, 2, 3, and 4)
+   - Example Numbers: 123, 124, 132, 134,... 432
+
+2. **Repeated Digits Input:**
+   - Input: `digits = {1, 2, 2, 4}`
+   - Expected Output: 18 three-digit numbers (permutations allowing repetition of 2, but not other digits)
+   - Example Numbers: 122, 124, 142, 212, 214, 221, 224, 241, 242, 412, 421, 422,...
+
+3. **Fewer Digits:**
+   - Input:  `digits = {1, 2, 3}`
+   - Expected Output: 6 three-digit numbers
+   - Example Numbers: 123, 132, 213, 231, 312, 321
+
+
+4. **More Digits (Corner Case - Doesn't affect output in this code):**
+   - Input:  `digits = {1, 2, 3, 4, 5}`
+   - Expected Output: Still 24 three-digit numbers (the code only uses the first 4 distinct digits if more are provided)
+
+5. **Single Digit (Edge Case):**
+   - Input: `digits = {1}`
+   - Expected Output:  0 three-digit numbers (not possible to form a 3-digit number with only one digit without repetition)
+
+6. **Duplicate Digits and Single Digit Combined (Edge Case):**
+   - Input: `digits = {1, 1, 1}`
+   - Expected Output: 0 three-digit numbers.
+
+
+
+
+**How to Run Tests:**
+
+You could implement these test cases using a testing framework like JUnit.  Create a separate test class, and write test methods for each case.  Assert the size of the returned list and potentially check if some specific expected numbers are present.
+
+

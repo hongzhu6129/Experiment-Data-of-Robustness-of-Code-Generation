@@ -1,0 +1,49 @@
+```java
+public class BooleanArrayPrinter {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "t " : "f "); // Print "t" for true, "f" for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+While the prompt technically requests all code within the `main` method,  doing so for anything non-trivial quickly becomes messy and hard to read.  I've used a helper method  `printBooleanArray` to demonstrate better coding practice.  If you absolutely *must* have everything in `main`:
+
+```java
+public class BooleanArrayPrinter {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        for (boolean[] row : boolArray) {
+            for (boolean value : row) {
+                System.out.print(value ? "t " : "f ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+This second version fulfills the literal requirement, but the first example with the helper function is significantly more organized and reusable.

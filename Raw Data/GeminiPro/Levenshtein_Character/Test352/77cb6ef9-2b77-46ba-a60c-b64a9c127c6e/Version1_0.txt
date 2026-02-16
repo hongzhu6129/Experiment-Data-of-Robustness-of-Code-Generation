@@ -1,0 +1,53 @@
+```java
+public class StringPermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String str = "abc";
+        permutationWithRepeation(str);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation and Example:**
+
+1. **`main(String[] args)`:**
+   - This is the entry point of the program.  It calls `permutationWithRepeation` with the input string.
+
+2. **`permutationWithRepeation(String str)`:**
+   - This method initiates the recursive process by calling `showPermutation` with the original string and an empty prefix.
+
+3. **`showPermutation(String str, String prefix)`:**
+   - This is the recursive method that generates the permutations.
+   - **Base Case:**  If the `prefix` has reached the length of the original `str`, it means a complete permutation has been formed. It prints the `prefix` and returns.
+   - **Recursive Step:** It iterates through each character of the original `str`.  In each iteration, it adds the current character to the `prefix` and recursively calls `showPermutation` with the updated `prefix`.  This allows for characters to be repeated.
+
+**Example with "abc":**
+
+- Initial call: `showPermutation("abc", "")`
+- First loop (i=0): `showPermutation("abc", "a")`
+  - Second loop (i=0): `showPermutation("abc", "aa")`
+    - Third loop (i=0): `showPermutation("abc", "aaa")` - Prints "aaa"
+    - Third loop (i=1): `showPermutation("abc", "aab")` - Prints "aab"
+    - Third loop (i=2): `showPermutation("abc", "aac")` - Prints "aac"
+  - Second loop (i=1): `showPermutation("abc", "ab")`
+    ... (and so on, following the pattern)
+
+
+
+This will generate all 3^3 = 27 permutations with repetition, including "aaa", "aab", "aac", "aba", "abb", "abc", ..., "ccc".

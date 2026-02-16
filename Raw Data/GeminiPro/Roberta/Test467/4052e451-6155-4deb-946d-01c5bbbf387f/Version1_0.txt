@@ -1,0 +1,59 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first date (yyyy-MM-dd):");
+        String date1String = scanner.nextLine();
+
+        System.out.println("Enter the second date (yyyy-MM-dd):");
+        String date2String = scanner.nextLine();
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date1 = LocalDate.parse(date1String, formatter);
+            LocalDate date2 = LocalDate.parse(date2String, formatter);
+
+            Period period = Period.between(date1, date2);
+
+            System.out.println("Difference:");
+            System.out.println("Years: " + period.getYears());
+            System.out.println("Months: " + period.getMonths());
+            System.out.println("Days: " + period.getDays());
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Error Handling:**  It now includes a `try-catch` block to handle potential `DateTimeParseException` if the user enters dates in an incorrect format.  This makes the program more robust.
+* **Clearer Output:**  The output is now labeled more clearly ("Difference:", "Years:", etc.) for better readability.
+* **Standard Library:** It uses `java.time` (introduced in Java 8), which is the preferred way to work with dates and times in modern Java.  It's much cleaner and easier than older approaches (like `Date` and `Calendar`).
+* **User Input:**  It takes date input from the user, making it more interactive.
+
+
+Example Usage:
+
+```
+Enter the first date (yyyy-MM-dd):
+2023-10-26
+Enter the second date (yyyy-MM-dd):
+2024-02-10
+Difference:
+Years: 0
+Months: 3
+Days: 15
+```

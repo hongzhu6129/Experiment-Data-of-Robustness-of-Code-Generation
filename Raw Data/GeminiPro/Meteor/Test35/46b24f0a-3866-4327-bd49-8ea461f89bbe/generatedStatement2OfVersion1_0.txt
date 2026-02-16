@@ -1,0 +1,53 @@
+
+
+**Test Cases:**
+
+1. **Basic Character:**
+   - Input: `A`
+   - Expected Output: `The ASCII value of 'A' is: 65`
+
+2. **Lowercase Character:**
+   - Input: `a`
+   - Expected Output: `The ASCII value of 'a' is: 97`
+
+3. **Digit:**
+   - Input: `7`
+   - Expected Output: `The ASCII value of '7' is: 55`
+
+4. **Special Character:**
+   - Input: `$`
+   - Expected Output: `The ASCII value of '$' is: 36`
+
+5. **Space:**
+   - Input: ` ` (a space)
+   - Expected Output: `The ASCII value of ' ' is: 32`
+
+6. **Extended ASCII Character (e.g., accented characters - depends on encoding):**
+   - Input: `�`
+   - Expected Output:  The output might vary depending on your system's encoding (e.g., 130 for CP1252, 233 for UTF-8). It's good practice to use UTF-8 if you're working with international characters.
+
+7. **Empty Input:**
+   - Input: "" (nothing entered)
+   - Expected Output: `Please enter a single character.`
+
+8. **Multiple Characters:**
+   - Input: `abc`
+   - Expected Output: `Please enter a single character.`
+
+9. **Control Character (e.g., Tab):**
+    - Input:  `\t` (Press the Tab key) �  The Scanner class usually handles this by reading the whole line including escape sequences.
+    - Expected Output: `Please enter a single character.` (Because  `\t` is considered a single string representing the tab character, but we only want a single character without escape sequence interpretation.)
+
+10. **Null Character:**
+    -  You can't directly enter a null character ('\0') through the console. If you try to assign it programmatically within the code (e.g. `char character = '\0';`), it will give you an ASCII value of 0.
+
+
+**Explanation of Corner Cases:**
+
+* **Empty and Multiple Characters:** These are handled by the `if` condition to ensure the program operates correctly only with single-character input.
+* **Extended ASCII:**  Handles characters outside the basic ASCII range (0-127), which are represented differently depending on the character encoding.
+* **Control Characters:** Addresses how the program should behave if the user enters a control character like Tab or Enter.
+* **Null Character:** Explains why direct input of the null character via console isn't possible and what happens if you set it in your code directly.
+
+
+This comprehensive set of test cases helps you verify the correctness and robustness of your `AsciiValue` program by covering a variety of scenarios, including edge cases. Remember to consider character encoding, especially if you are working with international characters. It is strongly recommended to use UTF-8 encoding for modern Java applications.

@@ -1,0 +1,66 @@
+class Solution {
+    /**
+     * Gnome Sort (also known as Stupid sort)
+     * 
+     * @param arr The integer array to be sorted.
+     */
+    void gnomeSort(int[] arr) {
+        int index = 0;
+        int n = arr.length;
+
+        while (index < n) {
+            if (index == 0) {
+                index++;
+            }
+            if (arr[index] >= arr[index - 1]) {
+                index++;
+            } else {
+                // Swap elements
+                int temp = arr[index];
+                arr[index] = arr[index - 1];
+                arr[index - 1] = temp;
+                index--;
+            }
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] arr = {5, 3, 2, 4, 1};
+        solution.gnomeSort(arr);
+
+        System.out.print("Sorted array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+
+        int[] arr2 = {1, 2, 3, 4, 5}; // Already sorted
+        solution.gnomeSort(arr2);
+        System.out.print("Sorted array: ");
+        for (int num : arr2) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        int[] arr3 = {5, 5, 3, 2, 4, 1, 1}; // Duplicates
+        solution.gnomeSort(arr3);
+        System.out.print("Sorted array: ");
+        for (int num : arr3) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        int[] arr4 = {}; // Empty array
+        solution.gnomeSort(arr4);
+        System.out.print("Sorted array: ");
+        for (int num : arr4) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+
+    }
+}

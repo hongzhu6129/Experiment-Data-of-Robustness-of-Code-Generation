@@ -1,0 +1,81 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference (num1 - num2): " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder (Modulo): " + (num1 % num2)); // "until" likely refers to remainder
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference (num1-num2)| Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Integers | -10 | -5 | -15 | -5 | 50 | 2.0 | 0.0 |
+| 3. Mixed Signs | -10 | 5 | -5 | -15 | -50 | -2.0 | 0.0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0.0 | 0.0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | Division by zero error | Division by zero error |
+| 6. Decimal Numbers | 10.5 | 2.5 | 13.0 | 8.0 | 26.25 | 4.2 | 0.0 |
+| 7. Large Numbers | 1000000 | 1000 | 1001000 | 999000 | 1000000000 | 1000.0 | 0.0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0.0 |
+| 9. Integer Overflow (potential) | Integer.MAX_VALUE | 1 |  Overflow behavior (depends on how Java handles it) |  |  |  |  |
+| 10. Floating-point precision limitations | 0.1 | 0.2 | Approximately 0.3 (may not be exact due to floating-point representation) |  |  |  |  |
+
+
+**How to Run the Test Cases:**
+
+While you could manually input these values, a more efficient approach for testing is to write unit tests (e.g., using JUnit).  Here's a very basic example of how you might start creating a unit test for this code:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ArithmeticOperationsTest {
+
+    @Test
+    void testPositiveIntegers() {
+        // You'd ideally capture the output of your main method or refactor
+        // the arithmetic operations into separate, testable methods. 
+        assertEquals(15, ArithmeticOperations.add(10, 5)); // Example if you had a separate add method
+        assertEquals(5, ArithmeticOperations.subtract(10, 5));
+        // ... more assertions for multiply, divide, remainder
+    }
+
+
+    // ... more @Test methods for the other test cases
+
+}
+```
+
+This demonstrates a more robust and automated way to ensure your code functions correctly under various conditions.  Refactoring the arithmetic operations into their own functions would make unit testing significantly easier and cleaner.
+
+
+
+This improved answer provides a clearer explanation of test cases and how to implement them with unit tests. It emphasizes the importance of separating arithmetic operations into testable functions for better code organization and maintainability.  It also highlights how to handle potential overflow scenarios and the limitations of floating-point precision in testing.

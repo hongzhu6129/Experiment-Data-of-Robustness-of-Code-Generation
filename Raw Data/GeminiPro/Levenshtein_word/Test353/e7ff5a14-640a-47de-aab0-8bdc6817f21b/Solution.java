@@ -1,0 +1,51 @@
+import java.util.*;
+
+class Solution {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first string (A): ");
+        String a = scanner.nextLine();
+
+        System.out.print("Enter the second string (B): ");
+        String b = scanner.nextLine();
+
+        System.out.print("Enter the interleaved string (C): ");
+        String c = scanner.nextLine();
+
+        if (checkInterleaved(a, b, c)) {
+            System.out.println("Yes, C is an interleaving of A and B.");
+        } else {
+            System.out.println("No, C is not an interleaving of A and B.");
+        }
+        scanner.close();
+    }
+
+    private static boolean checkInterleaved(String a, String b, String c) {
+        if (c.length() != a.length() + b.length()) {
+            return false;
+        }
+
+        boolean[][] dp = new boolean[a.length() + 1][b.length() + 1];
+
+        dp[0][0] = true;
+
+        for (int i = 1; i <= a.length(); i++) {
+            dp[i][0] = dp[i - 1][0] && (a.charAt(i - 1) == c.charAt(i - 1));
+        }
+
+        for (int j = 1; j <= b.length(); j++) {
+            dp[0][j] = dp[0][j - 1] && (b.charAt(j - 1) == c.charAt(j - 1));
+        }
+
+        for (int i = 1; i <= a.length(); i++) {
+            for (int j = 1; j <= b.length(); j++) {
+                dp[i][j] = (dp[i - 1][j] && (a.charAt(i - 1) == c.charAt(i + j - 1))) ||
+                           (dp[i][j - 1] && (b.charAt(j - 1) == c.charAt(i + j - 1)));
+            }
+        }
+
+        return dp[a.length()][b.length()];
+    }
+}

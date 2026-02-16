@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        // Handle invalid input (empty string)
+        if (binaryString.isEmpty()) {
+            System.out.println("Invalid input: Empty string.");
+            return;
+        }
+
+        // Handle invalid input (non-binary characters)
+        for (char c : binaryString.toCharArray()) {
+            if (c != '0' && c != '1') {
+                System.out.println("Invalid input: Non-binary characters.");
+                return;
+            }
+        }
+
+        int decimal = 0;
+        int power = 0;
+
+
+        for (int i = binaryString.length() - 1; i >= 0; i--) {
+            if (binaryString.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        String hexString = "";
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            if (remainder < 10) {
+                hexString = remainder + hexString;
+            } else {
+                char hexChar = (char) ('a' + remainder - 10);
+                hexString = hexChar + hexString;
+            }
+            decimal /= 16;
+        }
+
+        // Handle the case where the input is "0"
+        if (hexString.isEmpty()) {
+            hexString = "0";
+        }
+
+        System.out.println("Hexadecimal value: '" + hexString + "'");
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: `1101`
+   - Expected Output: `'d'`
+   - Input: `1010`
+   - Expected Output: `'a'`
+   - Input: `1111`
+   - Expected Output: `'f'`
+   - Input: `10000000`
+   - Expected Output: `'80'`
+   - Input: `11111111`
+   - Expected Output: `'ff'`
+
+2. **Invalid Input:**
+   - Input: `110a`  (Non-binary character)
+   - Expected Output: `Invalid input: Non-binary characters.`
+   - Input: `11 2` (Space in input)
+   - Expected Output: `Invalid input: Non-binary characters.`
+   - Input: `` (Empty string)
+   - Expected Output: `Invalid input: Empty string.`
+
+3. **Corner Cases:**
+   - Input: `0`
+   - Expected Output: `'0'` (Handles the case of zero input correctly)
+   - Input:  A very long binary string (e.g., a string of 32 '1's: `11111111111111111111111111111111`) 
+   - Expected Output: `'ffffffff'` (Tests handling of larger numbers).
+
+
+These test cases cover valid binary inputs, invalid inputs with non-binary characters and empty strings, and corner cases like input `0` and a very long binary input to make sure the conversion logic holds for larger values.  This robust testing ensures the program functions correctly under various conditions.

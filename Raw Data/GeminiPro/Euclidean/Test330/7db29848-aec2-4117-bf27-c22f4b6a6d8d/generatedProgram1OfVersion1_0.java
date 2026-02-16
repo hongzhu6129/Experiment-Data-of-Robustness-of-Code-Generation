@@ -1,0 +1,36 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");  // Create a new String object
+        String str4 = "world";
+
+        // Using == operator (checks reference equality)
+        System.out.println("str1 == str2: " + (str1 == str2)); // true (both refer to the same string literal in the string pool)
+        System.out.println("str1 == str3: " + (str1 == str3)); // false (str3 is a distinct object)
+
+        // Using .equals() method (checks content equality)
+        System.out.println("str1.equals(str2): " + str1.equals(str2)); // true
+        System.out.println("str1.equals(str3): " + str1.equals(str3)); // true
+        System.out.println("str1.equals(str4): " + str1.equals(str4)); // false
+
+
+        //Another example
+        String s1 = "example";
+        String s2 = new String("example").intern();//Forces it to be added to the string pool
+
+        System.out.println("s1 == s2: " + (s1 == s2)); //true, because of .intern()
+        System.out.println("s1.equals(s2): " + s1.equals(s2)); // true
+
+        //  To demonstrate the importance of null checks:
+        String s5 = null;
+        String s6 = "not null";
+
+       // System.out.println(s5.equals(s6)); // This would throw a NullPointerException!
+
+        System.out.println(s6.equals(s5)); // Safe because s6 is not null (returns false)
+
+
+    }
+}

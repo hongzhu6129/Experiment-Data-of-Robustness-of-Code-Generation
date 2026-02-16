@@ -1,0 +1,18 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) {
+                System.out.print("* * * * * * "); // Stars part
+            } else {
+                System.out.print("* * * * * "); // Stars part (alternate row)
+            }
+            System.out.println("=================================="); // Stripes part
+
+        }
+        for (int i = 0; i < 6; i++) {
+            System.out.println("=================================="); // Remaining Stripes
+        }
+    }
+}

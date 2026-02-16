@@ -1,0 +1,71 @@
+```java
+public class LowercaseString {
+
+    public static void main(String[] args) {
+        String inputString = "ThIs Is A MiXeD CaSe StRiNg."; // Example string
+
+        String lowercaseString = inputString.toLowerCase();
+
+        System.out.println("Original string: " + inputString);
+        System.out.println("Lowercase string: " + lowercaseString);
+
+
+        //  Handling null or empty input (good practice):
+        String possiblyNullString = null; 
+        String anotherString = "";  // Empty
+
+        // Safe approach:
+        if (possiblyNullString != null) {
+           System.out.println("Lowercase (null handled): " + possiblyNullString.toLowerCase());
+        } else {
+           System.out.println("Input string is null.");
+        }
+
+       if (!anotherString.isEmpty()) {  // Check if not empty
+          System.out.println("Lowercase (empty handled): " + anotherString.toLowerCase());
+       } else {
+          System.out.println("Input string is empty.");
+       }
+
+
+
+       //  Working with command-line arguments if provided:
+        if (args.length > 0) {
+            String commandLineString = String.join(" ", args); // Combine arguments
+            System.out.println("Lowercase (from command line): " + commandLineString.toLowerCase());
+        }
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **String inputString = ...;**:  We declare a string variable `inputString` and initialize it with the sample string.
+2. **String lowercaseString = inputString.toLowerCase();**: This is the core part. We use the built-in `toLowerCase()` method of the `String` class to convert the entire string to lowercase. The result is stored in the `lowercaseString` variable.
+3. **System.out.println(...);**:  We print the original and the lowercase string to the console to demonstrate the conversion.
+
+**Important additions:**
+
+* **Null and Empty String Handling:** The improved code demonstrates how to safely handle situations where the input string might be `null` or empty. This prevents `NullPointerException` errors.
+* **Command-line Arguments:** The code now also shows how to process command-line arguments (if provided) and convert them to lowercase.  This makes the program more versatile.
+
+
+How to compile and run from the command line:
+
+1. **Save:** Save the code as `LowercaseString.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile:
+   ```bash
+   javac LowercaseString.java 
+   ```
+3. **Run:**
+   ```bash
+   java LowercaseString  
+   ```
+   Or, provide command-line arguments:
+   ```bash
+   java LowercaseString  Hello WORLD  How ARE you?
+   ```  The output will show the combined arguments converted to lowercase.

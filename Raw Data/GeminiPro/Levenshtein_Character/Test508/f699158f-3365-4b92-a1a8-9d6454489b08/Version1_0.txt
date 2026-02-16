@@ -1,0 +1,36 @@
+```java
+public class NumberClassifier {
+
+    public static void main(String[] args) {
+        int deficientCount = 0;
+        int perfectCount = 0;
+        int abundantCount = 0;
+
+        for (long i = 1; i <= 10000; i++) {
+            Long sumOfProperDivisors = proper_Divs_Sum(i);
+
+            if (sumOfProperDivisors < i) {
+                deficientCount++;
+            } else if (sumOfProperDivisors == i) {
+                perfectCount++;
+            } else {
+                abundantCount++;
+            }
+        }
+
+        System.out.println("Deficient number: " + deficientCount);
+        System.out.println("Perfect number: " + perfectCount);
+        System.out.println("Abundant number: " + abundantCount);
+    }
+
+    public static Long proper_Divs_Sum(long n) {
+        long sum = 0;
+        for (long i = 1; i <= n / 2; i++) {
+            if (n % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+}
+```

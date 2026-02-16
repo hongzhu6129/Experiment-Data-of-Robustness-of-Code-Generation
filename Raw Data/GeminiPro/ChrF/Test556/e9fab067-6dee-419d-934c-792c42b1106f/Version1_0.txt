@@ -1,0 +1,28 @@
+```java
+import java.util.Arrays;
+
+public class InsertAtFirst {
+
+    public static void main(String[] args) {
+        String[] names = {"Bob", "Alice", "Charlie"}; // Original array
+
+        String newElement = "David"; // Element to insert
+
+        // Create a new array with one extra position
+        String[] newNames = new String[names.length + 1];
+
+
+        // Insert the new element at the first position
+        newNames[0] = newElement;
+
+        // Copy the elements from the original array, starting from the second position in the new array
+        System.arraycopy(names, 0, newNames, 1, names.length);
+
+
+
+        // Print the new array
+        System.out.println(Arrays.toString(newNames)); // Output: [David, Bob, Alice, Charlie]
+
+    }
+}
+```

@@ -1,0 +1,107 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        if (num > Integer.MAX_VALUE / 10 || num < Integer.MIN_VALUE /10) { // Handle potential overflow for large numbers
+            System.out.println("Input number is too large or too small. Multiplication may cause overflow.");
+            return;
+        }
+        System.out.println("Multiplication table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication table for 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication table for 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Number:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication table for -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+
+```
+
+**4. Large Number (Corner Case):**
+
+* **Input:** 214748364  (Close to Integer.MAX_VALUE/10 to test for potential overflow.  Use a slightly smaller number to prevent the last multiplication from exceeding Integer.MAX_VALUE)
+* **Expected Output:**  The table should print correctly without overflow.
+
+
+**5. Very Large Number (Overflow Corner Case):**
+
+* **Input:**  2147483647 (Integer.MAX_VALUE).
+* **Expected Output:** "Input number is too large or too small. Multiplication may cause overflow." (or behavior indicative of overflow if the overflow check is not included)
+
+
+**6. Very Small Number (Overflow Corner Case):**
+
+* **Input:** -2147483648 (Integer.MIN_VALUE).
+* **Expected Output:**  "Input number is too large or too small. Multiplication may cause overflow." (or behavior indicative of overflow if the overflow check is not included).
+
+
+
+This comprehensive set of test cases covers various scenarios and corner cases, helping to ensure that the `printMultiplicationTable` method works correctly.  The overflow check now ensures that the program handles extreme input values gracefully.

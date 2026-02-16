@@ -1,0 +1,36 @@
+```java
+public class LowercaseConverter {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String inputString = "HeLlO, wOrLd!";
+        String lowercaseString = inputString.toLowerCase();
+
+        System.out.println("Original string: " + inputString);
+        System.out.println("Lowercase string: " + lowercaseString);
+
+
+        // Handling command-line arguments (if provided)
+        if (args.length > 0) {
+            for (String arg : args) {
+                 lowercaseString = arg.toLowerCase();
+                System.out.println("Lowercase: " + lowercaseString);
+            }
+        } 
+    }
+}
+```
+
+
+This revised code does the following:
+
+1. **Handles command-line arguments:** If any arguments are passed to the program when it's run, the code iterates through each argument and converts it to lowercase. This is a more robust way to accept user input.
+
+2. **Provides a default example:**  If no command-line arguments are provided, the code uses a default example string ("HeLlO, wOrLd!") to demonstrate the functionality.
+
+**How to run with command-line arguments:**
+
+1. **Compile:** `javac LowercaseConverter.java`
+2. **Run:**  `java LowercaseConverter "My String To Convert" AnotherString "And Another"`
+
+Each string enclosed in quotes will be treated as a separate argument and converted to lowercase. If you omit the arguments, the default example will execute.

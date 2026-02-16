@@ -1,0 +1,54 @@
+```java
+import java.util.LinkedList;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Check if the list is empty
+        if (linkedList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            // Retrieve the first element without removing it using peek()
+            String firstElement = linkedList.peek(); 
+
+            // Or, alternatively use getFirst() which also doesn't remove:
+            // String firstElement = linkedList.getFirst();
+
+
+            if (firstElement != null) { // good practice to check for null in case peek() returns null on an empty list (though getFirst() would throw an exception).
+                System.out.println("First element (without removing): " + firstElement);
+            }
+
+            // Print the linked list to demonstrate that the element was not removed
+            System.out.println("Linked list after retrieval: " + linkedList);
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Create a LinkedList:** We initialize a `LinkedList` of strings.  You can change the type to any other object type you need.
+2. **Add Elements:** We add some sample elements to the list.
+3. **Check for Empty List:**  We check if the list is empty using `isEmpty()`. It's important to do this before trying to retrieve an element, to avoid exceptions.
+4. **Retrieve the First Element (without removing):** 
+   - We use the `peek()` method. `peek()` returns the first element (head) of the list *without* removing it.  If the list is empty, `peek()` will return `null`.
+   - Alternatively, you can use `getFirst()`.  `getFirst()` does the same thing as `peek()`, but will throw a `NoSuchElementException` if the list is empty.
+5. **Print the Element and the List:** We print the retrieved element and the entire linked list. This demonstrates that the first element is still present in the list after the retrieval operation, confirming that `peek()` (or `getFirst()`) does not modify the list.
+
+
+**Key Differences between `peek()` and `getFirst()`:**
+
+- `peek()` returns `null` if the list is empty.
+- `getFirst()` throws a `NoSuchElementException` if the list is empty.
+
+In most cases, `peek()` is safer to use because it avoids potential exceptions.  However, if you want the code to explicitly fail with an exception if the list is empty, `getFirst()` would be the better choice.

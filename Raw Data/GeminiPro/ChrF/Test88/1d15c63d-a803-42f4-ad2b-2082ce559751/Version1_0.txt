@@ -1,0 +1,53 @@
+```java
+public class AdjacentNumberChecker {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 2, 4, 2};
+        int num1 = 2;
+        System.out.println("Array 1 contains " + num1 + " in every adjacent pair: " + checkAdjacent(arr1, num1)); // Output: true
+
+        int[] arr2 = {1, 2, 3, 4, 5, 6};
+        int num2 = 3;
+        System.out.println("Array 2 contains " + num2 + " in every adjacent pair: " + checkAdjacent(arr2, num2)); // Output: false
+
+        int[] arr3 = {2, 1, 2, 3, 2, 4, 2};
+        int num3 = 2;
+        System.out.println("Array 3 contains " + num3 + " in every adjacent pair: " + checkAdjacent(arr3, num3)); // Output: false
+
+
+        int[] arr4 = {}; // Empty array
+        int num4 = 2;
+        System.out.println("Array 4 contains " + num4 + " in every adjacent pair: " + checkAdjacent(arr4, num4)); // Output: true (vacuously true as there are no pairs)
+
+        int[] arr5 = {2}; // Single element array
+        int num5 = 2;
+        System.out.println("Array 5 contains " + num5 + " in every adjacent pair: " + checkAdjacent(arr5, num5)); // Output: true  (vacuously true as there are no pairs)
+    }
+
+    public static boolean checkAdjacent(int[] arr, int num) {
+        if (arr.length < 2) { // Handle empty or single-element arrays (no adjacent pairs)
+            return true; // Vacuously true - no pairs to check
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] != num && arr[i + 1] != num) {
+                return false; // If 'num' is not in either of the adjacent elements, return false
+            }
+        }
+
+        return true; // If the loop completes without returning false, then all pairs contain 'num'
+    }
+}
+```
+
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:**  The code now correctly handles empty arrays and single-element arrays. These are considered to satisfy the condition (vacuously true) because there are no adjacent pairs to check.
+
+2. **Clearer Logic:** The `if` condition inside the loop is simplified. It now directly checks if *neither* of the adjacent elements is equal to `num`. This makes the logic easier to understand.
+
+3. **Comments and Explanation:** Added comments to clarify the purpose of the code and the logic within the `checkAdjacent` method.
+
+4. **Test Cases:** Included a variety of test cases in `main` to demonstrate the behavior of the code with different inputs, including edge cases.  This helps in verifying that the function works correctly.

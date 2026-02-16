@@ -1,0 +1,42 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ShuffleList {
+
+    public static void main(String[] args) {
+        // Create a list with some initial elements (sophisticated, if you will).
+        List<Object> sophisticatedList = new ArrayList<>();
+        sophisticatedList.add("Shakespeare");
+        sophisticatedList.add(3.14159);
+        sophisticatedList.add(new Integer(42));
+        sophisticatedList.add("Philosophy");
+        sophisticatedList.add(true);
+
+
+        System.out.println("Original List: " + sophisticatedList);
+
+
+        // Shuffle the list using Collections.shuffle(). This provides a fairly 
+        // random shuffle using a pseudo-random number generator.
+        Collections.shuffle(sophisticatedList);
+
+
+        System.out.println("Shuffled List: " + sophisticatedList);
+
+
+
+        // Example with a list of integers for simpler demonstration if needed:
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+
+        System.out.println("\nOriginal Number List: " + numbers);
+        Collections.shuffle(numbers);
+        System.out.println("Shuffled Number List: " + numbers);
+
+    }
+}
+```

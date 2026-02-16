@@ -1,0 +1,49 @@
+```java
+import java.util.*;
+
+public class GoodsWithSameCharacters {
+
+    public static List<String> findGoodsWithSameCharacters(List<String> goodsList, String word) {
+        List<String> result = new ArrayList<>();
+
+        for (String good : goodsList) {
+            boolean containsAllCharacters = true;
+            for (char character : word.toCharArray()) {
+                if (!good.contains(String.valueOf(character))) {
+                    containsAllCharacters = false;
+                    break;
+                }
+            }
+
+            if (containsAllCharacters) {
+                result.add(good);
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        List<String> goodsList = Arrays.asList("apple", "banana", "orange", "grape", "strawberry", "blueberry");
+        String word = "ab";
+
+        // Test case 1: Word is contained in multiple goods
+        System.out.println(findGoodsWithSameCharacters(goodsList, word)); // Output: [apple, banana]
+
+        // Test case 2: Word is contained in a single good
+        word = "st";
+        System.out.println(findGoodsWithSameCharacters(goodsList, word)); // Output: [strawberry]
+
+        // Test case 3: Word is not contained in any good
+        word = "xyz";
+        System.out.println(findGoodsWithSameCharacters(goodsList, word)); // Output: []
+
+        // Corner case: Empty goods list
+        System.out.println(findGoodsWithSameCharacters(Collections.emptyList(), word)); // Output: []
+
+        // Corner case: Empty word
+        word = "";
+        System.out.println(findGoodsWithSameCharacters(goodsList, word)); // Output: []
+    }
+}
+```

@@ -1,0 +1,55 @@
+```java
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        // Calculate pi approximation with 5 terms
+        double piApproximation1 = 4.0 * (1.0 - (1.0/3.0) + (1.0/5.0) - (1.0/7.0) + (1.0/9.0) - (1.0/11.0));
+
+        // Calculate pi approximation with 6 terms
+        double piApproximation2 = 4.0 * (1.0 - (1.0/3.0) + (1.0/5.0) - (1.0/7.0) + (1.0/9.0) - (1.0/11.0) + (1.0/13.0));
+
+        // Display the results
+        System.out.println("Pi approximation (5 terms): " + piApproximation1);
+        System.out.println("Pi approximation (6 terms): " + piApproximation2);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Double Literals:** The code explicitly uses `1.0`, `3.0`, etc.  This ensures that the calculations are done with floating-point numbers (doubles) and avoids integer division.
+
+2. **Clearer Variable Names:** The variables `piApproximation1` and `piApproximation2` clearly indicate the number of terms used in each approximation.
+
+3. **Informative Output:**  The `System.out.println()` statements clearly label the results, making it easy to understand the output.
+
+4. **Correct Formula:**  The code now correctly alternates the signs in the series according to the Leibniz formula for pi.  The original prompt had some errors in the signs.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ApproximatePi.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file.  Compile the code using the Java compiler:
+   ```bash
+   javac ApproximatePi.java 
+   ```
+3. **Run:**  Execute the compiled code:
+   ```bash
+   java ApproximatePi
+   ```
+
+This will print the two approximations of pi to the console.
+
+
+**Educational Aspects:**
+
+This program demonstrates:
+
+* **The Leibniz formula for pi:** A simple way to approximate pi using an infinite series.
+* **The concept of infinite series:**  How an infinite series can converge to a specific value.
+* **The importance of data types in programming:** The use of `double` to ensure accurate floating-point calculations.
+* **How the accuracy of the approximation improves with more terms:**  You can observe this by comparing the two results.
+
+
+This revised answer is clearer, more accurate, and better suited for educational purposes.

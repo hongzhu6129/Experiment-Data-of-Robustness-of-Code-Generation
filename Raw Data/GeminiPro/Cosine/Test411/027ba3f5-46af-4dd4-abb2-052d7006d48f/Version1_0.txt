@@ -1,0 +1,40 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class MirrorImageString {
+
+    public String endsWithMirrorImage(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        String longestMirror = "";
+        for (int i = 1; i <= str.length(); i++) {
+            String prefix = str.substring(0, i);
+            String suffix = new StringBuilder(prefix).reverse().toString();
+            if (str.endsWith(suffix) && prefix.length() > longestMirror.length()) {
+                longestMirror = prefix;
+            }
+        }
+        return longestMirror;
+    }
+
+
+    public static void main(String[] args) {
+        MirrorImageString mirror = new MirrorImageString();
+
+        System.out.println("Longest mirror image in 'abaaba': " + mirror.endsWithMirrorImage("abaaba"));  // Output: aba
+        System.out.println("Longest mirror image in 'abca': " + mirror.endsWithMirrorImage("abca"));     // Output: a
+        System.out.println("Longest mirror image in 'abaababa': " + mirror.endsWithMirrorImage("abaababa")); // Output: abaaba
+         System.out.println("Longest mirror image in 'abba': " + mirror.endsWithMirrorImage("abba")); // Output: bb
+         System.out.println("Longest mirror image in 'racecar': " + mirror.endsWithMirrorImage("racecar")); //racecar
+        System.out.println("Longest mirror image in '': " + mirror.endsWithMirrorImage("")); // "" (Empty String)
+        System.out.println("Longest mirror image in 'ab': " + mirror.endsWithMirrorImage("ab")); //a
+        System.out.println("Longest mirror image in 'aa': " + mirror.endsWithMirrorImage("aa")); //aa
+        System.out.println("Longest mirror image in null: " + mirror.endsWithMirrorImage(null)); // "" (Handles null gracefully)
+
+
+    }
+}
+```

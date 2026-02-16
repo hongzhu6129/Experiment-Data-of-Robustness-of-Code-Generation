@@ -1,0 +1,35 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Latitude 1 | Longitude 1 | Latitude 2 | Longitude 2 | Expected Distance (approx.) | Description |
+|---|---|---|---|---|---|---|
+| 1 | 25 | 35 | 35.5 | 25.5 | 1480.08 | Example from the prompt |
+| 2 | 0 | 0 | 0 | 0 | 0 | Same point |
+| 3 | 90 | 0 | -90 | 0 |  20015.08 | North and South Poles |
+| 4 | 0 | 0 | 0 | 180 | 20015.08 | Opposite sides of the equator |
+| 5 | 40.7128 | -74.0060 | 34.0522 | -118.2437 | 3935.76 | New York to Los Angeles |
+| 6 | 0 | 0 | 1 | 1 | 157.23 | Small distance |
+| 7 | -25 | -35 | -35.5 | -25.5 | 1480.08 | Negative coordinates |
+| 8 | 90 | 180 | -90 | -180 | 20015.08 | Poles and anti-meridian |
+| 9 | 0 | 90 | 0 | -90 | 20015.08 | Opposite points on the equator (different longitude wrap) |
+| 10 | 89.9 | 0 | 89.9 | 180 | 12.55 | Points very close to North Pole, opposite longitudes |
+
+
+
+**Explanation of Corner Cases and Considerations:**
+
+* **Same Point (Test 2):**  Distance should be zero.
+* **Poles (Test 3 & 8):**  Tests the formula's behavior at extreme latitudes.
+* **Opposite sides of Earth (Test 4, 9):** Tests maximum distances. Handles different ways to represent opposite longitudes.
+* **Small Distance (Test 6):**  Ensures accuracy for short distances.
+* **Negative Coordinates (Test 7):**  The formula should work correctly with negative latitude and longitude values.
+* **Near Poles with Large Longitude Difference (Test 10):** This is important because small changes in longitude near the poles represent much smaller distances than at the equator.
+
+
+**How to Run Test Cases:**
+
+You could automate these tests by creating a separate test class (using JUnit or TestNG) or you could manually modify the input values in the `main` method for each test case and compare the output with the expected distance. For more precise comparisons in automated tests, use an assertion method with a tolerance to account for very small floating-point differences.  Example (with JUnit and `Assert.assertEquals`):
+

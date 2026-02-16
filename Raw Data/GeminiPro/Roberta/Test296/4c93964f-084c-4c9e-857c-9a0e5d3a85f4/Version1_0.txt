@@ -1,0 +1,65 @@
+```java
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class KRepresentingElements {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 1};
+        int k1 = 3;
+        findKRepresentingElements(arr1, k1); // Output: 1, 2
+
+        int[] arr2 = {5, 4, 3, 2, 1, 5, 4, 3, 5, 4, 5};
+        int k2 = 3;
+        findKRepresentingElements(arr2, k2); // Output: 5, 4
+
+
+        int[] arr3 = {1, 2, 3, 4, 5, 6}; //Example with no repeating elements within k threshold
+        int k3 = 2;
+        findKRepresentingElements(arr3, k3); //Output: None
+
+
+        int[] arr4 = {}; // Empty array example
+        int k4 = 2;
+        findKRepresentingElements(arr4, k4); // Output: None
+
+
+
+        int[] arr5 = null; //Null array example
+        int k5 = 2;
+        findKRepresentingElements(arr5, k5); // Output: None
+
+    }
+
+
+    public static void findKRepresentingElements(int[] arr, int k) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("None");
+            return;
+        }
+
+
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        StringBuilder result = new StringBuilder();
+        boolean found = false;
+
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            if (entry.getValue() >= k) {
+                result.append(entry.getKey()).append(", ");
+                found = true;
+            }
+        }
+
+        if (found) {
+            System.out.println(result.substring(0, result.length() - 2)); // Remove trailing comma and space
+        } else {
+            System.out.println("None");
+        }
+    }
+}
+```

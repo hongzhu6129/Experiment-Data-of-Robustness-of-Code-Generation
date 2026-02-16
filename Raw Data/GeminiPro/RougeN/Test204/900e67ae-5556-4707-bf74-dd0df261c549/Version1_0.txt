@@ -1,0 +1,80 @@
+```java
+import java.util.Arrays;
+
+public class MinorBuffer {
+
+    private int[] buffer;
+    private int head;
+    private int tail;
+    private int size;
+
+    public MinorBuffer(int size) {
+        this.buffer = new int[size];
+        this.head = 0;
+        this.tail = 0;
+        this.size = size;
+    }
+
+    public void add(int value) {
+        buffer[tail] = value;
+        tail = (tail + 1) % size;
+        if (tail == head) {
+            head = (head + 1) % size;
+        }
+    }
+
+    public int remove() {
+        int value = buffer[head];
+        head = (head + 1) % size;
+        return value;
+    }
+
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
+    public boolean isFull() {
+        return (tail + 1) % size == head;
+    }
+
+    public static void main(String[] args) {
+        MinorBuffer buffer = new MinorBuffer(5);
+
+        // Test cases, including corner cases:
+
+        // Add elements to the buffer
+        buffer.add(1);
+        buffer.add(2);
+        buffer.add(3);
+        buffer.add(4);
+        buffer.add(5);
+
+        // Check if the buffer is full
+        System.out.println("Is the buffer full? " + buffer.isFull()); // Output: true
+
+        // Remove elements from the buffer
+        System.out.println("Removed element: " + buffer.remove()); // Output: 1
+        System.out.println("Removed element: " + buffer.remove()); // Output: 2
+        System.out.println("Removed element: " + buffer.remove()); // Output: 3
+
+        // Check if the buffer is empty
+        System.out.println("Is the buffer empty? " + buffer.isEmpty()); // Output: false
+
+        // Add more elements to the buffer
+        buffer.add(6);
+        buffer.add(7);
+
+        // Check if the buffer is full again
+        System.out.println("Is the buffer full? " + buffer.isFull()); // Output: true
+
+        // Remove the remaining elements from the buffer
+        System.out.println("Removed element: " + buffer.remove()); // Output: 4
+        System.out.println("Removed element: " + buffer.remove()); // Output: 5
+        System.out.println("Removed element: " + buffer.remove()); // Output: 6
+        System.out.println("Removed element: " + buffer.remove()); // Output: 7
+
+        // Check if the buffer is empty
+        System.out.println("Is the buffer empty? " + buffer.isEmpty()); // Output: true
+    }
+}
+```

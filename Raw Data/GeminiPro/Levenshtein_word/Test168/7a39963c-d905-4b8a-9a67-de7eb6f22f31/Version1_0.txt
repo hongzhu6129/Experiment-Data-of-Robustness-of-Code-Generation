@@ -1,0 +1,75 @@
+**Problem Description:**
+
+The given problem is to write a Java program that prints the multiplicity of all elements in an array, but it should only print the multiplicity once even if an element is repeated.
+
+**Java Code:**
+
+```java
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Arrays;
+
+public class ArrayMultiplicity {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 1, 2, 3};
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i : arr) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " occurs " + entry.getValue() + " times");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* Empty array: should print an empty line
+* Array with a single element: should print the element and its multiplicity
+
+**Regular Cases:**
+
+* Array with duplicate elements: should print each unique element and its multiplicity
+* Array with large numbers of elements: should handle large arrays efficiently
+
+**Examples:**
+
+**Input:**
+```
+arr = {1, 2, 3, 4, 5, 1, 2, 3}
+```
+
+**Output:**
+```
+1 occurs 2 times
+2 occurs 2 times
+3 occurs 2 times
+4 occurs 1 times
+5 occurs 1 times
+```
+
+**Input:**
+```
+arr = {}
+```
+
+**Output:**
+```
+(empty line)
+```
+
+**Input:**
+```
+arr = {100}
+```
+
+**Output:**
+```
+100 occurs 1 times
+```

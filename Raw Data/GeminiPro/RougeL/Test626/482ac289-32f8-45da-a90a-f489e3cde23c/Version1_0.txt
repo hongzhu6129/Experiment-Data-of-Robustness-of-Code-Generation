@@ -1,0 +1,86 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetHigherElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<RateObject> treeSet = new TreeSet<>();
+
+        treeSet.add(new RateObject("A", 10));
+        treeSet.add(new RateObject("B", 5));
+        treeSet.add(new RateObject("C", 15));
+        treeSet.add(new RateObject("D", 20));
+        treeSet.add(new RateObject("E", 12));
+
+
+        RateObject target = new RateObject("Target", 13); 
+
+        RateObject higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element with higher rate than " + target.rate + ": " + higher.name + " (" + higher.rate + ")");
+        } else {
+            System.out.println("No element found with a higher rate than " + target.rate);
+        }
+
+
+
+         target = new RateObject("Target", 22); // Test with a value greater than any in the set
+         higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element with higher rate than " + target.rate + ": " + higher.name + " (" + higher.rate + ")");
+        } else {
+            System.out.println("No element found with a higher rate than " + target.rate);
+        }
+
+
+        target = new RateObject("Target", 4); // Test with a value less than any in the set
+         higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element with higher rate than " + target.rate + ": " + higher.name + " (" + higher.rate + ")");
+        } else {
+            System.out.println("No element found with a higher rate than " + target.rate);
+        }
+    }
+
+
+    public static RateObject getHigherElement(TreeSet<RateObject> treeSet, RateObject target) {
+       return treeSet.higher(target);
+    }
+
+
+
+    static class RateObject implements Comparable<RateObject> {
+        String name;
+        int rate;
+
+        public RateObject(String name, int rate) {
+            this.name = name;
+            this.rate = rate;
+        }
+
+
+        @Override
+        public int compareTo(RateObject other) {
+            return Integer.compare(this.rate, other.rate);  // Compare based on rate
+        }
+    }
+}
+```
+
+
+
+Key improvements in this version:
+
+* **`RateObject` class:** Encapsulates the name and rate, making the code cleaner and easier to understand.
+* **`Comparable` interface:**  The `RateObject` class implements `Comparable` so that the `TreeSet` can automatically order the elements based on their `rate` values. This is crucial for `higher()` to work correctly.
+* **Clearer Example Usage:** Demonstrates adding elements to the `TreeSet` and searching for higher-rated elements using the `getHigherElement` method.
+* **Error Handling:** Includes a check to handle the case where no higher element is found.
+* **Comprehensive Testing:**  Includes test cases for when the target rate is higher than any existing rate and when it is lower than any existing rate.
+* **Conciseness:** Uses the built-in `higher()` method directly, making the `getHigherElement()` method very short and focused.
+
+
+This improved code is more robust, readable, and effectively addresses the problem of finding an element with a higher rate in a `TreeSet`.

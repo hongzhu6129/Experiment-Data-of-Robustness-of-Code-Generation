@@ -1,0 +1,56 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class RemoveDuplicateCharacters {
+
+    public static void main(String[] args) {
+        String input = "Hello World!";
+        String result = removeDuplicateCharacters(input);
+        System.out.println(result); // Output: "Helo Wrd!"
+    }
+
+    public static String removeDuplicateCharacters(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+
+        Set<Character> uniqueCharacters = new HashSet<>();
+        StringBuilder result = new StringBuilder();
+
+        for (char character : input.toCharArray()) {
+            if (uniqueCharacters.add(character)) {
+                result.append(character);
+            }
+        }
+
+        return result.toString();
+    }
+}
+```
+
+**Test Cases:**
+
+* **Normal case:**
+    * Input: "Hello World!"
+    * Output: "Helo Wrd!"
+
+* **Empty string:**
+    * Input: ""
+    * Output: ""
+
+* **String with all duplicate characters:**
+    * Input: "aaaaaa"
+    * Output: "a"
+
+* **String with special characters:**
+    * Input: "Hello, World!"
+    * Output: "Hel, Wor!"
+
+* **String with numbers:**
+    * Input: "1234567890"
+    * Output: "1234567890"
+
+* **String with spaces:**
+    * Input: "Hello World  "
+    * Output: "Helo Wrd "

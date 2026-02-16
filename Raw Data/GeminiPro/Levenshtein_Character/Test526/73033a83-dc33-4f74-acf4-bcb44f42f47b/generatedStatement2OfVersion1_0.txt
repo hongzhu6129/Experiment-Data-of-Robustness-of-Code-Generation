@@ -1,0 +1,13 @@
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber` helper method:**  This method encapsulates the Fermat number calculation, making the `main` method cleaner and easier to read.
+2. **Explicit Cast to `long`:**  Fermat numbers grow very rapidly.  Even though `Math.pow` returns a `double`, we need to cast the result to `long` to handle the integer values correctly (at least for the first few Fermat numbers before they exceed the `long`'s capacity).
+3. **Clear output:** The code now includes a descriptive message indicating what it's printing.
+
+
+**Important Note about Large Fermat Numbers:**
+
+Fermat numbers quickly become extremely large.  Java's primitive `long` type can't hold Fermat numbers beyond F4 (65537) because they exceed the maximum `long` value. For larger Fermat numbers, you would need to use `BigInteger` (from the `java.math` package) to handle arbitrary-precision arithmetic. Here's a version using `BigInteger`:
+

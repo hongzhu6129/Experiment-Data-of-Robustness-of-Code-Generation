@@ -1,0 +1,34 @@
+```java
+import java.util.TimeZone;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+
+        // Display all available time zones
+        String[] availableIDs = TimeZone.getAvailableIDs();
+        System.out.println("All Available Time Zones:");
+        for (String id : availableIDs) {
+            System.out.println(id);
+        }
+
+        System.out.println("\nUTC Time Zone:");
+        // Display UTC time zone information
+        TimeZone utcTimeZone = TimeZone.getTimeZone("UTC");
+        displayTimeZoneInfo(utcTimeZone);
+
+        System.out.println("\nGMT Time Zone:");
+        // Display GMT time zone information
+        TimeZone gmtTimeZone = TimeZone.getTimeZone("GMT");
+        displayTimeZoneInfo(gmtTimeZone);
+
+    }
+
+    private static void displayTimeZoneInfo(TimeZone timeZone) {
+        System.out.println("ID: " + timeZone.getID());
+        System.out.println("Display Name: " + timeZone.getDisplayName());
+        System.out.println("Raw Offset: " + timeZone.getRawOffset() / (1000 * 60 * 60) + " hours"); // Offset in hours from UTC
+        System.out.println("Daylight Saving Time Offset: " + timeZone.getDSTSavings() / (1000 * 60 * 60)+ " hours"); // DST offset in hours
+    }
+}
+```

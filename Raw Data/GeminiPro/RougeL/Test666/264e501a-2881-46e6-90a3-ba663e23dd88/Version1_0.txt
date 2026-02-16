@@ -1,0 +1,58 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (sorted map)
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the map with some data
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+
+        // Example usage 1: Get the portion of the map whose keys are strictly less than 4
+        int givenKey1 = 4;
+        SortedMap<Integer, String> subMap1 = treeMap.headMap(givenKey1); // Exclusive of the given key
+
+        System.out.println("Submap for keys strictly less than " + givenKey1 + ":");
+        printMap(subMap1);
+
+
+        // Example usage 2: Get the portion of the map whose keys are strictly less than 2
+        int givenKey2 = 2;
+        SortedMap<Integer, String> subMap2 = treeMap.headMap(givenKey2);
+
+        System.out.println("\nSubmap for keys strictly less than " + givenKey2 + ":");
+        printMap(subMap2);
+
+
+         // Example usage 3: Handle edge case where given key is smaller than all keys in the map
+        int givenKey3 = 0;
+        SortedMap<Integer, String> subMap3 = treeMap.headMap(givenKey3);
+
+        System.out.println("\nSubmap for keys strictly less than " + givenKey3 + ":");
+        printMap(subMap3); // Output will be an empty map
+
+    }
+
+
+    // Helper function to print the map entries
+    public static void printMap(SortedMap<Integer, String> map) {
+        if (map.isEmpty()) {
+            System.out.println("Map is empty.");
+        } else {
+            for (Integer key : map.keySet()) {
+                System.out.println("Key: " + key + ", Value: " + map.get(key));
+            }
+        }
+
+    }
+}
+```

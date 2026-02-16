@@ -1,0 +1,33 @@
+import java.util.PriorityQueue;
+
+public class RemoveHalfPriorityQueue {
+
+    public static void main(String[] args) {
+        // Example usage:
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(1);
+        pq.add(2);
+        pq.add(3);
+        pq.add(4);
+        pq.add(5);
+        pq.add(6);
+        pq.add(7);
+        pq.add(8);
+
+        removeHalf(pq);
+
+        System.out.println("Priority Queue after removing half: " + pq);
+    }
+
+    public static void removeHalf(PriorityQueue<Integer> pq) {
+        int initialSize = pq.size();
+        int elementsToRemove = initialSize / 2; // Integer division handles odd sizes
+
+        for (int i = 0; i < elementsToRemove; i++) {
+            pq.poll(); // Removes the head (smallest element)
+        }
+    }
+}
+
+
+

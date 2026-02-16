@@ -1,0 +1,124 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        
+        // Input validation: Check if the input is an integer
+        if (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            return; // Exit the program if the input is not an integer
+        }
+
+
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering normal scenarios and corner/edge cases:
+
+1. **Positive Integer:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Integer:**
+   - Input: `12345`  (Tests for potential overflow if you were using a smaller data type like `byte` or `short`, though `int` should be fine)
+   - Expected output should be the correct multiplication table up to 10.
+
+5. **Large Negative Integer:** (Similar to the large positive case, testing data type limits)
+   - Input: `-98765`
+
+6. **Invalid Input (Non-integer):**
+   - Input: `hello` or `3.14`
+   - Expected Output:  "Invalid input. Please enter an integer."  The program should handle this gracefully and not crash.
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering each test case value.
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit.  Here's a simple example using JUnit 5:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveInput() {
+        String input = "7\n";
+        String expectedOutput = "Multiplication table for 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n";
+        testMultiplicationTable(input, expectedOutput);
+    }
+
+
+    // Add similar @Test methods for other test cases (0, negative, large numbers, invalid input)
+
+    private void testMultiplicationTable(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        MultiplicationTable.main(new String[0]);  // Call the main method
+
+        assertEquals(expectedOutput, out.toString());
+
+        System.setIn(System.in); // Restore standard input
+        System.setOut(System.out); // Restore standard output
+    }
+
+}
+```
+
+This JUnit example demonstrates how to redirect standard input and output so you can test the program's output against the expected output for each test case.  It's much more efficient and robust than manual testing.

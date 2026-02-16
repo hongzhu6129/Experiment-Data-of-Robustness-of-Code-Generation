@@ -1,0 +1,23 @@
+public class ArrayMultiplication {
+
+    public static void main(String[] args) {
+        int[] array1 = {1, 3, -5, 4};
+        int[] array2 = {1, 4, -5, -2};
+
+        if (array1.length != array2.length) {
+            System.out.println("Arrays must have the same length for element-wise multiplication.");
+            return;
+        }
+
+        int[] result = new int[array1.length];
+
+        for (int i = 0; i < array1.length; i++) {
+            result[i] = array1[i] * array2[i];
+        }
+
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println(); // Add a newline for cleaner output
+    }
+}

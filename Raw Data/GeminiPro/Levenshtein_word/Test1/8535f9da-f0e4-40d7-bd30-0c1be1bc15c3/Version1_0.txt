@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong(); // Use long to handle potential overflow
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1      | num2      | Expected Output                   | Notes                                   |
+|-----------|-----------|-----------|-----------------------------------|----------------------------------------|
+| 1        | 5         | 10        | 50                                | Positive numbers                         |
+| 2        | -3        | 7         | -21                               | Negative and positive number            |
+| 3        | 0         | 15        | 0                                 | Zero multiplied by any number is zero   |
+| 4        | -8        | -4        | 32                                | Two negative numbers                    |
+| 5        | 1000000   | 1000000   | 1000000000000                      | Large numbers (potential overflow with int) |
+| 6        | 9223372036854775807 | 1 | 9223372036854775807 |  Long.MAX_VALUE * 1                   |
+| 7        | 9223372036854775807 | 2 | -2                              | Overflow (Long.MAX_VALUE * 2)        |
+| 8        | -9223372036854775808| -1 | -9223372036854775808| Long.MIN_VALUE * -1 (still in range)|
+| 9 | -9223372036854775808| 2 | 0                                | Overflow (Long.MIN_VALUE * 2) |
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can input these values directly into the program when prompted.
+
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit.  Here's a basic example using JUnit 5:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(50, ProductOfTwoNumbers.calculateProduct(5, 10)); // Example test case
+    }
+
+
+    // ... Add more @Test methods for the other test cases
+
+     @Test
+    void testLongMaxValueTimesOne(){
+         assertEquals(9223372036854775807L, ProductOfTwoNumbers.calculateProduct(9223372036854775807L, 1)); 
+    }
+
+    @Test
+    void testLongMaxValueTimesTwo(){
+         assertEquals(-2, ProductOfTwoNumbers.calculateProduct(9223372036854775807L, 2)); 
+    }
+
+
+}
+
+
+
+
+// Modify your original class to have a testable method:
+public class ProductOfTwoNumbers {
+     // ... (Existing main method)
+
+    public static long calculateProduct(long num1, long num2) { // Method for testing
+        return num1 * num2;
+    }
+}
+```
+
+By using a testing framework, you can automate the testing process and ensure your code works correctly for different inputs.  Remember to add tests for all the corner cases and typical scenarios.

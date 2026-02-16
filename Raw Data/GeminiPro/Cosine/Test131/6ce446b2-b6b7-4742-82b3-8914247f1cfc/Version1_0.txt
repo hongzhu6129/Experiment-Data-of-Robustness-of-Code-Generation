@@ -1,0 +1,57 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class SingleNumberFinder {
+
+    public static void main(String[] args) {
+        int[] nums1 = {2, 2, 1};
+        System.out.println(getSingleNumber(nums1)); // Output: 1
+
+        int[] nums2 = {4, 1, 2, 1, 2};
+        System.out.println(getSingleNumber(nums2)); // Output: 4
+
+        int[] nums3 = {1};
+        System.out.println(getSingleNumber(nums3)); // Output: 1
+    }
+
+    public static int getSingleNumber(int[] nums) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        for (int num : nums) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : nums) {
+            if (countMap.get(num) == 1) {
+                return num;
+            }
+        }
+
+        return -1; // Should never reach here if the problem statement is followed (all numbers occur twice except one)
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **HashMap Approach:** The `getSingleNumber` function uses a `HashMap` to store the frequency of each number.  We iterate through the array, incrementing the count for each number. Then, we iterate again and return the number with a count of 1.
+
+
+2. **Error Handling (Optional):**  Although the problem states that there will always be one unique number,  I've added a `return -1` at the end as a safety net. In a real-world scenario, you might want to throw an exception or handle the case where the input doesn't meet the expected criteria.
+
+
+3. **Alternative (Bit Manipulation - XOR):**  A more efficient solution (though perhaps less immediately obvious) utilizes the XOR bitwise operator.  XOR has the property that `a ^ a = 0` and `a ^ 0 = a`. If you XOR all the numbers in the array, the numbers that appear twice will cancel each other out, leaving you with the single number.
+
+   ```java
+   public static int getSingleNumber(int[] nums) {
+       int result = 0;
+       for (int num : nums) {
+           result ^= num;
+       }
+       return result;
+   }
+   ```
+
+The bit manipulation approach is generally preferred due to its constant space complexity (O(1)) and linear time complexity (O(n)).  The HashMap approach uses O(n) space in the worst case.

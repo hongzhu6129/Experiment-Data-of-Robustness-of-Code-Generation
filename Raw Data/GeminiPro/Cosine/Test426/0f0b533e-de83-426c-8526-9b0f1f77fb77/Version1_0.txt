@@ -1,0 +1,35 @@
+```java
+public class ReverseOddLengthWords {
+
+    public static void main(String[] args) {
+        String inputString = "This is a sample string with some words";
+        String reversedString = test(inputString);
+        System.out.println(reversedString);
+
+        inputString = "Hello world how are you doing today";
+        reversedString = test(inputString);
+        System.out.println(reversedString);
+
+        inputString = "One two three four five six seven eight nine ten";
+        reversedString = test(inputString);
+        System.out.println(reversedString);
+
+
+    }
+
+    public static String test(String inputString) {
+        String[] words = inputString.split(" ");
+        StringBuilder reversedString = new StringBuilder();
+
+        for (String word : words) {
+            if (word.length() % 2 != 0) {
+                reversedString.append(new StringBuilder(word).reverse().toString()).append(" ");
+            } else {
+                reversedString.append(word).append(" ");
+            }
+        }
+
+        return reversedString.toString().trim(); // Remove trailing space
+    }
+}
+```

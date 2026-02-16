@@ -1,0 +1,29 @@
+```java
+import java.util.Arrays;
+
+public class ArrayMedian {
+
+    public static void main(String[] args) {
+        int[] array1 = {10, 2, 38, 22, 38, 23};
+        System.out.println("original array: " + Arrays.toString(array1));
+        System.out.println("median of the said array of integers: " + getMedian(array1));
+
+        int[] array2 = {10, 2, 38, 23, 38, 23, 21};
+        System.out.println("original array: " + Arrays.toString(array2));
+        System.out.println("median of the said array of integers: " + getMedian(array2));
+    }
+
+    public static int getMedian(int[] arr) {
+        Arrays.sort(arr); // Sort the array
+        int n = arr.length;
+
+        if (n % 2 == 0) {
+            // Even number of elements: median is the average of the middle two
+            return (arr[n / 2 - 1] + arr[n / 2]) / 2;
+        } else {
+            // Odd number of elements: median is the middle element
+            return arr[n / 2];
+        }
+    }
+}
+```

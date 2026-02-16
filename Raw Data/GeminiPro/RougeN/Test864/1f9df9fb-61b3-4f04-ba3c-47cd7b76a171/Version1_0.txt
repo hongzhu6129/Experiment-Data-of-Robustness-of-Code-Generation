@@ -1,0 +1,49 @@
+```java
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double sum1 = 1.0 - (1.0 / 3.0) + (1.0 / 5.0) - (1.0 / 7.0) + (1.0 / 9.0) - (1.0 / 11.0);
+        double pi1 = 4.0 * sum1;
+
+        double sum2 = 1.0 - (1.0 / 3.0) + (1.0 / 5.0) - (1.0 / 7.0) + (1.0 / 9.0) - (1.0 / 11.0) + (1.0 / 13.0);
+        double pi2 = 4.0 * sum2;
+
+        System.out.println("Approximation of pi with 6 terms: " + pi1);
+        System.out.println("Approximation of pi with 7 terms: " + pi2);
+
+
+        // More educational output showing the terms and how the sum develops
+        System.out.println("\nDetailed calculation with 6 terms:");
+        double currentSum = 1.0;
+        System.out.println("Term 1: " + currentSum);
+        currentSum -= (1.0/3.0);
+        System.out.println("Term 2: " + currentSum);
+        currentSum += (1.0/5.0);
+        System.out.println("Term 3: " + currentSum);
+        currentSum -= (1.0/7.0);
+        System.out.println("Term 4: " + currentSum);
+        currentSum += (1.0/9.0);
+        System.out.println("Term 5: " + currentSum);
+        currentSum -= (1.0/11.0);
+        System.out.println("Term 6: " + currentSum);
+
+
+        System.out.println("Multiplied by 4: " + 4 * currentSum);
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity:**  Uses more descriptive variable names (sum1, pi1, sum2, pi2) instead of just sum and pi.
+* **Educational Output:** Includes print statements that explain the individual terms and how they contribute to the sum and final approximation. This makes the code's purpose and calculation much clearer for learning.
+* **Correct Formula:** The original prompt had some incorrect signs in the series.  This version uses the correct alternating signs ( - + - + - +).
+* **Uses 1.0:** Explicitly uses `1.0` and other floating-point literals, as requested.
+* **Detailed Calculation Breakdown:** Shows step-by-step how the sum progresses, making it easier to understand the calculation.
+
+
+This improved version is significantly better for educational purposes as it clearly demonstrates the Leibniz formula for approximating pi.  It shows the impact of adding more terms to the series and provides a much better understanding of the calculation process.

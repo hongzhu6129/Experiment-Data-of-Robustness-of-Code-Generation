@@ -1,0 +1,54 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky.");
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are");
+    }
+}
+```
+
+**Test Cases:**
+
+While this specific program doesn't have traditional inputs that can be varied, we can still consider some testing aspects:
+
+1. **Basic Functionality Test:**  Simply run the program and visually verify that the output matches the expected format precisely (including indentation).  This is the most important test.
+
+2. **Output Redirection Test (Optional):** Redirect the output to a file and then compare the file contents with the expected output using a diff tool or a file comparison utility.  This is helpful for automated testing.  For example, in a Linux/macOS terminal:
+
+   ```bash
+   java TwinkleTwinkle > output.txt
+   diff output.txt expected_output.txt 
+   ```
+
+3. **Character Encoding Test (Less Critical):** Ensure the output is displayed correctly with different character encodings (UTF-8, ASCII, etc.).  This is generally handled by the system, but can be relevant in some environments.  You might set your system's locale or use a specific output encoding if needed when redirecting to a file.
+
+
+**Corner Cases (Not Applicable in the Strictest Sense):**
+
+This program doesn't have true corner cases because there are no inputs to manipulate. Corner cases usually involve boundary conditions, invalid inputs, or extreme values.  However, we can consider a "quasi-corner case":
+
+1. **Empty String in `println()`:**  While not a true corner case, you could modify the code to handle a potentially empty string by checking for it before printing. This is defensive programming, but not strictly necessary in this very simple example.
+
+   ```java
+   String line = "Twinkle, twinkle, little star,";  // Could be set to ""
+   if (!line.isEmpty()) { // Check if the string is empty
+       System.out.println(line);
+   }
+   ```
+
+
+
+The test cases in this situation primarily focus on verifying the correct formatting of the output, rather than handling unexpected inputs. The program's simplicity limits the scope of traditional corner cases.
+
+
+
+

@@ -1,0 +1,70 @@
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "apple";
+        String str2 = "banana";
+        String str3 = "apple";
+
+        // Method 1: Using compareTo()
+        int result1 = str1.compareTo(str2);
+        int result2 = str1.compareTo(str3);
+
+        System.out.println("\"" + str1 + "\" compared to \"" + str2 + "\" (compareTo()): " + result1); // Output: -1 (str1 is lexicographically less than str2)
+        System.out.println("\"" + str1 + "\" compared to \"" + str3 + "\" (compareTo()): " + result2); // Output: 0 (str1 is lexicographically equal to str3)
+
+
+        // Method 2: Using equals() for lexicographical equality
+        boolean isEqual1 = str1.equals(str2);
+        boolean isEqual2 = str1.equals(str3);
+
+        System.out.println("\"" + str1 + "\" equals \"" + str2 + "\": " + isEqual1); // Output: false
+        System.out.println("\"" + str1 + "\" equals \"" + str3 + "\": " + isEqual2); // Output: true
+
+
+        // Method 3:  Illustrating case sensitivity
+        String str4 = "Apple";
+        int result3 = str1.compareTo(str4);  // 'a' > 'A' in ASCII
+        boolean isEqual3 = str1.equalsIgnoreCase(str4); // Case-insensitive comparison
+
+
+        System.out.println("\"" + str1 + "\" compared to \"" + str4 + "\" (compareTo()): " + result3);  // a positive value (str1 is lexicographically greater than str4)
+        System.out.println("\"" + str1 + "\" equalsIgnoreCase \"" + str4 + "\": " + isEqual3); // Output: true
+
+
+
+        // Example with command line arguments (if provided)
+        if (args.length >= 2) {
+            int resultArgs = args[0].compareTo(args[1]);
+            System.out.println("\"" + args[0] + "\" compared to \"" + args[1] + "\" (compareTo() - args): " + resultArgs);
+        } else {
+            System.out.println("Provide two string arguments to compare from the command line.");
+        }
+
+
+    }
+}
+```
+
+
+**Explanation and Key improvements:**
+
+1. **`compareTo()` Method:** The `compareTo()` method is the standard way to compare strings lexicographically in Java.  It returns:
+   - 0 if the strings are equal.
+   - A negative value if the first string is lexicographically less than the second.
+   - A positive value if the first string is lexicographically greater than the second.
+
+2. **`equals()` Method:** The `equals()` method checks for *exact* equality (same characters, same length, same case).  This is a simpler way to check for lexicographical equality if you don't need the "less than" or "greater than" information.
+
+3. **Case Sensitivity:** The example now demonstrates the impact of case sensitivity when comparing strings using `compareTo()`.  It also shows `equalsIgnoreCase()` for case-insensitive comparison.
+
+4. **Command-Line Arguments:**  The code now handles command-line arguments. If you run the program with two string arguments, it will compare them using `compareTo()`.  This makes the program more versatile.
+
+5. **Clearer Output:** The `println()` statements now provide more descriptive output, making it easier to understand the results of the comparisons.
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `StringComparison.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac StringComparison.java`
+3. **Run:**  `java StringComparison string1 string2`  (Replace `string1` and `string2` with the strings you want to compare).  If you don't provide command-line arguments, the program will use the default sample strings.

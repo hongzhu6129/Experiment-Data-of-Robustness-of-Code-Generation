@@ -1,0 +1,105 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CopyMap {
+
+    public static void main(String[] args) {
+        // Create the source map
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("One", 1);
+        sourceMap.put("Two", 2);
+        sourceMap.put("Three", 3);
+
+        // Method 1: Using putAll() - most efficient
+        Map<String, Integer> destinationMap1 = new HashMap<>();
+        destinationMap1.putAll(sourceMap);
+
+        // Method 2: Using a loop and put()
+        Map<String, Integer> destinationMap2 = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : sourceMap.entrySet()) {
+            destinationMap2.put(entry.getKey(), entry.getValue());
+        }
+        
+        // Method 3: Java 8+ Stream API (slightly less efficient than putAll)
+        Map<String, Integer> destinationMap3 = new HashMap<>(sourceMap); // Or:
+        // Map<String, Integer> destinationMap3 = sourceMap.entrySet().stream()
+        //     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+
+        // Print the copied maps to verify
+        System.out.println("Copied Map 1 (putAll): " + destinationMap1);
+        System.out.println("Copied Map 2 (loop): " + destinationMap2);
+        System.out.println("Copied Map 3 (Stream/Constructor): " + destinationMap3);
+
+
+        // Demonstrating that changes to the copy do *not* affect the original
+        destinationMap1.put("Four", 4);  // Modify the copy
+        System.out.println("Original Map after modifying copy: " + sourceMap);
+        System.out.println("Modified Copy: " + destinationMap1);
+
+        // Important Note about shallow copy:
+        // If your map values are mutable objects (like lists or other maps),
+        // then changes *inside* those objects will be reflected in both the 
+        // original and the copy. This is because the copy refers to the same 
+        // underlying objects as the original map. For a "deep copy", you need
+        // to manually clone the mutable values as well. Example below:
+
+         Map<String, MyMutableObject> sourceMapMutable = new HashMap<>();
+         MyMutableObject obj1 = new MyMutableObject("Initial Value");
+         sourceMapMutable.put("Object1", obj1);
+
+         // Shallow Copy (demonstrates the issue)
+         Map<String, MyMutableObject> copyMutableShallow = new HashMap<>(sourceMapMutable);
+        
+         copyMutableShallow.get("Object1").setValue("Changed Value"); // Modify within the mutable object
+
+         System.out.println("Original with Mutable Objects after modifying copy: " + sourceMapMutable); // Both are changed!
+         System.out.println("Shallow Copy with Mutable Objects: " + copyMutableShallow);
+
+
+         //  One way to deep copy (manual cloning):
+         Map<String, MyMutableObject> copyMutableDeep = new HashMap<>();
+         for (Map.Entry<String, MyMutableObject> entry : sourceMapMutable.entrySet()) {
+            try {
+                MyMutableObject clonedValue = (MyMutableObject) entry.getValue().clone();
+                copyMutableDeep.put(entry.getKey(), clonedValue);
+            } catch (CloneNotSupportedException e) {
+                System.err.println("Cloning failed: " + e);
+            }
+
+         }
+
+         copyMutableDeep.get("Object1").setValue("Deep Copy Changed");  // only affects the deep copy
+         System.out.println("Original after deep copy modification: " + sourceMapMutable); // Original unaffected
+         System.out.println("Deep Copy after modification: " + copyMutableDeep);
+
+    }
+
+
+}
+
+// Example mutable object for deep copy demonstration
+class MyMutableObject implements Cloneable {
+    private String value;
+
+    public MyMutableObject(String value) {
+        this.value = value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // simple clone for this example - adjust for complex objects.
+    }
+}
+
+```

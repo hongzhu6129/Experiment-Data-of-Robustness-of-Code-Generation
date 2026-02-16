@@ -1,0 +1,44 @@
+public class IterateArray {
+
+    public static void main(String[] args) {
+
+        // Example array of names
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Eve"};
+
+        // Method 1: Using a basic for loop (index-based)
+        System.out.println("Using a basic for loop:");
+        for (int i = 0; i < names.length; i++) {
+            System.out.println(names[i]);
+        }
+
+        // Method 2: Using an enhanced for loop (for-each loop)
+        System.out.println("\nUsing an enhanced for loop:");
+        for (String name : names) {
+            System.out.println(name);
+        }
+
+
+        // Method 3: Using Java 8 Streams and forEach (functional approach) 
+        System.out.println("\nUsing Java 8 Streams:");
+        java.util.Arrays.stream(names).forEach(System.out::println);
+
+
+        // Method 4: Using a while loop  (index-based)
+        System.out.println("\nUsing a while loop:");
+        int i = 0;
+        while (i < names.length) {
+            System.out.println(names[i]);
+            i++;
+        }
+
+
+        //Method 5: Using  java.util.Iterator (less common for arrays, more common for other collections)
+        System.out.println("\nUsing an Iterator:");
+        java.util.Iterator<String> iterator = java.util.Arrays.asList(names).iterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+    }
+}

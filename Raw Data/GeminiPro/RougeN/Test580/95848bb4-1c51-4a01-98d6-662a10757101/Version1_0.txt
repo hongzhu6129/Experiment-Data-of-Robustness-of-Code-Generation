@@ -1,0 +1,54 @@
+```java
+import java.util.LinkedList;
+
+public class InsertAtSpecificPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Specify the element to insert and the position
+        String elementToInsert = "Grape";
+        int position = 1; // Insert at index 1 (second position)
+
+        try {
+            // Insert the element at the specified position
+            linkedList.add(position, elementToInsert);
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + linkedList);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid position. Position should be between 0 and " + linkedList.size());
+        }
+
+       // Example demonstrating inserting at the beginning (position 0)
+        LinkedList<String> linkedList2 = new LinkedList<>();
+        linkedList2.add("Apple");
+        linkedList2.add("Banana");
+        linkedList2.add("Orange");
+
+
+        linkedList2.add(0,"Mango"); // Insert at the beginning
+        System.out.println("LinkedList after inserting at the beginning: " + linkedList2);
+
+        // Example demonstrating inserting at the end (using linkedList.size() as the position
+        LinkedList<String> linkedList3 = new LinkedList<>();
+        linkedList3.add("Apple");
+        linkedList3.add("Banana");
+        linkedList3.add("Orange");
+
+
+        linkedList3.add(linkedList3.size(),"Peach"); // Insert at the end.
+        System.out.println("LinkedList after inserting at the end: " + linkedList3);
+
+
+    }
+}
+```

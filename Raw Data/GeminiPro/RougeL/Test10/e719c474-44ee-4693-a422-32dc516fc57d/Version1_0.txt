@@ -1,0 +1,69 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +'''''+");
+        System.out.println(" | o  o |");
+        System.out.println(" |  ^  |");
+        System.out.println(" | '-' |");
+        System.out.println(" +-----+");
+    }
+}
+```
+
+**Test Cases (While not directly unit testable in the conventional sense, we can consider output validation):**
+
+1. **Basic Functionality:** Run the program and visually verify that the output matches the expected face.  This checks the standard execution path.
+
+2. **Output Redirection:**  Redirect the output to a file and then compare the file contents with the expected output string.  This allows for automated testing:
+
+   ```bash
+   java FacePrinter > output.txt
+   diff output.txt expected_output.txt  # diff should report no differences
+   ```
+
+   `expected_output.txt` would contain:
+
+   ```
+   +'''''+
+   | o  o |
+   |  ^  |
+   | '-' |
+   +-----+
+   ```
+
+3. **Character Encoding:**  Ensure that the output is displayed correctly with different character encodings (UTF-8, ASCII).  Although the characters used are basic ASCII, this is a good practice for more complex outputs. Set the system property `file.encoding` before running the Java program.
+
+4. **Console Size/Wrapping:**  (Less critical for this simple case)  Test with different console window sizes to ensure the face isn't distorted or wrapped unexpectedly if the lines were much longer.  This is more relevant if you were generating larger ASCII art.
+
+5. **Empty Input:**  (Not applicable in this case, as the program takes no input arguments.)  However, if the program were modified to take input affecting the face, you would test with empty or null input.  For example, allowing the user to specify the face's "expression" and testing with an empty expression string.
+
+6. **Invalid Input:**  (Not applicable in this case for the same reasons as above). If there were input parameters, testing with invalid inputs (e.g., non-numeric input when expecting a number for the eye size) would be essential.
+
+
+**Example Bash Script for Automated Testing:**
+
+```bash
+#!/bin/bash
+
+expected_output="  +'''''+\n | o  o |\n |  ^  |\n | '-' |\n +-----+"
+
+java FacePrinter > output.txt
+
+if diff output.txt <(echo "$expected_output"); then
+  echo "Test passed!"
+else
+  echo "Test failed!"
+  diff output.txt <(echo "$expected_output")  # Show the differences
+fi
+
+rm output.txt # Cleanup
+```
+
+
+While these tests are relatively simple for this small program, the principles apply to more complex output scenarios.  Using output redirection and comparison is a key strategy for testing programs that generate text or graphical output.  For very complex ASCII art, image comparison tools might become necessary.
+

@@ -1,0 +1,26 @@
+```java
+public class PellSeries {
+
+    public static void main(String[] args) {
+        int n = 15;
+        int a = 0, b = 1;
+
+        System.out.print("First " + n + " Pell numbers: ");
+
+        if (n >= 1) {
+            System.out.print(a + " ");
+        }
+        if (n >= 2) {
+            System.out.print(b + " ");
+        }
+
+        for (int i = 3; i <= n; i++) {
+            int nextPell = 2 * b + a;
+            System.out.print(nextPell + " ");
+            a = b;
+            b = nextPell;
+        }
+        System.out.println(); // Add a newline for better formatting
+    }
+}
+```

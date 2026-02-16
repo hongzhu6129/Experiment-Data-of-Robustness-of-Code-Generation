@@ -1,0 +1,55 @@
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+         boolean[][] boolArray2 = {
+                {true},
+                {false, true},
+                {true, false, true}
+        }; // Jagged array example
+          System.out.println("\nJagged Array Example:"); //Added new line for clarity
+        printBooleanArray(boolArray2);
+
+          boolean[][] emptyArray = {}; // Empty array example
+          System.out.println("\nEmpty Array Example:");//Added new line for clarity
+          printBooleanArray(emptyArray);
+
+
+          boolean[][] nullArray = null; // Null array example
+          System.out.println("\nNull Array Example:");//Added new line for clarity
+          printBooleanArray(nullArray);
+
+    }
+
+
+
+    public static void printBooleanArray(boolean[][] boolArray) {
+         if (boolArray == null) {
+            System.out.println("The array is null.");
+            return;
+        }
+
+        if (boolArray.length == 0) {
+            System.out.println("The array is empty.");
+            return;
+        }
+
+        for (int i = 0; i < boolArray.length; i++) {
+            if (boolArray[i] == null) { // handle potentially null rows in jagged arrays.
+                System.out.println("Row " + i + " is null.");
+                continue; // Skip to the next row
+            }
+            for (int j = 0; j < boolArray[i].length; j++) {
+                System.out.print(boolArray[i][j] ? "t " : "f "); // Print 't' for true, 'f' for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}

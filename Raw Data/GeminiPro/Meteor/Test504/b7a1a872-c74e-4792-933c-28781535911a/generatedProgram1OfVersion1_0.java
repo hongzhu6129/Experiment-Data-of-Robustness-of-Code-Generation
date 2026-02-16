@@ -1,0 +1,27 @@
+class Solution {
+
+    /**
+     * Displays the factors of 3 present in a given integer.
+     *
+     * @param n The integer to check for factors of 3.
+     */
+    public static void test(int n) {
+        int temp = n;
+        while (temp > 0) {
+            if (temp % 3 == 0) {
+                System.out.print(3 + " ");
+            }
+            temp /= 3; // Equivalent to integer division by 3
+        }
+        System.out.println(); // Add a newline for cleaner output
+    }
+
+    public static void main(String[] args) {
+        test(27);   // Output: 3 3 3
+        test(18);   // Output: 3 3
+        test(10);   // Output: (no output as 10 has no factors of 3)
+        test(81);   // Output: 3 3 3 3 
+        test(12);     // Output: 3
+    }
+}
+

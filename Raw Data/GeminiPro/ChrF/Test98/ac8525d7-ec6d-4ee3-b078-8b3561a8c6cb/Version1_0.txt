@@ -1,0 +1,67 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 5; // Example: You can change this value
+
+        if (n <= 0) {
+            System.out.println("Invalid input. n must be a positive integer.");
+            return;
+        }
+
+
+        int totalCoinsNeeded = 0;
+        int rows = 0;
+
+        for (int i = 1; ; i++) {
+            totalCoinsNeeded += i;
+            if (totalCoinsNeeded > n) {
+                rows = i - 1;
+                break;
+            } else if (totalCoinsNeeded == n) {
+                rows = i;
+                break;
+            }
+        }
+
+
+        for (int i = 1; i <= rows; i++) {
+            // Print spaces
+            for (int j = 0; j < rows - i; j++) {
+                System.out.print(" ");
+            }
+
+            // Print coins
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+
+            System.out.println(); // Move to the next line
+        }
+
+    }
+}
+```
+
+
+This code does the following within the `main` method:
+
+1. **Handles Invalid Input:** Checks if `n` (the number of coins) is positive.
+2. **Calculates the Number of Rows:**  Determines how many complete rows of the staircase can be formed with the given `n` coins.
+3. **Prints the Staircase:**  Uses nested loops:
+   - The outer loop iterates through each row.
+   - The inner loops print spaces and asterisks (*) to create the staircase shape.  The number of spaces decreases with each row, and the number of asterisks increases.
+4. **Newline after each row:** `System.out.println();` moves the cursor to the next line after printing each row, creating the staircase structure.
+
+
+**Example Output (for n=5):**
+
+```
+    *
+   **
+  ***
+ ****
+***** 
+```
+If `n` is smaller, let's say `n=2`, fewer complete rows will be printed.
+If `n` is larger, such as `n=10` more complete rows will be printed until there aren't enough coins left to form a full row.

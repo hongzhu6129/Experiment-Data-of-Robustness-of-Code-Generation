@@ -1,0 +1,68 @@
+```java
+public class AmicableNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 220;
+        int num2 = 284;
+
+        if (isAmicable(num1, num2)) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+
+
+        num1 = 12; // Example of non-amicable numbers
+        num2 = 14;
+
+        if (isAmicable(num1, num2)) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+
+
+        // Interactive user input example (requires Java SE 7 or later for try-with-resources)
+        try (java.util.Scanner scanner = new java.util.Scanner(System.in)) {
+            System.out.print("Enter the first number: ");
+            num1 = scanner.nextInt();
+            System.out.print("Enter the second number: ");
+            num2 = scanner.nextInt();
+
+            if (isAmicable(num1, num2)) {
+                System.out.println("These numbers are amicable.");
+            } else {
+                System.out.println("These numbers are not amicable.");
+            }
+        }
+
+    }
+
+    private static int sumOfProperDivisors(int num) {
+        int sum = 0;
+        for (int i = 1; i < num; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    private static boolean isAmicable(int num1, int num2) {
+        return sumOfProperDivisors(num1) == num2 && sumOfProperDivisors(num2) == num1;
+    }
+}
+```
+
+
+Key improvements:
+
+* **`sumOfProperDivisors` helper function:**  This function cleanly calculates the sum of proper divisors, making the `isAmicable` function more readable.
+* **`isAmicable` function:** This function specifically checks for amicability, separating the logic from the main method.
+* **Clearer output:**  The output now clearly states whether the numbers are amicable or not.
+* **Example with non-amicable numbers:** Demonstrates that the code correctly identifies non-amicable pairs.
+* **Interactive user input:** The code now includes an example showing how to get input from the user using the `Scanner` class.  This allows the user to test different number pairs interactively. The try-with-resources ensures the `Scanner` is closed correctly.
+
+
+
+This revised answer is more structured, readable, and robust, making it a better solution to the problem.

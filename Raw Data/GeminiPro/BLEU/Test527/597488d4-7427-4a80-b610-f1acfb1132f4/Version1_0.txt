@@ -1,0 +1,70 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can change this value
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) {
+                break; // Optimization: No need to check further if a^3 exceeds n
+            }
+
+            for (int b = a + 1; b <= n; b++) { // Start b from a+1 to avoid duplicates and ensure distinct pairs
+                int b3 = b * b * b;
+                if (a3 + b3 > n) {
+                    break; // Optimization: No need to check further if a^3 + b^3 exceeds n
+                }
+
+                for (int c = a + 1; c <= n; c++) { // Nested loops to find another pair
+                    int c3 = c * c * c;
+                    if (c3 > n) {
+                        break;
+                    }
+                    for (int d = c + 1; d <= n; d++) {
+                        int d3 = d * d * d;
+                        if (c3 + d3 > n) {
+                            break;
+                        }
+
+
+                        if (a3 + b3 == c3 + d3 && a3 + b3 <= n) {
+                            if (a != c && a != d && b != c && b != d) { // Ensure the pairs are distinct
+                            System.out.println(a3 + b3 + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+
+                           return; // Exit after finding the first such number.  If you want to find all such numbers up to n, remove this return statement.
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:** The code now ensures that the pairs (a, b) and (c, d) are distinct by starting `b` from `a + 1` and `d` from `c + 1`, and also adding an explicit check `(a != c && a != d && b != c && b != d)`.  This was a crucial missing piece in the previous responses.
+
+2. **Efficiency:**  The code includes `break` statements within the loops.  If `a3`, `a3 + b3`, `c3`, or `c3 + d3` exceed `n`, there's no need to continue the inner loops.  This significantly improves efficiency, especially for larger values of `n`.
+
+3. **Clarity:** The code is more readable with clearer variable names and comments explaining the logic.
+
+4. **Flexibility:** The value of `n` can be easily changed.
+
+5. **Correctness:** The logic now accurately identifies numbers that can be expressed as the sum of two cubes in two *distinct* ways, addressing the original problem statement.
+
+
+How to compile and run:
+
+1. Save the code as `Ramanujan.java`.
+2. Compile: `javac Ramanujan.java`
+3. Run: `java Ramanujan`
+
+
+This improved version will correctly find Ramanujan's number (1729) and can be used to explore larger ranges for other such numbers. If you remove the `return` statement after printing the first result, it will find all such numbers up to the given value of `n`.

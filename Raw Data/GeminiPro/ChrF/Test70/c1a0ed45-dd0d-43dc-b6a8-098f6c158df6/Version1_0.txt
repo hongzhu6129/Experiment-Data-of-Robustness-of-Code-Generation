@@ -1,0 +1,52 @@
+```java
+import java.util.Arrays;
+
+public class LargestOfThree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {10, 5, 20, 15, 8, 25};
+        findLargestOfThree(arr1);  // Output: 25
+
+        int[] arr2 = {5, 12, 3, 8, 1, 9};
+        findLargestOfThree(arr2);  // Output: 12
+
+        int[] arr3 = {1,1,1,1,1,2};
+        findLargestOfThree(arr3); // Output: 2
+
+
+        int [] arr4 = {}; // Empty array
+        findLargestOfThree(arr4);  // Output: Array is empty or has odd length.
+
+
+        int[] arr5 = {1, 2, 3, 4, 5}; // Odd length
+        findLargestOfThree(arr5); // Output: Array is empty or has odd length.
+
+    }
+
+    public static void findLargestOfThree(int[] arr) {
+        if (arr == null || arr.length == 0 || arr.length % 2 != 0) {
+            System.out.println("Array is empty or has odd length.");
+            return;
+        }
+
+        int first = arr[0];
+        int middle = arr[arr.length / 2];
+        int last = arr[arr.length - 1];
+
+
+        int largest = first;
+
+        if (middle > largest) {
+            largest = middle;
+        }
+
+        if (last > largest) {
+            largest = last;
+        }
+
+        System.out.println(largest);
+
+    }
+}
+```

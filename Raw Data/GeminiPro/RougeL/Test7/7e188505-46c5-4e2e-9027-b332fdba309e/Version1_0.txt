@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (Exception e) {
+            System.err.println("Invalid input. Please enter numeric values.");
+        } finally {
+            scanner.close();
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30
+   **Expected Output:** 20.0
+
+2. **Input:** 1.5, 2.5, 3.5
+   **Expected Output:** 2.5
+
+3. **Input:** -5, 0, 5
+   **Expected Output:** 0.0
+
+
+**Edge/Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  (Overflow Check)
+   **Expected Output:** Infinity (or a very large positive number depending on how Java handles overflow)
+
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE (Underflow Check)
+   **Expected Output:** -Infinity (or a very large negative number)
+
+6. **Input:** 0, 0, 0
+   **Expected Output:** 0.0
+
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE (Double overflow)
+   **Expected Output:** Infinity
+
+8. **Input:** -Double.MAX_VALUE, -Double.MAX_VALUE, -Double.MAX_VALUE (Double underflow)
+    **Expected Output:** -Infinity
+
+9. **Input:** Double.NaN, 1, 2  (Handling NaN - Not a Number)
+    **Expected Output:** NaN
+
+
+
+**Invalid Input Cases:**
+
+10. **Input:** 1, a, 2  (Non-numeric input)
+    **Expected Output:** "Invalid input. Please enter numeric values." (Error message)
+
+11. **Input:** 1, 2 (Insufficient input)
+    **Expected Output:**  The program might throw an exception because it's expecting three inputs or it might hang waiting for the third input, which might not be ideal.  The provided code now handles this more gracefully by displaying the invalid input message.
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering the test case inputs and verifying the outputs.
+
+2. **Using JUnit (Recommended):**  Create a separate test class (e.g., `AverageCalculatorTest.java`) and use JUnit assertions to automate the testing process.  This is much more efficient and robust for larger projects.
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class AverageCalculatorTest {
+
+       @Test
+       void testNormalCase() {
+           assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+       }
+
+       @Test
+       void testOverflow() {
+          assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)); // or assertTrue if checking for a very large number instead of infinity
+       }
+
+       // ... add more test cases following this pattern ...
+   }
+   ```
+
+
+By using a combination of normal, edge, and invalid input cases, you can thoroughly test your `AverageCalculator` and ensure its correctness and robustness.  JUnit will greatly simplify the testing process.

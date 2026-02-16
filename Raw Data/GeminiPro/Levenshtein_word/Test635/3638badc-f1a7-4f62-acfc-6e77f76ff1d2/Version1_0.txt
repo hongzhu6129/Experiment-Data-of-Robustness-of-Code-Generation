@@ -1,0 +1,46 @@
+```java
+import java.util.PriorityQueue;
+
+public class LeastElementCountPriorityQueue {
+
+    public static void main(String[] args) {
+        // Example usage:
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(2); // Adding duplicate least element
+        pq.add(1); // Least element
+        pq.add(1); // Another duplicate least element
+        pq.add(9);
+
+        int leastElement = pq.peek(); // Get the least element (head of the queue)
+        int count = 0;
+
+        // Iterate through the PriorityQueue and count occurrences of the least element
+        for (Integer element : pq) {
+            if (element == leastElement) {
+                count++;
+            }
+        }
+
+        System.out.println("Least element: " + leastElement);
+        System.out.println("Count of least element: " + count);
+
+
+        //  More efficient approach if you are allowed to remove elements (modifies the queue)
+        //PriorityQueue<Integer> pq2 = new PriorityQueue<>(pq); // Create a copy if you need to preserve the original queue
+        //int leastElement2 = pq2.peek();
+        //int count2 = 0;
+        //while (!pq2.isEmpty() && pq2.peek() == leastElement2) {
+        //    pq2.poll(); // Removes the head of the queue
+        //    count2++;
+        //}
+
+        //System.out.println("Least element (efficient): " + leastElement2);
+        //System.out.println("Count of least element (efficient): " + count2);
+
+
+    }
+}
+```

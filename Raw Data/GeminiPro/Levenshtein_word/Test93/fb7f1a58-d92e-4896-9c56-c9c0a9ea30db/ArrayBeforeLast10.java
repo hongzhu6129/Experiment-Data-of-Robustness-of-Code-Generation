@@ -1,0 +1,49 @@
+import java.util.Arrays;
+
+public class ArrayBeforeLast10 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 10, 3, 4, 10, 5, 6};
+        int[] arr2 = {1, 2, 10, 3, 4, 5, 6};
+        int[] arr3 = {1, 10, 2, 10, 3, 4, 5, 6};
+        int[] arr4 = {1, 2, 3, 4, 5, 6};
+
+
+        System.out.println("Original Array: " + Arrays.toString(arr1));
+        System.out.println("New Array: " + Arrays.toString(createNewArray(arr1)));
+
+        System.out.println("Original Array: " + Arrays.toString(arr2));
+        System.out.println("New Array: " + Arrays.toString(createNewArray(arr2)));
+
+        System.out.println("Original Array: " + Arrays.toString(arr3));
+        System.out.println("New Array: " + Arrays.toString(createNewArray(arr3)));
+
+        System.out.println("Original Array: " + Arrays.toString(arr4));
+        System.out.println("New Array: " + Arrays.toString(createNewArray(arr4)));
+
+    }
+
+    public static int[] createNewArray(int[] arr) {
+        int lastIndex = -1;
+
+        // Find the last index of 10
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == 10) {
+                lastIndex = i;
+                break;
+            }
+        }
+
+
+        if (lastIndex != -1) {
+            int[] newArray = new int[lastIndex];
+            for (int i = 0; i < lastIndex; i++) {
+                newArray[i] = arr[i];
+            }
+            return newArray;
+        } else { // Return  original array if 10 not found
+            return arr; 
+        }
+
+    }
+}

@@ -1,0 +1,41 @@
+```java
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemoveDuplicates {
+
+    public static void main(String[] args) {
+        String str = "geeksforgeeks";
+        System.out.println(removeDuplicates(str));
+    }
+
+    public static String removeDuplicates(String str) {
+        Set<Character> set = new LinkedHashSet<>();
+        for (char c : str.toCharArray()) {
+            set.add(c);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : set) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
+```
+
+Test cases:
+
+1. Input: "geeksforgeeks"
+   Output: "geksfor"
+
+2. Input: "abbcccddddeeeee"
+   Output: "abcde"
+
+3. Input: "12334455"
+   Output: "12345"
+
+4. Input: ""
+   Output: ""
+
+5. Input: "a"
+   Output: "a"

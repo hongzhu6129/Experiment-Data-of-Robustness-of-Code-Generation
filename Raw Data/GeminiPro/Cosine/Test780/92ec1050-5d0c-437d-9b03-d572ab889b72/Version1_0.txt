@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split("\\s+"); // Split the line by whitespace
+
+                for (String part : parts) {
+                    try {
+                        int num = Integer.parseInt(part);
+                        // Process the integer if parsing is successful
+                        System.out.println("Parsed integer: " + num); 
+                    } catch (NumberFormatException e) {
+                        System.err.println("Invalid integer: " + part);
+                        // Handle the invalid integer (e.g., skip it, assign a default value, etc.)
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        } finally {
+            scanner.close(); // Close the scanner in the finally block
+        }
+    }
+}
+```
+
+**Explanation of the error and the solution:**
+
+The error "invalid literal for int() with base 10: '\r[|'" occurs when you try to convert a string that is not a valid integer representation (in base 10) to an integer using `Integer.parseInt()`. Characters like '\r' (carriage return), '[', and '|' are not valid digits.
+
+This code addresses the issue by:
+
+1. **Reading Input Line by Line:**  It uses a `Scanner` to read the input line by line, handling potential newline characters correctly.
+
+2. **Splitting the Line:**  `line.split("\\s+")` splits each line into parts based on whitespace. This is crucial because if you have multiple potential integers on a single line, you need to process them individually.
+
+3. **Try-Catch Block for Integer Parsing:** The `try-catch` block within the loop attempts to parse each `part` of the line as an integer. If `Integer.parseInt()` throws a `NumberFormatException` (meaning the `part` isn't a valid integer), the `catch` block handles the error gracefully.  You can choose how you want to handle invalid input � print an error message, skip the invalid part, or assign a default value.
+
+4. **Outer Try-Catch for General Errors:** An outer `try-catch` block is included to catch any other potential exceptions that might occur during input or processing.
+
+5. **Finally Block for Scanner Closure:** The `scanner.close()` in the `finally` block ensures that the `Scanner` is closed properly, even if exceptions occur, preventing resource leaks.
+
+
+**How to use the code:**
+
+1. Save it as a `.java` file (e.g., `Main.java`).
+2. Compile it: `javac Main.java`
+3. Run it: `java Main`
+4. Provide input (containing potentially invalid integers) to the program via the console.  The code will parse valid integers and report the invalid ones.
+
+
+This improved version is more robust and handles various input scenarios, including those containing invalid integer representations, more effectively.

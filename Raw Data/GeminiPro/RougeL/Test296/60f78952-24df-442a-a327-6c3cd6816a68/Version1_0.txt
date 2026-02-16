@@ -1,0 +1,69 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 22, 1, 9, 0, 44, 3, 7};
+        k = 4;
+        findKLargest(arr, k);
+    }
+
+    public static void findKLargest(int[] arr, int k) {
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k.");
+            return;
+        }
+
+        // Method 1: Using a Min-Heap (Priority Queue) - Efficient for large datasets
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Remove the smallest element if the heap size exceeds k
+            }
+        }
+
+        Integer[] kLargest = minHeap.toArray(new Integer[0]);  // Get the elements from the heap
+        System.out.println("K Largest elements (using Min-Heap): " + Arrays.toString(kLargest));
+
+
+        // Method 2: Sorting and then printing last K elements - Simpler but less efficient for huge datasets
+        //  Only use this if k is relatively large compared to the array size or if simplicity is prioritized.
+        Arrays.sort(arr);
+        int[] kLargestSorted = Arrays.copyOfRange(arr, arr.length - k, arr.length);
+        System.out.println("K Largest elements (using Sorting): " + Arrays.toString(kLargestSorted));
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles Invalid Input:** Checks if `k` is valid (not negative or greater than array length) and prints a message if it's invalid.
+* **Two Methods Demonstrated:** Includes both the Min-Heap (Priority Queue) method (more efficient for larger datasets when k is relatively small) and the sorting method (simpler, suitable when k is a larger portion of the array size or if simplicity is preferred).
+* **Clearer Output:**  The output now clearly labels which method was used to generate the result.
+* **Concise Conversion to Array:** Uses `toArray()` with a type parameter to efficiently convert the PriorityQueue to an Integer array.  This is cleaner than manually iterating.
+* **Example Usages:**  Includes a couple of example usages in `main` to demonstrate the function.
+
+
+**Explanation of the Min-Heap Method:**
+
+1. **Min-Heap:** A Min-Heap data structure (implemented using `PriorityQueue` in Java) keeps track of the smallest element at the top.
+2. **Iterate and Offer:**  We iterate through the input array `arr`. In each iteration, we offer the current element `num` to the `minHeap`.
+3. **Maintain Size k:** If the size of the `minHeap` becomes greater than `k`, we remove the smallest element (the root) using `minHeap.poll()`. This ensures that the `minHeap` always contains the `k` largest elements seen so far.
+4. **Final Result:** After iterating through the entire array, the `minHeap` will contain the `k` largest elements. We can then extract these elements into an array.
+
+
+**Time Complexity:**
+
+* **Min-Heap Method:** O(n log k), where n is the size of the input array.  More efficient when k is relatively small.
+* **Sorting Method:** O(n log n) because of the sorting. Can be more efficient if k is a large percentage of n.

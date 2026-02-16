@@ -1,0 +1,69 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+     * Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+     *
+     * @param nums The sorted array.
+     * @return The new length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+         int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4 ); // Output: 0
+        //System.out.println(", Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4))); // Would cause NullPointerException
+
+        int[] nums5 = {1};
+        int len5 = removeDuplicates(nums5);
+        System.out.println("New Length: " + len5 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5))); // Output: 1, [1]
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases**: The code now correctly handles empty arrays (`{}`) and `null` input, preventing potential `NullPointerExceptions`.
+
+2. **Clearer Variable Names:**  `uniqueIndex` replaces `index` for better readability, clearly indicating its purpose.
+
+3. **Concise Return:** The `if (nums.length == 0) return 0;` condition streamlines the code.
+
+4. **Comprehensive `main` method**: Includes more test cases demonstrating the handling of empty, null, and single-element arrays, along with the original example.  It also uses `Arrays.copyOfRange` to only print the relevant portion of the modified array after duplicate removal. This is crucial because the original array is modified in place, but elements beyond the new length are not guaranteed to be meaningful.  Also added output for the null array example, demonstrating correct length handling.
+
+5. **Javadoc Comments:**  Added clear Javadoc documentation to `removeDuplicates` to explain its purpose, parameters, and return value, improving code understanding.
+
+
+
+This improved version is robust, efficient, and adheres to the prompt's requirements, providing a comprehensive solution to the problem.

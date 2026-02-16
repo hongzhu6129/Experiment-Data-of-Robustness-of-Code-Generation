@@ -1,0 +1,72 @@
+```java
+import java.util.Scanner;
+
+public class MultiplyBinary {
+
+    public static String multiplyBinary(String bin1, String bin2, String bin3) {
+        try {
+            int dec1 = Integer.parseInt(bin1, 2);
+            int dec2 = Integer.parseInt(bin2, 2);
+            int dec3 = Integer.parseInt(bin3, 2);
+
+            int product = dec1 * dec2 * dec3;
+
+            return Integer.toBinaryString(product);
+        } catch (NumberFormatException e) {
+            return "Invalid Input: Not a binary number";
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first binary number: ");
+        String bin1 = scanner.nextLine();
+
+        System.out.print("Enter the second binary number: ");
+        String bin2 = scanner.nextLine();
+
+        System.out.print("Enter the third binary number: ");
+        String bin3 = scanner.nextLine();
+
+
+        String result = multiplyBinary(bin1, bin2, bin3);
+        System.out.println("Product: " + result);
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Binary 1 | Binary 2 | Binary 3 | Expected Output |
+|---|---|---|---|---|
+| **Normal Case 1** | 101 | 110 | 10 | 111100 |
+| **Normal Case 2** | 11 | 10 | 1 | 110 |
+| **All Ones** | 111 | 111 | 111 | 1100001 |
+| **All Zeros** | 0 | 0 | 0 | 0 |
+| **Zero with Others** | 101 | 0 | 11 | 0 |
+| **Single Digit** | 1 | 1 | 1 | 1 |
+| **Large Numbers** | 111111 | 111111 | 10 | 111110000010 |
+| **Invalid Input - Non-binary** | 102 | 110 | 10 | Invalid Input: Not a binary number |
+| **Invalid Input - Empty String** |  | 11 | 10 | Invalid Input: Not a binary number |
+| **Invalid Input - Whitespace** | 101 | " " | 10 | Invalid Input: Not a binary number |  // Note: leading/trailing spaces handled in some IDEs but test explicitly.
+| **Leading Zeroes** | 00101 | 0110 | 0010 | 111100 |
+
+
+
+**Explanation of Corner Cases:**
+
+* **All Zeros:**  Tests the multiplication when all inputs are zero.
+* **Zero with Others:** Tests if multiplication with zero results in zero.
+* **Single Digit:**  Tests the simplest case of multiplication.
+* **Large Numbers:**  Tests potential overflow or handling of large binary strings (though Java's `BigInteger` could be used if extremely large numbers are expected).
+* **Invalid Input:**  Tests handling of inputs that are not valid binary numbers (e.g., containing digits other than 0 and 1, empty strings, whitespace).
+* **Leading Zeroes:** Ensures the program correctly handles leading zeros in the input binary strings.
+
+
+This comprehensive set of test cases will help you thoroughly validate the correctness and robustness of your binary multiplication program.  Remember to test your code with these cases to ensure it handles all possible scenarios gracefully.

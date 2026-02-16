@@ -1,0 +1,58 @@
+```java
+import java.util.Arrays;
+
+public class ArrayAverage {
+
+    static void streamAvg(float[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            System.out.println("No numbers provided.");
+            return;
+        }
+
+        float sum = Arrays.stream(numbers).sum();
+        float average = getAvg(sum, 0, numbers.length);  // 0 is a placeholder, not used
+        System.out.println("Average: " + average);
+
+
+    }
+
+    static float getAvg(float sum, float ignored, int count) {
+        if (count == 0) {
+            return 0; // Avoid division by zero
+        }
+        return sum / count;
+    }
+
+    public static void main(String[] args) {
+        float[] numbers1 = {10, 20, 30, 40, 50};
+        streamAvg(numbers1);
+
+        float[] numbers2 = {5, 15, 25, 35, 45, 55};
+        streamAvg(numbers2);
+
+        float[] emptyArray = {};
+        streamAvg(emptyArray);
+
+        float[] nullArray = null;
+        streamAvg(nullArray);
+
+       
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Empty and Null Arrays:**  The `streamAvg` method now explicitly checks for `null` and empty arrays to prevent `NullPointerException` and division by zero errors, providing more robust error handling. It prints a message indicating when no numbers are provided.
+
+2. **Uses Arrays.stream for Summation:** The code uses `Arrays.stream` to efficiently calculate the sum of the elements in the array. This is generally more concise and readable than manually iterating through the array.
+
+3. **Simplified `getAvg`:** The `getAvg` method now takes the sum and the count as parameters and returns their quotient as the average. The placeholder parameter is maintained to satisfy the specified method signature.
+
+4. **Clearer Output:** The output now clearly labels the results as "Average:" to make the output more informative.
+
+5. **Multiple Test Cases:**  The `main` method includes several test cases, including different arrays, an empty array, and a `null` array, to demonstrate the error handling and functionality of the code.
+
+
+This improved version is much more robust, readable, and adheres to best practices. It utilizes Java's stream API where appropriate for clarity and efficiency.

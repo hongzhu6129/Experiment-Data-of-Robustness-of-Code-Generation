@@ -1,0 +1,108 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
+            printScalarTable(num);
+        } else {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+        scanner.close();
+    }
+
+    public static void printScalarTable(int num) {
+        System.out.println("Scalar Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Positive Integer:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Scalar Table for 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Scalar Table for 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Integer:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Scalar Table for -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+```
+
+**4. Large Integer:**  (This tests for potential overflow if you were using a smaller data type than `int`, though `int` should be fine for multiplication tables up to 10).
+
+* **Input:** 214748364  (Integer.MAX_VALUE / 10 approximately - to avoid overflow in the last step of the table).
+* **Expected Output:**  The table should calculate correctly without overflow.
+
+
+**5. Invalid Input (Corner Case):**
+
+* **Input:** hello
+* **Expected Output:**
+```
+Invalid input. Please enter an integer.
+```
+
+**6. Invalid Input (Corner Case):**
+
+* **Input:** 12.5
+* **Expected Output:**
+```
+Invalid input. Please enter an integer.
+```
+
+
+These test cases cover a range of scenarios, including positive and negative numbers, zero, large numbers (to check for potential overflow issues), and invalid input to ensure the program handles errors gracefully.  Always test your code with various inputs to ensure it works correctly in all expected situations.

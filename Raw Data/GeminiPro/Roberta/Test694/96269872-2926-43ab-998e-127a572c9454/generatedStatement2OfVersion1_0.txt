@@ -1,0 +1,12 @@
+
+
+
+Explanation:
+
+1. **Base Case:**  The recursion stops when `b` becomes 0.  The product of any number and 0 is 0.
+
+2. **Positive b:** If `b` is positive, we recursively call `multiply_two_nums` with `b` decremented by 1 and add `a` to the result.  This effectively adds `a` to itself `b` times.
+
+3. **Negative b:** If `b` is negative, we negate both `a` and `b` before the recursive call, essentially multiplying  `a` by the absolute value of `b`, and then negating the final result to account for the original negative sign of `b`.
+
+**Important Note on Stack Overflow:** This recursive approach can lead to stack overflow errors if the absolute value of `b` is very large. This is because each recursive call adds a new frame to the call stack.  Iterative solutions (using loops) are generally preferred for multiplication in real-world scenarios to avoid this issue, but this solution adheres to the given constraints of no loops.

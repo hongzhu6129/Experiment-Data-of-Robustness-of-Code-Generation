@@ -1,0 +1,69 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSort {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("kiwi", 3);
+        treeMap.put("orange", 4);
+        treeMap.put("grape", 5);
+
+
+        // Print the sorted TreeMap
+        System.out.println("Sorted TreeMap: " + treeMap);
+
+
+        //Demonstrate the Comparator usage outside the TreeMap constructor (e.g., for other sorting)
+         String str1 = "apple";
+         String str2 = "banana";
+         StringLengthComparator comparator = new StringLengthComparator();
+         int comparisonResult = comparator.compare(str1, str2);
+
+         if (comparisonResult < 0) {
+             System.out.println(str1 + " is shorter than " + str2);
+         } else if (comparisonResult > 0) {
+             System.out.println(str1 + " is longer than " + str2);
+         } else {
+             System.out.println(str1 + " has the same length as " + str2);
+         }
+
+    }
+
+
+
+     // Separate Comparator class (recommended approach)
+     static class StringLengthComparator implements Comparator<String> {
+         @Override
+         public int compare(String str1, String str2) {
+             return Integer.compare(str1.length(), str2.length()); // Sort by string length
+         }
+     }
+
+
+}
+```
+
+
+Key improvements in this version:
+
+* **Separate Comparator Class:** The `StringLengthComparator` is now a separate, named inner class.  This is better practice for organization and reusability.
+* **Clearer Demonstration:**  The `main` method demonstrates both how to use the `Comparator` with the `TreeMap` constructor and how to use the `compare()` method directly for other comparison purposes (outside the TreeMap).
+* **Concise Commenting:** Comments explain the key parts of the code.
+* **Integer.compare():** Uses `Integer.compare()` for length comparison, which handles potential integer overflow issues more robustly than simply subtracting lengths.
+
+
+How to Compile and Run:
+
+1. Save the code as `TreeMapSort.java`.
+2. Compile: `javac TreeMapSort.java`
+3. Run: `java TreeMapSort`
+
+
+The output will show the TreeMap sorted by the lengths of the keys (shortest to longest).  It will also demonstrate the direct usage of the `compare` method.

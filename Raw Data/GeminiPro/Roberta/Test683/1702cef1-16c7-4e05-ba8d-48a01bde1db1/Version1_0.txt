@@ -1,0 +1,47 @@
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        // Example usage:
+        float num1 = 123.45678f;
+        int decimals1 = 2;
+        float rounded1 = roundFloat(num1, decimals1);
+        System.out.println(num1 + " rounded to " + decimals1 + " decimals: " + rounded1); // Output: 123.46
+
+        float num2 = 987.654321f;
+        int decimals2 = 3;
+        float rounded2 = roundFloat(num2, decimals2);
+        System.out.println(num2 + " rounded to " + decimals2 + " decimals: " + rounded2); // Output: 987.654
+
+
+        float num3 = 0.12345f;
+        int decimals3 = 4;
+        float rounded3 = roundFloat(num3, decimals3);
+        System.out.println(num3 + " rounded to " + decimals3 + " decimals: " + rounded3); // Output: 0.1235
+
+        float num4 = -5.6789f;  // Test with a negative number
+        int decimals4 = 1;
+        float rounded4 = roundFloat(num4, decimals4);
+        System.out.println(num4 + " rounded to " + decimals4 + " decimals: " + rounded4); // Output: -5.7
+        
+        float num5 = 2.999999f;
+        int decimals5 = 0;
+        float rounded5 = roundFloat(num5, decimals5);
+        System.out.println(num5 + " rounded to " + decimals5 + " decimals: " + rounded5); // Output: 3.0
+
+    }
+
+    public static float roundFloat(float num, int decimals) {
+        if (decimals < 0) {
+            throw new IllegalArgumentException("Decimals must be non-negative.");
+        }
+
+        BigDecimal bd = new BigDecimal(Float.toString(num)); // Convert float to BigDecimal to avoid precision issues
+        bd = bd.setScale(decimals, RoundingMode.HALF_UP);     // Round using HALF_UP
+        return bd.floatValue();                           // Convert back to float
+    }
+}
+```

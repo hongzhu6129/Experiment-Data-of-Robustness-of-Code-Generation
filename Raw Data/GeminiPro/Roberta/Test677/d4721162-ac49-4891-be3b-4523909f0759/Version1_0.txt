@@ -1,0 +1,69 @@
+```java
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap. TreeMap is a NavigableMap implementation.
+        NavigableMap<Integer, String> studentScores = new TreeMap<>();
+
+        // Populate the map with some data.
+        studentScores.put(10, "Alice");
+        studentScores.put(25, "Bob");
+        studentScores.put(50, "Charlie");
+        studentScores.put(75, "David");
+        studentScores.put(100, "Eve");
+
+        // Key from which we want to get the submap (exclusive in this example)
+        int thresholdKey = 25; 
+
+        // Get the portion of the map whose keys are greater than thresholdKey
+        NavigableMap<Integer, String> higherScores = studentScores.tailMap(thresholdKey, false); // Exclusive
+
+        // Print the original map
+        System.out.println("Original Map: " + studentScores);
+
+        // Print the submap
+        System.out.println("Submap with keys greater than " + thresholdKey + ": " + higherScores);
+
+
+
+        // Example with inclusive submap:
+        NavigableMap<Integer, String> higherScoresInclusive = studentScores.tailMap(thresholdKey, true);
+        System.out.println("Submap with keys greater than or equal to " + thresholdKey + ": " + higherScoresInclusive);
+
+
+        // Example getting a submap within a range:
+        int startKey = 25; // Inclusive
+        int endKey = 75;   // Exclusive
+        NavigableMap<Integer, String> rangeMap = studentScores.subMap(startKey, true, endKey, false);
+        System.out.println("Submap between " + startKey + " (inclusive) and " + endKey + " (exclusive): " + rangeMap);
+
+
+        // Important Considerations:
+        System.out.println("\nImportant Considerations:");
+
+        // 1. Changes to the submap reflect in the original map:
+        higherScores.put(80,"Frank"); // This modifies studentScores as well.
+        System.out.println("Original map after modification through submap: " + studentScores);
+
+
+        // 2. Using headMap for keys less than a given key:
+        NavigableMap<Integer, String> lowerScores = studentScores.headMap(50, false); // Keys strictly less than 50.
+        System.out.println("Submap with keys less than 50: " + lowerScores);
+
+        // 3. NullPointerException if the map is null. Always check for null before using these methods.
+
+
+        // 4. ClassCastException if the specified key cannot be compared with the keys currently in the map.  The map's Comparator must be able to handle the provided key type.
+
+       // 5. IllegalArgumentException if the fromKey is greater than the toKey in subMap (when used with a range).
+
+
+
+
+    }
+}
+```

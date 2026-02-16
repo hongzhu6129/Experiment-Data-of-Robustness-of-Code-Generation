@@ -1,0 +1,59 @@
+import java.util.HashSet;
+import java.util.Set;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+public class LinkedListBeside {
+
+    public static void main(String[] args) {
+        // Example usage:
+        Node head1 = new Node(1);
+        head1.next = new Node(2);
+        head1.next.next = new Node(3);
+        head1.next.next.next = new Node(4); 
+
+        Node head2 = new Node(10); //Beside
+        //Node head2 = new Node(2); //Not Beside
+
+        if (isBeside(head1, head2)) {
+            System.out.println("The linked lists are beside.");
+        } else {
+            System.out.println("The linked lists are NOT beside.");
+        }
+    }
+
+
+    public static boolean isBeside(Node head1, Node head2) {
+        // A linked list is "beside" another if they have no common elements.
+
+        // Use a HashSet to efficiently store elements of the first list.
+        Set<Integer> elements = new HashSet<>();
+
+        Node current = head1;
+        while (current != null) {
+            elements.add(current.data);
+            current = current.next;
+        }
+
+        // Iterate through the second list and check if any element is present in the HashSet.
+        current = head2;
+        while (current != null) {
+            if (elements.contains(current.data)) {
+                return false; // Found a common element, lists are NOT beside.
+            }
+            current = current.next;
+        }
+
+        return true; // No common elements found, lists are beside.
+    }
+
+
+}

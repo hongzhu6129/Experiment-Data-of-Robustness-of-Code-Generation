@@ -1,0 +1,29 @@
+```java
+public class CountVowels {
+
+    public static void main(String[] args) {
+        String inputString = "w3resource";
+        int vowelCount = count_Vowels(inputString);
+        System.out.println("Number of  Vowels in the string: " + vowelCount);
+
+
+        // Additional test cases (optional)
+        System.out.println("Number of Vowels in 'Hello World': " + count_Vowels("Hello World"));
+        System.out.println("Number of Vowels in 'AEIOU': " + count_Vowels("AEIOU")); 
+        System.out.println("Number of Vowels in 'xyz': " + count_Vowels("xyz"));
+    }
+
+    public static int count_Vowels(String str) {
+        int count = 0;
+        str = str.toLowerCase(); // Case-insensitive counting
+
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```

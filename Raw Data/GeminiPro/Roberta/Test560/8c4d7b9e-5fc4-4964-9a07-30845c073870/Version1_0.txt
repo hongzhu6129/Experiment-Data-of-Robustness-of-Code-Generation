@@ -1,0 +1,72 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListSearch {
+
+    public static void main(String[] args) {
+
+        // 1. Creating an ArrayList
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // 2. Searching using contains() method
+        String searchTerm = "Orange";
+        boolean found = fruits.contains(searchTerm);
+
+        if (found) {
+            System.out.println(searchTerm + " is found in the list.");
+        } else {
+            System.out.println(searchTerm + " is not found in the list.");
+        }
+
+        // 3. Searching using indexOf() method  (returns index or -1 if not found)
+        searchTerm = "Grape";
+        int index = fruits.indexOf(searchTerm);
+
+        if (index != -1) {
+            System.out.println(searchTerm + " is found at index " + index);
+        } else {
+            System.out.println(searchTerm + " is not found in the list.");
+        }
+
+
+        // 4. Searching using a loop (for demonstration, contains() and indexOf() are generally preferred)
+        searchTerm = "Mango";
+        boolean foundLoop = false;
+        for (String fruit : fruits) {
+            if (fruit.equals(searchTerm)) {
+                foundLoop = true;
+                break; // Exit loop once found
+            }
+        }
+
+        if (foundLoop) {
+            System.out.println(searchTerm + " is found in the list (using loop).");
+        } else {
+            System.out.println(searchTerm + " is not found in the list (using loop).");
+        }
+
+
+        // 5. Searching for a partial match (using a loop and contains())
+        searchTerm = "an"; // Looking for fruits containing "an"
+        List<String> matchingFruits = new ArrayList<>();
+
+        for (String fruit : fruits) {
+            if (fruit.contains(searchTerm)) {
+                matchingFruits.add(fruit);
+            }
+        }
+
+        if (matchingFruits.size() > 0) {
+            System.out.println("Fruits containing \"" + searchTerm + "\": " + matchingFruits);
+        } else {
+            System.out.println("No fruits found containing \"" + searchTerm + "\".");
+        }
+    }
+}
+```

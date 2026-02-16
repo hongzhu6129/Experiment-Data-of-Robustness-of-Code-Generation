@@ -1,0 +1,64 @@
+```java
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to maintain sorted order
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some data
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+        // Specify the key from which to get the tail map
+        int givenKey = 3;
+
+        // Get the portion of the map whose keys are greater than or equal to givenKey
+        SortedMap<Integer, String> tailMap = map.tailMap(givenKey);
+
+
+        // Print the original map and the tail map
+        System.out.println("Original Map: " + map);
+        System.out.println("Tail Map (keys >= " + givenKey + "): " + tailMap);
+
+
+        // Example with String keys:
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("A", 1);
+        stringMap.put("B", 2);
+        stringMap.put("C", 3);
+        stringMap.put("D", 4);
+
+        String givenStringKey = "B";
+        SortedMap<String, Integer> stringTailMap = stringMap.tailMap(givenStringKey);
+
+        System.out.println("\nString Keyed Map Example:");
+        System.out.println("Original Map: " + stringMap);
+        System.out.println("Tail Map (keys >= " + givenStringKey + "): " + stringTailMap);
+
+
+
+        //Demonstrating Inclusive and Exclusive tailMap (Java 8+)
+        System.out.println("\nInclusive/Exclusive tailMap Example:");
+
+        // inclusive = true (default): keys greater than OR EQUAL TO givenKey are included.
+        SortedMap<Integer, String> inclusiveTailMap = map.tailMap(4); 
+
+        // inclusive = false: keys STRICTLY GREATER THAN givenKey are included.
+        SortedMap<Integer, String> exclusiveTailMap = map.tailMap(4, false);  // Java 8+
+
+
+        System.out.println("Inclusive TailMap (>=4) :" + inclusiveTailMap); // Includes 4, 5, 6
+        System.out.println("Exclusive TailMap (>4) :" + exclusiveTailMap); // Includes 5, 6
+
+
+    }
+}
+```

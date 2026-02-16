@@ -1,0 +1,62 @@
+```java
+public class CaseInsensitiveStringComparison {
+
+    public static void main(String[] args) {
+
+        // Example strings
+        String string1 = "hello";
+        String string2 = "Hello";
+        String string3 = "World";
+
+        // Method 1: Using equalsIgnoreCase()
+        System.out.println("Method 1: Using equalsIgnoreCase()");
+        compareStringsIgnoreCase(string1, string2); // Output: Strings are equal (ignoring case)
+        compareStringsIgnoreCase(string1, string3); // Output: Strings are not equal
+
+
+        // Method 2: Converting to lowercase and then comparing
+        System.out.println("\nMethod 2: Converting to lowercase");
+        compareStringsLowercase(string1, string2); // Output: Strings are equal (ignoring case)
+        compareStringsLowercase(string1, string3); // Output: Strings are not equal
+
+        // Demonstrating null handling:
+        String string4 = null;
+        System.out.println("\nNull Handling Demonstration:");
+        compareStringsIgnoreCase(string1, string4); // Output: Strings are not equal
+        compareStringsLowercase(string1, string4); // Output: Strings are not equal
+
+         // Demonstrating empty string handling:
+        String string5 = "";
+        System.out.println("\nEmpty String Handling Demonstration:");
+        compareStringsIgnoreCase(string1, string5); // Output: Strings are not equal
+        compareStringsLowercase(string1, string5); // Output: Strings are not equal
+        compareStringsIgnoreCase(string5, string5); // Output: Strings are equal (ignoring case)
+        compareStringsLowercase(string5, string5); // Output: Strings are equal (ignoring case)
+    }
+
+
+    public static void compareStringsIgnoreCase(String str1, String str2) {
+        if (str1 == null || str2 == null) {  // Handle nulls explicitly to prevent NullPointerException
+             System.out.println("Strings are not equal");
+             return;
+        }
+        if (str1.equalsIgnoreCase(str2)) {
+            System.out.println("Strings are equal (ignoring case)");
+        } else {
+            System.out.println("Strings are not equal");
+        }
+    }
+
+    public static void compareStringsLowercase(String str1, String str2) {
+        if (str1 == null || str2 == null) { // Handle nulls explicitly
+            System.out.println("Strings are not equal");
+            return;
+        }
+        if (str1.toLowerCase().equals(str2.toLowerCase())) { // Convert both to lowercase before comparing
+            System.out.println("Strings are equal (ignoring case)");
+        } else {
+            System.out.println("Strings are not equal");
+        }
+    }
+}
+```

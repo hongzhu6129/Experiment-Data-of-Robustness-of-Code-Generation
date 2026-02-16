@@ -1,0 +1,23 @@
+```java
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class ThousandSeparator {
+
+    public static void main(String[] args) {
+        int number1 = 1234;
+        int number2 = 1234567;
+        int number3 = 1234567890;
+
+        System.out.println(validate(number1)); // Output: 1,234
+        System.out.println(validate(number2)); // Output: 1,234,567
+        System.out.println(validate(number3)); // Output: 1,234,567,890
+    }
+
+    public static String validate(int number) {
+        // Use NumberFormat to format the number with thousand separators
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US); 
+        return nf.format(number);
+    }
+}
+```

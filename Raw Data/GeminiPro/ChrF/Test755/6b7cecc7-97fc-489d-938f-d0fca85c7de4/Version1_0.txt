@@ -1,0 +1,28 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RemoveNonAlphanumeric {
+
+    public static void main(String[] args) {
+        String str1 = "This#string%contains^special*characters+.";
+        String str2 = "Another123Example456";
+
+        System.out.println("Original string: " + str1);
+        System.out.println("Cleaned string: " + validate(str1));
+
+        System.out.println("Original string: " + str2);
+        System.out.println("Cleaned string: " + validate(str2));
+    }
+
+    public static String validate(String str) {
+        // Regular expression to match only alphanumeric characters
+        String regex = "[^a-zA-Z0-9]"; 
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+
+        return matcher.replaceAll(""); // Replace non-alphanumeric characters with empty string
+    }
+}
+
+```

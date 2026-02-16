@@ -1,0 +1,48 @@
+```java
+public class CheckJavaInstallation {
+
+    public static void main(String[] args) {
+        System.out.println("Java Version: " + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path"));
+
+
+        // A more concise way to check if Java is installed would be to simply
+        // try to execute some Java code.  If the JVM isn't available, the program 
+        // won't run.  The above provides more details if it *is* installed.
+
+        System.out.println("\nIf you see the above output, Java is installed and working.");
+    }
+}
+```
+
+
+**Explanation and How to Use:**
+
+1. **Save:** Save the code as `CheckJavaInstallation.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac CheckJavaInstallation.java 
+   ```
+3. **Run:** If the compilation is successful (no errors), it means Java is installed and the compiler is working.  Then, run the compiled code:
+   ```bash
+   java CheckJavaInstallation
+   ```
+
+4. **Output:** If Java is installed correctly, you'll see output similar to the example you provided, confirming the Java version, runtime, vendor, etc. If Java is not installed or not configured properly, you'll either get an error during compilation or the program won't run at all.
+
+
+**Key improvements in this version:**
+
+* **Clearer Output:**  The output is now labeled, making it easier to understand which information corresponds to each property.
+* **Concise Check:** The code highlights that simply running the program is a good test of whether Java is installed.  The property details provide further information if you want to know specifics.
+* **No External Libraries:** This code relies only on the core Java libraries (specifically `System.getProperty()`), which are always available if Java is installed. This makes the code very portable and easy to run on any system with Java.
+* **Error Handling (Implicit):** The program won't run if Java isn't installed. The operating system will handle the "error" of not being able to find the `java` command (or equivalent). This avoids the need for explicit `try-catch` blocks in this simple case.
+
+
+
+This enhanced version provides a robust and user-friendly way to verify a Java installation directly from the command line.  The simple fact of the code compiling and running is, itself, strong confirmation.  The additional details help for learning about the Java environment or troubleshooting.
+

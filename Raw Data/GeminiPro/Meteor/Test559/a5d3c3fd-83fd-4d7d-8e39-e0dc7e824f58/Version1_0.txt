@@ -1,0 +1,32 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class RemoveThirdElement {
+
+    public static void main(String[] args) {
+        // Create a sample sophisticated list (using ArrayList for demonstration)
+        List<String> sophisticatedList = new ArrayList<>();
+        sophisticatedList.add("Shakespeare");
+        sophisticatedList.add("Mozart");
+        sophisticatedList.add("Einstein"); // The element to be removed
+        sophisticatedList.add("Da Vinci");
+        sophisticatedList.add("Marie Curie");
+
+
+        // Check if the list has at least 3 elements to avoid IndexOutOfBoundsException
+        if (sophisticatedList.size() >= 3) {
+            // Remove the third element (index 2)
+            sophisticatedList.remove(2); 
+
+            // Print the modified list
+            System.out.println("Sophisticated list after removing the third element:");
+            for (String item : sophisticatedList) {
+                System.out.println(item);
+            }
+        } else {
+            System.out.println("The list does not have a third element to remove.");
+        }
+    }
+}
+```

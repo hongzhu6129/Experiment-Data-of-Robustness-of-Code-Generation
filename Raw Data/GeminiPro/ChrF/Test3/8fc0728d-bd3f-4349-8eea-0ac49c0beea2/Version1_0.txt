@@ -1,0 +1,128 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication Table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     7 x 4 = 28
+     7 x 5 = 35
+     7 x 6 = 42
+     7 x 7 = 49
+     7 x 8 = 56
+     7 x 9 = 63
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication Table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Number:**
+   - Input: `12345` (or any large number within the `int` range)
+   - Expected Output: The multiplication table should be correctly calculated and displayed. This tests for potential integer overflow issues (although unlikely with multiplication up to 10).
+
+5. **Small Number (Close to Zero):**
+    - Input: `1` (or `-1`)
+    - Expected Output:  Verify the table is generated correctly for these small values. This is useful because sometimes there can be off-by-one errors in loop conditions, especially near boundary values.
+
+
+**How to Run and Test:**
+
+1. **Save:** Save the code as `MultiplicationTable.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac MultiplicationTable.java`
+3. **Run:** Execute the compiled code using: `java MultiplicationTable`
+4. **Input:** Enter the desired input number when prompted.
+
+You can automate these tests by creating a separate testing class using JUnit or TestNG. This will make the testing process more robust and repeatable, especially as your code grows.
+
+
+
+```java
+// Example using JUnit (you'll need to add the JUnit library to your project)
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testTable(7, "7 x 1 = 7\n7 x 2 = 14\n... (up to 7 x 10 = 70)"); // ... represents the rest of the table
+    }
+
+    @Test
+    void testZero() {
+       testTable(0, "0 x 1 = 0\n0 x 2 = 0\n... (up to 0 x 10 = 0)");
+    }
+
+
+    // Add tests for negative, large, and small numbers similarly
+
+
+    private void testTable(int input, String expectedOutputSnippet) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        MultiplicationTable.printMultiplicationTable(input);
+
+        String actualOutput = outputStream.toString();
+        assertTrue(actualOutput.contains(expectedOutputSnippet)); // Use contains to partially check output
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+This enhanced version provides better, more automated testing using JUnit.  It redirects standard output to capture the printed table and then checks if the captured output contains the expected values.  This is how you can add more comprehensive and automated testing to your projects.

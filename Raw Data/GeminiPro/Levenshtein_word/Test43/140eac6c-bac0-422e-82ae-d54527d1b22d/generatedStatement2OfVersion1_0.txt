@@ -1,0 +1,48 @@
+
+
+**Test Cases:**
+
+1. **Standard Case:**
+   - Start: 1
+   - End: 100
+   - Expected Output:  Correctly prints numbers divisible by 3, 5, and both within the range. (e.g., Divisible by both: 15 30 45 60 75 90)
+
+2. **Empty Range:**
+   - Start: 10
+   - End: 5
+   - Expected Output: "Invalid range: Start must be less than or equal to end."
+
+3. **Single Number Range:**
+   - Start: 15
+   - End: 15
+   - Expected Output: If 15 is divisible by 3, 5, or both, it should be printed in the respective sections.
+
+4. **Negative Numbers:**
+   - Start: -50
+   - End: 20
+   - Expected Output: Correctly handles negative numbers and prints the divisible numbers within the range.
+
+5. **Zero in Range:**
+   - Start: -5
+   - End: 5
+   - Expected Output:  0 should be printed in all three sections (divisible by 3, 5, and both).
+
+
+6. **Large Range:**
+   - Start: 1
+   - End: 1000
+   - Expected Output:  Handles a larger range efficiently and correctly.
+
+7. **Boundary Cases:**
+   - Start: 3
+   - End: 100 // Starts at a multiple of 3
+   - Start: 1
+   - End: 99  // Ends at a multiple of 3 (and a multiple of other divisors)
+   - Start: 5
+   - End: 100 // Starts at a multiple of 5
+   - Start: 1
+   - End: 100 // Ends at a multiple of 5 (and possibly of both 3 and 5) 
+   - These test what happens when the start or end of the range fall exactly on a number divisible by 3, 5 or both.
+
+
+These test cases cover various scenarios, including corner cases and edge cases, to ensure the program functions correctly under different conditions.  You can automate these tests with a testing framework like JUnit for more robust testing.

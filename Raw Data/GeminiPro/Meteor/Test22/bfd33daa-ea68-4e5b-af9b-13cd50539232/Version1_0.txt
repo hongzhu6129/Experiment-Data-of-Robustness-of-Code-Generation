@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class OctalToHex {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = scanner.nextLine();
+
+
+        try {
+            int decimal = 0;
+            int power = 0;
+            for (int i = octalString.length() - 1; i >= 0; i--) {
+                char digitChar = octalString.charAt(i);
+                if (!Character.isDigit(digitChar) || (digitChar - '0' >= 8) ) {
+                    throw new NumberFormatException("Invalid octal digit: " + digitChar);
+                }
+                int digit = digitChar - '0'; 
+                decimal += digit * Math.pow(8, power);
+                power++;
+
+            }
+
+            String hexString = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit;
+
+                if (remainder < 10) {
+                    hexDigit = (char) (remainder + '0');
+                } else {
+                    hexDigit = (char) (remainder - 10 + 'A');
+                }
+
+
+                hexString = hexDigit + hexString; //prepend as we are converting from right to left
+                decimal /= 16;
+            }
+
+
+            if(hexString.equals("")) {  //Handle the case where the input is 0.
+                System.out.println("Hexadecimal equivalent: 0");
+            } else {
+                System.out.println("Hexadecimal equivalent: " + hexString);
+
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Invalid octal number. " + e.getMessage());
+
+        }
+        scanner.close();
+
+    }
+}
+```
+
+
+**Test Cases (including corner cases):**
+
+1. **Valid Octal Numbers:**
+   - Input: 123  Output: 53
+   - Input: 777  Output: 1FF
+   - Input: 10    Output: 8
+   - Input: 0     Output: 0  (Corner Case: Zero input)
+   - Input: 42    Output: 22
+   - Input: 700  Output: 1C0
+   - Input: 17777 Output: 3FFF (Largest 4-digit octal)
+
+
+2. **Invalid Octal Numbers:**
+   - Input: 800 (Contains digit '8')  Expected Output: Error message.
+   - Input: 91   (Contains digit '9')  Expected Output: Error message.
+   - Input: 12a (Contains non-digit 'a') Expected Output: Error message.
+   - Input: -12 (Negative sign not allowed) Expected Output: Error message (though technically caught by the isDigit check).
+   - Input: ""    (Empty string)       Expected Output: Error message (though technically caught by the loop condition preventing any calculation, resulting in "0").
+
+
+3. **Large Octal Numbers:**
+   - Input: 17777777777  Output: FFFFFFFF (Largest possible octal within int's limit converted to max hex value that fits within int)
+
+
+These test cases cover various scenarios, including valid conversions, common errors like invalid digits, the corner case of zero, and handling of a large input to test for potential overflow issues (though with `int`, very large octals will lose precision when converted to decimal).  Testing the error handling is particularly crucial to ensure the program handles invalid inputs gracefully.

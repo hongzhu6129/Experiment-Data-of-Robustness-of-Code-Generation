@@ -1,0 +1,33 @@
+```java
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        System.out.println("Least key greater than or equal to 4: " + treeMap.ceilingKey(4)); // Output: 5
+        System.out.println("Least key greater than or equal to 1: " + treeMap.ceilingKey(1)); // Output: 1
+        System.out.println("Least key greater than or equal to 10: " + treeMap.ceilingKey(10)); // Output: null
+
+
+
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        System.out.println("Least key greater than or equal to 'banana': " + stringTreeMap.ceilingKey("banana")); // Output: banana
+        System.out.println("Least key greater than or equal to 'apricot': " + stringTreeMap.ceilingKey("apricot"));  // Output: apple (lexicographically greater)
+        System.out.println("Least key greater than or equal to 'zucchini': " + stringTreeMap.ceilingKey("zucchini")); // Output: null
+    }
+}
+```

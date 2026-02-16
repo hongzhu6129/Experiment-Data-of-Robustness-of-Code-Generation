@@ -1,0 +1,41 @@
+```java
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class LinkedListToArray {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("apple");
+        linkedList.add("banana");
+        linkedList.add("cherry");
+        linkedList.add("date");
+
+        // Convert LinkedList to ArrayList using the constructor
+        ArrayList<String> arrayList = new ArrayList<>(linkedList);
+
+
+        // Print the ArrayList (just to verify the conversion)
+        System.out.println("ArrayList: " + arrayList);
+
+        // Example using integers
+        LinkedList<Integer> intLinkedList = new LinkedList<>();
+        intLinkedList.add(1);
+        intLinkedList.add(2);
+        intLinkedList.add(3);
+
+        ArrayList<Integer> intArrayList = new ArrayList<>(intLinkedList);
+        System.out.println("Integer ArrayList: " + intArrayList);
+
+
+        // Example showing manual conversion (less efficient, but demonstrates the principle)
+        ArrayList<String> manualArrayList = new ArrayList<>();
+        for (String item : linkedList) {  // Iterate through the LinkedList
+            manualArrayList.add(item);      // Add each item to the ArrayList
+        }
+
+        System.out.println("Manually Converted ArrayList: " + manualArrayList); 
+    }
+}
+```

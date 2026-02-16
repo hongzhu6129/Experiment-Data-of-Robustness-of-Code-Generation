@@ -1,0 +1,89 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing within main method)
+        int number = 8; 
+
+        // Check if the number is a cube
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        // Test with other inputs (within main method)
+        number = 27;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        number = 10;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+         number = 0; // Test edge case
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        number = -8; // Test negative number
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+    }
+
+
+    // Helper function to check if a number is a perfect cube
+    private static boolean isCube(int n) {
+        // Handle negative numbers (cube root of a negative number is negative)
+        int absN = Math.abs(n);
+
+        // Binary search for the cube root.  More efficient for large numbers.
+        int low = 0;
+        int high = (int) Math.cbrt(Integer.MAX_VALUE); // Efficiently handle large numbers
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2; // Avoid overflow
+            int cube = mid * mid * mid;
+
+            if (cube == absN) {
+               return n >=0 ? true: (n == -cube) ; //Check sign for negative numbers
+            } else if (cube < absN) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return false; // No cube root found
+    }
+}
+```
+
+
+Key Improvements in this version:
+
+* **Handles Negative Numbers:** Correctly checks for cube roots of negative numbers.
+* **More Efficient Cube Root Calculation:** Uses binary search (much faster for large numbers) instead of a simple loop.  Crucial for performance if large inputs are possible.
+* **Edge Case Handling:** Includes test cases for 0 and negative inputs.
+* **Clearer Main Method:**  Demonstrates how to call the `isCube()` method and interpret the result with several example inputs.
+* **Helper Function:** Encapsulates the cube checking logic in a separate `isCube()` method for better code organization and reusability.
+* **Handles Potential Overflow:**  Uses `low + (high - low) / 2` to calculate the midpoint in binary search, avoiding potential integer overflow issues.
+
+
+
+This improved version addresses efficiency, correctness for negative numbers, and better code structure.

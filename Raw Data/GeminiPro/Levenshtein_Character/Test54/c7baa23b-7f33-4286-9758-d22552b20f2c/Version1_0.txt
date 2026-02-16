@@ -1,0 +1,88 @@
+```java
+import java.util.Scanner;
+
+public class LargestOfTwo {
+
+    public static int findLargest(int num1, int num2) {
+        return Math.max(num1, num2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        int largest = findLargest(num1, num2);
+        System.out.println("The largest number is: " + largest);
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output |
+|---|---|---|---|
+| Positive Numbers | 10 | 5 | 10 |
+| Negative Numbers | -5 | -10 | -5 |
+| Zero and Positive | 0 | 5 | 5 |
+| Zero and Negative | 0 | -5 | 0 |
+| Both Zero | 0 | 0 | 0 |
+| Equal Positive Numbers | 10 | 10 | 10 |
+| Equal Negative Numbers | -5 | -5 | -5 |
+| Positive and Negative | 10 | -5 | 10 |
+| Negative and Positive | -5 | 10 | 10 |
+| Large Positive Numbers | 2147483647 | 2147483646 | 2147483647 |  // Integer.MAX_VALUE and near max
+| Large Negative Numbers | -2147483648 | -2147483647 | -2147483647 | // Integer.MIN_VALUE and near min
+
+
+**How to Run the Test Cases:**
+
+While you could manually enter these values into the program, a more efficient and robust way to test is to use a testing framework like JUnit.  Here's a basic example of how you would write a JUnit test for this program:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LargestOfTwoTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(10, LargestOfTwo.findLargest(10, 5));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-5, LargestOfTwo.findLargest(-5, -10));
+    }
+
+    // ... (Add more test cases from the table above) ...
+
+    @Test
+    void testLargePositiveNumbers() {
+        assertEquals(2147483647, LargestOfTwo.findLargest(2147483647, 2147483646));
+    }
+
+    @Test
+    void testLargeNegativeNumbers() {
+        assertEquals(-2147483647, LargestOfTwo.findLargest(-2147483648, -2147483647));
+    }
+}
+
+```
+
+By using JUnit (or a similar framework), you can automate your testing process, which is crucial for ensuring code quality as your programs become more complex.  You can run these tests directly within your IDE (like IntelliJ or Eclipse).
+
+
+Key improvements in this revised answer:
+
+* **Clearer Test Cases:** The table format makes the test cases much easier to understand and execute.
+* **Corner Cases Included:** The test cases explicitly cover boundary conditions like `Integer.MAX_VALUE` and `Integer.MIN_VALUE`.
+* **JUnit Example:**  Provides a practical demonstration of how to use a testing framework, which is essential for proper software development.  This promotes best practices and makes testing more systematic.

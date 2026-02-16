@@ -1,0 +1,96 @@
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class CheckJavaInstallation {
+
+    public static boolean isJavaInstalled() {
+        try {
+            Process process = Runtime.getRuntime().exec("java -version");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream())); // Read from error stream
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("java version") || line.startsWith("openjdk version")) {
+                    return true; // Found java or openjdk
+                }
+            }
+            return false; // java -version didn't output expected string
+        } catch (IOException e) {
+            return false; // Error executing command, likely not installed
+        }
+    }
+
+    public static void main(String[] args) {
+        if (isJavaInstalled()) {
+            System.out.println("Java is installed.");
+        } else {
+            System.out.println("Java is not installed.");
+        }
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+**1. Positive Case:**
+
+* **Expected Output:** "Java is installed."
+* **How to Simulate:**  Run the code on a system with a standard Java installation (JDK or OpenJDK). Ensure "java" is in the system's PATH environment variable.
+
+**2. Negative Case (Java Not Installed):**
+
+* **Expected Output:** "Java is not installed."
+* **How to Simulate:**
+    * Uninstall Java completely from your system.
+    * OR temporarily remove "java" from the PATH environment variable. (Be sure to restore it later!)
+
+**3. Corner Case 1 (Java Executable Renamed):**
+
+* **Expected Output:** "Java is not installed."
+* **How to Simulate:**  If possible (and ONLY in a test environment, never on a production system!), rename the "java" executable in your Java installation directory to something else (e.g., "java_renamed").  This simulates a scenario where Java is present but not accessible via the standard command.
+
+**4. Corner Case 2 (Permissions Issue):**
+
+* **Expected Output:** "Java is not installed." (Most likely, though it might vary depending on the OS)
+* **How to Simulate:** (Advanced and OS-dependent.  Proceed with caution in a test environment only). Modify file permissions on the "java" executable so that the current user does not have execute permissions.
+
+**5. Corner Case 3 (Corrupted Java Installation):**
+
+* **Expected Output:**  This is the trickiest to reliably test.  The output depends on how Java is corrupted. It could print "Java is not installed,"  throw an error, or even print a truncated version string.
+* **How to Simulate:**  (Advanced, for experienced users only, and only in a disposable test environment)
+    * Attempt to delete or modify crucial files within the Java installation directory. Be EXTREMELY careful doing this, as you could damage your system.  It's generally better to rely on the other test cases.
+
+
+**Improved Test Coverage (Using a Testing Framework - JUnit):**
+
+While the above provides a good starting point, using a testing framework like JUnit allows for more robust and automated tests:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+// ... (CheckJavaInstallation class code from above) ...
+
+public class CheckJavaInstallationTest {
+
+    @Test
+    void testJavaInstalled() {
+        // Assuming Java is correctly installed for the build and test environment.
+        assertTrue(CheckJavaInstallation.isJavaInstalled()); 
+    }
+
+    // Negative and corner cases are harder to simulate reliably with JUnit
+    // unless you have sophisticated control over the test environment (e.g., VMs, Docker).
+    // You can use assumptions to skip tests if certain conditions aren't met.
+    // For example, check for the existence of a special environment variable to indicate 
+    // a test environment with a modified or removed Java installation.
+
+
+}
+
+```
+
+With JUnit, you can integrate these tests into your build process for automatic execution.  This helps ensure code quality as you make changes to your Java project.

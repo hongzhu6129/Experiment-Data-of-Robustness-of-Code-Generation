@@ -1,0 +1,29 @@
+```java
+public class SystemInfo {
+
+    public static void main(String[] args) {
+
+        // Get and print system environment variables
+        System.out.println("System Environment:");
+        java.util.Map<String, String> env = System.getenv();
+        for (String envName : env.keySet()) {
+            System.out.format("%s=%s%n", envName, env.get(envName));
+        }
+
+        // Get and print system properties
+        System.out.println("\nSystem Properties:");
+        java.util.Properties props = System.getProperties();
+        props.list(System.out);
+
+
+        // Check and print if a security manager is present
+        System.out.println("\nSecurity Manager Check:");
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+    }
+}
+```

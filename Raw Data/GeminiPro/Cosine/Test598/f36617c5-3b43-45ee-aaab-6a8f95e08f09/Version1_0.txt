@@ -1,0 +1,40 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+
+public class LinkedListToArray {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> namesLinkedList = new LinkedList<>();
+        namesLinkedList.add("Alice");
+        namesLinkedList.add("Bob");
+        namesLinkedList.add("Charlie");
+        namesLinkedList.add("David");
+
+        // Method 1: Using toArray() with a pre-allocated array
+        String[] namesArray1 = new String[namesLinkedList.size()];
+        namesLinkedList.toArray(namesArray1);
+        System.out.println("Array 1 (pre-allocated): " + Arrays.toString(namesArray1));
+
+        // Method 2: Using toArray() without a pre-allocated array
+        String[] namesArray2 = namesLinkedList.toArray(new String[0]); // Or new String[namesLinkedList.size()] 
+        System.out.println("Array 2 (no pre-allocation): " + Arrays.toString(namesArray2));
+
+        // Method 3: Iterating through the LinkedList (less efficient, but demonstrates the concept)
+        String[] namesArray3 = new String[namesLinkedList.size()];
+        for (int i = 0; i < namesLinkedList.size(); i++) {
+            namesArray3[i] = namesLinkedList.get(i);
+        }
+        System.out.println("Array 3 (iterative): " + Arrays.toString(namesArray3));
+
+
+        // Method 4: Using ArrayList as an intermediary (if you need an ArrayList later)
+        ArrayList<String> namesArrayList = new ArrayList<>(namesLinkedList); // Directly convert to ArrayList
+        String[] namesArray4 = namesArrayList.toArray(new String[0]);  // Then convert ArrayList to array
+        System.out.println("Array 4 (via ArrayList): " + Arrays.toString(namesArray4));
+
+    }
+}
+```

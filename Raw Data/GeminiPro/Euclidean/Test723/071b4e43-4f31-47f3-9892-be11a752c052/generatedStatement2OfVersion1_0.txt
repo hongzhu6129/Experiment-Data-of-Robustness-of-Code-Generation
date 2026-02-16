@@ -1,0 +1,12 @@
+
+
+
+Key improvements and explanations:
+
+* **Cloning in `permute()`:** The `arr.clone()` method is crucial within the `permute` function. Without it, you are adding a reference to the same `arr` object to the `permutations` list multiple times. Since the `permute` function modifies the original array in place, all the references in the list would end up pointing to the same final (and probably unsorted) permutation. Cloning creates a copy of the array at each permutation, ensuring that each saved permutation is unique.
+* **Backtracking in `permute()`:**  The second swap call in the `permute` method (after the recursive call) is essential for backtracking. It reverts the array to its state before the recursive call, allowing you to explore other permutations.
+* **Return type of `pSort()`:** The `pSort()` method now correctly returns an `int[]` representing the sorted array.
+* **Clarity and Style:**  Improved variable naming and added comments to explain key parts of the algorithm.
+
+
+This revised version addresses the core issues with the original implementation and provides a functional permutation sort, although it's important to remember that permutation sort is extremely inefficient for anything but very small arrays.  Its time complexity is O(n * n!), which is factorial, making it practically unusable for larger datasets.  It's primarily used for educational or illustrative purposes.

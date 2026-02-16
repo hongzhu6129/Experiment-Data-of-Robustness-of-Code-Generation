@@ -1,0 +1,30 @@
+```java
+import java.util.Calendar;
+
+public class MaxDateParts {
+
+    public static void main(String[] args) {
+        Calendar calendar = Calendar.getInstance();
+
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1; // Month is 0-indexed
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        System.out.println("Current Date Parts:");
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + month);
+        System.out.println("Week of Year: " + weekOfYear);
+        System.out.println("Day of Month: " + dayOfMonth);
+
+        int maxValue = Math.max(year, Math.max(month, Math.max(weekOfYear, dayOfMonth)));
+
+
+        System.out.println("\nMaximum Value:");
+        System.out.println(maxValue);
+
+
+    }
+}
+```

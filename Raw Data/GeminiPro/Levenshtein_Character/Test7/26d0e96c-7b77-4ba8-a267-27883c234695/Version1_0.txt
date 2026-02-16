@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** num1 = 10, num2 = 20, num3 = 30
+   **Expected Output:** 20.0
+
+2. **Input:** num1 = 5.5, num2 = 10.5, num3 = 15.0
+   **Expected Output:** 10.333333333333334
+
+3. **Input:** num1 = -5, num2 = 0, num3 = 5
+   **Expected Output:** 0.0
+
+**Corner Cases:**
+
+4. **Input:** num1 = 0, num2 = 0, num3 = 0
+   **Expected Output:** 0.0  (Testing all zeros)
+
+5. **Input:** num1 = Integer.MAX_VALUE, num2 = Integer.MAX_VALUE, num3 = Integer.MAX_VALUE // Or use Double.MAX_VALUE
+   **Expected Output:**  Infinity (or a very large number close to infinity) (Testing overflow)
+
+
+6. **Input:** num1 = Integer.MIN_VALUE, num2 = Integer.MIN_VALUE, num3 = Integer.MIN_VALUE // Or use Double.MIN_VALUE (Not really a practical corner case, but good for completeness).
+   **Expected Output:**  -Infinity (or a very large negative number) (Testing underflow)
+
+
+7. **Input:** num1 = Double.NaN, num2 = 10, num3 = 20  //Testing NaN input
+   **Expected Output:** NaN
+
+
+**How to run the test cases (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    public void testNormalCase1() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    public void testNormalCase2() {
+        assertEquals(10.333333333333334, AverageCalculator.calculateAverage(5.5, 10.5, 15.0));
+    }
+
+    // ... Add tests for other cases similarly
+    @Test
+    public void testOverflow() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+
+    }
+
+    @Test
+    public void testNaNInput(){
+        assertEquals(Double.NaN, AverageCalculator.calculateAverage(Double.NaN, 10, 20));
+    }
+
+}
+
+```
+
+Remember to add the JUnit library to your project to run these tests.  The `assertEquals` method checks if the calculated average is equal to the expected average.  For the infinity/NaN cases, you use  `Double.POSITIVE_INFINITY` and `Double.NaN` respectively in your assertions.

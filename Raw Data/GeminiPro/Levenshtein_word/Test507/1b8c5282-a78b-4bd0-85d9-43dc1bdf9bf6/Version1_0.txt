@@ -1,0 +1,58 @@
+```java
+public class UglyNumberChecker {
+
+    public static void main(String[] args) {
+        int num = 235; // You can change this to test different numbers
+        boolean isUgly = isUgly(num);
+
+        if (isUgly) {
+            System.out.println(num + ": it is an ugly number.");
+        } else {
+            System.out.println(num + ": it is not an ugly number.");
+        }
+
+
+        // Test cases (optional):  Uncomment to test more numbers automatically
+        // testUglyNumber(1);
+        // testUglyNumber(2);
+        // testUglyNumber(3);
+        // testUglyNumber(4);
+        // testUglyNumber(5);
+        // testUglyNumber(6);
+        // testUglyNumber(8);
+        // testUglyNumber(9);
+        // testUglyNumber(10);
+        // testUglyNumber(12);
+        // testUglyNumber(14); // Not ugly
+    }
+
+
+    public static boolean isUgly(int num) {
+        if (num <= 0) {
+            return false;
+        }
+
+        while (num % 2 == 0) {
+            num /= 2;
+        }
+        while (num % 3 == 0) {
+            num /= 3;
+        }
+        while (num % 5 == 0) {
+            num /= 5;
+        }
+
+        return num == 1;
+    }
+
+
+    // Optional helper function for testing multiple cases:
+    public static void testUglyNumber(int num) {
+        if (isUgly(num)) {
+            System.out.println(num + ": it is an ugly number.");
+        } else {
+            System.out.println(num + ": it is not an ugly number.");
+        }
+    }
+}
+```

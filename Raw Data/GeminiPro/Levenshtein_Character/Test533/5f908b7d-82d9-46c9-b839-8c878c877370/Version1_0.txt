@@ -1,0 +1,74 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class CosinesAndHamming {
+
+    public static void main(String[] args) {
+
+        // Part 1: First twenty cosine numbers
+        System.out.println("First twenty cosine numbers:");
+        for (int i = 0; i < 20; i++) {
+            double cosine = Math.cos(i); // Calculate cosine for each number
+            System.out.println("cos(" + i + ") = " + cosine);
+        }
+        System.out.println();
+
+
+        // Part 2: First twenty Hamming numbers (optimized)
+        System.out.println("First twenty Hamming numbers:");
+        List<Long> hammingNumbers = new ArrayList<>();
+        hammingNumbers.add(1L);  // Start with 1
+
+        long next2 = 2;
+        long next3 = 3;
+        long next5 = 5;
+
+        int i2 = 0;
+        int i3 = 0;
+        int i5 = 0;
+
+        for (int i = 1; i < 20; i++) {
+            long nextHamming = Math.min(next2, Math.min(next3, next5));
+            hammingNumbers.add(nextHamming);
+
+
+            if (nextHamming == next2) {
+                next2 = 2 * hammingNumbers.get(++i2);
+            }
+            if (nextHamming == next3) {
+                next3 = 3 * hammingNumbers.get(++i3);
+            }
+            if (nextHamming == next5) {
+                next5 = 5 * hammingNumbers.get(++i5);
+            }
+
+        }
+
+        for (Long num : hammingNumbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println(); 
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clarity and Separation:** The code is now clearly divided into two sections: one for cosine calculation and one for Hamming numbers. This improves readability and organization.
+
+2. **Efficient Hamming Number Generation:**  The original approach of checking every number was very inefficient. This updated code uses a more efficient algorithm:
+   - It maintains three pointers (`i2`, `i3`, `i5`) to keep track of the next multiples of 2, 3, and 5 respectively.
+   - The next Hamming number is the minimum of these three multiples.
+   - The corresponding pointer is incremented, and the next multiple is calculated.
+   - This method avoids redundant calculations and generates Hamming numbers in ascending order much faster, especially for larger sets.
+
+
+3. **Long Data Type:**  Hamming numbers can grow large quickly. Using `long` instead of `int` prevents overflow issues, ensuring correctness for a larger range of Hamming numbers.
+
+4. **ArrayList for Hamming Numbers:** Using an `ArrayList` to store the Hamming numbers is more flexible than a fixed-size array, especially if you later decide to generate a different number of Hamming numbers.
+
+
+This revised version is much more efficient and robust for generating Hamming numbers and presents the results clearly alongside the cosine calculations.

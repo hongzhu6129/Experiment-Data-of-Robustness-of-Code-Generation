@@ -1,0 +1,31 @@
+import java.io.File;
+
+public class ListFilesInDirectory {
+
+    public static void main(String[] args) {
+        // Specify the directory path. 
+        //  For the current directory use "."  or provide a full path like "C:\\MyDirectory"
+        String directoryPath = "."; 
+
+        if (args.length > 0) { // Allow the directory path to be passed as a command-line argument
+            directoryPath = args[0];
+        }
+
+        File directory = new File(directoryPath);
+
+        if (directory.exists() && directory.isDirectory()) {
+            String[] filesAndDirectories = directory.list(); // Get the list of names
+
+            if (filesAndDirectories != null) {  // Check for null in case of an error
+                System.out.println("Files and directories in " + directoryPath + ":");
+                for (String name : filesAndDirectories) {
+                    System.out.println(name);
+                }
+            } else {
+                System.err.println("Error reading directory contents."); // Handle potential read errors.
+            }
+        } else {
+            System.err.println("Directory does not exist or is not a directory: " + directoryPath);
+        }
+    }
+}

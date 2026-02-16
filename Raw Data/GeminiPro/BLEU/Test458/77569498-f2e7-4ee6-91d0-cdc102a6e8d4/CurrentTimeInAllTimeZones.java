@@ -1,0 +1,17 @@
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class CurrentTimeInAllTimeZones {
+
+    public static void main(String[] args) {
+        // Get all available time zone IDs
+        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+
+        // Print the current time for each time zone
+        for (String zoneId : zoneIds) {
+            ZonedDateTime currentTime = ZonedDateTime.now(ZoneId.of(zoneId));
+            System.out.println("Time in " + zoneId + ": " + currentTime);
+        }
+    }
+}

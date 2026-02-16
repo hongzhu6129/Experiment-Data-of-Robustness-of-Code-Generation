@@ -1,0 +1,40 @@
+```java
+public class StringManipulation {
+
+    public String exceptFirstTwo(String str) {
+        if (str == null || str.length() < 2) {
+            return str;
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        if (str.charAt(0) == 'g') {
+            result.append('g');
+        }
+
+        if (str.length() > 1 && str.charAt(1) == 'h') {
+            result.append('h');
+        }
+
+        if (str.length() > 2) {
+            result.append(str.substring(2));
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        StringManipulation sm = new StringManipulation();
+
+        System.out.println(sm.exceptFirstTwo("Hello"));  // Output: llo
+        System.out.println(sm.exceptFirstTwo("gHello")); // Output: gllo
+        System.out.println(sm.exceptFirstTwo("hgllo")); // Output: hllo
+        System.out.println(sm.exceptFirstTwo("ghllo")); // Output: ghllo
+        System.out.println(sm.exceptFirstTwo("He"));    // Output: 
+        System.out.println(sm.exceptFirstTwo("H"));     // Output: 
+        System.out.println(sm.exceptFirstTwo(""));      // Output: 
+        System.out.println(sm.exceptFirstTwo(null));    // Output: null
+
+    }
+}
+```

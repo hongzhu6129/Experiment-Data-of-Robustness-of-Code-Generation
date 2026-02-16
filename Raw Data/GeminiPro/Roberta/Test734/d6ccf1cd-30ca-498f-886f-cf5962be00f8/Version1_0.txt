@@ -1,0 +1,71 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+        int target = 21;
+
+
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Element found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Element not found
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search Algorithm:** The `Saddleback` (or Saddleback Search) method efficiently searches a sorted 2D array.  It starts from the top-right corner.
+   - If the current element is equal to the target, the search is successful.
+   - If the current element is smaller than the target, move down to the next row (because elements increase as you move down).
+   - If the current element is larger than the target, move left to the previous column (because elements decrease as you move left).
+
+2. **Return an `int[]`:** The `Saddleback` method now returns an `int[]` of size 2.  The array contains the row and column indices of the target if found. If the target is not found, it returns `{-1, -1}`.  This is a standard way to indicate that the element is not present.
+
+3. **Clearer Main Method:** The `main` method is more concise and demonstrates how to use the `Saddleback` method and interpret its results.
+
+4. **Error Handling:**  The `main` method now checks the result from `Saddleback` and prints an appropriate message whether the element is found or not.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SaddlebackSearch.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:
+   ```bash
+   javac SaddlebackSearch.java
+   ```
+3. **Run:** After successful compilation, run the code:
+   ```bash
+   java SaddlebackSearch 
+   ```

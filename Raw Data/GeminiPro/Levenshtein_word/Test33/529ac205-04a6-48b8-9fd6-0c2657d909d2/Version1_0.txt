@@ -1,0 +1,57 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>(); // Use a Set to ensure uniqueness
+
+        int count = 0;
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    // Ensure digits are unique within the number
+                    if (i != j && i != k && j != k) {
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                        count++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + count);
+        System.out.println("Total count of unique three-digit numbers (using set size): " + uniqueNumbers.size()); // Verification using set size
+
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+1. **Basic Case:** Verify that the program generates unique three-digit numbers using the given digits (1, 2, 3, 4) and counts them correctly.
+
+2. **Duplicate Digits Input:**  Modify the `digits` array to include duplicate numbers (e.g., {1, 2, 2, 4}).  Verify that the program still generates only unique three-digit numbers and the count is correct. The count should be less than the case with all unique input digits. For example, with {1,2,2,4}, the count should be 18.
+
+3. **Fewer Digits:** Modify the `digits` array to have fewer than 4 unique digits (e.g., {1, 2, 3}). The program should still work correctly, generating all permutations of the given digits and providing the correct count. In this case, the count would be 6.
+
+4. **Empty Digits Array:** (Corner case) Modify the digits array to be empty `int[] digits = {};`.  The program should not crash and should output a count of 0.
+
+5. **Single Digit Array:** (Corner case) Modify the digits array to have a single digit  `int[] digits = {1};`. The program should output a count of 0 as a three-digit number cannot be formed.
+
+6. **Array with Repeated Identical Digits:** (Corner case)  `int[] digits = {2, 2, 2, 2};`.  The program should produce a count of 0 as no unique three-digit numbers can be formed.
+
+7. **Large Input Set (for performance, not strictly a corner case):** (Optional) If you want to test performance, you could create a larger array of unique digits and measure the execution time. This helps you assess the efficiency of the algorithm as the number of input digits grows. For instance, test with digits from 0 to 9.
+
+
+By running these test cases, you can verify the correctness and robustness of the `UniqueThreeDigitNumbers` program. Remember to compare the program's output (both the list of unique numbers and the count) with the expected results for each test case.  The use of the `HashSet` ensures that even if there are duplicate digits in the input, only unique three-digit numbers are displayed and counted.

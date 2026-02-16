@@ -1,0 +1,39 @@
+```java
+public class CheckJavaInstallation {
+
+    public static void main(String[] args) {
+        System.out.println("Java Version: " + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path"));
+
+
+        // More robust check (checks for javac):
+        try {
+            Process p = Runtime.getRuntime().exec("javac -version");
+            int exitCode = p.waitFor();
+            if (exitCode == 0) {
+                System.out.println("Java Development Kit (JDK) is installed.");
+            } else {
+                System.err.println("Java Development Kit (JDK) might not be installed properly.  Javac returned exit code: " + exitCode);
+            }
+        } catch (Exception e) {
+            System.err.println("Error checking for JDK: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+This code fulfills the prompt's requirements in the following ways:
+
+1. **Uses only `public static void main(String[] args)`:** The entire logic is contained within the main method.
+
+2. **Prints Java environment information:** It retrieves and prints the Java version, runtime version, home directory, vendor, vendor URL, and classpath, mirroring the output in the problem description.
+
+3. **Checks for Java installation:** Beyond just printing properties, it actively checks for a working JDK installation by attempting to execute `javac -version`. This is a more reliable indicator than simply checking system properties.  It also includes error handling for a more robust solution.
+
+
+This improved version provides a more comprehensive and reliable way to determine if Java (specifically the JDK, which is needed for compiling Java programs) is installed and functioning correctly.

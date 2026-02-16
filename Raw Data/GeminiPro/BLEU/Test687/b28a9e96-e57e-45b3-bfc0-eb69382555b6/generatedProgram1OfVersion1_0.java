@@ -1,0 +1,19 @@
+public class AbsoluteValue {
+
+    public static void main(String[] args) {
+        int num1 = -5;
+        int num2 = 10;
+
+        System.out.println("Absolute value of " + num1 + " is: " + convert(num1));
+        System.out.println("Absolute value of " + num2 + " is: " + convert(num2));
+
+    }
+
+    public static int convert(int num) {
+        if (num < 0) {
+            return -num; // If negative, return the negation (positive equivalent)
+        } else {
+            return num;  // If positive or zero, return as is.
+        }
+    }
+}

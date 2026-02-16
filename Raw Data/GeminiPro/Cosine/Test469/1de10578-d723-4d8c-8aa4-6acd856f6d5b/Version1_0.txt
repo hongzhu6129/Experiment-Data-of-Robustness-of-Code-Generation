@@ -1,0 +1,49 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class CalculateAge {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your date of birth in YYYY-MM-DD format (e.g., 1990-05-15):");
+        String dobString = scanner.nextLine();
+
+        try {
+            LocalDate dob = LocalDate.parse(dobString, DateTimeFormatter.ISO_DATE);
+            LocalDate now = LocalDate.now();
+            Period age = Period.between(dob, now);
+
+            System.out.println("Your age is: " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days.");
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+        }
+    }
+}
+```
+
+
+This improved version:
+
+1. **Handles invalid input:** It uses a `try-catch` block to catch `DateTimeParseException` if the user enters the date in the wrong format. This prevents the program from crashing.
+2. **Uses `LocalDate` and `Period`:** These classes from the `java.time` package provide a much cleaner and more reliable way to work with dates and calculate age compared to manual calculations.
+3. **Clear prompts and output:** The program provides clear instructions to the user and formats the output nicely.
+4. **Good coding practices:**  Uses meaningful variable names and includes comments where necessary.
+
+
+Example Usage:
+
+```
+Enter your date of birth in YYYY-MM-DD format (e.g., 1990-05-15):
+1985-12-20
+Your age is: 37 years, 8 months, and 20 days.  // Output will vary depending on the current date
+
+Enter your date of birth in YYYY-MM-DD format (e.g., 1990-05-15):
+hello
+Invalid date format. Please use YYYY-MM-DD.
+```

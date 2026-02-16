@@ -1,0 +1,73 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Define the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Example format
+
+        // Format the date and time
+        String formattedDateTime = currentDateTime.format(formatter);
+
+        // Print the formatted date and time
+        System.out.println("Current Date and Time: " + formattedDateTime);
+
+
+
+        // ---  More examples of formatting ---
+
+        // Example 2:  A different format
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy hh:mm:ss a");
+        String formattedDateTime2 = currentDateTime.format(formatter2);
+        System.out.println("\nFormatted differently: " + formattedDateTime2);
+
+
+
+        // Example 3:  Just the date
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String formattedDate = currentDateTime.format(dateFormatter);
+        System.out.println("\nJust the date: " + formattedDate);
+
+
+
+        // Example 4:  Just the time
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a"); // 12-hour format
+        String formattedTime = currentDateTime.format(timeFormatter);
+        System.out.println("\nJust the time: " + formattedTime);
+
+
+
+        // Example 5:  ISO 8601 format (useful for data exchange)
+        String isoDateTime = currentDateTime.toString();
+        System.out.println("\nISO 8601 Format: " + isoDateTime);
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Import necessary classes:**
+   - `java.time.LocalDateTime`: Represents a date and time.
+   - `java.time.format.DateTimeFormatter`: Used for formatting dates and times.
+
+2. **Get current date and time:**
+   - `LocalDateTime currentDateTime = LocalDateTime.now();` gets the current date and time and stores it in a `LocalDateTime` object.
+
+3. **Define the format:**
+   - `DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");` creates a `DateTimeFormatter` object with the specified pattern. The pattern string uses symbols to represent different parts of the date and time (e.g., `yyyy` for year, `MM` for month, `dd` for day, `HH` for hour, `mm` for minute, `ss` for second).
+
+4. **Format the date and time:**
+   - `String formattedDateTime = currentDateTime.format(formatter);` applies the formatter to the `currentDateTime` object to create a formatted string.
+
+5. **Print the formatted date and time:**
+   - `System.out.println("Current Date and Time: " + formattedDateTime);` prints the formatted string to the console.
+
+
+The code also includes additional examples showing different formatting patterns, including formatting just the date, just the time, and using the ISO 8601 format.  Refer to the Java documentation for `DateTimeFormatter` for a complete list of the pattern symbols you can use.

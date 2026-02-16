@@ -1,0 +1,71 @@
+```java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class DescendingWords {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java DescendingWords <filename>");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+        ArrayList<String> words = new ArrayList<>();
+
+        try (Scanner input = new Scanner(new File(filename))) {
+            while (input.hasNext()) {
+                String word = input.next();
+                if (word.matches("^[a-zA-Z].*")) { // Check if the word starts with a letter
+                    words.add(word);
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found: " + filename);
+            System.exit(2);
+        }
+
+
+
+        Collections.sort(words, Collections.reverseOrder()); // Sort in descending order
+
+
+        for (String word : words) {
+            display(word);
+        }
+    }
+
+    public static void display(String word) {
+        System.out.println(word);
+    }
+}
+```
+
+
+Key improvements in this revised code:
+
+* **Error Handling:** Includes checks for the correct number of command-line arguments and handles `FileNotFoundException`.  This makes the program more robust.
+* **Filtering for Words Starting with Letters:**  Uses a regular expression `^[a-zA-Z].*` to ensure that only words starting with a letter are added to the list.
+* **Clearer Variable Names:** Uses more descriptive variable names (like `filename` instead of `args[0]`).
+* **Descending Sort:** Uses `Collections.reverseOrder()` to directly sort in descending order, simplifying the logic.
+* **`display` Method:** Uses the required `display` method to print each word.
+* **Try-with-resources:** Uses try-with-resources for the `Scanner` to ensure proper file closing.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DescendingWords.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:
+   ```bash
+   javac DescendingWords.java
+   ```
+3. **Run:**  Execute the program, providing the text file as a command-line argument:
+   ```bash
+   java DescendingWords input.txt  // Replace input.txt with the actual filename
+   ```
+
+
+This revised code provides a complete and robust solution to the problem, adhering to the specified method signatures and best practices.

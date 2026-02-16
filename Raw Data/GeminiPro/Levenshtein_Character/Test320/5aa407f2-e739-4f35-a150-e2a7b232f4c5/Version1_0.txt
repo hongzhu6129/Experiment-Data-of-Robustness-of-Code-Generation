@@ -1,0 +1,61 @@
+```java
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java GetCharacterAtIndex <string> <index>");
+            return;
+        }
+
+        String inputString = args[0];
+        int index;
+
+        try {
+            index = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid index. Please provide an integer.");
+            return;
+        }
+
+
+        if (index < 0 || index >= inputString.length()) {
+            System.out.println("Index out of bounds.");
+        } else {
+            int codePoint = inputString.codePointAt(index);
+            System.out.println("Character at index " + index + ": " + (char) codePoint + " (Unicode code point: " + codePoint + ")");
+        }
+
+
+    }
+}
+```
+
+
+To compile and run this code:
+
+1. **Save:** Save the code as `GetCharacterAtIndex.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac GetCharacterAtIndex.java`
+3. **Run:** Execute the compiled program, providing the string and index as command-line arguments:  `java GetCharacterAtIndex "Hello, world!" 7`  (This will get the character at index 7).
+
+
+**Explanation and Improvements:**
+
+* **Error Handling:** The code now includes checks to handle invalid input:
+    * It verifies that exactly two command-line arguments are provided.
+    * It uses a `try-catch` block to handle potential `NumberFormatException` if the index argument is not a valid integer.
+    * It checks for index out of bounds errors.
+* **Unicode Support:**  The `codePointAt()` method is used to correctly handle Unicode characters (especially supplementary characters that require two code units).  The code prints both the character itself and its Unicode code point.
+* **Clearer Output:**  The output message is more informative, indicating the index and both the character and its code point.
+* **User-Friendly Usage Message:** If the user provides incorrect command-line arguments, a helpful usage message is displayed.
+
+
+**Example Usage:**
+
+```
+java GetCharacterAtIndex "Hello, world!" 7   // Output: Character at index 7: w (Unicode code point: 119)
+java GetCharacterAtIndex "Java" 0           // Output: Character at index 0: J (Unicode code point: 74)
+java GetCharacterAtIndex "Test" 5           // Output: Index out of bounds.
+java GetCharacterAtIndex "Test" abc        // Output: Invalid index. Please provide an integer.
+java GetCharacterAtIndex "Hi"               // Output: Usage: java GetCharacterAtIndex <string> <index>
+
+```

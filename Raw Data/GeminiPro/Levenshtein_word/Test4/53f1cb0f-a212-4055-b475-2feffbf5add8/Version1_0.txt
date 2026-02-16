@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner to potentially take input later (for testing)
+        Scanner scanner = new Scanner(System.in);
+
+        // Example usage with the given radius
+        double radius = 9.5; 
+
+        // Calculate perimeter (circumference) and area
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+
+        System.out.printf("Perimeter is = %.15f\n", perimeter);  // Print with more precision
+        System.out.printf("Area is = %.15f\n", area);
+
+
+        // --- Testing with Scanner (optional - comment out if not needed) ---
+        /*
+        System.out.print("Enter the radius of the circle: ");
+        radius = scanner.nextDouble();
+        perimeter = 2 * Math.PI * radius;
+        area = Math.PI * radius * radius;
+        System.out.printf("Perimeter is = %.15f\n", perimeter);
+        System.out.printf("Area is = %.15f\n", area);
+        */
+        scanner.close(); // Good practice to close the Scanner
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios:
+
+| Test Case | Radius Input | Expected Perimeter (approx) | Expected Area (approx) | Purpose of Test |
+|---|---|---|---|---|
+| 1 | 9.5 | 59.69026041820607 | 283.5287369864306 | Given example |
+| 2 | 0 | 0.0 | 0.0 | Zero radius |
+| 3 | 1 | 6.283185307179586 | 3.141592653589793 | Unit radius |
+| 4 | 100 | 628.3185307179587 | 31415.926535897932 | Large radius |
+| 5 | 0.1 | 0.6283185307179586 | 0.031415926535897934 | Small radius |
+| 6 | -5 (using Scanner input)|  Handle gracefully (e.g., error message or set radius to 0) | Handle gracefully | Negative radius (invalid) |
+| 7 | "abc" (using Scanner input)  | Handle gracefully (e.g., error message or exit) | Handle gracefully | Non-numeric input (invalid) |
+
+
+**How to Run Test Cases:**
+
+1. **Manual Input with Scanner:**  Uncomment the Scanner section in the code. Compile and run the program. Enter each test case radius value when prompted.  Observe the output and compare it to the expected values.
+
+2. **Automated Testing (Recommended):** Create JUnit tests (or use another testing framework). This allows you to write specific test methods for each case and automate the comparison of actual and expected results.  This is a more robust and professional approach.
+
+
+
+**Example JUnit Test (partial):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testGivenExample() {
+        double radius = 9.5;
+        double expectedPerimeter = 59.69026041820607;  // Or use approximation with delta
+        double expectedArea = 283.5287369864306;
+        // ... (call your calculation methods and assertEquals with a delta for floating-point comparison) 
+    }
+
+    // ... other test methods for the remaining test cases
+}
+
+```
+
+
+
+By running these tests, you'll be able to verify the correctness of your `CircleCalculations` class under different conditions, including corner cases and invalid inputs.  Using a testing framework like JUnit is the standard practice for Java development.

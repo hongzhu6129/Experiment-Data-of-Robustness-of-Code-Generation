@@ -1,0 +1,65 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveFromTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        System.out.println("Original TreeSet: " + numbers);
+
+        // Element to remove
+        int elementToRemove = 30;
+
+        // Remove the element
+        boolean removed = numbers.remove(elementToRemove);
+
+        if (removed) {
+            System.out.println("TreeSet after removing " + elementToRemove + ": " + numbers);
+        } else {
+            System.out.println(elementToRemove + " not found in the TreeSet.");
+        }
+
+
+        //Example demonstrating removing a non-existent element:
+        elementToRemove = 15; //This element isn't present
+
+        removed = numbers.remove(elementToRemove);
+
+        if (removed) {
+            System.out.println("TreeSet after removing " + elementToRemove + ": " + numbers);
+        } else {
+            System.out.println(elementToRemove + " not found in the TreeSet.");
+        }
+
+       //Example with String TreeSet
+        TreeSet<String> fruits = new TreeSet<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        System.out.println("\nOriginal TreeSet of fruits: " + fruits);
+
+        String fruitToRemove = "Banana";
+        boolean fruitRemoved = fruits.remove(fruitToRemove);
+
+
+        if (fruitRemoved) {
+            System.out.println("TreeSet of fruits after removing " + fruitToRemove + ": " + fruits);
+        } else {
+            System.out.println(fruitToRemove + " not found in the TreeSet.");
+
+        }
+
+    }
+}
+```
+

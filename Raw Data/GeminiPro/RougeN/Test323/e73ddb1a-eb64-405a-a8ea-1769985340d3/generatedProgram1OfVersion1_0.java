@@ -1,0 +1,42 @@
+public class StringCompareIgnoreCase {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "apple";
+        String str4 = "Banana";
+
+        // Using compareToIgnoreCase()
+        int result1 = str1.compareToIgnoreCase(str2);
+        int result2 = str1.compareToIgnoreCase(str3);
+        int result3 = str4.compareToIgnoreCase(str3);
+
+
+        System.out.println("Comparing \"" + str1 + "\" and \"" + str2 + "\":");
+        if (result1 == 0) {
+            System.out.println("The strings are equal (ignoring case).");
+        } else if (result1 < 0) {
+            System.out.println("\"" + str1 + "\" comes before \"" + str2 + "\" (ignoring case).");
+        } else {
+            System.out.println("\"" + str1 + "\" comes after \"" + str2 + "\" (ignoring case).");
+        }
+
+        System.out.println("\nComparing \"" + str1 + "\" and \"" + str3 + "\":");
+        if (result2 == 0) {
+            System.out.println("The strings are equal (ignoring case).");
+        } else if (result2 < 0) {
+            System.out.println("\"" + str1 + "\" comes before \"" + str3 + "\" (ignoring case).");
+        } else {
+            System.out.println("\"" + str1 + "\" comes after \"" + str3 + "\" (ignoring case).");
+        }
+
+         System.out.println("\nComparing \"" + str4 + "\" and \"" + str3 + "\":");
+        if (result3 == 0) {
+            System.out.println("The strings are equal (ignoring case).");
+        } else if (result3 < 0) {
+            System.out.println("\"" + str4 + "\" comes before \"" + str3 + "\" (ignoring case).");
+        } else {
+            System.out.println("\"" + str4 + "\" comes after \"" + str3 + "\" (ignoring case).");
+        }
+    }
+}

@@ -1,0 +1,70 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **Opposite Sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74  (New York)
+   - lat2: -40
+   - lon2: 106 (Near Perth, Australia � antipode of New York)
+   - Expected Output: ~20015.08 km (Approximately Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: Any value (longitude is irrelevant at the poles)
+   - Expected Output: ~20015.08 km (Approximately Earth's diameter)
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180 
+   - Expected Output: ~20015.08/2 = 10007.54 (Halfway around the Earth)
+
+
+
+6. **Points near the International Date Line (Longitude 180/-180):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: A small distance (because they are close despite the longitude difference)
+
+
+
+7. **Invalid Input (Latitudes out of range):**
+   - lat1: 95 (Invalid)
+   - lon1: 0
+   - lat2: 0
+   - lon2: 0
+   - Expected Behavior: The program should ideally handle this gracefully, either by throwing an exception or prompting the user for valid input (latitudes must be between -90 and 90 inclusive).
+
+
+8. **Edge Cases (Latitudes exactly at 90 or -90):** Ensure your program handles these edge cases correctly (they should be treated like any other valid latitude).
+
+
+**How to Test:**
+
+You can modify the `main` method of the Java code to hardcode these test cases or create a separate testing class (using a testing framework like JUnit is recommended for larger projects). Print the calculated distance and compare it to the expected output.  You could also automatically check the correctness within your test code.  For example (using JUnit 5):
+
+
+

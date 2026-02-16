@@ -1,0 +1,38 @@
+```java
+import java.util.HashSet;
+
+public class EmptyHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some elements (optional, to demonstrate emptying)
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        System.out.println("Original HashSet: " + hashSet);
+
+        // Empty the HashSet using clear()
+        hashSet.clear();
+
+
+        System.out.println("HashSet after emptying: " + hashSet);
+
+
+        //Another way to empty a hashset (less efficient but demonstrates alternative):
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("Original numbers HashSet: " + numbers);
+
+        numbers = new HashSet<>(); // Creates a brand new, empty HashSet, discarding the old one.
+
+        System.out.println("numbers HashSet after re-assignment: " + numbers);
+
+    }
+}
+```

@@ -1,0 +1,19 @@
+
+
+
+
+Key improvements and explanations in the test cases:
+
+* **JUnit 5:**  Uses JUnit 5 for cleaner test structure.
+* **`@Test` Annotation:**  Clearly marks test methods.
+* **Input Redirection:** Uses `ByteArrayInputStream` and `ByteArrayOutputStream` to simulate user input and capture program output, making testing easier.
+* **`assertEquals()`:** Verifies that the actual output matches the expected output.
+* **Corner Cases:** Includes tests for radius 0 and negative radius.  The negative radius test demonstrates how to check for an exception.
+* **Helper Methods:** Uses helper methods (`testWithInput`, `injectInputAndRun`) to keep the test code organized and reusable.
+* **Restoring System.in/out:**  Crucially restores `System.in` and `System.out` to their original state after each test to avoid interfering with other tests or the console.
+* **Exception Handling:** Shows how to test for expected exceptions using `assertThrows()`.  I've commented on how you would need to modify your `CircleCalculations` class to actually throw the exception if that's your intended behavior for negative radius.
+
+
+
+
+This improved test suite provides much more robust and comprehensive testing of your `CircleCalculations` class, covering typical inputs and important edge cases. Remember to add the JUnit 5 library to your project.

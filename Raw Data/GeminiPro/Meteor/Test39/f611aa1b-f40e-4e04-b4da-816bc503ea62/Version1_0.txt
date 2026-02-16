@@ -1,0 +1,66 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DisplaySystemTime {
+
+    public static String getCurrentDateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd HH:mm:ss z yyyy"); // Format as requested
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String currentDateTime = getCurrentDateTime();
+        System.out.println("Current Date time: " + currentDateTime);
+    }
+}
+```
+
+
+## Test Cases
+
+Here are some test cases, including corner cases, to test the `getCurrentDateTime()` method:
+
+**1. Basic Functionality Test:**
+
+* **Input:** None (System clock provides the input).
+* **Expected Output:** A string representing the current date and time in the specified format ("EEE MMM dd HH:mm:ss z yyyy").  The exact time will vary depending on when the test is run.
+* **How to Test:** Run the program multiple times and visually inspect the output.  Compare it to the system time displayed by your operating system.
+
+**2. Time Zone Change Test (Difficult to automate fully):**
+
+* **Input:**  Change the system's time zone.
+* **Expected Output:** The output should reflect the current date and time in the *new* time zone, still formatted correctly.
+* **How to Test:** Manually change your system's time zone and run the program.  Verify that the "z" (time zone abbreviation) part of the output string is correct.
+
+**3. DST Transition Test (Difficult to automate fully, requires careful timing):**
+
+* **Input:** Run the program immediately before and after a Daylight Saving Time transition.
+* **Expected Output:** The output should correctly reflect the time change, including the hour shift and potentially a change in the time zone abbreviation.
+* **How to Test:** This requires careful timing. Schedule the test to run around the DST transition time in your time zone.  Check that the hour and time zone parts of the output are correct before and after the transition.
+
+**4. Locale Change Test (Advanced):**
+
+* **Input:** Change the system's locale (language and region settings).  This primarily tests the `MMM` (month abbreviation) and `EEE` (day of week abbreviation) parts of the format.
+* **Expected Output:** The day and month abbreviations in the output should reflect the new locale, if supported by the underlying Java libraries.  The other parts of the date and time should remain consistent.
+* **How to Test:** Use `Locale.setDefault(new Locale(...));` before calling `getCurrentDateTime()` to change the locale. Remember to restore the original locale afterward. For example, to test French:
+
+```java
+Locale originalLocale = Locale.getDefault();
+Locale.setDefault(new Locale("fr", "FR")); // Set to French (France)
+String dateTime = getCurrentDateTime();
+System.out.println(dateTime); // Observe the French abbreviations
+Locale.setDefault(originalLocale); // Restore original locale
+```
+
+
+**5. (Indirect Test) Format String Modification:**  While not a corner case for system time itself, this is an important test for the program:
+
+* **Input:** Modify the format string in the `DateTimeFormatter`. For example,  `DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS Z");`
+* **Expected Output:** The output should reflect the new format correctly. This tests that the formatter is being used correctly and handles different format specifiers.
+
+
+
+
+These tests help ensure the `getCurrentDateTime()` function correctly retrieves and formats the system time under various conditions. The DST and Time Zone tests are more challenging to fully automate and often require manual verification.  The format string modification test is crucial to verify the formatting logic itself.

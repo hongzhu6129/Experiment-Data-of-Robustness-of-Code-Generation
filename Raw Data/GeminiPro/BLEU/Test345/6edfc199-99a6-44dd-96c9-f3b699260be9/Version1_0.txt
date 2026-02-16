@@ -1,0 +1,43 @@
+```java
+public class StringToCharArray {
+
+    public static void main(String[] args) {
+        String str = "sample"; // The string to convert
+
+        // Method 1: Using toCharArray()
+        char[] charArray1 = str.toCharArray();
+        System.out.print("Method 1: ");
+        for (char c : charArray1) {
+            System.out.print(c);
+        }
+        System.out.println();
+
+
+        // Method 2: Iterating through the string
+        char[] charArray2 = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            charArray2[i] = str.charAt(i);
+        }
+        System.out.print("Method 2: ");
+        for (char c : charArray2) {
+            System.out.print(c);
+        }
+        System.out.println();
+
+
+        //Demonstrating that the arrays are copies, not linked to the original string
+        str = "changed"; // Modify the original string
+        System.out.print("Method 1 (after string change): ");
+        for (char c : charArray1) { // The char array remains unchanged
+            System.out.print(c);
+        }
+        System.out.println();
+        System.out.print("Method 2 (after string change): ");
+        for (char c : charArray2) { // The char array remains unchanged
+            System.out.print(c);
+        }
+        System.out.println();
+
+    }
+}
+```

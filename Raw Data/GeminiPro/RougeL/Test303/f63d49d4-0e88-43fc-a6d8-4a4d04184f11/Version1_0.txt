@@ -1,0 +1,103 @@
+**Problem Description**
+
+Write a Java program that counts the number of times a character is repeated consecutively in a string and prints the character followed by the count of its consecutive occurrences.
+
+**Java Code:**
+
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the input string
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Initialize the character count to 1
+        int count = 1;
+
+        // Iterate over the input string
+        for (int i = 1; i < inputString.length(); i++) {
+            // Check if the current character is the same as the previous character
+            if (inputString.charAt(i) == inputString.charAt(i - 1)) {
+                // Increment the character count
+                count++;
+            } else {
+                // Print the character and its count
+                System.out.println(inputString.charAt(i - 1) + " " + count);
+                
+                // Reset the character count to 1
+                count = 1;
+            }
+        }
+
+        // Print the last character and its count
+        System.out.println(inputString.charAt(inputString.length() - 1) + " " + count);
+    }
+}
+```
+
+**Test Cases:**
+
+**Input:** "aabbbccccdddeee"
+
+**Output:**
+```
+a 2
+b 3
+c 4
+d 3
+e 3
+```
+
+**Input:** "hello"
+
+**Output:**
+```
+h 1
+e 1
+l 2
+o 1
+```
+
+**Input:** "12345"
+
+**Output:**
+```
+1 1
+2 1
+3 1
+4 1
+5 1
+```
+
+**Input:** "aaabbbcccddddeee"
+
+**Output:**
+```
+a 3
+b 3
+c 3
+d 3
+e 3
+```
+
+**Input:** "empty"
+
+**Output:**
+```
+e 1
+m 1
+p 1
+t 1
+y 1
+```
+
+**Corner Cases:**
+
+**Input:** "" (empty string)
+
+**Output:** No output

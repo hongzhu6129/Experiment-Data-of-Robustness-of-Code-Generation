@@ -1,0 +1,46 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class DefaultCalendarInfo {
+
+    public static void main(String[] args) {
+        // Get a default calendar (GregorianCalendar is the default)
+        Calendar calendar = new GregorianCalendar();
+
+        // Get year, month (0-indexed), day, hour, minute
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);  // Note: Months are 0-indexed (0 = January, 1 = February, etc.)
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH); 
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY); // 24-hour format
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Add 1 to month to display human-readable months (1-12)
+        int displayMonth = month + 1;
+
+        // Display the information
+        System.out.println("Current Date and Time:");
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + displayMonth);
+        System.out.println("Day: " + dayOfMonth);
+        System.out.println("Hour: " + hourOfDay);
+        System.out.println("Minute: " + minute);
+
+
+        // "earlier" is a bit ambiguous.  I'll interpret as one day earlier.
+        calendar.add(Calendar.DAY_OF_MONTH, -1); // Subtract 1 day
+
+        int earlierYear = calendar.get(Calendar.YEAR);
+        int earlierMonth = calendar.get(Calendar.MONTH) + 1;
+        int earlierDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        System.out.println("\nOne Day Earlier:");
+        System.out.println("Year: " + earlierYear);
+        System.out.println("Month: " + earlierMonth);
+        System.out.println("Day: " + earlierDay);
+
+
+
+    }
+}
+```

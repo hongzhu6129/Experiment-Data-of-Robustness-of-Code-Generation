@@ -1,0 +1,66 @@
+```java
+import java.util.Arrays;
+
+public class PartitionArray {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] partitionedArr = partitionArray2(arr);
+
+        System.out.println("Original Array: " + Arrays.toString(arr));
+        System.out.println("Partitioned Array: " + Arrays.toString(partitionedArr));
+
+
+        int[] arr2 = {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}; // Already somewhat partitioned
+        int[] partitionedArr2 = partitionArray2(arr2);
+        System.out.println("Original Array 2: " + Arrays.toString(arr2));
+        System.out.println("Partitioned Array 2: " + Arrays.toString(partitionedArr2));
+
+
+        int[] arr3 = {2, 4, 6, 8, 1, 3, 5, 7};
+         int[] partitionedArr3 = partitionArray2(arr3);
+        System.out.println("Original Array 3: " + Arrays.toString(arr3));
+        System.out.println("Partitioned Array 3: " + Arrays.toString(partitionedArr3));
+
+        int[] emptyArr = {};
+        int[] partitionedEmptyArr = partitionArray2(emptyArr);
+        System.out.println("Original Empty Array: " + Arrays.toString(emptyArr));
+        System.out.println("Partitioned Empty Array: " + Arrays.toString(partitionedEmptyArr));
+
+
+    }
+
+
+    public static int[] partitionArray2(int[] arr) {
+        if (arr == null) {
+            return null; // Or throw an exception, depending on requirements.
+        }
+
+        int[] partitionedArr = new int[arr.length];
+        int evenIndex = 0;
+        int oddIndex = arr.length - 1; // Start from the end for odds
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                partitionedArr[evenIndex++] = num; // Place evens at the beginning
+            } else {
+                partitionedArr[oddIndex--] = num; // Place odds at the end
+            }
+        }
+        return partitionedArr;
+    }
+
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Using `evenIndex` and `oddIndex` makes the code easier to follow.
+2. **Handles `null` Input:**  The code now checks for a `null` input array and returns `null` in that case.  You could also throw a `NullPointerException` if that's the desired behavior for your application.
+3. **Efficient Partitioning:** The code iterates through the array only once.  Evens are placed from the beginning of the `partitionedArr`, and odds are placed from the end. This avoids unnecessary shifting or swapping.
+4. **Test Cases in `main`:** Added several test cases in `main` to demonstrate the function's behavior with different input arrays (including an already partially sorted array, and an empty array). This makes it easier to verify the correctness of the `partitionArray2` method.
+
+
+
+This revised version provides a more robust, readable, and efficient solution to the array partitioning problem.

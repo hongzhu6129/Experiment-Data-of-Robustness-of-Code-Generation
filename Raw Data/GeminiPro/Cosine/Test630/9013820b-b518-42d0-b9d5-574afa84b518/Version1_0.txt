@@ -1,0 +1,35 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+        //  Iterating and removing elements maintains priority order during printing.
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); 
+        }
+
+
+        // Alternatively, you could print using a for-each loop (Java 5 and later) which iterates through the queue but *doesn't remove* elements. Note that with a standard PriorityQueue, this doesn't guarantee elements are printed in priority order:
+        /*
+        System.out.println("Elements of the priority queue (using for-each loop - not guaranteed priority order):");
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+        */ 
+
+    }
+}
+```

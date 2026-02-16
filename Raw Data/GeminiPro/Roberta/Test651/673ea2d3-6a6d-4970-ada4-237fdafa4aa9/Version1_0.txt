@@ -1,0 +1,46 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class GetMapValue {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Specify the key to retrieve
+        String key = "banana";
+
+        // Get the value associated with the key
+        Integer value = myMap.get(key);
+
+        // Print the value (or null if the key is not found)
+        if (value != null) {
+            System.out.println("The value of '" + key + "' is: " + value);
+        } else {
+            System.out.println("Key '" + key + "' not found in the map.");
+        }
+
+
+        // Example demonstrating getOrDefault:
+        String key2 = "grape";  // A key that might not exist
+        int defaultValue = 0;  // Default value if the key isn't found
+
+        int value2 = myMap.getOrDefault(key2, defaultValue);
+        System.out.println("The value of '" + key2 + "' is (using getOrDefault): " + value2);
+
+
+        //Example for handling null values effectively (more robust):
+        String key3 = "orange";
+        Integer value3 = myMap.get(key3);
+
+        int intValue = (value3 != null) ? value3 : -1; // Use -1 or another appropriate default
+        System.out.println("The value of '" + key3 + "' is (handling nulls): " + intValue);
+
+
+    }
+}
+```

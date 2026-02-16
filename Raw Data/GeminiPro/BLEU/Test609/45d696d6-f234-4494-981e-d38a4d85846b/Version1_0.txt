@@ -1,0 +1,77 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class HashSetToTreeSet {
+
+    public static void main(String[] args) {
+
+        // 1. Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+        hashSet.add("Banana");
+        hashSet.add("Apple");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+
+        System.out.println("Original HashSet: " + hashSet);  // Notice: No guaranteed order
+
+
+        // 2. Convert HashSet to TreeSet (Method 1: Using TreeSet constructor)
+        Set<String> treeSet1 = new TreeSet<>(hashSet);
+
+
+        System.out.println("TreeSet (using constructor): " + treeSet1); // Sorted!
+
+
+
+        // 3. Convert HashSet to TreeSet (Method 2: Adding elements individually)
+        Set<String> treeSet2 = new TreeSet<>();
+        for (String fruit : hashSet) {
+            treeSet2.add(fruit);
+        }
+
+        System.out.println("TreeSet (adding elements): " + treeSet2);  // Also sorted!
+
+
+
+        // Example with Integers:
+        Set<Integer> integerHashSet = new HashSet<>();
+        integerHashSet.add(5);
+        integerHashSet.add(2);
+        integerHashSet.add(8);
+        integerHashSet.add(1);
+
+        Set<Integer> integerTreeSet = new TreeSet<>(integerHashSet); // Using constructor for brevity
+
+        System.out.println("Integer HashSet: " + integerHashSet);
+        System.out.println("Integer TreeSet: " + integerTreeSet); // Numbers will be sorted numerically.
+
+
+        // Important Note on Sorting and Comparability:
+        // For custom objects, you'll need to ensure they implement the Comparable interface or provide a Comparator
+        // to the TreeSet constructor to define how they should be sorted.  Otherwise, you'll get a runtime error.
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Creating a HashSet:**  We start by creating a `HashSet` and populating it with some string elements. Remember, `HashSet` doesn't guarantee any specific order.
+
+2. **Method 1: TreeSet Constructor:** The simplest way to convert a `HashSet` to a `TreeSet` is to use the `TreeSet` constructor that takes a `Collection` as an argument.  The `TreeSet` automatically sorts the elements during construction.
+
+3. **Method 2: Adding Elements Individually:**  We can also create an empty `TreeSet` and then iterate through the `HashSet`, adding each element to the `TreeSet`.  This method achieves the same result as the constructor method.
+
+4. **Integer Example:**  The code also demonstrates converting a `HashSet` of integers to a `TreeSet`. Integers have a natural ordering, so they are sorted numerically.
+
+5. **Important Note on Custom Objects:** If you're working with custom objects instead of strings or integers, you *must* either make your custom objects implement the `Comparable` interface (to define their natural ordering) or provide a `Comparator` to the `TreeSet` constructor (to define a custom sorting logic). This is essential for the `TreeSet` to know how to sort the elements. If you don't do this, you'll get a `ClassCastException` at runtime.
+
+
+Key Differences:
+
+* **HashSet:** No ordering, faster for add/remove/contains operations.
+* **TreeSet:** Sorted order, slower for add/remove/contains operations. Useful when you need sorted data.

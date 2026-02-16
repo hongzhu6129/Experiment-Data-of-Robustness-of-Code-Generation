@@ -1,0 +1,19 @@
+
+
+
+Here's how it addresses stream processing within the constraints of a single `main` method:
+
+1. **Simulates Stream:**  Since we can't directly process a continuous stream within `main`, the input is taken as a `String`. This string acts as our "stream" of characters.
+
+2. **`LinkedHashMap` for Order:** A `LinkedHashMap` is crucial. It maintains the order of insertion, which is essential for finding the *first* non-repeating character.  A regular `HashMap` wouldn't guarantee the order.
+
+3. **Character Counts:** The code iterates through the "stream" (string), counting the occurrences of each character and storing them in the `LinkedHashMap`.
+
+4. **Finding the First Non-Repeating:**  After counting, the code iterates through the `LinkedHashMap`.  The first character encountered with a count of 1 is returned as the result.
+
+
+5. **Handles Edge Cases:** The code includes handling for empty streams and streams where all characters repeat, returning "None" in these cases. Also handles single character streams correctly.
+
+
+
+This provides a functional solution that effectively simulates stream processing and finds the first non-repeating character, all within the limitations of using only the `main` method.

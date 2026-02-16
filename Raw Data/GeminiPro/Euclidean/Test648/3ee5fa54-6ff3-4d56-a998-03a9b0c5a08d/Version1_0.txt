@@ -1,0 +1,48 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckKeyInMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Key to check
+        String keyToCheck = "banana";
+
+        // Check if the key exists using containsKey()
+        if (myMap.containsKey(keyToCheck)) {
+            System.out.println("The map contains the key: " + keyToCheck);
+        } else {
+            System.out.println("The map does not contain the key: " + keyToCheck);
+        }
+
+        // Another key to check (not present)
+        keyToCheck = "grape";
+
+        if (myMap.containsKey(keyToCheck)) {
+            System.out.println("The map contains the key: " + keyToCheck);
+        } else {
+            System.out.println("The map does not contain the key: " + keyToCheck);
+        }
+
+
+        // Demonstrating with an Integer key
+        Map<Integer, String> intKeyMap = new HashMap<>();
+        intKeyMap.put(1, "One");
+        intKeyMap.put(2, "Two");
+
+        Integer intKey = 2;
+
+        if (intKeyMap.containsKey(intKey)) {
+            System.out.println("The map contains the integer key: " + intKey);
+        } else {
+            System.out.println("The map does not contain the integer key: " + intKey);
+        }
+    }
+}
+```

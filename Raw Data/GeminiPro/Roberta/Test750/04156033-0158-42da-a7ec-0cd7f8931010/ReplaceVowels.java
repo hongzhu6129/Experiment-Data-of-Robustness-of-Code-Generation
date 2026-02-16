@@ -1,0 +1,50 @@
+public class ReplaceVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        char replacementChar = '*';
+
+        String modifiedString = validate(inputString, replacementChar);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Modified string: " + modifiedString);
+
+
+        inputString = "aeiouAEIOU";
+        replacementChar = '#';
+        modifiedString = validate(inputString, replacementChar);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Modified string: " + modifiedString);
+
+        // Test with an empty string
+        inputString = "";
+        replacementChar = '@';
+        modifiedString = validate(inputString, replacementChar);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Modified string: " + modifiedString);
+
+
+
+    }
+
+    public static String validate(String inputString, char replacementChar) {
+        if (inputString == null) {
+            return null; // Or handle null as needed
+        }
+
+        StringBuilder sb = new StringBuilder(); 
+        for (char c : inputString.toCharArray()) {
+            if (isVowel(c)) {
+                sb.append(replacementChar);
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+
+    private static boolean isVowel(char c) {
+        c = Character.toLowerCase(c); // Case-insensitive check
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}

@@ -1,0 +1,34 @@
+class Solution {
+    /**
+     * Returns the substring that is between the first and last show of the substring "toast" in the given string,
+     * or returns an empty string if the substring "toast" does not exist.
+     *
+     * @param str The input string.
+     * @return The substring between the first and last "toast" occurrences, or an empty string.
+     */
+    public String pickMiddleOfBread(String str) {
+        int firstIndex = str.indexOf("toast");
+        int lastIndex = str.lastIndexOf("toast");
+
+        if (firstIndex == -1 || lastIndex == -1 || firstIndex == lastIndex) {
+            return "";
+        }
+
+        return str.substring(firstIndex + "toast".length(), lastIndex);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(solution.pickMiddleOfBread("toastjamtoastbuttertoast")); // Output: jamtoastbutter
+        System.out.println(solution.pickMiddleOfBread("toast")); // Output: 
+        System.out.println(solution.pickMiddleOfBread("toasttoast")); // Output: 
+        System.out.println(solution.pickMiddleOfBread("jamtoast")); // Output: 
+        System.out.println(solution.pickMiddleOfBread("toastjam")); // Output: 
+        System.out.println(solution.pickMiddleOfBread("jam")); // Output: 
+          System.out.println(solution.pickMiddleOfBread("toastpeanutbuttertoastchocolatetoast")); // Output: peanutbuttertoastchocolate
+
+
+    }
+}

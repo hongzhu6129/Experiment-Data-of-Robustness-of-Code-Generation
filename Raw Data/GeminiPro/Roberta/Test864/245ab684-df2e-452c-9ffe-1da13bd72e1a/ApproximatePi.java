@@ -1,0 +1,23 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = calculatePi(5); // Up to 1/9
+        double piApproximation2 = calculatePi(6); // Up to 1/13
+
+        System.out.println("Approximation with 5 terms: " + piApproximation1);
+        System.out.println("Approximation with 6 terms: " + piApproximation2);
+    }
+
+    public static double calculatePi(int numTerms) {
+        double sum = 0.0;
+        for (int i = 1; i <= numTerms; i++) {
+            double term = 1.0 / (2 * i - 1);
+            if (i % 2 == 0) {
+                sum -= term;
+            } else {
+                sum += term;
+            }
+        }
+        return 4.0 * sum;
+    }
+}

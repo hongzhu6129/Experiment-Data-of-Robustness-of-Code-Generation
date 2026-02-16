@@ -1,0 +1,53 @@
+```java
+class Solution {
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if ((str == null) || (str.length() <= 1)) {
+            System.out.print(str);
+        } else {
+            System.out.print(str.charAt(str.length() - 1));
+            reverseString(str.substring(0, str.length() - 1));
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        solution.reverseString("hello"); // Output: olleh
+        System.out.println(); // Newline for clarity
+
+        solution.reverseString("world"); // Output: dlrow
+        System.out.println();
+
+        solution.reverseString("");      // Output: 
+        System.out.println();
+
+        solution.reverseString(null);    // Output: null
+        System.out.println();
+
+        solution.reverseString("a");     // Output: a
+        System.out.println();
+
+        solution.reverseString("12345"); // Output: 54321
+        System.out.println();
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles null and empty strings:** The code now explicitly handles `null` and empty strings, avoiding potential `NullPointerException` or incorrect output.
+* **Prints the reversed string:** The `reverseString` method directly prints the reversed string, making the output clear and concise.
+* **Added test cases in `main`:**  Several test cases in the `main` method demonstrate the function's behavior with different inputs, including empty, null, single-character, and multi-character strings.
+* **Clearer base case:** The base case for the recursion is now more explicit, checking for both `null` and strings with length less than or equal to 1.
+* **Newlines for clarity:** Newlines have been added after each test case in `main` to separate the outputs and make them easier to read.
+
+
+This improved version is more robust, handles edge cases correctly, and provides clearer output, making it a more complete and usable solution.

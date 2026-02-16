@@ -1,0 +1,42 @@
+public class SubstringExample {
+
+    public static void main(String[] args) {
+        String str = "This is a sample string";
+        int start = 10;
+        int end = 17;
+
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String sub = str.substring(start, end);
+            System.out.println("Original string: " + str);
+            System.out.println("Substring: " + sub);
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+
+        // Another example with different positions
+        start = 0;
+        end = 4;
+
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String sub = str.substring(start, end);
+            System.out.println("Original string: " + str);
+            System.out.println("Substring: " + sub);
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+
+        // Example demonstrating error handling for invalid inputs
+         start = 25; // Out of bounds
+         end = 30; // Out of bounds
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String sub = str.substring(start, end);
+            System.out.println("Original string: " + str);
+            System.out.println("Substring: " + sub);
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+    }
+}

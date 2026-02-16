@@ -1,0 +1,111 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the program:
+
+1. **Same Coordinates:**
+   - lat1 = 25, lon1 = 35
+   - lat2 = 25, lon2 = 35
+   - Expected Distance: 0 km
+
+2. **Provided Example:**
+   - lat1 = 25, lon1 = 35
+   - lat2 = 35.5, lon2 = 25.5
+   - Expected Distance: ~1480.08 km
+
+3. **Antipodes (Opposite sides of the Earth):**
+   - lat1 = 45, lon1 = 0
+   - lat2 = -45, lon2 = 180
+   - Expected Distance: ~20015.08 km (approximately Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1 = 90, lon1 = 0  (North Pole)
+   - lat2 = -90, lon2 = 0 (South Pole)
+   - Expected Distance: ~20015.08 km
+
+
+5. **Points on the Equator:**
+   - lat1 = 0, lon1 = 0
+   - lat2 = 0, lon2 = 180
+   - Expected Distance: ~20015.08 km
+
+6. **Points on the same longitude:**
+   - lat1 = 30, lon1 = 45
+   - lat2 = 60, lon2 = 45
+   - Expected Distance: ~3326.56 km
+
+
+
+7. **Invalid Input (Latitude out of range):**
+   - lat1 = 100, lon1 = 35  (Latitude should be between -90 and 90)
+   - lat2 = 35.5, lon2 = 25.5
+   - Expected: The program should ideally handle this gracefully, either by throwing an exception or displaying an error message.  Consider adding input validation to your code.
+
+
+**How to Run Tests:**
+
+You can manually input these values into your program or, better yet, create a separate test class using a testing framework like JUnit.  JUnit will let you automate these tests and verify the results against the expected values.  This is highly recommended, especially as your code gets more complex.
+
+
+Example JUnit test (you'll need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    void testSameCoordinates() {
+        assertEquals(0.0, EarthDistance.calculateDistance(25, 35, 25, 35), 0.001); // Delta for floating-point comparison
+    }
+
+    // Add more tests for other cases...
+
+     private static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        double radius = 6371.01; // Earth's radius in kilometers
+        lat1 = Math.toRadians(lat1);
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+
+        return radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+    }
+
+}
+```
+
+
+By thoroughly testing your code with various scenarios, you can ensure that it's robust and accurate.

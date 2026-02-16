@@ -1,0 +1,59 @@
+```java
+import java.util.LinkedList;
+
+public class InsertElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Position to insert (index starts from 0)
+        int position = 1;
+
+        // Insert the element at the specified position
+        insertElement(linkedList, elementToInsert, position);
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + linkedList);
+
+
+        // Example with an invalid position (demonstrates error handling)
+        int invalidPosition = 5; // Out of bounds
+        insertElement(linkedList, "Mango", invalidPosition);
+
+
+    }
+
+    public static void insertElement(LinkedList<String> list, String element, int position) {
+        try {
+            list.add(position, element);
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid position.  Cannot insert at position " + position + ". List size is " + list.size());
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes error handling for `IndexOutOfBoundsException`. If you try to insert at an invalid position (e.g., a negative index or an index greater than or equal to the size of the list), it will print a clear error message instead of crashing.
+
+2. **Clearer Output:** The output now explicitly states "Updated LinkedList:" so it's easy to see the result of the insertion.
+
+3. **Example with Invalid Position:**  The code now includes a demonstration of how the error handling works by attempting to insert at an out-of-bounds index.
+
+4. **Conciseness:**  The logic is streamlined and easy to follow.
+
+
+How the core `insertElement` logic works (using LinkedList's built-in method):
+
+The `LinkedList` class in Java provides a built-in `add(int index, E element)` method. This method inserts the specified element at the specified position (index) in the list.  The other elements are shifted accordingly.  Using this built-in method makes the code much simpler and more efficient than manually manipulating nodes.

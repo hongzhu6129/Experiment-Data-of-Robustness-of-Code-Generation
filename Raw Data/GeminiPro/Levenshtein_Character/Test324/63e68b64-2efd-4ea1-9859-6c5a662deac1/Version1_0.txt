@@ -1,0 +1,36 @@
+```java
+public class ConcatenateStringToDouble {
+
+    public static void main(String[] args) {
+        double num = 123.45;
+        String str = "hello";
+
+        String concatenated = String.valueOf(num) + str; 
+
+        System.out.println("Concatenated string: " + concatenated);
+
+        // If you need the result as a double (after potentially parsing the string part)
+        // You'll need more sophisticated handling depending on the content of 'str'
+        // For example, if 'str' might contain other numbers:
+        try {
+            if (str.matches("-?\\d+(\\.\\d+)?")) { // Check if 'str' is a valid number
+                double combinedNum = num + Double.parseDouble(str);
+                System.out.println("Combined as double: " + combinedNum);
+            } else {
+                System.out.println("String part is not a valid number for double conversion.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error converting string to double: " + e.getMessage());
+        }
+
+         //Example with non-numeric string
+        double num2 = 987.65;
+        String str2 = "world!";
+        String concatenated2 = String.valueOf(num2) + str2;
+        System.out.println("Concatenated string (non-numeric): " + concatenated2);
+
+
+
+    }
+}
+```

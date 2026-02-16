@@ -1,0 +1,31 @@
+```java
+class Solution {
+    /**
+     * Given two integers, return true if either is 15 or if their sum or comparison is 15.
+     *
+     * @param a the first integer
+     * @param b the second integer
+     * @return true if either is 15 or if their sum or comparison is 15, false otherwise
+     */
+    public static boolean calculate(int a, int b) {
+        if (a == 15 || b == 15) {
+            return true;
+        }
+
+        if (a + b == 15 || Math.abs(a - b) == 15) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(calculate(10, 5)); // true (sum is 15)
+        System.out.println(calculate(15, 10)); // true (a is 15)
+        System.out.println(calculate(20, 5)); // true (difference is 15)
+        System.out.println(calculate(10, 10)); // false
+        System.out.println(calculate(7, 8)); // false
+
+    }
+}
+```

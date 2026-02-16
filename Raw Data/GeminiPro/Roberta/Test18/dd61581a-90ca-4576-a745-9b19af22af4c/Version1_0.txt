@@ -1,0 +1,86 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+
+        // Handle invalid input (non-binary characters)
+        try {
+            Long.parseLong(binary, 2);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary input.");
+            return;
+        }
+
+
+        int decimal = 0;
+        int power = 0;
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        String hex = "";
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            if (remainder < 10) {
+                hex = remainder + hex;
+            } else {
+                hex = (char) (remainder + 87) + hex; // a=97, b=98...
+            }
+            decimal /= 16;
+        }
+
+        if (hex.isEmpty()) { //handle the case of input "0"
+            System.out.println("Hexadecimal value: '0'");
+        } else {
+            System.out.println("Hexadecimal value: '" + hex + "'");
+        }
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+2. **Leading Zeros:**
+   - Input: `0001111`
+   - Expected Output: `Hexadecimal value: 'f'`
+
+3. **Larger Binary:**
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+
+4. **Zero:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+
+5. **Empty String:**
+   - Input: ``
+   - Expected Output: `Invalid binary input.` (or a similar error message indicating invalid input)
+
+6. **Invalid Characters:**
+   - Input: `101201`
+   - Expected Output: `Invalid binary input.`
+
+
+7. **Very Large Binary (to test potential integer overflow if you were using `int` for decimal � this version uses `Long.parseLong` which parses to a `long` so it's less of a risk, but still a good test):**
+    - Input: `1111111111111111111111111111111111111111111111111111111111111111` (64 ones)
+    - Expected Output:  `Hexadecimal value: 'ffffffffffffffff'`
+
+
+
+
+These test cases cover valid binary inputs, edge cases (zero, empty string), and invalid inputs (non-binary characters).  They should give you confidence that your program handles various scenarios correctly. It's important to test with both valid and invalid data to ensure robustness.

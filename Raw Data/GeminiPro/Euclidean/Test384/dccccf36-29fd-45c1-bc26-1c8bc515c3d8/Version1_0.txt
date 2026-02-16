@@ -1,0 +1,40 @@
+```java
+class Solution {
+    /**
+     * Reads a string and removes the first two characters if one or both are 
+     * equal to a specified character, otherwise leaves them unchanged.
+     *
+     * @param str The input string.
+     * @return The modified string.
+     */
+    public String exceptTwoO(String str) {
+        char specifiedChar = 'o'; // Or any other character you want to specify
+
+        if (str.length() < 2) {
+            return str; // Nothing to remove if the string is too short
+        }
+
+        if (str.charAt(0) == specifiedChar || str.charAt(1) == specifiedChar) {
+            return str.substring(2); 
+        } else {
+            return str;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.exceptTwoO("orange")); // Output: ange
+        System.out.println(solution.exceptTwoO("boat"));   // Output: boat
+        System.out.println(solution.exceptTwoO("oops"));   // Output: ps
+        System.out.println(solution.exceptTwoO("o"));     // Output:  (empty string)
+        System.out.println(solution.exceptTwoO(""));      // Output:  (empty string)
+
+         // Additional tests to cover more scenarios
+        System.out.println(solution.exceptTwoO("oblong"));  // Output: long
+        System.out.println(solution.exceptTwoO("zoo")); // Output: o
+        System.out.println(solution.exceptTwoO("apple")); // Output: apple
+
+    }
+}
+```

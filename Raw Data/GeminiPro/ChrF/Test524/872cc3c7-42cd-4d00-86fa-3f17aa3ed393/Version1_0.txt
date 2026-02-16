@@ -1,0 +1,46 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing within main method)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        // Test with other values (optional):
+        number = 27;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        number = 10;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        number = -8; // Handle negative numbers as well
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+    }
+
+
+    private static boolean isCube(int number) {
+        // Efficient approach using cbrt (cube root) 
+        double cubeRoot = Math.cbrt(number);
+        return cubeRoot == Math.round(cubeRoot); // Check if the cube root is an integer
+
+    }
+}
+```

@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Iterating through Available Zone IDs:** The code uses `ZoneId.getAvailableZoneIds()` to get a set of all available time zone IDs. It then iterates through this set to process each zone.
+
+2. **Getting Current Time in Zone:** Inside the loop, `ZoneId.of(zoneIdString)` creates a `ZoneId` object. `ZonedDateTime.now(zoneId)` gets the current date and time in that specific zone.
+
+3. **Extracting Offset:** `now.getOffset()` extracts the `ZoneOffset` for the current time in the specified zone.
+
+4. **Formatting the Offset:**  The `formatOffset` method takes the offset in seconds as input and formats it into the desired `+HH:mm:ss` or `-HH:mm:ss` format. This makes the output more readable.
+
+5. **Clear Output:** The `System.out.println` statement clearly displays the zone ID and its corresponding formatted offset.
+
+
+**How to Run:**
+
+1. Save the code as `TimeZoneOffsets.java`.
+2. Compile: `javac TimeZoneOffsets.java`
+3. Run: `java TimeZoneOffsets`
+
+This will print a list of available time zone IDs and their current offsets to the console.

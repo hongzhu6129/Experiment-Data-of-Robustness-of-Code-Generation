@@ -1,0 +1,26 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **TreeMap and Ordering:**  `TreeMap` in Java stores its entries sorted according to their keys. By default, it uses the natural ordering of the key type (e.g., alphabetical order for strings, numerical order for numbers).
+
+2. **Comparator Interface:** To customize the sorting order, we implement the `Comparator` interface.  The `compare(String s1, String s2)` method defines how two keys (strings in this case) should be compared.
+
+3. **StringLengthComparator Class:** The inner class `StringLengthComparator` implements `Comparator<String>`.  Its `compare` method compares strings based on their lengths using `Integer.compare()`. This ensures that shorter strings come before longer strings in the `TreeMap`.
+
+4. **Creating TreeMap with Comparator:** When creating the `TreeMap`, we pass an instance of our `StringLengthComparator` to the constructor: `new TreeMap<>(new StringLengthComparator());`.  This tells the `TreeMap` to use our custom sorting logic.
+
+5. **Adding Elements:**  We add key-value pairs to the `TreeMap` using the `put()` method.
+
+6. **Sorted Output:**  When we print the `TreeMap`, the entries are printed in the order defined by our `StringLengthComparator`.
+
+7. **Reversed Order (Java 8+):**  The `reversed()` method (available since Java 8) provides a convenient way to create a comparator that gives the opposite ordering of the original comparator.  This is demonstrated in the second part of the `main` method.
+
+
+**Key Learning Outcomes:**
+
+* How to use a `Comparator` to control the sorting order of a `TreeMap`.
+* The importance of the `compare` method in defining the comparison logic.
+* How to create a `TreeMap` with a custom `Comparator`.
+* How to use the `reversed()` method for reverse sorting (Java 8+).

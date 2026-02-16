@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ThinArrayList {
+
+    public static void main(String[] args) {
+        // Example usage:
+        List<Integer> originalList = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 4, 4, 5, 6, 6, 6, 7));
+
+        List<Integer> thinnedList = thinList(originalList);
+
+        System.out.println("Original List: " + originalList);
+        System.out.println("Thinned List: " + thinnedList);
+
+
+        List<String> stringList = new ArrayList<>(Arrays.asList("apple", "banana", "banana", "orange", "grape", "grape", "kiwi"));
+        List<String> thinnedStringList = thinList(stringList); // Demonstrating with Strings
+
+        System.out.println("Original String List: " + stringList);
+        System.out.println("Thinned String List: " + thinnedStringList);
+
+
+    }
+
+
+
+    public static <T> List<T> thinList(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return new ArrayList<>(); // Return empty list if input is null or empty
+        }
+
+        List<T> thinnedList = new ArrayList<>();
+        T previous = null;
+
+        for (T element : list) {
+            if (!element.equals(previous)) {
+                thinnedList.add(element);
+                previous = element;
+            }
+        }
+
+        return thinnedList;
+    }
+}

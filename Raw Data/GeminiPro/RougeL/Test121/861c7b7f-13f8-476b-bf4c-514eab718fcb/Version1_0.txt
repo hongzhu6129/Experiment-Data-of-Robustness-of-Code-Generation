@@ -1,0 +1,60 @@
+```java
+public class EuclideanAlgorithm {
+
+    /**
+     * Calculates the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The greatest common divisor of a and b.
+     */
+    public static int euclid(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java EuclideanAlgorithm <integer1> <integer2>");
+            return;
+        }
+
+        try {
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[1]);
+            int gcd = euclid(num1, num2);
+            System.out.println("GCD of " + num1 + " and " + num2 + " is: " + gcd);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid input. Please enter integers.");
+        }
+
+
+    }
+}
+```
+
+
+The original error "invalid literal for int() with base 10: 'euclidean'" likely occurred because you were trying to convert the string "euclidean" (perhaps a program name or some other text) to an integer.  The provided code addresses this in several ways:
+
+1. **Clear Usage Message:** The `main` method now checks if exactly two arguments are provided.  If not, it prints a helpful usage message explaining how to run the program.
+
+2. **Error Handling with try-catch:** The `Integer.parseInt()` calls are wrapped in a `try-catch` block.  If the user enters non-numeric input, a `NumberFormatException` will be caught, and a clear error message will be printed to the console instead of crashing the program.
+
+3. **Focus on Euclid Algorithm:** The code concentrates on the core functionality of the Euclidean algorithm, taking two integer inputs and calculating their GCD.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `EuclideanAlgorithm.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile using:
+   ```bash
+   javac EuclideanAlgorithm.java
+   ```
+3. **Run:**  Execute the compiled program with two integer arguments:
+   ```bash
+   java EuclideanAlgorithm 48 18  // Example: GCD of 48 and 18
+   ```

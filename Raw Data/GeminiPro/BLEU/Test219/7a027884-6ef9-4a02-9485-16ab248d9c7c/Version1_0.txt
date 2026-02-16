@@ -1,0 +1,52 @@
+```java
+import java.util.Arrays;
+
+public class StringCompare {
+
+    public static void main(String[] args) {
+        // Test cases
+        String s1 = "Hello";
+        String s2 = "Hello";
+        String s3 = "World";
+
+        // Check if the three strings contain the same data
+        boolean areSame = Arrays.equals(s1.toCharArray(), s2.toCharArray()) && Arrays.equals(s2.toCharArray(), s3.toCharArray());
+
+        // Print the result
+        System.out.println(areSame); // Output: false
+
+        // Test case with empty strings
+        s1 = "";
+        s2 = "";
+        s3 = "";
+
+        // Check if the three strings contain the same data
+        areSame = Arrays.equals(s1.toCharArray(), s2.toCharArray()) && Arrays.equals(s2.toCharArray(), s3.toCharArray());
+
+        // Print the result
+        System.out.println(areSame); // Output: true
+
+        // Test case with null strings
+        s1 = null;
+        s2 = null;
+        s3 = null;
+
+        // Check if the three strings contain the same data
+        areSame = Arrays.equals(s1.toCharArray(), s2.toCharArray()) && Arrays.equals(s2.toCharArray(), s3.toCharArray());
+
+        // Print the result
+        System.out.println(areSame); // Output: false
+
+        // Test case with different lengths
+        s1 = "Hello";
+        s2 = "Hello World";
+        s3 = "Hello World!";
+
+        // Check if the three strings contain the same data
+        areSame = Arrays.equals(s1.toCharArray(), s2.toCharArray()) && Arrays.equals(s2.toCharArray(), s3.toCharArray());
+
+        // Print the result
+        System.out.println(areSame); // Output: false
+    }
+}
+```

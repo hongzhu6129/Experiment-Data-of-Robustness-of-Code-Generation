@@ -1,0 +1,78 @@
+```java
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
+public class DivideAndPrint {
+
+    public static void main(String[] args) {
+        int num1 = 50;
+        int num2 = 3;
+        int result = num1 / num2;
+
+        // Create a BufferedImage object
+        int width = 200;
+        int height = 100;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        // Get the Graphics2D object to draw on the image
+        Graphics2D g2d = image.createGraphics();
+
+        // Set background color
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, width, height);
+
+        // Set text color and font
+        g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Arial", Font.PLAIN, 20));
+
+        // Draw the division expression and result
+        String text = num1 + " / " + num2 + " = " + result;
+        FontMetrics fm = g2d.getFontMetrics();
+        int x = (width - fm.stringWidth(text)) / 2;
+        int y = (height - fm.getHeight()) / 2 + fm.getAscent();
+        g2d.drawString(text, x, y);
+
+
+        g2d.dispose();
+
+        // Save the image to a file
+        try {
+            File outputfile = new File("division_result.png");
+            ImageIO.write(image, "png", outputfile);
+            System.out.println("Image saved to division_result.png");
+        } catch (IOException e) {
+            System.out.println("Error saving image: " + e.getMessage());
+        }
+    }
+}
+
+
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The `try-catch` block handles potential `IOExceptions` during image saving, providing a more robust solution.  It prints an informative error message if the image cannot be saved.
+2. **Image Saving:** The code now saves the image to a file named "division_result.png" in the project's root directory.  This makes the result visible and persistent.
+3. **Clear Output:** The program prints a message to the console confirming the image's successful creation and its filename.
+4. **Dynamic Text Positioning:** `FontMetrics` is used to calculate the text width and height, allowing the division expression and result to be centered on the image regardless of its size or the length of the text. This provides better visual presentation.
+5. **Clearer Comments:** Comments are added to explain different sections of the code, making it easier to understand and maintain.
+
+
+To compile and run this code:
+
+1. Save it as `DivideAndPrint.java`.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where you saved the file.
+4. Compile: `javac DivideAndPrint.java`
+5. Run: `java DivideAndPrint`
+
+
+After running, you'll find the `division_result.png` image in the same directory, displaying the division and its result.
+
+
+
+

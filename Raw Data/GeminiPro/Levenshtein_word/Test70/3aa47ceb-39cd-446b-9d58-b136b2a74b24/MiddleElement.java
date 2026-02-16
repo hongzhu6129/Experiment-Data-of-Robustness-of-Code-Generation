@@ -1,0 +1,34 @@
+public class MiddleElement {
+
+    public static void main(String[] args) {
+        // Example array (even length)
+        int[] arr = {10, 20, 30, 40, 50, 60}; 
+
+        if (arr == null || arr.length == 0 || arr.length % 2 != 0) {
+            System.out.println("Invalid input: Array must be non-null, non-empty, and have an even length.");
+            return;
+        }
+
+        int first = arr[0];
+        int middle = arr[arr.length / 2 - 1]; // Middle-left element (adjust if needed)
+        int last = arr[arr.length - 1];
+
+        int representative = findRepresentative(first, middle, last);
+
+        System.out.println("Representative element: " + representative);
+    }
+
+
+    private static int findRepresentative(int a, int b, int c) {
+        // Find the middle value among the three
+        if ((a <= b && b <= c) || (c <= b && b <= a)) {
+            return b;
+        } else if ((b <= a && a <= c) || (c <= a && a <= b)) {
+            return a;
+        } else {
+            return c;
+        }
+    }
+}
+
+

@@ -1,0 +1,48 @@
+```java
+public class AfterTen {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 10, 12, 13, 5, 7, 10, 15, 16, 20}; // Example array
+
+        int tenIndex = -1;
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                tenIndex = i;
+            }
+        }
+
+        if (tenIndex != -1 && tenIndex < originalArray.length - 1) {
+            int newArrayLength = originalArray.length - (tenIndex + 1);
+            int[] newArray = new int[newArrayLength];
+
+            for (int i = 0; i < newArrayLength; i++) {
+                newArray[i] = originalArray[tenIndex + 1 + i];
+            }
+
+            System.out.print("Original array: ");
+            printArray(originalArray);
+            System.out.print("New array: ");
+            printArray(newArray);
+
+        } else {
+            System.out.println("No element after last 10 found or 10 not found.");
+
+             System.out.print("Original array: ");
+            printArray(originalArray);
+        }
+
+
+    }
+
+    public static void printArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```

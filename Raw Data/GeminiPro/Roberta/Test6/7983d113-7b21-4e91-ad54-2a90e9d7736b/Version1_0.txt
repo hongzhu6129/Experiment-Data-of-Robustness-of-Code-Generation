@@ -1,0 +1,67 @@
+```java
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("hello");
+        System.out.println("My");
+        System.out.println("Name");
+        System.out.println("Is");
+        System.out.println("Bard"); // Replace "Bard" with your actual name
+    }
+}
+```
+
+**Test Cases:**
+
+While this program is straightforward and doesn't involve complex logic where extensive testing is usually required, we can still consider a few scenarios, focusing on output verification:
+
+1. **Standard Output:**  Verify that the program prints "hello" followed by your name on separate lines, exactly as intended.  You can visually inspect the console output or, for automated testing, redirect the output to a file and compare it to an expected output file.
+
+   Example of expected output (if your name is Bard):
+   ```
+   hello
+   My
+   Name
+   Is
+   Bard
+   ```
+
+
+2. **Empty Name:**  Modify the program temporarily to have an empty name (e.g., replace "Bard" with "").  The output should still print "hello" followed by empty lines. This checks that the program handles empty strings gracefully.
+
+   Example of expected output (empty name):
+   ```
+   hello
+
+
+   
+
+
+   
+   ```
+
+3. **Name with Special Characters:**  Use a name containing special characters like spaces, apostrophes, or Unicode characters (e.g., "O'Brien", "Jos�"). This verifies that the program correctly handles various character encodings. Ensure the output matches the input name precisely.
+
+   Example of expected output (name with special character):
+   ```
+   hello
+   O'
+   Brien
+   ```
+
+4. **Long Name:**  Use a very long name (e.g., a string with several hundred characters). This isn't a true corner case, but it's good practice to see how the program behaves with larger inputs.  The output should still display the full name correctly.
+
+
+
+**How to redirect output to a file for testing (using command line):**
+
+```bash
+java HelloWorld > output.txt   // This redirects the output to a file named output.txt
+diff output.txt expected_output.txt  // This compares the output with the expected output
+```
+
+The `diff` command will show any differences between the two files. If there are no differences, the command won't produce any output, indicating that the test passed.
+
+
+**Note:** For simple programs like this, visual inspection is often sufficient. However, for more complex Java applications, using a testing framework like JUnit is highly recommended for automated and more thorough testing.  JUnit provides a structured way to write test cases and assertions to verify the behavior of your code.
+

@@ -1,0 +1,69 @@
+```java
+import java.util.Scanner;
+
+public class LivingExpensesCalculator {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Income
+        System.out.print("Enter your monthly salary: ");
+        double salary = input.nextDouble();
+        System.out.print("Enter any other monthly income: ");
+        double otherIncome = input.nextDouble();
+        double totalIncome = salary + otherIncome;
+
+        // Expenses
+        System.out.print("Enter your monthly rent/mortgage: ");
+        double rentMortgage = input.nextDouble();
+        System.out.print("Enter your monthly utilities (water, electricity, etc.): ");
+        double utilities = input.nextDouble();
+        System.out.print("Enter your monthly grocery expenses: ");
+        double groceries = input.nextDouble();
+        System.out.print("Enter your monthly transportation costs: ");
+        double transportation = input.nextDouble();
+        System.out.print("Enter your monthly healthcare expenses: ");
+        double healthcare = input.nextDouble();
+        System.out.print("Enter other monthly expenses (entertainment, clothing, etc.):");
+        double otherExpenses = input.nextDouble();
+
+        double totalExpenses = rentMortgage + utilities + groceries + transportation + healthcare + otherExpenses;
+
+        // Calculations and Output
+        double netIncome = totalIncome - totalExpenses;
+
+        System.out.println("\n--- Living Expenses Summary ---");
+        System.out.printf("Total Monthly Income: $%.2f\n", totalIncome);
+        System.out.printf("Total Monthly Expenses: $%.2f\n", totalExpenses);
+        System.out.printf("Net Monthly Income (Savings/Remaining): $%.2f\n", netIncome);
+
+        if (netIncome > 0) {
+            System.out.println("You have a positive net income. Good job!");
+        } else if (netIncome < 0) {
+            System.out.println("You have a negative net income. Consider reviewing your expenses.");
+        } else {
+            System.out.println("Your income and expenses are balanced.");
+        }
+
+        input.close(); // Close the Scanner to prevent resource leaks
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Prompts:**  More descriptive prompts guide the user on what to input.
+* **Detailed Output Summary:**  A formatted summary makes the results easy to understand.
+* **Net Income Analysis:**  Provides feedback based on whether the net income is positive, negative, or zero.
+* **Resource Management:** Closes the `Scanner` using `input.close()` to prevent resource leaks.  This is good practice.
+* **Error Handling (Basic):** Using `nextDouble()` assumes the user will input valid numbers. More robust error handling (e.g., using `try-catch` blocks) could be added if desired to handle invalid input gracefully.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `LivingExpensesCalculator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac LivingExpensesCalculator.java`
+3. **Run:**  After successful compilation, run the program using: `java LivingExpensesCalculator`
+
+The program will then prompt you to enter your income and expense details.

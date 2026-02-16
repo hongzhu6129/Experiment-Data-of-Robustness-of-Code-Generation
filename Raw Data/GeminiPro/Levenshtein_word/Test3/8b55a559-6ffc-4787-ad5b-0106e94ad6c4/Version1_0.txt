@@ -1,0 +1,119 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table of " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication Table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication Table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication Table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**  (Not a true corner case, but tests for potential overflow if you were using a smaller data type like `byte` or `short` which you are not here)
+   - Input: 100000 
+   - Expected Output: The table up to 100000 x 10 = 1000000
+
+5. **Large Negative Number:** (Similar overflow check as above)
+   - Input: -100000
+   - Expected Output: The table up to -100000 x 10 = -1000000
+
+
+
+**How to Run the Tests:**
+
+1. **Manual Testing:** Run the program multiple times, entering each test case input manually and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  You could create a testing class using a testing framework like JUnit.  Here's a basic example:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testTable(7, "7 x 1 = 7\n7 x 2 = 14\n... // Check the full output\n7 x 10 = 70\n"); // Replace ... with the full expected output
+    }
+
+    @Test
+    void testZero() {
+        testTable(0, "0 x 1 = 0\n0 x 2 = 0\n...\n0 x 10 = 0\n"); // Replace ...
+    }
+
+    @Test
+    void testNegativeNumber() {
+        testTable(-5, "-5 x 1 = -5\n-5 x 2 = -10\n...\n-5 x 10 = -50\n"); // Replace ...
+    }
+
+
+
+    private void testTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); // Redirect System.out
+        MultiplicationTable.printMultiplicationTable(input);
+        String actualOutput = outputStream.toString();
+        assertTrue(actualOutput.contains(expectedOutput), "Incorrect output for input: " + input); // Or assertEquals if you want an exact match
+        System.setOut(System.out); // Restore System.out
+    }
+}
+
+```
+
+Automated testing using JUnit (or another framework) allows you to run your tests quickly and reliably. This becomes especially valuable as you add more features or modify your code, as you can easily re-run the tests to ensure you haven't introduced regressions.

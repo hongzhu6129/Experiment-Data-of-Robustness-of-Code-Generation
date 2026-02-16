@@ -1,0 +1,103 @@
+```java
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class CorrectTwoPriorityQueues {
+
+    public static void main(String[] args) {
+        // Example usage:
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>(); // Natural order (min-heap)
+        pq1.add(5);
+        pq1.add(1);
+        pq1.add(10);
+        pq1.add(3);
+
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>(Comparator.reverseOrder()); // Reverse order (max-heap)
+        pq2.add(2);
+        pq2.add(8);
+        pq2.add(4);
+        pq2.add(6);
+
+
+        System.out.println("Original pq1: " + pq1);
+        System.out.println("Original pq2: " + pq2);
+
+
+        correctPriorityQueues(pq1, pq2);
+
+        System.out.println("Corrected pq1 (min-heap): " + pq1);
+        System.out.println("Corrected pq2 (max-heap): " + pq2);
+    }
+
+
+
+    public static void correctPriorityQueues(PriorityQueue<Integer> pq1, PriorityQueue<Integer> pq2) {
+        // 1. Create temporary lists to store elements
+        java.util.List<Integer> allElements = new java.util.ArrayList<>();
+
+        // 2. Add all elements from both queues to the list
+        allElements.addAll(pq1);
+        allElements.addAll(pq2);
+
+        // 3. Clear original priority queues
+        pq1.clear();
+        pq2.clear();
+
+
+        //4. Sort the combined list to easily divide elements
+        java.util.Collections.sort(allElements);
+
+        int n = allElements.size();
+        // 5. Re-add elements to corrected queues
+        for (int i = 0; i < n / 2; i++) {
+            pq1.add(allElements.get(i));  // Smaller half to min-heap
+        }
+
+        for (int i = n / 2; i < n; i++) {
+            pq2.add(allElements.get(i)); // Larger half to max-heap
+        }
+
+
+       //Alternative (more efficient if the heaps are large and mostly correct):
+
+        /*
+         *  This approach iteratively swaps elements that are in the wrong heap. 
+         *  It's generally faster when only a small portion of the elements 
+         *  needs correction.
+         */
+
+
+       /*
+        while (!pq1.isEmpty() && !pq2.isEmpty() && pq1.peek() > pq2.peek()) {
+            // Swap the top elements if they are in the wrong heaps
+            int temp = pq1.poll();
+            pq1.add(pq2.poll());
+            pq2.add(temp);
+        }
+        */
+
+
+    }
+}
+```
+
+
+Key Improvements and Explanations:
+
+1. **Clearer Example:** The `main` method provides a clear example of how to use the `correctPriorityQueues` method, creating two sample priority queues (one min-heap and one max-heap) with initial values.
+
+2. **Generic Method:** The `correctPriorityQueues` method now works with `PriorityQueue<Integer>`, making it more flexible. You can easily adapt it to other comparable types.
+
+3. **Combined List Approach (More Robust):**  The code uses a temporary list to combine all elements, sorts them, and then redistributes them to the correct queues.  This guarantees completely corrected queues, even if the initial queues were severely disordered.
+
+4. **Alternative Iterative Approach (Potentially More Efficient):**  The commented-out section demonstrates an iterative approach that swaps elements between the heaps if they are misplaced.  This can be significantly more efficient *if the heaps are already largely correct* and only a few elements need swapping. It avoids the overhead of sorting the entire combined list.
+
+5. **Comments and Explanations:**  The code includes comments to explain the logic step by step.
+
+6. **Improved Output:** The `main` method demonstrates the state of the queues before and after the correction, making it easier to see the results.
+
+
+How to Choose Between the Two Approaches inside `correctPriorityQueues`:
+
+* **Combined List/Sort:** Choose this if you need a guaranteed correct solution, regardless of the initial state of the queues, or if your queues are relatively small.  The `O(n log n)` complexity of sorting is acceptable in these cases.
+* **Iterative Swapping:** Consider this if you have very large queues and expect that they are mostly correct already (e.g., only a few elements are misplaced).  In such scenarios, the iterative approach can be significantly faster as it avoids the full sort.  However, this method's efficiency depends on the initial state of the queues.  In the worst-case (severely disordered queues), it could approach `O(n^2)` complexity in the number of swaps.

@@ -1,0 +1,60 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong();  // Use long to handle larger numbers and potential overflow
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+        scanner.close(); // Close the scanner to release resources.
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | num1 | num2 | Expected Output | Notes/Corner Case |
+|---|---|---|---|---|
+| 1 | 5 | 10 | 50 | Basic positive numbers |
+| 2 | -5 | 10 | -50 | Negative and positive number |
+| 3 | -5 | -10 | 50 | Two negative numbers |
+| 4 | 0 | 10 | 0 | Multiplication with zero |
+| 5 | 10 | 0 | 0 | Multiplication with zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 | `Long.MAX_VALUE` (Positive boundary) |
+| 8 | -9223372036854775808 | 1 | -9223372036854775808 | `Long.MIN_VALUE` (Negative boundary) |
+| 9 | 9223372036854775807 | 2 | -2 | Overflow (Positive * Positive = Negative) |
+| 10 | -9223372036854775808 | -1 | -9223372036854775808 |  Overflow (Negative * Negative = Negative.  -MIN_VALUE is still MIN_VALUE) |
+| 11 | 1000000000 | 1000000000 | 1000000000000000000 | Large numbers (within `long` range) |
+
+
+**How to run the test cases (example using case 1):**
+
+1. **Compile:**  `javac ProductOfTwoNumbers.java`
+2. **Run:** `java ProductOfTwoNumbers`
+3. **Input:**  When prompted, enter `5` for the first number and `10` for the second number.
+4. **Verify:** The output should be `The product of 5 and 10 is: 50`.
+
+Repeat steps 2-4 with the other test case inputs.
+
+
+Key improvements in this version:
+
+* **Handles larger numbers:** Uses `long` instead of `int` to avoid potential integer overflow with larger input values.
+* **Resource management:** Closes the `Scanner` using `scanner.close()` to prevent resource leaks.
+* **Comprehensive Test Cases:** Includes corner cases like zero, boundary values (`Long.MAX_VALUE`, `Long.MIN_VALUE`), and overflow scenarios to ensure the program behaves correctly in various situations.
+* **Clear explanation of test cases:** The table clearly explains the purpose of each test case.
+
+
+
+This enhanced version and its accompanying test cases provide a more robust and complete solution to the problem.

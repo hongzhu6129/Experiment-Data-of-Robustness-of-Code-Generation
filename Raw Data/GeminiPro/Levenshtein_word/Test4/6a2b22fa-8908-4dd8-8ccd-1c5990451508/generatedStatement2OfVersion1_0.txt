@@ -1,0 +1,26 @@
+
+
+
+Explanation and Improvements:
+
+1. **Object-Oriented Approach:** The code now uses a `Circle` class to encapsulate the radius, area, and perimeter calculations.  This is better practice than having loose functions.
+
+2. **Clearer Output:** The `main` method now prints the radius as well as the calculated area and perimeter, making the output easier to understand.
+
+3. **JUnit Tests:**  The most significant improvement is the inclusion of JUnit tests.  These tests automatically verify that the `calculatePerimeter` and `calculateArea` methods work correctly. Here's a breakdown of the test cases:
+   - `testZeroRadius`: Tests the corner case of a circle with a radius of 0.
+   - `testPositiveRadius`: Tests a standard case with a positive radius (the original example's radius).
+   - `testLargeRadius`: Tests with a very large radius to check for potential overflow or inaccuracies with large numbers.  The `delta` in `assertEquals` has been increased a bit for this case as there might be tiny discrepancies due to floating-point math.
+   - `testNegativeRadius()`: This crucial test now correctly checks for a negative radius and expects the constructor to throw an `IllegalArgumentException`. We added exception handling to the Circle constructor.
+
+
+4. **Exception Handling:** The `Circle` constructor now throws an `IllegalArgumentException` if the provided radius is negative.  This prevents the creation of invalid `Circle` objects.
+
+
+5. **Accuracy with Doubles:** The `assertEquals` method for doubles now uses a `delta` value (e.g., `1e-10`). This is essential when comparing floating-point numbers because tiny rounding errors can occur.  The `delta` specifies the acceptable difference between the expected and actual values.
+
+How to Run the Tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, you can usually right-click the test class or method and choose "Run".
+2. **Command Line:**  Compile and run the tests from the command line using:
+   

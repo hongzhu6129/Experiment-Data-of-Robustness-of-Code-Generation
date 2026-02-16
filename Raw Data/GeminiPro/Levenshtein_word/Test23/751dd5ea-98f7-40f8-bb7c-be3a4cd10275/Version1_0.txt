@@ -1,0 +1,70 @@
+```java
+public class HexToDecimal {
+
+    public static void main(String[] args) {
+
+        if (args.length != 1) {
+            System.out.println("Usage: java HexToDecimal <hex_value>");
+            return;
+        }
+
+        String hexString = args[0];
+        long decimalValue = 0;
+        long power = 1;
+
+
+        for (int i = hexString.length() - 1; i >= 0; i--) {
+            char hexChar = hexString.charAt(i);
+
+            if (hexChar >= '0' && hexChar <= '9') {
+                decimalValue += (hexChar - '0') * power;
+            } else if (hexChar >= 'A' && hexChar <= 'F') {
+                decimalValue += (hexChar - 'A' + 10) * power;
+            } else if (hexChar >= 'a' && hexChar <= 'f') {
+                decimalValue += (hexChar - 'a' + 10) * power;
+            } else {
+                System.out.println("Invalid hexadecimal character: " + hexChar);
+                return;
+            }
+
+            power *= 16;
+        }
+
+        System.out.println(decimalValue);
+
+    }
+}
+```
+
+**Test Cases:**
+
+**Valid Inputs:**
+
+1. **Simple Case:** `FF` (Expected output: 255)
+2. **Mixed Case:** `fF` (Expected output: 255)
+3. **Leading Zeroes:** `00FF` (Expected output: 255)
+4. **Number with digits and letters:** `1A2B` (Expected output: 6707)
+5. **Single Digit:** `A` (Expected output: 10)
+6. **Zero:** `0` (Expected output: 0)
+7. **Large Number:** `FFFFFFFF` (Expected output: 4294967295) - Test the limits of a 32-bit unsigned integer.
+
+
+**Corner/Invalid Inputs:**
+
+1. **Empty String:** `""` (Expected output: Usage message)
+2. **Invalid Character:** `G1` (Expected output: "Invalid hexadecimal character: G")
+3. **Space in Input:** `FF FF` (Expected output: Usage message, as the program only accepts one argument)
+4. **Negative Sign:** `-FF` (Expected output: "Invalid hexadecimal character: -")
+5. **Overflow (potential, depending on system):**  `100000000` (For a 32-bit system, may cause unexpected behavior or errors).  This tests for potential integer overflow issues. On a 64-bit system using `long`, it should handle this correctly.
+6. **Case sensitivity within a number:**  `aFFFFFFF` (Makes sure there aren't case sensitivity problems within the hex number itself.)
+
+
+
+**How to Run Test Cases (from the command line):**
+
+1. Save the code as `HexToDecimal.java`
+2. Compile: `javac HexToDecimal.java`
+3. Run each test case: `java HexToDecimal FF` (replace `FF` with the desired test input)
+
+
+By testing these cases, you can verify that the program correctly handles various inputs and identifies invalid hexadecimal values.  Pay close attention to the overflow test, as the behavior might differ depending on your system architecture (32-bit vs. 64-bit). Using `long` helps mitigate this, but it's always good to be aware of potential limitations.

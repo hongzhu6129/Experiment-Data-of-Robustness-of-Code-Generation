@@ -1,0 +1,75 @@
+```java
+public class CanonicalRepresentation {
+
+    public static void main(String[] args) {
+        // Example strings
+        String str1 = "Hello";
+        String str2 = new String("Hello"); // Created using the new keyword
+        String str3 = str1.intern();       // Forces str1 to use the canonical representation
+
+        // Print the canonical representation (memory address in essence) using System.identityHashCode
+        System.out.println("Canonical Representation of str1 (hashcode): " + System.identityHashCode(str1));
+        System.out.println("Canonical Representation of str2 (hashcode): " + System.identityHashCode(str2));
+        System.out.println("Canonical Representation of str3 (hashcode): " + System.identityHashCode(str3));
+
+        // Comparing canonical representations
+        if (str1 == str2) { // Compares references (canonical representations)
+            System.out.println("str1 and str2 have the same canonical representation.");
+        } else {
+            System.out.println("str1 and str2 have different canonical representations.");
+        }
+
+        if (str1 == str3) {
+            System.out.println("str1 and str3 have the same canonical representation.");
+        } else {
+            System.out.println("str1 and str3 have different canonical representations.");
+        }
+
+        // Further illustration (using intern)
+        String str4 = new String("World").intern();
+        String str5 = "World";
+
+        if (str4 == str5) {  // Will be true after interning str4
+            System.out.println("str4 and str5 have the same canonical representation after interning.");
+        } else {
+            System.out.println("str4 and str5 have different canonical representations.");
+        }
+
+
+        // More realistic example: demonstrating the effect of intern() for performance
+        String[] strings = new String[10000]; 
+        for (int i = 0; i < strings.length; i++) {
+            strings[i] = new String("Some repeated string").intern(); //  Use intern() here
+        }
+
+        // Demonstrates that only one canonical representation is created even though we used new String() repeatedly
+         System.out.println("Number of unique canonical representations (estimated): " + countUniqueCanonicalRepresentations(strings));
+
+
+
+    }
+
+    // Helper function to roughly estimate the number of unique canonical representations
+    public static int countUniqueCanonicalRepresentations(String[] strings) {
+        java.util.Set<Integer> uniqueHashCodes = new java.util.HashSet<>();
+        for (String s : strings) {
+            uniqueHashCodes.add(System.identityHashCode(s));
+        }
+        return uniqueHashCodes.size();
+    }
+}
+```
+
+
+Explanation of Canonical Representation and `intern()`:
+
+1. **Canonical Representation:** In Java, string literals (like "Hello") are stored in a special memory area called the "string constant pool" (part of the method area/permanent generation in older Java versions and part of the heap in newer versions). Each unique string literal has only *one* canonical representation in this pool. When you use the same string literal multiple times, they all refer to the same object in the string pool.
+
+2. **`String` created with `new`:**  When you create a `String` using the `new String("Hello")` constructor, a *new* string object is created in the heap, even if a string with the same content already exists in the string pool. This new object has a different canonical representation (memory address) than the one in the string pool.
+
+3. **`intern()` method:** The `intern()` method ensures that a string has a canonical representation in the string pool.  If a string with the same content already exists in the pool, `intern()` returns a reference to that string. If not, it adds the string to the pool and returns a reference to the newly added string.
+
+4. **`==` vs. `.equals()`:** The `==` operator compares references (canonical representations/memory addresses). The `equals()` method compares the *content* of the strings.  So, `str1 == str2` checks if `str1` and `str2` refer to the *same* object, while `str1.equals(str2)` checks if they contain the same sequence of characters.
+
+
+The provided code demonstrates these concepts with examples and uses `System.identityHashCode()` to illustrate the difference in canonical representations (while not directly providing the memory address, the `identityHashCode` typically reflects the object's identity). The code also includes a more practical example showing how `intern()` can be used to ensure only one copy of a repeated string is stored, which can be crucial for memory efficiency in certain situations.

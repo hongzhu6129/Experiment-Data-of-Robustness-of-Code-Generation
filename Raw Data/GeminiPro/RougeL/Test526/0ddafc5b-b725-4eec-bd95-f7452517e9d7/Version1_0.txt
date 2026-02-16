@@ -1,0 +1,47 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1);  // Calculate 2^(2^n) + 1
+    }
+}
+```
+
+
+This code calculates and displays the first 10 Fermat numbers.  It uses a helper function `calculateFermatNumber` to keep the main method clean.  Because Fermat numbers grow very large quickly, we use `long` to store them. However, even `long` will not be sufficient for Fermat numbers beyond the first few.  If you need to work with larger Fermat numbers, you would have to use `BigInteger`.
+
+
+Here's a version using `BigInteger` if you need to handle arbitrarily large Fermat numbers:
+
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.TWO.pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+    }
+}
+```
+
+
+This version uses `BigInteger` which can handle numbers of arbitrary precision. This allows it to correctly display Fermat numbers beyond those that fit into `long`.

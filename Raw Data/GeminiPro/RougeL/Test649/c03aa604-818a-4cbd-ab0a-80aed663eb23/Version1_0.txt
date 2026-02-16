@@ -1,0 +1,54 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckMapMapping {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> map = new HashMap<>();
+        map.put("apple", 1);
+        map.put("banana", 2);
+        map.put("orange", 3);
+
+        // Test if the map contains mappings for specific keys
+        String key1 = "banana";
+        String key2 = "grape";
+
+        // Method 1: Using containsKey()
+        boolean containsKey1 = map.containsKey(key1);
+        boolean containsKey2 = map.containsKey(key2);
+
+        System.out.println("Map contains mapping for \"" + key1 + "\": " + containsKey1); // Output: true
+        System.out.println("Map contains mapping for \"" + key2 + "\": " + containsKey2); // Output: false
+
+
+        // Method 2: Using get() and checking for null (less efficient, but shows alternative)
+        Integer value1 = map.get(key1);
+        Integer value2 = map.get(key2);
+
+        boolean containsMapping1 = (value1 != null);
+        boolean containsMapping2 = (value2 != null);
+
+        System.out.println("Map contains mapping for \"" + key1 + "\" (using get): " + containsMapping1); // Output: true
+        System.out.println("Map contains mapping for \"" + key2 + "\" (using get): " + containsMapping2); // Output: false
+
+
+        // Example with Integer keys (or any other Comparable type)
+        Map<Integer, String> intMap = new HashMap<>();
+        intMap.put(10, "Ten");
+        intMap.put(20, "Twenty");
+
+        Integer intKey1 = 20;
+        Integer intKey2 = 30;
+
+
+        boolean containsIntKey1 = intMap.containsKey(intKey1);
+        boolean containsIntKey2 = intMap.containsKey(intKey2);
+
+        System.out.println("Map contains mapping for " + intKey1 + ": " + containsIntKey1); // Output: true
+        System.out.println("Map contains mapping for " + intKey2 + ": " + containsIntKey2); // Output: false
+
+    }
+}
+```

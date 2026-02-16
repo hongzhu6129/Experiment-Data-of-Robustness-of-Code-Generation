@@ -1,0 +1,97 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Original Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km (half the Earth's circumference)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106  (Near Perth, Australia)
+   - Expected Output: ~20015.08 km (approximately) � Note: Antipodes aren't always exactly opposite latitudes.
+
+5. **Points on the Equator, 90 degrees apart:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km  (quarter of Earth's circumference)
+
+
+6. **Points near the International Date Line:**
+    - lat1: 10
+    - lon1: 179
+    - lat2: 10
+    - lon2: -179
+    - Expected Output: Small distance (because they are close despite the longitude difference)
+
+7. **Invalid Inputs (optional, depends on how you handle errors):**
+    - lat1: -91 (invalid latitude)
+    - lon1: 181 (invalid longitude)
+    - Test how your program handles latitudes and longitudes out of the valid range (-90 to +90 for latitude and -180 to +180 for longitude)
+
+
+**How to perform the tests:**
+
+You can either:
+
+* **Manually input:** Run your program multiple times, inputting the test case values each time and comparing with the expected output.
+* **Automated testing (recommended):** Create unit tests (e.g., using JUnit) to automate the testing process.  This approach is far more efficient and robust.  You would define the test cases within your unit test methods and use assertions to check that the calculated distances match the expected values within a defined tolerance.
+
+
+
+By using these test cases, you can thoroughly verify the correctness of your Earth distance calculation program.  Consider adding more test cases based on the specific requirements or edge cases relevant to your application.

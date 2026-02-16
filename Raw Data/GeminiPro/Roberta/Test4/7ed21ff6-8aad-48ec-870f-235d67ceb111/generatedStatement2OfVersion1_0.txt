@@ -1,0 +1,27 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Test Cases:**  The code now includes comprehensive JUnit 5 test cases. These tests cover positive, zero, very small, and large radius values for both area and perimeter calculations.  Importantly, they also handle the corner case of negative radius input by expecting an `IllegalArgumentException`. This is crucial for robust code.  We have now improved the handling of these cases so that they throw an exception.
+
+* **Exception Handling (Improved):**  Instead of just printing an error message, the `calculateArea` and `calculatePerimeter` methods should throw an `IllegalArgumentException` if a negative radius is provided. This is standard practice for invalid input and allows calling methods to handle the error appropriately. The tests were modified to accommodate this improvement by using Assertions.assertThrows()
+
+* **Clearer Test Names:** Test method names are more descriptive (e.g., `testCalculateArea_positiveRadius`, `testCalculatePerimeter_zeroRadius`), making it easier to understand what each test is verifying.
+
+* **Tolerance in Assertions:** The `assertEquals` assertions now include a delta (tolerance) to account for potential floating-point inaccuracies.  This is extremely important when comparing double values.
+
+* **Test for Large Radius:** Included a test case with a very large radius to ensure calculations remain accurate with large numbers.
+
+* **Test for Very Small Radius:** Included a test case with a very small radius to test behavior near zero.
+
+
+How to run the tests (assuming you have JUnit 5 set up):
+
+1. **IDE:** Most IDEs (IntelliJ, Eclipse, NetBeans) have built-in support for running JUnit tests.  Right-click on the test class or a specific test method and select "Run".
+
+2. **Command Line:**  If you're using Maven or Gradle, use the appropriate test command (e.g., `mvn test` or `gradle test`).
+
+
+This revised version is much more robust and demonstrates good testing practices, which are essential for reliable software development.

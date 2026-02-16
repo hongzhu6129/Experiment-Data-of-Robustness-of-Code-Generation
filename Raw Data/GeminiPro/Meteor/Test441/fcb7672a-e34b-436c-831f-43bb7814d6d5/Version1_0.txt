@@ -1,0 +1,95 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
+public class MinimumDateValues {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Year
+        int minYear = currentDate.getYear(); // Current year is the minimum
+
+        // Month
+        int minMonth = currentDate.getMonthValue(); // Current month is the minimum
+
+
+        // Week of year (ISO-8601 standard: Week starts on Monday)
+        int currentWeekOfYear = currentDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+        int minWeekOfYear = currentWeekOfYear;
+
+
+        // Day of month
+        int minDayOfMonth = currentDate.getDayOfMonth(); // Current day is the minimum
+
+
+        // Example of finding minimum values across a set of holidays (Illustrative)
+        LocalDate[] holidays = {
+                LocalDate.of(2024, Month.DECEMBER, 25), // Christmas
+                LocalDate.of(2024, Month.JANUARY, 1),  // New Year's Day
+                LocalDate.of(2024, Month.JULY, 4)      // 4th of July
+        };
+
+        for (LocalDate holiday : holidays) {
+            minYear = Math.min(minYear, holiday.getYear());
+            minMonth = Math.min(minMonth, holiday.getMonthValue());
+            minWeekOfYear = Math.min(minWeekOfYear, holiday.get(WeekFields.of(Locale.getDefault()).weekOfYear())); //ISO weeks
+            minDayOfMonth = Math.min(minDayOfMonth, holiday.getDayOfMonth());
+        }
+
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month: " + minMonth);
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+
+
+        // ---  Additional Calculations (If needed) ---
+
+        // Minimum day of week (e.g., Sunday=7)
+        DayOfWeek minDayOfWeek = currentDate.getDayOfWeek();
+        for (LocalDate holiday : holidays) {
+             if (holiday.getDayOfWeek().getValue() < minDayOfWeek.getValue()) {
+                  minDayOfWeek = holiday.getDayOfWeek();
+             }
+        }
+        System.out.println("Minimum Day of Week: " + minDayOfWeek.getValue()); //1=Monday ... 7=Sunday
+
+
+
+        // Day of year (1-366):  Not as useful for "minimum" comparisons across years
+        int minDayOfYear = currentDate.getDayOfYear();
+        for (LocalDate holiday : holidays) {
+            minDayOfYear = Math.min(minDayOfYear, holiday.getDayOfYear());
+        }
+        System.out.println("Minimum Day of Year: " + minDayOfYear);
+
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:** More descriptive variable names (e.g., `minYear`, `minMonth`) improve readability.
+
+2. **ISO 8601 Week Numbers:**  Uses `WeekFields.of(Locale.getDefault()).weekOfYear()` to get the week number according to the ISO 8601 standard, where weeks start on Monday. This provides more consistent and internationally understood week numbers.
+
+3. **Holiday Example:** Includes an example array of `LocalDate` holidays to demonstrate how to find minimums across a set of dates.
+
+4. **Minimum Day of Week:** Demonstrates how to find the minimum day of the week using the `getDayOfWeek()` method.
+
+5. **Day of Year Consideration:**  Includes calculation for the day of the year but explains why it's not always meaningful for comparing minimums across different years.
+
+6. **Comments and Explanations:** Added comments to explain the logic and the use of different `java.time` methods.
+
+
+This improved version addresses the prompt more directly, provides more accurate and internationally consistent week numbers, and gives a clear example of how to use the concepts with a set of dates.

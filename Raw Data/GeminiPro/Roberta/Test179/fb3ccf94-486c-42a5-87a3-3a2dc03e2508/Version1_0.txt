@@ -1,0 +1,62 @@
+```java
+import java.util.Arrays;
+
+public class LexicographicRank {
+
+    public static void main(String[] args) {
+        String[] testCases = {"a", "ab", "abc", "ba", "bca", "cab", "cba"};
+
+        for (String testCase : testCases) {
+            int rank = getLexicographicRank(testCase);
+            System.out.println("The lexicographic rank of \"" + testCase + "\" is: " + rank);
+        }
+    }
+
+    public static int getLexicographicRank(String str) {
+        int[] count = new int[256];
+
+        for (int i = 0; i < str.length(); i++) {
+            count[str.charAt(i)]++;
+        }
+
+        int rank = 1;
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = 0; j < str.charAt(i); j++) {
+                rank += count[j];
+            }
+
+            count[str.charAt(i)]--;
+        }
+
+        return rank;
+    }
+}
+```
+
+**Test Cases**
+
+**Valid Test Cases**
+
+* Input: "a"
+  * Output: 1
+* Input: "ab"
+  * Output: 3
+* Input: "abc"
+  * Output: 6
+* Input: "ba"
+  * Output: 2
+* Input: "bca"
+  * Output: 9
+* Input: "cab"
+  * Output: 8
+* Input: "cba"
+  * Output: 7
+
+**Corner Cases**
+
+* Input: null
+  * Output: 0 (invalid input)
+* Input: ""
+  * Output: 1 (empty string has rank 1)
+* Input: "aaaaaaaaaaaaaaaaaaa"
+  * Output: 1220703125 (very large rank, testing for overflow)

@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class ReadFromConsole {
+
+    public static void main(String[] args) {
+
+        // 1. Using Scanner: This is the most common and recommended approach.
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int intValue = scanner.nextInt(); 
+        scanner.nextLine(); // Consume the newline character left by nextInt()
+
+        System.out.print("Enter a double: ");
+        double doubleValue = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+
+        System.out.print("Enter a string: ");
+        String stringValue = scanner.nextLine();
+
+        System.out.print("Enter a single character: ");
+        char charValue = scanner.nextLine().charAt(0);  // Read a line and take the first char
+
+
+        System.out.println("\nYou entered:");
+        System.out.println("Integer: " + intValue);
+        System.out.println("Double: " + doubleValue);
+        System.out.println("String: " + stringValue);
+        System.out.println("Character: " + charValue);
+
+
+
+        // 2. Using BufferedReader (Less common, but useful for large inputs):
+        /*
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.print("Enter a line using BufferedReader: ");
+            String line = reader.readLine();
+            System.out.println("You entered: " + line);
+
+        } catch (IOException e) {
+            System.err.println("Error reading input: " + e.getMessage());
+        }
+        */
+
+        scanner.close(); // Important: Close the scanner to release resources
+
+
+        // 3. Using Console (For passwords and sensitive data):
+        /*  Console console = System.console(); 
+            if (console != null) {  // Check if console is available (might not be in IDEs)
+                char[] password = console.readPassword("Enter your password: ");
+                String passwordString = new String(password); // Convert to String if needed
+                System.out.println("You entered: " + passwordString); //  Be very careful about displaying passwords! In real applications, never display them directly.
+
+                // Important: Clear the password array for security
+                java.util.Arrays.fill(password, ' ');  
+            } else {
+                System.out.println("Console is not available."); //  Handle the case where a console is not available
+            }
+        */
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+* **Clearer explanations:**  Comments explain each step and the purpose of each method.
+* **Handles newline characters:** `scanner.nextLine()` is used after `nextInt()` and `nextDouble()` to consume the newline character left behind. This prevents issues when reading strings immediately after reading numbers.
+* **Character input:** Shows how to read a single character using `scanner.nextLine().charAt(0)`.
+* **BufferedReader example (commented out):** Includes a commented-out example of using `BufferedReader`, which can be more efficient for large inputs.
+* **Console example (commented out):**  Demonstrates how to read passwords or other sensitive data securely using `System.console()`. This also includes vital security advice about handling passwords.
+* **Resource management:**  `scanner.close()` is included to release resources.
+* **Error handling (in BufferedReader):** The `BufferedReader` example includes a `try-catch` block to handle potential `IOExceptions`.
+* **Console availability check:** The `Console` example includes a check to make sure `System.console()` is available before trying to use it (it may not be available in some IDEs).
+* **Security best practice:** Emphasizes the importance of *not* displaying passwords and clearing password arrays after use.
+
+
+This educational example is more complete, safer, and better suited for teaching users how to read input effectively in Java.

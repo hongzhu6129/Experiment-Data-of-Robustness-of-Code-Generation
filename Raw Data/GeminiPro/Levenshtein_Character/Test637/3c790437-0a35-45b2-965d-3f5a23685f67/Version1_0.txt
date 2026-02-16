@@ -1,0 +1,36 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueuePeek {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers (you can use any comparable type)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some elements to the PriorityQueue
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+
+        // Retrieve the first element (smallest in this case) using peek()
+        if (!pq.isEmpty()) {  // Check if the queue is empty before peeking
+            Integer firstElement = pq.peek(); 
+            System.out.println("First element (smallest): " + firstElement);
+
+
+            //Demonstrate that peek() does *not* remove the element
+            System.out.println("Queue after peek(): " + pq); 
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+
+         //Example of retrieving and *removing* using poll()
+        if (!pq.isEmpty()) {
+             Integer polledElement = pq.poll();
+             System.out.println("Polled element: " + polledElement);
+             System.out.println("Queue after poll(): " + pq);
+        }
+    }
+}
+```

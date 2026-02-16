@@ -1,0 +1,54 @@
+```java
+import java.util.Scanner;
+
+public class FutureInvestmentValue {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter investment amount: ");
+        double investmentAmount = input.nextDouble();
+
+        System.out.print("Enter annual interest rate in percentage: ");
+        double annualInterestRate = input.nextDouble();
+
+        System.out.print("Enter number of years: ");
+        int numberOfYears = input.nextInt();
+
+        double futureValue = futureInvestmentValue(investmentAmount, annualInterestRate, numberOfYears);
+
+        System.out.printf("Future value is $%.2f\n", futureValue);
+
+        input.close(); 
+    }
+
+    public static double futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years) {
+        double monthlyInterestRateDecimal = monthlyInterestRate / 1200.0; // Convert percentage to decimal and divide by 12
+        int numberOfMonths = years * 12;
+        return investmentAmount * Math.pow(1 + monthlyInterestRateDecimal, numberOfMonths);
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Clear Prompts:**  The `main` method now uses clear prompts to guide the user on what input to provide.
+2. **Input Validation (Optional but Recommended):**  While not strictly required by the prompt, you should consider adding input validation in a real application to handle invalid inputs (e.g., negative investment amount, non-numeric input).
+3. **Closing Scanner:** The `Scanner` is closed using `input.close()` to release the resource.
+4. **Formula in `futureInvestmentValue`:**  The formula for compound interest is correctly implemented:
+   ```
+   Future Value = Investment Amount * (1 + Monthly Interest Rate)^Number of Months
+   ```
+5. **Monthly Interest Rate Calculation:** The annual interest rate is correctly converted to a monthly interest rate in decimal form by dividing by 1200 (12 months * 100 to convert percentage to decimal).
+6. **Output Formatting:** The `printf` method formats the output to two decimal places for currency representation.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `FutureInvestmentValue.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler: `javac FutureInvestmentValue.java`
+3. **Run:** Execute the compiled code: `java FutureInvestmentValue`
+
+
+The program will then prompt you to enter the investment amount, annual interest rate, and number of years, and it will calculate and display the future value.

@@ -1,0 +1,70 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int target = 5;
+        int[] result = Saddleback(matrix, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+
+
+        target = 20; // Example with a target that doesn't exist
+         result = Saddleback(matrix, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] matrix, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature:**  The method signature `Saddleback(int[][] matrix, int m, int n, int target)` is now more informative, explicitly stating the matrix, its dimensions, and the target value.
+
+2. **Return an Array for Coordinates:** The `Saddleback` method returns an `int[]` array to store both the row and column index of the found element. If the element is not found, it returns `{-1, -1}`.  This is a standard and efficient way to return multiple values from a method in Java.
+
+3. **Concise Saddleback Search Implementation:** The `Saddleback` method efficiently implements the algorithm:
+   - It starts at the top-right corner of the matrix.
+   - If the current element is smaller than the target, it moves down to the next row (because the elements to the left in the current row are smaller).
+   - If the current element is larger than the target, it moves left to the previous column (because the elements below in the current column are larger).
+   - It continues this process until the target is found or the boundaries of the matrix are crossed.
+
+4. **Illustrative `main` method:** The `main` method provides a clear example of how to use the `Saddleback` method and handles the case where the target is not found.  It uses a sample sorted 2D array.  I've added a second example to demonstrate what happens when the target is not present.
+
+
+This revised code provides a complete, well-documented, and efficient solution to the saddleback search problem.

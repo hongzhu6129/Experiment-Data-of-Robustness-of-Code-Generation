@@ -1,0 +1,58 @@
+```java
+import java.util.TreeSet;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        Integer key1 = 25;
+        Integer result1 = getLeastKeyGreaterThanOrEqualTo(treeSet, key1);
+        System.out.println("Least key greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        Integer key2 = 10;
+        Integer result2 = getLeastKeyGreaterThanOrEqualTo(treeSet, key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+        Integer key3 = 55;
+        Integer result3 = getLeastKeyGreaterThanOrEqualTo(treeSet, key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + result3); // Output: null
+
+
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+
+        String key4 = "blueberry";
+        String result4 = getLeastKeyGreaterThanOrEqualTo(stringTreeSet, key4);
+        System.out.println("Least key greater than or equal to " + key4 + ": " + result4); // Output: cherry
+
+
+        // Example with an empty TreeSet
+        TreeSet<Integer> emptyTreeSet = new TreeSet<>();
+        Integer key5 = 10;
+        Integer result5 = getLeastKeyGreaterThanOrEqualTo(emptyTreeSet, key5);
+        System.out.println("Least key greater than or equal to " + key5 + " in an empty set: " + result5); // Output: null
+
+
+
+    }
+
+    public static <T> T getLeastKeyGreaterThanOrEqualTo(TreeSet<T> treeSet, T key) {
+        if (treeSet == null || treeSet.isEmpty()) {
+            return null;
+        }
+         return treeSet.ceiling(key); 
+    }
+}
+```
+
+
+The core logic is within the  `getLeastKeyGreaterThanOrEqualTo` method which now correctly utilizes `TreeSet.ceiling()` and handles `null` or empty `TreeSet` inputs. The `main` method demonstrates various test cases, including integer and string TreeSets, and handling edge cases.

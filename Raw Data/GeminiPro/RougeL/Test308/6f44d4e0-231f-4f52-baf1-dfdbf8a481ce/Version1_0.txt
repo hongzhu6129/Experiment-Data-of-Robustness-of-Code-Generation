@@ -1,0 +1,37 @@
+```java
+class Solution {
+    /**
+     * Checks if the second string contains the first one.
+     *
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return True if the second string contains the first one, false otherwise.
+     */
+    public static boolean is_str_contains(String str1, String str2) {
+        return str2.contains(str1);
+    }
+
+    /**
+     * Main method to demonstrate the is_str_contains function.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        String str1 = "once in a blue moon";
+        String str2 = "see eye to eye";
+
+        if (is_str_contains(str1, str2)) {
+            System.out.println("if the second string contains the first one? true");
+        } else {
+            System.out.println("if the second string contains the first one? false"); // This will be the output in this case
+        }
+
+
+        // Additional examples
+        System.out.println(is_str_contains("hello", "world hello there")); // true
+        System.out.println(is_str_contains("world", "hello")); // false
+        System.out.println(is_str_contains("", "any string")); // true  (Empty string is contained in any string)
+        System.out.println(is_str_contains("test", "test"));//true
+    }
+}
+```

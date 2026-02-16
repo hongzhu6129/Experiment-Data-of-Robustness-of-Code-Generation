@@ -1,0 +1,30 @@
+
+
+
+
+Key improvements and explanations in the revised code:
+
+* **JUnit Tests:**  The code now includes comprehensive JUnit tests.  Testing is crucial for verifying correctness, especially for mathematical calculations.  The tests cover:
+    * Positive radius values.
+    * Zero radius.
+    * Very large radius (handling potential `Infinity` results).
+    * Very small radius (close to zero).
+    * Negative radius (now throwing `IllegalArgumentException`, which is caught in the tests).  This is important for robust code!
+
+* **Exception Handling:**  Added `IllegalArgumentException` for negative radius input in both `calculateArea` and `calculatePerimeter`. This prevents unexpected behavior or crashes with invalid data.
+
+* **Clearer Comments:**  Improved comments to explain the reasoning behind the code and the test cases.
+
+* **Tolerance in Assertions:** For tests involving very small or very large numbers where tiny rounding errors might occur, I've used a `delta` (tolerance) with `assertEquals` to ensure the tests pass reliably.
+
+* **Edge Case Coverage:** The test cases now explicitly address edge cases and boundary conditions like zero, very large, and very small radius values, making the testing more thorough.
+
+
+How to run the tests:
+
+1. **IDE (e.g., IntelliJ, Eclipse):** The simplest way is to use an IDE. Right-click on the test class or a specific test method and select "Run."
+
+2. **Command Line (with build tools like Maven or Gradle):** If you're using a build tool, it will have commands for running tests (e.g., `mvn test` for Maven, `./gradlew test` for Gradle).
+
+
+This improved version is more robust, well-tested, and follows best practices for Java development. It's designed to handle various input scenarios and avoid potential errors.

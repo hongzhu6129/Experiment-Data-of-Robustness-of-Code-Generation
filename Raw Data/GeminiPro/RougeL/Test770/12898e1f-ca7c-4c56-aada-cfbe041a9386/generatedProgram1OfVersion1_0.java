@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input second number: ");
+        int num2 = input.nextInt();
+
+        int sum = add(num1, num2);
+        int difference = subtract(num1, num2);
+        int product = multiply(num1, num2);
+        int quotient = divide(num1, num2);
+        int remainder = findRemainder(num1, num2);
+
+
+        System.out.println(num1 + " + " + num2 + " = " + sum);
+        System.out.println(num1 + " - " + num2 + " = " + difference);
+        System.out.println(num1 + " x " + num2 + " = " + product);
+        System.out.println(num1 + " / " + num2 + " = " + quotient);
+        System.out.println(num1 + " mod " + num2 + " = " + remainder);
+
+        input.close();
+    }
+
+
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static int divide(int a, int b) {
+        return a / b;
+    }
+
+    public static int findRemainder(int a, int b) {
+        return a % b;
+    }
+}

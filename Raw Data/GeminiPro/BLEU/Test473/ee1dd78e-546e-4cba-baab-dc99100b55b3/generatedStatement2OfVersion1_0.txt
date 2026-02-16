@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Milliseconds vs. Seconds:** Unix timestamps are typically in seconds, but the `Date` constructor in Java expects milliseconds.  The code now correctly multiplies by 1000 to convert.
+
+2. **Command-line Argument Handling:**  The code now optionally accepts a Unix timestamp as a command-line argument. This makes it more flexible.  It also includes error handling in case the argument isn't a valid number.
+
+3. **Clearer Output:**  The output now labels the dates to make it easier to understand (especially when using command-line arguments).
+
+**How to Run (with command-line argument):**
+
+1. **Compile:** `javac UnixTimestampToDate.java`
+2. **Run:** `java UnixTimestampToDate 1678886400`  (Replace `1678886400` with your desired timestamp)
+
+
+**Key improvements over previous versions:**
+
+* **Correctness:** Handles the seconds-to-milliseconds conversion accurately.
+* **Flexibility:**  Allows you to provide a timestamp as a command-line argument.
+* **Robustness:** Includes error handling for invalid input.
+* **Clarity:** Improved output labeling.

@@ -1,0 +1,89 @@
+```java
+import java.util.Arrays;
+
+public class CountingSort {
+
+    // k is the range of input (0 to k)
+    void countingSort(int[] arr, int n, int k) {
+        int[] count = new int[k + 1]; // Initialize count array with zeros
+        int[] output = new int[n];   // Output array
+
+        // Store the count of each element
+        for (int i = 0; i < n; i++) {
+            count[arr[i]]++;
+        }
+
+        // Update count[i] to store the sum of counts up to i
+        for (int i = 1; i <= k; i++) {
+            count[i] += count[i - 1];
+        }
+
+        // Build the output array
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[arr[i]] - 1] = arr[i];
+            count[arr[i]]--; 
+        }
+
+        // Copy the output array to the original array
+        for (int i = 0; i < n; i++) {
+            arr[i] = output[i];
+        }
+
+    }
+
+    public static void main(String[] args) {
+        CountingSort cs = new CountingSort();
+        int[] arr = {1, 4, 1, 2, 7, 5, 2};
+        int k = 9; // Max element in array (adjust as needed)
+        int n = arr.length;
+
+        System.out.println("Original array: " + Arrays.toString(arr));
+
+        cs.countingSort(arr, n, k);
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+
+
+        // Demonstrating the error handling for non-integer input:
+
+        String[] strArr = {"1", "4", "computer", "2", "7", "5", "2"};  // Example with invalid input
+
+
+        try {
+             int[] numArr = new int[strArr.length];
+
+             for(int i=0; i<strArr.length; i++){
+                numArr[i] = Integer.parseInt(strArr[i]); // This line throws exception if not a number
+             }
+
+
+             cs.countingSort(numArr, numArr.length, k); // Only call if parsing was successful
+
+             System.out.println("Sorted numeric array (if successful parse): " + Arrays.toString(numArr));
+            
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Invalid input. Cannot convert 'computer' (or other non-numeric string) to an integer.");
+        }
+
+
+
+
+    }
+}
+
+
+
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer `countingSort` Implementation:**  The `countingSort` method now has comments explaining each step, making it easier to understand. The output array is handled more efficiently.
+2. **Illustrative `main` method:** The `main` method provides a simple example demonstrating how to use `countingSort`. It also includes `k` (the maximum element in the array) explicitly, which is essential for counting sort.
+3. **Error Handling Demonstration:** The main point of the question � the `ValueError` when converting 'computer' to an integer. The provided code now demonstrates how to handle this using a `try-except` block. The code attempts to convert each string in the array to an integer. If it encounters a `NumberFormatException`, it catches the error and prints a helpful message.
+4. **Java conventions:** Code formatting and naming conventions are improved for better readability.
+
+
+This improved version addresses the original prompt about handling the integer conversion error and also provides a functional, well-commented counting sort implementation.

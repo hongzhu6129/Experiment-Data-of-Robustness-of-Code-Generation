@@ -1,0 +1,31 @@
+```java
+import java.util.List;
+import java.util.Arrays;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("Apple", "apricot", "Avocado", "Banana", "blueberry", "orange");
+
+        String startLetter = "a"; // Case-insensitive
+
+        long count = strings.stream()
+                .filter(s -> s.toLowerCase().startsWith(startLetter.toLowerCase()))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startLetter + "': " + count);
+
+
+        // Example with a different starting letter and list
+        List<String> strings2 = Arrays.asList("Car", "cat", "Dog", "dolphin", "Elephant", "eagle");
+        String startLetter2 = "E";
+
+         count = strings2.stream()
+                .filter(s -> s.toLowerCase().startsWith(startLetter2.toLowerCase()))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startLetter2 + "': " + count);
+
+    }
+}
+```

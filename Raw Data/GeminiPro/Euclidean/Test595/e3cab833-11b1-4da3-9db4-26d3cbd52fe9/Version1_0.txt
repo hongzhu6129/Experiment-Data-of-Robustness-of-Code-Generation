@@ -1,0 +1,44 @@
+```java
+import java.util.LinkedList;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Check if the list is empty before attempting to retrieve the first element
+        if (!linkedList.isEmpty()) {
+            // Retrieve the first element using peekFirst() - this doesn't remove it
+            String firstElement = linkedList.peekFirst(); 
+
+            // Print the first element
+            System.out.println("First element: " + firstElement);
+
+            // Verify that the element is still in the list
+            System.out.println("Linked List: " + linkedList);  // Output will include "Apple"
+        } else {
+            System.out.println("The linked list is empty.");
+        }
+
+
+         //Example using peek() which is equivalent to peekFirst()
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(20);
+
+        if (!numbers.isEmpty()) {
+            Integer firstNumber = numbers.peek();
+            System.out.println("First number (using peek()): " + firstNumber);
+            System.out.println("Numbers List: " + numbers); // Output will include 10
+        } else {
+            System.out.println("The numbers list is empty.");
+        }
+    }
+}
+```

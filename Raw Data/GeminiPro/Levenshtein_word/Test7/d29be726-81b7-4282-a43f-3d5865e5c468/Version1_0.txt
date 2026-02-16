@@ -1,0 +1,88 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's always closed.
+        }
+
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering normal cases, edge cases, and error handling:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| Normal Case 1 | 10, 20, 30 | 20.0 |
+| Normal Case 2 | -5, 0, 5 | 0.0 |
+| Normal Case 3 | 2.5, 3.7, 1.8 | 2.6666666666666665 |  // Handles decimals
+| Edge Case 1 (Large Numbers) | 1000000000, 2000000000, 3000000000 | 2.0E9 | // Handles large numbers
+| Edge Case 2 (Small Numbers) | 0.000001, 0.000002, 0.000003 | 2.0E-6 | // Handles very small numbers
+| Edge Case 3 (Zeroes) | 0, 0, 0 | 0.0 |
+| Error Case 1 (Invalid Input - Text) | a, b, c | "Invalid input. Please enter numbers only." |
+| Error Case 2 (Partial Invalid Input) | 10, 20, x | "Invalid input. Please enter numbers only." |
+| Error Case 3 (Overflow) | Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity | // Check for potential overflow
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:**  You can run the program multiple times, entering each set of input values manually and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):** For more robust testing, use a testing framework like JUnit.  Here's an example of how you could write a JUnit test:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverage_normalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverage_decimals() {
+        assertEquals(2.6666666666666665, AverageCalculator.calculateAverage(2.5, 3.7, 1.8));
+    }
+
+    // Add more test cases using the table above as a guide
+
+    @Test
+    void calculateAverage_overflow() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+}
+```
+
+With JUnit, you can easily run all the test cases automatically and ensure your `calculateAverage` method behaves correctly under different conditions.  Remember to add the JUnit library to your project.

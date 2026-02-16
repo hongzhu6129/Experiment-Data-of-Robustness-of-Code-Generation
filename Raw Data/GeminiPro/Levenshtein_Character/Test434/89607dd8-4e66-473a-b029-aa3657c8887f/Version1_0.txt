@@ -1,0 +1,29 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class CountFlutes {
+
+    public static void main(String[] args) {
+        List<String> flutes = Arrays.asList("Flute A", "Flute B", "Piccolo", "Flute C", "Recorder", "Flute D");
+        char startingLetter = 'F';
+
+        long count = flutes.stream()
+                .filter(flute -> flute.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+        System.out.println("Number of flutes starting with '" + startingLetter + "': " + count);
+
+
+        // Example with a different starting letter:
+        startingLetter = 'P';
+        count = flutes.stream()
+                .filter(flute -> flute.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+         System.out.println("Number of flutes starting with '" + startingLetter + "': " + count);
+
+
+    }
+}
+```

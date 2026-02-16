@@ -1,0 +1,29 @@
+
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty input arrays gracefully.
+   - Initializes `uniqueCount` to 1 (the first element is always unique initially).
+   - Iterates through the array, starting from the second element (`i = 1`).
+   - If the current element (`nums[i]`) is different from the previous element (`nums[i-1]`), it's a unique element.
+   - Copy this unique element to `nums[uniqueCount]` and increment `uniqueCount`.
+   - Finally, returns the `uniqueCount`, which represents the updated length of the array without duplicates.
+
+2. **`main(String[] args)`:**
+   - Demonstrates the function with example arrays.
+   - Uses `Arrays.copyOfRange()` to print only the relevant part of the modified array (up to the `newLength`).  The original array is modified in-place, but elements beyond `newLength` are no longer considered part of the unique elements.
+
+
+**Key Improvements:**
+
+- **Handles edge cases:**  Correctly deals with empty and `null` input arrays.
+- **In-place modification:** Modifies the original array directly, saving space.
+- **Clearer variable names:**  `uniqueCount` is more descriptive than just `i` or `count`.
+- **Detailed comments:** Explains the logic step by step.
+- **Comprehensive test cases:** Includes tests with various scenarios, including empty and null arrays.  The output also shows the resulting modified array (the elements up to the new length).
+
+
+
+

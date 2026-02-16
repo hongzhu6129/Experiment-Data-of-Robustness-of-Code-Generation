@@ -1,0 +1,46 @@
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class NavigableSetView {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> navigableMap = new TreeMap<>();
+
+        // Add some key-value pairs to the map
+        navigableMap.put("apple", 1);
+        navigableMap.put("banana", 2);
+        navigableMap.put("orange", 3);
+        navigableMap.put("grape", 4);
+
+        // Get a NavigableSet view of the keys
+        NavigableSet<String> navigableKeySet = navigableMap.navigableKeySet();
+
+        // Print the NavigableSet of keys
+        System.out.println("NavigableSet of keys: " + navigableKeySet);
+
+
+        // Demonstrate some NavigableSet methods (optional)
+
+        // Get the first (lowest) key
+        String firstKey = navigableKeySet.first();
+        System.out.println("First key: " + firstKey);
+
+        // Get the last (highest) key
+        String lastKey = navigableKeySet.last();
+        System.out.println("Last key: " + lastKey);
+
+        // Get the key that is less than or equal to "orange"
+        String floorKey = navigableKeySet.floor("orange");
+        System.out.println("Floor key of 'orange': " + floorKey);
+
+         // Get the key that is greater than or equal to "orange"
+        String ceilingKey = navigableKeySet.ceiling("orange");
+        System.out.println("Ceiling key of 'orange': " + ceilingKey);
+
+        // Get a descending view of the NavigableSet
+        NavigableSet<String> descendingKeySet = navigableKeySet.descendingSet();
+        System.out.println("Descending set of keys: " + descendingKeySet);
+    }
+}

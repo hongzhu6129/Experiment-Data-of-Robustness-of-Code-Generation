@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Type Casting:**  Fermat numbers grow very rapidly.  Even `long` (64-bit integer) can only hold the first few accurately.  The code uses an explicit cast `(long)` to convert the result of `Math.pow()` to `long`.  This is essential to avoid overflow and handle large Fermat numbers as best as possible within the limitations of `long`.
+
+2. **Clear Output:** The code includes a descriptive message to indicate what the output represents.
+
+3. **Loop for Efficiency:**  A `for` loop iterates from `n = 0` to `n = 9` (inclusive) to calculate and display the first 10 Fermat numbers.
+
+4. **Correct Formula:**  The code implements the correct formula: 2<sup>(2<sup>n</sup>)</sup> + 1.
+
+**Important Note about Overflow:**
+
+Fermat numbers become extremely large very quickly. After the first few, they exceed the maximum value that can be stored in a `long`.  When this happens, overflow occurs, and the results become incorrect. For truly accurate representation of large Fermat numbers, you would need to use specialized libraries like `BigInteger` that can handle arbitrary-precision arithmetic.
+
+
+Here's a version using `BigInteger` for accurate calculation (though it's not strictly using only `main` as requested, it's much better for correct results):
+

@@ -1,0 +1,55 @@
+```java
+public class StringPermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String inputString = "abb"; // Example input
+        permutationWithRepeation(inputString);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+Here's how it addresses the problem using only the specified methods:
+
+1. **`main(String[] args)`:**
+   - This method takes the input string (e.g., "abb").
+   - It calls `permutationWithRepeation` to start the permutation process.
+
+2. **`permutationWithRepeation(String str)`:**
+   - This method initializes the process by calling `showPermutation` with the original string and an empty prefix.
+
+3. **`showPermutation(String str, String prefix)`:**
+   - This is the recursive method that generates the permutations.
+   - **Base Case:** If the `prefix` length equals the original string length, it means a complete permutation is formed. The `prefix` is printed, and the function returns.
+   - **Recursive Step:** It iterates through each character of the original string (`str`). In each iteration:
+     - It adds the current character to the `prefix`.
+     - It makes a recursive call to `showPermutation` with the same original string (`str`) and the updated `prefix`.  This is where the "with repetition" part happens � the same character can be chosen multiple times at different positions in the prefix.
+
+
+**Example Output (for input "abb"):**
+
+```
+aaa
+aab
+aba
+abb
+baa
+bab
+bba
+bbb 
+```

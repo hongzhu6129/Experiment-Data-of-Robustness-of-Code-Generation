@@ -1,0 +1,79 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int functionOne(int n) {
+        int sum = 0;
+        n = Math.abs(n); // Handle negative numbers
+
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        scanner.close();
+
+        int sum = functionOne(number);
+        System.out.println("Sum of digits: " + sum);
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Notes                                      |
+|------------|-----------------|-------------------------------------------|
+| 12345      | 15              | Positive multi-digit number              |
+| 0          | 0               | Zero                                       |
+| 9          | 9               | Single-digit number                       |
+| -123       | 6               | Negative number (absolute value is used) |
+| 1000       | 1               | Number with zeros                         |
+| 9999       | 36              | Large number                             |
+| Integer.MAX_VALUE | 1                | Maximum positive integer. Demonstrates handling overflow (2147483647 sums to 29 but if the sum variable is an int, it might wrap around). Ideally, change `sum` to `long` if you need to handle this edge case. |
+| Integer.MIN_VALUE | 1                | Minimum negative integer (absolute value: 2147483648) demonstrates possible overflow - see above.|
+
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:**  Handles the case where the input is 0.
+* **Single Digit:**  Correctly calculates the sum when the input is a single digit.
+* **Negative Number:** The code now uses `Math.abs()` to handle negative numbers appropriately.
+* **Large Numbers:** Tests the ability to handle numbers with multiple digits and potentially large sums.
+* **Integer.MAX_VALUE and Integer.MIN_VALUE:**  These cases are important because they check for potential overflow. If your program doesn't handle very large numbers correctly, the sum might become inaccurate due to integer overflow. Using `long` for the `sum` variable is recommended if you expect inputs in this range.
+
+
+
+
+**How to Run the Test Cases:**
+
+You can manually enter these test cases into the console when prompted by the program. For a more automated approach, consider using a testing framework like JUnit, where you can write unit tests to verify the correctness of your `functionOne` method for each test case.  This is good practice in software development. Example JUnit test:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SumOfDigitsTest {
+
+    @Test
+    void testFunctionOne() {
+        assertEquals(15, SumOfDigits.functionOne(12345));
+        assertEquals(0, SumOfDigits.functionOne(0));
+        assertEquals(9, SumOfDigits.functionOne(9));
+        assertEquals(6, SumOfDigits.functionOne(-123)); 
+        assertEquals(1, SumOfDigits.functionOne(1000));
+        assertEquals(36, SumOfDigits.functionOne(9999));
+    }
+}
+```

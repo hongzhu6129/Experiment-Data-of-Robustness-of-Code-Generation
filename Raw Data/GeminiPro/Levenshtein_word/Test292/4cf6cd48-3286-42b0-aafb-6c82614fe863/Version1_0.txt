@@ -1,0 +1,74 @@
+```java
+public class TransposeArray {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println("Original Array:");
+        print_array(array);
+
+        transpose(array);
+
+        System.out.println("\nTransposed Array:");
+        print_array(array);
+    }
+
+    private static void transpose(int[][] array) {
+        // Check for valid square matrix
+        if (array.length != array[0].length) {
+            System.out.println("Error: Matrix must be square for in-place transpose.");
+            return;  // Or throw an exception
+        }
+
+        int n = array.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) { // Note: Start j from i+1 to avoid swapping back
+                // Swap array[i][j] and array[j][i]
+                int temp = array[i][j];
+                array[i][j] = array[j][i];
+                array[j][i] = temp;
+            }
+        }
+    }
+
+
+    private static void print_array(int[][] array) {
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Square Matrix Check:**  The `transpose` method now checks if the input array is a square matrix (equal number of rows and columns). Transposing a non-square matrix in-place (modifying the original array directly) is not straightforward. The provided code handles this by printing an error message and returning if the matrix is not square.  A more robust approach would be to throw an exception.
+2. **Optimized Transposition:** The `transpose` method is optimized to avoid unnecessary swaps.  The inner loop starts from `j = i + 1`.  This is because we only need to swap the upper triangle of the matrix with the lower triangle.  Swapping elements twice would revert them back to their original positions.
+3. **Clearer Comments:** Added comments to explain the logic within the `transpose` method.
+4. **Enhanced Readability:**  Used more descriptive variable names (e.g., `n` instead of just a single-letter variable) and consistent formatting for better code readability.
+5. **In-Place Transposition:** The code performs in-place transposition, meaning the original `array` is modified directly.
+
+
+
+Example Usage and Output:
+
+
+```
+Original Array:
+1 2 3 
+4 5 6 
+7 8 9 
+
+Transposed Array:
+1 4 7 
+2 5 8 
+3 6 9 
+```

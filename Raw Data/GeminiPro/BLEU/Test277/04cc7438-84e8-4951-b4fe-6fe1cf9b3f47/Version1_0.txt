@@ -1,0 +1,104 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Interval {
+    private int start;
+    private int end;
+
+    public Interval(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + start + "," + end + "]";
+    }
+}
+
+public class MergeOverlappingIntervals {
+
+    public static void main(String[] args) {
+        ArrayList<Interval> intervals = new ArrayList<>();
+        intervals.add(new Interval(1, 3));
+        intervals.add(new Interval(2, 6));
+        intervals.add(new Interval(8, 10));
+        intervals.add(new Interval(15, 18));
+        intervals.add(new Interval(17,20)); // Added an overlapping interval
+
+
+        ArrayList<Interval> mergedIntervals = merge(intervals);
+
+        System.out.print("Merged Intervals: ");
+        for (Interval interval : mergedIntervals) {
+            System.out.print(interval + " ");
+        }
+        System.out.println();
+    }
+
+    public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+        if (intervals == null || intervals.size() <= 1) {
+            return intervals;
+        }
+
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval i1, Interval i2) {
+                return i1.getStart() - i2.getStart();
+            }
+        });
+
+
+        ArrayList<Interval> mergedIntervals = new ArrayList<>();
+        Interval current = intervals.get(0);
+
+        for (int i = 1; i < intervals.size(); i++) {
+            Interval next = intervals.get(i);
+
+            if (current.getEnd() >= next.getStart()) {
+                current = new Interval(current.getStart(), Math.max(current.getEnd(), next.getEnd()));
+            } else {
+                mergedIntervals.add(current);
+                current = next;
+            }
+        }
+
+        mergedIntervals.add(current); // Add the last interval
+
+        return mergedIntervals;
+    }
+
+
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Interval Class:** Encapsulates the start and end of an interval.  The `toString()` method makes printing the results easier.
+
+2. **Comparator for Sorting:**  The `Collections.sort()` method now uses a `Comparator` to sort intervals based on their start times, which is crucial for the merging logic. This addresses a significant flaw in earlier responses.
+
+3. **Merging Logic:** The merging logic is now corrected. It iterates through the sorted intervals, merging overlapping intervals by updating the `current` interval's end. If intervals don't overlap, the `current` interval is added to the `mergedIntervals` list.
+
+4. **Handling the Last Interval:** The code now correctly adds the last `current` interval after the loop completes, ensuring no intervals are missed.
+
+5. **Clearer Variable Names:** More descriptive variable names (`current`, `next`) improve readability.
+
+6. **Example Usage in `main()`:**  Demonstrates how to create, merge, and print the intervals. I added an overlapping interval [17, 20] to test the merging logic more thoroughly.
+
+7. **Handles Edge Cases:** The `merge` method now handles `null` or empty input gracefully.
+
+
+
+This revised version is a much more robust and correct solution to the overlapping intervals problem, adhering to the given method signature constraints.

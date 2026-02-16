@@ -1,0 +1,61 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing within main method)
+        int number = 8; // Replace with user input if needed
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+
+    private static boolean isCube(int num) {
+        if (num < 0) {  // Handle negative numbers (their cubes are also negative)
+            return isCube(-num);
+        }
+
+
+        int cubeRoot = (int) Math.round(Math.cbrt(num)); // Calculate cube root
+
+        return cubeRoot * cubeRoot * cubeRoot == num; // Check if the cube of the integer cube root equals the original number
+
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Handles Negative Numbers:** The `isCube` method now correctly handles negative numbers. The cube of a negative number is also negative. The logic is simplified by recursively calling `isCube` with the absolute value if the input is negative.
+
+2. **More Efficient Calculation:** Instead of iterating to find the cube root, the code uses `Math.cbrt()` to directly compute the cube root.  This is a much more efficient approach.
+
+3. **Integer Cube Root Check:** The code rounds the cube root to the nearest integer using `Math.round()` and then checks if the cube of this integer root is equal to the original number.  This robustly handles cases where `Math.cbrt()` might return a value very close to an integer due to floating-point limitations.
+
+4. **Clearer Output:** The output messages are more informative ("Number is a cube" or "Number is not a cube").
+
+5. **`main` Method for Testing:** The provided `main` method demonstrates how to use the `isCube` method with sample input.  You would typically replace the hardcoded value with user input if you were building a full application.
+
+
+To take user input (if needed):
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+
+        // ... (rest of the code is the same)
+    }
+
+    // ... (isCube method remains the same)
+}
+```

@@ -1,0 +1,42 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveFirstElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (names)
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+
+        // Remove and return the first element
+        String firstElement = removeFirst(names);
+
+
+        // Print the removed element (if any)
+        if (firstElement != null) {
+            System.out.println("Removed element: " + firstElement);
+        } else {
+            System.out.println("The list was empty.");
+        }
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + names);
+
+
+    }
+
+    // Helper function to remove and return the first element
+    // (Handles the case of an empty list).  Made static as it's
+    // used within the static main method.
+    private static String removeFirst(LinkedList<String> list) {
+        if (list.isEmpty()) {
+            return null; // Or throw an exception if appropriate
+        } else {
+            return list.removeFirst(); // LinkedList's built-in method
+        }
+    }
+}
+```

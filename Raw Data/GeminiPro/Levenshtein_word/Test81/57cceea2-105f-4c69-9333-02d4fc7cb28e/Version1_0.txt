@@ -1,0 +1,74 @@
+```java
+public class EvenOddCounter {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // Example array
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        System.out.println("Even count: " + evenCount);
+        System.out.println("Odd count: " + oddCount);
+
+
+        // Example with user input (within main method limitations)
+        // Note: This approach for user input is basic and has limitations. 
+        // For robust input handling, separate methods and exception handling are recommended.
+        if (args.length > 0) { // Check if any command-line arguments are provided
+            int[] userArr = new int[args.length];
+            try {
+                for (int i = 0; i < args.length; i++) {
+                    userArr[i] = Integer.parseInt(args[i]);
+                }
+
+                evenCount = 0; 
+                oddCount = 0;
+
+                for (int num : userArr) {
+                    if (num % 2 == 0) {
+                        evenCount++;
+                    } else {
+                        oddCount++;
+                    }
+                }
+                System.out.println("Even count (user input): " + evenCount);
+                System.out.println("Odd count (user input): " + oddCount);
+
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please provide integers as command-line arguments.");
+            }
+
+        } // end of if args.length>0
+
+
+
+    } //end of main method
+}
+```
+
+
+To compile and run with user input:
+
+1.  **Save:** Save the code as `EvenOddCounter.java`.
+2.  **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile:  `javac EvenOddCounter.java`
+3.  **Run:** `java EvenOddCounter 1 2 3 4 5 6`  (Replace `1 2 3 4 5 6` with your desired integer inputs).
+
+
+Key improvements in this version:
+
+*   **Clearer Variable Names:** More descriptive names like `evenCount` and `oddCount`.
+*   **Enhanced Output:** Includes labels for even and odd counts.
+*   **Basic User Input Handling (Within main limitations):**  Demonstrates how to accept input from command-line arguments (with basic error handling) while respecting the `void main(String[])` constraint.  It's important to understand this user input approach is simplified.  More robust input handling would involve using `Scanner` (which is generally done outside the `main` method) or other methods for a better user experience.
+
+
+
+If you need more advanced user input (like accepting input from the console during runtime), you would typically create separate helper methods and use `Scanner`. However, this version demonstrates a way to manage it within `main` for a basic example.

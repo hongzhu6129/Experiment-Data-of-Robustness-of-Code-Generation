@@ -1,0 +1,61 @@
+```java
+public class ExecutionTimeMeasurement {
+
+    public static void main(String[] args) {
+        // Get the starting time in nanoseconds (higher precision)
+        long startTime = System.nanoTime();
+
+        // Code to be measured
+        // Example: calculating the sum of numbers from 1 to 1000000
+        long sum = 0;
+        for (int i = 1; i <= 1000000; i++) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum); // Print the result (optional)
+
+        // Get the ending time in nanoseconds
+        long endTime = System.nanoTime();
+
+        // Calculate the elapsed time in nanoseconds
+        long elapsedTimeNano = endTime - startTime;
+
+        // Convert nanoseconds to microseconds
+        long elapsedTimeMicro = elapsedTimeNano / 1000;
+
+        System.out.println("Execution time: " + elapsedTimeMicro + " microseconds");
+
+
+        // Alternative, less precise way using milliseconds:
+        long startTimeMillis = System.currentTimeMillis();
+        // Your code here... (same code as above)
+        long endTimeMillis = System.currentTimeMillis();
+        long elapsedTimeMillis = endTimeMillis - startTimeMillis;
+        System.out.println("Execution time (milliseconds): " + elapsedTimeMillis +" milliseconds");
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Nanosecond Precision:** Using `System.nanoTime()` provides higher precision than `System.currentTimeMillis()`. While the final result is displayed in microseconds, using nanoseconds for measurement ensures greater accuracy, especially for very short execution times.
+
+2. **Clearer Output:** The code now clearly labels the output as "microseconds" to avoid ambiguity.  It also includes an example calculation (sum of numbers) so you can see it in action.
+
+3. **Millisecond alternative shown:** The less precise but sometimes useful millisecond-based timing is included for comparison.
+
+4. **Correct Conversion:**  The nanosecond to microsecond conversion is accurately done by dividing by 1000.
+
+
+**How to Use:**
+
+1. Replace the example code (calculating the sum) with the code you want to measure.
+2. Compile and run the Java program.  The output will show the execution time of your code in microseconds.
+
+
+**Important Notes:**
+
+* The measured time might vary slightly on each run due to factors like system load, garbage collection, etc.  It's often a good idea to run the code multiple times and take an average.
+* For extremely short code segments, the overhead of calling `System.nanoTime()` might be noticeable. In such cases, consider running the code segment multiple times in a loop and dividing the total time by the number of iterations to get a more accurate measurement per iteration.

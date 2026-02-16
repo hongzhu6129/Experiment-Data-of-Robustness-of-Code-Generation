@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class LexicographicRank {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = input.nextLine();
+
+        // Compute the lexicographic rank of the string
+        int rank = 1;
+        for (int i = 0; i < str.length(); i++) {
+            int numSmaller = 0;
+            for (int j = i + 1; j < str.length(); j++) {
+                if (str.charAt(j) < str.charAt(i)) {
+                    numSmaller++;
+                }
+            }
+            rank += numSmaller * factorial(str.length() - i - 1);
+        }
+
+        System.out.println("The lexicographic rank of the string is: " + rank);
+    }
+
+    // Compute the factorial of a number
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+}

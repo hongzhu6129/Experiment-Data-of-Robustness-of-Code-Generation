@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class AverageOfPartNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three part numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average of the part numbers is: " + average);
+
+        } catch (Exception e) { // Catch any input errors (e.g., non-numeric input)
+            System.err.println("Invalid input. Please enter valid numbers.");
+        } finally {
+            scanner.close(); // Close the scanner to release resources
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0;  // Use 3.0 to ensure floating-point division
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* Input: 10, 20, 30
+* Expected Output: 20.0
+
+**2. Decimal Numbers:**
+
+* Input: 10.5, 20.5, 30
+* Expected Output: 20.333333333333332
+
+**3. Negative Numbers:**
+
+* Input: -10, 20, -30
+* Expected Output: -6.666666666666667
+
+**4. Zero Values:**
+
+* Input: 0, 0, 0
+* Expected Output: 0.0
+
+**5. Large Numbers:**
+
+* Input: 1000000, 2000000, 3000000
+* Expected Output: 2000000.0
+
+
+**Corner Cases:**
+
+**6.  Input with Non-Numeric Values:**
+
+* Input: 10, abc, 30
+* Expected Output: "Invalid input. Please enter valid numbers."  (Error message due to invalid input)
+
+**7. Overflow (Less likely with doubles but theoretically possible with extremely large numbers):**
+
+* Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE 
+* Expected Output: Infinity  (or an exception depending on how Java handles overflow in this specific context)
+
+**8. Underflow (very small numbers):**
+
+* Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE
+* Expected Output: A very small number close to zero (demonstrates handling of very small values).
+
+
+
+**How to run the test cases:**
+
+1.  Save the code as `AverageOfPartNumbers.java`.
+2.  Compile the code: `javac AverageOfPartNumbers.java`
+3.  Run the code: `java AverageOfPartNumbers`
+4.  Enter the input values when prompted.
+
+For automated testing, you would typically use a testing framework like JUnit to define these test cases more formally and run them automatically.  The above examples are designed to be tested manually.

@@ -1,0 +1,59 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the top part of the flag (stars and stripes)
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 26; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+
+        // Print the stripes-only section
+         for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (i == 1 && j == 2) {
+                   System.out.print("pct ");
+                } else {
+                   System.out.print("* "); 
+                }
+            }
+            System.out.print("==");
+            for (int j = 0; j < 26; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+
+
+        for (int i = 0; i < 6; i++) {
+            System.out.print("==");
+            for (int j = 0; j < 32; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Here's how this code works:
+
+1. **Top Section (Stars and Stripes):** The first outer loop (`i` from 0 to 4) iterates five times to create the top five rows containing both stars and stripes.
+   - The inner loop (`j` from 0 to 5) prints six asterisks followed by a space for each row.
+   - Then, `==` is printed to start the stripe section.
+   - Another inner loop prints 26 `=` characters to form the stripes.
+
+2. **Stripes Section:** The second outer loop prints the next four rows, which have stripes and the "pct" characters.
+   - It uses nested loops and a conditional statement to print the "pct" string at the correct position (row 2, element 3) while printing asterisks elsewhere.
+
+3. **Bottom Stripes:** The third outer loop (`i` from 0 to 5) iterates six times to print the bottom six rows of stripes.  It prints 34 `=` characters on each row.
+
+
+This revised code should produce the desired output, simulating the requested pattern closely. You might need to adjust some of the counts (numbers of asterisks and equal signs) very slightly depending on how you want the pattern to align and how you count the characters. The central "pct" is now included.

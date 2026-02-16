@@ -1,0 +1,34 @@
+```java
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+    public static void main(String[] args) {
+        // Get the current year and month (you can change this to any year/month)
+        YearMonth ym = YearMonth.now();
+
+        // Get the first day of the month
+        LocalDate firstDay = ym.atDay(1);
+
+        // Get the last day of the month
+        LocalDate lastDay = ym.atEndOfMonth();
+
+        // Format the dates for output (optional, but makes it nicer)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Print the results
+        System.out.println("First day of the month: " + formatter.format(firstDay));
+        System.out.println("Last day of the month: " + formatter.format(lastDay));
+
+
+        // Example for a specific month/year:
+        YearMonth specificMonth = YearMonth.of(2024, 2); // February 2024
+        LocalDate firstDaySpecific = specificMonth.atDay(1);
+        LocalDate lastDaySpecific = specificMonth.atEndOfMonth();
+        System.out.println("First day of February 2024: " + formatter.format(firstDaySpecific));
+        System.out.println("Last day of February 2024: " + formatter.format(lastDaySpecific));
+
+    }
+}
+```

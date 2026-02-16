@@ -1,0 +1,65 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapComparatorExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+        treeMap.put("kiwi", 5);
+
+        // Print the TreeMap (sorted by string length)
+        System.out.println(treeMap);
+
+
+        // Example with reversed order
+        TreeMap<String, Integer> reversedTreeMap = new TreeMap<>(new StringLengthComparator().reversed()); // Use reversed()
+
+        reversedTreeMap.putAll(treeMap);  // Copy entries
+        System.out.println(reversedTreeMap);
+    }
+
+
+    public static class StringLengthComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String s1, String s2) {
+            // Compare strings based on their lengths
+            return Integer.compare(s1.length(), s2.length()); 
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Comparator Interface:**  The core of custom sorting is the `Comparator` interface.  We create a nested class `StringLengthComparator` that implements `Comparator<String>`.  This means it's designed to compare `String` objects.
+
+2. **compare() Method:** The crucial part is the `compare(String s1, String s2)` method. It defines the sorting logic.  In this example, we compare the lengths of the two input strings using `Integer.compare(s1.length(), s2.length())`. This will sort the `TreeMap` based on the lengths of the keys (shortest to longest).
+
+3. **TreeMap Construction:** When you create the `TreeMap`, you pass an instance of your `StringLengthComparator` to the constructor: `new TreeMap<>(new StringLengthComparator());`.  This tells the `TreeMap` to use your custom comparator for sorting.
+
+4. **Adding Elements:**  You can add elements to the `TreeMap` as usual using `put()`.  The `TreeMap` will automatically maintain the sorted order based on your comparator.
+
+5. **Printing:** When you print the `TreeMap`, the entries will be displayed in the sorted order determined by the `StringLengthComparator`.
+
+6. **Reversed Order (Important Addition):**  The `.reversed()` method, called on a `Comparator`, provides an easy way to reverse the sorting order.  The example shows how to create a second `TreeMap` ( `reversedTreeMap`) that uses the reversed comparator.
+
+
+**Key Improvements in this Version:**
+
+* **Clarity and Readability:**  Clear comments and explanations improve understanding.
+* **Nested Class for Comparator:**  Encapsulates the comparator logic neatly within the main class.
+* **Reversed Order Example:** Demonstrates how to easily reverse the sorting order, which is a common requirement.
+* **Adherence to Method Signature Requirements:** Strictly uses only `main` and `compare`.
+
+
+This revised answer provides a complete and well-explained solution that adheres to the prompt's restrictions while demonstrating best practices.

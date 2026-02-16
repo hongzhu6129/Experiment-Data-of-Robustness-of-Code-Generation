@@ -1,0 +1,122 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static String getCurrentSystemTime() {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Format the date and time (you can customize the format)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String formattedDateTime = now.format(formatter);
+
+        return formattedDateTime;
+    }
+
+    public static void main(String[] args) {
+        String currentTime = getCurrentSystemTime();
+        System.out.println("Current System Time: " + currentTime);
+    }
+}
+```
+
+**Test Cases:**
+
+It's difficult to directly unit test `getCurrentSystemTime()` because it relies on the system clock, which is constantly changing.  Instead, we focus on testing the formatting and ensuring the output is reasonable.  We'll use JUnit for these examples:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+
+class SystemTimeTest {
+
+    @Test
+    void testFormat() {
+        // Create a known LocalDateTime for testing
+        LocalDateTime testDateTime = LocalDateTime.of(2024, 10, 27, 10, 30, 0, 0);
+
+        // Format using the same pattern as getCurrentSystemTime()
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String expectedFormattedDateTime = testDateTime.format(formatter);
+
+
+        //  Manipulate system time (for testing ONLY - not recommended in real applications!)
+        //  This section demonstrates how you might approach testing if you COULD control time
+        //  However, this is usually impractical.
+        //  SystemTimeMock.setCurrentTime(testDateTime); // Hypothetical time-setting function
+        //  String actualFormattedDateTime = SystemTime.getCurrentSystemTime(); 
+        //  assertEquals(expectedFormattedDateTime, actualFormattedDateTime);
+
+        // More realistic approach: Check if the output matches the expected format
+        String actualFormattedDateTime = SystemTime.getCurrentSystemTime();
+        assertTrue(actualFormattedDateTime.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}")); // Regular expression check
+    }
+
+
+
+    @Test
+    void testReasonableTimeDifference() {  // More practical test
+        LocalDateTime before = LocalDateTime.now();
+        String currentTime = SystemTime.getCurrentSystemTime();
+        LocalDateTime after = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        LocalDateTime parsedCurrentTime = LocalDateTime.parse(currentTime, formatter);
+
+
+        assertTrue(parsedCurrentTime.isAfter(before.minus(1, ChronoUnit.SECONDS))); // Allow a small margin of error
+        assertTrue(parsedCurrentTime.isBefore(after.plus(1, ChronoUnit.SECONDS)));
+
+    }
+
+    // Corner cases (These are more about testing the date-time library itself, which is robust):
+    @Test
+    void testLeapYear() {
+        // Test around a leap year (e.g., 2024-02-29) - ensure the formatter handles it
+        // Create and format a known date-time around a leap year/day
+        LocalDateTime leapDay = LocalDateTime.of(2024, 2, 29, 12, 0, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String formattedLeapDay = leapDay.format(formatter); 
+        assertEquals("2024-02-29 12:00:00.000", formattedLeapDay);
+
+    }
+
+     @Test
+    void testYearChange() {
+        // Test around a year change (e.g., 2023-12-31 to 2024-01-01).
+        //  Similar to leap year test, create and format dates around the year change.
+        // The underlying Java time library handles these cases very well.
+         LocalDateTime yearEnd = LocalDateTime.of(2023, 12, 31, 23, 59, 59);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String formattedYearEnd = yearEnd.format(formatter); 
+        assertEquals("2023-12-31 23:59:59.000", formattedYearEnd);
+
+        LocalDateTime yearStart = LocalDateTime.of(2024, 1, 1, 0, 0, 0);
+        String formattedYearStart= yearStart.format(formatter); 
+        assertEquals("2024-01-01 00:00:00.000", formattedYearStart);
+
+    }
+
+
+}
+```
+
+
+Key improvements and explanations in the test cases:
+
+* **JUnit 5:** Uses the modern JUnit 5 library (`org.junit.jupiter.api`).
+* **Focus on Format:** Since we can't easily control system time, the primary test verifies the output string's format using a regular expression.
+* **Reasonable Time Difference:** A more practical test checks if the returned time falls within a small window around the actual execution time.  This is a more realistic way to test time-dependent functions.
+* **Corner Cases:** Includes tests around leap years and year changes to ensure the date-time formatting handles these transitions correctly. These demonstrate how to verify the behavior with specific dates.
+* **Hypothetical Time Setting (Commented out):** Shows how you *might* test if you could control the system time (e.g., using a mocking library), but emphasizes that this isn't typically practical.
+
+
+
+
+This revised answer provides more robust and practical testing strategies for a time-dependent function. Remember to add the JUnit 5 dependency to your project if you haven't already.

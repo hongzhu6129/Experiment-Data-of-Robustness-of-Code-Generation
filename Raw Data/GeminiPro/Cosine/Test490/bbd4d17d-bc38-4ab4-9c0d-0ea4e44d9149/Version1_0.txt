@@ -1,0 +1,21 @@
+```java
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        // Display the first 50 pentagonal numbers
+        final int NUMBER_OF_PENTAGONAL_NUMBERS = 50;
+        for (int i = 1; i <= NUMBER_OF_PENTAGONAL_NUMBERS; i++) {
+            System.out.printf("%-6d ", getPentagonalNumber(i)); // Align output neatly
+            if (i % 10 == 0) { // 10 numbers per line
+                System.out.println();
+            }
+        }
+    }
+
+
+    public static int getPentagonalNumber(int n) {
+        // Calculate the nth pentagonal number using the formula
+        return n * (3 * n - 1) / 2; 
+    }
+}
+```

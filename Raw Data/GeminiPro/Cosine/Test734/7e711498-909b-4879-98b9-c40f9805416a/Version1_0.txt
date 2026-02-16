@@ -1,0 +1,71 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
+        };
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int target = 7;
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the matrix.");
+        }
+
+
+        target = 20; // Example with an element not in the array
+        result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the matrix.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Element found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Element not found
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature Adherence:**  The code strictly adheres to the requested method signatures: `public static void main(String[])` and `private static int[] Saddleback(int[][], int, int, int)`.
+
+2. **Saddleback Search Implementation:** The `Saddleback` method correctly implements the saddleback search algorithm. It starts from the top-right corner of the matrix and efficiently eliminates rows or columns based on the target value.
+
+3. **Return Value:** The `Saddleback` method returns an `int[]` containing the row and column indices of the target element. If the element is not found, it returns `{-1, -1}` to indicate failure.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method with a sample matrix and target value. It also handles the case where the target is not found.
+
+5. **Comments and Readability:**  The code includes comments to explain the logic and improve readability.
+
+6. **Handles Edge Cases:** The `while` loop condition `row < m && col >= 0` prevents out-of-bounds errors.
+
+
+This improved version is a complete and functional solution that addresses the problem description and follows the specified method signature requirements.

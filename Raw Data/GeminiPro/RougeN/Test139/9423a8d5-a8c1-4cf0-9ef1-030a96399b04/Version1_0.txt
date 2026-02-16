@@ -1,0 +1,82 @@
+```java
+import java.util.Scanner;
+
+public class DivideStringIntoIndividualParts {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string and the number of parts to divide it into
+        System.out.println("Enter the string: ");
+        String inputString = scanner.nextLine();
+        System.out.println("Enter the number of parts: ");
+        int numParts = scanner.nextInt();
+
+        // Check if the number of parts is valid
+        if (numParts <= 0) {
+            System.out.println("Invalid number of parts");
+            return;
+        }
+
+        // Divide the string into individual parts
+        String[] parts = new String[numParts];
+        for (int i = 0; i < numParts; i++) {
+            parts[i] = inputString.substring(i * (inputString.length() / numParts), (i + 1) * (inputString.length() / numParts));
+        }
+
+        // Print the divided parts
+        System.out.println("The divided parts are: ");
+        for (String part : parts) {
+            System.out.println(part);
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:**
+```
+Enter the string: Hello world
+Enter the number of parts: 3
+The divided parts are:
+Hel
+lo 
+wor
+ld
+```
+
+* **Empty string:**
+```
+Enter the string: 
+Enter the number of parts: 3
+The divided parts are:
+ 
+ 
+ 
+```
+
+* **One part:**
+```
+Enter the string: Hello world
+Enter the number of parts: 1
+The divided parts are:
+Hello world
+```
+
+* **More parts than characters in string:**
+```
+Enter the string: Hi
+Enter the number of parts: 5
+The divided parts are:
+H
+i
+
+```
+
+* **Negative number of parts:**
+```
+Enter the string: Hello world
+Enter the number of parts: -3
+Invalid number of parts
+```

@@ -1,0 +1,35 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class CloneMultiplicationSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet to store multiplication table values.
+        Set<Integer> multiplicationSet = new HashSet<>();
+
+        // Populate the set with some multiplication table values (e.g., 2x table).
+        for (int i = 1; i <= 10; i++) {
+            multiplicationSet.add(2 * i);
+        }
+
+        // Clone the multiplicationSet to a new HashSet called clonedSet.
+        // Method 1: Using the constructor
+        Set<Integer> clonedSet1 = new HashSet<>(multiplicationSet);
+
+
+        // Method 2: Using addAll()
+        Set<Integer> clonedSet2 = new HashSet<>();
+        clonedSet2.addAll(multiplicationSet);
+
+
+        // Print the original and cloned sets to verify.
+        System.out.println("Original Set: " + multiplicationSet);
+        System.out.println("Cloned Set (Constructor): " + clonedSet1);
+        System.out.println("Cloned Set (addAll): " + clonedSet2);
+
+
+
+    }
+}
+```

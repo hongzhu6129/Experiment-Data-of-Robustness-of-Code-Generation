@@ -1,0 +1,23 @@
+public class PythonChecker {
+
+    public static void main(String[] args) {
+        String str1 = "Welcome to Python";
+        String str2 = "Hello World";
+        String str3 = "python is fun";
+        String str4 = "pYtHoN";
+
+        System.out.println(validate(str1)); // Output: Java
+        System.out.println(validate(str2)); // Output: C++
+        System.out.println(validate(str3)); // Output: Java
+        System.out.println(validate(str4)); // Output: Java
+
+    }
+
+    public static String validate(String str) {
+        if (str.toLowerCase().contains("python")) {
+            return "Java";
+        } else {
+            return "C++";
+        }
+    }
+}

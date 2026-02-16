@@ -1,0 +1,62 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicatesTwice {
+
+    static int remove_Duplicates_twice(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int index = 0; // Index for the updated array (with at most two occurrences)
+
+        for (int num : nums) {
+            // If the current element is the first occurrence or the second occurrence, add it to the updated array
+            if (index < 2 || num != nums[index - 2]) {
+                nums[index++] = num;
+            }
+        }
+
+        return index; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 1, 2, 2, 3};
+        int newLength1 = remove_Duplicates_twice(nums1);
+        System.out.println("Updated array length: " + newLength1);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1)));
+
+        int[] nums2 = {0, 0, 1, 1, 1, 1, 2, 3, 3};
+        int newLength2 = remove_Duplicates_twice(nums2);
+        System.out.println("Updated array length: " + newLength2);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2)));
+
+
+        int[] nums3 = {};
+        int newLength3 = remove_Duplicates_twice(nums3);
+        System.out.println("Updated array length: " + newLength3);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, newLength3)));
+
+        int[] nums4 = null;
+        int newLength4 = remove_Duplicates_twice(nums4);
+        System.out.println("Updated array length: " + newLength4); // Output: 0
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Variable Naming:**  `index` is used instead of `j` for better readability.
+
+2. **Handles Edge Cases:** The code now explicitly handles `null` and empty input arrays, preventing potential `NullPointerException` or `ArrayIndexOutOfBoundsException` errors.
+
+3. **Simplified Logic:** The core logic for removing duplicates is streamlined using a single `if` condition.  It checks if the current element is either one of the first two elements encountered *or* if it is different from the element two positions before the current `index`. This efficiently enforces the "at most twice" rule.
+
+4. **Returns Length:** The method correctly returns the length of the updated array (the value of `index`).
+
+5. **Illustrative `main` Method:** The `main` method provides multiple test cases, including edge cases (empty and null array), and clearly prints both the updated length and the modified array itself using `Arrays.copyOfRange` which prevents printing the unmodified portion of the original array.
+
+
+
+This improved version is more robust, easier to understand, and demonstrates best practices for handling edge cases and presenting output clearly.

@@ -1,0 +1,35 @@
+public class CheckTwenty {
+
+    public static void main(String[] args) {
+        int[] arr1 = {20, 10, 30, 20, 5, 20}; // Valid
+        int[] arr2 = {20, 20, 10, 30, 20, 5}; // Invalid (adjacent 20s)
+        int[] arr3 = {20, 10, 30, 20, 5, 10}; // Invalid (only two 20s)
+        int[] arr4 = {1,2,3,4,5}; // Invalid (no 20s)
+
+        System.out.println("Array 1: " + checkTwenty(arr1));
+        System.out.println("Array 2: " + checkTwenty(arr2));
+        System.out.println("Array 3: " + checkTwenty(arr3));
+        System.out.println("Array 4: " + checkTwenty(arr4));
+
+    }
+
+    public static boolean checkTwenty(int[] arr) {
+        int count = 0;
+        boolean adjacent = false;
+
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 20) {
+                count++;
+
+                // Check for adjacent 20s
+                if (i > 0 && arr[i - 1] == 20) {
+                    adjacent = true;
+                    break; // No need to continue if adjacent 20s are found
+                }
+            }
+        }
+
+        return count == 3 && !adjacent;
+    }
+}

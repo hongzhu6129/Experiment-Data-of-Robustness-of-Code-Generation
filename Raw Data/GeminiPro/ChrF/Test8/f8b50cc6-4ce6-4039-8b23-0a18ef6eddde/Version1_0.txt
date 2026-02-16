@@ -1,0 +1,93 @@
+```java
+class Rectangle {
+    double length;
+    double width;
+
+    // Constructor to initialize length and width
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    // Method to calculate the area
+    public double calculateArea() {
+        return length * width;
+    }
+
+    // Method to calculate the perimeter
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+
+    public static void main(String[] args) {
+
+        // Test cases (including corner cases)
+        Rectangle rect1 = new Rectangle(5, 10);
+        printRectangleDetails(rect1, "Rectangle 1");
+
+        Rectangle rect2 = new Rectangle(0, 5); // Zero length
+        printRectangleDetails(rect2, "Rectangle 2 (Zero length)");
+
+        Rectangle rect3 = new Rectangle(7, 0); // Zero width
+        printRectangleDetails(rect3, "Rectangle 3 (Zero width)");
+
+        Rectangle rect4 = new Rectangle(0, 0); // Zero length and width
+        printRectangleDetails(rect4, "Rectangle 4 (Zero length and width)");
+
+        Rectangle rect5 = new Rectangle(-5, 10);  // Negative length (should ideally be handled)
+        printRectangleDetails(rect5, "Rectangle 5 (Negative length)");
+
+
+        Rectangle rect6 = new Rectangle(5, -10);  // Negative width (should ideally be handled)
+        printRectangleDetails(rect6, "Rectangle 6 (Negative width)");
+
+        Rectangle rect7 = new Rectangle(Double.MAX_VALUE, 1); // Very large length 
+        printRectangleDetails(rect7, "Rectangle 7 (Very large length)");
+
+
+
+    }
+
+    // Helper function to print the details neatly
+    public static void printRectangleDetails(Rectangle rect, String name) {
+        System.out.println(name + ":");
+        System.out.println("Length: " + rect.length);
+        System.out.println("Width: " + rect.width);
+        System.out.println("Area: " + rect.calculateArea());
+        System.out.println("Perimeter: " + rect.calculatePerimeter());
+        System.out.println("--------------------");
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Class Structure:**  The code is now organized into a `Rectangle` class, which is a more object-oriented and reusable approach.
+
+2. **Constructor:**  A constructor is included to initialize the `length` and `width` when a `Rectangle` object is created.
+
+3. **Methods:** Separate methods (`calculateArea` and `calculatePerimeter`) are defined for calculating the area and perimeter. This improves code readability and organization.
+
+4. **Test Cases:** The `main` method now includes several test cases, demonstrating the usage of the class and covering various scenarios:
+   - Normal rectangle
+   - Rectangles with zero length or width
+   - Rectangle with zero length and width
+   - Rectangles with negative length or width (These are corner cases that might need special handling in a real application, like throwing an exception or using absolute values).
+   - Rectangle with a very large dimension (to test for potential overflow issues if calculations were more complex).
+
+5. **Helper Function:** The `printRectangleDetails` function is introduced to avoid code duplication and keep the `main` method cleaner.
+
+6. **Handling Invalid Input (Optional but Recommended):**  Consider adding checks within the `Rectangle` class to handle invalid input (like negative length or width) gracefully. You could throw an `IllegalArgumentException` or handle it in another way appropriate for your application. For example:
+
+   ```java
+   public Rectangle(double length, double width) {
+       if (length < 0 || width < 0) {
+           throw new IllegalArgumentException("Length and width cannot be negative.");
+       }
+       this.length = length;
+       this.width = width;
+   }
+   ```
+
+
+This improved version provides a more robust, reusable, and testable solution for calculating the area and perimeter of rectangles. The test cases help ensure that the code functions correctly under various conditions.

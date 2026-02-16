@@ -1,0 +1,65 @@
+```java
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ZoneOffsets {
+
+    public static void main(String[] args) {
+        // Define some ZoneIds
+        ZoneId zoneIdLosAngeles = ZoneId.of("America/Los_Angeles");
+        ZoneId zoneIdLondon = ZoneId.of("Europe/London");
+
+        // Get current time in those zones
+        ZonedDateTime nowLosAngeles = ZonedDateTime.now(zoneIdLosAngeles);
+        ZonedDateTime nowLondon = ZonedDateTime.now(zoneIdLondon);
+
+        // Extract and format the offsets
+        String losAngelesOffset = formatOffset(nowLosAngeles.getOffset().getTotalSeconds());
+        String londonOffset = formatOffset(nowLondon.getOffset().getTotalSeconds());
+
+
+        System.out.println("Los Angeles: " + nowLosAngeles.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME) +  " (Offset: " + losAngelesOffset + ")");
+        System.out.println("London: " + nowLondon.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME) + " (Offset: " + londonOffset + ")");
+
+
+        // Example with a fixed offset
+        ZoneOffset fixedOffset = ZoneOffset.ofHoursMinutes(5, 30);  // +5:30
+        System.out.println("Fixed Offset: " + formatOffset(fixedOffset.getTotalSeconds()));
+
+    }
+
+    private static String formatOffset(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = Math.abs((totalSeconds % 3600) / 60);  // Use absolute value for minutes
+
+        String sign = (hours >= 0) ? "+" : "-";
+        return String.format("%s%02d:%02d", sign, Math.abs(hours), minutes); // Pad with zeros for consistent formatting
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Using `java.time`:** The older `Date` and `Calendar` classes are outdated and can be problematic.  The modern `java.time` API (Java 8 and later) is much better.  This code uses `ZonedDateTime`, `ZoneId`, and `ZoneOffset`.
+
+2. **Clearer Zone Definition:**  Using `ZoneId.of()` with IANA time zone names (like "America/Los_Angeles") is the recommended way to specify time zones. It handles daylight saving time correctly.
+
+3. **ISO 8601 Formatting:** Using `DateTimeFormatter.ISO_OFFSET_DATE_TIME` provides a standard, unambiguous representation of the date and time with the offset.
+
+4. **Improved `formatOffset()`:**
+   - Handles both positive and negative offsets correctly.
+   - Uses `String.format()` for cleaner, more robust formatting with zero-padding (e.g., "+07:00" instead of "+7:0").
+   - Uses `Math.abs()` to always display positive minutes.
+
+
+**How to run:**
+
+1. Save the code as `ZoneOffsets.java`.
+2. Compile: `javac ZoneOffsets.java`
+3. Run: `java ZoneOffsets`
+
+
+This improved version provides a more robust and modern solution for working with time zones and offsets in Java.  It clearly defines time zones, handles offsets correctly, and formats the output in a standard way.

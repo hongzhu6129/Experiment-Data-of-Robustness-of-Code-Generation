@@ -1,0 +1,59 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class StringComparison {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the two strings from the user.
+        System.out.print("Enter the first string: ");
+        String str1 = scanner.nextLine();
+
+        System.out.print("Enter the second string: ");
+        String str2 = scanner.nextLine();
+
+        // Compare the two strings.
+        boolean areEqual = str1.equals(str2);
+
+        // Print the result.
+        if (areEqual) {
+            System.out.println("The two strings are equal.");
+        } else {
+            System.out.println("The two strings are not equal.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty strings:**
+    * Input: str1 = "", str2 = ""
+    * Expected output: The two strings are equal.
+
+* **Strings with different lengths:**
+    * Input: str1 = "abc", str2 = "abcd"
+    * Expected output: The two strings are not equal.
+
+* **Strings with different cases:**
+    * Input: str1 = "abc", str2 = "ABC"
+    * Expected output: The two strings are not equal.
+
+**Regular Test Cases:**
+
+* **Equal strings:**
+    * Input: str1 = "hello", str2 = "hello"
+    * Expected output: The two strings are equal.
+
+* **Different strings:**
+    * Input: str1 = "apple", str2 = "banana"
+    * Expected output: The two strings are not equal.
+
+* **Strings with whitespace:**
+    * Input: str1 = "Hello World", str2 = "Hello World"
+    * Expected output: The two strings are equal.

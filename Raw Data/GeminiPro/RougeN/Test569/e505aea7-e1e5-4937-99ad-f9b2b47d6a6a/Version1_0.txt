@@ -1,0 +1,54 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class CloneArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an original ArrayList
+        ArrayList<String> originalList = new ArrayList<>();
+        originalList.add("Apple");
+        originalList.add("Banana");
+        originalList.add("Orange");
+
+        // Method 1: Using the constructor (shallow copy)
+        ArrayList<String> clonedList1 = new ArrayList<>(originalList);
+
+        // Method 2: Using the addAll() method (shallow copy)
+        ArrayList<String> clonedList2 = new ArrayList<>();
+        clonedList2.addAll(originalList);
+
+        // Method 3: Using Collections.copy() (shallow copy - requires the destination list to be at least the same size)
+        ArrayList<String> clonedList3 = new ArrayList<>(originalList.size()); // Presize for copy()
+        Collections.copy(clonedList3, originalList);
+
+
+        // Method 4: Using a loop for a deep copy (if you need to clone the objects within the list as well)
+        ArrayList<String> clonedList4 = new ArrayList<>();
+        for (String item : originalList) {
+            clonedList4.add(new String(item)); // Creates new String objects
+        }
+
+        // Print the original and cloned lists
+        System.out.println("Original List: " + originalList);
+        System.out.println("Cloned List 1 (Constructor): " + clonedList1);
+        System.out.println("Cloned List 2 (addAll()): " + clonedList2);
+        System.out.println("Cloned List 3 (Collections.copy()): " + clonedList3);
+        System.out.println("Cloned List 4 (Deep Copy Loop): " + clonedList4);
+
+
+        // Demonstrate the difference between shallow and deep copy (important!)
+        originalList.set(0, "Grape"); // Modify the original list
+
+        System.out.println("\nAfter modifying the original list:");
+        System.out.println("Original List: " + originalList);
+        System.out.println("Cloned List 1 (Constructor): " + clonedList1); // Affected by change in original
+        System.out.println("Cloned List 2 (addAll()): " + clonedList2);    // Affected by change in original
+        System.out.println("Cloned List 3 (Collections.copy()): " + clonedList3); // Affected by change in original
+        System.out.println("Cloned List 4 (Deep Copy Loop): " + clonedList4); // Not affected
+
+
+    }
+}
+```

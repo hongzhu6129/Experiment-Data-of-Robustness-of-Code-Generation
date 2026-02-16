@@ -1,0 +1,91 @@
+public class MergeSortedArrays {
+
+    public static void main(String[] args) {
+        // Example sorted arrays
+        int[] arr1 = {2, 5, 8, 12};
+        int[] arr2 = {1, 3, 7, 9, 10};
+
+        // Print the original arrays
+        System.out.print("Array 1: ");
+        printArray(arr1);
+        System.out.print("Array 2: ");
+        printArray(arr2);
+
+        // Merge the arrays and store the result in mergedArray
+        int[] mergedArray = mergeSortedArrays(arr1, arr2);
+
+        // Print the merged array
+        System.out.print("Merged Array: ");
+        printArray(mergedArray);
+
+        //Another Example
+        int[] arr3 = {1, 3, 5};
+        int[] arr4 = {2, 4, 6, 8};
+
+
+        System.out.print("Array 3: ");
+        printArray(arr3);
+        System.out.print("Array 4: ");
+        printArray(arr4);
+
+
+        int[] mergedArray2 = mergeSortedArrays(arr3, arr4);
+
+        System.out.print("Merged Array 2: ");
+        printArray(mergedArray2);
+
+        // Example with empty arrays
+        int[] arr5 = {};
+        int[] arr6 = {1,2,3};
+
+
+        System.out.print("Array 5: ");
+        printArray(arr5);
+        System.out.print("Array 6: ");
+        printArray(arr6);
+
+
+        int[] mergedArray3 = mergeSortedArrays(arr5, arr6);
+
+        System.out.print("Merged Array 3: ");
+        printArray(mergedArray3);
+
+    }
+
+    public static int[] mergeSortedArrays(int[] arr1, int[] arr2) {
+        int n1 = arr1.length;
+        int n2 = arr2.length;
+        int[] mergedArray = new int[n1 + n2];
+
+        int i = 0, j = 0, k = 0;
+
+        // Compare elements from both arrays and add the smaller one to the merged array
+        while (i < n1 && j < n2) {
+            if (arr1[i] <= arr2[j]) {
+                mergedArray[k++] = arr1[i++];
+            } else {
+                mergedArray[k++] = arr2[j++];
+            }
+        }
+
+        // Copy remaining elements from arr1, if any
+        while (i < n1) {
+            mergedArray[k++] = arr1[i++];
+        }
+
+        // Copy remaining elements from arr2, if any
+        while (j < n2) {
+            mergedArray[k++] = arr2[j++];
+        }
+
+        return mergedArray;
+    }
+
+
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}

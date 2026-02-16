@@ -1,0 +1,78 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueInsertion {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers (you can use other data types too)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some initial elements
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+
+        System.out.println("Initial PriorityQueue: " + pq); // Output: [1, 2, 8, 5] (order may vary slightly due to internal implementation)
+
+        // Element to insert
+        int elementToInsert = 6;
+
+        // Insert the element - PriorityQueue automatically maintains order based on natural ordering (for Integers, it's ascending)
+        pq.add(elementToInsert);
+
+        System.out.println("PriorityQueue after inserting " + elementToInsert + ": " + pq); // Output: [1, 2, 6, 5, 8] (order may vary slightly)
+
+
+        // Example with Strings (natural ordering is lexicographical):
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.add("banana");
+        stringPQ.add("apple");
+        stringPQ.add("orange");
+
+        System.out.println("String PriorityQueue: " + stringPQ);  // Output: [apple, banana, orange] (order may vary slightly)
+
+
+        stringPQ.add("grape");
+        System.out.println("String PriorityQueue after inserting \"grape\": " + stringPQ); // Output: [apple, banana, orange, grape] (order may vary slightly)
+
+
+
+        // Important Note about PriorityQueues:
+        // 1. Retrieval from a PriorityQueue is always the smallest element (based on natural ordering or a custom Comparator).  pq.poll() removes and returns the smallest element.
+        // 2. PriorityQueues do not provide constant-time access to elements by index like ArrayLists.
+
+
+        // Example showing retrieval:
+        System.out.println("Smallest element in integer PQ: " + pq.peek()); // Output: 1 (smallest element)
+        pq.poll(); // Remove the smallest element
+        System.out.println("Integer PQ after removing smallest: " + pq);
+
+
+        System.out.println("Smallest element in string PQ: " + stringPQ.peek()); // Output: apple  (smallest lexicographically)
+
+
+
+        // Example using a custom Comparator (for descending order of Integers):
+        PriorityQueue<Integer> descendingPQ = new PriorityQueue<>((a, b) -> b - a); // Reverse the usual order
+
+        descendingPQ.add(5);
+        descendingPQ.add(2);
+        descendingPQ.add(8);
+        descendingPQ.add(1);
+
+        System.out.println("Descending PriorityQueue: " + descendingPQ); // Output: [8, 5, 2, 1] (order may vary slightly)
+
+    }
+}
+```
+
+
+Key improvements in this educational example:
+
+* **Clear explanations:** Comments throughout the code explain each step.
+* **Multiple examples:** Demonstrates insertion with both Integers and Strings, showcasing natural ordering.
+* **Custom Comparator:** Shows how to use a Comparator for a different ordering (descending order).
+* **Retrieval explanation:** Explains how `peek()` and `poll()` work for retrieving elements.
+* **Important notes:** Highlights key differences between PriorityQueues and other data structures like ArrayLists.
+* **Concise and focused:** Stays focused on PriorityQueue insertion while providing context.

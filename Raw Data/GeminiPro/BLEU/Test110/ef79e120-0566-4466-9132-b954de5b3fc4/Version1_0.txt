@@ -1,0 +1,75 @@
+```java
+class Solution {
+    /**
+     * Searches for a target value in an m x n matrix.
+     *
+     * @param matrix The m x n matrix to search.
+     * @param target The value to search for.
+     * @return True if the target value is found in the matrix, false otherwise.
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int low = 0;
+        int high = m * n - 1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int row = mid / n;
+            int col = mid % n;
+
+            if (matrix[row][col] == target) {
+                return true;
+            } else if (matrix[row][col] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[][] matrix1 = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        int target1 = 3;
+        System.out.println(solution.searchMatrix(matrix1, target1)); // Output: true
+
+        int[][] matrix2 = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        int target2 = 13;
+        System.out.println(solution.searchMatrix(matrix2, target2)); // Output: false
+
+
+        int[][] matrix3 = {};
+        int target3 = 13;
+        System.out.println(solution.searchMatrix(matrix3, target3)); // Output: false
+
+        int[][] matrix4 = {{}}; // Empty row
+        int target4 = 13;
+        System.out.println(solution.searchMatrix(matrix4, target4)); // Output: false
+
+        int[][] matrix5 = {{1}};
+        int target5 = 1;
+        System.out.println(solution.searchMatrix(matrix5, target5)); // Output: true
+
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles edge cases:**  The code now correctly handles null or empty matrices, as well as matrices with empty rows.  This prevents `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+* **Clearer variable names:**  `m` and `n` are used for rows and columns, improving readability.
+* **Efficient search:** Uses binary search (treating the matrix as a sorted 1D array) for O(log(m*n)) time complexity.
+* **Concise code:** The logic within the `while` loop is simplified and easier to follow.
+* **Robust `main` method:** The `main` method demonstrates the usage of the `searchMatrix` function with various test cases, including edge cases. This helps verify correctness.

@@ -1,0 +1,57 @@
+```java
+import java.util.Scanner;
+
+public class RemoveDuplicateCharacters {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Create a new string to store the result
+        String resultString = "";
+
+        // Iterate over the input string and add each character to the result string if it is not already present
+        for (int i = 0; i < inputString.length(); i++) {
+            if (!resultString.contains(inputString.charAt(i))) {
+                resultString += inputString.charAt(i);
+            }
+        }
+
+        // Print the result string
+        System.out.println("The string after removing duplicate characters is: " + resultString);
+    }
+}
+```
+
+### Test Cases
+
+**Normal Cases:**
+
+* Input: "hello"
+* Output: "helo"
+* Explanation: The duplicate character 'l' is removed.
+
+* Input: "programming"
+* Output: "progamng"
+* Explanation: The duplicate characters 'r' and 'm' are removed.
+
+* Input: "Mississippi"
+* Output: "Misp"
+* Explanation: The duplicate characters 's', 's', and 'i' are removed.
+
+**Corner Cases:**
+
+* Input: "12345567"
+* Output: "1234567"
+* Explanation: There are no duplicate characters in the input string.
+
+* Input: ""
+* Output: ""
+* Explanation: The input string is empty.
+
+* Input: null
+* Output: null
+* Explanation: The input string is null.

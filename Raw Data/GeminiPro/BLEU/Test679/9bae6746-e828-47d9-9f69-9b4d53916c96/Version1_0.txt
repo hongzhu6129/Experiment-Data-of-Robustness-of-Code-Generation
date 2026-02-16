@@ -1,0 +1,63 @@
+```java
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        int key1 = 25;
+        Integer result1 = getLeastKeyGreaterThanOrEqualTo(treeMap, key1);
+        System.out.println("Least key greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        int key2 = 10;
+        Integer result2 = getLeastKeyGreaterThanOrEqualTo(treeMap, key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+
+        int key3 = 60;
+        Integer result3 = getLeastKeyGreaterThanOrEqualTo(treeMap, key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + result3); // Output: null
+
+
+        // Example with String keys (you'd need to adjust the generic types)
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("cherry", 3);
+
+        String key4 = "blueberry";
+        String result4 = getLeastKeyGreaterThanOrEqualTo(stringTreeMap, key4);
+        System.out.println("Least key greater than or equal to " + key4 + ": " + result4); // Output: cherry
+
+        String key5 = "apple";
+        String result5 = getLeastKeyGreaterThanOrEqualTo(stringTreeMap, key5);
+        System.out.println("Least key greater than or equal to " + key5 + ": " + result5); // Output: apple
+
+
+
+    }
+
+    public static <K, V> K getLeastKeyGreaterThanOrEqualTo(TreeMap<K, V> treeMap, K key) {
+        return treeMap.ceilingKey(key); 
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Generics:**  The `getLeastKeyGreaterThanOrEqualTo` method now uses generics `<K, V>` so it can work with TreeMaps of any key and value types, not just Integer and String.
+2. **TreeMap's `ceilingKey()`:**  The core logic is simplified by using `treeMap.ceilingKey(key)`. This method directly returns the least key greater than or equal to the given key, or `null` if there's no such key.  This is much cleaner and more efficient than manual iteration.
+3. **Clearer Examples:** The `main` method demonstrates usage with both `Integer` keys and `String` keys to illustrate the generic nature of the `getLeastKeyGreaterThanOrEqualTo` method.
+4. **Conciseness:** The code is now more concise and focused, directly addressing the problem statement without unnecessary complexity.
+5. **Correct Handling of Null:** The code now correctly returns `null` if no key greater than or equal to the given key is present in the TreeMap.
+
+
+This revised version is the most efficient and idiomatic way to solve this problem in Java, leveraging the built-in functionality of the `TreeMap` class.

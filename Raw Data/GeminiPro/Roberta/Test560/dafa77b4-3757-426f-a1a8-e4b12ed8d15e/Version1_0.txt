@@ -1,0 +1,84 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class TrackElement {
+
+    public static void main(String[] args) {
+        // Sample ArrayList
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(10); // Duplicate element
+        numbers.add(30);
+
+
+        // Element to track
+        int target = 10;
+
+        // Track and print occurrences
+        trackElement(numbers, target);
+
+
+        //Example using contains() to check if an element exists
+        if (numbers.contains(target)) {
+            System.out.println(target + " exists in the ArrayList.");
+        } else {
+            System.out.println(target + " does not exist in the ArrayList.");
+        }
+
+        // Example using indexOf() to find the first occurrence:
+        int firstIndex = numbers.indexOf(target);
+        if (firstIndex != -1) {
+            System.out.println("First occurrence of " + target + " is at index: " + firstIndex);
+        } else {
+            System.out.println(target + " not found in the list.");
+        }
+
+        // Example using lastIndexOf() to find the last occurrence:
+        int lastIndex = numbers.lastIndexOf(target);
+        if (lastIndex != -1) {
+            System.out.println("Last occurrence of " + target + " is at index: " + lastIndex);
+        } else {
+            System.out.println(target + " not found in the list.");
+        }
+    }
+
+    public static void trackElement(List<Integer> list, int target) {
+        System.out.println("Tracking element: " + target);
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == target) {
+                System.out.println("Found " + target + " at index: " + i);
+            }
+        }
+
+        if (!list.contains(target)){ //using contains for a final check (if not found)
+            System.out.println(target + " is not present in the list.");
+        }
+    }
+}
+```
+
+
+Explanation and key improvements:
+
+1. **Clearer Output:** The output now explicitly states what element is being tracked and provides more informative messages.
+2. **`contains()` Method:**  Demonstrates how to use the `contains()` method to efficiently check if an element exists in the ArrayList without manually iterating.
+3. **`indexOf()` and `lastIndexOf()`:** Shows how to find the first and last occurrences of an element using these methods.
+4. **Handles "Not Found" Case:** The `trackElement` method now includes a check to print a message if the target element is not found at all in the list. This makes the output more complete and user-friendly.
+5. **Combined Approach:** Using `contains()`, `indexOf()`, `lastIndexOf()` and the loop provides comprehensive examples of how to find elements.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `TrackElement.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac TrackElement.java 
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java TrackElement
+   ```

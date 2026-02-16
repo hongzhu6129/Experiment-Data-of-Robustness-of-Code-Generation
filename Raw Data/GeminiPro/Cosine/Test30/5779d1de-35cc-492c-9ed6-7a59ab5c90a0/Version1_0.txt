@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of a side of the hexagon: ");
+        double sideLength = input.nextDouble();
+
+        // Handle invalid input (side length cannot be negative or zero)
+        if (sideLength <= 0) {
+            System.out.println("Error: Side length must be a positive value.");
+            return; // Exit the program
+        }
+
+
+        double area = (3 * Math.sqrt(3) * sideLength * sideLength) / 2;
+
+        System.out.printf("The area of the hexagon is: %.2f\n", area);
+        input.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Positive Side Length:**
+   - Input: `5`
+   - Expected Output: `64.95`
+
+2. **Decimal Side Length:**
+   - Input: `2.5`
+   - Expected Output: `16.24`
+
+3. **Zero Side Length (Corner Case):**
+   - Input: `0`
+   - Expected Output: `Error: Side length must be a positive value.`
+
+4. **Negative Side Length (Corner Case):**
+   - Input: `-3`
+   - Expected Output: `Error: Side length must be a positive value.`
+
+5. **Very Large Side Length:**
+   - Input: `10000`
+   - Expected Output: `259807621.14` (This tests for potential overflow issues, though `double` can handle very large numbers).
+
+6. **Small Side Length:**
+    - Input: `0.001`
+    - Expected Output: `0.00` (or a very small value, demonstrating handling of small decimals)
+
+
+
+**How to run the test cases:**
+
+You can manually input these values when prompted by the program.  A more robust way to test would be to write unit tests using a testing framework like JUnit.  This allows for automated testing and more thorough validation.  Here's a simple example of how you could start writing a JUnit test (requires adding the JUnit library to your project):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class HexagonAreaTest {
+
+    @Test
+    void testPositiveSideLength() {
+        String input = "5\n";  // Simulate user input
+        String expectedOutput = "The area of the hexagon is: 64.95\n";
+        testHexagonArea(input, expectedOutput);
+    }
+
+    // Add more @Test methods for other test cases
+
+    private void testHexagonArea(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        HexagonArea.main(new String[0]); // Run the main method
+
+        assertEquals(expectedOutput, out.toString());
+        System.setIn(System.in); // Restore standard input
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+This JUnit example shows how you redirect input and output streams to test the `main` method directly.  It's a good practice to learn for more complex programs.

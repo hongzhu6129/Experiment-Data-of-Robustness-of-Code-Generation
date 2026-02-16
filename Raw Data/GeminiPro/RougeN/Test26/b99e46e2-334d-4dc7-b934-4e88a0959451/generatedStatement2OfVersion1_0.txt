@@ -1,0 +1,38 @@
+
+
+**Test Cases and Corner Cases:**
+
+Here's how you can test the program, covering various scenarios:
+
+1. **Standard Case (Java Installed):**
+   - **Expected Output:** "Java is installed."
+   - **How to Test:** Simply run the program on a system with a standard Java installation. Most systems will have `java` in their PATH.
+
+2. **Java Not Installed:**
+   - **Expected Output:** "Java is not installed."
+   - **How to Test:**
+     - **Option 1 (Simplest):**  Temporarily rename or move the `java` executable (or the entire Java directory) out of any location specified in the system's PATH environment variable. Then run the program. Remember to restore the original Java location afterward.
+     - **Option 2 (Using a Virtual Machine or Docker):** Set up a clean virtual machine or a Docker container without Java installed. Run the program inside that environment.
+
+
+3. **Java in Non-Standard Location (Corner Case):**
+   - **Expected Output:** "Java is not installed." (Unless you explicitly configure PATH)
+   - **How to Test:** Install Java in a directory *not* included in the system's PATH.  Then run the program. This simulates a situation where Java is present but not readily accessible.
+
+4. **`java -version` Returns Unexpected Output (Corner Case):**
+   - **Expected Output:** "Java is not installed" (if the output doesn't start with the expected strings).
+   - **How to Test:** This is harder to simulate directly. You could *theoretically* modify the Java installation to change the output of `java -version`. A more practical approach for testing this would be to modify the source code of your `isJavaInstalled()` method temporarily to expect a different output string and then run it against a standard Java installation.  After testing, revert your code to the correct expected strings.
+
+5. **Permissions Issues (Corner Case - Less Common):**
+   - **Expected Output:** "Java is not installed."
+   - **How to Test:** This is tricky to test reliably.  You could try setting restrictive permissions on the `java` executable to prevent the current user from executing it. Then run your program. Remember to revert the permissions changes afterward!
+
+
+
+**Important Notes on Testing:**
+
+- **Restore Your System:** After testing corner cases that involve modifying your system (like changing the PATH or permissions), always restore your system to its original working state.
+- **Automated Tests:** Ideally, you'd create automated tests (using a testing framework like JUnit) to cover these scenarios programmatically, rather than manually testing each time.  Automated tests make regression testing much easier.
+
+
+This comprehensive approach to testing ensures your `isJavaInstalled()` method functions correctly under various conditions, including edge cases.

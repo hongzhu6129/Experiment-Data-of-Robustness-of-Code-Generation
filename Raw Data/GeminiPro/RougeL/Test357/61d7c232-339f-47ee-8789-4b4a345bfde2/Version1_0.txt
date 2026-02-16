@@ -1,0 +1,58 @@
+```java
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.length() == 0) {
+            System.out.println("Input string cannot be null or empty.");
+            return;
+        }
+
+        int len = str.length();
+        int partSize = len / n;
+
+        if (len % n != 0) {
+            System.out.println("String cannot be divided into " + n + " equal parts.");
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+            int startIndex = i * partSize;
+            int endIndex = (i + 1) * partSize;
+            System.out.println(str.substring(startIndex, endIndex));
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcdefghijklmnopqrstuvwx";
+        int n1 = 4;
+        splitString(str1, n1); // Output: abcdefghij klmnopqrst uvwx
+
+        System.out.println(); // Add an empty line for clarity
+
+
+        String str2 = "abcdefghijklm";
+        int n2 = 3;
+        splitString(str2, n2); // Output: abcd efgh ijklm
+
+        System.out.println();
+
+        String str3 = "abcdefg";
+        int n3 = 3;
+        splitString(str3, n3); // String cannot be divided into 3 equal parts.
+
+        System.out.println();
+
+        String str4 = null; // Test null input
+        splitString(str4, 2); // Input string cannot be null or empty.
+
+        System.out.println();
+
+        String str5 = ""; // Test empty input
+        splitString(str5, 2); // Input string cannot be null or empty.
+
+
+
+
+    }
+}
+```

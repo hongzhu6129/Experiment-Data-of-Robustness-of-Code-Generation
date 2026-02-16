@@ -1,0 +1,77 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSortWithComparator {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("grape", 3);
+        treeMap.put("orange", 4);
+        treeMap.put("kiwi", 5);
+
+
+        // Print the sorted TreeMap
+        System.out.println("Sorted TreeMap: " + treeMap);
+
+
+        //Demonstrate usage of compare method (could be called within the Comparator)
+        StringLengthComparator comparator = new StringLengthComparator();
+        System.out.println("Comparison result: " + comparator.compare("apple", "banana")); // Expected: -1 (apple is shorter)
+        System.out.println("Comparison result: " + comparator.compare("banana", "apple")); // Expected: 1 (banana is longer)
+        System.out.println("Comparison result: " + comparator.compare("grape", "grape")); // Expected: 0 (equal length)
+
+    }
+
+
+
+    // Custom Comparator to sort strings by length
+    static class StringLengthComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String s1, String s2) {
+            return Integer.compare(s1.length(), s2.length());  // Compare based on string length
+        }
+    }
+}
+
+
+
+```
+
+
+Explanation:
+
+1. **`StringLengthComparator` Class:** This class implements the `Comparator<String>` interface, meaning it provides a custom way to compare strings.  The crucial part is the `compare(String s1, String s2)` method. It returns:
+   - A negative integer if `s1` is shorter than `s2`.
+   - A positive integer if `s1` is longer than `s2`.
+   - Zero if `s1` and `s2` have the same length.
+
+
+2. **`TreeMap` Creation:**  In the `main` method, we create a `TreeMap` and pass an instance of our `StringLengthComparator` to its constructor:
+   ```java
+   TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator()); 
+   ```
+   This tells the `TreeMap` to use the `StringLengthComparator`'s `compare` method to sort the keys.
+
+
+3. **Adding Elements:** We add key-value pairs to the `TreeMap`.
+
+4. **Printing the Sorted `TreeMap`:**  When we print the `TreeMap`, the keys are automatically sorted according to the `compare` method in our custom comparator.
+
+
+5. **Demonstrating `compare`:** The code also explicitly demonstrates how the `compare` method of the `StringLengthComparator` can be used.  This helps illustrate how the comparison logic works within the comparator.
+
+
+
+Key Improvements:
+
+- **Clearer Explanation:** The explanation breaks down the code's functionality step by step.
+- **`compare` Method Demonstration:**  Added code to show how `compare` works, which helps understanding.
+- **Conciseness:**  Removed unnecessary comments and made the code more concise.
+- **Adherence to Prompt:** The solution strictly adheres to the prompt's requirement of only using `main` and `compare` method signatures.

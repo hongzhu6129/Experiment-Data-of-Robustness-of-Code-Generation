@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class CharCounter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        System.out.print("Enter the character to count: ");
+        char targetChar = scanner.nextLine().charAt(0);
+
+        long startTime = System.nanoTime();
+        int count = countOccurrences(inputString, targetChar);
+        long endTime = System.nanoTime();
+
+        System.out.println("Occurrences of '" + targetChar + "': " + count);
+
+        displayExecutionTime(endTime - startTime);
+
+        scanner.close();
+    }
+
+    private static int countOccurrences(String str, char ch) {
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static void displayExecutionTime(long timeInNanoseconds) {
+        System.out.println("Execution time: " + timeInNanoseconds + " nanoseconds");
+    }
+}
+```
+
+
+This revised code adheres strictly to the requested method signatures. It:
+
+1. Takes user input for the string and character.
+2. Times the execution of the `countOccurrences` method using `System.nanoTime()`.
+3. Displays the character count.
+4. Displays the execution time using the provided `displayExecutionTime` method.
+5. Includes proper resource management by closing the `Scanner`.
+6. Maintains clear and concise code structure.

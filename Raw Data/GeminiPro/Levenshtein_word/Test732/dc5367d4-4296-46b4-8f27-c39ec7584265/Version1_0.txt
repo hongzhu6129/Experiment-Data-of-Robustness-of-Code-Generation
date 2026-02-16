@@ -1,0 +1,91 @@
+```java
+public class ExponentialSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+        int target = 12;
+        int index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+
+        target = 22; // Test for element not present
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+        int[] emptyArr = {};
+        target = 5;
+        index = exponentialSearch(emptyArr, target);
+         if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+
+
+    }
+
+    private static int exponentialSearch(int[] arr, int target) {
+        if (arr == null || arr.length == 0) {
+            return -1; 
+        }
+
+        if (arr[0] == target) {
+            return 0;
+        }
+
+        int i = 1;
+        while (i < arr.length && arr[i] <= target) {
+            i *= 2;
+        }
+
+        // Perform Binary Search within the determined range
+        int start = i / 2;
+        int end = Math.min(i, arr.length -1); // Don't go past end of array
+
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+
+        return -1; // Element not found
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Empty or Null Array:**  Added a check at the beginning of `exponentialSearch` to handle cases where the input array is `null` or empty. This prevents `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+
+2. **Handles Element at Index 0:**  Added a specific check for the target element being at the very beginning of the array (`arr[0] == target`).
+
+3. **Bound Check in Binary Search:**  Modified the binary search part to correctly handle the `end` index.  The `end` is now calculated as `Math.min(i, arr.length - 1)` to ensure it never goes beyond the last valid index of the array. This prevents potential `ArrayIndexOutOfBoundsException`.
+
+4. **Clearer Comments and Variable Names:** Improved comments within the code to explain the logic more clearly.
+
+5. **Test Cases in `main`:** The `main` method now includes test cases for:
+    - An element present in the array.
+    - An element not present in the array.
+    - An empty array. This tests the new null/empty check. 
+
+This revised code is more robust, efficient, and handles various edge cases correctly.  It now adheres more strictly to the problem description and best practices.

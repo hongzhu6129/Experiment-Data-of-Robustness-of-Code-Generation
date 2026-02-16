@@ -1,0 +1,53 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckEmptyMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        Map<String, Integer> map1 = new HashMap<>();
+
+        // Check if the map is empty using isEmpty()
+        boolean isEmpty1 = map1.isEmpty();
+        System.out.println("Is map1 empty? " + isEmpty1); // Output: true
+
+        // Add some key-value pairs to the map
+        map1.put("Apple", 1);
+        map1.put("Banana", 2);
+        map1.put("Orange", 3);
+
+        // Check if the map is empty again
+        boolean isEmpty2 = map1.isEmpty();
+        System.out.println("Is map1 empty now? " + isEmpty2); // Output: false
+
+
+        // Another way to check if a map is empty (less efficient)
+        Map<String, Integer> map2 = new HashMap<>();
+        boolean isEmpty3 = map2.size() == 0;
+        System.out.println("Is map2 empty? " + isEmpty3); // Output: true
+
+
+        // Demonstrating with different map types (TreeMap)
+        Map<Integer, String> treeMap = new java.util.TreeMap<>(); 
+        System.out.println("Is treeMap initially empty? " + treeMap.isEmpty()); // Output: true
+        treeMap.put(1, "One");
+        System.out.println("Is treeMap empty after adding an element? " + treeMap.isEmpty()); // Output: false
+
+
+        //  Illustrating potential NullPointerException if the map is null
+        Map<String, String> nullMap = null;
+        //  The following line would throw a NullPointerException:
+        //  boolean isEmptyNull = nullMap.isEmpty(); 
+
+        // How to handle a potentially null map safely:
+        if (nullMap != null && nullMap.isEmpty()) {
+            System.out.println("The map is null or empty.");
+        } else if (nullMap != null) {
+            System.out.println("The map is not empty.");
+        } else {
+            System.out.println("The map is null."); // This will be printed in this case.
+        }
+
+    }
+}

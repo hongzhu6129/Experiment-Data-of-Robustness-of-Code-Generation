@@ -1,0 +1,46 @@
+import java.util.TreeMap;
+
+public class TreeMapAssociateValue {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> bookMap = new TreeMap<>();
+
+        // Associate values with keys
+        bookMap.put("The Lord of the Rings", 1954);
+        bookMap.put("The Hitchhiker's Guide to the Galaxy", 1979);
+        bookMap.put("Pride and Prejudice", 1813);
+
+        // Print the TreeMap to verify the associations
+        System.out.println(bookMap);
+
+
+        //Demonstrate updating an existing value (associating a new value with an existing key).
+        // If the key already exists, the put() method replaces the old value with the new one.
+
+        bookMap.put("The Lord of the Rings", 1965); // Corrected publication date
+        System.out.println(bookMap);
+
+
+
+        //Demonstrate what happens if you try to add a duplicate key
+        Integer previousValue = bookMap.put("The Hitchhiker's Guide to the Galaxy", 1980);
+        System.out.println("Previous value for Hitchhiker's:" + previousValue); //This will print 1979
+        System.out.println(bookMap);
+
+
+
+         //Demonstrate adding a null value (allowed for values, not for keys in a TreeMap)
+        bookMap.put("Unfinished Novel", null);
+        System.out.println(bookMap);
+
+
+        //Demonstrate trying to add a null key (will throw a NullPointerException)
+        try {
+            bookMap.put(null, 2024); 
+        } catch (NullPointerException e) {
+            System.out.println("Cannot add a null key to a TreeMap: " + e.getMessage());
+        }
+    }
+}
+

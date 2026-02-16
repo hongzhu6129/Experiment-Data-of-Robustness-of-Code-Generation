@@ -1,0 +1,91 @@
+```java
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String a = "ab";
+        String b = "cd";
+        findInterleavingStrings(a, b);
+    }
+
+    public static void findInterleavingStrings(String a, String b) {
+        List<String> result = new ArrayList<>();
+        findInterleavingStringsHelper(a, b, "", result);
+        System.out.println(result);
+    }
+
+    public static void findInterleavingStringsHelper(String a, String b, String current, List<String> result) {
+        if (a.isEmpty() && b.isEmpty()) {
+            result.add(current);
+            return;
+        }
+        if (!a.isEmpty()) {
+            findInterleavingStringsHelper(a.substring(1), b, current + a.charAt(0), result);
+        }
+        if (!b.isEmpty()) {
+            findInterleavingStringsHelper(a, b.substring(1), current + b.charAt(0), result);
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Empty strings:**
+```
+a = ""
+b = ""
+Expected: [""]
+```
+
+* **Single-character strings:**
+```
+a = "a"
+b = "b"
+Expected: ["ab", "ba"]
+```
+
+* **Longer strings:**
+```
+a = "abc"
+b = "def"
+Expected: ["abcdef", "abdecf", "abcdf", "abdcef", "acdbfe", "acbdef"]
+```
+
+* **Strings with repeated characters:**
+```
+a = "aabc"
+b = "ab"
+Expected: ["aababc", "aabcab", "abaabc", "abacba", "abacbc"]
+```
+
+* **Strings with special characters:**
+```
+a = "a!@#"
+b = "b$%^"
+Expected: ["a!@#$%^", "a!@#b%^", "a!#b$^%", "b!@#$%^", "b!@#a%^", "b!@a#%^"]
+```
+
+**Corner cases:**
+
+* **Null strings:**
+```
+a = null
+b = "cd"
+Expected: IllegalArgumentException
+```
+
+* **Empty string with non-empty string:**
+```
+a = ""
+b = "cd"
+Expected: [""]
+```
+
+* **Non-empty string with empty string:**
+```
+a = "abc"
+b = ""
+Expected: ["abc"]
+```

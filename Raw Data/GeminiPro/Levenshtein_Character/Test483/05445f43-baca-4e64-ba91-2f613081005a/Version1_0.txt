@@ -1,0 +1,93 @@
+```java
+class Solution {
+    /**
+     * Given two years, calculate the total number of days between them (inclusive).
+     *
+     * @param year1 The first year.
+     * @param year2 The second year.
+     * @return The total number of days.
+     */
+    public static int number_of_days(int year1, int year2) {
+        int totalDays = 0;
+
+        // Ensure year1 is smaller than or equal to year2
+        if (year1 > year2) {
+            int temp = year1;
+            year1 = year2;
+            year2 = temp;
+        }
+
+        for (int year = year1; year <= year2; year++) {
+            totalDays += number_of_days(year);
+        }
+
+        return totalDays;
+    }
+
+
+    /**
+     * Given a year, return the number of days in that year.
+     * @param year The year to check
+     * @return The number of days in the year (365 or 366)
+     */
+    public static int number_of_days(int year) {
+        if (is_Leap_Year(year)) {
+            return 366;
+        } else {
+            return 365;
+        }
+    }
+
+
+    /**
+     * Checks if a given year is a leap year.
+     * @param year The year to check
+     * @return True if the year is a leap year, false otherwise.
+     */
+    public static boolean is_Leap_Year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
+    public static void main(String[] args) {
+        int year1 = 2023;
+        int year2 = 2024;
+        int days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 731
+
+        year1 = 2024;
+        year2 = 2025;
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 731
+
+        year1 = 2024;
+        year2 = 2024;  // Same year
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 366
+
+        year1 = 1900; // Not a leap year
+        year2 = 1900;
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 365
+
+
+
+        year1 = 2000; // A leap year
+        year2 = 2000;
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 366
+
+         year1 = 2001;
+        year2 = 2003; 
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 1096
+
+        year1 = 2003;
+        year2 = 2001; //year1 > year2
+        days = number_of_days(year1, year2);
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + days); // Output: 1096
+
+
+
+    }
+}
+```

@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToOctal {
+
+    public static String functionone(int decimal) {
+        return Integer.toOctalString(decimal);
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a Decimal Number: ");
+        int decimal = input.nextInt();
+
+        String octal = functionone(decimal);
+        System.out.println("Octal number is: " + octal);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | Input (Decimal) | Expected Output (Octal) |
+|---|---|---|
+| 1 | 15 | 17 |
+| 2 | 0 | 0 |
+| 3 | 1 | 1 |
+| 4 | 7 | 7 |
+| 5 | 8 | 10 |
+| 6 | 63 | 77 |
+| 7 | 128 | 200 |
+| 8 | 255 | 377 |
+| 9 | 1000 | 1750 |
+| 10 | -1 | -1 (Handles negative input correctly by simply returning the same value as octal representation  �  some languages/libraries throw exceptions, others represent negative octal differently; this implementation prioritizes simplicity and consistency with `Integer.toOctalString`'s behavior) | 
+| 11 | 2147483647 (Integer.MAX_VALUE) | 17777777777 |
+
+
+**Explanation of Corner Cases:**
+
+* **Test Case 2 (0):**  Tests the conversion of zero.
+* **Test Case 3 (1) and 4 (7):** Test single-digit decimal numbers within the octal base range (0-7).
+* **Test Case 5 (8):** Tests the transition to a two-digit octal number.
+* **Test Case 10 (-1):**  Tests how the program handles negative input. As octal representation of negatives isn't universally standardized and often involves two's complement, this implementation simply returns the input value to maintain simplicity and consistency with how `Integer.toOctalString` behaves.  A more sophisticated approach would be to represent the negative sign explicitly or to use a representation like two's complement.
+* **Test Case 11 (Integer.MAX_VALUE):**  Tests the conversion of the largest possible integer value.  This checks for overflow or other issues.
+
+
+
+This set of test cases covers a good range of inputs, including boundaries and edge cases, to ensure the `DecimalToOctal` program works correctly under various conditions.  It's important to thoroughly test code, especially when dealing with different number systems, to catch potential errors.

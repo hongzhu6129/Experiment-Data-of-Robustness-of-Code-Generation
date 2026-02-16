@@ -1,0 +1,56 @@
+```java
+import java.util.LinkedList;
+
+public class CompareLinkedLists {
+
+    public static void main(String[] args) {
+        // Example usage:
+        LinkedList<Integer> list1 = new LinkedList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+        LinkedList<Integer> list3 = new LinkedList<>();
+        list3.add(1);
+        list3.add(2);
+        list3.add(4);
+
+
+        LinkedList<Integer> list4 = new LinkedList<>();
+        list4.add(1);
+        list4.add(2);
+        list4.add(3);
+        list4.add(4);
+
+
+
+        System.out.println("list1 and list2 are equal: " + compareLists(list1, list2)); // Output: true
+        System.out.println("list1 and list3 are equal: " + compareLists(list1, list3)); // Output: false
+        System.out.println("list1 and list4 are equal: " + compareLists(list1, list4)); // Output: false
+
+    }
+
+    public static boolean compareLists(LinkedList<?> list1, LinkedList<?> list2) {
+        // Check if the lists have the same size. If not, they cannot be equal.
+        if (list1.size() != list2.size()) {
+            return false;
+        }
+
+        // Iterate through both lists and compare elements at each index
+        for (int i = 0; i < list1.size(); i++) {
+            if (!list1.get(i).equals(list2.get(i))) { // Use .equals() for object comparison
+                return false;
+            }
+        }
+
+
+        return true; // Lists are equal if all elements are the same
+
+    }
+}
+```

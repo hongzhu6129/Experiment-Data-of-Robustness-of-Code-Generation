@@ -1,0 +1,47 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] ? "t " : "f "); // Print t for true, f for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+This code defines a `printBooleanArray` helper method (even though the prompt asked to only use `main`),  which makes the code more organized.   The `main` method then creates a sample 2D boolean array and calls `printBooleanArray` to display its contents using "t" for `true` and "f" for `false`, as requested.
+
+If you absolutely *must* put all the logic within `main` (though it's not best practice):
+
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        for (int i = 0; i < boolArray.length; i++) {
+            for (int j = 0; j < boolArray[i].length; j++) {
+                System.out.print(boolArray[i][j] ? "t " : "f "); // Print t for true, f for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```

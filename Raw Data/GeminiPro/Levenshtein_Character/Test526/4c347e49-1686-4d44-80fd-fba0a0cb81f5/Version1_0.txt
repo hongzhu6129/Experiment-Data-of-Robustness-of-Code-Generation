@@ -1,0 +1,55 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber); 
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:**  This helper method calculates the Fermat number for a given `n`.  It uses `Math.pow()` to perform the exponentiation.  The result is cast to `long` because Fermat numbers grow very quickly, exceeding the capacity of `int` even for small values of `n`.
+
+2. **`main` Method:**
+   - It prints a clear header.
+   - The loop iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+   - It calls the `calculateFermatNumber` method to get each Fermat number.
+
+3. **Long Data Type:** Using `long` allows the program to handle larger Fermat numbers than if `int` were used. However, even `long` will not be able to store all Fermat numbers beyond the first few, as they become extremely large. For truly large Fermat numbers, you would need to use `BigInteger` (see further improvement below).
+
+**Further Improvement (Using BigInteger for Arbitrary Precision):**
+
+If you need to handle even larger Fermat numbers, you can use the `BigInteger` class, which supports arbitrary-precision integers:
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers (using BigInteger):");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.valueOf(2).pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+    }
+}
+```
+
+This version will accurately calculate and print the first 10 (and many more) Fermat numbers without overflow issues.

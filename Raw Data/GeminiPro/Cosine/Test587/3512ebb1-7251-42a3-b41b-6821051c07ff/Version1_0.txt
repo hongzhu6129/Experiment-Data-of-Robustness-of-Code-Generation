@@ -1,0 +1,67 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to remove
+        String elementToRemove = "Orange";
+
+        // Remove the element
+        boolean removed = linkedList.remove(elementToRemove); // Removes first occurrence
+
+        if (removed) {
+            System.out.println("LinkedList after removing '" + elementToRemove + "': " + linkedList);
+        } else {
+            System.out.println(elementToRemove + " not found in the LinkedList.");
+        }
+
+
+        // Example using removeFirstOccurrence (for clarity, though remove() does this by default)
+         linkedList.add("Orange"); // Add orange back for demonstration
+        System.out.println("LinkedList before removeFirstOccurrence: "+ linkedList);
+        linkedList.removeFirstOccurrence("Orange"); 
+        System.out.println("LinkedList after removeFirstOccurrence: "+ linkedList);
+
+
+
+         //Example removing by index
+        System.out.println("LinkedList before removing element at index 1: " + linkedList);
+        linkedList.remove(1); //Removes the element at index 1 (second element).
+        System.out.println("LinkedList after removing element at index 1: " + linkedList);
+
+
+
+        // Example demonstrating removing all occurrences
+        linkedList.add("Grape"); //add grape back for demonstration
+        linkedList.add("Grape");
+
+        System.out.println("LinkedList before removing all 'Grape': " + linkedList);
+
+        while (linkedList.contains("Grape")) {  // Iterate and remove until none are left.
+            linkedList.remove("Grape"); 
+        }
+
+
+        System.out.println("LinkedList after removing all 'Grape': " + linkedList);
+
+
+
+
+
+    }
+}
+```

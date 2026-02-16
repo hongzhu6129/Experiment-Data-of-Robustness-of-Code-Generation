@@ -1,0 +1,76 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int lowerIndex, int higherIndex, int[] array) {
+
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        // Divide into two arrays
+        while (i <= j) {
+            /**
+             * In each iteration, we will identify a number from left side which
+             * is greater then the pivot value, and also we will identify a number
+             * from right side which is less then the pivot value. Once the search
+             * is done, then we exchange both numbers.
+             */
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, array);
+                //move index to next position on both sides
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j, array);
+        if (i < higherIndex)
+            quickSort(i, higherIndex, array);
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        QuickSort sorter = new QuickSort();
+        int[] input = {24,2,45,20,56,75,2,56,99,53,12};
+        sorter.sort(input);
+        System.out.println(Arrays.toString(input));   // Output: [2, 2, 12, 20, 24, 45, 53, 56, 56, 75, 99]
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Clearer Pivot Selection:**  The pivot is now calculated as the middle element using `array[lowerIndex+(higherIndex-lowerIndex)/2]`. This is generally safer than using `(lowerIndex + higherIndex)/2` to prevent potential integer overflow issues with very large arrays.
+* **Correct Recursive Calls:** The recursive calls to `quickSort` are now correctly placed *after* the partitioning step.  This ensures that the sub-arrays are correctly defined before being recursively sorted.
+* **Handles Empty/Null Input:** The `sort` method now correctly handles empty or null input arrays.
+* **In-place Sorting:**  The array is sorted in-place (modifying the original array), as is typical for quicksort.
+* **Improved Readability:** Variable names and comments have been improved for better understanding.
+* **Example Usage in `main`:**  The `main` method demonstrates how to use the `QuickSort` class.
+
+
+This revised code implements a much more robust and correct version of the quicksort algorithm.  It addresses the potential issues and inefficiencies of the original code and provides a good starting point for further optimization if needed.

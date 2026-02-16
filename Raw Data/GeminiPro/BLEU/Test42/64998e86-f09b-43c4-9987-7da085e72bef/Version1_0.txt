@@ -1,0 +1,82 @@
+```java
+import java.util.Scanner;
+
+public class EvenNumberChecker {
+
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        while (!scanner.hasNextInt()) { // Input validation loop
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Consume the invalid input
+        }
+        int number = scanner.nextInt();
+
+        if (isEven(number)) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input | Expected Output |
+|---|---|---|
+| Positive Even | 10 | 10 is even. |
+| Positive Odd | 7 | 7 is odd. |
+| Zero | 0 | 0 is even. |
+| Negative Even | -12 | -12 is even. |
+| Negative Odd | -5 | -5 is odd. |
+| Large Positive Even | 2147483646 | 2147483646 is even. |  // Close to Integer.MAX_VALUE
+| Large Negative Even | -2147483648 | -2147483648 is even. | // Integer.MIN_VALUE
+| Large Positive Odd | 2147483647 | 2147483647 is odd. |   // Integer.MAX_VALUE
+| Large Negative Odd | -2147483647 | -2147483647 is odd. | // Close to Integer.MIN_VALUE
+| Invalid Input (String) | hello | Invalid input. Please enter an integer. (Prompts for re-entry) |
+| Invalid Input (Floating Point) | 3.14 | Invalid input. Please enter an integer. (Prompts for re-entry) |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:**  Zero is considered an even number mathematically, so the program should correctly identify it as such.
+* **Integer.MIN_VALUE and Integer.MAX_VALUE:** Testing these limits ensures that the program handles the largest and smallest possible integer values correctly.  `Integer.MIN_VALUE` is particularly important because its absolute value is one greater than `Integer.MAX_VALUE`.
+* **Invalid Input:** The program includes input validation to handle cases where the user enters non-integer values.  This prevents the program from crashing due to `InputMismatchException`.
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering each test case input manually and verifying the output.
+
+2. **Using a Testing Framework (Recommended):**  For more efficient and automated testing, use a testing framework like JUnit. Here's a basic example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EvenNumberCheckerTest {
+
+    @Test
+    public void testIsEven() {
+        assertTrue(EvenNumberChecker.isEven(10));
+        assertFalse(EvenNumberChecker.isEven(7));
+        assertTrue(EvenNumberChecker.isEven(0));
+        assertTrue(EvenNumberChecker.isEven(-12));
+        // Add more tests here...
+    }
+}
+```
+
+
+Using a testing framework like JUnit makes it much easier to manage and run a large number of test cases, especially as your programs become more complex.  It also provides better reporting and helps to ensure the quality and correctness of your code.

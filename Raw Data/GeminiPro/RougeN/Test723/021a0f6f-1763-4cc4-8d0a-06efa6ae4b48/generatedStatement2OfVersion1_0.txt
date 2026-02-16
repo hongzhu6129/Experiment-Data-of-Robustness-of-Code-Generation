@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **Cloning in `permute`:**  The `arr.clone()` is crucial. Without it,  the list `permutations` would end up containing multiple references to the *same* array, which would be in its final permuted state (likely not sorted).
+
+2. **Backtracking in `permute`:** The second `swap` call reverses the swap performed at the beginning of the loop. This is essential for backtracking and exploring all possible permutations correctly.
+
+3. **Clearer `pSort`:** The `pSort` method now iterates through the generated permutations and returns the first sorted one found.
+
+4. **Return `null` handling:** The comment "// Should not reach here..." clarifies the intended behavior in `pSort`. If your input array is such that no sorted permutation exists (which isn't a realistic scenario with integers),  it's good practice to handle this case explicitly (e.g., by throwing an exception or returning a special value).
+
+5. **Efficiency (Caveat):** Permutation sort is inherently inefficient (O(n!)). For practical sorting, use algorithms like merge sort, quicksort, or the built-in `Arrays.sort()`.  This implementation is specifically for demonstrating the permutation sort concept as requested by the prompt.  Avoid using it for large arrays.
+
+
+
+Example usage in `main` demonstrates how to call `pSort` and print the sorted array. Remember that this algorithm is computationally very expensive and is not suitable for practical applications with anything other than very small arrays.

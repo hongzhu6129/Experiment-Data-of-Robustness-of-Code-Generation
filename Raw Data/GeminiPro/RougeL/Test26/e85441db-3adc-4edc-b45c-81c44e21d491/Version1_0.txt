@@ -1,0 +1,67 @@
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class CheckJavaInstallation {
+
+    public static boolean isJavaInstalled() {
+        try {
+            Process process = Runtime.getRuntime().exec("java -version");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream())); // Version info is on error stream
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("java version") || line.startsWith("openjdk version")) {
+                    return true;
+                }
+            }
+            return false; // Reached end of stream without finding version info
+        } catch (IOException e) {
+            return false; // Exception likely means java command not found
+        }
+    }
+
+    public static void main(String[] args) {
+        if (isJavaInstalled()) {
+            System.out.println("Java is installed.");
+        } else {
+            System.out.println("Java is not installed.");
+        }
+    }
+}
+
+
+```
+
+
+**Test Cases (Conceptual -  Implementation depends on your testing framework):**
+
+1. **Standard Case:**  Java is installed and accessible in the system PATH.  Expected Output: "Java is installed."
+
+2. **Java Not Installed:** Java is not installed on the system. Expected Output: "Java is not installed."
+
+3. **Java Installed but not in PATH:** Java is installed, but the `java` executable is not in the system's PATH environment variable.  Expected Output: "Java is not installed." (This is a crucial corner case).
+
+4. **Java Executable Renamed:** The `java` executable has been renamed (a very unusual but possible scenario). Expected Output: "Java is not installed."
+
+5. **Permissions Issue:** The user running the Java program does not have execute permissions on the `java` executable. Expected Output: "Java is not installed."  (Another important corner case, especially in server environments).
+
+6. **`java -version` Outputs Unexpectedly:** The `java -version` command outputs something other than the expected "java version" or "openjdk version" string.  This could happen if a custom Java distribution modifies the output. The program should ideally handle such cases robustly. You might need to adjust the string matching if you encounter such a distribution.  You can test this by temporarily modifying (or creating a mock) `java` executable that outputs different text.
+
+7. **Very Old Java Version:** Test with a very old Java version (if you can set one up) to ensure the version parsing still works.  This tests the regex or string matching logic.
+
+8. **Different Operating Systems:**  Ideally, test on different operating systems (Windows, macOS, Linux) to ensure platform compatibility. The core logic should be the same, but path handling and process execution might have subtle differences.
+
+
+**How to simulate some test cases (examples):**
+
+* **Java Not in PATH (Windows):**  Temporarily remove Java's bin directory from the system PATH.  
+* **Java Executable Renamed:**  (Use with caution!) Temporarily rename the `java` executable in the Java bin directory. Remember to rename it back!
+
+
+**Improved Code (handling more corner cases):**
+
+The provided code already handles most cases well. For even more robustness (especially regarding unexpected output from `java -version`), you might enhance the string matching to be more flexible.  Regular expressions are often useful for this purpose.
+
+
+This more comprehensive set of test cases and explanation should help you thoroughly validate your `isJavaInstalled()` function. Remember to use a proper testing framework (like JUnit) for automated testing.

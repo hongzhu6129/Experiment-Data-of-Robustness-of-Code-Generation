@@ -1,0 +1,79 @@
+```java
+import java.util.Scanner;
+
+public class PolygonArea {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the number of sides on the polygon: ");
+        int n = input.nextInt();
+
+        System.out.print("Input the length of one of the sides: ");
+        double s = input.nextDouble();
+
+        if (n < 3 || s <= 0) {
+            System.out.println("Invalid input. Number of sides must be 3 or more and side length must be positive.");
+            return; // Exit if input is invalid
+        }
+
+        double area = calculatePolygonArea(n, s);
+
+        System.out.println("The area is: " + area);
+
+        input.close();
+    }
+
+    public static double calculatePolygonArea(int n, double s) {
+        return (n * s * s) / (4 * Math.tan(Math.PI / n));
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Valid Input:**
+
+* **Input:** n = 7, s = 6
+* **Expected Output:** The area is: 130.82084798405722
+
+**2. Invalid Input (n < 3):**
+
+* **Input:** n = 2, s = 5
+* **Expected Output:** Invalid input. Number of sides must be 3 or more and side length must be positive.
+
+**3. Invalid Input (s <= 0):**
+
+* **Input:** n = 5, s = -2
+* **Expected Output:** Invalid input. Number of sides must be 3 or more and side length must be positive.
+
+**4. Invalid Input (s = 0):**
+
+* **Input:** n = 5, s = 0
+* **Expected Output:** Invalid input. Number of sides must be 3 or more and side length must be positive.
+
+
+**5. Triangle:**
+
+* **Input:** n = 3, s = 4
+* **Expected Output:** The area is: 6.928203230275509 (approximately)
+
+**6. Square:**
+
+* **Input:** n = 4, s = 5
+* **Expected Output:** The area is: 25.0
+
+**7. Large Polygon:**
+
+* **Input:** n = 100, s = 1
+* **Expected Output:** The area is: 795.5128971386793
+
+
+**8. Small Side Length:**
+
+* **Input:** n = 6, s = 0.5
+* **Expected Output:** The area is: 0.649519052838329
+
+
+These test cases cover various scenarios, including valid inputs, invalid inputs (negative or zero side length, or number of sides less than 3), and boundary cases like a triangle and a square. They also test a large polygon and a polygon with a small side length to ensure the formula works correctly across a range of values.  Testing these various scenarios will help ensure your `calculatePolygonArea` method is robust and handles different inputs correctly.
+

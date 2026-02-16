@@ -1,0 +1,104 @@
+```java
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class ThousandSeparator {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+
+        // Example with factorial (requires larger number handling - see note below)
+        int factorialInput = 10;
+        long factorialResult = calculateFactorial(factorialInput);
+        String formattedFactorial = validate((int) factorialResult); // Cast to int (might lose precision)
+        System.out.println(formattedFactorial);
+    }
+
+    public static String validate(int number) {
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US); // Use US locale for commas
+        DecimalFormat df = (DecimalFormat) nf;
+        df.applyPattern("#,###");  // Apply the thousand separator pattern
+        return df.format(number);
+    }
+
+    // Helper function to calculate factorial (limited to int range)
+    public static long calculateFactorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
+        }
+        long result = 1;
+        for (int i = 1; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+}
+
+
+
+```
+
+**Important Note on Factorials:**
+
+Factorials grow very quickly.  Even 10! is 3,628,800, and 20! exceeds the maximum value of an `int`.  If you need to handle larger factorials, you'll need to use `BigInteger` which can represent arbitrarily large integers.
+
+Here's an example incorporating `BigInteger` if you need it:
+
+
+```java
+import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class ThousandSeparatorBigInteger {
+    // ... (main and validate methods remain the same)
+
+    public static BigInteger calculateFactorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
+        }
+
+        BigInteger result = BigInteger.ONE;
+        for (int i = 1; i <= n; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // ... (other examples)
+
+         int factorialInput = 20; // Now we can handle a larger factorial
+        BigInteger factorialResult = calculateFactorial(factorialInput);
+        String formattedFactorial = validate(factorialResult);  // Use the new validate method
+        System.out.println(formattedFactorial);
+
+    }
+
+
+    // Overloaded validate method for BigInteger:
+    public static String validate(BigInteger number) {
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
+        DecimalFormat df = (DecimalFormat) nf;
+        df.applyPattern("#,###");
+        return df.format(number);
+    }
+
+}
+```
+
+
+Now you can correctly calculate and format large factorials!

@@ -1,0 +1,41 @@
+public class CheckFifteen {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int num1 = 10;
+        int num2 = 5;
+        boolean result = calculate(num1, num2);
+        System.out.println(result); // Output: true
+
+        num1 = 20;
+        num2 = 5;
+        result = calculate(num1, num2);
+        System.out.println(result); // Output: true
+
+        num1 = 10;
+        num2 = 25;
+        result = calculate(num1, num2);
+        System.out.println(result);  // Output: true
+
+
+        num1 = 7;
+        num2 = 8;
+        result = calculate(num1, num2);
+        System.out.println(result); // Output: true (because sum is 15)
+
+
+        num1 = 10;
+        num2 = 7;
+        result = calculate(num1, num2);
+        System.out.println(result); // Output: false
+
+    }
+
+    public static boolean calculate(int a, int b) {
+        if (a == 15 || b == 15 || (a + b) == 15 || Math.abs(a - b) == 15 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted array in-place and returns the new length.
+     *
+     * @param nums The sorted array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: New length: 2, Array: [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: New length: 5, Array: [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: New length: 0, Array: []
+
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New length: " + len4 ); // Output: New length: 0, Array: []
+
+        int[] nums5 = {1};
+        int len5 = removeDuplicates(nums5);
+        System.out.println("New length: " + len5 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5))); // Output: New length: 1, Array: [1]
+
+
+    }
+}
+```
+
+
+Key improvements:
+
+- **Clearer Variable Names:** `uniqueIndex` is more descriptive than just `i` for the unique element tracker.
+- **Handles Edge Cases:** Explicitly handles `null` or empty input arrays.
+- **Concise Logic:** The core logic for removing duplicates is streamlined.
+- **Informative Main Method:**  The `main` method demonstrates the function's usage with different test cases, including edge cases (empty and null arrays), and prints the modified array along with its new length, making it easier to understand the output.
+- **Uses `Arrays.copyOfRange`:**  This prevents printing the garbage values that might exist after the relevant part of the modified array in the main method's print statements.
+
+
+
+This improved version is more robust, easier to read, and provides better demonstrations of its functionality. It also adheres to the specified method signatures.

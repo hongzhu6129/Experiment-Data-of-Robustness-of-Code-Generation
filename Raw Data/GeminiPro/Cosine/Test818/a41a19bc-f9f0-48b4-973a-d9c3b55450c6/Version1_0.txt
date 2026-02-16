@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class HexToDecimal {
+
+    public static int hex_to_decimal(String hex) {
+        int decimal = 0;
+        int power = 0;
+
+        for (int i = hex.length() - 1; i >= 0; i--) {
+            char digit = hex.charAt(i);
+
+            if (digit >= '0' && digit <= '9') {
+                decimal += (digit - '0') * Math.pow(16, power);
+            } else if (digit >= 'A' && digit <= 'F') {
+                decimal += (digit - 'A' + 10) * Math.pow(16, power);
+            } else if (digit >= 'a' && digit <= 'f') {
+                decimal += (digit - 'a' + 10) * Math.pow(16, power);
+            } else {
+                // Handle invalid input (optional)  e.g., throw an exception
+                System.err.println("Invalid hexadecimal digit: " + digit);
+                return -1; // Or another error indicator
+            }
+
+            power++;
+        }
+        return decimal;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a hexadecimal number: ");
+        String hex = input.nextLine();
+
+        int decimal = hex_to_decimal(hex);
+        if (decimal != -1) { // Check for errors from hex_to_decimal
+            System.out.println("Equivalent decimal number is: " + decimal);
+        } 
+        input.close();
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **`hex_to_decimal(String hex)` Method:**
+   - Takes a hexadecimal string as input.
+   - Initializes `decimal` to store the decimal equivalent and `power` to track the power of 16.
+   - Iterates through the hex string from right to left (least significant digit to most significant).
+   - Inside the loop:
+     - `hex.charAt(i)` gets the character at the current position.
+     - Checks if the character is a digit ('0' to '9') or an uppercase/lowercase letter ('A' to 'F'/'a' to 'f').
+     - Converts the character to its decimal equivalent:
+       - For digits, subtract '0' (ASCII value).
+       - For letters, subtract 'A'/'a' and add 10.
+     - Multiplies the decimal equivalent by 16 raised to the power of `power`.
+     - Adds the result to `decimal`.
+     - Increments `power`.
+   - Returns the final `decimal` value.  Handles invalid characters by returning -1.
+
+2. **`main(String[] args)` Method:**
+   - Creates a `Scanner` to get user input.
+   - Prompts the user to enter a hexadecimal number.
+   - Reads the input using `input.nextLine()`.
+   - Calls `hex_to_decimal()` to convert the input to decimal.
+   - Prints the equivalent decimal number.  Checks the return value for errors.
+   - Closes the `Scanner`.
+
+**How to Compile and Run:**
+
+1. Save the code as `HexToDecimal.java`.
+2. Compile: `javac HexToDecimal.java`
+3. Run: `java HexToDecimal`
+
+
+**Key Concepts:**
+
+- **Hexadecimal Number System:** Base-16, uses digits 0-9 and letters A-F (or a-f).
+- **Decimal Number System:** Base-10, uses digits 0-9.
+- **ASCII Values:** Characters are represented by numerical codes.  '0' is 48, 'A' is 65, 'a' is 97.
+- **`Math.pow()`:** Calculates the power of a number.
+- **String Manipulation:** `charAt()`, `length()`.
+- **Error Handling:** (Optional but recommended) Checking for invalid input.
+
+
+
+
+

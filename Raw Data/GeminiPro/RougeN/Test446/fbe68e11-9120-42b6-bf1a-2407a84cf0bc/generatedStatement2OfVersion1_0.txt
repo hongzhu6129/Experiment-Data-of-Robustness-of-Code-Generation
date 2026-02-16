@@ -1,0 +1,11 @@
+
+
+
+Key improvements in this code:
+
+* **Handles Week 53 Correctly:**  Addresses the issue where week 53 might fall partially or completely in the next year. It ensures that only the part of week 53 that belongs to the current year is displayed. 
+* **Locale Awareness:** Uses `WeekFields.of(Locale.getDefault())` to make the week calculations respect the user's locale (important as the first day of the week varies in different regions).
+* **Clearer Comments:**  Improved comments explain the logic more clearly.
+* **Error Handling:** Includes a `try-catch` block to handle potential `DateTimeException` if an invalid week number (like 53 in a year where it doesn't exist) is encountered.
+* **Correct Last Day Calculation:**  Uses `.plusDays(6)` to accurately calculate the last day (Sunday) from the first day (Monday).
+* **Uses `TemporalAdjusters`:** A more elegant and reliable way to get the first and last days of the week.

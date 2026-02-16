@@ -1,0 +1,62 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class DecimalPlacesCounter {
+
+    public static void main(String[] args) {
+        String numStr1 = "123.456";
+        String numStr2 = "123";
+        String numStr3 = "123.4567890";
+        String numStr4 = "-123.45"; // Handles negative numbers
+        String numStr5 = "123."; // Handles trailing decimal
+        String numStr6 = ".45"; // Handles leading decimal
+        String numStr7 = "abc"; // Handles invalid input
+
+        System.out.println("Decimal places in " + numStr1 + ": " + validate(numStr1));
+        System.out.println("Decimal places in " + numStr2 + ": " + validate(numStr2));
+        System.out.println("Decimal places in " + numStr3 + ": " + validate(numStr3));
+        System.out.println("Decimal places in " + numStr4 + ": " + validate(numStr4));
+        System.out.println("Decimal places in " + numStr5 + ": " + validate(numStr5));
+        System.out.println("Decimal places in " + numStr6 + ": " + validate(numStr6));
+        System.out.println("Decimal places in " + numStr7 + ": " + validate(numStr7));
+
+
+
+
+    }
+
+    public static Integer validate(String numStr) {
+        // Regular expression to match the decimal part of a number.
+        Pattern pattern = Pattern.compile("\\.(\\d+)"); 
+        Matcher matcher = pattern.matcher(numStr);
+
+        if (matcher.find()) {
+            return matcher.group(1).length();
+        } else {
+            // If no decimal part is found, return 0 or handle as needed (e.g., invalid input).
+            return 0; 
+        }
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Regular Expression for Robustness:** Uses a regular expression `\\.(\\d+)` to accurately extract the decimal part.  This handles a wider variety of valid number formats (leading/trailing decimal points, negative numbers) and avoids issues with simply splitting on ".".
+
+2. **Clearer Invalid Input Handling:**  Returns 0 if no decimal part is found.  This is a common convention and makes it clear that the input string did not have a fractional component.  You could modify this to return -1 or throw an exception if you need to specifically detect invalid input.
+
+3. **Conciseness and Efficiency:** The code is more compact and efficient by directly using the `Matcher` to get the length of the captured group.
+
+4. **Example Usage in `main`:** The `main` method now demonstrates the function's usage with different types of input, including negative numbers and edge cases like trailing or leading decimal points.
+
+
+How the regex works:
+
+* `\\.`: Matches a literal dot character (needs to be escaped with \\ because . has special meaning in regex).
+* `(\\d+)`: This is a capturing group.
+    * `\\d`: Matches any digit (0-9).
+    * `+`: Matches one or more of the preceding element (so one or more digits).
+* `matcher.group(1)`:  Extracts the captured part of the matched string (the part inside the parentheses in the regex). In this case, it's the sequence of digits after the decimal point.

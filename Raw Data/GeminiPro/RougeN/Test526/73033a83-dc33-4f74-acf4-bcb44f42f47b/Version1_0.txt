@@ -1,0 +1,51 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1); // Explicit cast to long
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber` helper method:**  This method encapsulates the Fermat number calculation, making the `main` method cleaner and easier to read.
+2. **Explicit Cast to `long`:**  Fermat numbers grow very rapidly.  Even though `Math.pow` returns a `double`, we need to cast the result to `long` to handle the integer values correctly (at least for the first few Fermat numbers before they exceed the `long`'s capacity).
+3. **Clear output:** The code now includes a descriptive message indicating what it's printing.
+
+
+**Important Note about Large Fermat Numbers:**
+
+Fermat numbers quickly become extremely large.  Java's primitive `long` type can't hold Fermat numbers beyond F4 (65537) because they exceed the maximum `long` value. For larger Fermat numbers, you would need to use `BigInteger` (from the `java.math` package) to handle arbitrary-precision arithmetic. Here's a version using `BigInteger`:
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers (using BigInteger):");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.valueOf(2).pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+    }
+}
+```
+
+
+This `BigInteger` version will accurately calculate and display the first 10 Fermat numbers, even though some of them are very, very large.

@@ -1,0 +1,61 @@
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReadWriteTextFile {
+
+    public static void main(String[] args) {
+        String fileName = "my_text_file.txt"; 
+
+        // Write to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write("This is the first line.\n");
+            writer.write("This is the second line.\n");
+            writer.write("And this is the third.");
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.err.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+
+        // Read from the file
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            System.out.println("\nFile contents:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Try-with-resources:** The code uses try-with-resources ( `try (...)` ) to ensure that the `BufferedWriter` and `BufferedReader` are automatically closed, even if exceptions occur. This is crucial for preventing resource leaks and ensuring proper file handling.
+
+2. **Error Handling:** The code includes `try-catch` blocks to handle potential `IOExceptions` during file operations. It prints informative error messages to the console if any errors occur.
+
+3. **Clearer Output:** The output to the console is more structured and indicates whether the write operation was successful before printing the file contents.
+
+4. **File Name Variable:** The file name is stored in a `String` variable (`fileName`), making it easier to change if needed.
+
+5. **Newline Characters:** Newline characters (`\n`) are added to the end of each line when writing to ensure proper line breaks in the output file.
+
+6. **Comments:**  Comments explain the purpose of different sections of the code, improving readability.
+
+
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `ReadWriteTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler: `javac ReadWriteTextFile.java`
+3. **Run:** After successful compilation, run the program: `java ReadWriteTextFile`
+
+This will create a file named `my_text_file.txt` in the same directory, write the specified text to it, and then read and print the contents of the file to the console.

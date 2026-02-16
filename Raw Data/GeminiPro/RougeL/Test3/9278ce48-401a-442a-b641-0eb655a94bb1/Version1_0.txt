@@ -1,0 +1,119 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 5
+   **Expected Output:**
+   ```
+   Multiplication Table of 5:
+   5 x 1 = 5
+   5 x 2 = 10
+   5 x 3 = 15
+   ...
+   5 x 10 = 50
+   ```
+
+2. **Input:** 12
+   **Expected Output:**
+   ```
+   Multiplication Table of 12:
+   12 x 1 = 12
+   12 x 2 = 24
+   ...
+   12 x 10 = 120
+   ```
+
+**Corner/Edge Cases:**
+
+3. **Input:** 0
+   **Expected Output:**
+   ```
+   Multiplication Table of 0:
+   0 x 1 = 0
+   0 x 2 = 0
+   ...
+   0 x 10 = 0
+   ```
+
+4. **Input:** -7  (Negative Number)
+   **Expected Output:**
+   ```
+   Multiplication Table of -7:
+   -7 x 1 = -7
+   -7 x 2 = -14
+   ...
+   -7 x 10 = -70
+   ```
+
+5. **Input:**  2147483647 (Integer.MAX_VALUE)  // Test for potential overflow
+   **Expected Output:** (Check for correct results, might overflow for some multiplications) The output will likely be correct for smaller multiples, but larger ones (like 9 and 10) might exhibit integer overflow, resulting in unexpected negative values.
+
+6. **Input:** -2147483648 (Integer.MIN_VALUE) // Test for potential overflow.  Similar to MAX_VALUE,  -2147483648 * 2 or higher will likely overflow in Java.
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering each test case input as prompted. Verify the output against the expected output.
+2. **Automated Testing (Recommended):**  Using JUnit or TestNG (testing frameworks in Java) is the best practice.  You would write separate test methods for each case.  Example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testMultiplicationTable5() {
+        testTable(5, "5 x 1 = 5\n5 x 2 = 10\n...5 x 10 = 50\n"); // Replace ... with the full output
+    }
+
+     // Add more @Test methods for other cases (0, -7, MAX_VALUE, MIN_VALUE)
+
+    private void testTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); // Redirect System.out
+
+        // Simulate user input
+        Scanner scanner = new Scanner(String.valueOf(input));
+        MultiplicationTable.main(new String[0]); // scanner now has input
+
+        String actualOutput = outputStream.toString().trim().replace("\r", ""); // Normalize output (remove \r)
+
+
+        // Assertions compare the expected and actual
+        assertTrue(actualOutput.contains("Multiplication Table of " + input + ":")); //Partial match, easier
+        // Or for a more precise but harder to maintain test: assertEquals(expectedOutput, actualOutput);
+
+        System.setOut(System.out); // Restore System.out
+    }
+}
+```
+
+
+By using automated tests, you ensure your code works as expected even after making changes and help catch regressions early on.  It's very important to use automated testing like JUnit as your programs become larger and more complex.

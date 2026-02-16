@@ -1,0 +1,42 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of names
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        names.add("Eve");
+
+        // Specify the starting position (e.g., 2 for the third element)
+        int startPosition = 2;
+
+
+        // Check if the starting position is valid
+        if (startPosition < 0 || startPosition >= names.size()) {
+            System.out.println("Invalid starting position.");
+            return; // Exit if the position is invalid
+        }
+
+
+        // Iterate through the LinkedList from the specified position using a ListIterator
+        ListIterator<String> iterator = names.listIterator(startPosition);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        //Alternative approach using a simple for loop (less efficient for linked lists, but demonstrates another option)
+        System.out.println("\nIterating using a for loop (less efficient for LinkedLists):");
+        for (int i = startPosition; i < names.size(); i++) {
+            System.out.println(names.get(i));
+        }
+
+
+    }
+}

@@ -1,0 +1,75 @@
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            System.out.println("Input string cannot be null or empty.");
+            return;
+        }
+
+        int strLength = str.length();
+
+        if (n <= 0) {
+            System.out.println("Number of parts (n) must be greater than 0.");
+            return;
+        }
+
+        if (strLength < n) {
+            System.out.println("String length is less than the number of parts.");
+            return; // Or handle it differently, e.g., print the whole string
+        }
+
+        int partSize = strLength / n;
+        int remainder = strLength % n;
+
+
+        int startIndex = 0;
+        for (int i = 0; i < n; i++) {
+            int endIndex = startIndex + partSize;
+
+            // Distribute the remainder across the parts
+            if (remainder > 0) {
+                endIndex++;
+                remainder--;
+            }
+            System.out.println(str.substring(startIndex, endIndex));
+
+            startIndex = endIndex;
+
+
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String str1 = "abcdefghijklmnopqrstuvwxy";
+        int n1 = 5;
+        splitString(str1, n1);  // Output: abcde, fghij, klmno, pqrst, uvwxy
+
+        System.out.println(); // Add an empty line for clearer output.
+
+        String str2 = "abcdefgh";
+        int n2 = 3;
+        splitString(str2, n2); // Output: abc, def, gh
+
+
+        System.out.println();
+
+        String str3 = "abcdef";
+        int n3 = 4;  // Example where string length < n
+        splitString(str3,n3);
+
+        System.out.println();
+
+        splitString(null, 2); // Test null input
+
+        System.out.println();
+
+        splitString("hello", 0); // Test n <= 0
+        
+        System.out.println();
+
+        splitString("", 3);  //Test empty input string
+
+
+    }
+}

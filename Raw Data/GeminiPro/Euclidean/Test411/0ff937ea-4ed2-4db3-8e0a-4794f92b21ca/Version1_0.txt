@@ -1,0 +1,64 @@
+```java
+public class StringMirrorImage {
+
+    public String endsWithMirrorImage(String str) {
+        if (str == null || str.length() <= 1) {
+            return ""; // Empty or single-char strings have no mirror image
+        }
+
+        String longestMirror = "";
+        for (int len = 1; len <= str.length() / 2; len++) {
+            String prefix = str.substring(0, len);
+            String suffix = str.substring(str.length() - len);
+
+            String reversedSuffix = new StringBuilder(suffix).reverse().toString();
+
+            if (prefix.equals(reversedSuffix)) {
+                longestMirror = prefix;
+            }
+        }
+
+        return longestMirror;
+    }
+
+    public static void main(String[] args) {
+        StringMirrorImage smi = new StringMirrorImage();
+
+        String str1 = "aba";
+        String result1 = smi.endsWithMirrorImage(str1);
+        System.out.println("Longest mirror image in \"" + str1 + "\": \"" + result1 + "\""); // Output: a
+
+        String str2 = "abca";
+        String result2 = smi.endsWithMirrorImage(str2);
+        System.out.println("Longest mirror image in \"" + str2 + "\": \"" + result2 + "\"");  // Output: a
+
+        String str3 = "abba";
+        String result3 = smi.endsWithMirrorImage(str3);
+        System.out.println("Longest mirror image in \"" + str3 + "\": \"" + result3 + "\""); // Output: ab
+
+         String str4 = "abcdcba";
+        String result4 = smi.endsWithMirrorImage(str4);
+        System.out.println("Longest mirror image in \"" + str4 + "\": \"" + result4 + "\""); // Output: abcd
+
+
+        String str5 = "racecar";
+        String result5 = smi.endsWithMirrorImage(str5);
+        System.out.println("Longest mirror image in \"" + str5 + "\": \"" + result5 + "\"");  // Output: race
+
+
+        String str6 = "hello";
+        String result6 = smi.endsWithMirrorImage(str6);
+        System.out.println("Longest mirror image in \"" + str6 + "\": \"" + result6 + "\"");  // Output: "" (empty string)
+
+
+        String str7 = null;
+        String result7 = smi.endsWithMirrorImage(str7);
+        System.out.println("Longest mirror image in \"" + str7 + "\": \"" + result7 + "\""); // Output: "" (empty string � handles null)
+
+        String str8 = "a"; // Single char
+        String result8 = smi.endsWithMirrorImage(str8);
+        System.out.println("Longest mirror image in \"" + str8 + "\": \"" + result8 + "\"");  // Output: "" (empty string)
+
+    }
+}
+```

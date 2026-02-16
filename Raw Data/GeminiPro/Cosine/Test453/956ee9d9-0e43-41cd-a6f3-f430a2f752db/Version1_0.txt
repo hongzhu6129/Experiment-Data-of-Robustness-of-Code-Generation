@@ -1,0 +1,75 @@
+```java
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+public class TwoWeeksPrior {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the date 2 weeks ago
+        LocalDate twoWeeksAgo = currentDate.minusWeeks(2);
+
+        // Format the date for output (e.g., "yyyy-MM-dd")
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = twoWeeksAgo.format(formatter);
+
+        // Print the date from 2 weeks ago
+        System.out.println("The date 2 weeks ago was: " + formattedDate);
+
+
+        // Example of handling command-line arguments (optional)
+        if (args.length > 0) {
+            try {
+                // Attempt to parse the first argument as a date
+                 currentDate = LocalDate.parse(args[0], formatter); 
+                 twoWeeksAgo = currentDate.minusWeeks(2);
+                 formattedDate = twoWeeksAgo.format(formatter);
+                System.out.println("2 weeks before " + args[0] + " was: " + formattedDate);
+
+
+            } catch (java.time.format.DateTimeParseException e) {
+                System.err.println("Invalid date format. Please use yyyy-MM-dd.  Using current date instead.");
+            }
+        }
+
+
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Uses `java.time`:**  The modern `java.time` API (introduced in Java 8) is used for date/time calculations. It's much cleaner and easier to use than the older `Date` and `Calendar` classes.
+
+2. **Clearer Variable Names:** More descriptive variable names improve readability (e.g., `twoWeeksAgo` instead of just `date`).
+
+3. **Date Formatting:** The `DateTimeFormatter` is used to format the output date in a standard "yyyy-MM-dd" format.  You can easily change this to a different format if needed.
+
+4. **Optional Command-Line Argument Handling:** The code now includes a section to demonstrate how you could optionally accept a date as a command-line argument.  It includes error handling (using a `try-catch` block) in case the user provides an invalid date format.
+
+5. **`LocalDate.now()`:**  Gets the current date.
+
+6. **`minusWeeks(2)`:** Subtracts 2 weeks from the current date.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TwoWeeksPrior.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile it:
+   ```bash
+   javac TwoWeeksPrior.java 
+   ```
+3. **Run:**
+   ```bash
+   java TwoWeeksPrior  
+   ```
+   Or, to provide a specific date as an argument:
+   ```bash
+   java TwoWeeksPrior 2024-03-15  // Example date
+   ```
+
+
+This improved version is more robust, easier to understand, and provides a good starting point for handling dates in your Java programs.  It also shows how to handle potential errors gracefully.
+

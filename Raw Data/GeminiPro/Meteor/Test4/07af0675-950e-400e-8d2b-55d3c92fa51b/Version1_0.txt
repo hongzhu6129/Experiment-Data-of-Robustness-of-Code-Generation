@@ -1,0 +1,127 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using Scanner for user input (optional - you can hardcode radius as 7.5)
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble();
+        input.close();  // Close the scanner
+
+
+        if (radius < 0) {
+            System.out.println("Radius cannot be negative.");
+            return; // Exit the program if radius is negative
+        }
+
+
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+        System.out.println("Perimeter is = " + perimeter);
+        System.out.println("Area is = " + area);
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Standard Case (radius = 7.5):**  (As provided in the problem description)
+   - Expected Output:
+     ```
+     Perimeter is = 47.12388980384689
+     Area is = 176.71458676442586
+     ```
+
+2. **Zero Radius:** (Corner Case)
+   - Input: radius = 0
+   - Expected Output:
+     ```
+     Perimeter is = 0.0
+     Area is = 0.0
+     ```
+
+3. **Large Radius:**
+   - Input: radius = 1000
+   - Expected Output:
+     ```
+     Perimeter is = 6283.185307179586
+     Area is = 3141592.653589793
+     ```
+
+4. **Small Radius:**
+   - Input: radius = 0.1
+   - Expected Output:
+     ```
+     Perimeter is = 0.6283185307179586
+     Area is = 0.031415926535897934
+     ```
+
+5. **Negative Radius:** (Corner Case - Error Handling)
+   - Input: radius = -5
+   - Expected Output:
+     ```
+     Radius cannot be negative.
+     ```
+
+
+**How to run the tests:**
+
+1. **Manual Testing:**  You can run the program multiple times, entering the different radius values as input.
+2. **Automated Testing (Recommended):** Create JUnit tests (or use another testing framework) to automate these test cases.  This is the standard practice in software development.  Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testStandardCase() {
+        String input = "7.5";
+        String expectedOutput = "Perimeter is = 47.12388980384689\nArea is = 176.71458676442586\n";
+        testWithInput(input, expectedOutput);
+    }
+
+
+    // Add similar test methods for other cases (zero radius, large radius, etc.)
+
+    @Test
+    void testNegativeRadius() {
+        String input = "-5";
+        String expectedOutput = "Radius cannot be negative.\n";
+        testWithInput(input, expectedOutput);
+    }
+
+
+
+
+    private void testWithInput(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        CircleCalculations.main(new String[]{}); // Call your main method
+
+        assertEquals(expectedOutput, outContent.toString());
+
+        // Reset System.in and System.out to their original values (important!)
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
+}
+
+```
+
+
+Using automated testing like JUnit will make your code more robust and easier to maintain.  It's a great practice to adopt early on!

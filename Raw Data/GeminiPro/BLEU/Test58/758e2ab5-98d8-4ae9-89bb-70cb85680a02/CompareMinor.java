@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class CompareMinor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the minor from the user.
+        System.out.println("Enter the minor: ");
+        int minor = scanner.nextInt();
+
+        // Get the applicable characters sequence from the user.
+        System.out.println("Enter the applicable characters sequence: ");
+        String applicableCharactersSequence = scanner.nextLine();
+
+        // Compare the minor to the applicable characters sequence.
+        boolean isApplicable = false;
+        for (int i = 0; i < applicableCharactersSequence.length(); i++) {
+            if (minor == applicableCharactersSequence.charAt(i)) {
+                isApplicable = true;
+                break;
+            }
+        }
+
+        // Print the result.
+        if (isApplicable) {
+            System.out.println("The minor is applicable to the characters sequence.");
+        } else {
+            System.out.println("The minor is not applicable to the characters sequence.");
+        }
+    }
+}

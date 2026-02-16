@@ -1,0 +1,65 @@
+```java
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Python Exercises";
+        String str2 = "ses";
+        String str3 = "abc";
+
+        // Check if str1 ends with str2
+        boolean endsWithStr2 = str1.endsWith(str2);
+
+        // Check if str1 ends with str3
+        boolean endsWithStr3 = str1.endsWith(str3);
+
+
+        System.out.println("\"" + str1 + "\" ends with \"" + str2 + "\"? " + endsWithStr2);
+        System.out.println("\"" + str1 + "\" ends with \"" + str3 + "\"? " + endsWithStr3);
+
+
+
+        // More examples using command line arguments if provided:
+
+        if (args.length >= 2) {  // Check if at least two arguments are provided.
+             String arg1 = args[0]; 
+             String arg2 = args[1];
+
+            boolean endsWithArg2 = arg1.endsWith(arg2);
+             System.out.println("\"" + arg1 + "\" ends with \"" + arg2 + "\"? " + endsWithArg2);
+         } else {
+             System.out.println("Please provide two string arguments to check.");
+        }
+
+
+    }
+}
+```
+
+
+This improved version:
+
+1. **Handles Command-Line Arguments:**  It allows the user to provide two strings as command-line arguments, making the program more flexible.
+2. **Provides Clearer Output:** It includes the strings being checked in the output, making it easier to understand the results.
+3. **Includes Default Examples:** If no command-line arguments are given, it demonstrates the functionality using predefined sample strings.
+4. **Error Handling:** It checks if sufficient arguments are provided before proceeding, preventing potential errors.
+
+
+**How to Run with Command-Line Arguments:**
+
+1. **Compile:**  `javac StringEndsWith.java`
+2. **Run:**  `java StringEndsWith "Hello World" "World"` (Replace `"Hello World"` and `"World"` with your desired strings).
+
+
+**Example Output (with command-line arguments):**
+
+```
+"Hello World" ends with "World"? true
+```
+
+**Example Output (without command-line arguments):**
+
+```
+"Python Exercises" ends with "ses"? true
+"Python Exercises" ends with "abc"? false
+Please provide two string arguments to check. 
+```

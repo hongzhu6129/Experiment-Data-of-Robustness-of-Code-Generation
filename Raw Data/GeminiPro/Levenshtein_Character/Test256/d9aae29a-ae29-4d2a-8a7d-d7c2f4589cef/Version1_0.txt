@@ -1,0 +1,74 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1 because the first element is always unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) { // Compare current element with the previous one
+                nums[uniqueCount] = nums[i]; // If different, copy to the next unique position
+                uniqueCount++; 
+            }
+        }
+        
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + newLength1); // Output: 2
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1))); // Output: [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + newLength2); // Output: 5
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2))); // Output: [0, 1, 2, 3, 4]
+
+        // Test cases for empty and null arrays
+        int[] nums3 = {};
+        int newLength3 = removeDuplicates(nums3);
+        System.out.println("Updated length (empty array): " + newLength3); // Output: 0
+
+        int[] nums4 = null;
+        int newLength4 = removeDuplicates(nums4);
+        System.out.println("Updated length (null array): " + newLength4); // Output: 0
+
+
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty input arrays gracefully.
+   - Initializes `uniqueCount` to 1 (the first element is always unique initially).
+   - Iterates through the array, starting from the second element (`i = 1`).
+   - If the current element (`nums[i]`) is different from the previous element (`nums[i-1]`), it's a unique element.
+   - Copy this unique element to `nums[uniqueCount]` and increment `uniqueCount`.
+   - Finally, returns the `uniqueCount`, which represents the updated length of the array without duplicates.
+
+2. **`main(String[] args)`:**
+   - Demonstrates the function with example arrays.
+   - Uses `Arrays.copyOfRange()` to print only the relevant part of the modified array (up to the `newLength`).  The original array is modified in-place, but elements beyond `newLength` are no longer considered part of the unique elements.
+
+
+**Key Improvements:**
+
+- **Handles edge cases:**  Correctly deals with empty and `null` input arrays.
+- **In-place modification:** Modifies the original array directly, saving space.
+- **Clearer variable names:**  `uniqueCount` is more descriptive than just `i` or `count`.
+- **Detailed comments:** Explains the logic step by step.
+- **Comprehensive test cases:** Includes tests with various scenarios, including empty and null arrays.  The output also shows the resulting modified array (the elements up to the new length).
+
+
+
+

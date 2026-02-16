@@ -1,0 +1,115 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Scalar Table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Scalar Table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     7 x 4 = 28
+     7 x 5 = 35
+     7 x 6 = 42
+     7 x 7 = 49
+     7 x 8 = 56
+     7 x 9 = 63
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Scalar Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Scalar Table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: `100000` (or any other large number)
+   - Expected Output:  The table should be correctly calculated and displayed.
+
+5. **Large Negative Number:**
+   - Input: `-100000` (or any other large negative number)
+   - Expected Output:  The table should be correctly calculated and displayed.
+
+
+**How to Run the Tests:**
+
+1. **Manual Testing:**  You can run the program and manually enter each test case input.  Visually verify the output against the expected output.
+
+2. **Automated Testing (Recommended):** Using JUnit or TestNG (Java testing frameworks):
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import java.io.ByteArrayInputStream;
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class ScalarTableTest {
+
+       @Test
+       public void testPositiveNumber() {
+           testScalarTable(7, "7 x 1 = 7\n7 x 2 = 14\n...\n7 x 10 = 70\n"); // Replace ... with the full output
+       }
+
+       // Add tests for other cases (zero, negative, large numbers) similarly
+
+       private void testScalarTable(int input, String expectedOutput) {
+           String inputString = String.valueOf(input) + "\n";
+           System.setIn(new ByteArrayInputStream(inputString.getBytes()));
+
+           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outputStream));
+
+           ScalarTable.main(new String[]{}); // Run your main method
+
+           String actualOutput = outputStream.toString();
+           assertTrue(actualOutput.contains("Scalar Table for " + input + ":")); // Basic check
+           // You can add more specific assertions here to check the table's values
+       }
+   }
+   ```
+
+By using automated testing, you can easily and reliably test your program with many different inputs, ensuring it works correctly in all cases.  This makes your code more robust and maintainable.

@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+
+        // Input validation: Check if the input is an integer
+        if (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            return; // Exit the program if input is not an integer
+        }
+
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+
+## Test Cases:
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output: Multiplication table of 7 up to 10 (7x1=7, 7x2=14, ..., 7x10=70)
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output: Multiplication table of 0 (all results will be 0). This is a corner case.
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output: Multiplication table of -5 (e.g., -5x1=-5, -5x2=-10, etc.).
+
+4. **Large Positive Number:**
+   - Input: `10000`
+   - Expected Output: Multiplication table of 10000.  Tests handling of larger numbers.
+
+5. **Large Negative Number:**
+   - Input: `-20000`
+   - Expected Output: Multiplication table of -20000.
+
+6. **Invalid Input (Non-Integer):**
+   - Input: `abc` or `3.14`
+   - Expected Output: "Invalid input. Please enter an integer." and the program should exit. This is a crucial corner case to ensure robust input handling.
+
+
+**How to run the test cases:**
+
+1. **Manual Testing:**  You can run the Java program and manually enter each of these inputs to verify the output against the expected results.
+2. **Automated Testing (Recommended):**  You could write unit tests using a testing framework like JUnit.  This approach is more systematic and allows you to easily re-run the tests whenever you make changes to your code. Example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    public void testPositiveNumber() {
+        String input = "7\n";
+        String expected = "Multiplication Table of 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n";
+        testMultiplicationTable(input, expected);
+    }
+
+
+    // ... (Add similar @Test methods for other test cases) ...
+
+    private void testMultiplicationTable(String input, String expected) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        MultiplicationTable.main(new String[0]); // Run the main method
+
+        assertEquals(expected, out.toString());  // Check if output matches expected
+    }
+
+}
+```
+
+By using automated testing, you can easily and reliably test your code, making it easier to catch and fix bugs.  This is especially important as your program grows more complex.

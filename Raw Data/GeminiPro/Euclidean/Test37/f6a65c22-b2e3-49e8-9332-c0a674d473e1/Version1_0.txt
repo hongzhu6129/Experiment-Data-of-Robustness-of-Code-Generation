@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class RevenueCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer (n): ");
+        int n = scanner.nextInt();
+
+        if (n < 0 || n > 9) {  // Handle invalid input (outside 0-9)
+            System.out.println("Invalid input. n must be between 0 and 9.");
+            return;
+        }
+
+
+        long revenue = calculateRevenue(n);
+        System.out.println("Revenue: " + revenue);
+
+        scanner.close();
+    }
+
+    public static long calculateRevenue(int n) {
+        int nn = n * 10 + n;
+        int nnn = n * 100 + nn;
+        return (long) n + nn + nnn;
+    }
+}
+```
+
+
+**Test Cases (including corner cases):**
+
+1. **Valid Input - Positive Single Digit:**
+   - Input: `n = 5`
+   - Expected Output: `Revenue: 615` (5 + 55 + 555)
+
+2. **Valid Input - Zero:**
+   - Input: `n = 0`
+   - Expected Output: `Revenue: 0` (0 + 00 + 000)
+
+3. **Valid Input - Nine:**
+   - Input: `n = 9`
+   - Expected Output: `Revenue: 1107` (9 + 99 + 999)
+
+4. **Invalid Input - Negative Number:**
+   - Input: `n = -2`
+   - Expected Output: `Invalid input. n must be between 0 and 9.`
+
+5. **Invalid Input - Two-Digit Number:**
+   - Input: `n = 12`
+   - Expected Output: `Invalid input. n must be between 0 and 9.`
+
+6. **Invalid Input � Non-integer:** (This needs to be handled carefully, ideally outside the main calculation logic)
+   - Input:  `n = 3.14` (or any other non-integer)
+   - Expected Behavior: The Scanner's `nextInt()` method will throw an `InputMismatchException`. Your program should catch this exception and display an appropriate error message (e.g., "Invalid input. Please enter an integer.").  You could do this with a `try-catch` block.
+
+**Improved Version with Input Validation and Exception Handling:**
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class RevenueCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter an integer (n): ");
+            int n = scanner.nextInt();
+
+            if (n < 0 || n > 9) {  // Handle invalid input (outside 0-9)
+                System.out.println("Invalid input. n must be between 0 and 9.");
+                return; 
+            }
+
+            long revenue = calculateRevenue(n);
+            System.out.println("Revenue: " + revenue);
+
+
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        } finally {
+            scanner.close(); // Always close the scanner in the finally block
+        }
+    }
+
+    // ... (calculateRevenue method remains the same)
+}
+
+```
+
+This improved version handles the non-integer input gracefully using a `try-catch` block. It's essential to have this exception handling to make your program more robust.

@@ -1,0 +1,57 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class SumOfDigitsInString {
+
+    public int sumOfDigits(String str) {
+        int sum = 0;
+
+        // Use regular expression to find digits
+        Pattern pattern = Pattern.compile("\\d"); // Matches any digit
+        Matcher matcher = pattern.matcher(str);
+
+        while (matcher.find()) {
+            String digitStr = matcher.group();
+            int digit = Integer.parseInt(digitStr);
+            sum += digit;
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        SumOfDigitsInString solution = new SumOfDigitsInString();
+
+        String str1 = "abc123xyz45";
+        int sum1 = solution.sumOfDigits(str1);
+        System.out.println("Sum of digits in \"" + str1 + "\": " + sum1); // Output: 21
+
+        String str2 = "Hello1World2023";
+        int sum2 = solution.sumOfDigits(str2);
+        System.out.println("Sum of digits in \"" + str2 + "\": " + sum2); // Output: 8
+
+
+        String str3 = "NoDigitsHere";
+        int sum3 = solution.sumOfDigits(str3);
+        System.out.println("Sum of digits in \"" + str3 + "\": " + sum3); // Output: 0
+
+
+        String str4 = ""; // Empty String
+        int sum4 = solution.sumOfDigits(str4);
+        System.out.println("Sum of digits in \"" + str4 + "\": " + sum4); // Output: 0
+
+
+         String str5 = null; // Null String - Handle this carefully!
+        if (str5 != null) {  // Avoid NullPointerException
+            int sum5 = solution.sumOfDigits(str5);
+            System.out.println("Sum of digits in \"" + str5 + "\": " + sum5); 
+        } else {
+            System.out.println("Input string cannot be null.");
+        }
+
+
+
+    }
+}
+```

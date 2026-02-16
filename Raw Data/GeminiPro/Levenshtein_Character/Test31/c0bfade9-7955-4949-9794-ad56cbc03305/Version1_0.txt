@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40.7128
+   - lon1: -74.0060 (New York City)
+   - lat2: 40.7128
+   - lon2: -74.0060
+   - Expected Output: 0 km
+
+3. **Antipodes (Opposite sides of the Earth):**
+   - lat1: 40.7128
+   - lon1: -74.0060 
+   - lat2: -40.7128
+   - lon2: 105.9940 (approximately)
+   - Expected Output: ~20015.08 km (approximately Earth's diameter)
+
+
+
+4. **North Pole to Equator:**
+   - lat1: 90
+   - lon1: 0
+   - lat2: 0
+   - lon2: 0  (Longitude doesn't matter at the poles)
+   - Expected Output: ~10007.54 km (approximately � Earth's circumference)
+
+5. **Equator to itself (different longitudes):**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180
+   - Expected Output: ~20015.08 km (approximately Earth's diameter, as points are antipodal on the equator)
+
+6. **Near Antipodes (with slight offset):**
+   - lat1: 45
+   - lon1: 0
+   - lat2: -44.9
+   - lon2: 180
+   - Expected Output: ~19996.11 km (very close to the diameter)
+
+7. **Dateline Crossing:**
+   - lat1: 10
+   - lon1: 175
+   - lat2: 10
+   - lon2: -175 
+   - Expected Output:  ~1246.44 km (relatively short distance because these longitudes are close)
+
+8. **Invalid Input (outside latitude/longitude range):**
+   - lat1: 100  (latitude should be between -90 and 90)
+   - lon1: 200 (longitude should be between -180 and 180)
+   - lat2: 20
+   - lon2: 30
+   - Expected Behavior: Your program should ideally handle this gracefully, perhaps by throwing an exception or printing an error message.   NaN (Not a Number) might also be produced by the `Math.acos()` function if the input to it is outside the range -1 to 1.
+
+
+These test cases cover various scenarios and potential edge cases to ensure your program calculates distances correctly under different conditions.  You can use a testing framework like JUnit to automate these tests.  Remember to handle invalid latitude/longitude inputs appropriately.

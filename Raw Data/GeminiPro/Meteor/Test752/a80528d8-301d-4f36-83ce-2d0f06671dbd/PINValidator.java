@@ -1,0 +1,42 @@
+public class PINValidator {
+
+    public static void main(String[] args) {
+        String pin1 = "1234";
+        String pin2 = "123456";
+        String pin3 = "12345678";
+        String pin4 = "12345";
+        String pin5 = "123";
+        String pin6 = "1234567";
+        String pin7 = "1234a";
+
+        System.out.println(pin1 + " : " + validate(pin1)); // true
+        System.out.println(pin2 + " : " + validate(pin2)); // true
+        System.out.println(pin3 + " : " + validate(pin3)); // true
+        System.out.println(pin4 + " : " + validate(pin4)); // false
+        System.out.println(pin5 + " : " + validate(pin5)); // false
+        System.out.println(pin6 + " : " + validate(pin6)); // false
+        System.out.println(pin7 + " : " + validate(pin7)); // false
+
+
+    }
+
+    public static boolean validate(String pin) {
+        if (pin == null) {
+            return false;
+        }
+
+        int len = pin.length();
+
+        if (len != 4 && len != 6 && len != 8) {
+            return false;
+        }
+
+        for (int i = 0; i < len; i++) {
+            if (!Character.isDigit(pin.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

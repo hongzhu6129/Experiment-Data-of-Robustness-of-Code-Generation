@@ -1,0 +1,26 @@
+```java
+import java.util.Scanner;
+
+public class LargestOrSmallest {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the first number : ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input the second number: ");
+        int num2 = input.nextInt();
+
+        if (num1 == num2) {
+            System.out.println("Result: 0");
+        } else if (num1 % 6 == num2 % 6) {
+            System.out.println("Result: " + (num1 < num2 ? num1 : num2));
+        } else {
+            System.out.println("Result: " + (num1 > num2 ? num1 : num2));
+        }
+        input.close();
+    }
+}
+```

@@ -1,0 +1,47 @@
+```java
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class ThousandSeparator {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 123;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);        
+    }
+
+    public static String validate(int number) {
+        // Use NumberFormat for locale-specific formatting
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US); // Or Locale.getDefault() for system locale
+        return nf.format(number);
+    }
+}
+```
+
+
+This code uses `NumberFormat` with `Locale.US` (you can change to another locale if needed) to format the number with thousand separators appropriate for that locale.  This approach is generally preferred over manually manipulating the string, as it handles different number formats and locales correctly.
+
+
+Here's how it addresses potential issues:
+
+* **Handles large numbers:** `NumberFormat` handles arbitrarily large numbers without issues.
+* **Locale-sensitive:** It adapts to different number formatting conventions depending on the locale.
+* **Clean and concise:** The code is much simpler and easier to understand.
+* **Correctness:** It's less prone to errors compared to manual string manipulation.
+
+
+Example Output:
+
+```
+1,234,567,890
+12,345
+123
+```

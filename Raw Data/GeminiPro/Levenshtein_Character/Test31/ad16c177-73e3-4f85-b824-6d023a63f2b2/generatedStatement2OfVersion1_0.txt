@@ -1,0 +1,60 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to test the Java program:
+
+1. **Provided Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -70
+   - Latitude 2: 40
+   - Longitude 2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - Latitude 1: 90  (North Pole)
+   - Longitude 1: 0
+   - Latitude 2: -90 (South Pole)
+   - Longitude 2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite Sides of the Earth (Antipodes):**
+   - Latitude 1: 40
+   - Longitude 1: -70
+   - Latitude 2: -40
+   - Longitude 2: 110 
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Near Antipodes (with slight offset):**  This is important to check for potential rounding errors.
+   - Latitude 1: 40.1
+   - Longitude 1: -70
+   - Latitude 2: -39.9
+   - Longitude 2: 110.1
+   - Expected Distance: ~20000 km (approximately)
+
+6. **Dateline Crossing (East to West):**
+   - Latitude 1: 0
+   - Longitude 1: 179
+   - Latitude 2: 0
+   - Longitude 2: -179
+   - Expected Distance:  Small value (shortest distance across the dateline)
+
+7. **Dateline Crossing (West to East):**
+   - Latitude 1: 0
+   - Longitude 1: -179
+   - Latitude 2: 0
+   - Longitude 2: 179
+   - Expected Distance: Small value (shortest distance across the dateline)
+
+8. **Invalid Input:** You should also test with invalid inputs (like latitudes outside the range -90 to +90 or non-numeric input) to ensure your program handles these gracefully and doesn't crash.
+
+
+
+You can create a separate test class in Java with JUnit or TestNG to automate these test cases.  This is good software engineering practice and will make it much easier to verify the correctness of your distance calculation function.

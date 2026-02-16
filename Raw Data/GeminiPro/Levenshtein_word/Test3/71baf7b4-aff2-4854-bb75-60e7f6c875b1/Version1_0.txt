@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner and edge cases:
+
+1. **Positive Integer:**
+   - Input: `5`
+   - Expected Output:
+     ```
+     Multiplication Table for 5:
+     5 x 1 = 5
+     5 x 2 = 10
+     ...
+     5 x 10 = 50
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: `-7`
+   - Expected Output:
+     ```
+     Multiplication Table for -7:
+     -7 x 1 = -7
+     -7 x 2 = -14
+     ...
+     -7 x 10 = -70
+     ```
+
+4. **Large Positive Integer:**  (Tests for potential overflow if not using `long`)
+   - Input: `100000` (or even larger)
+   - Expected Output:  Correct multiplication table up to 10 times the input.
+
+5. **Large Negative Integer:** (Similar overflow check)
+   - Input: `-100000`
+   - Expected Output: Correct multiplication table.
+
+6. **Invalid Input (Non-Integer):**  (Important to handle!)
+   - Input: `hello` or `3.14`
+   - Expected Behavior: The program should either gracefully handle the error (e.g., print an error message and exit/re-prompt) or throw an `InputMismatchException` that is caught and handled. The provided code uses `Scanner.nextInt()`, which will throw this exception if the input is not an integer.
+
+
+
+**How to Run the Tests:**
+
+You can manually test the program by running it and entering the input values.  For more automated testing, you can use JUnit (or another Java testing framework):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveInteger() {
+        testTable(5, "Multiplication Table for 5:\n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50\n");
+    }
+
+    // Add similar tests for other cases (0, negative, large numbers)
+
+
+    private void testTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        MultiplicationTable.printMultiplicationTable(input);
+
+        assertEquals(expectedOutput, outContent.toString());
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+This improved answer provides a more comprehensive set of test cases and demonstrates how to automate testing using JUnit.  The `testTable()` helper function makes it easier to write multiple tests. Remember to add JUnit to your project dependencies.

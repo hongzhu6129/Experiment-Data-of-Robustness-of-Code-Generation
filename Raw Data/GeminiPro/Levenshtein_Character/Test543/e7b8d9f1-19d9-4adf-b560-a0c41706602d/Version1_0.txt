@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Example usage: Read an integer
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        System.out.println("You entered: " + num);
+
+        // Example usage: Read a line of text
+        scanner.nextLine(); // Consume newline left-over
+        System.out.print("Enter a line of text: ");
+        String line = scanner.nextLine();
+        System.out.println("You entered: " + line);
+
+        // Example usage: Read a double
+        System.out.print("Enter a double: ");
+        double decimal = scanner.nextDouble();
+        System.out.println("You entered: " + decimal);
+
+
+        scanner.close(); // Close the scanner when done
+    }
+}
+```
+
+
+This code demonstrates how to read different types of input from the console within the `main` method.  Key points:
+
+* **Scanner:** The `Scanner` class is used to read input.
+* **System.in:**  This represents the standard input stream (the console).
+* **Methods:**  `nextInt()`, `nextLine()`, `nextDouble()`, etc., are used to read specific data types.
+* **Prompts:**  `System.out.print()` is used to display prompts to the user.
+* **Closing the Scanner:**  `scanner.close()` is important to release resources.
+* **Handling newline:** After using `nextInt()` or `nextDouble()`, you often need `scanner.nextLine()` to consume the remaining newline character before reading a line with `nextLine()`.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `Main.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac Main.java`
+3. **Run:**  Execute the compiled code with: `java Main`
+
+You'll then be prompted to enter the different types of input in the console.
+
+
+This provides a basic framework for reading console input in your Java programs.  You can adapt and extend this to handle different input scenarios and data types as needed.

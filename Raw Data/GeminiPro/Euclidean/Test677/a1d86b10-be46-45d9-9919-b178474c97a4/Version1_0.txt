@@ -1,0 +1,68 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class PortionOfMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (sorted by keys)
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        int givenKey = 4;
+
+        // Get the portion of the map whose keys are greater than givenKey
+        SortedMap<Integer, String> subMap = map.tailMap(givenKey); 
+
+        // Print the submap
+        System.out.println("Portion of map with keys greater than " + givenKey + ": " + subMap);
+
+
+
+        //Example with a String key map
+        TreeMap<String, Integer> stringKeyMap = new TreeMap<>();
+        stringKeyMap.put("apple", 1);
+        stringKeyMap.put("banana", 2);
+        stringKeyMap.put("grape", 3);
+        stringKeyMap.put("orange", 4);
+
+        String givenStringKey = "banana";  // Inclusive
+
+        SortedMap<String, Integer> stringSubMapInclusive = stringKeyMap.tailMap(givenStringKey);
+
+         givenStringKey = "banana"; // Exclusive - Need to use the next key for exclusive behavior
+
+        // Find the smallest key strictly greater than givenStringKey for exclusive submap
+        String nextKey = stringKeyMap.higherKey(givenStringKey);
+        SortedMap<String, Integer> stringSubMapExclusive = (nextKey != null) ? stringKeyMap.tailMap(nextKey) : new TreeMap<>();
+
+
+
+        System.out.println("String Key Map (inclusive): " + stringSubMapInclusive);
+        System.out.println("String Key Map (exclusive): " + stringSubMapExclusive);
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+1. **TreeMap for Sorted Keys:**  `TreeMap` is crucial because it keeps the keys sorted, which is essential for efficiently getting a portion based on key comparisons.
+
+2. **tailMap() Method:** The `tailMap(givenKey)` method is the core of the solution. It directly returns a `SortedMap` containing all entries with keys greater than or equal to `givenKey`.
+
+3. **Clearer Output:** The `println` statements are more informative, showing the original `givenKey` and the resulting `subMap`.
+
+4. **Handling String Keys:** The code demonstrates how to use `TreeMap` and `tailMap()` with `String` keys as well. Strings are compared lexicographically (alphabetical order).
+
+5. **Inclusive vs. Exclusive:** Shows how to get both inclusive (greater than or equal to) and exclusive (strictly greater than) submaps.  The `higherKey()` method is used to find the next key for the exclusive case, handling the scenario where `givenStringKey` is the largest key.
+
+
+This revised answer addresses the prompt more directly and provides a complete, runnable example with better explanations.

@@ -1,0 +1,53 @@
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class PrintDateTime {
+
+    public static void main(String[] args) {
+        // Create a SimpleDateFormat object with the desired date and time format
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        // Get the current date and time
+        Date date = new Date();
+
+        // Format the date and time using the SimpleDateFormat object
+        String formattedDate = sdf.format(date);
+
+        // Print the formatted date and time
+        System.out.println(formattedDate);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Normal case:**
+```
+Input: None
+Expected output: The current date and time in the format "dd/MM/yyyy HH:mm:ss"
+```
+
+* **Corner case:**
+```
+Input: None
+Expected output: An exception is thrown if the SimpleDateFormat object is initialized with an invalid date and time format.
+```
+
+* **Empty input:**
+```
+Input: None
+Expected output: An exception is thrown if the SimpleDateFormat object is initialized with an empty date and time format.
+```
+
+* **Null input:**
+```
+Input: None
+Expected output: An exception is thrown if the SimpleDateFormat object is initialized with a null date and time format.
+```
+
+* **Invalid date and time format:**
+```
+Input: "dd/MM/yyyy HH:mm:ss"
+Expected output: An exception is thrown if the SimpleDateFormat object is initialized with an invalid date and time format.
+```

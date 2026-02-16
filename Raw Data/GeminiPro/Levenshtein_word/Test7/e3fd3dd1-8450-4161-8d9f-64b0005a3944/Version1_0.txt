@@ -1,0 +1,107 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's closed even if an exception occurs.
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30
+   **Expected Output:** 20.0
+
+2. **Input:** -5, 0, 5
+   **Expected Output:** 0.0
+
+3. **Input:** 2.5, 3.7, 4.1
+   **Expected Output:** 3.4333333333333336
+
+
+**Edge/Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  (Test overflow)
+   **Expected Output:** Infinity (or a very large positive number depending on how Java handles overflow)
+
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE (Test underflow)
+   **Expected Output:** -Infinity (or a very large negative number)
+
+6. **Input:** 0, 0, 0
+   **Expected Output:** 0.0
+
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE (Test Double overflow)
+   **Expected Output:** Infinity
+
+8. **Input:**  -Double.MAX_VALUE, -Double.MAX_VALUE, -Double.MAX_VALUE  (Test Double underflow)
+   **Expected Output:** -Infinity
+
+9. **Input:** Double.NaN, 10, 20 (Test with NaN - Not a Number)
+   **Expected Output:** NaN
+
+
+
+**Invalid Input Cases:**
+
+10. **Input:** 10, a, 20 (Non-numeric input)
+    **Expected Output:** "Invalid input. Please enter numbers only."
+
+11. **Input:** 10, 20 (Insufficient input) -  While not handled explicitly in this code (the Scanner will keep waiting for the third number), it's a good idea to consider this scenario in a more robust application and provide feedback to the user if they don't enter the required number of inputs.
+
+
+**How to run these test cases:**
+
+1. **Manually:** You can run the program and enter the input values manually to check if the output matches the expected output.
+
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit.  JUnit allows you to write automated tests, which is much more efficient and reliable than manual testing, especially for regression testing.  Here's a basic example of a JUnit test:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageOverflow() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
+    }
+
+     // ... more test cases
+}
+```
+
+
+By writing JUnit tests, you can systematically test your `calculateAverage` method and ensure that it handles all cases correctly.  This will help prevent bugs and make your code more robust.

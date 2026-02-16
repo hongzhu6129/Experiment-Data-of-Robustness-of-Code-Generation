@@ -1,0 +1,47 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example as per prompt)
+        int number = 8;
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("number is a cube.");
+        } else {
+            System.out.println("number is not a cube."); // Added for completeness
+        }
+    }
+
+    // Helper function to check for perfect cube
+    private static boolean isPerfectCube(int n) {
+        if (n < 0) { // Handle negative numbers (cube root can be negative)
+            return isPerfectCube(-n); // Check the absolute value
+        } else if (n == 0) {
+            return true; // 0 is a perfect cube
+        }
+        
+        double cubeRoot = Math.cbrt(n);
+        return Math.round(cubeRoot) * Math.round(cubeRoot) * Math.round(cubeRoot) == n;
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Helper Function `isPerfectCube()`:**  The core logic for checking if a number is a perfect cube is now encapsulated in a separate private helper function.  This improves code organization and readability.
+
+2. **Handling Negative Numbers:** The `isPerfectCube()` function now correctly handles negative input values. The cube root of a negative number is also negative. The code now checks the absolute value in the case of a negative input.
+
+3. **Handling 0:**  The code explicitly handles the case where the input number is 0, as 0 is a perfect cube.
+
+4. **Using `Math.cbrt()`:** The most efficient way to find the cube root is to use the built-in `Math.cbrt()` method.
+
+5. **Rounding and Checking:** After calculating the cube root, we round it to the nearest integer and then cube the rounded value.  If the result is equal to the original number, then the original number was a perfect cube. This handles potential floating-point precision issues.
+
+6. **Clearer output:**  The program now prints "number is not a cube." if the input number is not a cube for better feedback.
+
+
+This improved version is more robust, efficient, and easier to understand. It addresses the potential issues of the previous version while still adhering to the constraint of only using the `public static void main(String[])` signature for external interaction.

@@ -1,0 +1,108 @@
+```java
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+
+        System.out.println("Divisible by 3:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for clarity
+
+        System.out.println("Divisible by 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n");
+
+        System.out.println("Divisible by both 3 and 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline at the end
+    }
+}
+```
+
+
+**Test Cases (including corner cases):**
+
+1. **Lower Boundary:**
+   - Input Range: 1 to 5  (Checks if the program handles numbers at the start of the range correctly)
+   - Expected Output:
+     - Divisible by 3: 3
+     - Divisible by 5: 5
+     - Divisible by both: (none)
+
+2. **Upper Boundary:**
+   - Input Range: 95 to 100 (Checks if the program handles numbers at the end of the range correctly)
+   - Expected Output:
+     - Divisible by 3: 96 99
+     - Divisible by 5: 100
+     - Divisible by both: 90 (If the range were 90-100)
+
+
+3. **Range containing multiples of both 3 and 5:**
+   - Input Range: 10 to 20
+   - Expected Output:
+     - Divisible by 3: 12 15 18
+     - Divisible by 5: 10 15 20
+     - Divisible by both: 15
+
+
+4. **Empty Range:**
+   - Input Range: 101 to 100 (or any range where start > end)
+   - Expected Output: Nothing should be printed for each category.  This tests handling of invalid ranges.
+
+5. **Single Number Range:**
+   - Input Range: 15 to 15
+   - Expected Output:
+      - Divisible by 3: 15
+      - Divisible by 5: 15
+      - Divisible by both: 15
+
+
+**How to Implement the Test Cases:**
+
+You wouldn't typically hardcode these ranges into the `main` method. A better approach is to create a separate testing class (using a testing framework like JUnit is best practice):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class DivisibleBy3And5Test {
+
+    @Test
+    public void testRange1to5() {
+        testRange(1, 5, "3 \n", "5 \n", ""); // Expected outputs for 3, 5, and both
+    }
+
+    // ... other test methods for different ranges ...
+
+    private void testRange(int start, int end, String expectedBy3, String expectedBy5, String expectedByBoth) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();  // Capture output
+        System.setOut(new PrintStream(outputStream));
+
+        DivisibleBy3And5.main(new String[]{}); // Run the main method
+        // Split the output string by newline to compare individually for 3, 5, and both.
+        String[] outputLines = outputStream.toString().split("\n");
+        assertEquals("Divisible by 3:\n" + expectedBy3, outputLines[0]+"\n"+outputLines[1]); // Lines 0 and 1
+        assertEquals("Divisible by 5:\n" + expectedBy5, outputLines[2]+"\n"+outputLines[3]); // Lines 2 and 3
+        assertEquals("Divisible by both 3 and 5:\n" + expectedByBoth, outputLines[4]+"\n"+outputLines[5]); // Lines 4 and 5
+
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+
+This JUnit example provides a much more robust and organized way to test your code.  It's how testing is done professionally in Java.

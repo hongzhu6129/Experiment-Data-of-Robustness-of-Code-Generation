@@ -1,0 +1,65 @@
+**Java Program:**
+
+```java
+public class FindIndexOfAlphabetFeature {
+
+    public static void main(String[] args) {
+        String word = "java";
+        char feature = 'd';
+
+        int index = findIndexOfAlphabetFeature(word, feature);
+        if (index != -1) {
+            System.out.println("The index of the feature '" + feature + "' in the word '" + word + "' is: " + index);
+        } else {
+            System.out.println("The feature '" + feature + "' is not found in the word '" + word + "'");
+        }
+    }
+
+    public static int findIndexOfAlphabetFeature(String word, char feature) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == feature) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+```
+
+**Test Cases and Expected Results:**
+
+**Test Case 1:**
+* Input:
+    * Word: "java"
+    * Feature: 'd'
+* Expected Output: 2
+
+**Test Case 2:**
+* Input:
+    * Word: "python"
+    * Feature: 'x'
+* Expected Output: -1
+
+**Test Case 3:**
+* Input:
+    * Word: "apple"
+    * Feature: 'a'
+* Expected Output: 0
+
+**Test Case 4:**
+* Input:
+    * Word: "banana"
+    * Feature: 'n'
+* Expected Output: 1
+
+**Test Case 5 (Corner Case):**
+* Input:
+    * Word: "" (empty string)
+    * Feature: 'a'
+* Expected Output: -1
+
+**Test Case 6 (Corner Case):**
+* Input:
+    * Word: "java"
+    * Feature: ' ' (space character)
+* Expected Output: -1

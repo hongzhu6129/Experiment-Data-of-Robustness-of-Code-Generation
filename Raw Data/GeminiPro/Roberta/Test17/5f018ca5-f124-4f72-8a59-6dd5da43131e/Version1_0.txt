@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToDecimal {
+
+    public static int functionone(String binary) {
+        int decimal = 0;
+        int power = 0;
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            } else if (binary.charAt(i) != '0') {
+                // Handle invalid input (non-binary characters)
+                return -1; // Indicate an error
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+
+        int decimal = functionone(binary);
+
+        if (decimal != -1) {
+            System.out.println("Decimal Number: " + decimal);
+        } else {
+            System.out.println("Invalid binary number input.");
+        }
+        input.close();
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+| Binary Input | Expected Decimal Output | Description                                     |
+|--------------|-----------------------|-------------------------------------------------|
+| "100"       | 4                     | Basic conversion                               |
+| "1011"      | 11                    | Another basic conversion                      |
+| "1"         | 1                     | Single bit                                   |
+| "0"         | 0                     | Zero                                        |
+| "11111111" | 255                   | Maximum value for an 8-bit binary number      |
+| ""          | 0                     | Empty string (should handle gracefully)         |
+| "10A"       | -1                    | Invalid input (contains non-binary character) |
+| "10 0"      | -1                    | Invalid input (contains a space)                |
+| " 100"      | -1                    | Invalid input (leading space)                    |
+| "100 "      | -1                    | Invalid input (trailing space)                   |
+
+
+
+**Explanation of Improvements:**
+
+1. **Error Handling:** The `functionone` method now handles invalid input (non-binary characters) by returning -1.  The `main` method checks this return value and prints an appropriate error message. This makes the program more robust.
+
+2. **Handling Edge Cases:** The test cases now include empty strings, single bits, and the maximum 8-bit value. These cases help to ensure that the function works correctly in various scenarios.
+
+3. **Testing for Invalid Input:**  The test cases include several examples of invalid binary strings (containing letters, spaces, etc.) to verify that the error handling works as expected.  Testing invalid input is crucial for creating reliable software.
+
+4. **Clearer Output:** The output messages are more informative, indicating whether the conversion was successful or if there was an error.
+
+5. **Resource Management:** The `Scanner` is closed using `input.close()` after it's no longer needed, which is good practice for preventing resource leaks.
+
+
+
+This improved version is more robust, handles a wider range of inputs, and provides clearer feedback to the user. It's also better tested with a comprehensive set of test cases.

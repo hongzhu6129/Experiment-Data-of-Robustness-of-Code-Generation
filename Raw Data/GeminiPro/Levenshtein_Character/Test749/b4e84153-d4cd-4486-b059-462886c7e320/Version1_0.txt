@@ -1,0 +1,54 @@
+```java
+class Solution {
+    /**
+     * Removes all vowels (a, e, i, o, u) from a given string.
+     *
+     * @param str The input string.
+     * @return The updated string with vowels removed.
+     */
+    public static String validate(String str) {
+        if (str == null) {
+            return null; 
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (!isVowel(c)) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        char lowerC = Character.toLowerCase(c);
+        return lowerC == 'a' || lowerC == 'e' || lowerC == 'i' || lowerC == 'o' || lowerC == 'u';
+    }
+
+
+    public static void main(String[] args) {
+        String test1 = "Hello World";
+        String result1 = validate(test1);
+        System.out.println(result1); // Output: Hll Wrld
+
+        String test2 = "aeiou";
+        String result2 = validate(test2);
+        System.out.println(result2); // Output: ""
+
+        String test3 = "This is a TEST";
+        String result3 = validate(test3);
+        System.out.println(result3); // Output: Ths s  TST
+
+
+        String test4 = null;
+        String result4 = validate(test4);
+        System.out.println(result4); // Output: null
+
+        String test5 = "";
+        String result5 = validate(test5);
+        System.out.println(result5); // Output: ""
+
+
+    }
+}
+```

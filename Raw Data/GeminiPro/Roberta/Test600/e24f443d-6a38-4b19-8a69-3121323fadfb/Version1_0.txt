@@ -1,0 +1,48 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListIsEmpty {
+
+    public static void main(String[] args) {
+        // Create an empty linked list
+        LinkedList<String> emptyList = new LinkedList<>();
+
+        // Check if the linked list is empty using isEmpty()
+        if (emptyList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty."); 
+        }
+
+
+        // Create a linked list with elements
+        LinkedList<Integer> nonEmptyList = new LinkedList<>();
+        nonEmptyList.add(1);
+        nonEmptyList.add(2);
+        nonEmptyList.add(3);
+
+        // Check if the linked list is empty using size() (alternative approach)
+        if (nonEmptyList.size() == 0) { //size() returns 0 if empty, > 0 otherwise
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+
+
+        //Illustrating another way to add elements:
+         LinkedList<Double> anotherList = new LinkedList<>();
+         anotherList.addLast(5.5); //Add to the end (same as add())
+         anotherList.addFirst(1.1); //Add to the beginning
+
+
+         // Check if the linked list is empty using isEmpty()
+        if (anotherList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+    }
+}
+
+
+```

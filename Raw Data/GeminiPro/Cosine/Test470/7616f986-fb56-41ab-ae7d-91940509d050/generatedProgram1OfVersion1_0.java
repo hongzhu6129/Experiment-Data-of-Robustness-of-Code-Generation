@@ -1,0 +1,28 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class NextAndYearFridays {
+
+    public static void main(String[] args) {
+        // Get today's date
+        LocalDate today = LocalDate.now();
+
+        // Find the next Friday
+        LocalDate nextFriday = today.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+        System.out.println("Next Friday: " + nextFriday);
+
+
+        // Find all Fridays in the next year (from today)
+        System.out.println("\nFridays in the next year:");
+        LocalDate nextYear = today.plusYears(1);
+        LocalDate currentFriday = today.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY)); // Start from the next/current Friday
+
+
+        while (currentFriday.isBefore(nextYear)) {
+            System.out.println(currentFriday);
+            currentFriday = currentFriday.plusWeeks(1);  // Add 7 days to get the next Friday
+        }
+
+    }
+}

@@ -1,0 +1,121 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table of " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Positive Integer:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication Table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication Table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication Table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Integer:**  (Tests potential overflow if you were using `byte` or `short`, but `int` handles this fine)
+   - Input: 12345
+   - Expected Output:  Multiplication table of 12345 up to 12345 x 10 = 123450
+
+5. **Large Negative Integer:** (Similar overflow check, but `int` is fine)
+   - Input: -12345
+   - Expected Output: Multiplication table of -12345 up to -12345 x 10 = -123450
+
+
+
+**How to Run Test Cases (Manually):**
+
+1.  Compile the Java code: `javac MultiplicationTable.java`
+2.  Run the code from your terminal: `java MultiplicationTable`
+3.  Enter the test input when prompted.  Visually compare the output with the expected output.
+
+
+**Automated Testing (Recommended):**
+
+For more thorough and efficient testing, especially if you modify the code later, use a testing framework like JUnit.  Here's a simple JUnit 5 example:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveInteger() {
+        testTable(7, "7 x 1 = 7\n7 x 2 = 14\n... (check full output)\n7 x 10 = 70\n"); // Replace ... with the full expected output
+    }
+
+    @Test
+    void testZero() {
+       testTable(0, "0 x 1 = 0\n0 x 2 = 0\n... (check full output)\n0 x 10 = 0\n");
+    }
+
+    @Test
+    void testNegativeInteger() {
+        testTable(-5, "-5 x 1 = -5\n-5 x 2 = -10\n... (check full output)\n-5 x 10 = -50\n");
+    }
+     // Add tests for large positive and negative integers as well
+
+    private void testTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        MultiplicationTable.printMultiplicationTable(input);
+        String actualOutput = outputStream.toString().replace("\r", ""); // Remove carriage returns for cross-platform compatibility
+        assertEquals(expectedOutput, actualOutput);
+        System.setOut(System.out); // Restore standard output
+    }
+}
+
+```
+
+Remember to add JUnit to your project dependencies if you use this approach.  Automated testing is crucial for maintaining code quality as your project grows.

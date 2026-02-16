@@ -1,0 +1,35 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class SortStringsByLength {
+
+    public static void main(String[] args) {
+        String[] strings = {"apple", "banana", "kiwi", "orange", "grape"};
+
+        System.out.println("Original array: " + Arrays.toString(strings));
+
+        sort_array_by_length(strings, "asc"); // Sort in ascending order
+        System.out.println("Ascending order: " + Arrays.toString(strings));
+
+        sort_array_by_length(strings, "desc"); // Sort in descending order
+        System.out.println("Descending order: " + Arrays.toString(strings));
+
+
+        // Example with different strings
+        String[] strings2 = {"short", "verylongword", "medium", "longestwordinthearray", "tiny"};
+        System.out.println("\nOriginal array 2: " + Arrays.toString(strings2));
+        sort_array_by_length(strings2, "asc");
+        System.out.println("Ascending order 2: " + Arrays.toString(strings2));
+        sort_array_by_length(strings2, "desc");
+        System.out.println("Descending order 2: " + Arrays.toString(strings2));
+
+    }
+
+    public static void sort_array_by_length(String[] arr, String sort_asc_dsc) {
+        if (sort_asc_dsc.equals("asc")) {
+            Arrays.sort(arr, Comparator.comparingInt(String::length));
+        } else if (sort_asc_dsc.equals("desc")) {
+            Arrays.sort(arr, (s1, s2) -> Integer.compare(s2.length(), s1.length())); // Descending comparator
+        }  //Otherwise, do nothing (invalid sort order)
+    }
+}

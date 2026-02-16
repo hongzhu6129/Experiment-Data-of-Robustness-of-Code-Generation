@@ -1,0 +1,76 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can change n to explore other ranges
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) {
+                break; // Optimization: No need to check further if a^3 exceeds n
+            }
+
+            int count = 0;
+            int prevB = -1; // To store the previous value of b
+
+            for (int b = 1; b <= a; b++) {
+                int b3 = b * b * b;
+                int sum = a3 + b3;
+
+                if (sum > n) {
+                    break; // Optimization: No need to check further if the sum exceeds n
+                }
+
+                int c = 1;
+                while (true) {
+                    int c3 = c * c * c;
+                    int diff = sum - c3;
+                    if (diff < 0) break;
+
+                    int d = 1;
+                    while (true) {
+                        int d3 = d * d * d;
+
+                        if (d3 > diff) break;
+
+                        if (d3 == diff && c != a && c != b && d != a && d != b && c <= d) { // Check for distinct pairs
+                            if (count == 0) {
+                                prevB = b; // Store the first value of b
+                            } else if (b != prevB) {  // Ensure at least two different pairs
+                                System.out.println(sum + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                                return; // Exit after finding the first such number. If you want to find all such numbers within the range, remove this line.
+                            }
+                            count++;
+                        }
+                        d++;
+                    }
+                    c++;
+                }
+
+
+            }
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Using `a`, `b`, `c`, `d` makes the code more aligned with the mathematical problem.
+
+2. **Optimizations:** Added `break` statements in the loops to avoid unnecessary calculations when `a3` or the sum of cubes exceeds `n`.  This significantly improves performance.
+
+3. **Distinct Pair Check:**  The condition `c != a && c != b && d != a && d != b && c <= d` ensures that we only consider distinct pairs (a, b) and (c, d), and avoids duplicates due to the order of c and d.
+
+4. **Two Distinct Ways Check:**  `prevB` is used to track the 'b' value of the first found representation.  We only print a result if a second representation is found with a different 'b' value, fulfilling the "two (or more) different ways" requirement.
+
+5. **Comments:** Added comments to explain the logic and the purpose of the code sections.
+
+6. **Flexibility:** You can easily change the value of `n` to search within different ranges.
+
+7. **Early Exit (Optional):** The `return` statement after finding the first Ramanujan number is included if you only need *one* such number.  If you want *all* such numbers within the range, remove the `return` statement.
+
+
+
+This improved version addresses the original prompt's requirements more precisely, is more efficient, and is easier to understand.

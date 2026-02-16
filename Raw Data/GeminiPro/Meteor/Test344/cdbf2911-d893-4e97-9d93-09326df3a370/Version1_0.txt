@@ -1,0 +1,43 @@
+```java
+public class SubstringExample {
+
+    public static void main(String[] args) {
+        String str = "This is a sample string";
+        int start = 10;
+        int end = 17;
+
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String sub = str.substring(start, end);
+            System.out.println("Substring: " + sub);
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+
+        // Another Example with different positions.  Demonstrates handling of bad input
+        String str2 = "Programming";
+        int start2 = 3;
+        int end2 = 12; // Beyond the string length
+
+         if (start2 >= 0 && end2 <= str2.length() && start2 <= end2) {
+            String sub2 = str2.substring(start2, end2);
+            System.out.println("Substring: " + sub2);
+        } else {
+            System.out.println("Invalid start or end positions for string 2.");
+        }
+
+         // Another Example with invalid start being greater than end
+        String str3 = "JavaCode";
+        int start3 = 5;
+        int end3 = 2; 
+
+         if (start3 >= 0 && end3 <= str3.length() && start3 <= end3) {
+            String sub3 = str3.substring(start3, end3);
+            System.out.println("Substring: " + sub3);
+        } else {
+            System.out.println("Invalid start or end positions for string 3.  Start must be <= end.");
+        }
+    }
+}
+```
+

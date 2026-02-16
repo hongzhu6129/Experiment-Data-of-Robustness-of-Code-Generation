@@ -1,0 +1,104 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Regular Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Mix of Positive and Negative Numbers:**
+   - Input: -5, 10, 25
+   - Expected Output: 10.0
+
+4. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000000, 2000000000, 3000000000
+   - Expected Output: 2.0E9 (or 2000000000.0 depending on how the output is formatted)
+
+6. **Small Decimal Numbers:**
+   - Input: 0.1, 0.2, 0.3
+   - Expected Output: 0.2
+
+7. **Combination of Large and Small Numbers:**
+   - Input: 1000000000, 0.000000001, 5
+   - Expected Output: 3.3333333336666667E8 (approximately)
+
+
+
+**How to Run the Test Cases (Manually):**
+
+1. Compile the Java code: `javac AverageCalculator.java`
+2. Run the code: `java AverageCalculator`
+3. The program will prompt you to enter three numbers. Enter the test case input values.
+4. Compare the program's output with the expected output.
+
+**Using JUnit (For Automated Testing - Recommended):**
+
+JUnit is a testing framework for Java. It allows you to write automated tests for your code. Here's an example of how to use JUnit to test the `calculateAverage` method:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAveragePositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverageNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+    // Add more test methods for other test cases...
+
+     @Test
+    void calculateAverageLargeAndSmall() {
+        assertEquals(3.3333333336666667E8, AverageCalculator.calculateAverage(1000000000, 0.000000001, 5));
+    }
+
+}
+```
+
+To run the JUnit tests, you'll need to add JUnit to your project (if you're using an IDE like IntelliJ or Eclipse, it can usually do this automatically) and then run the tests through the IDE or through the command line using a build tool like Maven or Gradle.
+
+
+
+Automated testing with a framework like JUnit is a much more efficient and robust way to test your code, especially as the code gets more complex.  It ensures that you don't accidentally break your code when making changes later on.
+

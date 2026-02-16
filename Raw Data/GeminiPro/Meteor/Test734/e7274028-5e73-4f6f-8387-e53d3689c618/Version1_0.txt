@@ -1,0 +1,67 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] sophisticated = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
+        };
+
+        int target = 7;
+        int m = sophisticated.length;
+        int n = sophisticated[0].length;
+
+        int[] position = Saddleback(sophisticated, target, m, n);
+
+        if (position != null) {
+            System.out.println("Target " + target + " found at row: " + position[0] + ", column: " + position[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] sophisticated, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (sophisticated[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (sophisticated[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return null; // Target not found
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search Algorithm:** The `Saddleback` method implements the saddleback search (also sometimes called a staircase search).  This is efficient for sorted 2D arrays. It starts at the top-right corner and moves either down or left based on the comparison with the target.
+
+2. **Clear Return Value:**  The `Saddleback` method returns an `int[]` where `int[0]` is the row index and `int[1]` is the column index if the target is found. It returns `null` if the target is not found, making the result easy to check in `main`.
+
+3. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method with a sample 2D array and target value.
+
+4. **Error Handling:**  The `main` method includes a check for `null` to handle the case where the target is not found.
+
+5. **Clarity and Comments:**  The code includes comments to explain the logic and steps.
+
+
+**How Saddleback Search Works:**
+
+Imagine you are standing at the top-right corner of the 2D array.
+
+* **If the current element is smaller than the target:**  You know that everything in the current row to the left is also smaller, so you move down to the next row (increment `row`).
+* **If the current element is larger than the target:** You know that everything in the current column below is also larger, so you move left to the previous column (decrement `col`).
+* **If the current element is equal to the target:** You have found the target!
+
+
+This process efficiently eliminates rows or columns in each step, leading to a faster search than a simple linear scan of the entire 2D array. Because the array is sorted both row-wise and column-wise, this search strategy works correctly.

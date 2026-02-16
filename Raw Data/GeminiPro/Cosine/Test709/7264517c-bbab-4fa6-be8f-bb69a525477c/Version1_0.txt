@@ -1,0 +1,92 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int lowerIndex, int higherIndex, int[] array) {
+
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
+        // Divide into two arrays
+        while (i <= j) {
+            /**
+             * In this loop, we will identify a number from left side which
+             * is greater then the pivot value, and also we will identify a number
+             * from right side which is less then the pivot value. Once the search
+             * is done, then we exchange both numbers.
+             */
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, array);
+                //move index to next position on both sides
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j, array);
+        if (i < higherIndex)
+            quickSort(i, higherIndex, array);
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        QuickSort sorter = new QuickSort();
+        int[] input = {24, 2, 45, 20, 56, 75, 2, 56, 99, 53, 12};
+        sorter.sort(input);
+        System.out.println(Arrays.toString(input));  // Output the sorted array
+
+
+        // Test with an empty array
+        int[] emptyArray = {};
+        sorter.sort(emptyArray);
+        System.out.println(Arrays.toString(emptyArray)); // Output: []
+
+        // Test with a null array
+        int[] nullArray = null;
+        sorter.sort(nullArray); // Should not throw an exception
+
+         // Test with an already sorted array
+        int[] sortedArray = {1, 2, 3, 4, 5};
+        sorter.sort(sortedArray);
+        System.out.println(Arrays.toString(sortedArray)); // Output: [1, 2, 3, 4, 5]
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  The `sort()` method now correctly handles null and empty input arrays without throwing exceptions.
+* **Clearer variable names:** Using `lowerIndex` and `higherIndex` instead of `i` and `j` in the `quickSort` signature improves readability.  (The `i` and `j` are still used *within* the `quickSort` method as they are commonly used for these roles in quicksort algorithms.)
+* **More robust pivot selection:** The pivot is chosen as the middle element to avoid worst-case performance in already sorted or nearly sorted arrays.
+* **Comprehensive testing:** The `main` method includes test cases with an empty array, a null array, and an already sorted array.
+* **Output:** The code now prints the sorted array to the console.
+
+
+
+This revised code addresses the potential issues and provides a more robust and complete quicksort implementation.

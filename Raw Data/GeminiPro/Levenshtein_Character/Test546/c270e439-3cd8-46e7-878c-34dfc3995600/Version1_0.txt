@@ -1,0 +1,39 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFileLineByLine {
+
+    public static void main(String[] args) {
+        String filePath = ""; // Replace with your file path
+
+        if (args.length > 0) { // Allow passing the file path as a command-line argument
+            filePath = args[0]; 
+        } else {
+            System.out.println("Please provide the file path as a command-line argument.");
+            return; // Exit if no file path is provided
+        }
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+To compile and run this code:
+
+1. **Save:** Save the code as `ReadFileLineByLine.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the command:  `javac ReadFileLineByLine.java`
+3. **Run:** Execute the compiled code with the file path as a command-line argument: `java ReadFileLineByLine /path/to/your/file.txt`  (Replace `/path/to/your/file.txt` with the actual path to your file).
+
+
+If you don't provide a file path as an argument, the program will print a message asking you to do so and then exit.  This makes the program more robust and user-friendly.

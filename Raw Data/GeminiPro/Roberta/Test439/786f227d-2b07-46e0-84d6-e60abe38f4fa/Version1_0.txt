@@ -1,0 +1,40 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class DefaultCalendarInfo {
+
+    public static void main(String[] args) {
+        // Get a default calendar instance (typically GregorianCalendar)
+        Calendar calendar = new GregorianCalendar();
+
+        // Extract and display the desired information
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH); // Month is 0-indexed (0-11)
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY); // 24-hour format
+        int minute = calendar.get(Calendar.MINUTE);
+
+
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + (month + 1)); // Add 1 for human-readable month (1-12)
+        System.out.println("Day of Month: " + dayOfMonth);
+        System.out.println("Hour: " + hourOfDay);
+        System.out.println("Minute: " + minute);
+
+
+
+         // To demonstrate the "ERA" (BC/AD)  (Optional - likely not essential for this basic question, but added for completeness)
+        int era = calendar.get(Calendar.ERA);
+        String eraString = (era == GregorianCalendar.BC) ? "BC" : "AD";  // GregorianCalendar constants 
+        System.out.println("Era: " + eraString);
+
+         // Day of week (Optional):
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK); // 1 (Sunday) to 7 (Saturday)
+        String[] dayNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        System.out.println("Day of week: " + dayNames[dayOfWeek - 1]); // Adjust index
+
+
+    }
+}
+```

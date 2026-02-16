@@ -1,0 +1,73 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterateArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        System.out.println("Original ArrayList: " + numbers);
+
+
+        // Method 1: Using a basic for loop (index-based)
+        System.out.print("Iterating with basic for loop: ");
+        for (int i = 0; i < numbers.size(); i++) {
+            System.out.print(numbers.get(i) + " ");
+        }
+        System.out.println();
+
+
+        // Method 2: Using an enhanced for loop (for-each loop)
+        System.out.print("Iterating with enhanced for loop: ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+
+
+        // Method 3: Using a while loop
+        System.out.print("Iterating with while loop: ");
+        int i = 0;
+        while (i < numbers.size()) {
+            System.out.print(numbers.get(i) + " ");
+            i++;
+        }
+        System.out.println();
+
+
+        // Method 4: Using the Iterator interface explicitly (less common for simple iteration)
+        System.out.print("Iterating with Iterator: ");
+        java.util.Iterator<Integer> iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
+        System.out.println();
+
+
+
+        //Method 5: Java 8+ using forEach with a lambda expression:
+        System.out.print("Iterating with forEach and lambda: ");
+        numbers.forEach(n -> System.out.print(n + " ")); // Lambda expression
+        System.out.println();
+
+       // Method 6: Using a forEach with method reference (Java 8+):
+        System.out.print("Iterating with forEach and method reference: ");
+        numbers.forEach(System.out::print); //Method Reference.  
+                                            //Note: No space between elements if using this simple method reference.
+        System.out.println();
+
+
+
+
+
+    }
+}
+```

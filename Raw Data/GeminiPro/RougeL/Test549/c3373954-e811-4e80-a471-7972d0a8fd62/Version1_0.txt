@@ -1,0 +1,79 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FileToArray {
+
+    public static void main(String[] args) {
+        // Replace "your_file_path.txt" with the actual path to your text file.
+        String filePath = "your_file_path.txt";
+
+        try {
+            List<String> lines = readLinesFromFile(filePath);
+
+            // Convert the List to an array if needed.
+            String[] linesArray = lines.toArray(new String[0]);
+
+            // Print the lines or process them as needed
+            for (String line : linesArray) {
+                System.out.println(line);
+            }
+
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+
+    private static List<String> readLinesFromFile(String filePath) throws IOException {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+        return lines;
+    }
+}
+```
+
+**Explanation:**
+
+1. **`main` Method:**
+   - The `main` method is the entry point of the program.
+   - It specifies the file path (`filePath`).  **Make sure to replace `"your_file_path.txt"` with the correct path.**
+   - It calls `readLinesFromFile` to get the lines from the file and stores them in a `List<String>`.
+   - It then converts the `List` to a `String[]` using `lines.toArray(new String[0])`.
+   - Finally, it iterates through the array and prints each line. You can replace the printing part with any other processing you need to do with the lines.
+
+2. **`readLinesFromFile` Method:**
+   - This helper method takes the `filePath` as input.
+   - It uses a `try-with-resources` block to ensure that the `BufferedReader` and `FileReader` are closed automatically, even if exceptions occur.
+   - It reads the file line by line using `reader.readLine()`.
+   - Each line is added to the `ArrayList<String>` called `lines`.
+   - The method returns the `List` of lines.
+
+3. **Error Handling:**
+   - The `try-catch` block in `main` handles potential `IOExceptions` that might occur during file reading (e.g., file not found). It prints an error message if an exception occurs.
+
+4. **List to Array Conversion:**
+   - The `lines.toArray(new String[0])` part efficiently converts the `List<String>` to a `String[]`. The `new String[0]` creates an empty array of the correct type, which `toArray` then uses to create the properly sized array containing the list elements.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `FileToArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac FileToArray.java 
+   ```
+3. **Run:**
+   ```bash
+   java FileToArray
+   ```
+
+Make sure the text file you specify in `filePath` exists in the same directory or provide the full path to the file.

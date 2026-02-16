@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class HexToBinary {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a hexadecimal number: ");
+        String hexString = scanner.nextLine().toUpperCase();
+
+        // Handle corner cases: empty string and non-hex characters
+        if (hexString.isEmpty()) {
+            System.out.println("Invalid input: Empty string.");
+            return;
+        }
+
+
+        String binaryString = "";
+        for (int i = 0; i < hexString.length(); i++) {
+            char hexChar = hexString.charAt(i);
+
+            // Validate hex characters
+            if (!((hexChar >= '0' && hexChar <= '9') || (hexChar >= 'A' && hexChar <= 'F'))) {
+                System.out.println("Invalid input: Non-hexadecimal character detected.");
+                return;
+            }
+
+
+            int decimalValue;
+            if (hexChar >= '0' && hexChar <= '9') {
+                decimalValue = hexChar - '0';
+            } else {
+                decimalValue = hexChar - 'A' + 10;
+            }
+
+            String binaryEquivalent = "";
+            for (int j = 0; j < 4; j++) {  // Convert each hex digit to 4 binary bits
+                binaryEquivalent = (decimalValue % 2) + binaryEquivalent;
+                decimalValue /= 2;
+            }
+
+            binaryString += binaryEquivalent;
+
+        }
+        System.out.println("Binary equivalent: " + binaryString);
+        scanner.close();
+
+    }
+}
+
+```
+
+
+**Test Cases:**
+
+1. **Valid Hexadecimal:**
+   - Input: `1A`
+   - Expected Output: `00011010`
+
+2. **Valid Hexadecimal with Leading Zeroes:**
+   - Input: `000F`
+   - Expected Output: `0000000000001111`
+
+3. **Valid Hexadecimal with mixed case:**
+    - Input: `a9Bc`
+    - Expected Output: `1010100110111100`
+
+4. **Empty String (Corner Case):**
+   - Input: ``
+   - Expected Output: `Invalid input: Empty string.`
+
+5. **Non-Hexadecimal Character (Corner Case):**
+   - Input: `G3`
+   - Expected Output: `Invalid input: Non-hexadecimal character detected.`
+
+6. **Non-Hexadecimal Character (Corner Case):**
+    - Input:  `12&`
+    - Expected Output: `Invalid input: Non-hexadecimal character detected.`
+
+7. **Large Hexadecimal Number:**
+    - Input: `ABCDEF0123456789`
+    - Expected Output: `1010101111001101111011110000000100100011010001010110011110001001`
+
+8. **Zero:**
+    - Input: `0`
+    - Expected Output: `0000`
+
+
+
+These test cases cover various scenarios, including valid hexadecimal numbers, leading zeroes, mixed case, empty strings, invalid characters, and a large hexadecimal number. They help ensure the program handles both normal inputs and corner cases correctly.

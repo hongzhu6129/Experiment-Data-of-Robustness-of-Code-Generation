@@ -1,0 +1,52 @@
+```java
+public class StringToArray {
+
+    public static void main(String[] args) {
+        String str = "This is a sample string"; // Example string
+
+        // Method 1: Using toCharArray() method
+        char[] charArray1 = str.toCharArray(); 
+
+        System.out.println("Character array using toCharArray():");
+        for (char c : charArray1) {
+            System.out.print(c);
+        }
+        System.out.println(); // Newline
+
+
+        // Method 2: Iterating through the string and assigning to an array
+        char[] charArray2 = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            charArray2[i] = str.charAt(i);
+        }
+
+        System.out.println("Character array using charAt():");
+        for (char c : charArray2) {
+            System.out.print(c);
+        }
+        System.out.println(); // Newline
+
+         //Example with a string from the command line arguments
+        if(args.length > 0) {
+            String argString = args[0];
+            char[] argCharArray = argString.toCharArray();
+            System.out.println("Character array from command line argument:");
+             for (char c : argCharArray) {
+                 System.out.print(c);
+             }
+            System.out.println();
+        }
+
+
+    }
+}
+```
+
+This code demonstrates two ways to convert a String to a character array within the `main` method:
+
+1. **`toCharArray()` Method:** The most straightforward approach, this directly returns a character array representing the string.
+
+2. **`charAt()` and Iteration:**  This method iterates through the string using a `for` loop and retrieves each character using `charAt(i)`, assigning it to the corresponding index in a pre-allocated character array.  This demonstrates the fundamental logic behind the conversion if `toCharArray()` were not available.
+
+
+The code also includes an example of taking a String from the command-line arguments and converting it to a character array. This demonstrates how to work with program inputs within the `main` method.  To run this with a command-line argument, after compiling (e.g., `javac StringToArray.java`), you would execute it like this:  `java StringToArray "Your string here"`.  Replace "Your string here" with the string you want to convert.

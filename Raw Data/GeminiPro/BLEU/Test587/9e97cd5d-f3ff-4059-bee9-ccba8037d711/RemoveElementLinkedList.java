@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class RemoveElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of names
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        names.add("Eve");
+
+        System.out.println("Original LinkedList: " + names);
+
+        // Specify the element to remove
+        String elementToRemove = "Charlie";
+
+        // Remove the specified element
+        boolean removed = names.remove(elementToRemove); // remove() handles nulls gracefully
+
+        if (removed) {
+            System.out.println("Element '" + elementToRemove + "' removed successfully.");
+        } else {
+            System.out.println("Element '" + elementToRemove + "' not found in the LinkedList.");
+        }
+
+        System.out.println("Updated LinkedList: " + names);
+
+
+
+        // Example removing by index:
+        int indexToRemove = 1; //Bob is at index 1 now
+
+        if(indexToRemove >=0 && indexToRemove < names.size()){
+          String removedByIndex = names.remove(indexToRemove);
+          System.out.println("Element at index "+indexToRemove + " ('" + removedByIndex + "') removed successfully.");
+          System.out.println("Updated LinkedList: " + names);
+        } else {
+            System.out.println("Invalid index: "+ indexToRemove);
+        }
+    }
+}

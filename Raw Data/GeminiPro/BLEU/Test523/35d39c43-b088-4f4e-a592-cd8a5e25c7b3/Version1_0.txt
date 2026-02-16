@@ -1,0 +1,65 @@
+```java
+class Solution {
+
+    public static void main(String[] args) {
+        int num = 35; // Example input, you can change this
+
+        if (isCircularPrime(num)) {
+            System.out.println("It is a circular prime number.");
+        } else {
+            System.out.println("It is not a circular prime number.");
+        }
+
+        num = 1193; // Example input, you can change this
+
+        if (isCircularPrime(num)) {
+            System.out.println("It is a circular prime number.");
+        } else {
+            System.out.println("It is not a circular prime number.");
+        }
+
+        num = 113;
+        if (isCircularPrime(num)) {
+            System.out.println("It is a circular prime number.");
+        } else {
+            System.out.println("It is not a circular prime number.");
+        }
+    }
+
+
+    public static boolean isCircularPrime(int n) {
+        int num = n;
+        int numDigits = String.valueOf(n).length();
+
+        do {
+            if (!isPrime(num)) {
+                return false;
+            }
+            num = circulate_func(num, numDigits); // Rotate digits
+        } while (num != n);  // Stop when we cycle back to the original number
+
+        return true;
+    }
+
+
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static int circulate_func(int n, int numDigits) {
+        int powerOf10 = (int) Math.pow(10, numDigits - 1);
+        int lastDigit = n % 10;
+        int remainingDigits = n / 10;
+        return lastDigit * powerOf10 + remainingDigits;
+    }
+}
+```

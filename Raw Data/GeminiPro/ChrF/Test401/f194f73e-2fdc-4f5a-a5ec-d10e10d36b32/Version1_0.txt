@@ -1,0 +1,29 @@
+```java
+public class StringRepetition {
+
+    public String beginningRepetition(String str, int p) {
+        if (str == null || str.isEmpty() || p <= 0) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = p; i > 0; i--) {
+            result.append(String.valueOf(str.charAt(0)).repeat(i)); // Java 11+ for repeat()
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        StringRepetition sr = new StringRepetition();
+
+        System.out.println(sr.beginningRepetition("Java", 3));  // Output: JJJJJJJ
+        System.out.println(sr.beginningRepetition("abcd", 2)); // Output: aa
+        System.out.println(sr.beginningRepetition("Python", 4));// Output: PPPPPPPPPP
+        System.out.println(sr.beginningRepetition("", 2));     // Output: 
+        System.out.println(sr.beginningRepetition("xyz", 0));     // Output: 
+        System.out.println(sr.beginningRepetition(null, 2));     // Output: 
+
+
+    }
+}
+```

@@ -1,0 +1,59 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        
+
+        System.out.println("Height of tree is : " + 
+                                      tree.maxDepth(root));
+    }
+}
+```
+
+
+This code fulfills the requirements of the prompt:
+
+1. **`public int maxDepth(Node)`:** This method recursively calculates the maximum depth (or height) of the binary tree.  The base case is when `node` is null (an empty subtree), returning 0. Otherwise, it calculates the depth of the left and right subtrees and returns 1 plus the larger of the two depths.
+
+2. **`public static void main(String[])`:** This method creates a sample binary tree and then calls `maxDepth()` on the root node to demonstrate how to use the function and prints the result.
+
+
+**Explanation of "Exceeds Depth Part":**
+
+The phrase "exceeds depth part" isn't standard terminology in tree data structures. The code provided calculates the *maximum* depth of the tree.  If you're looking for nodes that are *beyond* a specific depth, you'd need to modify the code to track the current depth during traversal and perform actions (like printing the node's data) when that depth is exceeded.  Please clarify with a new prompt if you'd like to see how to find nodes beyond a certain depth.

@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+
+public class KeithNumber {
+
+    public static void main(String[] args) {
+        int number = 197; // Example: Check if 197 is a Keith number
+        boolean isKeith = isKeithNumber(number);
+
+        if (isKeith) {
+            System.out.println(number + " is a Keith number.");
+        } else {
+            System.out.println(number + " is not a Keith number.");
+        }
+
+        number = 14; // Example: Check if 14 is a Keith number
+        isKeith = isKeithNumber(number);
+
+        if (isKeith) {
+            System.out.println(number + " is a Keith number.");
+        } else {
+            System.out.println(number + " is not a Keith number.");
+        }
+
+
+        number = 742; // Example: Check if 742 is a Keith number
+        isKeith = isKeithNumber(number);
+
+        if (isKeith) {
+            System.out.println(number + " is a Keith number.");
+        } else {
+            System.out.println(number + " is not a Keith number.");
+        }
+    }
+
+
+
+    private static boolean isKeithNumber(int number) {
+        if (number < 10) {
+            return false; // Single-digit numbers are not Keith numbers
+        }
+
+        ArrayList<Integer> terms = new ArrayList<>();
+        int temp = number;
+        while (temp > 0) {
+            terms.add(0, temp % 10); // Add digits to the list in reverse order
+            temp /= 10;
+        }
+
+
+        int nextTerm = 0;
+        while (nextTerm < number) {
+            nextTerm = 0;
+            for (int term : terms) {
+                nextTerm += term;
+            }
+
+            if (nextTerm == number) {
+                return true; // Number found in the sequence
+            }
+
+            terms.remove(0); // Remove the first digit
+            terms.add(nextTerm); // Add the new term
+            
+        }
+            
+        return false; // Number not found in the sequence
+    }
+}
+
+
+
+

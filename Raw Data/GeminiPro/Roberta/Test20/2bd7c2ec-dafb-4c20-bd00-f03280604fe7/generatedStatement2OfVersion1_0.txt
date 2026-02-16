@@ -1,0 +1,33 @@
+
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Numbers:**
+   - Input: 123  Output: 83
+   - Input: 777  Output: 511
+   - Input: 0    Output: 0
+   - Input: 10   Output: 8
+   - Input: 42   Output: 34
+
+2. **Invalid Octal Numbers:**
+   - Input: 888  Output: Invalid octal number. Digits must be 0-7.
+   - Input: 12A  Output: Invalid octal number. Digits must be 0-7.
+   - Input: -128 Output: Invalid octal number. Digits must be 0-7.  (Even if negative is allowed)
+   - Input: hello Output: Invalid input. Please enter a valid octal number.
+
+3. **Negative Octal Numbers (handling as negative decimals):**
+   - Input: -123 Output: -83
+   - Input: -777 Output: -511
+
+4. **Corner Cases:**
+   - Input: "" (empty string) Output: Invalid input. Please enter a valid octal number.
+   - Input: " " (space) Output: Invalid input. Please enter a valid octal number.
+
+
+5. **Overflow Case (important):**
+    - Input: 1777777777777777777777 (a very large octal number) Output: Octal number too large to represent as a long decimal.
+
+
+These test cases cover various scenarios, including valid and invalid inputs, negative numbers, empty input, and a crucial overflow condition that can easily occur if you don't check for it when converting large octal values to decimal.  The overflow check is very important because it prevents potentially incorrect results due to limitations of the `long` data type.

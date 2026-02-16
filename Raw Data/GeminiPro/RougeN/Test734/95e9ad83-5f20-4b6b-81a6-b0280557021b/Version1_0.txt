@@ -1,0 +1,75 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 14;
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+
+
+        target = 20; // Test a value not in the array
+        result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature Adherence:**  The code strictly uses the requested `public static void main` and `private static int[] Saddleback` signatures.
+
+2. **Return an `int[]`:** The `Saddleback` method returns an `int[]` of size 2.  If the target is found, the array contains the row and column indices (e.g., `{2, 3}`). If not found, it returns `{-1, -1}`. This makes it much easier for the `main` method to handle the result.
+
+3. **Saddleback Search Algorithm:** The code correctly implements the saddleback search algorithm. It starts from the top-right corner of the matrix and efficiently moves down or left based on the comparison with the target.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to call the `Saddleback` method and interpret the results.  It also includes an example where the target is not present in the array to show how the `{-1, -1}` return value is used.
+
+5. **Comments and Readability:**  Comments are included to clarify the code's logic, making it more understandable.
+
+
+How to Compile and Run:
+
+1. Save the code as `SaddlebackSearch.java`.
+2. Compile: `javac SaddlebackSearch.java`
+3. Run: `java SaddlebackSearch`
+
+
+This revised version addresses the requirements of the prompt and provides a working, efficient, and well-commented implementation.

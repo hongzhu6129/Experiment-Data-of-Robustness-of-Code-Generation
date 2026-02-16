@@ -1,0 +1,70 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int number) {
+        if (number < 0) {  // Handle negative numbers (their cube roots are negative)
+            return isCube(-number); 
+        }
+
+        // Binary Search approach for efficiency
+        int low = 0;
+        int high = number; 
+
+        while(low <= high){
+            int mid = low + (high - low)/2;  // prevent potential overflow
+
+            long cube = (long)mid * mid * mid;  // Use long to handle potential overflow
+
+            if(cube == number) return true;
+            else if (cube < number) low = mid + 1;
+            else high = mid - 1;
+        }
+
+        return false;
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Negative Numbers:** The `isCube` method now correctly handles negative numbers by checking if the absolute value of the number is a cube.
+
+2. **Efficiency with Binary Search:** Instead of iterating up to the cube root, I've implemented a binary search approach. This significantly improves the efficiency for larger numbers.
+
+3. **Handles Overflow with `long`:**  Cubing an `int` can quickly lead to integer overflow (exceeding the maximum `int` value).  The code uses `long` to store the cubed value (`cube`) to prevent this issue.  This is crucial for correctness.
+
+4. **Clearer Output:** The output messages are slightly more informative.
+
+5. **Input Handling (Optional):**  For a more complete program, you can replace the hardcoded `number = 8` with code to take user input from the console using the `Scanner` class. Example:
+
+
+```java
+import java.util.Scanner; // Import Scanner
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+        scanner.close(); // Close the scanner
+
+        // ... rest of the code (isCube method, etc.) ...
+    }
+
+    // ... isCube method ...
+}
+```

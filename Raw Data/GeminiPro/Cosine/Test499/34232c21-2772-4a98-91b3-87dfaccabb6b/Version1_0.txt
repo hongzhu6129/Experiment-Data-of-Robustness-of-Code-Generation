@@ -1,0 +1,33 @@
+```java
+public class TwinPrimes {
+
+    public static void main(String[] args) {
+        System.out.println("Twin prime numbers less than 100:");
+        for (long i = 3; i < 100; i += 2) { // Optimize: Check only odd numbers after 2
+            if (is_Prime(i) && is_Prime(i + 2)) {
+                System.out.println("(" + i + ", " + (i + 2) + ")");
+            }
+        }
+    }
+
+    public static boolean is_Prime(long num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num <= 3) {
+            return true;
+        }
+        if (num % 2 == 0 || num % 3 == 0) {
+            return false;
+        }
+
+        // Optimized primality test (6k � 1)
+        for (long i = 5; i * i <= num; i += 6) {
+            if (num % i == 0 || num % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```

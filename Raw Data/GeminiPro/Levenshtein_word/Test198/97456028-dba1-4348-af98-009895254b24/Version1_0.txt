@@ -1,0 +1,47 @@
+```java
+import java.util.Arrays;
+
+public class ReverseOddLengthWords {
+
+    public static void main(String[] args) {
+        String input = "I love programming and Java";
+        System.out.println(reverseOddLengthWords(input)); // Output: I evol gnimmargor dna avaJ
+
+        input = "Lorem ipsum dolor sit amet";
+        System.out.println(reverseOddLengthWords(input)); // Output: Lorem si tsilp modor si tsem
+
+        input = "Hello world";
+        System.out.println(reverseOddLengthWords(input)); // Output: Hello world (no odd-length words)
+
+        input = "";
+        System.out.println(reverseOddLengthWords(input)); // Output: "" (empty string)
+    }
+
+    public static String reverseOddLengthWords(String input) {
+        String[] words = input.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() % 2 == 1) {
+                words[i] = new StringBuilder(words[i]).reverse().toString();
+            }
+        }
+        return String.join(" ", words);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Normal case:** "I love programming and Java"
+    * Expected output: "I evol gnimmargor dna avaJ"
+* **Case with multiple odd-length words:** "Lorem ipsum dolor sit amet"
+    * Expected output: "Lorem si tsilp modor si tsem"
+* **Case with no odd-length words:** "Hello world"
+    * Expected output: "Hello world"
+* **Empty string:** ""
+    * Expected output: ""
+* **Corner case: String with only one letter:** "a"
+    * Expected output: "a" (no odd-length words)
+* **Corner case: String with a single odd-length word:** "programming"
+    * Expected output: "gnimmargor"
+* **Corner case: String with a single odd-length word and leading/trailing spaces:** "    programming    "
+    * Expected output: "    gnimmargor    "

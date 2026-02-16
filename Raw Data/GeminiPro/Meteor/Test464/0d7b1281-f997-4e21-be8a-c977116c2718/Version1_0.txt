@@ -1,0 +1,40 @@
+```java
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+
+public class GetTimeInformation {
+
+    public static void main(String[] args) {
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+
+        // Print the current time
+        System.out.println("Current Time: " + currentTime);
+
+        // Get specific time components
+        int hour = currentTime.getHour();
+        int minute = currentTime.getMinute();
+        int second = currentTime.getSecond();
+        int nano = currentTime.getNano();
+        int milli = currentTime.get(ChronoField.MILLI_OF_SECOND);  // Milliseconds of the second
+
+        // Print the individual components
+        System.out.println("Hour: " + hour);
+        System.out.println("Minute: " + minute);
+        System.out.println("Second: " + second);
+        System.out.println("Nanosecond: " + nano);
+        System.out.println("Millisecond: " + milli);
+
+
+
+        // Example of getting time for a specific time zone (optional):
+        // Requires Java 8 or later.  Uncomment if needed.
+        /*
+        ZoneId zoneId = ZoneId.of("America/New_York"); // Replace with desired time zone
+        LocalTime newYorkTime = LocalTime.now(zoneId);
+        System.out.println("New York Time: " + newYorkTime);
+        */
+
+    }
+}
+```

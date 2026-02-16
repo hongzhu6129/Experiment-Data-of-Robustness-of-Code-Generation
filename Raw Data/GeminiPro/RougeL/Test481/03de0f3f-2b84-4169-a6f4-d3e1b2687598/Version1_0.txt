@@ -1,0 +1,64 @@
+```java
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+
+public class ZoneOffsets {
+
+    public static void main(String[] args) {
+        // Get all available zone IDs
+        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+
+        // Print zone offsets for some example zones
+        System.out.println("Los Angeles: " + formatOffset(getOffset("America/Los_Angeles")));
+        System.out.println("New York: " + formatOffset(getOffset("America/New_York")));
+        System.out.println("London: " + formatOffset(getOffset("Europe/London")));
+        System.out.println("Tokyo: " + formatOffset(getOffset("Asia/Tokyo")));
+
+        // Iterate through all zones and print their offsets (optional)
+        /*
+        for (String zoneId : zoneIds) {
+            System.out.println(zoneId + ": " + formatOffset(getOffset(zoneId)));
+        }
+        */
+    }
+
+    private static int getOffset(String zoneId) {
+        // Get the current time in the specified zone
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of(zoneId));
+
+        // Get the zone offset
+        ZoneOffset offset = now.getOffset();
+
+        // Return the offset in seconds
+        return offset.getTotalSeconds();
+    }
+
+
+    private static String formatOffset(int offsetInSeconds) {
+        int hours = offsetInSeconds / 3600;
+        int minutes = Math.abs((offsetInSeconds % 3600) / 60); // Use absolute value for minutes
+
+        String sign = (offsetInSeconds >= 0) ? "+" : "-";
+        return String.format("GMT%s%02d:%02d", sign, Math.abs(hours), minutes); // Use absolute value for hours too for consistent formatting.
+
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Clarity and Readability:** The code is now more clearly structured and easier to understand. Comments explain the purpose of each section.
+2. **`getOffset` function:** This function now handles the retrieval of the offset in a cleaner way, using `ZonedDateTime` and `ZoneOffset`. It returns the offset in seconds.
+3. **`formatOffset` function:** This function is significantly improved:
+   - It now uses `String.format` for correct formatting of the offset string, including leading zeros for hours and minutes.
+   - It handles both positive and negative offsets correctly using the ternary operator and `Math.abs` for consistent output.  This ensures that "-03:00" is not displayed, but rather "-03:00".
+4. **Example Usage:**  The `main` method demonstrates how to use the functions with some common time zones.
+5. **Optional Iteration:** The commented-out loop shows how you could iterate through all available zone IDs if needed.
+6. **Error Handling (Optional):** You could add a `try-catch` block in `getOffset` to handle the `ZoneRulesException` that might occur if an invalid `zoneId` is provided.
+
+
+This revised code provides a more robust and user-friendly way to define and extract zone offsets in Java.

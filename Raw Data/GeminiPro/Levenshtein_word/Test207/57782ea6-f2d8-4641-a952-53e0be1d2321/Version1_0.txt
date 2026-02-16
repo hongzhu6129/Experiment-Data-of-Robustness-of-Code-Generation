@@ -1,0 +1,76 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6); // Added a node to the right subtree
+        root.left.left.left = new Node(7); // Added a deeper node
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+
+        // Test with an empty tree
+        Node emptyRoot = null;
+        System.out.println("Height of empty tree is: " + tree.maxDepth(emptyRoot));
+
+
+        // Test with a single node tree
+        Node singleNodeRoot = new Node(10);
+         System.out.println("Height of single node tree is: " + tree.maxDepth(singleNodeRoot));
+
+    }
+}
+
+```
+
+
+**Explanation and Improvements:**
+
+1. **Node Class:**  Defines the structure of a node in the binary tree.  Each node holds an integer `data` and references to its left and right children.
+
+2. **maxDepth(Node node):**  This recursive method calculates the maximum depth:
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**  Recursively calculates the depth of the left subtree (`lDepth`) and the right subtree (`rDepth`). The maximum depth of the current node is 1 plus the larger of `lDepth` and `rDepth`.
+
+3. **main(String[] args):**
+   - Creates instances of the `BinaryTreeMaxDepth` class and `Node` objects to build a sample binary tree.
+   - Calls `maxDepth()` to calculate and print the height/depth of the tree.
+   - Includes additional test cases: an empty tree and a single-node tree to demonstrate correctness in edge cases.
+
+
+**Key Improvement: Clearer Code and Test Cases:** The original response lacked test cases.  This version provides a more complete and testable solution. The `main` method demonstrates how to create and use the `maxDepth()` function and verifies it with different tree structures. This makes the code much more robust and easier to understand.

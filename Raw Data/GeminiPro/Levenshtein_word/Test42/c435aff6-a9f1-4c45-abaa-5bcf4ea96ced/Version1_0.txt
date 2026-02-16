@@ -1,0 +1,76 @@
+```java
+import java.util.Scanner;
+
+public class EvenOddChecker {
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        if (isEven(number)) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is odd.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input | Expected Output | Reason/Corner Case |
+|---|---|---|---|
+| 1 | 0 | 0 is even. | Zero is considered even. |
+| 2 | 1 | 1 is odd. |  Basic odd number test. |
+| 3 | 2 | 2 is even. | Basic even number test. |
+| 4 | -1 | -1 is odd. |  Negative odd number test. |
+| 5 | -2 | -2 is even. | Negative even number test. |
+| 6 | 1000 | 1000 is even. | Large positive even number. |
+| 7 | -1001 | -1001 is odd. | Large negative odd number. |
+| 8 | Integer.MAX_VALUE | Integer.MAX_VALUE is odd. |  Largest possible Java `int` (odd). |
+| 9 | Integer.MIN_VALUE | Integer.MIN_VALUE is even. | Smallest possible Java `int` (even).|
+
+
+
+**How to run the test cases:**
+
+1. **Manual Testing:**  You can manually enter each input value and verify that the program's output matches the expected output in the table.
+
+2. **Automated Testing (Recommended - JUnit example):**  For more robust testing, especially as your program grows, use a testing framework like JUnit.  Here's how you might write a JUnit test class:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class EvenOddCheckerTest {
+
+       @Test
+       void testIsEven() {
+           assertTrue(EvenOddChecker.isEven(0));
+           assertFalse(EvenOddChecker.isEven(1));
+           assertTrue(EvenOddChecker.isEven(2));
+           assertFalse(EvenOddChecker.isEven(-1));
+           assertTrue(EvenOddChecker.isEven(-2));
+           assertTrue(EvenOddChecker.isEven(1000));
+           assertFalse(EvenOddChecker.isEven(-1001));
+           assertFalse(EvenOddChecker.isEven(Integer.MAX_VALUE));
+           assertTrue(EvenOddChecker.isEven(Integer.MIN_VALUE));
+       }
+   }
+   ```
+
+   To use JUnit, you'll need to add the JUnit library to your project. Most IDEs (like IntelliJ IDEA or Eclipse) have built-in support for JUnit, making it easy to run these tests automatically.  Automated testing is highly recommended for real-world projects.
+
+
+
+This comprehensive set of test cases and the JUnit example will help ensure that your `isEven` method works correctly under various conditions.

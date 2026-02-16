@@ -1,0 +1,48 @@
+```java
+import java.util.Arrays;
+
+class PrimeArray {
+
+    public static int prime_cell(int i, int j) {
+        if (isPrime(i) && isPrime(j)) {
+            return 0; // Represents false
+        } else {
+            return 1; // Represents true
+        }
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int m = 3; // Example size of the array
+        boolean[][] A = new boolean[m][m];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                A[i][j] = prime_cell(i, j) == 1; // Convert 1 to true, 0 to false
+            }
+        }
+
+
+        // Print the array (formatted as requested in sample output)
+        StringBuilder output = new StringBuilder();
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < m; j++){
+                output.append(A[i][j]).append(" ");
+            }
+        }
+        System.out.println(output.toString().trim());
+
+    }
+}
+```

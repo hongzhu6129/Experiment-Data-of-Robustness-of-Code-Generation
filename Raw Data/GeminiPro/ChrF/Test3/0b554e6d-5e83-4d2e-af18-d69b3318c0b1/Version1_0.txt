@@ -1,0 +1,117 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Scalar Table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Integer:**
+   - Input: `5`
+   - Expected Output:
+     ```
+     Scalar Table for 5:
+     5 x 1 = 5
+     5 x 2 = 10
+     5 x 3 = 15
+     5 x 4 = 20
+     5 x 5 = 25
+     5 x 6 = 30
+     5 x 7 = 35
+     5 x 8 = 40
+     5 x 9 = 45
+     5 x 10 = 50
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Scalar Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: `-7`
+   - Expected Output:
+     ```
+     Scalar Table for -7:
+     -7 x 1 = -7
+     -7 x 2 = -14
+     ...
+     -7 x 10 = -70
+     ```
+
+4. **Large Positive Integer:**
+   - Input: `123456789`  (Testing potential integer overflow if calculations aren't handled carefully - though Java's `int` is large enough to accommodate this).
+   - Expected Output: The correct scalar table up to 10.
+
+5. **Large Negative Integer:**
+   - Input: `-123456789` (Similar overflow check as above for negative values).
+   - Expected Output: The correct scalar table up to 10.
+
+
+
+**How to Run the Test Cases (Manual Testing):**
+
+1.  Compile the Java code: `javac ScalarTable.java`
+2.  Run the code: `java ScalarTable`
+3.  Enter the input value when prompted.
+4.  Compare the output with the expected output for each test case.
+
+
+**Automated Testing (using JUnit - highly recommended for larger projects):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ScalarTableTest {
+
+    @Test
+    public void testPositiveInteger() {
+        testScalarTable(5, "5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50\n");
+    }
+    // ... Add similar @Test methods for the other test cases ...
+
+    private void testScalarTable(int input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        ScalarTable.main(new String[]{}); // Run your main method
+
+        String actualOutput = out.toString();
+        assertEquals("Scalar Table for " + input + ":\n" + expectedOutput, actualOutput);  // Use assertEquals
+    }
+}
+```
+
+This JUnit example demonstrates how to redirect standard input and output to test the `main` method directly. It's a much more robust approach for testing, especially as your project grows.  Remember to add JUnit to your project.

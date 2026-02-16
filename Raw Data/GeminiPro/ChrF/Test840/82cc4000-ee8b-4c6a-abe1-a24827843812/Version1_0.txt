@@ -1,0 +1,29 @@
+```java
+public class Operations {
+
+    public static void main(String[] args) {
+        System.out.println(-5 + 8 * 6); // a. -5 + 8 * 6
+        System.out.println((55 + 9) % 9); // b. (55+9) % 9
+        System.out.println(20 + -3 * 5 / 8); // c. 20 + -3*5 / 8  (integer division)
+        System.out.println(5 + 15 / 3 * 2 - 8 % 3); // d. 5 + 15 / 3 * 2 - 8 % 3 (clarified the expression)
+    }
+}
+```
+
+**Explanation and Output:**
+
+* **a. -5 + 8 * 6:** Multiplication has higher precedence than addition.  8 * 6 is 48. Then, -5 + 48 = 43.
+* **b. (55 + 9) % 9:** Parentheses are evaluated first. 55 + 9 is 64.  64 % 9 (the remainder when 64 is divided by 9) is 1.
+* **c. 20 + -3 * 5 / 8:** Multiplication and division have the same precedence and are evaluated left-to-right. -3 * 5 is -15. Then, -15 / 8 is -1 (because of integer division, the fractional part is discarded). Finally, 20 + -1 is 19.
+* **d. 5 + 15 / 3 * 2 - 8 % 3:** Division, multiplication, and modulo (%) have the same precedence and are evaluated left-to-right. 15 / 3 is 5.  5 * 2 is 10. 8 % 3 (the remainder when 8 is divided by 3) is 2. Finally, 5 + 10 - 2 = 13.
+
+
+
+**Output when the code is run:**
+
+```
+43
+1
+19
+13
+```

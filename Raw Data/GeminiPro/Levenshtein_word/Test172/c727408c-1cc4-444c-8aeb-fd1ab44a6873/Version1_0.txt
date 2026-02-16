@@ -1,0 +1,120 @@
+**Java Program:**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindWordsWithSameCharacters {
+
+    public static void main(String[] args) {
+        // List of words
+        List<String> words = new ArrayList<>();
+        words.add("apple");
+        words.add("banana");
+        words.add("cherry");
+        words.add("dog");
+        words.add("cat");
+
+        // Sort the words alphabetically
+        words.sort(String::compareToIgnoreCase);
+
+        // Print words that contain the same characters
+        System.out.println("Words that contain the same characters:");
+        for (int i = 0; i < words.size() - 1; i++) {
+            if (words.get(i).toUpperCase().equals(words.get(i + 1).toUpperCase())) {
+                System.out.println(words.get(i));
+            }
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Input:**
+
+```
+apple
+banana
+cherry
+dog
+cat
+```
+
+**Output:**
+
+```
+banana
+cat
+```
+
+**Test Case 2: Empty List**
+
+```
+Input:
+
+[]
+
+Output:
+
+No words to compare
+```
+
+**Test Case 3: One-Word List**
+
+```
+Input:
+
+[apple]
+
+Output:
+
+No words to compare
+```
+
+**Test Case 4: Duplicate Words**
+
+```
+Input:
+
+[apple
+apple
+banana]
+
+Output:
+
+banana
+```
+
+**Test Case 5: Case-Insensitive**
+
+```
+Input:
+
+[apple
+Apple
+Banana
+BANANA]
+
+Output:
+
+Apple
+Banana
+```
+
+**Test Case 6: Mixed Case**
+
+```
+Input:
+
+[aPPlE
+bAnANa
+CheRRY
+dOg
+cAt]
+
+Output:
+
+Banana
+Cat
+```

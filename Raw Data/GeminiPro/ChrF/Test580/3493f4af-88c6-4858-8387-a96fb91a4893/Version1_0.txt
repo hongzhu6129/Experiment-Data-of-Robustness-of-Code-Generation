@@ -1,0 +1,56 @@
+```java
+import java.util.LinkedList;
+import java.util.List;
+
+public class EditLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        List<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+
+        // Specify the position and new element
+        int positionToEdit = 1; // Remember, indexing starts from 0
+        String newElement = "Mango";
+
+        // Edit the element at the specified position.  Check for valid index
+        if (positionToEdit >= 0 && positionToEdit < linkedList.size()) {
+            linkedList.set(positionToEdit, newElement);
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + linkedList);
+        } else {
+            System.out.println("Invalid position.  Position must be between 0 and " + (linkedList.size() - 1));
+        }
+
+
+        // Example of adding at a specific position (Not required by prompt, but useful)
+        int positionToAdd = 2;
+        String elementToAdd = "Kiwi";
+        if (positionToAdd >=0 && positionToAdd <= linkedList.size()) { // Note: <= here as you can add at the end
+             linkedList.add(positionToAdd, elementToAdd);  
+            System.out.println("LinkedList after adding Kiwi: " + linkedList);
+        } else {
+            System.out.println("Invalid position to add.");
+        }
+
+
+        // Example of removing at a specific position
+        int positionToRemove = 0;
+
+        if (positionToRemove >= 0 && positionToRemove < linkedList.size()) {
+            linkedList.remove(positionToRemove);
+             System.out.println("LinkedList after removing element at 0 : " + linkedList);
+        } else {
+            System.out.println("Invalid position to remove.");
+
+        }
+    }
+}
+```

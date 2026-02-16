@@ -1,0 +1,64 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        } else {
+            // Recursively calculate the depth of the left and right subtrees
+            int leftDepth = maxDepth(root.left);
+            int rightDepth = maxDepth(root.right);
+
+            // Return the maximum of the two depths + 1 (for the current node)
+            return Math.max(leftDepth, rightDepth) + 1;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        // Example tree creation:
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+
+        System.out.println("Max depth of the tree is: " + tree.maxDepth(root)); // Output: 3
+
+         // Example for an empty tree:
+        Node emptyRoot = null;
+        System.out.println("Max depth of an empty tree is: " + tree.maxDepth(emptyRoot)); // Output 0
+
+        // Example for a tree with only a root node:
+        Node singleNodeRoot = new Node(10);
+        System.out.println("Max depth of a single node tree is: " + tree.maxDepth(singleNodeRoot)); // Output: 1
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Node class:** The `Node` class is now explicitly defined to represent the structure of a binary tree node.
+
+2. **Recursive `maxDepth` method:**  The core logic is in the `maxDepth` method. It uses recursion to efficiently calculate the maximum depth:
+   - **Base Case:** If the current node (`root`) is `null`, the depth is 0.
+   - **Recursive Step:**  Calculate the depth of the left and right subtrees recursively. The maximum of these two depths + 1 (for the current node) is the depth of the subtree rooted at the current node.
+
+3. **Comprehensive `main` method:** The `main` method now demonstrates the use of the `maxDepth` function with different tree examples, including an empty tree, a tree with only the root node, and a more complex tree, making the code easier to understand and test.
+
+4. **Comments:**  Added comments to explain the code's logic and purpose.
+
+5. **Standard Java conventions:** Used standard Java naming conventions (e.g., `maxDepth` instead of `max_depth`) and code formatting for better readability.

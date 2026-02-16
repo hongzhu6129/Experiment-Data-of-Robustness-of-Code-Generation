@@ -1,0 +1,78 @@
+```java
+public class IntegerToLegitimacy {
+
+    public static void main(String[] args) {
+        int input = 12345; // Example input
+        int legitimacyValue = convert(input);
+        System.out.println("Legitimacy value of " + input + " is: " + legitimacyValue);
+
+
+        input = -5000; // Another example
+        legitimacyValue = convert(input);
+        System.out.println("Legitimacy value of " + input + " is: " + legitimacyValue);
+
+        input = 0; // Example with 0
+        legitimacyValue = convert(input);
+        System.out.println("Legitimacy value of " + input + " is: " + legitimacyValue);
+
+
+    }
+
+    public static int convert(int num) {
+        //  Here, "legitimacy" isn't a standard term. I'll provide a few
+        // different interpretations and you can choose or adapt as needed:
+
+        // 1. Absolute Value (Interpreting "legitimacy" as magnitude)
+        // return Math.abs(num);
+
+        // 2. Signum Function  (Interpreting "legitimacy" as just positive/negative/zero status)
+        // return Integer.signum(num);
+
+
+        // 3. Custom Mapping (Example: Positive numbers -> 1, Negative -> -1, Zero -> 0)
+        if (num > 0) {
+            return 1;
+        } else if (num < 0) {
+            return -1;
+        } else {
+            return 0;
+        }
+
+        // 4. Digit Sum (Interpreting "legitimacy" as the sum of digits)
+        // int sum = 0;
+        // num = Math.abs(num); // Handle negative numbers if needed
+        // while (num > 0) {
+        //     sum += num % 10;
+        //     num /= 10;
+        // }
+        // return sum;
+
+
+        // 5.  Return the input unchanged (If "legitimacy" has no special meaning)
+        // return num;
+    }
+}
+```
+
+
+**Explanation and Different "Legitimacy" Interpretations:**
+
+The core of the solution lies in the `convert()` method.  Because "legitimacy" isn't a standard mathematical or programming concept, I've provided several possible interpretations within the `convert()` method.  You'll need to **uncomment the one that best fits your specific definition of "legitimacy."**
+
+1. **Absolute Value:** This interprets "legitimacy" as the magnitude of the number, disregarding its sign.
+
+2. **Signum Function:** This reduces the number to its sign: 1 for positive, -1 for negative, and 0 for zero.
+
+3. **Custom Mapping:** This demonstrates how you can create your own rules for mapping input values to legitimacy values. I've used a simple example, but you can adapt it to your needs.
+
+4. **Digit Sum:**  This calculates the sum of the digits of the number, which can be another interpretation of "legitimacy" depending on the context.
+
+5. **Return Unchanged:**  If "legitimacy" doesn't have a particular meaning in your case, this simply returns the input number itself.
+
+
+**How to Use:**
+
+1. **Choose the appropriate interpretation of "legitimacy"** from the `convert()` method and uncomment that block of code.
+2. **Compile the code:**  `javac IntegerToLegitimacy.java`
+3. **Run the code:** `java IntegerToLegitimacy`
+   You can change the `input` value in the `main()` method to test with different integer values.  The output will print the original input and its calculated "legitimacy value".

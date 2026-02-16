@@ -1,0 +1,57 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example, ideally would be user input)
+        int number = 8;
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        // Test with another number
+         number = 27;
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        // Test with a non-cube number
+        number = 10;
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+
+    // Helper function to check if a number is a perfect cube
+    private static boolean isPerfectCube(int num) {
+        if (num < 0) {  // Handle negative numbers
+            return isPerfectCube(-num); // Recursively check the absolute value
+        }
+
+        if (num == 0) {
+            return true; // 0 is a perfect cube
+        }
+
+        for (int i = 1; i * i * i <= num; i++) {
+            if (i * i * i == num) {
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+}
+```

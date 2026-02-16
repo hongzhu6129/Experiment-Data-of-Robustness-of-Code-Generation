@@ -1,0 +1,32 @@
+```java
+public class FermatComparison {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Comparisons:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            double fermatDouble = (double) fermatNumber;  // Cast to double for comparison
+            System.out.println(fermatDouble); 
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` function:** This helper function calculates the Fermat number for a given `n`. It uses `Math.pow()` to compute 2^(2^n) and adds 1.  Critically, it casts the result to `long` to handle the large numbers involved.
+
+2. **Casting to `double`:**  Because Fermat numbers grow incredibly large very quickly, even `long` (a 64-bit integer type) can't store them accurately beyond the first few.  To display them for n >= 5, we cast the `long` to `double`.  `double` can represent larger numbers (though with some loss of precision for very large values, as it uses a floating-point representation).
+
+3. **Clear Output:**  The code now prints "First 10 Fermat Comparisons:" to clearly label the output.  Each Fermat number (or its double approximation) is printed on a new line.
+
+4. **Loop Limit:** The loop now correctly iterates from `n = 0` to `n = 9` (inclusive) to display the first *ten* Fermat numbers, as requested.
+
+
+**Key Point about Large Fermat Numbers:** Be aware that for n > 4, even `double` won't be able to represent the Fermat numbers with full precision due to their immense size. You'll see the numbers printed in scientific notation (e.g., 4.294967297E9) indicating this loss of precision.  For precise representation of arbitrarily large Fermat numbers, you'd need to use specialized libraries like `BigInteger`.

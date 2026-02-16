@@ -1,0 +1,107 @@
+```java
+import java.util.Scanner;
+
+public class PartAverage {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double partAverage = calculatePartAverage(num1, num2, num3);
+
+        System.out.println("Part average: " + partAverage);
+
+        input.close(); // Close the scanner to release resources
+    }
+
+    public static double calculatePartAverage(double a, double b, double c) {
+        return (a + b + c) / 3.0;  // Explicitly divide by 3.0 for double precision
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering normal scenarios, edge cases, and corner cases:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+3. **Negative Numbers:**
+   - Input: -10, -20, -30
+   - Expected Output: -20.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -10, 20, 30
+   - Expected Output: 13.333333333333334
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 1.8
+   - Expected Output: 2.6666666666666665
+
+7. **Corner Case (Very large/small numbers - to check for overflow/underflow, though Java's double handles a wide range):**  
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE  // Extremely Large
+   - Expected Output: Infinity  // Java handles this gracefully
+   - Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE // Extremely Small, close to zero
+   - Expected Output: 1.6940658945086005E-315 //  A very small number
+
+
+
+**How to Run the Test Cases:**
+
+You can manually enter these values when prompted by the program or, for a more automated approach, you can create a separate testing class using a testing framework like JUnit. JUnit allows you to write structured test cases and automate the process of testing your `calculatePartAverage` method with various inputs and expected outputs.  This is best practice for larger projects.
+
+
+
+**Example JUnit Test (using JUnit 5):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PartAverageTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals(20.0, PartAverage.calculatePartAverage(10, 20, 30));
+    }
+
+    @Test
+    void testZeroes() {
+        assertEquals(0.0, PartAverage.calculatePartAverage(0, 0, 0));
+    }
+
+    // ... Add more tests similarly ...
+
+    @Test
+    void testLargeNumbers() {
+        assertEquals(2000000.0, PartAverage.calculatePartAverage(1000000, 2000000, 3000000));
+    }
+
+
+    @Test
+    void testMaxValue() {
+        assertEquals(Double.POSITIVE_INFINITY, PartAverage.calculatePartAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+}
+```
+
+
+This more structured approach with JUnit allows you to quickly run all your test cases and ensure your `calculatePartAverage` method works correctly under different conditions.  This is highly recommended as code becomes more complex.

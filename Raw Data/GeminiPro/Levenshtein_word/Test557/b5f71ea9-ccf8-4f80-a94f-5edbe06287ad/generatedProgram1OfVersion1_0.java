@@ -1,0 +1,56 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class RetrieveElement {
+
+    public static void main(String[] args) {
+        // Example usage with ArrayList:
+        List<String> arrayList = new ArrayList<>();
+        arrayList.add("apple");
+        arrayList.add("banana");
+        arrayList.add("orange");
+
+        int indexArrayList = 1; // Index to retrieve (banana)
+
+        try {
+            String elementArrayList = arrayList.get(indexArrayList);
+            System.out.println("Element at index " + indexArrayList + " in ArrayList: " + elementArrayList);
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Index out of bounds for ArrayList: " + e.getMessage());
+        }
+
+        // Example usage with LinkedList:
+        List<Integer> linkedList = new LinkedList<>();
+        linkedList.add(10);
+        linkedList.add(20);
+        linkedList.add(30);
+
+
+        int indexLinkedList = 0; // Index to retrieve (10)
+        try {
+            Integer elementLinkedList = linkedList.get(indexLinkedList);
+             System.out.println("Element at index " + indexLinkedList + " in LinkedList: " + elementLinkedList);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Index out of bounds for LinkedList: " + e.getMessage());
+        }
+
+
+          // Example with error handling:
+         List<Double> doubleList = new ArrayList<>();
+         doubleList.add(1.1);
+         doubleList.add(2.2);
+        
+         int invalidIndex = 5;
+
+         try {
+             Double invalidElement = doubleList.get(invalidIndex); 
+             System.out.println("Element at invalid index: " + invalidElement); // This won't be reached if an exception is thrown
+         } catch (IndexOutOfBoundsException e) {
+              System.err.println("Error: Invalid index. " + e.getMessage());
+         }
+
+
+    }
+}

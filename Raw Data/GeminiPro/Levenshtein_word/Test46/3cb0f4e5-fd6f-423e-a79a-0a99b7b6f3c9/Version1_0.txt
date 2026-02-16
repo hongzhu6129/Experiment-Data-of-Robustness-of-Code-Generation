@@ -1,0 +1,67 @@
+```java
+import java.util.Scanner;
+
+public class RightmostDigitComparison {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int rightmost1 = num1 % 10;
+        int rightmost2 = num2 % 10;
+        int rightmost3 = num3 % 10;
+
+        // Check for equality among the rightmost digits
+        return (rightmost1 == rightmost2) || (rightmost1 == rightmost3) || (rightmost2 == rightmost3);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three non-negative integers: ");
+        int num1 = input.nextInt();
+        int num2 = input.nextInt();
+        int num3 = input.nextInt();
+
+        // Input validation (ensure non-negative)
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Invalid input: Please enter non-negative integers.");
+            return; // Exit if input is invalid
+        }
+
+
+        boolean result = function(num1, num2, num3);
+        System.out.println(result);
+
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering different scenarios, including corner cases:
+
+| Test Case | num1 | num2 | num3 | Expected Result |
+|---|---|---|---|---|
+| 1 | 23 | 32 | 43 | true |
+| 2 | 17 | 27 | 37 | true |
+| 3 | 10 | 20 | 30 | true |  // Corner case: Numbers ending in 0
+| 4 | 1 | 2 | 3 | false |
+| 5 | 123 | 456 | 789 | false |
+| 6 | 0 | 0 | 0 | true | // Corner case: All zeros
+| 7 | 11 | 11 | 11 | true |  // All same numbers
+| 8 | 100 | 200 | 301 | false | // Only two have the same rightmost digit (0)
+| 9 | 1002 | 200 | 300 | true | // Larger numbers with same rightmost digit (0)
+| 10 | 7 | 7 | 17 | true | // Two identical, one with same rightmost digit
+| 11 | 1 | 11 | 21 | true | // Corner case: single-digit numbers involved
+
+
+
+**Explanation of Corner Cases:**
+
+* **Numbers ending in 0:**  It's important to test cases where numbers end in 0 to ensure the modulo operator (%) works correctly.
+* **All zeros:**  This tests the scenario where all inputs are 0.
+* **Single-digit numbers:** Tests cases involving single-digit numbers ensure there are no issues with the logic.
+* **Larger numbers:**  Test with larger numbers to verify that the rightmost digit extraction works as expected.
+
+
+By running your Java program with these test cases, you can verify its correctness and handle potential edge scenarios. Remember to test your code thoroughly to ensure it's robust.

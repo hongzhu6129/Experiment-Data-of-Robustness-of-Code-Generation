@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RemoveThirdElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+
+        if (numbers.size() >= 3) {
+            numbers.remove(2); // Remove the element at index 2 (the third element)
+
+            System.out.println("ArrayList after removing the third element: " + numbers);
+
+        } else {
+            System.out.println("ArrayList does not have a third element to remove.");
+        }
+
+
+        //More examples
+
+         List<String> strings = new ArrayList<>(List.of("apple", "banana", "cherry", "date"));
+        if (strings.size() >= 3) {
+            strings.remove(2);
+             System.out.println("ArrayList after removing the third element: " + strings);
+        } else {
+            System.out.println("ArrayList does not have a third element to remove.");
+        }
+
+
+        List<Double> doubles = new ArrayList<>(List.of(1.1, 2.2, 3.3));
+
+        if(doubles.size() >= 3) {
+            doubles.remove(2);
+             System.out.println("ArrayList after removing the third element: " + doubles);
+        } else {
+            System.out.println("ArrayList does not have a third element to remove.");
+        }
+
+
+
+          List<Character> chars = new ArrayList<>(List.of('a', 'b'));
+
+        if(chars.size() >= 3) {
+            chars.remove(2);
+             System.out.println("ArrayList after removing the third element: " + chars);
+        } else {
+            System.out.println("ArrayList does not have a third element to remove.");
+        }
+    }
+}

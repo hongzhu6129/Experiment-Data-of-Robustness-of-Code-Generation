@@ -1,0 +1,55 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = sumOfSquaresOfDigits(n);
+        }
+
+        return n == 1;
+    }
+
+    private static int sumOfSquaresOfDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's original intent:
+        System.out.println("7 is a happy number: " + isHappy_number(7));  // true
+        System.out.println("2 is a happy number: " + isHappy_number(2));  // false
+        System.out.println("10 is a happy number: " + isHappy_number(10)); //true
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **HashSet for Cycle Detection:**  The `HashSet` called `seen` efficiently tracks numbers encountered during the process. This is crucial to detect cycles (which indicate an unhappy number) and prevent infinite loops.
+* **Clearer Helper Function:** The `sumOfSquaresOfDigits` function is extracted to improve code readability and organization.  It calculates the sum of the squares of a number's digits.
+* **Concise Return:** The `isHappy_number` function returns `true` if the number eventually becomes 1, and `false` otherwise (if a cycle is detected).
+* **Meaningful Main Method:**  The `main` method now demonstrates the function's usage with clear examples, including cases from the prompt's original intent.
+
+
+This improved version directly addresses the problem description, handles cycle detection effectively, and provides a well-structured, readable solution.

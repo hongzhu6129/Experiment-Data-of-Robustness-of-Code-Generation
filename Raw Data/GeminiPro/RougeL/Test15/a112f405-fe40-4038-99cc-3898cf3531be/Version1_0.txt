@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        String hex = "";
+        char[] hexChars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            hex = hexChars[remainder] + hex; // Prepend the character for correct order
+            decimal /= 16;
+        }
+
+        return hex;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+        String hexadecimal = function(decimal);
+        System.out.println("Hexadecimal equivalent: " + hexadecimal);
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Decimal Input | Expected Hexadecimal Output |
+|---|---|
+| 0 | 0 |
+| 1 | 1 |
+| 10 | A |
+| 15 | F |
+| 16 | 10 |
+| 255 | FF |
+| 1024 | 400 |
+| -1 |  (Handle this case appropriately.  Either throw an exception or define behavior for negative numbers) |  
+| Integer.MAX_VALUE (2147483647) | 7FFFFFFF |
+| Integer.MIN_VALUE (-2147483648) | (Handle this case - it may produce 80000000 if using two's complement representation, but the function might need adjustments). |
+
+
+**How to run the tests:**
+
+1. **Manual Testing:** You can manually enter these values into the program's prompt and verify the output.
+2. **Automated Testing (Recommended):** A more robust approach is to use JUnit (or a similar testing framework) to create automated tests. This is how professional Java development is done.
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class DecimalToHexadecimalTest {
+
+       @Test
+       void testZero() {
+           assertEquals("0", DecimalToHexadecimal.function(0));
+       }
+
+       @Test
+       void testSingleDigit() {
+           assertEquals("A", DecimalToHexadecimal.function(10));
+       }
+       // ... Add more test cases similarly
+       @Test
+       void testMaxValue() {
+            assertEquals("7FFFFFFF", DecimalToHexadecimal.function(Integer.MAX_VALUE));
+
+       }
+
+       @Test
+       void testNegative() {
+           // Decide how you want to handle negative numbers, and test accordingly.
+           // For example, if you decide to throw an exception:
+           assertThrows(IllegalArgumentException.class, () -> DecimalToHexadecimal.function(-1)); // Assuming you add exception handling to your 'function' method
+
+           // Or if you want a specific output:
+           // assertEquals("-1", DecimalToHexadecimal.function(-1)); // If you've modified 'function' to handle negative numbers
+       }
+   }
+   ```
+
+**Key Improvements in the provided code:**
+
+* **Handles 0 correctly:** The original code had a flaw where it returned an empty string for the input 0.  This has been fixed.
+* **More Efficient String Construction:** Uses prepending (`hex = hexChars[remainder] + hex;`) instead of appending characters, which is significantly more efficient in Java as strings are immutable.
+* **Clearer Variable Names:**  Using `hexChars` instead of just `hex` for the character array makes the code more readable.
+* **Scanner Closure:** The `scanner.close()` is added to release the resource.
+
+This improved version and the comprehensive test cases make for a much more robust and reliable solution.  Remember to consider how you want to handle negative input values, and ensure your tests cover those cases as well.

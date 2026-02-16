@@ -1,0 +1,81 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+
+        int givenKey = 3;
+        boolean inclusive = true; // Change to false for exclusive
+
+        // Get the submap
+        SortedMap<Integer, String> subMap =  getPortion(map, givenKey, inclusive);
+
+        // Print the submap
+        System.out.println("Original Map: " + map);
+        System.out.println("Submap (keys <= " + givenKey + " - inclusive: " + inclusive + "): " + subMap);
+
+
+
+        givenKey = 3;
+        inclusive = false;
+
+        subMap = getPortion(map, givenKey, inclusive);
+         System.out.println("Submap (keys <= " + givenKey + " - inclusive: " + inclusive + "): " + subMap);
+
+
+        givenKey = 0; // Test with a key smaller than any in the map
+        inclusive = true;
+
+        subMap = getPortion(map, givenKey, inclusive);
+         System.out.println("Submap (keys <= " + givenKey + " - inclusive: " + inclusive + "): " + subMap);
+
+
+    }
+
+
+    public static SortedMap<Integer, String> getPortion(TreeMap<Integer, String> map, int givenKey, boolean inclusive) {
+        if (inclusive) {
+            return map.headMap(givenKey, true); // Inclusive
+        } else {
+            return map.headMap(givenKey, false); // Exclusive
+        }
+    }
+
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`TreeMap` for Sorted Data:**  A `TreeMap` is used to store the data because it keeps the keys sorted, which is crucial for efficiently getting a portion based on key comparisons.
+
+2. **`headMap()` Method:** The `headMap(toKey, inclusive)` method of `TreeMap` is directly used. This method returns a view of the portion of the map whose keys are strictly less than `toKey` (if `inclusive` is `false`) or less than or equal to `toKey` (if `inclusive` is `true`).
+
+3. **Clearer Variable Names:** The variable names are made more descriptive (`givenKey`, `inclusive`, `subMap`).
+
+4. **Example Usage Demonstrated:** The `main` method shows how to use the `getPortion` method with different inputs (inclusive and exclusive,  and with a key not present in the map).
+
+5. **`SortedMap` Return Type:**  The `getPortion` method returns a `SortedMap`. While the underlying map is a `TreeMap`, returning  `SortedMap` is generally better practice as it's a more general interface.
+
+
+6. **Error Handling (Optional but Recommended):** In a real application, you might want to add error handling to `getPortion` in case the input `map` is null.  For example:
+
+
+```java
+    public static SortedMap<Integer, String> getPortion(TreeMap<Integer, String> map, int givenKey, boolean inclusive) {
+        if (map == null) {
+            // Handle the null map case appropriately (e.g., return an empty map, throw an exception)
+            return new TreeMap<>(); // Or throw a NullPointerException
+        }
+        // ... (rest of the code as before)
+    }
+```

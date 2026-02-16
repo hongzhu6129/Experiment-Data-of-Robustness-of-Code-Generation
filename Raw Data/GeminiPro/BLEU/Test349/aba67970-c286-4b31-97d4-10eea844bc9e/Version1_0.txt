@@ -1,0 +1,27 @@
+```java
+import java.util.Scanner;
+
+public class DoubleCharacters {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = input.nextLine();
+
+        String doubledStr = "";
+        for (char c : str.toCharArray()) {
+            doubledStr += c + "" + c;
+        }
+
+        System.out.println("Doubled string: " + doubledStr);
+    }
+}
+```
+
+**Test cases:**
+
+* **Empty string:** ""
+* **Single character string:** "a"
+* **Multiple character string:** "hello"
+* **String with spaces:** "hello world"
+* **String with special characters:** "hello!@#$%^&*()"

@@ -1,0 +1,95 @@
+```java
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+
+        System.out.println("Numbers divisible by 3:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for clarity
+
+        System.out.println("Numbers divisible by 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for clarity
+
+        System.out.println("Numbers divisible by both 3 and 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for clarity
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Basic Test:** Check if the program correctly identifies numbers divisible by 3, 5, and both within the range 1 to 100.  For example, verify that 15, 30, 45, etc., are printed in the "divisible by both" section.
+
+2. **Boundary Cases:**
+   - **Lower Boundary:** Test with the number 1 (not divisible by 3 or 5).  It should not be printed in any of the output sections.
+   - **Upper Boundary:** Test with the number 100 (divisible by 5).  It should be printed in the "divisible by 5" section. 
+   - **Numbers close to boundaries divisible by 3, 5 or both:** For example 99 (divisible by 3), 95(divisible by 5), 90(divisible by both).
+
+3. **Edge Cases:**
+   - **Zero:** While not explicitly in the range, consider testing with 0.  It's technically divisible by both 3 and 5. You might expect it *not* to be included as the problem states "between 1 and 100."  This tests that you're using `>` and `<` and not `>=` and `<=`.
+   - **Negative Numbers:** Test with a few small negative numbers like -3, -5, and -15.  They should not be included. This tests the range restriction.
+
+
+**How to run the tests (Manually):**
+
+You can visually inspect the output of the program and compare it to the expected values.  For example, you should see 15, 30, 45, 60, 75, and 90 printed in the "divisible by both" section.
+
+
+**How to create more robust tests (using JUnit - Optional):**
+
+For more extensive and automated testing, use a testing framework like JUnit. Here's a simple example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class DivisibleBy3And5Test {
+
+    @Test
+    void testDivisibility() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        DivisibleBy3And5.main(new String[]{}); // Run the main method
+
+        String output = outputStream.toString();
+
+        assertTrue(output.contains("15")); // Check for numbers divisible by both
+        assertTrue(output.contains("30"));
+        assertTrue(output.contains("90"));
+        assertTrue(output.contains("3"));  // Check for numbers divisible by 3
+        assertTrue(output.contains("99"));
+        assertTrue(output.contains("5")); // Check for numbers divisible by 5
+        assertTrue(output.contains("100"));
+        assertFalse(output.contains("1")); //Check boundary conditions
+        assertFalse(output.contains("0")); // Check for zero
+        assertFalse(output.contains("-15")); //Check negative numbers
+
+        System.setOut(System.out); // Restore standard output
+
+    }
+
+}
+
+```
+
+This JUnit test captures the output of your program and uses assertions to check for expected and unexpected values.  This provides a more automated and reliable way to test your code.  Run this JUnit test to ensure your logic is correct.

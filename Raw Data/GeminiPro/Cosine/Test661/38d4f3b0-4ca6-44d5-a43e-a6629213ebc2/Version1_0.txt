@@ -1,0 +1,74 @@
+```java
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Collections;
+
+public class GreatestLeastKeyValue {
+
+    public static void main(String[] args) {
+        // Example usage:
+        Map<Integer, String> myMap = new TreeMap<>(); // TreeMap ensures sorted order by keys
+
+        myMap.put(1, "One");
+        myMap.put(5, "Five");
+        myMap.put(2, "Two");
+        myMap.put(10, "Ten");
+        myMap.put(3, "Three");
+
+        if (!myMap.isEmpty()) {
+            int greatestKey = Collections.lastKey(myMap);
+            String greatestKeyValue = myMap.get(greatestKey);
+
+            int leastKey = myMap.firstKey(); //  TreeMap specific method
+            String leastKeyValue = myMap.get(leastKey);
+
+
+            System.out.println("Greatest Key-Value: " + greatestKey + " - " + greatestKeyValue);
+            System.out.println("Least Key-Value: " + leastKey + " - " + leastKeyValue);
+        } else {
+            System.out.println("The map is empty.");
+        }
+
+
+        // Example with a different Map type (HashMap � not inherently sorted)
+        Map<Integer, String> hashMap = new java.util.HashMap<>();
+        hashMap.put(1, "One");
+        hashMap.put(5, "Five");
+        hashMap.put(2, "Two");
+        hashMap.put(10, "Ten");
+        hashMap.put(3, "Three");
+
+         if (!hashMap.isEmpty()) {
+            int greatestKeyHashMap = Collections.max(hashMap.keySet());  //For general Maps
+            String greatestKeyValueHashMap = hashMap.get(greatestKeyHashMap);
+
+            int leastKeyHashMap = Collections.min(hashMap.keySet());   //For general Maps
+            String leastKeyValueHashMap = hashMap.get(leastKeyHashMap);
+            
+            System.out.println("\nHashMap - Greatest Key-Value: " + greatestKeyHashMap + " - " + greatestKeyValueHashMap);
+            System.out.println("HashMap - Least Key-Value: " + leastKeyHashMap + " - " + leastKeyValueHashMap);
+        } else {
+            System.out.println("The HashMap is empty.");
+        }
+
+
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **TreeMap for Sorted Order:** Using a `TreeMap` is the most efficient way to get the greatest and least keys because a `TreeMap` automatically stores its keys in sorted order. This avoids the need for manual sorting.
+
+2. **Handling Empty Maps:**  The code now includes a check to see if the map is empty before attempting to retrieve the greatest/least keys.  This prevents `NullPointerExceptions`.
+
+3. **`Collections.lastKey()` and `firstKey()` (TreeMap):** For TreeMaps, these methods provide direct access to the greatest and smallest keys.
+
+4. **`Collections.max()` and `Collections.min()` (General Maps):** The provided code also demonstrates how to find the largest and smallest keys if you are using other Map types like `HashMap` which are not inherently sorted.
+
+5. **Clearer Output:** The output is formatted to clearly indicate the greatest and least key-value pairs.
+
+6. **Example with HashMap:** An additional example with HashMap is included to show the general approach for maps that don't maintain sorted order.  This highlights the advantages of using a `TreeMap` when key order matters.

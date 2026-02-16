@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHexadecimal {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        // Handle invalid input (non-binary characters)
+        try {
+            int decimal = 0;
+            int power = 0;
+            for (int i = binaryString.length() - 1; i >= 0; i--) {
+                char digit = binaryString.charAt(i);
+                if (digit != '0' && digit != '1') {
+                    System.out.println("Invalid binary input.");
+                    return; 
+                }
+                if (digit == '1') {
+                    decimal += Math.pow(2, power);
+                }
+                power++;
+            }
+
+            String hexString = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit;
+                if (remainder < 10) {
+                    hexDigit = (char) (remainder + '0');
+                } else {
+                    hexDigit = (char) (remainder - 10 + 'a');
+                }
+                hexString = hexDigit + hexString;  // Prepend the digit
+                decimal /= 16;
+            }
+
+            // Handle the case where input is "0"
+            if (hexString.isEmpty()) {
+                hexString = "0";
+            }
+
+            System.out.println("Hexadecimal value: '" + hexString + "'");
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary input.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+   - Input: `101010`
+   - Expected Output: `Hexadecimal value: '2a'`
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+
+
+2. **Invalid Binary Input (Non-binary characters):**
+   - Input: `110a`
+   - Expected Output: `Invalid binary input.`
+   - Input: `101201`
+   - Expected Output: `Invalid binary input.`
+
+
+3. **Boundary Cases:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`  (Handles the zero case)
+   - Input: `1`
+   - Expected Output: `Hexadecimal value: '1'`
+   - Input: (Empty string)
+   - Expected Output: Depending on how Scanner handles this, either an error message or a hex value of 0 (ideally an error message but can be treated as 0 if input validation isn't done before processing). Check how your Scanner behaves!
+
+
+4. **Large Binary Input:**
+   - Input: `1111111111111111` (16 ones)
+   - Expected Output: `Hexadecimal value: 'ffff'`
+
+
+
+This improved version includes error handling for invalid binary input (non-binary digits) and specifically addresses the case where the input binary string represents 0.  It also has more comprehensive test cases.  The try-catch block protects against `NumberFormatException` which could occur if the input was very large and led to issues with `Math.pow`. However,  for extremely large inputs that exceed `Integer.MAX_VALUE` after conversion to decimal, you'd need to use `BigInteger` for more robust handling.  This example focuses on the core conversion logic within the constraints of the question (using `main` and basic data types where practical).

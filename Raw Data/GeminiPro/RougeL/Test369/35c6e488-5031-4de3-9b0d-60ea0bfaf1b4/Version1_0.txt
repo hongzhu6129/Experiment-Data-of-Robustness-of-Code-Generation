@@ -1,0 +1,57 @@
+```java
+public class StringRotationChecker {
+
+    static boolean checkForRotation(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length()) {
+            return false;
+        }
+        if (s1.isEmpty() && s2.isEmpty()) { // Handle empty strings
+            return true;
+        }
+        return (s1 + s1).contains(s2);
+    }
+
+    public static void main(String[] args) {
+        String[] strings = {"waterbottle", "erbottlewat", "lewaterbott", "bottlewater", "terbottlewa", "ottlewaterb"}; // Example strings
+        // String[] strings = {"AACD", "ACDA", "DAAC", "CDAB", "CDAA"}; // Example where not all are rotations
+        // String[] strings =  {"abc", "bca", "cab"}; // Example where all are rotations
+        // String[] strings = {"waterbottle", "", "lewaterbott", "bottlewater", "terbottlewa", "ottlewaterb"}; // Example with empty string
+        // String[] strings = {"", "", "", "", "", ""};  // Example all empty strings
+
+        boolean allRotations = true;
+        for (int i = 1; i < strings.length; i++) {
+            if (!checkForRotation(strings[0], strings[i])) {
+                allRotations = false;
+                break;
+            }
+        }
+
+        if (allRotations) {
+            System.out.println("All strings are rotations of each other.");
+        } else {
+            System.out.println("Not all strings are rotations of each other.");
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handle `null` and Empty Strings:** The `checkForRotation` method now explicitly handles `null` inputs and empty strings.  This prevents `NullPointerExceptions` and ensures correct behavior for empty string comparisons.
+
+2. **Clearer Main Method:** The `main` method now includes several example string arrays to demonstrate different scenarios, including cases where all strings are rotations, where some are not, and where empty strings are involved.
+
+3. **Efficient Rotation Check:**  The core logic using `(s1 + s1).contains(s2)` remains a concise and efficient way to determine if `s2` is a rotation of `s1`.
+
+4. **All Rotations Check:** The `main` method iterates through the string array, comparing each string to the first string in the array.  If any string is *not* a rotation of the first, the `allRotations` flag is set to `false`, and the loop breaks early for efficiency.  This ensures that we don't do unnecessary comparisons once we've determined that not all strings are rotations.
+
+
+**How to Use:**
+
+1. Save the code as `StringRotationChecker.java`.
+2. Compile: `javac StringRotationChecker.java`
+3. Run: `java StringRotationChecker`
+
+
+You can modify the `strings` array in the `main` method to test with your own sets of strings.

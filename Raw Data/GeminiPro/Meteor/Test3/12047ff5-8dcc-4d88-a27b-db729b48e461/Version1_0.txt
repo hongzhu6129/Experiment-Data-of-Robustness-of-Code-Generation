@@ -1,0 +1,113 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication table for " + num + ":");
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Integer:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 11 = 77
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 11 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 11 = -55
+     ```
+
+4. **Large Positive Integer:**
+   - Input: 10000  (Tests for potential overflow issues, though Java's `int` type is large enough to handle this)
+   - Expected Output:
+     ```
+     Multiplication table for 10000:
+     10000 x 1 = 10000
+     ...
+     10000 x 11 = 110000
+     ```
+
+5. **Large Negative Integer:**
+   - Input: -10000
+   - Expected Output:
+     ```
+     Multiplication table for -10000:
+     -10000 x 1 = -10000
+     ...
+     -10000 x 11 = -110000
+     ```
+
+
+**How to Run Test Cases (using a simple script):**
+
+While a full testing framework (like JUnit) would be ideal, you can create a basic script to help automate these tests:
+
+```bash
+#!/bin/bash
+
+# Test cases
+inputs=(7 0 -5 10000 -10000)
+expected_outputs=("77" "0" "-55" "110000" "-110000")  # Check the last value of the table
+
+for i in "${!inputs[@]}"; do
+  input="${inputs[$i]}"
+  expected_output="${expected_outputs[$i]}"
+
+  actual_output=$(java MultiplicationTable <<< "$input" | tail -n 1 | awk '{print $NF}') # Get the last output value
+
+  if [ "$actual_output" == "$expected_output" ]; then
+    echo "Test case for input $input: PASSED"
+  else
+    echo "Test case for input $input: FAILED. Expected: $expected_output, Actual: $actual_output"
+  fi
+done
+```
+
+This script runs the Java program for each input, captures the last line of the output (which contains the result of `num x 11`), extracts the numerical value, and compares it with the expected output.  Make sure to compile your Java code (`javac MultiplicationTable.java`) before running the script.
+
+
+This comprehensive testing approach ensures your program's correctness across a range of scenarios. Using a proper testing framework like JUnit is highly recommended for more complex projects.

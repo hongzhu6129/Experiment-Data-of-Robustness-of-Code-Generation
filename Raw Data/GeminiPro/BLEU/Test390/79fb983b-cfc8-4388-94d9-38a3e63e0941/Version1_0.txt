@@ -1,0 +1,44 @@
+```java
+class Solution {
+    /**
+     * Checks if the substring "abc" appears before the first period (.) in a given string.
+     *
+     * @param str The input string.
+     * @return True if "abc" appears before the first period, false otherwise.
+     */
+    public Boolean abcBeforePeriod(String str) {
+        int abcIndex = str.indexOf("abc");
+        int periodIndex = str.indexOf('.');
+
+        if (abcIndex == -1) {  // "abc" not found
+            return false;
+        } else if (periodIndex == -1) { // "." not found, but "abc" is present
+            return true; 
+        } else { // Both are present, check order
+            return abcIndex < periodIndex;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "abc.def";
+        System.out.println(str1 + ": " + solution.abcBeforePeriod(str1)); // Output: true
+
+        String str2 = "def.abc";
+        System.out.println(str2 + ": " + solution.abcBeforePeriod(str2)); // Output: false
+
+        String str3 = "abcdef";
+        System.out.println(str3 + ": " + solution.abcBeforePeriod(str3)); // Output: true
+
+        String str4 = "defghi.";
+        System.out.println(str4 + ": " + solution.abcBeforePeriod(str4)); // Output: false
+
+        String str5 = ".abcdef";
+        System.out.println(str5 + ": " + solution.abcBeforePeriod(str5)); // Output: false
+
+
+
+    }
+}
+```

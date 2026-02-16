@@ -1,0 +1,27 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringMatcher {
+
+    public static void main(String[] args) {
+        String input1 = "pHelloWorldq";
+        String input2 = "pHello Worldq";
+        String input3 = "qHelloWorldp";
+        String input4 = "pHelloWorld";
+
+        System.out.println(input1 + ": " + validate(input1));
+        System.out.println(input2 + ": " + validate(input2));
+        System.out.println(input3 + ": " + validate(input3));
+        System.out.println(input4 + ": " + validate(input4));
+
+    }
+
+    public static String validate(String input) {
+        // Regular expression: starts with 'p', followed by any characters, and ends with 'q'
+        Pattern pattern = Pattern.compile("^p.*q$");
+        Matcher matcher = pattern.matcher(input);
+        return String.valueOf(matcher.matches()); 
+    }
+}
+```

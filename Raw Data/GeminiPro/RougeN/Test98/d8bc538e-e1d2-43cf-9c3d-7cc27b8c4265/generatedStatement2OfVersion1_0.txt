@@ -1,0 +1,30 @@
+
+
+
+Here's how this code works:
+
+1. **Initialization:**
+   - `n`:  The total number of coins.  You can change this value.
+   - `currentRow`: Keeps track of the current row number (starts at 1).
+   - `coinsInRow`:  Counts the coins in the current row.
+   - `coinsUsed`: The total number of coins used so far.
+
+2. **Looping Through Rows (`while` loop):**
+   - The `while` loop continues as long as we haven't used all `n` coins (`coinsUsed < n`).
+
+3. **Building Each Row (`for` loop):**
+   - The inner `for` loop builds the current row (`currentRow` coins).
+   - Inside the loop:
+     - If we have coins left (`coinsUsed < n`), we append "M" (minted coin) to the `row` string and increment `coinsUsed` and `coinsInRow`.
+     - If we run out of coins, we append a space " " to maintain the staircase structure.
+
+4. **Printing with Alignment:**
+    - We use a `for` loop to print leading spaces. The number of spaces is determined by `n - coinsInRow`. These leading spaces ensure that the staircase is aligned to the right. The correct spacing value might need adjustment depending on your output requirements (e.g. even spacing between coins)
+
+5. **Incrementing and Resetting:**
+   - After printing a row, we increment `currentRow` to prepare for the next row.
+   - We reset `coinsInRow` to 0 to start counting coins for the new row.
+
+
+**Example Output (n = 10):**
+

@@ -1,0 +1,142 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void printMultiplicationTable(int num) {
+        if (num >= 0 && num <= Integer.MAX_VALUE / 10) { // Avoid potential overflow for large numbers
+            System.out.println("Multiplication Table for " + num + ":");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(num + " x " + i + " = " + (num * i));
+            }
+        } else if (num < 0 && num >= Integer.MIN_VALUE/10) {  // Handle negative input.
+            System.out.println("Multiplication Table for " + num + ":");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(num + " x " + i + " = " + (num * i));
+            }
+        } else {
+            System.out.println("Input number is too large or too small to calculate multiplication table without overflow.");
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            printMultiplicationTable(number);
+        } else {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 5
+   **Expected Output:**
+   ```
+   Multiplication Table for 5:
+   5 x 1 = 5
+   5 x 2 = 10
+   ...
+   5 x 10 = 50
+   ```
+
+2. **Input:** 12
+   **Expected Output:**
+   ```
+   Multiplication Table for 12:
+   12 x 1 = 12
+   12 x 2 = 24
+   ...
+   12 x 10 = 120
+   ```
+
+**Corner/Edge Cases:**
+
+3. **Input:** 0
+   **Expected Output:**
+   ```
+   Multiplication Table for 0:
+   0 x 1 = 0
+   0 x 2 = 0
+   ...
+   0 x 10 = 0
+   ```
+
+4. **Input:** -7  // Negative number
+   **Expected Output:**
+    ```
+    Multiplication Table for -7:
+    -7 x 1 = -7
+    -7 x 2 = -14
+    ...
+    -7 x 10 = -70
+    ```
+
+5. **Input:**  2147483647 (Integer.MAX_VALUE) // Check for Overflow
+   **Expected Output:** Input number is too large or too small to calculate multiplication table without overflow.
+
+
+6. **Input:** -2147483648 (Integer.MIN_VALUE)  // Check for negative overflow
+   **Expected Output:** Input number is too large or too small to calculate multiplication table without overflow.
+
+
+
+7. **Invalid Input:** "abc" (Non-integer input)
+   **Expected Output:** Invalid input. Please enter an integer.
+
+
+**How to Run Test Cases:**
+
+You can easily test these cases in your IDE (like IntelliJ or Eclipse) by running the `main` method and providing the input through the console.  Or, for more automated testing, consider using a testing framework like JUnit to write proper unit tests.  Here's a simple example with JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testInput5() {
+        String input = "5";
+        String expectedOutput = "Multiplication Table for 5:\n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50\n";
+        testWithInput(input, expectedOutput);
+    }
+
+
+    //Add more @Test methods for other test cases
+
+    private void testWithInput(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        MultiplicationTable.main(new String[0]);  // Run your main method
+
+        assertEquals(expectedOutput, out.toString());
+
+        // Reset System.in and System.out to defaults
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
+}
+
+```
+
+
+This improved version handles various edge cases, including invalid input and potential integer overflows. It also provides examples of how to test the code using JUnit, which is highly recommended for more robust testing.

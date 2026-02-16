@@ -1,0 +1,47 @@
+```java
+import java.util.HashMap;
+import java.util.Collection;
+import java.util.Map;
+
+public class MapValuesView {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+        map.put("Grape", 4);
+
+        // Get a Collection view of the values
+        Collection<Integer> values = map.values();
+
+        // Print the values
+        System.out.println("Values in the map:");
+        for (Integer value : values) {
+            System.out.println(value);
+        }
+
+
+        //Demonstrate that changes to the collection reflect in the map (and vice-versa)
+        System.out.println("\nDemonstrating shared structure:");
+
+        //Remove a value from the collection view
+        values.remove(2);  // Banana's value
+
+        System.out.println("Map after removing '2' from values collection: " + map);
+
+
+        //Add a value directly to the map
+        map.put("Mango", 5);
+
+        System.out.println("Values collection after adding 'Mango:5' to the map: " + values);
+
+        // Clear all values using the collection view:
+        values.clear();
+        System.out.println("Map after clearing the values collection: " + map); //Map will also be empty
+
+    }
+}
+```

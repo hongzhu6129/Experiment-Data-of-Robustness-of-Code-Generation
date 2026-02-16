@@ -1,0 +1,49 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can adjust this limit
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) break;
+
+            for (int b = a + 1; b <= n; b++) { // Start b from a+1 to avoid duplicates
+                int b3 = b * b * b;
+                if (a3 + b3 > n) break;
+                
+                for (int c = 1; c <= n; c++) {
+                    int c3 = c * c * c;
+                    if (c3 > n) break;
+
+                    for (int d = c + 1; d <= n; d++) { // Start d from c+1 to avoid duplicates
+                        int d3 = d * d * d;
+                        if (c3 + d3 > n) break;
+
+                        if (a3 + b3 == c3 + d3 && a != c && a != d) {
+                            System.out.println(a3 + b3 + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                            return; // Exit after finding one such number
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Efficiency:**  The original linked code has nested loops that go up to `N`. While it works, it's inefficient for larger `N`. This version iterates up to the cube root of `n`, improving performance significantly.
+2. **Avoiding Duplicates:** The code uses `b = a + 1` and `d = c + 1` in the inner loops to avoid finding the same pairs of cubes in a different order (e.g., 1^3 + 12^3 and 12^3 + 1^3).
+3. **Clarity:** The code is more readable with better variable names and comments.
+4. **Early Exit:** The `return;` statement exits the program after the first Ramanujan number is found, as requested by the prompt ("find *any* number"). If you want to find all such numbers within the given range, remove the `return` statement.
+5. **Flexibility:**  You can easily change the value of `n` to search within a different range.
+
+**How it Works:**
+
+The code iterates through possible pairs of cubes (a^3 + b^3) and (c^3 + d^3) and checks if their sums are equal while ensuring that the pairs themselves are different (a != c and a != d). When such a number is found, it prints the result and exits.  The starting point of the inner loops (b = a + 1 and d = c + 1) is crucial for avoiding duplicate pairs and improving efficiency.
+
+
+
+

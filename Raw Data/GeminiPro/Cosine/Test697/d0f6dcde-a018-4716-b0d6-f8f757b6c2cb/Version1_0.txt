@@ -1,0 +1,58 @@
+```java
+class Solution {
+
+    /**
+     * Counts the numbers from 1 to 'n' (inclusive) that do NOT contain the digit 7.
+     *
+     * @param n The upper limit (inclusive) of the range to check.
+     * @return The count of numbers without the digit 7.
+     */
+    static int count_nums_not_7(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (!containsDigit7(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Helper function to check if a number contains the digit 7.
+     *
+     * @param num The number to check.
+     * @return True if the number contains 7, false otherwise.
+     */
+    private static boolean containsDigit7(int num) {
+        while (num > 0) {
+            if (num % 10 == 7) {
+                return true;
+            }
+            num /= 10;
+        }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 20; // Example input
+        int result = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + result);
+
+
+         n = 100; // Example input
+         result = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + result);
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:** The code is now well-commented, explaining the purpose of each function and section.  Variable names are more descriptive (e.g., `containsDigit7`).
+* **Helper Function:**  The `containsDigit7` function makes the logic cleaner and easier to understand. The main `count_nums_not_7` function focuses on the counting aspect.
+* **Example Usage in main:**  The `main` method demonstrates how to use the `count_nums_not_7` function with sample inputs, making the code more practical.
+* **Efficiency (Minor):** While the core logic remains the same (iterating and checking each number), the helper function slightly improves organization and could be optimized further if needed for very large ranges.
+
+This revised version is more robust, understandable, and follows best practices for Java coding.

@@ -1,0 +1,12 @@
+
+
+
+Key improvements in this version:
+
+* **Handles single-digit squares correctly:** The `split_num` function now correctly splits numbers like 1, 9, whose squares are also single-digit.  It returns `"0"` and the number itself as strings for cases where the number or square has fewer digits than required.  This also avoids `ArrayIndexOutOfBoundsException`
+* **Handles zero and edge cases**:  The logic for when `n` is 0 or the square of `n` has fewer digits is specifically addressed. We use string formatting to pad with zeroes when needed to ensure the correct splitting in these boundary conditions.
+* **Error Handling:** Includes a `try-catch` block in `isKaprekar` to handle potential `NumberFormatException` if the split parts can't be parsed as integers (e.g., due to leading zeros).
+* **Clearer Logic:** Simplified some conditional checks and made the overall structure easier to follow.
+
+
+This revised code should produce the correct output for all Kaprekar numbers under 1000, including the edge cases.

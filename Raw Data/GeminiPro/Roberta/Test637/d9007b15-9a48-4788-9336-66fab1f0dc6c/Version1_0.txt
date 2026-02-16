@@ -1,0 +1,42 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueuePeek {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+        pq.add(15);
+
+
+        // Retrieve the top element (smallest in this case, as it's a min-heap by default) using peek()
+        Integer topElement = pq.peek();
+
+        // Print the top element
+        if (topElement != null) { // Check for null in case the queue is empty.
+            System.out.println("Top element: " + topElement);
+        } else {
+            System.out.println("The priority queue is empty.");
+        }
+
+
+        // Demonstrate that peek() doesn't remove the element
+        System.out.println("PriorityQueue after peek(): " + pq); 
+
+         //Remove and print the top element using poll().
+         Integer removedElement = pq.poll();
+         if (removedElement != null) {
+            System.out.println("Removed element: " + removedElement);
+        }
+        System.out.println("PriorityQueue after poll(): " + pq);
+
+
+
+    }
+}
+```

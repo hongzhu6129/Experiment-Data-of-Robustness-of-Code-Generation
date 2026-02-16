@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **Antipodes (opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106  (180 degrees opposite longitude)
+   - Expected Output: ~20015.08 km (approximately Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1: 90 (North Pole)
+   - lon1: 0  (Longitude doesn't matter at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km
+
+5. **Points near the Prime Meridian and 180th Meridian:**
+   - lat1: 0
+   - lon1: 0.1 (Near Prime Meridian)
+   - lat2: 0
+   - lon2: -179.9 (Near 180th Meridian)
+   - Expected Output:  A small distance (demonstrates handling the meridian transition)
+
+
+6. **Points on the Equator:**
+    - lat1: 0
+    - lon1: 20
+    - lat2: 0
+    - lon2: 50
+    - Expected Output: Calculated distance based on longitude difference only.
+
+7. **Invalid Input (e.g., latitude outside -90 to 90 range):**  You should include input validation in a robust program to handle this, but for testing, try inputs like:
+    - lat1: 100 (invalid)
+    - The program should gracefully handle this error (either throw an exception or print an error message).
+
+
+**How to Implement Test Cases:**
+
+You could create a separate testing class or use a testing framework like JUnit to automate these tests. The test would call your `EarthDistance` program with the test inputs and assert that the calculated distance is within an acceptable tolerance of the expected output.  Example (using `assert` - you would need to enable assertions at runtime with `-ea` flag):
+
+```java
+// ... in your testing code ...
+
+double distance = calculateDistance(25, 35, 35.5, 25.5);  // Call your distance calculation function
+assert Math.abs(distance - 1480.0848451069087) < 0.001 : "Test case 1 failed";  // Check within a tolerance
+
+// ... other test cases ...
+```
+
+
+By running these test cases, you can verify the correctness of your program under different conditions.  Adding robust input validation is highly recommended to make your program more user-friendly and prevent unexpected behavior.

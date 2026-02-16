@@ -1,0 +1,31 @@
+```java
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = calculatePi(5); // 5 terms: 1, 3, 5, 9, 11
+        double piApproximation2 = calculatePi(6); // 6 terms: 1, 3, 5, 9, 11, 13
+
+        System.out.println("Approximation with 5 terms: " + piApproximation1);
+        System.out.println("Approximation with 6 terms: " + piApproximation2);
+    }
+
+    public static double calculatePi(int numTerms) {
+        double sum = 1.0;
+        int denominator = 1;
+        int sign = -1;
+
+        for (int i = 1; i < numTerms; i++) {
+            if (i % 2 == 1) {  // Odd terms (3, 11...) are subtracted
+                 denominator +=2;
+            } else {
+                denominator += 4; //Even terms(5,9, 13...) are added
+            }
+            
+            
+            sum += (sign * (1.0 / denominator));
+            sign *= -1; 
+        }
+        return 4 * sum;
+    }
+}
+```

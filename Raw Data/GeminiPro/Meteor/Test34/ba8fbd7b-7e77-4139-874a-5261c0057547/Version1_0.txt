@@ -1,0 +1,78 @@
+```java
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.SortedMap;
+
+public class ListAvailableCharsets {
+
+    public static void listCharsets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        System.out.println("Available Character Sets:");
+
+        Iterator<String> iterator = charsets.keySet().iterator();
+        while (iterator.hasNext()) {
+            String charsetName = iterator.next();
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + ": " + charset.displayName());
+
+            // Optionally display aliases:
+            //System.out.println("    Aliases: " + charset.aliases()); 
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        listCharsets();
+    }
+}
+
+```
+
+
+**Test Cases and Corner Cases:**
+
+Testing this kind of program is more about verification than finding bugs in the code itself (unless you suspect a problem with the underlying Java library).  You're primarily checking if the program accurately reflects the available charsets on the system it's running on.
+
+1. **Standard Output Check:**
+
+   - Run the program and visually inspect the output.  Does it list charsets that you expect to be available on your system (e.g., UTF-8, UTF-16, US-ASCII, ISO-8859-1)?
+
+2. **Comparison with System Information:**
+
+   - On some operating systems (like Linux), you can get a list of available charsets from system commands.  Compare the program's output with this list.  For example, on Linux, you might use `locale -a`.
+
+3. **Empty SortedMap (Hypothetical Corner Case):**
+
+   - While practically unlikely, you could simulate an empty `Charset.availableCharsets()` return value for a more rigorous unit test (though this depends on your testing framework):
+
+   ```java
+   // In a unit test (using JUnit or a similar framework)
+   @Test
+   public void testEmptyCharsets() {
+       // Mocking or stubbing the Charset class would be required
+       // to force availableCharsets() to return an empty map.
+       // This usually requires a mocking library like Mockito.
+
+       // Example using Mockito (you'll need to add Mockito to your dependencies):
+       SortedMap<String, Charset> emptyMap = new TreeMap<>(); 
+       try (MockedStatic<Charset> mockedCharset = Mockito.mockStatic(Charset.class)) {
+           mockedCharset.when(Charset::availableCharsets).thenReturn(emptyMap);
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent));
+           ListAvailableCharsets.listCharsets();
+           assertEquals("Available Character Sets:\n", outContent.toString()); // Expecting only the header
+       }
+   }
+   ```
+
+
+
+4. **Charset Display Name with Special Characters:**
+
+   - It's very unlikely, but not impossible, that a charset's display name could contain special characters that might cause formatting issues in the output (e.g., control characters, Unicode characters that don't render correctly in your console).  Visually check the output for any abnormalities.
+
+
+
+Because `Charset.availableCharsets()` relies on the underlying Java runtime and operating system, truly comprehensive testing would involve running the program on different operating systems and Java versions to ensure consistent and correct behavior. However, the core functionality is so simple that the basic verification checks are usually sufficient.

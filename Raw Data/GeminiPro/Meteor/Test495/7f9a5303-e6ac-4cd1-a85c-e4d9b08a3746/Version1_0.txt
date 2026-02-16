@@ -1,0 +1,57 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    }
+
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("[" + i + "," + j + "] "); //Prints the matrix coordinates
+            }
+            System.out.println(); //Newline after each row.
+        }
+    }
+}
+```
+
+
+**Explanation and How to Run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java` and compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java
+   ```
+
+2. **Running:** Execute the compiled code with the desired matrix size as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // Creates a 5x5 matrix
+   java MatrixPrinter 3  // Creates a 3x3 matrix
+   ```
+
+
+**Key improvements in this version:**
+
+* **Input Validation:** The `main` method now checks for the correct number of command-line arguments and handles `NumberFormatException` if the input is not a valid integer.  It also checks that `n` is a positive number.
+* **Clearer Output:** The `printMatrix` method uses a more readable format for displaying the matrix elements (e.g., [0,0] [0,1]...).  It also adds a newline after each row for proper matrix formatting.
+* **Adherence to prompt:**  The code strictly adheres to the requested method signatures.
+
+
+
+This revised code provides a more robust and user-friendly way to generate and display n-by-n matrices in Java.

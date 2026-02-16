@@ -1,0 +1,42 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class DateTimeBefore {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of hours: ");
+        int hours = scanner.nextInt();
+
+        System.out.print("Enter the number of minutes: ");
+        int minutes = scanner.nextInt();
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime pastDateTime = currentDateTime.minus(hours, ChronoUnit.HOURS).minus(minutes, ChronoUnit.MINUTES);
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedPastDateTime = pastDateTime.format(formatter);
+
+
+        System.out.println("Current Date and Time: " + currentDateTime.format(formatter));
+        System.out.println("Date and Time " + hours + " hours and " + minutes + " minutes ago: " + formattedPastDateTime);
+
+        scanner.close(); 
+    }
+}
+```
+
+
+Example Usage and Output:
+
+```
+Enter the number of hours: 2
+Enter the number of minutes: 30
+Current Date and Time: 2024-07-27 16:45:10  (Example - Your current time will be displayed)
+Date and Time 2 hours and 30 minutes ago: 2024-07-27 14:15:10
+```

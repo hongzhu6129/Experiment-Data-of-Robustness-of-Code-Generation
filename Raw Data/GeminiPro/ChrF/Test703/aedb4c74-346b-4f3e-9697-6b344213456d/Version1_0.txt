@@ -1,0 +1,56 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 if k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; 
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+        if (n < 0 || k < 0) {
+             System.out.println("Error: n and k must be non-negative.");
+             return;
+        }
+
+        long coefficient = binomial_Coefficient(n, k);
+        System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        scanner.close(); 
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The `main` method now includes input validation to check if `n` and `k` are non-negative.  This prevents unexpected behavior or crashes.
+
+2. **Efficiency in `binomial_Coefficient`:**
+   - **Range Check:** The function first checks if `k` is within the valid range (0 to n). If not, it returns 0, as the binomial coefficient is defined as 0 in such cases.
+   - **Base Cases:**  Handles the base cases `k=0` and `k=n` directly, returning 1.
+   - **Symmetry Optimization:** The code now includes the optimization `k = n - k` if `k > n/2`. This takes advantage of the symmetry property of binomial coefficients (C(n, k) = C(n, n-k)) to reduce the number of iterations in the loop, improving efficiency, especially for larger values of `n` and `k`.
+   - **Iterative Calculation:** The core calculation is done iteratively, which is more efficient in terms of memory than a recursive approach, particularly for large values of `n` and `k` (avoids stack overflow errors).  It also uses the multiplicative formula to calculate efficiently within the loop, minimizing the chance of integer overflow.
+
+
+3. **Resource Management:**  The `Scanner` is closed using `scanner.close()` after its use to release system resources.
+
+
+This improved version is more robust, handles edge cases correctly, and calculates the binomial coefficient more efficiently.

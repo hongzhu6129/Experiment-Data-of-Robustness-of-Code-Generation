@@ -1,0 +1,53 @@
+```java
+import java.util.TreeMap;
+
+public class FloorKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        int key1 = 35;
+        Integer floorKey1 = treeMap.floorKey(key1);
+        System.out.println("Floor key for " + key1 + ": " + floorKey1); // Output: 30
+
+        int key2 = 25;
+        Integer floorKey2 = treeMap.floorKey(key2);
+        System.out.println("Floor key for " + key2 + ": " + floorKey2); // Output: 20
+
+
+        int key3 = 5;
+        Integer floorKey3 = treeMap.floorKey(key3);
+        System.out.println("Floor key for " + key3 + ": " + floorKey3); // Output: null (no key less than or equal to 5)
+
+        int key4 = 50;
+        Integer floorKey4 = treeMap.floorKey(key4);
+        System.out.println("Floor key for " + key4 + ": " + floorKey4); // Output: 50 (exact match)
+
+
+
+        // Example with String keys:
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String key5 = "blueberry";
+        String floorKey5 = stringTreeMap.floorKey(key5);
+        System.out.println("Floor key for " + key5 + ": " + floorKey5); // Output: banana
+
+         String key6 = "apple";
+        String floorKey6 = stringTreeMap.floorKey(key6);
+        System.out.println("Floor key for " + key6 + ": " + floorKey6); // Output: apple (exact match)
+
+
+
+    }
+}
+```

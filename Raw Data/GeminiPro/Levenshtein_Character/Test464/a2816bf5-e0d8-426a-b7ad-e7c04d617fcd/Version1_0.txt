@@ -1,0 +1,87 @@
+```java
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+
+public class GetTimeInfo {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Or create a specific date and time
+        // LocalDateTime specificTime = LocalDateTime.of(2024, 10, 26, 10, 30, 45);
+
+
+        // --- Display various time information ---
+
+        System.out.println("Current Date and Time: " + now);
+
+        // Format the output using DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println("Formatted Date and Time: " + now.format(formatter));
+
+
+        // Get specific components of the date and time
+        int year = now.getYear();
+        int month = now.getMonthValue(); // 1-12
+        int day = now.getDayOfMonth();
+        int hour = now.getHour();
+        int minute = now.getMinute();
+        int second = now.getSecond();
+        int nanosecond = now.getNano(); // Nanoseconds
+
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + month);
+        System.out.println("Day: " + day);
+        System.out.println("Hour: " + hour);
+        System.out.println("Minute: " + minute);
+        System.out.println("Second: " + second);
+        System.out.println("Nanosecond: " + nanosecond);
+
+
+
+        // Day of the week (e.g., MONDAY)
+        System.out.println("Day of the week: " + now.getDayOfWeek());
+
+        // Day of the year (1-365/366)
+        System.out.println("Day of the year: " + now.getDayOfYear());
+
+
+        // --- Working with Time only ---
+        LocalTime currentTime = LocalTime.now();
+
+        // Get the hour (0-23)
+        int currentHour = currentTime.getHour();
+
+        // Get the hour using ChronoField (another way)
+        int currentHourChrono = currentTime.get(ChronoField.HOUR_OF_DAY);
+
+
+        System.out.println("Current hour: " + currentHour);
+        System.out.println("Current hour (using ChronoField): " + currentHourChrono);
+
+
+        // ---  Example of formatting time ---
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a"); // 12-hour format with AM/PM
+        System.out.println("Formatted Time (12-hour): " + currentTime.format(timeFormatter));
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Output:**  The output is organized with descriptive labels for each piece of information.
+2. **Date Formatting:** Uses `DateTimeFormatter` to demonstrate how to format the date and time output into various string representations.
+3. **Specific Time Components:**  Shows how to extract individual parts of the date and time like year, month, day, hour, minute, second, nanosecond.
+4. **Day of Week/Year:** Demonstrates getting the day of the week (e.g., MONDAY) and the day of the year.
+5. **LocalTime Example:** Includes an example of working with `LocalTime` to get just the time portion.
+6. **ChronoField:** Shows an alternative method of getting the hour using `ChronoField`.
+7. **12-Hour Time Format:**  An example of formatting the time into a 12-hour format with AM/PM indicator is provided.
+8. **Comments:**  Added comments to explain the different parts of the code.
+
+This revised code provides a more complete and illustrative example of getting time information in Java, making it easier to understand and adapt for various purposes.

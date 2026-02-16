@@ -1,0 +1,57 @@
+```java
+import java.util.Arrays;
+
+public class ReverseWordsInString {
+
+    public static void main(String[] args) {
+        String str = "Hello World";
+        System.out.println(reverseWords(str));
+    }
+
+    public static String reverseWords(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        String[] words = str.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            sb.append(words[i] + " ");
+        }
+        return sb.toString().trim();
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+Input: "Hello World"
+Output: "World Hello"
+
+**Corner Cases:**
+
+**Empty String:**
+
+Input: ""
+Output: ""
+
+**Single Word:**
+
+Input: "Hello"
+Output: "Hello"
+
+**Multiple Spaces:**
+
+Input: "Hello    World"
+Output: "World Hello"
+
+**Leading and Trailing Spaces:**
+
+Input: "  Hello World  "
+Output: "World Hello"
+
+**Special Characters:**
+
+Input: "Hello! World?"
+Output: "World? Hello!"

@@ -1,0 +1,82 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 10},
+                {2, 5, 8, 11},
+                {3, 6, 9, 12}
+        };
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 8;
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+        target = 15; // Example with an element not present
+        result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Element found
+            } else if (arr[row][col] < target) {
+                row++; // Move down (element is larger in next row)
+            } else {
+                col--; // Move left (element is smaller in previous column)
+            }
+        }
+
+        return new int[]{-1, -1}; // Element not found
+    }
+}
+```
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Method Signature Adherence:** The code strictly follows the specified method signatures `main` and `Saddleback`.
+
+2. **Saddleback Search Implementation:**  The `Saddleback` method efficiently searches the 2D array.  It starts from the top-right corner:
+   - If the current element is equal to the target, the position is returned.
+   - If the current element is smaller than the target, we move down to the next row (because elements increase as we move down).
+   - If the current element is larger than the target, we move left to the previous column (because elements increase as we move right).
+
+
+3. **Return an Array for Coordinates:** The `Saddleback` method returns an `int[]` of size 2, holding the row and column indices of the target element.  If the element is not found, it returns `{-1, -1}`.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method with a sample array and target. It handles the case where the target is not found.
+
+5. **Comments:**  The code includes comments to explain the logic.
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SaddlebackSearch.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac SaddlebackSearch.java 
+   ```
+3. **Run:**
+   ```bash
+   java SaddlebackSearch
+   ```

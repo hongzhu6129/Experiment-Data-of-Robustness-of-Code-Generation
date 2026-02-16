@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+class ReplaceCharacters {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter the input string: ");
+        String inputString = scanner.nextLine();
+
+        // Get the character to replace with
+        System.out.println("Enter the character to replace with: ");
+        char replaceWith = scanner.nextLine().charAt(0);
+
+        // Replace all applicable characters with the given character
+        String replacedString = inputString.replaceAll("[aeiouAEIOU]", String.valueOf(replaceWith));
+
+        // Print the replaced string
+        System.out.println("The replaced string is: " + replacedString);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Input String:** "Hello, world!"
+* **Replace With:** 'x'
+* **Expected Output:** "xllx, wrld!"
+
+* **Input String:** "12345"
+* **Replace With:** 'a'
+* **Expected Output:** "12345" (since there are no vowels in the input string)
+
+* **Input String:** "AEIOUaeiou"
+* **Replace With:** 'z'
+* **Expected Output:** "zzzzzzzz"
+
+* **Input String:** "" (empty string)
+* **Replace With:** 'x'
+* **Expected Output:** "" (empty string)
+
+* **Input String:** "aA"
+* **Replace With:** 'Z'
+* **Expected Output:** "ZZ"
+
+* **Input String:** "A E I O U a e i o u"
+* **Replace With:** '1'
+* **Expected Output:** "1 1 1 1 1 1 1 1 1 1 1"

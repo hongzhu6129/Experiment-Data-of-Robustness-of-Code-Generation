@@ -1,0 +1,74 @@
+```java
+import java.util.Scanner;
+
+public class AddDigitsUntilOne {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a positive integer: ");
+        int num = scanner.nextInt();
+
+        if (num <= 0) {
+            System.out.println("Please enter a positive integer.");
+        } else {
+            int result = add_digits_until_one(num);
+            System.out.println("The final single-digit result is: " + result);
+        }
+        scanner.close(); 
+    }
+
+    public static int add_digits_until_one(int num) {
+        while (num >= 10) { // Continue until num is a single digit
+            int sum = 0;
+            while (num > 0) {  // Add up all digits of num
+                sum += num % 10;
+                num /= 10;
+            }
+            num = sum;        // Update num with the sum
+        }
+        return num; 
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **`main` Method:**
+   - The `main` method is the entry point of the program.
+   - It uses a `Scanner` to get integer input from the user.
+   - Input validation ensures that the number entered is positive.
+   - It calls the `add_digits_until_one` method to perform the digit summing.
+   - Finally, it prints the result.  It's good practice to close the `Scanner` when you are finished with it.
+
+2. **`add_digits_until_one` Method:**
+   - This method takes a positive integer `num` as input.
+   - **Outer `while` loop:** This loop continues as long as `num` has more than one digit (i.e., greater than or equal to 10).
+   - **Inner `while` loop:** This loop iterates through the digits of `num`.
+     - `num % 10` extracts the last digit.
+     - `num /= 10` removes the last digit (integer division).
+     - The `sum` variable accumulates the digits.
+   - After the inner loop, `num` is updated with the calculated `sum`.
+   - The outer loop repeats this process until `num` becomes a single digit.
+   - The final single-digit `num` is returned.
+
+
+**Example Usage:**
+
+If the user enters 12345:
+
+1. The initial `num` is 12345.
+2. First iteration: 1 + 2 + 3 + 4 + 5 = 15. `num` becomes 15.
+3. Second iteration: 1 + 5 = 6. `num` becomes 6.
+4. The loop terminates because 6 is a single digit.
+5. The output is 6.
+
+
+**Key Concepts:**
+
+* **Loops:** Demonstrates the use of nested `while` loops for iteration and digit extraction.
+* **Modulo Operator (%):** Used to extract the last digit of a number.
+* **Integer Division (/):** Used to remove the last digit.
+* **Method Design:** Shows how to break down a problem into smaller, more manageable methods.
+* **Input Validation:**  Highlights the importance of checking user input for correctness.
+* **Resource Management:** Shows the good practice of closing the `Scanner`.

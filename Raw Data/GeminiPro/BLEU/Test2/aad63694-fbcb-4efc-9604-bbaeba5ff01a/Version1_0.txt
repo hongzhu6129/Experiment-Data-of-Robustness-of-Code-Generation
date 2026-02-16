@@ -1,0 +1,62 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference (num1 - num2): " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder: " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            System.out.println("Remainder operation with a divisor of zero is not allowed.");
+        }
+
+
+        input.close(); // Close the Scanner
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference (num1 - num2) | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2 | 0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | "Division by zero" | "Remainder with zero divisor" |
+| 6. Decimal Numbers | 10.5 | 2.5 | 13 | 8 | 26.25 | 4.2 | 0 |
+| 7. Large Numbers | 100000 | 1000 | 101000 | 99000 | 100000000 | 100 | 0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0.001 | 
+| 9. Integer Overflow (Corner Case) | Integer.MAX_VALUE | 1 | Integer.MIN_VALUE | Integer.MAX_VALUE - 1 |  - |  - | - | // Note: Integer overflow behavior
+| 10. Integer Underflow (Corner Case)| Integer.MIN_VALUE | -1 | Integer.MAX_VALUE | Integer.MIN_VALUE + 1 |  - |  - | - | // Note: Integer underflow behavior
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Test Case 5):**  Dividing by zero is undefined mathematically. The program explicitly checks for this and prints an appropriate message.
+* **Integer Overflow/Underflow (Test Cases 9 & 10):** Java's `int` type has a limited range. When calculations exceed this range (either positive or negative), the value "wraps around."  The program itself doesn't explicitly handle this, and the results will reflect the standard Java overflow/underflow behavior.  This is something to be aware of when dealing with potentially large or small numbers.
+
+
+
+
+This improved version uses `double` to handle a wider range of numbers and provides better error handling for division by zero, along with comprehensive test cases. It also closes the `Scanner` to release system resources. Remember to run these test cases to verify the program's correctness.

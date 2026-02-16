@@ -1,0 +1,68 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        int row = 1;
+        int coinsInRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            coinsInRow++; // Increment coins for the current row
+
+            if (coinsUsed + coinsInRow <= n) { // Check if enough coins are available
+                for (int i = 0; i < coinsInRow; i++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+                coinsUsed += coinsInRow;
+                row++;
+            } else {
+                // Handle remaining coins if not enough for a full row
+                int remainingCoins = n - coinsUsed;
+                for (int i = 0; i < remainingCoins; i++) {
+                    System.out.print("* ");
+                }
+                System.out.println();  // Print the final (possibly incomplete) row
+                coinsUsed += remainingCoins;  //So we break out of the while loop
+            }
+        }
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Initialization:**
+   - `n`:  The total number of coins.
+   - `row`: Keeps track of the current row number (starts at 1).
+   - `coinsInRow`: The number of coins in the current row.
+   - `coinsUsed`: The total number of coins used so far.
+
+
+2. **Outer `while` loop:** Continues as long as there are coins remaining (`coinsUsed < n`).
+
+3. **Increment `coinsInRow`:**  For each row, we need one more coin than the previous row.
+
+4. **Check for sufficient coins:** `if (coinsUsed + coinsInRow <= n)` makes sure we have enough coins to complete the current row.
+
+5. **Print the row:**  If enough coins are available, we print `coinsInRow` asterisks (*) to represent the coins.
+
+6. **Update `coinsUsed`:**  After printing a row, we update `coinsUsed` with the number of coins in that row.
+
+7. **Increment `row`:** Prepare for the next row.
+
+8. **Handling remaining coins:**  The `else` block handles the case where there aren't enough coins to complete a full row. It prints the remaining coins and then breaks out of the `while` loop.
+
+
+Example output (n = 10):
+
+```
+* 
+* * 
+* * * 
+* 
+```

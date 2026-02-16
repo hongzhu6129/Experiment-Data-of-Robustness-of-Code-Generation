@@ -1,0 +1,49 @@
+
+
+
+
+**Test Cases:**
+
+1. **Empty Input:**
+   - Input: ""
+   - Expected Output: `Octal equivalent: 0`
+
+2. **Invalid Input (Non-binary characters):**
+   - Input: "101201"
+   - Expected Output: `Invalid binary input.`
+
+3. **Zero:**
+   - Input: "0"
+   - Expected Output: `Octal equivalent: 0`
+
+4. **Single Binary Digit (1):**
+   - Input: "1"
+   - Expected Output: `Octal equivalent: 1`
+
+5. **Small Binary Number:**
+   - Input: "101"
+   - Expected Output: `Octal equivalent: 5`
+
+6. **Larger Binary Number:**
+   - Input: "111010110"
+   - Expected Output: `Octal equivalent: 726`
+
+7. **Binary Number with Leading Zeros:**
+   - Input: "000101"  
+   - Expected Output: `Octal equivalent: 5`
+
+8. **Maximum Integer Value (to avoid overflow in decimal conversion -  adjust as needed for your system):**
+   - Input: "1111111111111111111111111111111" (32 ones - Java int max)
+   - Expected Output: `Octal equivalent: 37777777777`
+
+
+
+**Explanation of Corner Case Handling:**
+
+- **Empty Input:**  Handles the case where the user enters nothing.
+- **Invalid Input:** Checks for characters other than '0' and '1'.
+- **Leading Zeros:** The code correctly handles leading zeros by iterating from right to left during binary to decimal conversion.
+- **Zero Value:** Specifically checks for an input of "0" to output "0". This is a special case, ensuring clean output and preventing an empty octal string.
+
+
+This improved version addresses the potential integer overflow by using `long` for decimal representation where appropriate and includes more comprehensive test cases.  It also makes the output more consistent and user-friendly.

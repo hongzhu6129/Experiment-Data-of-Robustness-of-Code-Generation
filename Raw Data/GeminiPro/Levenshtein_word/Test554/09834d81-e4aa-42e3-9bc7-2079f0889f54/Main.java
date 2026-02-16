@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList to store strings (colors in this case)
+        List<String> colors = new ArrayList<>();
+
+        // Add some colors to the list
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Purple");
+
+        // Print out the collection using the enhanced for loop (or any other method)
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+
+        // Alternative print method using streams (Java 8 and above):
+        //colors.forEach(System.out::println);
+
+
+
+    }
+}

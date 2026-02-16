@@ -1,0 +1,92 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StringConcatenation {
+
+    public static String concatenateWithoutFirstChar(String str1, String str2) {
+        if (str1 == null || str2 == null || str1.length() < 1 || str2.length() < 1) {
+            throw new IllegalArgumentException("Strings cannot be null and must have length 1 or greater.");
+        }
+        return str1.substring(1) + str2.substring(1);
+    }
+
+    @Test
+    void testValidStrings() {
+        assertEquals("elloorld", concatenateWithoutFirstChar("Hello", "World"));
+        assertEquals("bc", concatenateWithoutFirstChar("ab", "bc"));
+        assertEquals("y", concatenateWithoutFirstChar("xy", "y")); // Second string length 1
+        assertEquals("x", concatenateWithoutFirstChar("x", "yz")); // First string length 1
+        assertEquals("", concatenateWithoutFirstChar("a", "b"));  // Both strings length 1
+
+    }
+
+
+    @Test
+    void testNullStrings() {
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar(null, "World"));
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar("Hello", null));
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar(null, null));
+    }
+
+    @Test
+    void testEmptyString() {
+
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar("", "World"));
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar("Hello", ""));
+        assertThrows(IllegalArgumentException.class, () -> concatenateWithoutFirstChar("", ""));
+
+    }
+
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+        try {
+            String result = concatenateWithoutFirstChar(str1, str2);
+            System.out.println("Concatenated string: " + result);
+
+
+            str1 = "x";  // Test with length 1
+            str2 = "yz"; // Test with length greater than 1
+            result = concatenateWithoutFirstChar(str1, str2);
+            System.out.println("Concatenated string: " + result);
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+
+    }
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes thorough error handling using `IllegalArgumentException` to address null or empty strings and strings with lengths less than 1.  This makes the function more robust.
+
+2. **JUnit Tests:**  The code now includes JUnit 5 tests, which are a standard way to verify the correctness of your code.  The test cases cover:
+   - Valid input strings of different lengths.
+   - Corner cases (strings of length 1).
+   - Null strings.
+   - Empty strings.
+
+3. **Clarity and Readability:**  Minor improvements to variable names and comments make the code easier to understand.
+
+4. **Main Method Examples:** The `main` method demonstrates how to use the function and also how to handle potential exceptions.
+
+
+
+**How to Run the Tests:**
+
+If you're using an IDE like IntelliJ or Eclipse, you can usually right-click on the test class or methods and select "Run".  If you're using the command line:
+
+1. **Compile:** `javac StringConcatenation.java`
+2. **Run (assuming you have JUnit on your classpath):**  `java org.junit.platform.console.ConsoleLauncher --class StringConcatenation`
+
+
+
+
+This revised version provides much better error handling, testing, and overall robustness. Using unit tests is a best practice that will help you catch errors early and ensure your code behaves as expected.

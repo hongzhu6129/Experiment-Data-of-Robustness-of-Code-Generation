@@ -1,0 +1,105 @@
+```java
+import java.nio.charset.Charset;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.SortedMap;
+
+public class ListAvailableCharsets {
+
+    public static void listCharsets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        System.out.println("Available Character Sets:");
+        for (String charsetName : charsets.keySet()) {
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + ": " + charset.displayName());
+            // Optionally, print aliases:
+            // System.out.println("   Aliases: " + charset.aliases()); 
+        }
+    }
+
+
+    public static void main(String[] args) {
+        listCharsets();
+    }
+}
+
+
+
+// ---- Test Cases (using JUnit) ----
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Set;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class ListAvailableCharsetsTest {
+
+    @Test
+    void testListCharsetsContainsUTF8() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); 
+
+        ListAvailableCharsets.listCharsets();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("UTF-8"));  // Verify UTF-8 is listed
+
+        System.setOut(System.out); // Restore standard output
+    }
+
+
+    @Test
+    void testListCharsetsNonEmpty() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+        assertFalse(charsets.isEmpty());  // At least one charset should always be available.
+    }
+
+
+
+    @Test
+    void testListCharsetsHandlesAliases() { // Corner case
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); 
+
+        ListAvailableCharsets.listCharsets();
+
+        String output = outputStream.toString();
+
+        // Check if an expected charset with aliases is handled (UTF-16 should always have aliases)
+        if (Charset.isSupported("UTF-16")) { // Guard against platforms without UTF-16 (unlikely)
+          assertTrue(output.contains("UTF-16"));
+
+          // The following check requires aliases to be printed. Uncomment if printing aliases in main code
+          //assertTrue(output.contains("UTF-16LE") || output.contains("UTF-16BE")); // Alias example
+        }
+
+        System.setOut(System.out);
+    }
+
+
+}
+```
+
+
+**Explanation and Test Cases:**
+
+1. **`ListAvailableCharsets.java` (Main Code):**
+   - Uses `Charset.availableCharsets()` to get a `SortedMap` of available charsets.
+   - Iterates through the map and prints the canonical name (`charsetName`) and the display name (`charset.displayName()`) of each charset.
+   - You can uncomment the line `System.out.println("   Aliases: " + charset.aliases());` if you also want to print the aliases for each character set.
+
+2. **Test Cases (`ListAvailableCharsetsTest.java`):**
+   - **`testListCharsetsContainsUTF8()`:**  This test verifies that "UTF-8" (a very common charset) is present in the output of `listCharsets()`. It redirects `System.out` to capture the output and then checks if "UTF-8" is in the captured string.  It's important to restore `System.out` after each test.
+   - **`testListCharsetsNonEmpty()`:** This test is crucial.  It ensures that `Charset.availableCharsets()` never returns an empty map.  There should *always* be at least one character set available on any Java platform.
+   - **`testListCharsetsHandlesAliases()` (Corner Case):**  This test checks that the code handles charsets that have aliases correctly. UTF-16 (and some others) have aliases (like UTF-16LE, UTF-16BE). The test first checks if "UTF-16" exists and then (if you uncomment the alias printing in the main code), checks if an alias is also displayed in the output.   The `if (Charset.isSupported("UTF-16"))` guard handles the very unlikely case where a platform doesn't support UTF-16.
+
+
+
+**How to Run the Tests (with JUnit 5):**
+
+1. **IDE (IntelliJ, Eclipse, etc.):**  Most IDEs have built-in support for running JUnit tests. Just right-click on the test class or test method and select "Run".
+2. **Command Line (with Maven):**  If you're using Maven, you can run the tests with: `mvn test`
+3. **Command Line (without build tools):** You'll need to compile and run the tests using the `javac` and `java` commands, ensuring that the JUnit JAR is on the classpath. This is a bit more involved. If you need help with this method, please let me know.

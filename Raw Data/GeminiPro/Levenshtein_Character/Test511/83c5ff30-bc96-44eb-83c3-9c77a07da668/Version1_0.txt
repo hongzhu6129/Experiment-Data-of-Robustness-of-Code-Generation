@@ -1,0 +1,85 @@
+```java
+import java.math.BigInteger;
+import java.util.Tuple; // Assuming you have a Tuple class defined
+
+public class LychrelNumbers {
+
+    static BigInteger rev(BigInteger n) {
+        String s = n.toString();
+        StringBuilder sb = new StringBuilder(s);
+        return new BigInteger(sb.reverse().toString());
+    }
+
+    static Tuple lychrel(BigInteger n) {
+        BigInteger original = n;
+        int iterations = 0;
+        for (int i = 0; i < 500; i++) {
+            n = n.add(rev(n));
+            if (n.equals(rev(n))) {
+                return new Tuple<>(false, iterations + 1, n); // Not a Lychrel candidate
+            }
+            iterations++;
+        }
+        return new Tuple<>(true, iterations, n); // Lychrel candidate
+    }
+
+    public static void main(String[] args) {
+        int lychrelCount = 0;
+
+        for (int i = 1; i <= 10000; i++) {
+            Tuple result = lychrel(BigInteger.valueOf(i));
+            if ((Boolean) result.getItem1()) {
+                lychrelCount++;
+                System.out.println("Lychrel candidate: " + i + " (iterations: " + result.getItem2() + ", final value: " + result.getItem3() + ")");
+            }
+        }
+
+        System.out.println("Total Lychrel candidates found: " + lychrelCount);
+    }
+}
+
+
+// Simple Tuple implementation (replace with a real Tuple class if available)
+class Tuple {
+    private final Object[] items;
+
+    public Tuple(Object... items) {
+        this.items = items;
+    }
+
+    public Object getItem1() {
+        return items[0];
+    }
+
+    public Object getItem2() {
+        return items[1];
+    }
+
+    public Object getItem3() { return items[2]; }
+
+    // Add getters for more items if needed
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **BigInteger:** Uses `BigInteger` for handling potentially large numbers arising from repeated additions.
+2. **rev() Function:** Efficiently reverses a `BigInteger` by converting it to a string, reversing the string, and then converting back to `BigInteger`.
+3. **lychrel() Function:**  Performs the 196-algorithm and returns a `Tuple` containing:
+   - `Boolean`:  `true` if the number is a Lychrel candidate (didn't become a palindrome within 500 iterations), `false` otherwise.
+   - `Integer`: Number of iterations performed.
+   - `BigInteger`: The final value reached after iterations.
+4. **main() Function:** Iterates from 1 to 10000. Calls `lychrel()` for each number and counts the Lychrel candidates. Prints information about each candidate.
+5. **Tuple Class:** Provides a basic `Tuple` class (you might want to replace this with a more robust Tuple library if you have one).
+6. **Clear Output:** Prints both the original seed number, the number of iterations, and the final value for better analysis.
+7. **Efficiency:**  The `rev()` function uses `StringBuilder` for efficient string manipulation.
+
+
+**To use this code:**
+
+1. **Replace the placeholder Tuple class:**  If you have a Tuple library (e.g., Apache Commons Lang, or JavaFX's Pair), import and use it instead of the provided simple Tuple implementation.
+2. **Compile and run:** `javac LychrelNumbers.java` and then `java LychrelNumbers`
+
+
+This improved version addresses the previous issues, handles large numbers correctly, provides clearer output, and is more efficient.

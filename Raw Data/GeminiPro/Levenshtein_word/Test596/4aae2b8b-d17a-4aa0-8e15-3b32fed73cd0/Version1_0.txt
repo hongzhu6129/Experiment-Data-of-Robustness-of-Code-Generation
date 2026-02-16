@@ -1,0 +1,54 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListLastElement {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        // Check if the list is empty
+        if (languages.isEmpty()) {
+            System.out.println("The LinkedList is empty.");
+            return; // Exit early if the list is empty
+        }
+
+        // Retrieve the last element using peekLast()
+        String lastElement = languages.peekLast();
+
+        // Print the last element
+        if (lastElement != null) { // Redundant check, but good practice for general cases
+            System.out.println("The last element is: " + lastElement);
+        }
+
+
+        // Demonstrate that the element is still in the list:
+        System.out.println("The LinkedList after peekLast(): " + languages);
+
+
+        // Example showing difference between peekLast() and pollLast():
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("Original numbers list: " + numbers);
+
+        int lastNumberPeek = numbers.peekLast(); // Retrieves, but doesn't remove
+        System.out.println("Last number (peekLast): " + lastNumberPeek);
+        System.out.println("Numbers list after peekLast: " + numbers); // List unchanged
+
+        int lastNumberPoll = numbers.pollLast();  // Retrieves AND removes
+        System.out.println("Last number (pollLast): " + lastNumberPoll);
+        System.out.println("Numbers list after pollLast: " + numbers); // Last element removed
+
+    }
+}
+```

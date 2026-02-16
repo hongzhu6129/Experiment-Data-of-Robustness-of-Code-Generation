@@ -1,0 +1,45 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class CalculateAge {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your birthdate in YYYY-MM-DD format (e.g., 1995-03-15):");
+
+        String birthDateString = scanner.nextLine();
+
+        try {
+            LocalDate birthDate = LocalDate.parse(birthDateString, DateTimeFormatter.ISO_DATE);
+            LocalDate currentDate = LocalDate.now();
+
+            Period age = Period.between(birthDate, currentDate);
+
+            System.out.println("Your age is: " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days.");
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+        }
+    }
+}
+```
+
+
+This improved version:
+
+1. **Handles invalid input:**  It uses a `try-catch` block to catch `DateTimeParseException` if the user enters the date in the wrong format. This prevents the program from crashing.
+2. **Uses `java.time`:** The `java.time` API (introduced in Java 8) is the modern and preferred way to work with dates and times in Java.  It's much cleaner and easier to use than older classes like `Date` and `Calendar`.
+3. **Calculates the precise age:**  `Period.between()` calculates the exact difference between two dates, including years, months, and days.
+4. **Clear prompts and output:**  The program provides clear instructions to the user and displays the age in a user-friendly format.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CalculateAge.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run `javac CalculateAge.java`.
+3. **Run:**  After successful compilation, run `java CalculateAge`. The program will prompt you to enter your birthdate.

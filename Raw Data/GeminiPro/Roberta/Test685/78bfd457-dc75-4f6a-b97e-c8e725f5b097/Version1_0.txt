@@ -1,0 +1,60 @@
+```java
+public class ReverseInteger {
+
+    public static void main(String[] args) {
+        int num = 12345;
+        int reversed = 0;
+
+        System.out.println("Original Number: " + num);
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        System.out.println("Reversed Number: " + reversed);
+
+
+        //Handling overflow (though not explicitly requested, it's good practice)
+        num = 1534236469;  //Example that would overflow
+        reversed = 0;
+
+        System.out.println("\nOriginal Number (with potential overflow): " + num);
+
+        try {
+            while (num != 0) {
+                int digit = num % 10;
+                reversed = Math.addExact(Math.multiplyExact(reversed, 10), digit); //Use Math.addExact and Math.multiplyExact to detect overflow
+                num /= 10;
+            }
+            System.out.println("Reversed Number: " + reversed);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Integer overflow occurred during reversal.");
+        }
+
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **No separate method:** The code performs the reversal directly within the `main` method as requested.
+
+2. **Basic Reversal:**
+   - The `while` loop iterates through the digits of the input `num`.
+   - `digit = num % 10` extracts the last digit.
+   - `reversed = reversed * 10 + digit` builds the reversed number by adding the extracted digit to the end of the current reversed number.
+   - `num /= 10` removes the last digit from the original number.
+
+3. **Handling Overflow (Important Improvement):**
+   - The second part of the `main` method demonstrates how to deal with potential integer overflow (which can occur if the reversed number becomes larger than the maximum value an `int` can hold).
+   - `Math.addExact()` and `Math.multiplyExact()` are used. These methods throw an `ArithmeticException` if an overflow occurs.
+   - The `try-catch` block catches the `ArithmeticException` and prints an error message if an overflow happens.
+
+This improved version is more robust and handles a wider range of input values correctly.

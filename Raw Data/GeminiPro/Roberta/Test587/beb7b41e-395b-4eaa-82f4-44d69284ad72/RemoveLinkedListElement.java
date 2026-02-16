@@ -1,0 +1,64 @@
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to be removed
+        String elementToRemove = "Orange";
+
+
+        // Remove the specified element 
+        boolean removed = linkedList.remove(elementToRemove); // remove() handles nulls safely
+
+
+        if (removed) {
+            System.out.println("LinkedList after removing '" + elementToRemove + "': " + linkedList);
+        } else {
+            System.out.println("'" + elementToRemove + "' not found in the LinkedList.");
+        }
+
+
+        // Example removing by index (demonstration - not strictly part of the problem description)
+        if (!linkedList.isEmpty()) { // Ensure the list isn't empty
+            int indexToRemove = 1; // Remove element at index 1 (the second element)
+
+            String removedByIndex = linkedList.remove(indexToRemove);
+
+
+            System.out.println("LinkedList after removing element at index " + indexToRemove + ": " + linkedList);
+
+        }
+
+
+        // Handling edge case: empty list
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        boolean removedFromEmpty = emptyList.remove((Integer) 5); // Example with Integer list
+        System.out.println("Attempt to remove from empty list: " + removedFromEmpty + ", Empty List: " + emptyList);
+
+
+
+        // Handling null in list (remove(Object) handles nulls)
+        LinkedList<String> listWithNull = new LinkedList<>();
+        listWithNull.add("Apple");
+        listWithNull.add(null);
+        listWithNull.add("Banana");
+
+        boolean removedNull = listWithNull.remove(null);
+        System.out.println("Removed null?: " + removedNull + ", List: " + listWithNull);
+
+
+
+    }
+}

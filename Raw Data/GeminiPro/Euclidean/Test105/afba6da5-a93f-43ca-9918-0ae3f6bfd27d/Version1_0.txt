@@ -1,0 +1,53 @@
+```java
+class Solution {
+    public static void main(String[] args) {
+        int num = 151; // Example input, you can modify this to take user input.
+        if (is_Palindrome(num)) {
+            System.out.println(num + " is a palindrome number.");
+        } else {
+            System.out.println(num + " is not a palindrome number.");
+        }
+    }
+
+
+    public static int reverse_nums(int num) {
+        int reversed = 0;
+        while (num > 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        return reversed;
+    }
+
+    public static boolean is_Palindrome(int num) {
+        return num == reverse_nums(num);
+    }
+}
+```
+
+
+Explanation and improvements:
+
+1. **Clear Method Signatures:** The code adheres to the requested method signatures: `main(String[])`, `reverse_nums(int)`, and `is_Palindrome(int)`.
+
+2. **`reverse_nums` function:** This function efficiently reverses an integer.
+
+3. **`is_Palindrome` function:** This function now simply checks if the original number is equal to its reversed version using the `reverse_nums` function. This is a much clearer and more efficient way to check for palindromes.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `is_Palindrome` function and prints the result to the console. You can easily change the `num` variable to test with other numbers.
+
+5. **User Input (Optional):**  If you want to take user input, you can modify the `main` method like this:
+
+   ```java
+   import java.util.Scanner;
+
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       System.out.print("Enter a positive integer: ");
+       int num = scanner.nextInt();  // Read integer input from the user
+       // ... rest of the code (same as before)
+   }
+   ```
+
+
+This improved version is more concise, readable, and efficient in determining if a number is a palindrome. It also demonstrates how to handle user input if desired.

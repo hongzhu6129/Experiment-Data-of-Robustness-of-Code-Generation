@@ -1,0 +1,45 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+2. **Valid Binary with Leading Zeros:**
+   - Input: `001101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+3. **Larger Valid Binary:**
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+
+4. **Zero:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+
+5. **Empty Input:**
+   - Input: ``
+   - Expected Output: `Invalid binary number.`
+
+6. **Invalid Binary (contains characters other than 0 or 1):**
+   - Input: `1102`
+   - Expected Output: `Invalid binary number.`
+
+7. **Invalid Binary (contains spaces):**
+   - Input: `11 01`
+   - Expected Output: `Invalid binary number.`
+
+8. **Very Large Binary (potential overflow):**
+    - Input: A very long string of '1's exceeding `Integer.MAX_VALUE`  (e.g., a string of 32 '1's)
+    - Expected Behaviour: While the program doesn't explicitly check for integer overflow, it's good to test with large values to see how it behaves (potential overflow).  Might throw `NumberFormatException`. It's a limitation of this simple approach.
+
+9. **Negative Binary (not directly supported):**
+    - Input: `-1101`
+    - Expected Output: `Invalid binary number.` (This implementation doesn't handle negative binary directly).
+
+
+
+
+This comprehensive set of test cases helps ensure the program handles various scenarios, including both valid and invalid inputs and edge cases.  It also highlights a potential area for improvement (handling very large binary numbers and potential overflow).

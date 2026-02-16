@@ -1,0 +1,90 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LexicographicalFileComparison {
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java LexicographicalFileComparison <file1> <file2>");
+            return;
+        }
+
+        String file1Path = args[0];
+        String file2Path = args[1];
+
+        try (BufferedReader reader1 = new BufferedReader(new FileReader(file1Path));
+             BufferedReader reader2 = new BufferedReader(new FileReader(file2Path))) {
+
+            int comparisonResult = compareFiles(reader1, reader2);
+
+            if (comparisonResult < 0) {
+                System.out.println(file1Path + " comes before " + file2Path + " lexicographically.");
+            } else if (comparisonResult > 0) {
+                System.out.println(file1Path + " comes after " + file2Path + " lexicographically.");
+            } else {
+                System.out.println(file1Path + " and " + file2Path + " are lexicographically equal.");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading files: " + e.getMessage());
+        }
+    }
+
+
+    private static int compareFiles(BufferedReader reader1, BufferedReader reader2) throws IOException {
+        String line1;
+        String line2;
+
+        while ((line1 = reader1.readLine()) != null && (line2 = reader2.readLine()) != null) {
+            int lineComparison = line1.compareTo(line2);
+            if (lineComparison != 0) {
+                return lineComparison; // Files differ at this line
+            }
+        }
+
+        // One file is a prefix of the other or both files have been fully read
+        if (line1 == null && line2 == null) {
+            return 0; // Files are equal
+        } else if (line1 == null) {
+            return -1; // File 1 is shorter (a prefix of File 2)
+        } else {
+            return 1; // File 2 is shorter (a prefix of File 1)
+        }
+    }
+}
+
+
+```
+
+
+Explanation and Educational Points:
+
+1. **Lexicographical Order:** The code implements a lexicographical comparison, similar to how words are ordered in a dictionary.  It compares files line by line.  If two lines differ, the comparison of those lines determines the order.
+
+2. **`compareTo()` Method:**  The core of the comparison is the `String.compareTo()` method.  This method returns:
+   - A negative integer if the first string is lexicographically less than the second.
+   - Zero if the strings are equal.
+   - A positive integer if the first string is lexicographically greater than the second.
+
+3. **Line-by-Line Comparison:** The `compareFiles` method reads both files line by line using `BufferedReader`.  This is efficient for large files as it doesn't load the entire files into memory at once.
+
+4. **Handling Different File Lengths:** The code correctly handles cases where one file is shorter than the other (a prefix). If all lines are equal up to the end of the shorter file, the shorter file is considered lexicographically smaller.
+
+5. **Error Handling:** The `try-with-resources` block ensures that the files are closed properly even if exceptions occur.  The `catch` block handles potential `IOExceptions`.
+
+6. **Command-Line Arguments:**  The `main` method uses `args` to get the file paths from the command line.  This makes the code reusable for comparing different files.
+
+7. **Clear Output:** The code provides informative output to the user, indicating which file comes first lexicographically or if they are equal.
+
+8. **Modularity:** The comparison logic is encapsulated in the `compareFiles` method, making the code more organized and easier to understand.
+
+
+
+
+How to compile and run:
+
+1. Save the code as `LexicographicalFileComparison.java`.
+2. Compile: `javac LexicographicalFileComparison.java`
+3. Run: `java LexicographicalFileComparison file1.txt file2.txt`  (Replace `file1.txt` and `file2.txt` with the actual file paths).

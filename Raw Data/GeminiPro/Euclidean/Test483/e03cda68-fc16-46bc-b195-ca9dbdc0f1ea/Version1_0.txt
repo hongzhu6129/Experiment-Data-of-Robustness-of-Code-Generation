@@ -1,0 +1,59 @@
+```java
+import java.util.Scanner;
+
+public class DaysBetweenYears {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first year: ");
+        int year1 = scanner.nextInt();
+        System.out.print("Enter the second year: ");
+        int year2 = scanner.nextInt();
+
+        if (year1 > year2) {
+            int temp = year1;
+            year1 = year2;
+            year2 = temp; // Ensure year1 is always smaller than or equal to year2
+        }
+
+        int totalDays = 0;
+        for (int year = year1; year < year2; year++) {
+            totalDays += number_of_days(year);
+        }
+
+        System.out.println("Number of days between " + year1 + " and " + year2 + ": " + totalDays);
+        scanner.close();
+    }
+
+    public static int number_of_days(int year) {
+        if (is_Leap_Year(year)) {
+            return 366;
+        } else {
+            return 365;
+        }
+    }
+
+    public static boolean is_Leap_Year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Input and Validation:** The code now takes input from the user using a `Scanner`. It also swaps the years if `year1` is greater than `year2` to ensure correct calculation.  You could add further input validation (e.g., checking for valid year ranges) if needed.
+
+2. **Looping for Calculation:**  The code iterates from `year1` (inclusive) up to but not including `year2` (exclusive) using a `for` loop. This calculates the total number of days in the years between the given years.
+
+3. **Clear Method Signatures:** The code uses the required method signatures `main()`, `number_of_days()`, and `is_Leap_Year()` precisely as specified.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DaysBetweenYears.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the command:  `javac DaysBetweenYears.java`
+3. **Run:** After successful compilation, run the program using: `java DaysBetweenYears`
+
+
+Now, the program will prompt you to enter the two years, and it will output the total number of days between those years (exclusive of the end year).

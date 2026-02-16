@@ -1,0 +1,53 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CountWordsEndingMorN {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        Pattern pattern = Pattern.compile("\\b\\w+[mnMN]\\b"); // Word boundary, one or more word chars, m or n, word boundary
+        Matcher matcher = pattern.matcher(text);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        CountWordsEndingMorN counter = new CountWordsEndingMorN();
+
+        String text1 = "The program is written in Java, autumn is coming soon";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 count: " + count1); // Output: 2 (program, autumn)
+
+        String text2 = "Man is important than money";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 count: " + count2); // Output: 2 (Man, than)
+
+
+
+        String text3 = ""; // Empty string
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 count: " + count3); // Output: 0
+
+        String text4 = null;  // Null string
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 count: " + count4); // Output: 0
+
+        String text5 = "   "; // Whitespace only
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 count: " + count5); // Output: 0
+
+         String text6 = "item Item autumn Autumn William WILLIAM plan PLAN";
+         int count6 = counter.endWithmOrn(text6);
+        System.out.println("Text 6 count: " + count6); // Output: 8
+
+
+    }
+}
+

@@ -1,0 +1,52 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "t " : "w "); // t for true, w for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **`main` Method:** The `main` method now initializes a sample 2D boolean array.
+2. **`printBooleanArray` Method:** This helper method iterates through the 2D array using enhanced `for` loops (also known as for-each loops).  This makes the code more concise and readable.
+3. **Clear Representation:** The `printBooleanArray` method uses a ternary operator (`value ? "t " : "w "`) to print "t" for `true` and "w" for `false`, as requested in the problem description.  It also adds a space after each element for better readability.
+4. **Newlines:**  A `System.out.println()` is added after each row to format the output correctly, making it a clear 2D representation.
+
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as a `.java` file (e.g., `PrintBooleanArray.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac PrintBooleanArray.java
+   ```
+3. **Run:** After successful compilation, run the program:
+   ```bash
+   java PrintBooleanArray
+   ```
+
+This will print the following output to the console:
+
+```
+t w t 
+w t w 
+t t w 
+```

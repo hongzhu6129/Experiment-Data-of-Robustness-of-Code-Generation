@@ -1,0 +1,35 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+        // Another example (you can change these values to test)
+        boolean[][] anotherArray = {
+                {false, false},
+                {true, true}
+        };
+
+        System.out.println(); // Add a newline for clarity
+        printBooleanArray(anotherArray);
+
+
+    }
+
+    // Helper function to print the array (not strictly required, but makes the code cleaner)
+    public static void printBooleanArray(boolean[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] ? "t " : "f "); // Using ternary operator for concise printing
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```

@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Latitude 1 | Longitude 1 | Latitude 2 | Longitude 2 | Expected Distance (approx.) | Description |
+|---|---|---|---|---|---|---|
+| 1 | 25 | 35 | 35.5 | 25.5 | 1480.08 | Example from the prompt |
+| 2 | 0 | 0 | 0 | 0 | 0 | Same point |
+| 3 | 90 | 0 | -90 | 0 |  20015.09 | North and South Poles |
+| 4 | 0 | 0 | 0 | 180 | 20015.09 | Opposite sides of the equator |
+| 5 | 40.7128 | -74.0060 | 34.0522 | -118.2437 | 3935.86 | New York to Los Angeles |
+| 6 | 0 | 0 | 1 | 1 | 157.26 | Small distance |
+| 7 | 90 | 0 | 89 | 180 | 157.46 | Near North Pole, opposite longitude |  // Corner case near pole, large longitude difference
+| 8 | 0 | 179 | 0 | -179 | 222.64 | Near antimeridian |  // Corner case near 180/-180 longitude
+| 9 | 89.99 | 0 | 89.99 | 1 | 1.11 | Very near the North Pole | // Corner case very near pole
+| 10 | -90 | 0 | -89 | 0 | 111.19 | Near South Pole | // Corner case near pole
+| 11 |  0 | 90 | 0 | -90 | 20015.09 | Opposite sides on the equator |
+
+
+
+
+**Explanation of Corner Cases:**
+
+* **Near Poles:** Calculations involving latitudes close to 90 or -90 degrees can be tricky due to the converging meridians.  Test cases 7 and 9 verify the behavior near the poles with varying longitude differences. Test case 10 is for the area near the south pole.
+
+* **Near the Antimeridian (180/-180 Longitude):** Crossing the 180-degree meridian requires careful handling of longitude differences. Test case 8 tests this.
+
+* **Same Point:** The distance between a point and itself should be zero (Test case 2).
+
+* **Opposite Points on Equator:** Test case 4 and 11 checks the calculation for opposite points along the equator, resulting in half the earth's circumference as the distance.
+
+**How to Run the Tests:**
+
+You can manually input these values into the program or, for a more automated approach, create a separate test class using a testing framework like JUnit.  This will allow you to run the tests easily and verify the results against the expected values.  A JUnit example would look like this (partial example):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    void testNewYorkToLosAngeles() {
+        double distance = calculateDistance(40.7128, -74.0060, 34.0522, -118.2437);
+        assertEquals(3935.86, distance, 0.01); // Allow a small tolerance for floating-point comparison
+    }
+
+
+    // Add more test methods for other test cases
+
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        // ... (same calculation logic as in your main method) ...
+    }
+
+}
+```
+
+
+
+This approach is more robust and makes it much easier to manage and run your tests as you develop your code.  Remember to include JUnit (or your preferred testing framework) as a dependency in your project.

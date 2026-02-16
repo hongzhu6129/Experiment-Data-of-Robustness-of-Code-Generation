@@ -1,0 +1,62 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth) {
+                return (leftDepth + 1);
+            } else {
+                return (rightDepth + 1);
+            }
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(3);
+        root.left = new Node(9);
+        root.right = new Node(20);
+        root.right.left = new Node(15);
+        root.right.right = new Node(7);
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+
+        // Additional Test cases
+        Node root2 = null; // Empty Tree
+        System.out.println("Height of tree is : " + tree.maxDepth(root2));  // Output: 0
+
+        Node root3 = new Node(1); // Single node tree
+        System.out.println("Height of tree is : " + tree.maxDepth(root3)); // Output: 1
+
+        Node root4 = new Node(1);
+        root4.left = new Node(2);
+        root4.left.left = new Node(3); // Left-skewed tree
+        System.out.println("Height of tree is : " + tree.maxDepth(root4)); // Output 3
+
+
+
+    }
+}
+
+```

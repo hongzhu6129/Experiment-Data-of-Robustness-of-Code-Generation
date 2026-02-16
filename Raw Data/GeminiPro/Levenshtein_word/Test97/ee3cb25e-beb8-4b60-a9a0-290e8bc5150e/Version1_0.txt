@@ -1,0 +1,47 @@
+```java
+public class SumDigits {
+
+    public static void main(String[] args) {
+        int number = 12345; // Example input
+
+        int sum = sumDigits(number);
+        System.out.println("Sum of digits until single digit: " + sum);
+
+
+        number = 99999; // Another example
+        sum = sumDigits(number);
+        System.out.println("Sum of digits until single digit: " + sum);
+    }
+
+    private static int sumDigits(int n) {
+        while (n > 9) {  // Continue until the number is a single digit
+            int sum = 0;
+            while (n > 0) { // Calculate sum of digits
+                sum += n % 10;
+                n /= 10;
+            }
+            n = sum; // Update n with the new sum
+        }
+        return n;
+    }
+}
+```
+
+
+Explanation:
+
+
+1. **`main` method:**  This method takes the initial integer as input (you can modify the code to read from the command line if needed) and calls the `sumDigits` method to perform the digit sum calculation.  It then prints the result.
+
+2. **`sumDigits` method:**
+   - It takes an integer `n` as input.
+   - It uses a `while` loop to repeat the process of summing digits until `n` becomes a single-digit number (less than or equal to 9).
+   - Inside the outer loop, there's an inner `while` loop that calculates the sum of the digits of the current `n`.  It does this by repeatedly extracting the last digit using the modulo operator (`% 10`) and adding it to `sum`. Then, it removes the last digit using integer division (`/ 10`).
+   - After the inner loop completes, `n` is updated with the calculated sum.
+   - Finally, the method returns the single-digit sum.
+
+
+Example Usage (as in the code):
+
+- For `number = 12345`, the sum of digits will be calculated repeatedly: 1+2+3+4+5 = 15, then 1+5 = 6. The output will be 6.
+- For `number = 99999`, the sum will be: 9+9+9+9+9 = 45, then 4+5 = 9. The output will be 9.

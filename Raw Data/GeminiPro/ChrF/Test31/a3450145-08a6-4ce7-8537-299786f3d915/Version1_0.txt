@@ -1,0 +1,120 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close(); 
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the Java program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km  (approximately Earth's diameter)
+
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 45
+   - lon1: 20
+   - lat2: -45
+   - lon2: 160 (20 + 180 - 20 accounting for dateline)
+   - Expected Output:  ~20015.08 km (approximately Earth's diameter)
+
+
+5. **Points near the Dateline (Longitude 180/-180):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output:  A small distance (because they are close despite being across the dateline)
+
+6. **Zero Longitude and Latitude:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 10
+   - lon2: 10
+   - Expected Output:  ~1545.96 km
+
+
+
+7. **Invalid Input (e.g., latitude > 90 or < -90):** The program doesn't currently have robust input validation.  You might want to add checks to ensure the latitude is within the valid range and handle potential errors gracefully.  You might throw an exception or print an error message.  For example, a latitude of 100 is invalid.
+
+
+
+**How to Perform Testing:**
+
+* **Manual Testing:** You can manually input these values and verify that the program calculates the correct distances.
+* **Automated Testing (Recommended):** You could create a unit test class (e.g., using JUnit) to automate the testing process. This makes it much easier to run regression tests whenever you make changes to the code. Example of JUnit test (adjust as needed):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    void testSamePoint() {
+        assertEquals(0.0, EarthDistance.calculateDistance(40, -70, 40, -70), 0.001); // Delta for floating-point comparison
+    }
+      // ... more tests for other cases
+    
+    //Helper method to calculate the distance (modify EarthDistance class to make calculateDistance method static and public)
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+            lat1 = Math.toRadians(lat1);
+            lon1 = Math.toRadians(lon1);
+            lat2 = Math.toRadians(lat2);
+            lon2 = Math.toRadians(lon2);
+            double radius = 6371.01;
+            return radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+      }
+
+}
+```
+
+
+By using a combination of manual and (preferably) automated testing, you can ensure your `EarthDistance` program works correctly.

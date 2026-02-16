@@ -1,0 +1,49 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");
+        String str4 = "world";
+
+        // Method 1: Using equals() method (recommended for content comparison)
+        System.out.println("Using equals():");
+        System.out.println("str1 and str2 are equal: " + str1.equals(str2)); // true
+        System.out.println("str1 and str3 are equal: " + str1.equals(str3)); // true
+        System.out.println("str1 and str4 are equal: " + str1.equals(str4)); // false
+
+
+        // Method 2: Using == operator (compares references, not always content)
+        System.out.println("\nUsing == operator:");
+        System.out.println("str1 and str2 are the same object: " + (str1 == str2)); // true (string literals are interned)
+        System.out.println("str1 and str3 are the same object: " + (str1 == str3)); // false (str3 is a new object)
+        System.out.println("str1 and str4 are the same object: " + (str1 == str4)); // false
+
+        // Method 3: Using equalsIgnoreCase() (compares content ignoring case)
+        String str5 = "HeLlO";
+        System.out.println("\nUsing equalsIgnoreCase():");
+        System.out.println("str1 and str5 are equal ignoring case: " + str1.equalsIgnoreCase(str5)); // true
+
+
+        // Example demonstrating the importance of using equals() for content comparison
+        String str6 = new String("hello");
+        String str7 = new String("hello");
+        System.out.println("\nExample with new String():");
+        System.out.println("str6 and str7 are the same object: " + (str6 == str7));       // false
+        System.out.println("str6 and str7 are equal (content): " + str6.equals(str7)); // true
+
+        //Null checks are important before calling equals()
+        String str8 = null;
+        //System.out.println(str8.equals(str1)); // This would throw a NullPointerException
+
+        System.out.println("str8 and str1 are equal: " + (str8 != null && str8.equals(str1))); // Correct way with null check
+        System.out.println("str1 and str8 are equal: " + (str1 != null && str1.equals(str8))); // Also correct
+
+        //You could also use Objects.equals which handles nulls for you
+        System.out.println("str8 and str1 are equal (using Objects.equals): "+ java.util.Objects.equals(str8,str1) );
+
+
+
+
+    }
+}

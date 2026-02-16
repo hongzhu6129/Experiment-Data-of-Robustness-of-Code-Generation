@@ -1,0 +1,92 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 6; // Example value for n
+        int k = 2; // Example value for k
+
+        int currentRow = 1;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            if (currentRow % k == 0) {
+                // k-th row, print k coins
+                if (coinsUsed + currentRow <= n) {
+                    for (int i = 0; i < currentRow; i++) {
+                        System.out.print("O ");
+                    }
+                    coinsUsed += currentRow;
+                    System.out.println(); 
+                } else {
+                    //If not enough coins left to make a full k-th row
+                    int remainingCoins = n - coinsUsed;
+                    for(int i=0; i < remainingCoins; i++){
+                        System.out.print("O ");
+                    }
+                    coinsUsed = n; //All coins used
+                    System.out.println();
+                }
+
+
+            } else {
+                // Not a k-th row, print currentRow coins if possible
+                if(coinsUsed + currentRow <=n){
+                     for(int i=0; i < currentRow; i++){
+                        System.out.print("O ");
+                    }
+                    coinsUsed+=currentRow;
+                    System.out.println();
+                }else{
+                    //If not enough coins left to make a full regular row
+                    int remainingCoins = n- coinsUsed;
+                    for(int i=0; i < remainingCoins; i++){
+                        System.out.print("O ");
+                    }
+                    coinsUsed = n; //All coins used
+                     System.out.println();
+                }
+                
+            }
+             currentRow++; 
+        }
+    }
+}
+```
+
+
+Here's how it works:
+
+1. **Initialization:**
+   - `n`: Total number of coins.
+   - `k`: Every k-th row has k coins.
+   - `currentRow`: Keeps track of the current row number.
+   - `coinsUsed`: Counts how many coins have been used so far.
+
+2. **Loop:** The `while` loop continues as long as `coinsUsed` is less than `n`.
+
+3. **k-th Row Check:** Inside the loop, we check if the `currentRow` is a multiple of `k` (using the modulo operator `%`).
+
+4. **k-th Row Logic:** If it's a k-th row:
+   - We check if we have enough coins remaining to place `currentRow` (which is also `k`) coins.
+   - If enough coins, prints "O " `k` times (representing the coins) and update `coinsUsed`.
+   - If not enough coins, prints the remaining coins and sets `coinsUsed` to `n` to exit the loop.
+
+
+5. **Non-k-th Row Logic:**  If it's not a `k`th row:
+    - Print  "O " `currentRow` times (representing the coins), and update `coinsUsed`.
+    - Handle case where remaining coins less than `currentRow`:  Print remaining coins.
+
+
+6. **Increment Row:** After each row is printed, `currentRow` is incremented.
+
+7. **Output:** The code prints the staircase pattern to the console.
+
+
+Example Usage:
+If `n = 6` and `k = 2`:
+
+```
+O 
+O O 
+O O 
+```

@@ -1,0 +1,71 @@
+**Problem Description:**
+
+Write a Java program that takes a string as input, ignores any non-alphabetic characters, and arranges the unique alphabetic characters in ascending order.
+
+**Java Program:**
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SortUniqueAlphabeticCharacters {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter a string: ");
+        String inputString = input.nextLine();
+
+        // Remove non-alphabetic characters
+        String alphabeticCharacters = inputString.replaceAll("[^a-zA-Z]", "");
+
+        // Convert to character array
+        char[] characters = alphabeticCharacters.toCharArray();
+
+        // Sort the character array
+        Arrays.sort(characters);
+
+        // Remove duplicate characters
+        char[] uniqueCharacters = new char[characters.length];
+        int uniqueLength = 0;
+        for (char character : characters) {
+            if (uniqueLength == 0 || character != uniqueCharacters[uniqueLength - 1]) {
+                uniqueCharacters[uniqueLength] = character;
+                uniqueLength++;
+            }
+        }
+
+        // Convert back to string and print
+        String sortedUniqueString = new String(uniqueCharacters, 0, uniqueLength);
+        System.out.println("Sorted unique alphabetic characters: " + sortedUniqueString);
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* Input: "Hello world!"
+* Output: "dehlo"
+
+**2. Empty String:**
+
+* Input: ""
+* Output: ""
+
+**3. String with only symbols:**
+
+* Input: "$%^&*"
+* Output: ""
+
+**4. String with non-alphabetic characters at the beginning and end:**
+
+* Input: "!@#Hello world!$%"
+* Output: "dehlo"
+
+**5. String with duplicate characters:**
+
+* Input: "aaabbbccc"
+* Output: "abc"

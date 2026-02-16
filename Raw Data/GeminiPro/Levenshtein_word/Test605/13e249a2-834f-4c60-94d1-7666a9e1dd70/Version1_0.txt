@@ -1,0 +1,53 @@
+```java
+import java.util.HashSet;
+
+public class HashSetExample {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Apple"); // Adding a duplicate - it will be ignored
+
+        // Print the HashSet (order is not guaranteed)
+        System.out.println("HashSet: " + hashSet);
+
+        // Check if an element exists
+        System.out.println("Contains Apple: " + hashSet.contains("Apple"));
+        System.out.println("Contains Grape: " + hashSet.contains("Grape"));
+
+
+        // Remove an element
+        hashSet.remove("Banana");
+        System.out.println("HashSet after removing Banana: " + hashSet);
+
+        // Get the size of the HashSet
+        System.out.println("Size of HashSet: " + hashSet.size());
+
+        // Iterate through the HashSet
+        System.out.print("Iterating through HashSet: ");
+        for (String fruit : hashSet) {
+            System.out.print(fruit + " ");
+        }
+        System.out.println(); // New line for formatting
+
+        // Clear the HashSet
+        hashSet.clear();
+        System.out.println("HashSet after clearing: " + hashSet);  // Will be empty
+
+
+        // Example with integers:
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        System.out.println("HashSet of numbers: " + numbers);
+
+
+    }
+}
+```

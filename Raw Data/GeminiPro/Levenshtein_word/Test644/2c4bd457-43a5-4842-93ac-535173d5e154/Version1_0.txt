@@ -1,0 +1,54 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CopyMap {
+
+    public static void main(String[] args) {
+        // Create the source map
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("Apple", 1);
+        sourceMap.put("Banana", 2);
+        sourceMap.put("Orange", 3);
+
+        // Method 1: Using putAll() - Most efficient
+        Map<String, Integer> copiedMap1 = new HashMap<>();
+        copiedMap1.putAll(sourceMap);
+
+        // Method 2: Using a loop and put()
+        Map<String, Integer> copiedMap2 = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : sourceMap.entrySet()) {
+            copiedMap2.put(entry.getKey(), entry.getValue());
+        }
+
+        // Method 3: Java 8 Stream API (for more complex scenarios or transformations)
+        Map<String, Integer> copiedMap3 = sourceMap.entrySet().stream()
+                .collect(HashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), HashMap::putAll);
+
+
+        // Print the copied maps to verify
+        System.out.println("Copied Map 1 (putAll): " + copiedMap1);
+        System.out.println("Copied Map 2 (loop): " + copiedMap2);
+        System.out.println("Copied Map 3 (Stream): " + copiedMap3);
+
+
+        //Demonstrate that changes to copiedMap1 do *not* affect sourceMap (shallow copy):
+        copiedMap1.put("Grape", 4);
+        System.out.println("sourceMap after modification to copiedMap1: " + sourceMap); //Grape is not in sourceMap
+        System.out.println("copiedMap1 after modification: " + copiedMap1); //Grape *is* in copiedMap1
+
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Multiple methods demonstrated:** The code shows three common ways to copy a map: `putAll()`, looping with `put()`, and using the Stream API. `putAll()` is generally the most concise and efficient.
+* **Clearer output:**  The `println` statements clearly label each copied map and demonstrate the effects (or lack thereof) of modifying the copy.
+* **Shallow Copy Demonstration:** The code explicitly shows that modifying the copied map (e.g., adding a new entry) does *not* affect the original source map.  This highlights that these methods create a *shallow* copy. This means the map structure is copied, but if the values are objects (rather than primitives like `Integer` used here),  the *references* to those objects are copied, not the objects themselves. Changes *within* a referenced object would be reflected in both maps.
+* **Stream API Example:**  While `putAll()` is usually sufficient, the Stream API example provides a foundation for more complex copying scenarios where you might want to filter entries, transform values, etc., during the copy process.  It is included for completeness.
+* **Comments:**  The code is well-commented to explain each approach and important concepts like shallow copying.

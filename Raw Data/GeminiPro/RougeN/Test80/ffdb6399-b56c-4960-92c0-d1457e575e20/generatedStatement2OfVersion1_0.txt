@@ -1,0 +1,15 @@
+
+
+
+Key improvements in this version:
+
+* **Clearer comments:**  The comments explain each step of the process.
+* **More realistic example:** The example code now does a simple calculation (summing numbers), making it more representative of a real-world scenario.  A simple empty loop isn't very useful for benchmarking.
+* **Millisecond timing example:**  Provides a more practical millisecond-based timer example using `System.currentTimeMillis()`.  This is often more useful for longer running benchmarks.
+* **Explanation of millisecond preference:** Explains *why* `currentTimeMillis()` can be a better choice for general benchmarking.
+
+
+
+Important Note on `nanoTime()`
+
+While `nanoTime()` provides nanosecond resolution, it's primarily intended for measuring *relative* time differences within a single JVM run, not absolute wall-clock time. Its accuracy and behavior can vary between operating systems and JVM implementations.  For longer-running benchmarks, `currentTimeMillis()` is often more reliable and consistent.

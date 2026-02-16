@@ -1,0 +1,67 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example: Number of coins
+
+        int currentRow = 1;
+        int coinsInRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            for (int i = 0; i < currentRow; i++) {
+                if (coinsUsed < n) {
+                    System.out.print("* ");
+                    coinsUsed++;
+                    coinsInRow++;
+                } else {
+                    break; // Stop if we've used all the coins
+                }
+            }
+
+            if (coinsInRow > 0) { // Only print a newline if we've placed coins in this row.
+                System.out.println();
+            }
+
+
+            currentRow++; 
+            coinsInRow = 0; // Reset for the next row
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Initialization:**
+   - `n`: Stores the total number of coins.
+   - `currentRow`: Keeps track of the current row number (starts from 1).
+   - `coinsInRow`: Counts the number of coins placed in the current row.
+   - `coinsUsed`: Tracks the total number of coins used so far.
+
+2. **Outer Loop (while):**
+   - Continues as long as `coinsUsed` is less than `n` (we still have coins to place).
+
+3. **Inner Loop (for):**
+   - Iterates `currentRow` times (to place `currentRow` coins in the current row).
+   - **Conditional Check:** Inside the inner loop, we check `coinsUsed < n` to ensure we don't try to place more coins than available.
+   - **Print and Update:** If we have coins left, print an asterisk (`*`) representing a coin, increment `coinsUsed` and `coinsInRow`.
+   - **Break:** If we run out of coins, `break` out of the inner loop.
+
+4. **Newline:**
+   - After the inner loop, if `coinsInRow > 0` (meaning we placed coins in the current row), print a newline to move to the next row. This avoids printing extra newlines if the inner loop is broken due to insufficient coins.
+
+5. **Increment and Reset:**
+   - Increment `currentRow` to prepare for the next row.
+   - Reset `coinsInRow` to 0.
+
+
+**Example Output (n = 10):**
+
+```
+* 
+* * 
+* * * 
+* 
+```

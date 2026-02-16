@@ -1,0 +1,64 @@
+```java
+import java.util.PriorityQueue;
+
+public class ColorPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (colors)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.offer("Red");
+        colorQueue.offer("Green");
+        colorQueue.offer("Blue");
+        colorQueue.offer("Yellow");
+        colorQueue.offer("Orange");
+
+
+        // Print the elements of the PriorityQueue
+        System.out.println("Colors in the priority queue:");
+
+        // Method 1: Iterate and remove (this will empty the queue)
+        /*
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); // poll() retrieves and removes the head
+        }
+        */
+
+        // Method 2: Iterate without removing (preserves the queue)
+        for (String color : colorQueue) {  // Enhanced for loop (for-each)
+            System.out.println(color);
+        }
+
+
+        // or, Iterate using iterator explicitly without removing:
+         /*
+        Iterator<String> iterator = colorQueue.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+         */
+
+
+    }
+}
+```
+
+
+Explanation using only `main`:
+
+1. **Create a `PriorityQueue`:** `PriorityQueue<String> colorQueue = new PriorityQueue<>();` creates a priority queue to store strings (representing colors).  By default, strings are ordered lexicographically (alphabetically) in a `PriorityQueue`.
+
+2. **Add colors:** `colorQueue.offer("Red");` etc. adds colors to the queue. `offer()` inserts elements according to the queue's priority order.
+
+3. **Print elements:**
+   - **Method 1 (Iterate and Remove):** The commented-out `while` loop using `colorQueue.poll()` retrieves and removes the head (the lowest-priority element according to the natural ordering of Strings) of the queue in each iteration until the queue is empty. This empties the queue after printing.
+   - **Method 2 (Iterate without Removing - preferred):**  The `for (String color : colorQueue)` loop (enhanced for loop) iterates through the queue without modifying it.  This approach lets you print the elements while preserving the queue's contents.
+   - **Method 3 (Iterator):**  The commented-out iterator approach gives you explicit control over the iteration and also preserves the queue.
+
+
+Key improvement from earlier responses:
+
+- **Preserving the queue:** The preferred method now uses an enhanced `for` loop or iterator, so the queue's contents are not removed when printing. This is generally more useful than emptying the queue during printing.
+- **Clearer explanation:**  The explanations are more concise and directly relate to the code in the `main` method.
+- **Standard output:** The output is sent to the console using `System.out.println()`, the standard Java way to print.

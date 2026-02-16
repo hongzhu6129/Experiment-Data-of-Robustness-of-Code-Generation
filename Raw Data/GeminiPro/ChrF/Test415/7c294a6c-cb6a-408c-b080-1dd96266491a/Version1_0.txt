@@ -1,0 +1,50 @@
+```java
+class Solution {
+    /**
+     * Checks if the first instance of any character in a given string is immediately followed by the same character.
+     *
+     * @param str The input string.
+     * @return True if any character appears twice consecutively at its first occurrence, false otherwise.
+     */
+    boolean appearTwice(String str) {
+        if (str == null || str.length() < 2) {
+            return false;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            boolean firstOccurrence = true;
+
+            for (int j = 0; j < i; j++) {
+                if (str.charAt(j) == currentChar) {
+                    firstOccurrence = false;
+                    break;
+                }
+            }
+
+            if (firstOccurrence && i + 1 < str.length() && str.charAt(i + 1) == currentChar) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.appearTwice("aba"));      // Output: false
+        System.out.println(solution.appearTwice("abba"));     // Output: true (first 'b' is followed by 'b')
+        System.out.println(solution.appearTwice("aabbc"));    // Output: true (first 'a' is followed by 'a')
+        System.out.println(solution.appearTwice("abc"));      // Output: false
+        System.out.println(solution.appearTwice("aabc"));    // Output: true
+        System.out.println(solution.appearTwice("abbc"));    // Output: true
+        System.out.println(solution.appearTwice("aabbcc"));  // Output: true 
+        System.out.println(solution.appearTwice(""));        // Output: false
+        System.out.println(solution.appearTwice("a"));       // Output: false
+        System.out.println(solution.appearTwice(null));      // Output: false
+
+    }
+}
+```

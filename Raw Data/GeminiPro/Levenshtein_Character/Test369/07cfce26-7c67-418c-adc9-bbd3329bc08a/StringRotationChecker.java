@@ -1,0 +1,39 @@
+public class StringRotationChecker {
+
+    static boolean checkForRotation(String str1, String str2) {
+        if (str1 == null || str2 == null) {
+            return false; 
+        }
+
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        String concatenated = str1 + str1;  // Concatenate str1 with itself
+        return concatenated.contains(str2); // Check if str2 is a substring
+    }
+
+    public static void main(String[] args) {
+        String string1 = "waterbottle";
+        String string2 = "erbottlewat";
+        String string3 = "bottlewater";
+        String string4 = "aterbottlew";
+
+
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + string2 + "\"? " + checkForRotation(string1, string2)); // True
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + string3 + "\"? " + checkForRotation(string1, string3)); // True
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + string4 + "\"? " + checkForRotation(string1, string4)); // True
+
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + "waterbottl" + "\"? " + checkForRotation(string1, "waterbottl")); // False (different lengths)
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + "waterbottlex" + "\"? " + checkForRotation(string1, "waterbottlex")); // False (different lengths)
+        System.out.println("Is \"" + string1 + "\" a rotation of \"" + "bottlwater" + "\"? " + checkForRotation(string1,  "bottlwater")); // False (not a rotation)
+
+        // Test cases involving nulls
+        System.out.println("Is null a rotation of \"abc\"? " + checkForRotation(null, "abc")); // False
+        System.out.println("Is \"abc\" a rotation of null? " + checkForRotation("abc", null)); // False
+        System.out.println("Is null a rotation of null? " + checkForRotation(null, null)); // False (consistent with other null checks)
+
+
+
+    }
+}

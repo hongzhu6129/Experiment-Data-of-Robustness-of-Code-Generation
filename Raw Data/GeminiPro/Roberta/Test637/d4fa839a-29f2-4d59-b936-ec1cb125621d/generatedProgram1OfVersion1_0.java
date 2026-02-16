@@ -1,0 +1,32 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueFirstElement {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(3);
+        pq.add(1);
+        pq.add(4);
+        pq.add(2);
+
+        // Check if the PriorityQueue is empty
+        if (!pq.isEmpty()) {
+            // Retrieve the first element (head) without removing it
+            Integer firstElement = pq.peek();
+
+            // Print the first element
+            System.out.println("First element: " + firstElement);
+
+
+            //Alternatively, retrieve and remove the first element:
+             Integer firstElementRemoved = pq.poll();
+             System.out.println("First element (removed): " + firstElementRemoved);
+
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+    }
+}

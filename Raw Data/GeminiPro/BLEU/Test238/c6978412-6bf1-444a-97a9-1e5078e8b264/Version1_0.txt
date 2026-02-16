@@ -1,0 +1,63 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+     *
+     * @param nums Sorted array of integers
+     * @return The new length of the array after removing duplicates
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position for unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4 + ", Updated Array: " + (nums4 == null ? "null" : Arrays.toString(Arrays.copyOfRange(nums4, 0, len4)) ) ); // Output: 0, null
+
+
+    }
+}
+```
+
+
+
+Key improvements:
+
+- **Handles edge cases:**  The code now correctly handles empty arrays (`{}`) and `null` input, returning 0 in both cases.
+- **Clearer variable naming:** `uniqueIndex` replaces `k` for better readability.
+- **In-place modification:** Modifies the original `nums` array as requested.
+- **Comprehensive main method:** Includes multiple test cases with various scenarios, including edge cases, demonstrating the function's correctness.
+- **Correct output:** Prints the updated length AND the updated portion of the array using `Arrays.copyOfRange()` to avoid showing the unmodified elements beyond the new length.
+
+
+
+This revised solution is more robust, efficient, and adheres to best coding practices, making it easier to understand and maintain.

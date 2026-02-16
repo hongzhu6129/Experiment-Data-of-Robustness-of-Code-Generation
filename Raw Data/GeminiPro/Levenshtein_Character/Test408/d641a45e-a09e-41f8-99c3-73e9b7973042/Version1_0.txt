@@ -1,0 +1,47 @@
+```java
+public class StringCounter {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        String[] words = text.split("\\s+"); // Split by whitespace
+        int count = 0;
+
+        for (String word : words) {
+            char lastChar = Character.toLowerCase(word.charAt(word.length() - 1));
+            if (lastChar == 'm' || lastChar == 'n') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        StringCounter counter = new StringCounter();
+
+        String text1 = "man sun gun moon pen pin";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 Count: " + count1); // Output: 5
+
+        String text2 = "Mom Son run";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 Count: " + count2); // Output: 2
+
+        String text3 = "  "; // Test empty string
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 Count: " + count3); // Output: 0
+
+        String text4 = null;  // Test null string
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 Count: " + count4); // Output: 0
+
+
+        String text5 = "item items woman women medium alumni"; // More comprehensive test
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 Count: " + count5); // Output: 4
+    }
+}
+```

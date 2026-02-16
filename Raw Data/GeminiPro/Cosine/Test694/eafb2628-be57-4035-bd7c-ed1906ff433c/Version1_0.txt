@@ -1,0 +1,73 @@
+```java
+class Solution {
+    /**
+     * Multiplies two integers without using multiplication, division, bitwise operators, or loops.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The product of a and b.
+     */
+    public static int multiply_two_nums(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+
+        if (b > 0) {
+            return a + multiply_two_nums(a, b - 1);
+        } else {
+            return -multiply_two_nums(a, -b);
+        }
+    }
+
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 3;
+        int result = multiply_two_nums(a, b);
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+
+
+        a = -5;
+        b = 3;
+        result = multiply_two_nums(a, b);
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+
+
+        a = 5;
+        b = -3;
+        result = multiply_two_nums(a, b);
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+
+        a = -5;
+        b = -3;
+        result = multiply_two_nums(a, b);
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+
+
+        a = 5;
+        b = 0;
+        result = multiply_two_nums(a, b);
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+
+        a = 0;
+        b = 3;
+        result = multiply_two_nums(a, b); // Demonstrates handling b=0 in recursive call
+        System.out.println("The product of " + a + " and " + b + " is: " + result);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Negative Numbers:** The code now correctly handles multiplication with negative numbers by using recursion and negation.
+
+2. **Handles Zero:** Explicitly handles the case where `b` is zero, preventing infinite recursion.
+
+3. **Recursion:**  Uses recursion to perform repeated addition.  The base case is when `b` reaches 0.
+
+4. **Comprehensive Testing in `main`:**  The `main` method now includes test cases with positive, negative, and zero values for both `a` and `b` to demonstrate the code's correctness.
+
+5. **Clearer Explanation in Comments:** Added a docstring to `multiply_two_nums` to explain its purpose and parameters.
+
+
+This revised version addresses the limitations of the previous response and fulfills all requirements of the problem statement while adhering to the specified method signatures. It is important to note that for very large input values, this recursive approach might lead to a stack overflow error due to deep recursion.  For production code, iterative approaches (even though prohibited in this exercise) would generally be preferred for performance and stability reasons.

@@ -1,0 +1,57 @@
+```java
+import java.util.Scanner;
+
+public class NasdaqCharacterExtractor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter a string containing NASDAQ characters:");
+        String inputString = scanner.nextLine();
+
+        // Extract the NASDAQ characters from the input string
+        String nasdaqCharacters = extractNasdaqCharacters(inputString);
+
+        // Print the extracted NASDAQ characters to the console
+        System.out.println("The NASDAQ characters in the input string are:");
+        System.out.println(nasdaqCharacters);
+    }
+
+    public static String extractNasdaqCharacters(String inputString) {
+        StringBuilder nasdaqCharacters = new StringBuilder();
+
+        for (char character : inputString.toCharArray()) {
+            if (Character.isLetterOrDigit(character)) {
+                nasdaqCharacters.append(character);
+            }
+        }
+
+        return nasdaqCharacters.toString();
+    }
+}
+```
+
+**Test Cases**
+
+**Normal Cases**
+
+* Input: `NASDAQ 100`
+* Expected Output: `NASDAQ100`
+
+* Input: `The NASDAQ Composite Index is a stock market index`
+* Expected Output: `NASDAQCompositeIndex`
+
+**Corner Cases**
+
+* Input: `123`
+* Expected Output: `123`
+
+* Input: `!@#$%^&*()`
+* Expected Output: ``
+
+* Input: `NASDAQ 100!`
+* Expected Output: `NASDAQ100`
+
+* Input: `NASDAQ Composite Index 2023`
+* Expected Output: `NASDAQCompositeIndex2023`

@@ -1,0 +1,60 @@
+```java
+import java.io.File;
+
+public class FileSize {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java FileSize <filename>");
+            return;
+        }
+
+        File file = new File(args[0]);
+
+        if (!file.exists() || !file.isFile()) {
+            System.out.println("Invalid file specified.");
+            return;
+        }
+
+        System.out.println("File size in bytes: " + filesize_in_Bytes(file));
+        System.out.println("File size in KB: " + filesize_in_kiloBytes(file));
+        System.out.println("File size in MB: " + filesize_in_megaBytes(file));
+    }
+
+    private static String filesize_in_megaBytes(File file) {
+        double sizeInBytes = file.length();
+        double sizeInMB = sizeInBytes / (1024 * 1024);
+        return String.format("%.2f MB", sizeInMB); // Format to two decimal places
+    }
+
+    private static String filesize_in_kiloBytes(File file) {
+        double sizeInBytes = file.length();
+        double sizeInKB = sizeInBytes / 1024;
+        return String.format("%.2f KB", sizeInKB); // Format to two decimal places
+
+    }
+
+    private static String filesize_in_Bytes(File file) {
+        long sizeInBytes = file.length();
+        return sizeInBytes + " bytes";
+    }
+}
+```
+
+
+To compile and run:
+
+1. **Save:** Save the code as `FileSize.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac FileSize.java`
+3. **Run:** After successful compilation, run the program with the filename as an argument: `java FileSize myfile.txt`  (Replace `myfile.txt` with the actual path to your file).
+
+
+Key improvements in this revised code:
+
+* **Error Handling:** Checks for invalid file paths or if the provided path is not a file. Provides a helpful usage message if no filename is given.
+* **Clear Output:**  Formats the KB and MB output to two decimal places for better readability.
+* **Uses `long` for bytes:**  `file.length()` returns a `long`, so using `long` instead of `double` to store the size in bytes avoids potential precision loss for very large files.
+
+
+
+This makes the code more robust and user-friendly.

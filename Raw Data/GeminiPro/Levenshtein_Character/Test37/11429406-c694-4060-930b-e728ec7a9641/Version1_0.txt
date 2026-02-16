@@ -1,0 +1,76 @@
+```java
+import java.util.Scanner;
+
+public class NNN {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer (n): ");
+        int n = scanner.nextInt();
+
+        long result = calculateNNN(n);
+
+        System.out.println("Result of n + nn + nnn: " + result);
+        scanner.close();
+    }
+
+    public static long calculateNNN(int n) {
+        if (n < 0 || n > 9) {  // Validate input to be a single digit. Throw an exception or handle it as needed
+            throw new IllegalArgumentException("Input n must be a single digit between 0 and 9.");
+
+        }
+        int nn = n * 10 + n;
+        int nnn = n * 100 + nn;
+        return (long) n + nn + nnn;  // Cast to long to handle potential overflow for larger n
+
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Input (n) | Expected Output | Reason/Notes |
+|---|---|---|
+| 0 | 0 |  0 + 00 + 000 = 0 |
+| 1 | 123 | 1 + 11 + 111 = 123 |
+| 5 | 615 | 5 + 55 + 555 = 615 |
+| 9 | 1107 | 9 + 99 + 999 = 1107 |
+| -1 | Exception |  Input validation should throw an exception (or handle it appropriately) |
+| 10 | Exception | Input validation should throw an exception |
+
+
+
+**How to Run the Test Cases (Example):**
+
+While you could manually enter these inputs, a more robust approach would be to create automated tests (using JUnit, for example). Here�s a basic example to get you started with JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class NNNTest {
+
+    @Test
+    void testCalculateNNN_validInput() {
+        assertEquals(123, NNN.calculateNNN(1));
+        assertEquals(615, NNN.calculateNNN(5));
+        assertEquals(1107, NNN.calculateNNN(9));  // largest single digit
+        assertEquals(0, NNN.calculateNNN(0));   // smallest single digit
+
+    }
+
+    @Test
+    void testCalculateNNN_invalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> NNN.calculateNNN(-1));
+        assertThrows(IllegalArgumentException.class, () -> NNN.calculateNNN(10));
+    }
+}
+```
+
+
+
+This JUnit test class demonstrates how to test both valid and invalid inputs.  Remember to include JUnit in your project dependencies to run these tests.  This structured approach is much better for verifying program correctness than manual testing, especially as your code evolves.

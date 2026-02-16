@@ -1,0 +1,26 @@
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+
+        // Efficiently check if a number is a perfect cube 
+        // by comparing the cube root (rounded down to the nearest integer) 
+        // cubed back to the original number.
+
+        int cubeRoot = (int) Math.round(Math.cbrt(number)); // Calculate the cube root and round
+
+        if (cubeRoot * cubeRoot * cubeRoot == number) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+        scanner.close(); // Close the Scanner to release resources.
+    }
+}
+```

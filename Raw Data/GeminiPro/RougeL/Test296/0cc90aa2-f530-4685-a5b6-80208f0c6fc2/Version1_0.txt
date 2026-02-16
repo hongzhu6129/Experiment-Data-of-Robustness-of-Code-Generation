@@ -1,0 +1,87 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 23, 56, 1, 7, 34, 89, 2, 4, 10};
+        k = 5;
+        findKLargest(arr, k);
+
+         arr = new int[]{5,10,15};
+         k=3;
+         findKLargest(arr,k);
+
+        //Edge cases
+        arr = new int[]{5,10,15};
+        k=0;
+        findKLargest(arr,k);
+
+        arr = new int[]{5,10,15};
+        k=4; //K larger than array size
+        findKLargest(arr,k);
+
+        arr = null; //Null array
+        k=2;
+        findKLargest(arr,k);
+
+        arr = new int[]{}; //Empty array
+        k=2;
+        findKLargest(arr,k);
+
+
+
+    }
+
+
+    public static void findKLargest(int[] arr, int k) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("Invalid input: Array is null or empty.");
+            return;
+        }
+
+        if (k <= 0) {
+            System.out.println("Invalid input: K must be greater than 0.");
+            return;
+        }
+        
+        if (k > arr.length) {
+            System.out.println("Invalid input: K cannot be larger than the array size.");
+            return;
+        }
+
+
+        // Using a min-heap (PriorityQueue) to efficiently store the k largest elements.
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num);  // Add element to the heap
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Remove the smallest element if the heap size exceeds k
+            }
+        }
+
+        // Print the k largest elements (which are now in the minHeap)
+        Integer[] kLargestArray = minHeap.toArray(new Integer[0]);  // Convert to array for easier printing
+        System.out.println(Arrays.toString(kLargestArray));
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes robust error handling for `null` or empty arrays, `k` values less than or equal to zero, and `k` values greater than the array size. This makes the code more resilient to unexpected inputs.
+2. **Min-Heap using PriorityQueue:** The core logic uses a `PriorityQueue` which implements a min-heap data structure.  This provides efficient retrieval of the smallest element, which is crucial for maintaining the k largest elements.
+3. **Clear Comments:**  Comments explain the purpose of key parts of the code.
+4. **Concise Output:**  The k largest elements are printed in a clean, readable format using `Arrays.toString()`.
+5. **Testability:** The `main` method includes multiple test cases demonstrating normal operation and edge cases. This makes it easier to verify the correctness of the code.
+
+
+This improved version is more robust, efficient, and readable, making it a better solution for finding the k largest elements in an array.

@@ -1,0 +1,22 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle `DateTimeParseException`. This prevents the program from crashing if the user enters an invalid date format and provides a helpful error message.
+
+2. **Clearer Prompts:**  The prompts to the user are more explicit about the expected date format.
+
+3. **Resource Management:** The `Scanner` is closed using `scanner.close()` at the end of the `main` method.  This is good practice to prevent resource leaks.
+
+4. **`java.time` API:**  The code uses the modern `java.time` API (introduced in Java 8).  It's much preferred over the older `Date` and `Calendar` classes because it's cleaner, easier to use, and handles time zones correctly.  `LocalDate` is specifically for dates without time components. `Period` is designed precisely for calculating the difference between two dates in terms of years, months, and days.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DateDifference.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac DateDifference.java`
+3. **Run:**  Execute the compiled code: `java DateDifference`
+
+
+The program will then prompt you to enter the two dates.  Make sure to use the `yyyy-MM-dd` format.

@@ -1,0 +1,121 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal number of unique three-digit numbers: " + uniqueNumbers.size());
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Case:**
+- Input: {1, 2, 3, 4} (as in the code)
+- Expected Output: 24 unique three-digit numbers (4 * 3 * 2 = 24 permutations) and the numbers themselves printed.
+
+**2. Repeated Digits:**  (This is handled by the `if` condition in the code)
+- Input: {1, 1, 2, 3}
+- Expected Output: 12 unique three-digit numbers (because the repeated '1' reduces the possibilities).  For example, you won't get 111 or 112 twice.
+
+**3. Fewer Digits:**
+- Input: {1, 2, 3}
+- Expected Output: 6 unique three-digit numbers (3 * 2 * 1 = 6)
+
+**4. More Digits (Corner Case):**
+- Input: {1, 2, 3, 4, 5}  (The code still works correctly)
+- Expected Output: 60 unique three-digit numbers (5 * 4 * 3 = 60).
+
+**5. Empty Input (Corner Case):**
+- Input: {}
+- Expected Output: 0 unique three-digit numbers (and no numbers printed).
+
+
+**How to Run Test Cases (Manually):**
+
+1.  **Modify the `digits` array** in the `main` method to represent your test input.
+2.  **Run the Java code.**
+3.  **Visually inspect the output** to confirm it matches your expected output.
+
+
+**Automated Testing (JUnit - recommended for larger projects):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class UniqueThreeDigitNumbersTest {
+
+    private Set<Integer> getUniqueNumbers(int[] digits) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        // ... (same code as before to generate unique numbers) ...
+        return uniqueNumbers;
+    }
+
+    @Test
+    void testBasicCase() {
+        assertEquals(24, getUniqueNumbers(new int[]{1, 2, 3, 4}).size());
+    }
+
+    @Test
+    void testRepeatedDigits() {
+        assertEquals(12, getUniqueNumbers(new int[]{1, 1, 2, 3}).size());
+    }
+
+
+    @Test
+    void testFewerDigits() {
+        assertEquals(6, getUniqueNumbers(new int[]{1, 2, 3}).size());
+    }
+
+    @Test
+    void testMoreDigits() {
+        assertEquals(60, getUniqueNumbers(new int[]{1, 2, 3, 4, 5}).size());
+    }
+
+    @Test
+    void testEmptyInput() {
+        assertEquals(0, getUniqueNumbers(new int[]{}).size());
+    }
+
+
+    // Example of a more advanced test (checks specific output):
+    @Test
+    void testSpecificOutput() {
+       Set<Integer> expected = new HashSet<>(Arrays.asList(123, 124, 132, 134, 142, 143,
+               213, 214, 231, 234, 241, 243, 312, 314, 321, 324, 341, 342,
+               412, 413, 421, 423, 431, 432));
+
+        Set<Integer> actual = getUniqueNumbers(new int[]{1, 2, 3, 4});
+        assertEquals(expected, actual); 
+    }
+}
+```
+
+
+Using JUnit gives you a more robust and automated way to test your code. You can run the tests directly within your IDE (like IntelliJ or Eclipse).

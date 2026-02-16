@@ -1,0 +1,30 @@
+```java
+import java.util.Locale;
+
+public class CompareStringsIgnoreCase {
+
+    public static void main(String[] args) {
+        // Test cases
+        String str1 = "Hello";
+        String str2 = "HELLO";
+        String str3 = "hello";
+        String str4 = "Hello, world!";
+
+        // Compare strings lexicographically, ignoring case differences
+        int result1 = str1.compareToIgnoreCase(str2);
+        int result2 = str1.compareToIgnoreCase(str3);
+        int result3 = str1.compareToIgnoreCase(str4);
+
+        // Print the results
+        System.out.println("Result 1: " + result1); // 0
+        System.out.println("Result 2: " + result2); // 0
+        System.out.println("Result 3: " + result3); // -1
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:** Two strings with different cases that are lexicographically equal.
+* **Corner case:** Two strings with the same case that are lexicographically equal.
+* **Corner case:** Two strings with different cases and lengths that are lexicographically equal.

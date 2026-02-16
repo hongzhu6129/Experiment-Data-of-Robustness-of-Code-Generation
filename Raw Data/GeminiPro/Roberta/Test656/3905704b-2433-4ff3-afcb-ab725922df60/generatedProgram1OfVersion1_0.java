@@ -1,0 +1,62 @@
+import java.util.TreeMap;
+
+public class TreeMapTracker {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+
+        // Key to track
+        String keyToTrack = "orange";
+
+        // Check if the key exists
+        if (treeMap.containsKey(keyToTrack)) {
+            System.out.println(keyToTrack + " exists in the TreeMap.");
+
+            // Get the value associated with the key
+            Integer value = treeMap.get(keyToTrack);
+            System.out.println("Value associated with " + keyToTrack + ": " + value);
+
+
+            //Demonstrate tracking changes (e.g., updating the value)
+            treeMap.put(keyToTrack, value + 10); //Increment value
+            System.out.println("Updated value for " + keyToTrack + ": " + treeMap.get(keyToTrack));
+
+            // Removing the key
+            treeMap.remove(keyToTrack);
+            if (!treeMap.containsKey(keyToTrack)) {
+                System.out.println(keyToTrack + " has been removed from the TreeMap.");
+            }
+
+
+        } else {
+            System.out.println(keyToTrack + " does not exist in the TreeMap.");
+        }
+
+
+       // Example of floorKey() and ceilingKey():
+
+         treeMap.put("cherry", 5); // Add back for demonstration
+         treeMap.put("apricot", 0);
+
+
+        String floorKey = treeMap.floorKey("banana"); // Greatest key less than or equal to "banana"
+        System.out.println("Floor key of 'banana': " + floorKey);
+
+
+        String ceilingKey = treeMap.ceilingKey("banana"); // Smallest key greater than or equal to "banana"
+
+        System.out.println("Ceiling key of 'banana': " + ceilingKey);
+
+
+        System.out.println("Current state of the TreeMap: " + treeMap);
+
+
+    }
+}

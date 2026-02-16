@@ -1,0 +1,61 @@
+```java
+public class SubstringExample {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        int start = 2;
+        int end = 7;
+
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String sub = str.substring(start, end);
+            System.out.println("Original String: " + str);
+            System.out.println("Substring: " + sub);
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+        // Another example with different positions and handling potential errors:
+        String str2 = "example";
+        int start2 = 1;
+        int end2 = 9; // Intentionally beyond the string length
+
+        try {
+            String sub2 = str2.substring(start2, end2);
+            System.out.println("Original String 2: " + str2);
+            System.out.println("Substring 2: " + sub2); 
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid positions for substring in example 2. " + e.getMessage());
+        }
+
+          // Another example with negative start:
+        String str3 = "negative";
+        int start3 = -2;
+        int end3 = 5;
+
+        try {
+            String sub3 = str3.substring(start3, end3);
+            System.out.println("Original String 3: " + str3);
+            System.out.println("Substring 3: " + sub3);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid positions for substring in example 3. " + e.getMessage());
+        }
+
+
+    }
+}
+```
+
+
+This improved version includes:
+
+1. **Input Validation:** It checks if `start` and `end` are within the valid range of the string indices to prevent `StringIndexOutOfBoundsException`.  It also handles the case when `start` is greater than `end`.
+
+2. **Error Handling (try-catch):** It demonstrates how to handle `StringIndexOutOfBoundsException` gracefully using a try-catch block. This is crucial to prevent program crashes and provide informative error messages if the substring extraction fails.
+
+3. **Multiple Examples:** It shows several examples with different input strings and positions, including cases that demonstrate the error handling.
+
+4. **Clearer Output:** The output is formatted to clearly distinguish the original string and the extracted substring, as well as to provide helpful error messages.
+
+
+
+This makes the code more robust, easier to understand, and demonstrates best practices for substring extraction in Java.

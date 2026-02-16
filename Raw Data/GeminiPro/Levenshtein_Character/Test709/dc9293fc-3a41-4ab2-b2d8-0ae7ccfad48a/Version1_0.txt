@@ -1,0 +1,76 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int lowerIndex, int higherIndex, int[] array) {
+
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = array[lowerIndex+(higherIndex-lowerIndex)/2];
+        // Divide into two arrays
+        while (i <= j) {
+            /**
+             * In each iteration, we will identify a number from left side which
+             * is greater then the pivot value, and also we will identify a number
+             * from right side which is less then the pivot value. Once the search
+             * is done, then we exchange both numbers.
+             */
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, array);
+                //move index to next position on both sides
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j, array);
+        if (i < higherIndex)
+            quickSort(i, higherIndex, array);
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        QuickSort sorter = new QuickSort();
+        int[] input = {24,2,45,20,56,75,2,56,99,53,12};
+        sorter.sort(input);
+        System.out.println(Arrays.toString(input));        
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  Checks for `null` or empty input array.
+* **Clearer variable names:** Uses `lowerIndex` and `higherIndex` for better readability.
+* **Improved pivot selection:**  Uses the middle element as the pivot to mitigate worst-case scenarios with already sorted or reverse-sorted inputs.  `(lowerIndex + higherIndex) / 2` can potentially overflow with very large arrays. The safer calculation is `lowerIndex + (higherIndex - lowerIndex) / 2`.
+* **Correct partitioning logic:** Ensures elements are correctly placed around the pivot.
+* **Recursive calls only when necessary:** Avoids unnecessary recursive calls when subarrays are already sorted.
+* **Example usage in `main`:**  Demonstrates how to use the `sort` method.
+* **Prints the sorted array:** Added a print statement to show the sorted output.
+
+
+
+This improved version addresses potential issues and provides a more robust and efficient implementation of Quick Sort.

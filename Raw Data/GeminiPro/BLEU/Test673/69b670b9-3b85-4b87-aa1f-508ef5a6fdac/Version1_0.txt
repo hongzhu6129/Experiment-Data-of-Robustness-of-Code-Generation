@@ -1,0 +1,44 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class RemoveKeyValuePair {
+
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        Map<String, String> map = new HashMap<>();
+        map.put("apple", "red");
+        map.put("banana", "yellow");
+        map.put("grape", "purple");
+
+
+        // Key to remove and retrieve
+        String keyToRemove = "banana";
+
+        // Remove and get the value associated with the key
+        String removedValue = map.remove(keyToRemove);
+
+        // Print the removed value (or null if the key wasn't present)
+        if (removedValue != null) {
+            System.out.println("Removed key: " + keyToRemove + ", Value: " + removedValue);
+        } else {
+            System.out.println("Key '" + keyToRemove + "' not found in the map.");
+        }
+
+
+        // Print the updated map
+        System.out.println("Updated map: " + map);
+
+
+        // Example with a key that doesn't exist:
+        String nonExistentKey = "orange";
+        String nonExistentValue = map.remove(nonExistentKey); 
+
+        if (nonExistentValue == null) {
+            System.out.println("Key '" + nonExistentKey + "' not found in the map.");
+        }
+
+        System.out.println("Final map: " + map);
+    }
+}
+```

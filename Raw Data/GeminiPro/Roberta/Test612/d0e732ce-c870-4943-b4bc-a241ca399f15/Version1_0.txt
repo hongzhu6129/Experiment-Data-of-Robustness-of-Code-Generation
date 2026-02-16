@@ -1,0 +1,50 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class RetainSameElements {
+
+    public static void main(String[] args) {
+        // Example sets
+        Set<String> set1 = new HashSet<>();
+        set1.add("apple");
+        set1.add("banana");
+        set1.add("orange");
+        set1.add("grape");
+
+        Set<String> set2 = new HashSet<>();
+        set2.add("banana");
+        set2.add("grape");
+        set2.add("kiwi");
+        set2.add("mango");
+
+
+        // Retain only the common elements in set1.  This modifies set1 directly.
+        set1.retainAll(set2); 
+
+        // Print the corrected set (set1 now contains only the common elements)
+        System.out.println("Common elements: " + set1);
+
+
+        //Alternative (if you don't want to modify the original sets): create a new set for the intersection
+        Set<Integer> set3 = new HashSet<>();
+        set3.add(1);
+        set3.add(2);
+        set3.add(3);
+
+        Set<Integer> set4 = new HashSet<>();
+        set4.add(2);
+        set4.add(3);
+        set4.add(4);
+
+
+        Set<Integer> intersection = new HashSet<>(set3); // Create a copy of set3
+        intersection.retainAll(set4);
+
+        System.out.println("Intersection (alternative method): " + intersection);
+
+
+
+    }
+}
+```

@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+
+        System.out.println("The distance between those points is: " + distance);
+
+        input.close();
+
+    }
+}
+
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases and explanations of what they test:
+
+1. **Same Point:**
+   - lat1 = 25, lon1 = 35
+   - lat2 = 25, lon2 = 35
+   - Expected Distance: 0  (Tests if the formula handles identical points correctly)
+
+2. **Antipodal Points (opposite sides of Earth):**
+   - lat1 = 25, lon1 = 35
+   - lat2 = -25, lon2 = -145  (approx. antipodal)
+   - Expected Distance: ~20015 km (close to Earth's diameter; tests the formula's behavior at maximum distance)
+
+3. **North and South Poles:**
+   - lat1 = 90, lon1 = 0   (North Pole)
+   - lat2 = -90, lon2 = 0  (South Pole)
+   - Expected Distance: ~20015 km (another antipodal test)
+
+4. **Points on the Equator:**
+   - lat1 = 0, lon1 = 0
+   - lat2 = 0, lon2 = 180
+   - Expected Distance: ~20015 km  (antipodal on the equator)
+
+
+5. **Points with large longitude difference:**
+   - lat1 = 45, lon1 = -179
+   - lat2 = 45, lon2 = 179
+   - Expected Distance: small value (because these points are close, crossing the 180/-180 longitude boundary) This tests if the longitude difference is handled correctly near the boundary.
+
+
+6. **Points near the prime meridian:**
+   - lat1 = 10, lon1 = 0.5
+   - lat2 = 10, lon2 = -0.5
+   - Expected Distance:  small value (tests behavior near the prime meridian)
+
+7. **Invalid Input (optional):**  You could add checks in your program for latitudes outside -90 to +90 or longitudes outside -180 to +180.  These would throw exceptions or return error values.
+
+
+
+How to use the test cases:
+
+1. **Manually:** Substitute the test values into your Java code and check if the output matches the expected distance.
+2. **Automated Testing (Recommended):**  Write unit tests using a testing framework like JUnit.  This is a much better approach for larger projects as it automates the testing process and makes it easier to regression test (ensure that code changes don't break existing functionality).
+
+
+Example of a JUnit test (you'll need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    public void testSamePoint() {
+        assertEquals(0, EarthDistance.calculateDistance(25, 35, 25, 35), 0.001); // 0.001 is the delta (tolerance)
+    }
+
+    // Add more @Test methods for the other test cases
+
+    // Helper method to encapsulate the distance calculation (modify your main code accordingly)
+    private static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        double earthRadius = 6371.01;
+        lat1 = Math.toRadians(lat1);
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+        return earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+    }
+}
+```

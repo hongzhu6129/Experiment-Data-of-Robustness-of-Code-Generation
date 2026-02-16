@@ -1,0 +1,42 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "t " : "f "); // Print "t" for true, "f" for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Clearer Output:** The code now prints "t" for `true` and "f" for `false`, making the output easier to read and understand.  It also adds a space after each element for better formatting.
+
+2. **Enhanced Readability:**  The core printing logic is extracted into a separate `printBooleanArray` method.  This improves code organization and makes the `main` method more concise.  It follows good practice to separate concerns and keep the `main` method focused on high-level program flow.
+
+3. **Flexibility:** The `printBooleanArray` method can be easily reused with different boolean arrays without modifying the `main` method.
+
+
+**Example Usage:**
+
+If you run this code with the provided sample boolean array, the output will be:
+
+```
+t f t 
+f t f 
+t t f 
+```

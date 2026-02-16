@@ -1,0 +1,41 @@
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class ReverseLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Method 1: Using a descending iterator (ListIterator)
+        System.out.print("Reversed LinkedList (using ListIterator): ");
+        ListIterator<String> listIterator = linkedList.listIterator(linkedList.size()); // Start at the end
+        while (listIterator.hasPrevious()) {
+            System.out.print(listIterator.previous() + " ");
+        }
+        System.out.println();
+
+
+        // Method 2: Using Java 8 streams and reverse order
+        System.out.print("Reversed LinkedList (using Java 8 streams): ");
+        linkedList.descendingIterator().forEachRemaining(s -> System.out.print(s + " "));
+        System.out.println();
+
+
+        //Method 3: Using a for loop with descending index
+        System.out.print("Reversed LinkedList (using for loop with descending index): ");
+        for (int i = linkedList.size() - 1; i >= 0; i--) {
+            System.out.print(linkedList.get(i) + " ");
+        }
+        System.out.println();
+
+
+    }
+}

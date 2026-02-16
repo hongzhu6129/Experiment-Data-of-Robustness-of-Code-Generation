@@ -1,0 +1,78 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListInsertAtEnd {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList of Strings
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add some initial elements
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+
+        // Element to insert at the end
+        String newLanguage = "JavaScript";
+
+        System.out.println("Initial LinkedList: " + languages);
+
+        // Insert at the end using add()
+        languages.add(newLanguage); 
+
+        System.out.println("LinkedList after inserting at the end: " + languages);
+
+
+        // Example with an integer LinkedList
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        int newNumber = 4;
+
+        System.out.println("\nInitial Integer LinkedList: " + numbers);
+        numbers.add(newNumber);  // Add at the end
+        System.out.println("Integer LinkedList after inserting at the end: " + numbers);
+
+
+        // Illustrating offer() which is functionally equivalent to add() for inserting at the end.
+        LinkedList<Character> chars = new LinkedList<>();
+        chars.add('A');
+        chars.add('B');
+
+        char newChar = 'C';
+
+        System.out.println("\nInitial Character LinkedList: " + chars);
+
+        chars.offer(newChar); // offer() also inserts at the end
+        System.out.println("Character LinkedList after inserting at the end (using offer()): " + chars);
+
+
+
+        // Demonstrating addLast() which is explicitly for inserting at the end.
+         LinkedList<Double> doubles = new LinkedList<>();
+        doubles.add(1.1);
+        doubles.add(2.2);
+
+        double newDouble = 3.3;
+
+        System.out.println("\nInitial Double LinkedList: " + doubles);
+
+        doubles.addLast(newDouble); // addLast() inserts at the end.
+        System.out.println("Double LinkedList after inserting at the end (using addLast()): " + doubles);
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Examples:** The code now includes examples with different data types (String, Integer, Character, Double) to show how to insert at the end of `LinkedList`s of various types.
+2. **`offer()` and `addLast()`:** The code demonstrates `offer()` and `addLast()` which are also used for inserting at the end.  `offer()` is generally preferred if you want your code to be compatible with Queue interfaces. `addLast()` is very explicit in its intent.
+3. **Explanations in comments:**  Comments explain the purpose of each part of the code and highlight the different methods used to achieve the same outcome (inserting at the end).
+4. **Output Clarity:** The `println()` statements clearly show the initial and modified `LinkedList`s for each example, making it easy to understand the insertion process.
+5. **Best Practice � `add()`:** While `offer()`, `addLast()`, and `add()` work for insertion at the end, using just `add()` without an index is usually the most concise and commonly used way to add to the end of a LinkedList in Java.  The code emphasizes this.

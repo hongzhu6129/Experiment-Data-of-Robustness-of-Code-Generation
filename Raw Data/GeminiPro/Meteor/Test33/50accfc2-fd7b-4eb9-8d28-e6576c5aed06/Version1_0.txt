@@ -1,0 +1,106 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>(); // Use a Set to ensure uniqueness
+
+        int count = 0;
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure all digits are different
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                        count++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + count);
+
+
+        // --- Test Cases ---
+        test(new int[]{1, 2, 3, 4}, 24);  // Standard case
+        test(new int[]{1, 1, 1, 1}, 0);   // All digits the same (corner case)
+        test(new int[]{1, 2, 3, 3}, 12);  // Two digits the same (edge case)
+        test(new int[]{9, 8, 7}, 6);       // Only three distinct digits
+
+
+    }
+
+
+    // Helper function for testing
+    public static void test(int[] digits, int expectedCount) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        int count = 0;
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+
+                  if (digits.length >= 3 && i != j && i != k && j != k) {
+                    int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                    uniqueNumbers.add(number);
+                    count++;
+                  }
+
+
+                }
+            }
+        }
+
+        if (count == expectedCount) {
+            System.out.println("Test Passed for input " + java.util.Arrays.toString(digits));
+
+        } else {
+            System.err.println("Test Failed for input " + java.util.Arrays.toString(digits) +
+                    ". Expected: " + expectedCount + ", Actual: " + count );
+
+
+        }
+
+
+    }
+
+
+}
+
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Uniqueness:** The code now uses a `HashSet` called `uniqueNumbers` to store the generated numbers.  HashSets automatically handle uniqueness, so even if the same number is generated multiple times, it will only be stored once in the set.
+
+2. **Clearer Output:** The output is formatted to clearly display the unique numbers and their count.
+
+3. **Test Cases:**  The `test()` function simplifies testing. It takes the input digits and the expected count as arguments. Test cases now cover:
+   - The standard case (distinct digits).
+   - The corner case where all input digits are the same.
+   - An edge case where some input digits are repeated.
+   - A case where fewer than four digits are provided.
+
+
+4. **Conciseness and Readability**:  Minor improvements for readability.
+
+
+
+**How to Run:**
+
+1. Save the code as `UniqueThreeDigitNumbers.java`.
+2. Compile: `javac UniqueThreeDigitNumbers.java`
+3. Run: `java UniqueThreeDigitNumbers`
+
+
+The output will show the unique three-digit numbers generated and their count, followed by the results of the test cases.

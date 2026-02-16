@@ -1,0 +1,32 @@
+public class LucasComparison {
+
+    public static void main(String[] args) {
+        int n = 10; // Display the first 10 Lucas numbers
+
+        int l0 = 2;
+        int l1 = 1;
+
+        System.out.println("First " + n + " Lucas numbers and comparison with Fibonacci:");
+        System.out.println("-------------------------------------------------------");
+        System.out.printf("n\tLucas(n)\tFibonacci(n)\tLucas(n) > Fibonacci(n)\n");
+        System.out.println("-------------------------------------------------------");
+
+        for (int i = 0; i < n; i++) {
+            int fib = fibonacci(i);
+            System.out.printf("%d\t%d\t\t%d\t\t%s\n", i, l0, fib, (l0 > fib));
+
+            int temp = l1;
+            l1 = l0 + l1;
+            l0 = temp;
+        }
+    }
+
+    // Helper function to calculate Fibonacci numbers
+    public static int fibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+

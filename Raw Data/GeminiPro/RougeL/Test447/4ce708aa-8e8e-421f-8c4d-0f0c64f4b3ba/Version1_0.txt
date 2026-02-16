@@ -1,0 +1,54 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
+
+public class WeekendDates {
+
+    public static void main(String[] args) {
+        // Get the current year and month (you can modify this to specify a different year/month)
+        YearMonth yearMonth = YearMonth.now(); 
+
+        // Find the first weekend (Saturday or Sunday)
+        LocalDate firstWeekend = yearMonth.atDay(1);
+        while (firstWeekend.getDayOfWeek() != DayOfWeek.SATURDAY && firstWeekend.getDayOfWeek() != DayOfWeek.SUNDAY) {
+            firstWeekend = firstWeekend.plusDays(1);
+        }
+
+        // Find the last weekend (Saturday or Sunday)
+        LocalDate lastWeekend = yearMonth.atEndOfMonth();
+        while (lastWeekend.getDayOfWeek() != DayOfWeek.SATURDAY && lastWeekend.getDayOfWeek() != DayOfWeek.SUNDAY) {
+            lastWeekend = lastWeekend.minusDays(1);
+        }
+
+        // Format the dates for output
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Print the results
+        System.out.println("First weekend of " + yearMonth + ": " + firstWeekend.format(formatter));
+        System.out.println("Last weekend of " + yearMonth + ": " + lastWeekend.format(formatter));
+
+
+
+        // Example for a specific month and year:
+        YearMonth specificMonth = YearMonth.of(2024, 2);  // February 2024
+        LocalDate firstWeekendSpecific = specificMonth.atDay(1);
+        while (firstWeekendSpecific.getDayOfWeek() != DayOfWeek.SATURDAY 
+               && firstWeekendSpecific.getDayOfWeek() != DayOfWeek.SUNDAY) {
+            firstWeekendSpecific = firstWeekendSpecific.plusDays(1);
+        }
+
+        LocalDate lastWeekendSpecific = specificMonth.atEndOfMonth();
+        while (lastWeekendSpecific.getDayOfWeek() != DayOfWeek.SATURDAY 
+               && lastWeekendSpecific.getDayOfWeek() != DayOfWeek.SUNDAY) {
+            lastWeekendSpecific = lastWeekendSpecific.minusDays(1);
+        }
+
+        System.out.println("First weekend of " + specificMonth + ": " + firstWeekendSpecific.format(formatter));
+        System.out.println("Last weekend of " + specificMonth + ": " + lastWeekendSpecific.format(formatter));
+
+    }
+}
+```

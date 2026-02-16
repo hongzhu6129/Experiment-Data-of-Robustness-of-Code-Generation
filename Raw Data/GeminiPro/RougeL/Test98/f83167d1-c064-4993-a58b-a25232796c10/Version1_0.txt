@@ -1,0 +1,36 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        int row = 1;
+        int coinsInRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            coinsInRow++;
+            int coinsNeeded = row * coinsInRow;
+
+            if (coinsUsed + coinsNeeded <= n) {
+                for (int i = 0; i < coinsInRow; i++) {
+                    System.out.print("O "); // Print 'O' for a coin
+                }
+                System.out.println(); // New line after each row
+                coinsUsed += coinsInRow;
+                row++;
+            } else {
+                // Print the remaining coins on the last row if n is not a perfect sum
+                int remainingCoins = n - coinsUsed;
+                for (int i = 0; i < remainingCoins; i++) {
+                    System.out.print("O ");
+                }
+                System.out.println();
+                coinsUsed = n; // Exit the loop
+            }
+
+        }
+
+    }
+}
+```

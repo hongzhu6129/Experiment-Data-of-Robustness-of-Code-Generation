@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RemoveElementFromList {
+
+    public static void main(String[] args) {
+
+        // Create a sample list
+        List<String> myList = new ArrayList<>();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+        myList.add("grape");
+        myList.add("banana"); // Duplicate element
+
+
+        // Element to remove
+        String elementToRemove = "banana";
+
+        System.out.println("Original list: " + myList);
+
+
+        // Method 1: Remove by object (removes first occurrence)
+        myList.remove(elementToRemove);  
+        System.out.println("List after removing first 'banana': " + myList);
+
+
+
+        // Reset the list (for demonstrating other methods)
+        myList.clear();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+        myList.add("grape");
+        myList.add("banana");
+
+
+        // Method 2: Remove by index
+        int indexToRemove = 1; // Remove element at index 1 (second element)
+        if (indexToRemove >= 0 && indexToRemove < myList.size()) {
+            myList.remove(indexToRemove);
+            System.out.println("List after removing element at index 1: " + myList);
+        } else {
+            System.out.println("Invalid index");
+        }
+
+        // Reset the list (for demonstrating other methods)
+        myList.clear();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+        myList.add("grape");
+        myList.add("banana");
+
+
+
+        // Method 3: Remove all occurrences using a loop (Iterating backwards is important!)
+        for (int i = myList.size() - 1; i >= 0; i--) {
+            if (myList.get(i).equals(elementToRemove)) {
+                myList.remove(i);
+            }
+        }
+        System.out.println("List after removing all 'banana': " + myList);
+
+
+
+        // Method 4: Remove all occurrences using removeIf (Java 8 and later)  Most efficient for all occurrences
+         myList.clear();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+        myList.add("grape");
+        myList.add("banana");
+
+        myList.removeIf(item -> item.equals(elementToRemove)); // Lambda expression
+        System.out.println("List after removing all 'banana' using removeIf: " + myList);
+
+
+
+    }
+}

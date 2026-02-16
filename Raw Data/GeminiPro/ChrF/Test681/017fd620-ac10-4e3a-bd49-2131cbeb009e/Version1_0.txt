@@ -1,0 +1,40 @@
+```java
+public class DoubleParts {
+
+    public static void main(String[] args) {
+        double num = 123.456;
+
+        int wholePart = (int) num;  // Casting to int truncates the decimal part
+
+        double fractionalPart = num - wholePart;
+
+        System.out.println("Original Number: " + num);
+        System.out.println("Whole Part: " + wholePart);
+        System.out.println("Fractional Part: " + fractionalPart);
+
+
+        // Example with negative number
+        double negNum = -987.654;
+
+        int wholePartNeg = (int) negNum;
+        double fractionalPartNeg = negNum - wholePartNeg;
+
+
+        System.out.println("\nOriginal Number (Negative): " + negNum);
+        System.out.println("Whole Part: " + wholePartNeg);
+        System.out.println("Fractional Part: " + fractionalPartNeg);
+
+
+        // Example with Math.floor for more control (especially with negatives)
+        double anotherNum = -777.888;
+        int wholePartFloor = (int) Math.floor(anotherNum); // Explicitly rounds down
+        double fractionalPartFloor = anotherNum - wholePartFloor;
+
+        System.out.println("\nOriginal Number (Using Math.floor): " + anotherNum);
+        System.out.println("Whole Part: " + wholePartFloor);
+        System.out.println("Fractional Part: " + fractionalPartFloor);
+
+
+    }
+}
+```

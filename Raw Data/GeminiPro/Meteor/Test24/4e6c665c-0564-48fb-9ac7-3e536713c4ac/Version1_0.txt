@@ -1,0 +1,86 @@
+```java
+import java.util.Scanner;
+
+public class HexToBinary {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a hexadecimal number: ");
+        String hexString = scanner.nextLine().toUpperCase();
+
+        String binaryString = "";
+
+        // Handle potential empty input
+        if (hexString.isEmpty()) {
+            System.out.println("Invalid input (empty string).");
+            return; 
+        }
+
+
+        for (int i = 0; i < hexString.length(); i++) {
+            char hexChar = hexString.charAt(i);
+
+            // Validate input characters
+            if (!((hexChar >= '0' && hexChar <= '9') || (hexChar >= 'A' && hexChar <= 'F'))) {
+                System.out.println("Invalid input (non-hexadecimal character).");
+                return;
+            }
+
+            int decimalValue;
+
+            if (hexChar >= '0' && hexChar <= '9') {
+                decimalValue = hexChar - '0';
+            } else {
+                decimalValue = hexChar - 'A' + 10;
+            }
+
+
+            String binaryDigit = "";
+            // Convert decimal to binary (4 bits)
+            for (int j = 0; j < 4; j++) { // Ensure 4-bit representation
+                binaryDigit = (decimalValue % 2) + binaryDigit;  // Prepend for correct order
+                decimalValue /= 2;
+            }
+
+            binaryString += binaryDigit;
+        }
+
+        System.out.println("Binary equivalent: " + binaryString);
+        scanner.close();
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+1. **Valid Hex Input:**
+   - Input: `1A`
+   - Expected Output: `00011010`
+   - Input: `F0F`
+   - Expected Output: `111100001111`
+   - Input: `C0FFEE`  (Longer input)
+   - Expected Output: `110000001111111111101110`
+
+2. **Empty Input:**
+   - Input: `` (Empty string)
+   - Expected Output: `Invalid input (empty string).`
+
+3. **Invalid Characters:**
+   - Input: `G3` (Invalid character 'G')
+   - Expected Output: `Invalid input (non-hexadecimal character).`
+   - Input: `1A#` (Invalid character '#')
+   - Expected Output: `Invalid input (non-hexadecimal character).`
+   - Input: `1aZ` (Invalid character 'Z', even though 'a' is technically valid, we're handling upper case only for simplicity in the provided code)
+   - Expected Output: `Invalid input (non-hexadecimal character).`
+
+
+4. **Leading Zeros in Hex:**
+   - Input: `000A` 
+   - Expected Output: `0000000000001010` (Important to ensure leading zeros in the binary are maintained if you want strict 4-bit representation per hex digit).
+
+
+
+These test cases cover various scenarios, including valid hexadecimal inputs, empty input, invalid character input, and cases with leading zeros. They help ensure the robustness of the hexadecimal to binary conversion program.  You can easily create more test cases to increase confidence in your program's correctness.

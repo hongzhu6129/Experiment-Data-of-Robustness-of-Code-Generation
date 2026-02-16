@@ -1,0 +1,49 @@
+
+
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   - Input: 123
+   - Expected Output: Hexadecimal equivalent: 53
+
+2. **Leading Zeros:**
+   - Input: 000123
+   - Expected Output: Hexadecimal equivalent: 53
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: Hexadecimal equivalent: 0
+
+4. **Empty String:**
+   - Input: 
+   - Expected Output: Invalid octal number: Empty string
+
+5. **Invalid Characters:**
+   - Input: 128
+   - Expected Output: Invalid octal number: Contains non-octal digits
+
+6. **Invalid Characters (letters):**
+   - Input: 1A3
+   - Expected Output: Invalid octal number: Contains non-octal digits
+
+7. **Large Octal Number (potential overflow):**
+   - Input: 17777777777  (largest possible octal int)
+   - Expected Output: Hexadecimal equivalent: 7FFFFFFF 
+
+8. **Octal Number Exceeding Integer Limit:**
+   - Input: 20000000000  (This will overflow a standard integer)
+   - Expected Output: Invalid octal number: Too large (or equivalent error message)
+
+
+**Explanation of improvements:**
+
+* **Corner Case Handling:** Explicitly handles empty strings, invalid characters (including non-octal digits), and octal numbers exceeding the `int` capacity using `try-catch`.
+* **Input Validation:** Thoroughly validates the input to ensure it conforms to octal representation before processing.
+* **Clear Error Messages:** Provides descriptive error messages to indicate the type of input error.
+* **Direct `toHexString` Use:** Uses `Integer.toHexString()` after parsing to decimal for a concise conversion.
+
+
+
+This revised version addresses all the corner cases, providing a robust and reliable solution.  It significantly reduces the possibility of unexpected behavior or crashes. It also clarifies the error handling process making it easier to understand and debug.

@@ -1,0 +1,72 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static String getCurrentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Current System Time: " + getCurrentTime());
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Functionality:**
+
+* **Expected Output:**  A string representing the current date and time in the specified format (yyyy-MM-dd HH:mm:ss.SSS).
+* **How to Test:** Run the program multiple times, observing that the time changes appropriately.  Compare the output to a known time source (e.g., an online clock or your system clock).
+
+
+**2. Format Validation:**
+
+* **Expected Output:** The output string should *always* adhere to the "yyyy-MM-dd HH:mm:ss.SSS" format.  Years should be 4 digits, months and days should be 2 digits (with leading zeros if necessary), and milliseconds should always have 3 digits.
+* **How to Test:**  You could write a separate test function that parses the output string using `DateTimeFormatter` to verify the format.  If parsing fails, it indicates a format error.  Alternatively, use regular expressions to validate the format.
+
+
+**3. Time Zone Handling (Implicit):**
+
+* **Expected Output:** The time returned should be in the system's default time zone.
+* **How to Test:** Change your system's time zone and re-run the program. The output should reflect the new time zone.  Be mindful of potential issues with Daylight Saving Time transitions.
+
+**4.  Edge Cases (These are less applicable to this specific example as `LocalDateTime` handles them well, but it's good practice to consider them):**
+
+* **Leap Years:**  Ensure the date is correct during leap years (February 29th). Test around February 28th/29th in a leap year and a non-leap year.
+* **Start/End of Day/Month/Year:** Run the program at times like 23:59:59.999 on December 31st to check for rollover behavior.  Similarly, test at 00:00:00.000 on January 1st.
+* **Daylight Saving Time Transitions:**  If your system observes DST, run the program immediately before and after a DST transition to ensure correct time reporting.
+
+
+**Example Test Code (using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class SystemTimeTest {
+
+    @Test
+    void testFormat() {
+        String timeString = SystemTime.getCurrentTime();
+        try {
+            LocalDateTime.parse(timeString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+        } catch (DateTimeParseException e) {
+            fail("Incorrect date/time format: " + e.getMessage());
+        }
+    }
+
+    // Add more tests for other cases (leap year, time zones, etc.)
+}
+```
+
+
+This improved answer provides more comprehensive test cases, including example test code using JUnit, and explains the reasoning behind each test.  Remember to run your tests in different time zones and around date/time boundaries for thorough validation.

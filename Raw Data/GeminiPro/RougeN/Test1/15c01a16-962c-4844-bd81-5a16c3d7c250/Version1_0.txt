@@ -1,0 +1,79 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = input.nextLong(); // Use long to handle larger numbers
+
+        System.out.print("Enter the second number: ");
+        long num2 = input.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+
+        input.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Description |
+|---|---|---|---|---|
+| 1 | 5 | 10 | 50 | Positive numbers |
+| 2 | -5 | 10 | -50 | Negative and positive numbers |
+| 3 | -5 | -10 | 50 | Two negative numbers |
+| 4 | 0 | 10 | 0 | Multiplication by zero |
+| 5 | 10 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 |  Maximum positive long value multiplied by 1 |
+| 8 | -9223372036854775808 | 1 | -9223372036854775808 | Minimum negative long value multiplied by 1 |
+| 9 | 9223372036854775807 | 2 | -2 | Overflow (positive overflow) |  
+| 10 | -9223372036854775808 | 2 | 0 | Overflow (negative overflow)|
+| 11 | 1234567890 | 987654321 | 12193263111263526900 | Large positive numbers |
+| 12 | -1234567890 | -987654321 | 12193263111263526900 | Large negative numbers |
+
+
+
+
+**How to Run Test Cases:**
+
+While you can manually enter these test cases into the console, a more efficient and automated way is to use JUnit (or a similar testing framework).  Here's a basic example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(50, ProductOfTwoNumbers.calculateProduct(5, 10)); // Example test
+    }
+
+
+    // Add more @Test methods for the other test cases
+
+    // Helper method to make testing cleaner (not in the original class)
+    private long calculateProduct(long num1, long num2) {
+        return num1 * num2;
+    }
+}
+```
+
+**Explanation of Corner Cases and Overflow:**
+
+* **Zero:** Multiplying any number by zero results in zero.
+* **Maximum/Minimum Long Values:**  Testing with the largest and smallest possible `long` values is crucial to check how your program handles these boundaries.
+* **Overflow:** When the product of two numbers exceeds the maximum or minimum value that a `long` can hold, overflow occurs.  The result wraps around.  This is demonstrated in test cases 9 and 10. It is important to be aware of the possibility of overflow in your program, especially when dealing with large numbers.
+
+
+By testing these cases, you can be more confident that your `ProductOfTwoNumbers` program works correctly in a variety of situations. Using a testing framework like JUnit makes it much easier to automate these tests and incorporate them into your development workflow.

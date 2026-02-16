@@ -1,0 +1,51 @@
+```java
+public class StringToByteArray {
+
+    public static void main(String[] args) {
+        String str = "Hello, World!"; // Example string
+
+        byte[] byteArray = str.getBytes();
+
+        System.out.print("Byte array: [");
+        for (int i = 0; i < byteArray.length; i++) {
+            System.out.print(byteArray[i]);
+            if (i < byteArray.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+
+        // To demonstrate converting back to a String (Optional)
+        String restoredString = new String(byteArray);
+        System.out.println("Restored String: " + restoredString);
+
+
+        // Using a specific character set (e.g., UTF-8) for more control:
+        try {
+             byte[] utf8ByteArray = str.getBytes("UTF-8");
+
+             System.out.print("UTF-8 Byte array: [");
+             for (int i = 0; i < utf8ByteArray.length; i++) {
+                 System.out.print(utf8ByteArray[i]);
+                 if (i < utf8ByteArray.length - 1) {
+                     System.out.print(", ");
+                 }
+             }
+             System.out.println("]");
+
+            String utf8RestoredString = new String(utf8ByteArray, "UTF-8");
+            System.out.println("UTF-8 Restored String: " + utf8RestoredString);
+
+
+
+        } catch (java.io.UnsupportedEncodingException e) {
+            System.err.println("Error: UTF-8 encoding not supported.");  // This is unlikely in most environments
+        }
+
+
+
+
+    }
+}
+```

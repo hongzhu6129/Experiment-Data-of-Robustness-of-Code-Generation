@@ -1,0 +1,63 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int k = 1; // Index of the next unique element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int k1 = removeDuplicates(nums1);
+        System.out.println("k = " + k1 + ", nums = " + Arrays.toString(Arrays.copyOfRange(nums1, 0, k1))); // Output: k = 2, nums = [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int k2 = removeDuplicates(nums2);
+        System.out.println("k = " + k2 + ", nums = " + Arrays.toString(Arrays.copyOfRange(nums2, 0, k2))); // Output: k = 5, nums = [0, 1, 2, 3, 4]
+
+
+        int[] nums3 = {}; // Empty array
+        int k3 = removeDuplicates(nums3);
+        System.out.println("k = " + k3 + ", nums = " + Arrays.toString(Arrays.copyOfRange(nums3, 0, k3))); // Output: k = 0, nums = []
+
+
+        int[] nums4 = null; // Null array
+        int k4 = removeDuplicates(nums4);
+        System.out.println("k = " + k4 + ", nums = null");  // Output: k = 0, nums = null
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles `null` and empty input arrays, returning 0 in these cases.
+
+2. **Clearer Variable Names:**  `k` is used to represent the index of the next unique element, making the code easier to follow.
+
+3. **Efficient In-Place Modification:** The `removeDuplicates` method modifies the input array `nums` directly, moving unique elements to the front of the array.
+
+4. **Returns the Length of the Unique Subarray:** The method returns `k`, which represents the number of unique elements (and therefore the effective length of the updated array).
+
+5. **Illustrative `main` Method:** The `main` method demonstrates the usage of the `removeDuplicates` method with various test cases, including empty and null arrays.  It uses `Arrays.copyOfRange()` to print only the relevant part of the modified array (up to index `k`).
+
+
+**How it works:**
+
+The algorithm iterates through the sorted array. It maintains a pointer `k` to keep track of the position where the next unique element should be placed.  If the current element `nums[i]` is different from the previous element `nums[i-1]`, it's a unique element, so it's copied to `nums[k]`, and `k` is incremented. Finally, `k` is returned, indicating the length of the subarray containing the unique elements.

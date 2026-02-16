@@ -1,0 +1,52 @@
+```java
+import java.util.*;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = sc.nextLine();
+        char result = findFirstNonRepeatingCharacter(str);
+        if (result == '\0') {
+            System.out.println("No non-repeating character found");
+        } else {
+            System.out.println("The first non-repeating character is: " + result);
+        }
+    }
+
+    public static char findFirstNonRepeatingCharacter(String str) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c : str.toCharArray()) {
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) + 1);
+            } else {
+                map.put(c, 1);
+            }
+        }
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+
+        return '\0';
+    }
+}
+```
+
+Test cases:
+
+* **Normal case:**
+    * Input: "abcadbc"
+    * Output: 'b'
+* **Case with no non-repeating characters:**
+    * Input: "aaabbbccc"
+    * Output: No non-repeating character found
+* **Corner case with empty string:**
+    * Input: ""
+    * Output: No non-repeating character found
+* **Case with special characters:**
+    * Input: "!@#$%^&*()_+=-"
+    * Output: '!'

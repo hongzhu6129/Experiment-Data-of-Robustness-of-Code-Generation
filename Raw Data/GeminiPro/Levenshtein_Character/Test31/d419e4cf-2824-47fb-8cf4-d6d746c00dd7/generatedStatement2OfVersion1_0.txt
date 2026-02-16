@@ -1,0 +1,62 @@
+
+
+**Test Cases (including corner cases):**
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North & South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106 (Near Perth, Australia)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+
+5. **Points near the 180th Meridian (International Date Line):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: A small value, as these points are close despite the longitude difference.  *This is a crucial test for handling the discontinuity at the date line.*
+
+6. **Invalid Input:**
+    - Test with non-numeric input (e.g., "abc") to ensure the program handles it gracefully without crashing.  You might want to add input validation to your code for this.
+
+7. **Boundary values for Latitude:**
+    - lat1: 90 (North Pole)
+    - lon1: Any
+    - lat2: 89.999 (very close to North Pole)
+    - lon2: Any
+    - Should calculate a small distance.
+
+8. **Points near the equator:**
+   - Test various points near the equator to ensure accuracy in these regions.
+
+**How to Run Test Cases:**
+
+- You can either manually input these values into your program multiple times.
+- Or, even better, create a separate test class using a testing framework like JUnit. This will automate the process and provide more structured results.
+
+
+
+

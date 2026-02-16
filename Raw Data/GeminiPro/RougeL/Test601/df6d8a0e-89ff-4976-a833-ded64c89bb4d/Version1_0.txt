@@ -1,0 +1,44 @@
+```java
+import java.util.LinkedList;
+
+public class ReplaceLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some elements
+        books.add("The Lord of the Rings");
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+        books.add("1984");
+
+        System.out.println("Original LinkedList: " + books);
+
+        // Replace an element at a specific index
+        int indexToReplace = 1; // Replace the element at index 1
+        String newElement = "The Restaurant at the End of the Universe";
+
+        if (indexToReplace >= 0 && indexToReplace < books.size()) {
+            books.set(indexToReplace, newElement);
+            System.out.println("LinkedList after replacing element at index " + indexToReplace + ": " + books);
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (books.size() - 1));
+        }
+
+
+        // Example of replacing a specific element with another  (first occurrence only)
+        String elementToReplace = "1984";
+        String replacementElement = "Brave New World";
+
+         if(books.contains(elementToReplace)) { // Check if the element exists before attempting replacement.
+            books.set(books.indexOf(elementToReplace), replacementElement);
+            System.out.println("LinkedList after replacing '" + elementToReplace + "' with '" + replacementElement +"': " + books);
+         } else {
+             System.out.println("Element '" + elementToReplace + "' not found in the list.");
+         }
+
+
+    }
+}
+```

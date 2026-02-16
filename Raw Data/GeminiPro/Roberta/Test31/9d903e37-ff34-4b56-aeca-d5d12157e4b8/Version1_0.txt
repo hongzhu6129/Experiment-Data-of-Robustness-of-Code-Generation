@@ -1,0 +1,124 @@
+```java
+import java.util.Scanner;
+
+public class DistanceBetweenTwoPoints {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases including corner and edge cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at the poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+4. **Antipodal Points (Opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110  (180 degrees opposite longitude)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+5. **Points near the 180th Meridian (International Date Line):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: Small distance (because they are close despite the longitude difference)
+
+6. **Invalid Input:**
+   - lat1: "abc"  (or any non-numeric input) � the program should handle this gracefully (e.g., with an error message or exception).  Using `Scanner.nextDouble()` will throw an `InputMismatchException` if the input is not a valid `double`.
+
+
+7. **Extreme Latitudes/Longitudes:**
+   - lat1: 90  
+   - lon1: 180
+   - lat2: -89.9999
+   - lon2: -179.9999
+   - Expected Output:  A valid distance (tests handling of values very close to the limits)
+
+
+
+**How to Run Tests (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DistanceBetweenTwoPointsTest {
+
+    @Test
+    void testProvidedExample() {
+        assertEquals(1480.084845106907, DistanceBetweenTwoPoints.calculateDistance(25, 35, 35.5, 25.5), 0.0001); // Delta for tolerance
+    }
+
+    // ... (Add tests for other cases) ...
+
+    @Test
+    void testSamePoint(){
+        assertEquals(0, DistanceBetweenTwoPoints.calculateDistance(40,-70, 40, -70), 0.0001);
+    }
+
+   // Add a helper function to your main class to make testing cleaner:
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+         lat1 = Math.toRadians(lat1);
+         lon1 = Math.toRadians(lon1);
+         lat2 = Math.toRadians(lat2);
+         lon2 = Math.toRadians(lon2);
+         double earthRadius = 6371.01;
+         return earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+    }
+
+}
+```
+
+
+By creating a comprehensive set of test cases, you can ensure your program is robust and handles various inputs correctly. Using a testing framework like JUnit helps automate this process.  Consider using a mocking framework like Mockito to simulate user input if you want to test the input portions, or refactor the code slightly so input reading and calculation logic are separate.

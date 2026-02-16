@@ -1,0 +1,121 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Integer:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication Table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     7 x 4 = 28
+     7 x 5 = 35
+     7 x 6 = 42
+     7 x 7 = 49
+     7 x 8 = 56
+     7 x 9 = 63
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication Table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication Table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Integer:**  (Tests for potential overflow if not using `long`)
+   - Input: 2147483647 (Integer.MAX_VALUE)
+   - Expected Output: (Check for correct large number handling)
+
+
+5. **Large Negative Integer:** (Tests for potential overflow if not using `long`)
+   - Input: -2147483648 (Integer.MIN_VALUE)
+   - Expected Output: (Check for correct large number handling)
+
+
+**How to Run Test Cases:**
+
+While you could manually enter these values and check the output, a more robust approach is to create automated tests.  Here's a basic example using JUnit (a popular Java testing framework):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    public void testPositiveInteger() {
+        testTable(7, "Multiplication Table of 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n");
+    }
+
+    @Test
+    public void testZero() {
+         testTable(0, "Multiplication Table of 0:\n0 x 1 = 0\n0 x 2 = 0\n0 x 3 = 0\n0 x 4 = 0\n0 x 5 = 0\n0 x 6 = 0\n0 x 7 = 0\n0 x 8 = 0\n0 x 9 = 0\n0 x 10 = 0\n");
+    }
+
+    // Add more tests for negative, large positive, and large negative integers
+
+     private void testTable(int input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
+        System.setIn(in);  // Redirect System.in
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out)); // Redirect System.out
+
+        MultiplicationTable.main(new String[0]); // Run the main method
+
+        assertEquals(expectedOutput, out.toString()); // Check the output
+        System.setIn(System.in); // Restore System.in
+        System.setOut(System.out); // Restore System.out
+
+    }
+}
+```
+
+
+Using a testing framework makes it much easier to run and manage your test cases as your program grows.  It also helps ensure that your code functions correctly as you make changes.

@@ -1,0 +1,19 @@
+public class LucasNumbers {
+
+    public static void main(String[] args) {
+        int n = 10;
+        int[] lucas = new int[n];
+
+        lucas[0] = 2;
+        lucas[1] = 1;
+
+        for (int i = 2; i < n; i++) {
+            lucas[i] = lucas[i - 1] + lucas[i - 2];
+        }
+
+        System.out.print("The first 10 Lucas numbers are: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(lucas[i] + " ");
+        }
+    }
+}

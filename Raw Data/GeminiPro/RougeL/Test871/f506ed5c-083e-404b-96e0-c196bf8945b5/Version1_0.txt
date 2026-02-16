@@ -1,0 +1,66 @@
+```java
+import java.io.File;
+
+public class FileSize {
+
+    public static void main(String[] args) {
+        String[] filePaths = { "/home/students/abc.txt", "/home/students/test.txt" }; // Replace with your file paths
+
+        for (String filePath : filePaths) {
+            File file = new File(filePath);
+
+            if (file.exists()) {
+                long fileSizeInBytes = file.length();
+                System.out.println(filePath + ": " + fileSizeInBytes + " bytes");
+            } else {
+                System.out.println(filePath + ": File not found.");
+            }
+        }
+    }
+}
+```
+
+
+This code addresses the prompt directly by:
+
+1. **Using `public static void main(String[] args)`:**  The code adheres to the required method signature.
+2. **Finding file size:**  It uses `file.length()` to get the file size in bytes.
+3. **Handling file existence:**  It checks if the file exists using `file.exists()` to prevent errors if a file isn't found.  It prints a message if the file doesn't exist.
+4. **Providing specified file paths:** The code includes an array of file paths to check. You should replace `/home/students/abc.txt` and `/home/students/test.txt` with the actual file paths you want to use.  If you want the user to provide the paths, you'll need to modify the code slightly to take command-line arguments, as `main`'s signature does not allow for `Scanner` based input directly.
+
+
+**Example with command-line arguments (if you need user input):**
+
+```java
+import java.io.File;
+
+public class FileSize {
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide file paths as command-line arguments.");
+            return;
+        }
+
+
+        for (String filePath : args) {
+            File file = new File(filePath);
+
+            if (file.exists()) {
+                long fileSizeInBytes = file.length();
+                System.out.println(filePath + ": " + fileSizeInBytes + " bytes");
+            } else {
+                System.out.println(filePath + ": File not found.");
+            }
+        }
+    }
+}
+```
+
+To compile and run this version (assuming you saved it as `FileSize.java`):
+
+1. `javac FileSize.java`
+2. `java FileSize /path/to/file1.txt /path/to/file2.txt etc.`  (Replace with your actual file paths)
+
+
+This command-line argument version lets the user specify the file paths when running the program. This addresses the limitations of using `Scanner` within the `main` method's specified signature.

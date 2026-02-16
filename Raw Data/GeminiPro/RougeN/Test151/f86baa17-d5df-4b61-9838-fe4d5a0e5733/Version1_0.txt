@@ -1,0 +1,101 @@
+**Java Code:**
+
+```java
+import java.util.Scanner;
+
+public class MagazineChangeFormat {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the input magazine text
+        String magazineText = scanner.nextLine();
+
+        // Split the magazine text into words
+        String[] words = magazineText.split(" ");
+
+        // Reverse the order of the words
+        for (int i = words.length - 1; i >= 0; i--) {
+            System.out.print(words[i] + " ");
+        }
+
+        System.out.println();
+    }
+}
+```
+
+**Test Cases:**
+
+**Input:**
+
+```text
+The quick brown fox jumps over the lazy dog.
+```
+
+**Expected Output:**
+
+```text
+dog lazy the over jumps fox brown quick The
+```
+
+**Test Case 2:**
+
+**Input:**
+
+```text
+This is a test case.
+```
+
+**Expected Output:**
+
+```text
+case test a is This
+```
+
+**Test Case 3:**
+
+**Input:**
+
+```text
+This is a long sentence with many words.
+```
+
+**Expected Output:**
+
+```text
+words many with sentence long a is This
+```
+
+**Test Case 4:**
+
+**Input:**
+
+```text
+(empty string)
+```
+
+**Expected Output:**
+
+```text
+(empty string)
+```
+
+**Test Case 5:**
+
+**Input:**
+
+```text
+This sentence contains only one word.
+```
+
+**Expected Output:**
+
+```text
+word one only contains sentence This
+```
+
+**Corner Cases:**
+
+* **Empty input:** The program should handle the case of an empty input string by printing an empty string.
+* **Single word input:** The program should reverse the order of a single word input.
+* **Input with leading/trailing whitespace:** The program should ignore leading and trailing whitespace in the input string.

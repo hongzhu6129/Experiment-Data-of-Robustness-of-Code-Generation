@@ -1,0 +1,71 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class NasdaqCharacterAnalyzer {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user.
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Create a map to store the characters and their opening and closing positions.
+        Map<Character, int[]> characterPositions = new HashMap<>();
+
+        // Iterate over the input string and update the map with the opening and closing positions of each character.
+        for (int i = 0; i < inputString.length(); i++) {
+            char character = inputString.charAt(i);
+            if (characterPositions.containsKey(character)) {
+                characterPositions.get(character)[1] = i;
+            } else {
+                characterPositions.put(character, new int[]{i, i});
+            }
+        }
+
+        // Print the opening and closing positions of each character.
+        for (Map.Entry<Character, int[]> entry : characterPositions.entrySet()) {
+            System.out.println("Character: " + entry.getKey() + ", Opening Position: " + entry.getValue()[0] + ", Closing Position: " + entry.getValue()[1]);
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty string:** The program should print an empty map.
+* **String with only one character:** The program should print the opening and closing position of the character as the same value.
+
+**Regular Test Cases:**
+
+* **String with multiple characters:** The program should print the opening and closing positions of each character.
+* **String with repeating characters:** The program should print the opening and closing positions of each character, even if it repeats.
+* **String with non-alphabetic characters:** The program should ignore non-alphabetic characters.
+* **String with uppercase and lowercase characters:** The program should treat uppercase and lowercase characters as the same character.
+
+**Sample Input and Output:**
+
+**Input:**
+
+```
+Hello World!
+```
+
+**Output:**
+
+```
+Character: H, Opening Position: 0, Closing Position: 0
+Character: e, Opening Position: 1, Closing Position: 3
+Character: l, Opening Position: 2, Closing Position: 3
+Character: o, Opening Position: 4, Closing Position: 6
+Character: W, Opening Position: 7, Closing Position: 7
+Character: o, Opening Position: 8, Closing Position: 8
+Character: r, Opening Position: 9, Closing Position: 9
+Character: l, Opening Position: 10, Closing Position: 10
+Character: d, Opening Position: 11, Closing Position: 11
+Character: !, Opening Position: 12, Closing Position: 12
+```

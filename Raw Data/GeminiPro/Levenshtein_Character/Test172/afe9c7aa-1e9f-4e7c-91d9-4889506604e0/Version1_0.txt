@@ -1,0 +1,61 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class FindWordsWithSameCharacters {
+
+    public static void main(String[] args) {
+        // Create a list of words
+        List<String> words = new ArrayList<>();
+        words.add("apple");
+        words.add("banana");
+        words.add("cherry");
+        words.add("dog");
+        words.add("elephant");
+        words.add("fish");
+
+        // Create a list of characters
+        List<Character> characters = new ArrayList<>();
+        characters.add('a');
+        characters.add('e');
+        characters.add('i');
+        characters.add('o');
+        characters.add('u');
+
+        // Find all the words that contain at least one of the characters
+        List<String> matchingWords = new ArrayList<>();
+        for (String word : words) {
+            for (Character character : characters) {
+                if (word.contains(character.toString())) {
+                    matchingWords.add(word);
+                    break;
+                }
+            }
+        }
+
+        // Print the matching words
+        System.out.println(matchingWords);
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+* Input: ["apple", "banana", "cherry", "dog", "elephant", "fish"], ["a", "e", "i", "o", "u"]
+* Expected Output: ["apple", "banana", "cherry", "elephant"]
+
+* Input: ["hello", "world", "java", "python", "javascript"], ["a", "e", "i"]
+* Expected Output: ["hello", "world", "java"]
+
+**Corner Cases:**
+
+* Input: [], ["a", "e", "i"]
+* Expected Output: []
+
+* Input: ["apple", "banana", "cherry", "dog", "elephant", "fish"], []
+* Expected Output: []
+
+* Input: ["a", "e", "i", "o", "u"], ["z"]
+* Expected Output: []

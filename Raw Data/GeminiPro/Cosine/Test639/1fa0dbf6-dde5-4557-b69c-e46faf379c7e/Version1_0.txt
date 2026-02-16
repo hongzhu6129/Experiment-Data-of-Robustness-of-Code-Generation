@@ -1,0 +1,53 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(7);
+
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] arr1 = new Integer[pq.size()];
+        pq.toArray(arr1);
+
+        System.out.println("Array 1 (pre-allocated): " + Arrays.toString(arr1));
+
+
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] arr2 = pq.toArray(); // Returns an Object array
+
+        // Convert Object array to Integer array (necessary if you need a typed array)
+        Integer[] arr3 = Arrays.stream(arr2)
+                .map(Object::toString)
+                .map(Integer::parseInt) // Or any appropriate parsing based on your data type
+                .toArray(Integer[]::new);
+
+        System.out.println("Array 2 (converted from Object array): " + Arrays.toString(arr3));
+
+
+        //Method 3 - Iterating through the PriorityQueue (preserves order):
+        Integer[] arr4 = new Integer[pq.size()];
+        int index = 0;
+        for (Integer element : pq) { // Uses iterator, maintains priority order
+            arr4[index++] = element;
+        }
+
+        System.out.println("Array 3 (using iterator): " + Arrays.toString(arr4));
+
+
+        // Note: After toArray() operations, the PriorityQueue remains unchanged
+        System.out.println("Original PriorityQueue: " + pq); 
+
+
+    }
+}
+```

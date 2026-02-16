@@ -1,0 +1,77 @@
+```java
+import java.util.Arrays;
+
+public class Prime2DArray {
+
+    public static int prime_cell(int i, int j) {
+        if (isPrime(i) && isPrime(j)) {
+            return 0; // Represents false
+        } else {
+            return 1; // Represents true
+        }
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int m = 3; // Example size of the array (you can change this)
+        boolean[][] a = new boolean[m][m];
+
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                 a[i][j] = prime_cell(i, j) == 1; //  Convert 1 to true, 0 to false
+            }
+        }
+
+        // Print the 2D array (formatted for readability)
+         for (int i = 0; i < m; i++) {
+             for (int j = 0; j < m; j++) {
+                 System.out.print(a[i][j] + " ");
+             }
+             System.out.println(); // New line after each row
+         }
+
+
+
+        // Print a single row (as shown in the sample output)
+        for (int j = 0; j < m; j++) {
+            System.out.print(a[0][j] + " ");
+        }
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`prime_cell(int i, int j)`:** This method now correctly determines whether both `i` and `j` are prime.  It returns 0 for false (if both are prime) and 1 for true (otherwise).
+
+2. **`isPrime(int num)`:** This helper function efficiently checks if a number is prime.
+
+3. **`main` Method:**
+   - Creates the 2D boolean array `a[][]`.
+   - Iterates through the array, calling `prime_cell` to set the boolean values.
+   - **Clearer Output:** The output now prints the entire 2D array in a formatted way (row by row) and then separately prints the first row to match the sample output you provided.
+   - **Example Size:** The `m` variable is set to 3 for the example, but you can easily change it to create different size arrays.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `Prime2DArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac Prime2DArray.java`
+3. **Run:**  `java Prime2DArray`
+
+
+This improved version will give you the desired output and is more robust and efficient.

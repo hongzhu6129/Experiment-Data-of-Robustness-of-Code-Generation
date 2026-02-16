@@ -1,0 +1,89 @@
+```java
+import java.nio.charset.Charset;
+import java.util.SortedMap;
+
+public class ListCharsets {
+
+    public static void listCharacterSets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        System.out.println("Available Character Sets:");
+        for (String charsetName : charsets.keySet()) {
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + ": " + charset.displayName());
+            // Optionally, you can print aliases:
+            // System.out.println("   Aliases: " + charset.aliases());
+        }
+    }
+
+    public static void main(String[] args) {
+        listCharacterSets();
+    }
+}
+
+
+// Test Cases:
+
+// Test case 1:  Verify common charsets exist
+// Expected Result:  UTF-8, UTF-16, US-ASCII, ISO-8859-1 should be present.
+
+// Test case 2: Verify case insensitivity (if applicable).
+// Some systems might treat charset names case-insensitively (though the standard doesn't require it).
+// Expected Result:  Looking up "utf-8" and "UTF-8" should return the same Charset object.  This test may or may not pass depending on the JVM/OS.  It highlights a potential portability issue if your code relies on case-insensitive lookups.
+
+// Test case 3: Empty available charsets (Corner case - extremely unlikely in practice)
+// Artificially create a situation where availableCharsets() returns an empty map (e.g., by mocking or if there's a truly unusual system configuration).
+// Expected Result: The code should handle the empty map gracefully, perhaps by printing a message like "No charsets available."  This prevents unexpected NullPointerExceptions.
+
+
+//  Example of how to implement Test Case 3 (Empty Charsets) using a simple mock for demonstration:
+
+// import java.nio.charset.Charset;
+// import java.util.Collections;
+// import java.util.SortedMap;
+
+
+// public class ListCharsetsMockTest { // Separate class for the mock test
+
+
+//     public static void listCharacterSets(SortedMap<String, Charset> mockCharsets) {  // Modified to accept a mock map
+//         System.out.println("Available Character Sets:");
+
+//         if (mockCharsets.isEmpty()) {
+//             System.out.println("No charsets available.");  // Handle empty case
+//             return;
+//         }
+
+
+//         for (String charsetName : mockCharsets.keySet()) {
+//             Charset charset = mockCharsets.get(charsetName);
+//             System.out.println(charsetName + ": " + charset.displayName());
+//         }
+//     }
+
+//     public static void main(String[] args) {
+//         // Create an empty mock map
+//         SortedMap<String, Charset> emptyCharsets = Collections.emptySortedMap();
+
+
+//         // Test with the empty map:
+//         listCharacterSets(emptyCharsets);  // This should print "No charsets available"
+
+
+//         // Test with the real charsets (as before)
+//         listCharacterSets(Charset.availableCharsets());
+//     }
+// }
+
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Output:** The output now includes the display name of each charset along with its canonical name, making it easier to understand.
+2. **Optional Alias Printing:** I've added a commented-out line that shows how to print the aliases for each charset if needed.  Uncomment this line if alias information is important for your use case.
+3. **Test Cases:**  I've outlined essential test cases, including positive tests (verifying common charsets), a test for potential case insensitivity issues (which might affect portability), and, crucially, a corner case test for handling an empty set of available charsets.
+4. **Mock Example for Corner Case:**  I've included a separate example demonstrating how to simulate the "empty available charsets" corner case using a mock `SortedMap`. This example shows a robust way to test that your code handles this unlikely but possible scenario gracefully, preventing potential `NullPointerExceptions`.  This demonstrates good defensive programming practice.
+
+
+This revised answer provides a more complete solution, including clearer output, better documentation, and thorough testing considerations.

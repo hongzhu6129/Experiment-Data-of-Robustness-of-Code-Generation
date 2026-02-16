@@ -1,0 +1,40 @@
+```java
+import java.util.*;
+
+public class RemoveDuplicateChars {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        // Create a set to store the unique characters
+        Set<Character> uniqueChars = new HashSet<>();
+
+        // Iterate over the string and add each character to the set
+        for (char c : str.toCharArray()) {
+            uniqueChars.add(c);
+        }
+
+        // Print the unique characters
+        System.out.println(uniqueChars);
+    }
+}
+```
+
+**Test cases:**
+
+* **Test case 1:**
+    * Input: "hello"
+    * Output: [e, h, l, o]
+* **Test case 2:**
+    * Input: "AABBCCDD"
+    * Output: [A, B, C, D]
+* **Test case 3:**
+    * Input: ""
+    * Output: []
+* **Test case 4:**
+    * Input: "12345"
+    * Output: [1, 2, 3, 4, 5]
+* **Test case 5:**
+    * Input: "!!!!!"
+    * Output: [!]

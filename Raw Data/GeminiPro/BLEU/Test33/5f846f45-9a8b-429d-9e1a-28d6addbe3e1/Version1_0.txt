@@ -1,0 +1,113 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class UniqueThreeAndFiveDigitNumbers {
+
+    public static void main(String[] args) {
+        List<Integer> digits = Arrays.asList(1, 2, 3, 4);
+        Set<Integer> threeDigitNumbers = generateUniqueThreeDigitNumbers(digits);
+
+        System.out.println("Unique three-digit numbers:");
+        for (int num : threeDigitNumbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\nCount of unique three-digit numbers: " + threeDigitNumbers.size());
+
+        long fiveDigitCount = countFiveDigitNumbers(digits);
+        System.out.println("\nCount of five-digit numbers: " + fiveDigitCount);
+
+
+        // --- Test Cases ---
+        testGenerateUniqueThreeDigitNumbers();
+        testCountFiveDigitNumbers();
+
+    }
+
+    public static Set<Integer> generateUniqueThreeDigitNumbers(List<Integer> digits) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        for (int i : digits) {
+            for (int j : digits) {
+                for (int k : digits) {
+                    if (i != j && i != k && j != k) {
+                        uniqueNumbers.add(i * 100 + j * 10 + k);
+                    }
+                }
+            }
+        }
+        return uniqueNumbers;
+    }
+
+    public static long countFiveDigitNumbers(List<Integer> digits) {
+        // Using permutations (allowing repetition): digits.size() ^ 5
+        return (long) Math.pow(digits.size(), 5); 
+    }
+
+
+    // Test cases
+    public static void testGenerateUniqueThreeDigitNumbers() {
+        List<Integer> digits1 = Arrays.asList(1, 2, 3, 4);
+        Set<Integer> result1 = generateUniqueThreeDigitNumbers(digits1);
+        System.out.println("\nTest Case 1 (1,2,3,4):  Expected Size: 24, Actual size: " + result1.size()); //24 permutations
+
+        List<Integer> digits2 = Arrays.asList(1, 1, 1, 1); // Corner case: all digits same. Expect 0
+        Set<Integer> result2 = generateUniqueThreeDigitNumbers(digits2);
+        System.out.println("Test Case 2 (1,1,1,1): Expected Size: 0, Actual size: " + result2.size());
+
+
+        List<Integer> digits3 = Arrays.asList(1, 2, 3); // Corner case: Fewer than 4 digits
+        Set<Integer> result3 = generateUniqueThreeDigitNumbers(digits3);
+        System.out.println("Test Case 3 (1,2,3): Expected Size: 6, Actual size: " + result3.size()); // 3! = 6
+
+
+    }
+
+    public static void testCountFiveDigitNumbers() {
+
+        List<Integer> digits1 = Arrays.asList(1, 2, 3, 4);
+        long result1 = countFiveDigitNumbers(digits1);
+        System.out.println("\nTest Case 4 five digits (1,2,3,4): Expected: 1024, Actual: " + result1); //4^5
+
+        List<Integer> digits2 = Arrays.asList(0);    // Corner case: only one distinct digit
+        long result2 = countFiveDigitNumbers(digits2);
+        System.out.println("Test Case 5 five digits (0)     : Expected: 1, Actual: " + result2);
+
+        List<Integer> digits3 = new ArrayList<>(); // Corner case : empty list
+        long result3 = countFiveDigitNumbers(digits3); // Should be 0
+        System.out.println("Test Case 6 five digits ()      : Expected: 0, Actual: " + result3);
+
+
+    }
+}
+```
+
+
+Key Improvements and Explanations:
+
+1. **Clearer Variable Names:** More descriptive names like `threeDigitNumbers` and `fiveDigitCount` improve readability.
+
+2. **HashSet for Unique Numbers:**  Using a `HashSet` automatically handles uniqueness for the three-digit numbers. No need for manual checks after generation.
+
+3. **Five-Digit Count Calculation:** The `countFiveDigitNumbers` method now correctly calculates the number of five-digit numbers using permutations with repetition (n^r, where n is the number of available digits and r is the number of digits in the number).
+
+4. **Comprehensive Test Cases:**  The code includes a dedicated test section (`testGenerateUniqueThreeDigitNumbers` and `testCountFiveDigitNumbers`). These test cases cover:
+   - The normal case (1, 2, 3, 4).
+   - Corner cases (all digits same, fewer than four input digits, empty list for five-digit count test).
+   - Clear expected vs. actual output for easy verification of test results.
+
+
+5. **Output Formatting:** The output is formatted for better readability.
+
+
+
+
+How to Run and Test:
+
+1. Save the code as `UniqueThreeAndFiveDigitNumbers.java`.
+2. Compile: `javac UniqueThreeAndFiveDigitNumbers.java`
+3. Run: `java UniqueThreeAndFiveDigitNumbers`
+
+The output will display the unique three-digit numbers, their count, the five-digit number count, and the results of all test cases.

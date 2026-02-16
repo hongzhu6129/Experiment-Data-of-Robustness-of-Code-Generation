@@ -1,0 +1,81 @@
+```java
+import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
+
+public class StringCounter {
+
+    public static void main(String[] args) throws Exception {
+
+        List<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("apricot");
+        strings.add("banana");
+        strings.add("blueberry");
+        strings.add("avocado");
+        strings.add("orange");
+
+        char startingLetter = 'a';
+
+        int numThreads = 4; // Adjust as needed based on your system
+
+        ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
+        List<Future<Integer>> futures = new ArrayList<>();
+
+        int chunkSize = strings.size() / numThreads;  // Size of each sublist
+
+        for (int i = 0; i < numThreads; i++) {
+            int start = i * chunkSize;
+            int end = (i == numThreads - 1) ? strings.size() : start + chunkSize; // Handle last chunk
+
+            List<String> sublist = strings.subList(start, end); 
+
+            Callable<Integer> task = () -> {
+                int count = 0;
+                for (String str : sublist) {
+                    if (str.charAt(0) == startingLetter) {
+                        count++;
+                    }
+                }
+                return count;
+            };
+            futures.add(executorService.submit(task));
+        }
+
+        int totalCount = 0;
+        for (Future<Integer> future : futures) {
+            totalCount += future.get(); // Get the result from each tributary (Future)
+        }
+
+        executorService.shutdown();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + totalCount);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Tributaries (ExecutorService):** The code uses an `ExecutorService` to create a pool of worker threads (tributaries).  Each thread processes a portion (sublist) of the original string list.
+
+2. **Callable and Future:**  `Callable` tasks are submitted to the `ExecutorService`.  Each `Callable` returns an `Integer` representing the count of strings starting with the target letter in its sublist.  `Future` objects represent the results of these asynchronous computations.
+
+3. **Chunking the List:** The input list is divided into sublists (chunks) of approximately equal size. This allows for parallel processing by the tributaries. The code correctly handles the last chunk, which might have a different size if the list size is not perfectly divisible by the number of threads.
+
+4. **Retrieving Results:**  After submitting all tasks, the main thread iterates through the `Future` objects and retrieves the results (partial counts) using `future.get()`. These partial counts are then summed up to get the total count.
+
+5. **Shutdown ExecutorService:** The `executorService.shutdown()` is crucial to ensure that the thread pool is properly terminated after all tasks are completed.
+
+
+**How to Compile and Run:**
+
+1. Save the code as `StringCounter.java`.
+2. Compile: `javac StringCounter.java`
+3. Run: `java StringCounter`
+
+
+This improved version uses tributaries effectively to distribute the work of counting strings, making it more efficient for larger lists of strings.  You can adjust `numThreads` to experiment with different levels of parallelism.

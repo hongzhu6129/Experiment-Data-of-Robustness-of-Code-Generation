@@ -1,0 +1,47 @@
+```java
+import java.util.Arrays;
+
+public class StringPermutation {
+
+    public static void main(String[] args) {
+        String str1 = "abcd";
+        String str2 = "badc";
+        String str3 = "abce";
+
+        System.out.println(str1 + " is a permutation of " + str2 + ": " + stringPermutation(str1, str2)); // Output: true
+        System.out.println(str1 + " is a permutation of " + str3 + ": " + stringPermutation(str1, str3)); // Output: false
+        System.out.println(str1 + " is a permutation of " + str1 + ": " + stringPermutation(str1, str1)); // Output: true (A string is a permutation of itself)
+
+        // Test cases for empty and null strings:
+        System.out.println(stringPermutation("", "")); //true
+        System.out.println(stringPermutation(null, null)); //true
+        System.out.println(stringPermutation("abc", null)); //false
+        System.out.println(stringPermutation(null, "abc")); //false
+        System.out.println(stringPermutation("", "abc")); //false
+        System.out.println(stringPermutation("abc",""));//false
+
+
+
+    }
+
+    public static boolean stringPermutation(String str1, String str2) {
+        // Handle null and empty string cases
+        if (str1 == null || str2 == null) {
+            return str1 == str2; // Both null, return true. Otherwise, false.
+        }
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+
+        return Arrays.equals(charArray1, charArray2);
+
+    }
+}
+```

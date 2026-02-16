@@ -1,0 +1,62 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class RemoveMappings {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+        myMap.put("grape", 4);
+        myMap.put("kiwi", 5);
+
+
+        System.out.println("Original map: " + myMap);
+
+        // Method 1: Remove mappings using remove() method (specific keys)
+        myMap.remove("banana");
+        myMap.remove("grape");
+
+        System.out.println("Map after removing 'banana' and 'grape': " + myMap);
+
+        // Reset the map for the next example
+        myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+        myMap.put("grape", 4);
+        myMap.put("kiwi", 5);
+
+
+        // Method 2: Remove mappings using keySet() and an iterator (conditional removal)
+        // Be cautious when modifying a collection while iterating.  Use an iterator's remove() method.
+        for (var iterator = myMap.keySet().iterator(); iterator.hasNext(); ) {
+            String key = iterator.next();
+            if (key.startsWith("o") || key.startsWith("g")) { // Example condition
+                iterator.remove();
+            }
+        }
+
+        System.out.println("Map after removing keys starting with 'o' or 'g': " + myMap);
+
+
+        // Reset the map for the next example
+        myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+        myMap.put("grape", 4);
+        myMap.put("kiwi", 5);
+
+        // Method 3:  Remove all mappings (clear the map)
+        myMap.clear();
+        System.out.println("Map after clearing all mappings: " + myMap);
+
+
+
+    }
+}
+```

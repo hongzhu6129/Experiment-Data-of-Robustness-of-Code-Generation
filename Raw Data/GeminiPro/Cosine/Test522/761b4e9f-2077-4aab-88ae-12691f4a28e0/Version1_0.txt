@@ -1,0 +1,37 @@
+```java
+import java.util.Scanner;
+
+public class AmicableNumbers {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input the second number: ");
+        int num2 = input.nextInt();
+
+        if (isAmicable(num1, num2)) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+        input.close();
+    }
+
+    private static boolean isAmicable(int num1, int num2) {
+        return sumOfProperDivisors(num1) == num2 && sumOfProperDivisors(num2) == num1;
+    }
+
+    private static int sumOfProperDivisors(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+}
+```

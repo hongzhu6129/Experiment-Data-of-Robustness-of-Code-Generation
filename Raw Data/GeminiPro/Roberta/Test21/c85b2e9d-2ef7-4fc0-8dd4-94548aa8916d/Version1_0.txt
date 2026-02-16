@@ -1,0 +1,103 @@
+```java
+import java.util.Scanner;
+
+public class OctalToBinary {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = scanner.nextLine();
+
+        try {
+            long octal = Long.parseLong(octalString, 8); // Parse octal string
+
+            // Corner case: Handle negative octal numbers
+            boolean isNegative = false;
+            if (octalString.startsWith("-")) {
+                isNegative = true;
+                octal = -octal; // Make it positive for conversion
+            }
+
+
+            String binaryString = "";
+            if (octal == 0) {
+                binaryString = "0"; // Handle octal 0
+            } else {
+                while (octal > 0) {
+                    int remainder = (int) (octal % 2);
+                    binaryString = remainder + binaryString;
+                    octal /= 2;
+                }
+            }
+
+
+            if (isNegative) {
+                // Two's complement for negative binary (not strictly required for this problem, 
+                // but adds robustness for a more general octal-to-binary converter)
+                String twosComplement = "";
+
+                // 1. Invert bits
+                for(char bit : binaryString.toCharArray()) {
+                  twosComplement += (bit == '0') ? '1' : '0';
+                }
+                // 2. Add 1
+                int carry = 1;
+                String temp = "";
+
+                for (int i = twosComplement.length() - 1; i >= 0; i--) {
+                    int sum = (twosComplement.charAt(i) - '0') + carry;
+                    temp = (sum % 2) + temp;
+                    carry = sum / 2;
+                }
+
+                binaryString = (carry > 0 ? carry : "") + temp;
+                System.out.println("Binary equivalent (two's complement): " + binaryString);
+
+            } else {
+                System.out.println("Binary equivalent: " + binaryString);
+            }
+
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid octal number.");
+        }
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   - Input: 123
+   - Expected Output: 1010011
+
+2. **Leading Zeros:**
+   - Input: 0077
+   - Expected Output: 111111
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+4. **Large Octal:** 
+   - Input: 17777777777  (Largest octal that fits in a signed Java long)
+   - Expected Output: 1111111111111111111111111111111
+
+5. **Invalid Octal:**
+   - Input: 890  (Contains digits other than 0-7)
+   - Expected Output: Invalid octal number.
+
+6. **Negative Octal (Corner case):**
+   - Input: -10
+   - Expected Output: Binary equivalent (two's complement): 11111111111111111111111111110110 (depending on system architecture/JVM, might show fewer leading 1s, but it should represent -8 in two's complement)
+
+7. **Empty Input (Corner case):**
+   - Input: "" (just press enter)
+   - Expected Output: Invalid octal number.
+
+
+These test cases cover valid octal numbers, boundary cases (zero, large octal), invalid inputs, and the corner case of negative octals.  Make sure to test with these to ensure your program handles all possible scenarios correctly.

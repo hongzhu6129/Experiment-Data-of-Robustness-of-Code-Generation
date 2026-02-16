@@ -1,0 +1,82 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    /**
+     * Removes duplicates from a sorted integer array in-place and returns the new length.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0; // Handle empty or null input
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) { 
+                // If the current element is different from the last unique element,
+                // move the current element to the next position after the unique elements.
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        // The unique elements now occupy the first uniqueIndex + 1 positions of the array.
+        // The remaining elements beyond uniqueIndex are not relevant anymore.
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Example 1: Updated array length: " + len1);
+        System.out.println("Example 1: Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Example 2: Updated array length: " + len2);
+        System.out.println("Example 2: Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Example 3 (Empty Array): Updated array length: " + len3);
+
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Example 4 (Null Array): Updated array length: " + len4);
+
+
+        int[] nums5 = {1, 2, 3, 4, 5}; // No duplicates
+        int len5 = removeDuplicates(nums5);
+        System.out.println("Example 5 (No Duplicates): Updated array length: " + len5);
+        System.out.println("Example 5: Updated array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5)));
+
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **Sorted Array:** The `removeDuplicates` method is designed for *sorted* arrays. This is a crucial prerequisite.  If the input array isn't sorted, the algorithm won't work correctly.
+
+2. **In-Place Modification:** The method modifies the input array directly (in-place) rather than creating a new one.  This is generally more memory-efficient, especially for large arrays.
+
+3. **Two Pointers:** The `uniqueIndex` and `i` variables act as two pointers. `uniqueIndex` keeps track of the position where the next unique element should be placed. `i` iterates through the array.
+
+4. **Duplicate Check:**  Inside the loop, `nums[i] != nums[uniqueIndex]` checks if the current element (`nums[i]`) is different from the last unique element encountered (`nums[uniqueIndex]`).  If they are different, it means we've found a new unique element.
+
+
+5. **Return Value:** The method returns the length of the updated array (the part containing the unique elements). The original array is modified so that the unique elements are at the beginning.
+
+6. **Handling Edge Cases:**  The code includes handling for empty (`{}`) and null arrays to prevent `NullPointerExceptions` or other errors. This is a good practice for robust code.
+
+
+7. **Main Method Examples:** The `main` method demonstrates how to use `removeDuplicates` with various examples, including arrays with duplicates, no duplicates, empty arrays, and null arrays.  The `Arrays.copyOfRange` method is used to print only the relevant part of the modified array (up to the returned length).  This prevents printing the "garbage" values that might be left in the array beyond the unique elements.

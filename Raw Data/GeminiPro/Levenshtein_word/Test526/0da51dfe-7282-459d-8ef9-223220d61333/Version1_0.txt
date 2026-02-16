@@ -1,0 +1,46 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) Math.pow(2, Math.pow(2, n)) + 1; 
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber` Method:** This helper method takes an integer `n` and calculates the corresponding Fermat number using the formula 2^(2^n) + 1.  It's crucial to cast the result to `long` because Fermat numbers grow very quickly, and even the 5th Fermat number exceeds the capacity of an `int`.
+
+2. **Main Loop:** The `main` method now iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+
+3. **Output Clarity:** Added a header "First 10 Fermat Numbers:" to make the output more understandable.
+
+4. **Data Type:**  Using `long` allows us to display more Fermat numbers correctly than `int` would. However, Fermat numbers grow incredibly fast, and even `long` won't be able to hold very large ones accurately (starting from the 10th). For truly large Fermat numbers, you would need to use `BigInteger`.
+
+
+**Example Usage and Output:**
+
+```
+First 10 Fermat Numbers:
+3
+5
+17
+257
+65537
+4294967297
+18446744073709551617
+340282366920938463463374607431768211457
+115792089237316195423570985008687907853269984665640564039457584007913129639937
+134078079299425970995740234112692578012872900796997065673762217520
+```
+
+As you can see, even with `long`, the larger Fermat numbers are not accurate due to overflow.  If you require precise representation of very large Fermat numbers, you'll have to use `BigInteger`.

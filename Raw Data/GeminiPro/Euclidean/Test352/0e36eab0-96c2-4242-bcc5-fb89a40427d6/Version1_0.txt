@@ -1,0 +1,56 @@
+```java
+public class StringPermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String inputString = "abc"; // Example input string
+        permutationWithRepeation(inputString);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation and Example:**
+
+1. **`main` method:**
+   - Takes the input string (e.g., "abc").
+   - Calls `permutationWithRepeation` to start the process.
+
+2. **`permutationWithRepeation` method:**
+   - Initializes the process by calling `showPermutation` with the input string and an empty prefix.
+
+3. **`showPermutation` method (Recursive):**
+   - **Base Case:** If the length of the `prefix` equals the length of the original string, it means a full permutation has been formed. Print the `prefix` and return.
+   - **Recursive Step:** 
+     - Iterates through each character of the input string (`str`).
+     - For each character, it recursively calls `showPermutation` again, but this time with an extended `prefix` (the current `prefix` plus the character at index `i`).  This effectively builds up the permutations by adding one character at a time, and exploring all possible combinations at each level of the recursion.
+
+**Example with "abc" as input:**
+
+- The initial call is `showPermutation("abc", "")`.
+- The loop in `showPermutation` adds 'a', 'b', or 'c' to the prefix:
+  - `showPermutation("abc", "a")`
+  - `showPermutation("abc", "b")`
+  - `showPermutation("abc", "c")`
+- Inside `showPermutation("abc", "a")`, it again adds 'a', 'b', or 'c':
+  - `showPermutation("abc", "aa")`
+  - `showPermutation("abc", "ab")`
+  - `showPermutation("abc", "ac")`
+- This continues until the prefix has a length of 3 (the length of "abc"), at which point the permutation is printed.
+
+
+This recursive approach explores all possible combinations of characters, including repetitions, generating the full set of permutations with repetition.

@@ -1,0 +1,54 @@
+```java
+public class StringPermutationWithRepetition {
+
+    public static void main(String[] args) {
+        String str = "abc"; // Example string
+        permutationWithRepeation(str);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation and Example:**
+
+1. **`main(String[] args)`:**
+   - This is the entry point of the program. 
+   - It calls `permutationWithRepeation()` with the input string.
+
+2. **`permutationWithRepeation(String str)`:**
+   - This method initializes the recursive process by calling `showPermutation()` with the input string and an empty prefix.
+
+3. **`showPermutation(String str, String prefix)`:**
+   - This is the recursive method that generates and prints the permutations.
+   - **Base Case:** When the length of the `prefix` equals the length of the input `str`, it means a complete permutation has been formed.  The `prefix` is printed, and the function returns.
+   - **Recursive Step:**  It iterates through each character of the input `str`. In each iteration, it adds the current character to the `prefix` and makes a recursive call to `showPermutation()` with the same input string and the extended `prefix`.  This explores all possible combinations with repetition.
+
+**Example with "abc" as input:**
+
+The recursion unfolds like this (simplified):
+
+1. `showPermutation("abc", "")`
+2. `showPermutation("abc", "a")`
+3. `showPermutation("abc", "aa")`
+4. `showPermutation("abc", "aaa")`  (Prints "aaa")
+5. `showPermutation("abc", "aab")`  (Prints "aab")
+6. `showPermutation("abc", "aac")`  (Prints "aac")
+7. ... and so on until all combinations like "bbb", "abc", "cab", "ccc" are printed.
+
+
+**Key point about Repetition:**  Notice how in the recursive step, we always pass the original `str` in the recursive call. This is what allows characters to be repeated. For example,  `showPermutation("abc", "a")` can lead to `showPermutation("abc", "aa")` because we are picking from the original "abc" again, allowing 'a' to be selected a second time.

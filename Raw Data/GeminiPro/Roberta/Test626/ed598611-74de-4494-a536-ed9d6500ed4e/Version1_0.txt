@@ -1,0 +1,92 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetHigherElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<RateObject> treeSet = new TreeSet<>();
+
+        treeSet.add(new RateObject("A", 10));
+        treeSet.add(new RateObject("B", 5));
+        treeSet.add(new RateObject("C", 15));
+        treeSet.add(new RateObject("D", 20));
+        treeSet.add(new RateObject("E", 12));
+
+
+        RateObject target = new RateObject("Target", 11);
+
+        RateObject higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element higher than " + target.rate + ": " + higher.rate +  " (Name: " + higher.name + ")");
+        } else {
+            System.out.println("No element found higher than " + target.rate);
+        }
+
+
+        target = new RateObject("Target", 25); // Test with a value greater than any in the set
+        higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element higher than " + target.rate + ": " + higher.rate);
+        } else {
+            System.out.println("No element found higher than " + target.rate);
+        }
+
+         target = new RateObject("Target", 4); // Test with a value lower than any in the set
+        higher = getHigherElement(treeSet, target);
+
+        if (higher != null) {
+            System.out.println("Element higher than " + target.rate + ": " + higher.rate +  " (Name: " + higher.name + ")");
+        } else {
+            System.out.println("No element found higher than " + target.rate);
+        }
+
+    }
+
+
+    public static RateObject getHigherElement(TreeSet<RateObject> treeSet, RateObject target) {
+       return treeSet.higher(target);
+
+    }
+
+
+
+    static class RateObject implements Comparable<RateObject> {
+        String name;
+        int rate;
+
+        public RateObject(String name, int rate) {
+            this.name = name;
+            this.rate = rate;
+        }
+
+        @Override
+        public int compareTo(RateObject other) {
+            return Integer.compare(this.rate, other.rate);  // Compare based on rate
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+1. **Custom `RateObject` Class:**  The code now defines a `RateObject` class to encapsulate the "rate" and optionally other data associated with each element. This makes the code more general and robust.  It also demonstrates how to use TreeSets with custom objects.
+
+2. **`Comparable` Interface:**  `RateObject` implements the `Comparable` interface. The `compareTo` method is crucial for the `TreeSet` to know how to order the objects (in this case, based on the `rate`).  This avoids the `ClassCastException` that would occur if you tried to put non-comparable objects in a `TreeSet`.
+
+3. **`TreeSet.higher()` Method:** The code now directly uses the `higher()` method provided by `TreeSet`. This is the most efficient and correct way to find the least element strictly greater than the given element.  This significantly simplifies the logic.
+
+4. **Clearer Example Usage:**  The `main` method demonstrates how to create, populate, and use the `getHigherElement` method with a `TreeSet` of `RateObject` instances.  It also provides different test cases.
+
+5. **Error Handling:** The `getHigherElement` method handles the case where no higher element exists gracefully by returning `null`.  The `main` method then checks for this null to print an appropriate message.
+
+6. **Comments and Readability:**  The code is well-commented, explaining the purpose of each section and making it easier to understand.
+
+
+
+This revised version addresses all the previous issues and demonstrates best practices for working with `TreeSet` in Java.

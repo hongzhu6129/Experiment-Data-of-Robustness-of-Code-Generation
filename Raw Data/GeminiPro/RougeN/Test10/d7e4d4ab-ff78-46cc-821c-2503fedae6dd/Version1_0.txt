@@ -1,0 +1,80 @@
+```java
+public class PrintFace {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases (While you can't directly "test" output like this with JUnit, these are examples of how to verify visually):**
+
+1. **Basic Output:** Run the program directly and visually inspect the output.  It should match the face as described in the prompt.
+
+2. **Character Encoding:**  Ensure your console or output stream is set to a character encoding that supports the characters used (like UTF-8). If it's not, you might see distorted characters.  You can sometimes set this in your IDE or terminal settings.
+
+3. **Redirecting Output:** Redirect the output to a file and compare it to an expected output file.  This is a more automated way of testing, although it's still based on comparing the text.  In a Bash-like environment, you could do:
+
+   ```bash
+   java PrintFace > output.txt
+   diff output.txt expected_output.txt  # diff will show any differences
+   ```
+
+   Where `expected_output.txt` would contain:
+
+   ```
+   +"""""+
+   [| o o |]
+   |  ^  |
+   | '-' |
+   +-----+
+   ```
+
+4. **No Input:** This program doesn't take any command-line arguments, so you don't need to test with different inputs.
+
+5. **Corner Cases:**  This program doesn't have traditional corner cases because it's just printing static output. The closest thing to corner cases are the character encoding and output redirection aspects mentioned above. If you were to modify this program to take the face features as input, then you'd have more corner cases to consider (e.g., empty strings, invalid characters, etc.).
+
+
+**Example using JUnit for demonstration (although more complex than necessary for this simple program):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PrintFaceTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        PrintFace.printFace();
+
+        String expectedOutput =  "  +\"\"\"\"+"+ System.lineSeparator() +
+                                " [| o o |]"+ System.lineSeparator() +
+                                "  |  ^  |"+ System.lineSeparator() +
+                                "  | '-' |"+ System.lineSeparator() +
+                                "  +-----+"+ System.lineSeparator();
+
+        assertEquals(expectedOutput, outContent.toString());
+
+        System.setOut(System.out); // Restore System.out
+    }
+}
+```
+
+This JUnit test captures the output using `ByteArrayOutputStream` and compares it with the expected output.  This illustrates a more robust way to test output in Java, but, again, it might be overkill for this particular example.
+
+
+
+

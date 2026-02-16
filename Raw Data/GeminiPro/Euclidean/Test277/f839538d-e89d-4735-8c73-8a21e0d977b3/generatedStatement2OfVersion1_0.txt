@@ -1,0 +1,19 @@
+
+
+
+Key Changes and Explanations:
+
+1. **Interval Class:**  An `Interval` class is created to represent the intervals. It has `getStart()` and `getEnd()` as required.
+
+2. **Comparator for Sorting:** The `merge()` method now uses a `Comparator` with the `compare(Interval i1, Interval i2)` method signature to sort the intervals based on their start times.  This is essential for the merging logic to work correctly.
+
+3. **Merging Logic:** The core merging logic iterates through the sorted intervals. If the next interval overlaps with the current interval (next start <= current end), a new merged interval is created. Otherwise, the current interval is added to the result, and the next interval becomes the new current interval.
+
+4. **Adding Last Interval:** The final `currentInterval` is added to the `mergedIntervals` list after the loop to handle the last interval correctly.
+
+5. **Main Method Example:** The `main` method demonstrates how to use the `merge` function and prints the merged intervals.
+
+6. **Handling Null/Empty:** Added a check in `merge()` to handle `null` or empty input gracefully.
+
+
+This revised code addresses the prompt's requirements for method signatures and provides a clear and correct implementation of the interval merging algorithm.

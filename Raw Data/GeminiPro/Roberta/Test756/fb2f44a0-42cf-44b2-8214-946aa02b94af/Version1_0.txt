@@ -1,0 +1,43 @@
+```java
+public class MoveLowerCase {
+
+    public static void main(String[] args) {
+        String inputString = "HeLlOwoRlD";
+        String result = validate(inputString);
+        System.out.println(result); // Output: elloworldHLORD
+        
+        inputString = "jAvA";
+        result = validate(inputString);
+        System.out.println(result); // Output: jaAvA
+
+
+        inputString = "ALLCAPS";
+        result = validate(inputString);
+        System.out.println(result); // Output: ALLCAPS
+
+        inputString = "lowercase";
+        result = validate(inputString);
+        System.out.println(result); // Output: lowercase
+
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return ""; // Handle empty or null input as needed
+        }
+
+        StringBuilder lowerCaseChars = new StringBuilder();
+        StringBuilder otherChars = new StringBuilder();
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                lowerCaseChars.append(c);
+            } else {
+                otherChars.append(c);
+            }
+        }
+
+        return lowerCaseChars.toString() + otherChars.toString();
+    }
+}
+```

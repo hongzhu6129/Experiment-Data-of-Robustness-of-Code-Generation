@@ -1,0 +1,62 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        // Example 2D boolean array
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        // Print the array
+        printBooleanArray(boolArray);
+
+
+        // Another Example:  Empty array
+        boolean[][] emptyArray = {};
+        printBooleanArray(emptyArray);
+
+         // Another Example:  Array with uneven rows
+         boolean[][] unevenArray = {
+            {true, false},
+            {false, true, false},
+            {true}
+    };
+    printBooleanArray(unevenArray);
+
+
+    }
+
+    public static void printBooleanArray(boolean[][] boolArray) {
+        if (boolArray == null || boolArray.length == 0) {
+            System.out.println("Empty array.");
+            return;
+        }
+
+        for (int i = 0; i < boolArray.length; i++) {
+            if(boolArray[i] == null || boolArray[i].length == 0) { //Handle potentially empty rows.
+                System.out.println(); //Print a blank line for an empty row.
+                continue; //Go to the next row.
+            }
+
+
+            for (int j = 0; j < boolArray[i].length; j++) {
+                System.out.print(boolArray[i][j] ? "t " : "f "); // Print 't' for true, 'f' for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles empty and null arrays gracefully:**  The code now checks if the array itself is null or empty, printing a message in those cases. It also checks for empty rows *within* the 2D array and handles them appropriately.
+* **Clearer output:**  Adds a space after each "t" or "f" for better readability.
+* **More robust:** Handles cases where rows within the 2D array might have different lengths (jagged arrays). This is important for real-world scenarios where arrays might not always be perfectly rectangular.
+* **Example Usage:** Demonstrates how to use the method with different types of boolean arrays (including empty and uneven ones). This makes the code easier to understand and test.
+
+
+This revised code is more comprehensive and addresses potential issues that the previous version didn't. It provides a more reliable and user-friendly solution for printing boolean arrays.

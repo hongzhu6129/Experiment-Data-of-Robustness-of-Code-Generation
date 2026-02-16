@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        StringBuilder hexadecimal = new StringBuilder();
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+
+            if (remainder < 10) {
+                hexadecimal.insert(0, remainder);
+            } else {
+                char hexChar = (char) ('A' + remainder - 10);
+                hexadecimal.insert(0, hexChar);
+            }
+
+            decimal /= 16;
+        }
+
+        return hexadecimal.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+        String hexadecimal = function(decimal);
+
+        System.out.println("Hexadecimal equivalent: " + hexadecimal);
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Number:**
+   Input: 255
+   Expected Output: FF
+
+2. **Zero:**
+   Input: 0
+   Expected Output: 0  (This is a corner case - handles zero correctly)
+
+3. **Negative Number:**
+   Input: -10
+   Expected Output: FFFFFFF6 (Java handles negative numbers using two's complement, resulting in a large hexadecimal representation)
+
+4. **Large Positive Number:**
+   Input: 123456789
+   Expected Output: 75BCD15
+
+5. **Small Positive Number:**
+   Input: 10
+   Expected Output: A
+
+6. **Number with leading zeros (in decimal):**
+  Input: 00123 // Leading zeros in input
+  Expected Output: 7B (The program should correctly ignore leading zeros in the decimal input)
+
+7. **Max Integer Value:**
+   Input: 2147483647 (Integer.MAX_VALUE)
+   Expected Output: 7FFFFFFF
+
+
+**How to run the test cases:**
+
+1. **Manually:** You can run the program and enter each input value as prompted.  Compare the output with the expected output.
+
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit.  Here's a basic example of how you would write JUnit tests:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DecimalToHexadecimalTest {
+
+    @Test
+    void testPositiveNumber() {
+        assertEquals("FF", DecimalToHexadecimal.function(255));
+    }
+
+    @Test
+    void testZero() {
+        assertEquals("0", DecimalToHexadecimal.function(0));
+    }
+
+    @Test
+    void testNegativeNumber() {
+        assertEquals("FFFFFFF6", DecimalToHexadecimal.function(-10)); // Note the two's complement result
+    }
+
+    // Add more tests for other cases...
+
+}
+```
+
+
+By using JUnit (or a similar framework), you can automate the process of testing your code against various inputs and verifying the correctness of the outputs.  This makes your code more reliable and easier to maintain.

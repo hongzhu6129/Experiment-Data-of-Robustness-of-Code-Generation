@@ -1,0 +1,56 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class StringInterleavings {
+
+    public static void allInterleavings(String str1, String str2, String current, Set<String> interleavings) {
+        if (str1.length() == 0 && str2.length() == 0) {
+            interleavings.add(current);
+            return;
+        }
+
+        if (str1.length() > 0) {
+            allInterleavings(str1.substring(1), str2, current + str1.charAt(0), interleavings);
+        }
+
+        if (str2.length() > 0) {
+            allInterleavings(str1, str2.substring(1), current + str2.charAt(0), interleavings);
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "AB";
+        String str2 = "CD";
+
+        Set<String> interleavings = new HashSet<>();
+        allInterleavings(str1, str2, "", interleavings);
+
+        System.out.println("Interleavings of '" + str1 + "' and '" + str2 + "':");
+        for (String interleaving : interleavings) {
+            System.out.println(interleaving);
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Uses a `Set`:**  The `interleavings` is now a `HashSet`. This automatically handles duplicate interleavings, which is crucial for correctness.  The previous versions would print duplicate interleavings if the input strings had repeated characters.
+* **Clearer Recursion:** The base case and recursive calls are more concise and readable.
+* **Correct Output:** This version produces the correct set of interleavings without duplicates.
+* **Example Usage:** The `main` method provides a clear example of how to use the `allInterleavings` method.
+
+
+Example Output (for "AB" and "CD"):
+
+```
+Interleavings of 'AB' and 'CD':
+ACBD
+ABCD
+CABD
+CADB
+CDAB
+ACDB
+```

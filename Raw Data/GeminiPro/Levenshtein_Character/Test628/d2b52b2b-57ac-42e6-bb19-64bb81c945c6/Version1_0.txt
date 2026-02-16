@@ -1,0 +1,63 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class RemoveLastElementFromGreenSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet (Green set is not a standard Java collection, so using HashSet)
+        Set<String> greenSet = new HashSet<>();
+
+        // Add some elements
+        greenSet.add("Lime");
+        greenSet.add("Emerald");
+        greenSet.add("Olive");
+        greenSet.add("Forest");
+
+        // Retrieving and removing the last element is tricky with HashSet because it doesn't inherently have an order.
+        // We need to convert to an ordered collection like an ArrayList.
+        if (!greenSet.isEmpty()) { // Check if the set is empty before proceeding
+            String lastElement = null;
+            for (String element : greenSet) { // Iterate to find the "last" added element (which is not truly deterministic in a HashSet)
+                lastElement = element; // This will end up with the element that happened to be iterated through last
+            }
+
+
+            System.out.println("Original Set: " + greenSet);
+
+            if (lastElement != null) {
+                greenSet.remove(lastElement);
+                System.out.println("Removed element: " + lastElement);
+                System.out.println("Set after removal: " + greenSet);
+            }
+
+        } else {
+            System.out.println("The set is empty.");
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **HashSet Limitations:** `HashSet` doesn't guarantee any specific order of elements.  Therefore, the concept of a "last" element is not directly applicable.  The iteration order can change based on the internal hashing.
+
+2. **Simulating "Last" Element:**  The code iterates through the `HashSet`.  The `lastElement` variable will hold the value of the element that happened to be iterated through last.  It's important to understand that this is *not* a reliable way to get the last *added* element because `HashSet` doesn't preserve insertion order.
+
+3. **Removal:**  We then use `greenSet.remove(lastElement)` to remove the element that was retrieved in the previous step.
+
+4. **Empty Set Check:** The code now includes a check to see if the set is empty *before* attempting to retrieve and remove an element. This avoids a `NullPointerException` if the set is empty.
+
+5. **ArrayList Alternative (if order is crucial):**  If you absolutely need to maintain the insertion order and reliably retrieve the last *added* element, you should use `LinkedHashSet` instead of `HashSet`.  `LinkedHashSet` remembers the order in which elements were added.
+
+
+
+Example Output (will vary because HashSet iteration order is not fixed):
+
+
+```
+Original Set: [Lime, Emerald, Olive, Forest]
+Removed element: Forest  (Or any other element depending on iteration order)
+Set after removal: [Lime, Emerald, Olive]
+```

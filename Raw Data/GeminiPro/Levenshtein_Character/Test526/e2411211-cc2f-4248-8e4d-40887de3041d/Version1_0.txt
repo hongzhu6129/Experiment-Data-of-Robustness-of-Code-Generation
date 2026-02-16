@@ -1,0 +1,57 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println("F" + n + " = " + fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1); 
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` method:** This helper method is introduced to encapsulate the Fermat number calculation. This makes the `main` method cleaner and easier to read.
+
+2. **Using `long`:**  Fermat numbers grow very rapidly. `int` will quickly overflow.  `long` is used to store the calculated numbers, which provides a larger range but still has limitations.
+
+3. **Explicit Casting:** `Math.pow()` returns a `double`. We explicitly cast the result to `long` because Fermat numbers are integers.
+
+4. **Output Formatting:** The output clearly labels each Fermat number with "F" and its corresponding 'n' value (F0, F1, F2, etc.).
+
+5. **Correct Formula:** The code accurately implements the formula 2^(2^n) + 1.
+
+
+
+**Limitations:**
+
+Even with `long`, Fermat numbers beyond F4 will exceed its capacity. For truly large Fermat numbers, you'd need to use `BigInteger` (which allows for arbitrary-precision integers).  Here's the version using `BigInteger`:
+
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println("F" + n + " = " + fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.valueOf(2).pow(1 << n).add(BigInteger.ONE); // Optimized calculation
+    }
+}
+```
+
+This version with `BigInteger` will correctly calculate and display the first 10 (and many more) Fermat numbers without overflow issues. The calculation is also slightly optimized by using bitwise left shift (`1 << n`) which is equivalent to 2^n.

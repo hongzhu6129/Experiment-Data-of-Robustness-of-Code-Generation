@@ -1,0 +1,24 @@
+public class FindPython {
+
+    public static void main(String[] args) {
+        String str1 = "Welcome to python programming";
+        String str2 = "Java is a popular language";
+        String str3 = "Python is also popular"; // Case-insensitive test
+        String str4 = "  python  "; // Test with leading/trailing spaces
+
+        System.out.println(str1 + " -> " + validate(str1));
+        System.out.println(str2 + " -> " + validate(str2));
+        System.out.println(str3 + " -> " + validate(str3));
+        System.out.println(str4 + " -> " + validate(str4));
+
+
+    }
+
+    public static String validate(String inputString) {
+        if (inputString.toLowerCase().contains("python")) {
+            return "Java";
+        } else {
+            return "c++";
+        }
+    }
+}

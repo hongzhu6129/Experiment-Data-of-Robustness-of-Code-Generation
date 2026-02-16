@@ -1,0 +1,42 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace(); 
+    }
+}
+```
+
+**Test Cases (While not strictly unit tests, these demonstrate different scenarios):**
+
+1. **Basic Functionality:** Simply running the `main` method as above checks if the face prints correctly in a standard console.
+
+2. **Output Redirection:**  Redirect the output to a file to verify the exact characters printed:  `java FacePrinter > output.txt`. Then compare the contents of `output.txt` with the expected output.  This helps ensure no extra whitespace or hidden characters are present.
+
+3. **Different Console Encodings:** If possible, try running the code in environments with different console encodings (e.g., UTF-8, ASCII) to ensure the characters display correctly. This might be more relevant if you were using special characters.
+
+4. **Console Size:**  Although less critical for a simple face, consider (in a more complex scenario where you are printing larger outputs) how the output behaves if the console window is very narrow. Does it wrap correctly?  (For this simple face, wrapping might not be visually appealing, but it's a good thing to test in general).
+
+5. **Embedded in Larger Output:** Integrate the `printFace()` method into a larger program where other text is printed before and after. Verify that the face still prints correctly and doesn't interfere with other output.  This tests for any unintended side effects like changing the cursor position or print stream settings.
+
+
+
+**Corner cases (While not many apply to this simple example, the concept is important):**
+
+For this specific `printFace()` function, there aren't really corner cases in the input sense (it takes no arguments). The important considerations are more about the output environment as described in the test cases above (console size, encoding, etc.).
+
+If the `printFace()` function was more complex,  you might consider corner cases like:
+
+* **Invalid Input:**  If it took parameters (like a size or character set), what happens if you pass in negative values, zero, extremely large values, or invalid characters?
+* **Resource Limitations:** If the function involved file I/O or other resource-intensive operations, what happens if there's not enough disk space or memory?  (Not applicable here, but good practice to think about in other scenarios).
+
+
+Even for simple code, thinking about test cases, including corner cases and how your output might interact with its environment, is a very valuable habit.  It helps prevent unexpected problems and improves the robustness of your code.

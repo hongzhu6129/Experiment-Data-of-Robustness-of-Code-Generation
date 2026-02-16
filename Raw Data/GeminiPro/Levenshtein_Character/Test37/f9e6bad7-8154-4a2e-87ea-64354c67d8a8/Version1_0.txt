@@ -1,0 +1,87 @@
+```java
+import java.util.Scanner;
+
+public class NPlusNNPlusNNN {
+
+    public static int calculateSum(int n) {
+        int nn = n * 10 + n;
+        int nnn = n * 100 + nn;
+        return n + nn + nnn;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input number: ");
+        int n = scanner.nextInt();
+        int sum = calculateSum(n);
+        System.out.println(sum);
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Input (n) | Expected Output | Reason/Description |
+|---|---|---|
+| 5 | 615 | Standard positive single-digit input. |
+| 0 | 0 | Zero input. |
+| 1 | 121 | Another single-digit test. |
+| 9 | 1107 |  Largest single digit. Tests for potential overflow issues (though unlikely with int). |
+| -5 | -615 | Negative single-digit input. Check handling of negative numbers. |
+| 10 | 1210 | This will not give the desired result as it does not follow the pattern (10, 1010, 101010) as the requirements state to compute n + nn + nnn. |
+
+
+**How to Run the Tests:**
+
+1. **Manual Testing:**  You can manually input these values when prompted by the program.
+2. **Automated Testing (Recommended):** Using a testing framework like JUnit is a much better approach. Here's a basic example of how you could write JUnit tests for this program:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class NPlusNNPlusNNNJunitTest {
+
+    @Test
+    void testPositiveSingleDigit() {
+        assertEquals(615, NPlusNNPlusNNN.calculateSum(5));
+    }
+
+    @Test
+    void testZero() {
+        assertEquals(0, NPlusNNPlusNNN.calculateSum(0));
+    }
+
+    @Test
+    void testOne() {
+        assertEquals(121, NPlusNNPlusNNN.calculateSum(1));
+    }
+
+    @Test
+    void testNine() {
+        assertEquals(1107, NPlusNNPlusNNN.calculateSum(9));
+    }
+
+
+    @Test
+    void testNegativeSingleDigit() {
+        assertEquals(-615, NPlusNNPlusNNN.calculateSum(-5));
+    }
+
+
+}
+```
+
+
+With JUnit, you can easily run all these tests automatically and ensure your `calculateSum` method works as expected.  This makes it much easier to catch regressions if you make changes to your code in the future.  To use JUnit, you will need to add the JUnit library to your project. Most IDEs have built-in support for JUnit.
+
+
+Key improvements in this revised response:
+
+* **Clearer explanation of test cases:** The rationale behind each test case is now provided.
+* **JUnit example:** Automated testing using JUnit is now included, which is the standard practice in Java development.
+* **Handling of Larger Numbers (Clarified):** While the current solution handles up to 9 perfectly, the explanation now clarifies that for inputs larger than 9, the requirement is not for a mathematical operation, but more about string concatenation, which is not something tested here.   If that string manipulation *was* what you intended,  the problem description and code would have to be adjusted to reflect that.
+* **Resource Management:** The `Scanner` is now closed in the `main` method, which is good practice.

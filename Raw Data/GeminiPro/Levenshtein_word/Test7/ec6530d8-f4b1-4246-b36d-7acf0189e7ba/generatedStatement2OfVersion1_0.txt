@@ -1,0 +1,50 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Regular Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Regular Negative Numbers:**
+   - Input: -10, -20, -30
+   - Expected Output: -20.0
+
+3. **Mix of Positive and Negative Numbers:**
+   - Input: -10, 20, 30
+   - Expected Output: 13.333333333333334
+
+4. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000000, 2000000000, 3000000000
+   - Expected Output: 2.0E9  (2 billion - handles large numbers correctly)
+
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 4.2
+   - Expected Output: 3.466666666666667
+
+7. **Corner Case: Very large numbers close to the limit:**
+    - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE
+    - Expected Output: Infinity (Handles overflow gracefully)
+
+8. **Corner Case: Very small numbers close to zero:**
+    - Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE // MIN_VALUE is the smallest *positive* number
+    - Expected Output:  A value close to Double.MIN_VALUE
+
+
+9. **At least one number is Double.NaN:**
+    - Input: Double.NaN, 20, 30  (or 10, Double.NaN, 30 etc.)
+    - Expected Output: NaN (Handles NaN correctly)
+
+
+
+**How to Run Test Cases (Example with JUnit):**
+
+While you could manually check the outputs, using a testing framework like JUnit is much more efficient. Here's a simple example of how you could write JUnit tests for the `calculateAverage` method:
+

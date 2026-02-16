@@ -1,0 +1,64 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        String input = "abcabcbb";
+        System.out.println(firstNonRepeatingCharacter(input)); // b
+
+        String input2 = "bbbbbbbb";
+        System.out.println(firstNonRepeatingCharacter(input2)); // null
+
+        String input3 = "";
+        System.out.println(firstNonRepeatingCharacter(input3)); // null
+    }
+
+    public static Character firstNonRepeatingCharacter(String input) {
+        if (input == null || input.isEmpty()) {
+            return null;
+        }
+
+        Set<Character> repeatingCharacters = new HashSet<>();
+        Set<Character> nonRepeatingCharacters = new HashSet<>();
+
+        char[] inputCharacters = input.toCharArray();
+        for (char character : inputCharacters) {
+            if (repeatingCharacters.contains(character)) {
+                continue;
+            }
+            if (nonRepeatingCharacters.contains(character)) {
+                nonRepeatingCharacters.remove(character);
+                repeatingCharacters.add(character);
+            } else {
+                nonRepeatingCharacters.add(character);
+            }
+        }
+
+        if (nonRepeatingCharacters.isEmpty()) {
+            return null;
+        }
+
+        return nonRepeatingCharacters.iterator().next();
+    }
+}
+```
+
+**Test Cases:**
+
+* **Happy Path:**
+    * Input: "abcabcbb"
+    * Expected output: "b"
+* **All Characters Repeating:**
+    * Input: "bbbbbbbb"
+    * Expected output: null
+* **Empty String:**
+    * Input: ""
+    * Expected output: null
+* **Corner Cases:**
+    * Input: null
+    * Expected output: null
+* **Input with Special Characters and Numbers:**
+    * Input: "a1b2c3d4e5f6g7h8i9j10"
+    * Expected output: "a"

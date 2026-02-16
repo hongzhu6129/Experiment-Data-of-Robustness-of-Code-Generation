@@ -1,0 +1,74 @@
+```java
+import java.util.concurrent.CountDownLatch;
+
+public class SleepSort {
+
+    public static void sleepSortAndPrint(int[] arr) {
+        int n = arr.length;
+        CountDownLatch latch = new CountDownLatch(n); // Used to wait for all threads to complete
+
+        for (int num : arr) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(num); // Sleep for a duration proportional to the number
+                    System.out.print(num + " ");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    latch.countDown(); // Signal thread completion
+                }
+            }).start();
+        }
+
+        try {
+            latch.await(); // Wait for all threads to finish
+            System.out.println(); // Print a newline after all numbers are printed
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void run() {
+        // This method is not used in this implementation
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+        System.out.print("Sorted array: ");
+        sleepSortAndPrint(arr1);
+
+
+        int[] arr2 = {5, 2, 8, 1, 9, 4};
+        System.out.print("Sorted array: ");
+        sleepSortAndPrint(arr2);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **CountDownLatch:** The most important improvement is the use of a `CountDownLatch`. This ensures that the `main` thread waits for all the sorting threads to complete before exiting. Without this, the program might finish before all numbers are printed.
+
+2. **Clearer Output:** A newline character (`System.out.println()`) is added after the printing of each sorted array to make the output cleaner and more readable.
+
+3. **Simplified Structure:** The `run()` method isn't needed for this implementation, so it's left empty.
+
+4. **Example Usage:** The `main` method now includes a couple of example arrays to demonstrate how to use `sleepSortAndPrint`.
+
+5. **Error Handling:** Basic error handling is included with a `try-catch` block to catch any `InterruptedException` that might occur during thread sleep.
+
+**How Sleep Sort Works (and its Limitations):**
+
+Sleep sort relies on the idea that threads sleeping for longer durations will finish later.  Each number's value determines how long its corresponding thread sleeps.  The thread that sleeps the shortest time will wake up and print its number first, followed by the next shortest sleeping thread, and so on.
+
+**Important Considerations:**
+
+* **Not Reliable:** Sleep sort is *not* a reliable sorting algorithm. Thread scheduling is not perfectly precise, so smaller numbers might sometimes appear after larger numbers due to variations in thread scheduling.
+
+* **Limited Range:** It only works well with a reasonably small range of non-negative integers.  Very large numbers would require excessively long sleep times.  Negative numbers wouldn't work directly.
+
+* **Resource Intensive:**  It can be resource-intensive, creating a new thread for each element.  For large arrays, this can be inefficient.
+
+* **Not Practical:** Sleep sort is more of a curiosity than a practical sorting algorithm.  Use proven algorithms like merge sort, quicksort, or heapsort for real-world sorting tasks.

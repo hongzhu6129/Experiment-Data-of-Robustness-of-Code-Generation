@@ -1,0 +1,35 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add("Banana");
+        treeSet.add("Apple");
+        treeSet.add("Orange");
+        treeSet.add("Grape");
+
+        // Check if the TreeSet is empty
+        if (treeSet.isEmpty()) {
+            System.out.println("TreeSet is empty.");
+        } else {
+            // Retrieve and remove the first element
+            String firstElement = treeSet.pollFirst();
+
+            if (firstElement != null) {
+                System.out.println("Removed first element: " + firstElement);
+            } else {
+                System.out.println("TreeSet is empty after removal attempt"); // Shouldn't happen in this example, but good practice
+            }
+
+
+            // Print the remaining elements of the TreeSet
+            System.out.println("Remaining elements in TreeSet: " + treeSet);
+        }
+    }
+}
+```

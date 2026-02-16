@@ -1,0 +1,48 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 5; i++) {
+            // Stars and Stripes alternating rows
+            if (i % 2 == 0) {
+                System.out.print("* * * * * * ");
+            } else {
+                System.out.print("* * * * * ");
+            }
+            System.out.println("================================");
+        }
+
+        // Special row with "pct"
+        System.out.print("* * pct * * ");
+        System.out.println("================================");
+
+
+        for (int i = 0; i < 4; i++) {
+            // Stars and Stripes alternating rows (after "pct" row)
+            if ((i+5) % 2 == 0) {   // Adjust for the "pct" row offset.
+                System.out.print("* * * * * * ");
+            } else {
+                System.out.print("* * * * * ");
+            }
+            System.out.println("================================");
+        }
+
+        // Bottom Stripes
+        for (int i = 0; i < 6; i++) {
+            System.out.println("================================");
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Correct Star Pattern:**  The stars now alternate correctly in rows of 6 and 5.
+* **"pct" Row:** The special row with "pct" is included in the correct position.
+* **Clearer Structure:** The code is organized into loops that handle the top striped section, the "pct" row, the bottom striped section, and the solid red stripes separately, making it easier to understand and modify.
+* **No unnecessary `if` condition:** The simpler alternating pattern logic is used without the `(i == 4)` special case, as we've split the loops.
+
+
+This version produces the exact output specified in your prompt.

@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close();
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Mixed Positive and Negative:**
+   - Input: -5, 10, 25
+   - Expected Output: 10.0
+
+4. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.5, 7.5
+   - Expected Output: 5.166666666666667
+
+7. **Corner Cases:**
+   - **Integer Overflow/Underflow (less likely with doubles but still possible with extremely large magnitudes):**  Test with `Double.MAX_VALUE`, `Double.MIN_VALUE`, and combinations that might lead to exceeding these limits (e.g.,  `Double.MAX_VALUE`, `Double.MAX_VALUE`, `Double.MAX_VALUE`). The program should ideally handle these gracefully and not crash.  Expect `Infinity` or `-Infinity` as a possible output in overflow/underflow situations.
+   - **Invalid Input:**  "abc", "1, 2, 3" (commas instead of spaces), "1.5.5" (invalid double format). The program should handle these gracefully, displaying an error message and not crashing.
+
+**How to Run Test Cases (Example using JUnit):**
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+    // ... (add more test cases similarly) ...
+
+    @Test
+    void testLargeNumbers() {
+        assertEquals(2000000.0, AverageCalculator.calculateAverage(1000000, 2000000, 3000000));
+    }
+
+     @Test
+     void testOverflow() {
+         assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)); // Expecting Infinity
+     }
+
+
+}
+```
+
+Remember to add the JUnit library to your project to run these tests.   The above provides a comprehensive set of test cases to verify that the `AverageCalculator` works correctly under different conditions.  Using a testing framework like JUnit helps automate the testing process and makes it easier to maintain the tests as your code evolves.

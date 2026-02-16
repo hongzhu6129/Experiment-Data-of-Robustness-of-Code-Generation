@@ -1,0 +1,56 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+
+        int key1 = 25;
+        int key2 = 30;
+        int key3 = 5;
+        int key4 = 60;
+
+
+        printFloorEntry(map, key1); // Output: 20=Twenty
+        printFloorEntry(map, key2); // Output: 30=Thirty
+        printFloorEntry(map, key3); // Output: null (no key less than or equal to 5)
+        printFloorEntry(map, key4); // Output: 50=Fifty
+
+    }
+
+    private static void printFloorEntry(TreeMap<Integer, String> map, int key) {
+        java.util.Map.Entry<Integer, String> entry = map.floorEntry(key);
+        if (entry != null) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        } else {
+            System.out.println(null); // Or handle the case as needed
+        }
+    }
+}
+```
+
+
+Explanation within the `main` method constraints:
+
+1. **TreeMap Creation:**  We create a `TreeMap` to store the key-value pairs. `TreeMap` is used because it automatically sorts entries by key, which is essential for efficient floor entry lookup.
+
+2. **Adding Entries:** Key-value pairs are added to the map using `map.put()`.
+
+3. **`floorEntry()` Method:** The crucial part is the `map.floorEntry(key)` method.  This method efficiently finds the entry associated with the greatest key less than or equal to the given `key`.  It returns a `Map.Entry` object (containing the key-value pair) or `null` if no such key exists.
+
+4. **Outputting the Result:**  The `printFloorEntry()` helper function handles printing the entry or `null` in a formatted way.  This is necessary because trying to directly print  `entry.getKey()` or `entry.getValue()` when `entry` is `null` would cause a `NullPointerException`.
+
+
+Key improvements in this version:
+
+- **Clarity:**  The helper function makes the logic within `main` more readable.
+- **Error Handling:** The `null` check prevents potential `NullPointerExceptions`.
+- **Example Usage:**  Multiple examples within `main` demonstrate different scenarios.
+- **Conciseness:**  The code is more focused and avoids unnecessary complexity.

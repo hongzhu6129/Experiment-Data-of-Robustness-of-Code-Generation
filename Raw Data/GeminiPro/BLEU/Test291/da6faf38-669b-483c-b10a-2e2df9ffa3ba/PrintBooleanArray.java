@@ -1,0 +1,28 @@
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+         boolean[][] boolArray2 = {
+                {true, false},
+                {false, true}
+         };
+         printBooleanArray(boolArray2);
+    }
+
+    private static void printBooleanArray(boolean[][] boolArray) {
+        for (boolean[] row : boolArray) {
+            for (boolean element : row) {
+                System.out.print(element ? "t " : "f "); // Print "t" for true, "f" for false
+            }
+            System.out.println(); // Newline after each row
+        }
+        System.out.println(); // Extra newline between arrays for clarity.
+    }
+}

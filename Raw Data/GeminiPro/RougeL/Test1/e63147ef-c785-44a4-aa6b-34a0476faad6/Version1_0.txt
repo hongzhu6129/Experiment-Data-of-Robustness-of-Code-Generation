@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = input.nextLong(); // Using long to handle larger numbers and some corner cases
+
+        System.out.print("Enter the second number: ");
+        long num2 = input.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Reason/Corner Case |
+|---|---|---|---|---|
+| 1 | 5 | 3 | 15 | Basic positive multiplication |
+| 2 | -2 | 4 | -8 | Multiplication with a negative number |
+| 3 | 0 | 10 | 0 | Multiplication with zero |
+| 4 | 7 | 0 | 0 | Multiplication with zero |
+| 5 | -5 | -6 | 30 | Multiplication of two negative numbers |
+| 6 | 999999999 | 999999999 | 999999998000000001 | Large numbers (demonstrates why `long` is preferred over `int`) |
+| 7 | Long.MAX_VALUE | 1 | 9223372036854775807 | Boundary condition (maximum long value) |
+| 8 | Long.MIN_VALUE | -1 | -9223372036854775808 | Boundary condition (minimum long value times -1, be mindful of overflow potential) |
+| 9 | Long.MAX_VALUE | 2 | -2 | Overflow (product exceeds `long`'s maximum value) |
+| 10 | Long.MIN_VALUE | 2 | 0 | Overflow (product exceeds `long`'s minimum value) | 
+| 11 | 123456789 | 987654321 | 121932631112635269 | Large number multiplication resulting in a valid long |
+
+
+
+**How to Run Test Cases:**
+
+While you could manually input these values, a more robust approach is to use a testing framework like JUnit. Here's a simple example of how you might use JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(15, ProductOfTwoNumbers.calculateProduct(5, 3)); // Example test
+    }
+
+    // ... Add more @Test methods for the other test cases
+
+    // You'll need to add a calculateProduct method to your main class:
+     public static long calculateProduct(long num1, long num2){
+         return num1*num2;
+     }
+
+}
+```
+
+
+By using a testing framework, you automate the testing process and can easily verify the correctness of your program for different inputs.  This is especially important when dealing with corner cases and potential overflows, as demonstrated in the test cases above. Remember to add JUnit to your project dependencies if you use this approach.
+

@@ -1,0 +1,62 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSecondElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Replace the second element (index 1) with "Mango"
+        String newElement = "Mango";
+        if (fruits.size() >= 2) { // Check if the list has at least 2 elements
+            fruits.set(1, newElement);
+        } else {
+            System.out.println("ArrayList does not have a second element to replace.");
+        }
+
+        // Print the updated ArrayList
+        System.out.println("Updated ArrayList: " + fruits);
+
+
+        // Example with integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+
+
+        int newNumber = 10;
+
+        if (numbers.size() >= 2) {
+            numbers.set(1, newNumber);
+        } else {
+            System.out.println("ArrayList does not have a second element to replace.");
+        }
+
+
+        System.out.println("Updated ArrayList of numbers: " + numbers);
+
+
+        // Example showing what happens if there's less than 2 elements
+        List<String> fewStrings = new ArrayList<>();
+        fewStrings.add("Single");
+
+        if(fewStrings.size()>=2) {
+            fewStrings.set(1, "AttemptReplace"); // This won't execute
+        } else {
+            System.out.println("ArrayList fewStrings does not have a second element to replace.");
+        }
+
+        System.out.println("fewStrings after attempted replacement: " + fewStrings);
+
+
+    }
+}
+```

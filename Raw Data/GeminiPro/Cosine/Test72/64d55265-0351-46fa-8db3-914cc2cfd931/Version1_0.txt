@@ -1,0 +1,24 @@
+```java
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str1 = "Python";
+        String str2 = "JS";
+        String str3 = "Code";
+
+        modifyAndPrint(str1);
+        modifyAndPrint(str2);
+        modifyAndPrint(str3);
+    }
+
+    private static void modifyAndPrint(String str) {
+        if (str.length() >= 3) {
+            String lastThree = str.substring(str.length() - 3);
+            String modifiedStr = lastThree + str + lastThree;
+            System.out.println(modifiedStr);
+        } else {
+            System.out.println("String length must be 3 or more: " + str); // Handling invalid input
+        }
+    }
+}
+```

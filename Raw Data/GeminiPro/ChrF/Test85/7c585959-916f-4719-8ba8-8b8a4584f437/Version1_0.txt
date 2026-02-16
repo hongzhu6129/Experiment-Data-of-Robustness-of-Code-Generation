@@ -1,0 +1,113 @@
+```java
+import java.util.Arrays;
+
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "Hello";
+        String str3 = new String("Hello");
+
+        // Check if the strings are equal using == operator
+        if (str1 == str2) {
+            System.out.println("str1 and str2 are the same object");
+        } else {
+            System.out.println("str1 and str2 are not the same object");
+        }
+
+        // Check if the strings are equal using equals() method
+        if (str1.equals(str2)) {
+            System.out.println("str1 and str2 are equal");
+        } else {
+            System.out.println("str1 and str2 are not equal");
+        }
+
+        // Check if the strings are equal using Arrays.equals() method
+        if (Arrays.equals(str1.toCharArray(), str2.toCharArray())) {
+            System.out.println("str1 and str2 are equal");
+        } else {
+            System.out.println("str1 and str2 are not equal");
+        }
+
+        // Check if the strings are equal using compareTo() method
+        if (str1.compareTo(str2) == 0) {
+            System.out.println("str1 and str2 are equal");
+        } else {
+            System.out.println("str1 and str2 are not equal");
+        }
+
+        // Check if the strings are equal using intern() method
+        if (str1.intern() == str2.intern()) {
+            System.out.println("str1 and str2 are the same object");
+        } else {
+            System.out.println("str1 and str2 are not the same object");
+        }
+
+        // Check if the strings are equal using contentEquals() method
+        if (str1.contentEquals(str2)) {
+            System.out.println("str1 and str2 are equal");
+        } else {
+            System.out.println("str1 and str2 are not equal");
+        }
+
+        // Check if the strings are equal using == operator
+        if (str1 == str3) {
+            System.out.println("str1 and str3 are the same object");
+        } else {
+            System.out.println("str1 and str3 are not the same object");
+        }
+
+        // Check if the strings are equal using equals() method
+        if (str1.equals(str3)) {
+            System.out.println("str1 and str3 are equal");
+        } else {
+            System.out.println("str1 and str3 are not equal");
+        }
+
+        // Check if the strings are equal using Arrays.equals() method
+        if (Arrays.equals(str1.toCharArray(), str3.toCharArray())) {
+            System.out.println("str1 and str3 are equal");
+        } else {
+            System.out.println("str1 and str3 are not equal");
+        }
+
+        // Check if the strings are equal using compareTo() method
+        if (str1.compareTo(str3) == 0) {
+            System.out.println("str1 and str3 are equal");
+        } else {
+            System.out.println("str1 and str3 are not equal");
+        }
+
+        // Check if the strings are equal using intern() method
+        if (str1.intern() == str3.intern()) {
+            System.out.println("str1 and str3 are the same object");
+        } else {
+            System.out.println("str1 and str3 are not the same object");
+        }
+
+        // Check if the strings are equal using contentEquals() method
+        if (str1.contentEquals(str3)) {
+            System.out.println("str1 and str3 are equal");
+        } else {
+            System.out.println("str1 and str3 are not equal");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+* **Positive Test Cases:**
+    * str1 = "Hello", str2 = "Hello", str3 = "Hello"
+    * str1 = "123", str2 = "123", str3 = new String("123")
+    * str1 = "", str2 = "", str3 = new String("")
+
+* **Negative Test Cases:**
+    * str1 = "Hello", str2 = "World", str3 = "Hello"
+    * str1 = "123", str2 = "456", str3 = new String("123")
+    * str1 = null, str2 = null, str3 = new String(null)
+
+* **Corner Cases:**
+    * str1 = "Hello", str2 = null, str3 = null
+    * str1 = null, str2 = "Hello", str3 = new String("Hello")
+    * str1 = null, str2 = null, str3 = new String(null)

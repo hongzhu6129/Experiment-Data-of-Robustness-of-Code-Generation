@@ -1,0 +1,43 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        int givenKey1 = 4;
+        Integer greatestKey1 = treeMap.floorKey(givenKey1); 
+        System.out.println("Greatest key less than or equal to " + givenKey1 + ": " + greatestKey1); // Output: 3
+
+        int givenKey2 = 7;
+        Integer greatestKey2 = treeMap.floorKey(givenKey2);
+        System.out.println("Greatest key less than or equal to " + givenKey2 + ": " + greatestKey2); // Output: 7
+
+        int givenKey3 = 0;
+        Integer greatestKey3 = treeMap.floorKey(givenKey3);
+        System.out.println("Greatest key less than or equal to " + givenKey3 + ": " + greatestKey3); // Output: null (no key less than or equal to 0)
+
+
+        // Example with Strings as keys (natural ordering):
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String givenStringKey = "apricot";
+        String greatestStringKey = stringTreeMap.floorKey(givenStringKey);
+        System.out.println("Greatest string key less than or equal to " + givenStringKey + ": " + greatestStringKey); // Output: apple
+
+
+    }
+}
+```

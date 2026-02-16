@@ -1,0 +1,58 @@
+```java
+public class RoundUpIntegerDivision {
+
+    public static void main(String[] args) {
+        int numerator = 17;
+        int denominator = 5;
+
+        // Using Math.ceil to round up the result of the division
+        int roundedUpResult = (int) Math.ceil((double) numerator / denominator); 
+
+        System.out.println("Numerator: " + numerator);
+        System.out.println("Denominator: " + denominator);
+        System.out.println("Rounded up result: " + roundedUpResult);
+
+
+
+        //Demonstrating with other examples
+        demonstrateRounding(7, 3);   // Output: 3
+        demonstrateRounding(10, 2);  // Output: 5
+        demonstrateRounding(5, 6);   // Output: 1 (because 5/6 is less than 1, it rounds up to 1)
+        demonstrateRounding(-7, 3);  // Output: -2 (rounds towards positive infinity)
+        demonstrateRounding(7,-3);  // Output: -2 (rounds towards positive infinity)
+
+
+
+    }
+
+    //Helper function to avoid repeating code in main for demonstration purposes.
+    public static void demonstrateRounding(int num, int den) {
+         int result = (int) Math.ceil((double) num / den);
+         System.out.println(num + " / " + den + " rounded up = " + result);
+    }
+}
+```
+
+
+**Explanation and Key improvements:**
+
+1. **Casting to double:**  Crucially, we cast `numerator` to `double` *before* the division.  This ensures that the division itself is performed using floating-point arithmetic, which gives us a more accurate result (including the fractional part). If we don't cast, integer division truncates the decimal portion, leading to incorrect rounding.
+
+2. **Math.ceil():**  `Math.ceil()` is the correct function to use for rounding *up* towards positive infinity.  It takes a `double` argument and returns the smallest `double` value that is greater than or equal to the argument and is equal to a mathematical integer.
+
+3. **Casting back to int:**  After using `Math.ceil()`, we cast the result back to `int` to get the final rounded-up integer value.
+
+4. **Clearer Output:**  The output now clearly labels the numerator, denominator, and the rounded-up result, making it easier to understand.
+
+5. **More Examples:** The `demonstrateRounding()` helper function and additional examples in `main` illustrate the behavior of the rounding logic with various inputs, including negative numbers, which helps clarify edge cases and provides more comprehensive testing.
+
+
+**How `Math.ceil()` handles different cases:**
+
+* **Positive numerator, positive denominator:** Rounds up to the nearest integer.
+* **Negative numerator, positive denominator:** Rounds "up" towards positive infinity (becomes a smaller negative integer or zero).
+* **Positive numerator, negative denominator:** Rounds "up" towards positive infinity (becomes a smaller negative integer or zero).
+* **Negative numerator, negative denominator:**  Rounds up to the nearest integer.
+
+
+This improved code addresses the original issue and provides a more robust and understandable solution for rounding up integer division results in Java.

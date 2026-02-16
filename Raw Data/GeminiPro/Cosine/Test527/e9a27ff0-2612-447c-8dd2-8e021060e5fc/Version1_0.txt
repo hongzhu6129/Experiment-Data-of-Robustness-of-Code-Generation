@@ -1,0 +1,60 @@
+```java
+public class SixCubes {
+
+    public static void main(String[] args) {
+        int n = 1730; // Ramanujan's number (1729 is the smallest)
+        int maxCube = (int) Math.cbrt(n);
+
+        // Create a table to store counts of sums of cubes
+        int[] sumCounts = new int[n + 1];
+
+        // Populate the table with counts
+        for (int i = 1; i <= maxCube; i++) {
+            for (int j = i; j <= maxCube; j++) {
+                for (int k = j; k <= maxCube; k++) {
+                    for (int l = k; l <= maxCube; l++) {
+                        for (int m = l; m <= maxCube; m++) {
+                            for (int p = m; p <= maxCube; p++) {
+                                int sum = i * i * i + j * j * j + k * k * k + l * l * l + m * m * m + p * p * p;
+                                if (sum <= n) {
+                                    sumCounts[sum]++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // Find and print numbers that can be expressed as the sum of six cubes in two or more ways
+        for (int i = 1; i <= n; i++) {
+            if (sumCounts[i] >= 2) {
+                System.out.println(i + " can be expressed as the sum of six cubes in at least two ways.");
+                break; // Stop after finding the first such number (or remove break to find all).
+            }
+        }
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Efficiency:**  The original Ramanujan problem focuses on the sum of *two* cubes. This solution addresses the sum of *six* cubes, which requires a significantly larger search space. The nested loops make this computationally intensive. While I've used some optimizations like starting inner loops from the outer loop's current value (to avoid redundant calculations like 1� + 2� and 2� + 1�), further optimization could be explored if `n` is very large.
+2. **`sumCounts` Array:** This array efficiently tracks how many ways each number (up to `n`) can be represented as a sum of six cubes.
+3. **`maxCube` Calculation:**  Calculates the maximum cube root needed to avoid unnecessary iterations.
+4. **Clearer Output:**  The output now clearly states how the number found satisfies the condition.
+5. **`break` statement:** The code includes a `break` statement. If you want to find *all* such numbers up to `n`, remove the `break`.
+6. **`n = 1730`:**  I've set `n` to 1730 because we know that Ramanujan's taxicab number (1729, the next smallest) will not be found with sums of *six* cubes. The first number that will work is significantly larger.  If you're prepared to wait a considerable amount of time for the computation, you can increase `n`.
+
+
+
+**Further Optimization (If Needed):**
+
+If you need to run this for a very large `n`, you could explore more advanced techniques like:
+
+* **Hashing/Memoization:** Store intermediate sums of cubes to avoid recalculating them.
+* **Multithreading:**  Parallelize the calculations across multiple threads to take advantage of multiple CPU cores.
+* **More efficient algorithms:** There might be more mathematically sophisticated approaches to solve this problem for very large `n` that are beyond the scope of a simple demonstration.

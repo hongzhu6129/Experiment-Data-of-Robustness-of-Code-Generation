@@ -1,0 +1,39 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringDigitsTest {
+
+    public static void main(String[] args) {
+        String str1 = "12345";
+        String str2 = "123a45";
+        String str3 = "123 45"; // Contains a space
+
+        System.out.println(str1 + ": " + test_only_digits(str1)); // Output: true
+        System.out.println(str2 + ": " + test_only_digits(str2)); // Output: false
+        System.out.println(str3 + ": " + test_only_digits(str3)); // Output: false
+        System.out.println("" + ": " + test_only_digits("")); // Output: false (Empty String)
+         System.out.println(null + ": " + test_only_digits(null)); // Output: false (null String)
+    }
+
+    public static boolean test_only_digits(String str) {
+        if (str == null || str.isEmpty()) {  //Handle null or empty strings. They don't contain only digits.
+            return false;
+        }
+        // Regular expression to match only digits (0-9) from beginning to end of the string.
+        Pattern pattern = Pattern.compile("^\\d+$");  // ^ = start, $ = end, \d+ = one or more digits
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+
+
+        /* Alternative method using a loop (less efficient but demonstrates another approach):
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+        */
+    }
+}
+```

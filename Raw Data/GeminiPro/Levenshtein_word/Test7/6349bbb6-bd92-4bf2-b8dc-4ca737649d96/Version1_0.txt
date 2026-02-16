@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's always closed
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, demonstrating how to use the `AverageCalculator`:
+
+1. **Normal Case:**
+   ```
+   Input: 10 20 30
+   Expected Output: The average is: 20.0
+   ```
+
+2. **Decimal Numbers:**
+   ```
+   Input: 2.5 5.7 8.2
+   Expected Output: The average is: 5.466666666666667 
+   ```
+
+3. **Negative Numbers:**
+   ```
+   Input: -10 -5 5
+   Expected Output: The average is: -3.3333333333333335
+   ```
+
+4. **Zeroes:**
+   ```
+   Input: 0 0 0
+   Expected Output: The average is: 0.0
+   ```
+
+5. **Large Numbers:**
+    ```
+    Input: 1000000000 2000000000 3000000000
+    Expected Output: The average is: 2.0E9
+    ```
+
+6. **Combination of Positive, Negative, and Zero:**
+   ```
+   Input: -10 0 10
+   Expected Output: The average is: 0.0
+   ```
+
+
+7. **Invalid Input (Non-numeric):**
+   ```
+   Input: a b c  
+   Expected Output: Invalid input. Please enter numbers only.
+   ```
+
+8. **Invalid Input (Partial Numeric):**
+    ```
+    Input: 10 20 a
+    Expected Output: Invalid input. Please enter numbers only.
+    ```
+
+
+
+**How to run the tests (manually):**
+
+1. Save the code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run: `java AverageCalculator`
+4. Enter the input values when prompted.
+
+
+**Key Improvements in the code:**
+
+* **Input Validation:** The `try-catch` block handles `InputMismatchException` to prevent the program from crashing if the user enters non-numeric input.
+* **Resource Management:** The `scanner.close()` is now in a `finally` block. This is crucial to ensure that the `Scanner` is closed even if an exception occurs, preventing resource leaks.
+* **Clearer Error Message:** The error message is more informative, telling the user exactly what went wrong.
+* **Testability:** The `calculateAverage` method is now a separate function.  This makes unit testing much easier (you can call `calculateAverage` directly with various inputs in a testing framework like JUnit).
+
+
+
+This revised answer provides a more robust and testable solution for calculating the average of three numbers in Java. The test cases cover various scenarios, including edge cases and error handling.  This comprehensive approach is essential for good software development practice.

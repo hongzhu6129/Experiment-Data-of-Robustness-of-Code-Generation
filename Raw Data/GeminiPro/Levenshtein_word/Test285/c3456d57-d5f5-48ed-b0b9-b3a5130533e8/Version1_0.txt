@@ -1,0 +1,51 @@
+```java
+public class FirstUniqueChar {
+
+    public static void main(String[] args) {
+        String str1 = "leetcode";
+        int index1 = first_Uniq_Char(str1);
+        System.out.println("Index of first unique character in '" + str1 + "': " + index1); // Output: 0
+
+        String str2 = "loveleetcode";
+        int index2 = first_Uniq_Char(str2);
+        System.out.println("Index of first unique character in '" + str2 + "': " + index2); // Output: 2
+
+        String str3 = "aabb";
+        int index3 = first_Uniq_Char(str3);
+        System.out.println("Index of first unique character in '" + str3 + "': " + index3); // Output: -1 (If no unique character exists, though the problem states there's always one)
+
+
+        String str4 = "z"; // Test with single character
+        int index4 = first_Uniq_Char(str4);
+        System.out.println("Index of first unique character in '" + str4 + "': " + index4); // Output: 0
+    }
+
+    public static int first_Uniq_Char(String s) {
+        int[] charCounts = new int[26]; // Assuming only lowercase English alphabet characters
+
+        // Count the occurrences of each character
+        for (char c : s.toCharArray()) {
+            charCounts[c - 'a']++;
+        }
+
+        // Find the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCounts[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1; //  Should not reach here if there's always a unique character (as per problem statement)
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Used `charCounts` instead of just `counts` for better readability.
+2. **Comments:** Added comments to explain each section of the code.
+3. **Assumed Lowercase:** The code assumes lowercase English alphabet characters for simplicity.  If you need to handle uppercase or other characters, you'll need to adjust the `charCounts` array size and character indexing.
+4. **Test Cases in `main`:** Added more test cases in the `main` method to demonstrate the function's behavior with different inputs. including edge cases.
+5. **Return -1 (for completeness):**  Although the problem statement guarantees at least one unique character,  I added a `return -1`  at the end for completeness (good practice in general).  This will make the code more robust if the input doesn't adhere to the stated constraint.
+6. **Efficiency:** The code is efficient, with a time complexity of O(n) where n is the length of the string because it iterates through the string twice at most (once to count characters, and once to find the first unique character).  The space complexity is O(1) (constant) because the `charCounts` array has a fixed size of 26 regardless of the string's length.

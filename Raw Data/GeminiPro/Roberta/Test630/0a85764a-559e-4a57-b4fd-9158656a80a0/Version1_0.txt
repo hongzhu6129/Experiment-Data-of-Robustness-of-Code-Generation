@@ -1,0 +1,57 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1:  Iterate using enhanced for loop (preferred as it doesn't remove elements)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+        System.out.println("----"); //separator for clarity between methods
+
+
+        // Method 2:  Iterate by removing elements (be careful, this empties the queue!)
+        PriorityQueue<String> colorQueue2 = new PriorityQueue<>(colorQueue); // Create a copy to demonstrate this method
+
+        System.out.println("Elements of the priority queue (using poll - empties queue):");
+        while (!colorQueue2.isEmpty()) {
+            System.out.println(colorQueue2.poll()); // Removes head each time
+        }
+
+
+         //Method 3: Using toString() (less readable output, primarily for debugging)
+        System.out.println("----"); //separator for clarity between methods
+        System.out.println("Elements of the priority queue (using toString):");
+        System.out.println(colorQueue.toString());
+    }
+}
+```
+
+
+Key improvements in this revised code:
+
+* **Clarity and Comments:**  Clearer explanations of what each section of the code does.
+* **Multiple Iteration Methods:** Shows three different ways to access/print the elements: 
+    1. Enhanced `for` loop (recommended - doesn't modify the queue).
+    2. `poll()` method (demonstrates how to retrieve and remove the head, but empties the queue).
+    3. `toString()` method (less readable, but useful for quick checks).
+* **Copy for Destructive Method:** Creates a copy of the original queue before using `poll()` so that the original queue isn't modified when demonstrating the `poll()` method.
+* **Output Formatting:** Added separators to make the output easier to understand.
+
+
+This example provides a more complete and pedagogical way to learn about using `PriorityQueue` in Java.  It emphasizes best practices and shows the consequences of different approaches.

@@ -1,0 +1,126 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void printMultiplicationTable(int num) {
+        if (num >= Integer.MIN_VALUE && num <= Integer.MAX_VALUE) { // Handle potential overflow
+            System.out.println("Multiplication Table for " + num + ":");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(num + " x " + i + " = " + (num * i)); // Explicitly cast long to int
+            }
+        } else {
+            System.out.println("Input number is out of valid integer range.");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            printMultiplicationTable(number);
+        } else {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 5
+   **Expected Output:**
+   ```
+   Multiplication Table for 5:
+   5 x 1 = 5
+   5 x 2 = 10
+   ...
+   5 x 10 = 50
+   ```
+
+2. **Input:** 12
+   **Expected Output:**
+   ```
+   Multiplication Table for 12:
+   12 x 1 = 12
+   12 x 2 = 24
+   ...
+   12 x 10 = 120
+   ```
+
+**Corner/Edge Cases:**
+
+3. **Input:** 0
+   **Expected Output:**
+   ```
+   Multiplication Table for 0:
+   0 x 1 = 0
+   0 x 2 = 0
+   ...
+   0 x 10 = 0
+   ```
+
+4. **Input:** -7
+   **Expected Output:**
+   ```
+   Multiplication Table for -7:
+   -7 x 1 = -7
+   -7 x 2 = -14
+   ...
+   -7 x 10 = -70
+   ```
+
+5. **Input:**  Integer.MAX_VALUE (2147483647)  (Important for overflow check)
+   **Expected Output:** (Table will print, calculations may have inaccuracies due to potential overflow, best to avoid relying on accurate results at this extreme)
+
+6. **Input:** Integer.MIN_VALUE (-2147483648) (Important for overflow check)
+ **Expected Output:** (Table will print, calculations may have inaccuracies due to potential overflow, best to avoid relying on accurate results at this extreme)
+
+
+
+7. **Invalid Input:** "abc" (or any non-integer input)
+   **Expected Output:**
+   ```
+   Invalid input. Please enter an integer.
+   ```
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:**  Enter the input values shown above when prompted and verify the output against the expected output.
+2. **Using JUnit (Recommended):**  Create a JUnit test class to automate these tests. This is especially useful for regression testing. Here�s an example JUnit test (using `System.setOut` to capture and check console output - there are other approaches as well):
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testMultiplicationTable5() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // Capture output
+        System.setOut(new PrintStream(outContent)); 
+
+        MultiplicationTable.printMultiplicationTable(5);
+
+        String expectedOutput = "Multiplication Table for 5:\r\n5 x 1 = 5\r\n5 x 2 = 10\r\n5 x 3 = 15\r\n5 x 4 = 20\r\n5 x 5 = 25\r\n5 x 6 = 30\r\n5 x 7 = 35\r\n5 x 8 = 40\r\n5 x 9 = 45\r\n5 x 10 = 50\r\n"; // Adjust \r\n for your OS
+        assertEquals(expectedOutput, outContent.toString());
+
+        System.setOut(System.out);  // Restore System.out
+    }
+
+    // Add more test cases similarly for other inputs (0, -7, Integer.MAX_VALUE, etc.)
+}
+```
+
+
+By including these test cases, you can ensure the correctness and robustness of your `MultiplicationTable` program.  JUnit greatly simplifies and automates this process.

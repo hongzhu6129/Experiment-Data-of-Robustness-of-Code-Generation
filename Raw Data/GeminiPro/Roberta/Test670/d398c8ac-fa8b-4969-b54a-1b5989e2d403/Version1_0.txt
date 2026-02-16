@@ -1,0 +1,66 @@
+```java
+import java.util.TreeSet;
+
+public class GreatestSetLessThanKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> set1 = new TreeSet<>();
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+        set1.add(4);
+        set1.add(5);
+
+        int key1 = 4;
+        TreeSet<Integer> result1 = getGreatestSetLessThanKey(set1, key1);
+        System.out.println("Set: " + set1 + ", Key: " + key1 + ", Result: " + result1); // Expected: [1, 2, 3]
+
+
+        int key2 = 1;
+        TreeSet<Integer> result2 = getGreatestSetLessThanKey(set1, key2);
+        System.out.println("Set: " + set1 + ", Key: " + key2 + ", Result: " + result2); // Expected: null
+
+        int key3 = 6;
+        TreeSet<Integer> result3 = getGreatestSetLessThanKey(set1, key3);
+        System.out.println("Set: " + set1 + ", Key: " + key3 + ", Result: " + result3); // Expected: [1, 2, 3, 4, 5]
+
+
+
+        TreeSet<Integer> set2 = new TreeSet<>();  // Empty set
+        int key4 = 5;
+        TreeSet<Integer> result4 = getGreatestSetLessThanKey(set2, key4);
+        System.out.println("Set: " + set2 + ", Key: " + key4 + ", Result: " + result4); // Expected: null
+
+
+    }
+
+    public static TreeSet<Integer> getGreatestSetLessThanKey(TreeSet<Integer> set, int key) {
+        if (set == null ) { // Handle null input set
+            return null; 
+        }
+
+        TreeSet<Integer> subset = (TreeSet<Integer>) set.headSet(key);
+
+        if (subset.isEmpty()) {
+            return null;
+        } else {
+            return subset;
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Null Input:** The code now explicitly checks if the input `set` is `null` and returns `null` in that case to prevent a `NullPointerException`.
+
+2. **Uses `headSet()`:**  The most efficient way to get the elements strictly less than a key in a `TreeSet` is to use the `headSet(key)` method. This method returns a view of the portion of the set whose elements are strictly less than `key`.
+
+3. **Clearer Return Logic:** The code now directly returns the `subset` if it's not empty.  If the subset is empty (meaning there were no elements less than the key), it returns `null`.
+
+4. **Example Usage in `main()`:** The `main` method now includes several test cases to demonstrate the behavior of the function with different inputs, including an empty set and keys greater than, less than, and equal to elements in the set. This helps in thorough testing.
+
+
+This improved version is more robust, concise, and directly uses the capabilities of `TreeSet` for optimal efficiency. It also handles edge cases more effectively.

@@ -1,0 +1,56 @@
+```java
+class Solution {
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if (str == null || str.length() <= 1) {
+            System.out.print(str); // Base case: empty or single-char string
+            return;
+        }
+
+        // Recursive step:
+        reverseString(str.substring(1)); // Reverse the rest of the string
+        System.out.print(str.charAt(0)); // Print the first character last
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        solution.reverseString("hello");    // Output: olleh
+        System.out.println();
+
+        solution.reverseString("world");   // Output: dlrow
+        System.out.println();
+
+        solution.reverseString("");        // Output: 
+        System.out.println();
+
+        solution.reverseString(null);     // Output: null
+        System.out.println();  // Just to make the last null output visible
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Base Case:**  The recursion stops when the string is either `null` or has a length of 0 or 1. In this case, we simply print the string (or `null`).
+
+2. **Recursive Step:**
+   - We make a recursive call to `reverseString` with the substring of the input string starting from the second character (index 1). This effectively reverses the "rest" of the string.
+   - After the recursive call returns, we print the first character (at index 0) of the original string.  This ensures that the first character becomes the last character in the reversed output.
+
+**Example:**
+
+Let's trace `reverseString("hello")`:
+
+1. `reverseString("hello")`: Calls `reverseString("ello")` and then prints 'h'.
+2. `reverseString("ello")`: Calls `reverseString("llo")` and then prints 'e'.
+3. `reverseString("llo")`: Calls `reverseString("lo")` and then prints 'l'.
+4. `reverseString("lo")`: Calls `reverseString("o")` and then prints 'l'.
+5. `reverseString("o")`:  Prints 'o' (base case).
+
+The output becomes "olleh".

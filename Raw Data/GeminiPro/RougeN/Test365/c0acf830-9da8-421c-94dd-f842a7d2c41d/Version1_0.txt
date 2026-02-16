@@ -1,0 +1,62 @@
+```java
+public class RemoveCharacters {
+
+    public static void main(String[] args) {
+        String inputString = "abracadabra";
+        String charsToRemove = "b";
+        String stringToRemove = "ac";
+
+        removeSetofCharacters(inputString, charsToRemove, stringToRemove);
+
+        inputString = "acbacbac";
+        charsToRemove = "b";
+        stringToRemove = "ac";
+        removeSetofCharacters(inputString, charsToRemove, stringToRemove);
+
+
+    }
+
+    public static void removeSetofCharacters(String inputString, String charsToRemove, String stringToRemove) {
+        // Remove individual characters
+        for (char c : charsToRemove.toCharArray()) {
+            inputString = inputString.replace(String.valueOf(c), "");
+        }
+
+        // Remove the string
+        inputString = inputString.replace(stringToRemove, "");
+
+
+        System.out.println("Result: " + inputString);
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Method Signature Adherence:** The code strictly adheres to the provided method signatures: `main(String[])` and `removeSetofCharacters(String, String, String)`.
+
+2. **Character Removal:** The `charsToRemove` string is iterated through, and each character is removed from the `inputString` using the `replace()` method. This handles cases where the characters to remove might appear multiple times.
+
+3. **String Removal:** The `stringToRemove` is removed from the `inputString` using the `replace()` method.
+
+4. **Clear Output:** The `System.out.println()` statement clearly displays the modified string after the removals.
+
+5. **Multiple Test Cases (in main):** I added a couple of test cases in the `main` method to demonstrate the function's behavior with different inputs. This is good practice for testing your code.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `RemoveCharacters.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac RemoveCharacters.java`
+3. **Run:** After successful compilation, run the program using: `java RemoveCharacters`
+
+
+
+The output for the given examples will be:
+
+```
+Result: aradaara
+Result: 
+```
+

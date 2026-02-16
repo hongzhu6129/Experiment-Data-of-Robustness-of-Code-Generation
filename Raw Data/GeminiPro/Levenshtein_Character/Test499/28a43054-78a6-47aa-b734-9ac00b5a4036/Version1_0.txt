@@ -1,0 +1,54 @@
+```java
+public class TwinPrimes {
+
+    public static void main(String[] args) {
+        System.out.println("Twin prime numbers less than 100:");
+        for (long i = 3; i < 100; i += 2) { // Optimize: only check odd numbers
+            if (is_Prime(i) && is_Prime(i + 2)) {
+                System.out.println("(" + i + ", " + (i + 2) + ")");
+            }
+        }
+    }
+
+    public static boolean is_Prime(long n) {
+        if (n <= 1) {
+            return false;
+        }
+        if (n <= 3) {
+            return true;
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
+            return false;
+        }
+
+        for (long i = 5; i * i <= n; i += 6) { // 6k � 1 optimization
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **`main` method:**
+   - It iterates through odd numbers from 3 up to (but not including) 100.  Starting at 3 and incrementing by 2 avoids checking even numbers, which (except for 2) are never prime.
+   - For each odd number `i`, it checks if both `i` and `i + 2` are prime using the `is_Prime` method.
+   - If both are prime, it prints them as a twin prime pair.
+
+2. **`is_Prime` method:**
+   - **Base Cases:** Handles `n <= 1` (not prime), `n <= 3` (2 and 3 are prime).
+   - **Divisibility by 2 and 3:**  Quickly checks if `n` is divisible by 2 or 3, eliminating many composite numbers.
+   - **6k � 1 Optimization:** All prime numbers greater than 3 can be expressed in the form 6k � 1 (where k is any integer).  The loop iterates with `i += 6` and checks `n % i` and `n % (i + 2)`, significantly reducing the number of divisors to test.  
+   - **Loop Condition `i * i <= n`:**  We only need to check divisibility up to the square root of `n`. If `n` has a divisor greater than its square root, it must also have a divisor smaller than its square root.
+
+
+Key improvements in this version:
+
+- **Efficiency:** The 6k � 1 optimization and checking only up to the square root of `n` in `is_Prime` greatly improve efficiency.
+- **Clarity:**  The code is well-commented and easier to understand.
+- **Correctness:** The base cases and divisibility checks ensure accurate prime detection.
+- **Style:** Follows standard Java conventions for naming and formatting.

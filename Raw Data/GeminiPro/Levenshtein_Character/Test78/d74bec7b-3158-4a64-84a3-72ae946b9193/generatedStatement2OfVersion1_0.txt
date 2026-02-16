@@ -1,0 +1,9 @@
+
+
+
+Key improvements in this version:
+
+* **Handles different operating systems for TEMP:** Uses both `TEMP` (Windows) and `TMP` (Linux/others) and provides a message if neither is found.
+* **More robust temp directory retrieval:** Uses `java.io.tmpdir` system property, a more reliable cross-platform method for getting the temporary directory.
+* **Clearer output:**  Labels each environment variable for better readability.
+* **Handles `null` returns:**  Checks for `null` to prevent `NullPointerExceptions` if an environment variable is not set.

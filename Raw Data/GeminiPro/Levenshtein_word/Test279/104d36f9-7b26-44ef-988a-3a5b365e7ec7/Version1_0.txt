@@ -1,0 +1,53 @@
+```java
+import java.util.Arrays;
+
+public class AnagramChecker {
+
+    /**
+     * Checks if two strings are anagrams of each other.
+     *
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return True if the strings are anagrams, false otherwise.
+     */
+    public boolean areAnagrams(String str1, String str2) {
+        // Remove whitespace and convert to lowercase for case-insensitive comparison
+        str1 = str1.replaceAll("\\s+", "").toLowerCase();
+        str2 = str2.replaceAll("\\s+", "").toLowerCase();
+
+        // Check if lengths are different
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Convert strings to character arrays
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        // Sort the character arrays
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+       
+        // Compare the sorted arrays
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    public static void main(String[] args) {
+        AnagramChecker checker = new AnagramChecker();
+
+        String str1 = "listen";
+        String str2 = "silent";
+        System.out.println(checker.areAnagrams(str1, str2)); // Output: true
+
+        str1 = "hello";
+        str2 = "world";
+        System.out.println(checker.areAnagrams(str1, str2)); // Output: false
+
+
+        str1 = "Dormitory";
+        str2 = "Dirty room";
+        System.out.println(checker.areAnagrams(str1, str2)); // Output: true (handles spaces and case)
+    }
+}
+
+```

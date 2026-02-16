@@ -1,0 +1,56 @@
+**Problem Description:**
+
+Write a Java program that takes a character as input and determines whether it is an alphabet or not. If it is an alphabet, then identify whether it is a vowel or a consonant.
+
+**Code:**
+
+```java
+import java.util.Scanner;
+
+public class AlphabetIdentifier {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter a character
+        System.out.println("Enter a character: ");
+        char character = scanner.next().charAt(0);
+
+        // Check if the character is an alphabet
+        if (Character.isAlphabetic(character)) {
+            // Check if the character is a vowel
+            if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u' ||
+                    character == 'A' || character == 'E' || character == 'I' || character == 'O' || character == 'U') {
+                System.out.println("The character " + character + " is a vowel.");
+            } else {
+                System.out.println("The character " + character + " is a consonant.");
+            }
+        } else {
+            System.out.println("The character " + character + " is not an alphabet.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Valid inputs:**
+
+* a
+* O
+* E
+* z
+* H
+
+**Invalid inputs:**
+
+* 1
+* %
+* &
+* .
+
+**Corner cases:**
+
+* Empty input
+* Input containing multiple characters
+* Input containing non-ASCII characters

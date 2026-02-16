@@ -1,0 +1,83 @@
+```java
+public class PrintFace {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input and therefore doesn't have traditional "corner cases" like invalid input or edge values, we can still consider a few things to ensure it behaves as expected:
+
+1. **Visual Inspection:**  The most crucial test is to run the program and visually verify that the output resembles a face as intended.  Check for proper alignment of characters and the overall shape.
+
+2. **Character Encoding:**  Ensure the output is displayed correctly across different operating systems and consoles, which might have varying character encodings. This is less of an issue with basic ASCII characters like those used here, but it's still a good practice to be mindful of.
+
+3. **Redirection to a File:**  Redirect the output to a file and then compare the contents of the file against the expected output.  This can be useful for automated testing. For example, in a bash or similar shell:
+
+   ```bash
+   java PrintFace > output.txt
+   diff output.txt expected_output.txt  // Check for differences
+   ```
+
+   `expected_output.txt` would contain:
+
+   ```
+   +"""""+ 
+   [| o o |]
+   |  ^  |
+   | '-' |
+   +-----+
+   ```
+
+
+4. **Output to different consoles/terminals:** Test in different terminal environments (e.g., command prompt, PowerShell, various Linux terminals) to ensure consistent output.
+
+5. **Integration with other programs (if applicable):** If this `printFace()` method were to be part of a larger application, you would need integration tests to ensure it interacts correctly with other parts of the program.  For example, if it was used to display a face in a graphical user interface, you'd need to test the GUI integration.
+
+For a simple program like this, visual inspection and redirection to a file are likely sufficient.  More complex programs involving user input or interactions with other systems would require more sophisticated tests.
+
+
+**Example of a very basic JUnit test (although arguably overkill for this specific case):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class PrintFaceTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        PrintFace.printFace();
+
+        String expectedOutput = "  +\"\"\"\"\"+ \r\n" +  // \r\n for Windows line endings
+                              " [| o o |] \r\n" +
+                              "  |  ^  | \r\n" +
+                              "  | '-' | \r\n" +
+                              "  +-----+ \r\n"; // Or use System.lineSeparator()
+
+        assertEquals(expectedOutput, outContent.toString());
+
+        // Restore original System.out
+        System.setOut(System.out); 
+    }
+}
+```
+
+
+This JUnit test captures the output of `printFace()` and compares it to the expected string. It handles Windows line endings (`\r\n`) and restores `System.out` after the test.  You would need to add JUnit to your project to run this test.

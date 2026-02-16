@@ -1,0 +1,31 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetLessThanSeven {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer objects
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some numbers to the TreeSet
+        numbers.add(2);
+        numbers.add(9);
+        numbers.add(5);
+        numbers.add(1);
+        numbers.add(7);
+        numbers.add(3);
+        numbers.add(12);
+
+        // Use the headSet method to get numbers less than 7 (exclusive)
+        TreeSet<Integer> lessThanSeven = (TreeSet<Integer>) numbers.headSet(7);
+
+        // Print the numbers less than 7
+        System.out.println("Numbers less than 7: " + lessThanSeven);
+
+
+        // Demonstrating inclusive headSet (less than or equal to 7) if needed:
+        TreeSet<Integer> lessThanOrEqualSeven = (TreeSet<Integer>) numbers.headSet(7, true);
+        System.out.println("Numbers less than or equal to 7: " + lessThanOrEqualSeven);
+    }
+}
+```

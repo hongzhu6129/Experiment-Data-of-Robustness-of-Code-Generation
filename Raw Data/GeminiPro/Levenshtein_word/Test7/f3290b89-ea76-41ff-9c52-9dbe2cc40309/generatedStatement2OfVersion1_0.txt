@@ -1,0 +1,54 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **Regular Positive Numbers:**
+   - Input: `5 10 15`
+   - Expected Output: `10.0`
+
+2. **Zeroes:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+3. **Negative Numbers:**
+   - Input: `-5 -10 -15`
+   - Expected Output: `-10.0`
+
+4. **Mixed Positive and Negative:**
+   - Input: `-5 10 -5`
+   - Expected Output: `0.0`
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Decimal Numbers:**
+   - Input: `2.5 5.5 7.5`
+   - Expected Output: `5.166666666666667`
+
+7. **Corner Case - Very large/small numbers (to test potential overflow/underflow if integers were used):**
+   - Input: `Double.MAX_VALUE Double.MIN_VALUE 0`  (Java's max and min double values)
+   - Expected Output: `8.988465674311579E307`  (Expect a very large positive number)
+
+
+8. **Invalid Input:**
+   - Input: `a b c`
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+9. **Partial Invalid Input:**
+   - Input: `1 2 a`
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+10. **Numbers with leading/trailing spaces (to ensure the scanner handles whitespace correctly):**
+   - Input: `  10   20 30   `
+   - Expected Output: `20.0`
+
+
+**How to run the tests:**
+
+You can manually test these cases by running the Java program and entering the input values.  For more automated testing, you could create a JUnit test class (or use another testing framework).  A JUnit example:
+
+

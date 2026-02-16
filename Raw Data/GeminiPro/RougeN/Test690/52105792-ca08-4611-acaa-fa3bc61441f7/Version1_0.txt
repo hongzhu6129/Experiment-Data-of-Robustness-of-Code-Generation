@@ -1,0 +1,27 @@
+```java
+public class FifteenChecker {
+
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println("10, 5: " + calculate(10, 5)); // True (sum is 15)
+        System.out.println("15, 7: " + calculate(15, 7)); // True (first number is 15)
+        System.out.println("7, 15: " + calculate(7, 15)); // True (second number is 15)
+        System.out.println("20, 5: " + calculate(20, 5)); // True (difference is 15)
+        System.out.println("5, 20: " + calculate(5, 20)); // True (difference is 15)
+        System.out.println("1, 2: " + calculate(1, 2));   // False
+    }
+
+    public static boolean calculate(int a, int b) {
+        if (a == 15 || b == 15) {
+            return true;
+        }
+        if (a + b == 15) {
+            return true;
+        }
+        if (Math.abs(a - b) == 15) {  // Use Math.abs for absolute difference
+            return true;
+        }
+        return false;
+    }
+}
+```

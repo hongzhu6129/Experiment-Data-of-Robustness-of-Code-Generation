@@ -1,0 +1,37 @@
+```java
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentAndComingDate {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Format the date (optional, but makes output nicer)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedCurrentDate = currentDate.format(formatter);
+
+
+        // Calculate the coming date (e.g., 7 days from now)
+        LocalDate comingDate = currentDate.plusDays(7);  // You can change the number of days as needed
+
+        // Format the coming date
+        String formattedComingDate = comingDate.format(formatter);
+
+        // Print the dates
+        System.out.println("Current Date: " + formattedCurrentDate);
+        System.out.println("Coming Date (in 7 days): " + formattedComingDate);
+
+
+        // Example of getting a specific coming date (e.g., New Year's Day of the next year)
+        int nextYear = currentDate.getYear() + 1;
+        LocalDate nextNewYearsDay = LocalDate.of(nextYear, 1, 1);
+        String formattedNewYears = nextNewYearsDay.format(formatter);
+        System.out.println("Next New Year's Day: " + formattedNewYears);
+
+
+
+    }
+}
+```

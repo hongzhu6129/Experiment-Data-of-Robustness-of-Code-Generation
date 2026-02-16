@@ -1,0 +1,33 @@
+```java
+public class RemoveSubstring {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or throw an exception, depending on requirements
+        }
+
+        return mainString.replace(removeString, ""); 
+    }
+
+    public static void main(String[] args) {
+        RemoveSubstring remover = new RemoveSubstring();
+
+        String mainString = "This is a test string. test";
+        String removeString = "test";
+        String result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: This is a  string. 
+
+        mainString = "appleapplebananaapple";
+        removeString = "apple";
+        result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: banana
+
+
+        // Test cases where null or empty strings are provided
+        System.out.println(remover.removeString(null, "test")); // Output: null
+        System.out.println(remover.removeString("test", null)); // Output: test
+        System.out.println(remover.removeString("test", ""));  // Output: test
+        System.out.println(remover.removeString("", "test"));  // Output: 
+    }
+}
+```

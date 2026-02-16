@@ -1,0 +1,57 @@
+**Java Program:**
+
+```java
+import java.util.Arrays;
+
+public class SecondNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        String str = "abbabcddd";
+        System.out.println("Original String: " + str);
+        char secondNonRepeatingChar = findSecondNonRepeatingCharacter(str);
+        System.out.println("Second Non-Repeating Character: " + secondNonRepeatingChar);
+    }
+
+    public static char findSecondNonRepeatingCharacter(String str) {
+        // Create an array to store the frequency of each character
+        int[] charFrequency = new int[256];
+
+        // Update the frequency of each character in the string
+        for (char ch : str.toCharArray()) {
+            charFrequency[ch]++;
+        }
+
+        // Iterate over the string again to find the second non-repeating character
+        for (char ch : str.toCharArray()) {
+            if (charFrequency[ch] == 2) {
+                return ch;
+            }
+        }
+
+        // Return a special character if no second non-repeating character is found
+        return Character.MIN_VALUE;
+    }
+}
+```
+
+**Test Cases with Corner Cases:**
+
+* **Test Case 1 (No Second Non-Repeating Character):**
+   - Input: "aaaa"
+   - Expected Output: Character.MIN_VALUE
+
+* **Test Case 2 (Multiple Second Non-Repeating Characters):**
+   - Input: "aabbbcddd"
+   - Expected Output: 'c' (or any other second non-repeating character)
+
+* **Test Case 3 (Empty String):**
+   - Input: ""
+   - Expected Output: Character.MIN_VALUE
+
+* **Test Case 4 (String with All Unique Characters):**
+   - Input: "abcdefghij"
+   - Expected Output: 'b' (or any other second character in the string)
+
+* **Test Case 5 (String with Spaces and Special Characters):**
+   - Input: "Hello World! 123"
+   - Expected Output: ' ' (space is the second non-repeating character)

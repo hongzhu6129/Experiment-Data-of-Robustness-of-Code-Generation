@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input second number: ");
+        int num2 = input.nextInt();
+
+        int sum = num1 + num2;
+        int difference = num1 - num2;
+        int product = num1 * num2;
+        int quotient = num1 / num2; // Integer division
+        int remainder = num1 % num2;
+
+        System.out.println(num1 + " + " + num2 + " = " + sum);
+        System.out.println(num1 + " - " + num2 + " = " + difference);
+        System.out.println(num1 + " x " + num2 + " = " + product);
+        System.out.println(num1 + " / " + num2 + " = " + quotient);
+        System.out.println(num1 + " mod " + num2 + " = " + remainder);
+
+        input.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Regular Positive Numbers:**
+   - num1 = 125, num2 = 24 (Given example)
+   - Expected Output:  As provided in the problem description.
+
+2. **Zero as Second Operand:**
+   - num1 = 10, num2 = 0
+   - Expected Output:  The program should throw an `ArithmeticException` (division by zero) for division and remainder operations.  Addition, subtraction, and multiplication should work correctly.
+
+3. **Negative Numbers:**
+   - num1 = -5, num2 = 2
+   - Expected Output:  Correct results for all operations, handling negative values properly.
+   - num1 = 5, num2 = -2
+   - Expected Output: Correct results for all operations, handling negative values properly.
+   - num1 = -5, num2 = -2
+   - Expected Output: Correct results for all operations, handling negative values properly.
+
+
+4. **Large Numbers:**
+   - num1 = Integer.MAX_VALUE, num2 = 2
+   - Expected Output:  Multiplication might cause integer overflow (wrap around).  Other operations should produce expected (potentially large) results.
+
+5. **Minimum Integer Values:**
+   - num1 = Integer.MIN_VALUE, num2 = -1  (Important corner case for overflow!)
+   - Expected Output: Division should produce `Integer.MIN_VALUE`.  Multiplication will likely overflow to `Integer.MIN_VALUE` (check Java's overflow behavior).
+
+6. **Zero as First Operand:**
+    - num1 = 0, num2 = 5
+    - Expected output: Correct results for all operations.
+
+
+**How to Run Test Cases (Example using JUnit - a Java testing framework):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ArithmeticOperationsTest {
+
+    @Test
+    void testRegularPositiveNumbers() {
+        // ... (Arrange - set inputs, Act - call your methods, Assert - check results)
+        assertEquals(149, ArithmeticOperations.add(125, 24)); // Example using a hypothetical add() method.  You'll need to adapt to your actual code structure.
+        // Add assertions for other operations (subtract, multiply, etc.).
+    }
+
+    @Test
+    void testDivisionByZero() {
+        assertThrows(ArithmeticException.class, () -> ArithmeticOperations.divide(10, 0)); // Example.  Adapt as needed.
+        assertThrows(ArithmeticException.class, () -> ArithmeticOperations.remainder(10, 0));
+    }
+
+    // ... Tests for other cases (negative numbers, large numbers, etc.)
+}
+```
+
+Using a testing framework like JUnit is highly recommended for thorough testing, especially as your programs become more complex. It makes it easy to automate your tests and ensures they are run consistently.
+
+
+
+

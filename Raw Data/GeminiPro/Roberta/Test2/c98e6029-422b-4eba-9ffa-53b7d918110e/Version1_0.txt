@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference (num1 - num2): " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient (num1 / num2): " + (num1 / num2));
+            System.out.println("Remainder (num1 % num2): " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            // For remainder with a divisor of 0, Java throws ArithmeticException
+            System.out.println("Remainder calculation not possible (division by zero)."); 
+        }
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** num1 = 10, num2 = 5
+   **Expected Output:**
+     Sum: 15.0
+     Difference: 5.0
+     Product: 50.0
+     Quotient: 2.0
+     Remainder: 0.0
+
+2. **Input:** num1 = 7.5, num2 = 2.5
+   **Expected Output:**
+     Sum: 10.0
+     Difference: 5.0
+     Product: 18.75
+     Quotient: 3.0
+     Remainder: 0.0
+
+3. **Input:** num1 = -8, num2 = 3
+   **Expected Output:**
+     Sum: -5.0
+     Difference: -11.0
+     Product: -24.0
+     Quotient: -2.6666666666666665
+     Remainder: -2.0
+
+
+**Corner Cases:**
+
+4. **Division by Zero:** num1 = 10, num2 = 0
+   **Expected Output:**
+     Sum: 10.0
+     Difference: 10.0
+     Product: 0.0
+     Division by zero is not allowed.
+     Remainder calculation not possible (division by zero).
+
+5. **Large Numbers:** num1 =  1e10, num2 = 1e5 (test for potential overflow issues, though doubles have a large range)
+   **Expected Output:**
+     Sum: 1.000001E10
+     Difference: 9.9999E9
+     Product: 1.0E15
+     Quotient: 1.0E5
+     Remainder: 0.0
+
+6. **Small Numbers:** num1 = 1e-10, num2 = 1e-5  (test handling of very small numbers)
+   **Expected Output:** (results will be very close to zero for difference, product, and remainder)
+
+
+
+7. **One number is zero:** num1 = 0, num2 = 5
+   **Expected Output:** 
+     Sum: 5.0
+     Difference: -5.0
+     Product: 0.0
+     Quotient: 0.0
+     Remainder: 0.0
+
+8. **Both numbers are zero:** num1 = 0, num2 = 0
+   **Expected Output:**
+     Sum: 0.0
+     Difference: 0.0
+     Product: 0.0
+     Division by zero is not allowed.
+     Remainder calculation not possible (division by zero).
+
+
+
+
+These test cases cover various scenarios, including normal operations, division by zero, large and small numbers, and cases where one or both numbers are zero, which helps ensure that the program handles different inputs correctly.  Always remember to test your code with a range of inputs to identify and fix potential issues.

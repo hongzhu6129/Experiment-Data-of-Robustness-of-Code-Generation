@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        StringBuilder hexadecimal = new StringBuilder();
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            char hexDigit;
+
+            if (remainder < 10) {
+                hexDigit = (char) (remainder + '0');
+            } else {
+                hexDigit = (char) (remainder - 10 + 'A');
+            }
+
+            hexadecimal.insert(0, hexDigit);
+            decimal /= 16;
+        }
+
+        return hexadecimal.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+        String hexadecimal = function(decimal);
+        System.out.println("Hexadecimal equivalent: " + hexadecimal);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Decimal Input | Expected Hexadecimal Output | Description                       |
+|--------------|-----------------------------|-----------------------------------|
+| 0            | 0                           | Zero case                         |
+| 1            | 1                           | Simple single digit case          |
+| 9            | 9                           | Highest single decimal digit      |
+| 10           | A                           | First double-digit requiring A-F |
+| 15           | F                           | Highest single hex digit           |
+| 16           | 10                          | Represents base 16                |
+| 255          | FF                          | Maximum value for 2 hex digits    |
+| 256          | 100                         | Transition to 3 hex digits        |
+| 16777215    | FFFFFF                       | Maximum value for 6 hex digits (24-bit) |
+| -1           | (Handles Negative)          | Negative number.  How it's handled depends on desired behavior (e.g., using two's complement or throwing an error). |
+| 2147483647  | 7FFFFFFF                    | Maximum positive signed 32-bit integer |
+
+
+**Explanation of Corner Cases and Considerations:**
+
+* **Zero:** Handling zero is essential as it's a special case where the loop won't execute.
+* **Single Digits (1-9):** These are the basic conversion cases.
+* **10-15:** This range tests the conversion to hexadecimal letters (A-F).
+* **16 and Multiples:**  Tests the handling of place values in hexadecimal.
+* **255, 256:** These test the transition between different numbers of hexadecimal digits.
+* **Large Numbers:**  (e.g., 16777215 and Integer.MAX_VALUE) push the limits of the integer type.
+* **Negative Numbers:** You need to decide how to handle negative input. The provided code doesn't explicitly deal with negatives. Common approaches include:
+    * Two's complement representation (which is how Java stores negative integers internally).  You'd likely need to use `Long.toHexString()` if you want Java to handle this for you automatically.
+    * Throwing an exception.
+    * Returning a special value or indicator (e.g., prepend a "-" sign).
+
+**Improved Code (Handling Negatives with Two's Complement):**
+
+If you want to handle negative numbers using two's complement, use the built-in `Long.toHexString()` method, which correctly handles all integer values:
+
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        return Long.toHexString(decimal); // Using Long.toHexString() to handle negatives correctly.
+    }
+
+    // ... (rest of the code is the same)
+}
+```
+
+This revised version simplifies the code significantly and handles negative inputs correctly. Remember to choose the approach to negative numbers that best fits your requirements.

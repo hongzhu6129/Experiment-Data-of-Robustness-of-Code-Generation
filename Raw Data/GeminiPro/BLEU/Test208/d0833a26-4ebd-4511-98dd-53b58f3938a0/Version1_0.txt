@@ -1,0 +1,71 @@
+```java
+class Node {
+    int data;
+    Node left, mid, right;
+
+    public Node(int item) {
+        data = item;
+        left = mid = right = null;
+    }
+}
+
+public class TernaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(node.left);
+        int midDepth = maxDepth(node.mid);
+        int rightDepth = maxDepth(node.right);
+
+        return Math.max(leftDepth, Math.max(midDepth, rightDepth)) + 1;
+    }
+
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.mid = new Node(3);
+        root.right = new Node(4);
+        root.left.left = new Node(5);
+        root.left.mid = new Node(6);
+        root.left.right = new Node(7);
+
+
+        TernaryTreeDepth tree = new TernaryTreeDepth();
+        System.out.println("Maximum depth of the ternary tree is: " + tree.maxDepth(root));
+
+          // Another test case
+        Node root2 = new Node(10);
+        root2.left = new Node(20);
+        root2.mid = new Node(30);
+        root2.right = new Node(40);
+        root2.left.mid = new Node(50);
+        root2.right.left = new Node(60);
+        root2.right.right = new Node(70);
+        root2.right.right.left = new Node(80);
+
+        System.out.println("Maximum depth of the ternary tree is: " + tree.maxDepth(root2));
+
+        // Test with an empty tree
+        System.out.println("Maximum depth of the ternary tree is: " + tree.maxDepth(null));
+    }
+}
+```
+
+
+Explanation:
+
+1. **Node Class:**  Represents a node in the ternary tree. It stores the data and pointers to its left, mid, and right children.
+
+2. **maxDepth(Node node):**
+   - This recursive method calculates the maximum depth.
+   - **Base Case:** If the node is null (empty subtree), the depth is 0.
+   - **Recursive Step:** It recursively calculates the depth of the left, mid, and right subtrees.
+   - It then returns the maximum of those depths + 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates sample ternary trees for testing.
+   - Creates an instance of `TernaryTreeDepth`.
+   - Calls the `maxDepth()` method to calculate and print the maximum depth of the trees. Includes test cases with different tree structures and an empty tree to ensure the code handles various scenarios correctly.

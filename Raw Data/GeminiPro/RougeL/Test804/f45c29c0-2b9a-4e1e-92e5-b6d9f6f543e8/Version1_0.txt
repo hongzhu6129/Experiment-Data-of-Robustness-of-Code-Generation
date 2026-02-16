@@ -1,0 +1,68 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            if (i % 2 == 0) {
+                System.out.print("* "); // Extra star for even rows
+            }
+            System.out.print("==");
+            for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+
+        // Print the bottom red section
+        for (int i = 0; i < 6; i++) {
+             if (i == 2 && args.length > 0 && args[0].equals("pct")) { // pct argument for placing "pct"
+                 for (int k=0; k < 6; k++) {
+                    System.out.print("* ");
+                 }
+                 System.out.print("pct ");
+                 for (int k=0; k < 5; k++) {
+                    System.out.print("* ");
+                 }
+            }else{
+                for (int j = 0; j < 27; j++) {
+                   System.out.print("=");
+                }
+            }
+
+            
+            System.out.print("==");
+
+             for (int j = 0; j < 20; j++) {
+               System.out.print("=");
+            }
+
+
+            System.out.println();
+        }
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Correct Star Pattern:**  Accurately reproduces the alternating 6-star and 7-star rows in the flag's canton.
+* **Simplified Code:** Uses more efficient looping and printing logic.
+* **pct Argument:** Includes the special `pct` argument logic as requested.  If you run the program with the command-line argument `pct` (e.g., `java AmericanFlag pct`), it will place "pct" as specified.  If you run it without any arguments, it prints the standard flag.
+
+
+To compile and run:
+
+1. Save the code as `AmericanFlag.java`.
+2. Compile: `javac AmericanFlag.java`
+3. Run with "pct": `java AmericanFlag pct`
+4. Run without "pct": `java AmericanFlag`
+
+
+This revised code should produce the desired American flag output, both with and without the "pct" placement.

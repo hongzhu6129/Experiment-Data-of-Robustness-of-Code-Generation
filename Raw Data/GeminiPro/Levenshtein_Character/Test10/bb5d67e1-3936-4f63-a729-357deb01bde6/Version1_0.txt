@@ -1,0 +1,73 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  | '-' |\n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases (though for simple output, visual inspection is primary):**
+
+1. **Basic Test:**  Run the program and visually verify that the output matches the expected face. This confirms the basic functionality.
+
+2. **Character Encoding:**  Ensure the output looks correct on different systems with varying character encodings.  This is less of an issue with basic ASCII characters used here, but worth checking if you were to add more complex characters like emojis.
+
+3. **Output Stream Redirection (Less applicable, but for completeness):** If you were using this face printing in a larger application, test redirecting the output to a file or another stream to confirm it behaves correctly. For example:
+
+   ```bash
+   java FacePrinter > face.txt
+   ```
+
+   Then check the content of `face.txt`.
+
+4. **Integration Test (If part of a larger system):** If `printFace()` is a component of a larger program, create integration tests that verify how this face printing integrates and interacts with the other components.  For example, imagine a game where different faces are printed based on events � you'd test those scenarios.
+
+
+**Corner Cases (N/A):**
+
+There aren't true corner cases for this simple example.  "Corner cases" usually arise where input values can cause unexpected behavior.  This program takes no input.  However, if we were to generalize the program to print different types of faces (happy, sad, etc.) based on an input parameter, then you would have corner cases like:
+
+* **Invalid Input:**  What if the input is not one of the recognized face types?  How should the program handle this?
+* **Null Input:** What if the input parameter is null?
+* **Boundary Conditions:** (If the input were numerical, representing face size, for instance), what are the maximum and minimum allowable sizes?
+
+
+**Example of an extended program with corner cases:**
+
+```java
+public class FacePrinterExtended {
+
+    public static void printFace(String type) {
+        if (type == null) {
+            System.out.println("Error: Face type cannot be null.");
+            return; 
+        }
+
+        switch (type.toLowerCase()) {
+            case "happy":
+                System.out.println("  +\"\"\"\"\"+\n [| ^ ^ |]\n  |  -  |\n  | \\_/ |\n  +-----+");
+                break;
+            case "sad":
+                System.out.println("  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  |  _  |\n  +-----+");
+                break;
+            default:
+                System.out.println("Error: Unknown face type: " + type);
+        }
+    }
+
+    public static void main(String[] args) {
+        printFace("happy");
+        printFace("sad");
+        printFace(null);        // Test null input
+        printFace("angry");   // Test invalid input
+    }
+}
+```
+
+
+This extended example demonstrates how introducing input creates the need for corner case testing.

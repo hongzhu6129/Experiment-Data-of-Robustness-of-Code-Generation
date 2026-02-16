@@ -1,0 +1,60 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+     *
+     * @param nums The sorted array.
+     * @return The length of the updated array.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Expected: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Expected: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Expected: 0, []
+
+
+        int[] nums4 = {1};
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4))); // Expected: 1, [1]
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  `uniqueIndex` instead of just `j` makes the purpose more obvious.
+2. **Handles Empty Array:** Added a check for an empty input array to avoid potential issues.
+3. **Concise Return:**  `uniqueIndex + 1` directly calculates the length.
+4. **Comprehensive `main` Method:** Includes multiple test cases (empty array, single element, duplicates) to demonstrate correctness and edge case handling.
+5. **Output Formatting:** The `main` method now uses `Arrays.copyOfRange` and `Arrays.toString` to cleanly print the relevant portion of the modified array (up to the new length).  This avoids showing the unmodified "garbage" values that remain in the original array after the unique elements.
+
+
+This revised version is more robust, easier to understand, and provides better demonstration of its functionality. It addresses potential edge cases and clarifies the intent of the code.

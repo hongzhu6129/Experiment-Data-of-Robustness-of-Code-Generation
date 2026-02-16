@@ -1,0 +1,54 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetAddToAnother {
+
+    public static void main(String[] args) {
+
+        // Create the first TreeSet (source TreeSet)
+        TreeSet<String> sourceSet = new TreeSet<>();
+        sourceSet.add("Apple");
+        sourceSet.add("Banana");
+        sourceSet.add("Orange");
+        sourceSet.add("Grape");
+
+
+        // Create the second TreeSet (destination TreeSet)
+        TreeSet<String> destinationSet = new TreeSet<>();
+        destinationSet.add("Mango");
+        destinationSet.add("Pineapple");
+
+        System.out.println("Initial source TreeSet: " + sourceSet);
+        System.out.println("Initial destination TreeSet: " + destinationSet);
+
+        // Add all elements from sourceSet to destinationSet
+        destinationSet.addAll(sourceSet);
+
+        System.out.println("Destination TreeSet after adding all elements: " + destinationSet);
+
+
+
+        // Example with Integer TreeSet
+        TreeSet<Integer> sourceNumbers = new TreeSet<>();
+        sourceNumbers.add(5);
+        sourceNumbers.add(1);
+        sourceNumbers.add(10);
+        sourceNumbers.add(3);
+
+
+        TreeSet<Integer> destinationNumbers = new TreeSet<>();
+        destinationNumbers.add(7);
+        destinationNumbers.add(2);
+
+
+        System.out.println("\nInitial source TreeSet (Integers): " + sourceNumbers);
+        System.out.println("Initial destination TreeSet (Integers): " + destinationNumbers);
+
+
+        destinationNumbers.addAll(sourceNumbers);
+
+        System.out.println("Destination TreeSet (Integers) after adding all elements: " + destinationNumbers);
+
+    }
+}
+```

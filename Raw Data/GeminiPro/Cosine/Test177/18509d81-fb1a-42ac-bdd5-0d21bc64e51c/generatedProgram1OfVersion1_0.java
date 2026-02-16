@@ -1,0 +1,58 @@
+import java.util.*;
+
+public class ThirdNonRepeatingCharacter {
+
+    public static char findThirdNonRepeatingCharacter(String str) {
+        // Create a map to store the count of each character in the string
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        // Iterate over the string and update the count of each character in the map
+        for (char c : str.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Create a list to store the non-repeating characters in the string
+        List<Character> nonRepeatingChars = new ArrayList<>();
+
+        // Iterate over the map and add the non-repeating characters to the list
+        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+            if (entry.getValue() == 1) {
+                nonRepeatingChars.add(entry.getKey());
+            }
+        }
+
+        // If the list contains less than 3 non-repeating characters, return null
+        if (nonRepeatingChars.size() < 3) {
+            return '\0';
+        }
+
+        // Return the third non-repeating character in the list
+        return nonRepeatingChars.get(2);
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        String str1 = "abcabcbb";
+        String str2 = "abccba";
+        String str3 = "aaa";
+        String str4 = "";
+
+        // Expected outputs
+        char expected1 = 'c';
+        char expected2 = '\0';
+        char expected3 = '\0';
+        char expected4 = '\0';
+
+        // Actual outputs
+        char actual1 = findThirdNonRepeatingCharacter(str1);
+        char actual2 = findThirdNonRepeatingCharacter(str2);
+        char actual3 = findThirdNonRepeatingCharacter(str3);
+        char actual4 = findThirdNonRepeatingCharacter(str4);
+
+        // Check if the actual outputs match the expected outputs
+        System.out.println("Test case 1: " + (actual1 == expected1));
+        System.out.println("Test case 2: " + (actual2 == expected2));
+        System.out.println("Test case 3: " + (actual3 == expected3));
+        System.out.println("Test case 4: " + (actual4 == expected4));
+    }
+}

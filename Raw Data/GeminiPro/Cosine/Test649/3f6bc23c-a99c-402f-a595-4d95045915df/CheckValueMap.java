@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, String> map = new HashMap<>();
+        map.put("apple", "red");
+        map.put("banana", "yellow");
+        map.put("grape", "purple");
+
+
+        // Value to search for
+        String valueToFind = "yellow";
+
+        // Check if the map contains the value
+        boolean containsValue = map.containsValue(valueToFind);
+
+        // Print the result
+        if (containsValue) {
+            System.out.println("The map contains the value: " + valueToFind);
+        } else {
+            System.out.println("The map does not contain the value: " + valueToFind);
+        }
+
+
+
+        //Another example illustrating that containsValue doesn't care about keys:
+         Map<String, String> map2 = new HashMap<>();
+        map2.put("fruit1", "yellow");
+        map2.put("fruit2", "red");
+
+        String valueToFind2 = "yellow";
+
+        boolean containsValue2 = map2.containsValue(valueToFind2);
+
+          if (containsValue2) {
+            System.out.println("The map2 contains the value: " + valueToFind2);
+        } else {
+            System.out.println("The map2 does not contain the value: " + valueToFind2);
+        }
+
+
+        //And an example where the value is not found:
+           Map<String, String> map3 = new HashMap<>();
+        map3.put("fruit1", "orange");
+        map3.put("fruit2", "red");
+
+        String valueToFind3 = "yellow";
+
+        boolean containsValue3 = map3.containsValue(valueToFind3);
+
+          if (containsValue3) {
+            System.out.println("The map3 contains the value: " + valueToFind3);
+        } else {
+            System.out.println("The map3 does not contain the value: " + valueToFind3);
+        }
+
+    }
+}

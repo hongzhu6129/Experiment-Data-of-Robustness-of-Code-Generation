@@ -1,0 +1,30 @@
+```java
+public class BinaryToHexadecimal {
+
+    public static void main(String[] args) {
+        String binaryNumber = "1101"; // You can change this to any binary number
+        int decimalEquivalent = 0;
+        int power = 0;
+
+        // Convert binary to decimal
+        for (int i = binaryNumber.length() - 1; i >= 0; i--) {
+            if (binaryNumber.charAt(i) == '1') {
+                decimalEquivalent += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        // Convert decimal to hexadecimal
+        String hexadecimalEquivalent = Integer.toHexString(decimalEquivalent);
+
+        System.out.println("Hexadecimal value: " + hexadecimalEquivalent);
+
+
+        // Example with user input (requires exception handling for robust code)
+        //  Scanner scanner = new Scanner(System.in);
+        //  System.out.print("Input a binary number: ");
+        //  binaryNumber = scanner.nextLine();
+        // ... (rest of the conversion logic as above) ... 
+    }
+}
+```

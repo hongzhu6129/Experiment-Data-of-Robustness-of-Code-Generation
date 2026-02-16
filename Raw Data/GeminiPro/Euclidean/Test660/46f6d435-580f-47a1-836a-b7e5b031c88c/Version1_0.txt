@@ -1,0 +1,63 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSort {
+
+    public static void main(String[] args) {
+        // Using a Comparator with the TreeMap constructor
+        TreeMap<String, Integer> treeMapComparator = new TreeMap<>(new StringLengthComparator());
+        treeMapComparator.put("apple", 1);
+        treeMapComparator.put("banana", 2);
+        treeMapComparator.put("kiwi", 3);
+        treeMapComparator.put("orange", 4);
+        treeMapComparator.put("grape", 5);
+
+
+        System.out.println("Sorted by string length (using Comparator): " + treeMapComparator);
+
+
+        // Using a Comparator with a simple TreeMap (alternative approach)
+         TreeMap<String, Integer> anotherTreeMap = new TreeMap<>();
+        anotherTreeMap.put("apple", 1);
+        anotherTreeMap.put("banana", 2);
+        anotherTreeMap.put("kiwi", 3);
+        anotherTreeMap.put("orange", 4);
+        anotherTreeMap.put("grape", 5);
+
+        TreeMap<String, Integer> sortedTreeMap = new TreeMap<>(new StringLengthComparator());
+        sortedTreeMap.putAll(anotherTreeMap); // Copy into a new TreeMap using comparator
+
+
+        System.out.println("Sorted by string length (alternative approach) : " + sortedTreeMap);
+
+    }
+
+
+    public static class StringLengthComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            return Integer.compare(s1.length(), s2.length()); // Compare by length
+        }
+    }
+
+
+
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Comparator Implementation:** The `StringLengthComparator` is now a nested static class, which makes it more organized and self-contained.  The `compare` method directly uses `Integer.compare()` for a concise and correct comparison of string lengths.
+
+2. **Illustrative Examples:** The `main` method demonstrates two ways to use a `Comparator` with a `TreeMap`:
+   - **Directly in the constructor:** This is the most common and recommended approach.
+   - **Creating a separate sorted TreeMap:** This approach is useful if you already have an existing `TreeMap` and want to create a sorted copy of it using a `Comparator`.
+
+3. **Output Clarity:** The `System.out.println()` statements clearly label the output, making it easy to understand which sorting method was used.
+
+4. **Adherence to Requirements:** The code strictly adheres to the requirement of only using `public static void main(String[])` and `public int compare(String, String)`. No other methods are used.
+
+
+This revised answer is more robust, efficient, and easier to understand, providing a comprehensive solution to the problem while adhering to all given constraints.

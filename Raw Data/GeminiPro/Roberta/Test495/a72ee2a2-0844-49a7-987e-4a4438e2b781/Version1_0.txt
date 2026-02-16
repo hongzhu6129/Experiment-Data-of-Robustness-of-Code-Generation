@@ -1,0 +1,63 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: n must be an integer.");
+        }
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("[" + i + "," + j + "] "); //Prints the matrix coordinates
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```
+
+**Explanation and How to Run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java` and compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java
+   ```
+
+2. **Execution:** Run the compiled code, providing the matrix size `n` as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // Creates a 5x5 matrix
+   ```
+   ```bash
+   java MatrixPrinter 3 // Creates a 3x3 matrix
+   ```
+
+3. **Output:** The program will print the n-by-n matrix to the console. For example, if `n` is 3, the output will be:
+
+   ```
+   [0,0] [0,1] [0,2] 
+   [1,0] [1,1] [1,2] 
+   [2,0] [2,1] [2,2] 
+   ```
+
+**Key Improvements:**
+
+* **Input Validation:** The code now includes input validation to handle cases where the user provides invalid input (non-integer, negative numbers, or no arguments).  This makes the program more robust.
+* **Clearer Output:** The output now displays the row and column indices within each cell of the matrix, making it easier to understand the structure of the matrix.
+* **Error Handling:**  The `try-catch` block handles potential `NumberFormatException` if the user enters a non-integer value for `n`.
+
+
+This improved version addresses the prompt's requirements while also being more practical and user-friendly.

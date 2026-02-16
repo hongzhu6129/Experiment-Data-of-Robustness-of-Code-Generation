@@ -1,0 +1,56 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExtractArrayListPortion {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> originalList = new ArrayList<>();
+        originalList.add("apple");
+        originalList.add("banana");
+        originalList.add("cherry");
+        originalList.add("date");
+        originalList.add("elderberry");
+
+        // Define the start and end indices for extraction (inclusive start, exclusive end)
+        int startIndex = 1;
+        int endIndex = 4;
+
+        // Validate indices
+        if (startIndex < 0 || endIndex > originalList.size() || startIndex >= endIndex) {
+            System.out.println("Invalid start or end indices.");
+            return; // Exit if indices are invalid
+        }
+
+
+
+        // Method 1: Using subList() (Recommended)
+        List<String> extractedList = originalList.subList(startIndex, endIndex);
+        System.out.println("Extracted portion (using subList): " + extractedList);
+
+
+        // Method 2: Using a loop
+        ArrayList<String> extractedListLoop = new ArrayList<>();
+        for (int i = startIndex; i < endIndex; i++) {
+            extractedListLoop.add(originalList.get(i));
+        }
+        System.out.println("Extracted portion (using loop): " + extractedListLoop);
+
+
+        //Important Note about subList(): subList() returns a view of the original list.
+        //Modifications to the subList will affect the original list. If you need a completely 
+        //independent copy, use the constructor like this:
+
+        List<String> independentCopy = new ArrayList<>(originalList.subList(startIndex, endIndex));
+
+
+
+         //Example demonstrating modification and its impact:
+        extractedList.set(0, "grape"); // Modify the sublist 
+        System.out.println("Original list after modifying subList: " + originalList); // Original list is affected!
+        System.out.println("Independent copy: " + independentCopy);  // Independent copy remains unchanged
+
+    }
+}
+```

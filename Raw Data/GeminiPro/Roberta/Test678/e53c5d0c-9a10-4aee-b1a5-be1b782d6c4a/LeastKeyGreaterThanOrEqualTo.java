@@ -1,0 +1,34 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        int key1 = 4;
+        Map.Entry<Integer, String> entry1 = getCeilingEntry(treeMap, key1);
+        System.out.println("For key " + key1 + ": " + entry1); // Output: For key 4: 5=Five
+
+        int key2 = 5;
+        Map.Entry<Integer, String> entry2 = getCeilingEntry(treeMap, key2);
+        System.out.println("For key " + key2 + ": " + entry2); // Output: For key 5: 5=Five
+
+        int key3 = 10;
+        Map.Entry<Integer, String> entry3 = getCeilingEntry(treeMap, key3);
+        System.out.println("For key " + key3 + ": " + entry3); // Output: For key 10: null
+
+
+    }
+
+    public static <K, V> Map.Entry<K, V> getCeilingEntry(TreeMap<K, V> treeMap, K key) {
+        return treeMap.ceilingEntry(key); 
+    }
+}

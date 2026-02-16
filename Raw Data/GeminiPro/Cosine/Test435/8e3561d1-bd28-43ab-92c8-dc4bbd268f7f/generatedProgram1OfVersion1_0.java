@@ -1,0 +1,57 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringSort {
+
+    public static void main(String[] args) {
+
+        List<String> strings = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+
+        // Ascending sort using streams
+        List<String> ascendingSorted = strings.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending order: " + ascendingSorted);
+
+
+        // Descending sort using streams
+        List<String> descendingSorted = strings.stream()
+                .sorted((s1, s2) -> s2.compareTo(s1)) // Use a Comparator for descending order
+                .collect(Collectors.toList());
+
+        System.out.println("Descending order: " + descendingSorted);
+
+
+
+        // Example with nulls and case-insensitive sorting:
+
+        List<String> stringsWithNulls = Arrays.asList("apple", null, "Banana", "orange", "Grape", "kiwi", null);
+
+
+        List<String> ascendingSortedCaseInsensitive = stringsWithNulls.stream()
+                .filter(s -> s != null) // Filter out nulls to avoid NullPointerException
+                .sorted(String.CASE_INSENSITIVE_ORDER)  // Case-insensitive sorting
+                .collect(Collectors.toList());
+
+
+
+        System.out.println("Ascending case-insensitive order (nulls handled) : " + ascendingSortedCaseInsensitive);
+
+
+
+
+        List<String> descendingSortedCaseInsensitiveWithNullsLast = stringsWithNulls.stream()
+                .sorted( (s1, s2) -> {
+                    if (s1 == null && s2 == null) return 0; // Nulls are equal
+                    if (s1 == null) return 1;  // Nulls go last in descending order
+                    if (s2 == null) return -1; // Nulls go last in descending order
+                    return s2.compareToIgnoreCase(s1); //Case-insensitive descending sort
+                })
+                .collect(Collectors.toList());
+
+        System.out.println("Descending case-insensitive order (nulls last): " + descendingSortedCaseInsensitiveWithNullsLast);
+
+    }
+}

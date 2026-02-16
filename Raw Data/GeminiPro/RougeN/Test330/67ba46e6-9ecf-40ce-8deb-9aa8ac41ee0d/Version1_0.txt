@@ -1,0 +1,46 @@
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");
+        String str4 = "world";
+
+        // Method 1: Using .equals() (recommended for content comparison)
+        System.out.println("str1.equals(str2): " + str1.equals(str2)); // true
+        System.out.println("str1.equals(str3): " + str1.equals(str3)); // true
+        System.out.println("str1.equals(str4): " + str1.equals(str4)); // false
+
+        // Method 2: Using == (checks for reference equality)
+        System.out.println("str1 == str2: " + (str1 == str2)); // true (because of string interning)
+        System.out.println("str1 == str3: " + (str1 == str3)); // false (str3 is a new object)
+
+
+        // More robust example (handles nulls):
+        String str5 = null;
+        String str6 = "another string";
+
+        // Using Objects.equals() is null-safe
+        System.out.println("Objects.equals(str5, str6): " + java.util.Objects.equals(str5, str6)); // false
+        System.out.println("Objects.equals(str6, str5): " + java.util.Objects.equals(str6, str5)); // false
+        System.out.println("Objects.equals(str5, null): " + java.util.Objects.equals(str5, null)); // true
+
+
+
+
+    }
+}
+```
+
+
+**Explanation and Key Differences:**
+
+* **`equals()` method:** This method compares the *content* of the strings.  It's the preferred way to check if two strings represent the same sequence of characters.
+
+* **`==` operator:** This operator compares *references*.  It checks if two string variables point to the same memory location.  With string literals (like "hello"), Java often uses "string interning" (stores only one copy in memory), so `==` might return `true` even for separately declared literals.  However, if you create strings using `new String()`, `==` will likely be `false` because new objects are created.
+
+* **`Objects.equals()`:**  This method from the `java.util.Objects` class provides a null-safe way to compare strings (or any objects). It handles the case where one or both strings are `null` without throwing a `NullPointerException`. This is the most robust approach.
+
+
+**In Summary:** Always use `equals()` or `Objects.equals()` (for null safety) to compare the content of strings. Avoid using `==` unless you specifically intend to check if two string variables refer to the same object in memory.

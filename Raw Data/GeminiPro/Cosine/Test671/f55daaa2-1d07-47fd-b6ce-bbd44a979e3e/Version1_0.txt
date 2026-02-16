@@ -1,0 +1,47 @@
+```java
+import java.util.Map;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class NavigableSetOfLocks {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store locks, using keys for ordering.
+        Map<String, Lock> lockMap = new TreeMap<>();
+
+        // Add some locks to the map
+        lockMap.put("LockA", new ReentrantLock());
+        lockMap.put("LockC", new ReentrantLock());
+        lockMap.put("LockB", new ReentrantLock());
+
+        // Get a NavigableSet view of the keys (which represent the locks)
+        NavigableSet<String> lockKeys = lockMap.navigableKeySet();
+
+        // Iterate through the NavigableSet and access the locks
+        for (String key : lockKeys) {
+            Lock lock = lockMap.get(key);
+            System.out.println("Lock Key: " + key);
+
+            // You can now work with the lock, e.g., acquire and release:
+            lock.lock();
+            try {
+                // Perform operations protected by the lock
+                System.out.println("Acquired " + key);
+            } finally {
+                lock.unlock();
+                System.out.println("Released " + key);
+            }
+        }
+
+
+        // Demonstrating NavigableSet methods (optional):
+        System.out.println("First Key: " + lockKeys.first()); // LockA
+        System.out.println("Last Key: " + lockKeys.last());   // LockC
+        System.out.println("Key Set: " + lockKeys);        // [LockA, LockB, LockC]
+
+
+    }
+}
+```

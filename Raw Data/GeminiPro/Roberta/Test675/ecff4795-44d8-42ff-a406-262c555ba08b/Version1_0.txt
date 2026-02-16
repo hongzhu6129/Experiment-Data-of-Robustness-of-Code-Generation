@@ -1,0 +1,71 @@
+```java
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (implementation of NavigableMap)
+        NavigableMap<Integer, String> originalMap = new TreeMap<>();
+
+        // Populate the map with some data
+        originalMap.put(1, "One");
+        originalMap.put(2, "Two");
+        originalMap.put(3, "Three");
+        originalMap.put(4, "Four");
+        originalMap.put(5, "Five");
+        originalMap.put(6, "Six");
+        originalMap.put(7, "Seven");
+
+
+        // Define the start and end keys for the submap
+        int startKey = 2;  // Inclusive start key
+        int endKey = 5;    // Exclusive end key
+
+
+        // Get the submap.  .subMap(startKey, true, endKey, false) gets the portion
+        // from startKey (inclusive) to endKey (exclusive)
+        NavigableMap<Integer, String> subMap = originalMap.subMap(startKey, true, endKey, false);
+
+
+        // Print the original map
+        System.out.println("Original Map: " + originalMap);
+
+        // Print the submap
+        System.out.println("Submap: " + subMap);
+
+
+        // Example using a set as the starting point (inclusive)
+        NavigableMap<Integer, String> subMapFromSet = originalMap.tailMap(3, true);
+
+        System.out.println("Submap from set (inclusive): " + subMapFromSet);
+
+          // Example using a set as the starting point (exclusive)
+        NavigableMap<Integer, String> subMapFromSetExclusive = originalMap.tailMap(3, false);
+
+        System.out.println("Submap from set (exclusive): " + subMapFromSetExclusive);
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Use `NavigableMap`:**  The `NavigableMap` interface (and its common implementation `TreeMap`) provides methods like `subMap()`, `tailMap()`, and `headMap()` specifically designed for getting portions of a sorted map.
+
+2. **Clearer Example:** The code now provides a more complete and understandable example, demonstrating how to create and populate a map, and then extract a submap.  It also clearly shows how to control inclusivity/exclusivity of the start/end points.
+
+3. **Illustrates `tailMap()`:** The example also includes the `tailMap()` method which effectively creates a submap from a given key to the end of the map.  This addresses the "from a given set to another key" part of the prompt, where the "set" can be considered a single key defining the starting point, and "another key" can be implicitly the end of the map.
+
+4. **Handles Inclusivity/Exclusivity:**  The `subMap()` method's parameters let you specify whether the start and end keys are inclusive or exclusive in the submap, providing flexibility.
+
+5. **Output for Clarity:** The code prints both the original map and the submap, making it easy to verify the results.
+
+6. **Example with a "set" (using tailMap):**  The code demonstrates how to use a single value (which can be thought of as a set with one element) as the starting point using `tailMap()`. This shows both inclusive and exclusive variations.
+
+
+
+This improved version provides a comprehensive solution to the problem, using best practices and making the code more readable and understandable.

@@ -1,0 +1,75 @@
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        // Example usage:
+        float number = 123.456789f;
+        int decimalPlaces = 2;
+
+        float roundedNumber = roundFloat(number, decimalPlaces);
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+
+        number = 987.654321f;
+        decimalPlaces = 3;
+        roundedNumber = roundFloat(number, decimalPlaces);
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+
+        number = 0.12345f; // Demonstrating potential issues with float precision
+        decimalPlaces = 4;
+        roundedNumber = roundFloat(number, decimalPlaces);
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+
+        // Using BigDecimal for more precise rounding:
+        BigDecimal bdNumber = new BigDecimal("0.12345");  // Use String constructor for BigDecimal for accurate representation
+        BigDecimal bdRounded = bdNumber.setScale(decimalPlaces, RoundingMode.HALF_UP);
+        System.out.println("Original BigDecimal: " + bdNumber);
+        System.out.println("Rounded BigDecimal: " + bdRounded.floatValue());
+
+
+
+    }
+
+    public static float roundFloat(float number, int decimalPlaces) {
+        float powerOfTen = (float) Math.pow(10, decimalPlaces);
+        return Math.round(number * powerOfTen) / powerOfTen;
+    }
+}
+```
+
+
+Explanation:
+
+1. **`roundFloat(float number, int decimalPlaces)` method:**
+   - Takes the `float` number and the desired number of `decimalPlaces` as input.
+   - Calculates `powerOfTen` (e.g., 100 for 2 decimal places).
+   - Multiplies the `number` by `powerOfTen` to shift the decimal point.
+   - Uses `Math.round()` to round to the nearest integer.
+   - Divides the result by `powerOfTen` to shift the decimal point back to its original position.
+   - Returns the rounded `float` value.
+
+
+2. **`main` method (examples):**
+   - Shows how to use the `roundFloat` method with different float values and decimal places.
+   - **Important:** The example also demonstrates the inherent limitations of `float` precision.  Floats are represented in binary and cannot precisely represent all decimal values.  This can lead to slight inaccuracies in rounding.
+
+
+
+3. **Using BigDecimal (for accurate rounding):**
+   - The code now includes an example using `BigDecimal` for more accurate rounding.  `BigDecimal` is recommended when precision is critical, especially in financial or scientific calculations.
+   - Notice how the `BigDecimal` is created using a `String` constructor.  This is important to avoid introducing inaccuracies from the start.  If you create a `BigDecimal` from a `double` or `float`, the initial inaccuracies of those types will be carried over.
+
+
+Key improvements in this version:
+
+- Clearer examples in `main` demonstrating usage.
+- Explanation of `float` precision limitations.
+- Example using `BigDecimal` for accurate rounding when needed.  This is best practice for situations where precision is paramount.

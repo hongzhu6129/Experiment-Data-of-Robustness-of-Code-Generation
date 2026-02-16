@@ -1,0 +1,57 @@
+```java
+import java.util.LinkedList;
+import java.util.Iterator;
+
+public class ReverseLinkedList {
+
+    public static void main(String[] args) {
+
+        // 1. Creating a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        System.out.println("Original LinkedList: " + languages);
+
+
+        // 2. Iterating in reverse using a descendingIterator()
+        System.out.print("Reversed LinkedList (using descendingIterator): ");
+        Iterator<String> descendingIterator = languages.descendingIterator();
+        while (descendingIterator.hasNext()) {
+            System.out.print(descendingIterator.next() + " ");
+        }
+        System.out.println();
+
+
+        // 3. Iterating in reverse using a for loop and size() & get() (Less Efficient)
+        System.out.print("Reversed LinkedList (using size and get): ");
+        for (int i = languages.size() - 1; i >= 0; i--) {
+            System.out.print(languages.get(i) + " ");
+        }
+        System.out.println();
+
+
+
+        //  4. Iterating in reverse by adding to a new list (creates a copy)
+        LinkedList<String> reversedList = new LinkedList<>();
+        for (String language : languages) {
+            reversedList.addFirst(language); // Adds to the beginning
+        }
+
+        System.out.println("Reversed LinkedList (by creating a new list): " + reversedList);
+
+
+        // Note on other methods (not demonstrable directly within main but useful):
+
+        //  - You can also reverse a LinkedList in-place using Collections.reverse():
+        //      java.util.Collections.reverse(languages);  // Modifies the original list
+
+
+        // -  If you're working with a custom LinkedList implementation (e.g., using nodes),
+        //    you might need to implement your own reverse() method involving pointer manipulation.
+
+    }
+}
+```

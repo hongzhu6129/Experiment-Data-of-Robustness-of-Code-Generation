@@ -1,0 +1,68 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+
+
+        // Example with a more unbalanced tree to demonstrate depth calculation
+        Node root2 = new Node(1);
+        root2.left = new Node(2);
+        root2.left.left = new Node(3);
+        root2.left.left.left = new Node(4);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root2));
+
+    }
+}
+```
+
+
+Explanation and improvements in this version:
+
+1. **Clearer Node Class:** The `Node` class is explicitly defined to represent the structure of a binary tree node. This improves code readability and organization.
+
+2. **Recursive `maxDepth()`:** The `maxDepth()` method uses recursion, which is a natural fit for tree traversal problems.  It correctly handles the base case (empty tree) and the recursive step (calculating depth based on subtrees).
+
+3. **Illustrative `main()` Method:** The `main()` method includes two example trees: a more balanced one and a skewed one.  This demonstrates how `maxDepth()` correctly calculates the depth (height) in different scenarios.  Clear output messages make it easy to understand the results.
+
+4. **Conciseness and Efficiency:** The code remains concise while efficiently calculating the maximum depth.  It avoids unnecessary complexity.
+
+5. **Correct Terminology:**  The code now consistently uses the term "depth" which is synonymous with "height" in this context, referring to the number of edges on the longest path from the root to a leaf.  Using consistent language enhances understanding.

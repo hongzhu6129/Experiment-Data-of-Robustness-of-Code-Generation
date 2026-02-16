@@ -1,0 +1,72 @@
+```java
+import java.util.Arrays;
+
+public class LinearSearchEducational {
+
+    public static void main(String[] args) {
+        int[] array = {10, 20, 80, 30, 60, 50, 110, 100, 130, 170};
+        int searchElement = 110;
+
+        System.out.println("Array: " + Arrays.toString(array));
+        System.out.println("Searching for element: " + searchElement);
+
+        int index = Linear_Search(array, searchElement);
+
+        if (index != -1) {
+            System.out.println("Element " + searchElement + " found at index: " + index);
+        } else {
+            System.out.println("Element " + searchElement + " not found in the array.");
+        }
+
+
+        // Example 2: Element not present
+        searchElement = 15; // Element not in the array
+        index = Linear_Search(array, searchElement);
+        if (index != -1) {
+            System.out.println("Element " + searchElement + " found at index: " + index);
+        } else {
+            System.out.println("Element " + searchElement + " not found in the array.");
+        }
+    }
+
+    private static int Linear_Search(int[] array, int searchElement) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == searchElement) {
+                return i; // Return the index where the element is found
+            }
+        }
+        return -1; // Return -1 if the element is not found
+    }
+}
+
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - Initializes an example array `array` and the element to search for `searchElement`.
+   - Prints the array and the search element for clarity.
+   - Calls the `Linear_Search` method to perform the search.
+   - Prints the result based on the returned index.
+
+2. **`Linear_Search` method:**
+   - Takes the array (`array`) and the element to search (`searchElement`) as input.
+   - Iterates through the array element by element using a `for` loop.
+   - Inside the loop, it checks if the current element `array[i]` is equal to the `searchElement`.
+   - If a match is found, it immediately returns the index `i`.
+   - If the loop completes without finding the element, it means the element is not present in the array, so it returns -1.
+
+
+Key improvements and explanations for educational purposes:
+
+
+- **Clearer output:**  The `main` method now provides more descriptive output to show the array, the search element, and the search result.
+- **Example with element not found:** Demonstrates what happens when the element is not in the array, emphasizing the -1 return value.
+- **Comments:** Added comments to explain the logic in both methods, making it easier to understand.
+- **Descriptive method name:** Changed the method name to `Linear_Search` for better readability.
+- **Consistent naming:**  Used consistent camelCase naming for variables (e.g., `searchElement` instead of x).
+
+
+
+This improved version provides a more complete and educational demonstration of linear search in Java.  It covers both the case where the element is found and where it is not found, and the code is well-commented to explain the process.

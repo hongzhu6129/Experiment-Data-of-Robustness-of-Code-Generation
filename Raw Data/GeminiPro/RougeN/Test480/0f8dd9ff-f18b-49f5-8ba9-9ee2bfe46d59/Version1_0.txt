@@ -1,0 +1,36 @@
+```java
+import java.util.TimeZone;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        // Get all available time zone IDs
+        Set<String> timeZoneIds = TimeZone.getAvailableIDs();
+
+        // Iterate through the IDs and display UTC and GMT time zones
+        System.out.println("Available UTC and GMT Time Zones:");
+        for (String id : timeZoneIds) {
+            if (id.startsWith("Etc/UTC") || id.startsWith("Etc/GMT") || id.equals("UTC") || id.equals("GMT")  || id.startsWith("GMT") || id.contains("UTC") || id.contains("GMT") ) { //Broader match to catch variations
+                TimeZone tz = TimeZone.getTimeZone(id);
+                System.out.println(id + " (Raw Offset: " + tz.getRawOffset() + "ms)"); 
+            }
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Comprehensive Matching:**  The original prompt asked for "UTC" and "GMT."  However, there are variations like "Etc/UTC", "Etc/GMT",  "GMT+1",  "UTC+2" etc. The code now includes a more comprehensive check (`startsWith`, `equals`, and `contains`) to capture these variations. This ensures a wider range of relevant time zones are displayed.
+
+2. **Raw Offset Information:** The code now displays the raw offset of each time zone in milliseconds. This is useful for understanding the difference between the time zone and UTC/GMT. For example, "GMT+2" would have a raw offset of 7200000 milliseconds (2 hours * 60 minutes * 60 seconds * 1000 milliseconds).
+
+3. **Clarity and Readability:** The code is formatted for better readability and includes comments to explain the logic.
+
+4. **Efficiency:**  Using `startsWith`, `equals` and `contains`,  along with || (OR) operator, keeps string checking efficient in the loop.
+
+
+
+This improved version provides a more complete and informative list of UTC and GMT-related time zones, making it more practical for real-world use cases.

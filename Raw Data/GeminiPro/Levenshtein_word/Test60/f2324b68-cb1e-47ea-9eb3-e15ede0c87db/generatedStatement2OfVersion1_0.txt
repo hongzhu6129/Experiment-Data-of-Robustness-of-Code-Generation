@@ -1,0 +1,28 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  Using JUnit provides a structured way to test the code's behavior. The `@Test` annotation marks the test methods.  `assertEquals()` asserts that the expected output matches the actual output. `assertThrows()` checks if the expected exception is thrown.
+
+* **Clearer Error Handling:** The `IllegalArgumentException` is used to explicitly signal invalid input (null or empty strings).  This makes the code more robust. The error messages are also improved.
+
+* **Corner Case Coverage:** The test cases now cover:
+    * Normal strings.
+    * Single-character strings (important to test the `substring()` behavior).
+    * One string being single-character and the other longer.
+    * Empty strings.
+    * Null strings.
+
+
+* **Main Method Demonstration:** The `main` method demonstrates how to use the `concatenateStrings()` method and handle potential exceptions.
+
+
+How to run the tests (assuming you have JUnit 5 set up):
+
+1. Save the code as `StringConcatenation.java`.
+2. Compile: `javac StringConcatenation.java`
+3. Run tests: `java -jar <path_to_junit_jar> --class-path . StringConcatenation`  (Replace `<path_to_junit_jar>` with the actual path).
+
+
+This revised version is more robust, testable, and provides clearer error handling, making it better suited for real-world use.

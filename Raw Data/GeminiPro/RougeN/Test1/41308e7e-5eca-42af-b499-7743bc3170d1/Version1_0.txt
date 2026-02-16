@@ -1,0 +1,82 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong(); // Use long to handle larger numbers
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | num1 | num2 | Expected Output | Notes |
+|---|---|---|---|---|
+| 1 | 5 | 10 | 50 | Basic positive numbers |
+| 2 | -3 | 7 | -21 | One negative number |
+| 3 | -5 | -8 | 40 | Two negative numbers |
+| 4 | 0 | 12 | 0 | Multiplication by zero |
+| 5 | 15 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 |  Largest positive long, testing for overflow (if using int, this would overflow)|
+| 8| 9223372036854775807 | 2 | -2 |  Overflow with long (if using int, this would also overflow) |
+| 9 | -9223372036854775808 | -1 | -9223372036854775808 | Smallest negative long, testing for overflow (if using int, this would overflow) |
+| 10 | -9223372036854775808 | 2 | 0 | Overflow with long (if using int, this would also overflow) |
+| 11 | 123456789 | 987654321 | 121932631112635269 | Large positive numbers to check for potential overflow if int was used. |
+
+
+**How to run the test cases:**
+
+1. **Manual Testing:**  You can manually enter these values into the console when prompted by the program.
+
+2. **Automated Testing (Recommended):** For more robust testing, use a testing framework like JUnit.  Here's a simple JUnit example:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(50, ProductOfTwoNumbers.calculateProduct(5, 10)); // Helper method added
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-21, ProductOfTwoNumbers.calculateProduct(-3, 7));
+    }
+    // ... add more tests similar to the ones in the table
+
+     @Test
+    void testLargePositiveNumbers() {
+        assertEquals(121932631112635269L, ProductOfTwoNumbers.calculateProduct(123456789L, 987654321L)); 
+    }
+
+    // Add the calculateProduct method to your ProductOfTwoNumbers class for testing purposes
+    public static long calculateProduct(long num1, long num2) {
+      return num1 * num2;
+    }
+}
+
+```
+
+This JUnit example makes testing more systematic and allows you to automate the process.  Remember to add the `calculateProduct` helper method to your `ProductOfTwoNumbers` class to make the tests work.  You would run these tests in an IDE or build tool that supports JUnit.
+
+
+By using `long` instead of `int`, we broaden the range of numbers the program can handle and reduce the risk of integer overflow in most practical cases. However, even with `long`, very large numbers can still cause overflow, as demonstrated in some of the test cases.  The JUnit tests are highly recommended to check these corner cases effectively.

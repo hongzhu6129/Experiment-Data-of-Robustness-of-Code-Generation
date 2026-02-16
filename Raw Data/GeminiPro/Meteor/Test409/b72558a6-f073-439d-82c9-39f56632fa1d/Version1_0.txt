@@ -1,0 +1,73 @@
+```java
+public class StringRemover {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or handle nulls as you see fit
+        }
+
+        return mainString.replace(removeString, "");
+    }
+
+    public static void main(String[] args) {
+        StringRemover remover = new StringRemover();
+
+        String mainString1 = "This is a test string.";
+        String removeString1 = "is";
+        String result1 = remover.removeString(mainString1, removeString1);
+        System.out.println("Original: \"" + mainString1 + "\"");
+        System.out.println("Removed \"" + removeString1 + "\": \"" + result1 + "\"");
+
+
+        String mainString2 = "Hello world, world!";
+        String removeString2 = "world";
+        String result2 = remover.removeString(mainString2, removeString2);
+        System.out.println("Original: \"" + mainString2 + "\"");
+        System.out.println("Removed \"" + removeString2 + "\": \"" + result2 + "\"");
+
+        String mainString3 = "abababa";
+        String removeString3 = "aba";  // Demonstrates removing overlapping occurrences
+        String result3 = remover.removeString(mainString3, removeString3);
+        System.out.println("Original: \"" + mainString3 + "\"");
+        System.out.println("Removed \"" + removeString3 + "\": \"" + result3 + "\"");
+
+        String mainString4 = null; // test null
+        String removeString4 = "world"; 
+        String result4 = remover.removeString(mainString4, removeString4);
+        System.out.println("Original: \"" + mainString4 + "\"");
+        System.out.println("Removed \"" + removeString4 + "\": \"" + result4 + "\"");
+
+        String mainString5 = "Hello"; // test null
+        String removeString5 = null; 
+        String result5 = remover.removeString(mainString5, removeString5);
+        System.out.println("Original: \"" + mainString5 + "\"");
+        System.out.println("Removed \"" + removeString5 + "\": \"" + result5 + "\"");
+
+
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles `null` inputs:** The `removeString` method now checks for null arguments and returns the main string if either is null. This prevents `NullPointerExceptions`.
+* **Clearer `main` method:** The `main` method now includes multiple test cases to demonstrate the behavior of the `removeString` method in different scenarios, including overlapping occurrences and null input.  It makes it easier to understand how the method works.
+* **Uses `String.replace()`:** This is the most concise and efficient way to remove all occurrences of a substring in Java.  It's better than manually looping and manipulating the string.
+
+
+Output of the provided test cases:
+
+```
+Original: "This is a test string."
+Removed "is": "Th  a test string."
+Original: "Hello world, world!"
+Removed "world": "Hello , !"
+Original: "abababa"
+Removed "aba": "b"
+Original: "null"
+Removed "world": "null"
+Original: "Hello"
+Removed "null": "Hello"
+```

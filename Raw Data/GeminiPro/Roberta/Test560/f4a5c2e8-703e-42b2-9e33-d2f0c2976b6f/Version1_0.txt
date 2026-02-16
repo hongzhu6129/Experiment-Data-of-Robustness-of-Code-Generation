@@ -1,0 +1,60 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListSearch {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+        numbers.add(30);
+
+        // Element to search for
+        int target = 15;
+
+        // Search for the element using contains()
+        if (numbers.contains(target)) {
+            System.out.println(target + " is found in the ArrayList at index " + numbers.indexOf(target));
+        } else {
+            System.out.println(target + " is not found in the ArrayList");
+        }
+
+
+        // Example with String ArrayList
+        List<String> names = new ArrayList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        String searchName = "Bob";
+
+        if (names.contains(searchName)) {
+            System.out.println(searchName + " is found in the ArrayList at index " + names.indexOf(searchName));
+        } else {
+            System.out.println(searchName + " is not found in the ArrayList");
+        }
+
+        // Demonstrating manual loop-based search (less efficient than contains() for general use)
+        int target2 = 5;
+        boolean found = false;
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == target2) {
+                System.out.println(target2 + " found at index (manual search): " + i);
+                found = true;
+                break; // Exit the loop once found
+            }
+        }
+
+        if (!found) {
+            System.out.println(target2 + " not found (manual search)");
+        }
+    }
+}
+
+
+```

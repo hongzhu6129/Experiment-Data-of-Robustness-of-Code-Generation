@@ -1,0 +1,38 @@
+```java
+import java.util.Calendar;
+
+public class MinimumCalendarValues {
+
+    public static void main(String[] args) {
+        // Get an instance of the default calendar
+        Calendar calendar = Calendar.getInstance();
+
+        // Get the minimum values for year, month, week of year, and day of month
+        int minYear = calendar.getActualMinimum(Calendar.YEAR);
+        int minMonth = calendar.getActualMinimum(Calendar.MONTH); // Month starts from 0 (January)
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR); 
+        int minDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+
+        // Print the minimum values
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month (0-indexed): " + minMonth); // January is 0
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+
+        // To get the current date:
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH); // January is 0
+        int currentDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        int currentWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        System.out.println("\nCurrent Date Information:");
+        System.out.println("Current Year: " + currentYear);
+        System.out.println("Current Month (0-indexed): " + currentMonth);
+        System.out.println("Current Day of Month: " + currentDayOfMonth);
+        System.out.println("Current Week of Year: " + currentWeekOfYear);
+
+
+
+    }
+}
+```

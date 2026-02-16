@@ -1,0 +1,61 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapView {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> originalMap = new HashMap<>();
+        originalMap.put("apple", 1);
+        originalMap.put("banana", 2);
+        originalMap.put("orange", 3);
+
+        // Create a view of the mappings (entrySet returns a Set view)
+        Set<Map.Entry<String, Integer>> mapView = originalMap.entrySet();
+
+
+        // Demonstrate that changes through the view affect the original map
+        System.out.println("Original Map before modification: " + originalMap);
+        System.out.println("Map View before modification: " + mapView);
+
+        // Modify the map through the view (e.g., remove an entry)
+        mapView.remove(Map.entry("banana", 2)); // Use Map.entry() for proper comparison.
+
+        System.out.println("Original Map after modification: " + originalMap); // banana is gone
+        System.out.println("Map View after modification: " + mapView);       // banana is gone
+
+
+        // Iterating through the view and printing key-value pairs
+        System.out.println("Iterating and printing key-value pairs through the view:");
+        for (Map.Entry<String, Integer> entry : mapView) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+
+
+        // Demonstrate that changes to the original affect the view
+        originalMap.put("grape", 4);
+        System.out.println("Original Map after adding grape: " + originalMap);  //grape is added
+        System.out.println("Map View after adding grape: " + mapView);        // grape is added
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clarity and Comments:**  Added comments to explain the purpose of each section of code, making it easier to understand what's happening.
+
+2. **Demonstrating Bidirectional Updates:**  The code demonstrates how changes made through the `mapView` affect the `originalMap` AND how changes to the `originalMap` are reflected in the `mapView`. This is crucial for understanding how views work.
+
+3. **Correct Removal with `Map.entry()`:** Using `Map.entry("banana", 2)` in the `remove()` method is essential. It creates an `Entry` object for comparison, ensuring that the entry with both the correct key AND value is removed.
+
+4. **Iteration Example:** Included an example of how to iterate through the `mapView` using a for-each loop and access the key-value pairs using `entry.getKey()` and `entry.getValue()`.
+
+5. **`entrySet()` for Mappings View:** The `entrySet()` method is the correct way to obtain a view of the mappings (key-value pairs) of a map.
+
+6. **Output for Clarity:** The output statements clearly show the state of both the original map and the view before and after modifications, illustrating the linked nature of the view.

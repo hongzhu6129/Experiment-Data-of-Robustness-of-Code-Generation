@@ -1,0 +1,108 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+## Test Cases
+
+Here are some test cases, including corner cases, to test the `AverageCalculator` program:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30
+   **Expected Output:** 20.0
+
+2. **Input:** 2.5, 5.5, 8.0
+   **Expected Output:** 5.333333333333333
+
+3. **Input:** -5, 0, 5
+   **Expected Output:** 0.0
+
+**Corner Cases:**
+
+4. **Input:** 0, 0, 0
+   **Expected Output:** 0.0
+
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  // Test for potential overflow
+   **Expected Output:** 2.147483647E9 (or very large number - might vary slightly due to floating-point representation)
+
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE // Test for potential underflow
+   **Expected Output:** -2.147483648E9 (or very large negative number)
+
+
+**Error Cases (Input Validation):**
+
+7. **Input:** 10, a, 20   // Non-numeric input
+   **Expected Output:** "Invalid input. Please enter numbers only."
+
+8. **Input:** 10, 20   // Insufficient input 
+   **Expected Output:**  The program will likely throw an `InputMismatchException` or `NoSuchElementException` because it expects three numbers but only receives two. The `try-catch` block handles the exception gracefully.
+
+9. **Input:**  10 20 30 (with spaces only, no commas or other delimiters)
+   **Expected Output:**  This will likely be handled correctly as the `Scanner` defaults to whitespace as a delimiter. The average should be 20.0
+
+
+
+**How to run the test cases:**
+
+You can either:
+
+* **Manually:** Run the program multiple times, entering each set of test input.
+* **Automated Testing (Recommended):** Use a testing framework like JUnit to write unit tests for the `calculateAverage` method. This is the preferred approach for robust testing.
+
+
+
+Example JUnit test (using JUnit 5):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageZeros() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+   // Add more tests for other cases...
+
+}
+```
+
+
+By running these tests, you can ensure your `AverageCalculator` program functions correctly under various conditions.  Remember to test both normal cases and corner/edge cases.  Input validation is crucial for preventing unexpected program behavior.

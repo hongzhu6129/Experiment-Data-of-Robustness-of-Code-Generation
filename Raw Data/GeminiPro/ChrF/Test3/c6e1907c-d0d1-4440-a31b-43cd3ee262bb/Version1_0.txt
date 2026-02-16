@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Positive Number:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication Table of 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication Table of 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Number:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication Table of -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+```
+
+**4. Large Number:**
+
+* **Input:** 12345
+* **Expected Output:** (truncated for brevity - verify the pattern continues)
+```
+Multiplication Table of 12345:
+12345 x 1 = 12345
+12345 x 2 = 24690
+12345 x 3 = 37035
+...
+12345 x 10 = 123450
+```
+
+**5.  Input Validation (Corner/Error Case - Not included in the provided code, but important):**
+
+The provided code doesn't handle invalid input (like non-numeric input).  For a more robust solution, you should include input validation using a `try-catch` block:
+
+```java
+import java.util.InputMismatchException;
+// ... (rest of the code)
+
+        try {
+            int num = scanner.nextInt();
+           // ... (rest of the multiplication logic)
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+
+// ... (rest of the code)
+```
+
+
+This improved version will catch the `InputMismatchException` if the user enters something that isn't an integer and print an error message.  This is essential for real-world applications to prevent crashes due to unexpected user input.

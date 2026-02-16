@@ -1,0 +1,32 @@
+```java
+public class EnvironmentAndSecurityManager {
+
+    public static void main(String[] args) {
+
+        // 21. Check for Security Manager
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        // 90. Get Environment Variables
+        System.out.println("PATH: " + System.getenv("PATH"));
+        System.out.println("TEMP: " + System.getenv("TEMP"));  // Or TMP on some systems
+        System.out.println("USERNAME: " + System.getenv("USERNAME")); // or USER on some systems
+
+
+        //More robust way to handle potentially missing environment variables:
+         String path = System.getenv("PATH");
+         if (path != null) {
+             System.out.println("PATH: " + path);
+         } else {
+             System.out.println("PATH environment variable not found.");
+         }
+         // ... (similarly for TEMP and USERNAME)
+
+
+    }
+}
+```

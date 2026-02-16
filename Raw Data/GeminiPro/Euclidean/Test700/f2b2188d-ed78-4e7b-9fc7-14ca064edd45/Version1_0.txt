@@ -1,0 +1,83 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class MaxDistinctPrimes {
+
+    static int max_distinct_primes(int start, int end) {
+        int numWithMaxPrimes = -1;
+        int maxDistinctPrimes = 0;
+
+        for (int num = start; num <= end; num++) {
+            int distinctPrimesCount = countDistinctPrimeFactors(num);
+            if (distinctPrimesCount > maxDistinctPrimes) {
+                maxDistinctPrimes = distinctPrimesCount;
+                numWithMaxPrimes = num;
+            }
+        }
+        return numWithMaxPrimes;
+    }
+
+
+    private static int countDistinctPrimeFactors(int n) {
+        Set<Integer> primeFactors = new HashSet<>();
+        // Handle 2 as a special case
+        while (n % 2 == 0) {
+            primeFactors.add(2);
+            n /= 2;
+        }
+
+        // Iterate from 3 to sqrt(n)
+        for (int i = 3; i * i <= n; i += 2) {
+            while (n % i == 0) {
+                primeFactors.add(i);
+                n /= i;
+            }
+        }
+
+        // If n is still greater than 2, it's a prime factor
+        if (n > 2) {
+            primeFactors.add(n);
+        }
+
+        return primeFactors.size();
+    }
+
+
+    public static void main(String[] args) {
+        int start = 10;
+        int end = 100;
+
+        int numWithMaxDistinctPrimes = max_distinct_primes(start, end);
+
+        if (numWithMaxDistinctPrimes != -1) {
+            System.out.println("Number with the maximum distinct prime factors in the range [" + start + ", " + end + "]: " + numWithMaxDistinctPrimes);
+
+        } else {
+            System.out.println("No number with distinct prime factors found in the given range.");
+        }
+
+         // Example with a larger range where output will be more interesting.
+        start = 2;
+        end = 200;
+        numWithMaxDistinctPrimes = max_distinct_primes(start, end);
+        System.out.println("Number with the maximum distinct prime factors in the range [" + start + ", " + end + "]: " + numWithMaxDistinctPrimes);
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **`countDistinctPrimeFactors` helper method:** This method efficiently calculates the number of distinct prime factors for a given number. It optimizes by handling 2 separately and then iterating only through odd numbers up to the square root of `n`.
+
+2. **`HashSet` for Distinct Primes:** Using a `HashSet` ensures that we only count each prime factor once.
+
+3. **Clearer `main` method:** The `main` method now demonstrates usage with example ranges and handles the case where no numbers with distinct prime factors are found within the given range. It also provides more descriptive output.
+
+4. **Comments and Code Style:** Added comments to explain the logic and improved code formatting for readability.
+
+
+
+This revised code is more efficient, robust, and easier to understand.

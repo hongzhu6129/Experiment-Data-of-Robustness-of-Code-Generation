@@ -1,0 +1,85 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class RemoveLastElementFromGreenSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet (Green set is not a standard Java collection, 
+        // assuming it refers to a regular HashSet)
+        Set<String> greenSet = new HashSet<>();
+
+        // Add some elements to the set
+        greenSet.add("apple");
+        greenSet.add("banana");
+        greenSet.add("orange");
+        greenSet.add("grape");
+
+        // Sets don't have a defined order, so there's no guaranteed "last" element.
+        //  We need to iterate to get and remove an element.  This example removes 
+        // *an* element (not necessarily the one most recently added)
+
+        if (!greenSet.isEmpty()) {
+            String lastElement = null;
+            for (String element : greenSet) { // Iterate to find *an* element
+                lastElement = element; 
+            }
+
+
+            if (lastElement != null) { // Remove the element we found
+                greenSet.remove(lastElement);
+                System.out.println("Removed element: " + lastElement);
+
+            }
+        } else {
+            System.out.println("The set is empty.");
+        }
+
+        System.out.println("Remaining elements in the set: " + greenSet);
+
+
+
+        // Example of using a LinkedHashSet if you *do* need to maintain insertion order:
+        Set<String> orderedGreenSet = new java.util.LinkedHashSet<>();
+        orderedGreenSet.add("apple");
+        orderedGreenSet.add("banana");
+        orderedGreenSet.add("orange");
+        orderedGreenSet.add("grape");
+
+        if (!orderedGreenSet.isEmpty()) {
+            String trulyLast = null;
+            for (String element : orderedGreenSet) { // Get last element (order is preserved)
+                trulyLast = element;
+            }
+
+            if (trulyLast != null) { // Remove the element we found
+                orderedGreenSet.remove(trulyLast);
+                System.out.println("\nRemoved last element from LinkedHashSet: " + trulyLast);
+            }
+
+        }else {
+            System.out.println("\nThe LinkedHashSet is empty.");
+        }
+
+
+        System.out.println("Remaining elements in the LinkedHashSet: " + orderedGreenSet);
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised version:
+
+* **Handles Empty Set:** The code now checks if the set is empty before attempting to remove an element.  This prevents `NullPointerExceptions`.
+* **Clarification on Set Order:**  Regular `HashSet`s don't guarantee any specific order. The code explains this and provides a solution using `LinkedHashSet` if insertion order is important.
+* **Iterating to Get an Element:** Since sets are unordered (in general), the code iterates through the `HashSet` to get *one* element, which it then removes.  It is not the "last" in the sense of most recently added, unless you use `LinkedHashSet`.
+* **`LinkedHashSet` Example:** The code now shows how to use a `LinkedHashSet` to preserve insertion order, correctly retrieving and removing the *truly* last added element.  This makes the code more useful for cases where order matters.
+* **Clear Output:** The output now clearly indicates whether the "last" element is from a regular `HashSet` (where order is not guaranteed) or from a `LinkedHashSet`.
+
+
+
+
+
+

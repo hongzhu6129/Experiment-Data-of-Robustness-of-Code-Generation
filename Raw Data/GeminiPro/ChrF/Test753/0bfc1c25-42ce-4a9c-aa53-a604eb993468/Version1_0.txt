@@ -1,0 +1,71 @@
+```java
+public class RemoveLetters {
+
+    public static void main(String[] args) {
+        String inputString = "apple, banana, pear, orange, grapefruit, raspberry";
+        String updatedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Updated string: " + updatedString);
+
+
+        inputString = "programming";
+        updatedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Updated string: " + updatedString);
+
+        inputString = ""; // Empty String
+        updatedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Updated string: " + updatedString);
+
+
+        inputString = null; // Null String -  Handle potential NullPointerException
+        updatedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Updated string: " + updatedString);
+
+
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null) {
+            return null; // Or return ""; depending on how you want to handle null input
+        }
+
+        // Using StringBuilder for efficient string manipulation
+        StringBuilder sb = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if (c != 'p' && c != 'q' && c != 'r') {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+
+
+        // Alternatively, using replaceAll with regular expression:
+        //return inputString.replaceAll("[pqr]", ""); 
+
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **`main` Method:**
+   - The `main` method demonstrates how to use the `validate` method with different example strings, including edge cases like empty and null strings.  Handling `null` is important to avoid `NullPointerException` errors.
+
+2. **`validate` Method:**
+   - **Null Handling:** The `validate` method first checks if the input string is `null`. This defensive programming practice prevents `NullPointerExceptions`.
+   - **StringBuilder:**  Using `StringBuilder` is more efficient than repeatedly concatenating strings directly, especially for longer strings.
+   - **Character Iteration:** The code iterates through the input string character by character.  This is a common pattern for string manipulation.
+   - **Conditional Check:** Inside the loop, it checks if the current character (`c`) is 'p', 'q', or 'r'. If it's *not* one of these characters, it's appended to the `StringBuilder`.
+   - **Return Value:** Finally, the `validate` method converts the `StringBuilder` back to a `String` using `toString()` and returns the updated string.
+   - **`replaceAll` Alternative (commented out):** The code also shows an alternative using `replaceAll` and a regular expression `[pqr]`.  This is a more concise way to achieve the same result, but it's good to understand both approaches.
+
+3. **Edge Case Handling:**  The `main` method demonstrates handling empty and null strings. This is good practice to make your code robust.
+
+4. **Clear Output:** The `main` method prints both the original and updated strings for each example, making it easy to see the effect of the `validate` method.
+
+
+This example provides a clear and educational way to demonstrate how to remove specific characters from a string in Java, covering both the basic concepts and best practices.  It also emphasizes handling edge cases and efficient string manipulation.

@@ -1,0 +1,50 @@
+```java
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.out.println("Please provide a number as a command-line argument.");
+            return;
+        }
+
+        try {
+            int num = Integer.parseInt(args[0]);
+
+            System.out.println("Input a number: " + num + ":");
+
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(num + " x " + i + " = " + (num * i));
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    }
+}
+```
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `MultiplicationTable.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:
+   ```bash
+   javac MultiplicationTable.java 
+   ```
+3. **Run:** Execute the compiled code, providing the number as a command-line argument:
+   ```bash
+   java MultiplicationTable 8 
+   ```
+   Replace `8` with any number you want to generate the multiplication table for.
+
+
+**Explanation:**
+
+* The `main` method takes the command-line arguments as a `String` array.
+* It first checks if any argument was provided. If not, it prints an error message.
+* It uses a `try-catch` block to handle potential `NumberFormatException` if the user enters non-numeric input.
+* `Integer.parseInt(args[0])` converts the first command-line argument (which is a `String`) to an integer.
+* The `for` loop iterates from 1 to 10, printing each line of the multiplication table using string concatenation and the multiplication operator.
+
+
+This revised version adheres to the prompt's requirement to only use the `public static void main(String[] args)` signature and handles invalid input gracefully. It also prints the "Input a number" line as requested.
+

@@ -1,0 +1,78 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth) {
+                return (lDepth + 1);
+            } else {
+                return (rDepth + 1);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+
+        System.out.println("Height/Max Depth of tree is : " + tree.maxDepth(root));
+
+
+        // Example of a skewed tree (linked list like structure) where exceeds depth is more obvious:
+        Node skewedRoot = new Node(1);
+        skewedRoot.left = new Node(2);
+        skewedRoot.left.left = new Node(3);
+        skewedRoot.left.left.left = new Node(4);
+        skewedRoot.left.left.left.left = new Node(5);  // Exceeds depth is becoming apparent
+
+        System.out.println("Height/Max Depth of skewed tree is : " + tree.maxDepth(skewedRoot));
+
+    }
+}
+```
+
+
+**Explanation and Addressing "Exceeds Depth":**
+
+1. **`maxDepth(Node node)`:** This method recursively calculates the depth (or height) of the binary tree.
+2. **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+3. **Recursive Step:**  It calculates the depth of the left and right subtrees (`lDepth` and `rDepth`). The depth of the current node is 1 plus the maximum of its children's depths.
+
+**What is "Exceeds Depth"?**
+
+"Exceeds depth" isn't a standard term in computer science.  It's likely referring to situations where the tree's depth becomes very large, potentially causing issues like stack overflow errors (if the tree is very unbalanced and recursion is used) or performance problems.
+
+**How to handle potential "Exceeds Depth" problems:**
+
+* **Balanced Trees:** Use balanced tree structures (e.g., AVL trees, Red-Black trees) which guarantee a maximum depth of O(log n), where n is the number of nodes. This prevents excessively deep trees.
+* **Iterative Depth Calculation:** Instead of recursion, use an iterative approach (e.g., level order traversal using a queue) to calculate depth. This avoids stack overflow errors that can occur with very deep trees and recursion.
+* **Depth Limit:** If you have a specific depth limit in mind, you can modify the `maxDepth` function to stop recursion and return an appropriate value (e.g., -1 or throw an exception) when the limit is reached.
+
+
+**Example demonstrating "exceeds depth" (using a skewed tree):**
+
+The provided code now includes an example of a skewed tree (essentially a linked list).  As you add more nodes to the left in this example, the depth increases linearly.  This demonstrates a case where the depth might "exceed" a desirable limit.  You'll see a larger depth value for the skewed tree compared to a more balanced tree.

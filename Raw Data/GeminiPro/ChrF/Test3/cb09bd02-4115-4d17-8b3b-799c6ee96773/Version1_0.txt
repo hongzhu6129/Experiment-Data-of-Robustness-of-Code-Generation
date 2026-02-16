@@ -1,0 +1,116 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication Table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication Table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: `100000`  (Tests for potential overflow issues if you were using smaller data types like `byte` or `short`, but `int` handles this fine)
+   - Expected Output: (check a few lines to make sure the multiplication is correct)
+
+
+5. **Large Negative Number:**
+   - Input: `-100000`  (Similar overflow check as above)
+
+
+
+6. **Invalid Input (Non-Integer):**
+   - Input: `abc` or `3.14`
+   - Expected Behavior: The program should either gracefully handle the error (e.g., using a `try-catch` block to catch `InputMismatchException`) and prompt the user again for a valid integer or terminate with an error message.  The provided code will throw an exception if the input isn't an integer.  A more robust version is below.
+
+
+
+**More Robust Version (Handles Invalid Input):**
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        int num = 0;
+        boolean validInput = false;
+
+        while (!validInput) {
+            System.out.print("Enter an integer: ");
+            try {
+                num = scanner.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                scanner.next(); // Consume the invalid input
+            }
+        }
+
+        System.out.println("Multiplication Table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+
+```
+
+
+This improved version uses a loop and a `try-catch` block to ensure the user provides a valid integer. It also includes clear error handling.  It would be even better to separate out the input validation into its own function to improve code organization.

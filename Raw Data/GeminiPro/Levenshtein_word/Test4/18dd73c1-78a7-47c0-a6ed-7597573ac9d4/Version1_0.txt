@@ -1,0 +1,116 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner for potential user input (though fixed in this example)
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); // Could be 7.5 for the given example
+        input.close(); // Close the scanner to release resources
+
+        // Calculate the perimeter (circumference)
+        double perimeter = 2 * Math.PI * radius;
+
+        // Calculate the area
+        double area = Math.PI * radius * radius;
+
+        // Print the results, formatted for clarity
+        System.out.printf("Perimeter is = %.14f\n", perimeter); // Increased precision for comparison
+        System.out.printf("Area is = %.14f\n", area);
+
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, with expected outputs:
+
+1. **Standard Case (Provided Example):**
+   - Input: `radius = 7.5`
+   - Expected Output:
+     ```
+     Perimeter is = 47.12388980384690
+     Area is = 176.71458676442586
+     ```
+
+2. **Zero Radius:**
+   - Input: `radius = 0`
+   - Expected Output:
+     ```
+     Perimeter is = 0.00000000000000
+     Area is = 0.00000000000000
+     ```
+
+3. **Negative Radius (Invalid, but important to test):**
+   - Input: `radius = -5`
+   - Expected Output (May vary depending on how you handle errors.  The current code will calculate, but the results are meaningless):
+     ```
+     Perimeter is = -31.41592653589793
+     Area is = 78.53981633974483
+     ```
+    - Ideally, you'd add error handling to prevent calculation with negative radii.
+
+4. **Large Radius:**
+   - Input: `radius = 10000`
+   - Expected Output:
+     ```
+     Perimeter is = 62831.853071795860
+     Area is = 314159265.35897930
+     ```
+
+5. **Small Radius:**
+   - Input: `radius = 0.001`
+   - Expected Output:
+     ```
+     Perimeter is = 0.00628318530718
+     Area is = 0.00000314159265
+     ```
+
+6. **Max Double Value (Extreme Case):**
+    - Input: `radius = Double.MAX_VALUE`
+    - Expected Output: (May result in Infinity)
+        ```
+        Perimeter is = Infinity
+        Area is = Infinity
+        ```
+
+**How to Test:**
+
+1. **Manual Testing:** Run the program and enter the test case inputs, then compare the output to the expected values.
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit to write automated tests. This is much more efficient and reliable, especially for larger projects.  Here's a basic example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testStandardCase() {
+        double radius = 7.5;
+        double expectedPerimeter = 47.1238898038469;
+        double expectedArea = 176.71458676442586;
+
+        // You'll need to modify your CircleCalculations class slightly 
+        // to make these methods testable (e.g., make them public and static, 
+        // or create an instance of the class):
+        double actualPerimeter = CircleCalculations.calculatePerimeter(radius); // Example
+        double actualArea = CircleCalculations.calculateArea(radius); // Example
+
+        assertEquals(expectedPerimeter, actualPerimeter, 0.0000001); // Delta for floating-point comparison
+        assertEquals(expectedArea, actualArea, 0.0000001);
+    }
+
+    // Add more @Test methods for other test cases.
+}
+```
+
+This JUnit example demonstrates how to write a unit test for the standard case. You would create similar test methods for the zero radius, large radius, small radius, and negative radius cases.  Handle the negative radius case by either asserting that an exception is thrown (if you add exception handling) or by documenting the expected (likely nonsensical) calculation.  For the max double case, you would assert that the results are `Double.POSITIVE_INFINITY`.
+
+
+This improved answer provides more comprehensive testing and guidance on how to create automated tests.  Remember to handle potential errors like negative radii and overflow appropriately in the main code.

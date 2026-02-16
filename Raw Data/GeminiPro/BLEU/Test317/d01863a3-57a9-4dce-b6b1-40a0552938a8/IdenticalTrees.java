@@ -1,0 +1,76 @@
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {}
+
+    TreeNode(int val) { this.val = val; }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+public class IdenticalTrees {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeNode p1 = new TreeNode(1);
+        p1.left = new TreeNode(2);
+        p1.right = new TreeNode(3);
+
+        TreeNode q1 = new TreeNode(1);
+        q1.left = new TreeNode(2);
+        q1.right = new TreeNode(3);
+
+        System.out.println("Trees 1 and 2 are identical: " + is_Identical_tree_node(p1, q1)); // Output: true
+
+
+        TreeNode p2 = new TreeNode(1);
+        p2.left = new TreeNode(2);
+
+        TreeNode q2 = new TreeNode(1);
+        q2.right = new TreeNode(2);
+
+        System.out.println("Trees 3 and 4 are identical: " + is_Identical_tree_node(p2, q2)); // Output: false
+
+        TreeNode p3 = new TreeNode(1);
+        p3.left = new TreeNode(2);
+        p3.right = new TreeNode(1);
+
+
+        TreeNode q3 = new TreeNode(1);
+        q3.left = new TreeNode(1);
+        q3.right = new TreeNode(2);
+        System.out.println("Trees 5 and 6 are identical: " + is_Identical_tree_node(p3, q3)); // Output: false
+
+
+        System.out.println("Trees 7 and 8 are identical: " + is_Identical_tree_node(null, null)); // Output: true
+
+        TreeNode p4 = new TreeNode(1);
+        System.out.println("Trees 9 and 10 are identical: " + is_Identical_tree_node(p4, null)); // Output: false
+
+    }
+
+
+    public static boolean is_Identical_tree_node(TreeNode p, TreeNode q) {
+        // Both null, considered identical
+        if (p == null && q == null) {
+            return true;
+        }
+        // One null, one not null - not identical
+        if (p == null || q == null) {
+            return false;
+        }
+        // Values don't match - not identical
+        if (p.val != q.val) {
+            return false;
+        }
+        // Recursively check left and right subtrees
+        return is_Identical_tree_node(p.left, q.left) && is_Identical_tree_node(p.right, q.right);
+
+    }
+}

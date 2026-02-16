@@ -1,0 +1,87 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.offer(5);
+        pq.offer(1);
+        pq.offer(8);
+        pq.offer(3);
+        pq.offer(6);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] arr1 = new Integer[pq.size()];
+        pq.toArray(arr1);
+        System.out.println("Array 1 (pre-allocated): " + Arrays.toString(arr1));
+
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] arr2 = pq.toArray();  // Returns an Object[]
+        Integer[] arr2Int = new Integer[arr2.length]; 
+        for(int i = 0; i < arr2.length; i++){
+            arr2Int[i] = (Integer) arr2[i]; // Cast to Integer
+        }
+
+        System.out.println("Array 2 (no pre-allocation): " + Arrays.toString(arr2Int));
+
+
+
+        // Method 3:  Iterating and adding to an array (least efficient, not recommended)
+        Integer[] arr3 = new Integer[pq.size()];
+        int i = 0;
+        while (!pq.isEmpty()) {
+            arr3[i++] = pq.poll(); //Note: This modifies the original PriorityQueue
+        }
+        System.out.println("Array 3 (iteration - modifies original queue): " + Arrays.toString(arr3));
+        System.out.println("Original PriorityQueue (now empty after Method 3): " + pq);
+
+
+
+
+        // Recreate the PriorityQueue since method 3 emptied it.
+         pq = new PriorityQueue<>();
+        pq.offer(5);
+        pq.offer(1);
+        pq.offer(8);
+        pq.offer(3);
+        pq.offer(6);
+
+
+
+         // Method 4: Stream toArray (Java 8 and later) - maintains order
+        Integer[] arr4 = pq.stream().toArray(Integer[]::new);
+        System.out.println("Array 4 (Stream toArray): " + Arrays.toString(arr4));
+
+
+        System.out.println("Original PriorityQueue (after Method 4): " + pq);//Stream doesn't modify it
+
+
+    }
+}
+
+```
+
+
+Key improvements and explanations:
+
+1. **Multiple Methods Demonstrated:** The code shows several ways to convert a `PriorityQueue` to an array, including `toArray()` with and without pre-allocation, iteration (though less efficient), and using Java Streams.  This gives a comprehensive overview of the options.
+
+2. **Efficiency Considerations:**  The code explains which methods are more efficient (pre-allocating the array for `toArray()` is best) and why iterating and polling is generally less efficient.
+
+3. **Type Safety:** The example uses `Integer` for the `PriorityQueue` and correctly handles casting when using the `toArray()` method that returns an `Object[]`.
+
+4. **Clearer Output:** The `System.out.println()` statements clearly label each method's output and show the effects on the original `PriorityQueue` when using methods like `poll()`.
+
+5. **Stream Example (Java 8+):** Added a method demonstrating conversion using Java Streams which is a concise approach for Java 8 and later.  It also highlights that the stream method *does not* modify the original PriorityQueue.
+
+6. **Correct Handling of `poll()`:**  The code clarifies that `poll()` removes elements from the original `PriorityQueue`, which is an important side effect to be aware of.  The PriorityQueue is recreated to demonstrate the other methods properly.
+
+
+
+This improved answer provides a more robust, informative, and efficient solution to the problem of converting a `PriorityQueue` to an array in Java.

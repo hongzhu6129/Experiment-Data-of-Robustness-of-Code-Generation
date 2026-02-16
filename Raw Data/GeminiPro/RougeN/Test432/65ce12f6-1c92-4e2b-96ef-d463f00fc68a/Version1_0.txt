@@ -1,0 +1,40 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class SumEvenOdd {
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        int sumOfEven = numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        int sumOfOdd = numbers.stream()
+                .filter(n -> n % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println("Sum of even numbers: " + sumOfEven);
+        System.out.println("Sum of odd numbers: " + sumOfOdd);
+
+
+        // Example with a different list:
+         List<Integer> numbers2 = Arrays.asList(11, 12, 13, 14, 15, 16);
+         int evenSum2 = numbers2.stream().filter(n -> n % 2 == 0).mapToInt(Integer::intValue).sum();
+         int oddSum2 = numbers2.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum();
+         System.out.println("\nSum of even numbers (list 2): " + evenSum2);
+         System.out.println("Sum of odd numbers (list 2): " + oddSum2);
+
+
+         // Example with an empty list for robustness:
+        List<Integer> emptyList = Arrays.asList();
+        int evenEmpty = emptyList.stream().filter(n -> n % 2 == 0).mapToInt(Integer::intValue).sum();
+        int oddEmpty = emptyList.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum();
+        System.out.println("\nSum of even numbers (empty list): " + evenEmpty);
+        System.out.println("Sum of odd numbers (empty list): " + oddEmpty);
+    }
+}
+```

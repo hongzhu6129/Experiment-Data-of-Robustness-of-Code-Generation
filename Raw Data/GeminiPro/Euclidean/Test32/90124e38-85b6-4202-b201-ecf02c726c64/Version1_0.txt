@@ -1,0 +1,125 @@
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters++;
+            } else if (Character.isWhitespace(c)) {
+                spaces++;
+            } else if (Character.isDigit(c)) {
+                numbers++;
+            } else {
+                others++;
+            }
+        }
+
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Other characters: " + others);
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Input:**
+   - Input:  `aa kiu, i swd skieo 236587.`
+   - Expected Output:
+     ```
+     Letters: 16
+     Spaces: 5
+     Numbers: 6
+     Other characters: 2
+     ```
+
+2. **Empty String:**
+   - Input: `` (empty string)
+   - Expected Output:
+     ```
+     Letters: 0
+     Spaces: 0
+     Numbers: 0
+     Other characters: 0
+     ```
+
+3. **Only Spaces:**
+   - Input: `     ` (five spaces)
+   - Expected Output:
+      ```
+      Letters: 0
+      Spaces: 5
+      Numbers: 0
+      Other characters: 0
+      ```
+
+4. **Only Numbers:**
+   - Input: `1234567890`
+   - Expected Output:
+     ```
+     Letters: 0
+     Spaces: 0
+     Numbers: 10
+     Other characters: 0
+     ```
+
+5. **Only Special Characters:**
+   - Input: `!@#$%^&*()`
+   - Expected Output:
+     ```
+     Letters: 0
+     Spaces: 0
+     Numbers: 0
+     Other characters: 10
+     ```
+
+6. **Mixed Case with Unicode:**
+   - Input: `H�llo W�rld 123!`
+   - Expected Output:  (Note: Unicode letters are correctly counted)
+     ```
+     Letters: 10
+     Spaces: 2
+     Numbers: 3
+     Other characters: 1
+     ```
+
+7. **String with Leading/Trailing Spaces:**
+   - Input: `   This string has leading and trailing spaces   `
+   - Expected Output: (Leading and trailing spaces should be counted)
+     ```
+     Letters: 28
+     Spaces: 12
+     Numbers: 0
+     Other characters: 0
+     ```
+
+8. **String with Tabs and Newlines:**  (Important for handling whitespace correctly)
+   - Input: `This string\nhas tabs\tand newlines.`
+   - Expected Output: (Tabs and newlines counted as whitespace)
+      ```
+      Letters: 23
+      Spaces: 3  // or 5 if you consider \t and \n each to be its own space character
+      Numbers: 0
+      Other characters: 2 // or 0 if you count the tabs and newlines as spaces.
+      ```
+
+
+
+By running these test cases, you can thoroughly verify the correctness of your `CharacterCounter` program.  You can automate these tests using JUnit or TestNG, which would be a good practice in a larger project.

@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 if k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; // Efficient calculation
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+
+        if (n < 0 || k < 0) {
+            System.out.println("n and k must be non-negative.");
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("Binomial Coefficient C(" + n + ", " + k + ") = " + coefficient);
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes input validation. It checks if `n` and `k` are non-negative, and if `k` is within the valid range (0 to `n`).  It prints an appropriate message if the input is invalid.
+
+2. **Efficiency:** The `binomial_Coefficient` method is optimized:
+   - It handles the base cases (k=0, k=n) directly.
+   - It uses the symmetry property `C(n, k) = C(n, n-k)` to reduce calculations when `k > n/2`.
+   - It calculates the result iteratively to avoid unnecessary multiplications and divisions. The formula `result = result * (n - i + 1) / i` is crucial for preventing intermediate overflows that can occur if you calculate factorials separately.
+
+3. **Clarity and Readability:**  The code is well-commented, making it easier to understand.  Variable names are more descriptive.
+
+4. **Resource Management:** The `Scanner` is closed using `scanner.close()` to release the resource.
+
+
+
+Example Usage:
+
+```
+Enter the value of n: 5
+Enter the value of k: 2
+Binomial Coefficient C(5, 2) = 10
+
+Enter the value of n: 10
+Enter the value of k: 3
+Binomial Coefficient C(10, 3) = 120
+
+Enter the value of n: -1
+Enter the value of k: 2
+n and k must be non-negative. 
+```

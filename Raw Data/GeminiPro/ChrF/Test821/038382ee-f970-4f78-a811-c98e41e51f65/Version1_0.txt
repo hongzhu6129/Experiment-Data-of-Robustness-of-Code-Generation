@@ -1,0 +1,36 @@
+```java
+public class CheckJavaInstallation {
+
+    public static void main(String[] args) {
+        System.out.println("Java is installed on your computer.");
+        System.out.println("Java Version: " + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path")); 
+    }
+}
+```
+
+**Explanation:**
+
+The core of checking if Java is installed relies on the fact that if this Java code runs at all, Java *must* be installed and working.  So, the program's successful execution is the primary indicator.  
+
+To provide more details about the Java installation, the code then utilizes `System.getProperty()` to retrieve and print various system properties related to the Java environment, such as the version, runtime version, installation directory (Java home), vendor, and classpath.  These properties are readily available if a Java runtime environment is present and functioning.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code above as a file named `CheckJavaInstallation.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac CheckJavaInstallation.java
+   ```
+3. **Run:** After successful compilation, run the compiled class file:
+   ```bash
+   java CheckJavaInstallation
+   ```
+
+
+If Java is installed and configured correctly, the program will execute and print the Java information.  If Java is not installed or there's an issue with its configuration, you'll encounter an error during compilation or execution.

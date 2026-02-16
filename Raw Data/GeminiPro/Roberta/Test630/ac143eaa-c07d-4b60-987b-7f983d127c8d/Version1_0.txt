@@ -1,0 +1,79 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+
+        // Create a PriorityQueue of Strings. By default, it uses natural ordering (alphabetical for strings).
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        System.out.println("Elements of the Priority Queue:");
+
+        // Method 1:  Iterate and remove elements (destructive)
+        System.out.println("Printing and removing elements (using poll()):");
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); // poll() removes and returns the head (highest priority)
+        }
+
+
+        // Re-add the colors for the next demonstration (since the previous loop emptied the queue)
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Method 2: Iterate without removing (non-destructive) using enhanced for loop (Java 5+)
+        System.out.println("\nPrinting elements without removing (using enhanced for loop):");
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+        // Method 3: Iterate without removing (non-destructive) using iterator
+        /*
+        System.out.println("\nPrinting elements without removing (using iterator):");
+        Iterator<String> iterator = colorQueue.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        */
+
+        // Method 4:  peek() to see the head without removing
+        System.out.println("\nPeeking at the head (highest priority): " + colorQueue.peek()); // peek() returns the head without removing
+
+
+
+        // Example of using a custom Comparator (e.g., to reverse the order):
+        /*  
+        PriorityQueue<String> reverseColorQueue = new PriorityQueue<>(Collections.reverseOrder()); 
+        // ... add elements to reverseColorQueue ...
+        */
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+* **Clearer Explanations:**  Comments explain each step, including the default behavior of `PriorityQueue` with Strings (natural ordering) and how `poll()` works.
+* **Multiple Iteration Methods:** Demonstrates three ways to print the elements: 
+    1. `poll()` (removes elements).
+    2. Enhanced `for` loop (non-destructive).
+    3. `iterator()` (non-destructive). (Commented out, but provided as an option)
+* **`peek()` Example:** Shows how to use `peek()` to see the highest priority element without removing it.
+* **Custom Comparator Hint:** Includes a commented-out example of how to use a `Comparator` to customize the ordering (e.g., reverse alphabetical order).
+* **Re-adding Elements:** The code re-adds the colors after the destructive `poll()` loop so that the non-destructive methods can be demonstrated on a full queue.
+* **Concise and Focused:** The code is streamlined and focuses on the core concepts of `PriorityQueue` usage, making it easier to understand for educational purposes.

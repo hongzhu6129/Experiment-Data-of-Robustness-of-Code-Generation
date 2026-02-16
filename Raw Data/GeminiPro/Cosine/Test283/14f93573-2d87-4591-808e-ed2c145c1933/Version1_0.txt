@@ -1,0 +1,50 @@
+**Problem Description**
+
+Write a Java program that removes the spaces from a given string and prints the resulting string.
+
+**Code**
+
+```java
+import java.util.Scanner;
+
+public class RemoveSpaces {
+
+    public static void main(String[] args) {
+        // Get the input string from the user.
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Remove the spaces from the string.
+        String output = input.replaceAll(" ", "");
+
+        // Print the resulting string.
+        System.out.println("The resulting string is: " + output);
+    }
+}
+```
+
+**Test Cases**
+
+**Input 1:** "Hello World"
+**Expected Output:** "HelloWorld"
+
+**Input 2:** "A B C D E"
+**Expected Output:** "ABCDE"
+
+**Input 3:** "" (empty string)
+**Expected Output:** "" (empty string)
+
+**Corner Cases**
+
+**Input 1:** " " (single space character)
+**Expected Output:** "" (empty string)
+
+**Input 2:** "  " (two consecutive space characters)
+**Expected Output:** "" (empty string)
+
+**Input 3:** "Hello    World" (multiple consecutive space characters)
+**Expected Output:** "HelloWorld"
+
+**Input 4:** "   Hello   World   " (multiple leading and trailing space characters)
+**Expected Output:** "HelloWorld"

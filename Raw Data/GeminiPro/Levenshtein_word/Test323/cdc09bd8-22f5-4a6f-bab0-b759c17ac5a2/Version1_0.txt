@@ -1,0 +1,63 @@
+```java
+public class StringCompareIgnoreCase {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "Hello";
+        String str3 = "apple";
+        String str4 = "zebra";
+        String str5 = null;  // Demonstrating null handling
+
+        // Using compareToIgnoreCase()
+        System.out.println("\nUsing compareToIgnoreCase():");
+        compareStrings(str1, str2);
+        compareStrings(str1, str3);
+        compareStrings(str1, str4);
+        compareStrings(str1, str5); // Handling nulls
+        compareStrings(str2, str3);
+
+
+
+        // Explaining the return values of compareToIgnoreCase()
+        System.out.println("\nExplanation of compareToIgnoreCase() return values:");
+        explainComparisonResult(str1.compareToIgnoreCase(str2));  // 0 if equal (ignoring case)
+        explainComparisonResult(str1.compareToIgnoreCase(str3));  // > 0 if str1 is lexicographically after str3
+        explainComparisonResult(str1.compareToIgnoreCase(str4));  // < 0 if str1 is lexicographically before str4
+
+
+        // Using equalsIgnoreCase() for simple equality check
+        System.out.println("\nUsing equalsIgnoreCase():");
+
+        System.out.println("\"" + str1 + "\" equalsIgnoreCase \"" + str2 + "\"? " + str1.equalsIgnoreCase(str2));
+        System.out.println("\"" + str1 + "\" equalsIgnoreCase \"" + str3 + "\"? " + str1.equalsIgnoreCase(str3));
+
+
+
+    }
+
+    public static void compareStrings(String s1, String s2) {
+        if (s1 == null || s2 == null) {
+            System.out.println("Cannot compare with null.");
+            return;
+        }
+        int result = s1.compareToIgnoreCase(s2);
+        if (result == 0) {
+            System.out.println("\"" + s1 + "\" is equal to \"" + s2 + "\" (ignoring case)");
+        } else if (result < 0) {
+            System.out.println("\"" + s1 + "\" is lexicographically before \"" + s2 + "\" (ignoring case)");
+        } else {
+            System.out.println("\"" + s1 + "\" is lexicographically after \"" + s2 + "\" (ignoring case)");
+        }
+    }
+
+    public static void explainComparisonResult(int result) {
+        if (result == 0) {
+            System.out.println("Result 0: Strings are equal (ignoring case).");
+        } else if (result < 0) {
+            System.out.println("Result < 0: First string is lexicographically before the second (ignoring case).");
+        } else {
+            System.out.println("Result > 0: First string is lexicographically after the second (ignoring case).");
+        }
+    }
+}
+```

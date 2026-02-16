@@ -1,0 +1,62 @@
+```java
+import java.util.Map;
+import java.util.TreeMap;
+
+public class SubMap {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+
+        int givenKey = 4;
+
+        // Get the submap with keys strictly less than givenKey
+        Map<Integer, String> subMap = map.headMap(givenKey);
+
+
+        // Print the submap
+        System.out.println("Original map: " + map);
+        System.out.println("Submap with keys less than " + givenKey + ": " + subMap);
+
+
+        // Another example with a non-existent key:
+        givenKey = 10; // Key greater than any in the map
+        subMap = map.headMap(givenKey);
+        System.out.println("Submap with keys less than " + givenKey + ": " + subMap); //returns the whole map as all keys are smaller
+
+        // Example with String keys
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("apple", 1);
+        stringMap.put("banana", 2);
+        stringMap.put("cherry", 3);
+        String givenStringKey = "cherry";
+
+        Map<String, Integer> stringSubMap = stringMap.headMap(givenStringKey);
+        System.out.println("Original string map: " + stringMap);
+        System.out.println("String Submap with keys less than " + givenStringKey + ": " + stringSubMap);
+    }
+}
+```
+
+
+Explanation and Key Improvements:
+
+1. **TreeMap:** Uses `TreeMap` which is a sorted map implementation. This is crucial because `headMap()` relies on the natural ordering of keys (or a provided `Comparator`) to efficiently extract the submap.  If you were using a `HashMap` (which is unordered), the concept of "less than" a key wouldn't be well-defined.
+
+2. **headMap():**  The `headMap(K toKey)` method efficiently returns a view of the portion of the map whose keys are strictly less than `toKey`. This is precisely what the problem asks for.
+
+3. **Clearer Examples:** Includes multiple examples:
+   - One with integer keys.
+   - One demonstrating what happens when the `givenKey` is larger than any key in the map.
+   - An example with string keys to show that it works with different data types that have a natural ordering.
+
+4. **Output:**  Prints both the original map and the submap for easy comparison and understanding.
+
+5. **Correct Handling of Non-Existent Keys:** The code correctly handles the case when `givenKey` is not present in the map (it returns all entries with keys smaller than  `givenKey`).
+
+6. **Conciseness and Efficiency:** The code is concise, avoids unnecessary loops or iterations, and leverages the built-in efficiency of `TreeMap` and `headMap()`.

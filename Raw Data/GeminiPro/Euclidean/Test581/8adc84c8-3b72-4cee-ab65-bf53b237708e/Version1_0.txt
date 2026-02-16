@@ -1,0 +1,51 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Inserting at the beginning (head) of the list
+        languages.addFirst("Java"); // Inserts "Java" at the beginning
+        languages.push("Python"); //  push() is equivalent to addFirst()
+        languages.offerFirst("C++"); // offerFirst() also inserts at the beginning
+
+
+        System.out.println("List after inserting at the beginning: " + languages); // Output: [C++, Python, Java]
+
+        // Inserting at the end (tail) of the list
+        languages.addLast("JavaScript"); // Inserts "JavaScript" at the end
+        languages.offerLast("Go"); // offerLast() also inserts at the end
+        languages.add("Ruby"); // add() without an index inserts at the end by default
+
+        System.out.println("List after inserting at the end: " + languages); // Output: [C++, Python, Java, JavaScript, Go, Ruby]
+
+
+
+        // Example demonstrating the difference between add() and offer():
+        // offer() methods (offerFirst, offerLast) don't throw exceptions when the capacity is restricted (e.g., with a fixed-size queue implementation based on LinkedList). 
+        //  Instead, they return false. add() throws an exception.  We don't restrict capacity in a standard LinkedList, so it's less of a concern here.
+
+        // Explaining removeFirst() and removeLast(): //  (Not part of the original question but useful additions for a tutorial)
+        String firstElement = languages.removeFirst(); // Removes and returns the first element ("C++")
+        String lastElement = languages.removeLast();  // Removes and returns the last element ("Ruby")
+
+        System.out.println("Removed first element: " + firstElement); // Output: C++
+        System.out.println("Removed last element: " + lastElement);  // Output: Ruby
+        System.out.println("List after removing first and last: " + languages); // Output: [Python, Java, JavaScript, Go]
+
+
+
+        //  peekFirst() and peekLast(): //  Show the first and last elements without removing them
+
+        String firstPeek = languages.peekFirst(); // Returns the first element ("Python") without removing
+        String lastPeek = languages.peekLast();  // Returns the last element ("Go") without removing
+
+        System.out.println("Peeked at first element: " + firstPeek); // Output: Python
+        System.out.println("Peeked at last element: " + lastPeek); // Output: Go
+        System.out.println("List after peeking: " + languages);  // List remains unchanged: [Python, Java, JavaScript, Go]
+    }
+}
+```

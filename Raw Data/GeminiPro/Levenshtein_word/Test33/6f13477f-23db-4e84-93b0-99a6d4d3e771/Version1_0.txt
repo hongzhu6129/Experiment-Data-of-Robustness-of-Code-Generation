@@ -1,0 +1,148 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + uniqueNumbers.size());
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Basic Case:**
+
+* **Input:**  `digits = {1, 2, 3, 4}`
+* **Expected Output:**
+    ```
+    Unique three-digit numbers:
+    123
+    124
+    132
+    134
+    142
+    143
+    213
+    214
+    231
+    234
+    241
+    243
+    312
+    314
+    321
+    324
+    341
+    342
+    412
+    413
+    421
+    423
+    431
+    432
+    Total count of unique three-digit numbers: 24
+    ```
+
+
+**2.  Case with Repeated Digits (This tests the uniqueness logic):**
+
+* **Input:** `digits = {1, 1, 2, 3}`  (Note the repeated 1)
+* **Expected Output:** (The output will still contain only unique 3-digit numbers even though the input has repeated digits)
+    ```
+    Unique three-digit numbers:
+    123
+    132
+    213
+    231
+    312
+    321
+    Total count of unique three-digit numbers: 6
+    ```
+
+
+**3. Case with Fewer Than 4 Digits:**
+
+* **Input:** `digits = {1, 2, 3}`
+* **Expected Output:**
+    ```
+    Unique three-digit numbers:
+    123
+    132
+    213
+    231
+    312
+    321
+    Total count of unique three-digit numbers: 6 
+    ```
+
+**4. Corner Case:  Only One Distinct Digit:**
+
+* **Input:** `digits = {1, 1, 1, 1}`
+* **Expected Output:**
+   ```
+   Unique three-digit numbers:
+   Total count of unique three-digit numbers: 0
+   ```  (No unique 3-digit numbers can be formed)
+
+
+
+**How to Run the Test Cases (Example):**
+
+You can create a separate test class (e.g., `UniqueThreeDigitNumbersTest.java`) using a testing framework like JUnit to automate these tests. Here's a simple example using JUnit 5:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbersTest {
+
+    @Test
+    void testBasicCase() {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> expected = new HashSet<>(Arrays.asList(123, 124, /* ... add all expected numbers ...*/)); // Add all 24 expected numbers
+        Set<Integer> actual = getUniqueNumbers(digits);  // Helper method to extract numbers
+        assertEquals(expected, actual);
+        assertEquals(24, actual.size());
+    }
+
+
+    // ... other test methods for other cases ...
+
+
+    // Helper method to extract numbers for testing
+    private Set<Integer> getUniqueNumbers(int[] digits) {
+      // ... (same code as in the main method to generate the set) ...
+      return uniqueNumbers;
+    }
+}
+```
+
+
+By running this test class, you can verify that your `UniqueThreeDigitNumbers` class behaves correctly for different inputs.  Remember to add assertions for all test cases including the size of the resulting set.

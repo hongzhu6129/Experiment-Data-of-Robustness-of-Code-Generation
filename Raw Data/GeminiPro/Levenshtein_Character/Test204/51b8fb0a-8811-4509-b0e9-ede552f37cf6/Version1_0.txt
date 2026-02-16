@@ -1,0 +1,143 @@
+**Java Code:**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class Buffer {
+    private List<Integer> data;
+    private int capacity;
+
+    public Buffer(int capacity) {
+        this.data = new ArrayList<>();
+        this.capacity = capacity;
+    }
+
+    public synchronized void put(int item) throws InterruptedException {
+        // Wait until there's space in the buffer
+        while (data.size() == capacity) {
+            wait();
+        }
+
+        // Add the item to the buffer
+        data.add(item);
+
+        // Notify waiting threads that data is available
+        notifyAll();
+    }
+
+    public synchronized int get() throws InterruptedException {
+        // Wait until there's data in the buffer
+        while (data.isEmpty()) {
+            wait();
+        }
+
+        // Remove the first item from the buffer
+        int item = data.remove(0);
+
+        // Notify waiting threads that space is available in the buffer
+        notifyAll();
+
+        return item;
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+```java
+Buffer buffer = new Buffer(10);
+
+new Thread(() -> {
+    for (int i = 0; i < 100; i++) {
+        try {
+            buffer.put(i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}).start();
+
+new Thread(() -> {
+    for (int i = 0; i < 100; i++) {
+        try {
+            int item = buffer.get();
+            System.out.println("Retrieved item: " + item);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}).start();
+```
+
+**Corner Cases:**
+
+**Empty Buffer:**
+
+```java
+Buffer buffer = new Buffer(0);
+
+new Thread(() -> {
+    try {
+        int item = buffer.get();
+        System.out.println("Retrieved item: " + item);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}).start();
+```
+
+**Full Buffer:**
+
+```java
+Buffer buffer = new Buffer(1);
+
+new Thread(() -> {
+    try {
+        buffer.put(1);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}).start();
+
+new Thread(() -> {
+    try {
+        buffer.put(2);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}).start();
+```
+
+**Concurrent Access:**
+
+```java
+Buffer buffer = new Buffer(10);
+
+List<Thread> threads = new ArrayList<>();
+
+for (int i = 0; i < 100; i++) {
+    threads.add(new Thread(() -> {
+        try {
+            buffer.put(i);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }));
+
+    threads.add(new Thread(() -> {
+        try {
+            int item = buffer.get();
+            System.out.println("Retrieved item: " + item);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }));
+}
+
+for (Thread thread : threads) {
+    thread.start();
+}
+```

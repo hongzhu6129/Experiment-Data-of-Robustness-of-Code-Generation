@@ -1,0 +1,36 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MaxValuesFromCalendar {
+
+    public static void main(String[] args) {
+
+        // Get a default calendar instance (typically represents the current date/time)
+        Calendar calendar = new GregorianCalendar();
+
+        // Get the maximum values for various fields
+        int maxYear = calendar.getMaximum(Calendar.YEAR);      //  The maximum year value is large (e.g., 292278994)
+        int maxMonth = calendar.getMaximum(Calendar.MONTH);    // Months are 0-indexed (0 - January, 11 - December). The max is 11.
+        int maxWeekOfYear = calendar.getMaximum(Calendar.WEEK_OF_YEAR);// Max depends on the year and the first day of the week setting (52 or 53)
+        int maxDayOfMonth = calendar.getMaximum(Calendar.DAY_OF_MONTH);// Max depends on the month and year (28, 29, 30, or 31)
+        int maxDayOfYear = calendar.getMaximum(Calendar.DAY_OF_YEAR); // 365 or 366
+
+
+        System.out.println("Maximum Year: " + maxYear);
+        System.out.println("Maximum Month: " + (maxMonth + 1)); // Add 1 to present it in the usual 1-12 range
+        System.out.println("Maximum Week of Year: " + maxWeekOfYear);
+        System.out.println("Maximum Day of Month: " + maxDayOfMonth);
+        System.out.println("Maximum Day of Year: " + maxDayOfYear);
+
+        //To demonstrate max day of month for current month vs. another:
+        int currentMonthMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); // Max for the CURRENT month
+        calendar.set(Calendar.MONTH, Calendar.FEBRUARY); // Change to February
+        int febMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);        // Max for February
+
+        System.out.println("Maximum Day of current Month: " + currentMonthMax);
+        System.out.println("Maximum Day of February in current Year: " + febMax);
+
+    }
+}
+```

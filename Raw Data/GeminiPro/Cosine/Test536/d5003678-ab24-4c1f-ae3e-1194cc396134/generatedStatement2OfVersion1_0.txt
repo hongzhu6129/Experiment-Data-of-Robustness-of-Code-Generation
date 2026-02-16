@@ -1,0 +1,17 @@
+
+
+
+
+Key improvements in this version:
+
+- **Error Handling:** Includes checks for valid directory paths and handles potential `null` returns from `directory.listFiles()`.  Also, the NIO version uses a try-catch block to catch `IOException`.
+- **Clearer output:**  Adds a separator between the output of the two listing methods, making it easier to understand the results.
+- **java.nio.file (Preferred Method):**  Includes the more modern and efficient NIO method using `Files.list()` with try-with-resources. This is generally preferred in modern Java development.
+- **Comments:** Added comments explaining the code and the different approaches.
+
+
+To compile and run:
+
+1. Save the code as `ListFilesAndDirectories.java`.
+2. Compile: `javac ListFilesAndDirectories.java`
+3. Run: `java ListFilesAndDirectories [directory_path]`  (Replace `[directory_path]` with the actual path if needed. If no path is provided, it defaults to the current directory.)

@@ -1,0 +1,14 @@
+
+
+
+Explanation and Improvements:
+
+1. **Error Handling:** The code now includes a check to ensure that `k` is within a valid range (1 to the length of the array). This prevents `ArrayIndexOutOfBoundsException` if `k` is invalid.
+
+2. **Clarity and Readability:** The code is more readable with better variable names ( `kthSmallest`, `kthLargest`) and comments explaining the steps.
+
+3. **Efficiency (for larger datasets and frequent kth element queries):**  While sorting is simple for smaller arrays, for larger datasets or if you need to find the kth element multiple times, consider using a more efficient approach like a `PriorityQueue` (min-heap for kth smallest and max-heap for kth largest) or QuickSelect algorithm.  These have better average-case time complexity than sorting the entire array (O(n log k) or O(n) on average, respectively, compared to O(n log n) for sorting).
+
+
+Example using a `PriorityQueue` for finding the kth largest element:
+

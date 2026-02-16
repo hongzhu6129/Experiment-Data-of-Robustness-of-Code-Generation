@@ -1,0 +1,68 @@
+```java
+public class ReplaceVowels {
+
+    public static void main(String[] args) {
+        String inputString = "This is a sample string with vowels.";
+        char replacementChar = '*';
+
+        String modifiedString = validate(inputString, replacementChar);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Modified string: " + modifiedString);
+
+
+        // Example with a double converted to a String
+        double doubleValue = 3.14159;
+        String doubleString = String.valueOf(doubleValue);
+        String modifiedDoubleString = validate(doubleString, replacementChar);
+        System.out.println("Original double as string: " + doubleString);
+        System.out.println("Modified double as string: " + modifiedDoubleString);
+
+    }
+
+    public static String validate(String input, char replacement) {
+        if (input == null) {
+            return null; // Or handle null input as needed
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            // Check if the character is a vowel (case-insensitive)
+            if (String.valueOf(c).matches("[aeiouAEIOU]")) {
+                result.append(replacement);
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+}
+
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - Takes a sample `String` and a `char` for replacement.
+   - Calls the `validate` method to perform the vowel replacement.
+   - Prints the original and modified strings to the console.
+   - Demonstrates how to use it with a double by converting it to a string first.
+
+2. **`validate` method:**
+   - Takes the input `String` and the replacement `char` as arguments.
+   - Handles `null` input (returns `null` in this case; you can modify it to throw an exception or return an empty string if desired).
+   - Iterates through the characters of the input string using a `for-each` loop.
+   - Uses a regular expression `[aeiouAEIOU]` to efficiently check if a character is a vowel (case-insensitive).
+   - If the character is a vowel, appends the `replacement` character to the `StringBuilder`.
+   - Otherwise, appends the original character to the `StringBuilder`.
+   - Finally, converts the `StringBuilder` to a `String` and returns it.
+
+
+Key improvements:
+
+- **Handles `null` input:** More robust.
+- **Uses `StringBuilder`:** More efficient for string manipulation, especially with longer strings.
+- **Case-insensitive vowel check:** Correctly handles both uppercase and lowercase vowels.
+- **Clearer variable names:** Improves readability.
+- **Added example with double:** Shows the intended use case.
+- **Uses regex for vowel check:** More concise and easier to read than multiple `||` conditions.

@@ -1,0 +1,53 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's examples (though not explicitly requested to print these)
+         System.out.println("7 is a happy number: " + isHappy_number(7)); // Output: True
+         System.out.println("2 is a happy number: " + isHappy_number(2));  // Output: False
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **HashSet for Cycle Detection:**  The `HashSet` called `seen` is crucial.  It stores the numbers encountered during the process. If we encounter a number that's already in `seen`, we know we're in a cycle, and the number is not happy.  This prevents infinite loops.
+
+2. **Clearer Loop Condition:** The `while` loop condition `n != 1 && !seen.contains(n)` is concise and expresses the two stopping conditions: reaching 1 (happy) or entering a cycle (unhappy).
+
+3. **Efficient Digit Extraction:** The inner `while` loop efficiently extracts digits using the modulo operator (`%`) and integer division (`/`).
+
+4. **Concise Return:**  The final `return n == 1;` is straightforward and directly answers whether the number is happy.
+
+5. **Example Usage in `main`:** The `main` method demonstrates how to use the `isHappy_number` function and prints clear output. I've added examples with both happy and unhappy numbers.
+
+
+This improved version addresses the potential infinite loop issue, uses a `HashSet` efficiently, and is more readable and maintainable.

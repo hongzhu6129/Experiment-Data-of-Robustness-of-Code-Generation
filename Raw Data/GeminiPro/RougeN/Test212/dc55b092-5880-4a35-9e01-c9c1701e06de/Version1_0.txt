@@ -1,0 +1,65 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        // The length of the updated array (with duplicates removed) is uniqueIndex + 1
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3+ ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3)));
+
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4 + (nums4 != null ?  ", Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4)) : "")); // Handle null case
+
+
+    }
+}
+```
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles empty arrays (`nums.length == 0`) and `null` input, returning 0 in both cases.  This prevents `NullPointerExceptions` and handles scenarios where there are no elements to process.
+
+2. **Efficient In-Place Modification:** The solution modifies the input array `nums` directly (in-place) to store the unique elements at the beginning. This avoids creating a new array, saving memory, especially for large input arrays.
+
+3. **Clear Return Value:** The function returns the *length* of the updated subarray containing only unique elements. This is consistent with the problem description's request for "updated length."
+
+4. **Improved `main` Method for Testing:** The `main` method now demonstrates the function's behavior with more diverse test cases, including empty and null inputs, and prints the updated array content along with the length. The `Arrays.copyOfRange` method is used to only display the relevant portion of the modified array (up to the new length). This avoids showing the leftover elements from the original array that are no longer part of the unique subarray.
+
+5. **Clearer Variable Naming:** The variable `uniqueIndex` is used to make the purpose of the index clearer.
+
+6. **Correctly Handles Null Input:** The updated `main` method and the `removeDuplicates` method itself correctly handle the case when the input array is `null`.
+
+
+
+This improved version is more robust, efficient, and clearly demonstrates how to remove duplicates from a sorted array while adhering to the given method signature constraints.
+

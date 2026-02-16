@@ -1,0 +1,55 @@
+```java
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+        String str1 = "Hello"; // First string
+        String str2 = " World"; // Second string
+
+        // Method 1: Using the + operator
+        String concatenatedString1 = str1 + str2;
+        System.out.println("Concatenated string (using +): " + concatenatedString1);
+
+
+        // Method 2: Using the concat() method
+        String concatenatedString2 = str1.concat(str2);
+        System.out.println("Concatenated string (using concat()): " + concatenatedString2);
+
+
+        // Example with user-provided strings (if args are supplied)
+        if (args.length == 2) {
+            String userStr1 = args[0];
+            String userStr2 = args[1];
+            String userConcatenated = userStr1.concat(userStr2);
+            System.out.println("Concatenated user strings: " + userConcatenated);
+        }
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **`public static void main(String[] args)`:**  This is the main method where the program execution begins.
+
+2. **String Declaration and Initialization:**
+   - `String str1 = "Hello";` and `String str2 = " World";` declare and initialize two string variables.
+
+3. **Method 1: Using the `+` operator:**
+   - `String concatenatedString1 = str1 + str2;` concatenates `str1` and `str2` using the `+` operator.  This is a simple and common way to concatenate strings.
+
+4. **Method 2: Using the `concat()` method:**
+   - `String concatenatedString2 = str1.concat(str2);`  concatenates `str1` and `str2` using the built-in `concat()` method of the String class. This method is also very efficient.
+
+5. **User Input (Optional):**
+   - The `if (args.length == 2)` block demonstrates how to handle user input if the program is run from the command line with two arguments. The `args` array stores these command-line arguments. This part is just to show a more complete example; you can remove it if you don't need user input.
+
+6. **Printing the Results:**
+   - `System.out.println(...)` is used to display the concatenated strings on the console.
+
+
+To run this code from the command line:
+
+1. Save it as `StringConcatenation.java`.
+2. Compile: `javac StringConcatenation.java`
+3. Run:  `java StringConcatenation` (or `java StringConcatenation "First String" "Second String"` to use the user input part)

@@ -1,0 +1,40 @@
+
+
+
+**Test Cases (Conceptual -  cannot be directly executed as code, but illustrate testing approaches):**
+
+1. **Positive Case:**
+   - **Expected Output:** "Java is installed on your system."
+   - **System State:** Java is correctly installed and `java -version` returns the expected output (e.g.,  "java version "17.0.2"" or similar). The java executable is on the system PATH.
+
+
+2. **Negative Case - Java Not Installed:**
+   - **Expected Output:** "Java is NOT installed on your system."
+   - **System State:** Java is not installed.  The `java` command is not recognized.
+
+
+3. **Negative Case - Java Path Issue:**
+   - **Expected Output:** "Java is NOT installed on your system."
+   - **System State:** Java is installed, but the `java` executable is not on the system PATH.  The program won't be able to find it.  (You could simulate this by temporarily removing Java's bin directory from your PATH).
+
+
+
+4. **Negative Case - Java Corrupted Installation:**
+   - **Expected Output:** "Java is NOT installed on your system."  (Ideally)
+   - **System State:** Java is installed, but somehow corrupted.  The `java -version` command might return an error or unexpected output. This is a harder scenario to test precisely because the nature of the corruption could vary.  The current code assumes that anything other than the expected "java version" string means Java isn't usable.
+
+
+
+5. **Corner Case - Permissions Issue:**
+    - **Expected Output:**  "Java is NOT installed on your system."
+    - **System State:** Java is installed but the user running the program doesn't have execute permissions for the `java` executable.  (Less common but could happen). This can be simulated (carefully!) by changing file permissions on the java executable.  (e.g., `chmod -x /path/to/java`).  Remember to restore the correct permissions afterward.
+
+
+**How to actually "test" these scenarios:**
+
+You would need to manually set up or simulate these different system states and then run the Java program to verify it produces the expected output.  Automated testing of these install-related conditions is more complex and often involves system-level tools or virtual machines.
+
+
+**Important Improvement in the code:**
+
+The provided code now reads from the `errorStream` of the `Process`. This is crucial because `java -version` writes its version information to the *error* stream, not the standard output stream. The previous versions of the code would incorrectly report Java as not installed in most cases.

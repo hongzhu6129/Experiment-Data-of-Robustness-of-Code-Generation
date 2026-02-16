@@ -1,0 +1,65 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class CheckWordCharacters {
+
+    static void checkExistance(String word, String listItem) {
+        char[] wordChars = word.toCharArray();
+        Arrays.sort(wordChars);
+        char[] itemChars = listItem.toLowerCase().toCharArray(); // Case-insensitive comparison
+        Arrays.sort(itemChars);
+
+        int i = 0, j = 0;
+        while (i < wordChars.length && j < itemChars.length) {
+            if (wordChars[i] == itemChars[j]) {
+                i++;
+            }
+            j++;
+        }
+
+        if (i == wordChars.length) { // All characters of the word are present in the list item
+            System.out.println(listItem);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String word = "sun";
+        List<String> listItems = Arrays.asList("sunday", "unsung", "sunscreen", "another", "rainsun");
+
+        for (String item : listItems) {
+            checkExistance(word, item);
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Case-Insensitivity:** The `checkExistance` method now converts the `listItem` to lowercase using `toLowerCase()` before comparison. This makes the check case-insensitive.
+
+2. **Sorting for Efficiency:**  Both the `word` and the `listItem` are converted to character arrays and sorted using `Arrays.sort()`. This allows for an efficient comparison using a two-pointer approach.
+
+3. **Two-Pointer Approach:** The `while` loop uses two pointers (`i` and `j`) to iterate through the sorted character arrays.  If a character from the `word` is found in the `listItem`, the `i` pointer is incremented.  The loop continues until either all characters of the word are found or the end of either array is reached.
+
+4. **Clear Output:**  If all characters of the word are found in the list item (i.e., `i == wordChars.length` after the loop), the `listItem` is printed to the console.
+
+5. **Example Usage in `main`:**  The `main` method demonstrates how to use the `checkExistance` method with a sample list of strings.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `CheckWordCharacters.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file.  Compile the code using: `javac CheckWordCharacters.java`
+3. **Run:**  Execute the compiled code using: `java CheckWordCharacters`
+
+The output will be:
+
+```
+sunday
+unsung
+sunscreen
+rainsun
+```

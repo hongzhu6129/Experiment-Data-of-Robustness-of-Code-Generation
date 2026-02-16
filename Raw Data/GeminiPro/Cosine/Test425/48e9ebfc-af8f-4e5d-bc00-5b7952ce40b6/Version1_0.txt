@@ -1,0 +1,39 @@
+```java
+public class ConsecutiveLetters {
+
+    public static void main(String[] args) {
+        String str1 = "aabbccd";
+        System.out.println("String: " + str1 + ", Consecutive letters: " + test(str1)); // Output: true
+
+        String str2 = "abcded";
+        System.out.println("String: " + str2 + ", Consecutive letters: " + test(str2)); // Output: false
+
+        String str3 = "AabBcC";
+        System.out.println("String: " + str3 + ", Consecutive letters: " + test(str3)); // Output: true (case-sensitive)
+
+
+        String str4 = ""; // Empty string
+        System.out.println("String: " + str4 + ", Consecutive letters: " + test(str4)); // Output: false
+
+
+        String str5 = "a"; // Single character string
+        System.out.println("String: " + str5 + ", Consecutive letters: " + test(str5)); // Output: false
+
+
+    }
+
+    public static boolean test(String str) {
+        if (str == null || str.length() < 2) { 
+            return false;
+        }
+
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+```

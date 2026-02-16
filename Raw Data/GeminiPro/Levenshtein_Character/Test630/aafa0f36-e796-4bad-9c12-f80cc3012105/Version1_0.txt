@@ -1,0 +1,60 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (colors)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1:  Iterate using a while loop and remove elements
+        /*  while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); // poll() retrieves and removes the head
+         }
+         */
+
+
+        // Method 2: Enhanced for loop (This won't modify the queue)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+
+        //Method 3:  Using Java 8 Stream API (This also won't modify the queue)
+        /* colorQueue.forEach(System.out::println); */
+
+
+
+
+    }
+}
+```
+
+**Explanation and Important Notes:**
+
+1. **PriorityQueue:**  A `PriorityQueue` in Java is a data structure that stores elements based on their natural ordering (for Strings, this is lexicographical order) or a custom Comparator provided during construction.  By default, the smallest element is at the head of the queue (meaning `poll()` retrieves the smallest element).
+
+2. **Adding Elements:**  We use `add()` to insert elements into the queue.
+
+3. **Printing Elements:**
+   - **Method 1 (Iterating with `poll()`):** This method *removes* elements from the queue as you print them.  If you want to preserve the queue's contents, use one of the other methods.
+   - **Method 2 (Enhanced `for` loop):** This is a convenient way to iterate over the elements *without* removing them from the queue.  The order in which elements are printed depends on the queue's sorting.
+   - **Method 3 (Java 8 Streams with `forEach`):** Another way to iterate and print without modifying the queue's content.
+
+4. **Natural Ordering:** Since we are using Strings, they are ordered lexicographically (alphabetical order).  So "Blue" will come before "Green," and "Red" will come before "Yellow."
+
+5. **Custom Ordering (Comparators - Not shown in basic example):**  If you want a different ordering (e.g., by string length or some other criteria), you would provide a `Comparator` to the `PriorityQueue`'s constructor.
+
+
+This enhanced explanation makes the code easier to understand and covers the key points about `PriorityQueue` usage.  The commented-out sections show alternative ways to print, giving the user more options and a better understanding of how they affect the queue.

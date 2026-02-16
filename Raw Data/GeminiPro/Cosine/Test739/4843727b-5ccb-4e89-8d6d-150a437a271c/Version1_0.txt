@@ -1,0 +1,39 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringMatch {
+
+    public static void main(String[] args) {
+        String testString1 = "paq";
+        String testString2 = "p123q";
+        String testString3 = "pq";
+        String testString4 = "pqr";
+        String testString5 = "apq";
+        String testString6 = "pa";
+        String testString7 = "q";
+
+
+        System.out.println(testString1 + ": " + validate(testString1)); // True
+        System.out.println(testString2 + ": " + validate(testString2)); // True
+        System.out.println(testString3 + ": " + validate(testString3)); // True
+        System.out.println(testString4 + ": " + validate(testString4)); // True (Anything can be between p and q, including 'r')
+        System.out.println(testString5 + ": " + validate(testString5)); // False
+        System.out.println(testString6 + ": " + validate(testString6)); // False
+        System.out.println(testString7 + ": " + validate(testString7)); // False
+    }
+
+    public static String validate(String input) {
+        // Regular expression:  ^p.*q$
+        // ^ asserts position at start of a line
+        // p matches the character p literally (case sensitive)
+        // .* matches any character (except newline)
+        //      * Quantifier � Matches between zero and unlimited times, as many times as possible, giving back as needed (greedy)
+        // q matches the character q literally (case sensitive)
+        // $ asserts position at the end of a line
+        Pattern pattern = Pattern.compile("^p.*q$");
+        Matcher matcher = pattern.matcher(input);
+        return String.valueOf(matcher.matches());
+    }
+}
+```

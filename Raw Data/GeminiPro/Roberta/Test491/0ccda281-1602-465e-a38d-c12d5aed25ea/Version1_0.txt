@@ -1,0 +1,49 @@
+```java
+import java.util.Scanner;
+
+public class FutureInvestmentValue {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter investment amount: ");
+        double investmentAmount = input.nextDouble();
+
+        System.out.print("Enter annual interest rate in percentage: ");
+        double annualInterestRate = input.nextDouble();
+
+        System.out.print("Enter number of years: ");
+        int numberOfYears = input.nextInt();
+
+        double futureValue = futureInvestmentValue(investmentAmount, annualInterestRate, numberOfYears);
+
+        System.out.printf("Future value is $%.2f\n", futureValue);
+
+        input.close(); // Close the scanner
+    }
+
+    public static double futureInvestmentValue(double investmentAmount, double annualInterestRate, int numberOfYears) {
+        double monthlyInterestRate = annualInterestRate / 1200; // Convert annual rate to monthly and decimal
+        double futureValue = investmentAmount * Math.pow(1 + monthlyInterestRate, numberOfYears * 12);
+        return futureValue;
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Resource Management:** The `Scanner` is closed using `input.close()` after it's no longer needed.  This is important to prevent resource leaks.
+* **Clear Prompts:**  The prompts to the user are more specific (e.g., "annual interest rate in percentage").
+* **Output Formatting:** The output is formatted to two decimal places using `printf` for a cleaner presentation of monetary values.
+* **Concise Calculation:** The calculation of the future value is streamlined within the `futureInvestmentValue` method.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `FutureInvestmentValue.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac FutureInvestmentValue.java`
+3. **Run:**  After successful compilation, run the program using: `java FutureInvestmentValue`
+
+
+The program will then prompt you to enter the investment amount, annual interest rate, and number of years.  After you provide these inputs, it will calculate and display the future investment value.

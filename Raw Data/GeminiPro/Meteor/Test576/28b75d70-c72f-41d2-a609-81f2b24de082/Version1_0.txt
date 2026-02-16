@@ -1,0 +1,39 @@
+```java
+import java.util.LinkedList;
+
+public class AppendToLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> names = new LinkedList<>();
+
+        // Add some initial names
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        // Element to append
+        String newName = "David";
+
+        // Append the new name to the end of the list
+        names.add(newName); //  LinkedList's add() method appends by default
+
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + names);
+
+
+        // Example appending another element:
+        String anotherName = "Eve";
+        names.addLast(anotherName); // Or use addLast() explicitly to emphasize appending
+        System.out.println("LinkedList after adding Eve: " + names);
+
+         //Append at a Specific Index (not requested, but shown for completeness)
+        String yetAnotherName = "Mallory";
+        int indexToInsert = 2; // Insert at index 2 (third position)
+        names.add(indexToInsert, yetAnotherName);
+        System.out.println("LinkedList after inserting Mallory at index 2: " + names);
+
+    }
+}
+```

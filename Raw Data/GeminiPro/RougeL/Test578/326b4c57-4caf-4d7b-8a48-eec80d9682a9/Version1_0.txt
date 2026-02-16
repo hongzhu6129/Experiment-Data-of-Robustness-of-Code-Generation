@@ -1,0 +1,55 @@
+```java
+import java.util.LinkedList;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Kotlin");
+
+        // Specify the starting position (index)
+        int startPosition = 2; 
+
+        // Validate the start position
+        if (startPosition < 0 || startPosition >= languages.size()) {
+            System.out.println("Invalid start position.");
+            return; // Exit if the position is out of bounds
+        }
+
+        System.out.println("Iterating from position " + startPosition + ":");
+
+        // Method 1: Using a for loop from the specified position
+        for (int i = startPosition; i < languages.size(); i++) {
+            System.out.println(languages.get(i));
+        }
+
+
+        // Method 2: Using a ListIterator (more flexible for bidirectional traversal)
+        System.out.println("\nUsing ListIterator:");  // Separate output for clarity
+        java.util.ListIterator<String> iterator = languages.listIterator(startPosition);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        // Example of adding elements while iterating with ListIterator (demonstration only)
+        System.out.println("\nAdding elements during iteration with ListIterator:");
+        java.util.ListIterator<String> iterator2 = languages.listIterator(1); // Example: Start at index 1
+        while (iterator2.hasNext()) {
+            String lang = iterator2.next();
+            if (lang.equals("Python")) {
+                iterator2.add("C#"); // Add "C#" after "Python"
+            }
+        }
+        System.out.println("Modified list: " + languages);
+
+
+    }
+}
+```

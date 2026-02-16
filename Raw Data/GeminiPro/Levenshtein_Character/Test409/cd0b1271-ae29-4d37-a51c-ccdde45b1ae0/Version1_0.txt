@@ -1,0 +1,38 @@
+```java
+public class StringRemover {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or handle nulls as needed (e.g., throw an exception)
+        }
+
+        return mainString.replace(removeString, ""); 
+    }
+
+    public static void main(String[] args) {
+        StringRemover remover = new StringRemover();
+
+        String mainString = "This is a test string. test";
+        String removeString = "test";
+        String result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: This is a  string. 
+
+        mainString = "abababa";
+        removeString = "aba";
+        result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: b
+
+
+        mainString = null;
+        removeString = "test";
+        result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: null (or handle as desired)
+
+
+        mainString = "Hello";
+        removeString = null;
+        result = remover.removeString(mainString, removeString);
+        System.out.println("Result: " + result); // Output: Result: Hello (or handle as desired)
+    }
+}
+```

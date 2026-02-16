@@ -1,0 +1,74 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.right.left = new Node(6); // Added an extra level to the left side
+
+
+        System.out.println("Height of tree is : " +
+                tree.maxDepth(root));
+    }
+}
+```
+
+
+This code adheres strictly to the requested method signatures.  It calculates the maximum depth (height) of a binary tree using recursion.
+
+**Explanation:**
+
+1. **Node Class:**  Represents a node in the binary tree. It has a `data` field and pointers to its `left` and `right` children.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**
+     - Recursively calculate the depth of the left subtree (`lDepth`).
+     - Recursively calculate the depth of the right subtree (`rDepth`).
+     - Return the maximum of `lDepth` and `rDepth`, plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates a sample binary tree.
+   - Calls the `maxDepth()` method to calculate the height and prints the result.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `BinaryTreeDepth.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile using the Java compiler: `javac BinaryTreeDepth.java`
+3. **Run:** After successful compilation, run the program: `java BinaryTreeDepth`
+
+
+The output will be the height/maximum depth of the sample tree you created in the `main` method.

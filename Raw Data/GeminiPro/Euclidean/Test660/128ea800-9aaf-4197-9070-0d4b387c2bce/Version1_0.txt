@@ -1,0 +1,86 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class SortLocksTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom comparator
+        TreeMap<String, String> locks = new TreeMap<>(new LockComparator());
+
+        // Add some locks (key is lock name, value could be any associated data)
+        locks.put("Lock C", "Description C");
+        locks.put("Lock A", "Description A");
+        locks.put("Lock B", "Description B");
+        locks.put("Lock D", "Description D");
+
+
+        // Print the sorted locks
+        System.out.println("Sorted Locks:");
+        for (String lockName : locks.keySet()) {
+            System.out.println(lockName + ": " + locks.get(lockName));
+        }
+    }
+
+    public static class LockComparator implements Comparator<String> {
+        @Override
+        public int compare(String lock1, String lock2) {
+            // Perform comparison logic here (e.g., alphabetical order)
+            return lock1.compareTo(lock2); // Example: Sort alphabetically
+            //return lock2.compareTo(lock1); //Reverse Alphabetical Order
+            // For more complex sorting, implement your custom logic here
+        }
+    }
+}
+
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Comparator Class:** The `LockComparator` class implements the `Comparator<String>` interface.  This is how you provide custom sorting logic to the `TreeMap`.
+
+2. **compare Method:**  The `compare(String lock1, String lock2)` method is the heart of the comparator. It receives two lock names (strings) and returns:
+   - A negative integer if `lock1` should come before `lock2`.
+   - Zero if `lock1` and `lock2` are considered equal for sorting.
+   - A positive integer if `lock1` should come after `lock2`.
+
+3. **TreeMap Initialization:**  The `TreeMap` is initialized with an instance of the `LockComparator`:
+   ```java
+   TreeMap<String, String> locks = new TreeMap<>(new LockComparator());
+   ```
+   This tells the `TreeMap` to use your custom comparator for sorting the keys.
+
+4. **Example Sorting:** The provided `compare` method uses `lock1.compareTo(lock2)`. This sorts the locks alphabetically.  You can replace this with your own sorting logic as needed (e.g., sorting by lock ID, priority, etc.).
+
+5. **Clearer Output:** The `main` method now prints the locks in a more formatted way, showing both the lock name (key) and its associated description (value).
+
+
+**How to Use with Different Sorting Criteria:**
+
+Just modify the `compare` method within the `LockComparator` class to implement your specific sorting rules. For example:
+
+* **Reverse Alphabetical:**
+  ```java
+  return lock2.compareTo(lock1); 
+  ```
+
+* **Numerical Sorting (assuming lock names are numbers):**
+  ```java
+  try {
+      int lock1Num = Integer.parseInt(lock1);
+      int lock2Num = Integer.parseInt(lock2);
+      return Integer.compare(lock1Num, lock2Num);
+  } catch (NumberFormatException e) {
+      // Handle cases where lock names aren't valid numbers
+      return lock1.compareTo(lock2); // Default to alphabetical
+  }
+  ```
+
+* **Sorting by Length of Lock Name:**
+  ```java
+    return Integer.compare(lock1.length(), lock2.length());
+  ```
+
+
+This revised example is more robust, flexible, and adheres to the requested method signature restrictions.

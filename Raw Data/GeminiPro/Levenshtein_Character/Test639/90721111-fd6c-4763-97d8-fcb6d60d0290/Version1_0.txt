@@ -1,0 +1,48 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.offer(3);
+        priorityQueue.offer(1);
+        priorityQueue.offer(4);
+        priorityQueue.offer(2);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] array1 = new Integer[priorityQueue.size()];
+        priorityQueue.toArray(array1);
+        System.out.println("Array 1 (pre-allocated): " + Arrays.toString(array1));
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] array2 = priorityQueue.toArray(); // Returns Object[]
+
+        // Convert Object[] to Integer[] (if needed)
+        Integer[] integerArray2 = Arrays.copyOf(array2, array2.length, Integer[].class);
+        System.out.println("Array 2 (not pre-allocated): " + Arrays.toString(integerArray2));
+
+
+        //Method 3: Manually copying elements to an array
+        Integer[] array3 = new Integer[priorityQueue.size()];
+        int i = 0;
+        while (!priorityQueue.isEmpty()) {
+            array3[i++] = priorityQueue.poll(); // Note: poll() removes elements from the queue
+        }
+        System.out.println("Array 3 (manual copy): " + Arrays.toString(array3)); // Original queue is now empty
+
+
+
+        // Restore the original queue (if you need it later) if you used method 3
+        for(Integer element : array3){  //Or array1, array2 since they are the same elements
+             priorityQueue.offer(element); 
+        }
+
+
+    }
+}
+```

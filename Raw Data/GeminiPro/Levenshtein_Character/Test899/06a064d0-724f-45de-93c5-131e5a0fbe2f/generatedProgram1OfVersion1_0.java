@@ -1,0 +1,46 @@
+class Solution {
+    /**
+     * Given a string, find the index of the first unique character in the string.
+     * Assume that there is at least one unique character in the string.
+     *
+     * @param s The string to search.
+     * @return The index of the first unique character in the string.
+     */
+    public static int first_Uniq_Char(String s) {
+        int[] charCounts = new int[26]; // Assuming only lowercase English alphabet characters
+
+        // Count the occurrences of each character
+        for (char c : s.toCharArray()) {
+            charCounts[c - 'a']++;
+        }
+
+        // Find the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCounts[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1; // Should not reach here as we assume at least one unique character exists
+    }
+
+    public static void main(String[] args) {
+        String s = "wresource";
+        System.out.println("Original String: " + s);
+        int index = first_Uniq_Char(s);
+        System.out.println("First unique character of the above: " + index);
+
+
+        s = "leetcode";
+        System.out.println("Original String: " + s);
+        index = first_Uniq_Char(s);
+        System.out.println("First unique character of the above: " + index);
+
+
+
+        s = "aabb";
+        System.out.println("Original String: " + s);
+        index = first_Uniq_Char(s);
+        System.out.println("First unique character of the above: " + index); // Would return -1 if the assumption wasn't made
+    }
+}

@@ -1,0 +1,50 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class SubarraySumZero {
+
+    public static List<Integer> subarraySum(int[] arr) {
+        List<Integer> result = new ArrayList<>();
+
+        // Use a prefix sum technique
+        int[] prefixSum = new int[arr.length + 1];
+        prefixSum[0] = 0;
+        for (int i = 1; i <= arr.length; i++) {
+            prefixSum[i] = prefixSum[i - 1] + arr[i - 1];
+        }
+
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                // Calculate sum of subarray arr[i..j] using prefix sum
+                int subarraySum = prefixSum[j + 1] - prefixSum[i];
+                
+                if (subarraySum == 0) {
+                    result.add(i);
+                    result.add(j);
+                    return result; // Return immediately after finding the first subarray
+                }
+            }
+        }
+        
+        return result; // Return empty list if no such subarray is found
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, -6, 5, 4};
+        List<Integer> indices = subarraySum(arr1);
+        System.out.println("index of the subarray where the sum of numbers is zero: " + indices);
+
+        int[] arr2 = {1, 2, -3, 4, -4};
+        indices = subarraySum(arr2);
+        System.out.println("index of the subarray where the sum of numbers is zero: " + indices);
+
+        int[] arr3 = {1, 2, 3, 4, 5}; // Case with no subarray summing to zero
+        indices = subarraySum(arr3);
+        System.out.println("index of the subarray where the sum of numbers is zero: " + indices);
+    }
+}
+```
+

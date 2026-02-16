@@ -1,0 +1,71 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateFormats {
+
+    public static void main(String[] args) {
+        Date currentDate = new Date();
+
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String date1 = format1.format(currentDate);
+        System.out.println("Current date in yyyy-MM-dd format: " + date1);
+
+        SimpleDateFormat format2 = new SimpleDateFormat("dd/MM/yyyy");
+        String date2 = format2.format(currentDate);
+        System.out.println("Current date in dd/MM/yyyy format: " + date2);
+
+
+        SimpleDateFormat format3 = new SimpleDateFormat("dd-MMM-yyyy");
+        String date3 = format3.format(currentDate);
+        System.out.println("Current date in dd-MMM-yyyy format: " + date3);
+
+
+
+        SimpleDateFormat format4 = new SimpleDateFormat("MM-dd-yyyy");
+        String date4 = format4.format(currentDate);
+        System.out.println("Current date in MM-dd-yyyy format: " + date4);
+
+
+         SimpleDateFormat format5 = new SimpleDateFormat("E, MMM dd yyyy"); // Day, Month dd yyyy
+        String date5 = format5.format(currentDate);
+        System.out.println("Current date in E, MMM dd yyyy format: "+ date5);
+
+
+        SimpleDateFormat format6 = new SimpleDateFormat("'Today is 'EEEE, MMMM dd, yyyy"); 
+        String date6 = format6.format(currentDate);
+        System.out.println(date6);
+
+
+
+        SimpleDateFormat format7 = new SimpleDateFormat("h:mm a"); // 12-hour format with AM/PM
+        String date7 = format7.format(currentDate);
+        System.out.println("Current time in h:mm a format: " + date7);
+
+
+        SimpleDateFormat format8 = new SimpleDateFormat("HH:mm:ss");  //24-hour format
+        String date8 = format8.format(currentDate);
+        System.out.println("Current time in HH:mm:ss format: " + date8);
+
+
+
+
+        SimpleDateFormat format9 = new SimpleDateFormat("HH:mm:ss z"); // 24-hour format with time zone
+        String date9 = format9.format(currentDate);
+        System.out.println("Current time in HH:mm:ss z format: " + date9);
+
+
+
+        SimpleDateFormat format10 = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+        String date10 = format10.format(currentDate);
+        System.out.println("Current date and time in yyyy.MM.dd.HH.mm.ss format: " + date10);
+
+
+
+
+        SimpleDateFormat format11 = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z"); // RFC 822 format 
+        String date11 = format11.format(currentDate);
+        System.out.println("Current date and time in RFC 822 format: " + date11);
+        
+
+    }
+}

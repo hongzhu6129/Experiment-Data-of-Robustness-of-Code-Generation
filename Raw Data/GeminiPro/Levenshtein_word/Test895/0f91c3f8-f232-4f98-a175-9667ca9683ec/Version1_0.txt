@@ -1,0 +1,58 @@
+```java
+import java.util.Arrays;
+
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Number of elements not equal to val
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 6, 7, 6, 2};
+        int val = 6;
+
+        System.out.println("Original array: " + Arrays.toString(nums));
+
+        int newLength = removeElement(nums, val);
+
+        System.out.println("The length of the new array is: " + newLength);
+
+
+        // Print the updated array (optional - the original array is modified in-place)
+        int[] newArray = Arrays.copyOfRange(nums, 0, newLength); // Create a new array with the correct length
+        System.out.println("New array: " + Arrays.toString(newArray));
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **In-Place Modification:** The `removeElement` method modifies the original array `nums` directly.  This is more efficient than creating a new array.  The elements not equal to `val` are moved to the beginning of the array.
+
+2. **`k` as a Counter and Index:**  The variable `k` serves two purposes:
+   - It keeps track of the number of elements that are *not* equal to `val`. This is the new length of the array.
+   - It acts as the index where the next element that's not equal to `val` should be placed.
+
+3. **Clearer Output:** The `main` method now prints both the original array and the new length. I've also added an optional part in the `main` method that shows how to create a new array containing only the updated elements if you need to work with a separate array.
+
+4. **Conciseness and Efficiency:**  The code avoids unnecessary temporary variables or complex logic, making it more efficient and easier to understand.
+
+
+**Example Usage and Output:**
+
+```
+Original array: [1, 4, 6, 7, 6, 2]
+The length of the new array is: 4
+New array: [1, 4, 7, 2] 
+```

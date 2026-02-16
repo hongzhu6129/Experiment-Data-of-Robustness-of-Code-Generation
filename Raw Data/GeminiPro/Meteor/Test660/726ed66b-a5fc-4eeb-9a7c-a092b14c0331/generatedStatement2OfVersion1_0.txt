@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Custom Comparator Class:**  The `MyComparator` class implements the `Comparator<String>` interface.  This allows us to define our own sorting logic.
+
+2. **Case-Insensitive Sorting:** The `compare` method now uses `s1.compareToIgnoreCase(s2)`  for case-insensitive sorting. You can modify this method to implement any other string comparison logic you require (e.g., sorting by length, sorting by the last character, etc.).
+
+3. **TreeMap Instantiation with Comparator:**  The `TreeMap` is instantiated with an instance of `MyComparator`: `new TreeMap<>(new MyComparator())`.  This tells the `TreeMap` to use our custom comparator for sorting the keys.
+
+4. **Clearer Example:** The `main` method demonstrates how to add elements and print the sorted `TreeMap`.
+
+5. **Reverse Sorting:** The example also shows how to create a reverse sorted `TreeMap` using `new MyComparator().reversed()`. This is very convenient.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TreeMapSortComparator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac TreeMapSortComparator.java`
+3. **Run:**  Execute the compiled code: `java TreeMapSortComparator`
+
+
+The output will show the sorted `TreeMap` according to the custom comparison logic you've defined in the `compare` method.

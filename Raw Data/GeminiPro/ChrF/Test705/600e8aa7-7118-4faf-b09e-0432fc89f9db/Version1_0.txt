@@ -1,0 +1,72 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrimeImpact {
+
+    public static void main(String[] args) {
+        int n = 12; // Example input.  Change this to test with different numbers.
+        printPrimeImpact(n);
+
+        n = 315; // Another example.
+        printPrimeImpact(n);
+
+        n = 1; // Edge case
+        printPrimeImpact(n);
+
+        n = 0; // Another edge case
+        printPrimeImpact(n);
+    }
+
+    public static void printPrimeImpact(int n) {
+        if (n <= 1) {
+            System.out.println("Prime impact of " + n + ": None (number must be greater than 1)");
+            return;
+        }
+
+        System.out.print("Prime impact of " + n + ": ");
+
+        List<Integer> primeFactors = new ArrayList<>();
+
+        // Handle 2 separately for efficiency
+        while (n % 2 == 0) {
+            if (!primeFactors.contains(2)) { // Add 2 only once
+                primeFactors.add(2);
+            }
+            n /= 2;
+        }
+
+        // Iterate from 3 to sqrt(n) in steps of 2
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            while (n % i == 0) {
+                if (!primeFactors.contains(i)) {
+                    primeFactors.add(i);
+                }
+                n /= i;
+            }
+        }
+
+        // If n is still greater than 2, it must be prime
+        if (n > 2) {
+            primeFactors.add(n);
+        }
+
+
+        if (primeFactors.isEmpty()) { // In theory, shouldn't happen if n > 1, but included for robustness.
+            System.out.println("None");
+        } else {
+            for (int i = 0; i < primeFactors.size(); i++) {
+                System.out.print(primeFactors.get(i));
+                if (i < primeFactors.size() - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+```

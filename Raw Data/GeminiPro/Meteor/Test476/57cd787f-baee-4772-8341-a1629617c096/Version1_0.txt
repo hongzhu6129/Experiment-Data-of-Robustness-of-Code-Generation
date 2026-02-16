@@ -1,0 +1,60 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class StringDateTimeConverter {
+
+    public static void main(String[] args) {
+        // String to Date and Time conversion
+        String dateTimeString = "2024-03-15T10:30:00"; // Example ISO-8601 format
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"); // Adjust pattern as needed
+            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, formatter);
+            System.out.println("Converted DateTime: " + dateTime);
+
+
+            // Demonstrate different formats
+            DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy hh:mm:ss a");
+            String formattedDateTime = dateTime.format(customFormatter);
+            System.out.println("Formatted DateTime: " + formattedDateTime); // Example: Mar 15, 2024 10:30:00 AM
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing date/time: " + e.getMessage());
+        }
+
+
+        // Date and Time to String Conversion
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME; // Default ISO format
+        String dateTimeString2 = currentDateTime.format(formatter);
+        System.out.println("Current DateTime as String (ISO): " + dateTimeString2);
+
+        DateTimeFormatter customFormatter2 = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy HH:mm:ss");
+        String formattedDateTime2 = currentDateTime.format(customFormatter2); 
+        System.out.println("Current DateTime as String (Custom): " + formattedDateTime2); // Example: Thursday, March 14, 2024
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Error Handling:** Uses a `try-catch` block to handle potential `DateTimeParseException` if the input string is not in the expected format.  This prevents the program from crashing and provides a user-friendly error message.
+* **More Formatting Examples:** Demonstrates how to convert to and from different date/time formats using custom format patterns. This gives more flexibility.
+* **ISO-8601 Format:** Uses the standard ISO-8601 format as the default for string representation, which is widely compatible and recommended.
+* **Current Date/Time Example:** Shows how to get and format the current date and time.
+* **Comments:** Added comments to explain the code and the different formatting options.
+
+
+How to use it:
+
+1. **Compile:** Save the code as `StringDateTimeConverter.java` and compile it: `javac StringDateTimeConverter.java`
+2. **Run:** `java StringDateTimeConverter`
+
+
+You can modify the input `dateTimeString` and the format patterns to experiment with different conversions.  Make sure the format pattern matches the structure of the date/time string you are parsing.

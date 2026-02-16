@@ -1,0 +1,40 @@
+```java
+public class StringConversions {
+
+    public static void main(String[] args) {
+        String str = "12345";
+        String strDecimal = "12345.67";
+        String strLarge = "9876543210"; // Larger than max int
+
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Int value: " + intValue);
+
+            long longValue = Long.parseLong(strLarge); // Use long for larger numbers
+            System.out.println("Long value: " + longValue);
+           
+            float floatValue = Float.parseFloat(strDecimal);
+            System.out.println("Float value: " + floatValue);
+
+            double doubleValue = Double.parseDouble(strDecimal);
+            System.out.println("Double value: " + doubleValue);
+
+
+            //Demonstrating handling NumberFormatException
+            String invalidStr = "abc";
+            try{
+                int invalidInt = Integer.parseInt(invalidStr);
+
+            } catch (NumberFormatException e){
+                 System.out.println("Invalid string for integer conversion: " + e.getMessage());
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error during conversion: " + e.getMessage());
+        }
+
+
+    }
+}
+```

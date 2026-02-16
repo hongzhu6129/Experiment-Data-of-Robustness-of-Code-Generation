@@ -1,0 +1,71 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int number) {
+        if (number < 0) {
+            return isCube(-number); // Handle negative numbers
+        }
+
+        // Efficient approach using integer cube root
+        int cubeRoot = (int) Math.round(Math.cbrt(number));
+        return cubeRoot * cubeRoot * cubeRoot == number;
+
+        // Less efficient approach using a loop (for demonstration):
+        /*
+        for (int i = 0; i <= number; i++) {
+            if (i * i * i == number) {
+                return true; 
+            }
+             if (i*i*i > number) { //Optimization: break if exceeded
+                 break;
+             }
+        }
+        return false;
+        */
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Method Extraction:**  The `isCube()` method is now separate, making the code more organized and reusable.
+2. **Handling Negative Numbers:** The `isCube()` method correctly handles negative cubes. The cube root of a negative number is simply the negative of the cube root of its absolute value.
+3. **Efficient Cube Root Calculation:** The code uses `Math.cbrt()` to directly calculate the cube root, which is more efficient than looping or iterative approaches. We cast the result to `int` and round to the nearest integer because `Math.cbrt()` returns a `double`.
+4. **Clearer Output:** The output messages are more informative.
+5. **Optional Loop Approach (Commented Out):** I've included a loop-based approach as a comment for comparison. It's less efficient but demonstrates a basic iterative method. The loop also includes an optimization to break early if `i*i*i` exceeds the input number.  The `Math.cbrt` approach is generally preferred.
+
+
+
+How to use with User Input:
+
+To take user input, you can modify the `main` method like this:
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+    // ... (isCube method remains the same)
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+
+        if (isCube(number)) { // ... rest of the code
+         // ...
+        }
+    }
+}
+```

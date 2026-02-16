@@ -1,0 +1,52 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetLastElement {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of integers
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some elements to the TreeSet
+        numbers.add(10);
+        numbers.add(5);
+        numbers.add(20);
+        numbers.add(15);
+        numbers.add(25);
+
+        // Print the initial TreeSet
+        System.out.println("Initial TreeSet: " + numbers);
+
+        // Retrieve and remove the last element (largest)
+
+        if (!numbers.isEmpty()) { // Check if the TreeSet is empty to avoid exceptions
+            Integer lastElement = numbers.last();
+            numbers.remove(lastElement);
+
+
+            System.out.println("Removed Last Element: " + lastElement);
+            System.out.println("TreeSet after removal: " + numbers);
+        } else {
+            System.out.println("TreeSet is empty. Cannot remove the last element.");
+        }
+
+
+
+
+        //Demonstrate handling an empty TreeSet
+        TreeSet<String> emptySet = new TreeSet<>();
+        if(!emptySet.isEmpty()){ //Important check!
+            String last = emptySet.last();
+            emptySet.remove(last);
+             System.out.println("Last element removed (empty set demonstration): " + last);
+        } else {
+            System.out.println("Cannot remove from an empty TreeSet.");
+
+        }
+
+
+
+
+    }
+}
+```

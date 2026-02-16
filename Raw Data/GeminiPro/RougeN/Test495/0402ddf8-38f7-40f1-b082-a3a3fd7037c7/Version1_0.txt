@@ -1,0 +1,62 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    }
+
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print((i * n + j +1 )+ " "); // Print matrix elements sequentially.
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+**Explanation and How to Compile/Run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java`. Then compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java 
+   ```
+
+2. **Running:**  Execute the compiled code, providing the matrix size (n) as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // Creates a 5x5 matrix
+   ```
+   Or:
+   ```bash
+   java MatrixPrinter 3 // Creates a 3x3 matrix
+   ```
+
+**Key Improvements and Features:**
+
+* **Error Handling:**  The code now includes robust error handling. It checks for:
+    * Incorrect number of command-line arguments.
+    * Non-positive integer input for `n`.
+    * Non-integer input (NumberFormatException).  This makes the program more user-friendly and prevents crashes.
+* **Clear Usage Instructions:**  The `main` method provides clear usage instructions if the user provides incorrect command-line arguments.
+* **Sequential Numbering:**  The matrix is filled with sequentially increasing numbers from 1 to n*n, which is a common way to visualize matrix indices or elements.
+* **Clear Formatting:** The output is nicely formatted with spaces between elements and newlines after each row, making the matrix easy to read.
+
+
+This improved version addresses the potential issues and makes the code more practical and robust.

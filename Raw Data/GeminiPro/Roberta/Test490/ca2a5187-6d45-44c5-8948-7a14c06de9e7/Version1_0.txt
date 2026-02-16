@@ -1,0 +1,30 @@
+```java
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        displayFirst50PentagonalNumbers();
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+
+    public static void displayFirst50PentagonalNumbers() {
+        for (int i = 1; i <= 50; i++) {
+            System.out.printf("%7d ", getPentagonalNumber(i)); // %7d formats the output for alignment
+            if (i % 10 == 0) { // Start a new line after every 10 numbers
+                System.out.println();
+            }
+        }
+    }
+}
+```
+
+
+This code adheres strictly to the specified method signatures:
+
+1. **`public static void main(String[] args)`:**  This is the entry point of the program.  It calls the `displayFirst50PentagonalNumbers` method to print the sequence.
+
+2. **`public static int getPentagonalNumber(int n)`:** This method calculates the nth pentagonal number using the formula and returns the result.
+
+3. **`displayFirst50PentagonalNumbers()`:** (Added as instructed by the problem description, even though not explicitly in the original prompt). This helper method loops from 1 to 50, calls `getPentagonalNumber` for each value, and neatly formats the output in rows of 10 numbers.  The `%7d` format specifier ensures that the numbers are aligned nicely, even when they have different numbers of digits.  The `if (i % 10 == 0)` condition controls when a new line is printed.

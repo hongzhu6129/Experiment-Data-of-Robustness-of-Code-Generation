@@ -1,0 +1,102 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static String getCurrentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"); // Customizable format
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String currentTime = getCurrentTime();
+        System.out.println("Current System Time: " + currentTime);
+    }
+}
+```
+
+**Test Cases:**
+
+It's difficult to directly unit test `SystemTime.getCurrentTime()` because it relies on the system clock, which is constantly changing. Instead, we can test aspects like formatting and edge cases around time zones (though this code doesn't explicitly handle time zones, so it relies on the system's default).  More sophisticated time handling would use `ZonedDateTime` and allow you to inject a clock for testing purposes.
+
+Here's a testing approach that focuses on format validation:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SystemTimeTest {
+
+
+    @Test
+    public void testValidFormat() {
+        // Arrange:  Create a known LocalDateTime for predictable output.
+        LocalDateTime fixedTime = LocalDateTime.of(2024, 10, 27, 10, 30, 45, 123000000); // Example
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String expectedTime = fixedTime.format(formatter);
+
+        // Act: Override LocalDateTime.now() for testing purposes (not ideal, but demonstrates a strategy).
+        SystemTime st = new SystemTime() {
+            @Override
+            public String getCurrentTime() {
+                return fixedTime.format(formatter);
+            }
+        };
+        String actualTime = st.getCurrentTime();
+
+
+        // Assert:
+        assertEquals(expectedTime, actualTime);
+
+    }
+
+
+    @Test
+    public void testInvalidFormat() {
+        // Arrange: Simulate an invalid date-time string that doesn't match expected format.
+        String invalidTimeString = "2024/10/27 10:30";
+
+        // Act & Assert: Attempt to parse the invalid string; expect an exception
+        assertThrows(DateTimeParseException.class, () -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            LocalDateTime.parse(invalidTimeString, formatter); 
+        });
+    }
+
+
+
+    // Corner Case Example (Daylight Saving Time transition) - Requires more advanced time handling:
+    // (This test is commented out as it's beyond the scope of the basic SystemTime class,
+    // but included for illustrative purposes if you were using ZonedDateTime)
+    /*
+    @Test
+    public void testDaylightSavingTimeTransition() {
+        // This would require using ZonedDateTime and setting up specific times around DST changes
+        // to ensure the output is correct during transitions.
+        // ... (Test logic using ZonedDateTime) ...
+    }
+    */
+
+
+}
+
+```
+
+**Key Improvements in the Testing Approach:**
+
+* **Format Validation:** Tests the core functionality�formatting the date and time according to the specified pattern.
+* **Handles Invalid Formats:** Demonstrates how to handle cases where the date-time string isn't in the expected format using `DateTimeParseException`.
+* **Testability with Overriding (for demonstration):**  Shows how to override `getCurrentTime()` in the test to provide a fixed time for predictable output. This addresses the challenge of the system clock changing during the test.  A more robust solution would involve injecting a clock dependency, but that's a more advanced topic.
+* **Corner Case Example (DST):** Comments out a DST test to illustrate a more advanced scenario and point towards the direction of a better solution involving `ZonedDateTime`.
+
+
+
+
+This testing approach is much more robust and targets specific aspects of the `SystemTime` class that can be verified without being dependent on the constantly changing system clock. Remember, thorough testing is crucial, especially when dealing with date and time operations, which can have many subtle edge cases.

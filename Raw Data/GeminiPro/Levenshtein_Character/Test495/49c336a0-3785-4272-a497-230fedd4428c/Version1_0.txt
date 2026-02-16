@@ -1,0 +1,55 @@
+```java
+class Solution {
+    /**
+     * Prints an n-by-n matrix to the console.
+     *
+     * @param n The size of the matrix (n x n).
+     */
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(j + 1 + " "); // Print the column number (1-based)
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage: Print a 5x5 matrix
+        printMatrix(5);
+
+
+        // Example usage: Print a 3x3 matrix
+        printMatrix(3);
+
+
+         // Example for n = 0 (empty matrix) - won't print anything
+         printMatrix(0);
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Output:** The code now prints the numbers 1 through `n` for each row in the matrix, making the output more visually representative of a matrix.
+2. **`main` method for demonstration:**  The `main` method demonstrates how to use the `printMatrix` method with different values of `n`.
+3. **Handles n = 0:** The code correctly handles the case where `n` is 0 (prints nothing, representing an empty matrix). 
+4. **Comments:**  Added comments to explain the purpose of the `printMatrix` method and the example usage in `main`.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `Solution.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Compile the code using the Java compiler:
+   ```bash
+   javac Solution.java 
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java Solution
+   ```
+
+
+This will print the example matrices (5x5 and 3x3) to your console.  You can change the argument to `printMatrix` in `main` to test with other matrix sizes.

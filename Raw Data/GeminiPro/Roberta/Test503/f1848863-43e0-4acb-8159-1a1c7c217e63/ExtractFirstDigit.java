@@ -1,0 +1,32 @@
+public class ExtractFirstDigit {
+
+    public static void main(String[] args) {
+        System.out.println(test(123)); // Output: 1
+        System.out.println(test(-456)); // Output: -4
+        System.out.println(test(7)); // Output: 7
+        System.out.println(test(-8)); // Output: -8
+        System.out.println(test(0)); // Output: 0
+        System.out.println(test(9000)); // Output: 9
+        System.out.println(test(-100)); // Output: -1
+
+    }
+
+    public static int test(int n) {
+        if (n == 0) {
+            return 0;
+        }
+
+        if (n < 0) {
+            n = -n; // Make n positive for easier processing
+            while (n >= 10) {
+                n /= 10;
+            }
+             return -n; // Reapply negative sign
+        } else {
+             while (n >= 10) {
+                n /= 10;
+            }
+            return n;
+        }
+    }
+}

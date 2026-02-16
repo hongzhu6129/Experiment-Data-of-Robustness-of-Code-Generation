@@ -1,0 +1,80 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHexadecimal {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        try {
+            int decimal = 0;
+            int power = 0;
+            for (int i = binaryString.length() - 1; i >= 0; i--) {
+                char digit = binaryString.charAt(i);
+                if (digit == '1') {
+                    decimal += Math.pow(2, power);
+                } else if (digit != '0') {
+                    System.out.println("Invalid binary number");
+                    return;
+                }
+                power++;
+            }
+
+            String hexString = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                if (remainder < 10) {
+                    hexString = remainder + hexString;
+                } else {
+                    hexString = (char) ('a' + remainder - 10) + hexString; // Convert to hex characters
+                }
+                decimal /= 16;
+            }
+
+
+            if(hexString.isEmpty()) {
+                System.out.println("Hexadecimal value: '0'"); // Handle the case where the input is 0.
+            } else {
+                System.out.println("Hexadecimal value: '" + hexString + "'");
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a binary number.");
+        }
+
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+* **Valid Binary Numbers:**
+    * Input: `1101`  Expected Output: `Hexadecimal value: 'd'`
+    * Input: `1010`  Expected Output: `Hexadecimal value: 'a'`
+    * Input: `1111`  Expected Output: `Hexadecimal value: 'f'`
+    * Input: `10000` Expected Output: `Hexadecimal value: '10'`
+    * Input: `11111111` Expected Output: `Hexadecimal value: 'ff'`
+    * Input: `0` Expected Output: `Hexadecimal value: '0'`
+    * Input: `1` Expected Output: `Hexadecimal value: '1'`
+    * Input: `10` Expected Output: `Hexadecimal value: '2'`
+
+
+* **Invalid Binary Numbers (Corner Cases):**
+    * Input: `123`   Expected Output: `Invalid binary number`
+    * Input: `10a1`  Expected Output: `Invalid binary number`
+    * Input: `-101` Expected Output: `Invalid binary number`
+    * Input: `1 10` Expected Output: `Invalid binary number` (Handles spaces within input)
+    * Input: ``      Expected Output: `Hexadecimal value: '0'` (Empty string)
+
+
+* **Large Binary Numbers (Edge Cases):**
+    * Input: A very long string of 1s (e.g., 1 repeated 60 times). This tests the ability of the program to handle larger inputs without overflow or other issues.  Expected Output: The correct hexadecimal representation.
+
+
+This comprehensive set of test cases covers valid inputs, common errors (invalid characters), edge cases (empty string, large binary numbers), and corner cases (zero input). It helps to ensure the program's robustness.  Always run your program with a good variety of test cases like these to verify its correctness.

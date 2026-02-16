@@ -1,0 +1,74 @@
+```java
+public class TimeExecution {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using System.nanoTime()
+
+        long startTime = System.nanoTime();
+
+        // Code to be measured
+        long sum = 0;
+        for (int i = 0; i < 1000000; i++) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum); // Print the result to prevent optimization
+
+        long endTime = System.nanoTime();
+        long duration = endTime - startTime;
+
+        System.out.println("Execution time (nanoseconds): " + duration);
+
+
+
+        // Method 2: Demonstrating potential issues with very short executions
+
+        startTime = System.nanoTime();
+
+        // Very fast code - may show 0 execution time
+        int x = 10;
+        int y = 20;
+        int z = x + y;
+        System.out.println("z: " + z); // Print to prevent optimization
+
+
+        endTime = System.nanoTime();
+        duration = endTime - startTime;
+
+        System.out.println("Very fast code execution time (nanoseconds, potentially inaccurate): " + duration);
+
+        // Suggestion for very fast code: Run it multiple times in a loop and average the results.
+
+
+        // Method 3: Illustrating using System.currentTimeMillis() (less precise, in milliseconds)
+
+        long startMillis = System.currentTimeMillis();
+
+        //Some longer operation - to show difference between nanoTime and currentTimeMillis
+         sum = 0;
+        for (int i = 0; i < 100000000; i++) {  // Larger loop for demonstration
+            sum += i;
+        }
+         System.out.println("Larger Sum: " + sum);
+
+        long endMillis = System.currentTimeMillis();
+        long durationMillis = endMillis - startMillis;
+
+        System.out.println("Execution time (milliseconds): " + durationMillis);
+
+
+    }
+}
+```
+
+
+This enhanced educational example:
+
+1. **Uses `System.nanoTime()`:**  This is the recommended way to measure execution time in nanoseconds in Java.
+2. **Demonstrates a potential issue:** Shows how very short executions might report 0 nanoseconds and suggests running the code multiple times and averaging to address this.
+3. **Includes `System.currentTimeMillis()`:** Provides a comparison with `currentTimeMillis()`, which measures in milliseconds and is less precise but can be useful for longer-running operations.  This highlights the difference in precision.
+4. **Prints results:** Prints the results of the computations within the timed blocks. This prevents the compiler from optimizing away the code being measured, which could lead to artificially short execution times.
+5. **Clearer explanations:** Includes comments to explain the purpose of each section and potential pitfalls.
+
+
+This improved example offers a more comprehensive and practical understanding of timing code execution in Java.

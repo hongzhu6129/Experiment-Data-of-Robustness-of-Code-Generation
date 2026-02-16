@@ -1,0 +1,67 @@
+**Problem Description:**
+
+Given a string, find the first non-repeating character and the first character that repeats.
+
+**Java Program:**
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class FirstNonRepeatingAndRepeatingCharacters {
+
+    public static void main(String[] args) {
+        String input = "abcabcbb";
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        for (char c : input.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+
+        char firstNonRepeating = ' ';
+        char firstRepeating = ' ';
+        boolean nonRepeatingFound = false;
+        boolean repeatingFound = false;
+
+        for (char c : input.toCharArray()) {
+            if (!nonRepeatingFound && charCountMap.get(c) == 1) {
+                firstNonRepeating = c;
+                nonRepeatingFound = true;
+            } else if (!repeatingFound && charCountMap.get(c) > 1) {
+                firstRepeating = c;
+                repeatingFound = true;
+            }
+
+            if (nonRepeatingFound && repeatingFound) {
+                break;
+            }
+        }
+
+        System.out.println("First non-repeating character: " + firstNonRepeating);
+        System.out.println("First repeating character: " + firstRepeating);
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty string:** ""
+* **String with all repeating characters:** "aaa"
+
+**General Cases:**
+
+* **String with both non-repeating and repeating characters:** "abcabcbb"
+* **String with only non-repeating characters:** "abcdefg"
+* **String with only repeating characters:** "aaabbbccc"
+* **String with non-repeating and repeating spaces:** "a b c d a b c b"
+
+**Expected Output:**
+
+* **Empty string:** First non-repeating character: ' ', First repeating character: ' '
+* **String with all repeating characters:** First non-repeating character: ' ', First repeating character: 'a'
+* **String with both non-repeating and repeating characters:** First non-repeating character: 'a', First repeating character: 'b'
+* **String with only non-repeating characters:** First non-repeating character: 'a', First repeating character: ' '
+* **String with only repeating characters:** First non-repeating character: ' ', First repeating character: 'a'
+* **String with non-repeating and repeating spaces:** First non-repeating character: 'd', First repeating character: 'b'

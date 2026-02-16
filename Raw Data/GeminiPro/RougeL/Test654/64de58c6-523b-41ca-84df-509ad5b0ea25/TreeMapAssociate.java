@@ -1,0 +1,29 @@
+import java.util.TreeMap;
+
+public class TreeMapAssociate {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Associate values with keys
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+
+        // Print the TreeMap to verify the association
+        System.out.println(treeMap);
+
+
+        //Example of associating a new value with existing key (overwrites)
+         treeMap.put("Apple", 10); // Apple's value is now 10
+        System.out.println(treeMap);
+
+
+        //Example demonstrating automatic sorting by keys (natural ordering for Strings)
+        treeMap.put("Grape", 4);
+        treeMap.put("Cherry", 5);
+        System.out.println(treeMap);
+
+    }
+}

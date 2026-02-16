@@ -1,0 +1,18 @@
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        // Display the first 50 pentagonal numbers
+        final int NUMBER_OF_PENTAGONAL_NUMBERS = 50;
+        for (int i = 1; i <= NUMBER_OF_PENTAGONAL_NUMBERS; i++) {
+            System.out.printf("%7d ", getPentagonalNumber(i));
+            if (i % 10 == 0) {  // Print 10 numbers per line
+                System.out.println();
+            }
+        }
+    }
+
+    public static int getPentagonalNumber(int n) {
+        // Calculate and return the nth pentagonal number
+        return n * (3 * n - 1) / 2;
+    }
+}

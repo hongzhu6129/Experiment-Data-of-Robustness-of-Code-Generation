@@ -1,0 +1,42 @@
+
+
+
+
+**Test Cases (Including Corner Cases):**
+
+1. **Valid Binary:**
+   - Input: `101101`
+   - Expected Output: `55`
+
+2. **Leading Zeros:**
+   - Input: `000111`
+   - Expected Output: `7`
+
+3. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Large Binary:**
+   - Input: `11111111111111111111111111111111` (32 bits - max for `int`)
+   - Expected Output: `37777777777`
+
+5. **Invalid Characters:**
+   - Input: `101201`
+   - Expected Output: `Invalid binary input.`
+
+6. **Empty Input:**
+   - Input: `` (Empty string)
+   - Expected Output: `Invalid binary input.` (because the loop now checks for empty string after zero removal)
+
+
+
+**Explanation of Improvements:**
+
+- **Handles Leading Zeros:** The `while` loop efficiently removes leading zeros without affecting the core conversion logic.
+- **Handles Invalid Characters:** The code now explicitly checks for non-binary characters ('0' or '1') and prints an error message.
+- **Handles Zero Input:** The added `if (decimal == 0)` condition specifically handles the case where the input is "0", ensuring the correct octal output ("0").
+- **Empty String Handling:** The modified code handles empty input strings gracefully, preventing crashes.
+
+
+
+This revised code is more robust and handles various corner cases, making it a more reliable solution for converting binary to octal.

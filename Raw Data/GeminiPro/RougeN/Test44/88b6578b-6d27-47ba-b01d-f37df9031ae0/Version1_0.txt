@@ -1,0 +1,49 @@
+```java
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the input string
+        String inputString = scanner.nextLine();
+
+        // Read the character to be searched
+        char character = scanner.nextLine().charAt(0);
+
+        // Create a new string that contains all the characters in the input string that are different from the character to be searched
+        String newString = "";
+        for (int i = 0; i < inputString.length(); i++) {
+            if (inputString.charAt(i) != character) {
+                newString += inputString.charAt(i);
+            }
+        }
+
+        // Print the new string
+        System.out.println(newString);
+    }
+}
+```
+
+**Test cases:**
+
+* **Input string:** "HelloWorld"
+* **Character to be searched:** 'l'
+* **Expected output:** "HeWord"
+
+* **Input string:** "aabbbbcccc"
+* **Character to be searched:** 'b'
+* **Expected output:** "aacc"
+
+* **Input string:** ""
+* **Character to be searched:** 'a'
+* **Expected output:** ""
+
+* **Input string:** "a"
+* **Character to be searched:** 'a'
+* **Expected output:** ""
+
+* **Input string:** "1234567890"
+* **Character to be searched:** '5'
+* **Expected output:** "123467890"

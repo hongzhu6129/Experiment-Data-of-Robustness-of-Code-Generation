@@ -1,0 +1,69 @@
+```java
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
+public class FirstAndLastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current year and month (you can modify this to get input from the user)
+        int year = LocalDate.now().getYear();
+        int month = LocalDate.now().getMonthValue();
+
+
+        // Using YearMonth
+        YearMonth yearMonth = YearMonth.of(year, month);
+
+        LocalDate firstDay = yearMonth.atDay(1);
+        LocalDate lastDay = yearMonth.atEndOfMonth();
+
+        // Format the dates for output (optional)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        System.out.println("First day of the month: " + firstDay.format(formatter));
+        System.out.println("Last day of the month: " + lastDay.format(formatter));
+
+
+
+        // Example with user input (basic, no error handling):
+        if (args.length == 2) {
+            try {
+                year = Integer.parseInt(args[0]);
+                month = Integer.parseInt(args[1]);
+
+                yearMonth = YearMonth.of(year, month);
+                firstDay = yearMonth.atDay(1);
+                lastDay = yearMonth.atEndOfMonth();
+                System.out.println("First day of the month: " + firstDay.format(formatter));
+                System.out.println("Last day of the month: " + lastDay.format(formatter));
+
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please provide year and month as integers.");
+            }
+
+        }  // End of user input example
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Uses `java.time`:**  The modern Java date/time API is used (specifically `YearMonth`, `LocalDate`, and `DateTimeFormatter`), which is much preferred over older classes like `Calendar` and `Date`.
+* **Clearer Variable Names:**  More descriptive variable names improve readability.
+* **Optional Formatting:** The `DateTimeFormatter` is used to format the output nicely, making it easier to read.
+* **Example with User Input:** Demonstrates how to accept year and month from command-line arguments. Basic error handling (using `try-catch`) is included for the number parsing.
+* **Comments:** Added comments to explain the different sections of the code.
+
+
+To compile and run from the command line:
+
+1. **Save:** Save the code as `FirstAndLastDayOfMonth.java`.
+2. **Compile:** `javac FirstAndLastDayOfMonth.java`
+3. **Run (current date):** `java FirstAndLastDayOfMonth`
+4. **Run (specific year/month):** `java FirstAndLastDayOfMonth 2024 2` (for February 2024)
+
+
+This improved version provides a more robust and modern solution to the problem of getting the first and last day of a month in Java.

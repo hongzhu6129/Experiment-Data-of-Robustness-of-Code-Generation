@@ -1,0 +1,78 @@
+```java
+import java.util.Arrays;
+
+public class GreaterThanAverage {
+
+    public static void main(String[] args) {
+        // Example array
+        int[] numbers = {1, 5, 2, 8, 3, 9, 4, 7, 6};
+
+        // Calculate the average
+        double sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        double average = sum / numbers.length;
+
+        // Find and print numbers greater than the average
+        System.out.println("Numbers greater than the average (" + average + "):");
+        for (int number : numbers) {
+            if (number > average) {
+                System.out.print(number + " ");
+            }
+        }
+        System.out.println(); // Add a newline for cleaner output
+
+
+        // Example with no elements greater (or all equal)
+         int[] numbers2 = {5, 5, 5, 5, 5};
+         findGreater(numbers2);
+
+        // Example with an empty array
+        int[] numbers3 = {};
+        findGreater(numbers3);  // Handles the empty array case gracefully
+
+        // Example with negative numbers
+        int[] numbers4 = {-2, -5, -1, -8};
+        findGreater(numbers4);
+
+    }
+
+
+    // Helper function to encapsulate the logic and make the main method cleaner (though it's still all within main)
+    public static void findGreater(int[] numbers) {
+
+        if (numbers.length == 0) {
+            System.out.println("The array is empty.");
+            return;  // Important to exit early if the array is empty
+        }
+
+
+        double sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        double average = sum / numbers.length;
+
+        System.out.println("Numbers greater than the average (" + average + "):");
+
+        boolean foundGreater = false; // Flag to track if any greater number was found.
+        for (int number : numbers) {
+            if (number > average) {
+                System.out.print(number + " ");
+                foundGreater = true;
+            }
+        }
+
+        if (!foundGreater) {
+            System.out.println("No numbers are greater than the average.");
+        }
+
+        System.out.println(); // Newline for separation
+    }
+}
+
+
+
+
+```

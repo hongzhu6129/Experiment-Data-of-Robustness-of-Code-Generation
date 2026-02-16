@@ -1,0 +1,64 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer for n.");
+        }
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print((i * n + j + 1) % 10 + " "); // Prints the last digit 
+                                                             // of the number to fit n x n
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Takes a command-line argument `n` (as a String).
+   - Uses `Integer.parseInt()` to convert the String to an integer.
+   - Includes error handling to ensure the input is a valid positive integer.
+   - Calls the `printMatrix` method.
+
+2. **`printMatrix` method:**
+   - Uses nested loops to iterate through the rows and columns of the matrix.
+   - `System.out.print((i * n + j + 1) % 10 + " ");` calculates the value to be printed.  The formula `i * n + j + 1` calculates a sequential number for each cell in the matrix (starting from 1). `% 10` gets the last digit of that number, which helps keep the output visually appealing for larger values of `n`.
+   - `System.out.println();` prints a newline after each row to format the output correctly.
+
+
+**How to compile and run:**
+
+1. Save the code as `MatrixPrinter.java`.
+2. Compile: `javac MatrixPrinter.java`
+3. Run: `java MatrixPrinter 5` (replace 5 with your desired value of `n`)
+
+
+**Example Output (n=5):**
+
+```
+1 2 3 4 5 
+6 7 8 9 0 
+1 2 3 4 5 
+6 7 8 9 0 
+1 2 3 4 5 
+```

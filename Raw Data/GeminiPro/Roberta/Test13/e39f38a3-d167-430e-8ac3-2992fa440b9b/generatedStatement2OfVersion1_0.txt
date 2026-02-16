@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the `multiply` function:
+
+| Test Case | num1 | num2 | Expected Output | Notes                        |
+|-----------|------|------|-----------------|-----------------------------|
+| 1        | 5    | 10   | 50             | Positive numbers            |
+| 2        | -5   | 10   | -50            | Negative num1              |
+| 3        | 5    | -10  | -50            | Negative num2              |
+| 4        | -5   | -10  | 50             | Both negative             |
+| 5        | 0    | 10   | 0              | num1 is zero              |
+| 6        | 5    | 0    | 0              | num2 is zero              |
+| 7        | 0    | 0    | 0              | Both are zero              |
+| 8        | 9223372036854775807 | 1    | 9223372036854775807 | Long.MAX_VALUE * 1  |
+| 9        | 9223372036854775807 | 2    | -2                      | Long.MAX_VALUE * 2 (overflow)|
+| 10       | -9223372036854775808 | 1   | -9223372036854775808| Long.MIN_VALUE * 1      |
+| 11       | -9223372036854775808| -1  | 9223372036854775808 | Long.MIN_VALUE * -1 (overflow)|
+| 12       | 100000  | 100000 | 10000000000 | Large positive numbers |
+
+
+
+**How to Run Test Cases:**
+
+You can either manually input these values into the program or, better yet, create automated tests using a testing framework like JUnit. Here's a basic example using JUnit:
+

@@ -1,0 +1,54 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class GetDayOfWeek {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter date in YYYY-MM-DD format (e.g., 2024-03-15):");
+        String dateString = scanner.nextLine();
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE; // Formatter for YYYY-MM-DD
+            LocalDate date = LocalDate.parse(dateString, formatter);
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            System.out.println("The day of the week for " + dateString + " is: " + dayOfWeek);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+        }
+
+        scanner.close(); // Close the scanner
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Input Validation:** It now handles potential `DateTimeParseException` if the user enters an invalid date format.  This makes the code more robust.
+* **Clearer Prompt:** The prompt explicitly tells the user the expected date format.
+* **Scanner Closed:** The `scanner.close()` is added to release the resource.
+* **ISO_LOCAL_DATE Formatter:** Uses the built-in `DateTimeFormatter.ISO_LOCAL_DATE` for clarity and conciseness.
+
+
+
+Example Usage:
+
+```
+Enter date in YYYY-MM-DD format (e.g., 2024-03-15):
+2024-03-15
+The day of the week for 2024-03-15 is: FRIDAY
+
+Enter date in YYYY-MM-DD format (e.g., 2024-03-15):
+2023-12-25
+The day of the week for 2023-12-25 is: TUESDAY
+
+Enter date in YYYY-MM-DD format (e.g., 2024-03-15):
+bad-date
+Invalid date format. Please use YYYY-MM-DD.
+```

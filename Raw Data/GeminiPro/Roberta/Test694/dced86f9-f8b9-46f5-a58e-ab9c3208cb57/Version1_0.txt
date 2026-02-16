@@ -1,0 +1,63 @@
+```java
+class Solution {
+    /**
+     * Multiplies two integers without using multiplication, division, bitwise operators, or loops.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The product of a and b.
+     */
+    public static int multiply_two_nums(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+
+        if (b > 0) {
+            return a + multiply_two_nums(a, b - 1);
+        } else {
+            return -multiply_two_nums(a, -b);
+        }
+    }
+
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 3;
+        int product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+
+        num1 = -5;
+        num2 = 3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+        num1 = 5;
+        num2 = -3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+         num1 = -5;
+        num2 = -3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+        num1 = 5;
+        num2 = 0;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+    }
+}
+```
+
+
+This uses recursion to achieve multiplication.  The base case is when `b` is 0.  It handles both positive and negative numbers by recursively calling itself with adjusted values.  No loops, bitwise operations, multiplication, or division are used directly.  It relies on addition and subtraction, and the recursive calls effectively simulate multiplication.
+
+
+Key improvements and explanations:
+
+* **Handles negative numbers:**  The code explicitly deals with negative `b` values by negating the result of the recursive call with the absolute value of `b`.
+* **Clear base case:** The `b == 0` base case prevents infinite recursion.
+* **Comprehensive testing in `main()`:** The `main()` method demonstrates the function's behavior with different combinations of positive, negative, and zero inputs. This helps ensure correctness.
+* **Clearer recursion:** The recursion is designed to progressively reduce the absolute value of `b` towards zero.
+
+This revised answer directly addresses the prompt's constraints and provides a more robust and well-tested solution.

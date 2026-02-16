@@ -1,0 +1,61 @@
+```java
+import java.util.TimeZone;
+import java.util.Arrays;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        // Get all available time zone IDs
+        String[] availableIDs = TimeZone.getAvailableIDs();
+
+        // Sort the IDs for easier readability (optional)
+        Arrays.sort(availableIDs);
+
+        // Display the time zones with UTC/GMT offsets
+        System.out.println("Available Time Zones (UTC/GMT):");
+        for (String id : availableIDs) {
+            TimeZone tz = TimeZone.getTimeZone(id);
+            int offset = tz.getRawOffset(); // Offset in milliseconds
+
+            // Calculate and format the offset in hours and minutes
+            int hours = offset / (60 * 60 * 1000);
+            int minutes = Math.abs((offset / (60 * 1000)) % 60);  // Use absolute value for minutes
+            String formattedOffset = String.format("UTC%s%02d:%02d", (hours >= 0 ? "+" : "-"), Math.abs(hours), minutes); // Format as UTC+ or UTC-
+
+            System.out.println(id + " : " + formattedOffset );
+        }
+
+    }
+}
+
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clear Output Formatting:**  The code formats the output to clearly show the time zone ID and its offset from UTC, such as `America/New_York : UTC-05:00`.  The formatting makes it easy to read and understand.
+
+2. **Handles All Time Zones:** The `TimeZone.getAvailableIDs()` method returns *all* available time zone IDs recognized by Java. 
+
+3. **UTC/GMT Consistency:**  The code uses `getRawOffset()` which provides the *raw* offset without considering Daylight Saving Time (DST). This gives a consistent UTC offset. This is generally preferred when listing all time zones as DST can change throughout the year.  If you needed to account for DST, you could use `getOffset(long date)` with the current time.
+
+
+4. **Sorting:** The `Arrays.sort(availableIDs)` line sorts the time zone IDs alphabetically, which can make it easier to find a specific time zone in a long list. This is optional but helpful.
+
+5. **Error Handling (Optional):**  While very unlikely, you could add error handling in case a time zone ID is invalid (though `TimeZone.getTimeZone()` is robust and usually handles invalid IDs gracefully).
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `TimeZones.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it:
+   ```bash
+   javac TimeZones.java 
+   ```
+3. **Run:**
+   ```bash
+   java TimeZones
+   ```
+
+
+This will print the list of time zones and their UTC offsets to the console.

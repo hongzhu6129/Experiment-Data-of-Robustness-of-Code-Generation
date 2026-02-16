@@ -1,0 +1,43 @@
+```java
+import java.util.Scanner;
+
+public class CharacterFinder {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string and character to search for
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+        System.out.print("Enter a character to search for: ");
+        char ch = scanner.next().charAt(0);
+
+        // Find the first occurrence of the character in the string
+        int index = str.indexOf(ch);
+
+        // Print the index of the character, or -1 if it was not found
+        if (index == -1) {
+            System.out.println("The character was not found in the string.");
+        } else {
+            System.out.println("The character was found at index " + index + ".");
+        }
+    }
+}
+```
+
+**Test cases**
+
+* **Normal case:** Input string: "Hello world", character to search for: 'o'
+    * Expected output: "The character was found at index 4."
+* **Character not found:** Input string: "Hello world", character to search for: 'z'
+    * Expected output: "The character was not found in the string."
+* **Empty string:** Input string: "", character to search for: 'a'
+    * Expected output: "The character was not found in the string."
+* **Character at the beginning of the string:** Input string: "apple", character to search for: 'a'
+    * Expected output: "The character was found at index 0."
+* **Character at the end of the string:** Input string: "banana", character to search for: 'a'
+    * Expected output: "The character was found at index 5."
+* **Character appears multiple times:** Input string: "Mississippi", character to search for: 's'
+    * Expected output: "The character was found at index 0."
+* **Character is case-sensitive:** Input string: "Hello world", character to search for: 'O'
+    * Expected output: "The character was not found in the string."

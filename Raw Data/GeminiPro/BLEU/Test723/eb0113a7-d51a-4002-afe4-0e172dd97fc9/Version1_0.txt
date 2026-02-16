@@ -1,0 +1,69 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class PermutationSort {
+
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 8, 1, 9, 4};
+        int[] sortedArr = pSort(arr);
+        System.out.println(Arrays.toString(sortedArr));
+    }
+
+    public static int[] pSort(int[] arr) {
+        List<int[]> permutations = new ArrayList<>();
+        permute(arr, 0, permutations);
+
+        for (int[] permutation : permutations) {
+            if (isSorted(permutation)) {
+                return permutation;
+            }
+        }
+        return null; // Should never reach here if the array contains sortable elements
+    }
+
+
+    private static void permute(int[] arr, int l, List<int[]> permutations) {
+        if (l == arr.length) {
+            permutations.add(arr.clone()); // Important: Add a copy, not the original array
+        } else {
+            for (int i = l; i < arr.length; i++) {
+                swap(arr, l, i);
+                permute(arr, l + 1, permutations);
+                swap(arr, l, i); // Backtrack to maintain original order for next iteration
+            }
+        }
+    }
+
+    private static boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Copying Array in `permute`:** The most critical fix is adding `arr.clone()` inside the `permute` method.  This creates a copy of the array before adding it to the `permutations` list. Without this, you're adding the same array object multiple times, and as the array gets modified in place, all entries in the list reflect those changes.
+
+2. **Backtracking in `permute`:**  The `swap` after the recursive `permute` call implements backtracking. This is crucial to restore the array to its previous state before exploring other permutations.  This ensures you generate all possible permutations correctly.
+
+3. **`isSorted` Method:** This function checks if the array is sorted in ascending order.
+
+4. **Clarity and Comments:**  Added comments to explain the code's logic.
+
+
+
+**Important Note on Efficiency:** Permutation Sort is a highly inefficient sorting algorithm with a time complexity of O(n * n!).  It's not practical for any real-world scenarios except for very small arrays.  It's primarily used for educational purposes to demonstrate the concept of permutations.  For real-world applications, use efficient algorithms like Merge Sort, Quick Sort, or the built-in `Arrays.sort()`.

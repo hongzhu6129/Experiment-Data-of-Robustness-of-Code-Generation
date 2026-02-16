@@ -1,0 +1,58 @@
+```java
+import java.util.TreeMap;
+
+public class NextKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        Integer key1 = 4;
+        Integer nextKey1 = getNextKey(treeMap, key1);
+        System.out.println("Next key after " + key1 + ": " + nextKey1); // Output: 5
+
+        Integer key2 = 7;
+        Integer nextKey2 = getNextKey(treeMap, key2);
+        System.out.println("Next key after " + key2 + ": " + nextKey2); // Output: 9
+
+
+        Integer key3 = 10;
+        Integer nextKey3 = getNextKey(treeMap, key3);
+        System.out.println("Next key after " + key3 + ": " + nextKey3); // Output: null
+
+
+
+        //Additional test cases for edge conditions:
+        TreeMap<Integer, String> emptyTreeMap = new TreeMap<>();
+        Integer key4 = 5;
+        Integer nextKey4 = getNextKey(emptyTreeMap, key4);
+        System.out.println("Next key in empty map after " + key4 + ": " + nextKey4); //Output: null
+
+
+        TreeMap<Integer, String> singleTreeMap = new TreeMap<>();
+        singleTreeMap.put(7, "Seven");
+        Integer key5 = 6;
+        Integer nextKey5 = getNextKey(singleTreeMap, key5);
+        System.out.println("Next key after " + key5 + ": " + nextKey5); // Output: 7
+        
+        Integer key6 = 7;
+        Integer nextKey6 = getNextKey(singleTreeMap, key6);
+        System.out.println("Next key after " + key6 + ": " + nextKey6); // Output: null
+
+    }
+
+
+    public static <K, V> K getNextKey(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        return treeMap.higherKey(key); 
+    }
+}
+```

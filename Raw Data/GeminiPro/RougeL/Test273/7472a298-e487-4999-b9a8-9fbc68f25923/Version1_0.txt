@@ -1,0 +1,52 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+
+    /**
+     * Given a grid of size m x n, find the number of possible distinct paths from the top-left corner
+     * (0, 0) to the bottom-right corner (m-1, n-1).
+     *
+     * You can only move either down or right at any point in time.
+     *
+     * @param m The number of rows in the grid.
+     * @param n The number of columns in the grid.
+     * @return The number of unique paths.
+     */
+    public int uniquePaths(int m, int n) {
+        if (m <= 0 || n <= 0) {
+            return 0;
+        }
+
+        int[][] dp = new int[m][n];
+
+        // Initialize the first row and column
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = 1;
+        }
+        for (int j = 0; j < n; j++) {
+            dp[0][j] = 1;
+        }
+
+        // Fill the rest of the grid using dynamic programming
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+
+        return dp[m - 1][n - 1];
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int m = 2;
+        int n = 3;
+        int paths = solution.uniquePaths(m, n);
+        System.out.println("Unique paths from top-left corner to bottom-right corner of the said grid: " + paths);
+
+
+    }
+}
+```

@@ -1,0 +1,66 @@
+```java
+public class Walkway {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins. Change as needed.
+        int k = 0; // Current row number (starting from 0)
+        int coinsUsed = 0;
+
+        while (coinsUsed <= n) {
+            k++;
+            int coinsInRow = k;
+
+            if (coinsUsed + coinsInRow <= n) {
+                // Print the row
+                for (int i = 0; i < coinsInRow; i++) {
+                    System.out.print("O "); // Use 'O' to represent a coin
+                }
+                System.out.println();  // Newline after each row
+
+                coinsUsed += coinsInRow;
+            } else {
+                // Handle the case where we don't have enough coins for a full row
+                int remainingCoins = n - coinsUsed;
+                for (int i = 0; i < remainingCoins; i++) {
+                    System.out.print("O ");
+                }
+                System.out.println();
+                coinsUsed += remainingCoins; // Update coinsUsed to exit the loop
+                
+                
+            }
+        }
+
+
+    }
+}
+```
+
+
+Here's how this code works within the `main` method constraints:
+
+1. **Initialization:**
+   - `n`:  Represents the total number of coins available. You can change this value to test with different inputs.
+   - `k`: Keeps track of the current row number (0-indexed).
+   - `coinsUsed`:  Tracks the total number of coins used so far.
+
+2. **Looping and Row Creation:**
+   - The `while (coinsUsed <= n)` loop continues as long as we haven't used up all the coins.
+   - Inside the loop:
+     - `k++`:  Increment the row number.
+     - `coinsInRow = k`: The number of coins in the current row is equal to the row number.
+     - **Conditional Check:** `if (coinsUsed + coinsInRow <= n)`: Checks if we have enough coins to create a complete row.
+       - If yes: Print `k` coins (represented by 'O') followed by a newline.
+       - If no (not enough coins for a full row): Print the remaining coins and then exit the loop.
+
+3. **Output:** The code prints the walkway shape row by row, with each row having `k` coins (where `k` is the row number) until we run out of coins.
+
+
+**Example Output (n=10):**
+
+```
+O 
+O O 
+O O O 
+O 
+```

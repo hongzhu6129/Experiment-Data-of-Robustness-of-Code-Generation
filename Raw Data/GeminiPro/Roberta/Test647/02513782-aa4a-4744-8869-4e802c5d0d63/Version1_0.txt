@@ -1,0 +1,59 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class ShallowCopyHashMap {
+
+    public static void main(String[] args) {
+        // Create an original HashMap
+        HashMap<String, Integer> originalMap = new HashMap<>();
+        originalMap.put("apple", 1);
+        originalMap.put("banana", 2);
+        originalMap.put("orange", 3);
+
+        // Method 1: Using the putAll() method
+        HashMap<String, Integer> shallowCopy1 = new HashMap<>();
+        shallowCopy1.putAll(originalMap);
+
+        // Method 2: Using the clone() method (also creates a shallow copy)
+        HashMap<String, Integer> shallowCopy2 = (HashMap<String, Integer>) originalMap.clone();
+
+        // Method 3: Using the Map.copyOf() method (Java 9 and later)
+        Map<String, Integer> shallowCopy3 = Map.copyOf(originalMap); // More general, returns a Map
+
+
+        // Demonstrate that it's a shallow copy (modifying the copy affects the original for mutable objects)
+        shallowCopy1.get("banana"); //Access an element before modification
+
+        shallowCopy1.put("banana", 4); // Modify the shallow copy
+
+
+
+        // Print the original and copied maps
+        System.out.println("Original Map: " + originalMap);
+        System.out.println("Shallow Copy 1 (putAll): " + shallowCopy1);
+        System.out.println("Shallow Copy 2 (clone): " + shallowCopy2);
+        System.out.println("Shallow Copy 3 (copyOf): " + shallowCopy3);
+
+
+        //Demonstrate the effect of modification on the original HashMap after shallow copying
+        System.out.println("Original Map after modification of shallow copy: " + originalMap);
+
+
+        //Example with mutable objects (demonstrates shallow copy behavior)
+        HashMap<String, StringBuilder> mapWithMutableValues = new HashMap<>();
+        StringBuilder sb1 = new StringBuilder("original");
+        mapWithMutableValues.put("key1", sb1);
+
+        HashMap<String, StringBuilder> shallowCopyMutable = (HashMap<String, StringBuilder>) mapWithMutableValues.clone();
+
+        shallowCopyMutable.get("key1").append(" modified"); // Modify the StringBuilder *inside* the shallow copy
+
+        System.out.println("Original map with mutable values: " + mapWithMutableValues); // Original is also affected!
+        System.out.println("Shallow copy of map with mutable values: " + shallowCopyMutable);
+
+
+
+    }
+}
+```

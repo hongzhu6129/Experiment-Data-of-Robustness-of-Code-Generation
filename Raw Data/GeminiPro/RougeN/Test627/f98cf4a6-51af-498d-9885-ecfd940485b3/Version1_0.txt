@@ -1,0 +1,35 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveFirstTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.add(9);
+
+        // Check if the TreeSet is empty
+        if (numbers.isEmpty()) {
+            System.out.println("TreeSet is empty.");
+        } else {
+            // Retrieve the first element (smallest)
+            Integer firstElement = numbers.first();
+
+            // Remove the first element
+            numbers.remove(firstElement); // or numbers.pollFirst();
+
+
+            // Print the first element and the updated TreeSet
+            System.out.println("Removed first element: " + firstElement);
+            System.out.println("Updated TreeSet: " + numbers);
+
+        }
+    }
+}
+```

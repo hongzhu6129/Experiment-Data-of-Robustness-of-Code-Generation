@@ -1,0 +1,59 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSort {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, String> treeMap = new TreeMap<>(new MyComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", "red");
+        treeMap.put("banana", "yellow");
+        treeMap.put("orange", "orange");
+        treeMap.put("grape", "purple");
+
+        // Print the sorted TreeMap
+        System.out.println(treeMap); 
+    }
+
+    public static class MyComparator implements Comparator<String> {
+        @Override
+        public int compare(String str1, String str2) {
+            // Sort in reverse alphabetical order (descending)
+            return str2.compareTo(str1);  
+
+            // For ascending order, use:
+            // return str1.compareTo(str2);
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **`TreeMap` with `Comparator`:**
+   - We create a `TreeMap` and pass an instance of our custom `MyComparator` class to its constructor. This tells the `TreeMap` to use our specific comparison logic for sorting the keys.
+
+2. **`MyComparator` class:**
+   - This class implements the `Comparator<String>` interface.
+   - The `compare(String str1, String str2)` method defines the sorting logic.
+   - **`str2.compareTo(str1)`:** This line sorts the strings in *reverse* alphabetical order (descending).  If you want the standard ascending alphabetical order, use `str1.compareTo(str2)`.
+
+3. **`main` method:**
+   - We add some key-value pairs to the `TreeMap`.
+   - When we print the `TreeMap`, the keys will be printed in the sorted order defined by our `Comparator`.
+
+**Output (with the current descending order code):**
+
+```
+{orange=orange, grape=purple, banana=yellow, apple=red} 
+```
+
+
+**Output (if you change to `str1.compareTo(str2)` for ascending order):**
+
+```
+{apple=red, banana=yellow, grape=purple, orange=orange}
+```

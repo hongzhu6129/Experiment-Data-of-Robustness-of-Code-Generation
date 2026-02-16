@@ -1,0 +1,90 @@
+```java
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class ThresholdPriorityQueue {
+
+    public static void main(String[] args) {
+        // Example usage:
+
+        // Create a standard PriorityQueue (min-heap by default)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(8);
+
+
+        int threshold = 7; // Set your threshold
+
+        // Convert to a ThresholdPriorityQueue using a custom Comparator
+        PriorityQueue<Integer> thresholdPq =  toThresholdPriorityQueue(pq, threshold);
+
+
+        System.out.println("Threshold Priority Queue (elements >= " + threshold + "):");
+        while (!thresholdPq.isEmpty()) {
+            System.out.print(thresholdPq.poll() + " ");  //Output: 8 10
+        }
+        System.out.println();
+
+
+
+        // Example using a max-heap and a different threshold
+        PriorityQueue<Integer> maxPq = new PriorityQueue<>(Comparator.reverseOrder());
+        maxPq.add(5);
+        maxPq.add(1);
+        maxPq.add(10);
+        maxPq.add(3);
+        maxPq.add(8);
+
+        int threshold2 = 4;
+        PriorityQueue<Integer> thresholdMaxPq = toThresholdPriorityQueue(maxPq, threshold2, Comparator.reverseOrder());
+
+        System.out.println("Threshold Priority Queue (max-heap, elements >= " + threshold2 + "):");
+        while (!thresholdMaxPq.isEmpty()) {
+            System.out.print(thresholdMaxPq.poll() + " "); // Output: 10 8 5
+        }
+        System.out.println();
+
+    }
+
+    public static <T extends Comparable<T>> PriorityQueue<T> toThresholdPriorityQueue(PriorityQueue<T> originalPq, T threshold) {
+        return toThresholdPriorityQueue(originalPq, threshold, Comparator.naturalOrder()); //Default to min-heap
+    }
+
+
+
+    public static <T> PriorityQueue<T> toThresholdPriorityQueue(PriorityQueue<T> originalPq, T threshold, Comparator<T> comparator) {
+        PriorityQueue<T> thresholdPq = new PriorityQueue<>(comparator); 
+        for (T element : originalPq) {
+            if (comparator.compare(element, threshold) >= 0) {
+                thresholdPq.add(element);
+            }
+        }
+        return thresholdPq;
+    }
+}
+```
+
+
+Explanation and Key Improvements:
+
+1. Generics: The code now uses generics `<T>` to work with any comparable data type, not just integers.
+
+2. Comparator:  It uses a `Comparator` to handle both min-heap and max-heap scenarios gracefully. The `toThresholdPriorityQueue` method is overloaded; one version takes a comparator as an argument, the other defaults to the natural ordering (min-heap).
+
+3. Clarity and Reusability: The logic is encapsulated in the `toThresholdPriorityQueue` method, making the code cleaner and more reusable.
+
+4. Example Usage: The `main` method demonstrates how to use the conversion method with both min-heap and max-heap priority queues and different thresholds.
+
+5. Iterating through Priority Queue: The code iterates through the original PriorityQueue safely without modifying or clearing it.  It creates a *new* `thresholdPq` containing only the elements that meet the threshold criteria.
+
+
+How to Compile and Run:
+
+1. Save the code as `ThresholdPriorityQueue.java`.
+2. Compile: `javac ThresholdPriorityQueue.java`
+3. Run: `java ThresholdPriorityQueue`

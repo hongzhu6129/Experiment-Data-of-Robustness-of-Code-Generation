@@ -1,0 +1,59 @@
+```java
+import java.util.LinkedList;
+
+public class InsertAtFrontLinkedList {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements (optional)
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to insert at the front
+        String newElement = "Date";
+
+
+        // Method 1: Using addFirst()
+        linkedList.addFirst(newElement); 
+        System.out.println("LinkedList after adding '" + newElement + "' at the front (using addFirst()): " + linkedList);
+
+
+        // Reset the list (for demonstration of the second method)
+        linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+
+        // Method 2: Using add(int index, E element) with index 0
+        linkedList.add(0, newElement); // Insert at index 0 (the front)
+        System.out.println("LinkedList after adding '" + newElement + "' at the front (using add(0, element)): " + linkedList);
+
+
+
+         // Demonstrating edge cases
+
+        // Empty List
+        linkedList = new LinkedList<>();
+        linkedList.addFirst("First");
+        System.out.println("Adding to an empty list: " + linkedList);
+
+
+
+        // Adding null (LinkedList allows nulls)
+        linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.addFirst(null);
+        System.out.println("Adding null to the front: " + linkedList);
+
+
+
+
+    }
+}
+```

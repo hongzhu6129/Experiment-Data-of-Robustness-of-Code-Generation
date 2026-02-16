@@ -1,0 +1,37 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input number (replace with user input if needed)
+        int num = 8; 
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(num)) {
+            System.out.println("Number is same cube."); // Match the expected output message
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isPerfectCube(int num) {
+        // Handle negative numbers by checking the cube of their absolute value
+        int absNum = Math.abs(num);
+
+        // Efficiently check for perfect cubes using integer cube root
+        int cubeRoot = (int) Math.round(Math.cbrt(absNum));
+
+        //Return true if the cube of the cube root equals the original number (or its absolute value for negatives).
+        return (int) Math.pow(cubeRoot, 3) == absNum ;
+
+
+        /* Less efficient alternative using a loop:
+        for (int i = 1; i * i * i <= absNum; i++) {
+            if (i * i * i == absNum) {
+                return true;
+            }
+        }
+        return false;
+        */
+    }
+}
+```

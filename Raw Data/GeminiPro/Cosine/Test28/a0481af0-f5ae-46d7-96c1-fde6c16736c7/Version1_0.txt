@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        if (n < 0) {
+            n = -n; // Handle negative numbers
+        }
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        int sum = function(num);
+        System.out.println("Sum of digits: " + sum);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Reason/Corner Case |
+|---|---|---|
+| 0 | 0 | Zero should return 0 |
+| 12345 | 15 | Positive multi-digit number |
+| 9 | 9 | Single digit |
+| -123 | 6 | Negative number (absolute value used) |
+| 1000 | 1 | Number with leading zeros |
+| Integer.MAX_VALUE (2147483647) | 46 | Largest possible integer |
+| Integer.MIN_VALUE (-2147483648) | 47 | Smallest possible integer (absolute value used) |
+
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Negative Numbers:** The code now correctly handles negative input by taking the absolute value of `n` before processing.
+
+2. **Clearer Function Name:**  While the prompt asked for the function to be named "function," a more descriptive name like `sumDigits` or `calculateDigitSum` would be better practice in a real-world scenario.
+
+3. **Input Validation (Optional):** You could add input validation within the `main` method to handle non-integer input from the user using a `try-catch` block.
+
+
+4. **No Need for String Conversion:** The more efficient approach uses modulo and integer division to extract and sum digits directly, avoiding the overhead of string conversions.
+
+
+This improved version addresses corner cases, handles negative numbers, and provides a more robust and efficient solution for calculating the sum of an integer's digits.

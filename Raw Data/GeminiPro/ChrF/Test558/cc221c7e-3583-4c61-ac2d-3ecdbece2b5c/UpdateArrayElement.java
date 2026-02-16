@@ -1,0 +1,56 @@
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+
+        // 1. Initialize an array
+        int[] numbers = {1, 2, 3, 4, 5};
+
+        // 2. Specify the index to update and the new value
+        int indexToUpdate = 2; // Update element at index 2 (which is currently 3)
+        int newValue = 10;
+
+        // 3. Update the array element (with bounds checking)
+        if (indexToUpdate >= 0 && indexToUpdate < numbers.length) {
+            numbers[indexToUpdate] = newValue;
+            System.out.println("Array updated successfully.");
+        } else {
+            System.out.println("Invalid index. Array not updated.");
+        }
+
+        // 4. Print the updated array
+        System.out.print("Updated array: ");
+        for (int number : numbers) {
+            System.out.print(number + " ");
+        }
+        System.out.println();
+
+
+        // Another example demonstrating how to handle user input (requires exception handling):
+
+         try {
+            int[] myArray = {10, 20, 30, 40, 50};
+
+            // Simulate user input (replace with actual user input if needed)
+            String inputIndex = "1";  // Example index from user
+            String inputValue = "99"; // Example new value from user
+
+            int index = Integer.parseInt(inputIndex);
+            int value = Integer.parseInt(inputValue);
+
+            if (index >= 0 && index < myArray.length) {
+                myArray[index] = value;
+                System.out.print("Updated array: ");
+                for (int num : myArray) {
+                    System.out.print(num + " ");
+                }
+            } else {
+                System.out.println("Invalid index.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter integers for index and value.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Index out of bounds."); 
+        }
+    }
+}

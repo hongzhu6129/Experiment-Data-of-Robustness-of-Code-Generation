@@ -1,0 +1,61 @@
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+        // Example of an even taller tree
+         Node root2 = new Node(1);
+         root2.left = new Node(2);
+         root2.right = new Node(3);
+         root2.left.left = new Node(4);
+         root2.left.right = new Node(5);
+         root2.left.left.left = new Node(8); // Deeper on the left
+
+
+        System.out.println("Height of tree2 is : " + tree.maxDepth(root2));
+
+         //Example of an empty tree
+        Node root3 = null;
+        System.out.println("Height of tree3 is : " + tree.maxDepth(root3));
+
+
+
+    }
+}

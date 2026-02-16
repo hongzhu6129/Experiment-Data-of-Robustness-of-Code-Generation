@@ -1,0 +1,77 @@
+```java
+import java.util.Stack;
+
+public class MathExpressionValidator {
+
+    public static void main(String[] args) {
+        String expression1 = "2 + 3 * (4 - 1)";
+        String expression2 = "x = 5";
+        String expression3 = "1 + 2 +";
+        String expression4 = "1 + (2 * 3)";
+        String expression5 = "1 + 2) * 3";
+        String expression6 = "a + b"; // Allows variables assuming it's part of an expression
+
+
+        System.out.println(expression1 + ": " + validate(expression1));
+        System.out.println(expression2 + ": " + validate(expression2));
+        System.out.println(expression3 + ": " + validate(expression3));
+        System.out.println(expression4 + ": " + validate(expression4));
+        System.out.println(expression5 + ": " + validate(expression5));
+        System.out.println(expression6 + ": " + validate(expression6)); 
+
+    }
+
+    public static boolean validate(String expression) {
+        if (expression == null || expression.trim().isEmpty()) {
+            return false;
+        }
+
+        Stack<Character> parenthesesStack = new Stack<>();
+
+        for (char c : expression.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
+                parenthesesStack.push(c);
+            } else if (c == ')' || c == ']' || c == '}') {
+                if (parenthesesStack.isEmpty()) {
+                    return false; // Unmatched closing parenthesis
+                }
+
+                char opening = parenthesesStack.pop();
+                if ((c == ')' && opening != '(') ||
+                    (c == ']' && opening != '[') ||
+                    (c == '}' && opening != '{')) {
+                    return false; // Mismatched parentheses
+                }
+            }
+            // Add other validation checks as needed e.g., for operators at the beginning/end, consecutive operators, etc.
+            // Allow letters assuming they represent variables
+
+
+        }
+
+        return parenthesesStack.isEmpty(); // True if all parentheses are matched
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Parentheses Matching:** The core of the validation is checking for balanced parentheses using a stack.  This is essential for valid mathematical expressions.
+
+2. **Handle Empty/Null Input:** The code now checks for `null` or empty input strings and returns `false` in those cases, preventing potential `NullPointerExceptions`.
+
+3. **Clearer Variable Names:**  Using a name like `parenthesesStack` makes the purpose of the stack more obvious.
+
+4. **Whitespace Handling:**  The `expression.trim()` method removes leading and trailing whitespace to avoid issues with inputs like "  1 + 2 ".
+
+5. **Comments and Documentation:**  Added comments to explain the logic and usage of the `validate` method.
+
+6. **Flexibility for Variables:** The code allows letters, assuming they might be variables within a larger mathematical context.  If you want to strictly restrict to numbers and operators, you'd need more elaborate parsing and validation.
+
+7. **Further Validation (Optional):** The provided code primarily checks for parenthesis matching. You can expand it to perform additional validation as required (e.g., checking for invalid operator sequences like "++" or ensuring operators are not at the beginning/end of the expression, unless it's a unary operator).
+
+
+**Example Usage in `main()`:**
+
+The `main` method now provides example usage, showcasing how to call the `validate` method and interpret the results. It tests different scenarios, including valid and invalid expressions with and without parentheses.

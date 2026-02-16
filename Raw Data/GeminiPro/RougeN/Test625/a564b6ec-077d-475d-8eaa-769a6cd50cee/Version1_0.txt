@@ -1,0 +1,61 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to search for
+        int element = 25;
+
+        // Get the element greater than or equal to the specified element
+        Integer greaterOrEqualElement = treeSet.ceiling(element);
+
+        // Print the result
+        if (greaterOrEqualElement != null) {
+            System.out.println("Element greater than or equal to " + element + ": " + greaterOrEqualElement);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found.");
+        }
+
+
+        // Example with String TreeSet
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+        stringTreeSet.add("grape");
+
+        String searchString = "grapefruit";  // Example that will return a value
+        String resultString = stringTreeSet.ceiling(searchString);
+
+
+         if (resultString != null) {
+            System.out.println("String greater than or equal to " + searchString + ": " + resultString);
+        } else {
+            System.out.println("No string greater than or equal to " + searchString + " found.");
+        }
+
+
+
+        searchString = "zebra"; // Example that won't return a value because it's beyond the highest
+        resultString = stringTreeSet.ceiling(searchString);
+
+        if (resultString != null) {
+            System.out.println("String greater than or equal to " + searchString + ": " + resultString);
+        } else {
+            System.out.println("No string greater than or equal to " + searchString + " found.");
+        }
+    }
+}
+
+```

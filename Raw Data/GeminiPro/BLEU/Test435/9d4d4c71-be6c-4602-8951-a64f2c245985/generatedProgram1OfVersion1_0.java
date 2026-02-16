@@ -1,0 +1,48 @@
+publicclass StringSorter {
+
+    public static void main(String[] args) {
+        String[] strings = {"apple", "banana", "orange", "grape", "kiwi"};
+
+        // Ascending sort
+        sortAscending(strings);
+        System.out.println("Ascending order:");
+        printStrings(strings);
+
+        // Descending sort
+        sortDescending(strings);
+        System.out.println("\nDescending order:");
+        printStrings(strings);
+
+    }
+
+    public static void sortAscending(String[] strings) {
+        for (int i = 0; i < strings.length - 1; i++) {
+            for (int j = i + 1; j < strings.length; j++) {
+                if (strings[i].compareTo(strings[j]) > 0) {
+                    String temp = strings[i];
+                    strings[i] = strings[j];
+                    strings[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void sortDescending(String[] strings) {
+         for (int i = 0; i < strings.length - 1; i++) {
+            for (int j = i + 1; j < strings.length; j++) {
+                if (strings[i].compareTo(strings[j]) < 0) {
+                    String temp = strings[i];
+                    strings[i] = strings[j];
+                    strings[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void printStrings(String[] strings) {
+        for (String str : strings) {
+            System.out.print(str + " ");
+        }
+        System.out.println();
+    }
+}

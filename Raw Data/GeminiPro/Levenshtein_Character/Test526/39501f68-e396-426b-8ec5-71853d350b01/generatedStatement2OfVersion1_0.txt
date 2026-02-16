@@ -1,0 +1,17 @@
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:** This helper method encapsulates the Fermat number calculation.  It uses `Math.pow()` to compute 2^(2^n) and then adds 1. The result is cast to `long` because Fermat numbers grow very quickly and exceed the capacity of `int` even for small values of `n`.
+
+2. **Loop for First 10 Numbers:** The `main` method now has a simple `for` loop that iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+
+3. **Output Clarity:**  The output includes a header "First 10 Fermat Numbers:" to make the results clear.
+
+4. **Long Data Type:**  Using `long` instead of `int` is crucial.  Even the 6th Fermat number exceeds the maximum value of an `int`. However, be aware that even `long` will not be able to store Fermat numbers beyond the first few because they grow so rapidly.  For larger Fermat numbers, you would need to use `BigInteger` (if you need precise representations).
+
+
+
+**Example Output:** (The later numbers will exceed the `long` limit)
+
+

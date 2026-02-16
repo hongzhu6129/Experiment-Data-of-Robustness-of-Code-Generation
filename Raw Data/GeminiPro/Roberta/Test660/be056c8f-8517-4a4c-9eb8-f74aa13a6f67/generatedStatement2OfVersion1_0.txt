@@ -1,0 +1,25 @@
+
+
+
+**Explanation:**
+
+1. **`TreeMap` with `Comparator`:** We create a `TreeMap` and pass an instance of our custom `MyComparator` to its constructor. This tells the `TreeMap` to use our `compare` method to determine the order of keys.
+
+2. **`MyComparator` class:** This class implements the `Comparator` interface, which requires us to implement the `compare(String s1, String s2)` method.
+
+3. **`compare` method:** This is where the sorting logic resides.
+    -  `s2.compareTo(s1)`: This line performs the comparison. By reversing the arguments in `compareTo`, we achieve reverse alphabetical (descending) order. If you switch `s1` and `s2`, you'll get ascending order.
+    -  The code also shows examples of case-insensitive comparison and comparison by string length within comments � uncomment the relevant line to use it.
+
+4. **`main` method:** We add some key-value pairs to demonstrate the sorting. When the `TreeMap` is printed, the keys will be ordered according to the logic in the `compare` method.
+
+
+**How to Run:**
+
+1. Save the code as `TreeMapSort.java`.
+2. Compile: `javac TreeMapSort.java`
+3. Run: `java TreeMapSort`
+
+
+**Output (with the current descending order logic):**
+

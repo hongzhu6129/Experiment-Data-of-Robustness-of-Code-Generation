@@ -1,0 +1,22 @@
+
+
+
+Explanation and Improvements:
+
+1. **Clarity on "Year" Position:**  The concept of a "year" position is a bit ambiguous for a linked list.  I've interpreted it as an index, where 0 is the first position, 1 is the second, and so on. The code includes logic to handle cases where the "year" position is beyond the current size of the list. You can modify this behavior (add to the end, or do nothing) as needed.
+
+2. **Error Handling:** The code now has a check using  `if (yearPosition <= myList.size())` to handle situations where the `yearPosition`  might be larger than the current list's size. This prevents `IndexOutOfBoundsException`.
+
+3. **addLast():** For clarity, you can use `myList.addLast("element")` to explicitly add an element to the end of the LinkedList instead of using `add()` with a large index.
+
+4. **Comments:** Added comments to explain the code's logic.
+
+5. **Example Usage:**  The `main` method demonstrates how to insert elements at both the first position (using `addFirst()`) and a specified position (using `add(index, element)`).  I've also included an example where an insertion is attempted beyond the list size.
+
+
+
+How to Run:
+
+1. Save the code as `LinkedListInsertion.java`.
+2. Compile: `javac LinkedListInsertion.java`
+3. Run: `java LinkedListInsertion`

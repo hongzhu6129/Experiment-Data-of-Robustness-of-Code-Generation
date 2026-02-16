@@ -1,0 +1,79 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapKeySet {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        Map<String, Integer> studentScores = new HashMap<>();
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+        studentScores.put("David", 80);
+
+
+        // 1. Get the key set using keySet()
+        Set<String> studentNames = studentScores.keySet();
+
+
+        // 2. Print the key set directly
+        System.out.println("Key Set (Directly): " + studentNames);
+
+
+        // 3. Iterate through the key set using an enhanced for loop
+        System.out.print("Key Set (Iterating with enhanced for loop): ");
+        for (String name : studentNames) {
+            System.out.print(name + " ");
+        }
+        System.out.println(); // Newline for formatting
+
+
+
+        // 4. Iterate through the key set using a standard for loop (with iterator) - Less common but demonstrable
+        System.out.print("Key Set (Iterating with iterator): ");
+        for (java.util.Iterator<String> iterator = studentNames.iterator(); iterator.hasNext(); ) {
+            String name = iterator.next();
+            System.out.print(name + " ");
+
+        }
+        System.out.println(); // Newline for formatting
+
+
+
+        // 5. Check if a key exists in the key set
+        System.out.println("Does 'Alice' exist in the key set? " + studentNames.contains("Alice"));
+        System.out.println("Does 'Eve' exist in the key set? " + studentNames.contains("Eve"));
+
+
+
+        // 6. Get the size of the key set
+        System.out.println("Size of the key set: " + studentNames.size());
+
+
+
+
+        // Important Note: Changes to the key set (e.g., adding or removing elements) will be reflected in the original map, and vice-versa (mostly).
+        // However, attempting to modify a key within the keySet itself (if it were a mutable object) is generally not allowed and can lead to unpredictable behavior.
+        // To modify keys, you generally need to remove the old key-value pair and add a new one with the modified key.
+
+        // Example demonstrating modification impact
+        studentNames.remove("Bob"); // Removing from the keySet also removes from the map
+        System.out.println("Map after removing 'Bob' from the keySet: " + studentScores);
+
+        // Be careful with adding to the keyset directly as it might not have an associated value in the map initially. 
+        studentNames.add("Eve"); // Added to the keySet, but no value in map yet
+        System.out.println("Map after adding 'Eve' to the keySet: " + studentScores); // Eve has no value
+
+        studentScores.put("Eve", 75); // Now add a value for Eve
+        System.out.println("Map after adding value for 'Eve': " + studentScores);
+
+
+
+
+
+    }
+}
+```

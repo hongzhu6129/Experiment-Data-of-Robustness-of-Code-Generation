@@ -1,0 +1,46 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); 
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **Import `PriorityQueue`:**  `import java.util.PriorityQueue;` imports the necessary class.
+2. **Create a `PriorityQueue`:** `PriorityQueue<String> colorQueue = new PriorityQueue<>();` creates a new `PriorityQueue` that will store strings. By default, strings are ordered lexicographically (alphabetically).
+3. **Add elements:** `colorQueue.add("color");` adds string elements ("colors" in this case) to the queue.
+4. **Print elements:** The `while` loop iterates as long as the queue is not empty. Inside the loop, `colorQueue.poll()` retrieves and removes the head (the element with the highest priority - in this case, the lexicographically smallest string) of the queue and prints it.  This continues until all elements have been removed and printed.
+
+
+**Output (Example):**
+
+```
+Elements of the priority queue:
+Blue
+Green
+Orange
+Red
+Yellow
+```
+
+The output shows the colors printed in alphabetical order because the default `PriorityQueue` uses natural ordering for Strings.  If you wanted a different order (e.g., based on some property of the colors), you would need to provide a custom `Comparator` when creating the `PriorityQueue`.
+

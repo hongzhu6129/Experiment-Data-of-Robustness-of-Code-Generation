@@ -1,0 +1,52 @@
+```java
+public class FifteenChecker {
+
+    public static void main(String[] args) {
+        // Example usage:
+        System.out.println(calculate(10, 5));  // Output: true (difference is 5)
+        System.out.println(calculate(15, 5));  // Output: true (first number is 15)
+        System.out.println(calculate(5, 15));  // Output: true (second number is 15)
+        System.out.println(calculate(7, 8));   // Output: true (sum is 15)
+        System.out.println(calculate(1, 2));   // Output: false 
+    }
+
+    public static boolean calculate(int num1, int num2) {
+        if (num1 == 15 || num2 == 15) {
+            return true;
+        }
+
+        if (num1 + num2 == 15) {
+            return true;
+        }
+
+        // Check the absolute difference (handles both num1-num2 and num2-num1)
+        if (Math.abs(num1 - num2) == 15) { 
+            return true;
+        }
+
+        return false;
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **Method Signatures:** The code adheres strictly to the required method signatures `public static void main(String[] args)` and `public static boolean calculate(int, int)`.
+
+2. **Clear Conditions:** The `calculate` method uses clear `if` statements to check each condition separately:
+   - Is either number equal to 15?
+   - Is their sum equal to 15?
+   - Is their absolute difference equal to 15?
+
+3. **Absolute Difference:** Using `Math.abs(num1 - num2)` ensures that we check the difference regardless of which number is larger. This is important because the problem statement asks if "their difference" is 15, not if "the first minus the second" is 15.
+
+4. **Boolean Return:**  The `calculate` method returns `true` if any of the conditions are met and `false` otherwise, as specified by the `boolean` return type.
+
+5. **Example Usage in `main`:**  The `main` method demonstrates how to call the `calculate` method with various inputs and prints the results.  This helps understand how the function behaves in different scenarios.
+
+6. **Comments:** The code includes comments to explain the purpose of each section and the logic behind the absolute difference calculation.  Good comments are crucial for educational code.
+
+
+
+This improved example provides a more complete and educational demonstration of how to solve the problem within the specified constraints.

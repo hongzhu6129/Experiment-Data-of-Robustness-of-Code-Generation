@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+
+public class RemoveAllLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Remove all elements from the LinkedList
+        linkedList.clear();  // Most efficient way
+
+        // Alternatively, you could use a loop and removeFirst() or removeLast() until it's empty
+        // but clear() is simpler and faster
+
+        System.out.println("LinkedList after removing all elements: " + linkedList); 
+    }
+}

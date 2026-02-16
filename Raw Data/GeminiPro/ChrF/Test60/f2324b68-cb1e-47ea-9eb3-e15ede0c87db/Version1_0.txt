@@ -1,0 +1,98 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StringConcatenation {
+
+    public static String concatenateStrings(String str1, String str2) {
+        if (str1 == null || str2 == null || str1.length() < 1 || str2.length() < 1) {
+            throw new IllegalArgumentException("Strings cannot be null and must have length 1 or greater.");
+        }
+        return str1.substring(1) + str2.substring(1);
+    }
+
+    @Test
+    void testNormalCase() {
+        assertEquals("elloorld", concatenateStrings("Hello", "World"));
+    }
+
+    @Test
+    void testSingleCharacterStrings() {
+        assertEquals("", concatenateStrings("H", "W"));
+    }
+
+    @Test
+    void testOneStringSingleCharacter() {
+        assertEquals("orld", concatenateStrings("H", "World"));
+        assertEquals("ello", concatenateStrings("Hello", "W"));
+    }
+
+    @Test
+    void testEmptyString() {
+         assertThrows(IllegalArgumentException.class, () -> concatenateStrings("", "World"));
+         assertThrows(IllegalArgumentException.class, () -> concatenateStrings("Hello", ""));
+         assertThrows(IllegalArgumentException.class, () -> concatenateStrings("", ""));
+
+    }
+
+    @Test
+    void testNullString() {
+        assertThrows(IllegalArgumentException.class, () -> concatenateStrings(null, "World"));
+        assertThrows(IllegalArgumentException.class, () -> concatenateStrings("Hello", null));
+        assertThrows(IllegalArgumentException.class, () -> concatenateStrings(null, null));
+    }
+
+
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+
+        try {
+            String result = concatenateStrings(str1, str2);
+            System.out.println("Concatenated string: " + result);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+
+        str1 = "a";
+        str2 = "b";
+       try {
+            String result = concatenateStrings(str1, str2);
+            System.out.println("Concatenated string: " + result); // Output: ""
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  Using JUnit provides a structured way to test the code's behavior. The `@Test` annotation marks the test methods.  `assertEquals()` asserts that the expected output matches the actual output. `assertThrows()` checks if the expected exception is thrown.
+
+* **Clearer Error Handling:** The `IllegalArgumentException` is used to explicitly signal invalid input (null or empty strings).  This makes the code more robust. The error messages are also improved.
+
+* **Corner Case Coverage:** The test cases now cover:
+    * Normal strings.
+    * Single-character strings (important to test the `substring()` behavior).
+    * One string being single-character and the other longer.
+    * Empty strings.
+    * Null strings.
+
+
+* **Main Method Demonstration:** The `main` method demonstrates how to use the `concatenateStrings()` method and handle potential exceptions.
+
+
+How to run the tests (assuming you have JUnit 5 set up):
+
+1. Save the code as `StringConcatenation.java`.
+2. Compile: `javac StringConcatenation.java`
+3. Run tests: `java -jar <path_to_junit_jar> --class-path . StringConcatenation`  (Replace `<path_to_junit_jar>` with the actual path).
+
+
+This revised version is more robust, testable, and provides clearer error handling, making it better suited for real-world use.

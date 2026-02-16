@@ -1,0 +1,50 @@
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1, as the first element is always unique.
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i];
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("Array 1 - New Length: " + newLength1);
+        System.out.println("Array 1 - Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+        System.out.println("Array 2 - New Length: " + newLength2);
+        System.out.println("Array 2 - Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2)));
+
+          int[] nums3 = {}; // Empty array
+        int newLength3 = removeDuplicates(nums3);
+        System.out.println("Array 3 - New Length: " + newLength3);
+        System.out.println("Array 3 - Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, newLength3)));
+
+        int[] nums4 = null; // Null array
+        int newLength4 = removeDuplicates(nums4);
+        System.out.println("Array 4 - New Length: " + newLength4);
+        if (nums4 == null) {
+             System.out.println("Array 4 - Updated Array: null");
+        } else{
+           System.out.println("Array 4 - Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, newLength4)));
+        }
+
+
+    }
+}

@@ -1,0 +1,130 @@
+**Java Project**
+
+```java
+import java.util.*;
+
+public class DeathWithMagazines {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the input
+        int n = sc.nextInt();
+        String[] magazines = new String[n];
+        for (int i = 0; i < n; i++) {
+            magazines[i] = sc.nextLine();
+        }
+
+        // Find the duplicate magazines
+        Set<String> duplicates = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (magazines[i].equals(magazines[j])) {
+                    duplicates.add(magazines[i]);
+                }
+            }
+        }
+
+        // Print the duplicate magazines
+        for (String magazine : duplicates) {
+            System.out.println(magazine);
+        }
+    }
+}
+```
+
+**Test Cases**
+
+**Test Case 1**
+
+Input:
+
+```
+5
+Time
+Newsweek
+Time
+The Economist
+The Economist
+```
+
+Output:
+
+```
+Time
+The Economist
+```
+
+**Test Case 2**
+
+Input:
+
+```
+2
+Time
+Newsweek
+```
+
+Output:
+
+```
+No duplicates found
+```
+
+**Test Case 3**
+
+Input:
+
+```
+10
+Time
+Newsweek
+Time
+The Economist
+The Economist
+Time
+Newsweek
+Time
+The Economist
+The Economist
+```
+
+Output:
+
+```
+Time
+The Economist
+```
+
+**Test Case 4**
+
+Input:
+
+```
+0
+```
+
+Output:
+
+```
+No magazines entered
+```
+
+**Test Case 5**
+
+Input:
+
+```
+1
+Time
+Time
+Time
+Time
+Time
+```
+
+Output:
+
+```
+Time
+```

@@ -1,0 +1,59 @@
+```java
+class Solution {
+    /**
+     * Prints an n-by-n matrix where each element is the row number multiplied by the column number.
+     *
+     * @param n The size of the matrix (n x n).
+     */
+    public static void printMatrix(int n) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                System.out.print(i * j);
+                // Add spacing for better readability. Adjust as needed.
+                if (j < n) {
+                    System.out.print(" "); // Space between elements in a row.
+                }
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        // Example usage:
+        printMatrix(3); // Prints a 3x3 matrix.
+        System.out.println(); // Add a newline for separation.
+        printMatrix(5); // Prints a 5x5 matrix.
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Output Formatting:**  The code now adds spaces between elements in a row and a newline after each row, making the output much more readable.  You can adjust the spacing as needed.
+
+2. **Example Usage in `main()`:** The `main` method demonstrates how to call `printMatrix()` with different inputs, showcasing its functionality.
+
+3. **Comments:** Added comments to explain the code's purpose and the formatting choices.
+
+
+**Example Output (for `printMatrix(3)`):**
+
+```
+1 2 3
+2 4 6
+3 6 9
+```
+
+**Example Output (for `printMatrix(5)`):**
+
+```
+1 2 3 4 5
+2 4 6 8 10
+3 6 9 12 15
+4 8 12 16 20
+5 10 15 20 25 
+```

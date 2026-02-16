@@ -1,0 +1,88 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication table of " + num + " up to 10:");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Integer:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication table of 7 up to 10:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     7 x 4 = 28
+     7 x 5 = 35
+     7 x 6 = 42
+     7 x 7 = 49
+     7 x 8 = 56
+     7 x 9 = 63
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication table of 0 up to 10:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Integer:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication table of -5 up to 10:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Integer:**
+   - Input: 12345
+   - Expected Output:  (Verify a few lines of the output to ensure correctness)
+     ```
+     Multiplication table of 12345 up to 10:
+     12345 x 1 = 12345
+     12345 x 2 = 24690
+     ...
+     12345 x 10 = 123450
+     ```
+
+5. **Large Negative Integer:**
+   - Input: -98765
+   - Expected Output: (Verify a few lines)
+      ```
+      Multiplication table of -98765 up to 10:
+      -98765 x 1 = -98765
+      -98765 x 2 = -197530
+      ...
+      -98765 x 10 = -987650
+      ```
+
+
+These test cases cover the typical scenarios (positive, zero, negative) as well as larger numbers to check for potential overflow issues (though Java's `int` type has a large range so overflow is less likely).   The important thing is to ensure the logic is correct for all integer inputs.

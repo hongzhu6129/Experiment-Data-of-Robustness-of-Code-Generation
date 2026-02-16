@@ -1,0 +1,56 @@
+```java
+import java.util.Arrays;
+
+public class PartitionArray {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] partitionedArr = partitionArray2(arr);
+        System.out.println(Arrays.toString(partitionedArr));
+
+        int[] arr2 = {1, 3, 5, 7, 2, 4, 6, 8};
+        partitionedArr = partitionArray2(arr2);
+        System.out.println(Arrays.toString(partitionedArr));
+
+
+        int[] arr3 = {2, 4, 6, 8, 1, 3, 5, 7, 9}; // Example with odd length
+        partitionedArr = partitionArray2(arr3);
+        System.out.println(Arrays.toString(partitionedArr));
+
+        int[] arr4 = {}; // Empty array example
+        partitionedArr = partitionArray2(arr4);
+        System.out.println(Arrays.toString(partitionedArr));
+
+
+    }
+
+    public static int[] partitionArray2(int[] arr) {
+        if (arr == null) {
+            return null; // or throw an exception, depending on your requirements
+        }
+        int[] result = new int[arr.length];
+        int evenIndex = 0;
+        int oddIndex = arr.length - 1;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                result[evenIndex++] = num;
+            } else {
+                result[oddIndex--] = num;
+            }
+        }
+        return result;
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles `null` input:**  The code now explicitly checks for a `null` input array and returns `null` in that case. This prevents a `NullPointerException`.  You could also choose to throw an `IllegalArgumentException` if `null` is considered invalid input.
+* **More efficient:** Uses two index variables, `evenIndex` and `oddIndex`, to place even numbers at the beginning and odd numbers at the end of the `result` array in a single pass. This makes the code more efficient than creating separate even and odd arrays and then merging them.
+* **Clearer variable names:** `evenIndex` and `oddIndex` clearly indicate the purpose of the variables.
+* **Example usage in `main`:** The `main` method now demonstrates how to use the `partitionArray2` method and prints the results, making it easier to test and understand the code. Also added examples with different array configurations (odd length, pre-sorted even/odd, empty).
+
+
+This improved version addresses the potential issues of the previous response and provides a more robust and efficient solution.

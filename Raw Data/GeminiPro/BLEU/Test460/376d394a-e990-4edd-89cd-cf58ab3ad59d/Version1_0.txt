@@ -1,0 +1,52 @@
+```java
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class MonthsRemaining {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a date in yyyy-MM-dd format (e.g., 2024-03-15):");
+        String dateString = scanner.nextLine();
+
+        try {
+            LocalDate enteredDate = LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE);
+            int year = enteredDate.getYear();
+            Month enteredMonth = enteredDate.getMonth();
+            int remainingMonths = 12 - enteredMonth.getValue();
+
+            System.out.println("Number of months remaining in " + year + " after " + enteredMonth.name() + ": " + remainingMonths);
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **User Input:** The code now takes user input for the date using a `Scanner`.  This makes it more interactive and flexible.
+2. **Date Validation:** It uses a `try-catch` block to handle `DateTimeParseException`. This is essential for robust code, preventing crashes if the user enters an invalid date format.
+3. **Clearer Output:** The output message is more informative, including the year and the entered month's name.
+4. **LocalDate:** The `LocalDate` class from the `java.time` package (introduced in Java 8) provides a modern and much-improved way to work with dates. It's preferred over older classes like `Date` and `Calendar`.
+5. **ISO_DATE Format:** Using `DateTimeFormatter.ISO_DATE` makes it clear that the expected input format is "yyyy-MM-dd".
+6. **getMonthValue():**  Using `getMonthValue()` directly gets the numerical value of the month (1 for January, 2 for February, etc.), making the calculation of remaining months straightforward.
+
+
+Example Usage:
+
+```
+Enter a date in yyyy-MM-dd format (e.g., 2024-03-15):
+2024-06-22
+Number of months remaining in 2024 after JUNE: 6
+
+Enter a date in yyyy-MM-dd format (e.g., 2024-03-15):
+invalid_date
+Invalid date format. Please use yyyy-MM-dd. 
+```

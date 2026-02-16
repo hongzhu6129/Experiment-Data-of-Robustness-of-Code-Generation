@@ -1,0 +1,73 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class CompareFilesLexicographically {
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java CompareFilesLexicographically <file1> <file2>");
+            return;
+        }
+
+        String file1 = args[0];
+        String file2 = args[1];
+
+        try (BufferedReader reader1 = new BufferedReader(new FileReader(file1));
+             BufferedReader reader2 = new BufferedReader(new FileReader(file2))) {
+
+            String line1;
+            String line2;
+            int comparisonResult = 0;
+
+            while (true) {
+                line1 = reader1.readLine();
+                line2 = reader2.readLine();
+
+                if (line1 == null && line2 == null) {
+                    break; // Both files have reached the end
+                } else if (line1 == null) {
+                    comparisonResult = -1; // File1 is shorter
+                    break;
+                } else if (line2 == null) {
+                    comparisonResult = 1; // File2 is shorter
+                    break;
+                }
+
+                comparisonResult = line1.compareTo(line2);
+                if (comparisonResult != 0) {
+                    break; // Found a difference
+                }
+            }
+
+            if (comparisonResult < 0) {
+                System.out.println("File1 comes before File2 lexicographically.");
+            } else if (comparisonResult > 0) {
+                System.out.println("File2 comes before File1 lexicographically.");
+            } else {
+                System.out.println("File1 and File2 are lexicographically equal.");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading files: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+This improved version handles:
+
+* **Command-line arguments:**  It takes the file paths as command-line arguments.
+* **Error handling:** Uses a `try-catch` block to handle potential `IOExceptions`.
+* **End-of-file conditions:** Correctly handles cases where one file is shorter than the other.
+* **Clear output:** Prints informative messages about the comparison result.
+* **Resource management:** Uses try-with-resources to ensure that the file readers are closed properly.
+
+
+To compile and run:
+
+1. Save the code as `CompareFilesLexicographically.java`.
+2. Compile: `javac CompareFilesLexicographically.java`
+3. Run: `java CompareFilesLexicographically file1.txt file2.txt` (replace `file1.txt` and `file2.txt` with the actual file paths).

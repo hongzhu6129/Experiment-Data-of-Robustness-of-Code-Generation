@@ -1,0 +1,61 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing purposes - ideally, this would be read from user input)
+        int num = 8; 
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        // Test with other numbers:
+        num = 27; // Cube of 3
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        num = 10; // Not a perfect cube
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+         num = 0; // Cube of 0
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+        
+        num = -8; // Cube of -2
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+    }
+
+
+    public static boolean isCube(int num) {
+        // Efficiently check if a number is a perfect cube:
+
+        // Handle 0 explicitly
+        if (num == 0) return true;
+
+
+        // For larger numbers, using cbrt (cube root) and checking if it's an integer is more efficient than looping.
+        double cubeRoot = Math.cbrt(num);
+        return Math.round(cubeRoot) * Math.round(cubeRoot) * Math.round(cubeRoot) == num;
+
+
+    }
+}
+```

@@ -1,0 +1,27 @@
+import java.util.TreeSet;
+
+public class AddTreeElements {
+
+    public static void main(String[] args) {
+        // Create the source TreeSet (the one to copy from)
+        TreeSet<Integer> sourceTree = new TreeSet<>();
+        sourceTree.add(5);
+        sourceTree.add(2);
+        sourceTree.add(8);
+        sourceTree.add(1);
+        sourceTree.add(9);
+
+
+        // Create the destination TreeSet (the one to add to)
+        TreeSet<Integer> destinationTree = new TreeSet<>();
+        destinationTree.add(10); // Add some initial elements (optional)
+        destinationTree.add(3);
+
+        // Add all elements from sourceTree to destinationTree
+        destinationTree.addAll(sourceTree);
+
+
+        // Print the destination TreeSet to verify the result
+        System.out.println("Destination TreeSet after adding elements: " + destinationTree); 
+    }
+}

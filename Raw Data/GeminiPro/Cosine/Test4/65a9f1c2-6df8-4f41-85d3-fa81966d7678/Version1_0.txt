@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner for potential user input (though this example uses a fixed radius)
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the radius of the circle: ");
+        double radius = 7.5; // Fixed radius for this example
+
+        // Calculate the perimeter (circumference)
+        double perimeter = 2 * Math.PI * radius;
+
+        // Calculate the area
+        double area = Math.PI * radius * radius;
+
+        System.out.println("Perimeter of the circle: " + perimeter);
+        System.out.println("Area of the circle: " + area);
+
+        input.close();  // Close the Scanner
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases designed to cover different scenarios, including corner cases:
+
+1. **Standard Case (Positive Radius):**
+   - Input: radius = 7.5 (as provided)
+   - Expected Output: 
+     - Perimeter: approximately 47.1238898
+     - Area: approximately 176.7145867
+
+2. **Zero Radius:**
+   - Input: radius = 0
+   - Expected Output:
+     - Perimeter: 0
+     - Area: 0
+
+3. **Negative Radius (Invalid Input):**
+   - Input: radius = -5
+   - Expected Behavior:  While the code will technically run and produce results, a negative radius doesn't make sense geometrically.  Ideally, you should add input validation to handle this.  For example:
+
+   ```java
+    if (radius < 0) {
+        System.out.println("Error: Radius cannot be negative.");
+        return; // Or throw an exception
+    }
+   ```
+
+4. **Very Large Radius:**
+   - Input: radius = 1000000  (or some other large value)
+   - Expected Behavior: The program should calculate and print the correct, large perimeter and area. This tests handling of large numbers.
+
+
+5. **Small Radius:**
+   - Input: radius = 0.0001 (or some other small value)
+   - Expected Behavior: The program should correctly calculate and print the very small perimeter and area. This tests handling of small numbers and potential precision issues (though `double` should be sufficient for most practical cases).
+
+**How to Run Test Cases (Manually):**
+
+You can run these test cases manually by changing the `radius` value in the `main` method and comparing the output to the expected results.
+
+**How to Implement Automated Tests (Using JUnit - recommended):**
+
+A much better approach for thorough testing is to use a testing framework like JUnit.  Here's an example of a JUnit test class:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testStandardCase() {
+        double radius = 7.5;
+        double expectedPerimeter = 47.12388980384689; // Use a more precise expected value if needed
+        double expectedArea = 176.71458676442586;
+        double actualPerimeter = 2 * Math.PI * radius;
+        double actualArea = Math.PI * radius * radius;
+        assertEquals(expectedPerimeter, actualPerimeter, 0.0001); // Use a delta for floating-point comparisons
+        assertEquals(expectedArea, actualArea, 0.0001);
+    }
+
+    // Add similar test methods for the other test cases (zero radius, negative radius, etc.)
+}
+```
+
+By using JUnit (or another testing framework), you can easily automate your tests and ensure the correctness of your code as you make changes.  The `assertEquals` method with a delta is essential when comparing floating-point numbers, as tiny rounding errors can occur.

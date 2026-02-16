@@ -1,0 +1,78 @@
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+public class LongestWordFinder {
+
+    public static void main(String[] args) {
+        LongestWordFinder finder = new LongestWordFinder();
+        String longestWords = finder.findLongestWords();
+        System.out.println("Longest word(s): " + longestWords);
+    }
+
+    public String findLongestWords() {
+        String filePath = "input.txt"; // Replace with your file path
+        List<String> longestWords = new ArrayList<>();
+        int maxLength = 0;
+
+        try {
+            // Read all lines from the file
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+
+            // Iterate through each line
+            for (String line : lines) {
+                // Split the line into words
+                String[] words = line.split("\\s+"); // Split by whitespace
+
+                // Iterate through each word
+                for (String word : words) {
+                    // Remove punctuation and convert to lowercase for fair comparison
+                    String cleanedWord = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+                    if (cleanedWord.length() > maxLength) {
+                        // Found a new longest word
+                        maxLength = cleanedWord.length();
+                        longestWords.clear(); // Discard previous longest words
+                        longestWords.add(cleanedWord);
+                    } else if (cleanedWord.length() == maxLength) {
+                        // Found another word with the same length
+                        longestWords.add(cleanedWord);
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            return ""; // Return empty string in case of error
+        }
+
+
+        return String.join(", ", longestWords);
+
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **File Handling:** The code now reads the file content using `Files.readAllLines()`, which is more efficient than reading line by line for larger files.  It handles `IOException` gracefully.  You'll need to create a file named `input.txt` in the same directory as your Java file, or change the `filePath` variable.
+2. **Word Cleaning:**  It removes punctuation and converts words to lowercase using `replaceAll("[^a-zA-Z]", "").toLowerCase()`. This ensures that "word." and "Word" are considered the same, and punctuation doesn't affect length.
+3. **Multiple Longest Words:**  It now correctly handles cases where multiple words have the same maximum length.  It stores them in a `List<String>` and returns them all, comma-separated.
+4. **Error Handling:** The `try-catch` block catches `IOException` and returns an empty string if there's an error reading the file. This prevents the program from crashing.
+5. **Clearer Variable Names:** More descriptive variable names like `longestWords` and `maxLength` improve readability.
+6. **Whitespace Handling:** Splits words based on whitespace using `\\s+` which handles multiple spaces correctly.
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `LongestWordFinder.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac LongestWordFinder.java`
+3. **Run:** `java LongestWordFinder`
+
+
+This improved version is more robust, handles various edge cases, and provides a clearer and more efficient solution to finding the longest word(s) in a text file.  Remember to create your `input.txt` file with some text.
+

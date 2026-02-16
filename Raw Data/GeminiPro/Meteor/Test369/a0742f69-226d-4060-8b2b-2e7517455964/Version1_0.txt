@@ -1,0 +1,56 @@
+```java
+class Solution {
+    /**
+     * Checks if two given strings are rotations of each other.
+     *
+     * @param s1 The first string.
+     * @param s2 The second string.
+     * @return True if the strings are rotations of each other, false otherwise.
+     */
+    static boolean checkForRotation(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length()) {
+            return false;
+        }
+
+        if (s1.length() == 0) {  // Handle empty strings
+            return true; 
+        }
+
+
+        String concatenated = s1 + s1;
+        return concatenated.contains(s2);
+    }
+
+
+    public static void main(String[] args) {
+        String str1 = "waterbottle";
+        String str2 = "erbottlewat";
+        System.out.println(checkForRotation(str1, str2) ? "Rotation" : "Not Rotation");
+
+
+        String str3 = "helloworld";
+        String str4 = "worldhello";
+        System.out.println(checkForRotation(str3, str4) ? "Rotation" : "Not Rotation");
+
+        String str5 = "abc";
+        String str6 = "acb";
+        System.out.println(checkForRotation(str5, str6) ? "Rotation" : "Not Rotation");
+
+
+        String str7 = "abc";
+        String str8 = "ab"; // Different lengths
+        System.out.println(checkForRotation(str7, str8) ? "Rotation" : "Not Rotation");
+
+
+        String str9 = "";
+        String str10 = ""; // Empty strings
+        System.out.println(checkForRotation(str9, str10) ? "Rotation" : "Not Rotation");
+
+         String str11 = null;
+        String str12 = "ab"; // Null string
+        System.out.println(checkForRotation(str11, str12) ? "Rotation" : "Not Rotation");
+
+    }
+}
+
+```

@@ -1,0 +1,60 @@
+```java
+public class SumOfSeven {
+
+    public static void main(String[] args) {
+        // Test data:  74 + 36 + ...  (We'll add 5 more to make 7)
+        int num1 = 74;
+        int num2 = 36;
+        int num3 = 12;
+        int num4 = 5;
+        int num5 = 88;
+        int num6 = 21;
+        int num7 = 9;
+
+        int sum = num1 + num2 + num3 + num4 + num5 + num6 + num7;
+
+        System.out.println(sum); // Output: 245
+
+
+        // Alternatively, to make it more flexible, you can take command-line arguments:
+        /*
+        if (args.length == 7) {  // Check if 7 numbers are provided
+            int sumFromArgs = 0;
+            try {
+                for (String arg : args) {
+                    sumFromArgs += Integer.parseInt(arg); 
+                }
+                System.out.println(sumFromArgs);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input: Please provide 7 integers.");
+            }
+        } else {
+            System.err.println("Please provide 7 numbers as command-line arguments.");
+        }
+        */
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Hardcoded Values (Initial Version):**  The first part of the `main` method uses hardcoded values for the seven numbers. This is simple for a specific test case but not very flexible.
+
+2. **Command-Line Arguments (Commented-out Version):** The commented-out section demonstrates how to take the seven numbers as command-line arguments.  This is a much better approach for general use.
+
+   - `args.length == 7`: Checks if the user provided the correct number of arguments.
+   - `Integer.parseInt(arg)`: Converts the string arguments (from the command line) to integers.
+   - `try-catch`: Handles potential `NumberFormatException` if the user enters non-numeric input.
+   - Error messages guide the user on how to use the program correctly.
+
+**How to Compile and Run (with Command-Line Arguments):**
+
+1. **Save:** Save the code as `SumOfSeven.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file.  Then compile: `javac SumOfSeven.java`
+3. **Run:** `java SumOfSeven 10 20 30 40 50 60 70` (replace these numbers with any seven integers you want to sum).
+
+
+This improved version provides a more robust and reusable solution for summing seven numbers.

@@ -1,0 +1,63 @@
+class Solution {
+    /**
+     * Searches for a value (target) in an m x n matrix.
+     *
+     * @param matrix The m x n matrix to search.
+     * @param target The value to search for.
+     * @return True if the target is found in the matrix, false otherwise.
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        // Treat the matrix as a sorted array and perform binary search
+        int left = 0;
+        int right = m * n - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int row = mid / n;
+            int col = mid % n;
+
+            if (matrix[row][col] == target) {
+                return true;
+            } else if (matrix[row][col] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[][] matrix1 = {
+                {1, 3, 5, 7},
+                {10, 11, 16, 20},
+                {23, 30, 34, 60}
+        };
+
+        System.out.println(solution.searchMatrix(matrix1, 3));  // Output: true
+        System.out.println(solution.searchMatrix(matrix1, 13)); // Output: false
+
+
+        int[][] matrix2 = {{1}};
+        System.out.println(solution.searchMatrix(matrix2, 1));  // Output: true
+        System.out.println(solution.searchMatrix(matrix2, 0)); // Output: false
+
+        //Test for empty matrix
+        int[][] matrix3 = {};
+        System.out.println(solution.searchMatrix(matrix3, 1)); //Output: false
+
+
+    }
+}

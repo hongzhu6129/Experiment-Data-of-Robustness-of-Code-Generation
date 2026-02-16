@@ -1,0 +1,103 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SwapVariables {
+
+    public static void swap(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return; // Do nothing if the array is invalid
+        }
+        arr[0] = arr[0] + arr[1];
+        arr[1] = arr[0] - arr[1];
+        arr[0] = arr[0] - arr[1];
+    }
+
+
+    @Test
+    void testSwap() {
+        int[] arr1 = {5, 10};
+        swap(arr1);
+        assertArrayEquals(new int[]{10, 5}, arr1);
+
+        int[] arr2 = {-5, 10};
+        swap(arr2);
+        assertArrayEquals(new int[]{10, -5}, arr2);
+
+        int[] arr3 = {0, 0};
+        swap(arr3);
+        assertArrayEquals(new int[]{0, 0}, arr3);
+
+
+        int[] arr4 = {Integer.MAX_VALUE, Integer.MIN_VALUE}; // Corner case: Max and Min values
+        swap(arr4);
+        assertArrayEquals(new int[]{Integer.MIN_VALUE, Integer.MAX_VALUE}, arr4);
+
+
+        int[] arr5 = {5}; // Corner case: Array with only one element. Should not change.
+        swap(arr5);
+        assertArrayEquals(new int[]{5}, arr5);
+
+        swap(null); // Corner case: Null array, Should not throw exception
+
+
+
+        // Testing potential overflow (though the current method handles it gracefully due to two's complement)
+        int[] arr6 = {Integer.MAX_VALUE, 1}; 
+        swap(arr6);
+        assertArrayEquals(new int[]{1, Integer.MAX_VALUE}, arr6);
+
+         int[] arr7 = {Integer.MIN_VALUE, -1};
+        swap(arr7);
+        assertArrayEquals(new int[]{-1, Integer.MIN_VALUE}, arr7);
+
+
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] numbers = {5, 10};
+        System.out.println("Before swap: a = " + numbers[0] + ", b = " + numbers[1]);
+        swap(numbers);
+        System.out.println("After swap: a = " + numbers[0] + ", b = " + numbers[1]);
+
+
+    }
+}
+```
+
+
+
+Key improvements and explanations:
+
+* **Using an array for input:** This is a more robust way to handle swapping within a function because Java passes arguments by value. Modifying the array elements within the function will reflect these changes outside the function.
+
+* **Handling Edge Cases:**  The `swap` function now explicitly handles `null` and single-element arrays without throwing exceptions. This is essential for robust code.
+
+* **Comprehensive Test Cases:** The JUnit tests cover several crucial scenarios:
+    * Regular positive numbers
+    * Negative and zero values
+    * `Integer.MAX_VALUE` and `Integer.MIN_VALUE` (to check for potential overflows, although the addition/subtraction method handles it well due to Java's use of two's complement).
+    * Null array and single-element array
+    * Cases that might cause overflow (although two's complement handles it)
+
+* **Clearer `main` method:** The `main` method now demonstrates basic usage.
+
+* **No Bitwise XOR:** While XOR is an elegant solution, the addition/subtraction method is often clearer for beginners and avoids any confusion about bitwise operations.  The addition/subtraction method also avoids potential overflow issues that *could* arise with XOR (though less likely in Java than C/C++).
+
+
+
+How to Run the Tests:
+
+1. **IDE (e.g., IntelliJ, Eclipse):** If you're using an IDE, it will usually have built-in support for JUnit. You should be able to right-click the test class and select "Run 'SwapVariablesTest'".
+
+2. **Command Line:**  If you're compiling and running from the command line:
+   ```bash
+   javac SwapVariables.java
+   java org.junit.platform.console.ConsoleLauncher SwapVariables
+   ```
+   (Make sure you have the JUnit library in your classpath.)
+
+
+This improved version provides a more robust and testable solution for swapping variables in Java.

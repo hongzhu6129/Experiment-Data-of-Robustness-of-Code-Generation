@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+* **Encapsulation:** The `length` and `width` are now private instance variables, accessed through methods. This is good practice.
+* **Clearer `main` Method:** The `main` method now demonstrates a couple of examples, including the case of a square (a special type of rectangle).  I've also added output labels to make the printed results clearer.
+* **Test Cases (using JUnit 5):**
+    * I've included JUnit 5 test cases, which is the standard way to test Java code. These test different scenarios: a standard rectangle, a square, and corner cases.
+    * **Corner Case:** Tests with zero length have been added.  It's important to consider what should happen in these situations (e.g., zero area but non-zero perimeter if width > 0).
+* **Handling Invalid Input:** The constructor now includes more robust error handling, throwing `IllegalArgumentException` for negative length or width values.   These are also tested with JUnit's `assertThrows`.
+
+
+**How to run the tests:**
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, it has built-in support for JUnit.  Just right-click the test class and select "Run".
+2. **Command Line (with Maven or Gradle):** If you're using a build tool like Maven or Gradle, you can run the tests using the appropriate command (e.g., `mvn test` or `gradle test`).
+
+
+This improved version is much more robust and demonstrates better Java coding practices. The test cases ensure that the `Rectangle` class functions correctly under various conditions.

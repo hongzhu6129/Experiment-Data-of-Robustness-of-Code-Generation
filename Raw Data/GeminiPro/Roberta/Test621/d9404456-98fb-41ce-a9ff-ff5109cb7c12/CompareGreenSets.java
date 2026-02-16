@@ -1,0 +1,66 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class CompareGreenSets {
+
+    public static void main(String[] args) {
+        // Create two sets of "green" strings (or any other type).
+        Set<String> set1 = new HashSet<>();
+        set1.add("Green Apple");
+        set1.add("Green Grass");
+        set1.add("Green Light");
+
+
+        Set<String> set2 = new HashSet<>();
+        set2.add("Green Light");
+        set2.add("Green Tea");
+        set2.add("Green Apple");
+
+
+        // 1. Check if sets are equal (contain the same elements regardless of order)
+        boolean areEqual = set1.equals(set2);
+        System.out.println("Sets are equal: " + areEqual);
+
+        // 2. Check if one set is a subset of another
+        boolean set1IsSubsetOfSet2 = set1.containsAll(set2); // Check if set2 is a subset of set1
+        boolean set2IsSubsetOfSet1 = set2.containsAll(set1); // Check if set1 is a subset of set2
+
+        System.out.println("Set 1 is a subset of Set 2: " + set1IsSubsetOfSet2);
+        System.out.println("Set 2 is a subset of Set 1: " + set2IsSubsetOfSet1);
+
+
+
+        // 3. Find common elements (intersection)
+        Set<String> intersection = new HashSet<>(set1); // Create a copy to avoid modifying the original
+        intersection.retainAll(set2); 
+
+        System.out.println("Common elements (intersection): " + intersection);
+
+
+
+        // 4. Find the union of the sets
+        Set<String> union = new HashSet<>(set1);
+        union.addAll(set2);
+
+        System.out.println("Union of sets: " + union);
+
+
+
+        // 5. Find elements unique to set1 (set difference)
+        Set<String> set1Unique = new HashSet<>(set1);
+        set1Unique.removeAll(set2);
+
+        System.out.println("Elements unique to Set 1: " + set1Unique);
+
+        // 6. Find elements unique to set2 (set difference)
+        Set<String> set2Unique = new HashSet<>(set2);
+        set2Unique.removeAll(set1);
+
+        System.out.println("Elements unique to Set 2: " + set2Unique);
+
+
+
+
+
+    }
+}

@@ -1,0 +1,83 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+
+    private static int[] generatePrimes(int n) {
+        if (n <= 1) {
+            return new int[0]; 
+        }
+
+        boolean[] isPrime = new boolean[n + 1];
+        Arrays.fill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+
+        for (int p = 2; p * p <= n; p++) {
+            if (isPrime[p]) {
+                for (int i = p * p; i <= n; i += p) {
+                    isPrime[i] = false;
+                }
+            }
+        }
+
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                count++;
+            }
+        }
+
+        int[] primes = new int[count];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                primes[index++] = i;
+            }
+        }
+
+        return primes;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 30; // Example: Find primes up to 30
+        int[] primes = generatePrimes(n);
+
+        System.out.print("Primes smaller than or equal to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println();
+
+
+        n = 1; // Test case with n=1
+        primes = generatePrimes(n);
+        System.out.print("Primes smaller than or equal to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println();
+
+         n = 100;  // Test with a larger number 
+        primes = generatePrimes(n);
+        System.out.print("Primes smaller than or equal to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println();
+    }
+}
+```
+
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:** The code explicitly handles the cases where `n` is less than or equal to 1, returning an empty array as there are no primes in those cases.
+2. **Efficiency:** The outer loop in `generatePrimes` only goes up to the square root of `n` (`p * p <= n`). This optimization is based on the fact that if a number `n` is not prime, it must have a divisor less than or equal to its square root.
+3. **Clearer Variable Names:** Variables like `isPrime` and `primes` are more descriptive than single-letter names.
+4. **Concise Output:** The output is formatted to clearly show the primes up to the given limit.
+5. **Comprehensive Test Cases in `main`:** I've added multiple test cases within the `main` method to demonstrate how to use `generatePrimes` with different input values, including edge cases (n=1) and a larger number (n=100).  This makes the code more robust and easier to understand.
+
+
+This revised version is more efficient, handles edge cases correctly, and is easier to read and understand.

@@ -1,0 +1,38 @@
+public class CanonicalString {
+
+    public static void main(String[] args) {
+
+        // Example strings
+        String str1 = "Hello";
+        String str2 = new String("Hello");
+        String str3 = str2.intern();
+
+
+        System.out.println("String 1: " + str1);
+        System.out.println("String 2: " + str2);
+        System.out.println("String 3: " + str3);
+
+        System.out.println("str1 == str2: " + (str1 == str2)); // False (different objects)
+        System.out.println("str1 == str3: " + (str1 == str3)); // True (same object in string pool)
+        System.out.println("str2 == str3: " + (str2 == str3)); // True (after intern(), str2 now refers to the canonical representation)
+
+
+        // Demonstrating canonical representation with other examples
+        String s1 = "Java";
+        String s2 = "Java";
+        String s3 = new String("Java").intern(); // Explicitly getting the canonical representation
+
+        System.out.println("\ns1 == s2: " + (s1 == s2)); // True (string literals are automatically interned)
+        System.out.println("s1 == s3: " + (s1 == s3)); // True (intern() ensures canonical representation)
+
+
+        // Example demonstrating that modification of the string literal doesn't change the string pool object
+        String a = "abc";
+        String b = a;
+        a = a + "def"; //creates new object for a in String Constant Pool.
+
+        System.out.println("\na: " + a); // abcdef
+        System.out.println("b: " + b); // abc
+
+    }
+}

@@ -1,0 +1,60 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first date (yyyy-MM-dd):");
+        String date1String = scanner.nextLine();
+
+        System.out.println("Enter the second date (yyyy-MM-dd):");
+        String date2String = scanner.nextLine();
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date1 = LocalDate.parse(date1String, formatter);
+            LocalDate date2 = LocalDate.parse(date2String, formatter);
+
+            Period difference = Period.between(date1, date2);
+
+            System.out.println("Difference:");
+            System.out.println("Years: " + difference.getYears());
+            System.out.println("Months: " + difference.getMonths());
+            System.out.println("Days: " + difference.getDays());
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+        scanner.close(); 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Error Handling:** Uses a `try-catch` block to handle `DateTimeParseException` if the user enters dates in an incorrect format. This prevents the program from crashing.
+* **Clearer Prompts:**  Provides specific instructions to the user on the expected date format.
+* **Resource Management:** Closes the `Scanner` to release the resource.
+* **Modern Date/Time API:** Uses `java.time` (introduced in Java 8), which is significantly better than the old `Date` and `Calendar` classes.  It's simpler, clearer, and handles time zones more effectively (though time zones aren't relevant in this specific example).
+
+
+Example Usage:
+
+```
+Enter the first date (yyyy-MM-dd):
+2023-10-26
+Enter the second date (yyyy-MM-dd):
+2024-03-15
+Difference:
+Years: 0
+Months: 4
+Days: 19
+```

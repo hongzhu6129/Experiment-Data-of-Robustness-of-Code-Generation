@@ -1,0 +1,34 @@
+```java
+public class HarshadNumber {
+
+    public static void main(String[] args) {
+        int num = 353; // You can change this to test different numbers
+        int temp = num;
+        int sum = 0;
+
+        // Calculate the sum of digits
+        while (temp > 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        // Check if the number is divisible by the sum of its digits
+        if (num % sum == 0) {
+            System.out.println(num + " is a harshad number.");
+        } else {
+            System.out.println(num + " is not a harshad number.");
+        }
+
+
+        // Example with user input (requires exception handling for non-integer input)
+        //  Scanner scanner = new Scanner(System.in);
+        //  System.out.print("Input a number: ");
+        //  try {
+        //      num = scanner.nextInt(); 
+        //      // ... (rest of the logic as above) ...
+        //  } catch (InputMismatchException e) {
+        //      System.out.println("Invalid input. Please enter an integer.");
+        // }
+    }
+}
+```

@@ -1,0 +1,40 @@
+public class AdjacentNumberChecker {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 1, 3, 1, 4, 1};
+        int num1 = 1;
+        System.out.println("Array 1 contains " + num1 + " in every adjacent pair: " + checkAdjacent(arr1, num1)); // Output: true
+
+        int[] arr2 = {2, 1, 2, 3, 4, 2};
+        int num2 = 2;
+        System.out.println("Array 2 contains " + num2 + " in every adjacent pair: " + checkAdjacent(arr2, num2)); // Output: false
+
+        int[] arr3 = {1, 1, 1, 1, 1};
+        int num3 = 1;
+        System.out.println("Array 3 contains " + num3 + " in every adjacent pair: " + checkAdjacent(arr3, num3)); // Output: true
+
+         int[] arr4 = {}; // Empty array
+        int num4 = 5; 
+        System.out.println("Array 4 contains " + num4 + " in every adjacent pair: " + checkAdjacent(arr4, num4)); // Output: true (vacuously true)
+
+
+        int[] arr5 = {5}; // Single element array
+        int num5 = 5;
+        System.out.println("Array 5 contains " + num5 + " in every adjacent pair: " + checkAdjacent(arr5, num5)); // Output: true  (vacuously true)
+
+    }
+
+
+    public static boolean checkAdjacent(int[] arr, int num) {
+        if (arr == null || arr.length <= 1) { //Handles null and single-element arrays (which are vacuously true).
+            return true; 
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] != num && arr[i + 1] != num) {
+                return false;
+            }
+        }
+        return true;
+    }
+}

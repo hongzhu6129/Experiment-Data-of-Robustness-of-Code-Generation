@@ -1,0 +1,79 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+While there aren't really "corner cases" for printing a static image like this,  we can consider testing aspects like:
+
+1. **Correct Output:** Does the program print the face exactly as designed?  Visual inspection is the primary test here.  You could compare the output against a known-good "golden" output file.
+
+2. **Standard Output:** Ensure the output goes to the standard output stream (System.out) as expected.  This can be important if the program is later integrated into a larger system where output redirection might be used.
+
+
+Here's an example of how you could theoretically (though a bit overkill for this simple program) use a test framework like JUnit and output redirection to test the output against a file:
+
+```java
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class FacePrinterTest {
+
+    @Test
+    public void testPrintFace() {
+        // Redirect System.out to capture the output
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Call the printFace method
+        FacePrinter.printFace();
+
+        // Reset System.out to its original state (important!)
+        System.setOut(System.out);
+
+        // Get the captured output as a string
+        String actualOutput = outputStream.toString();
+
+        // Define the expected output
+        String expectedOutput = "  +\"\"\"\"+ \r\n" + // \r\n for Windows line endings
+                            " [| o o |] \r\n" +
+                            "  |  ^  | \r\n" +
+                            "  | '-' | \r\n" +
+                            "  +-----+ \r\n";  // Adjust line endings if needed
+
+
+        // Assert that the actual output matches the expected output
+        assertEquals(expectedOutput, actualOutput);
+
+
+    }
+}
+
+```
+
+Key improvements in this testing approach:
+
+* **Automated Testing:** Using JUnit makes the test repeatable and part of a larger test suite.
+* **Output Capture:** Redirecting `System.out` allows us to programmatically check the printed output.
+* **Cross-Platform:** The use of `\r\n` ensures the test works correctly on Windows systems.  You might want to adjust this if your target platform uses different line endings (e.g., `\n` for Linux/macOS).
+
+
+
+
+
+Most importantly for the simple face printing example, careful visual inspection of the output will be the most practical test.  The JUnit example is more to illustrate good testing principles that would be highly valuable for more complex programs.

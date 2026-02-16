@@ -1,0 +1,71 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            /* compute the depth of each subtree */
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            /* use the larger one */
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.right.left = new Node(6); // Adding a deeper node
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Node Class:** Represents a node in the binary tree. It has `data`, `left` child, and `right` child.
+
+2. **maxDepth(Node node):** This recursive method calculates the maximum depth (or height) of the tree.
+   - **Base Case:** If `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**  It recursively calculates the depth of the left and right subtrees (`lDepth` and `rDepth`).  It then returns the maximum of these depths plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates a sample binary tree.  You can modify this to create different tree structures for testing.
+   - Calls `maxDepth()` to calculate and print the height of the tree.
+
+**Key Improvements over a simpler approach:**
+
+- **Handles `null` nodes:** The base case (`node == null`) correctly handles empty subtrees and prevents `NullPointerExceptions`.
+- **Clear and Concise:**  The code is easy to understand and follows standard recursion patterns.
+- **Efficient:** This recursive approach efficiently explores the tree without redundant calculations.
+
+
+**How to use it:**
+
+1. **Compile:** Save the code as `BinaryTreeMaxDepth.java` and compile it using a Java compiler:  `javac BinaryTreeMaxDepth.java`
+2. **Run:**  `java BinaryTreeMaxDepth`
+
+The output will be the height/max depth of the sample tree you created in the `main` method. You can modify the tree structure in `main` to test with different trees.

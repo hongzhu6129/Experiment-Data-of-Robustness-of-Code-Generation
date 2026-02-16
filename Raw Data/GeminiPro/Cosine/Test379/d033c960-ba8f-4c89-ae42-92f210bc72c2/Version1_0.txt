@@ -1,0 +1,42 @@
+```java
+class Solution {
+    /**
+     * Checks if the string "good" appears at index 0 or 1 in the given string.
+     *
+     * @param str The input string.
+     * @return True if "good" appears at index 0 or 1, false otherwise.
+     */
+    public boolean hasGood(String str) {
+        if (str == null || str.length() < 4) {
+            return false;
+        }
+
+        if (str.startsWith("good")) {
+            return true;
+        }
+
+        if (str.length() >= 5 && str.substring(1).startsWith("good")) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Main method to test the hasGood function.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.hasGood("gooddog")); // Output: true
+        System.out.println(solution.hasGood("xgoodx"));  // Output: false
+        System.out.println(solution.hasGood("agoodby")); // Output: true
+        System.out.println(solution.hasGood("goo"));    // Output: false
+        System.out.println(solution.hasGood("ggood"));   // Output: true // Added test case
+        System.out.println(solution.hasGood(null));     // Output: false // Added test case for null input
+
+    }
+}
+```

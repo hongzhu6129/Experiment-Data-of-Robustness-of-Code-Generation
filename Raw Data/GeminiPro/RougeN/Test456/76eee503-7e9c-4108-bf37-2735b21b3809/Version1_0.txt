@@ -1,0 +1,55 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first date (yyyy-MM-dd):");
+        String date1Str = scanner.nextLine();
+
+        System.out.println("Enter the second date (yyyy-MM-dd):");
+        String date2Str = scanner.nextLine();
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date1 = LocalDate.parse(date1Str, formatter);
+            LocalDate date2 = LocalDate.parse(date2Str, formatter);
+
+            Period period = Period.between(date1, date2);
+
+            System.out.println("Years: " + period.getYears());
+            System.out.println("Months: " + period.getMonths());
+
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `DateTimeParseException` if the user enters dates in an incorrect format. This makes the program more robust.
+
+2. **Clear Prompts:**  Added clear prompts to instruct the user on the expected date format.
+
+3. **java.time API:**  Uses the modern `java.time` API (introduced in Java 8).  It's significantly better than the old `Date` and `Calendar` classes for date/time manipulation.  `LocalDate` is used to represent dates, and `Period` is used to calculate the difference between them.
+
+4. **Formatting:** Uses `DateTimeFormatter` for parsing the date strings into `LocalDate` objects, ensuring that the date format is handled correctly.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DateDifference.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac DateDifference.java`
+3. **Run:**  `java DateDifference`
+
+The program will then prompt you to enter the two dates.

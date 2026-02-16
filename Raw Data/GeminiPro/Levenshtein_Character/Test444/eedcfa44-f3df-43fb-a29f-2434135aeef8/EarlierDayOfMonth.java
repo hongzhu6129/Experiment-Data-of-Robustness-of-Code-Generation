@@ -1,0 +1,16 @@
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class EarlierDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the first day of the current month
+        LocalDate earlierDay = currentDate.with(TemporalAdjusters.firstDayOfMonth());
+
+        // Print the earlier day
+        System.out.println("The earlier day of the current month is: " + earlierDay);
+    }
+}

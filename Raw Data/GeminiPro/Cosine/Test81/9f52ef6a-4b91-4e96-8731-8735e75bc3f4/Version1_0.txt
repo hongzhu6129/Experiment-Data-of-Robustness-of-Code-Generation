@@ -1,0 +1,60 @@
+```java
+public class EvenOddCounter {
+
+    public static void main(String[] args) {
+        // Example array of integers
+        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        System.out.println("Even numbers: " + evenCount);
+        System.out.println("Odd numbers: " + oddCount);
+
+        // Example with user input (requires exception handling in a real application)
+         if(args.length > 0){
+             int [] userNumbers = new int [args.length];
+             for(int i=0; i < args.length; i++){
+                 userNumbers[i] = Integer.parseInt(args[i]);
+             }
+
+             evenCount = 0;
+             oddCount = 0;
+
+              for (int number : userNumbers) {
+                 if (number % 2 == 0) {
+                     evenCount++;
+                 } else {
+                      oddCount++;
+                 }
+              }
+
+            System.out.println("Even numbers (user input): " + evenCount);
+            System.out.println("Odd numbers (user input): " + oddCount);
+
+        }
+    }
+}
+```
+
+
+To compile and run this code:
+
+1. **Save:** Save the code as `EvenOddCounter.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run `javac EvenOddCounter.java`.
+3. **Run:**  Execute the compiled code with `java EvenOddCounter`  or, to provide numbers as command line arguments:  `java EvenOddCounter 1 2 3 4 5` (replace 1 2 3 4 5 with your desired numbers).
+
+
+Key improvements in this version:
+
+* **Handles user input:**  It now accepts command-line arguments and processes them as the input array.  This demonstrates a more flexible way of providing data to the program.  (Note:  In a full application, you would add error handling to deal with invalid inputs like non-numeric arguments.)
+* **Clearer output:** The output now distinguishes between the results from the example array and the results from user-provided input.
+* **Maintains core simplicity:**  It still fulfills the requirement of using only `void main(String[] args)`.

@@ -1,0 +1,45 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        // Specify the starting position (e.g., index 2)
+        int startPosition = 2;
+
+        // Iterate through elements starting at the specified position
+        iterateFromPosition(linkedList, startPosition);
+
+
+         // Example with an invalid start position (demonstrates error handling)
+        iterateFromPosition(linkedList, 10); // Start position beyond the list size
+
+    }
+
+    public static void iterateFromPosition(LinkedList<String> list, int startPosition) {
+        if (startPosition < 0 || startPosition >= list.size()) {
+            System.out.println("Invalid start position.");
+            return; // Or throw an exception if that's your preferred error handling
+        }
+
+        ListIterator<String> iterator = list.listIterator(startPosition);
+
+        System.out.println("Iterating from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+}
+
+
+
+```

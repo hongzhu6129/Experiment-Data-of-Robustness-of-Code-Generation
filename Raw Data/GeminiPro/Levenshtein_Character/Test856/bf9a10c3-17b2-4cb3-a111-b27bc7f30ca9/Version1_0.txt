@@ -1,0 +1,21 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static void main(String[] args) {
+        if (args == null || args.length == 0) {
+            System.out.println("Please provide a decimal number as an argument.");
+            return;
+        }
+
+        try {
+            int decimal = Integer.parseInt(args[0]);
+            String hexadecimal = Integer.toHexString(decimal).toUpperCase();
+            System.out.println("Hexadecimal number is : " + hexadecimal);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid decimal number.");
+        }
+    }
+}
+```

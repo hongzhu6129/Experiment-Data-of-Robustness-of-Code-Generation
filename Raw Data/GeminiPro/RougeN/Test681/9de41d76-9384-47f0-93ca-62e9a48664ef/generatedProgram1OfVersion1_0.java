@@ -1,0 +1,45 @@
+public class DoubleParts {
+
+    public static void main(String[] args) {
+        double num = 123.456;
+
+        // Method 1: Using casting
+        int wholePart1 = (int) num;
+        double fractionalPart1 = num - wholePart1;
+
+        System.out.println("Method 1:");
+        System.out.println("Whole part: " + wholePart1);
+        System.out.println("Fractional part: " + fractionalPart1);
+
+
+        // Method 2: Using Math.floor()
+        int wholePart2 = (int) Math.floor(num);
+        double fractionalPart2 = num - wholePart2;
+
+        System.out.println("\nMethod 2:");
+        System.out.println("Whole part: " + wholePart2);
+        System.out.println("Fractional part: " + fractionalPart2);
+
+
+        //Example with negative number:
+
+        double negativeNum = -987.654;
+
+         wholePart1 = (int) negativeNum;
+         fractionalPart1 = negativeNum - wholePart1;
+
+        System.out.println("\nMethod 1 (Negative Number):");
+        System.out.println("Whole part: " + wholePart1);
+        System.out.println("Fractional part: " + fractionalPart1);
+
+        wholePart2 = (int) Math.floor(negativeNum);
+        fractionalPart2 = negativeNum - wholePart2;
+
+
+        System.out.println("\nMethod 2 (Negative Number):");
+        System.out.println("Whole part: " + wholePart2);
+        System.out.println("Fractional part: " + fractionalPart2);
+
+
+    }
+}

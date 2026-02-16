@@ -1,0 +1,51 @@
+```java
+import java.util.LinkedList;
+
+public class RetrieveFirstElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Check if the list is empty before retrieving the first element
+        if (!linkedList.isEmpty()) {
+            // Retrieve the first element using peek() or getFirst()
+            String firstElement = linkedList.peek(); // peek() retrieves without removing
+
+            // Alternatively, use getFirst() (throws NoSuchElementException if empty)
+            // String firstElement = linkedList.getFirst();
+
+
+            System.out.println("First element: " + firstElement);  // Output: First element: Apple
+
+            // Verify that the element was not removed.
+            System.out.println("Linked List after retrieving: " + linkedList); // Output: Linked List after retrieving: [Apple, Banana, Orange]
+        } else {
+            System.out.println("The linked list is empty.");
+        }
+
+
+        // Example with an Integer LinkedList
+         LinkedList<Integer> numbers = new LinkedList<>();
+         numbers.add(10);
+         numbers.add(20);
+         numbers.add(30);
+
+        if (!numbers.isEmpty()) {
+            int firstNumber = numbers.peekFirst(); // peekFirst() for Integer LinkedList
+            System.out.println("First number: " + firstNumber); // Output: First number: 10
+            System.out.println("Numbers after retrieving: " + numbers); // Output: Numbers after retrieving: [10, 20, 30]
+        } else {
+            System.out.println("The numbers list is empty.");
+        }
+
+
+
+    }
+}
+```

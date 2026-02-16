@@ -1,0 +1,78 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class InterleaveStrings {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the two strings from the user.
+        System.out.println("Enter the first string: ");
+        String s1 = scanner.nextLine();
+        System.out.println("Enter the second string: ");
+        String s2 = scanner.nextLine();
+
+        // Interleave the two strings.
+        String interleavedString = interleave(s1, s2);
+
+        // Print the interleaved string.
+        System.out.println("The interleaved string is: " + interleavedString);
+    }
+
+    public static String interleave(String s1, String s2) {
+        // Check if either string is empty.
+        if (s1.isEmpty()) {
+            return s2;
+        }
+
+        if (s2.isEmpty()) {
+            return s1;
+        }
+
+        // Create a new string to store the interleaved string.
+        String interleavedString = "";
+
+        // Iterate over the two strings, appending one character from each string to the interleaved string.
+        for (int i = 0; i < s1.length() || i < s2.length(); i++) {
+            if (i < s1.length()) {
+                interleavedString += s1.charAt(i);
+            }
+
+            if (i < s2.length()) {
+                interleavedString += s2.charAt(i);
+            }
+        }
+
+        // Return the interleaved string.
+        return interleavedString;
+    }
+
+    public static void test() {
+        // Test case 1: Two non-empty strings
+        String s1 = "Hello";
+        String s2 = "World";
+        String expected = "HelloWorld";
+        String actual = interleave(s1, s2);
+        assertEquals(expected, actual);
+
+        // Test case 2: One empty string
+        s1 = "";
+        s2 = "World";
+        expected = "World";
+        actual = interleave(s1, s2);
+        assertEquals(expected, actual);
+
+        // Test case 3: Both strings empty
+        s1 = "";
+        s2 = "";
+        expected = "";
+        actual = interleave(s1, s2);
+        assertEquals(expected, actual);
+    }
+
+    public static void assertEquals(String expected, String actual) {
+        if (!expected.equals(actual)) {
+            throw new RuntimeException("Expected: " + expected + ", Actual: " + actual);
+        }
+    }
+}

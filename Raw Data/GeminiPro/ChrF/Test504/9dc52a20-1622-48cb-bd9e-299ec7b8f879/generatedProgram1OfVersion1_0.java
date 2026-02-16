@@ -1,0 +1,32 @@
+class Solution {
+    /**
+     * Displays the factors of 3 present in a given integer.
+     *
+     * @param n The integer to check for factors of 3.
+     */
+    public static void test(int n) {
+        int factor = 3;
+        int count = 0;
+
+        while (n > 0 && n % factor == 0) {
+            count++;
+            n /= factor;
+        }
+
+        if (count > 0) {
+            System.out.println("3 is a factor " + count + " time(s).");
+        } else {
+            System.out.println("3 is not a factor.");
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        test(27); // Output: 3 is a factor 3 time(s).
+        test(12); // Output: 3 is a factor 1 time(s).
+        test(4);  // Output: 3 is not a factor.
+        test(18); // Output: 3 is a factor 2 time(s).
+
+    }
+}

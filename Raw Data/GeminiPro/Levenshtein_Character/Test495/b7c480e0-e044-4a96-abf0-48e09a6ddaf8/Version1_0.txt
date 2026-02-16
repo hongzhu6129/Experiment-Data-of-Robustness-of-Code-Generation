@@ -1,0 +1,56 @@
+```java
+public class MatrixImage {
+
+    public static void main(String[] args) {
+        // Example usage: create a 5x5 matrix image
+        printMatrix(5);
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                // Logic to determine the value at each cell
+                int value = (i + j) % 2; // Example: alternating 0 and 1
+
+                System.out.print(value + " "); // Print the value with a space
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Value Assignment:** The original prompt lacked specifics on what the matrix should contain. I've used  `(i + j) % 2` as a simple example to create an alternating pattern of 0s and 1s.  You can modify this based on your desired matrix content (e.g., a diagonal, specific numbers, etc.).
+
+2. **Space Management:** Added a space after each number printed to ensure the matrix is formatted correctly.
+
+3. **Newline:**  `System.out.println()` after the inner loop ensures each row is printed on a new line, creating the matrix visualization.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to call the `printMatrix` method.
+
+
+**How to adapt for different matrix content:**
+
+* **Diagonal Matrix:**
+   ```java
+   int value = (i == j) ? 1 : 0; // 1 on the diagonal, 0 elsewhere
+   ```
+
+* **Numbers 1 to n*n:**
+   ```java
+   int value = i * n + j + 1; 
+   ```
+
+* **Random Numbers:**
+   ```java
+   import java.util.Random; // Import Random class
+
+   // ... inside printMatrix ...
+   Random rand = new Random();
+   int value = rand.nextInt(10); // Random numbers from 0 to 9 (adjust range as needed)
+   ```
+
+Replace the `int value = (i + j) % 2;` line with the appropriate logic for your desired matrix.

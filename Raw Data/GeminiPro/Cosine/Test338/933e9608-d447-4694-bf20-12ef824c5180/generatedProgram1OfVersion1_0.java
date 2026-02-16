@@ -1,0 +1,51 @@
+public class LastIndexSubstring {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. This is another test.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' is not found.");
+        }
+
+
+        // More examples
+        System.out.println("----More Examples----");
+
+        mainString = "apple banana apple orange";
+        subString = "apple";
+        lastIndex = mainString.lastIndexOf(subString);
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' is not found.");
+        }
+
+
+
+         mainString = "hello hello hello";
+        subString = "hello";
+        lastIndex = mainString.lastIndexOf(subString);
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' is not found.");
+        }
+
+
+
+        mainString = "coding is fun";
+        subString = "java";  // Example where substring isn't present
+        lastIndex = mainString.lastIndexOf(subString);
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' is not found.");
+        }
+
+    }
+}

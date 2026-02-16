@@ -1,0 +1,59 @@
+```java
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeFormats {
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = now.atZone(ZoneId.systemDefault());
+
+
+        // yyyy-mm-dd
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        // hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        // yyyy-mm-dd hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        // e mmm yyyy hh:mm:ss.sssz  (Note: 's' for milliseconds needs at least 3, otherwise use 'S')
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("e MMM yyyy HH:mm:ss.SSSZ")));
+
+
+
+        // hh:mm:ss, z
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss, z")));
+
+
+       // hh:mm:ss, Z  (For offset)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss, Z"))); // For offset
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **LocalDateTime vs. ZonedDateTime:**  `LocalDateTime` doesn't include time zone information.  For formats requiring a time zone (like `z`, `Z`, or `O`), you *must* use `ZonedDateTime`.
+* **Creating ZonedDateTime:** We get the current `LocalDateTime` and then convert it to `ZonedDateTime` using the system's default time zone (`ZoneId.systemDefault()`).  You can specify a different time zone if needed (e.g., `ZoneId.of("America/New_York")`).
+* **Correct Format Specifiers:**
+    * `MM`:  Month (01-12) - uppercase is crucial
+    * `mm`:  Minute (00-59)
+    * `HH`:  Hour (00-23) - 24-hour format
+    * `hh`:  Hour (01-12) - 12-hour format
+    * `ss`:  Second (00-59)
+    * `SSS`: Milliseconds (000-999) � At least 3 'S's required
+    * `z`:  Time zone abbreviation (e.g., PST, EST)
+    * `Z`: Time zone offset (e.g., -0800, +0530)
+    * `e`: Day of the week (1-7) - numeric
+    * `MMM`: Abbreviated month name (e.g., Jan, Feb)
+* **Clearer Formatting:**  The code is now better structured and easier to read.  Each format is printed on a separate line.
+
+
+This improved version addresses the issues with the original and provides a correct and robust solution for formatting date and time in Java using the specified patterns.

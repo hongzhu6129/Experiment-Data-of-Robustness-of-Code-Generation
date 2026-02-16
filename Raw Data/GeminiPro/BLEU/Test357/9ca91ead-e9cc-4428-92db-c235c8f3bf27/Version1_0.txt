@@ -1,0 +1,68 @@
+```java
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            System.out.println("Input string is empty or null.");
+            return;
+        }
+
+        int len = str.length();
+        int partSize = len / n;
+        int remainder = len % n;
+
+
+        if (len < n) {
+            System.out.println("String length is less than the number of parts.");
+            return;
+        }
+
+
+        int startIndex = 0;
+        for (int i = 0; i < n; i++) {
+            int endIndex = startIndex + partSize;
+            if (i < remainder) {
+                endIndex++; // Distribute remainder characters among initial parts
+            }
+
+            System.out.println(str.substring(startIndex, endIndex));
+            startIndex = endIndex;
+
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "abcdefghijklmnopqrstuvwxy";
+        int n = 5;
+        splitString(str, n);
+
+        System.out.println(); //separator
+
+        str = "abcdefghijklm";
+        n = 4;
+        splitString(str, n);
+
+        System.out.println(); //separator
+
+        str = "abc"; // Example with string length less than n
+        n = 4;
+        splitString(str, n);
+
+
+        System.out.println(); //separator
+
+         str = ""; // Example with empty string
+        n = 2;
+        splitString(str, n);
+
+         System.out.println(); //separator
+
+         str = null; // Example with null string
+        n = 2;
+        splitString(str, n);
+
+
+    }
+}
+
+```

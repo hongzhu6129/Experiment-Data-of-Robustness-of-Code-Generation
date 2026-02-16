@@ -1,0 +1,16 @@
+
+
+
+Explanation:
+
+1. **Method Signature Adherence:** The code strictly uses the provided method signatures `static void checkExistance(String, String)` and `public static void main(String[])`.  The second String argument in `checkExistance` is unused, a dummy, as it's required by the given signature but not needed for the logic.
+2. **Null and Empty String Handling:**  The `checkExistance` method includes error handling to address `null` or empty input strings, printing an appropriate message in such cases. This improves robustness.
+3. **Character List Creation:**  The core logic resides within `checkExistance`. It iterates through the input `word` character by character using a `for-each` loop on the `toCharArray()` result. Each character is added to an `ArrayList` of `Character` objects.
+4. **Output:** The resulting `charList` (containing all characters of the input word) is printed to the console.
+5. **Main Method Examples:** The `main` method demonstrates usage with different sample words, including empty and `null` inputs, to showcase the error handling.
+
+
+Important Notes regarding the given restriction:
+
+* The unused `String dummy` argument is a consequence of the enforced signature. In a real-world scenario,  you would likely design your method signature to only accept the necessary parameters. 
+* The chosen method name `checkExistance` isn't the most descriptive for the actual operation (copying characters).  Ideally,  a name like `copyWordCharacters` or similar would be more appropriate. However, the name cannot be changed due to the restrictions given in the prompt.

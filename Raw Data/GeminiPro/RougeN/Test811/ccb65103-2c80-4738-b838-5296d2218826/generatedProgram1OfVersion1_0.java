@@ -1,0 +1,29 @@
+public class DecimalToOctal {
+
+    public static void main(String[] args) {
+        int decimalNumber = 15; // You can change this to take input from the user
+        String octalNumber = Integer.toOctalString(decimalNumber);
+        System.out.println("Octal number is: " + octalNumber); 
+
+        // Alternative method using manual conversion (for understanding)
+        decimalNumber = 15; // Resetting for demonstration
+        octalNumber = "";
+        int remainder;
+
+        while (decimalNumber > 0) {
+            remainder = decimalNumber % 8;
+            octalNumber = remainder + octalNumber; // Prepend the remainder
+            decimalNumber /= 8;
+        }
+
+        System.out.println("Octal number (manual method) is: " + octalNumber);
+
+        //To take input from the user:
+        //Scanner input = new Scanner(System.in);
+        //System.out.print("Input a Decimal Number: ");
+        //decimalNumber = input.nextInt();
+        //octalNumber = Integer.toOctalString(decimalNumber);
+        //System.out.println("Octal number is: " + octalNumber);
+        //input.close(); // Close the scanner when done
+    }
+}

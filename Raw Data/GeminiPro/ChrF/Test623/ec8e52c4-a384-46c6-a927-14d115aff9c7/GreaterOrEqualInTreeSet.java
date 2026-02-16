@@ -1,0 +1,34 @@
+import java.util.TreeSet;
+
+public class GreaterOrEqualInTreeSet {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> greenSet = new TreeSet<>();
+        greenSet.add(10);
+        greenSet.add(20);
+        greenSet.add(30);
+        greenSet.add(40);
+        greenSet.add(50);
+
+        int givenElement1 = 25;
+        Integer greaterOrEqual1 = greenSet.ceiling(givenElement1);
+        System.out.println("Element greater than or equal to " + givenElement1 + ": " + greaterOrEqual1); // Output: 30
+
+        int givenElement2 = 20;
+        Integer greaterOrEqual2 = greenSet.ceiling(givenElement2);
+        System.out.println("Element greater than or equal to " + givenElement2 + ": " + greaterOrEqual2); // Output: 20
+
+
+        int givenElement3 = 60;  // Example with element larger than any in the set
+        Integer greaterOrEqual3 = greenSet.ceiling(givenElement3);
+        System.out.println("Element greater than or equal to " + givenElement3 + ": " + greaterOrEqual3); // Output: null (no such element)
+
+
+         int givenElement4 = 5;  // Example with element smaller than any in the set
+        Integer greaterOrEqual4 = greenSet.ceiling(givenElement4);
+        System.out.println("Element greater than or equal to " + givenElement4 + ": " + greaterOrEqual4); // Output: 10
+
+
+    }
+}

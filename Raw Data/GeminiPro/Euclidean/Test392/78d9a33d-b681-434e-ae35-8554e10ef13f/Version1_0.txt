@@ -1,0 +1,45 @@
+```java
+class Solution {
+    /**
+     * Checks if a substring "abc" appears in the middle of a given string.
+     * "Middle" means the difference between the number of characters to the left 
+     * and right of "abc" is not more than 1.
+     *
+     * @param str The string to check.
+     * @return True if "abc" is in the middle, false otherwise.
+     */
+    public boolean abcInMiddle(String str) {
+        if (str == null || str.length() < 3) {
+            return false;
+        }
+
+        int index = str.indexOf("abc");
+
+        if (index == -1) {
+            return false;
+        }
+
+        int leftChars = index;
+        int rightChars = str.length() - index - 3;
+
+        return Math.abs(leftChars - rightChars) <= 1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.abcInMiddle("aabcabca")); // True
+        System.out.println(solution.abcInMiddle("aaabcabcaa")); // True
+        System.out.println(solution.abcInMiddle("aabcabc")); // False
+        System.out.println(solution.abcInMiddle("abcabc")); // True
+        System.out.println(solution.abcInMiddle("abc")); // True
+        System.out.println(solution.abcInMiddle("xabcy"));  // True
+        System.out.println(solution.abcInMiddle("xabcyz")); // False
+        System.out.println(solution.abcInMiddle("xab")); //False
+        System.out.println(solution.abcInMiddle(null)); // False
+        System.out.println(solution.abcInMiddle("")); // False
+
+
+    }
+}
+```

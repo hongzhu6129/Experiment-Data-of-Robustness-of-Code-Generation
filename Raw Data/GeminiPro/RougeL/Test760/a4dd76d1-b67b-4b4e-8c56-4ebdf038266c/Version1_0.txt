@@ -1,0 +1,55 @@
+```java
+public class AddDashesToVowels {
+
+    public static void main(String[] args) {
+        String inputString = "hello world"; // Example input
+        String result = validate(inputString);
+        System.out.println(result); // Output: h-e-ll-o- w-o-rld
+    }
+
+    public static String validate(String input) {
+        if (input == null) {
+            return null; 
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : input.toCharArray()) {
+            if (isVowel(c)) {
+                result.append("-").append(c).append("-");
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        c = Character.toLowerCase(c); // Handle both uppercase and lowercase vowels
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - Takes a sample input string.
+   - Calls the `validate` method to process the string.
+   - Prints the returned result.
+
+2. **`validate` method:**
+   - Handles `null` input gracefully.
+   - Iterates through each character of the input string using a `for-each` loop and `toCharArray()`.
+   - Calls the `isVowel` helper method to check if a character is a vowel.
+   - If it's a vowel, it appends dashes before and after the vowel to the `StringBuilder`.
+   - Otherwise, it appends the character as is.
+   - Finally, it returns the modified string built by the `StringBuilder`.
+
+3. **`isVowel` helper method:**
+   - Converts the character to lowercase using `Character.toLowerCase()` to handle both uppercase and lowercase vowels.
+   - Checks if the character is one of the vowels (a, e, i, o, u).
+   - Returns `true` if it's a vowel, `false` otherwise.
+
+
+This improved version efficiently handles various cases, including null input and both uppercase and lowercase vowels, and uses a `StringBuilder` for better performance when modifying strings.

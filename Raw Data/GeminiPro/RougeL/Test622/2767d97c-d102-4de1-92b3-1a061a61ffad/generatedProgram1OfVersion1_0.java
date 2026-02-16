@@ -1,0 +1,85 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class FindNumbersLessThanSeven {
+
+    public static void main(String[] args) {
+        // Example tree creation (modify as needed):
+        TreeNode root = new TreeNode(10);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(15);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(8);
+        root.right.left = new TreeNode(12);
+        root.right.right = new TreeNode(20);
+
+        System.out.print("Numbers less than 7 in the tree: ");
+        findLessThanSeven(root);
+        System.out.println(); // Add a newline for better output formatting
+
+        // Another example (empty tree):
+        TreeNode emptyRoot = null;
+        System.out.print("Numbers less than 7 in the empty tree: ");
+        findLessThanSeven(emptyRoot); // Handles null gracefully
+        System.out.println();
+
+        // Another example (tree with only values >= 7):
+        TreeNode rootAllGreater = new TreeNode(10);
+        rootAllGreater.left = new TreeNode(12);
+        rootAllGreater.right = new TreeNode(15);
+        System.out.print("Numbers less than 7 in the all greater tree: ");
+        findLessThanSeven(rootAllGreater); // Handles cases with no values < 7
+        System.out.println();
+        
+                // Another example (tree with duplicates including < 7):
+        TreeNode rootWithDuplicates = new TreeNode(5);
+        rootWithDuplicates.left = new TreeNode(2);
+        rootWithDuplicates.right = new TreeNode(5);
+        rootWithDuplicates.left.left = new TreeNode(2);
+
+        System.out.print("Numbers less than 7 in the tree with duplicates: ");
+        findLessThanSeven(rootWithDuplicates);
+        System.out.println();
+
+
+    }
+
+    // Breadth-First Search (BFS) to find numbers less than 7
+    public static void findLessThanSeven(TreeNode root) {
+        if (root == null) {
+            return; // Handle empty tree
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+
+            if (current.val < 7) {
+                System.out.print(current.val + " ");
+            }
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,64 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void printFormattedTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+    }
+
+    public static void main(String[] args) {
+        printFormattedTwinkle();
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider a few testing aspects:
+
+1. **Correct Output Format:**  The primary test is to verify that the output precisely matches the desired format, including correct capitalization, punctuation, and indentation (tabs). You can visually inspect the output or use a string comparison in a unit test.
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class TwinkleTwinkleTest {
+
+       @Test
+       public void testOutputFormat() {
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent));
+
+           TwinkleTwinkle.printFormattedTwinkle();
+
+           String expectedOutput = "Twinkle, twinkle, little star,\r\n" + 
+                                    "\tHow I wonder what you are!\r\n" +
+                                    "\t\tUp above the world so high,\r\n" +
+                                    "\t\tLike a diamond in the sky.\r\n"; // Note: \r\n for Windows line endings. Adjust if necessary.
+
+           assertEquals(expectedOutput, outContent.toString());  // Check for exact match
+
+           System.setOut(System.out); // Restore standard output
+       }
+   }
+   ```
+
+
+
+2. **Character Encoding:**  Although less likely an issue with this specific program, ensure that the character encoding used by your Java environment and console/terminal is compatible with the characters in the string (e.g., UTF-8).  Incorrect encoding could lead to garbled output. You could test this by including characters from different languages if you were working with internationalized text.
+
+
+3. **Standard Output Redirection:** This program writes to the standard output (System.out).  If you need to redirect the output to a file or another stream, make sure your code or execution environment handles this redirection correctly. You could test this using the  `> file.txt` redirection in a shell environment or by modifying your program to take an OutputStream as a parameter.
+
+
+
+**Corner Cases (less relevant here, but generally important):**
+
+* **Empty Input/No Input:** Since this program doesn't take input, this isn't applicable.  However, in programs that do take input, always test with empty or null input values.
+* **Large Inputs (Not applicable):** Not applicable here, as there is no variable-length input. But for other programs, test with large inputs that might stress memory or performance limits.
+* **Boundary Conditions:**  If the program had variables or loops, you would test at the boundaries of valid ranges. (e.g., if a loop ran from 0 to 10, you would test at 0, 1, 9, and 10).
+
+
+While the `TwinkleTwinkle` example is simple, the principles of testing for correct output, character encoding, and output redirection are important in broader Java development.  Using JUnit (as shown in the example) allows you to automate these tests as part of your development process.

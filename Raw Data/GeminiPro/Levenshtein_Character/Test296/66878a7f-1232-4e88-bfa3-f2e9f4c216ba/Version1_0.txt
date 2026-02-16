@@ -1,0 +1,80 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 2, 7, 1, 15, 8, 3}; // Another example
+        k = 4;
+        findKLargest(arr, k);
+
+        arr = new int[]{5, 1, 8};  // Example with small array
+        k = 2;
+        findKLargest(arr, k);
+
+         arr = new int[]{5, 1, 8};  // Example where k is equal to array length
+        k = 3;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{5, 1, 8};  // Example where k is greater than array length (should return all elements)
+        k = 5;
+        findKLargest(arr, k);
+
+        // Example with duplicates
+        arr = new int[]{5, 5, 1, 8, 8, 2, 8};  
+        k = 3;
+        findKLargest(arr, k);
+
+        // Example with negative numbers
+        arr = new int[]{-5, -1, -8, -2, -10};
+        k = 2;
+        findKLargest(arr, k);
+
+         // Empty array example
+        arr = new int[]{};
+        k = 2;
+        findKLargest(arr, k);
+    }
+
+    public static void findKLargest(int[] arr, int k) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("The array is empty.");
+            return;
+        }
+
+        if (k <= 0) {
+            System.out.println("k should be a positive integer.");
+            return;
+        }
+
+         // Handle cases where k is larger than the array length.
+        k = Math.min(k, arr.length);
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num); // Add element to the min-heap
+
+            if (minHeap.size() > k) {
+                minHeap.poll();  // Remove the smallest if the size exceeds k
+            }
+        }
+
+        // Print the k largest elements
+        System.out.print("The " + k + " largest elements are: ");
+        Integer[] result = minHeap.toArray(new Integer[0]); // Efficient way to get elements in an array
+        Arrays.sort(result); // Sort to print in ascending order (optional, but cleaner output)
+        for(int num : result) {
+            System.out.print(num + " ");
+        }
+         System.out.println(); // Newline for clarity
+    }
+}
+
+```

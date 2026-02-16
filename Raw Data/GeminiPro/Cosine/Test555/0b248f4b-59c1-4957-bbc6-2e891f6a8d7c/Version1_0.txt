@@ -1,0 +1,55 @@
+```java
+import java.util.ArrayList;
+
+public class IterateArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Method 1: Using a for loop with index
+        System.out.println("Iterating using for loop with index:");
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println(fruits.get(i));
+        }
+
+        System.out.println("\n"); // Add a newline for better readability
+
+
+        // Method 2: Using an enhanced for loop (for-each loop)
+        System.out.println("Iterating using enhanced for loop:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+
+        System.out.println("\n"); // Add a newline for better readability
+
+
+        //Method 3: Using a while loop
+        System.out.println("Iterating using a while loop:");
+        int i = 0;
+        while (i < fruits.size()) {
+            System.out.println(fruits.get(i));
+            i++;
+        }
+        
+         System.out.println("\n"); // Add a newline for better readability
+        
+        // Method 4: Using the forEach method (Java 8 and later)
+         System.out.println("Iterating using forEach method:");
+         fruits.forEach(System.out::println);  // Using a method reference
+
+
+    }
+}
+```
+

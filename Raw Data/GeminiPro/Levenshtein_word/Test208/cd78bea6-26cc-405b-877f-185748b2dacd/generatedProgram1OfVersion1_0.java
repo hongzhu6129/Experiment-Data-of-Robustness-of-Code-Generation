@@ -1,0 +1,53 @@
+class Node {
+    int data;
+    Node left, middle, right;
+
+    public Node(int item) {
+        data = item;
+        left = middle = right = null;
+    }
+}
+
+public class TernaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftDepth = maxDepth(node.left);
+            int middleDepth = maxDepth(node.middle);
+            int rightDepth = maxDepth(node.right);
+
+            return Math.max(leftDepth, Math.max(middleDepth, rightDepth)) + 1;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        TernaryTreeMaxDepth tree = new TernaryTreeMaxDepth();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.middle = new Node(3);
+        root.right = new Node(4);
+        root.left.left = new Node(5);
+        root.left.middle = new Node(6);       
+        root.left.right = new Node(7);
+
+        System.out.println("Maximum depth/height of the Ternary Tree is: " + tree.maxDepth(root));
+
+
+        //Another test case
+         Node root2 = new Node(10);
+        root2.left = new Node(20);
+        root2.middle = new Node(30);
+        root2.right = new Node(40);
+        root2.middle.left = new Node(50);
+        root2.middle.middle = new Node(60);
+        root2.middle.right = new Node(70);  
+        root2.middle.middle.middle= new Node(80); //Adding a longer middle branch
+
+        System.out.println("Maximum depth/height of the second Ternary Tree is: " + tree.maxDepth(root2));
+
+
+    }
+}

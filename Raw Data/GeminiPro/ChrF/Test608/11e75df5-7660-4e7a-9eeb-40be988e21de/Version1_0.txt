@@ -1,0 +1,45 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetToArray {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Convert HashSet to an array using toArray()
+        String[] stringArray = hashSet.toArray(new String[0]); 
+        // Or, if you know the size beforehand for better performance:
+        // String[] stringArray = hashSet.toArray(new String[hashSet.size()]);
+
+
+        // Print the array elements
+        System.out.print("Array elements: ");
+        for (String element : stringArray) {
+            System.out.print(element + " ");
+        }
+
+
+        //Example with Integers:
+        Set<Integer> integerHashSet = new HashSet<>();
+        integerHashSet.add(1);
+        integerHashSet.add(2);
+        integerHashSet.add(3);
+
+        Integer[] integerArray = integerHashSet.toArray(new Integer[0]);
+        //Or, if you know the size in advance:
+        //Integer[] integerArray = integerHashSet.toArray(new Integer[integerHashSet.size()]);
+
+
+        System.out.print("\nInteger Array elements: ");
+        for (Integer element : integerArray) {
+            System.out.print(element + " ");
+        }
+    }
+}
+```

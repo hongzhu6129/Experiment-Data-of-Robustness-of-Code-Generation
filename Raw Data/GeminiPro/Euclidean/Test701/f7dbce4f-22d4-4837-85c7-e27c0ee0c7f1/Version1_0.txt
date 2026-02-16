@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+class Solution {
+
+    /**
+     * Generates the next smallest palindrome greater than the given number.
+     *
+     * @param num The input number.
+     * @return The next smallest palindrome.
+     */
+    public static int nextPalindromeGenerate(int num) {
+        num++; // Start checking from the number immediately after the input
+
+        while (true) {
+            if (isPalindrome(num)) {
+                return num;
+            }
+            num++;
+        }
+    }
+
+    /**
+     * Checks if a number is a palindrome.
+     *
+     * @param num The number to check.
+     * @return True if the number is a palindrome, false otherwise.
+     */
+    private static boolean isPalindrome(int num) {
+        String numStr = String.valueOf(num);
+        String reversedNumStr = new StringBuilder(numStr).reverse().toString();
+        return numStr.equals(reversedNumStr);
+    }
+
+    /**
+     * Main method to demonstrate the functionality.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        int nextPalindrome = nextPalindromeGenerate(num);
+        System.out.println("The next smallest palindrome is: " + nextPalindrome);
+
+        scanner.close();
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:**  The code is better structured and includes helpful comments explaining the purpose of each method and section.
+* **Efficiency (isPalindrome):**  The `isPalindrome` method is more efficient. Converting to a string, reversing, and comparing is generally faster for this purpose, especially for larger numbers.
+* **Input Handling:** The `main` method uses a `Scanner` to get user input, making it more interactive and user-friendly.  Also closes the `Scanner` afterwards.
+* **Error Handling (Optional):**  You might consider adding input validation to `main` (e.g., checking for negative numbers or non-integer input) to make it more robust.
+
+
+
+Example Usage:
+
+```
+Enter a number: 128
+The next smallest palindrome is: 131
+
+Enter a number: 99
+The next smallest palindrome is: 101
+
+Enter a number: 12321
+The next smallest palindrome is: 12421
+```

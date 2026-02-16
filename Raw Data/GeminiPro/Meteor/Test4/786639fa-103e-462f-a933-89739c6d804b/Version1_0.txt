@@ -1,0 +1,110 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner for potential user input (though fixed in this example)
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); // Can be changed for user input
+
+
+        // Calculate the perimeter (circumference) and area
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+        // Print the results formatted to several decimal places
+        System.out.printf("Perimeter is = %.15f\n", perimeter);
+        System.out.printf("Area is = %.15f\n", area);
+
+        input.close(); // Close the Scanner
+
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases including corner cases, which can be automated using JUnit or TestNG:
+
+1. **Standard Case (provided in the prompt):**
+   - Input: radius = 7.5
+   - Expected Output:
+     - Perimeter: 47.12388980384689
+     - Area: 176.71458676442586 (The value 157.714... in the prompt is incorrect)
+
+
+2. **Zero Radius:**
+   - Input: radius = 0
+   - Expected Output:
+     - Perimeter: 0
+     - Area: 0
+
+3. **Negative Radius (invalid input - handle gracefully):**
+   - Input: radius = -5
+   - Expected Output:  The program should ideally throw an exception or print an error message indicating that the radius cannot be negative. You might add error handling like this:
+
+   ```java
+    if (radius < 0) {
+       System.out.println("Error: Radius cannot be negative.");
+       return; // Or throw an exception
+    }
+    ```
+
+4. **Very Large Radius:**
+   - Input: radius = 1000000 (or any large number)
+   - Expected Output: Calculate and verify the extremely large perimeter and area to check for potential overflow issues (though `double` can handle very large numbers).
+
+5. **Small Radius:**
+   - Input: radius = 0.0001 (or any small number)
+   - Expected Output: Verify calculations for very small values to ensure precision.
+
+6. **Boundary Case (close to the maximum double value):**
+   - Input: radius = Double.MAX_VALUE (or a value close to it).
+   - Expected Output:  Test how the program behaves with extremely large values.  It's important to check for potential `Infinity` or `NaN` results, which can occur with floating-point arithmetic.
+
+
+
+**How to Automate Testing (JUnit Example):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testStandardCase() {
+        double radius = 7.5;
+        double expectedPerimeter = 47.12388980384689;
+        double expectedArea = 176.71458676442586; // Corrected value
+
+        // ... (You'll need to adapt this to call your calculation methods
+        // rather than directly using the formulas)
+        double perimeter = 2 * Math.PI * radius; 
+        double area = Math.PI * radius * radius;
+
+        assertEquals(expectedPerimeter, perimeter, 0.000001); // Delta for precision
+        assertEquals(expectedArea, area, 0.000001);
+    }
+
+    // Add more @Test methods for the other test cases (zero radius,
+    // negative radius, large radius, small radius).
+
+}
+```
+
+
+
+This improved answer provides:
+
+- Corrected area calculation.
+- Use of `Scanner` for potential user input.
+- Comprehensive test cases including corner cases.
+- A basic JUnit example to demonstrate how to automate these tests.  Remember to add JUnit to your project if you use this approach.

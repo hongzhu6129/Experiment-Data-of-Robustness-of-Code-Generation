@@ -1,0 +1,66 @@
+```java
+public class PrintFacing {
+
+    public static void main(String[] args) {
+        printFace(":|"); // Standard face
+        printFace(":)"); // Happy face
+        printFace(":("); // Sad face
+        printFace(":O"); // Surprised face
+        printFace("");   // Empty face - corner case
+        printFace(" ");  // Single space face - corner case
+        printFace(null); // Null face - corner case, handles gracefully.
+        printFace(":-)"); // Winking happy face.
+        printFace(":-("); // Sad face variant.
+        printFace(":D"); // Big grin.
+
+
+
+    }
+
+    public static void printFace(String face) {
+        if (face == null) {
+            System.out.println("  _  ");
+            System.out.println(" ( ) ");
+            System.out.println("  -  ");
+            System.out.println("  ~  ");
+            return; // Exit early to avoid NullPointerException.
+        }
+
+
+
+        System.out.println("  _  ");
+        System.out.println(" (" + face + ") ");
+        System.out.println("  -  ");
+        System.out.println("  ~  ");
+
+
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Standard Face:**  Input: `":|"`. Expected Output: A face with a neutral expression.
+2. **Happy Face:** Input: `":)"`.  Expected Output: A face with a happy expression.
+3. **Sad Face:** Input: `":("`. Expected Output: A face with a sad expression.
+4. **Empty Face (Corner Case):** Input: `""`.  Expected Output: A face with empty parentheses. This tests how the program handles an empty string.
+5. **Single Space Face (Corner Case):** Input: `" "`. Expected Output: A face with a space between the parentheses. This checks handling of whitespace.
+6. **Null Face (Corner Case):** Input: `null`. Expected Output: A default face.  This is crucial for robustness.  The program should not crash with a `NullPointerException`.
+7. **Winking Face:** Input: `":-)"` Expected Output: A face with a winking happy expression
+8. **Other expression:** Input: `":-("` Expected Output: A face with a more pronounced sad expression.
+9. **Big Grin** Input: `":D"` Expected Output: A face with a wide grin.
+
+
+
+
+**Explanation of Improvements:**
+
+* **Handles `null` input:**  The code now explicitly checks for `null` input and provides a default face in that case, preventing a `NullPointerException`.
+* **Clearer Output:** Consistent spacing and formatting makes the faces look better.
+* **More Test Cases:** Added corner cases (empty string, single space, and `null`) to ensure the program is robust.  Also added tests for other kinds of facial expressions to show flexibility.
+* **Comments:** Added comments to explain the purpose of the code and the test cases.
+
+
+This improved version is more robust, handles edge cases correctly, and produces more consistent output.  The comprehensive test cases demonstrate its functionality and help verify its correctness.

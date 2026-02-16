@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong();  // Use long to handle larger numbers and potential overflow
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the program:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Notes |
+|---|---|---|---|---|
+| 1 | 5 | 10 | 50 | Basic positive numbers |
+| 2 | -3 | 7 | -21 | One negative number |
+| 3 | -5 | -8 | 40 | Both negative numbers |
+| 4 | 0 | 12 | 0 | Zero as input |
+| 5 | 15 | 0 | 0 | Zero as input |
+| 6 | 0 | 0 | 0 | Both inputs are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 |  `Long.MAX_VALUE` multiplied by 1 |
+| 8 | 9223372036854775807 | 2 | -2 | Overflow (corner case) |
+| 9 | -9223372036854775808 | -1 | -9223372036854775808 | `Long.MIN_VALUE` multiplied by -1 |
+| 10 | -9223372036854775808 | -2 | 0 | Overflow (corner case)|
+| 11 | 1000000000 | 1000000000 | 1000000000000000000 | Large numbers demonstrating potential overflow if using `int`|
+
+
+
+**Explanation of Corner Cases and Overflow:**
+
+* **Test Cases 7, 8, 9, and 10:** These test the boundaries of the `long` data type.  Java's `long` has a maximum value (`Long.MAX_VALUE`) and a minimum value (`Long.MIN_VALUE`). When you perform calculations that exceed these limits, overflow occurs.  The result wraps around (becomes unexpectedly negative or zero).
+
+* **Using `long`:** It's crucial to use `long` instead of `int` for these cases.  If you use `int`, overflow will occur much more readily, even with moderately large numbers (as demonstrated in Test Case 11).
+
+
+**How to Run the Tests:**
+
+You can manually input these values or write a separate testing class (using JUnit or TestNG) to automate the testing process.  Automated testing is highly recommended for real-world applications.
+
+
+
+This enhanced explanation provides a more comprehensive understanding of the potential issues with integer overflow and why `long` is a better choice for this kind of program.  The test cases also specifically address these boundary conditions.

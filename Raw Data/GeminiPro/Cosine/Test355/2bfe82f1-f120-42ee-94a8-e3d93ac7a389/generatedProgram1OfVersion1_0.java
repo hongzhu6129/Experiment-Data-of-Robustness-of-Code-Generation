@@ -1,0 +1,37 @@
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemoveDuplicateChars {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        String result = removeDuplicateChars(str);
+        System.out.println(result); // Output: progamin
+
+        str = "abcabcabc";
+        result = removeDuplicateChars(str);
+        System.out.println(result); // Output: abc
+
+
+        str = "banana";
+        result = removeDuplicateChars(str);
+        System.out.println(result); // Output: ban
+    }
+
+    private static String removeDuplicateChars(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+
+        Set<Character> seenChars = new LinkedHashSet<>(); // Use LinkedHashSet to maintain order
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : str.toCharArray()) {
+            if (seenChars.add(c)) { // add() returns true if the element was not already present
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+}

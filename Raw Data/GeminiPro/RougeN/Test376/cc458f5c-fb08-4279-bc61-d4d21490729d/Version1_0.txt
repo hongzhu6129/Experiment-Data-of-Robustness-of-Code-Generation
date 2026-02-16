@@ -1,0 +1,31 @@
+```java
+public class ColorPicker {
+
+    public String pickColor(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return "";
+        }
+
+        if (inputString.startsWith("red")) {
+            return "red";
+        } else if (inputString.startsWith("black")) {
+            return "black";
+        } else {
+            return "";
+        }
+    }
+
+    public static void main(String[] args) {
+        ColorPicker colorPicker = new ColorPicker();
+
+        System.out.println(colorPicker.pickColor("redapple")); // Output: red
+        System.out.println(colorPicker.pickColor("blackberry")); // Output: black
+        System.out.println(colorPicker.pickColor("green")); // Output: ""
+        System.out.println(colorPicker.pickColor("")); // Output: ""
+        System.out.println(colorPicker.pickColor(null)); // Output: ""
+        System.out.println(colorPicker.pickColor("red")); // Output: red
+        System.out.println(colorPicker.pickColor("black")); // Output: black
+        
+    }
+}
+```

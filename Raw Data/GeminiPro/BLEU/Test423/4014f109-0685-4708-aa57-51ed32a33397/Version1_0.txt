@@ -1,0 +1,43 @@
+```java
+class Solution {
+    /**
+     * Concatenates a given string with itself a given number of times.
+     *
+     * @param str The string to be concatenated.
+     * @param n   The number of times to concatenate the string.
+     * @return The concatenated string.
+     */
+    public static String repeat_str(String str, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(str);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String str1 = "a";
+        int n1 = 5;
+        System.out.println(repeat_str(str1, n1)); // Output: aaaaa
+
+        String str2 = "Ha";
+        int n2 = 3;
+        System.out.println(repeat_str(str2, n2)); // Output: HaHaHa
+
+        String str3 = "Hello";
+        int n3 = 2;
+        System.out.println(repeat_str(str3, n3)); // Output: HelloHello
+
+
+        String str4 = "";
+        int n4 = 5;
+        System.out.println(repeat_str(str4, n4)); // Output: (empty string)
+
+
+        String str5 = "abc";
+        int n5 = 0;
+        System.out.println(repeat_str(str5, n5)); // Output: (empty string)
+
+    }
+}
+```

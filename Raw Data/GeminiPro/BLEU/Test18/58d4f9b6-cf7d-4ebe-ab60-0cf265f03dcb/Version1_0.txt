@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+
+        try {
+            int decimal = 0;
+            int power = 0;
+
+            // Convert binary to decimal
+            for (int i = binary.length() - 1; i >= 0; i--) {
+                if (binary.charAt(i) == '1') {
+                    decimal += Math.pow(2, power);
+                } else if (binary.charAt(i) != '0') {
+                    System.out.println("Invalid binary input.");
+                    return; // Exit if not a valid binary digit
+                }
+                power++;
+            }
+
+            // Convert decimal to hexadecimal
+            String hex = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit;
+
+                if (remainder < 10) {
+                    hexDigit = (char) (remainder + 48); // Convert to ASCII for 0-9
+                } else {
+                    hexDigit = (char) (remainder + 87); // Convert to ASCII for a-f
+                }
+
+                hex = hexDigit + hex;  // Prepend the digit (reverse order)
+                decimal /= 16;
+            }
+
+
+            if (hex.isEmpty()) { // Handle case where input is "0"
+                System.out.println("Hexadecimal value: '0'");
+            } else {
+                System.out.println("Hexadecimal value: '" + hex + "'");
+            }
+
+        } catch (NumberFormatException e) {  // If the string isn't parseable as an integer
+            System.out.println("Invalid binary input.");
+        }
+
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+2. **Valid Input (Longer):**
+   - Input: `10110111`
+   - Expected Output: `Hexadecimal value: 'b7'`
+
+3. **Valid Input (Leading Zeros):**
+   - Input: `0001101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+4. **Valid Input (Zero):**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+
+5. **Invalid Input (Non-binary characters):**
+   - Input: `1102`
+   - Expected Output: `Invalid binary input.`
+
+6. **Invalid Input (Empty String):**
+   - Input: `` (empty string)
+   - Expected Output:  (The program might throw a `NumberFormatException`  or handle it gracefully, depending on how input is handled. The provided solution handles the empty string and prints `Hexadecimal Value: '0'` which is logical).
+
+7. **Invalid Input (Space):**
+    - Input: `10 10`
+    - Expected Output: `Invalid binary input.`
+
+
+8. **Edge Case (Large Binary Number):**
+   - Input:  `11111111111111111111111111111111` (32 ones - maximum for a signed integer)
+   - Expected Output: `Hexadecimal value: 'ffffffff'`
+
+9. **Edge Case (Binary representation of the smallest signed integer):**
+   - Input: `10000000000000000000000000000000`
+   - Expected Output: `Hexadecimal value: '80000000'`
+
+
+These test cases cover a range of scenarios, including valid binary numbers, invalid input with non-binary characters, and edge cases involving maximum and minimum integer values that can be represented by signed 32-bit binary numbers. They should help you thoroughly test your program and ensure that it functions correctly under various conditions.

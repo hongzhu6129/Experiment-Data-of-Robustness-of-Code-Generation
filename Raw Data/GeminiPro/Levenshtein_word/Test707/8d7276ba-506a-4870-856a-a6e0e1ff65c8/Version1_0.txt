@@ -1,0 +1,50 @@
+```java
+public class ExcelColumnName {
+
+    public static String Column(int n) {
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = n % 26;
+
+            if (rem == 0) {
+                columnName.append("Z");
+                n = (n / 26) - 1;
+            } else {
+                columnName.append((char) ((rem - 1) + 'A'));
+                n = n / 26;
+            }
+        }
+
+        return columnName.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Column Name for 1: " + Column(1));     // Output: A
+        System.out.println("Column Name for 28: " + Column(28));   // Output: AB
+        System.out.println("Column Name for 701: " + Column(701)); // Output: ZY
+        System.out.println("Column Name for 702: " + Column(702)); // Output: ZZ
+        System.out.println("Column Name for 703: " + Column(703)); // Output: AAA
+        System.out.println("Column Name for 16384:" + Column(16384)); // Output: XFD
+        System.out.println("Column Name for 26:" + Column(26)); // Output: Z
+        System.out.println("Column Name for 52:" + Column(52)); // Output: AZ
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles 0 Remainder Correctly:**  The crucial part is how the code deals with a remainder of 0.  When `n % 26` is 0, it means we've encountered a 'Z'.  We append 'Z', and importantly, we subtract 1 from `n / 26`. This is because 'Z' represents a full cycle of 26, so we need to decrement the quotient before the next iteration.
+
+2. **StringBuilder for Efficiency:**  Using `StringBuilder` is much more efficient than string concatenation with `+` in a loop.
+
+3. **Reverse the Result:** We append characters to the `StringBuilder` in reverse order, so we need to reverse it at the end using `columnName.reverse().toString()`.
+
+4. **Clearer Variable Names:** `columnName` instead of just `s` makes the code easier to read.
+
+5. **Comprehensive Test Cases in `main()`:** The provided `main()` method tests various input values, including edge cases and larger numbers, to demonstrate the correctness of the `Column()` method.  This makes debugging and verification easier.
+
+
+This corrected and improved version accurately converts integer values to their corresponding Excel column names, addressing the issues present in previous responses and providing a more robust and efficient solution.

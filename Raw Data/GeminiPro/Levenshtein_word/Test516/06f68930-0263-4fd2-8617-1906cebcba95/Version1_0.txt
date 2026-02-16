@@ -1,0 +1,60 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumberChecker {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = sumOfSquaresOfDigits(n);
+        }
+
+        return n == 1;
+    }
+
+    private static int sumOfSquaresOfDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's examples (though they weren't explicitly asked for output)
+        System.out.println("7 is a happy number: " + isHappy_number(7)); //true, Example in prompt
+        System.out.println("2 is a happy number: " + isHappy_number(2)); //false, Example in prompt
+        System.out.println("9 is a happy number: " + isHappy_number(9)); //false, Example in prompt
+        System.out.println("1 is a happy number: " + isHappy_number(1)); //true, Example in prompt 
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **HashSet for Cycle Detection:** The most crucial aspect of determining if a number is happy is detecting cycles. The code uses a `HashSet` called `seen` to store numbers encountered during the process. If a number is already in `seen`, it indicates a cycle, and the number is unhappy.
+
+2. **Clearer Loop Condition:** The `while` loop condition is now `n != 1 && !seen.contains(n)`.  This makes it very explicit that the loop continues as long as the number isn't 1 AND it hasn't been seen before.
+
+3. **Helper Function:** The `sumOfSquaresOfDigits` function is introduced to improve readability and modularity. It calculates the sum of the squares of a number's digits.
+
+4. **Concise Return:**  The `return n == 1;` statement directly returns whether the final value of `n` is 1 (happy) or not.
+
+5. **Main Method with Examples:** The `main` method demonstrates how to use the `isHappy_number` function with a couple of example numbers.  I've also added the test cases from your prompt's examples to show they are handled correctly.
+
+
+This improved version is more efficient, readable, and directly addresses the cycle detection requirement, which is the core of the happy number problem.

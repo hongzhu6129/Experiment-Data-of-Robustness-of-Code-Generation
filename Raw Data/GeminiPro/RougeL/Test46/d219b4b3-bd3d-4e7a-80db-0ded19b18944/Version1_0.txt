@@ -1,0 +1,77 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean hasSameRightmostDigit(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check for equality among the rightmost digits
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third integer: ");
+        int num3 = scanner.nextInt();
+        
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Input integers must be non-negative.");
+            return;
+        }
+
+        boolean result = hasSameRightmostDigit(num1, num2, num3);
+        System.out.println(result);
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Positive Cases (Two or more same rightmost digits):**
+
+* **Input:** 23, 43, 67  **Output:** true (23 and 43 have the same rightmost digit 3)
+* **Input:** 10, 20, 35  **Output:** true (10 and 20 have the same rightmost digit 0)
+* **Input:** 111, 21, 31   **Output:** true (111, 21 and 31 have the same rightmost digit 1)
+* **Input:** 2, 12, 2   **Output:** true (All have 2 as the rightmost digit)
+
+
+**2. Negative Cases (No same rightmost digits):**
+
+* **Input:** 1, 22, 333  **Output:** false
+* **Input:** 10, 21, 32  **Output:** false
+* **Input:** 7, 18, 9    **Output:** false
+
+
+
+**3. Corner/Edge Cases:**
+
+* **Input:** 0, 0, 0      **Output:** true (All zeros)
+* **Input:** 1, 10, 100  **Output:** true (Rightmost digits are 1, 0, 0)
+* **Input:**  5, 15, 55 **Output:** true
+* **Input:** 1000, 2000, 3000 **Output:** true (Rightmost digits are all 0)
+
+
+
+**4. Input Validation Cases (Important to include to make the code robust):**
+
+* **Input:** -5, 10, 20  **Expected Output:** Error message about non-negative input / program terminates gracefully (The provided code now handles this)
+* **Input:** 10, -2, 3   **Expected Output:** Error message about non-negative input / program terminates gracefully  (The provided code now handles this)
+
+
+
+
+These test cases cover various scenarios to ensure your function operates correctly under different conditions.  Always include a good mix of positive, negative, and edge cases, especially when validating user input.

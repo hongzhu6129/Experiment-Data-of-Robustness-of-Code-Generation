@@ -1,0 +1,78 @@
+```java
+public class SwapVariables {
+
+    public static void main(String[] args) {
+
+        // Test case 1: Positive integers
+        int a = 10;
+        int b = 20;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+        System.out.println();
+
+
+        // Test case 2: Negative integers
+        a = -5;
+        b = -15;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+        System.out.println();
+
+        // Test case 3: Zero and a number
+        a = 0;
+        b = 100;
+        System.out.println("Before swap: a = " + a + ", b = " + b);
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("After swap: a = " + a + ", b = " + b);
+        System.out.println();
+
+        // Test case 4: Large numbers (potential overflow - using long to avoid)
+        long largeA = Integer.MAX_VALUE;
+        long largeB = Integer.MIN_VALUE;
+        System.out.println("Before swap: largeA = " + largeA + ", largeB = " + largeB);
+        largeA = largeA + largeB;
+        largeB = largeA - largeB;
+        largeA = largeA - largeB;
+        System.out.println("After swap: largeA = " + largeA + ", largeB = " + largeB);
+        System.out.println();
+
+
+
+
+        // Test case 5: Using a temporary variable (alternative approach, more robust for overflow)
+        a = 10;
+        b = 20;
+        System.out.println("Before swap (temp variable): a = " + a + ", b = " + b);
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("After swap (temp variable): a = " + a + ", b = " + b);
+
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Clearer Test Cases:** The code now includes comments to clearly label each test case and what it's testing.
+
+2. **Corner Cases:**
+   - Negative numbers are tested.
+   - Zero and a non-zero number are tested.
+   - Large numbers (close to integer limits) are included to illustrate potential overflow issues with the addition/subtraction method.
+
+3. **Overflow Handling (Test Case 4):** The test case using `Integer.MAX_VALUE` and `Integer.MIN_VALUE` is now using `long` variables to demonstrate how to handle potential overflow if you were dealing with very large numbers where the sum/difference might exceed the `int` capacity.
+
+4. **Alternative Swap Method (Test Case 5):**  The code now demonstrates a more robust swap method using a temporary variable. This avoids the overflow issue entirely. The temporary variable approach is generally preferred.
+
+
+Key takeaway: While the addition/subtraction method is clever, it has the potential for overflow. The temporary variable method is safer and easier to understand.  Use the temporary variable approach in real-world code.

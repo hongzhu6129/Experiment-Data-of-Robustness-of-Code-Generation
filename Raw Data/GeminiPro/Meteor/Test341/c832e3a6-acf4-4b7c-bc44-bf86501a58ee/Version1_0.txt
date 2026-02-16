@@ -1,0 +1,70 @@
+```java
+public class ReplaceCharacter {
+
+    public static void main(String[] args) {
+        String originalString = "This is a sample string.";
+        char charToReplace = 's';
+        char replacementChar = 'x';
+
+        String replacedString = originalString.replace(charToReplace, replacementChar);
+
+        System.out.println("Original string: " + originalString);
+        System.out.println("Replaced string: " + replacedString);
+
+
+        // Example with a specific instance (if arguments aren't provided)
+        if (args.length == 0) {  // Demonstrate usage if no command-line arguments 
+            String exampleString = "abracadabra";
+            char exampleCharToReplace = 'a';
+            char exampleReplacementChar = 'z';
+            String exampleReplacedString = exampleString.replace(exampleCharToReplace, exampleReplacementChar);
+            System.out.println("\nExample (hardcoded):");
+            System.out.println("Original string: " + exampleString);
+            System.out.println("Replaced string: " + exampleReplacedString);
+        } else if (args.length == 3) { // Handle command-line arguments
+            try {
+                String inputString = args[0];
+                char inputCharToReplace = args[1].charAt(0);
+                char inputReplacementChar = args[2].charAt(0);
+
+                String resultString = inputString.replace(inputCharToReplace, inputReplacementChar);
+
+                System.out.println("\nResult from command-line arguments:");
+                System.out.println("Original string: " + inputString);
+                System.out.println("Replaced string: " + resultString);
+            } catch (IndexOutOfBoundsException e) {
+                System.err.println("Error:  Please provide characters for replacement.");
+            }
+
+        } else {
+            System.out.println("Usage: java ReplaceCharacter \"string\" \"char_to_replace\" \"replacement_char\"");
+        }
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Command-Line Arguments:** The code now accepts the string, character to replace, and replacement character as command-line arguments. This makes it more flexible and reusable.
+
+2. **Error Handling:**  It includes basic error handling to check if single characters are provided for replacement.  It prints an error message if the input is incorrect.
+
+3. **Clearer Usage Instructions:** The `else` block provides instructions on how to run the program from the command line.
+
+4. **Example for Clarity:** If no command-line arguments are given, it runs a built-in example so the user can immediately see how it works.
+
+
+**How to Compile and Run (with command-line arguments):**
+
+1. **Save:** Save the code as `ReplaceCharacter.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac ReplaceCharacter.java`
+3. **Run:**  `java ReplaceCharacter "hello world" "l" "X"`  (This will replace 'l' with 'X').  Replace the arguments in quotes with your desired string and characters.
+
+
+**How to Run (without command-line arguments - will use the hardcoded example):**
+
+1. **Compile:**  `javac ReplaceCharacter.java`
+2. **Run:** `java ReplaceCharacter` (This will run the `abracadabra` example).

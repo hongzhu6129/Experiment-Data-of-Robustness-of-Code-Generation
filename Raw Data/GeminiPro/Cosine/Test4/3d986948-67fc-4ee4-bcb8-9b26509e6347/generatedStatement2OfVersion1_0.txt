@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases with expected outputs, covering normal cases, boundary conditions, and invalid inputs:
+
+| Test Case | Input (Radius) | Expected Perimeter (rounded to 2 decimals) | Expected Area (rounded to 2 decimals) |
+|---|---|---|---|
+| Normal Case 1 | 7.5 | 47.12 | 176.71 |
+| Normal Case 2 | 10 | 62.83 | 314.16 |
+| Normal Case 3 | 1 | 6.28 | 3.14 |
+| Boundary Case 1 (Zero Radius) | 0 | 0.00 | 0.00 |
+| Boundary Case 2 (Very Small Radius) | 0.0001 | 0.00 | 0.00 | // Due to rounding, might show as 0
+| Invalid Input 1 (Negative Radius) | -5 |  (Should handle gracefully � either print an error message or use `Math.abs(radius)`) |  (Should handle negative input gracefully) |
+| Invalid Input 2 (Non-Numeric Input) | "abc" | (Should handle gracefully � print an error message or exit)  | (Should handle gracefully)  |
+
+
+**How to run the test cases (without JUnit or other testing frameworks):**
+
+1. **Hardcoded Approach (Simplest):**
+   - Change the line `double radius = input.nextDouble();` in the code to set the radius directly for each test case (e.g., `double radius = 7.5;`).
+   - Run the program and compare the output with the expected values in the table.
+
+2. **Using a loop (slightly more advanced):**
+   - You can create an array of test radii and loop through them:
+
+   

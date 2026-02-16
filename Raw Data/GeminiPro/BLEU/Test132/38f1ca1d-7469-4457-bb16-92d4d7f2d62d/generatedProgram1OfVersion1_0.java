@@ -1,0 +1,37 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = calculatePi(5); // Calculate with 5 terms
+        double piApproximation2 = calculatePi(6); // Calculate with 6 terms
+
+        System.out.println("Approximation with 5 terms: " + piApproximation1);
+        System.out.println("Approximation with 6 terms: " + piApproximation2);
+    }
+
+    public static double calculatePi(int numTerms) {
+        double sum = 1.0; // Start with 1.0 (using 1.0 instead of 1 as requested)
+        double denominator = 3.0;
+        boolean subtract = true;
+
+        for (int i = 2; i <= numTerms; i++) {
+            if (subtract) {
+                sum -= 1.0 / denominator;
+            } else {
+                sum += 1.0 / denominator;
+            }
+
+            subtract = !subtract; // Alternate adding and subtracting
+
+             //Efficiently calculate denominators (3, 5, 9, 11, 13...)
+            if(i % 2 == 0) { //Even term: increase denominator by 4 (5 -> 9, 11->15)
+                denominator += 4.0;
+            } else { // Odd term: increase denominator by 2 (3 -> 5, 9 -> 11...)
+                denominator += 2.0;
+            }
+
+
+        }
+
+        return 4.0 * sum;
+    }
+}

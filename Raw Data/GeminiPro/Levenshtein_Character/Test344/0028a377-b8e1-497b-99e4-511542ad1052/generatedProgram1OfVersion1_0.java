@@ -1,0 +1,47 @@
+public class SubstringExample {
+
+    public static void main(String[] args) {
+        String str = "This is a test string";
+        int start = 10;
+        int end = 15;
+
+        try {
+            String sub = str.substring(start, end);
+            System.out.println("Substring: " + sub);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid start or end positions.");
+        }
+
+
+
+         // Another example demonstrating handling positions outside bounds
+         str = "Java Programming";
+         start = 5;
+         end = 20; // Beyond the string length
+
+
+         try {
+             String sub = str.substring(start, end);
+             System.out.println("Substring: " + sub);
+
+         } catch (StringIndexOutOfBoundsException e) {
+             System.out.println("Error: Invalid start or end positions.");
+         }
+
+
+        // Example with start greater than end (throws exception)
+        str = "Example String";
+        start = 8;
+        end = 2;
+
+        try {
+            String sub = str.substring(start, end);
+            System.out.println("Substring: " + sub);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid start or end positions."); // Specifically, start > end
+        }
+
+
+
+    }
+}

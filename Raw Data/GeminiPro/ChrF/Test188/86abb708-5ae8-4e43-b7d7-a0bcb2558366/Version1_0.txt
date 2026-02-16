@@ -1,0 +1,57 @@
+```java
+import java.util.Scanner;
+
+public class SubstringBeforePeriod {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input string from the user.
+        System.out.print("Enter a string: ");
+        String str = input.nextLine();
+
+        // Check if the string contains a period.
+        int periodIndex = str.indexOf('.');
+        if (periodIndex == -1) {
+            System.out.println("The string does not contain a period.");
+            return;
+        }
+
+        // Get the substring before the period.
+        String substring = str.substring(0, periodIndex);
+
+        // Check if the substring appears before the period.
+        if (str.indexOf(substring) < periodIndex) {
+            System.out.println("The substring appears before the period.");
+        } else {
+            System.out.println("The substring does not appear before the period.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Test case 1:**
+    * Input: "Hello. World"
+    * Output: "The substring appears before the period."
+* **Test case 2:**
+    * Input: "Hello World."
+    * Output: "The substring does not appear before the period."
+* **Test case 3:**
+    * Input: "."
+    * Output: "The string does not contain a period."
+* **Test case 4:**
+    * Input: "Hello.World"
+    * Output: "The substring appears before the period."
+* **Test case 5:**
+    * Input: "Hello World"
+    * Output: "The substring does not appear before the period."
+
+**Corner cases:**
+
+* **Corner case 1:** The input string is empty.
+* **Corner case 2:** The input string does not contain a period.
+* **Corner case 3:** The substring is empty.
+* **Corner case 4:** The substring is the same as the input string.
+* **Corner case 5:** The substring appears multiple times before the period.

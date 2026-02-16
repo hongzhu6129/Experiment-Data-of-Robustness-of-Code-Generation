@@ -1,0 +1,13 @@
+public class Rectangle {
+
+    public static void main(String[] args) {
+        double width = 5.6;
+        double length = 8.5; // The problem states "diameter", but for a rectangle, we use "length"
+
+        double area = width * length;
+        double perimeter = 2 * (width + length);
+
+        System.out.println("area is " + width + " * " + length + " = " + area);
+        System.out.println("perimeter is 2 * (" + width + " + " + length + ") = " + perimeter);
+    }
+}

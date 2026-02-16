@@ -1,0 +1,52 @@
+**Java Function:**
+
+```java
+public static String getSubstring(String str, int start, int end) {
+    // Check if the start and end positions are valid
+    if (start < 0 || end < 0 || start >= str.length() || end > str.length()) {
+        throw new IllegalArgumentException("Invalid start or end positions");
+    }
+    // Check if the start position is before the end position
+    if (start > end) {
+        throw new IllegalArgumentException("Start position must be before end position");
+    }
+    // Return the substring
+    return str.substring(start, end);
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+* **Input:** `str = "Hello World", start = 0, end = 5`
+* **Expected Output:** "Hello"
+* **Explanation:** The substring starting from position 0 and ending at position 5 (exclusive) is "Hello".
+
+* **Input:** `str = "Java Programming", start = 5, end = 15`
+* **Expected Output:** "Programming"
+* **Explanation:** The substring starting from position 5 and ending at position 15 (exclusive) is "Programming".
+
+**Edge Cases:**
+
+* **Input:** `str = "Empty", start = 0, end = 0`
+* **Expected Output:** ""
+* **Explanation:** The substring starting from position 0 and ending at position 0 (exclusive) is an empty string.
+
+* **Input:** `str = "Single Character", start = 0, end = 1`
+* **Expected Output:** "S"
+* **Explanation:** The substring starting from position 0 and ending at position 1 (exclusive) is a single character "S".
+
+**Corner Cases:**
+
+* **Invalid start position:** `str = "Valid String", start = -1, end = 5`
+* **Expected Output:** IllegalArgumentException
+* **Explanation:** The start position cannot be negative.
+
+* **Invalid end position:** `str = "Valid String", start = 0, end = 20`
+* **Expected Output:** IllegalArgumentException
+* **Explanation:** The end position cannot be greater than the length of the string.
+
+* **Start position greater than end position:** `str = "Valid String", start = 5, end = 2`
+* **Expected Output:** IllegalArgumentException
+* **Explanation:** The start position must be before the end position.

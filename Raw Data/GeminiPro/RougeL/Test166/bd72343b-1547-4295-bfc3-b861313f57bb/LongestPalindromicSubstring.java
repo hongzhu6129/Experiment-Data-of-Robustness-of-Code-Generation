@@ -1,0 +1,62 @@
+import java.util.*;
+
+public class LongestPalindromicSubstring {
+
+    public static String longestPalindromicSubstring(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        int start = 0;
+        int end = 0;
+        int maxLen = 1;
+
+        for (int i = 0; i < str.length(); i++) {
+            int len1 = expandAroundCenter(str, i, i);
+            int len2 = expandAroundCenter(str, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > maxLen) {
+                maxLen = len;
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+
+        return str.substring(start, end + 1);
+    }
+
+    private static int expandAroundCenter(String str, int left, int right) {
+        while (left >= 0 && right < str.length() && str.charAt(left) == str.charAt(right)) {
+            left--;
+            right++;
+        }
+
+        return right - left - 1;
+    }
+
+    public static void main(String[] args) {
+        String str = "babad";
+        System.out.println(longestPalindromicSubstring(str)); // "bab"
+
+        str = "cbbd";
+        System.out.println(longestPalindromicSubstring(str)); // "bb"
+
+        str = "a";
+        System.out.println(longestPalindromicSubstring(str)); // "a"
+
+        str = "abcba";
+        System.out.println(longestPalindromicSubstring(str)); // "abcba"
+
+        str = "racecar";
+        System.out.println(longestPalindromicSubstring(str)); // "racecar"
+
+        str = "12321";
+        System.out.println(longestPalindromicSubstring(str)); // "12321"
+
+        str = "";
+        System.out.println(longestPalindromicSubstring(str)); // ""
+
+        str = null;
+        System.out.println(longestPalindromicSubstring(str)); // ""
+    }
+}

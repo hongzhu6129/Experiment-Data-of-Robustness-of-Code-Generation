@@ -1,0 +1,78 @@
+```java
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+
+public class DivideAndPrint {
+
+    public static void main(String[] args) {
+        int num1 = 50;
+        int num2 = 3;
+        int result = num1 / num2;
+
+        // Create a buffered image
+        int width = 200;
+        int height = 100;
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = image.createGraphics();
+
+        // Set background color
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, width, height);
+
+        // Set text color and font
+        g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Arial", Font.PLAIN, 24));
+
+        // Draw the division equation and result
+        String equation = num1 + " / " + num2 + " = " + result;
+        FontMetrics fm = g2d.getFontMetrics();
+        int x = (width - fm.stringWidth(equation)) / 2;
+        int y = (height - fm.getHeight()) / 2 + fm.getAscent();
+        g2d.drawString(equation, x, y);
+
+        // Dispose of graphics context
+        g2d.dispose();
+
+        // Save the image to a file
+        try {
+            ImageIO.write(image, "png", new File("division_result.png"));
+            System.out.println("Image saved to division_result.png");
+        } catch (IOException e) {
+            System.err.println("Error saving image: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur during image saving. This makes the code more robust.
+
+2. **Clearer Output:**  Instead of just printing the result to the console, the program now explicitly states that the image has been saved and provides the filename.
+
+3. **Image Creation and Manipulation:**
+   - Uses `BufferedImage` to create an image in memory.
+   - Uses `Graphics2D` to draw on the image.
+   - Sets background color to white for better visibility.
+   - Sets text color and font.
+   - Calculates the position of the text using `FontMetrics` to center it on the image.
+
+4. **Image Saving:** Uses `ImageIO.write()` to save the image as a PNG file.
+
+5. **Comments:**  Added comments to explain the purpose of different parts of the code.
+
+
+To run this code:
+
+1. Save it as `DivideAndPrint.java`.
+2. Compile it: `javac DivideAndPrint.java`
+3. Run it: `java DivideAndPrint`
+
+This will create an image file named `division_result.png` in the same directory as the Java file.  The image will contain the text "50 / 3 = 16".
+
+
+If you don't have external libraries for image processing (like those that come standard in most Java development environments), you may need to add those to your classpath or use a different method for image creation/saving.  The core logic for the division and the string formatting for the equation would remain the same.

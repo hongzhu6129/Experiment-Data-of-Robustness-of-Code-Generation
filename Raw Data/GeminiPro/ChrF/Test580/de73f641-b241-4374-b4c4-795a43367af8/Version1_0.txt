@@ -1,0 +1,56 @@
+```java
+import java.util.LinkedList;
+
+public class InsertAtLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Position to insert (0-indexed)
+        int insertionPosition = 1;
+
+
+        try {
+            // Insert the element at the specified position
+            linkedList.add(insertionPosition, elementToInsert);
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + linkedList);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid insertion position.  Position must be between 0 and " + linkedList.size());
+        }
+
+
+
+          //Example with another  invalid position (too high)
+         insertionPosition = 5;  //This is beyond the end of the list
+
+
+         try {
+            // Insert the element at the specified position
+            linkedList.add(insertionPosition, "Mango");
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + linkedList);
+
+
+         } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid insertion position. Position must be between 0 and " + linkedList.size());
+         }
+
+
+
+
+    }
+}
+```

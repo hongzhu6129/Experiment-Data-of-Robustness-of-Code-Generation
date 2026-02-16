@@ -1,0 +1,75 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 14;
+
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Element " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+        target = 20;  // Test with an element not present
+        result = Saddleback(arr, m, n, target);
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Element " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Element found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row (larger elements)
+            } else {
+                col--; // Move left to the previous column (smaller elements)
+            }
+        }
+
+        return new int[]{-1, -1}; // Element not found
+    }
+}
+
+
+
+
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Use `m` and `n` for rows and columns, and `target` for the element being searched.
+2. **Return an Array:**  The `Saddleback` method now returns an `int[]` containing the row and column index. This is a standard and clean way to return multiple values. If the element is not found, it returns `{-1, -1}`.
+3. **Concise Conditionals:**  The `if/else if/else` structure within the loop is simplified for better readability.
+4. **Comments:** Added more comments to explain the logic.
+5. **Example Usage in `main`:** The `main` method now demonstrates how to use `Saddleback` and handles the case where the target is not found.
+6. **Test Cases:** Added a second test case to `main` to demonstrate searching for an element that is *not* present in the array. This ensures the code correctly handles that scenario.
+
+
+
+
+
+This revised version is more robust, efficient, and follows Java coding best practices. It clearly demonstrates the Saddleback search algorithm and provides a reliable way to find an element within a sorted 2D array.

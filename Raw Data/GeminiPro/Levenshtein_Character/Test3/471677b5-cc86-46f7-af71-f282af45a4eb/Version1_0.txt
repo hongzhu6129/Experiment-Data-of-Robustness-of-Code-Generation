@@ -1,0 +1,110 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+
+        // Input validation: Ensure the input is an integer.
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Consume the invalid input
+        }
+
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Positive Integer:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication Table of 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication Table of 0:
+0 x 1 = 0
+0 x 2 = 0
+...
+0 x 10 = 0
+```
+
+**3. Negative Integer:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication Table of -5:
+-5 x 1 = -5
+-5 x 2 = -10
+...
+-5 x 10 = -50
+```
+
+**4. Large Integer:**
+
+* **Input:** 12345  (or any large integer)
+* **Expected Output:**  (verify the calculations are correct)
+```
+Multiplication Table of 12345:
+12345 x 1 = 12345
+...
+12345 x 10 = 123450
+```
+
+**5.  Integer at the limit of int (corner case):**
+
+* **Input:** Integer.MAX_VALUE (2147483647)
+* **Expected Output:** (Note: might overflow, resulting in incorrect values. The program should still execute without crashing).
+
+
+**6.  Integer at the limit of int (corner case, negative):**
+
+* **Input:** Integer.MIN_VALUE (-2147483648)
+* **Expected Output:** (Note: might overflow, resulting in incorrect values.  The program should still execute without crashing).
+
+
+**7. Invalid Input (corner case):**
+
+* **Input:**  abc, 1.5, 2/3  (or any non-integer input)
+* **Expected Output:**  The program should prompt the user again for valid integer input and should not crash.
+
+
+
+These test cases cover various scenarios, including positive, negative, zero, large numbers, and boundary conditions (Integer.MAX_VALUE and Integer.MIN_VALUE) as well as handling incorrect input,  which helps ensure the correctness and robustness of the program.  It's crucial to test with both valid and invalid inputs to identify potential issues and improve the program's reliability.

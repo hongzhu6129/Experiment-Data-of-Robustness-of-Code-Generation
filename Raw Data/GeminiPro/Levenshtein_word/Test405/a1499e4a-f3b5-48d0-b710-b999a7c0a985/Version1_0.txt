@@ -1,0 +1,59 @@
+```java
+public class WordReplacer {
+
+    public String wordReplaceBy(String str) {
+        if (str == null) {
+            return null;
+        }
+
+        // Using StringBuilder for efficient string manipulation
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < str.length()) {
+            if (i + 1 < str.length() && str.substring(i, i + 2).equals("is")) {
+                sb.append("is not");
+                i += 2;
+            } else {
+                sb.append(str.charAt(i));
+                i++;
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public static void main(String[] args) {
+        WordReplacer replacer = new WordReplacer();
+
+        String test1 = "This is a test string.";
+        String result1 = replacer.wordReplaceBy(test1);
+        System.out.println("Original: " + test1);
+        System.out.println("Replaced: " + result1);  // Output: This is not a test string.
+
+
+        String test2 = "is is is";
+        String result2 = replacer.wordReplaceBy(test2);
+        System.out.println("Original: " + test2);
+        System.out.println("Replaced: " + result2); // Output: is not is not is not
+
+        String test3 = "This is his sister.";
+        String result3 = replacer.wordReplaceBy(test3);
+        System.out.println("Original: " + test3);
+        System.out.println("Replaced: " + result3); // Output: This is not his sister.
+
+
+        String test4 = null;
+        String result4 = replacer.wordReplaceBy(test4);
+        System.out.println("Original: " + test4);
+        System.out.println("Replaced: " + result4); // Output: Original: null Replaced: null
+
+        String test5 = "isis";
+        String result5 = replacer.wordReplaceBy(test5);
+        System.out.println("Original: " + test5);
+        System.out.println("Replaced: " + result5); // Output: is notis
+
+
+    }
+}
+```
+

@@ -1,0 +1,41 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class CountAbsoluteDistinct {
+
+    public static void main(String[] args) {
+        int[] arr = {2, -1, 3, -2, 1, 0, -3, 3}; // Example array
+
+        int distinctCount = countAbsoluteDistinct(arr);
+        System.out.println("Number of absolute distinct values: " + distinctCount);
+
+         //Another example
+        int[] arr2 = {-2, -1, 0, 1, 2, 3};
+        distinctCount = countAbsoluteDistinct(arr2);
+        System.out.println("Number of absolute distinct values: " + distinctCount);
+
+          //Another example: empty array
+        int[] arr3 = {};
+        distinctCount = countAbsoluteDistinct(arr3);
+        System.out.println("Number of absolute distinct values: " + distinctCount);
+
+
+         //Another example:  all same values
+        int[] arr4 = {2, 2, 2, 2};
+        distinctCount = countAbsoluteDistinct(arr4);
+        System.out.println("Number of absolute distinct values: " + distinctCount);
+
+    }
+
+    public static int countAbsoluteDistinct(int[] arr) {
+        Set<Integer> distinctValues = new HashSet<>();
+
+        for (int num : arr) {
+            distinctValues.add(Math.abs(num)); // Add the absolute value to the set
+        }
+
+        return distinctValues.size();
+    }
+}
+```

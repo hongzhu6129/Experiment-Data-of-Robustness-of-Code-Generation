@@ -1,0 +1,79 @@
+```java
+public class SumOfDigits {
+
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        int sum = 0;
+        int originalNum = num; // Store the original number for later printing
+
+        if (num < 0) { // Handle negative numbers
+            num = -num;
+        }
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+
+        System.out.println("The sum of digits of " + originalNum + " is: " + sum);
+        printDigitsInEnglish(sum);
+    }
+
+    public static void printDigitsInEnglish(int num) {
+         String[] englishNumbers = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+
+        if (num < 0) {
+            System.out.print("negative ");
+            num = -num; // Make num positive for processing.
+        }
+
+
+        String numStr = String.valueOf(num);
+
+        for (int i = 0; i < numStr.length(); i++) {
+            int digit = numStr.charAt(i) - '0'; // Convert char to int
+            print_number(digit);
+            if (i < numStr.length() - 1) {
+                System.out.print(" "); // Add space between words
+            }
+        }
+        System.out.println(); // New line after printing all digits.
+    }
+
+
+    public static void print_number(int digit) {
+        String[] englishNumbers = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        if(digit >=0 && digit <=9) {
+            System.out.print(englishNumbers[digit]);
+        }
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles Negative Numbers:**  The code now correctly handles negative input numbers by taking the absolute value before calculating the sum of digits and adding "negative" before printing the English words.
+* **Clearer Variable Names:** Using `originalNum` to store the input helps clarity.
+* **Concise Digit Printing:**  The `printDigitsInEnglish` function is more streamlined and efficient.
+* **Error Handling (in `print_number`):** The `print_number` method now includes a check to ensure that the input digit is within the valid range (0-9).  This prevents potential `ArrayIndexOutOfBoundsException` errors.
+* **Space Between Words:** Added a space between the English words when printing multiple digits.
+* **Newline at the end:** A newline character is printed at the end to ensure the output is formatted correctly.
+
+
+Example Usage:
+
+```
+Enter an integer: 12345
+The sum of digits of 12345 is: 15
+one five
+```
+
+```
+Enter an integer: -987
+The sum of digits of -987 is: 24
+two four
+```

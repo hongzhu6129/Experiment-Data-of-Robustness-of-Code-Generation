@@ -1,0 +1,70 @@
+```java
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ReadFileToByteArray {
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            System.err.println("Please provide the file path as a command-line argument.");
+            return;
+        }
+
+        String filePath = args[0];
+        File file = new File(filePath);
+
+        try (FileInputStream fis = new FileInputStream(file)) {
+            byte[] byteArray = fis.readAllBytes(); // Java 9+ simplified reading
+            System.out.println("File contents successfully read into a byte array.");
+
+            // Example: Print the size of the byte array
+            System.out.println("Byte array size: " + byteArray.length);
+
+             // Example:  Print a few bytes (for verification)
+            //for(int i = 0; i < Math.min(10, byteArray.length); i++) {
+            //    System.out.print(byteArray[i] + " "); 
+            //}
+            //System.out.println();
+
+
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and How to Run:**
+
+1. **Command-Line Argument:**  The program expects the file path as a command-line argument.
+2. **File Object:** Creates a `File` object representing the file.
+3. **Try-with-resources:**  Uses try-with-resources to ensure the `FileInputStream` is closed automatically, even if exceptions occur.
+4. **`readAllBytes()`:**  The core part: `fis.readAllBytes()` reads the entire file content into a byte array. This method is available from Java 9 onwards.  If you're using an older Java version, see the alternative below.
+5. **Error Handling:** The `catch` block handles potential `IOExceptions` during file reading.
+6. **Example Output:** The code prints a confirmation message and the size of the byte array.  The commented-out section shows how to print a few bytes from the array if you want to verify the contents.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadFileToByteArray.java`.
+2. **Compile:** Open a terminal or command prompt and compile: `javac ReadFileToByteArray.java`
+3. **Run:**  Execute the program, providing the file path as an argument:  `java ReadFileToByteArray /path/to/your/file.txt`  (Replace `/path/to/your/file.txt` with the actual path).
+
+
+
+**Alternative for Older Java Versions (Pre-Java 9):**
+
+If you are using a Java version older than 9, replace `fis.readAllBytes()` with the following:
+
+```java
+        byte[] byteArray = new byte[(int) file.length()]; // Allocate the byte array
+        int bytesRead = fis.read(byteArray);            // Read into the array
+        if (bytesRead != file.length()) {
+            System.err.println("Error: Could not read the entire file.");
+            return;
+        }
+```
+
+This code allocates a byte array of the file's size and then uses the `read()` method to populate the array.  It also includes a check to ensure the entire file has been read successfully.

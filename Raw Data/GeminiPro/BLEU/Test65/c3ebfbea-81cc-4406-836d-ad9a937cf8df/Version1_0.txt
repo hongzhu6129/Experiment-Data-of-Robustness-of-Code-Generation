@@ -1,0 +1,39 @@
+```java
+class Solution {
+    /**
+     * Write a Java program to test if the first and last element of two integer arrays are the same.
+     * The array length must be greater than or equal to 2.
+     * Test Data: array1 = 50, -20, 0, 30, 40, 60, 12 array2 = 45, 20, 10, 20, 30, 50, 11
+     * false
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        int[] array1 = {50, -20, 0, 30, 40, 60, 12};
+        int[] array2 = {45, 20, 10, 20, 30, 50, 11};
+
+        if (array1.length >= 2 && array2.length >= 2) {
+            boolean firstElementSame = array1[0] == array2[0];
+            boolean lastElementSame = array1[array1.length - 1] == array2[array2.length - 1];
+            System.out.println(firstElementSame && lastElementSame);
+
+        } else {
+            System.out.println("Array length must be greater than or equal to 2.");
+        }
+
+
+        int[] array3 = {50, -20, 0, 30, 40, 60, 10};
+        int[] array4 = {10, 20, 10, 20, 30, 50, 10};
+
+        if (array3.length >= 2 && array4.length >= 2) {
+            boolean firstElementSame = array3[0] == array4[0];
+            boolean lastElementSame = array3[array3.length - 1] == array4[array4.length - 1];
+
+            System.out.println(firstElementSame && lastElementSame);
+
+
+        }
+
+    }
+}
+```

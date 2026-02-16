@@ -1,0 +1,42 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class SumNumbersInString {
+
+    public int sumOfTheNumbers(String str) {
+        int sum = 0;
+        Pattern pattern = Pattern.compile("\\d+"); // Matches one or more digits
+        Matcher matcher = pattern.matcher(str);
+
+        while (matcher.find()) {
+            try {
+                sum += Integer.parseInt(matcher.group());
+            } catch (NumberFormatException e) {
+                // Handle potential NumberFormatException if a very large number is encountered
+                System.err.println("Number format exception: " + e.getMessage());
+             }
+        }
+        return sum;
+    }
+
+
+    public static void main(String[] args) {
+        SumNumbersInString sns = new SumNumbersInString();
+
+        String str1 = "abc123xyz456";
+        System.out.println("Sum of numbers in \"" + str1 + "\": " + sns.sumOfTheNumbers(str1)); // Output: 579
+
+        String str2 = "No numbers here";
+        System.out.println("Sum of numbers in \"" + str2 + "\": " + sns.sumOfTheNumbers(str2)); // Output: 0
+
+        String str3 = "12 and 34 and 56";
+        System.out.println("Sum of numbers in \"" + str3 + "\": " + sns.sumOfTheNumbers(str3)); // Output: 102
+
+        String str4 =  "a1b2c3d4e5f6"; // Example with multiple single-digit numbers
+        System.out.println("Sum of numbers in \"" + str4 + "\": " + sns.sumOfTheNumbers(str4)); // Output: 21
+
+
+        String str5 = "99999999999999999999999999999"; // Example with a very large number
+        System.out.println("Sum of numbers in \"" + str5 + "\": " + sns.sumOfTheNumbers(str5)); //Output (with error handling): Number format exception... then the sum (or partial sum if some numbers were parsed before the exception).
+    }
+}

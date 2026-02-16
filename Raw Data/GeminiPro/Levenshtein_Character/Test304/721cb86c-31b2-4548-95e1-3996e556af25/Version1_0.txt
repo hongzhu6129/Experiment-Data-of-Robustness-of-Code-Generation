@@ -1,0 +1,46 @@
+**Java Code:**
+
+```java
+public class Tessellations {
+
+    public static void main(String[] args) {
+        int tessellations = 7;
+        int flutes = 10;
+        
+        // Check corner cases
+        if (tessellations <= 0 || flutes <= 0) {
+            System.out.println("Invalid input");
+        }
+        else {
+            // Calculate the number of flutes per tessellation
+            double flutesPerTessellation = (double) flutes / tessellations;
+            
+            // Round the result to the nearest integer
+            int roundedFlutesPerTessellation = Math.round(flutesPerTessellation);
+            
+            // Print the result
+            System.out.println("Each tessellation can have up to " + roundedFlutesPerTessellation + " flutes.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Valid Test Cases:**
+
+* **Input:** tessellations = 7, flutes = 10
+  * **Expected Output:** Each tessellation can have up to 1 flutes.
+* **Input:** tessellations = 5, flutes = 15
+  * **Expected Output:** Each tessellation can have up to 3 flutes.
+* **Input:** tessellations = 1, flutes = 20
+  * **Expected Output:** Each tessellation can have up to 20 flutes.
+
+**Corner Case Test Cases:**
+
+* **Input:** tessellations = 0, flutes = 10
+  * **Expected Output:** Invalid input
+* **Input:** tessellations = 7, flutes = 0
+  * **Expected Output:** Invalid input
+* **Input:** tessellations = -5, flutes = 15
+  * **Expected Output:** Invalid input

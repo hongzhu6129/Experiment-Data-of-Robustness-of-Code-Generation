@@ -1,0 +1,126 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+
+        System.out.println("The distance between those points is: " + distance);
+
+        input.close();
+
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to thoroughly test the Java program:
+
+1. **Original Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Distance: 0 km
+
+3. **Antipodal Points (Opposite sides of the Earth - maximum distance):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40  
+   - lon2: 106 (180 degrees opposite longitude)
+   - Expected Distance: ~20015.09 km (approximately Earth's diameter)
+
+
+
+4. **North and South Poles:**
+   - lat1: 90 (North Pole)
+   - lon1: 0   (Longitude doesn't matter at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Distance: ~20015.09 km
+
+5. **Equatorial Points:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180 
+   - Expected Distance: ~20015.09 km
+
+6. **Points near the Prime Meridian and International Date Line:**
+   - lat1: 10
+   - lon1: 0.1  (Near Prime Meridian)
+   - lat2: 10
+   - lon2: -179.9 (Near International Date Line)
+   - Expected Distance: ~ A small distance (because these are very close geographically)
+
+
+7. **Invalid Input:**
+   - lat1: 91 (outside valid latitude range)
+   - lon1: 181 (outside valid longitude range)
+   - lat2:  (etc.) � Consider how your program should handle such input.
+
+
+**How to Use the Test Cases:**
+
+1. **Manual Testing:**  Enter the input values into your program and compare the output with the expected distance.
+
+2. **Automated Testing (Recommended):**  Create a set of unit tests (e.g., using JUnit) to automatically run these tests. This is much more efficient and helps ensure your code remains correct as you make changes.  Example of JUnit test (you'll need to add JUnit to your project):
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    void testOriginalExample() {
+        assertEquals(1480.0848451069087, EarthDistance.calculateDistance(25, 35, 35.5, 25.5), 0.001); // Delta for tolerance
+    }
+
+
+    // ... Add tests for other cases
+
+    // Helper method to make testing cleaner
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+      //  put the calculation logic from main method here
+      double earthRadius = 6371.01; // Earth's radius in kilometers
+      double distance = earthRadius * Math.acos(Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(lon1) - Math.toRadians(lon2)));
+      return distance;
+    }
+}
+```
+
+
+By running these tests, you can quickly verify that your program calculates distances correctly and that it handles edge and corner cases gracefully.  Automated tests also make it easier to refactor or improve your code later without introducing regressions (breaking existing functionality).

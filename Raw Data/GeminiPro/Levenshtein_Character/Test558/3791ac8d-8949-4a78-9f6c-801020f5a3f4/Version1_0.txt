@@ -1,0 +1,87 @@
+```java
+public class UpdateArray {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] myArray = {1, 2, 3, 4, 5};
+        int indexToUpdate = 2; // Update the element at index 2 (which is currently 3)
+        int newValue = 99;
+
+        // Update the array (in-place modification)
+        if (indexToUpdate >= 0 && indexToUpdate < myArray.length) {
+            myArray[indexToUpdate] = newValue;
+        } else {
+            System.out.println("Invalid index. Array remains unchanged.");
+        }
+
+        // Print the updated array
+        System.out.print("Updated array: ");
+        for (int element : myArray) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+
+        //Another Example (using command line args):
+
+        if(args.length >= 3){ //We need at least 3 arguments: Array values, index, new value.
+          try{
+            int arrLength = args.length-2;
+            int[] arrFromArgs = new int[arrLength];
+
+            for(int i=0; i<arrLength; i++){
+                arrFromArgs[i] = Integer.parseInt(args[i]);
+            }
+            
+            int index = Integer.parseInt(args[args.length - 2]);
+            int newVal = Integer.parseInt(args[args.length - 1]);
+            
+             if (index >= 0 && index < arrFromArgs.length) {
+                arrFromArgs[index] = newVal;
+            } else {
+                System.out.println("Invalid index. Array remains unchanged.");
+            }
+
+
+             System.out.print("Updated array: ");
+            for (int element : arrFromArgs) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+
+          } catch (NumberFormatException e) {
+             System.out.println("Invalid input. Please provide numbers as arguments.");
+          }
+
+
+
+        } else{
+            System.out.println("Please provide enough arguments: Array values, index to update, new value.");
+        }
+
+
+
+    }
+}
+```
+
+
+
+**Explanation and How to Run:**
+
+1. **Hardcoded Example:** The first part of the `main` method shows a basic example with a predefined array, index, and new value.  It updates the array directly and then prints the result.
+
+2. **Command-line Arguments Example:**  The second part demonstrates how to handle user input from the command line:
+
+   - It checks if enough arguments (`>= 3`) are provided.
+   - It uses a `try-catch` block to handle potential `NumberFormatException` if the user enters non-numeric input.
+   - It parses the array elements, index, and new value from the `args` array.
+   - Updates the array (with the same index check as before).
+   - Prints the updated array.
+
+**To compile and run from the command line:**
+
+1. **Save:** Save the code as `UpdateArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac UpdateArray.java`
+3. **Run (Hardcoded example):** `java UpdateArray`
+4. **Run (With command-line arguments):**  `java UpdateArray 1 2 3 4 5 2 99` (This will create an array `{1, 2, 3, 4, 5}`, update the element at index 2 with 99, and print the result).  You can change these arguments to test with different arrays and values.

@@ -1,0 +1,33 @@
+```java
+import java.util.Calendar;
+
+public class GetDateComponents {
+
+    public static void main(String[] args) {
+        // Get an instance of the default calendar (typically Gregorian)
+        Calendar calendar = Calendar.getInstance();
+
+        // Get the year, month, week of year, and day of month
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH); // Month is 0-indexed (0 = January)
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        // Print the retrieved values.  Adding 1 to month to make it 1-indexed (more user-friendly).
+        System.out.println("Current Year: " + year);
+        System.out.println("Current Month (1-indexed): " + (month + 1)); //  Make month 1-indexed
+        System.out.println("Current Week of Year: " + weekOfYear);
+        System.out.println("Current Day of Month: " + dayOfMonth);
+
+
+        // Optionally get other date components
+         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK); // Day of week (1 = Sunday, 2 = Monday, ..., 7 = Saturday)
+         int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
+
+        System.out.println("Current Day of Week (1=Sunday, 7=Saturday): " + dayOfWeek);
+        System.out.println("Current Day of Year: " + dayOfYear);
+
+    }
+}
+```

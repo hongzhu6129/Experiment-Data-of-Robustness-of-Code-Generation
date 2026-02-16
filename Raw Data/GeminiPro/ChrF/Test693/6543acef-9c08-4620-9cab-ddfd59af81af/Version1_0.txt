@@ -1,0 +1,57 @@
+```java
+class Solution {
+    /**
+     * Calculates the square root of a given float using the Babylonian method.
+     *
+     * @param num The number for which to calculate the square root.
+     * @return The square root of the number.
+     * @throws IllegalArgumentException if the input number is negative.
+     */
+    public static float square_Root(float num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Cannot calculate square root of a negative number.");
+        }
+
+        if (num == 0) {
+            return 0;
+        }
+
+        float x = num;
+        float y = 1;
+        float e = 0.000001f; // Define the desired precision
+
+        while (x - y > e) {
+            x = (x + y) / 2;
+            y = num / x;
+        }
+        return x;
+    }
+
+
+    public static void main(String[] args) {
+        float num1 = 4;
+        float num2 = 9;
+        float num3 = 2;
+        float num4 = 0;  // Test case for 0
+        float num5 = 0.25f;
+
+
+        System.out.println("Square root of " + num1 + " is " + square_Root(num1));
+        System.out.println("Square root of " + num2 + " is " + square_Root(num2));
+        System.out.println("Square root of " + num3 + " is " + square_Root(num3));
+        System.out.println("Square root of " + num4 + " is " + square_Root(num4));
+        System.out.println("Square root of " + num5 + " is " + square_Root(num5));
+
+
+
+        try {
+            float num6 = -4; // Test case for negative number - expect exception
+            square_Root(num6);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); // Handle the exception
+        }
+    }
+}
+
+
+```

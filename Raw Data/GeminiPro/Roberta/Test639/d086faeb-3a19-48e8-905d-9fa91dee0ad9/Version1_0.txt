@@ -1,0 +1,76 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] array1 = new Integer[priorityQueue.size()];
+        priorityQueue.toArray(array1);
+        System.out.println("Method 1: " + Arrays.toString(array1));
+
+        // Restore the priority queue (as toArray() doesn't remove elements)
+        priorityQueue.clear();
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+
+        // Method 2: Using toArray() with no arguments (less efficient)
+        Object[] array2 = priorityQueue.toArray();
+        Integer[] array2Int = new Integer[array2.length];  //Need to create an Integer array and cast each element.
+        for(int i=0; i< array2.length; i++){
+            array2Int[i] = (Integer) array2[i];
+        }
+        System.out.println("Method 2: " + Arrays.toString(array2Int));
+
+
+
+        //Restore priority queue again.  This is necessary to demonstrate the iterative approach since we consume the queue during the iterative process
+        priorityQueue.clear();
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Method 3: Iterative approach (destructive, consumes the queue) 
+        Integer[] array3 = new Integer[priorityQueue.size()];
+        for (int i = 0; i < array3.length; i++) {
+            array3[i] = priorityQueue.poll(); // Note: poll() removes the head
+        }
+        System.out.println("Method 3: " + Arrays.toString(array3)); //priorityQueue is now empty!
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+* **Method Clarity:**  Provides three distinct methods for converting to an array, each clearly labeled and explained.
+* **Restores PriorityQueue:**  Because `toArray()` doesn't modify the original PriorityQueue, the code restores it between methods to demonstrate each approach accurately.  The iterative method consumes the queue, so restoring it is crucial for demonstrating that method too.
+* **Generics:** Uses `Integer[]` for type safety and avoids unnecessary casting, except in method 2, which inherently returns an `Object[]`.
+* **Efficiency:** Explains the efficiency difference between the `toArray()` methods. The first (with a pre-allocated array) is more efficient.
+* **Iterative Method Explanation:**  Clearly notes that the iterative approach (using `poll()`) consumes/empties the PriorityQueue.
+* **Clearer Output:** Uses `Arrays.toString()` for clean and readable output of the resulting arrays.
+
+
+
+
+

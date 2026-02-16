@@ -1,0 +1,77 @@
+```java
+import java.util.HashSet;
+
+public class HashSetSize {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet of strings
+        HashSet<String> colors = new HashSet<>();
+
+        // Add some elements to the HashSet
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Red"); // Adding a duplicate - it won't be added twice
+
+
+        // Get the number of elements in the HashSet using the size() method
+        int numberOfElements = colors.size();
+
+        // Print the size of the HashSet
+        System.out.println("The HashSet contains " + numberOfElements + " elements.");
+
+
+        // Demonstrate another way to create and populate a HashSet directly
+        HashSet<Integer> numbers = new HashSet<>(java.util.Arrays.asList(1, 2, 3, 4, 5, 5, 5)); // Duplicates are ignored
+
+        System.out.println("The numbers HashSet contains " + numbers.size() + " elements.");
+
+
+        // Check if the HashSet is empty using isEmpty()
+        HashSet<String> emptySet = new HashSet<>();
+        if (emptySet.isEmpty()) {
+            System.out.println("The emptySet is empty.");
+        } else {
+            System.out.println("The emptySet is not empty.");
+        }
+
+
+        // Clearing a HashSet - removes all elements
+        colors.clear(); 
+        System.out.println("After clearing, the colors HashSet contains " + colors.size() + " elements.");
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Creating a HashSet:**
+   - `HashSet<String> colors = new HashSet<>();` creates a new HashSet designed to store String objects.
+   - You can also create a HashSet with initial elements using:
+     `HashSet<Integer> numbers = new HashSet<>(java.util.Arrays.asList(1, 2, 3, ...));`
+
+2. **Adding Elements:**
+   - `colors.add("Red");` adds the string "Red" to the HashSet.
+   - HashSets automatically handle duplicates. If you try to add the same element twice (like "Red" in the example), only one instance is stored.
+
+3. **Getting the Size:**
+   - `int numberOfElements = colors.size();`  The `size()` method returns the number of elements currently in the HashSet.
+
+4. **Checking for Emptiness:**
+   - `emptySet.isEmpty()` returns `true` if the HashSet is empty, `false` otherwise.
+
+5. **Clearing the HashSet:**
+   - `colors.clear();` removes all elements from the HashSet.
+
+
+
+Key Properties of HashSets:
+
+* **No Duplicates:**  HashSets do not allow duplicate elements.
+* **Unordered:**  The elements in a HashSet are not stored in any particular order. You cannot rely on the order of retrieval.
+* **Efficient:**  HashSets are very efficient for adding, removing, and checking for the existence of elements. These operations are typically O(1) (constant time) on average.

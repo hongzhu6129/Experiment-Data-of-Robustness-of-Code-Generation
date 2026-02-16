@@ -1,0 +1,64 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class PermutationSort {
+
+    public static void main(String[] args) {
+        int[] arr = {3, 1, 4, 1, 5, 9, 2, 6};
+        int[] sortedArr = pSort(arr);
+        System.out.println(Arrays.toString(sortedArr));
+    }
+
+    public static int[] pSort(int[] arr) {
+        List<int[]> permutations = new ArrayList<>();
+        permute(arr, 0, permutations);
+        for (int[] permutation : permutations) {
+            if (isSorted(permutation)) {
+                return permutation;
+            }
+        }
+        return null; // Should not happen if the input is valid
+    }
+
+    private static void permute(int[] arr, int l, List<int[]> permutations) {
+        int r = arr.length - 1;
+        if (l == r) {
+            permutations.add(arr.clone()); // Add a copy to avoid modification issues
+        } else {
+            for (int i = l; i <= r; i++) {
+                swap(arr, l, i);
+                permute(arr, l + 1, permutations);
+                swap(arr, l, i); // Backtrack
+            }
+        }
+    }
+
+    private static boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Deep Copying in `permute`:**  The `arr.clone()` method is crucial. Without it, you're adding references to the *same* array to the `permutations` list. As the array gets modified during the permutation process, all references in the list would point to the final (likely unsorted) state of the array. Cloning ensures each permutation stored is a separate, independent array.
+* **Backtracking in `permute`:** The second `swap` call after the recursive `permute` call reverses the swap made earlier.  This is essential for backtracking and correctly generating all permutations.  It restores the array to its previous state before exploring the next branch of permutations.
+* **Clearer Return:**  The `pSort` function now returns `null` if a sorted array is not found (which shouldn't happen for normal integer arrays). This helps signal potential issues rather than silently failing.
+* **Efficiency Consideration (Important):** Permutation Sort is *extremely* inefficient for larger arrays.  The number of permutations grows factorially (n!), so even for arrays of modest size (e.g., 10 elements), it becomes computationally intractable.  This implementation is for demonstration purposes and should not be used for real-world sorting tasks.  Use more efficient algorithms like Merge Sort, Quick Sort, or the built-in `Arrays.sort()` for practical applications.
+
+
+This revised version addresses the critical correctness issue and provides a better understanding of how the permutation sort (while inefficient) should be implemented.

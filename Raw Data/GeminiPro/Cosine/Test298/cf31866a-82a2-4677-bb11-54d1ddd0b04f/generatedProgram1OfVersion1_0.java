@@ -1,0 +1,36 @@
+import java.util.Arrays;
+
+public class KthSmallestLargest {
+
+    public static void main(String[] args) {
+        int[] arr = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr.length);
+            return;
+        }
+
+        Arrays.sort(arr);
+
+
+        System.out.println("Kth smallest element: " + arr[k - 1]);
+        System.out.println("Kth largest element: " + arr[arr.length - k]);
+
+        // Example usage with different k values:
+        int k2 = 1; // smallest
+        int k3 = arr.length; //largest
+        System.out.println("1st smallest element: " + arr[k2-1]);
+        System.out.println("Largest element: " + arr[arr.length-k3]);
+
+
+
+        //Demonstrates handling invalid k
+        int k4 = 0;
+        if (k4 <= 0 || k4 > arr.length) {
+            System.out.println("Invalid value of k (k4). k should be between 1 and " + arr.length);
+        }
+
+
+    }
+}

@@ -1,0 +1,46 @@
+```java
+import java.util.Scanner;
+
+public class CompareStringsLexicographicallyIgnoreCase {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the two strings from the user.
+        System.out.println("Enter the first string:");
+        String string1 = scanner.nextLine();
+
+        System.out.println("Enter the second string:");
+        String string2 = scanner.nextLine();
+
+        // Compare the two strings lexicographically, ignoring case differences.
+        int comparisonResult = string1.compareToIgnoreCase(string2);
+
+        // Print the comparison result.
+        if (comparisonResult < 0) {
+            System.out.println("The first string is lexicographically less than the second string.");
+        } else if (comparisonResult > 0) {
+            System.out.println("The first string is lexicographically greater than the second string.");
+        } else {
+            System.out.println("The two strings are lexicographically equal.");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* Two empty strings.
+* Two strings that are equal except for case differences.
+* Two strings that are equal except for whitespace characters.
+* A string and an empty string.
+* A string and a null value.
+
+**Normal Cases:**
+
+* Two strings that are lexicographically equal.
+* Two strings that are lexicographically different.
+* Two strings that are lexicographically different, but have the same length.
+* Two strings that are lexicographically different, but have different lengths.

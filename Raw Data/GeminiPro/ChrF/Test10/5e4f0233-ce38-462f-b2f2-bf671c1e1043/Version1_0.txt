@@ -1,0 +1,68 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace(); 
+    }
+}
+```
+
+**Test Cases (While these aren't automated unit tests, they demonstrate testing concepts):**
+
+1. **Basic Functionality:**  Simply run the program. Visually inspect the output to confirm it resembles a face as intended.
+
+2. **Output Redirection:** Redirect the output to a file and then compare the file contents to the expected output.  This is useful for more automated testing.  For example, in a Linux/macOS terminal:
+   ```bash
+   java FacePrinter > output.txt
+   diff output.txt expected_output.txt  # Compare with a file containing the expected face
+   ```
+
+3. **Character Encoding (Corner Case):**  Ensure the program handles different character encodings correctly. This is less likely to be an issue with simple ASCII characters but could become important if you were to use more complex characters like emojis.  Set your system's character encoding (e.g., UTF-8) and run the program.
+
+4. **Console Output Issues (Corner Case):**  If the console or terminal the program runs in doesn't support certain characters or has display issues, the face might not render correctly.  Test on different terminals or console environments if necessary (e.g., Command Prompt vs. PowerShell on Windows).
+
+5. **No Input (Corner Case):**  This program doesn't take any input, but it's still good practice to consider what would happen if unexpected arguments were passed. In this case, the program should ignore them and print the face as usual. Try running it with some arbitrary command-line arguments: `java FacePrinter some arguments here`.
+
+
+**Automated Testing (JUnit example - more robust):**
+
+For more robust testing, use a testing framework like JUnit.  This allows for automated test execution and comparison of actual vs. expected output.
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FacePrinterTest {
+
+    @Test
+    void testPrintFace() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        FacePrinter.printFace();
+
+        String expectedOutput = "  +\"\"\"\"+ \r\n" + // \r\n for Windows line endings
+                               "[| o o |] \r\n" + 
+                               "  |  ^  | \r\n" +
+                               "  | '-' | \r\n" +
+                               "  +-----+ \r\n";  
+        assertEquals(expectedOutput, outputStream.toString()); // Use platform-independent line separators if necessary
+
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+
+
+This JUnit test captures the output of `printFace()` and compares it to the expected string. The `\r\n` is important to handle Windows line endings. If you're on a Unix-like system (macOS/Linux), you would typically use `\n`.  Adjust the line separators as needed for your platform or use a platform-independent approach like `System.lineSeparator()`.

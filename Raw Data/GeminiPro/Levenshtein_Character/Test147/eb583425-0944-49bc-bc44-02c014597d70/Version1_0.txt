@@ -1,0 +1,59 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input strings
+        System.out.print("Enter the first string: ");
+        String str1 = input.nextLine();
+
+        System.out.print("Enter the second string: ");
+        String str2 = input.nextLine();
+
+        // Check if the first string ends with the second string
+        boolean result = str1.endsWith(str2);
+
+        // Print the result
+        System.out.println("The first string " + (result ? "ends with" : "does not end with") + " the second string.");
+    }
+}
+```
+
+**Test Cases:**
+
+* **Normal Case:**
+    * Input: str1 = "Hello World", str2 = "World"
+    * Output: The first string ends with the second string.
+
+* **Empty String Case:**
+    * Input: str1 = "", str2 = "World"
+    * Output: The first string does not end with the second string.
+
+* **Case-Sensitive Case:**
+    * Input: str1 = "Hello World", str2 = "world"
+    * Output: The first string does not end with the second string.
+
+* **Trailing Whitespace Case:**
+    * Input: str1 = "Hello World ", str2 = "World"
+    * Output: The first string does not end with the second string.
+
+* **Leading Whitespace Case:**
+    * Input: str1 = " Hello World", str2 = "World"
+    * Output: The first string does not end with the second string.
+
+* **Same String Case:**
+    * Input: str1 = "Hello World", str2 = "Hello World"
+    * Output: The first string ends with the second string.
+
+* **Substring Case:**
+    * Input: str1 = "This is a substring", str2 = "substring"
+    * Output: The first string ends with the second string.
+
+* **No Match Case:**
+    * Input: str1 = "Hello World", str2 = "Earth"
+    * Output: The first string does not end with the second string.

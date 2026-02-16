@@ -1,0 +1,21 @@
+
+
+
+Key improvements and explanations:
+
+* **Testability:**  The `calculatePerimeter` and `calculateArea` functions are now separate, public methods. This makes them easily testable with JUnit.
+* **JUnit Tests:**  The `CircleCalculationsTest` class demonstrates how to write unit tests using JUnit 5.
+* **Corner Case Testing:** The test cases cover:
+    * Positive radius (the original example)
+    * Zero radius
+    * Very small radius:  These tests are important to check for potential issues with floating-point precision.
+    * Large radius:  Tests how the functions behave with very large numbers, which might also lead to precision problems or other unexpected behavior.  A *relative* delta is used here, which is better for comparing very large or very small floating-point values.
+* **Clearer Output:** The `main` method now labels the output, making it easier to understand.
+* **Delta for Comparisons:**  When comparing floating-point numbers in tests, it's crucial to use a `delta` value (the third argument to `assertEquals`). This accounts for the inherent imprecision of floating-point arithmetic.  The `delta` is the acceptable difference between the expected and actual values.  Using a relative delta (a percentage of the expected value) can be helpful for comparing very large or very small numbers.
+
+
+How to run the tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, it will have built-in support for running JUnit tests.
+2. **Command Line:**  You can compile and run the tests from the command line:
+   

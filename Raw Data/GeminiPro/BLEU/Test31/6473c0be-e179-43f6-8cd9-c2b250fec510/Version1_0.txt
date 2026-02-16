@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close(); 
+    }
+}
+
+
+
+```
+
+**Test Cases (including corner/edge cases):**
+
+1. **Original Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected: 0 km
+
+3. **North & South Poles:**
+   - lat1: 90 (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at poles)
+   - Expected: ~20015.08 km (Earth's circumference / 2)
+
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106  (Near Perth, Australia - antipode of New York)
+   - Expected: ~20015.08 km (approximately Earth's half-circumference)
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected: ~10007.54 km (quarter of Earth's circumference)
+
+6. **Points with large longitude differences crossing the 180� meridian (International Date Line):**
+   - lat1: 10
+   - lon1: 170
+   - lat2: 15
+   - lon2: -175
+   - Expected: Should calculate correctly based on the shorter arc (not the longer arc across the Prime Meridian).
+
+
+7. **Invalid Input (Error Handling � optional but good practice):**
+   - lat1: "abc" (or any non-numeric input)
+   - lon1: 90
+   - lat2: 30
+   - lon2: 45
+   - Expected: The program should handle this gracefully (e.g., print an error message and exit or prompt for valid input).  Consider using a `try-catch` block to handle potential `InputMismatchException`.
+
+
+
+
+To thoroughly test your code, you can create a separate test class (using JUnit or a similar testing framework) and automate the execution of these test cases.  This will help you confirm that your program works correctly under various conditions and that it's robust enough to handle unexpected input.

@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+1. **Basic Case:**
+   - Input: {1, 2, 3, 4} (as in the code)
+   - Expected Output: 24 unique three-digit numbers (4 * 3 * 2 = 24 permutations), printed in any order, and the count 24.
+
+2. **Repeated Digits:**
+   - Input: {1, 1, 2, 3}
+   - Expected Output: 18 unique three-digit numbers.  (The repeated '1' reduces the number of unique combinations) and the count 18.
+
+3. **Fewer Digits:**
+   - Input: {1, 2, 3}
+   - Expected Output: 6 unique three-digit numbers (3 * 2 * 1 = 6 permutations), and the count 6.
+
+4. **More Digits (But Still Unique):**
+   - Input: {1, 2, 3, 4, 5}
+   - Expected Output: 60 unique three-digit numbers (5 * 4 * 3 = 60 permutations) and the count 60.
+
+5. **All Same Digits (Corner Case):**
+   - Input: {1, 1, 1, 1}
+   - Expected Output: 0 unique three-digit numbers (no combinations are unique) and the count 0.
+
+6. **Zero Included (Corner Case):**
+    - Input {0, 1, 2, 3}
+    - Expected Output: 18 unique three-digit numbers (because numbers like "012" or "023" will be treated as two-digit numbers if you don't account for leading zeros in your output) and the count 18.  If you want to consider "012" as a valid three-digit number, you'd need to format the output accordingly (e.g., using `String.format("%03d", number)`).
+
+
+
+**How to Run Test Cases (Manually):**
+
+You can manually modify the `digits` array in the `main` method of the Java code and run it to see if the output matches the expected results.
+
+**How to Run Test Cases (with JUnit - Recommended):**
+
+For more robust testing, create a separate test class using a testing framework like JUnit:
+
+

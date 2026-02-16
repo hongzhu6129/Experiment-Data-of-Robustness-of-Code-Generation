@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication table of " + num + ":");
+
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output: Multiplication table of 7 from 7x1 to 7x11.
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output: Multiplication table of 0 (all results will be 0). This tests the handling of zero.
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output: Multiplication table of -5 from -5x1 to -5x11. This tests handling of negative numbers.
+
+4. **Large Positive Number:**
+   - Input: `10000`  (or any large number)
+   - Expected Output:  Multiplication table of 10000. This tests handling of larger numbers.
+
+5. **Large Negative Number:**
+   - Input: `-10000` (or any large negative number)
+   - Expected Output: Multiplication table of -10000. This tests handling of larger negative numbers.
+
+6. **One:**
+   - Input: `1`
+   - Expected Output: Multiplication table of 1 (which is simply the numbers 1 to 11). This tests the lower boundary.
+
+
+**How to run the test cases:**
+
+You can manually run these tests by inputting the values when prompted by the program.  For more automated testing, you could use a testing framework like JUnit.  Here's a simple example of how you could structure a JUnit test:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        MultiplicationTable.printMultiplicationTable(7);
+        String expectedOutput = "Multiplication table of 7:\n7 x 1 = 7\n7 x 2 = 14\n... (and so on up to 7 x 11)\n"; // Add the full expected output
+        assertTrue(outContent.toString().contains(expectedOutput.substring(0,20))); // Check part of output to avoid newline issues.
+         System.setOut(System.out); //Restore original stream
+    }
+
+    // Add similar @Test methods for the other test cases (0, -5, large numbers, etc.)
+
+}
+```
+
+
+This JUnit example uses `ByteArrayOutputStream` to capture the printed output so that you can make assertions about it within the test methods.  Remember to add the JUnit library to your project.

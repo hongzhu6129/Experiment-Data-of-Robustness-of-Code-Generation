@@ -1,0 +1,67 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth) {
+                return (leftDepth + 1);
+            } else {
+                return (rightDepth + 1);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left= new Node(6);
+        root.right.right = new Node(7);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Node Class:**  The `Node` class is defined to represent a node in the binary tree. It contains the data and pointers to the left and right children.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**  The function recursively calculates the depth of the left and right subtrees. It then returns 1 + the maximum of the left and right depths.  This ensures we get the longest path from the root to a leaf.
+
+3. **main(String[] args):**
+   - A `BinaryTreeDepth` object is created.
+   - A sample binary tree is constructed.  You can modify this to test with different tree structures.
+   - `maxDepth()` is called with the root node, and the result (height/maximum depth) is printed to the console.
+
+
+Key improvements over simpler solutions:
+
+* **Handles null nodes:**  The base case `if (node == null)` correctly handles empty trees or subtrees, preventing `NullPointerExceptions`.
+* **Clear recursion:** The recursive calls and the logic for choosing the maximum depth are easy to follow.
+* **Standard practice:** Uses common naming conventions (e.g., `maxDepth`, `left`, `right`) and good code formatting, making it more readable.

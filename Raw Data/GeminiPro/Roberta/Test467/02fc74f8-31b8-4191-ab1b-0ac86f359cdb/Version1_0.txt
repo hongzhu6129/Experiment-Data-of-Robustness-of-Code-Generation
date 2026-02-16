@@ -1,0 +1,71 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class DateDifference {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first date (yyyy-MM-dd):");
+        String date1String = scanner.nextLine();
+
+        System.out.println("Enter the second date (yyyy-MM-dd):");
+        String date2String = scanner.nextLine();
+
+        try {
+            LocalDate date1 = LocalDate.parse(date1String, DateTimeFormatter.ISO_DATE);
+            LocalDate date2 = LocalDate.parse(date2String, DateTimeFormatter.ISO_DATE);
+
+            Period difference = Period.between(date1, date2);
+
+            System.out.println("Difference: " + difference.getYears() + " years, " +
+                    difference.getMonths() + " months, and " + difference.getDays() + " days");
+
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Input Validation:** The code now includes a `try-catch` block to handle `DateTimeParseException`. This prevents the program from crashing if the user enters an invalid date format.  It provides a helpful error message.
+
+2. **Clear Prompts:** User-friendly prompts guide the user to input dates in the correct format.
+
+3. **ISO 8601 Date Format:** The code uses `DateTimeFormatter.ISO_DATE` to parse dates. This ensures consistent and reliable date handling.  ISO 8601 (yyyy-MM-dd) is the recommended format for date strings.
+
+4. **LocalDate and Period:** The `java.time` package (introduced in Java 8) provides modern and efficient date/time handling. `LocalDate` represents a date without time, and `Period` calculates the difference between two dates.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `DateDifference.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac DateDifference.java 
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java DateDifference
+   ```
+
+The program will then prompt you to enter the two dates.
+
+
+Example Usage:
+
+```
+Enter the first date (yyyy-MM-dd):
+2023-10-26
+Enter the second date (yyyy-MM-dd):
+2024-03-15
+Difference: 0 years, 4 months, and 20 days 
+```

@@ -1,0 +1,71 @@
+```java
+public class CountEvenOdd {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14}; // Example array
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        int leastCount = Math.min(evenCount, oddCount);
+
+        System.out.println("Least count of even or odd elements: " + leastCount);
+
+
+        // Example with an array having more odd numbers
+         int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 9, 11, 13};
+         evenCount = 0;
+         oddCount = 0;
+         for (int num : arr2) {
+            if (num % 2 == 0) {
+                 evenCount++;
+            } else {
+                oddCount++;
+             }
+        }
+
+        leastCount = Math.min(evenCount, oddCount);
+
+         System.out.println("Least count of even or odd elements (arr2): " + leastCount);
+
+
+         // Example with all even numbers
+         int[] arr3 = {2, 4, 6, 8, 10, 12};
+         evenCount = 0;
+         oddCount = 0; // Initialize counts for arr3
+         for (int num : arr3) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+         }
+         leastCount = Math.min(evenCount, oddCount);
+         System.out.println("Least count of even or odd elements (arr3): " + leastCount);
+
+
+
+          // Example with all odd numbers
+         int[] arr4 = {1, 3, 5, 7, 9, 11};
+          evenCount = 0;
+         oddCount = 0; // Initialize counts for arr4
+        for (int num : arr4) {
+             if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+             }
+         }
+         leastCount = Math.min(evenCount, oddCount);
+        System.out.println("Least count of even or odd elements (arr4): " + leastCount);
+    }
+}
+```

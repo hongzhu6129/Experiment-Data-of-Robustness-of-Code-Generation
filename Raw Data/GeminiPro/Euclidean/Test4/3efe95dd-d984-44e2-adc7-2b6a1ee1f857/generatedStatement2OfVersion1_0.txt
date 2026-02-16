@@ -1,0 +1,15 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:** The most important addition is the use of JUnit 5 for testing.  This allows for automated testing of various scenarios, making the code much more robust.
+* **Test Cases:**  I've included several test cases, including:
+    * Positive radius (the original example)
+    * Zero radius (a boundary case)
+    * Negative radius (an invalid input � expects `IllegalArgumentException`)
+    * Very large radius (to test for potential overflow/`Infinity`)
+    * Very small radius (close to zero, to check for correct handling of small values)
+* **Assertions:** Used `assertEquals` with a delta for floating-point comparisons to account for very small rounding errors.  This is crucial when working with `double` values.
+* **Exception Handling (Optional):** In the test cases for negative radius, I've demonstrated how to test that the methods throw an `IllegalArgumentException` when provided with invalid input.  You could modify the `calculatePerimeter` and `calculateArea` methods to actually throw this exception if negative input is not allowed:
+

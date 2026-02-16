@@ -1,0 +1,60 @@
+```java
+import java.util.Arrays;
+
+public class SieveOfEratosthenes {
+
+    private static int[] generatePrimes(int n) {
+        boolean[] prime = new boolean[n + 1];
+        Arrays.fill(prime, true);  // Assume all numbers are prime initially
+
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p]) {
+                // Mark multiples of p as non-prime
+                for (int i = p * p; i <= n; i += p) {
+                    prime[i] = false;
+                }
+            }
+        }
+
+        // Count the number of primes
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                count++;
+            }
+        }
+
+        // Create an array to store the primes
+        int[] primes = new int[count];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primes[index++] = i;
+            }
+        }
+
+        return primes;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 30; // Example: Find primes up to 30
+        int[] primes = generatePrimes(n);
+
+        System.out.print("Primes less than or equal to " + n + ": ");
+        for (int p : primes) {
+            System.out.print(p + " ");
+        }
+        System.out.println(); 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:**  Improved variable names (like `prime` instead of `isPrime`) and comments make the code easier to understand.
+* **Efficiency:** The outer loop now only iterates up to the square root of `n` (`p * p <= n`). This is a standard optimization for the Sieve of Eratosthenes, as any number greater than the square root must have a factor less than or equal to its square root.
+* **Correctness:** The inner loop now starts marking multiples of `p` from `p * p`, not from `2 * p`. This avoids re-marking numbers that have already been marked.
+* **Handles Edge Cases:**  The code now correctly handles the case when `n` is small (e.g., 0, 1, 2).
+* **Clean Output:** The output is formatted neatly with a clear message indicating the upper limit.

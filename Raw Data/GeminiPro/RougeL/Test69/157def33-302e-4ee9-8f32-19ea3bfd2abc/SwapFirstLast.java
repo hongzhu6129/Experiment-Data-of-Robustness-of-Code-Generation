@@ -1,0 +1,62 @@
+public class SwapFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5}; 
+        int[] swappedArray = swapFirstAndLast(originalArray);
+
+        System.out.print("Original array: ");
+        printArray(originalArray);
+
+        System.out.print("Swapped array: ");
+        printArray(swappedArray);
+
+
+        int[] originalArray2 = {10};
+        int[] swappedArray2 = swapFirstAndLast(originalArray2);
+
+        System.out.print("\nOriginal array: ");
+        printArray(originalArray2);
+
+        System.out.print("Swapped array: ");
+        printArray(swappedArray2);
+
+        // Test with empty array (will throw exception and print error message)
+        int[] emptyArray = new int[0];
+        int[] swappedEmpty = swapFirstAndLast(emptyArray);
+        
+    }
+
+    public static int[] swapFirstAndLast(int[] arr) {
+        if (arr.length < 1) {
+            System.out.println("\nError: Array must have at least one element.");
+            return null; // Or throw an exception for more robust handling
+        }
+
+        int[] newArray = new int[arr.length];  // Create a new array to avoid modifying the original
+
+        // Copy all elements to the new array
+        for(int i=0; i<arr.length; i++){
+            newArray[i] = arr[i];
+        }
+
+        // Swap the first and last elements in the new array
+        int temp = newArray[0];
+        newArray[0] = newArray[newArray.length - 1];
+        newArray[newArray.length - 1] = temp;
+
+        return newArray;
+    }
+
+
+    // Helper function to print an array
+    public static void printArray(int[] arr) {
+        if (arr == null) return; // Handle potential null from the swap function
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+

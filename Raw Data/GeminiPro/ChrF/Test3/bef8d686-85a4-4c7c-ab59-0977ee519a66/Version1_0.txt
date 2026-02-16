@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        printScalarTable(num);
+
+        scanner.close(); 
+    }
+
+    public static void printScalarTable(int num) {
+        System.out.println("Scalar Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 5
+   **Expected Output:**
+   ```
+   Scalar Table for 5:
+   5 x 1 = 5
+   5 x 2 = 10
+   5 x 3 = 15
+   5 x 4 = 20
+   5 x 5 = 25
+   5 x 6 = 30
+   5 x 7 = 35
+   5 x 8 = 40
+   5 x 9 = 45
+   5 x 10 = 50
+   ```
+
+2. **Input:** 12
+   **Expected Output:** (Similar output, just with 12 as the base number)
+
+**Corner/Edge Cases:**
+
+3. **Input:** 0
+   **Expected Output:** (All results will be 0)
+
+4. **Input:** -3
+   **Expected Output:** (Handles negative numbers correctly)
+
+5. **Input:** Integer.MAX_VALUE  (2147483647)
+   **Expected Output:** (Might lead to integer overflow for some multiples.  Observe and document the behavior � the program should ideally not crash).
+
+6. **Input:** Integer.MIN_VALUE (-2147483648)
+    **Expected Output:** (Similar to the MAX_VALUE case, check for overflow).
+
+7. **Invalid Input:** (Not strictly a corner case for the `printScalarTable` method, but important for the program as a whole):
+   * **Input:**  "abc" (or any non-integer input)
+   **Expected Behavior:** The `Scanner.nextInt()` method will throw an `InputMismatchException`.  Your program should handle this gracefully (e.g., using a `try-catch` block) and prompt the user to enter valid input.  The provided code currently does *not* have error handling; you'll need to add it.
+
+
+**Example of Input Validation (with `try-catch`):**
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class ScalarTable {
+    // ... (rest of the code)
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num;
+
+        while (true) { // Loop until valid input
+            System.out.print("Enter a number: ");
+            try {
+                num = scanner.nextInt();
+                break; // Exit loop if input is valid
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next(); // Clear the invalid input from the scanner
+            }
+        }
+
+        printScalarTable(num); 
+        scanner.close();
+    }
+    // ... (rest of the code)
+
+}
+
+```
+
+By implementing these test cases and, importantly, the input validation, you'll make your program more robust and user-friendly.

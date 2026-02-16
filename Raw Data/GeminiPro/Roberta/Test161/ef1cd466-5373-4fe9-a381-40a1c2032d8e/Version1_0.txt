@@ -1,0 +1,101 @@
+**Problem Description:**
+
+Write a Java program that finds four substrings within a given string, such that they are all the same and appear at specified positions.
+
+**Input Format:**
+
+The input is a string consisting of lowercase and uppercase English letters. The positions where the substrings should appear are specified as four integers.
+
+**Output Format:**
+
+The output is the four substrings found at the specified positions, or "Not found" if no such substrings exist.
+
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class SubstringFinder {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input string and positions
+        System.out.println("Enter the string:");
+        String str = input.nextLine();
+        System.out.println("Enter the four positions (separated by spaces):");
+        int[] positions = new int[4];
+        for (int i = 0; i < positions.length; i++) {
+            positions[i] = input.nextInt();
+        }
+
+        // Find the substrings at the specified positions
+        String[] substrings = new String[positions.length];
+        boolean found = true;
+        for (int i = 0; i < positions.length; i++) {
+            if (positions[i] < 0 || positions[i] >= str.length()) {
+                found = false;
+                break;
+            }
+            substrings[i] = str.substring(positions[i], positions[i] + 1);
+        }
+
+        // Check if all substrings are the same
+        boolean same = true;
+        for (int i = 1; i < substrings.length; i++) {
+            if (!substrings[i].equals(substrings[0])) {
+                same = false;
+                break;
+            }
+        }
+
+        // Print the output
+        if (found && same) {
+            System.out.println("Substrings found:");
+            for (String substring : substrings) {
+                System.out.println(substring);
+            }
+        } else {
+            System.out.println("Not found");
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Test Case 1:**
+
+* Input String: "abcde"
+* Positions: 0, 2, 3, 4
+* Output: "a", "c", "d", "e"
+
+**Test Case 2:**
+
+* Input String: "aabbbcc"
+* Positions: 1, 3, 4, 6
+* Output: "a", "a", "a", "c"
+
+**Test Case 3:**
+
+* Input String: "xyzzy"
+* Positions: 0, 1, 2, 3
+* Output: "x", "y", "z", "z"
+
+**Test Case 4:**
+
+* Input String: "hello"
+* Positions: 1, 3, 5, 6
+* Output: "e", "l", "l", "o"
+
+**Test Case 5:**
+
+* Input String: "12345"
+* Positions: -1, 2, 3, 4
+* Output: "Not found" (invalid position)
+
+**Test Case 6:**
+
+* Input String: "abc"
+* Positions: 0, 1, 2, 4
+* Output: "Not found" (position out of bounds)

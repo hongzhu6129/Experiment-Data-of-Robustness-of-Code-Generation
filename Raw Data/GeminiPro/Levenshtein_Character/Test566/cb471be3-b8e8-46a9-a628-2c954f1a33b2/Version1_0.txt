@@ -1,0 +1,90 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CompareArrayLists {
+
+    public static void main(String[] args) {
+        // Method 1: Using equals() method (Order matters)
+        List<String> list1 = new ArrayList<>();
+        list1.add("Apple");
+        list1.add("Banana");
+        list1.add("Orange");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("Apple");
+        list2.add("Banana");
+        list2.add("Orange");
+
+        List<String> list3 = new ArrayList<>();
+        list3.add("Orange"); // Different order
+        list3.add("Banana");
+        list3.add("Apple");
+
+        System.out.println("Method 1: Using equals()");
+        System.out.println("list1 equals list2: " + list1.equals(list2)); // True
+        System.out.println("list1 equals list3: " + list1.equals(list3)); // False - Order matters
+
+
+        // Method 2: Using containsAll() method (Order doesn't matter, but checks for duplicates)
+        List<String> list4 = new ArrayList<>();
+        list4.add("Banana");
+        list4.add("Orange");
+        list4.add("Apple");
+
+        List<String> list5 = new ArrayList<>();
+        list5.add("Apple");
+        list5.add("Banana");
+        list5.add("Orange");
+        list5.add("Apple"); // Duplicate
+
+        System.out.println("\nMethod 2: Using containsAll()");
+        System.out.println("list1 containsAll list4: " + list1.containsAll(list4) && list4.containsAll(list1)); // True - Order doesn't matter
+        System.out.println("list1 containsAll list5: " + list1.containsAll(list5) && list5.containsAll(list1)); // False - Due to duplicate
+
+
+        // Method 3: Using sort() and equals() (Order doesn't matter initially, but it's enforced after sorting)
+        List<String> list6 = new ArrayList<>(list3); // Copy list3 (different order initially)
+
+        Collections.sort(list1); 
+        Collections.sort(list6); // Sort both lists
+
+        System.out.println("\nMethod 3: Using sort() and equals()");
+        System.out.println("list1 equals list6 (after sorting): " + list1.equals(list6)); // True -  Now they are equal
+
+
+        // Method 4: Custom comparison (e.g., case-insensitive, ignoring whitespace, etc.)
+        List<String> list7 = new ArrayList<>();
+        list7.add(" apple "); // Whitespace and different case
+        list7.add("banana");
+        list7.add("ORANGE");
+
+        boolean customEqual = true;
+        if (list1.size() != list7.size()) {
+            customEqual = false;
+        } else {
+            for (int i = 0; i < list1.size(); i++) {
+                if (!list1.get(i).trim().equalsIgnoreCase(list7.get(i).trim())) {
+                    customEqual = false;
+                    break;
+                }
+            }
+        }
+
+
+        System.out.println("\nMethod 4: Custom Comparison");
+        System.out.println("list1 custom equals list7: " + customEqual); // True (because our custom logic ignores case and whitespace)
+
+
+    }
+}
+```
+
+
+This educational example demonstrates four methods for comparing `ArrayLists`:
+
+1. **`equals()`:**  Checks for equality including order.
+2. **`containsAll()`:** Checks if one list contains all elements of the other, irrespective of order but sensitive to duplicates.
+3. **`sort()` + `equals()`:** Sorts both lists and then uses `equals()`.  Useful when order doesn't initially matter but you need to compare the *contents* regardless of initial arrangement.
+4. **Custom Comparison:** Demonstrates how to create your own comparison logic (e.g., case-insensitive comparison).  This is useful for situations where the standard methods don't meet your specific requirements.

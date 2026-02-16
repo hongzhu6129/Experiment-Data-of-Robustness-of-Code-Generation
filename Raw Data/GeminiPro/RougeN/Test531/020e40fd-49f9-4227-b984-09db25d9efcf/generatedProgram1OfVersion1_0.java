@@ -1,0 +1,18 @@
+public class PellSeries {
+
+    public static void main(String[] args) {
+        int n = 15; // Number of Pell numbers to print
+        long a = 0, b = 1;
+
+        System.out.print("First " + n + " Pell numbers: ");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+
+            long next = 2 * b + a;
+            a = b;
+            b = next;
+        }
+        System.out.println(); // Add a newline at the end
+    }
+}

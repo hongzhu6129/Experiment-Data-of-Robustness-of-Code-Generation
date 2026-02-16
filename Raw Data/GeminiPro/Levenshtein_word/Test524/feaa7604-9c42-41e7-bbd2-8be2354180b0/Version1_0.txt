@@ -1,0 +1,72 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Please provide exactly one integer argument.");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+
+            if (n < 0) {  // Handle negative numbers efficiently
+                n = -n; 
+                double cubeRoot = Math.cbrt(n);
+                if (Math.abs(cubeRoot - Math.round(cubeRoot)) < 1e-10) {  // Check for perfect cube using a tolerance for double precision
+                    System.out.println("number is a cube.");
+                } else {
+                    System.out.println("number is not a cube.");
+                }
+            } else {
+                double cubeRoot = Math.cbrt(n);
+                 if (Math.abs(cubeRoot - Math.round(cubeRoot)) < 1e-10) { 
+                    System.out.println("number is a cube.");
+                } else {
+                    System.out.println("number is not a cube.");
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    }
+}
+```
+
+
+Here's how this improved code works:
+
+1. **Input Validation:**  It first checks if exactly one argument is provided.  If not, it prints an error message and exits. This prevents `ArrayIndexOutOfBoundsException`.
+
+2. **Error Handling:** It uses a `try-catch` block to handle potential `NumberFormatException` if the input is not a valid integer.
+
+3. **Handles Negative Numbers:** The code now correctly handles negative cubes.  It takes the absolute value of a negative input, calculates the cube root, and then checks if the cube root is an integer.  If it is, the original (negative) number is a perfect cube.
+
+4. **Double Precision Comparison:** When checking if the cube root is an integer, it uses a small tolerance (`1e-10`) to account for the limitations of double-precision floating-point numbers.  Directly comparing a `double` with its rounded value (`cubeRoot == Math.round(cubeRoot)`) can be unreliable.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac CubeChecker.java`
+3. **Run:**  Execute the program with an integer argument: `java CubeChecker 8`  (or any other integer you want to test).
+
+
+Example Output:
+
+```
+java CubeChecker 8
+number is a cube.
+
+java CubeChecker 10
+number is not a cube.
+
+java CubeChecker -27
+number is a cube.
+
+java CubeChecker abc 
+Invalid input. Please enter an integer.
+
+java CubeChecker       // No input
+Please provide exactly one integer argument.
+```

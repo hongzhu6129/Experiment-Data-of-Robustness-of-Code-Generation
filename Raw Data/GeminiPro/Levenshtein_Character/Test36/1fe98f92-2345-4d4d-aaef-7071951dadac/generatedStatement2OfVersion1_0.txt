@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider a few aspects when testing:
+
+1. **Correct Formatting:** Verify that the output matches the required format *exactly*.  Pay attention to:
+    * Capitalization ("Twinkle" vs. "twinkle")
+    * Punctuation (commas, exclamation marks)
+    * Indentation (tabs "\t" are used for the specific indentation levels)
+    * Newlines (each line should be on a new line).
+
+2. **Character Encoding:**  Though less likely an issue with modern Java, ensure the output is displayed correctly with the intended character encoding (typically UTF-8).  Characters like commas and apostrophes should render as expected.  If there are special characters in the text (e.g., accented characters), test with those as well.  You might need to configure your console or IDE's encoding settings for this.
+
+3. **Standard Output Stream:**  The program explicitly uses `System.out.println()`.  Confirm that the output is going to the intended standard output stream.  If you were to redirect the output (e.g., to a file), ensure that redirection works as intended.
+
+
+**Corner Cases (While not strictly applicable in this specific simple example):**
+
+Think about how you'd test if the program were slightly more complex. For example, if the poem were read from a file, corner cases would include:
+
+* **Empty File:**  What happens if the input file is empty?
+* **File Not Found:** What if the file doesn't exist?
+* **Very Long Lines:**  What if a line in the file is extremely long?  Does it wrap or truncate or cause an error?
+* **Special Characters in File:**  How does the program handle Unicode characters or control characters in the input file?
+* **Invalid File Format:**  If there's an expected format (e.g., CSV), what happens with malformed input?
+
+
+Even in simple programs, thinking about these potential issues early can help you write more robust code in the future.
+
+
+**How to run the test:**
+
+1. Save the code as `TwinkleTwinkle.java`.
+2. Compile: `javac TwinkleTwinkle.java`
+3. Run: `java TwinkleTwinkle`
+
+Compare the output to the expected formatted output. If they match exactly, the program is working as expected.  For encoding tests, you might need to examine the output in a text editor or use a tool that shows character codes.
+

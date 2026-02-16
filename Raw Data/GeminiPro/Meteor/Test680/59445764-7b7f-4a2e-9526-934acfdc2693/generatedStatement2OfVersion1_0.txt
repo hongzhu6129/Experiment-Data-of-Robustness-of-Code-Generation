@@ -1,0 +1,22 @@
+
+
+
+Explanation and Key Improvements:
+
+1. **Handles Negative Numbers Correctly:** The original code and the  `(numerator + denominator - 1) / denominator` trick doesn't work correctly for negative numerators.  This version uses `Math.floor` and negation to ensure correct "rounding up" (towards zero) in the negative case.
+
+2. **Clearer Explanation:** The code now includes comments to explain the logic, especially the handling of negative values and the limitations of the "trick" method.
+
+3. **Handles Division by Zero:**  The code now includes a check to prevent division by zero, which would otherwise cause an `ArithmeticException`.  This is crucial for robust code.
+
+4. **Uses `Math.ceil` for clarity (preferred method):** While the "trick" with `(numerator + denominator - 1) / denominator` works for positive numbers,  using `Math.ceil` is generally clearer and less prone to errors, especially when dealing with negative values or when others are reading your code.
+
+5. **Demonstrates Different Approaches:**  The code shows both `Math.ceil` and the integer arithmetic trick, allowing you to see the differences and choose the most appropriate approach for your situation.  Remember `Math.ceil` is more general and reliable.
+
+
+
+How to Compile and Run:
+
+1. Save the code as `RoundUpIntegerDivision.java`.
+2. Compile: `javac RoundUpIntegerDivision.java`
+3. Run: `java RoundUpIntegerDivision`

@@ -1,0 +1,54 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1, as the first element is unique.
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i];
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4 + ", Array: " + (nums4 == null ? "null" : Arrays.toString(Arrays.copyOfRange(nums4,0,len4)))); // Output: 0, null
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  Explicitly handles empty (`{}`) and null arrays.
+* **Clearer output:** Uses `Arrays.toString` and `Arrays.copyOfRange` to print the updated array (containing only the unique elements) for easier verification.
+* **More test cases:** Added more examples in `main` to demonstrate the behavior with various inputs.
+* **In-place modification:** Modifies the original `nums` array directly, as per the common convention for this type of problem (though only the initial portion up to `uniqueCount` is valid).
+
+
+The `removeDuplicates` function efficiently removes duplicates in-place (meaning it directly modifies the input array without creating a new one) and returns the count of unique elements.  The `main` method demonstrates how to use it and print the results clearly.

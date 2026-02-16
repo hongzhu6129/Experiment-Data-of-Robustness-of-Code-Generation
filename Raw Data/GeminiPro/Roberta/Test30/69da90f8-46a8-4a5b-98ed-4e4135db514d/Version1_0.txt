@@ -1,0 +1,82 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static double computeHexagonArea(double side) {
+        if (side <= 0) {
+            throw new IllegalArgumentException("Side length must be a positive value.");
+        }
+        return (3 * Math.sqrt(3) * side * side) / 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the side length of the hexagon: ");
+        double side = scanner.nextDouble();
+
+
+        try {
+            double area = computeHexagonArea(side);
+            System.out.println("The area of the hexagon is: " + area);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive side length:**
+   - Input: `side = 5`
+   - Expected Output: `64.9519` (approximately)
+
+2. **Zero side length (corner case):**
+   - Input: `side = 0`
+   - Expected Output: `Error: Side length must be a positive value.` (due to the exception handling)
+
+3. **Negative side length (corner case):**
+   - Input: `side = -2`
+   - Expected Output: `Error: Side length must be a positive value.` (due to the exception handling)
+
+4. **Very small positive side length (corner case):**
+   - Input: `side = 0.001`
+   - Expected Output: `0.000002598` (approximately) � Tests handling of small values.
+
+5. **Very large positive side length (corner case):**
+   - Input: `side = 10000`
+   - Expected Output: `259807621.1353316` (approximately) � Tests handling of large values.
+
+
+
+**How to Run the Test Cases:**
+
+You can manually enter these values when prompted by the program.  For more automated testing, you could create a separate test class (best practice) using a testing framework like JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class HexagonAreaTest {
+
+    @Test
+    void testPositiveSide() {
+        assertEquals(64.9519052838329, HexagonArea.computeHexagonArea(5), 0.0001);
+    }
+
+    @Test
+    void testZeroSide() {
+        assertThrows(IllegalArgumentException.class, () -> HexagonArea.computeHexagonArea(0));
+    }
+
+    @Test
+    void testNegativeSide() {
+         assertThrows(IllegalArgumentException.class, () -> HexagonArea.computeHexagonArea(-2));
+    }
+
+    // ... more tests for other corner cases
+}
+```
+
+This JUnit example shows how to write proper unit tests that check the expected behavior of your `computeHexagonArea` method.  It is highly recommended to use a testing framework like JUnit for more robust and automated testing.

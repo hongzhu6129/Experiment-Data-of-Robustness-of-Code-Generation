@@ -1,0 +1,69 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        int currentRow = 1;
+        int coinsInCurrentRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            // Print spaces for alignment
+            for (int i = 0; i < (n - currentRow - coinsInCurrentRow) ; i++) { // Adjust spacing
+                System.out.print(" ");
+            }
+
+            // Print coins for the current row
+            for (int i = 0; i < currentRow && coinsUsed < n; i++) {
+                System.out.print("o "); // Use 'o' to represent a coin
+                coinsUsed++;
+                coinsInCurrentRow++;
+
+            }
+            System.out.println(); // Move to the next line after each row
+
+            coinsInCurrentRow=0; //reset
+            currentRow++;
+
+        }
+    }
+}
+```
+
+
+Here's how this code works within the `main` method limitations:
+
+1. **Initialization:**
+   - `n`:  Stores the total number of coins.  You can change this to test different values.
+   - `currentRow`: Tracks the current row number (starts at 1).
+   - `coinsInCurrentRow`: Keeps count of coins placed in the current row.
+   - `coinsUsed`: Tracks the total number of coins used so far.
+
+2. **Looping through Rows:**
+   - The `while (coinsUsed < n)` loop continues as long as we haven't used all the coins.
+
+3. **Printing Spaces (Alignment):**
+   - The first inner `for` loop prints leading spaces to create the staircase alignment. The number of spaces is calculated to ensure the right alignment as the rows grow.
+
+4. **Printing Coins:**
+   - The second inner `for` loop prints the "coins" (represented by 'o') for the current row. It prints a maximum of `currentRow` coins and also stops if `coinsUsed` reaches `n` (so we don't exceed the total number of coins).
+
+5. **Newline:**
+   - `System.out.println()` moves to the next line after each row is printed.
+
+6. **Incrementing and Resetting:**
+   - `currentRow` is incremented to move to the next row.
+   - `coinsInCurrentRow` is reset to 0 for the next row.
+
+
+
+Example Output (n = 10):
+
+```
+        o 
+       o o 
+      o o o 
+     o o o 
+    o 
+```

@@ -1,0 +1,55 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input second number: ");
+        int num2 = input.nextInt();
+
+        int product = num1 * num2;
+
+        System.out.println(num1 + " x " + num2 + " = " + product);
+
+        input.close(); // Close the scanner to release resources
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | Input 1 | Input 2 | Expected Output | Description |
+|---|---|---|---|---|
+| 1 | 25 | 5 | 125 | Positive numbers |
+| 2 | -10 | 3 | -30 | One negative number |
+| 3 | -5 | -7 | 35 | Two negative numbers |
+| 4 | 0 | 10 | 0 | Multiplication by zero |
+| 5 | 10 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 2147483647 | 1 | 2147483647 | Integer.MAX_VALUE multiplied by 1 |
+| 8 | 2147483647 | 2 | -2 | Integer overflow (corner case) |  
+| 9 | -2147483648 | -1 | 2147483648 | Integer overflow (corner case) |
+| 10 | -2147483648 | 2 | 0 | Integer overflow (corner case) |
+| 11 | 123456789 | 987654321 | -1825831517 | Large positive numbers resulting in overflow|
+
+
+**Explanation of Corner Cases and Overflow:**
+
+* **Test Case 7:** Tests the behavior with the maximum positive integer.
+* **Test Cases 8, 9, 10:**  These test cases demonstrate integer overflow.  Java's `int` type has a limited range.  When a calculation exceeds this range, the result "wraps around".  For example, 2147483647 + 1 becomes -2147483648 (the minimum integer value). This is a critical consideration when working with integers and potentially large products.
+* **Test Case 11:** This tests the behavior with large positive numbers that still cause overflow even though they are individually less than `Integer.MAX_VALUE`.
+
+
+**How to Run the Test Cases:**
+
+You can manually input these values into the program. Alternatively, for more automated testing, you would typically use a testing framework like JUnit. This allows you to write test methods that execute your code with specific inputs and verify that the output matches the expected value.
+
+
+This revised answer provides a more comprehensive explanation of the code and testing, particularly regarding the crucial concept of integer overflow.  Understanding this concept is essential for writing robust and correct Java programs involving integer arithmetic.
+

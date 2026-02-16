@@ -1,0 +1,52 @@
+```java
+public class StringRemover {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or handle nulls as needed, maybe throw an exception
+        }
+
+        return mainString.replace(removeString, ""); 
+    }
+
+    public static void main(String[] args) {
+        StringRemover remover = new StringRemover();
+
+        String mainStr1 = "applebananaappleorange";
+        String removeStr1 = "apple";
+        String result1 = remover.removeString(mainStr1, removeStr1);
+        System.out.println("Original String: " + mainStr1);
+        System.out.println("String to remove: " + removeStr1);
+        System.out.println("Result: " + result1);  // Output: banananaorange
+
+
+        String mainStr2 = "hello world hello";
+        String removeStr2 = "hello";
+        String result2 = remover.removeString(mainStr2, removeStr2);
+        System.out.println("\nOriginal String: " + mainStr2);
+        System.out.println("String to remove: " + removeStr2);
+        System.out.println("Result: " + result2); // Output:  world 
+
+        // Test null and empty cases
+        System.out.println("\nTesting null and empty strings:");
+        System.out.println(remover.removeString(null, "test")); // Output: null (or handle as desired)
+        System.out.println(remover.removeString("test", null)); // Output: test (or handle as desired)
+        System.out.println(remover.removeString("test", ""));    // Output: test
+        System.out.println(remover.removeString("", "test"));    // Output: ""
+
+
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles Nulls:**  The `removeString` method now checks for `null` input strings to prevent `NullPointerExceptions`. You can customize the null handling (e.g., throw an exception, return an empty string) as per your requirements.
+* **Uses `replace()`:**  The most efficient way to remove all occurrences of a substring is to use the built-in `replace()` method.  It's cleaner and generally faster than looping or using `replaceAll()` (which uses regular expressions and adds unnecessary overhead when you're not working with regex patterns).
+* **Clearer `main()` Method:** The `main()` method provides more demonstrative examples and tests edge cases (nulls, empty strings). This helps in understanding the behavior of the `removeString()` method under different scenarios.
+* **Comments:**  Added comments to improve readability and explain the code's logic.
+
+
+This revised version addresses the issues in the previous response and provides a more robust and efficient solution for removing strings in Java.

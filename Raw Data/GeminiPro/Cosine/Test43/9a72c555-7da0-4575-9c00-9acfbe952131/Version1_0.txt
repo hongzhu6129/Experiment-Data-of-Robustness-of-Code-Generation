@@ -1,0 +1,87 @@
+```java
+public class DivisibilityCheck {
+
+    public static void main(String[] args) {
+
+        System.out.println("Numbers divisible by 3:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // New line for clarity
+
+        System.out.println("\nNumbers divisible by 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+
+        System.out.println("\nNumbers divisible by both 3 and 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner and edge cases:
+
+1. **Lower Boundary (1):**  Check if 1 is correctly *not* printed in any of the lists (it's not divisible by 3, 5, or both).
+
+2. **Upper Boundary (100):** Verify that 100 is printed in the list of numbers divisible by 5, but not in the lists for 3 or both.
+
+3. **Divisible by 3 only:**  Test with a number like 9, ensuring it appears in the list for 3 but not 5 or both.
+
+4. **Divisible by 5 only:** Test with a number like 25, ensuring it appears in the list for 5 but not 3 or both.
+
+5. **Divisible by both 3 and 5:**  Test with a number like 15 or 30, verifying it's printed in all three lists (3, 5, and both).
+
+6. **Numbers around multiples of 15:** Test numbers like 14, 15, and 16 to ensure the program correctly handles the transition around numbers divisible by both 3 and 5.  This helps confirm the logic for "both" isn't accidentally including neighboring numbers.
+
+7. **Zero (if applicable):** While the problem specifies 1 to 100,  if you modified the code to include 0, test 0 as it's divisible by all integers.  (In the current code, 0 isn't checked).
+
+
+**How to Run Tests (Manually):**
+
+You can visually inspect the output of your program against the expected output based on the test cases.
+
+**How to Automate Tests (Example with JUnit):**  (More advanced, but recommended for larger projects)
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DivisibilityCheckTest {
+
+    @Test
+    public void testDivisibility() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // Capture output
+        System.setOut(new PrintStream(outContent));
+
+        DivisibilityCheck.main(new String[]{}); // Run your main method
+
+        String expectedOutput = /* Your expected output based on the range 1-100 */;
+        String actualOutput = outContent.toString();
+
+        // JUnit assertion:
+        assertTrue(actualOutput.contains("Numbers divisible by 3:")); // Example assertions
+        assertTrue(actualOutput.contains("3 6 9 ... 99 ")); // ... (add assertions for other test cases)
+        // ... other assertions for 5 and both
+        System.setOut(System.out); // Restore standard output
+    }
+
+    // Add more @Test methods for other test cases (e.g., boundary cases)
+}
+```
+
+This JUnit example shows how to capture and verify the output of your program.  You'd replace `/* Your expected output ... */` with the actual expected string, and add more `assertTrue` or other assertion methods as needed for each test case. This automated approach is much more efficient and reliable than manual testing, especially as your code becomes more complex.

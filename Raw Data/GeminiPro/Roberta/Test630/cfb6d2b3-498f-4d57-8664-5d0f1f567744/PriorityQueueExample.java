@@ -1,0 +1,49 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+
+        // Create a PriorityQueue of Strings. By default, it uses the natural ordering (alphabetical in this case)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1: Iterate and remove elements (this removes elements from the queue)
+        // while (!colorQueue.isEmpty()) {
+        //     System.out.println(colorQueue.poll()); // poll() removes and returns the head
+        // }
+
+
+
+        //Method 2: Iterate without removing elements (preferred if you want to keep elements in the queue)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+
+        //Method 3: Using Java 8 Stream API (also doesn't remove elements)
+        // colorQueue.forEach(System.out::println);
+
+
+
+        System.out.println("Is the queue empty now? " + colorQueue.isEmpty()); // Check if the queue is empty (will be false if you used method 2 or 3)
+
+
+
+        // Example of peek() - Retrieves but does not remove the head of the queue.
+        if (!colorQueue.isEmpty()) { // Good practice to check if empty before peeking.
+            System.out.println("Head of the queue (peek): " + colorQueue.peek()); 
+        }
+
+    }
+}

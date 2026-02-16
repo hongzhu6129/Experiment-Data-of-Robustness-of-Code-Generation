@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class CountCharacters {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters++;
+            } else if (Character.isWhitespace(c)) {
+                spaces++;
+            } else if (Character.isDigit(c)) {
+                numbers++;
+            } else {
+                others++;
+            }
+        }
+
+        System.out.println("Letters: " + letters);
+        System.out.println("Spaces: " + spaces);
+        System.out.println("Numbers: " + numbers);
+        System.out.println("Other characters: " + others);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+1. **Normal Case:**
+   Input:  `aa takako, i swd skieo 236587.`
+   Expected Output:
+   ```
+   Letters: 17
+   Spaces: 5
+   Numbers: 6
+   Other characters: 2
+   ```
+
+2. **Empty String:**
+   Input: ``
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 0
+   Other characters: 0
+   ```
+
+3. **String with only spaces:**
+   Input: `     `
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 5
+   Numbers: 0
+   Other characters: 0
+   ```
+
+4. **String with only numbers:**
+   Input: `1234567890`
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 10
+   Other characters: 0
+   ```
+
+5. **String with only special characters:**
+   Input: `!@#$%^&*()`
+   Expected Output:
+   ```
+   Letters: 0
+   Spaces: 0
+   Numbers: 0
+   Other characters: 10
+   ```
+
+6. **String with a mix of Unicode characters:**
+   Input: `H�llo W�rld 123 �Hola!`  // Includes accented characters and an inverted exclamation mark
+   Expected Output:
+   ```
+   Letters: 10 // Note: This correctly counts accented characters as letters.
+   Spaces: 3
+   Numbers: 3
+   Other characters: 2
+   ```
+
+7. **String with leading and trailing spaces:**
+   Input: `   This string has leading and trailing spaces.   `
+   Expected Output:
+   ```
+   Letters: 34
+   Spaces: 10
+   Numbers: 0
+   Other characters: 1
+   ```
+
+
+These test cases cover various scenarios and help ensure that the program functions correctly under different input conditions, including those with special characters and Unicode.  Running these tests is crucial for verifying the robustness of the code. You can create a separate testing class using JUnit or TestNG to automate these tests, which is best practice for software development.

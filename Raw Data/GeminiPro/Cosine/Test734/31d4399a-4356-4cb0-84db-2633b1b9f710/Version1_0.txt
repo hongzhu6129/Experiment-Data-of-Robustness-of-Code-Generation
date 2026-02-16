@@ -1,0 +1,77 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 14;
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+
+
+        target = 20;  // Test with a target not in the array
+        result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+
+Explanation and Improvements:
+
+1. **Clearer Method Signature:** The `Saddleback` method now returns an `int[]` to represent the row and column index.  This is more informative than returning just a boolean.  A return of `{-1, -1}` indicates the target was not found.
+
+2. **Concise Return:**  The code directly returns `new int[]{row, col}` when the target is found, making the logic cleaner.
+
+3. **Example Usage in `main`:**  The `main` method now demonstrates how to use the `Saddleback` function and how to interpret its results.  It also includes a test case where the target is *not* present in the array.
+
+4. **Comments:**  Added comments to explain the logic of the saddleback search within the `Saddleback` method.
+
+5. **No Unnecessary Variables:** Removed any temporary variables that weren't essential, simplifying the code.
+
+How Saddleback Search Works:
+
+The algorithm starts at the top-right corner of the matrix.  It compares the current element with the target:
+
+* **If they are equal:** The target is found, and the row/column are returned.
+* **If the current element is smaller than the target:** The target cannot be in the current row (since the row is sorted in ascending order).  Move down to the next row.
+* **If the current element is larger than the target:** The target cannot be in the current column (since the column is sorted in ascending order).  Move left to the previous column.
+
+This process continues until the target is found or the boundaries of the matrix are reached. This approach efficiently eliminates portions of the search space with each comparison.

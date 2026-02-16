@@ -1,0 +1,34 @@
+```java
+public class UppercaseConverter {
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!"; // Example string
+
+        if (args.length > 0) { // Use command-line argument if provided
+            inputString = args[0]; 
+        }
+
+        String uppercaseString = inputString.toUpperCase();
+
+        System.out.println("Original string: " + inputString);
+        System.out.println("Uppercase string: " + uppercaseString);
+    }
+}
+```
+
+
+This code fulfills the requirement of using only the `public static void main(String[])` method signature. It handles two scenarios:
+
+1. **No command-line arguments:**  It uses a default string "Hello, World!".
+2. **Command-line argument provided:** It takes the first command-line argument as the input string.  This makes the program more flexible.
+
+
+To compile and run this from the command line:
+
+1. **Save:** Save the code as `UppercaseConverter.java`.
+2. **Compile:** `javac UppercaseConverter.java`
+3. **Run (no arguments):** `java UppercaseConverter`
+4. **Run (with argument):** `java UppercaseConverter "This is a test string"`
+
+
+This will print the original string and the converted uppercase string to the console.

@@ -1,0 +1,31 @@
+```java
+public class CountZeroBits {
+
+    public static int countBitsTozeroBasedOnString(int n) {
+        String binaryString = Integer.toBinaryString(n);
+        int zeroCount = 0;
+        for (char bit : binaryString.toCharArray()) {
+            if (bit == '0') {
+                zeroCount++;
+            }
+        }
+        return zeroCount;
+    }
+
+    public static void main(String[] args) {
+        int n = 10; // Example input
+        int zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+
+
+        n = 0;  // Example showing handling of 0
+        zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+
+         n = 255;  // Example with no zero bits
+        zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+    }
+}
+
+```

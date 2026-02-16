@@ -1,0 +1,38 @@
+```java
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+public class ThousandSeparator {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber); // Output: 1,234,567,890
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber); // Output: 12,345
+
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber); // Output: 0
+
+
+        number = -1234567;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber); // Output: -1,234,567
+    }
+
+    public static String validate(int number) {
+        // Use NumberFormat or DecimalFormat to format the number with thousand separators.
+         NumberFormat formatter = NumberFormat.getInstance();
+         return formatter.format(number);
+
+
+        // DecimalFormat allows more customization if needed (e.g., different grouping separator)
+        // DecimalFormat df = new DecimalFormat("#,###"); // Use # for optional digits
+        // return df.format(number);
+
+    }
+}
+```

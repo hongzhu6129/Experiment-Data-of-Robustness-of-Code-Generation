@@ -1,0 +1,84 @@
+```java
+public class CountingSort {
+
+    void countingSort(int[] arr, int min, int max) {
+        if (arr == null || arr.length == 0) {
+            return;
+        }
+
+        int range = max - min + 1;
+        int[] count = new int[range];
+        int[] output = new int[arr.length];
+
+        // Count occurrences of each element
+        for (int num : arr) {
+            count[num - min]++; 
+        }
+
+        // Calculate cumulative counts
+        for (int i = 1; i < range; i++) {
+            count[i] += count[i - 1];
+        }
+
+        // Place elements in sorted order
+        for (int i = arr.length - 1; i >= 0; i--) {
+            output[count[arr[i] - min] - 1] = arr[i];
+            count[arr[i] - min]--;
+        }
+
+        // Copy sorted elements back to original array
+        System.arraycopy(output, 0, arr, 0, arr.length);
+    }
+
+    public static void main(String[] args) {
+        CountingSort cs = new CountingSort();
+
+        // Example usage:
+        int[] arr = {4, 2, 2, 8, 3, 3, 1};
+        int min = 1;  // Minimum value in the array
+        int max = 8;  // Maximum value in the array
+
+        cs.countingSort(arr, min, max);
+
+        System.out.print("Sorted array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+
+        // Demonstrating the error handling for non-integer input (which was the original prompt's issue):
+        try {
+            String invalidInput = "computer"; 
+            int num = Integer.parseInt(invalidInput); // This will throw NumberFormatException
+
+            // The following code won't execute if the exception is thrown
+            System.out.println("Parsed number: " + num); 
+
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Invalid input. Cannot convert '" + e.getMessage().split(":")[1].trim()  + "' to an integer.");
+        }
+
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Method Signature and Purpose:** The `countingSort` method now clearly takes the array, minimum value, and maximum value as parameters. This is essential for Counting Sort to work efficiently as it relies on knowing the range of the input data.
+
+2. **Error Handling (Addressing the original prompt):** The `main` method demonstrates how to handle the `NumberFormatException` that occurs when trying to convert a non-numeric string like "computer" to an integer. This is done using a `try-catch` block, which prevents the program from crashing and provides a user-friendly error message.
+
+3. **Example Usage and Output:** The `main` method includes an example of how to use the `countingSort` method with a sample array. The sorted array is then printed to the console.
+
+4. **Comments:**  The code is well-commented to explain the logic of the Counting Sort algorithm and the error handling.
+
+5. **Correct Implementation of Counting Sort:** The algorithm itself is implemented correctly, including the steps of counting occurrences, calculating cumulative counts, and placing elements in sorted order.
+
+6. **Defensive Coding:**  The `countingSort` method includes a check for `null` or empty input arrays to avoid potential `NullPointerException` errors.
+
+
+This revised version provides a complete, functional, and robust implementation of Counting Sort in Java, along with an explanation of how to handle the specific error mentioned in the prompt.

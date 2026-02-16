@@ -1,0 +1,72 @@
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int d) {
+        val = d;
+        next = null;
+    }
+}
+
+public class DeleteMiddleNode {
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(10);
+        head.next = new ListNode(20);
+        head.next.next = new ListNode(30);
+        head.next.next.next = new ListNode(40);
+        head.next.next.next.next = new ListNode(50);
+
+        System.out.println("Original Linked List:");
+        printList(head);
+
+        // Delete the 4th node (value 40)
+        deleteNode(head.next.next.next);  // Pass the node to be deleted
+
+        System.out.println("\nLinked List after deleting the node:");
+        printList(head);
+
+
+        //Test case 2: Delete a middle node
+        ListNode head2 = new ListNode(1);
+        head2.next = new ListNode(2);
+        head2.next.next = new ListNode(3);
+        head2.next.next.next = new ListNode(4);
+        head2.next.next.next.next = new ListNode(5);
+
+        System.out.println("\nOriginal Linked List:");
+        printList(head2);
+
+        //Delete the 3rd node (value 3)
+        deleteNode(head2.next.next);
+
+        System.out.println("\nLinked List after deleting the node:");
+        printList(head2);
+
+
+
+    }
+
+
+
+    public static void deleteNode(ListNode node) {
+        if (node == null || node.next == null) {
+            return; // Cannot delete the last node or if the node itself is null
+        }
+
+        // Copy the data from the next node to the current node
+        node.val = node.next.val;
+        // Update the next pointer to skip the next node
+        node.next = node.next.next; 
+    }
+
+    static void printList(ListNode node) {
+        while (node != null) {
+            System.out.print(node.val + " ");
+            node = node.next;
+        }
+        System.out.println();
+    }
+}
+```

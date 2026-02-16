@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class SwapVariables {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using a temporary variable
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the first variable (a):");
+        int a = scanner.nextInt();
+        System.out.println("Enter the second variable (b):");
+        int b = scanner.nextInt();
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("After swapping (using temp): a = " + a + ", b = " + b);
+
+
+        // Method 2: Using addition and subtraction (avoids temp variable but can cause overflow with very large numbers)
+        System.out.println("\nEnter the first variable (a):");
+        a = scanner.nextInt();  // Re-input values for demonstration
+        System.out.println("Enter the second variable (b):");
+        b = scanner.nextInt();
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        System.out.println("After swapping (using + and -): a = " + a + ", b = " + b);
+
+
+        // Method 3: Using bitwise XOR (avoids temp variable and overflow issues)
+        System.out.println("\nEnter the first variable (a):");
+        a = scanner.nextInt();  // Re-input values for demonstration
+        System.out.println("Enter the second variable (b):");
+        b = scanner.nextInt();
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+
+
+        System.out.println("After swapping (using XOR): a = " + a + ", b = " + b);
+        scanner.close();
+
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Regular Numbers:**
+   - a = 5, b = 10  (Expected: a = 10, b = 5)
+   - a = -3, b = 7   (Expected: a = 7, b = -3)
+
+2. **Zero Values:**
+   - a = 0, b = 5    (Expected: a = 5, b = 0)
+   - a = 0, b = 0    (Expected: a = 0, b = 0)
+   - a = 5, b = 0   (Expected: a = 0, b = 5)
+
+3. **Large Numbers (to test for potential overflow with the addition/subtraction method):**
+   - a = Integer.MAX_VALUE, b = Integer.MIN_VALUE  (Expected: a = Integer.MIN_VALUE, b = Integer.MAX_VALUE.  Check if using + and - leads to incorrect results due to overflow)
+   - a = Integer.MAX_VALUE -1, b = 1000 (Also checks close to limit cases).
+
+
+
+4. **Identical Numbers:**
+   - a = 5, b = 5 (Expected: a = 5, b = 5)
+
+
+**How to Run Test Cases:**
+
+You can manually input these values when prompted by the program.  For more automated testing, you would typically use a testing framework like JUnit.  With JUnit, you can write separate test methods to check each case and use assertions to verify the expected output against the actual output of the `swap` operation.
+
+
+
+**Example using JUnit (not in main method, as a separate test class):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SwapVariablesTest {
+
+    @Test
+    void testRegularSwap() {
+        int a = 5;
+        int b = 10;
+        // ... perform the swap using one of your methods ... 
+        assertEquals(10, a);
+        assertEquals(5, b);
+    }
+
+    // ... other test methods for the different test cases...
+
+}
+```
+
+
+This more structured approach makes testing more efficient and reliable, especially for larger projects.

@@ -1,0 +1,69 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class SplitString {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+
+        // Split the string into parts based on the delimiter
+        String[] parts = str.split(" ");
+
+        // Print the parts
+        for (String part : parts) {
+            System.out.println(part);
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+```
+Input: "Hello world"
+Output:
+Hello
+world
+```
+
+**Empty String:**
+
+```
+Input: ""
+Output:
+```
+
+**String with Multiple Spaces:**
+
+```
+Input: "Hello   world"
+Output:
+Hello
+world
+```
+
+**String with Special Characters:**
+
+```
+Input: "Hello, world!"
+Output:
+Hello,
+world!
+```
+
+**String with Numbers:**
+
+```
+Input: "123 Main Street"
+Output:
+123
+Main
+Street
+```

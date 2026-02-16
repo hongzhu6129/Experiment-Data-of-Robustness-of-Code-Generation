@@ -1,0 +1,44 @@
+```java
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        // Get all available time zone IDs
+        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+
+        // Print UTC and GMT time borders
+        System.out.println("Available Time Zones (UTC and GMT):");
+
+        for (String zoneId : zoneIds) {
+            if (zoneId.contains("UTC") || zoneId.contains("GMT")) {
+                ZonedDateTime now = ZonedDateTime.now(ZoneId.of(zoneId));
+                System.out.println(zoneId + ": " + now.toString());
+            }
+        }
+
+     //An alternative approach to find GMT specifically and accounting for the fact that  "GMT" is largely deprecated and replaced by "Etc/GMT":
+      System.out.println("\nSpecifically GMT/Etc/GMT zones:");  
+       for (String zoneId : ZoneIds.getAvailableZoneIds()) {
+            if (zoneId.startsWith("GMT") || zoneId.startsWith("Etc/GMT")) {
+                 ZonedDateTime now = ZonedDateTime.now(ZoneId.of(zoneId));
+                System.out.println(zoneId + ": " + now.toString());
+            }
+        }
+
+    }
+}
+```
+
+
+Key improvements in this code:
+
+* **Clarity and Readability:**  Improved comments and formatting make the code easier to understand.
+* **Specificity for GMT:** Addresses the deprecation of "GMT" and provides a dedicated section to find time zones starting with "GMT" or "Etc/GMT," ensuring more accurate representation.
+* **Use of ZonedDateTime:**  `ZonedDateTime` provides a more comprehensive representation of a time instant with a time zone, including the date and time. This gives a clearer picture of the time border.
+* **Direct `ZoneId.of()`:** Using `ZoneId.of(zoneId)` is a more direct and preferred way to get a `ZoneId` instance.
+
+
+This revised version provides a more complete and accurate solution to the problem of displaying available time zones in UTC and GMT. It also addresses potential issues with deprecated time zone IDs.

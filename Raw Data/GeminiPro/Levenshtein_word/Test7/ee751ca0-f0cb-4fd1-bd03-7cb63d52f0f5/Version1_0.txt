@@ -1,0 +1,83 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's always closed
+        }
+    }
+
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering normal scenarios and corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output | Notes |
+|---|---|---|---|
+| 1 | 10, 20, 30 | 20.0 | Basic positive numbers |
+| 2 | -5, 0, 5 | 0.0 | Includes negative and zero |
+| 3 | 0, 0, 0 | 0.0 | All zeros |
+| 4 | 1.5, 2.5, 3.5 | 2.5 | Decimal numbers |
+| 5 | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE |  Double.POSITIVE_INFINITY | Positive overflow (Java handles this gracefully with doubles) |
+| 6 | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | Integer.MIN_VALUE (converted to double) |  Negative overflow (handled in doubles) |
+| 7 | Double.MAX_VALUE, Double.MAX_VALUE, 0 | Double.POSITIVE_INFINITY | Overflow with doubles (Java handles this gracefully with doubles, resulting in Infinity) |
+| 8 | Double.NaN, 1, 2 | NaN | Input with NaN results in NaN|
+| 9 | 1, Double.POSITIVE_INFINITY, 2 | Double.POSITIVE_INFINITY | Infinity in input leads to Infinity in output |
+| 10 | "a", 2, 3 | "Invalid input. Please enter numbers only." | Invalid input (non-numeric characters) � The program handles this gracefully.  |
+
+
+
+**How to run the tests (Manually):**
+
+1.  **Compile:** Save the code as `AverageCalculator.java` and compile it: `javac AverageCalculator.java`
+2.  **Run:**  `java AverageCalculator`
+3.  Enter the input values as prompted.  Compare the program's output with the expected output in the test case table.
+
+
+**Improving Testability (using JUnit):**
+
+For more robust testing, especially in larger projects, it's highly recommended to use a testing framework like JUnit. Here's an example of how you could write a JUnit test for the `calculateAverage` method:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAveragePositive() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+      // Add more JUnit test cases here covering the corner cases (NaN, Infinity, overflows, etc.) 
+}
+```
+
+With JUnit, you can automate the running of your tests and easily verify the results.  This is a much more efficient and reliable way to test your code, especially as your project grows.  You can also generate reports of your tests to track code coverage.

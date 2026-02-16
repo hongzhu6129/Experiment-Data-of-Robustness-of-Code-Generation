@@ -1,0 +1,73 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeBefore {
+
+    public static void main(String[] args) {
+        // Get current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Example: Subtract 2 hours and 30 minutes
+        int hoursToSubtract = 2;
+        int minutesToSubtract = 30;
+
+
+        LocalDateTime pastDateTime = currentDateTime.minusHours(hoursToSubtract).minusMinutes(minutesToSubtract);
+
+
+        // Format the date and time (optional, but recommended for better output)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = pastDateTime.format(formatter);
+
+
+        // Display the result
+        System.out.println("Current Date and Time: " + currentDateTime.format(formatter));
+        System.out.println("Date and Time " + hoursToSubtract + " hours and " + minutesToSubtract + " minutes ago: " + formattedDateTime);
+
+
+        // Example with user input (within main method limitations - no error handling):
+
+        if (args.length == 2) { // rudimentary input check
+            try {
+                hoursToSubtract = Integer.parseInt(args[0]);
+                minutesToSubtract = Integer.parseInt(args[1]);
+
+                pastDateTime = currentDateTime.minusHours(hoursToSubtract).minusMinutes(minutesToSubtract);
+                formattedDateTime = pastDateTime.format(formatter);
+
+                System.out.println("Date and Time " + hoursToSubtract + " hours and " + minutesToSubtract + " minutes ago: " + formattedDateTime);
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please provide integers for hours and minutes.");
+            }
+
+        } else {
+            System.out.println("To specify hours and minutes, provide two integer arguments when running the program.");
+        }
+    }
+}
+```
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `DateTimeBefore.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac DateTimeBefore.java`
+3. **Run:**  Execute the compiled program: `java DateTimeBefore` (This will use the default 2 hours and 30 minutes)
+4. **Run with arguments:** `java DateTimeBefore 5 15` (This will subtract 5 hours and 15 minutes)
+
+
+
+**Explanation and Improvements:**
+
+* **Uses `java.time`:**  The modern `java.time` API (Java 8 and later) is used, which is much preferred over older date/time classes.
+* **Clearer Output:** The date and time are formatted for better readability using `DateTimeFormatter`.
+* **Handles User Input (Basic):**  The code now includes a basic way to take hours and minutes as command-line arguments, demonstrating how to incorporate user input within the limitations of the `main` method.  More robust input handling would usually involve using a `Scanner` if you were outside of `main`.
+* **Error Handling (Basic):** Added a `try-catch` block to handle potential `NumberFormatException` if the user provides non-integer input.
+* **Comments:**  Added comments to explain the code.
+
+
+**For More Advanced Input:**
+
+If you needed more sophisticated user input (handling invalid formats, prompts, etc.), you would typically create separate methods and use a `Scanner` object. The `main` method would then call these methods. However, the question specifically asked to only use the `main` method signature.

@@ -1,0 +1,104 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Positive Integer:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Multiplication Table of 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Multiplication Table of 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Integer:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Multiplication Table of -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+```
+
+**4. Large Positive Integer:**  (Not a corner case in terms of functionality, but tests for potential overflow if you were using a smaller data type than `int`)
+
+* **Input:** 1234567
+* **Expected Output:** (Truncated for brevity - should go up to x 10)
+```
+Multiplication Table of 1234567:
+1234567 x 1 = 1234567
+1234567 x 2 = 2469134
+...
+```
+
+**5. Large Negative Integer (Similar to 4):**
+
+* **Input:** -9876543
+
+
+**Corner Cases (related to input validation which is not implemented in the basic version):**
+
+* **Invalid Input (Non-integer):**  If the user enters text, a `InputMismatchException` will be thrown. Robust code should handle this (e.g., using a `try-catch` block) and prompt the user to re-enter a valid integer.
+* **Very Large Numbers exceeding `int` capacity:** Although less likely with user input, programmatically providing numbers that exceed the `int` range can cause integer overflow.   If you anticipate extremely large numbers, consider using `long`.
+
+
+
+This enhanced set of test cases covers a wider range of inputs and includes important error handling considerations to make your program more robust.  The basic program works correctly for valid integer input, but adding input validation would greatly improve its practical usability.

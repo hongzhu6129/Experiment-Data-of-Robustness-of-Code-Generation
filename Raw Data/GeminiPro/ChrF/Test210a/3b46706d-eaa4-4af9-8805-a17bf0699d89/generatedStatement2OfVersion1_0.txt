@@ -1,0 +1,23 @@
+
+
+
+Explanation:
+
+1. **Node Class:** Represents a node in the binary tree.  It has `data`, `left` child, and `right` child.
+
+2. **maxDepth(Node node):**
+   - This recursive method calculates the maximum depth of the binary tree.
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:** 
+     - Recursively calculate the depth of the left subtree (`leftDepth`).
+     - Recursively calculate the depth of the right subtree (`rightDepth`).
+     - Return the maximum of `leftDepth` and `rightDepth`, plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates a sample binary tree.
+   - Calls the `maxDepth()` method to calculate and print the maximum depth.
+
+
+How the recursion works:
+
+The `maxDepth()` function explores the tree in a depth-first manner. It goes as deep as it can down one branch, then backtracks and explores another branch.  At each node, it compares the depths of its left and right subtrees and returns the larger one plus one.  The final result is the maximum depth found during the entire traversal.

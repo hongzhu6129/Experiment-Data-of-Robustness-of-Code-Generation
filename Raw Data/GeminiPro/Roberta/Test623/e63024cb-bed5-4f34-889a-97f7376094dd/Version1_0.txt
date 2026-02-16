@@ -1,0 +1,73 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer objects
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+
+        // Example 1: Element present in the TreeSet
+        int element1 = 30;
+        Integer greaterOrEqual1 = treeSet.ceiling(element1); 
+        System.out.println("Element greater than or equal to " + element1 + ": " + greaterOrEqual1); // Output: 30
+
+
+        // Example 2: Element not present, but a larger element exists
+        int element2 = 35;
+        Integer greaterOrEqual2 = treeSet.ceiling(element2);
+        System.out.println("Element greater than or equal to " + element2 + ": " + greaterOrEqual2); // Output: 40
+
+
+        // Example 3: Element larger than all elements in the TreeSet
+        int element3 = 60;
+        Integer greaterOrEqual3 = treeSet.ceiling(element3);
+        System.out.println("Element greater than or equal to " + element3 + ": " + greaterOrEqual3); // Output: null (no such element)
+
+
+        // Example 4: Demonstrating with String TreeSet (natural ordering)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        String searchString = "apricot";
+        String greaterOrEqualString = stringTreeSet.ceiling(searchString);
+        System.out.println("String greater than or equal to \"" + searchString + "\": \"" + greaterOrEqualString + "\""); // Output: banana
+
+
+        // Example 5: Handling null input. ceiling(null) throws NullPointerException in a TreeSet with non-null elements.
+        try {
+           Integer greaterOrEqual4 = treeSet.ceiling(null); // If treeSet allows null, this will return null.
+           System.out.println("Element greater than or equal to null: " + greaterOrEqual4); 
+        } catch (NullPointerException e) {
+            System.out.println("Error: Cannot search for null in a TreeSet that doesn't allow nulls.");
+        }
+    }
+}
+
+```
+
+
+Key improvements and explanations in this revised code:
+
+1. **Clearer Examples:**  Provides diverse examples demonstrating different scenarios (element present, element not present but larger element exists, element larger than all elements).
+
+2. **String TreeSet Example:**  Demonstrates the `ceiling()` method with a `TreeSet<String>` to show its applicability to other data types with natural ordering.
+
+3. **Null Handling:** Includes an example showing how to handle `null` input gracefully and explains the potential `NullPointerException`.
+
+4. **Concise Explanations:**  Adds comments explaining the expected output and the behavior of `ceiling()` in each case.
+
+5. **Imports:**  Explicitly imports `java.util.TreeSet`.
+
+
+This improved version offers a more complete educational example that covers different scenarios and potential issues when using `ceiling()` with a `TreeSet`.

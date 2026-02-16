@@ -1,0 +1,46 @@
+```java
+import java.util.Arrays;
+
+public class StringPermutationChecker {
+
+    public static void main(String[] args) {
+        String string1 = "abc";
+        String string2 = "bca";
+        String string3 = "abd";
+
+        System.out.println("\"" + string1 + "\" is a permutation of \"" + string2 + "\": " + stringPermutation(string1, string2)); // Output: true
+        System.out.println("\"" + string1 + "\" is a permutation of \"" + string3 + "\": " + stringPermutation(string1, string3)); // Output: false
+
+
+        String string4 = "listen";
+        String string5 = "silent";
+         System.out.println("\"" + string4 + "\" is a permutation of \"" + string5 + "\": " + stringPermutation(string4, string5)); // Output: true
+
+
+
+        String string6 = "";
+        String string7 = "";
+        System.out.println("\"" + string6 + "\" is a permutation of \"" + string7 + "\": " + stringPermutation(string6, string7)); // Output: true
+
+        String string8 = "a";
+        String string9 = "aa";
+        System.out.println("\"" + string8 + "\" is a permutation of \"" + string9 + "\": " + stringPermutation(string8, string9)); // Output: false
+
+    }
+
+    public static boolean stringPermutation(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        return Arrays.equals(charArray1, charArray2);
+    }
+}
+```
+

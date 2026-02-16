@@ -1,0 +1,65 @@
+```java
+import java.util.Arrays;
+
+public class StringDuplicates {
+
+    static void CountCharacters(String str, int[] charCounts) {
+        str = str.toLowerCase(); // Case-insensitive counting
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c >= 'a' && c <= 'z') { // Consider only lowercase letters
+                charCounts[c - 'a']++;
+            }
+        }
+    }
+
+    static void showDuplicates(String str) {
+        int[] charCounts = new int[26]; // Assuming lowercase English alphabet
+
+        CountCharacters(str, charCounts);
+
+        System.out.print("Duplicate Characters: ");
+        boolean foundDuplicates = false;
+        for (int i = 0; i < 26; i++) {
+            if (charCounts[i] > 1) {
+                System.out.print((char) ('a' + i) + " ");
+                foundDuplicates = true;
+            }
+        }
+
+        if (!foundDuplicates) {
+            System.out.println("No duplicate characters found.");
+        } else {
+            System.out.println(); // Newline for cleaner output
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "programming";
+        String str2 = "Java";
+        String str3 = "abbcde";
+        String str4 = "xyz";
+
+
+        System.out.println("Input String: " + str1);
+        showDuplicates(str1);
+
+
+        System.out.println("Input String: " + str2);
+        showDuplicates(str2);
+
+
+
+        System.out.println("Input String: " + str3);
+        showDuplicates(str3);
+
+        System.out.println("Input String: " + str4);
+        showDuplicates(str4);
+
+
+    }
+}
+
+
+
+```

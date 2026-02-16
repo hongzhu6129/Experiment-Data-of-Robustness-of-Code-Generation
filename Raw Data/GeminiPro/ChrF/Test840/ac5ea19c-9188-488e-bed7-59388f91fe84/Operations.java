@@ -1,0 +1,14 @@
+public class Operations {
+
+    public static void main(String[] args) {
+        int a = -7 + 8 * 6;
+        int b = (55 + 9) % 9;
+        int c = 20 + -3 * 5 / 8;
+        int d = 5 + 15 / 3 * 2 - 8 % 3;
+
+        System.out.println(a); // Output: 41
+        System.out.println(b); // Output: 1
+        System.out.println(c); // Output: 19  (integer division truncates the decimal part)
+        System.out.println(d); // Output: 13
+    }
+}

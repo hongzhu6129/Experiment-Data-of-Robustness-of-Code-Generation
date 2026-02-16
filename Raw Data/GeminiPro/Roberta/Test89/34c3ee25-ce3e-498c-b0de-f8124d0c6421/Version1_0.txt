@@ -1,0 +1,87 @@
+```java
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class PrintCurrentDateAndTime {
+
+    public static void main(String[] args) {
+        // Create a SimpleDateFormat object with the desired date and time format
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        // Get the current date and time
+        Date now = new Date();
+
+        // Format the current date and time using the SimpleDateFormat object
+        String formattedDate = sdf.format(now);
+
+        // Print the formatted date and time
+        System.out.println(formattedDate);
+    }
+}
+```
+
+### Test Cases
+
+**Test Case 1:**
+
+* Input:
+```
+// No input
+```
+
+* Expected Output:
+```
+2023-03-08 15:30:23
+```
+
+**Test Case 2:**
+
+* Input:
+```
+// Change the format to "dd/MM/yyyy HH:mm:ss"
+SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+```
+
+* Expected Output:
+```
+08/03/2023 15:30:23
+```
+
+**Test Case 3:**
+
+* Input:
+```
+// Set the current date and time to a specific value
+Date now = new Date(1646739423000L);
+```
+
+* Expected Output:
+```
+2022-03-08 15:30:23
+```
+
+**Corner Case 1:**
+
+* Input:
+```
+// Set the current date and time to an invalid value
+Date now = new Date(-1L);
+```
+
+* Expected Output:
+```
+java.lang.IllegalArgumentException: Negative time
+```
+
+**Corner Case 2:**
+
+* Input:
+```
+// Set the date format to an invalid value
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss zzz");
+```
+
+* Expected Output:
+```
+java.lang.IllegalArgumentException: Illegal pattern character 'z'
+```

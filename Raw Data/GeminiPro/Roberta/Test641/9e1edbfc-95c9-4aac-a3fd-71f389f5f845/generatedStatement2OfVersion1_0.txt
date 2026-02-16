@@ -1,0 +1,21 @@
+
+
+
+Explanation and Key Improvements:
+
+1. Generics: The code now uses generics `<T>` to work with any comparable data type, not just integers.
+
+2. Comparator:  It uses a `Comparator` to handle both min-heap and max-heap scenarios gracefully. The `toThresholdPriorityQueue` method is overloaded; one version takes a comparator as an argument, the other defaults to the natural ordering (min-heap).
+
+3. Clarity and Reusability: The logic is encapsulated in the `toThresholdPriorityQueue` method, making the code cleaner and more reusable.
+
+4. Example Usage: The `main` method demonstrates how to use the conversion method with both min-heap and max-heap priority queues and different thresholds.
+
+5. Iterating through Priority Queue: The code iterates through the original PriorityQueue safely without modifying or clearing it.  It creates a *new* `thresholdPq` containing only the elements that meet the threshold criteria.
+
+
+How to Compile and Run:
+
+1. Save the code as `ThresholdPriorityQueue.java`.
+2. Compile: `javac ThresholdPriorityQueue.java`
+3. Run: `java ThresholdPriorityQueue`

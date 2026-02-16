@@ -1,0 +1,41 @@
+import java.util.LinkedList;
+
+public class RetrieveElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        // Retrieve (peek) the k-th element (e.g., k = 2, so the 3rd element)
+        int k = 2; // Index starts from 0
+
+        if (k >= 0 && k < linkedList.size()) {
+            String element = linkedList.get(k);
+            System.out.println("The " + (k + 1) + "th element is: " + element);
+
+
+            System.out.println("Linked List after retrieving (no removal): " + linkedList);
+
+
+        } else {
+            System.out.println("Invalid index.  Index must be between 0 and " + (linkedList.size() - 1));
+        }
+
+        // Example of using peek() to retrieve the first element without removing it:
+       if(!linkedList.isEmpty()) { // Check if the list is empty to avoid exceptions
+           String firstElement = linkedList.peek();
+           System.out.println("First element (using peek()): " + firstElement);
+           System.out.println("Linked List after peek(): " + linkedList); // List remains unchanged
+       }
+
+
+    }
+}

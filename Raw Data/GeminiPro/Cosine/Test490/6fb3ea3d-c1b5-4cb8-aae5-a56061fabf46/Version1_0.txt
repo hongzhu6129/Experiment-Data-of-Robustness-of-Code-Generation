@@ -1,0 +1,24 @@
+```java
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        displayFirst50PentagonalNumbers();
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+
+    public static void displayFirst50PentagonalNumbers() {
+        for (int i = 1; i <= 50; i++) {
+            System.out.printf("%7d ", getPentagonalNumber(i));  // %7d formats output for better alignment
+            if (i % 10 == 0) {                              // New line after every 10 numbers
+                System.out.println();
+            }
+        }
+    }
+}
+```
+
+
+This revised code adheres strictly to the requested method signatures, including `public static void main(String[])` and `public static int getPentagonalNumber(int)`.  It introduces a helper method `displayFirst50PentagonalNumbers()` to encapsulate the looping and printing logic, keeping the `main` method concise. The output is formatted for better readability.

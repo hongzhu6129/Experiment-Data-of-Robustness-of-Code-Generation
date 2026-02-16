@@ -1,0 +1,37 @@
+```java
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeFormats {
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+
+        // yyyy-MM-dd
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        // HH:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        // yyyy-MM-dd HH:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        // E MMM yyyy HH:mm:ss.SSSZ  (Example: Tue Nov 2023 10:15:30.123-0800)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("E MMM yyyy HH:mm:ss.SSSZ")));
+
+        // HH:mm:ss,Z (Example: 10:15:30,-0800) � Note the comma
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss,Z")));
+
+
+        // Demonstrating using a specific time zone (Optional)
+        ZoneId london = ZoneId.of("Europe/London");
+        ZonedDateTime londonTime = ZonedDateTime.now(london);
+        System.out.println("London time: " + londonTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z")));
+
+
+    }
+}
+```

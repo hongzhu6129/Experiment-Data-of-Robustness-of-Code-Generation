@@ -1,0 +1,78 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 5;
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found.");
+        }
+
+
+        target = 10; // Test with a number not in the array
+        result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found.");
+        }
+
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Found the target
+            } else if (arr[row][col] < target) {
+                row++; // Target is greater, move down to the next row
+            } else {
+                col--; // Target is smaller, move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Signatures:** The code adheres strictly to the requested method signatures: `main` and `Saddleback`.
+2. **Saddleback Search Algorithm:**  The `Saddleback` method correctly implements the saddleback search (or staircase search) algorithm. It starts from the top-right corner of the matrix.
+   - If the current element is equal to the target, the position is returned.
+   - If the current element is smaller than the target, move down to the next row (because elements increase along rows).
+   - If the current element is larger than the target, move left to the previous column (because elements increase along columns).
+3. **Return int[]:** The `Saddleback` method returns an `int[]` to hold the row and column indices of the target.  If the target isn't found, `{-1, -1}` is returned for easy checking in `main`.
+4. **Example Usage in main():** The `main` method demonstrates how to use `Saddleback` and handles cases where the target is found and not found.
+5. **Comments and Clarity:**  Comments have been added to explain the logic.  The code is formatted for readability.
+
+
+**How Saddleback Search Works (Example):**
+
+Let's say `target = 5` in the sample array:
+
+1. Start at `arr[0][2]` (value 3).  3 < 5, so move down.
+2. Now at `arr[1][2]` (value 6). 6 > 5, so move left.
+3. Now at `arr[1][1]` (value 5).  5 == 5, so return {1, 1} (row 1, column 1).
+
+
+This algorithm is efficient for sorted matrices because it eliminates parts of the matrix with each comparison. It has a time complexity of O(m + n), where 'm' is the number of rows and 'n' is the number of columns.

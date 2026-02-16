@@ -1,0 +1,32 @@
+```java
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        int row = 1;
+        int coinsInRow = 1;
+        int coinsUsed = 0;
+
+        while (coinsUsed + coinsInRow <= n) {
+            // Print the current row
+            for (int i = 0; i < coinsInRow; i++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+
+            coinsUsed += coinsInRow;
+            row++;
+            coinsInRow = row; // Next row has 'row' number of coins
+        }
+
+        // Print the last incomplete row (if any)
+        if (coinsUsed < n) {
+            for (int i = 0; i < n - coinsUsed; i++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
+```

@@ -1,0 +1,72 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapClear {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some elements
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Print the initial TreeMap
+        System.out.println("Initial TreeMap: " + treeMap);
+
+        // Delete all elements using clear()
+        treeMap.clear();
+
+        // Print the TreeMap after clearing
+        System.out.println("TreeMap after clearing: " + treeMap);
+
+
+        // Example demonstrating adding elements back after clearing
+        treeMap.put("Mango", 5);
+        treeMap.put("Pineapple", 6);
+
+        System.out.println("TreeMap after adding new elements: " + treeMap);
+
+
+
+        //Illustrating that clear() removes all mappings, not just values.
+        TreeMap<String, Integer> anotherTreeMap = new TreeMap<>();
+        anotherTreeMap.put("Red", 1);
+        anotherTreeMap.put("Green", 2);
+
+
+        System.out.println("Another TreeMap before clearing keys and values: " + anotherTreeMap);
+        anotherTreeMap.clear(); // Removes both keys ("Red", "Green") AND their associated values.
+        System.out.println("Another TreeMap after clearing keys and values: " + anotherTreeMap);
+
+
+    }
+}
+```
+
+
+Output will be:
+
+```
+Initial TreeMap: {Apple=1, Banana=2, Grape=4, Orange=3}
+TreeMap after clearing: {}
+TreeMap after adding new elements: {Mango=5, Pineapple=6}
+Another TreeMap before clearing keys and values: {Green=2, Red=1}
+Another TreeMap after clearing keys and values: {}
+```
+
+
+Explanation:
+
+1. **Create a TreeMap:**  `TreeMap<String, Integer> treeMap = new TreeMap<>();` creates a TreeMap that stores String keys and Integer values.
+2. **Add elements:** `treeMap.put("key", value);` adds key-value pairs to the TreeMap.
+3. **Clear the TreeMap:**  `treeMap.clear();` removes all elements (key-value pairs) from the TreeMap.  The TreeMap becomes empty after this operation.
+4. **Print the TreeMap:** `System.out.println(treeMap);` displays the contents of the TreeMap.
+5. **Adding back after clear():** Shows that the TreeMap is still usable after `clear()` and new elements can be added.
+6. **Illustrative Example:** Reinforces that `clear()` removes *both* keys and values, not just values.
+
+
+
+This educational example demonstrates how to create, populate, and clear a `TreeMap` in Java.  The output clearly shows the TreeMap before and after the `clear()` operation, highlighting that it effectively removes all entries. The additional code examples demonstrate the impact of `clear()` and how the TreeMap can still be used after clearing.

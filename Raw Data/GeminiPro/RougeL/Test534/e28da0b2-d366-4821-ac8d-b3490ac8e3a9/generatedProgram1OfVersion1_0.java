@@ -1,0 +1,35 @@
+class Solution {
+    /**
+     * Checks if a given integer is an Armstrong number.
+     * An Armstrong number is a number that is equal to the sum of cubes of its digits.
+     *
+     * @param n The integer to check.
+     * @return True if the number is an Armstrong number, false otherwise.
+     */
+    public static boolean is_Amstrong(int n) {
+        int originalNumber = n;
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit * digit;
+            n /= 10;
+        }
+        return originalNumber == sum;
+    }
+
+    public static void main(String[] args) {
+        int num = 153; // Example number
+        if (is_Amstrong(num)) {
+            System.out.println(num + " is Armstrong number?");  // Output as requested in prompt.
+        } else {
+            System.out.println(num + " is not an Armstrong number."); // More informative output
+        }
+
+        num = 123; // Another example
+        if (is_Amstrong(num)) {
+            System.out.println(num + " is Armstrong number?"); // Output as requested in prompt.
+        } else {
+            System.out.println(num + " is not an Armstrong number.");// More informative output
+        }
+    }
+}

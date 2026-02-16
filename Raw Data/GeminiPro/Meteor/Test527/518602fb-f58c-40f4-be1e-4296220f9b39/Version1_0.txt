@@ -1,0 +1,50 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; //  The Hardy-Ramanujan number
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) break; // Optimization: If a^3 exceeds n, no need to continue
+
+            for (int b = a + 1; b <= n; b++) {  // b starts from a+1 to avoid duplicates and ensure distinct pairs
+                int b3 = b * b * b;
+                if (a3 + b3 > n) break; // Optimization
+
+                for (int c = 1; c <= n; c++) {
+                    int c3 = c * c * c;
+                    if (c3 > n) break;
+
+                    for (int d = c + 1; d <= n; d++) { // d starts from c+1 for the same reason as b
+                        int d3 = d * d * d;
+                        if (c3 + d3 > n) break;
+
+                        if (a3 + b3 == c3 + d3 && a != c && a != d) {
+                            System.out.println(a3 + b3 + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                            return; // Exit after finding the first such number
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:** The code now ensures that `(a, b)` and `(c, d)` are distinct pairs by starting `b` from `a + 1` and `d` from `c + 1`. This prevents solutions like `1^3 + 1^3 = 1^3 + 1^3` or finding the same pair twice in reverse order (e.g.,  `1^3 + 12^3 = 9^3 + 10^3` and  `9^3 + 10^3 = 1^3 + 12^3`).
+
+2. **Optimizations:** The code includes `break` statements within the loops to avoid unnecessary calculations.  If `a^3`, `a^3 + b^3`, `c^3`, or `c^3 + d^3` exceeds `n`, the inner loops are terminated as there's no possibility of finding a solution within the given range.
+
+3. **Clearer Output:** The output is formatted to clearly display the number and the two different ways it can be expressed as the sum of two cubes.
+
+4. **Early Exit:**  The `return` statement exits the `main` method immediately after finding the first such number.  If you want to find *all* such numbers up to `n`, remove the `return` statement.
+
+5. **Correctness:** The condition `a != c && a != d` is crucial. Without it, you might get "solutions" where the same two cubes are just reordered, which doesn't fulfill the requirement of *different* ways.
+
+
+
+This revised code is more efficient, avoids redundant calculations, and produces the correct output for finding a number expressible as the sum of two cubes in two different ways within the range 1 to `n`.

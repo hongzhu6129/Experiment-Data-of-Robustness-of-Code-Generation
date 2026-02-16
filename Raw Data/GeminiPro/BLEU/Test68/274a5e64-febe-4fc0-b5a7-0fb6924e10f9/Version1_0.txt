@@ -1,0 +1,41 @@
+```java
+public class LargestFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] array1 = {1, 2, 3};
+        int largest1 = getLargestFirstLast(array1);
+        System.out.println("Largest of first and last element (array1): " + largest1); // Output: 3
+
+        int[] array2 = {5, 10, 2};
+        int largest2 = getLargestFirstLast(array2);
+        System.out.println("Largest of first and last element (array2): " + largest2); // Output: 5
+
+        int[] array3 = {7, 7, 7};
+        int largest3 = getLargestFirstLast(array3);
+        System.out.println("Largest of first and last element (array3): " + largest3); // Output: 7
+
+
+        // Handle invalid input (array length less than 3) gracefully:
+        int[] invalidArray = {1, 2};
+        int largestInvalid = getLargestFirstLast(invalidArray);
+        System.out.println("Largest of first and last element (invalidArray): " + largestInvalid); // Output: -1 (indicating error)
+
+
+         int[] emptyArray = {};
+        int largestEmpty = getLargestFirstLast(emptyArray);
+        System.out.println("Largest of first and last element (emptyArray): " + largestEmpty); // Output: -1 (indicating error)
+    }
+
+    public static int getLargestFirstLast(int[] arr) {
+        if (arr == null || arr.length < 3 ) {  // Handle cases where the array is invalid.
+            return -1; // Return -1 to signal an issue with the input
+        }
+
+        int first = arr[0];
+        int last = arr[arr.length - 1]; // Get the last element
+
+        return Math.max(first, last);
+    }
+}
+```

@@ -1,0 +1,67 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListIteration {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+        linkedList.add("Date");
+        linkedList.add("Elderberry");
+
+        // Specify the starting position (index)
+        int startPosition = 2; // Start iterating from the 3rd element (index 2)
+
+        // Check if the start position is valid
+        if (startPosition < 0 || startPosition >= linkedList.size()) {
+            System.out.println("Invalid start position.");
+            return; // Exit if the start position is out of bounds
+        }
+
+        // Iterate through the LinkedList starting from the specified position using a ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+
+        System.out.println("Elements starting from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        // Example of iterating backwards from a given position:
+
+         startPosition = 3;
+         if (startPosition < 0 || startPosition >= linkedList.size()) {
+            System.out.println("Invalid start position (backwards example).");
+            return; 
+        }
+
+        iterator = linkedList.listIterator(startPosition); // Reset the iterator
+
+         System.out.println("\nElements backwards from position " + startPosition + ":");
+
+        while (iterator.hasPrevious()) { // Use hasPrevious() and previous()
+            System.out.println(iterator.previous());
+        }
+    }
+}
+```
+
+
+
+Key improvements:
+
+1. **Input Validation:**  The code now checks if the `startPosition` is valid (within the bounds of the LinkedList).  This prevents `IndexOutOfBoundsException` if an invalid position is provided.
+
+2. **Clearer Output:** The output is more informative, indicating the starting position.
+
+3. **ListIterator:** Uses `ListIterator` which is the most efficient way to iterate from a specific position in a `LinkedList`. `ListIterator`  also allows both forward and backward iteration.
+
+4. **Example of Backwards Iteration:** Added a demonstration of how to iterate *backwards* from a given position using `hasPrevious()` and `previous()`.
+
+
+This revised version is more robust and demonstrates best practices for iterating through `LinkedList` elements from a specified point.

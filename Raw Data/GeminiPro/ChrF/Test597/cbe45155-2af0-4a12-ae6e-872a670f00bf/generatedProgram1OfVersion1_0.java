@@ -1,0 +1,58 @@
+import java.util.LinkedList;
+
+public class LinkedListContains {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements to the list
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        // Element to search for
+        String elementToSearch = "Banana";
+
+        // Check if the element exists using contains()
+        boolean containsElement = linkedList.contains(elementToSearch);
+
+        // Print the result
+        if (containsElement) {
+            System.out.println(elementToSearch + " exists in the linked list.");
+        } else {
+            System.out.println(elementToSearch + " does not exist in the linked list.");
+        }
+
+
+        // Example with an element that doesn't exist
+        elementToSearch = "Mango";
+        containsElement = linkedList.contains(elementToSearch);
+
+         if (containsElement) {
+            System.out.println(elementToSearch + " exists in the linked list.");
+        } else {
+            System.out.println(elementToSearch + " does not exist in the linked list.");
+        }
+
+
+
+         // Example with an Integer LinkedList
+         LinkedList<Integer> intLinkedList = new LinkedList<>();
+         intLinkedList.add(10);
+         intLinkedList.add(20);
+         intLinkedList.add(30);
+
+         int intToSearch = 20;
+
+         boolean containsInt = intLinkedList.contains(intToSearch); // contains() works with other types too
+
+         if (containsInt) {
+             System.out.println(intToSearch + " exists in the integer linked list.");
+         } else {
+             System.out.println(intToSearch + " does not exist in the integer linked list.");
+         }
+
+    }
+}

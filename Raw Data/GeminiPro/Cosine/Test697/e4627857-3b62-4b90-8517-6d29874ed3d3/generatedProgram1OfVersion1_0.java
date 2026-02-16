@@ -1,0 +1,58 @@
+class Solution {
+    /**
+     * Counts the number of integers from 1 to n (inclusive) that do not contain the digit 7.
+     *
+     * @param n The upper limit of the range (inclusive).
+     * @return The count of numbers without the digit 7.
+     */
+    static int count_nums_not_7(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (!containsDigit7(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Checks if a number contains the digit 7.
+     *
+     * @param num The number to check.
+     * @return True if the number contains 7, false otherwise.
+     */
+    private static boolean containsDigit7(int num) {
+        while (num > 0) {
+            if (num % 10 == 7) {
+                return true;
+            }
+            num /= 10;
+        }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 100; // Example input
+        int count = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + count);
+
+
+        n = 20;
+        count = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + count);
+
+
+        n = 75; // Example to test numbers greater than 70.
+        count = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + count);
+
+        n = 0; // Edge case : 0.
+        count = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + count);
+
+        n = 7; // Edge case : 7 itself.
+        count = count_nums_not_7(n);
+        System.out.println("The count of numbers without digit 7 from 1 to " + n + " is: " + count);
+    }
+}

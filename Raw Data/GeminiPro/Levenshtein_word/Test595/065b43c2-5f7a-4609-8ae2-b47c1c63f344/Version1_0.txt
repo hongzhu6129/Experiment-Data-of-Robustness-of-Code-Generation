@@ -1,0 +1,39 @@
+```java
+import java.util.LinkedList;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Check if the list is empty
+        if (linkedList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            // Retrieve the first element using peek() or getFirst()
+            String firstElement = linkedList.peek(); // Or linkedList.getFirst();  Both work the same when retrieving.
+
+            System.out.println("First element: " + firstElement);
+
+            // Verify that the element was not removed
+            System.out.println("Linked list after retrieving: " + linkedList);
+
+
+            //Example demonstrating difference between peek/getFirst and poll/removeFirst
+
+             if (!linkedList.isEmpty()) {
+                String removedElement = linkedList.poll(); // Or linkedList.removeFirst(); - removes the first element.
+                System.out.println("Removed element: " + removedElement);
+                System.out.println("Linked list after removal: " + linkedList);
+            }
+
+        }
+    }
+}
+```

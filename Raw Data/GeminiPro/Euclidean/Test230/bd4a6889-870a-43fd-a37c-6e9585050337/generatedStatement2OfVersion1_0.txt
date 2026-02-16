@@ -1,0 +1,19 @@
+
+
+
+Explanation and Key Improvements:
+
+1. Handles Edge Cases: The code now explicitly handles cases where the input array is `null` or empty, preventing `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+
+2. Efficient In-Place Modification:  The algorithm modifies the input array in place, moving unique elements to the beginning of the array.  This is more efficient than creating a new array.
+
+3. Clearer Variable Names:  `uniqueIndex` makes the purpose of the variable more evident.
+
+
+4.  Correct Return and Output: The `removeDuplicates` method correctly returns the updated length (the number of unique elements).  The `main` method then uses `Arrays.copyOfRange` to print only the relevant part of the modified array (up to the `newLength`). This avoids printing the leftover elements from the original array.
+
+
+
+How it works:
+
+The `removeDuplicates` function iterates through the sorted array, maintaining a `uniqueIndex`.  When a new unique element is encountered (i.e., it's different from the previous element), it's placed at the `uniqueIndex` and `uniqueIndex` is incremented. This effectively overwrites duplicate elements. Finally, `uniqueIndex` holds the count of unique elements, which is returned as the new length.

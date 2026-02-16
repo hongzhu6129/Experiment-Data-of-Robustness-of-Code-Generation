@@ -1,0 +1,40 @@
+```java
+public class StringPairs {
+
+    public String pairsToReturn(String str) {
+        if (str == null || str.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        int len = str.length();
+        int i = 0;
+
+        while (i < len) {
+            // Add characters at indices 0, 1, 2
+            for (int j = 0; j < 3 && i < len; j++) {
+                result.append(str.charAt(i));
+                i++;
+            }
+
+            // Skip characters at indices 3, 4
+            i += 2; // Skip two positions (3 and 4)
+
+
+        }
+        return result.toString();
+    }
+
+
+    public static void main(String[] args) {
+        StringPairs sp = new StringPairs();
+
+        System.out.println(sp.pairsToReturn("abcdefghijklmn")); // Output: abcghi
+        System.out.println(sp.pairsToReturn("abcdefgh")); // Output: abcghi (or abc if you strictly want only existing characters)
+        System.out.println(sp.pairsToReturn("ab")); // Output: ab
+        System.out.println(sp.pairsToReturn("")); // Output: 
+        System.out.println(sp.pairsToReturn(null)); // Output: 
+
+    }
+}
+```

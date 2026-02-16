@@ -1,0 +1,71 @@
+```java
+import java.util.Arrays;
+
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+        int indexToUpdate = 2; // Update the element at index 2 (which is currently 3)
+        int newValue = 10;
+
+        // Update the array element directly if the index is valid
+        if (indexToUpdate >= 0 && indexToUpdate < originalArray.length) {
+            originalArray[indexToUpdate] = newValue;
+            System.out.println("Updated Array: " + Arrays.toString(originalArray)); 
+        } else {
+            System.out.println("Invalid index. Array remains unchanged.");
+            System.out.println("Original Array: " + Arrays.toString(originalArray));
+        }
+
+
+        // Example using a new array (if you don't want to modify the original)
+        int[] newArray = updateElement(originalArray, indexToUpdate, newValue);
+
+        if (newArray != null) {
+             System.out.println("Updated Array (new array): " + Arrays.toString(newArray));
+        }
+
+       
+    }
+
+
+    // Helper function (optional � if you need a method to return a new array)
+    // This method avoids modifying the original array
+    public static int[] updateElement(int[] arr, int index, int value) {
+        if (index < 0 || index >= arr.length) {
+            System.out.println("Invalid Index");
+            return null; // Or throw an exception if you prefer.
+        }
+
+        int[] newArray = Arrays.copyOf(arr, arr.length); // Create a copy
+        newArray[index] = value;
+        return newArray;
+    }
+}
+```
+
+
+Explanation of the code using only `main`:
+
+1. **Array Declaration and Initialization:**
+   - `int[] originalArray = {1, 2, 3, 4, 5};`  declares and initializes an integer array.
+
+2. **Index and New Value:**
+   - `int indexToUpdate = 2;` specifies the index of the element to update (0-based indexing).
+   - `int newValue = 10;`  holds the value you want to put in the array.
+
+3. **Bounds Checking (Important):**
+   - `if (indexToUpdate >= 0 && indexToUpdate < originalArray.length)` is crucial to prevent `ArrayIndexOutOfBoundsException`. It makes sure the index is within the valid range of the array.
+
+4. **Update Element:**
+   - `originalArray[indexToUpdate] = newValue;` updates the element at the specified index directly.
+
+5. **Print Updated Array:**
+   - `System.out.println("Updated Array: " + Arrays.toString(originalArray));` prints the modified array using `Arrays.toString()` for easy viewing.
+
+6. **Error Handling:**
+   - The `else` block handles cases where the index is invalid, printing an error message and leaving the original array unchanged.
+
+
+The included helper function `updateElement()` demonstrates how to create a *new* array with the updated element if you don't want to modify the original one. It uses `Arrays.copyOf()` to create a copy of the array before updating the element in the copy.  It also demonstrates good practice by checking the index and returning `null` (or you could throw an exception) if the index is invalid.

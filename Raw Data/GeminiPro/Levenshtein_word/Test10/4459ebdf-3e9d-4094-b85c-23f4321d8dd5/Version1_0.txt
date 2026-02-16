@@ -1,0 +1,71 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+Since this program has no input and simply prints a fixed output, traditional unit testing with assertions isn't very applicable.  Instead, we can consider "visual testing" and verifying against the expected output string.  While not a corner case in the traditional sense, we can think about different output environments that might affect the rendering (though this is more of a system-level concern).
+
+1. **Standard Output Test:**
+   - Run the program and visually inspect the output.  Does it resemble a face?  Does the spacing match the intended design?  This is the primary "test."  You'd compare the console output with the expected face:
+
+   ```
+     +\"\"\"\"+
+    [| o o |]
+     |  ^  |
+     | '-' |
+     +-----+
+   ```
+
+
+2. **Output Redirection Test (More of a system test):**
+   - Redirect the output to a file: `java FacePrinter > face.txt`
+   - Open `face.txt` and verify the face is correctly printed. This tests whether output redirection works as expected.
+
+3. **Different Character Encoding (Edge Case - System Dependent):**
+   - If you're concerned about different character sets or encodings potentially impacting the rendering (e.g., if you were using more complex Unicode characters), you could try setting different console/terminal encodings and verifying the output still appears correctly.  This is less of a Java code issue and more an environment/system issue.
+
+4. **Extremely Long Output Line (Edge Case - Highly Unlikely Here):**
+   - While unlikely with this simple face, in other string-building scenarios, extremely long lines might cause issues with some output buffers.  This is usually a concern with very large dynamic string generation.  Since the face is a fixed small size, this is a very low-probability edge case.
+
+
+**How to "Automate" the Visual Test (Not strictly unit testing):**
+
+While visual inspection is often sufficient for this simple example, you could, in a more complex scenario, capture the program's output to a string and compare it to the expected output string.  This would require using something like `System.setOut()` to redirect the output to a `ByteArrayOutputStream`, which can be converted back to a string for comparison.  This is more involved than necessary for this program, but it demonstrates a way to automate the visual check:
+
+
+```java
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*; // Import Assertions class
+
+
+public class FacePrinterTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent)); // Redirect System.out
+
+        FacePrinter.printFace(); 
+
+        String expectedOutput = "  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+\n"; // Add \n at end!
+        assertEquals(expectedOutput, outContent.toString());
+
+        System.setOut(System.out); // Restore System.out (Important!)
+    }
+}
+```
+
+This uses JUnit to demonstrate a more automated approach, but the principle of capturing and comparing the output string is the key idea for more advanced scenarios.  For this simple face program, simple visual verification is usually sufficient.

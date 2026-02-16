@@ -1,0 +1,65 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (you can modify this to take user input)
+        int num = 8; 
+
+        if (isCube(num)) {
+            System.out.println("number is a cube.");
+        } else {
+            System.out.println("number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int num) {
+        // Handle negative numbers (their cube roots are also negative)
+        if (num < 0) {
+           return isCube(-num); // Check the absolute value and return the result
+        }
+
+        //Efficiently find the cube root by iterating up to the cubic root's potential maximum
+        for (int i = 0; i <= num; i++) {  // Iterate only up to the cube root's maximum possible value
+            if (i * i * i == num) {
+                return true;
+            } else if (i * i * i > num) { // Optimization: If the cube exceeds num, no need to check further
+                return false;
+            }
+        }
+        return false; 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+1. **Handles Negative Numbers:** The code now correctly checks if negative numbers are perfect cubes.
+2. **Efficiency:** Instead of iterating through all numbers up to `num`, the loop now stops when `i * i * i` exceeds `num`. This significantly improves performance, especially for larger numbers.  We only need to check up to the potential cube root's maximum value.
+3. **Clearer Output:**  The output messages are more informative ("number is a cube" or "number is not a cube").
+4. **Helper Function:** The `isCube` function makes the code more organized and reusable.
+
+
+Example Usage (with user input - you'd have to modify the `main` method for this if required):
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (isCube(num)) {
+            System.out.println(num + " is a cube.");
+        } else {
+            System.out.println(num + " is not a cube.");
+        }
+        scanner.close();
+    }
+
+    // ... (isCube function remains the same)
+}
+```

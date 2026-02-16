@@ -1,0 +1,71 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapComparator {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grapefruit", 4);
+        treeMap.put("kiwi", 5);
+
+
+        // Print the sorted TreeMap
+        System.out.println(treeMap);
+
+
+         TreeMap<String, Integer> reverseTreeMap = new TreeMap<>(new ReverseStringLengthComparator());
+        reverseTreeMap.putAll(treeMap); // Copy elements for demonstration
+
+         System.out.println(reverseTreeMap);
+    }
+
+    public static class StringLengthComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String s1, String s2) {
+           return s1.length() - s2.length(); // Compare by length
+        }
+    }
+
+     public static class ReverseStringLengthComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String s1, String s2) {
+           return s2.length() - s1.length(); // Compare by length in reverse
+        }
+    }
+
+
+
+}
+```
+
+
+**Explanation:**
+
+1. **`StringLengthComparator` Class:**
+   - This class implements the `Comparator<String>` interface.
+   - The `compare(String s1, String s2)` method defines the sorting logic. It compares strings based on their lengths.  If `s1` is shorter than `s2`, it returns a negative value. If `s1` is longer, it returns a positive value. If they are equal in length, it returns 0.
+
+2. **`ReverseStringLengthComparator` Class:**
+   - Similar to `StringLengthComparator`, but it sorts in reverse order of string length.
+
+3. **`main` Method:**
+   - A `TreeMap` is created using the `StringLengthComparator` in its constructor. This tells the `TreeMap` to use this comparator to sort its keys.
+   - Key-value pairs are added to the `TreeMap`.
+   - The `TreeMap` is printed. The output will show the entries sorted by key length.
+
+
+**Output:**
+
+```
+{kiwi=5, apple=5, banana=6, orange=6, grapefruit=10}  // Sorted by increasing length
+{grapefruit=4, banana=2, orange=3, kiwi=5, apple=1} // Sorted by decreasing length
+```

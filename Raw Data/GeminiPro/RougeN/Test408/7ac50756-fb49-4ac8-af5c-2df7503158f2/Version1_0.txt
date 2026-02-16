@@ -1,0 +1,52 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class WordCounter {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        // Use regex to find words ending in 'm' or 'n' (case-insensitive)
+        Pattern pattern = Pattern.compile("\\b\\w*[mnMN]\\b"); // \b for word boundaries
+        Matcher matcher = pattern.matcher(text);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        WordCounter counter = new WordCounter();
+        String text1 = "The man from the moon came home soon.";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 count: " + count1); // Expected: 3 (man, moon, home)
+
+        String text2 = "M and N are letters. Men and Women.";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 count: " + count2); // Expected: 2 (Men, Women)
+
+         String text3 = null;
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 count: " + count3); // Expected: 0
+
+        String text4 = "";
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 count: " + count4); // Expected: 0
+
+        String text5 = "   ";
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 count: " + count5); // Expected: 0
+
+
+        String text6 = "Tom tom Tim Jim";
+        int count6 = counter.endWithmOrn(text6);
+        System.out.println("Text 6 count: " + count6); // Expected: 4
+    }
+}
+```

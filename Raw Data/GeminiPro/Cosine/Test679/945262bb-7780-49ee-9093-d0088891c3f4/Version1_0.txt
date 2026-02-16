@@ -1,0 +1,41 @@
+```java
+import java.util.TreeMap;
+
+public class CeilingKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        int key1 = 25;
+        Integer ceilingKey1 = treeMap.ceilingKey(key1);
+        System.out.println("Ceiling key for " + key1 + ": " + ceilingKey1); // Output: 30
+
+        int key2 = 55;
+        Integer ceilingKey2 = treeMap.ceilingKey(key2);
+        System.out.println("Ceiling key for " + key2 + ": " + ceilingKey2); // Output: null
+
+
+        // More demonstration with different data types
+        TreeMap<String, Double> treeMap2 = new TreeMap<>();
+        treeMap2.put("apple", 1.0);
+        treeMap2.put("banana", 2.0);
+        treeMap2.put("cherry", 3.0);
+
+        String key3 = "blueberry";
+        String ceilingKey3 = treeMap2.ceilingKey(key3);
+        System.out.println("Ceiling key for " + key3 + ": " + ceilingKey3); // Output: cherry
+
+        String key4 = "date"; 
+        String ceilingKey4 = treeMap2.ceilingKey(key4);
+        System.out.println("Ceiling key for " + key4 + ": " + ceilingKey4); // Output: null
+
+
+    }
+}
+```

@@ -1,0 +1,48 @@
+```java
+import java.util.List;
+import java.util.Arrays;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "apricot", "banana", "Avocado", "blueberry", "orange");
+        char startingLetter = 'a'; // Specify the starting letter
+
+        long count = strings.stream()
+                .filter(s -> !s.isEmpty() && Character.toLowerCase(s.charAt(0)) == Character.toLowerCase(startingLetter))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+
+        // Example with different starting letter:
+        startingLetter = 'b';
+         count = strings.stream()
+                .filter(s -> !s.isEmpty() && Character.toLowerCase(s.charAt(0)) == Character.toLowerCase(startingLetter))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+        // Example with an empty list:
+        List<String> emptyList = Arrays.asList();
+        startingLetter = 'c';
+        count = emptyList.stream()
+                .filter(s -> !s.isEmpty() && Character.toLowerCase(s.charAt(0)) == Character.toLowerCase(startingLetter))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "' (empty list): " + count);
+
+
+
+        // Example with null values in the list: (Handles potential NullPointerExceptions)
+        List<String> listWithNulls = Arrays.asList("apple", null, "apricot", "banana", null, "Avocado");
+         startingLetter = 'a';
+         count = listWithNulls.stream()
+                 .filter(s -> s != null && !s.isEmpty() && Character.toLowerCase(s.charAt(0)) == Character.toLowerCase(startingLetter))
+                 .count();
+         System.out.println("Number of strings starting with '" + startingLetter + "' (list with nulls): " + count);
+
+
+    }
+}
+```

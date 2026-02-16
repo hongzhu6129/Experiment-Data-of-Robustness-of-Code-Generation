@@ -1,0 +1,40 @@
+```java
+public class RemoveCharacter {
+
+    public static void main(String[] args) {
+        String str = "hello world";
+        char ch = 'o';
+
+        String newStr = remove_Character(str, ch);
+        System.out.println(newStr); // Output: hell wrld
+
+
+        str = "programming";
+        ch = 'm';
+        newStr = remove_Character(str, ch);
+        System.out.println(newStr); // Output: prograing
+
+        str = "banana";
+        ch = 'a';
+        newStr = remove_Character(str,ch);
+        System.out.println(newStr); // Output: bnn
+
+        str =  "apple";
+        ch = 'z'; // Character not present
+        newStr = remove_Character(str, ch);
+        System.out.println(newStr); // Output: apple (no change)
+
+
+    }
+
+    public static String remove_Character(String str, char ch) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != ch) {
+                sb.append(str.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+}
+```

@@ -1,0 +1,61 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index for placing unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+
+         int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); 
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4+ ", Array: " + (nums4 == null ? "null" : Arrays.toString(Arrays.copyOfRange(nums4, 0, len4))));
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:** The code now correctly handles empty (`{}`) and null arrays without throwing exceptions.  It returns 0 for these cases, as there are no elements (and therefore no unique elements).
+
+2. **Clearer Variable Naming:** `uniqueIndex` is used instead of `j` or `k` making it more understandable that this variable tracks where the next unique element should be placed.
+
+3. **In-Place Modification:** The code modifies the original array `nums` in place, as requested in the problem description (LeetCode style).  The `removeDuplicates` method returns the new length of the modified array.
+
+4. **Comprehensive `main` method:** Includes several test cases, including empty and null arrays, to demonstrate the robustness of the code. It also prints out the modified array up to the new length, clearly showing the result of the duplicate removal.
+
+5. **Uses `Arrays.copyOfRange`:**  In the `main` method, when printing the result, we use `Arrays.copyOfRange(nums, 0, len)` to only print the relevant part of the array after duplicate removal. This avoids printing the "garbage" values that may exist after the unique elements.
+
+
+This improved version is more robust, efficient, and easier to understand, adhering to good coding practices and addressing potential issues. It follows the specified method signatures.

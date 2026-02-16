@@ -1,0 +1,81 @@
+```java
+import java.util.Scanner;
+
+public class RightmostDigitCheck {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check for equality among the digits
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first non-negative integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second non-negative integer: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third non-negative integer: ");
+        int num3 = scanner.nextInt();
+
+
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Error: Input integers must be non-negative.");
+            return; // Exit if any input is negative
+        }
+
+        boolean result = function(num1, num2, num3);
+
+        System.out.println(result);
+
+
+        scanner.close();  // Close the scanner
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. All different rightmost digits:**
+   - Input: 12, 23, 34
+   - Expected Output: `false`
+
+**2. Two matching rightmost digits:**
+   - Input: 12, 22, 34
+   - Expected Output: `true`
+
+**3. All three matching rightmost digits:**
+   - Input: 15, 25, 35
+   - Expected Output: `true`
+
+**4. Zeroes as rightmost digits:**
+   - Input: 10, 20, 30
+   - Expected Output: `true`
+
+**5. Single-digit numbers:**
+   - Input: 1, 1, 2
+   - Expected Output: `true`
+
+**6. Large numbers:**
+   - Input: 123456789, 987654321, 111111111 
+   - Expected Output: `false`
+
+
+**7. Corner Case:  Numbers with leading zeros (will be treated as octal in Java if you don't handle input carefully):**
+   - Input: 012, 022, 034  (If you directly parse these with `nextInt`,  012 will be treated as octal 10, 022 as octal 18, and so on). 
+   - Expected Behavior: Your code should ideally prevent direct octal interpretation or handle the case of leading zeros appropriately.
+
+**8. Corner Case: Negative numbers:**
+    - Input: -12, 22, 32
+    - Expected Behavior: Print the error message "Error: Input integers must be non-negative." and exit.
+
+
+These test cases cover various scenarios, including matching digits, different digits, zeros, single-digit numbers, large numbers, and corner cases involving leading zeros and negative inputs, which are important for ensuring the robustness of your code.

@@ -1,0 +1,59 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+        // Example with different dimensions
+        boolean[][] anotherBoolArray = {
+                {true, false},
+                {false, true, true},
+                {true}
+        };
+
+        printBooleanArray(anotherBoolArray);
+
+
+
+        boolean[][] emptyArray = {};
+        printBooleanArray(emptyArray);
+
+
+         boolean[][] nullArray = null;
+         printBooleanArray(nullArray); // Handles null gracefully
+    }
+
+    public static void printBooleanArray(boolean[][] boolArray) {
+        if (boolArray == null) {
+            System.out.println("The array is null.");
+            return;
+        }
+
+        if (boolArray.length == 0) {
+            System.out.println("The array is empty.");
+            return;
+        }
+
+
+
+        for (int i = 0; i < boolArray.length; i++) {
+            if (boolArray[i] == null) {
+                 System.out.print("null "); // Handle null rows
+                continue; // Skip to the next row
+            }
+
+            for (int j = 0; j < boolArray[i].length; j++) {
+                System.out.print(boolArray[i][j] ? "t " : "f ");
+            }
+            System.out.println(); // New line after each row
+        }
+        System.out.println(); // Separator between arrays
+    }
+}
+```

@@ -1,0 +1,27 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2 | 0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 (except division) | 10 | 0 | 10 | 10 | 0 | Division by zero error | Division by zero error |
+| 6. Decimal Numbers | 10.5 | 2.5 | 13 | 8 | 26.25 | 4.2 | 0 |
+| 7. Large Numbers | 1000000 | 1000 | 1001000 | 999000 | 1000000000 | 1000 | 0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0.0 |
+| 9. Integer Overflow (potential issue - depends on data type) | Integer.MAX_VALUE | 1 | Overflow  | Integer.MAX_VALUE -1 | Overflow | Overflow or Exception | Overflow or Exception |
+
+
+
+**How to run the test cases:**
+
+1. **Manually:**  Input the values for `num1` and `num2` as specified in the test cases and verify the output against the expected values.
+2. **Automated Testing (Recommended):**  Create a separate test class using a testing framework like JUnit.  This allows you to automate the test execution and easily check the results. Example using JUnit:
+
+

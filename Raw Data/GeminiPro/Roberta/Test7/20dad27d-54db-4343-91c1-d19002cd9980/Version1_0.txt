@@ -1,0 +1,105 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0;  // Use 3.0 for floating-point division
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Mixed Positive and Negative Numbers:**
+   - Input: -5, 10, 20
+   - Expected Output: 8.333333333333334
+
+4. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.7, 8.9
+   - Expected Output: 5.7
+
+7. **Corner Case: Very Large Numbers (potential overflow if using integers):**
+   - Input:  Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE / 2   // Handling potential overflow with doubles
+   - Expected Output: Double.POSITIVE_INFINITY (or a very large number)
+
+8. **Corner Case: Very Small Numbers (close to zero):**
+    - Input: 0.0000001, 0.0000002, 0.0000003
+    - Expected Output: 2.0E-7 (or a very small number close to 0)
+
+
+**How to Run Test Cases (Example with JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+    // Add more test cases similarly...
+
+     @Test
+    void testVeryLargeNumbers() {
+       assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE/2));
+    }
+
+
+    @Test
+    void testVerySmallNumbers() {
+        assertEquals(2.0E-7, AverageCalculator.calculateAverage(0.0000001, 0.0000002, 0.0000003), 1e-9); // using a delta for comparison of very small numbers
+    }
+
+
+
+}
+```
+
+Remember to add JUnit to your project if you haven't already. This provides a structured and automated way to test your Java code.  The test cases for very large and very small numbers demonstrate how to handle potential overflow/underflow and how to compare floating-point numbers with a tolerance (delta).

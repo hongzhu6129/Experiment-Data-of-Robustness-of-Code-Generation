@@ -1,0 +1,35 @@
+public class FifteenCheck {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int num1 = 10;
+        int num2 = 5;
+
+        boolean result = calculate(num1, num2);
+        System.out.println(result); // Output: true
+
+        num1 = 15;
+        num2 = 20;
+        result = calculate(num1, num2);
+        System.out.println(result); // Output: true
+
+        num1 = 7;
+        num2 = 9;
+        result = calculate(num1, num2);
+        System.out.println(result); // Output: false
+
+
+    }
+
+    public static boolean calculate(int a, int b) {
+        if (a == 15 || b == 15) {
+            return true;
+        }
+
+        if (a + b == 15 || Math.abs(a - b) == 15) { // Use Math.abs for difference
+            return true;
+        }
+
+        return false;
+    }
+}

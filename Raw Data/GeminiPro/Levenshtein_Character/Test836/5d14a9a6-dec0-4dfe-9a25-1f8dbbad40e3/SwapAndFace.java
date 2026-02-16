@@ -1,0 +1,28 @@
+public class SwapAndFace {
+
+    public static void main(String[] args) {
+
+        // Swap two variables
+        int a = 10;
+        int b = 20;
+
+        System.out.println("Before swapping: a = " + a + ", b = " + b);
+
+        // Swap using a temporary variable
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("After swapping: a = " + a + ", b = " + b);
+
+
+        // Print the face
+        System.out.println(" +\"\"\"\"\"+ ");
+        System.out.println("[| o o |]");
+        System.out.println(" |  ^  | ");
+        System.out.println(" | '-' | ");
+        System.out.println(" +-----+ ");
+
+
+    }
+}

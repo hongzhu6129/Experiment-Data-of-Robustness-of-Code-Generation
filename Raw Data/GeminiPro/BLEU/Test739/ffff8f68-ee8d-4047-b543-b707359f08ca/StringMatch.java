@@ -1,0 +1,30 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringMatch {
+
+    public static void main(String[] args) {
+        String testString1 = "paq";
+        String testString2 = "p123q";
+        String testString3 = "pq";
+        String testString4 = "p q";
+        String testString5 = "123pq";
+        String testString6 = "pa";
+
+        System.out.println(testString1 + ": " + validate(testString1)); // Output: paq: true
+        System.out.println(testString2 + ": " + validate(testString2)); // Output: p123q: true
+        System.out.println(testString3 + ": " + validate(testString3)); // Output: pq: true
+        System.out.println(testString4 + ": " + validate(testString4)); // Output: p q: true
+        System.out.println(testString5 + ": " + validate(testString5)); // Output: 123pq: false
+        System.out.println(testString6 + ": " + validate(testString6)); // Output: pa: false
+
+
+    }
+
+    public static String validate(String input) {
+        // Regular expression pattern: starts with "p", followed by any characters (0 or more), and ends with "q"
+        Pattern pattern = Pattern.compile("^p.*q$");  // "^" matches beginning, ".*" matches any character 0 or more times, "$" matches end
+        Matcher matcher = pattern.matcher(input);
+        return String.valueOf(matcher.matches());
+    }
+}

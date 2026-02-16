@@ -1,0 +1,138 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class Rectangle {
+    double length;
+    double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double getArea() {
+        return length * width;
+    }
+
+    public double getPerimeter() {
+        return 2 * (length + width);
+    }
+
+    public static void main(String[] args) {
+        Rectangle rect1 = new Rectangle(5, 10);
+        System.out.println("Area of rectangle 1: " + rect1.getArea());
+        System.out.println("Perimeter of rectangle 1: " + rect1.getPerimeter());
+
+        Rectangle rect2 = new Rectangle(7, 7); // Square case
+        System.out.println("Area of rectangle 2: " + rect2.getArea());
+        System.out.println("Perimeter of rectangle 2: " + rect2.getPerimeter());
+
+
+        Rectangle rect3 = new Rectangle(0, 5); //Zero length
+        System.out.println("Area of rectangle 3: " + rect3.getArea());
+        System.out.println("Perimeter of rectangle 3: " + rect3.getPerimeter());
+
+
+    }
+}
+
+
+class RectangleTest {
+
+    @Test
+    void getArea_positiveLengthAndWidth() {
+        Rectangle rect = new Rectangle(5, 10);
+        assertEquals(50, rect.getArea());
+    }
+
+    @Test
+    void getPerimeter_positiveLengthAndWidth() {
+        Rectangle rect = new Rectangle(5, 10);
+        assertEquals(30, rect.getPerimeter());
+    }
+
+    @Test
+    void getArea_zeroLength() {  // Corner case: Zero length
+        Rectangle rect = new Rectangle(0, 10);
+        assertEquals(0, rect.getArea());
+    }
+
+
+    @Test
+    void getPerimeter_zeroLength() { // Corner case: Zero length
+        Rectangle rect = new Rectangle(0, 10);
+        assertEquals(20, rect.getPerimeter());
+    }
+
+
+    @Test
+    void getArea_zeroWidth() {  // Corner case: Zero width
+        Rectangle rect = new Rectangle(5, 0);
+        assertEquals(0, rect.getArea());
+    }
+
+
+    @Test
+    void getPerimeter_zeroWidth() { // Corner case: Zero width
+        Rectangle rect = new Rectangle(5, 0);
+        assertEquals(10, rect.getPerimeter());
+    }
+
+
+
+    @Test
+    void getArea_square() { // Test case: Square (length == width)
+        Rectangle rect = new Rectangle(7, 7);
+        assertEquals(49, rect.getArea());
+    }
+
+    @Test
+    void getPerimeter_square() { // Test case: Square (length == width)
+        Rectangle rect = new Rectangle(7, 7);
+        assertEquals(28, rect.getPerimeter());
+    }
+
+
+    @Test
+    void getArea_largeNumbers() {  // Test case: Larger numbers
+        Rectangle rect = new Rectangle(1000, 2000);
+        assertEquals(2000000, rect.getArea());
+    }
+
+
+    @Test
+    void getPerimeter_largeNumbers() {  // Test case: Larger numbers
+        Rectangle rect = new Rectangle(1000, 2000);
+        assertEquals(6000, rect.getPerimeter());
+    }
+
+
+
+}
+```
+
+Key improvements and explanations:
+
+* **Test Cases:** The code now includes comprehensive JUnit tests covering various scenarios, including:
+    * Positive length and width
+    * Zero length (corner case)
+    * Zero width (corner case)
+    * Square (length equals width)
+    * Large numbers
+
+
+* **Clearer Output in `main`:**  The `main` method now prints more descriptive output, making it easier to understand the results of each calculation.
+
+* **JUnit Best Practices:** The tests follow JUnit best practices, with clear and concise test method names (e.g., `getArea_positiveLengthAndWidth`) and assertions.
+
+
+
+How to run the tests:
+
+1. **IDE:**  If you're using an IDE like IntelliJ or Eclipse, you can typically right-click on the `RectangleTest` class and select "Run 'RectangleTest'".
+
+2. **Command Line:** Compile the code using `javac Rectangle.java RectangleTest.java` and then run the tests using `java -cp . org.junit.platform.console.ConsoleLauncher RectangleTest`. You might need to add the JUnit library to your classpath if it's not already there.  Consult JUnit documentation for specific instructions.
+
+
+This improved version provides better testing and helps ensure the correctness of the `Rectangle` class.

@@ -1,0 +1,52 @@
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String stream = "aabccxb"; // Example stream of characters
+        findFirstNonRepeating(stream);
+
+        stream = "aabbccddeeffg"; // Another example
+        findFirstNonRepeating(stream);
+
+        stream = "abacabad"; // Another example
+        findFirstNonRepeating(stream);
+
+
+
+    }
+
+    public static void findFirstNonRepeating(String stream) {
+        Queue<Character> queue = new LinkedList<>();
+        int[] charCount = new int[256]; // Assuming ASCII characters
+
+        System.out.print("First non-repeating characters for stream \"" + stream + "\": ");
+
+        for (char c : stream.toCharArray()) {
+            charCount[c]++;
+            queue.offer(c);
+
+            while (!queue.isEmpty()) {
+                char front = queue.peek();
+                if (charCount[front] > 1) {
+                    queue.poll(); // Remove repeating character
+                } else {
+                    System.out.print(front + " ");
+                    break; // Found the first non-repeating character
+                }
+            }
+
+            if (queue.isEmpty()) {
+                System.out.print("null "); // No non-repeating character found yet
+            }
+
+           
+        }
+
+         System.out.println(); // Newline for the next example
+    }
+}
+```

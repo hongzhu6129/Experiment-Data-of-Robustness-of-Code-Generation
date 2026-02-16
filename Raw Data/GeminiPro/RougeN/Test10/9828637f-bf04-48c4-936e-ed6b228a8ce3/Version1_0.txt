@@ -1,0 +1,48 @@
+```java
+public class PrintFace {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |]");
+        System.out.println("  |  ^  |\n  | '-' |\n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace(); 
+    }
+}
+```
+
+**Test Cases (Conceptual - Java doesn't have a simple way to directly test console output without using external libraries or redirecting streams):**
+
+1. **Basic Functionality Test:**  Run the `printFace()` method. Visually verify that the output matches the intended face shape and characters.  This confirms the core logic is working.
+
+2. **Character Encoding Test:**  Run the program on different systems/terminals with varying character encodings (e.g., UTF-8, ASCII). Ensure the face displays correctly, and special characters like " " and "|" are rendered as expected.  This checks for encoding compatibility.
+
+3. **Output Redirection Test (Advanced):**  Redirect the program's output to a file.  Then, compare the contents of the file against the expected face representation.  This requires some shell scripting or file I/O but allows for automated testing. For example, on Linux/macOS:
+
+   ```bash
+   java PrintFace > output.txt
+   # Then compare output.txt to a file containing the expected face.
+   ```
+
+
+4. **Whitespace Sensitivity Test (Conceptual):**  Modify the code by adding or removing whitespace characters within the strings.  Observe the impact on the face's alignment and shape. This tests the sensitivity of the output to precise spacing.  You'd do this manually by changing the code and observing.
+
+
+**Explanation of Corner Cases in this Context:**
+
+While this program is simple, the "corner cases" relate more to environmental factors and character handling than complex inputs:
+
+* **Encoding Issues:**  Different systems might interpret special characters differently, leading to distorted output.  The Character Encoding Test addresses this.
+* **Terminal/Console Limitations:** Some terminals might not support all characters or have limitations on line widths, potentially affecting the face's appearance.
+* **Whitespace Sensitivity:** The visual representation relies heavily on precise whitespace.  Accidental changes could break the layout. The Whitespace Sensitivity Test covers this.
+
+
+**Why No Direct Unit Tests (without external libraries)?**
+
+Standard Java unit testing (e.g., using JUnit) is designed to test the return values of methods or the internal state of objects. `printFace()` doesn't return anything and only has a side effect (printing to the console).  Testing console output directly requires capturing the console stream, which is not part of core JUnit.  There are external libraries like System Rules that can assist with this, but they are beyond the scope of a basic example.
+
+
+
+
+

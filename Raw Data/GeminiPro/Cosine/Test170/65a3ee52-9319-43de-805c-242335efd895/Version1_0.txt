@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class StringDivider {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the string from the user
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Get the number of parts to divide the string into
+        System.out.println("Enter the number of parts to divide the string into: ");
+        int numParts = Integer.parseInt(scanner.nextLine());
+
+        // Divide the string into n individual parts
+        String[] parts = divideString(inputString, numParts);
+
+        // Print the divided string
+        System.out.println("The divided string is: ");
+        for (String part : parts) {
+            System.out.println(part);
+        }
+
+        scanner.close();
+    }
+
+    public static String[] divideString(String inputString, int numParts) {
+        // Check if the number of parts is valid
+        if (numParts <= 0) {
+            throw new IllegalArgumentException("The number of parts must be greater than 0");
+        }
+
+        // Check if the string is empty
+        if (inputString.isEmpty()) {
+            return new String[numParts];
+        }
+
+        // Calculate the length of each part
+        int partLength = inputString.length() / numParts;
+
+        // Divide the string into n individual parts
+        String[] parts = new String[numParts];
+        int startIndex = 0;
+        int endIndex = partLength;
+        for (int i = 0; i < numParts; i++) {
+            parts[i] = inputString.substring(startIndex, endIndex);
+            startIndex += partLength;
+            endIndex += partLength;
+        }
+
+        // Return the divided string
+        return parts;
+    }
+}
+```
+
+**Test cases:**
+
+**Corner cases:**
+
+* **Empty string:**
+```
+Input: ""
+Number of parts: 3
+Output: ["", "", ""]
+```
+
+* **String with fewer characters than the number of parts:**
+```
+Input: "abcdefg"
+Number of parts: 10
+Output: ["a", "b", "c", "d", "e", "f", "g", "", "", ""]
+```
+
+**Normal cases:**
+
+* **String with an even number of characters:**
+```
+Input: "abcdefgh"
+Number of parts: 4
+Output: ["abcd", "efgh", "", ""]
+```
+
+* **String with an odd number of characters:**
+```
+Input: "abcdefghi"
+Number of parts: 3
+Output: ["abc", "def", "ghi"]
+```

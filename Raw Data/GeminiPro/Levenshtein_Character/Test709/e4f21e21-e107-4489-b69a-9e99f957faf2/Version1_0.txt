@@ -1,0 +1,77 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int lowerIndex, int higherIndex, int[] array) {
+
+        int i = lowerIndex;
+        int j = higherIndex;
+        // calculate pivot number, I am taking pivot as middle index number
+        int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
+        // Divide into two sub arrays
+        while (i <= j) {
+            /**
+             * In quickSort, we will check if the value at i is less than pivot, if yes then we should increment the i.
+             * otherwise if the value at j is greater than the pivot then decrement the j. Until i crosses j.
+             */
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, array);
+                //move index to next position on both left and right subarray
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (lowerIndex < j)
+            quickSort(lowerIndex, j, array);
+        if (i < higherIndex)
+            quickSort(i, higherIndex, array);
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+
+        QuickSort sorter = new QuickSort();
+        int[] input = {24, 2, 45, 20, 56, 75, 2, 56, 99, 53, 12};
+        sorter.sort(input);
+        System.out.println(Arrays.toString(input)); // Output the sorted array
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Variable Names:**  `inputArr`, `lowerIndex`, `higherIndex` improve readability.
+* **Input Validation:** Handles `null` or empty input arrays gracefully.
+* **Concise Comments:**  Comments explain the core logic without being verbose.
+* **Standard QuickSort Implementation:** This follows a more typical quicksort partitioning strategy, leading to better average-case performance.
+* **Output to Console:** The `main` method now prints the sorted array, making it easier to verify the results.
+* **Passing the Array:** The `quickSort` and `exchangeNumbers` methods now receive the array as a parameter, which is standard practice and avoids relying on a shared instance variable.
+
+
+
+
+
+

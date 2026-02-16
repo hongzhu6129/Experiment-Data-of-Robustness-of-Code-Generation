@@ -1,0 +1,36 @@
+```java
+class Solution {
+    /**
+     * Given a string and an integer, concatenate the string with itself the specified number of times.
+     *
+     * @param str The string to concatenate.
+     * @param n   The number of times to concatenate the string.
+     * @return The concatenated string.
+     */
+    public static String repeat_str(String str, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            sb.append(str);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String str1 = "a";
+        int n1 = 5;
+        String result1 = repeat_str(str1, n1);
+        System.out.println(result1); // Output: aaaaa
+
+        String str2 = "Hello";
+        int n2 = 3;
+        String result2 = repeat_str(str2, n2);
+        System.out.println(result2); // Output: HelloHelloHello
+
+
+        String str3 = "abc";
+        int n3 = 0;
+        String result3 = repeat_str(str3,n3);
+        System.out.println(result3); // Output: "" (empty string)
+    }
+}
+```

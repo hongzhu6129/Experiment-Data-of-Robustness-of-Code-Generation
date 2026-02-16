@@ -1,0 +1,61 @@
+```java
+import java.util.Scanner;
+
+public class AsciiValue {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a character: ");
+        String input = scanner.nextLine();
+
+        if (input.length() != 1) {
+            System.out.println("Please enter a single character.");
+            return; // Exit if the input is not a single character
+        }
+
+        char character = input.charAt(0);
+        int asciiValue = (int) character;
+
+        System.out.println("The ASCII value of '" + character + "' is: " + asciiValue);
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+| Input Character | Expected ASCII Value | Expected Output |
+|---|---|---|
+| 'A' | 65 | The ASCII value of 'A' is: 65 |
+| 'a' | 97 | The ASCII value of 'a' is: 97 |
+| '0' | 48 | The ASCII value of '0' is: 48 |
+| ' ' (space) | 32 | The ASCII value of ' ' is: 32 |
+| '!' | 33 | The ASCII value of '!' is: 33 |
+| '\t' (tab)  | 9 | The ASCII value of '	' is: 9 |
+| '\n' (newline) | 10 | The ASCII value of '
+' is: 10 |  *(Note: output might appear on a new line)*
+| '�' | 169 | The ASCII value of '�' is: 169 | // Extended ASCII character
+| '' (empty string) |  | Please enter a single character. | // Corner case: empty input
+| "ab" |  | Please enter a single character. | // Corner case: multiple characters
+| '�' | 233 | The ASCII value of '�' is: 233  | //  Handles characters outside basic ASCII (UTF-8 encoding assumed)
+
+
+
+**Explanation of Improvements and Corner Case Handling:**
+
+1. **Input Validation:**  The code now checks if the input is exactly one character long. If not (empty string or multiple characters), it prints an error message and exits gracefully.  This prevents `StringIndexOutOfBoundsException` or unexpected behavior.
+
+2. **Clearer Error Message:** The error message is more informative, guiding the user to provide correct input.
+
+3. **Scanner Closure:** The `scanner.close()` statement is added to release the resource. Although often omitted in small programs, it's good practice to close Scanners.
+
+4. **Expanded Test Cases:** The test cases now include whitespace characters (space, tab, newline), extended ASCII characters (like '�'), and the crucial corner cases of empty string and multi-character input.  Testing with these cases ensures the program is robust.
+
+
+**How to Run the Test Cases:**
+
+You can manually test these cases by running the program and entering each input.  For more automated testing, consider using a testing framework like JUnit.  JUnit allows you to write test methods that automatically check if the output of your program matches the expected output for each input. This makes testing much more efficient and reliable, especially for larger programs.

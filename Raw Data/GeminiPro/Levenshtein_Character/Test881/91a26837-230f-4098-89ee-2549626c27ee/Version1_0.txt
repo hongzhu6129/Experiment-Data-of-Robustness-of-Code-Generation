@@ -1,0 +1,39 @@
+```java
+import java.util.Map;
+
+public class SystemInfo {
+
+    public static void main(String[] args) {
+        // Get System Environment Variables
+        Map<String, String> env = System.getenv();
+
+        System.out.println("System Environment Variables:");
+        for (Map.Entry<String, String> entry : env.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+
+        System.out.println("\n"); // Add a newline for better readability
+
+        // Get System Properties
+        System.getProperties().list(System.out); 
+    }
+}
+```
+
+
+This code demonstrates how to retrieve and print both environment variables and system properties within a single `main` method:
+
+1. **Environment Variables:**  `System.getenv()` returns a `Map` where keys are environment variable names (like `PATH` or `JAVA_HOME`) and values are their corresponding values. The code iterates through this map and prints each key-value pair.
+
+
+2. **System Properties:** `System.getProperties()` gets all system properties (things like the Java version, operating system, etc.). The `.list(System.out)` method directly prints these properties to the standard output stream, making it a concise way to display them. 
+
+
+To run this code:
+
+1. Save it as a `.java` file (e.g., `SystemInfo.java`).
+2. Compile it using a Java compiler: `javac SystemInfo.java`
+3. Run the compiled class: `java SystemInfo`
+
+
+You'll see a list of your system's environment variables and properties printed to the console.

@@ -1,0 +1,72 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+While there aren't traditional "input" test cases for a simple output program like this, we can think of testing scenarios in a broader sense.  Here's how we might approach testing and validation:
+
+1. **Visual Inspection:**
+
+   * **Basic Test:**  Simply run the program and visually confirm the output matches the expected face. This is the primary test for this kind of program.  Does it look like a face?
+
+2. **Character Encoding:**
+
+   * **Encoding Test:** Ensure your console or output environment correctly supports the characters used (quotes, brackets, dashes, etc.).  If you see garbled characters, it's an encoding issue, not a program logic issue. You might need to adjust your environment's encoding settings.
+
+3. **Output Redirection (for automated testing - optional but good practice):**
+
+   * **Redirection Test:** Redirect the output to a file. This allows for programmatic comparison against an expected output string.  
+
+     ```bash
+     java FacePrinter > output.txt
+     ```
+
+     Then, you could use a diff tool or write a simple Java program to compare `output.txt` with a file containing the expected face string. This approach is useful if you were to modify the `printFace()` function later.
+
+4. **Boundary Conditions (Conceptual � thinking about extensibility):**
+
+   * **Size/Scaling (Hypothetical):** If we were to extend the program to allow for different face sizes, we'd test with very small and very large sizes to ensure the face scales correctly. This would require changes to the program, of course.  This is more of a future-proofing consideration.
+
+   * **Character Replacement (Hypothetical):**  If the program allowed customizing the characters used (e.g., using different symbols for the eyes or mouth),  test with various valid and invalid characters (e.g., very long Unicode characters or control characters) to see how the face renders. Again, this would require modifying the program first.
+
+
+
+
+**Example of a basic comparison test (using Java and file redirection):**
+
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class FaceTest {
+
+    public static void main(String[] args) throws IOException {
+        String expectedOutput = "  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+";
+        String actualOutput = Files.readString(Paths.get("output.txt")); // Assuming output.txt was created by redirecting FacePrinter output
+
+        if (expectedOutput.equals(actualOutput)) {
+            System.out.println("Test passed!");
+        } else {
+            System.out.println("Test failed!");
+            System.out.println("Expected:\n" + expectedOutput);
+            System.out.println("Actual:\n" + actualOutput);
+        }
+    }
+}
+```
+
+
+
+Even for a simple program, thinking through these testing aspects helps develop good habits and prepares you for more complex testing scenarios.  The key is to think about how you can validate that the program is producing exactly the output it should, under different conditions or with different potential future extensions.
+

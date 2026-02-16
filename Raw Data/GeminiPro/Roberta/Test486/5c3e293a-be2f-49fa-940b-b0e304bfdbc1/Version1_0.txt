@@ -1,0 +1,36 @@
+```java
+class Solution {
+    /**
+     * Images the middle character(s) of a string.
+     *
+     * @param str The input string.
+     * @return The middle character(s).
+     */
+    public static String middle(String str) {
+        if (str == null || str.isEmpty()) {
+            return ""; // Handle empty or null strings
+        }
+
+        int len = str.length();
+        int middleIndex = len / 2;
+
+        if (len % 2 == 0) { // Even length
+            return String.valueOf(str.charAt(middleIndex -1 )) + String.valueOf(str.charAt(middleIndex));
+
+        } else { // Odd length
+            return String.valueOf(str.charAt(middleIndex));
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(middle("hello")); // Prints "l"
+        System.out.println(middle("world")); // Prints "r"
+        System.out.println(middle("even")); // Prints "ve"
+        System.out.println(middle(""));     // Prints ""
+        System.out.println(middle(null));    // Prints ""
+
+
+    }
+}
+```
+

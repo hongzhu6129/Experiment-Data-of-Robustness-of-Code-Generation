@@ -1,0 +1,46 @@
+```java
+import java.util.TreeSet;
+
+public class TreeElementsLessThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int givenElement = 35;
+
+        TreeSet<Integer> lessThanOrEqualSet = (TreeSet<Integer>) treeSet.headSet(givenElement, true); 
+
+        System.out.println("Elements less than or equal to " + givenElement + ": " + lessThanOrEqualSet);
+
+
+        givenElement = 20;
+        lessThanOrEqualSet = (TreeSet<Integer>) treeSet.headSet(givenElement, true);
+        System.out.println("Elements less than or equal to " + givenElement + ": " + lessThanOrEqualSet);
+
+
+         givenElement = 60; // Example with an element greater than all in the set
+        lessThanOrEqualSet = (TreeSet<Integer>) treeSet.headSet(givenElement, true);
+        System.out.println("Elements less than or equal to " + givenElement + ": " + lessThanOrEqualSet);
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **TreeSet:** We use a `TreeSet` because it automatically stores elements in sorted order, which is essential for efficiently finding elements less than or equal to a given value.
+
+2. **headSet():** The `headSet(E toElement, boolean inclusive)` method is the key.  It returns a view of the portion of the `TreeSet` whose elements are strictly less than `toElement` (if `inclusive` is false) or less than or equal to `toElement` (if `inclusive` is true).  We use `true` here to get elements less than *or equal to*.
+
+3. **Casting:**  `headSet()` returns a `SortedSet`, so we cast it back to a `TreeSet` for clearer type handling.  This is safe because the underlying implementation returned by `headSet` on a `TreeSet` is indeed a `TreeSet`.
+
+4. **Example Usage:** The `main` method demonstrates how to create a `TreeSet`, add elements, and then use `headSet()` to get the desired subset.  It shows cases where the `givenElement` is within the set, equal to an element in the set, and greater than all elements in the set.

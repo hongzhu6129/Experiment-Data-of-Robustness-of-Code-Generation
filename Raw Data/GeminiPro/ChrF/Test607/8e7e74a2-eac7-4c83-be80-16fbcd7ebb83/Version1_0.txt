@@ -1,0 +1,33 @@
+```java
+import java.util.HashSet;
+
+public class CloneHashSet {
+
+    public static void main(String[] args) {
+        // Create the original HashSet
+        HashSet<String> originalHashSet = new HashSet<>();
+        originalHashSet.add("apple");
+        originalHashSet.add("banana");
+        originalHashSet.add("orange");
+
+        // Clone the HashSet using the constructor
+        HashSet<String> clonedHashSet = new HashSet<>(originalHashSet);
+
+
+        // Print both HashSets to verify the cloning
+        System.out.println("Original HashSet: " + originalHashSet);
+        System.out.println("Cloned HashSet: " + clonedHashSet);
+
+
+        //Demonstrate that changes to the clone don't affect the original (and vice versa)
+        clonedHashSet.add("grape");
+        originalHashSet.add("mango");
+
+        System.out.println("\nAfter modifications:");
+        System.out.println("Original HashSet: " + originalHashSet);
+        System.out.println("Cloned HashSet: " + clonedHashSet);
+
+
+    }
+}
+```

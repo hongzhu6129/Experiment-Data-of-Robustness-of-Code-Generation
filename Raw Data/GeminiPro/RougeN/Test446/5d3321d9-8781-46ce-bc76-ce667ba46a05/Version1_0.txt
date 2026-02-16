@@ -1,0 +1,67 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
+public class WeeklyDates {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the current week number 
+        int currentWeekNumber = currentDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+
+        // Loop through all weeks of the year (adjust 53 to the actual number of weeks if needed)
+        for (int week = 1; week <= 53; week++) {
+            LocalDate firstDayOfWeek = currentDate.with(WeekFields.of(Locale.getDefault()).weekOfYear(), week)
+                    .with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)); // Adjust for your first day of the week (Sunday)
+
+            LocalDate lastDayOfWeek = firstDayOfWeek.plusDays(6); // Add 6 days to get the last day of the week
+
+
+            // Handle the case where the last day of the week might be in the next year
+            if (firstDayOfWeek.getYear() != lastDayOfWeek.getYear()) {
+                 if(week < currentWeekNumber){
+                    System.out.println("Week " + week + ": " + firstDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE) + " - " + lastDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE));
+                 } else if (week == currentWeekNumber) {
+                     if(lastDayOfWeek.isAfter(currentDate)){
+                         lastDayOfWeek = currentDate;
+                     }
+                     System.out.println("Week " + week + ": " + firstDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE) + " - " + lastDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE));
+
+
+                 } else if(week > currentWeekNumber){
+                     System.out.println("Week " + week + ": " + firstDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE) + " - " + lastDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE));
+                 }
+
+
+            }
+            // Print the first and last day of the week
+            else if (week <= currentWeekNumber) {
+
+
+                if (week < currentWeekNumber) {
+
+                    System.out.println("Week " + week + ": " + firstDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE) + " - " + lastDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE));
+
+                } else if(week == currentWeekNumber) {
+
+                    if (lastDayOfWeek.isAfter(currentDate)) {
+
+                        lastDayOfWeek = currentDate;
+                    }
+
+                    System.out.println("Week " + week + ": " + firstDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE) + " - " + lastDayOfWeek.format(java.time.format.DateTimeFormatter.ISO_DATE));
+
+                }
+            }
+
+
+
+
+        }
+    }
+}
+```

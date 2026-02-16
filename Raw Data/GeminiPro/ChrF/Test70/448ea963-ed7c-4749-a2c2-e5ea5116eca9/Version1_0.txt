@@ -1,0 +1,62 @@
+```java
+public class LargestOfThree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {1, 5, 9, 2, 6, 10};
+        findLargestOfThree(arr1);  // Output: 10
+
+        int[] arr2 = {12, 2, 8, 15, 4, 6};
+        findLargestOfThree(arr2); // Output: 15
+
+
+        int[] arr3 = {1, 2}; // even length array with only two elements
+        findLargestOfThree(arr3); //Output: 2
+
+
+        int[] emptyArray = {};
+         findLargestOfThree(emptyArray); // Output: Array is empty
+
+        int[] oddLengthArray = {1, 2, 3}; //Handles odd length array gracefully
+        findLargestOfThree(oddLengthArray); // Output: Array must have an even length
+        
+        int[] nullArray = null;  //Handles null array gracefully
+        findLargestOfThree(nullArray); // Output: Array cannot be null
+         
+    }
+
+    public static void findLargestOfThree(int[] arr) {
+        if (arr == null) {
+            System.out.println("Array cannot be null");
+            return;
+        }
+
+        int n = arr.length;
+        if (n == 0) {
+            System.out.println("Array is empty");
+            return;
+        }
+
+        if (n % 2 != 0) {
+            System.out.println("Array must have an even length");
+            return;
+        }
+
+        int first = arr[0];
+        int middle = arr[n / 2 -1]; // Middle left element if even length
+        int last = arr[n - 1];
+
+        int largest = first;
+
+        if (middle > largest) {
+            largest = middle;
+        }
+
+        if (last > largest) {
+            largest = last;
+        }
+
+        System.out.println(largest);
+    }
+}
+```

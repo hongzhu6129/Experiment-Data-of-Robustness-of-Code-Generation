@@ -1,0 +1,37 @@
+```java
+import java.util.Arrays;
+
+public class StringPermutation {
+
+    public static void main(String[] args) {
+        String string1 = "abc";
+        String string2 = "bca";
+        String string3 = "abd";
+
+        System.out.println("\"" + string1 + "\" is a permutation of \"" + string2 + "\": " + stringPermutation(string1, string2)); // Expected: true
+        System.out.println("\"" + string1 + "\" is a permutation of \"" + string3 + "\": " + stringPermutation(string1, string3)); // Expected: false
+
+
+        System.out.println("\"" +  "" + "\" is a permutation of \"" + "" + "\": " + stringPermutation("", "")); // Expected: true
+        System.out.println("\"" + "a" + "\" is a permutation of \"" + "a" + "\": " + stringPermutation("a", "a")); // Expected: true
+        System.out.println("\"" + "listen" + "\" is a permutation of \"" + "silent" + "\": " + stringPermutation("listen", "silent")); // Expected: true
+        System.out.println("\"" + "hello" + "\" is a permutation of \"" + "world" + "\": " + stringPermutation("hello", "world")); // Expected: false
+
+
+    }
+
+    public static boolean stringPermutation(String str1, String str2) {
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        return Arrays.equals(charArray1, charArray2);
+    }
+}
+```

@@ -1,0 +1,79 @@
+```java
+public class AddWithoutArithmetic {
+
+    public static void main(String[] args) {
+        int num1 = 10;  // Example numbers
+        int num2 = 5;
+
+        System.out.println("Adding " + num1 + " and " + num2 + " without arithmetic operators:");
+
+        // Using bitwise operators to simulate addition
+        while (num2 != 0) {
+            int carry = num1 & num2;  // Calculate the carry using AND
+            num1 = num1 ^ num2;       // Calculate the sum without carry using XOR
+            num2 = carry << 1;      // Shift the carry to the left for the next iteration
+        }
+
+        System.out.println("Result: " + num1);
+
+
+        // Example using different numbers (including negatives)
+        num1 = -5;
+        num2 = 3;
+
+        System.out.println("\nAdding " + num1 + " and " + num2 + " without arithmetic operators:");
+
+         while (num2 != 0) {
+            int carry = num1 & num2; 
+            num1 = num1 ^ num2;      
+            num2 = carry << 1;     
+        }
+
+        System.out.println("Result: " + num1);
+
+
+
+        // Example explaining the logic with smaller numbers:
+        int a = 2; // Binary: 10
+        int b = 3; // Binary: 11
+
+        System.out.println("\nStep-by-step example with 2 and 3:");
+
+        System.out.println("Initial values: a = " + a + ", b = " + b);
+
+        int carry = a & b;  // carry = 10 & 11 = 10 (binary) = 2 (decimal)
+        System.out.println("Carry (a & b): " + carry);
+
+        a = a ^ b;        // a = 10 ^ 11 = 01 (binary) = 1 (decimal)
+        System.out.println("Sum without carry (a ^ b): " + a);
+
+        b = carry << 1;   // b = 10 << 1 = 100 (binary) = 4 (decimal)
+        System.out.println("Shifted carry (carry << 1): " + b);
+
+        System.out.println("Now a = " + a + ", b = " + b);
+
+        carry = a & b;  // carry = 01 & 100 = 0 (decimal)
+        System.out.println("Carry (a & b): " + carry);
+
+        a = a ^ b;        // a = 01 ^ 100 = 101 (binary) = 5 (decimal)
+        System.out.println("Sum without carry (a ^ b): " + a);
+
+        b = carry << 1;   // b = 0 << 1 = 0 (decimal)
+        System.out.println("Shifted carry (carry << 1): " + b); // Loop terminates here as b becomes 0
+
+
+        System.out.println("Final result: " + a);
+
+
+
+    }
+}
+```
+
+
+This improved version includes:
+
+1. **More Examples:** Demonstrates addition with different numbers, including negative numbers, to showcase the generality of the method.
+2. **Step-by-Step Explanation:**  Breaks down the logic with a simple example (2 + 3), showing the binary operations and their decimal equivalents at each step. This significantly improves the educational value.
+3. **Clearer Comments:**  Provides comments throughout the code to explain the purpose of each bitwise operation.
+4. **Output Formatting:**  Uses `println` statements to structure the output, making it easier to follow the examples and explanations.

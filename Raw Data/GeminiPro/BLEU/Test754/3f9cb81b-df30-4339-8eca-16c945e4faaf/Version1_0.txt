@@ -1,0 +1,34 @@
+```java
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+public class NumberFormatter {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+
+         number = -12345678;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+    }
+
+    public static String validate(int number) {
+        // Using NumberFormat for locale-sensitive formatting
+        NumberFormat formatter = NumberFormat.getInstance();
+        return formatter.format(number);
+
+
+    }
+}
+```

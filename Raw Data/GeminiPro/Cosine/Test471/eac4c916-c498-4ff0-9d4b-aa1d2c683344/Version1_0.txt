@@ -1,0 +1,26 @@
+```java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class TodaysDateMidnight {
+
+    public static void main(String[] args) {
+        // Get today's date.
+        LocalDate today = LocalDate.now();
+
+        // Combine today's date with midnight time.
+        LocalDateTime midnightToday = LocalDateTime.of(today, LocalTime.MIDNIGHT);
+
+        // Print the result.
+        System.out.println("Today's date at midnight: " + midnightToday);
+
+
+        // Alternative, slightly more concise approach:
+        LocalDateTime alternativeMidnight = LocalDate.now().atStartOfDay();
+        System.out.println("Today's date at midnight (alternative): " + alternativeMidnight);
+
+
+    }
+}
+```

@@ -1,0 +1,68 @@
+```java
+import java.util.LinkedList;
+
+public class AppendToLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add some initial elements
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+
+        System.out.println("Initial LinkedList: " + languages);
+
+        // Element to append
+        String newLanguage = "JavaScript";
+
+        // Append the element using add() - it adds to the end by default
+        languages.add(newLanguage);
+
+
+        System.out.println("LinkedList after appending " + newLanguage + ": " + languages);
+
+
+
+        // Demonstrating addLast() -  explicitly adds to the end (same as add())
+        String anotherLanguage = "Kotlin";
+        languages.addLast(anotherLanguage); // Equivalent to languages.add(anotherLanguage)
+
+        System.out.println("LinkedList after appending " + anotherLanguage + ": " + languages);
+
+
+        // Example with integers:
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        int newNumber = 40;
+        numbers.add(newNumber); // Append to the end
+
+        System.out.println("LinkedList of numbers after appending " + newNumber + ": " + numbers);
+
+
+
+         // Appending a null element (allowed in LinkedList):
+        languages.add(null); // null is a valid element
+        System.out.println("LinkedList after appending null: " + languages); 
+
+
+
+    }
+}
+```
+
+
+This code demonstrates appending elements to a LinkedList in Java within the `main` method.  It covers:
+
+1. **Creating a LinkedList:** Shows how to initialize a LinkedList of Strings and Integers.
+2. **Appending with `add()`:**  The primary way to append � it adds the element to the end of the list.
+3. **Appending with `addLast()`:** Demonstrates `addLast()`, which is functionally equivalent to `add()` in this context.
+4. **Examples with different data types:** Includes examples with both String and Integer LinkedLists.
+5. **Appending `null`:**  Shows that `null` can be a valid element in a LinkedList.
+
+
+This comprehensive example within a single `main` method provides a clear and concise educational demonstration of how to append to a LinkedList in Java.

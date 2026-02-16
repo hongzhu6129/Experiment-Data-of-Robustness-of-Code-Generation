@@ -1,0 +1,46 @@
+```java
+public class MixNumbers {
+
+    public static void main(String[] args) {
+        int a = 10; // Example numbers
+        int b = 5;
+
+        System.out.println("Original numbers: a = " + a + ", b = " + b);
+
+        // Mixing without arithmetic operators
+        while (b != 0) {
+            int carry = a & b;  // Calculate the common set bits (like a carry in addition)
+            a = a ^ b;          // XOR gives the sum without carry (like bitwise addition without carry)
+            b = carry << 1;     // Shift the carry to the left (like carrying over in addition)
+        }
+
+        System.out.println("Mixed numbers: a = " + a + ", b = " + b); 
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Initialization:**  We start with two example numbers, `a` and `b`.
+
+2. **The Mixing Loop:** The `while` loop continues as long as `b` is not zero.  Inside the loop, we perform the following steps:
+   - **Carry:** `carry = a & b;` This calculates the bitwise AND of `a` and `b`.  The result (`carry`) will have a '1' in any bit position where *both* `a` and `b` have a '1'.  This is analogous to calculating the carry bits in binary addition.
+   - **Sum without Carry:** `a = a ^ b;` The bitwise XOR of `a` and `b` gives us the sum of the two numbers *without* considering the carry.  XOR gives a '1' if either `a` or `b` has a '1' in that position, but not both.
+   - **Shift Carry:** `b = carry << 1;` The carry is shifted one bit to the left.  This is like carrying over the carry to the next higher bit position in binary addition.
+
+3. **Result:** After the loop finishes, the value of `a` will hold the "mixed" result (which is actually the sum of the original `a` and `b`), and `b` will be zero.
+
+**Example:**
+
+If `a = 10` (binary 1010) and `b = 5` (binary 0101):
+
+- **Iteration 1:**
+  - `carry = 0000`
+  - `a = 1111` (15)
+  - `b = 0000` (0)
+
+The loop terminates because `b` is now 0. The final value of `a` is 15, which is the sum of the original `a` (10) and `b` (5).
+
+
+This method effectively mimics binary addition using only bitwise operators.

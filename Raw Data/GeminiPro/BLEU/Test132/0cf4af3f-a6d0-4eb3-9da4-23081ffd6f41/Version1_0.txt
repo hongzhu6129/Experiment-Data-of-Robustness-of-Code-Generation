@@ -1,0 +1,26 @@
+```java
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = calculatePi(5); // Up to 1/11
+        double piApproximation2 = calculatePi(6); // Up to 1/13
+
+        System.out.println("Approximation with 5 terms: " + piApproximation1);
+        System.out.println("Approximation with 6 terms: " + piApproximation2);
+    }
+
+    public static double calculatePi(int numTerms) {
+        double sum = 0.0;
+        for (int i = 0; i < numTerms; i++) {
+            double denominator = 2 * i + 1.0;
+            double term = 1.0 / denominator;
+            if (i % 2 == 1) { // Odd terms are subtracted
+                term = -term;
+            }
+            sum += term;
+
+        }
+        return 4.0 * sum;
+    }
+}
+```

@@ -1,0 +1,68 @@
+```java
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Variable to track the length of the new array
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i]; // Move elements that are not equal to val to the beginning of the array
+                k++;
+            }
+        }
+
+        return k; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 6, 7, 6, 2};
+        int val = 6;
+
+        System.out.print("Original array: [");
+        for (int i = 0; i < nums.length; i++) {
+            System.out.print(nums[i]);
+            if (i < nums.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+        int newLength = removeElement(nums, val);
+
+        System.out.println("The length of the new array is: " + newLength);
+
+
+        System.out.print("New array: ["); // Print the updated array (up to the new length)
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i]);
+            if (i < newLength - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeElement(int[] nums, int val)` Method:**
+   - Takes an integer array `nums` and the value `val` to be removed as input.
+   - Initializes `k` to 0. This variable will keep track of the length of the new array (the array without the occurrences of `val`).
+   - Iterates through the input array `nums`.
+   - Inside the loop, it checks if the current element `nums[i]` is *not* equal to `val`.
+   - If it's not equal, it means we want to keep this element.  So, we copy `nums[i]` to `nums[k]`.  This effectively moves the elements we want to keep to the beginning of the array.
+   - Then, we increment `k` to update the length of the new array.
+   - Finally, the method returns `k`, the new length.
+
+2. **`main(String[] args)` Method:**
+   - Creates a sample array `nums`.
+   - Sets the value to be removed (`val`).
+   - Prints the original array.
+   - Calls the `removeElement()` method to modify the array and get the new length.
+   - Prints the new length.
+   - Prints the updated array (only up to the new length `newLength` because the elements beyond `newLength` are no longer relevant).
+
+
+**Key Idea:**  The algorithm doesn't actually delete elements from the array (which is expensive in Java). Instead, it overwrites the elements that are not equal to `val` to the beginning of the array. This simulates removing the elements while maintaining the correct order of the remaining elements.  The returned `k` value tells you how many elements are now considered to be part of the "new" array.

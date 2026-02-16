@@ -1,0 +1,42 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Position to insert (index starts from 0)
+        int insertionPosition = 1; 
+
+        // Check for valid insertion position
+        if (insertionPosition >= 0 && insertionPosition <= linkedList.size()) {
+            linkedList.add(insertionPosition, elementToInsert);
+            System.out.println("Linked List after insertion: " + linkedList); 
+        } else {
+            System.out.println("Invalid insertion position.");
+        }
+
+
+         // Example with an invalid position:
+        int invalidPosition = 5;
+        if (invalidPosition >= 0 && invalidPosition <= linkedList.size()) {
+            linkedList.add(invalidPosition, "Mango");
+             System.out.println("Linked List after insertion: " + linkedList); 
+        } else {
+            System.out.println("Invalid insertion position.");
+        }
+
+
+    }
+}
+```

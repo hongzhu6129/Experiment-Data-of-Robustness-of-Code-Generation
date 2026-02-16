@@ -1,0 +1,65 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadPlainTextFile {
+
+    public static void main(String[] args) {
+        // Replace "your_file_path.txt" with the actual path to your text file.
+        String filePath = "your_file_path.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print each line of the file
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedReader`: Used for efficient reading of characters from a character-input stream.
+   - `java.io.FileReader`: Used to read character files.
+   - `java.io.IOException`: Handles potential input/output errors.
+
+2. **Specify file path:**
+   - Replace `"your_file_path.txt"` with the actual path to your text file.  You can use an absolute path (e.g., "C:\\Users\\YourName\\Documents\\myfile.txt") or a relative path (e.g., "data\\myfile.txt" if the file is in a "data" folder in your project directory).
+
+3. **Try-with-resources:**
+   - The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` and `FileReader` are automatically closed, even if an exception occurs. This is important for resource management.
+
+4. **Create BufferedReader:**
+   - `new FileReader(filePath)` creates a `FileReader` to read the specified file.
+   - `new BufferedReader(...)` wraps the `FileReader` in a `BufferedReader` for more efficient reading.
+
+5. **Read lines:**
+   - `reader.readLine()` reads a single line of text from the file and returns it as a `String`. It returns `null` when the end of the file is reached.
+   - The `while` loop continues reading lines until `readLine()` returns `null`.
+
+6. **Print lines:**
+   - `System.out.println(line);` prints the current line read from the file to the console.
+
+7. **Catch exceptions:**
+   - The `catch (IOException e)` block handles potential `IOExceptions` that might occur during file reading (e.g., file not found, permissions issues).  It prints an error message to the console.
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `ReadPlainTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac ReadPlainTextFile.java 
+   ```
+3. **Run:** After successful compilation, run the program:
+   ```bash
+   java ReadPlainTextFile
+   ```
+
+Make sure you have the correct file path in your code, or the program will throw a `FileNotFoundException`.

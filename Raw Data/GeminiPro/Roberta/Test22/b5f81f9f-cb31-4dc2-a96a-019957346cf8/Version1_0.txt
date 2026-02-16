@@ -1,0 +1,94 @@
+```java
+import java.util.Scanner;
+
+public class OctalToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = input.nextLine();
+
+        try {
+            // Octal to Decimal
+            int decimal = 0;
+            int power = 0;
+            for (int i = octalString.length() - 1; i >= 0; i--) {
+                int digit = octalString.charAt(i) - '0';
+                if (digit < 0 || digit > 7) {
+                    System.out.println("Invalid octal number.");
+                    return;
+                }
+                decimal += digit * Math.pow(8, power++);
+            }
+
+
+            // Decimal to Hexadecimal
+            String hexString = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit;
+                if (remainder < 10) {
+                    hexDigit = (char) (remainder + '0');
+                } else {
+                    hexDigit = (char) (remainder - 10 + 'A');
+                }
+                hexString = hexDigit + hexString;
+                decimal /= 16;
+
+            }
+          if(hexString.equals("")) { // Handle the case where input is 0
+              System.out.println("Hexadecimal equivalent: 0");
+          } else {
+              System.out.println("Hexadecimal equivalent: " + hexString);
+          }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid octal number.");
+        }
+        input.close();
+
+    }
+}
+
+```
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Number:**
+   - Input: 123
+   - Expected Output: Hexadecimal equivalent: 53
+
+2. **Octal Number with Leading Zeroes:**
+   - Input: 000123
+   - Expected Output: Hexadecimal equivalent: 53
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: Hexadecimal equivalent: 0
+
+
+4. **Large Octal Number:**
+   - Input: 7777777
+   - Expected Output: Hexadecimal equivalent: FFFFFF
+
+5. **Invalid Octal Number (Containing digits greater than 7):**
+   - Input: 1283
+   - Expected Output: Invalid octal number.
+
+6. **Invalid Octal Number (Non-numeric characters):**
+   - Input: 12A3
+   - Expected Output: Invalid octal number.
+
+7. **Empty Input:**
+   - Input: 
+   - Expected Output: Invalid input. Please enter a valid octal number. (This depends on how the scanner handles empty input, it might throw an exception or read the next line).
+
+8. **Negative Octal Number (Technically not standard octal, but test for robustness):**
+    - Input: -123 
+    - Expected Output: Invalid octal number.
+
+
+These test cases cover various scenarios, including valid octal inputs, invalid inputs (containing invalid digits, non-numeric characters, negative numbers) zero, large numbers, and leading zeroes, helping to ensure that the program functions correctly under different conditions.  Be sure to run your program with each of these test cases to verify its behavior.

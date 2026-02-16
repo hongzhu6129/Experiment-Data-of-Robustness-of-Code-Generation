@@ -1,0 +1,45 @@
+```java
+import java.util.Arrays;
+
+public class KthSmallestLargest {
+
+    public static void main(String[] args) {
+        int[] arr = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr.length);
+            return;
+        }
+
+        // Sort the array to easily find kth smallest and largest
+        Arrays.sort(arr);
+
+        // kth smallest element
+        int kthSmallest = arr[k - 1];
+
+        // kth largest element
+        int kthLargest = arr[arr.length - k];
+
+        System.out.println("Kth smallest element (" + k + "th): " + kthSmallest);
+        System.out.println("Kth largest element (" + k + "th): " + kthLargest);
+
+
+        // Example usage with different array and k
+        int[] arr2 = {1, 5, 2, 8, 3, 9, 4, 7, 6};
+        int k2 = 4;
+
+        if (k2 <= 0 || k2 > arr2.length) {
+            System.out.println("Invalid value of k. k should be between 1 and " + arr2.length);
+            return;
+        }
+
+        Arrays.sort(arr2);
+        System.out.println("Kth smallest element (" + k2 + "th): " + arr2[k2 - 1]);
+        System.out.println("Kth largest element (" + k2 + "th): " + arr2[arr2.length - k2]);
+
+
+    }
+}
+```
+

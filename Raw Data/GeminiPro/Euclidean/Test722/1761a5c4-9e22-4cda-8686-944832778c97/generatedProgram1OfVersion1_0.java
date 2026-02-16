@@ -1,0 +1,68 @@
+import java.util.Arrays;
+
+class PancakeSort {
+
+    public String toString() {
+        return "PancakeSort{}"; // Not used in the algorithm, but required by the prompt.
+    }
+
+    public void flip(int k, int[] arr) {
+        for (int i = 0; i < k / 2; i++) {
+            int temp = arr[i];
+            arr[i] = arr[k - 1 - i];
+            arr[k - 1 - i] = temp;
+        }
+    }
+
+    public int[] minmax(int n, int[] arr) {
+        int minIndex = 0;
+        int maxIndex = 0;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return new int[]{minIndex, maxIndex}; // Return both min and max index
+    }
+
+
+    public void sort(int n, int[] arr) {
+        for (int curr_size = n; curr_size > 1; --curr_size) {
+            int mi = findMax(arr, curr_size);
+
+            if (mi != curr_size - 1) {
+                flip(mi + 1, arr);
+
+                flip(curr_size, arr);
+            }
+        }
+    }
+
+    private int findMax(int[] arr, int n) {
+        int mi = 0;
+        for (int i = 0; i < n; i++)
+            if (arr[i] > arr[mi])
+                mi = i;
+        return mi;
+    }
+
+    public static void main(String[] args) {
+        PancakeSort ps = new PancakeSort();
+        int[] arr = {23, 10, 20, 11, 12, 6, 7};
+        int n = arr.length;
+
+        ps.sort(n, arr);
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+         arr = new int[]{1, 5, 2, 8, 3};
+         n = arr.length;
+
+        ps.sort(n, arr);
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+    }
+}

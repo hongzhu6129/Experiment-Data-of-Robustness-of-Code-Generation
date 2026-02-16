@@ -1,0 +1,92 @@
+```java
+public class BeadSort {
+
+    public static void main(String[] args) {
+        int[] unsortedArray = {5, 2, 8, 1, 9, 4, 7, 3, 6};
+        System.out.println("Unsorted Array:");
+        display1D(unsortedArray);
+
+        int[] sortedArray = beadSort(unsortedArray);
+        System.out.println("\nSorted Array:");
+        display1D(sortedArray);
+    }
+
+
+    public static int[] beadSort(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return new int[0]; // Return empty array if input is null or empty
+        }
+
+        int max = arr[0];
+        for (int num : arr) {
+            if (num < 0) {
+                throw new IllegalArgumentException("Bead Sort only works with non-negative integers.");
+            }
+            if (num > max) {
+                max = num;
+            }
+        }
+
+        char[][] grid = new char[arr.length][max];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i]; j++) {
+                grid[i][j] = '*'; // Represent beads
+            }
+        }
+
+        // Simulate beads falling
+        for (int j = 0; j < max; j++) {
+            int beadsCount = 0;
+            for (int i = 0; i < arr.length; i++) {
+                if (grid[i][j] == '*') {
+                    beadsCount++;
+                    grid[i][j] = ' '; // Remove bead
+                }
+            }
+            for (int i = arr.length - beadsCount; i < arr.length; i++) {
+                 grid[i][j] = '*'; // Place fallen bead
+
+            }
+        }
+        
+        
+
+        int[] sorted = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            int count = 0;
+            for (int j = 0; j < max; j++) {
+                if (grid[i][j] == '*') {
+                    count++;
+                }
+            }
+            sorted[i] = count;
+        }
+        return sorted;
+    }
+
+
+
+    public static void display1D(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    public static void display1D(char[] arr) {
+        for (char c : arr) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+    }
+
+    public static void display2D(char[][] grid) {
+        for (char[] row : grid) {
+            display1D(row);
+        }
+        System.out.println();
+    }
+}
+
+
+```

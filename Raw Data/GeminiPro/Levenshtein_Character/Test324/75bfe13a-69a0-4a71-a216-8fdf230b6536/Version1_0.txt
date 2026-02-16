@@ -1,0 +1,50 @@
+```java
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+        String str1 = "Hello"; // First string
+        String str2 = " World!"; // Second string
+
+        // Method 1: Using the + operator
+        String concatenatedString1 = str1 + str2;
+        System.out.println("Concatenated string (using +): " + concatenatedString1);
+
+        // Method 2: Using the concat() method
+        String concatenatedString2 = str1.concat(str2);
+        System.out.println("Concatenated string (using concat()): " + concatenatedString2);
+
+
+        // Example with user-provided strings (if arguments are provided)
+        if (args.length == 2) {
+            String arg1 = args[0];
+            String arg2 = args[1];
+            String concatenatedArgs = arg1.concat(arg2);
+            System.out.println("Concatenated arguments: " + concatenatedArgs);
+        }
+
+
+    }
+}
+```
+
+
+This code demonstrates two primary ways to concatenate strings in Java:
+
+1. **Using the `+` operator:** This is the simplest and most common way.
+
+2. **Using the `concat()` method:**  This is an alternative method provided by the `String` class.  It's functionally equivalent to `+` in most cases.
+
+The code also includes a section that handles command-line arguments.  If you run the program with two arguments, it will concatenate those and print the result.  This demonstrates how to make your string concatenation more dynamic.  For example, to run it from the command line with arguments, you would do:
+
+```bash
+java StringConcatenation "First String" " Second String"
+```
+
+
+This would output:
+
+```
+Concatenated string (using +): Hello World!
+Concatenated string (using concat()): Hello World!
+Concatenated arguments: First String Second String
+```

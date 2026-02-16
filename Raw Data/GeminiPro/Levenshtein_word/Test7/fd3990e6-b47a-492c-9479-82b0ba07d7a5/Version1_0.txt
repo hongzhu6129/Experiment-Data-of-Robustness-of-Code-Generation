@@ -1,0 +1,81 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                    |
+| --------- | ------- | ------- | ------- | --------------- | ---------------------------------------- |
+| 1        | 10      | 20      | 30      | 20.0           | General case                             |
+| 2        | 0       | 0       | 0       | 0.0            | All zeros                               |
+| 3        | -10     | 20      | 30      | 13.333333333333334 | Negative number                      |
+| 4        | 10.5    | 20.5    | 30      | 20.333333333333332 | Decimal numbers                        |
+| 5        | Integer.MAX_VALUE | Integer.MAX_VALUE  | Integer.MAX_VALUE   | Overflow (Positive Infinity)           | Integer overflow   |
+| 6        | Integer.MIN_VALUE | Integer.MIN_VALUE  | Integer.MIN_VALUE | Underflow (Negative Infinity if using `int`, large negative if using `double`) | Integer underflow  |
+| 7        | Double.MAX_VALUE | Double.MAX_VALUE  | Double.MAX_VALUE | Positive Infinity | Double overflow                           |
+| 8        | Double.MIN_VALUE | Double.MIN_VALUE  | Double.MIN_VALUE | Double.MIN_VALUE  | Very small doubles (not zero)  |
+
+
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can manually input these values into the console when prompted by the program.
+2. **Automated Testing (Recommended):**  For more robust testing, especially with corner cases, use a testing framework like JUnit. Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverageGeneralCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverageZeros() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+    @Test
+    void calculateAverageNegative() {
+        assertEquals(13.333333333333334, AverageCalculator.calculateAverage(-10, 20, 30));
+    }
+   // Add more test cases here, including overflow and underflow using Assertions.assertThrows() for exceptions
+
+    @Test
+    void calculateAverageOverflow(){
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+
+}
+```
+
+By using a testing framework, you can easily automate the execution of your test cases and verify that your program behaves as expected under different conditions. This helps to catch potential errors early in the development process. Remember to add JUnit to your project dependencies if you're using an IDE.

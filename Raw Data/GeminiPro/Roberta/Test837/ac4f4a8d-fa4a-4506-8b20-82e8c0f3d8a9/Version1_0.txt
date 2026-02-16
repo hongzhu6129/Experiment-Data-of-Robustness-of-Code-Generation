@@ -1,0 +1,73 @@
+```java
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class DisplayWordsDescending {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java DisplayWordsDescending <filename>");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+        ArrayList<String> words = new ArrayList<>();
+
+        try (Scanner input = new Scanner(new File(filename))) {
+            while (input.hasNext()) {
+                String word = input.next();
+                if (Character.isLetter(word.charAt(0))) { // Check if the word starts with a letter
+                    words.add(word);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filename);
+            System.exit(2);
+        }
+
+
+        Collections.sort(words, Collections.reverseOrder()); // Sort in descending order
+
+        for (String word : words) {
+            display(word);
+        }
+
+    }
+
+    public static void display(String word) {
+        System.out.println(word);
+    }
+
+
+}
+```
+
+
+Key improvements in this revised code:
+
+1. **Error Handling:** Includes checks for the correct number of command-line arguments and handles `FileNotFoundException` gracefully.
+2. **Filtering for words starting with a letter:** Uses `Character.isLetter()` to ensure only words that begin with a letter are added to the list.
+3. **Clearer Variable Names:**  Uses more descriptive variable names like `filename` and `words`.
+4. **Uses `ArrayList`:**  Uses `ArrayList` for dynamic sizing, which is more efficient for an unknown number of words.
+5. **`Collections.reverseOrder()`:**  Uses the built-in `Collections.reverseOrder()` comparator for simpler and more efficient descending sorting.
+6. **Adheres to method signature requirements:** Uses only the specified `main` and `display` methods.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DisplayWordsDescending.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac DisplayWordsDescending.java
+   ```
+3. **Run:** Execute the compiled code with the text file as a command-line argument:
+   ```bash
+   java DisplayWordsDescending input.txt 
+   ```
+   Replace `input.txt` with the actual name of your text file.
+
+
+This improved version is more robust, efficient, and follows best practices for Java programming.

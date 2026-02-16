@@ -1,0 +1,62 @@
+```java
+public class RoundUpIntegerDivision {
+
+    public static void main(String[] args) {
+
+        int numerator = 17;
+        int denominator = 5;
+
+        // Method 1: Using Math.ceil() (Cast to double for accurate results)
+        int result1 = (int) Math.ceil((double) numerator / denominator);
+        System.out.println("Result using Math.ceil(): " + result1);
+
+        // Method 2:  Integer arithmetic (adjusting the numerator before division)
+        int result2 = (numerator + denominator - 1) / denominator;
+        System.out.println("Result using integer arithmetic: " + result2);
+
+
+        //More examples
+        System.out.println("7/3 rounded up: " + roundUp(7, 3));
+        System.out.println("10/2 rounded up: " + roundUp(10,2));
+        System.out.println("1/5 rounded up: " + roundUp(1,5));
+
+    }
+
+    //Helper function for clarity (Not necessary, but good practice for reusable logic)
+    public static int roundUp(int numerator, int denominator) {
+        return (numerator + denominator - 1) / denominator;
+    }
+}
+```
+
+
+**Explanation:**
+
+**Method 1: `Math.ceil()`**
+
+* This method converts the division result to a `double` before using `Math.ceil()`.  `Math.ceil()` returns the smallest integer greater than or equal to the given double value.  This is then cast back to an `int`.  Casting to `double` is essential to ensure that the division is performed using floating-point arithmetic and not integer division, which would truncate the result before rounding.
+
+
+**Method 2: Integer Arithmetic**
+
+* This is a more efficient integer-based approach. By adding `denominator - 1` to the `numerator` before dividing by the `denominator`, we effectively ensure that any fractional part in the division will cause the result to be rounded up.
+
+**Example Breakdown (Method 2):**
+
+* `17 / 5 = 3` (integer division)
+* `(17 + 5 - 1) / 5 = 21 / 5 = 4`
+
+* `7 / 3 = 2`
+* `(7 + 3 -1) / 3 = 9 / 3 = 3`
+
+
+**Why Method 2 is preferred:**
+
+While both methods achieve the desired rounding up, Method 2 (integer arithmetic) is generally preferred for integer division because:
+
+* **Efficiency:** It avoids the overhead of type conversions (to and from `double`) that `Math.ceil()` requires.  This makes it faster, especially if the rounding operation is performed frequently.
+* **Avoids potential floating-point inaccuracies:**  While less common with simpler examples, floating-point numbers have limited precision. Using purely integer arithmetic avoids any potential issues related to this.
+
+
+The provided code demonstrates both methods and includes a helper function to illustrate best practices for reusable code.  You can use whichever method you find more readable or suits your specific performance requirements, though the integer arithmetic approach is typically the more efficient and robust option for integer division.
+

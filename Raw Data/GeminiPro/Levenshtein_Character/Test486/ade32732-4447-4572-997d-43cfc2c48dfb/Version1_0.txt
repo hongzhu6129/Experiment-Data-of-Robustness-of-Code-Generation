@@ -1,0 +1,44 @@
+```java
+public class MiddleCharacter {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "java";
+        String str3 = "coding";
+
+        System.out.println("Middle character of \"" + str1 + "\": " + middle(str1));
+        System.out.println("Middle character of \"" + str2 + "\": " + middle(str2));
+        System.out.println("Middle character of \"" + str3 + "\": " + middle(str3));
+    }
+
+    public static String middle(String str) {
+        int len = str.length();
+        int middleIndex = len / 2;
+
+        if (len % 2 == 0) { // Even length
+            return str.substring(middleIndex - 1, middleIndex + 1); 
+        } else { // Odd length
+            return str.substring(middleIndex, middleIndex + 1);
+        }
+    }
+}
+```
+
+
+**Explanation and Example Output:**
+
+The `middle()` method calculates the middle index of the string.  
+
+* **Even Length Strings:** If the string has an even length, it extracts two characters using `substring(middleIndex - 1, middleIndex + 1)`.  For instance, if the string is "java", the length is 4, `middleIndex` is 2.  The substring from index 1 (2-1) to  index 3 (exclusive, 2+1), effectively characters at index 1 and 2 ("av") are returned.
+
+* **Odd Length Strings:**  If the string has an odd length, it extracts a single character using `substring(middleIndex, middleIndex + 1)`. For the string "hello" (length 5, `middleIndex` is 2), the substring from index 2 to index 3 (exclusive) which is character at index 2 ("l") is returned.
+
+
+
+**Example Output:**
+
+```
+Middle character of "hello": l
+Middle character of "java": av
+Middle character of "coding": di
+```

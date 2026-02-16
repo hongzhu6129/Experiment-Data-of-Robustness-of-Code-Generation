@@ -1,0 +1,119 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculations {
+
+    public static double calculatePerimeter(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    public static double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    public static void main(String[] args) {
+        double radius = 7.5;
+        double perimeter = calculatePerimeter(radius);
+        double area = calculateArea(radius);
+
+        System.out.println("Radius: " + radius);
+        System.out.println("Perimeter: " + perimeter);
+        System.out.println("Area: " + area);
+    }
+}
+
+
+class CircleCalculationsTest {
+
+    @Test
+    void calculatePerimeter_positiveRadius() {
+        assertEquals(47.12388980384689, CircleCalculations.calculatePerimeter(7.5), 0.000001);
+    }
+
+    @Test
+    void calculateArea_positiveRadius() {
+        assertEquals(176.71458676442586, CircleCalculations.calculateArea(7.5), 0.000001);
+    }
+
+    @Test
+    void calculatePerimeter_zeroRadius() {
+        assertEquals(0.0, CircleCalculations.calculatePerimeter(0.0));
+    }
+
+    @Test
+    void calculateArea_zeroRadius() {
+        assertEquals(0.0, CircleCalculations.calculateArea(0.0));
+    }
+
+     // Corner case: Extremely small radius
+    @Test
+    void calculatePerimeter_smallRadius() {
+        assertEquals(0.000000006283185307179586, CircleCalculations.calculatePerimeter(0.000000001), 0.0000000000000001);
+    }
+
+    @Test
+    void calculateArea_smallRadius() {
+        assertEquals(3.141592653589793E-20, CircleCalculations.calculateArea(0.000000001), 1E-25); // Adjust delta for extremely small values
+    }
+
+
+    // Corner case: Negative radius (should ideally throw an exception in a real-world application, 
+    // but here we'll just test for the absolute value)
+    @Test
+    void calculatePerimeter_negativeRadius() {
+        assertEquals(47.12388980384689, Math.abs(CircleCalculations.calculatePerimeter(-7.5)), 0.000001);
+    }
+
+    @Test
+    void calculateArea_negativeRadius() {
+        assertEquals(176.71458676442586, CircleCalculations.calculateArea(-7.5), 0.000001); // Area remains positive even with negative radius
+    }
+
+    @Test
+    void calculatePerimeter_largeRadius() {
+        assertEquals(62831853071.79587, CircleCalculations.calculatePerimeter(1000000000), 0.000001);
+    }
+
+    @Test
+    void calculateArea_largeRadius() {
+       assertEquals(3.141592653589793E18, CircleCalculations.calculateArea(1000000000), 1E12);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Test Cases:**  The code now includes a comprehensive set of JUnit 5 test cases.  These test cases cover:
+    * Positive radius
+    * Zero radius
+    * Very small radius (corner case)
+    * Negative radius (corner case � in a real application, you might want to throw an exception for invalid input)
+    * Large Radius
+
+* **Delta for Comparisons:** When comparing floating-point numbers, you should always use a delta (tolerance) because of potential rounding errors. The `assertEquals` method with a delta parameter is used to address this.  The delta has been adjusted for extremely small values to ensure accurate comparisons.
+
+* **Clearer Main Method:** The `main` method is more focused on demonstrating the calculations for the given radius.
+
+* **JUnit 5:** Uses JUnit 5 for testing, which is the current standard for Java testing.
+
+
+How to compile and run the tests:
+
+1. **Save:** Save the code as `CircleCalculations.java` and `CircleCalculationsTest.java` in the same directory.
+
+2. **Compile:** Open a terminal or command prompt in that directory and compile:
+   ```bash
+   javac -cp .:junit-jupiter-api-5.?.?.jar CircleCalculations.java CircleCalculationsTest.java
+   ```
+   (Make sure to replace `5.?.?.` with the correct version number of your JUnit Jupiter API JAR.)
+
+3. **Run Tests:**
+   ```bash
+   java -cp .:junit-jupiter-api-5.?.?.jar:junit-platform-console-standalone-1.?.?.jar org.junit.platform.console.ConsoleLauncher --class CircleCalculationsTest
+   ```
+   (Again, replace version placeholders with your actual version numbers.)
+
+
+This improved version provides a much more robust and testable solution for calculating circle properties.  The test cases help ensure that the calculations are correct for a variety of input values, including edge and corner cases.

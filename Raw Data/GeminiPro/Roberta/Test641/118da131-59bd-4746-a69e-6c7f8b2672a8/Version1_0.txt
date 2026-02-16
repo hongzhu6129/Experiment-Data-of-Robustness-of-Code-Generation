@@ -1,0 +1,82 @@
+```java
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class MaxPriorityQueue {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using Collections.reverseOrder() comparator
+        PriorityQueue<Integer> maxPriorityQueue1 = new PriorityQueue<>(Collections.reverseOrder());
+
+        maxPriorityQueue1.add(3);
+        maxPriorityQueue1.add(1);
+        maxPriorityQueue1.add(4);
+        maxPriorityQueue1.add(2);
+
+        System.out.println("Max PriorityQueue 1 (using Collections.reverseOrder()):");
+        while (!maxPriorityQueue1.isEmpty()) {
+            System.out.print(maxPriorityQueue1.poll() + " "); // Output: 4 3 2 1
+        }
+        System.out.println();
+
+
+        // Method 2: Using a lambda expression for the comparator (Java 8+)
+        PriorityQueue<Integer> maxPriorityQueue2 = new PriorityQueue<>((a, b) -> b - a); // b - a for descending order
+
+        maxPriorityQueue2.add(3);
+        maxPriorityQueue2.add(1);
+        maxPriorityQueue2.add(4);
+        maxPriorityQueue2.add(2);
+
+        System.out.println("Max PriorityQueue 2 (using lambda):");
+        while (!maxPriorityQueue2.isEmpty()) {
+            System.out.print(maxPriorityQueue2.poll() + " "); // Output: 4 3 2 1 
+        }
+        System.out.println();
+
+
+
+        // Example with custom objects (assuming a 'Person' class with an 'age' field):
+        PriorityQueue<Person> maxPriorityQueuePerson = new PriorityQueue<>((p1, p2) -> Integer.compare(p2.age, p1.age)); 
+
+        maxPriorityQueuePerson.add(new Person("Alice", 30));
+        maxPriorityQueuePerson.add(new Person("Bob", 25));
+        maxPriorityQueuePerson.add(new Person("Charlie", 35));
+
+        System.out.println("Max PriorityQueue of Persons (by age):");
+        while (!maxPriorityQueuePerson.isEmpty()) {
+            System.out.println(maxPriorityQueuePerson.poll()); // Output: Charlie, Alice, Bob (in descending age order)
+        }
+
+
+    }
+
+
+    static class Person { // Inner class for demonstration
+        String name;
+        int age;
+
+        public Person(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+
+
+        @Override
+        public String toString() {
+            return name + " (" + age + ")";
+        }
+    }
+
+}
+```
+
+
+Key Improvements:
+
+- **Clearer Explanation:** Added comments to explain the two main methods of creating a max PriorityQueue.
+- **Lambda Example:** Demonstrated the use of a lambda expression for the comparator, a concise approach common in modern Java.
+- **Custom Object Example:**  Included an example of using a `PriorityQueue` with custom objects (a `Person` class) to show how to prioritize based on object properties.
+- **Output Demonstrated:**  Included output in the comments to show the effect of using `Collections.reverseOrder()` and the lambda expression.
+- **Better Formatting:** Improved formatting for better readability.

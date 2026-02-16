@@ -1,0 +1,32 @@
+class Solution {
+    static boolean isPerfectSquare(int n) {
+        if (n < 0)
+            return false;
+        int root = (int) Math.sqrt(n);
+        return root * root == n;
+    }
+
+    static boolean isFibonacci(int n) {
+        // A number is Fibonacci if and only if one or both of (5*n^2 + 4) or (5*n^2 � 4) is a perfect square.
+        return isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4);
+    }
+
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 13;
+        int num3 = 10;
+
+        System.out.println(num1 + " is Fibonacci: " + isFibonacci(num1));  // Output: true
+        System.out.println(num2 + " is Fibonacci: " + isFibonacci(num2));  // Output: true
+        System.out.println(num3 + " is Fibonacci: " + isFibonacci(num3));  // Output: false
+
+
+        // Test some more values:
+        System.out.println(0 + " is Fibonacci: " + isFibonacci(0));      // true
+        System.out.println(1 + " is Fibonacci: " + isFibonacci(1));      // true
+        System.out.println(2 + " is Fibonacci: " + isFibonacci(2));      // true
+        System.out.println(3 + " is Fibonacci: " + isFibonacci(3));      // true
+        System.out.println(4 + " is Fibonacci: " + isFibonacci(4));      // false
+
+    }
+}

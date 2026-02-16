@@ -1,0 +1,30 @@
+```java
+public class BreadSubstring {
+
+    public String pickMiddleOfBread(String str) {
+        int firstIndex = str.indexOf("toast");
+        int lastIndex = str.lastIndexOf("toast");
+
+        if (firstIndex == -1 || lastIndex == -1 || firstIndex == lastIndex) {
+            return ""; // "toast" doesn't exist or appears only once
+        }
+
+        // Extract the substring between the "toast" appearances.
+        // +4 to exclude the first "toast" itself
+        // lastIndex - (firstIndex + 4) is the length of substring between toasts
+        return str.substring(firstIndex + 4, lastIndex ); 
+    }
+
+    public static void main(String[] args) {
+        BreadSubstring bread = new BreadSubstring();
+
+        System.out.println(bread.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(bread.pickMiddleOfBread("toastjamtoastbuttertoast")); // Output: jamtoastbutter
+        System.out.println(bread.pickMiddleOfBread("toast")); // Output: ""
+        System.out.println(bread.pickMiddleOfBread("butter")); // Output: ""
+        System.out.println(bread.pickMiddleOfBread("toastbutter")); // Output: ""
+        System.out.println(bread.pickMiddleOfBread("buttertoast")); // Output: ""
+
+    }
+}
+```

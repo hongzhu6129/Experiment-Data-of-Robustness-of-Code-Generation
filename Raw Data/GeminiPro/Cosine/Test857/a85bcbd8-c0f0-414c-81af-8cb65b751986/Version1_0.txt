@@ -1,0 +1,54 @@
+```java
+public class DecimalToOctal {
+
+    public static void main(String[] args) {
+        int decimal = 15; 
+
+        // Method 1: Using Integer.toOctalString()
+        String octal = Integer.toOctalString(decimal);
+        System.out.println("Octal number is: " + octal);
+
+        // Method 2: Using manual conversion (for demonstration)
+        decimal = 15; // Reset for the second method
+        int octalNum = 0;
+        int i = 1;
+
+        while (decimal != 0) {
+            octalNum += (decimal % 8) * i;
+            decimal /= 8;
+            i *= 10;
+        }
+        System.out.println("Octal number (manual method) is: " + octalNum);
+
+
+        // Example with user input (requires exception handling in a real application)
+        if (args.length > 0) {
+            try {
+                decimal = Integer.parseInt(args[0]);
+                octal = Integer.toOctalString(decimal);
+                System.out.println("Octal equivalent of " + decimal + " is: " + octal);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please enter a valid integer.");
+            }
+        }
+
+
+    }
+}
+```
+
+
+Explanation of the methods within `main`:
+
+1. **`Integer.toOctalString(decimal)`:** This is the simplest and most efficient way to convert a decimal number to its octal representation in Java. It directly returns the octal value as a String.
+
+2. **Manual Conversion:**  The second method demonstrates the conversion logic mathematically using a `while` loop.  While this works, it's less efficient and more verbose than using the built-in `toOctalString()` method.
+
+3. **User Input Example:** This section shows how you could accept a decimal number as a command-line argument.  The `try-catch` block is essential here to handle potential `NumberFormatException` if the user enters non-numeric input.  In a more complete application, you would likely want more robust input validation.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DecimalToOctal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac DecimalToOctal.java`
+3. **Run:** Execute the compiled code: `java DecimalToOctal`  (To provide input, use: `java DecimalToOctal 255` for example).

@@ -1,0 +1,38 @@
+import java.util.LinkedList;
+
+public class JoinLinkedLists {
+
+    public static void main(String[] args) {
+        // Create two LinkedLists of Integers
+        LinkedList<Integer> list1 = new LinkedList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list2.add(4);
+        list2.add(5);
+        list2.add(6);
+
+        // Join list2 to the end of list1
+        list1.addAll(list2);  // This modifies list1 in place
+
+        // Print the combined LinkedList
+        System.out.println("Joined LinkedList: " + list1);
+
+
+        // Example with other data types (Strings) - just for demonstration
+        LinkedList<String> stringList1 = new LinkedList<>();
+        stringList1.add("A");
+        stringList1.add("B");
+
+        LinkedList<String> stringList2 = new LinkedList<>();
+        stringList2.add("C");
+        stringList2.add("D");
+
+        stringList1.addAll(stringList2);
+
+        System.out.println("Joined String LinkedList: " + stringList1);
+
+    }
+}

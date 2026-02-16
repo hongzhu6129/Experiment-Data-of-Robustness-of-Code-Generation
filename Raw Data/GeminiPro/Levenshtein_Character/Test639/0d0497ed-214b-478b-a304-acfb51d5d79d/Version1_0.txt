@@ -1,0 +1,54 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Example usage:
+
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(7);
+
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] arr1 = new Integer[pq.size()];
+        pq.toArray(arr1);
+        System.out.println("Method 1 - toArray() with pre-allocated array: " + Arrays.toString(arr1));
+        // Note: Using a pre-allocated array is more efficient as it avoids resizing operations
+
+
+        //Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] arr2 = pq.toArray(); // Returns an Object[]
+        Integer[] arr3 = Arrays.copyOf(arr2, arr2.length, Integer[].class); // Convert Object[] to Integer[]
+
+        System.out.println("Method 2 - toArray() without pre-allocated array: " + Arrays.toString(arr3));
+
+
+        // Method 3 - Iterative approach (useful for understanding but less efficient than toArray())
+        Integer[] arr4 = new Integer[pq.size()];
+        int i = 0;
+        for (Integer element : pq) { // Iterating doesn't guarantee sorted order!
+            arr4[i++] = element;
+        }
+        System.out.println("Method 3 - Iterative approach (unsorted): " + Arrays.toString(arr4));
+
+
+        // Important Note:  PriorityQueue does not guarantee a particular order when iterated directly or converted
+        // to an array using toArray(). If you need a sorted array, you must sort the resultant array manually
+        // after converting it from the PriorityQueue.
+        Arrays.sort(arr1); // Sorts the array (natural order for Integer)
+        System.out.println("Sorted array (after converting from PriorityQueue): " + Arrays.toString(arr1));
+
+       // Demonstrate that the original priority queue is unchanged
+        System.out.println("Original PriorityQueue: " + pq);
+
+
+    }
+}
+```

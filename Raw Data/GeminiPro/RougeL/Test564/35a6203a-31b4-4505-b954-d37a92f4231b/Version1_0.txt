@@ -1,0 +1,52 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ReverseArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        System.out.println("Original ArrayList: " + numbers);
+
+        // Reverse the ArrayList using Collections.reverse()
+        Collections.reverse(numbers);
+
+        System.out.println("Reversed ArrayList: " + numbers);
+
+
+        // Example with strings
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("cherry");
+
+        System.out.println("Original String ArrayList: " + strings);
+        Collections.reverse(strings);
+        System.out.println("Reversed String ArrayList: " + strings);
+
+
+        // Example demonstrating reversing a portion of the list
+         ArrayList<Integer> moreNumbers = new ArrayList<>();
+         moreNumbers.add(10);
+         moreNumbers.add(20);
+         moreNumbers.add(30);
+         moreNumbers.add(40);
+         moreNumbers.add(50);
+         moreNumbers.add(60);
+
+         System.out.println("Original Sublist ArrayList: " + moreNumbers);
+
+        // Reverse elements from index 1 (inclusive) to 4 (exclusive)
+         Collections.reverse(moreNumbers.subList(1, 4)); //reverses 20, 30, 40
+
+         System.out.println("Reversed Sublist ArrayList: " + moreNumbers); 
+    }
+}
+```

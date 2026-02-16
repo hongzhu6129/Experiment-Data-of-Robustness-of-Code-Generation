@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner for potential user input (though the problem specifies a fixed radius)
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); 
+
+        // Calculate the perimeter (circumference) and area
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+        // Print the results formatted to two decimal places for clearer output
+        System.out.printf("Perimeter: %.2f\n", perimeter);
+        System.out.printf("Area: %.2f\n", area);
+
+        input.close(); // Close the Scanner
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner/edge cases:
+
+1. **Standard Case (Given Radius):**
+   - Input: 7.5
+   - Expected Perimeter: 47.12
+   - Expected Area: 176.71
+
+2. **Zero Radius:**
+   - Input: 0
+   - Expected Perimeter: 0.00
+   - Expected Area: 0.00
+
+3. **Negative Radius (Invalid Input - Should handle gracefully):**
+   - Input: -5
+   - Expected Behavior:  An appropriate error message or exception handling to indicate that the radius cannot be negative. The program should not crash. You might print an error message like "Radius cannot be negative."  Or you could throw an `IllegalArgumentException`.
+
+4. **Very Large Radius:**
+   - Input: 100000
+   - Expected Perimeter: 628318.53 (approximately)
+   - Expected Area: 31415926535.89 (approximately)  (Test for potential overflow issues with very large numbers if not using `double`)
+
+
+5. **Small Radius:**
+   - Input: 0.001
+   - Expected Perimeter: 0.01
+   - Expected Area: 0.00
+
+
+**How to implement the negative radius handling:**
+
+```java
+import java.util.Scanner;
+import java.util.InputMismatchException; // For handling incorrect input type
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter the radius of the circle: ");
+            double radius = input.nextDouble();
+
+            if (radius < 0) {
+                System.out.println("Radius cannot be negative."); // Or throw an exception
+                //throw new IllegalArgumentException("Radius cannot be negative."); // More robust error handling
+            } else {
+                // ... (rest of the calculation code as before)
+            }
+
+        } catch (InputMismatchException e) { // Handle non-numeric input
+            System.out.println("Invalid input. Please enter a number.");
+        } finally {
+            input.close();
+        }
+    }
+}
+```
+
+
+By incorporating these test cases and the error handling for negative input, you'll have a more robust and reliable program.  Testing is crucial in software development!

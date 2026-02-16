@@ -1,0 +1,79 @@
+```java
+public class SwapParameters {
+
+    public static void main(String[] args) {
+
+        // Test cases:
+
+        // 1. Regular numbers
+        swap(5, 10);
+
+        // 2. Negative numbers
+        swap(-3, 7);
+
+        // 3. Zero values
+        swap(0, 15);
+        swap(0, 0);  // Both zero
+
+        // 4. Large numbers
+        swap(Integer.MAX_VALUE, Integer.MIN_VALUE); // Max and Min values
+        swap(1000000000, 2000000000); // Large positive numbers
+
+
+    }
+
+    public static void swap(int a, int b) {
+        System.out.println("Original values: a = " + a + ", b = " + b);
+
+        // Using XOR to swap (avoids temporary variable and overflow issues)
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+
+
+        System.out.println("Swapped values: a = " + a + ", b = " + b);
+        System.out.println("------------------");
+    }
+}
+
+
+
+```
+
+**Explanation of Test Cases:**
+
+1. **Regular Numbers:**  Tests basic functionality with positive integers.
+2. **Negative Numbers:** Ensures the swap works correctly with negative values.
+3. **Zero Values:** Tests edge cases where one or both inputs are zero.  Zero often causes unique behavior in arithmetic operations.
+4. **Large Numbers:** Uses `Integer.MAX_VALUE` and `Integer.MIN_VALUE` to test behavior at the extreme limits of integer representation.  Large positive numbers are also included. This can reveal potential overflow issues if a less robust swapping method (like using addition and subtraction) were employed.
+
+**Why XOR swap is preferred:**
+
+The XOR swap method is often preferred because:
+
+* **No temporary variable:**  It swaps the numbers in place without needing an extra variable.
+* **Avoids overflow:** Unlike swapping with addition and subtraction, the XOR method will not cause integer overflow, even if the sum of the two numbers exceeds the maximum integer value.
+
+
+**Output of the test cases:**
+
+```
+Original values: a = 5, b = 10
+Swapped values: a = 10, b = 5
+------------------
+Original values: a = -3, b = 7
+Swapped values: a = 7, b = -3
+------------------
+Original values: a = 0, b = 15
+Swapped values: a = 15, b = 0
+------------------
+Original values: a = 0, b = 0
+Swapped values: a = 0, b = 0
+------------------
+Original values: a = 2147483647, b = -2147483648
+Swapped values: a = -2147483648, b = 2147483647
+------------------
+Original values: a = 1000000000, b = 2000000000
+Swapped values: a = 2000000000, b = 1000000000
+------------------
+```

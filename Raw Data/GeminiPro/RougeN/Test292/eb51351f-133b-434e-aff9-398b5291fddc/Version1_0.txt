@@ -1,0 +1,65 @@
+```java
+public class TransposeArray {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println("Original Array:");
+        print_array(array);
+
+        transpose(array);
+
+        System.out.println("\nTransposed Array:");
+        print_array(array);
+    }
+
+    private static void transpose(int[][] array) {
+        int rows = array.length;
+        int cols = array[0].length;
+
+        if (rows != cols) {
+            System.out.println("Error: Matrix must be square for in-place transposition.");
+            return; // Or throw an exception, depending on desired behavior.
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = i + 1; j < cols; j++) {  // Note: Start j from i+1 to avoid swapping twice
+                // Swap array[i][j] and array[j][i]
+                int temp = array[i][j];
+                array[i][j] = array[j][i];
+                array[j][i] = temp;
+            }
+        }
+    }
+
+
+    private static void print_array(int[][] array) {
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling for Non-Square Matrices:** The `transpose` method now includes a check to ensure the input array is square (number of rows equals the number of columns). Transposing a non-square matrix in-place is not generally possible.  The code now prints an error message and returns if the matrix is not square. You could modify it to throw an exception instead, depending on how you want to handle this situation.
+
+2. **Optimized Transposition:**  The inner loop in `transpose` now starts from `j = i + 1`. This is because we only need to swap elements above the main diagonal with elements below the main diagonal.  Starting `j` from `i+1` avoids unnecessary swaps and makes the transposition more efficient.
+
+3. **Clearer Output:** The `print_array` method now prints the array in a more readable format, with each row on a new line and spaces between elements.
+
+4. **Conciseness:** The code is more compact and easier to read by using enhanced `for` loops where appropriate.
+
+5. **Comments:**  Added comments to explain the logic more clearly.
+
+
+This improved version addresses the potential issue of non-square matrices and optimizes the transposition process while also providing more user-friendly output.

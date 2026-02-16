@@ -1,0 +1,47 @@
+```java
+public class RemoveVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        String updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: Hll, Wrld!
+
+        inputString = "AEIOUaeiou";
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: 
+
+        inputString = "This is a test string.";
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: Ths s  tst strng.
+
+        inputString = "";
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output:
+
+
+         inputString = null;  // Handling null input
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: null (or handle it as you see fit)
+    }
+
+    public static String validate(String str) {
+        if (str == null) {
+            return null; // Or handle null as needed (e.g., return an empty string)
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (!isVowel(c)) {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
+
+    private static boolean isVowel(char c) {
+        c = Character.toLowerCase(c);  // Case-insensitive check
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+}
+```

@@ -1,0 +1,70 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted integer array in-place and returns the new length.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; 
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                nums[++uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)) + ", Length: " + len1); // Output: [1, 2], Length: 2
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)) + ", Length: " + len2); // Output: [0, 1, 2, 3, 4], Length: 5
+        
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3)) + ", Length: " + len3); // Output: [], Length: 0
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated array: null , Length: " + len4); // Output: null, Length: 0
+
+
+        int[] nums5 = {1, 2, 3, 4, 5}; // Already unique
+        int len5 = removeDuplicates(nums5);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5)) + ", Length: " + len5); // Output: [1, 2, 3, 4, 5], Length: 5
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles empty arrays (`{}`) and `null` input, returning 0 in both cases.
+
+2. **In-Place Modification:** The `removeDuplicates` function modifies the original array `nums` directly, as requested.
+
+3. **Clearer Variable Naming:** `uniqueIndex` replaces `j` for better readability, indicating its purpose.
+
+4. **Concise Return:** The length is calculated and returned directly as `uniqueIndex + 1`.
+
+5. **Comprehensive `main` Method:** The `main` method includes multiple test cases to demonstrate the function's behavior with various inputs, including duplicates, empty arrays, and `null` input, as well as an already unique array.
+
+6. **Outputting the Modified Array:** The `main` method uses `Arrays.copyOfRange` and `Arrays.toString` to print the *modified* array up to the new length, providing a clearer visualization of the result.  This is important because the original array *is* modified, but elements after `uniqueIndex` are not relevant to the solution.  We only want to print the relevant part of the array.
+
+
+This improved version addresses the original prompt's requirements, handles edge cases, improves readability, and provides more informative output for testing.  It's also more efficient because it only iterates through the array once.
+

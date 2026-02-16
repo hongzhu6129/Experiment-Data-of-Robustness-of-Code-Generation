@@ -1,0 +1,83 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListElementCheck {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> fruits = new LinkedList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Element to search for
+        String searchElement = "Orange";
+
+        // Method 1: Using contains()
+        boolean found1 = fruits.contains(searchElement);
+        System.out.println("Using contains(): " + searchElement + " found? " + found1);
+
+
+        // Method 2: Manual iteration (educational)
+        boolean found2 = false;
+        for (String fruit : fruits) {
+            if (fruit.equals(searchElement)) {
+                found2 = true;
+                break; // Exit loop once found
+            }
+        }
+        System.out.println("Using iteration: " + searchElement + " found? " + found2);
+
+
+        // Method 3: indexOf() (returns index or -1 if not found) - Demonstrates a different approach
+        int index = fruits.indexOf(searchElement);
+        System.out.println("Using indexOf(): Index of " + searchElement + ": " + index);
+        boolean found3 = (index != -1);
+        System.out.println("Using indexOf() to check existence: " + searchElement + " found? " + found3);
+
+
+         // Example showing how to handle a case where the element isn't present:
+        String notPresentElement = "Kiwi";
+        if (fruits.contains(notPresentElement)) {
+            System.out.println(notPresentElement + " is in the list.");
+        } else {
+            System.out.println(notPresentElement + " is NOT in the list.");
+        }
+
+
+        // Example to avoid NullPointerException if the list itself is null
+        LinkedList<String> nullList = null;
+        if (nullList != null && nullList.contains("Apple")) { // Check for null first
+            System.out.println("Apple found in nullList (This won't print).");
+        } else if (nullList == null){
+            System.out.println("The list is null!");
+        }
+
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Create a LinkedList:**  The code starts by creating a `LinkedList` of strings called `fruits` and adds some sample elements.
+
+2. **Element to Search:**  The `searchElement` variable stores the value we want to find in the list.
+
+3. **Method 1: `contains()` (Most Efficient):** The `contains()` method is the simplest and most efficient way to check if an element exists in a `LinkedList`. It returns `true` if the element is found, and `false` otherwise.
+
+4. **Method 2: Manual Iteration (Educational):** This method iterates through the `LinkedList` using a for-each loop.  It compares each element in the list with the `searchElement`. If a match is found, the `found` flag is set to `true`, and the loop is terminated using `break` to improve efficiency. This method is primarily for educational purposes to show how to traverse a LinkedList manually.
+
+5. **Method 3: `indexOf()` (Alternative Approach):**  The `indexOf()` method returns the index of the first occurrence of the element in the list. If the element is not found, it returns -1.  This method can be used to check for existence as well as find the position of the element.
+
+6. **Handling Element Not Found:** Shows how to use an `if-else` statement to handle cases where the element you are searching for is not in the LinkedList.
+
+7. **Handling Null List:**  Demonstrates a critical check to prevent `NullPointerException` if the LinkedList itself is `null`.  Always check for `null` before attempting to use methods on a potentially null object.
+
+
+This educational example provides multiple ways to check for element existence in a `LinkedList` and also covers important aspects of handling null values and not-found cases, making it more robust and suitable for beginners.

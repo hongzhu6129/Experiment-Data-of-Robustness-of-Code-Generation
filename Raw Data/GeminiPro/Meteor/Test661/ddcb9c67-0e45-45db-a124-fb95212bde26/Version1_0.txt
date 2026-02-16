@@ -1,0 +1,83 @@
+```java
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+public class GreatestAndLeastKeyMap {
+
+    public static void main(String[] args) {
+
+        // Example Map
+        Map<Integer, String> myMap = new HashMap<>();
+        myMap.put(1, "Apple");
+        myMap.put(5, "Banana");
+        myMap.put(2, "Orange");
+        myMap.put(10, "Grape");
+        myMap.put(-3, "Kiwi");
+
+
+        if (myMap.isEmpty()) {
+            System.out.println("The map is empty. No greatest or least key.");
+            return;
+        }
+
+
+        // Method 1: Using Collections.max and Collections.min (requires Integer keys or comparable keys)
+
+        int greatestKey = Collections.max(myMap.keySet());
+        String greatestKeyValue = myMap.get(greatestKey);
+
+        int leastKey = Collections.min(myMap.keySet());
+        String leastKeyValue = myMap.get(leastKey);
+
+
+        System.out.println("Using Collections.max and Collections.min:");
+        System.out.println("Greatest Key: " + greatestKey + ", Value: " + greatestKeyValue);
+        System.out.println("Least Key: " + leastKey + ", Value: " + leastKeyValue);
+
+
+        // Method 2: Iterating through the keySet (works for any comparable key type)
+
+        int greatestKey2 = Integer.MIN_VALUE; // Initialize with the smallest possible value
+        String greatestKeyValue2 = null;
+        int leastKey2 = Integer.MAX_VALUE;    // Initialize with the largest possible value
+        String leastKeyValue2 = null;
+
+
+
+        for (Integer key : myMap.keySet()) {
+            if (key > greatestKey2) {
+                greatestKey2 = key;
+                greatestKeyValue2 = myMap.get(key);
+            }
+
+            if (key < leastKey2) {
+                leastKey2 = key;
+                leastKeyValue2 = myMap.get(key);
+            }
+        }
+
+
+        System.out.println("\nUsing Iteration:");
+        System.out.println("Greatest Key: " + greatestKey2 + ", Value: " + greatestKeyValue2);
+        System.out.println("Least Key: " + leastKey2 + ", Value: " + leastKeyValue2);
+
+
+        // Example with a different Key type (String)
+        Map<String, Integer> stringKeyMap = new HashMap<>();
+        stringKeyMap.put("apple", 1);
+        stringKeyMap.put("zebra", 2);
+        stringKeyMap.put("banana", 3);
+
+        String greatestStringKey = Collections.max(stringKeyMap.keySet());  // String keys are comparable
+        String leastStringKey = Collections.min(stringKeyMap.keySet());
+
+        System.out.println("\nExample with String keys:");
+        System.out.println("Greatest String Key: " + greatestStringKey + ", Value: " + stringKeyMap.get(greatestStringKey));
+        System.out.println("Least String Key: " + leastStringKey + ", Value: " + stringKeyMap.get(leastStringKey));
+
+
+
+    }
+}
+```

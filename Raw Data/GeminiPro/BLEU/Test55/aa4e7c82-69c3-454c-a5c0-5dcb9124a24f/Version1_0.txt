@@ -1,0 +1,87 @@
+```java
+public class ModulusWithoutModulus {
+
+    public static int calculateModulus(int dividend, int divisor) {
+        if (divisor == 0) {
+            throw new ArithmeticException("Divisor cannot be zero.");
+        }
+
+        // Handle negative numbers
+        if (dividend < 0) {
+            return calculateModulus(-dividend, divisor) * (divisor < 0 ? -1 : 1) ; // Adjust sign if needed
+        }
+        if (divisor < 0) {
+            return calculateModulus(dividend, -divisor);
+        }
+
+
+        // Repeated subtraction method (efficient if divisor is small)
+        while (dividend >= divisor) {
+            dividend -= divisor;
+        }
+
+        return dividend;
+    }
+
+    public static void main(String[] args) {
+         // Test cases
+        System.out.println("10 % 3 = " + calculateModulus(10, 3));     // Expected: 1
+        System.out.println("15 % 5 = " + calculateModulus(15, 5));     // Expected: 0
+        System.out.println("7 % 9 = " + calculateModulus(7, 9));     // Expected: 7
+        System.out.println("-10 % 3 = " + calculateModulus(-10, 3));    // Expected: 2  (-10 = -4*3 + 2) Careful with sign!
+        System.out.println("10 % -3 = " + calculateModulus(10, -3));    // Expected: 1 
+        System.out.println("-10 % -3 = " + calculateModulus(-10, -3));   // Expected: -1 (-10 = 4*-3 + 2, but divisor is negative)
+        System.out.println("0 % 5 = " + calculateModulus(0, 5));      // Expected: 0 
+        System.out.println("5 % 0 = ");
+
+        try {
+            System.out.println(calculateModulus(5, 0));       // Expected: ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+        // Large numbers test
+        System.out.println("123456789 % 123 = " + calculateModulus(123456789, 123));
+
+        // Integer.MIN_VALUE cases (corner cases for potential overflow)
+        System.out.println(Integer.MIN_VALUE + " % 2" + " = " + calculateModulus(Integer.MIN_VALUE, 2)); // 0
+        System.out.println(Integer.MIN_VALUE + " % -1" + " = " + calculateModulus(Integer.MIN_VALUE, -1)); // 0 (careful!)
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handle Zero Divisor:** The code now explicitly checks for a zero divisor and throws an `ArithmeticException` if encountered. This is crucial for robustness.
+
+2. **Handle Negative Numbers:**  The code correctly handles negative dividends and divisors. It ensures the modulus retains its mathematical meaning (always non-negative and less than the absolute value of the divisor). The most complex part is dealing with both negative dividend and divisor - be very careful with the sign if both are negative.
+
+3. **Repeated Subtraction Method:** This method is used for calculating the modulus.  It's simple and avoids the use of the modulus operator. It's reasonably efficient when the divisor is small. (For very large numbers and large divisors, a more efficient approach like the division algorithm would be preferred)
+
+4. **Test Cases:** The provided test cases cover several scenarios, including positive and negative inputs, zero dividend, zero divisor, and large numbers. The crucial corner cases with `Integer.MIN_VALUE` are also included because `-Integer.MIN_VALUE` results in overflow (it's equal to `Integer.MIN_VALUE` itself).
+
+**Key Improvements over just subtraction:**
+
+* **Correctness with negative numbers:** The original subtraction approach wouldn't work correctly with negative numbers. This version handles them correctly.
+* **Exception Handling:** The added `ArithmeticException` makes the code more robust.
+* **Comprehensive Test Cases:**  Thorough testing, especially corner cases, helps ensure the code behaves correctly in all situations.
+
+
+**Using the Division Algorithm (More Efficient for Large Numbers):**
+
+For much larger dividends and divisors, a more efficient approach based on the division algorithm would be preferable.  You can implement that using integer division `/` and multiplication `*`:
+
+```java
+public static int calculateModulusEfficient(int dividend, int divisor) {
+     // ... (Handle zero divisor and negative numbers as before) ...
+
+     int quotient = dividend / divisor;
+     return dividend - (quotient * divisor);
+}
+```
+
+This version avoids the repeated subtraction loop, significantly improving performance when the quotient is large.

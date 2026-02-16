@@ -1,0 +1,44 @@
+public class RemoveVowels {
+
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String result = validate(str);
+        System.out.println(result); // Output: Hll Wrld
+
+        str = "AEIOUaeiou";
+        result = validate(str);
+        System.out.println(result); // Output: 
+
+        str = "This is a test string.";
+        result = validate(str);
+        System.out.println(result); // Output: Ths s  tst strng.
+
+        str = "";
+        result = validate(str);
+        System.out.println(result); // Output: 
+
+
+        str = null; // Handling null input
+        result = validate(str);
+        System.out.println(result); // Output: null
+
+
+    }
+
+    public static String validate(String str) {
+        if (str == null) {
+            return null; // Handle null input
+        }
+        String vowels = "AEIOUaeiou";
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : str.toCharArray()) {
+            if (vowels.indexOf(c) == -1) { //If the char is not present in vowels string
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+
+
+    }
+}

@@ -1,0 +1,31 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FluteSort {
+
+    public static void main(String[] args) {
+        List<String> flutes = Arrays.asList("Bass Flute", "Alto Flute", "C Flute", "Piccolo", "Contra-alto Flute");
+
+        // Ascending order
+        List<String> ascendingSortedFlutes = flutes.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending order:");
+        ascendingSortedFlutes.forEach(System.out::println);
+
+
+        // Descending order
+        List<String> descendingSortedFlutes = flutes.stream()
+                .sorted((f1, f2) -> f2.compareTo(f1)) // Use a Comparator for descending order
+                .collect(Collectors.toList());
+
+
+        System.out.println("\nDescending order:");
+        descendingSortedFlutes.forEach(System.out::println);
+
+    }
+}
+```

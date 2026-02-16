@@ -1,0 +1,54 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class AppendToList {
+
+    public static void main(String[] args) {
+        // Create a sample list
+        List<String> myList = new ArrayList<>();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("cherry");
+
+        // Element to append
+        String newElement = "date";
+
+        // Append the element to the end of the list
+        myList.add(newElement);
+
+        // Print the updated list
+        System.out.println("Updated List: " + myList);
+
+
+        // Example with Integer List
+        List<Integer> numberList = new ArrayList<>();
+        numberList.add(1);
+        numberList.add(2);
+        numberList.add(3);
+
+        int newNumber = 4;
+        numberList.add(newNumber);
+
+        System.out.println("Updated Number List: " + numberList);
+
+
+
+        // Example demonstrating how to handle potential null lists:
+        List<Double> maybeNullList = null; 
+
+        if (maybeNullList == null) {
+            maybeNullList = new ArrayList<>(); // Initialize if null
+        }
+
+        double newDouble = 3.14;
+        maybeNullList.add(newDouble);
+
+        System.out.println("Updated (Potentially Null) List: " + maybeNullList);
+
+
+
+    }
+}
+```
+

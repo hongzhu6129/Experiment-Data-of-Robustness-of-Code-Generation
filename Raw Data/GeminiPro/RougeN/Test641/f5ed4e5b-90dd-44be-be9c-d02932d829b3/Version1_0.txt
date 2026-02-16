@@ -1,0 +1,57 @@
+```java
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class MaxPriorityQueue {
+
+    public static void main(String[] args) {
+        // Method 1: Using Collections.reverseOrder() (Recommended)
+        PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder());
+
+        maxPQ.add(10);
+        maxPQ.add(5);
+        maxPQ.add(20);
+        maxPQ.add(15);
+
+        System.out.println("Max PriorityQueue (using Collections.reverseOrder()):");
+        while (!maxPQ.isEmpty()) {
+            System.out.print(maxPQ.poll() + " "); // Output: 20 15 10 5
+        }
+        System.out.println();
+
+
+
+        // Method 2: Using a custom Comparator (Less efficient, generally avoid)
+        PriorityQueue<Integer> maxPQ2 = new PriorityQueue<>((a, b) -> b - a); // Lambda for reverse comparison
+
+        maxPQ2.add(10);
+        maxPQ2.add(5);
+        maxPQ2.add(20);
+        maxPQ2.add(15);
+
+        System.out.println("Max PriorityQueue (using custom Comparator):");
+        while (!maxPQ2.isEmpty()) {
+            System.out.print(maxPQ2.poll() + " "); // Output: 20 15 10 5
+        }
+        System.out.println();
+
+
+
+        // Example with Strings (using Collections.reverseOrder()):
+        PriorityQueue<String> stringMaxPQ = new PriorityQueue<>(Collections.reverseOrder());
+
+        stringMaxPQ.add("apple");
+        stringMaxPQ.add("banana");
+        stringMaxPQ.add("orange");
+
+        System.out.println("Max PriorityQueue (Strings):");
+        while (!stringMaxPQ.isEmpty()) {
+            System.out.print(stringMaxPQ.poll() + " "); // Output: orange banana apple
+        }
+        System.out.println();
+
+
+
+    }
+}
+```

@@ -1,0 +1,71 @@
+```java
+public class BinaryToOctal {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String binary = "111";
+        convertBinaryToOctal(binary); 
+
+        binary = "1010";
+        convertBinaryToOctal(binary);
+
+        binary = "111111"; // Longer example
+        convertBinaryToOctal(binary);
+
+        binary = "10000000"; // Another longer example
+        convertBinaryToOctal(binary);
+
+         binary = "110101"; // Example with mix of 1s and 0s
+        convertBinaryToOctal(binary);
+
+
+    }
+
+    public static void convertBinaryToOctal(String binary) {
+        try {
+            // 1. Convert Binary to Decimal
+            int decimal = Integer.parseInt(binary, 2);
+
+
+            // 2. Convert Decimal to Octal
+            String octal = Integer.toOctalString(decimal);
+
+
+            System.out.println("Binary: " + binary + " -> Octal: " + octal);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary input: " + binary);
+        }
+
+    }
+}
+```
+
+
+Explanation and Educational Enhancements:
+
+1. **Input Handling:** The `convertBinaryToOctal` method now takes the binary number as a `String` argument.  This is more user-friendly for an educational example.
+2. **Error Handling:**  A `try-catch` block is included to handle potential `NumberFormatException` if the user enters an invalid binary string (e.g., containing characters other than '0' or '1'). This makes the code more robust.
+3. **Clear Output:** The output is formatted to clearly show the binary input and the corresponding octal output.
+4. **Example Usage:** The `main` method demonstrates how to use the `convertBinaryToOctal` method with several example binary numbers, including longer ones and examples with a mix of 1s and 0s, showcasing different scenarios.
+5. **Step-by-Step Comments:** Comments explain each step of the conversion process: binary to decimal, then decimal to octal.
+6. **Integer.parseInt(String s, int radix):**  This built-in Java method efficiently parses a string `s` representing a number in a given `radix` (base) and converts it to an integer. We use radix 2 for binary.
+7. **Integer.toOctalString(int i):** This convenient method directly converts an integer `i` to its octal string representation.
+
+
+How to Compile and Run:
+
+1. Save the code as `BinaryToOctal.java`.
+2. Compile: `javac BinaryToOctal.java`
+3. Run: `java BinaryToOctal`
+
+
+Output for the given examples:
+
+```
+Binary: 111 -> Octal: 7
+Binary: 1010 -> Octal: 12
+Binary: 111111 -> Octal: 77
+Binary: 10000000 -> Octal: 200
+Binary: 110101 -> Octal: 65
+```

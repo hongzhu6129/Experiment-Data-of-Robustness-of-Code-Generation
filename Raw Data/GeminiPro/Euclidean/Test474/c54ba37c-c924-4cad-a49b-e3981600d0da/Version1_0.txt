@@ -1,0 +1,24 @@
+```java
+import java.time.Instant;
+import java.time.Duration;
+
+public class YearsSince1970 {
+
+    public static void main(String[] args) {
+        // Get the current instant
+        Instant now = Instant.now();
+
+        // Get the instant representing the start of 1970 (Unix epoch)
+        Instant epoch = Instant.ofEpochMilli(0); 
+
+        // Calculate the duration between the two instants
+        Duration duration = Duration.between(epoch, now);
+
+        // Get the duration in seconds and convert to years (approximate)
+        long seconds = duration.getSeconds();
+        double years = seconds / (60.0 * 60.0 * 24.0 * 365.25); // Account for leap years
+
+        System.out.println("Number of years since 1970: " + years);
+    }
+}
+```

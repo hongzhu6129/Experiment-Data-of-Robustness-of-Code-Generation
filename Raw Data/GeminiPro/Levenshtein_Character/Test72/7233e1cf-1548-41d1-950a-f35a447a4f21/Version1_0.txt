@@ -1,0 +1,38 @@
+```java
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String originalString = "Programming"; // Example string
+
+        if (originalString.length() < 3) {
+            System.out.println("String length must be 3 or more.");
+            return; 
+        }
+
+        String lastThree = originalString.substring(originalString.length() - 3);
+        String modifiedString = lastThree + originalString + lastThree;
+
+        System.out.println(modifiedString);
+
+
+        // Additional examples to demonstrate handling strings with exactly 3 characters and short strings.
+        manipulateString("Java");
+        manipulateString("Hi");
+    }
+
+
+    // Helper function to encapsulate the string manipulation and error handling.  Not required by original problem, but good practice.
+    public static void manipulateString(String str) {
+        if (str.length() < 3) {
+            System.out.println("String \"" + str + "\" length must be 3 or more.");
+        } else {
+            String lastThree = str.substring(str.length() - 3);
+            String modifiedString = lastThree + str + lastThree;
+            System.out.println(modifiedString);
+        }
+    }
+}
+
+
+
+```

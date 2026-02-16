@@ -1,0 +1,36 @@
+
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 12345
+   - Expected Output: `Scalar places of 12345: 5 40 300 2000 10000 `
+
+2. **Negative Number:**
+   - Input: -9876
+   - Expected Output: `Scalar places of -9876: 6 70 800 9000 `
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: `Scalar places of 0: 0`
+
+4. **Number with more than ten digits:**
+   - Input: 123456789012345  (15 digits)
+   - Expected Output: `Scalar places of 123456789012345: 5 40 300 2000 10000 0 9000000 80000000 700000000 6000000000 ` (only up to 10 places)
+
+5. **Number with leading zeros (will be treated as the actual value):**
+   - Input: 000123
+   - Expected Output: `Scalar places of 123: 3 20 100 ` (Java's `nextInt()` handles leading zeros automatically)
+
+6. **Single Digit Number:**
+    - Input: 7
+    - Expected Output: `Scalar places of 7: 7 `
+
+7. **Large Negative Number:**
+    - Input: -2147483648 (Integer.MIN_VALUE)
+    - Expected Output: `Scalar places of -2147483648: 8 40 600 3000 80000 400000 7000000 40000000 100000000 2000000000 `
+
+
+
+These test cases cover various scenarios, including positive and negative numbers, zero, numbers with more than ten digits, leading zeros, and single-digit numbers. This helps ensure that the program functions correctly under different input conditions, including edge cases.  Testing with `Integer.MIN_VALUE` and `Integer.MAX_VALUE` is also good practice when working with integers.

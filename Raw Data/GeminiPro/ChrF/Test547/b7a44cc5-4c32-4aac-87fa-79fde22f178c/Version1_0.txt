@@ -1,0 +1,52 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFile {
+
+    public static void main(String[] args) {
+        String filePath = "path/to/your/file.txt"; // Replace with your file path
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and how to use it:**
+
+1. **Replace `"path/to/your/file.txt"`:**  Change this placeholder to the actual path of your text file.  For example:
+   -  `"my_document.txt"` if the file is in the same directory as your Java program.
+   -  `"C:\\Users\\YourName\\Documents\\my_document.txt"` for a Windows path.
+   -  `"/home/YourName/Documents/my_document.txt"` for a Linux/macOS path.
+
+2. **Compile and run:** Compile the Java code (e.g., `javac ReadFile.java`) and then run it (e.g., `java ReadFile`).
+
+3. **Output:** The program will print the contents of the text file to the console, line by line.
+
+
+**Error Handling:**
+
+The code includes a `try-catch` block to handle potential `IOExceptions`.  If the file is not found, or if there's another problem reading the file, an error message will be printed to the console.
+
+**Important Considerations:**
+
+* **File Path:**  Make sure the file path is correct.  Relative paths are relative to where you run the Java program from, not necessarily where the `.java` file is located.
+* **File Encoding:**  If your text file uses a different encoding than your system's default (e.g., UTF-8, ISO-8859-1), you might need to specify the encoding when creating the `FileReader`:
+   ```java
+   try (BufferedReader reader = new BufferedReader(new FileReader(filePath, StandardCharsets.UTF_8))) { 
+       // ... rest of the code
+   }
+   ```  (You'll need to import `java.nio.charset.StandardCharsets`)
+* **Large Files:** For very large files, reading the entire file into memory at once (as some other examples might do) is not efficient.  This code reads the file line by line, which is better for memory management.
+
+
+This revised answer provides a complete, working solution with clear instructions and addresses potential errors.

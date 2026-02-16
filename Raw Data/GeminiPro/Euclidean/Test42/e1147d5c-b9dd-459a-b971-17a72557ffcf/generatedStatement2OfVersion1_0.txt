@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+| Input Number | Expected Output | Justification |
+|---|---|---|
+| 20 | 1 | Even number |
+| 15 | 0 | Odd number |
+| 0 | 1 | Zero is considered even |
+| -2 | 1 | Negative even number |
+| -5 | 0 | Negative odd number |
+| 2147483647 (Integer.MAX_VALUE) | 0 | Largest positive integer (odd) |
+| -2147483648 (Integer.MIN_VALUE) | 1 | Smallest negative integer (even) | 
+| 1000000 (Large positive even) | 1 | Testing with a larger even number|
+| 999999 (Large positive odd) | 0 | Testing with a larger odd number |
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:** Zero is divisible by 2 with no remainder, so it is considered an even number.
+* **Negative Numbers:** The concept of even and odd applies to negative integers as well.  A negative integer is even if it's divisible by 2.
+* **Integer.MAX_VALUE and Integer.MIN_VALUE:** These represent the largest and smallest possible integer values in Java.  Testing these helps ensure the program handles the extreme ends of the integer range correctly.  It is specifically important to test `Integer.MIN_VALUE` because its absolute value cannot be represented as a positive integer.
+
+
+How to run the test cases (using a bash script -  adapt as needed for your environment):
+
+

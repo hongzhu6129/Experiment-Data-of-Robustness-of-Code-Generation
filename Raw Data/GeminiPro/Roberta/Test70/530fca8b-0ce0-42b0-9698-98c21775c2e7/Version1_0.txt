@@ -1,0 +1,40 @@
+```java
+public class LargestElement {
+
+    public static void main(String[] args) {
+        int[] arr = {10, 5, 25, 8, 15, 30}; // Example array (even length)
+
+        if (arr.length % 2 != 0 || arr.length == 0) {
+            System.out.println("Array must be of even length and non-empty.");
+            return;
+        }
+
+        int first = arr[0];
+        int last = arr[arr.length - 1];
+        int middleIndex1 = arr.length / 2 - 1;
+        int middleIndex2 = arr.length / 2;
+        int along1 = arr[middleIndex1];
+        int along2 = arr[middleIndex2];
+
+
+        int largest = first;
+
+        if (last > largest) {
+            largest = last;
+        }
+
+        if (along1 > largest) {
+            largest = along1;
+        }
+
+        if (along2 > largest) {
+            largest = along2;
+        }
+
+
+        System.out.println("Largest element among first, last, and middle two: " + largest);
+
+
+    }
+}
+```

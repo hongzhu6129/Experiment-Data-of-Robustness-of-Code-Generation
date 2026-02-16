@@ -1,0 +1,41 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class ReverseOddLengthWords {
+
+    public static void main(String[] args) {
+        String inputString = "This is a sample string with some words";
+        String result = test(inputString);
+        System.out.println(result); // Output: sihT is a elpmas gnirts htiw emos sdrow
+
+        inputString = "Hello World";
+        result = test(inputString);
+        System.out.println(result); // Output: olleH dlroW
+
+
+        inputString = "EvenLengthWord";
+        result = test(inputString);
+        System.out.println(result); // Output: EvenLengthWord
+    }
+
+    public static String test(String inputString) {
+        if (inputString == null || inputString.trim().isEmpty()) {
+            return inputString;
+        }
+
+        List<String> words = Arrays.asList(inputString.split("\\s+"));
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) {
+            if (word.length() % 2 != 0) { // Odd length
+                result.append(new StringBuilder(word).reverse().toString()).append(" ");
+            } else { // Even length
+                result.append(word).append(" ");
+            }
+        }
+
+        return result.toString().trim();
+    }
+}
+```

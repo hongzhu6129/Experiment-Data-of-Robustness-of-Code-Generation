@@ -1,0 +1,87 @@
+```java
+import java.util.Arrays;
+
+public class QuickSort {
+
+    public void sort(int[] inputArr) {
+        if (inputArr == null || inputArr.length == 0) {
+            return;
+        }
+        quickSort(0, inputArr.length - 1, inputArr);
+    }
+
+    private void quickSort(int low, int high, int[] arr) {
+        int i = low;
+        int j = high;
+        // pivot is middle index number
+        int pivot = arr[low + (high - low) / 2];
+        // Divide into two arrays
+        while (i <= j) {
+            /**
+             * In quickSort, we are dividing the array into two sub-arrays.
+             * The elements which are smaller than the pivot element are arranged on the left partition.
+             * The elements which are larger than the pivot element are arranged in the right partition.
+             */
+            while (arr[i] < pivot) {
+                i++;
+            }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                exchangeNumbers(i, j, arr);
+                // move index to next position on both partitions
+                i++;
+                j--;
+            }
+        }
+        // call quickSort() method recursively
+        if (low < j) {
+            quickSort(low, j, arr);
+        }
+        if (i < high) {
+            quickSort(i, high, arr);
+        }
+    }
+
+    private void exchangeNumbers(int i, int j, int[] array) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        QuickSort sorter = new QuickSort();
+        int[] input = {24, 2, 45, 20, 56, 75, 2, 56, 99, 53, 12};
+
+        System.out.println("Before sorting: " + Arrays.toString(input));
+        sorter.sort(input);
+        System.out.println("After sorting : " + Arrays.toString(input));
+
+
+        int[] input2 = {}; // Test with empty array
+
+        System.out.println("Before sorting: " + Arrays.toString(input2));
+        sorter.sort(input2);
+        System.out.println("After sorting : " + Arrays.toString(input2));
+
+
+
+         int[] input3 = null;  // Test with null array
+        System.out.println("Before sorting: " + (input3 == null ? "null" : Arrays.toString(input3)) );
+        sorter.sort(input3);
+        System.out.println("After sorting : " + (input3 == null ? "null" : Arrays.toString(input3)) ); 
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  The `sort` method now correctly handles `null` and empty input arrays.
+* **Clearer comments:** The comments explain the logic of the partitioning process in `quickSort` more clearly.
+* **Added tests in `main`:** The `main` method now includes tests with an empty array and a `null` array to demonstrate the robust handling of these edge cases.
+* **Uses a more common pivot selection:** The pivot is now chosen as the middle element using `arr[low + (high - low) / 2]`. This helps prevent worst-case scenarios with already sorted or nearly sorted arrays.  This avoids potential integer overflow that could happen if you simply do  `(low + high)/2`.
+
+
+This improved version is more robust, easier to understand, and demonstrates good coding practices.

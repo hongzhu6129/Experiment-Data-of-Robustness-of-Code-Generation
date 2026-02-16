@@ -1,0 +1,42 @@
+public class StringToNumber {
+
+    public static void main(String[] args) {
+        String str = "12345";
+
+        // Convert to int
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Int value: " + intValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input for int conversion: " + e.getMessage());
+        }
+
+        // Convert to long
+        try {
+            long longValue = Long.parseLong(str);
+            System.out.println("Long value: " + longValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input for long conversion: " + e.getMessage());
+        }
+
+        String strFloat = "123.45"; // Example with a decimal
+        String strDouble = "67890.123456789"; // Example with more precision
+
+         // Convert to float
+        try {
+            float floatValue = Float.parseFloat(strFloat);
+            System.out.println("Float value: " + floatValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input for float conversion: " + e.getMessage());
+        }
+
+
+        // Convert to double
+        try {
+            double doubleValue = Double.parseDouble(strDouble);
+            System.out.println("Double value: " + doubleValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input for double conversion: " + e.getMessage());
+        }
+    }
+}

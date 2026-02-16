@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+| Test Case | Input (Decimal) | Expected Output (Octal) |
+|---|---|---|
+| 1 | 15 | 17 |
+| 2 | 0 | 0 |
+| 3 | 1 | 1 |
+| 4 | 7 | 7 |
+| 5 | 8 | 10 |
+| 6 | 63 | 77 |
+| 7 | 128 | 200 |
+| 8 | 255 | 377 |
+| 9 | -1 |  (Handle negative input appropriately - either throw an exception or represent it correctly.  Java's `Integer.toOctalString()` handles negatives.) -37777777777 | // In two's complement for 32 bits.
+| 10 | 2147483647 (Integer.MAX_VALUE) | 7777777777 |
+| 11 | -2147483648 (Integer.MIN_VALUE) | 10000000000  | // Special case, also two's complement
+
+
+**Explanation of Test Cases and Corner Cases:**
+
+* **Case 1:** The provided example.
+* **Case 2 & 3:** Testing the base cases/boundaries.
+* **Case 4 & 5:**  Testing the transition point from single-digit octal to two-digit octal.
+* **Case 6, 7, 8:** Testing with larger numbers to ensure correct conversion.
+* **Case 9:**  Negative Input: Java's `Integer.toOctalString()` handles negative numbers using two's complement representation.  You might want to restrict input to non-negative numbers or provide a specific way to handle negative input in your application.
+* **Case 10 & 11:** Integer Limits:  Important to test the extreme values to make sure there are no overflows or unexpected behavior.  Integer.MAX_VALUE and Integer.MIN_VALUE cover these limits.
+
+
+**How to Run Test Cases:**
+
+While you could manually enter these values into the program, a better approach for testing is to write unit tests (e.g., using JUnit). Here's a basic example using JUnit:
+

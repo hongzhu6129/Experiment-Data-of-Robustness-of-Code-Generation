@@ -1,0 +1,110 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+**1. Normal Cases:**
+
+* **Input:** 10, 20, 30
+* **Expected Output:** 20.0
+
+* **Input:** 2.5, 5.7, 8.9
+* **Expected Output:** 5.7
+
+**2. Zero Values:**
+
+* **Input:** 0, 0, 0
+* **Expected Output:** 0.0
+
+* **Input:** 10, 0, 20
+* **Expected Output:** 10.0
+
+
+**3. Negative Numbers:**
+
+* **Input:** -10, -20, -30
+* **Expected Output:** -20.0
+
+* **Input:** -5, 15, 5
+* **Expected Output:** 5.0
+
+
+**4. Large Numbers:**
+
+* **Input:** 1000000000, 2000000000, 3000000000  // Note: These are within the range of a Java `double`
+* **Expected Output:** 2.0E9 (or 2000000000.0)
+
+
+**5.  Decimal Numbers with varying precision:**
+
+* **Input:** 1.234, 5.67, 89.0
+* **Expected Output:** 31.968
+
+
+**6. Corner Cases (potential overflow � unlikely with doubles, but important to consider with other data types):**
+
+
+* **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE 
+* **Expected Output:** Infinity  (This demonstrates how Java handles overflow with doubles).
+
+
+
+**How to run the test cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering the input values for each test case.  Visually compare the program's output with the expected output.
+
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit. This is a much more robust and efficient approach, especially for larger projects.  Here's a simple example using JUnit 5:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testZeroValues() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+    // ... add tests for other cases (negative numbers, large numbers, etc.)
+
+    @Test
+    void testMaxValue() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+}
+```
+
+By using JUnit (or similar frameworks), you can automate the testing process and ensure your program behaves correctly under different conditions.  It also makes it easier to maintain and update your tests as your code evolves.

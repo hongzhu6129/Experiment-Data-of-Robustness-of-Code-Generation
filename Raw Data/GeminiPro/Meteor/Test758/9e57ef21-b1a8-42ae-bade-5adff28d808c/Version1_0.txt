@@ -1,0 +1,64 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class LastNVowels {
+
+    public static void main(String[] args) {
+        String str1 = "aeroplane";
+        int n1 = 3;
+        System.out.println("Last " + n1 + " vowels of \"" + str1 + "\": " + validate(str1, n1)); // Expected: "ae"
+
+        String str2 = "programming";
+        int n2 = 2;
+        System.out.println("Last " + n2 + " vowels of \"" + str2 + "\": " + validate(str2, n2)); // Expected: "ai"
+
+        String str3 = "coding";
+        int n3 = 5; 
+        System.out.println("Last " + n3 + " vowels of \"" + str3 + "\": " + validate(str3, n3)); // Expected: "oi"
+
+        String str4 = "rhythm"; // No vowels
+        int n4 = 2;
+        System.out.println("Last " + n4 + " vowels of \"" + str4 + "\": " + validate(str4, n4)); // Expected: ""
+
+
+    }
+
+    public static String validate(String str, int n) {
+        List<Character> vowels = new ArrayList<>();
+
+        // Find all vowels (case-insensitive) and add them to the list
+        for (char c : str.toLowerCase().toCharArray()) {
+            if ("aeiou".indexOf(c) != -1) {
+                vowels.add(c);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        int numVowels = vowels.size();
+
+        // Get the last n vowels (or fewer if there are not enough)
+        for (int i = Math.max(0, numVowels - n); i < numVowels; i++) {
+            result.append(vowels.get(i));
+        }
+
+        return result.toString();
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+1. **Clarity and Readability:** The code is now better structured and easier to understand.  Comments explain the logic.
+
+2. **Case-Insensitivity:**  The `.toLowerCase()` method ensures that vowels are detected regardless of their case in the input string.
+
+3. **Handling Edge Cases:**  The `Math.max(0, numVowels - n)`  part handles cases where `n` is larger than the actual number of vowels in the string. It prevents index out of bounds exceptions and returns all available vowels if `n` is too large.
+
+4. **Efficiency (Minor):** Using a `StringBuilder` for constructing the result string is generally more efficient than repeated string concatenation (using `+`).  While the difference might be negligible for small strings, it's good practice.
+
+5. **Clearer Example Usage in `main`:** The `main` method demonstrates various examples, including cases with fewer vowels than `n` and strings with no vowels.  The expected output is provided in comments to help verify the correctness.
+
+
+This revised version addresses the issues in the previous response and provides a more robust and educational solution. It's also more in line with best practices for Java coding.

@@ -1,0 +1,102 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input | Expected Output                                                   |
+|-----------|-------|-------------------------------------------------------------------|
+| 1        | 5     | 5 x 1 = 5 ... 5 x 10 = 50                                      |
+| 2        | 0     | 0 x 1 = 0 ... 0 x 10 = 0                                      |
+| 3        | 1     | 1 x 1 = 1 ... 1 x 10 = 10                                     |
+| 4        | 10    | 10 x 1 = 10 ... 10 x 10 = 100                                  |
+| 5        | -2    | -2 x 1 = -2 ... -2 x 10 = -20                                 |
+| 6        | 100   | 100 x 1 = 100 ... 100 x 10 = 1000                             |
+| 7        | -100  | -100 x 1 = -100 ... -100 x 10 = -1000                           |
+| 8 (Large) | 2147483647 (Integer.MAX_VALUE)|  2147483647 x 1 = 2147483647 ... (check for potential overflow)| 
+| 9 (Large)| -2147483648 (Integer.MIN_VALUE)| -2147483648 x 1 = -2147483648 ... (check for potential overflow)|
+
+
+
+**Explanation of Test Cases:**
+
+* **Cases 1, 5, 6, 7:** These are general cases with positive, negative, and larger numbers to ensure the multiplication logic works correctly.
+* **Case 2 (Zero):**  Tests the behavior with zero input.
+* **Case 3 (One):** A simple case to verify basic functionality.
+* **Case 4 (Ten):**  Tests the upper bound of the multiplication table (up to 10).
+* **Cases 8 and 9 (Integer.MAX_VALUE and Integer.MIN_VALUE):**  These are crucial corner cases to test how the program handles the largest and smallest possible integer values.  Because Java uses a fixed number of bits to represent integers, multiplying very large or very small numbers can lead to *integer overflow*, where the result wraps around. Your test should check if the program handles this gracefully or produces incorrect results.
+
+
+**How to Run Test Cases (Manually):**
+
+1.  Compile the Java code: `javac MultiplicationTable.java`
+2.  Run the program for each test case:  `java MultiplicationTable`  (and enter the input value when prompted).
+3.  Compare the output with the expected output.
+
+
+
+**Automated Testing (Recommended):**
+
+For more robust and efficient testing, it's highly recommended to use a testing framework like JUnit. JUnit allows you to write automated tests that check your program's behavior against expected outputs without manual intervention. This makes testing much more thorough and less error-prone, especially as your program grows in complexity.  Here's a simple JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+
+
+public class MultiplicationTableTest {
+    @Test
+    void testMultiplicationTable5() {
+        testMultiplication(5, "5 x 1 = 5\n5 x 2 = 10\n... (up to 10)\n5 x 10 = 50\n"); // Replace ... with the full output
+    }
+
+
+    // Add more @Test methods for other test cases
+
+
+    private void testMultiplication(int input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(String.valueOf(input).getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        MultiplicationTable.main(new String[0]); // Run main with input
+
+
+        assertEquals(expectedOutput, out.toString());
+
+        // Reset System.in and System.out
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
+}
+
+```
+
+This JUnit example shows how to redirect standard input and output to test the `main` method.  You would expand it to include test methods for each of your test cases.  JUnit provides assertion methods like `assertEquals()` to check if the actual output matches the expected output.

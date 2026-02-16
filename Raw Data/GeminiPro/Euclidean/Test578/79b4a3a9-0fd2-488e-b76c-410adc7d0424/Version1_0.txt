@@ -1,0 +1,54 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+        linkedList.add("Date");
+        linkedList.add("Elderberry");
+
+        // Specify the starting position (index)
+        int startPosition = 2; // Start iterating from the 3rd element (index 2)
+
+        // Iterate through the LinkedList from the specified position
+        iterateFromPosition(linkedList, startPosition);
+
+
+         // Example of handling invalid start position:
+        int invalidStartPosition = 10; //  Beyond the list's bounds
+        iterateFromPosition(linkedList, invalidStartPosition); // This will print an appropriate message
+
+    }
+
+    public static void iterateFromPosition(LinkedList<String> linkedList, int startPosition) {
+
+        if (startPosition < 0 || startPosition >= linkedList.size()) {
+            System.out.println("Invalid start position.  Must be within the bounds of the LinkedList.");
+            return; // Exit the method if the start position is invalid
+        }
+
+        // Use a ListIterator to iterate from a specific position
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+
+        System.out.println("Iterating from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+        System.out.println(); // Add a newline for clarity between examples
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles invalid `startPosition`:**  The code now explicitly checks if `startPosition` is within the valid bounds of the LinkedList. If it's not (negative or greater than or equal to the list's size), it prints an informative message and exits the method. This prevents `IndexOutOfBoundsException` errors.
+* **Uses `ListIterator`:** The most efficient way to iterate from a specific position in a `LinkedList` is using a `ListIterator`. The `listIterator(int index)` method allows you to start the iterator at the specified index.
+* **Clearer output:**  The output now indicates the starting position and adds a newline between examples for better readability.
+* **More robust and user-friendly:** These changes make the code more robust by handling potential errors and provide better feedback to the user.

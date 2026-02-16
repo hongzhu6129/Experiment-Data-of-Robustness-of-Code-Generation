@@ -1,0 +1,58 @@
+public class MultiplyArrays {
+
+    public static void main(String[] args) {
+
+        // Example arrays
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {6, 7, 8, 9, 10};
+
+        // Check if arrays are of the same length
+        if (array1.length != array2.length) {
+            System.out.println("Arrays must have the same length for element-wise multiplication.");
+            return; // Exit if lengths are different
+        }
+
+        // Create an array to store the results
+        int[] result = new int[array1.length];
+
+        // Perform element-wise multiplication
+        for (int i = 0; i < array1.length; i++) {
+            result[i] = array1[i] * array2[i];
+        }
+
+        // Print the resulting array
+        System.out.print("Resulting array: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+
+        // Example with different size arrays to demonstrate error handling
+        int[] array3 = {1,2,3};
+        int[] array4 = {4,5};
+
+        if (array3.length != array4.length) {
+            System.out.println("Arrays must have the same length for element-wise multiplication. (Example 2)");
+            return; 
+        }
+
+        // This part won't be executed because the above if statement will exit
+
+       int[] result2 = new int[array3.length]; //  This would cause an error if lengths were unequal and we didn't have the check!
+        for (int i = 0; i < array3.length; i++) {
+            result2[i] = array3[i] * array4[i]; // Potential ArrayIndexOutOfBoundsException without the length check
+        }
+        System.out.print("Resulting array 2: ["); // This won't print
+         for (int i = 0; i < result2.length; i++) {
+             System.out.print(result2[i]);
+             if (i < result2.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]"); // This won't print
+    }
+}

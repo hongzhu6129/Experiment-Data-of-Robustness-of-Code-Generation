@@ -1,0 +1,48 @@
+```java
+public class EnvironmentAndSecurityManager {
+
+    public static void main(String[] args) {
+
+        // 25. Check for Security Manager
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        // 90. Get environment variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // On Windows
+        String tmp = System.getenv("TMP");   // On some other systems (e.g., Linux)
+        String username = System.getenv("USERNAME"); // On Windows
+
+
+        System.out.println("PATH: " + path);
+
+
+        if (temp != null) {
+            System.out.println("TEMP: " + temp);
+        } else if (tmp != null) {
+            System.out.println("TMP: " + tmp); // Use TMP if TEMP isn't found
+        } else {
+            System.out.println("Neither TEMP nor TMP environment variable found.");
+        }
+
+        System.out.println("USERNAME: " + username);
+
+
+        // More robust way to get temp directory (handles OS differences better)
+        String tempDir = System.getProperty("java.io.tmpdir");
+        System.out.println("Temporary Directory (using java.io.tmpdir): " + tempDir);
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles different operating systems for TEMP:** Uses both `TEMP` (Windows) and `TMP` (Linux/others) and provides a message if neither is found.
+* **More robust temp directory retrieval:** Uses `java.io.tmpdir` system property, a more reliable cross-platform method for getting the temporary directory.
+* **Clearer output:**  Labels each environment variable for better readability.
+* **Handles `null` returns:**  Checks for `null` to prevent `NullPointerExceptions` if an environment variable is not set.

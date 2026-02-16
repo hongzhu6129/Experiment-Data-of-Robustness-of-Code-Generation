@@ -1,0 +1,66 @@
+```java
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class TimeInformation {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the time in HH:mm:ss format (24-hour format):");
+        String timeString = scanner.nextLine();
+
+        try {
+            LocalTime time = LocalTime.parse(timeString);
+
+            System.out.println("Hour: " + time.getHour());
+            System.out.println("Minute: " + time.getMinute());
+            System.out.println("Second: " + time.getSecond());
+
+            DateTimeFormatter formatter12Hour = DateTimeFormatter.ofPattern("hh:mm:ss a");
+            String formatted12HourTime = time.format(formatter12Hour);
+            System.out.println("Time in 12-hour format: " + formatted12HourTime);
+
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid time format. Please use HH:mm:ss format.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+Example Usage and Output:
+
+```
+Enter the time in HH:mm:ss format (24-hour format):
+15:30:45
+Hour: 15
+Minute: 30
+Second: 45
+Time in 12-hour format: 03:30:45 PM
+
+
+Enter the time in HH:mm:ss format (24-hour format):
+09:05:00
+Hour: 9
+Minute: 5
+Second: 0
+Time in 12-hour format: 09:05:00 AM
+
+Enter the time in HH:mm:ss format (24-hour format):
+badformat
+Invalid time format. Please use HH:mm:ss format. 
+```
+
+
+Key improvements:
+
+* **Error Handling:** The `try-catch` block handles `DateTimeParseException` to gracefully manage invalid input formats, preventing the program from crashing.
+* **12-Hour Format:** The code now formats and displays the time in 12-hour format (e.g., "03:30:45 PM") using a `DateTimeFormatter`.
+* **Clearer Prompts and Output:**  The prompts and output messages are more user-friendly.
+* **Resource Management:** The `Scanner` is closed using `scanner.close()` to release the resource. This is good practice, especially in larger applications.

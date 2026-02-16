@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CopyMap {
+
+    public static void main(String[] args) {
+        // Create a source map
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("apple", 1);
+        sourceMap.put("banana", 2);
+        sourceMap.put("orange", 3);
+
+        // Create a destination map
+        Map<String, Integer> destinationMap = new HashMap<>();
+
+        // Copy all mappings from sourceMap to destinationMap
+        destinationMap.putAll(sourceMap);
+
+
+        // Print the destination map to verify the copy
+        System.out.println("Destination Map:");
+        for (Map.Entry<String, Integer> entry : destinationMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+
+        // Another way to create a copy (independent of original)
+        Map<String, Integer> anotherCopy = new HashMap<>(sourceMap);
+
+        System.out.println("\nAnother Copy (independent):");
+         for (Map.Entry<String, Integer> entry : anotherCopy.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+
+    }
+}

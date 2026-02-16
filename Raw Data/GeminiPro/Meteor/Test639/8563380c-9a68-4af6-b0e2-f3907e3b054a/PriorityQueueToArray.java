@@ -1,0 +1,36 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(7);
+
+        // Convert the PriorityQueue to an array using toArray()
+        Integer[] arr = pq.toArray(new Integer[0]); // Efficient way, uses the correct size from the start
+
+        // Print the array
+        System.out.println("Array elements: " + Arrays.toString(arr));
+
+
+        // Demonstration using a pre-allocated array (less efficient if the size is wrong)
+        Integer[] arr2 = new Integer[pq.size()];
+        pq.toArray(arr2); //Fills the pre-allocated array
+        System.out.println("Array elements (pre-allocated): " + Arrays.toString(arr2));
+
+
+        // Demonstrating potential issue if pre-allocated array is too small
+        Integer[] smallArray = new Integer[2]; //Array is too small
+        Integer[] result = pq.toArray(smallArray); //A new array is created and returned if the supplied array is too small
+        System.out.println("Array elements (too small array): " + Arrays.toString(result)); //result will not be smallArray but a new array
+
+    }
+}

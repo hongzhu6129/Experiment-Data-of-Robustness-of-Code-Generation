@@ -1,0 +1,36 @@
+
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -0.0 |  //remainder with negatives can be tricky. Java's % gives the remainder such that (a/b)*b + a%b = a
+| 3. Zero as num1 | 0 | 7 | 7 | -7 | 0 | 0.0 | 0.0 |
+| 4. Zero as num2 | 5 | 0 | 5 | 5 | 0 | Division by zero | Remainder by zero |  // Corner case: Division by zero
+| 5. Large Numbers | 100000 | 50000 | 150000 | 50000 | 5000000000L | 2.0 | 0.0 | //Handles large numbers correctly
+| 6. Decimal Numbers | 2.5 | 1.5 | 4.0 | 1.0 | 3.75 | 1.6666666666666667 | 1.0 |
+| 7. Mixed Signs | -10 | 5 | -5 | -15 | -50 | -2.0 | -0.0 |
+| 8. Integer overflow (potential corner case*) | Integer.MAX_VALUE | 1  | Overflow, likely becomes negative |  Integer.MAX_VALUE -1 |  Integer.MAX_VALUE | Integer.MAX_VALUE | 0 |
+| 9. Integer underflow (potential corner case*) | Integer.MIN_VALUE | -1  | Underflow, likely becomes positive | Integer.MIN_VALUE + 1  | Overflow (large positive value)| Integer.MIN_VALUE | 0 |
+
+
+
+
+*Note on Integer Overflow/Underflow:*  If `num1` and `num2` are integers (declared as `int` instead of `double`), and the arithmetic operation results in a value outside the range of `int`, overflow or underflow will occur.  The result will "wrap around" (e.g., adding 1 to `Integer.MAX_VALUE` results in `Integer.MIN_VALUE`).  The test cases above with `Integer.MAX_VALUE` and `Integer.MIN_VALUE`  are intended to demonstrate this if you were using `int` variables.  With `double`, you have a much wider range and are less likely to encounter this issue in typical calculations.
+
+
+
+**How to Run the Tests (Manually):**
+
+1.  **Save:** Save the Java code as `ArithmeticOperations.java`.
+2.  **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac ArithmeticOperations.java`
+3.  **Run:** Execute the compiled code: `java ArithmeticOperations`
+4.  **Input:** The program will prompt you to enter two numbers. Enter the values from each test case and verify the output matches the expected values.
+
+
+You could also automate these tests with JUnit or another testing framework. This would be recommended in a professional setting.

@@ -1,0 +1,88 @@
+```java
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListFilesAndDirectories {
+
+    public static void main(String[] args) {
+        // Get the directory path from command-line arguments.  Defaults to current directory if no argument is provided.
+        String directoryPath = ".";  // Default to current directory
+        if (args.length > 0) {
+            directoryPath = args[0];
+        }
+
+        try {
+            List<String> fileAndDirectoryNames = listFileAndDirectoryNames(directoryPath);
+            for (String name : fileAndDirectoryNames) {
+                System.out.println(name);
+            }
+        } catch (IOException e) {
+            System.err.println("Error listing files and directories: " + e.getMessage());
+        }
+    }
+
+
+    private static List<String> listFileAndDirectoryNames(String directoryPath) throws IOException {
+        List<String> names = new ArrayList<>();
+
+        // Use try-with-resources for automatic resource management
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(directoryPath))) { 
+            for (Path path : stream) {
+                names.add(path.getFileName().toString()); // Get just the file/directory name
+            }
+        }
+        return names;
+
+        /*  Alternative using File class (less efficient, handles symbolic links differently):
+
+        File directory = new File(directoryPath);
+        if (directory.exists() && directory.isDirectory()) {
+            File[] filesAndDirectories = directory.listFiles();  // Can return null!
+            if (filesAndDirectories != null) { // Check for null in case of error
+                 for (File file : filesAndDirectories) {
+                    names.add(file.getName());
+                }
+            } else {
+                System.err.println("Error reading directory contents (listFiles returned null). Check permissions or if the path is valid."); // More informative error message
+                //  You may want to throw an exception or return an empty list depending on your needs.
+            }
+        } else {
+            System.err.println("Invalid directory path: " + directoryPath);
+            //  You may want to throw an exception or return an empty list depending on your needs.
+        }
+        return names; */
+
+
+    }
+}
+```
+
+
+**Key improvements and explanations:**
+
+* **Error Handling:** The code now includes error handling with `try-catch` to prevent crashes if the directory is invalid or inaccessible. The `File.listFiles()` method can return `null` if there's a problem, so we need to handle this to avoid a `NullPointerException`.
+* **Clearer Error Messages:**  Improved the error messages to be more informative.
+* **Command-Line Argument:**  Allows the user to specify the directory path as a command-line argument (or defaults to the current directory if none is given). This makes the program more flexible.
+* **java.nio.file (Preferred):** The code uses the `java.nio.file` API (`Files.newDirectoryStream`) which is the modern and preferred way to work with files and directories in Java.  It's generally more efficient and provides better support for symbolic links and other file system features.
+* **Try-with-resources:** The `try (DirectoryStream<Path> stream = ...)` ensures that the `DirectoryStream` is automatically closed, even if an exception occurs, preventing resource leaks.
+* **Getting the Filename:** Uses `path.getFileName().toString()` to extract just the file or directory name, excluding the full path.
+* **Comments and Clarity:** Added more comments to explain the code's logic.
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `ListFilesAndDirectories.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac ListFilesAndDirectories.java`
+3. **Run:**  To list the contents of the current directory: `java ListFilesAndDirectories`
+   To list the contents of a specific directory:  `java ListFilesAndDirectories /path/to/your/directory`  (Replace `/path/to/your/directory` with the actual path).
+
+
+
+
+

@@ -1,0 +1,105 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication table of " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: `12345`
+   - Expected Output (partial - check that the logic holds):
+     ```
+     Multiplication table of 12345:
+     12345 x 1 = 12345
+     12345 x 2 = 24690
+     ...  (Check a few more)
+     12345 x 10 = 123450
+     ```
+
+5. **Large Negative Number:**
+   - Input: `-98765`
+   - Expected Output (partial - check that the logic holds):
+     ```
+     Multiplication table of -98765:
+     -98765 x 1 = -98765
+     -98765 x 2 = -197530
+     ... (Check a few more)
+     -98765 x 10 = -987650
+     ```
+
+**How to Run Test Cases:**
+
+You can easily test these cases manually by running the Java program and entering the input values. For more automated testing, consider using a testing framework like JUnit.  Here's a simple example of how you *could* manually test a case in your `main` method:
+
+```java
+public static void main(String[] args) {
+   // ... (Existing Code)
+
+   // Example of manual test case:
+   int testNum = 7;
+   printMultiplicationTable(testNum); // Observe the output and compare to expected
+
+   // ... (More test cases)
+}
+```
+
+
+
+This expanded answer provides a more complete set of test cases, including boundary and edge cases (large numbers, zero, negative numbers), making it more robust and helpful for verifying the correctness of the multiplication table program. It also provides guidance on running the tests.

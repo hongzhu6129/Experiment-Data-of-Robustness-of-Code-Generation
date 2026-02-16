@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class Rectangle {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the length of the rectangle: ");
+        double length = scanner.nextDouble();
+
+        System.out.print("Enter the width of the rectangle: ");
+        double width = scanner.nextDouble();
+
+
+        // Input validation:  Length and width cannot be negative or zero.
+        if (length <= 0 || width <= 0) {
+            System.out.println("Error: Length and width must be positive values.");
+            return; // Exit the program if input is invalid
+        }
+
+
+        double area = calculateArea(length, width);
+        double perimeter = calculatePerimeter(length, width);  // More common term than "fence"
+
+        System.out.println("Area of the rectangle: " + area);
+        System.out.println("Perimeter (fence) of the rectangle: " + perimeter);
+
+        scanner.close();
+    }
+
+    public static double calculateArea(double length, double width) {
+        return length * width;
+    }
+
+    public static double calculatePerimeter(double length, double width) {
+        return 2 * (length + width);
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+| Test Case | Length | Width | Expected Area | Expected Perimeter | Notes/Purpose                                   |
+| --------- | ------- | ----- | ------------- | ------------------ | ------------------------------------------------- |
+| 1        | 5      | 3     | 15           | 16                | Standard positive values                        |
+| 2        | 10     | 1     | 10           | 22                | Testing a long, thin rectangle                 |
+| 3        | 2.5    | 4.5   | 11.25        | 14                | Testing decimal/floating-point values            |
+| 4        | 1      | 1     | 1            | 4                 | Testing a square (special case of rectangle)       |
+| 5        | 0      | 5     | Error         | Error              | **Corner case:** Zero length (invalid input)      |
+| 6        | 5      | 0     | Error         | Error              | **Corner case:** Zero width (invalid input)       |
+| 7        | -2     | 3     | Error         | Error              | **Corner case:** Negative length (invalid input)    |
+| 8        | 5      | -3     | Error         | Error              | **Corner case:** Negative width (invalid input)    |
+| 9       | Double.MAX_VALUE | 1.0  | Double.MAX_VALUE |  2*Double.MAX_VALUE + 2 (likely overflows)  | **Corner case:** Very large length (potential overflow) |
+| 10       | 1.0 | Double.MAX_VALUE  | Double.MAX_VALUE |  2*Double.MAX_VALUE + 2 (likely overflows)  | **Corner case:** Very large width (potential overflow) |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can manually enter these values when prompted by the program.
+
+2. **Automated Testing (Recommended):**  For more robust testing, especially with many cases, it's much better to use a testing framework like JUnit.  You would write separate test methods for each test case. Here�s a basic example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RectangleTest {
+
+    @Test
+    void testCalculateArea_positiveValues() {
+        assertEquals(15.0, Rectangle.calculateArea(5.0, 3.0));
+    }
+
+    @Test
+    void testCalculatePerimeter_positiveValues() {
+        assertEquals(16.0, Rectangle.calculatePerimeter(5.0, 3.0));
+    }
+
+    // Add more test methods for other cases (zero, negative, large values, etc.)
+}
+```
+
+
+With JUnit or other testing frameworks, you can automate the execution of your test cases and quickly verify that your `Rectangle` class is working correctly under different conditions.

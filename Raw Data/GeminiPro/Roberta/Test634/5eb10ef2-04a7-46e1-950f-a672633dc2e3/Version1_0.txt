@@ -1,0 +1,65 @@
+```java
+import java.util.PriorityQueue;
+
+public class ClearPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of integers
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add some elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(10);
+        priorityQueue.add(3);
+
+        // Print the initial PriorityQueue
+        System.out.println("Initial PriorityQueue: " + priorityQueue);
+
+        // Remove all elements from the PriorityQueue using clear()
+        priorityQueue.clear();
+
+        // Print the PriorityQueue after clearing
+        System.out.println("PriorityQueue after clearing: " + priorityQueue);
+
+
+        // Demonstrating another way to effectively clear (by creating a new, empty queue)
+        priorityQueue = new PriorityQueue<>(); // This also clears the queue effectively.  The old queue will be garbage collected.
+        System.out.println("PriorityQueue after re-initialization: " + priorityQueue);
+
+
+        // Add elements again for further demonstration if needed
+        priorityQueue.add(20);
+        priorityQueue.add(15);
+        System.out.println("PriorityQueue after adding new elements: " + priorityQueue);
+    }
+}
+```
+
+
+Explanation:
+
+1. **Create a PriorityQueue:**
+   - `PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();` creates a new `PriorityQueue` to store integers.  You can change `Integer` to any other data type as needed (e.g., `String`, custom objects, etc.).
+
+2. **Add elements:**
+   - `priorityQueue.add()` is used to add elements to the queue.  Remember that a `PriorityQueue` keeps elements sorted according to their natural ordering (or a custom `Comparator` if provided).
+
+3. **`clear()` method:**
+   - `priorityQueue.clear();` is the primary method for removing all elements from a `PriorityQueue`. It efficiently empties the queue.
+
+4. **Re-initialization (alternative):**
+   -  `priorityQueue = new PriorityQueue<>();`  This creates a brand new, empty `PriorityQueue` and assigns it to the `priorityQueue` variable.  The original `PriorityQueue` object becomes eligible for garbage collection. This effectively clears the queue as well.
+
+5. **Printing for demonstration:**
+   - `System.out.println()` is used to show the contents of the `PriorityQueue` at different stages, demonstrating that the `clear()` method (or re-initialization) has successfully removed all elements.
+
+
+Output:
+
+```
+Initial PriorityQueue: [1, 3, 10, 5] // The order reflects the priority queue's internal ordering
+PriorityQueue after clearing: []
+PriorityQueue after re-initialization: []
+PriorityQueue after adding new elements: [15, 20]
+```

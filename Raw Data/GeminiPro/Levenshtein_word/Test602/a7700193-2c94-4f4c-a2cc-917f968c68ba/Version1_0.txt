@@ -1,0 +1,49 @@
+```java
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Append the element.  HashSet's add() method naturally handles this. If the element already exists,
+        // the add() method returns false and doesn't modify the set. If it's a new element, it's added and add() returns true.
+        boolean isAdded = hashSet.add(elementToAppend);
+
+        if (isAdded) {
+            System.out.println(elementToAppend + " added successfully.");
+        } else {
+            System.out.println(elementToAppend + " already exists in the set.");
+        }
+
+
+
+        // Print the updated HashSet
+        System.out.println("Updated HashSet: " + hashSet);
+
+
+        // Example appending an existing element:
+        String existingElement = "Apple";
+        boolean addedExisting = hashSet.add(existingElement); // Will return false, won't modify the set
+
+        if (addedExisting) {
+            System.out.println(existingElement + " added successfully.");
+        } else {
+            System.out.println(existingElement + " already exists in the set."); // This will execute
+        }
+
+        System.out.println("HashSet after trying to add existing element: " + hashSet);
+
+
+    }
+}
+```

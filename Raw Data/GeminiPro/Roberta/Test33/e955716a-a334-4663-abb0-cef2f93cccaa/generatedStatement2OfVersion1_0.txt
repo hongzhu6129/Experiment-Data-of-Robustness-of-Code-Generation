@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+**1. Basic Case:**
+
+* **Input:**  `digits = {1, 2, 3, 4}` (as in the original code)
+* **Expected Output:** 24 unique three-digit numbers (all permutations of 1, 2, 3, and 4)  and a count of 24.
+
+**2. Duplicate Digits:**
+
+* **Input:** `digits = {1, 1, 2, 3}`
+* **Expected Output:** 18 unique three-digit numbers (e.g., 112, 113, 121, 123, 131, 132, 211, 213, etc.) and a count of 18. This tests how the code handles duplicates within the input array. Although it technically shouldn't be an allowed case if you want strictly unique numbers, testing this will tell you how your algorithm handles duplicates.
+
+**3. Fewer Digits:**
+
+* **Input:** `digits = {1, 2, 3}`  (This is a borderline corner case.  It's valid but reduces the permutations)
+* **Expected Output:** 6 unique three-digit numbers (123, 132, 213, 231, 312, 321) and a count of 6.
+
+**4. More Digits (Not a corner case, but a good general test):**
+
+* **Input:** `digits = {1, 2, 3, 4, 5}`
+* **Expected Output:** 60 unique three-digit numbers  (5 * 4 * 3 = 60) and a count of 60.
+
+**5. Empty or Null Array (True corner cases):**
+
+* **Input:** `digits = {}` or `digits = null`
+* **Expected Output:**  The program should gracefully handle these cases, either by printing an appropriate error message (e.g., "Invalid input: empty array") or returning 0 without crashing. You would need to modify the code slightly to include these checks.  For `null` you'd check at the start of `main()` with:
+

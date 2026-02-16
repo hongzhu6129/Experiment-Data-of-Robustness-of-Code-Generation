@@ -1,0 +1,68 @@
+```java
+class Solution {
+    /**
+     * A Narcissistic Decimal Number is a number that is the sum of its own digits each raised to the power of the number of digits.
+     * For example, 153 is a Narcissistic Decimal Number because 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153.
+     *
+     * This program generates and displays the first 15 narcissistic decimal numbers.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int count = 0;
+        long num = 0;
+
+        while (count < 15) {
+            if (is_narc_dec_num(num)) {
+                System.out.println(num);
+                count++;
+            }
+            num++;
+        }
+    }
+
+    /**
+     * Checks if a given number is a Narcissistic Decimal Number.
+     *
+     * @param num The number to check.
+     * @return True if the number is a narcissistic decimal number, false otherwise.
+     */
+    public static boolean is_narc_dec_num(long num) {
+        if (num < 0) {
+            return false; // Handle negative numbers (optional, based on definition)
+        }
+
+        String numStr = String.valueOf(num);
+        int numDigits = numStr.length();
+        long sum = 0;
+
+        for (int i = 0; i < numDigits; i++) {
+            int digit = Character.getNumericValue(numStr.charAt(i));
+            sum += Math.pow(digit, numDigits);
+        }
+
+        return sum == num;
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Clarity and Comments:** Added comprehensive comments to explain the purpose of the code, the algorithm used, and the handling of edge cases like negative numbers (which may or may not be considered narcissistic depending on the exact definition).
+
+2. **Efficiency:** The `is_narc_dec_num` method was optimized by converting the number to a string only once.  This is slightly more efficient than repeatedly converting individual digits within the loop.
+
+3. **Negative Number Handling:** The code explicitly handles negative numbers by returning `false`.  You can adjust this if your definition of narcissistic numbers includes negatives.
+
+4. **String Conversion:** Used `String.valueOf()` for converting the number to a string, which is generally preferred over concatenation with an empty string ("" + num).
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `Solution.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the command:  `javac Solution.java`
+3. **Run:** Execute the compiled code with: `java Solution`
+
+
+This will print the first 15 narcissistic decimal numbers to the console.

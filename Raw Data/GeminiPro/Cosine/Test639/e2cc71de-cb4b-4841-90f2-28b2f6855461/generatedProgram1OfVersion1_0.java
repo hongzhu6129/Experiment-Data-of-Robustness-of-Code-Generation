@@ -1,0 +1,49 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Convert PriorityQueue to array using toArray()
+        Integer[] array = priorityQueue.toArray(new Integer[0]);
+
+
+        // Sort the array (optional - if you need the elements in their natural order, otherwise they'll be in heap order)
+        Arrays.sort(array); // For Integers (or other Comparable types)
+
+        // Print the array
+        System.out.println("Array elements:");
+        for (Integer element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+
+        //Example with a different data type (String)
+        PriorityQueue<String> stringPriorityQueue = new PriorityQueue<>();
+        stringPriorityQueue.add("apple");
+        stringPriorityQueue.add("banana");
+        stringPriorityQueue.add("orange");
+
+        String[] stringArray = stringPriorityQueue.toArray(new String[0]);
+
+        // Sort the String array
+        Arrays.sort(stringArray); // Strings are Comparable
+
+        System.out.println("String Array elements:");
+        for (String element : stringArray) {
+            System.out.print(element + " ");
+        }
+
+    }
+}

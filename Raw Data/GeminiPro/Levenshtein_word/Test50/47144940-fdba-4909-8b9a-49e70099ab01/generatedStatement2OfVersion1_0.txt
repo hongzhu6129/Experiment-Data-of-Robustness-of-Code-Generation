@@ -1,0 +1,20 @@
+
+
+
+
+**Explanation and Improvements:**
+
+1. **Null Handling:** The code now explicitly handles `null` input strings.  This prevents `NullPointerExceptions`. It's important to handle `null` as a valid input possibility, especially in robust applications.
+
+2. **Empty and Whitespace-Only String Handling:** The code efficiently handles both empty strings (`""`) and strings containing only whitespace (`"   "`). This ensures that the output is consistent and predictable for these boundary cases.
+
+3. **Trimmed Check:** The `sentence.trim().isEmpty()` check is added to make sure that strings containing *only* whitespace characters are also treated as effectively empty.
+
+4. **Clearer Variable Names:** The variable `newWord` makes the logic more readable.
+
+5. **Comprehensive Test Cases:**  The test cases cover various scenarios including leading/trailing spaces, empty strings, strings with only spaces, single-word strings, mixed-case strings, strings starting/ending with numbers, and even `null` string input. This thorough testing helps ensure the correctness of the function.
+
+
+**How it works:**
+
+The `function` method iterates through the characters of the input string.  It keeps track of whether it's encountering the beginning of a new word using the `newWord` flag.  If a character is a whitespace, `newWord` is set to `true`.  If a non-whitespace character is encountered and `newWord` is `true`, it capitalizes that character and sets `newWord` to `false`.  This logic effectively capitalizes the first letter of each word. The `StringBuilder` is used for efficient string concatenation.

@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of a side of the hexagon: ");
+        double side = input.nextDouble();
+
+        // Handle invalid input (side length cannot be negative or zero)
+        if (side <= 0) {
+            System.out.println("Invalid input. Side length must be positive.");
+            return; // Exit the program
+        }
+
+
+        double area = (3 * Math.sqrt(3) * side * side) / 2;
+
+        System.out.println("The area of the hexagon is: " + area);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: `side = 5`
+   - Expected Output: `The area of the hexagon is: 64.9519052838329`
+
+2. **Zero Side Length:**
+   - Input: `side = 0`
+   - Expected Output: `Invalid input. Side length must be positive.`
+
+3. **Negative Side Length:**
+   - Input: `side = -2`
+   - Expected Output: `Invalid input. Side length must be positive.`
+
+4. **Large Side Length:**
+   - Input: `side = 1000`
+   - Expected Output: `The area of the hexagon is: 2598076.211353316`
+
+5. **Small Side Length:**
+   - Input: `side = 0.5`
+   - Expected Output: `The area of the hexagon is: 0.649519052838329`
+
+6. **Decimal Input:**  (To ensure the program handles floating-point numbers correctly)
+   - Input: `side = 2.75`
+   - Expected Output: `The area of the hexagon is: 19.48557157975365`
+
+
+
+**How to run the test cases:**
+
+You can manually run these test cases by compiling and running the Java program, entering the input values as prompted.  Alternatively, if you're using an IDE like IntelliJ or Eclipse, you can often set up unit tests using JUnit or TestNG to automate these tests.  This would involve creating separate test methods for each test case.  For simple programs like this, manual testing is often sufficient.

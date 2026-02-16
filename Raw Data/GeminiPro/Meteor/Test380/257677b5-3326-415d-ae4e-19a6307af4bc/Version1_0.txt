@@ -1,0 +1,32 @@
+```java
+class Solution {
+    /**
+     * Checks if the first two characters of a string also appear at the end.
+     *
+     * @param str The input string.
+     * @return True if the first two characters are the same as the last two, 
+     *         false otherwise. Returns false if the string is less than 2 characters long.
+     */
+    public boolean firstInLast(String str) {
+        if (str.length() < 2) {
+            return false;
+        }
+
+        String firstTwo = str.substring(0, 2);
+        String lastTwo = str.substring(str.length() - 2);
+
+        return firstTwo.equals(lastTwo);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println("edited -> " + solution.firstInLast("edited")); // true
+        System.out.println("edit -> " + solution.firstInLast("edit"));   // false
+        System.out.println("ed -> " + solution.firstInLast("ed"));     // true
+        System.out.println("e -> " + solution.firstInLast("e"));       // false 
+        System.out.println(" -> " + solution.firstInLast(""));          // false
+
+    }
+}
+```

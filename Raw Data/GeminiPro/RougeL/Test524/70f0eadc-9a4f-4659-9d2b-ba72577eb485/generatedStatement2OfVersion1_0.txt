@@ -1,0 +1,17 @@
+
+
+
+**Explanation:**
+
+1. **`main` Method:**
+   - The `main` method is the entry point of the program.  I've included a sample `number` for demonstration; in a real application, you'd typically get this input from the user (e.g., using `Scanner`).
+
+2. **`isCube` Method:**
+   - **Handles Negative Numbers:**  The code first checks if the input number is negative.  If it is, it calls `isCube` again with the positive version of the number.  This is because the cube of a negative number is negative, and the cube of a positive number is positive.
+   - **Efficient Cube Root Check:**  The most efficient way to check if a number is a perfect cube is to calculate its cube root and check if the result is an integer.  We use `Math.cbrt()` to get the cube root, then `Math.round()` to round it to the nearest integer. If the rounded value is equal to the original cube root, it means the cube root was an integer, and therefore, the original number is a perfect cube.
+   - **Alternative Iterative Method (commented out):** I've included a less efficient, but perhaps more intuitively understandable, iterative approach as a comment.  This method loops through integers, calculating their cubes, and checks if any of the cubes equal the input number.
+
+
+
+**How to use with user input:**
+

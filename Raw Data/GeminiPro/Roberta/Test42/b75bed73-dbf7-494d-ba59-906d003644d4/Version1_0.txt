@@ -1,0 +1,74 @@
+```java
+import java.util.Scanner;
+
+public class EvenNumberChecker {
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        if (isEven(number)) {
+            System.out.println(number + " is even.");
+        } else {
+            System.out.println(number + " is not even (odd).");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input Number | Expected Output | Justification/Corner Case |
+|---|---|---|---|
+| 1 | 0 | 0 is even. | Zero is an even number (divisible by 2 with no remainder). |
+| 2 | 1 | 1 is not even (odd). | Basic odd number test. |
+| 3 | 2 | 2 is even. | Basic even number test. |
+| 4 | -2 | -2 is even. | Negative even number.  |
+| 5 | -1 | -1 is not even (odd). | Negative odd number. |
+| 6 | 1000 | 1000 is even. | Large positive even number. |
+| 7 | -1000 | -1000 is even. | Large negative even number. |
+| 8 | Integer.MAX_VALUE | Integer.MAX_VALUE is not even (odd). | Largest possible Java integer (odd). |
+| 9 | Integer.MIN_VALUE | Integer.MIN_VALUE is even. | Smallest possible Java integer (even). Be careful with overflow in other languages if doing similar tests!|
+
+
+
+
+**How to Run the Test Cases:**
+
+You can manually input these test cases into the program's console prompt.  For more automated testing, you would use a testing framework like JUnit.  Here's a basic example of how you might structure a JUnit test:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EvenNumberCheckerTest {
+
+    @Test
+    void testIsEven() {
+        assertTrue(EvenNumberChecker.isEven(0));
+        assertFalse(EvenNumberChecker.isEven(1));
+        assertTrue(EvenNumberChecker.isEven(2));
+        assertTrue(EvenNumberChecker.isEven(-2));
+        assertFalse(EvenNumberChecker.isEven(-1));
+        assertTrue(EvenNumberChecker.isEven(1000));
+        assertTrue(EvenNumberChecker.isEven(-1000));
+        assertFalse(EvenNumberChecker.isEven(Integer.MAX_VALUE));
+        assertTrue(EvenNumberChecker.isEven(Integer.MIN_VALUE));
+
+    }
+}
+```
+
+
+This JUnit test uses assertions (`assertTrue` and `assertFalse`) to verify that the `isEven()` method returns the expected result for each test case.  JUnit provides a much more structured and efficient way to perform software testing than manual input.
+

@@ -1,0 +1,64 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class StoreTextFileContent {
+
+    public static void main(String[] args) {
+        // Replace "your_file.txt" with the actual path to your text file
+        String filePath = "your_file.txt"; 
+
+        List<String> lines = readLinesFromFile(filePath);
+
+        if (lines != null) {
+            // Now you have the lines in the 'lines' List
+            System.out.println("File content stored successfully:");
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        }
+    }
+
+
+    private static List<String> readLinesFromFile(String filePath) {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            return null; // Indicate an error
+        }
+        return lines;
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Error Handling:** The `readLinesFromFile` method now includes a `try-catch` block to handle potential `IOExceptions`.  If there's a problem reading the file (e.g., it doesn't exist), an error message is printed, and `null` is returned to indicate the failure to the `main` method.
+
+2. **ArrayList for Storage:**  An `ArrayList<String>` is used to store the lines. `ArrayList` is a good choice because it dynamically resizes as needed, and provides efficient access to elements.
+
+3. **Clearer Output:** The `main` method now prints a success message if the file is read correctly, making the output more user-friendly.
+
+4. **Resource Management (try-with-resources):** The `BufferedReader` is used inside a try-with-resources block. This ensures that the `BufferedReader` is automatically closed, even if exceptions occur, preventing resource leaks.
+
+5. **Private Helper Method:** The file reading logic is encapsulated in the `readLinesFromFile` method.  This makes the `main` method cleaner and promotes code reusability.
+
+
+How to use:
+
+1. **Save:** Save the code as `StoreTextFileContent.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it:  `javac StoreTextFileContent.java`
+3. **Create a Text File:** Create a text file named `your_file.txt` (or whatever name you put in the `filePath` variable) in the same directory as the Java file.  Put some text in the file.
+4. **Run:**  Run the compiled code: `java StoreTextFileContent`
+
+
+The program will output the lines of your text file to the console.  If there are errors (e.g., the file is not found), an appropriate error message will be displayed.

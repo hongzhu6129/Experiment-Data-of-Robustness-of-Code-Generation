@@ -1,0 +1,34 @@
+```java
+public class CheckArrayElements {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 10, 10, 4, 5};
+        int[] arr2 = {1, 2, 20, 20, 4, 5};
+        int[] arr3 = {1, 2, 10, 10, 20, 20};
+        int[] arr4 = {1, 2, 10, 3, 20, 5};
+
+        System.out.println("Array 1: " + checkElements(arr1)); // Output: true
+        System.out.println("Array 2: " + checkElements(arr2)); // Output: true
+        System.out.println("Array 3: " + checkElements(arr3)); // Output: false
+        System.out.println("Array 4: " + checkElements(arr4)); // Output: false
+
+
+    }
+
+    public static boolean checkElements(int[] arr) {
+        boolean hasTenTen = false;
+        boolean hasTwentyTwenty = false;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == 10 && arr[i + 1] == 10) {
+                hasTenTen = true;
+            }
+            if (arr[i] == 20 && arr[i + 1] == 20) {
+                hasTwentyTwenty = true;
+            }
+        }
+
+        return (hasTenTen && !hasTwentyTwenty) || (!hasTenTen && hasTwentyTwenty); // Exclusive OR
+    }
+}
+```

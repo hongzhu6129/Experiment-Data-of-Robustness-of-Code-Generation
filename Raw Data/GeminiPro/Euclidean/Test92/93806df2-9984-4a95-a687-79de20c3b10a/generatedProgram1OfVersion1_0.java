@@ -1,0 +1,56 @@
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 4, 5, 6, 10, 7, 8, 9};
+        createNewArray(originalArray);
+
+        int[] test2 = {1, 2, 3, 4, 5}; //Test with no 10
+        createNewArray(test2);
+
+        int[] test3 = {10, 1, 2, 3, 10, 4, 5}; //Test with 10 at the beginning
+        createNewArray(test3);
+
+
+        int[] test4 = {1, 2, 3, 10}; // Test with 10 at the end
+        createNewArray(test4);
+
+
+        int[] test5 = {10, 10, 10}; // Test with all 10s
+        createNewArray(test5);
+
+    }
+
+
+
+    public static void createNewArray(int[] originalArray) {
+        int last10Index = -1;
+
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                last10Index = i;
+            }
+        }
+
+        if (last10Index != -1) { // Check if 10 exists in the original array
+            int newArrayLength = originalArray.length - (last10Index + 1);
+            if (newArrayLength > 0) { // Make sure there are elements after the last 10
+                int[] newArray = new int[newArrayLength];
+                for (int i = 0; i < newArrayLength; i++) {
+                    newArray[i] = originalArray[last10Index + 1 + i];
+                }
+
+                System.out.print("New array: ");
+                for (int num : newArray) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.println("No elements found after the last 10.");
+            }
+
+        } else {
+            System.out.println("10 not found in the original array.");
+        }
+
+    }
+}

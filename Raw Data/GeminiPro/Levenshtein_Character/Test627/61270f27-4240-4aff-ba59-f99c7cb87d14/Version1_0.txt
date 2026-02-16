@@ -1,0 +1,42 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveFirstTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.add(9);
+
+        // Check if the TreeSet is empty before attempting removal
+        if (!numbers.isEmpty()) {
+            // Retrieve and remove the first element
+            Integer firstElement = numbers.pollFirst();
+
+            // Print the removed element (if any) and the updated TreeSet
+            if (firstElement != null) {
+                System.out.println("Removed first element: " + firstElement);
+                System.out.println("Updated TreeSet: " + numbers);
+            }
+        } else {
+            System.out.println("TreeSet is empty. Cannot remove the first element.");
+        }
+
+
+        //Example demonstrating behavior with an empty TreeSet from the start.
+        TreeSet<String> emptySet = new TreeSet<>();
+        String removedFromEmpty = emptySet.pollFirst(); //Returns null
+
+        if(removedFromEmpty == null){
+            System.out.println("Tried removing from empty set. Nothing removed.");
+            System.out.println("Empty set remains empty: " + emptySet);
+        }
+    }
+}
+```

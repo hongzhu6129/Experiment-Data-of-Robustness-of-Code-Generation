@@ -1,0 +1,55 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                nums[++uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;  // Return the length of the updated array
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + newLength1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1))); // Output: New Length: 2, Array: [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + newLength2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2))); // Output: New Length: 5, Array: [0, 1, 2, 3, 4]
+
+
+        // Test cases with empty and null arrays:
+        int[] nums3 = {};
+        int newLength3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + newLength3 + ", Array: " + Arrays.toString(nums3)); // Output: New Length: 0, Array: []
+
+        int[] nums4 = null;
+        int newLength4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + newLength4 ); // Output: New Length: 0
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles `null` and empty input arrays, returning 0 in those cases.
+
+2. **Clearer Return Value:**  The function returns the updated length of the array (the number of unique elements), which is what the problem statement specifically asks for.
+
+3. **In-Place Modification and Efficiency:** The algorithm modifies the input array in-place (which is generally what LeetCode and similar platforms expect for this type of problem).  It is efficient because it avoids unnecessary copying or creation of new data structures. It has a time complexity of O(n) and space complexity of O(1).
+
+4. **Illustrative `main` Method:** The `main` method demonstrates the function's usage with multiple test cases, including edge cases, and prints the new length along with the modified portion of the array for better understanding.  The `Arrays.copyOfRange` is used in the `main` method to prevent displaying the unmodified part of the original array (since the method modifies in-place).
+
+
+This revised version addresses all the initial concerns and provides a more robust and efficient solution to the problem.

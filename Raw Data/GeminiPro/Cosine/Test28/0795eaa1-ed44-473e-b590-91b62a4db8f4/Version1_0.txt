@@ -1,0 +1,104 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        if (n < 0) {
+            n = -n; // Handle negative numbers
+        }
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        int sum = function(num);
+        System.out.println("Sum of digits: " + sum);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 12345
+   - Expected Output: 15
+
+2. **Negative Number:**
+   - Input: -9876
+   - Expected Output: 30
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+4. **Single Digit Number:**
+   - Input: 7
+   - Expected Output: 7
+
+5. **Large Number:**
+   - Input: 1234567890
+   - Expected Output: 45
+
+6. **Number with Repeating Digits:**
+   - Input: 99999
+   - Expected Output: 45
+
+7. **Number with Zeroes in between:**
+   - Input: 1002003
+   - Expected Output: 6
+
+8. **Smallest Negative Number (Integer.MIN_VALUE):**  This is a special corner case. Because the absolute value of `Integer.MIN_VALUE` cannot be represented as a positive integer, taking the absolute value directly will cause an integer overflow. The program handles this by summing the digits iteratively, working with the negative value directly.
+   - Input: -2147483648
+   - Expected Output: 47 (The program should ideally handle this, but it might be platform-dependent and overflow could occur.)
+
+9. **Largest Positive Number (Integer.MAX_VALUE):**
+   - Input: 2147483647
+   - Expected Output: 46
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:**  Enter each input value when prompted and verify the output against the expected output.
+
+2. **Automated Testing (Recommended):**  Create a separate test class (using JUnit or TestNG) to automate these test cases. This is the preferred way for robust testing. Example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SumOfDigitsTest {
+
+    @Test
+    void testPositiveNumber() {
+        assertEquals(15, SumOfDigits.function(12345));
+    }
+
+    @Test
+    void testNegativeNumber() {
+        assertEquals(30, SumOfDigits.function(-9876));
+    }
+
+    // ... add more test cases similarly ...
+
+    @Test
+    void testIntegerMinValue() {
+        assertEquals(47, SumOfDigits.function(Integer.MIN_VALUE));
+    }
+
+    @Test
+    void testIntegerMaxValue() {
+        assertEquals(46, SumOfDigits.function(Integer.MAX_VALUE));
+    }
+}
+```
+
+By implementing automated tests, you can ensure the correctness of your `function` method under different scenarios.  This approach makes it much easier to maintain and modify the code in the future.

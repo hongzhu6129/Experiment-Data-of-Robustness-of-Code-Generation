@@ -1,0 +1,39 @@
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int givenElement = 35;
+
+        // Find elements less than or equal to the given element
+        TreeSet<Integer> subset = (TreeSet<Integer>) treeSet.headSet(givenElement, true); 
+
+        // Print the subset
+        System.out.println("Elements less than or equal to " + givenElement + ": " + subset);
+
+
+        givenElement = 20;
+        subset = (TreeSet<Integer>) treeSet.headSet(givenElement, true);
+        System.out.println("Elements less than or equal to " + givenElement + ": " + subset);
+
+         givenElement = 55; // Example with an element greater than all in the set
+        subset = (TreeSet<Integer>) treeSet.headSet(givenElement, true);
+        System.out.println("Elements less than or equal to " + givenElement + ": " + subset);
+
+
+        givenElement = 5; // Example with an element smaller than all in the set
+        subset = (TreeSet<Integer>) treeSet.headSet(givenElement, true);
+        System.out.println("Elements less than or equal to " + givenElement + ": " + subset);
+
+
+
+    }
+}

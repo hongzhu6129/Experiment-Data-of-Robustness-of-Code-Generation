@@ -1,0 +1,23 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = calculatePi(4);
+        double piApproximation2 = calculatePi(5);
+
+        System.out.println("Approximation 1 (4 terms): " + piApproximation1);
+        System.out.println("Approximation 2 (5 terms): " + piApproximation2);
+    }
+
+    public static double calculatePi(int numTerms) {
+        double sum = 0.0;
+        double sign = 1.0;
+
+        for (int i = 0; i < numTerms; i++) {
+            double denominator = 2 * i + 1;
+            sum += sign / denominator;  // Changed 1 to 1.0 for floating-point division
+            sign *= -1.0; 
+        }
+
+        return 4.0 * sum;  // Changed 4 to 4.0 for consistency
+    }
+}

@@ -1,0 +1,71 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] formula_1 = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int m = formula_1.length;
+        int n = formula_1[0].length;
+
+        int target = 16; // Example target value
+
+
+        int[] result = Saddleback(formula_1, m, n, target);
+
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row (larger values)
+            } else {
+                col--; // Move left to the previous column (smaller values)
+            }
+        }
+
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Method Signature:** The `Saddleback` method now returns an `int[]` to represent the row and column index. This makes the result handling in `main` more straightforward.
+
+2. **Target Not Found Handling:**  The `Saddleback` method returns `{-1, -1}` if the target is not found.  The `main` method now explicitly checks for this and prints an appropriate message.
+
+3. **Comments:**  Added comments to explain the logic of the `Saddleback` algorithm.
+
+4. **Example Usage:**  The `main` method demonstrates how to use the `Saddleback` method with a sample 2D array and target value.
+
+
+**How Saddleback Search Works:**
+
+Saddleback search is efficient because it uses the sorted nature of the rows and columns.  It starts at the top-right corner of the matrix.
+
+- If the current element is equal to the target, we've found it.
+- If the current element is smaller than the target, we know the target can't be in the current row (since the row is sorted in ascending order).  So, we move down to the next row.
+- If the current element is larger than the target, we know the target can't be in the current column (since the column is sorted in ascending order). So, we move left to the previous column.
+
+
+This approach eliminates a row or a column in each step, leading to a time complexity of O(m + n), where 'm' is the number of rows and 'n' is the number of columns. This is more efficient than a linear search on the entire matrix (O(m*n)).

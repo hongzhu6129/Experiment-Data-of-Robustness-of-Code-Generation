@@ -1,0 +1,21 @@
+
+
+
+Explanation of the `isPowerOfFour` method:
+
+1. **Handle Zero and Negatives:**  Powers of 4 are always positive and greater than 0.  The initial check `if (num <= 0)` handles these invalid cases.
+
+2. **Power of Two Check:**  The bitwise AND operation `(num & (num - 1))` is a very efficient way to check if a number is a power of 2. If a number `n` is a power of 2, it has only one bit set in its binary representation.  Subtracting 1 from it flips all the bits to the right of the set bit and sets the bits to the right to 1. So, `n & (n-1)` will be 0 if `n` is a power of 2. If it's not a power of 2, the result will be non-zero.
+
+3. **Power of Four Check (Key Insight):** If a number is a power of 4, it's also a power of 2, and importantly, the single '1' bit in its binary representation is always at an *even* position (0, 2, 4, etc. counting from the right).
+
+   - The hexadecimal number `0x55555555` is a bitmask: `010101010101...`  (alternating 1s and 0s).
+
+   - By performing the bitwise AND `(num & 0x55555555)`, we check if the '1' bit in `num` aligns with one of the '1' bits in the mask.  If it does, the result will be non-zero, indicating that `num` is a power of 4.  If it doesn't, the result will be 0, meaning it's a power of 2 but *not* a power of 4.
+
+
+Example:
+
+- `64` (power of 4): Binary `1000000`.  `64 & 0x55555555 = 0x00000000` is not `0`, so `64` passes the test.
+- `16` (power of 4): Binary `10000`.  `16 & 0x55555555 = 0x00000000` is not `0`, so `16` passes the test.
+- `8` (power of 2, not 4): Binary `1000`.  `8 & 0x55555555 = 0x00000000` is not `0`, so `8` *fails* the test.

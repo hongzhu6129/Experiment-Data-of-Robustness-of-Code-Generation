@@ -1,0 +1,65 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 if k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; 
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n (positive integer): ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter the value of k (positive integer): ");
+        int k = scanner.nextInt();
+
+
+        if (n < 0 || k < 0) {
+            System.out.println("Error: n and k must be non-negative integers.");
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        }
+        scanner.close();
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes input validation to check if `n` and `k` are non-negative.  It prints an error message if they are negative.
+
+2. **Efficiency:** The  `if (k > n / 2)`  condition optimizes the calculation.  The binomial coefficient C(n, k) is equal to C(n, n-k).  By ensuring that `k` is always the smaller of the two, we reduce the number of iterations in the loop.
+
+3. **Clarity and Readability:** Comments have been added to explain the logic and the purpose of the optimization.  Variable names are more descriptive (`result` instead of just `res`).
+
+4. **User Input:**  The `main` method now uses a `Scanner` to get input from the user, making the program interactive.
+
+5. **Integer Overflow Handling (Important):**  The multiplication within the loop is performed carefully to avoid integer overflow as much as possible.  By multiplying by `(n - i + 1)` before dividing by `i`, we ensure we're always dividing by the smallest possible value, reducing the risk of exceeding the limits of `long`.  However, for very large `n` and `k`, `long` could still overflow.  If truly massive numbers are required, consider using `BigInteger`.
+
+
+Example Usage:
+
+```
+Enter the value of n (positive integer): 5
+Enter the value of k (positive integer): 2
+The binomial coefficient C(5, 2) is: 10
+```

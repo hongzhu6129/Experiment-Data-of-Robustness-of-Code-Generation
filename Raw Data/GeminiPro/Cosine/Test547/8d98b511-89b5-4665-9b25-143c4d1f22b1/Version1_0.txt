@@ -1,0 +1,68 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExplainPlainTextFile {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java ExplainPlainTextFile <filename>");
+            return;
+        }
+
+        String filename = args[0];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            int lineNumber = 1;
+            int totalLines = 0;
+            int totalWords = 0;
+            int totalCharacters = 0;
+
+
+            while ((line = reader.readLine()) != null) {
+                totalLines++;
+                int wordsInLine = line.split("\\s+").length;  // Split by whitespace
+                totalWords += wordsInLine;
+                totalCharacters += line.length(); // Count characters in the line
+
+                //  Optionally print or process each line:
+                // System.out.println("Line " + lineNumber + ": " + line);
+                lineNumber++;
+            }
+
+
+            System.out.println("File Analysis of: " + filename);
+            System.out.println("Total lines: " + totalLines);
+            System.out.println("Total words: " + totalWords);
+            System.out.println("Total characters (including whitespace): " + totalCharacters);
+
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+
+
+
+
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur if the file doesn't exist or there are other reading problems.  This makes the program more robust.
+
+2. **Command-Line Argument:** The program now takes the filename as a command-line argument. This is the standard way to pass input to Java programs and is more flexible than hardcoding the filename. The code checks if a filename is provided and displays usage instructions if not.
+
+3. **Whitespace Handling:** The word counting now uses `line.split("\\s+")` to split the line by any whitespace character (spaces, tabs, etc.), providing a more accurate word count.
+
+4. **Clearer Output:** The output is formatted to be more informative, displaying the filename being analyzed along with the statistics.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `ExplainPlainTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac ExplainPlainTextFile.java`
+3. **Run:** Run the program, providing the filename as an argument: `java ExplainPlainTextFile my_text_file.txt`  (Replace `my_text_file.txt` with the actual path to your text file.)

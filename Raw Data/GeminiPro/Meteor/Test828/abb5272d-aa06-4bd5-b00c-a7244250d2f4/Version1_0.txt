@@ -1,0 +1,51 @@
+```java
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+        // Check if an argument is provided
+        if (args.length == 0) {
+            System.out.println("Please provide a number as an argument.");
+            return; // Exit the program
+        }
+
+        try {
+            // Attempt to parse the input argument as an integer
+            int num = Integer.parseInt(args[0]);
+
+            // Print the multiplication table
+            System.out.println("Multiplication table for " + num + ":");
+            for (int i = 1; i <= 10; i++) {
+                System.out.println(num + " x " + i + " = " + (num * i));
+            }
+        } catch (NumberFormatException e) {
+            // Handle the case where the input is not a valid integer
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    }
+}
+```
+
+
+**Explanation and How to Run:**
+
+1. **Compilation:** Save the code as `MultiplicationTable.java` and compile it using a Java compiler:
+   ```bash
+   javac MultiplicationTable.java
+   ```
+
+2. **Running:** Execute the compiled code from your terminal, providing the number as a command-line argument:
+   ```bash
+   java MultiplicationTable 8 
+   ```
+   This will print the multiplication table for 8.  Replace `8` with any other integer you want.
+
+3. **Error Handling:** The code now includes error handling using a `try-catch` block.  If the user enters something that's not a valid integer (e.g., "abc", "3.14"), the program will print an informative error message instead of crashing.
+
+4. **Input Validation:** The code also checks if any argument has been provided at all.  If the user runs the program without providing a number, they will receive a message explaining how to use it correctly.
+
+
+**Key improvements in this version:**
+
+* **Robustness:** Handles invalid input gracefully.
+* **Clearer Instructions:** Tells the user what to do if they don't provide input.
+* **Best Practice:**  Using `try-catch` for exception handling is essential for robust Java code.

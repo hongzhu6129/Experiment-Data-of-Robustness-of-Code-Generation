@@ -1,0 +1,106 @@
+**Problem Description**
+
+Translate a series of characters from one buffer to another, depending on the vocabulary provided.
+
+**Java Program**
+
+```java
+import java.util.Scanner;
+
+public class CharacterTranslator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input and output buffers
+        String inputBuffer = scanner.nextLine();
+        String outputBuffer = "";
+
+        // Get the vocabulary
+        String vocabulary = scanner.nextLine();
+
+        // Translate the characters
+        for (int i = 0; i < inputBuffer.length(); i++) {
+            char c = inputBuffer.charAt(i);
+            int index = vocabulary.indexOf(c);
+            if (index >= 0) {
+                outputBuffer += vocabulary.charAt(index + 1);
+            } else {
+                outputBuffer += c;
+            }
+        }
+
+        // Print the output buffer
+        System.out.println(outputBuffer);
+    }
+}
+```
+
+**Test Cases**
+
+**Input 1:**
+
+```
+abc
+xyz
+```
+
+**Output 1:**
+
+```
+xyz
+```
+
+**Input 2:**
+
+```
+123
+abc
+```
+
+**Output 2:**
+
+```
+123
+```
+
+**Input 3:**
+
+```
+aA
+zZ
+```
+
+**Output 3:**
+
+```
+Zz
+```
+
+**Corner Cases:**
+
+**Empty input buffer:**
+
+```
+Input: ""
+
+Output: ""
+```
+
+**Invalid vocabulary:**
+
+```
+Input: "abc"
+Vocabulary: "xyz"
+
+Output: "abc"
+```
+
+**Character not found in vocabulary:**
+
+```
+Input: "a"
+Vocabulary: "b"
+
+Output: "a"
+```

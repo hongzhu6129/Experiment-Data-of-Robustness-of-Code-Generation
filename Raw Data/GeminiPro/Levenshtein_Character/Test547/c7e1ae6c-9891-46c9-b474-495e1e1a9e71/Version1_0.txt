@@ -1,0 +1,43 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadCoatTextFile {
+
+    public static void main(String[] args) {
+        // Replace "path/to/your/coat.txt" with the actual path to your file.
+        String filePath = "path/to/your/coat.txt"; 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print each line of the file
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling with Try-with-Resources:** The code uses a `try-with-resources` block. This ensures that the `BufferedReader` is automatically closed, even if an exception occurs.  This is crucial for preventing resource leaks.
+
+2. **Clearer Error Message:** The `catch` block now provides a more informative error message, including the specific exception message. This helps in debugging.
+
+3. **Path Parameterization:**  The file path is now a variable (`filePath`). This makes it easier to change the file you're reading without modifying the core code.  *Remember to replace `"path/to/your/coat.txt"` with the correct path on your system.*
+
+4. **Line-by-Line Reading:** The `BufferedReader` reads the file line by line, which is efficient for handling potentially large files.  It doesn't try to load the entire file into memory at once.
+
+5. **Comments:**  Added comments to explain the purpose of each part of the code.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadCoatTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac ReadCoatTextFile.java`
+3. **Run:** Execute the compiled code: `java ReadCoatTextFile`
+
+Make sure the `coat.txt` file exists at the path you specify in the code.  If the file is in the same directory as the Java file, you can just use the filename:  `String filePath = "coat.txt";`

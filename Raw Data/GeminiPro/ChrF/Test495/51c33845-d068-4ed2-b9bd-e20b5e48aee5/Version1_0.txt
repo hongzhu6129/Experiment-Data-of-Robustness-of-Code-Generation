@@ -1,0 +1,85 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: n must be an integer.");
+        }
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("X "); // Or print any desired character/value
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+**Explanation and How to Run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java` and compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java
+   ```
+
+2. **Execution:** Run the compiled code with the desired matrix size (n) as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // This will print a 5x5 matrix
+   ```
+   Replace `5` with any positive integer for a different matrix size.
+
+3. **Inside the Code:**
+
+   - **`main` method:**
+     - Checks for correct command-line argument usage.
+     - Parses the integer input `n`.
+     - Handles potential `NumberFormatException` if the input is not a valid integer.
+     - Calls the `printMatrix` method.
+
+   - **`printMatrix` method:**
+     - Uses nested loops to iterate through rows and columns.
+     - Prints "X " (or any character/value you want) for each element of the matrix.
+     - Prints a newline character (`System.out.println()`) after each row to format the output correctly.
+
+
+**Alternative for Random Numbers:**
+
+If you want to print a matrix of random numbers instead of "X", you can modify the `printMatrix` method like this:
+
+```java
+import java.util.Random;
+
+// ... (rest of the code)
+
+public static void printMatrix(int n) {
+    Random random = new Random();
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            System.out.print(random.nextInt(100) + " "); // Prints random numbers 0-99
+        }
+        System.out.println();
+    }
+}
+```
+
+
+This will print a matrix with random integers between 0 and 99 (inclusive). You can adjust the range as needed.
+
+
+Remember to import `java.util.Random` at the beginning of your file if you use the random number generation.

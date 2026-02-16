@@ -1,0 +1,58 @@
+```java
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java GetCharacterAtIndex <string> <index>");
+            return;
+        }
+
+        String inputString = args[0];
+        try {
+            int index = Integer.parseInt(args[1]);
+
+            if (index < 0 || index >= inputString.length()) {
+                System.out.println("Index out of bounds.");
+            } else {
+                int codePoint = inputString.codePointAt(index);
+                System.out.println("Character at index " + index + ": " + (char) codePoint + " (Unicode code point: " + codePoint + ")");
+
+
+                // Demonstrating supplementary character handling (if needed):
+                 //  (Important for characters beyond the Basic Multilingual Plane)
+
+                // Example string with a supplementary character (e.g., an emoji)
+                String emojiString = "Hello \uD83D\uDE00"; // Smiling face emoji
+                for (int i = 0; i < emojiString.length(); ) { // Note the unusual loop condition
+                    int cp = emojiString.codePointAt(i);
+                    System.out.println("Character (potentially supplementary) at index " + i + ": " + String.valueOf(Character.toChars(cp)));
+                    i += Character.charCount(cp);  // Increment by the number of Java chars in this code point 
+                }
+
+
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid index. Please enter an integer.");
+        }
+    }
+}
+```
+
+
+To compile and run this:
+
+1. **Save:** Save the code as `GetCharacterAtIndex.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac GetCharacterAtIndex.java`
+3. **Run:** Execute the program with the string and index as command-line arguments: `java GetCharacterAtIndex "Hello World" 6` (This will get the character at index 6, which is 'W').
+
+
+**Explanation and Key Improvements:**
+
+* **Error Handling:**  The code now includes robust error handling for invalid input (incorrect number of arguments, non-integer index, index out of bounds).  This makes the program more user-friendly and prevents crashes.
+* **Command-Line Arguments:** The program takes the string and index as command-line arguments (using `args`), making it more flexible and reusable.
+* **Unicode Code Point:** It prints both the character itself and its Unicode code point using `codePointAt()`. This is especially important for characters outside the Basic Multilingual Plane (BMP), such as emojis.
+* **Supplementary Character Handling:** The updated code demonstrates how to handle supplementary characters correctly. These characters are represented by two Java `char` values (surrogate pairs) but correspond to a single Unicode code point.  The loop example shows the recommended way to iterate and extract these code points using `codePointAt()`, `Character.toChars()`, and `Character.charCount()`.
+
+
+This improved version provides a much more complete and robust solution for getting a character at a given index, addressing potential issues with various types of input and character sets.

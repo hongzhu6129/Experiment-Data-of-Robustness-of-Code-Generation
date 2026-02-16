@@ -1,0 +1,60 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Initialize with 1 as the first element is always unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) { // Compare with the previous element
+                nums[uniqueCount] = nums[i];  // Place the unique element at the next available position
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3);  // Output: 0
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4); // Output 0
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles `null` and empty arrays, returning 0 in these cases.
+
+2. **In-Place Modification:** The `removeDuplicates` function modifies the input array `nums` directly. The unique elements are placed at the beginning of the array.  
+
+3. **Clearer Variable Naming:** Using `uniqueCount` instead of just `i` or `k` improves readability.
+
+4. **Concise Logic:** The core logic of comparing `nums[i]` with `nums[i-1]` is straightforward and efficient.
+
+5. **Informative Output in `main`:** The `main` method demonstrates how to use the function and prints both the updated length and the modified portion of the array using `Arrays.copyOfRange`. This makes it easier to verify the results.  This also shows handling of edge cases (empty and null arrays).
+
+
+
+This revised code addresses potential issues and provides a better demonstration of how to use the `removeDuplicates` function effectively.

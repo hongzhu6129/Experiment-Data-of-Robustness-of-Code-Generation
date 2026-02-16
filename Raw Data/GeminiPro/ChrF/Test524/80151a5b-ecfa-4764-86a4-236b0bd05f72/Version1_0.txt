@@ -1,0 +1,59 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int num) {
+        // Handle negative numbers (their cubes are negative)
+        if (num < 0) {
+            return isCube(-num); // Check the absolute value
+        }
+
+        // Efficiently check for cubes using a cubic root approximation
+        int cbrt = (int) Math.round(Math.cbrt(num));  // Calculate cube root
+        return cbrt * cbrt * cbrt == num;     // Check if the cube of cbrt matches num
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`isCube()` method:** This separate method makes the code more organized and reusable.  It handles both positive and negative numbers correctly.
+
+2. **Efficient Cube Root Check:** Instead of iterating through numbers, this code uses `Math.cbrt()` (cube root) to efficiently check. We round the result to the nearest integer using `Math.round()` because `Math.cbrt()` returns a `double`. Then we cube the rounded integer and compare it to the original number.  This is significantly faster, especially for larger numbers.
+
+3. **Handles Negative Numbers:** The code correctly handles negative numbers by taking the absolute value and checking if that is a perfect cube.
+
+4. **Clear Output:**  Provides clear output messages indicating whether the input is a cube or not.
+
+
+**How to use with User Input (if needed):**
+
+If you want to get the number from user input instead of hardcoding it, you can use the `Scanner` class:
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = input.nextInt();
+
+        // ... rest of the code (isCube() method and output) ...
+    }
+
+    // ... (isCube() method as before) ...
+}
+```

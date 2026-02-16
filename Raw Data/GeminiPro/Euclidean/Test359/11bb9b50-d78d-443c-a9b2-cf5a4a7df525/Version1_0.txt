@@ -1,0 +1,29 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class WordChecker {
+
+    static void checkExistance(String word, String item) {
+        if (item.contains(word.substring(0, Math.min(3, word.length())))) { // Extract first 3 chars (or less if word is shorter)
+            System.out.println(item);
+        }
+    }
+
+    public static void main(String[] args) {
+        String word = "flower";
+        List<String> items = new ArrayList<>();
+        items.add("flow");
+        items.add("flight");
+        items.add("flower");
+        items.add("flounder");
+        items.add("globe");
+        items.add("flowing");
+
+
+        for (String item : items) {
+            checkExistance(word, item);
+        }
+    }
+}
+```

@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class ReadFromConsole {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a line of text: ");
+        String line = scanner.nextLine();
+        System.out.println("You entered: " + line);
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();  // Reads the next integer
+        System.out.println("You entered: " + number);
+        scanner.nextLine(); // Consume newline left-over
+
+        System.out.print("Enter a double: ");
+        double decimal = scanner.nextDouble();
+        System.out.println("You entered: " + decimal);
+        scanner.nextLine(); // Consume newline left-over
+
+
+        System.out.print("Enter a single character: ");
+        char character = scanner.next().charAt(0); // Get first char of next token
+        System.out.println("You entered: " + character);
+
+
+        scanner.close(); // Close the scanner when finished
+    }
+}

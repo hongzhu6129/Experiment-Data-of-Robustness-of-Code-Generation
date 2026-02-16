@@ -1,0 +1,71 @@
+```java
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class StringToDateConverter {
+
+    public static void main(String[] args) {
+
+        // String to Date/Time
+        String dateTimeString = "2023-10-27T10:30:00"; // Example ISO 8601 format
+        String dateString = "2023-10-27";
+        String timeString = "10:30:00";
+
+
+        try {
+            // DateTime
+            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString);
+            System.out.println("Converted DateTime: " + dateTime);
+
+            //Parsing with custom format
+             DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+             LocalDateTime customDateTime = LocalDateTime.parse("2023/10/27 10:30:00", customFormatter);
+
+             System.out.println("Converted Custom DateTime: " + customDateTime);
+
+
+            // Date
+            LocalDate date = LocalDate.parse(dateString);
+            System.out.println("Converted Date: " + date);
+
+            // Time
+            LocalTime time = LocalTime.parse(timeString);
+            System.out.println("Converted Time: " + time);
+
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Error parsing date/time: " + e.getMessage());
+        }
+
+
+
+        // Date/Time to String
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+
+        // Default format
+        String dateTimeStringConverted = currentDateTime.toString();
+        String dateStringConverted = currentDate.toString();
+        String timeStringConverted = currentTime.toString();
+
+        System.out.println("Converted DateTime String (default): " + dateTimeStringConverted);
+        System.out.println("Converted Date String (default): " + dateStringConverted);
+        System.out.println("Converted Time String (default): " + timeStringConverted);
+
+
+        //Custom Format
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        System.out.println("Converted DateTime String (custom): " + formattedDateTime);
+
+
+    }
+}
+```
+

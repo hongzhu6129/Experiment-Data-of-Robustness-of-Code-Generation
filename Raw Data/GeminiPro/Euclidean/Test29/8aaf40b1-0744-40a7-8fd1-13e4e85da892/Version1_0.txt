@@ -1,0 +1,59 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of a side of the hexagon: ");
+        double side = input.nextDouble();
+
+        if (side <= 0) {
+            System.out.println("Side length must be positive.");
+        } else {
+            double area = (3 * Math.sqrt(3) * side * side) / 2;
+            System.out.println("The area of the hexagon is: " + area);
+        }
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Side Length:**
+   - Input: 5
+   - Expected Output: 64.9519052838329
+
+2. **Zero Side Length:**
+   - Input: 0
+   - Expected Output: Side length must be positive.
+
+3. **Negative Side Length:**
+   - Input: -3
+   - Expected Output: Side length must be positive.
+
+4. **Small Side Length:**
+   - Input: 0.5
+   - Expected Output: 0.649519052838329
+
+5. **Large Side Length:**
+   - Input: 100
+   - Expected Output: 25980.76211353316
+
+
+**Explanation of Corner Cases and How They're Handled:**
+
+* **Zero or Negative Side Length:** A hexagon cannot have a side length of zero or less. The code explicitly checks for this condition using `if (side <= 0)` and prints an error message if the input is invalid. This prevents the calculation from proceeding with incorrect values and potentially producing nonsensical results (like a negative area).
+
+* **Small Side Length:**  While not strictly a corner case, testing with a small side length ensures the calculation handles decimal values correctly.
+
+* **Large Side Length:**  Testing with a large side length verifies that the calculation doesn't overflow or produce unexpected results due to the limitations of floating-point arithmetic.
+
+
+**Why no other methods were used (as requested by the prompt):**
+
+The prompt specifically asked to avoid using any methods other than those essential. The provided solution uses only the `main` method, standard input/output (using `Scanner` and `System.out`), basic arithmetic operators, `Math.sqrt()`, and a conditional statement (`if`). This adheres to the prompt's restriction while still providing a complete and functional program.  Using a separate method for the area calculation would have been better design (for reusability and organization), but we followed the prompt's constraints.
+

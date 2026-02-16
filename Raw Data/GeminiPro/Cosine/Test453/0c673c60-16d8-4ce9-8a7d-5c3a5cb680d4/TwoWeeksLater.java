@@ -1,0 +1,20 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class TwoWeeksLater {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Add 2 weeks (14 days) to the current date
+        LocalDate twoWeeksLater = currentDate.plusWeeks(2);
+
+        // Format the date for output (optional, but makes it nicer to read)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = twoWeeksLater.format(formatter);
+
+        // Print the date after 2 weeks
+        System.out.println("The date after 2 weeks is: " + formattedDate); 
+    }
+}

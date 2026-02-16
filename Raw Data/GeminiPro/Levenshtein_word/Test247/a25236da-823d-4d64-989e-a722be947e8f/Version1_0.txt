@@ -1,0 +1,74 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted integer array in-place.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the updated array (number of unique elements).
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index for storing unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated array length: " + len1);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Print only the unique part
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated array length: " + len2);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Print only the unique part
+
+        //Test with empty and null arrays
+         int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated array length: " + len3);
+        System.out.println("Updated array: " + Arrays.toString(nums3));
+
+         int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated array length: " + len4);
+
+          // Single Element
+         int[] nums5 = {5};
+        int len5 = removeDuplicates(nums5);
+        System.out.println("Updated array length: " + len5);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5)));
+
+
+    }
+}
+```
+
+
+
+Key improvements and explanations in this version:
+
+1. **Handles Edge Cases:**  The code now explicitly handles `null` and empty input arrays. This makes the function more robust.
+
+2. **Clearer Variable Names:** `uniqueIndex` replaces `j` for better readability, making the code's purpose easier to understand.
+
+3. **Concise Return:** The function directly returns `uniqueIndex + 1`, which is simpler and more efficient than creating a new array (as in the previous versions).
+
+4. **In-Place Modification:** The function modifies the input array `nums` directly (in-place), which is the standard and expected behavior for this problem.  The original elements beyond the unique part are still present in the `nums` array, but we only consider the relevant part (up to `uniqueIndex`).
+
+5. **Comprehensive `main` method:** The `main` method now includes tests with different input arrays (including empty, null, and single-element arrays) to demonstrate the code's correctness in various scenarios. Using `Arrays.copyOfRange` in the print statements is crucial to avoid displaying the unmodified parts of the array after the unique elements.

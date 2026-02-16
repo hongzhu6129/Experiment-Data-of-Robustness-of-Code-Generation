@@ -1,0 +1,42 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class PortionOfMap {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        int givenKey = 5;
+        boolean inclusive = true; // Change to false for strictly less than
+
+        SortedMap<Integer, String> portion = getPortion(map, givenKey, inclusive);
+
+        System.out.println("Original Map: " + map);
+        System.out.println("Portion of Map (key <= " + givenKey + "): " + portion);
+
+
+        givenKey = 6; // Example with a key not in the map and inclusive = false
+        inclusive = false;
+        portion = getPortion(map, givenKey, inclusive);
+        System.out.println("Portion of Map (key < " + givenKey + "): " + portion);
+
+
+
+    }
+
+    public static <K, V> SortedMap<K, V> getPortion(TreeMap<K, V> map, K givenKey, boolean inclusive) {
+        if (inclusive) {
+            return map.headMap(givenKey, true); // Inclusive
+        } else {
+            return map.headMap(givenKey);      // Exclusive (strictly less than)
+        }
+    }
+}
+```

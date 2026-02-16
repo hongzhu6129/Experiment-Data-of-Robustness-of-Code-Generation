@@ -1,0 +1,72 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 2, 3, 4},
+                {12, 13, 14, 5},
+                {11, 16, 15, 6},
+                {10, 9, 8, 7}
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 15;
+
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+
+
+        target = 17; // Test for a number not in the array.
+        result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Target found, return its position
+            } else if (arr[row][col] > target) {
+                col--; // Move left if the current element is greater than the target
+            } else {
+                row++; // Move down if the current element is smaller than the target
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Saddleback Search Implementation:** The `Saddleback` method correctly implements the saddleback search algorithm.  It starts from the top-right corner of the matrix.  It moves left if the current element is greater than the target and moves down if the current element is less than the target.
+
+2. **Return Array:** The `Saddleback` method returns an `int[]` of size 2. If the target is found, the array contains the row and column indices (0-based).  If the target is not found, it returns `{-1, -1}` to clearly indicate failure.
+
+3. **Clearer Main Method:**  The `main` method now has clearer examples, demonstrating how to use the `Saddleback` method and how to interpret its results. It also includes a test case where the target is not present in the array.
+
+
+**How Saddleback Search Works with Spiral Ordered Matrices**
+
+A spirally ordered matrix (like the one in the example) has a specific property:  if you start from the top-right corner:
+- Elements to the left are smaller.
+- Elements below are larger.
+
+This allows the saddleback search to efficiently locate the target by eliminating either a row or a column in each comparison.  It is more efficient than a linear search in such a matrix.

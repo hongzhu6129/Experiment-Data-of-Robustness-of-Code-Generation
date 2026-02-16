@@ -1,0 +1,77 @@
+```java
+public class PrintFace {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+While there are no input parameters to vary for this specific `printFace()` function,  we can still consider testing in a broader context, particularly if this were part of a larger application. Here's how we could approach testing:
+
+1. **Visual Inspection:** The simplest "test" is to run the code and visually verify the output matches the expected face. This confirms the basic functionality.
+
+
+2. **Output Redirection & Comparison (for automated testing):**
+
+   We can redirect the output to a file and then compare it against a known-good output file.  This allows for automated testing.
+
+   ```java
+   import java.io.*;
+
+   public class TestPrintFace {
+       public static void main(String[] args) throws IOException {
+           // Redirect standard output to a file
+           PrintStream originalOut = System.out;
+           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           PrintStream ps = new PrintStream(baos);
+           System.setOut(ps);
+
+           PrintFace.printFace(); // Call the method under test
+
+           // Restore original standard output
+           System.setOut(originalOut);
+
+           // Get the output as a string
+           String actualOutput = baos.toString();
+
+           // Expected output (store this in a file or define it here)
+           String expectedOutput = "  +\"\"\"\"+"+ System.lineSeparator()+
+                   " [| o o |]"+ System.lineSeparator()+
+                   "  |  ^  |"+ System.lineSeparator()+
+                   "  | '-' |"+ System.lineSeparator()+
+                   "  +-----+"+System.lineSeparator();
+
+           // Compare actual and expected output
+           if (actualOutput.equals(expectedOutput)) {
+               System.out.println("Test Passed!");
+           } else {
+               System.err.println("Test Failed!");
+               System.err.println("Expected:");
+               System.err.println(expectedOutput);
+               System.err.println("Actual:");
+               System.err.println(actualOutput);
+           }
+       }
+   }
+
+   ```
+
+
+3. **Character Encoding:** Although less of a corner case for this simple example, ensure the character encoding is correct (e.g., UTF-8) if you're using special characters in your face design in a more complex scenario.  An incorrect encoding could lead to incorrect output.
+
+
+4. **Integration Tests (in a larger application):**  If `printFace()` is part of a larger system (e.g., a game UI),  you'd need integration tests to ensure it works correctly within that system.  For example, does calling `printFace()` at the right time in the game display the face as expected?
+
+
+Even for a simple function, thinking about these aspects introduces you to testing methodologies that become essential in larger projects.  Automated testing, output comparison, and consideration of encoding or platform differences are fundamental to good software development practice.

@@ -1,0 +1,87 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueToString {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+
+        // Method 1: Using toString() directly
+        String pqString = pq.toString();
+        System.out.println("PriorityQueue as String (using toString()): " + pqString);
+
+        // Method 2: Iterating and building a string (preserves order)
+        StringBuilder sb = new StringBuilder("[");
+        for (Integer element : pq) {
+            sb.append(element).append(", ");
+        }
+        if (sb.length() > 1) {
+            sb.delete(sb.length() - 2, sb.length()); // Remove trailing comma and space
+        }
+        sb.append("]");
+
+        System.out.println("PriorityQueue as String (using iteration): " + sb.toString());
+
+
+        // Method 3: Java 8+ Stream API (preserves order, more concise)
+        String streamString = pq.stream()
+                .map(String::valueOf) // Convert each element to string
+                .collect(java.util.stream.Collectors.joining(", ", "[", "]"));
+        System.out.println("PriorityQueue as String (using streams): " + streamString);
+
+          // Example for custom objects:
+        PriorityQueue<MyObject> customPq = new PriorityQueue<>((a, b) -> a.value - b.value);  // Comparator needed
+        customPq.add(new MyObject(10, "A"));
+        customPq.add(new MyObject(1, "B"));
+
+        String customString = customPq.stream()
+                .map(MyObject::toString)  // Call your object's toString()
+                .collect(java.util.stream.Collectors.joining(", ", "[", "]"));
+
+        System.out.println("Custom Object PriorityQueue: " + customString);
+    }
+
+
+    // Example custom class
+    static class MyObject {
+        int value;
+        String name;
+
+        public MyObject(int value, String name) {
+            this.value = value;
+            this.name = name;
+        }
+
+
+        @Override
+        public String toString() {  // Important for custom objects
+            return "{value: " + value + ", name: '" + name + "'}";
+        }
+    }
+
+
+
+
+}
+```
+
+
+Key Improvements and Explanations:
+
+1. **Multiple Methods:** Demonstrates three different approaches: `toString()`, iteration, and Java 8 Streams.
+2. **Order Preservation:** The iteration and Stream methods now correctly maintain the order of elements as they are retrieved from the priority queue.  `toString()` doesn't guarantee a specific order.
+3. **Custom Objects:**  Includes a clear example of how to handle a `PriorityQueue` of custom objects by implementing a `toString()` method in your custom class and using the stream approach.
+4. **Clarity and Comments:** Improved comments explain each method and its benefits.
+5. **Conciseness (Streams):** The Java 8 Stream approach provides a more concise and elegant way to convert the queue to a string.
+6. **Error Handling:** The iterative approach now includes a check to avoid errors with empty queues.
+7. **Custom Object Example Enhanced:** The `MyObject` class and its usage are more complete and illustrative.
+
+
+
+
+This revised answer provides a more comprehensive and practical solution for converting a `PriorityQueue` to a `String` representation in Java, covering various scenarios and best practices.

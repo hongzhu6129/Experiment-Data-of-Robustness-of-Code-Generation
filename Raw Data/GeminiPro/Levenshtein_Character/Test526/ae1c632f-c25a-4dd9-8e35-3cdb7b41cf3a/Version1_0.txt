@@ -1,0 +1,43 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            // Calculate Fermat number using Math.pow() and casting to long
+            long fermatNumber = (long) (Math.pow(2, Math.pow(2, n)) + 1); 
+
+            System.out.println(fermatNumber);
+
+
+        }
+    }
+}
+```
+
+
+This code will print the first 10 Fermat numbers.  However, be aware that after the 5th Fermat number, the values become too large to represent accurately as `long` integers in Java.  You would need to use `BigInteger` if you needed precise calculations for larger Fermat numbers. Here's how to do that for completeness:
+
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers (using BigInteger):");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger two = BigInteger.valueOf(2);
+            BigInteger powerOfTwo = two.pow((int) Math.pow(2, n));  // 2^(2^n)
+            BigInteger fermatNumber = powerOfTwo.add(BigInteger.ONE);
+
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+
+The version using `BigInteger` will provide accurate representations for all the Fermat numbers within the requested range.

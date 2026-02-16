@@ -1,0 +1,63 @@
+```java
+import java.util.TreeSet;
+
+public class GreaterOrEqualInTree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int element = 25;
+
+        Integer greaterOrEqualElement = treeSet.ceiling(element); 
+
+        if (greaterOrEqualElement != null) {
+            System.out.println("The element greater than or equal to " + element + " is: " + greaterOrEqualElement);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the tree.");
+        }
+
+
+
+        element = 15; //Another example
+        greaterOrEqualElement = treeSet.ceiling(element);
+
+        if (greaterOrEqualElement != null) {
+            System.out.println("The element greater than or equal to " + element + " is: " + greaterOrEqualElement);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the tree.");
+        }
+
+
+         element = 60; // Another example where no element is greater or equal.
+        greaterOrEqualElement = treeSet.ceiling(element);
+
+        if (greaterOrEqualElement != null) {
+            System.out.println("The element greater than or equal to " + element + " is: " + greaterOrEqualElement);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the tree.");
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **TreeSet:** We use a `TreeSet` which is a sorted set implementation in Java.  This is crucial because it allows us to efficiently find the smallest element greater than or equal to a given value.
+
+2. **ceiling() method:** The `ceiling(E e)` method of the `TreeSet` class returns the least element in this set greater than or equal to the given element, or `null` if there is no such element.
+
+3. **Example Usage:** The `main` method demonstrates how to create a `TreeSet`, add elements, and use the `ceiling()` method to find the desired element.  It also includes error handling in case no such element exists.
+
+
+Important Considerations:
+
+* **Sorted Data:** `TreeSet` keeps the elements sorted, which makes `ceiling()` efficient. If you don't need a sorted set, and your data is not already sorted, using a `HashSet` or `ArrayList` and manually iterating to find the smallest greater or equal element would be less efficient.
+* **Null Handling:** The code explicitly checks for `null` returned by `ceiling()` to handle cases where no greater or equal element exists.
+* **Generics:** You can use `TreeSet<T>` with any `Comparable` type `T` (e.g., `Integer`, `String`, `Double`, custom classes that implement `Comparable`).

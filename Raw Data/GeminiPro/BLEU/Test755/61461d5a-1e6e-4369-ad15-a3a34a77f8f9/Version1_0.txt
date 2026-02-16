@@ -1,0 +1,65 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RemoveNonAlphanumeric {
+
+    public static void main(String[] args) {
+        String inputString = "This string contains #$%^&*()_+=-`~[]{}|;':\",./<>? and 123.";
+        String cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+
+        String inputString2 = "Hello123World";
+        String cleanedString2 = validate(inputString2);
+        System.out.println("Original string: " + inputString2);
+        System.out.println("Cleaned string: " + cleanedString2); // Demonstrates no change if only alphanumeric
+    }
+
+    public static String validate(String input) {
+        if (input == null) {
+            return null; // Or handle null input as needed, e.g., return "";
+        }
+
+        // Use regular expression to replace all non-alphanumeric characters with an empty string
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]"); // Matches anything NOT a-z, A-Z, or 0-9
+        Matcher matcher = pattern.matcher(input);
+        return matcher.replaceAll("");
+
+
+    }
+}
+```
+
+
+Explanation and Educational Points:
+
+1. **Regular Expressions:** The core of the solution is using regular expressions.  The `Pattern` and `Matcher` classes from `java.util.regex` provide powerful tools for working with patterns in strings.  
+   - `[^a-zA-Z0-9]` : This regular expression defines a character class that matches any character *except* lowercase letters (a-z), uppercase letters (A-Z), and digits (0-9).  The `^` inside the square brackets negates the character class.
+   - `matcher.replaceAll("")`: This method replaces all occurrences of the matched pattern (non-alphanumeric characters) with an empty string, effectively removing them.
+
+2. **`validate()` Method:**  This method encapsulates the cleaning logic.  It's good practice to separate such functionality into a method for reusability and clarity.
+
+3. **Null Handling:**  The `validate()` method includes a check for `null` input.  This is important to prevent `NullPointerExceptions` and makes the code more robust.
+
+4. **`main()` Method for Demonstration:** The `main()` method provides examples of how to use the `validate()` method. Including different example inputs, like a string with only alphanumeric characters, helps illustrate the function's behavior.
+
+5. **Alternative Approaches (Mentioned for Educational Purposes):** While regular expressions are concise and efficient, you could also achieve the same result using a loop and checking each character individually:
+
+   ```java
+   public static String validate(String input) {
+       StringBuilder sb = new StringBuilder();
+       for (char c : input.toCharArray()) {
+           if (Character.isLetterOrDigit(c)) {
+               sb.append(c);
+           }
+       }
+       return sb.toString();
+   }
+   ```
+
+   However, the regular expression approach is generally preferred for its clarity and efficiency in this type of string manipulation.
+
+
+This enhanced explanation should make the code easier to understand for learning purposes.

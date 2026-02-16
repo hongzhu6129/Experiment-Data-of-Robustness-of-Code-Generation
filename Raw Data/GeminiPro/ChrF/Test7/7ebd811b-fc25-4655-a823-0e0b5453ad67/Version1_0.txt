@@ -1,0 +1,76 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Regular Input:**
+   - Input: `10 20 30`
+   - Expected Output: `20.0`
+
+2. **Zero Input:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+3. **Negative Input:**
+   - Input: `-10 -20 -30`
+   - Expected Output: `-20.0`
+
+4. **Mixed Input (Positive and Negative):**
+   - Input: `10 -20 30`
+   - Expected Output: `6.666666666666667`
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Decimal Numbers:**
+   - Input: `2.5 5.7 8.9`
+   - Expected Output: `5.7`
+
+7. **Corner Case (Overflow potential - although doubles have a wide range):**  You might test with `Double.MAX_VALUE` but be careful about expecting precise results with such large numbers due to the nature of floating-point representation. It's more important to ensure the program doesn't crash.
+   - Input: `1.7976931348623157E308 1.7976931348623157E308 1.0`
+   - Expected Output:  `Infinity` (likely, due to overflow) or a very large number
+
+
+**How to Run the Test Cases (Example - using redirection in a command line/terminal):**
+
+1. Save the Java code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run with input redirection (replace `input.txt` with a file containing your test inputs, one set of numbers per line):  `java AverageCalculator < input.txt`
+
+
+
+**Important Note on Floating-Point Comparisons:**
+
+When testing with decimal numbers, avoid direct equality checks. Due to the way floating-point numbers are represented, tiny rounding errors can occur.  Instead, check if the result is "close enough" to the expected value.  For example, use `Math.abs(actual - expected) < tolerance`, where `tolerance` is a small value like `1e-9`.
+
+
+
+This expanded answer provides more comprehensive test coverage and addresses potential issues with floating-point arithmetic, making the testing process more robust.

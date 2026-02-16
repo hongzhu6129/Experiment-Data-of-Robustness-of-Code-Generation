@@ -1,0 +1,54 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array of integers, removes duplicate elements in-place such that each element appears only once.
+     * Returns the new length of the array after removing duplicates.
+     *
+     * @param nums The sorted array of integers.
+     * @return The new length of the array.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index of the last unique element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("New length: " + newLength1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+        System.out.println("New length: " + newLength2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int newLength3 = removeDuplicates(nums3);
+        System.out.println("New length: " + newLength3 + ", Array: " + Arrays.toString(nums3)); // Output: 0, []
+
+         int[] nums4 = null;
+        int newLength4 = removeDuplicates(nums4);
+        System.out.println("New length: " + newLength4 + ", Array: null"); // Output: 0, null
+
+        int[] nums5 = {1};
+        int newLength5 = removeDuplicates(nums5);
+        System.out.println("New length: " + newLength5 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums5,0, newLength5))); // Output: 1, [1]
+
+
+
+    }
+}
+```

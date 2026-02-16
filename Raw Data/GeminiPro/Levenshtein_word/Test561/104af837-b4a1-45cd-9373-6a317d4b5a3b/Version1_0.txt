@@ -1,0 +1,77 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SortArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers (you can change the type as needed)
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.add(9);
+
+        // Sort the ArrayList using Collections.sort() - natural ordering (ascending for Integers)
+        Collections.sort(numbers);
+
+        // Print the sorted ArrayList
+        System.out.println("Sorted ArrayList: " + numbers);
+
+
+        // Example with Strings (lexicographical order)
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("orange");
+        strings.add("Apple"); // Note: uppercase comes before lowercase
+
+        Collections.sort(strings);
+        System.out.println("Sorted Strings: " + strings);
+
+
+        // Example with custom objects (requires implementing Comparable interface)
+        ArrayList<MyObject> objects = new ArrayList<>();
+        objects.add(new MyObject(3, "Charlie"));
+        objects.add(new MyObject(1, "Alice"));
+        objects.add(new MyObject(2, "Bob"));
+
+        Collections.sort(objects); // Sorts based on the compareTo method in MyObject
+        System.out.println("Sorted Objects: " + objects); 
+    }
+}
+
+
+// Example custom class (for sorting objects) - must implement Comparable
+class MyObject implements Comparable<MyObject> {
+    int id;
+    String name;
+
+    public MyObject(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(MyObject other) {
+        // Sort by ID first, then by name if IDs are equal
+        int idComparison = Integer.compare(this.id, other.id);
+        if (idComparison != 0) {
+            return idComparison;
+        } else {
+            return this.name.compareTo(other.name);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "{" + id + ", " + name + "}";
+    }
+
+}
+
+
+```

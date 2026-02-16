@@ -1,0 +1,60 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put elements to the map
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+
+        // Get the portion of the map whose keys are less than or equal to 3 (inclusive)
+        int givenKey = 3;
+        boolean inclusive = true;  // Change to false for strictly less than
+
+        SortedMap<Integer, String> subMap;
+
+        if (inclusive) {
+            subMap = treeMap.headMap(givenKey, true); 
+        } else {
+            subMap = treeMap.headMap(givenKey);
+        }
+
+
+
+        // Print the submap
+        System.out.println("Submap (keys <= " + givenKey + "): " + subMap);
+
+
+        // Example with strictly less than:
+        givenKey = 4;
+        inclusive = false;
+        subMap = treeMap.headMap(givenKey);
+        System.out.println("Submap (keys < " + givenKey + "): " + subMap);
+
+
+        // Example demonstrating handling edge cases (empty map, key not present)
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        SortedMap<Integer, String> emptySubMap = emptyMap.headMap(5);  // Handles empty map gracefully
+        System.out.println("Submap of empty map: " + emptySubMap);
+
+        SortedMap<Integer, String> subMapKeyNotPresent = treeMap.headMap(10); // Key greater than all keys
+        System.out.println("Submap (key not present): " + subMapKeyNotPresent); // Returns the whole map
+
+
+        SortedMap<Integer, String> subMapKeyLessThanAll = treeMap.headMap(0); // Key less than all keys
+        System.out.println("Submap (key less than all): " + subMapKeyLessThanAll); // Returns empty map
+
+
+    }
+}
+```

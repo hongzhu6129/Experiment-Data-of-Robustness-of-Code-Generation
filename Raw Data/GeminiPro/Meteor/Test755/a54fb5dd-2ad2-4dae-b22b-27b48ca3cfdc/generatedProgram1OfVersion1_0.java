@@ -1,0 +1,26 @@
+public class RemoveNonAlphanumeric {
+
+    public static void main(String[] args) {
+        String inputString = "This string contains 123 numbers and !@#$ special characters.";
+        String cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+
+        inputString =  "Hello123World";  // Example with no special characters
+        cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+         inputString =  "!!!!"; // Example with only special characters
+        cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+
+    }
+
+    public static String validate(String input) {
+        return input.replaceAll("[^a-zA-Z0-9]", ""); 
+    }
+}

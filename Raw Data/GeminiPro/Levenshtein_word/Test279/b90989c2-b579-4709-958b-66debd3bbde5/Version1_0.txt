@@ -1,0 +1,74 @@
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class InputHandling {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int number = getIntInput(scanner); 
+        System.out.println("You entered: " + number);
+        scanner.close();
+    }
+
+    public static int getIntInput(Scanner scanner) {
+        int number = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            System.out.print("Enter an integer: ");
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                validInput = true;
+            } else {
+                System.out.println("Invalid input. Please enter a valid integer.");
+                scanner.next(); // Consume the invalid input
+            }
+        }
+        return number;
+    }
+
+
+}
+```
+
+
+Explanation of the error and the fix:
+
+The error "invalid literal for int() with base 10: 'anagram'" occurs when you try to convert a string that is not a valid integer (like "anagram") into an integer using `Integer.parseInt()` or similar methods.  Java's `Scanner.nextInt()` will also throw an `InputMismatchException` in this scenario.
+
+The provided code addresses this by:
+
+1. **Using `Scanner.hasNextInt()`:** This method checks if the next token in the input stream is a valid integer *before* trying to read it.  This prevents the `InputMismatchException` from occurring.
+
+2. **Handling Invalid Input:** If `hasNextInt()` returns `false`, the code prints an error message, and importantly, uses `scanner.next()` to consume/discard the invalid input from the scanner's buffer. This prevents an infinite loop where the scanner keeps trying to read the same bad input.
+
+3. **Looping Until Valid Input:** The `while` loop continues until a valid integer is entered by the user, ensuring robust input handling.
+
+
+How to Adapt to Other Input Types:
+
+If you need to read other data types (e.g., doubles, strings), you can adapt this pattern:
+
+* **Doubles:** Use `scanner.hasNextDouble()` and `scanner.nextDouble()`.
+* **Strings:** `scanner.next()` (for single words) or `scanner.nextLine()` (for entire lines including spaces).
+
+
+Example with `double`:
+
+```java
+ public static double getDoubleInput(Scanner scanner) {
+    double number = 0;
+    boolean validInput = false;
+    while (!validInput) {
+        System.out.print("Enter a double: ");
+        if (scanner.hasNextDouble()) {
+            number = scanner.nextDouble();
+            validInput = true;
+        } else {
+            System.out.println("Invalid input. Please enter a valid double.");
+            scanner.next(); 
+        }
+    }
+    return number;
+}
+```

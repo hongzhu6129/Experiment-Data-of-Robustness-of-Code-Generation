@@ -1,0 +1,57 @@
+```java
+import java.util.Set;
+import java.util.TreeMap;
+
+public class SearchSetInTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Set<Integer>> treeMap = new TreeMap<>();
+
+        // Create some sample sets
+        Set<Integer> set1 = Set.of(1, 2, 3);
+        Set<Integer> set2 = Set.of(4, 5, 6);
+        Set<Integer> set3 = Set.of(7, 8, 9);
+
+        // Populate the TreeMap
+        treeMap.put("A", set1);
+        treeMap.put("B", set2);
+        treeMap.put("C", set3);
+
+        // Set to search for
+        Set<Integer> searchSet = Set.of(4, 5, 6);
+
+        // Search for the set
+        boolean found = false;
+        for (Set<Integer> value : treeMap.values()) {
+            if (value.equals(searchSet)) {
+                found = true;
+                break;
+            }
+        }
+
+
+        if (found) {
+            System.out.println("Set found in the TreeMap.");
+        } else {
+            System.out.println("Set not found in the TreeMap.");
+        }
+
+
+        // Example searching for a specific set associated with a key
+        String keyToSearch = "B";
+        if (treeMap.containsKey(keyToSearch) && treeMap.get(keyToSearch).equals(searchSet) ) {
+            System.out.println("Set found associated with key: " + keyToSearch);
+        } else {
+            System.out.println("Set not found associated with key: " + keyToSearch);
+        }
+
+        //Another way to search for a set (more concise, though functionally equivalent to the loop):
+        if(treeMap.containsValue(searchSet)){
+            System.out.println("Set found in the TreeMap (using containsValue).");
+        } else {
+            System.out.println("Set not found in the TreeMap (using containsValue).");
+        }
+    }
+}
+```

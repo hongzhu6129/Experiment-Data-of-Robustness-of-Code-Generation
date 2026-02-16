@@ -1,0 +1,51 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        Integer key = 6; // Key to search for
+
+        Integer greatestKeyLessThan = getGreatestKeyLessThan(treeMap, key);
+
+        if (greatestKeyLessThan != null) {
+            System.out.println("Greatest key strictly less than " + key + ": " + greatestKeyLessThan);
+        } else {
+            System.out.println("No key found strictly less than " + key);
+        }
+
+
+        // More examples
+        key = 1;
+        greatestKeyLessThan = getGreatestKeyLessThan(treeMap, key);
+        if (greatestKeyLessThan != null) {
+            System.out.println("Greatest key strictly less than " + key + ": " + greatestKeyLessThan);
+        } else {
+            System.out.println("No key found strictly less than " + key);
+        }
+
+
+        key = 10;
+         greatestKeyLessThan = getGreatestKeyLessThan(treeMap, key);
+        if (greatestKeyLessThan != null) {
+            System.out.println("Greatest key strictly less than " + key + ": " + greatestKeyLessThan);
+        } else {
+            System.out.println("No key found strictly less than " + key);
+        }
+    }
+
+
+    public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> treeMap, K key) {
+         return treeMap.lowerKey(key); 
+    }
+}
+```

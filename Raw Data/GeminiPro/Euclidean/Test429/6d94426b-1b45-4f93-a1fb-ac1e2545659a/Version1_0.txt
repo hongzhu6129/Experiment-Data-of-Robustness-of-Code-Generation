@@ -1,0 +1,38 @@
+```java
+public class StringChecker {
+
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println(test("programming", "program")); // true
+        System.out.println(test("hello", "world"));      // false
+        System.out.println(test("AbCd", "AbcD"));       // true
+        System.out.println(test("AbCd", "abcd"));       // false 
+        System.out.println(test("aaaa", "a"));          // true
+        System.out.println(test("a", "aaaa"));          // false
+    }
+
+    public static boolean test(String str1, String str2) {
+        // Convert the first string to a character array for easier access
+        char[] charArray1 = str1.toCharArray();
+
+        // Iterate through the characters of the second string
+        for (char c : str2.toCharArray()) {
+            boolean found = false;
+            // Check if the character is present in the first string's char array
+            for (char d : charArray1) {
+                if (c == d) {
+                    found = true;
+                    break; // Character found, move to the next character in str2
+                }
+            }
+            // If the character is not found in str1, return false
+            if (!found) {
+                return false;
+            }
+        }
+
+        // All characters of str2 are present in str1
+        return true; 
+    }
+}
+```

@@ -1,0 +1,107 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using Scanner for user input (optional - you can hardcode the radius)
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble();
+        input.close();  // Close the scanner when done
+
+
+        // Calculate perimeter (circumference) and area
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+
+        // Print the results formatted to 2 decimal places
+        System.out.printf("Perimeter is = %.2f\n", perimeter);
+        System.out.printf("Area is = %.2f\n", area);
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases with expected outputs, covering normal cases, boundary conditions, and invalid inputs:
+
+| Test Case | Input (Radius) | Expected Perimeter (rounded to 2 decimals) | Expected Area (rounded to 2 decimals) |
+|---|---|---|---|
+| Normal Case 1 | 7.5 | 47.12 | 176.71 |
+| Normal Case 2 | 10 | 62.83 | 314.16 |
+| Normal Case 3 | 1 | 6.28 | 3.14 |
+| Boundary Case 1 (Zero Radius) | 0 | 0.00 | 0.00 |
+| Boundary Case 2 (Very Small Radius) | 0.0001 | 0.00 | 0.00 | // Due to rounding, might show as 0
+| Invalid Input 1 (Negative Radius) | -5 |  (Should handle gracefully � either print an error message or use `Math.abs(radius)`) |  (Should handle negative input gracefully) |
+| Invalid Input 2 (Non-Numeric Input) | "abc" | (Should handle gracefully � print an error message or exit)  | (Should handle gracefully)  |
+
+
+**How to run the test cases (without JUnit or other testing frameworks):**
+
+1. **Hardcoded Approach (Simplest):**
+   - Change the line `double radius = input.nextDouble();` in the code to set the radius directly for each test case (e.g., `double radius = 7.5;`).
+   - Run the program and compare the output with the expected values in the table.
+
+2. **Using a loop (slightly more advanced):**
+   - You can create an array of test radii and loop through them:
+
+   ```java
+   public class CircleCalculations {
+       public static void main(String[] args) {
+           double[] testRadii = {7.5, 10, 1, 0, 0.0001, -5}; // Add your test cases here
+
+           for (double radius : testRadii) {
+               double perimeter = 2 * Math.PI * Math.abs(radius);  // Handle negative gracefully
+               double area = Math.PI * Math.abs(radius) * Math.abs(radius); // Handle negative gracefully
+
+               System.out.printf("Radius: %.4f, Perimeter: %.2f, Area: %.2f\n", radius, perimeter, area);
+
+
+                // Add your assertion logic here if desired (e.g., compare with expected values)
+           }
+       }
+   }
+   ```
+
+**Handling Invalid Inputs (Robust Code):**
+
+To make the code more robust, you should handle invalid inputs like negative radii or non-numeric input:
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class CircleCalculations {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter the radius of the circle: ");
+            double radius = input.nextDouble();
+
+            if (radius < 0) {
+                System.out.println("Error: Radius cannot be negative.");
+            } else {
+                // ... (rest of the calculation and printing code)
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("Error: Invalid input. Please enter a number.");
+        } finally {
+            input.close();
+        }
+    }
+}
+```
+
+
+This improved version will catch exceptions and print error messages if the user enters invalid data, preventing the program from crashing.
+
+
+
+

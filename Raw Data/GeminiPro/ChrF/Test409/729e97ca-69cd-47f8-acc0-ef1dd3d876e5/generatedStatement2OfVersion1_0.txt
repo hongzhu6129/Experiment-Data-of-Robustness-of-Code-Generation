@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations in this code:
+
+* **`String.replace()`:** This method directly replaces all occurrences of the `removeString` within the `mainString` with an empty string, effectively removing them.  This is a much simpler and more efficient approach than character-by-character processing or using `StringBuilder`.
+
+* **Null Handling:** The code now explicitly checks for `null` values for both `mainString` and `removeString`.  Currently, it returns the original `mainString` if either is `null`.  You could modify this to throw an exception (like `IllegalArgumentException`) or return `null` if you prefer a different behavior for null inputs.  This prevents `NullPointerExceptions`.
+
+* **Clearer `main()` Method:**  The `main()` method now includes multiple test cases to demonstrate how the `removeString()` method works with different inputs, including cases with overlapping occurrences of the substring to be removed and null handling tests, which make it easier to understand and verify the code's functionality.
+
+
+* **Conciseness:** The code is more compact and readable by using the built-in `replace()` method.
+
+
+This revised solution is significantly more efficient, robust (due to null checks), and easier to understand.

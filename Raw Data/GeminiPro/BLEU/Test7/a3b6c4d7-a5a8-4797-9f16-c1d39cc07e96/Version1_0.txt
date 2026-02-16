@@ -1,0 +1,102 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close(); // Close the scanner to release resources
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output | Notes |
+|---|---|---|---|
+| 1 | 10, 20, 30 | 20.0 | Standard positive numbers |
+| 2 | -5, 0, 5 | 0.0 | Includes negative and zero |
+| 3 | 0, 0, 0 | 0.0 | All zeros |
+| 4 | 1.5, 2.5, 3.0 | 2.3333333333333335 | Floating-point numbers |
+| 5 | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | Overflow:  Infinity (Double.POSITIVE_INFINITY) | Integer overflow check for doubles (doubles have a much larger range, so they might not overflow in the same way ints would, but this is still a good test) |
+| 6 | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | Underflow:  Large negative number (Double.NEGATIVE_INFINITY) | Integer underflow check |
+| 7 | Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity (Double.POSITIVE_INFINITY) | Double Overflow |
+| 8 | Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE | Very small number (Close to 0) | Double underflow (Doesn't become -Infinity, but very close to zero). |
+
+
+
+**How to Run the Test Cases:**
+
+You could manually input these values into the program, but a more efficient and robust way to test is to create automated tests using a testing framework like JUnit. Here's a basic example using JUnit:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNegativeAndZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+    @Test
+    void testAllZeros() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+
+    @Test
+    void testFloatingPointNumbers() {
+        assertEquals(2.3333333333333335, AverageCalculator.calculateAverage(1.5, 2.5, 3.0));
+    }
+
+    @Test
+    void testIntegerMaxValue() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
+    }
+
+    @Test
+    void testIntegerMinValue() {
+         assertEquals(Double.NEGATIVE_INFINITY/3, AverageCalculator.calculateAverage(Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE));
+
+    }
+
+
+     @Test
+    void testDoubleMaxValue() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+    @Test
+    void testDoubleMinValue() { // This doesn't become -Infinity
+        assertEquals(Double.MIN_VALUE/3*4, AverageCalculator.calculateAverage(Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE)); 
+    }
+
+}
+```
+
+To use JUnit, you'll need to add it as a dependency to your project (if using an IDE like IntelliJ or Eclipse, it's usually easy to add libraries).  JUnit provides more sophisticated assertion methods for comparing expected and actual values and makes it easy to run all your tests automatically.

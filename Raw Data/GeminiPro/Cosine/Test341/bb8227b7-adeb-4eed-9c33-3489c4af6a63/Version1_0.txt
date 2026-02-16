@@ -1,0 +1,55 @@
+```java
+public class ReplaceCharacter {
+
+    public static void main(String[] args) {
+        String originalString = "hello world";
+        char charToReplace = 'o';
+        char replacementChar = 'x';
+
+        String replacedString = originalString.replace(charToReplace, replacementChar);
+
+        System.out.println("Original String: " + originalString);
+        System.out.println("Replaced String: " + replacedString);
+
+
+        // Example with a specific index (less efficient for multiple replacements)
+        originalString = "abracadabra";
+        int indexToReplace = 2; // Replace the character at index 2 ('r')
+        char newChar = 'z';
+
+        if (indexToReplace >= 0 && indexToReplace < originalString.length()) {
+            StringBuilder sb = new StringBuilder(originalString);
+            sb.setCharAt(indexToReplace, newChar);
+            replacedString = sb.toString();
+            System.out.println("\nOriginal String: " + originalString);
+            System.out.println("String with character replaced at index " + indexToReplace + ": " + replacedString);
+
+
+        } else {
+            System.out.println("Invalid index to replace.");
+        }
+
+
+
+        // Example with multiple replacements using StringBuilder (more efficient)
+        originalString = "banana";
+        char targetChar = 'a';
+        replacementChar = '*';
+        sb = new StringBuilder(); // Create a new StringBuilder
+
+        for (int i = 0; i < originalString.length(); i++) {
+            char currentChar = originalString.charAt(i);
+            if (currentChar == targetChar) {
+                sb.append(replacementChar);
+            } else {
+                sb.append(currentChar);
+            }
+        }
+        replacedString = sb.toString();
+
+        System.out.println("\nOriginal String: " + originalString);
+        System.out.println("String with multiple replacements: " + replacedString);
+
+    }
+}
+```

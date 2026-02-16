@@ -1,0 +1,74 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int target = 5;
+        int m = arr.length;
+        int n = arr[0].length;
+
+
+        int[] result = Saddleback(arr, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Found the target
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row (larger values)
+            } else {
+                col--; // Move left to the previous column (smaller values)
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search Algorithm:** The `Saddleback` (or Saddleback Search) method efficiently searches a sorted 2D array.  It starts from the top-right corner.
+   - If the current element is equal to the target, the position is returned.
+   - If the current element is smaller than the target, move down to the next row (because values increase as you go down).
+   - If the current element is larger than the target, move left to the previous column (because values decrease as you go left).
+
+2. **Clearer Return Value:** The `Saddleback` method returns an `int[]` where the first element is the row index and the second is the column index.  If the target is not found, it returns `{-1, -1}` to indicate failure. This is clearer than just printing inside the function.
+
+3. **Example Usage in `main`:** The `main` method demonstrates how to create a sample 2D array, call `Saddleback`, and handle the returned result to print the location (or indicate if the element is not present).
+
+4. **Error Handling:** The code now gracefully handles the case where the target element is not found.
+
+
+**Example Usage and Output:**
+
+
+If `target = 5`, the output will be:
+
+```
+Element 5 found at: (1, 1) 
+```
+
+If `target = 10` (not in the array), the output will be:
+
+```
+Element 10 not found in the array.
+```

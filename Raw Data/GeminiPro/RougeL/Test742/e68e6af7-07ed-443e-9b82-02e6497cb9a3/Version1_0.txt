@@ -1,0 +1,26 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringValidator {
+
+    public static void main(String[] args) {
+        String testString1 = "ValidString123_";
+        String testString2 = "InvalidString!";
+        String testString3 = "Another_Valid_String456";
+
+        System.out.println(testString1 + ": " + validate(testString1));
+        System.out.println(testString2 + ": " + validate(testString2));
+        System.out.println(testString3 + ": " + validate(testString3));
+
+
+    }
+
+    public static String validate(String str) {
+        // Regular expression to match only uppercase and lowercase letters, numbers, and underscores.
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+$");  // ^ and $ ensure the entire string matches
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches() ? "Valid" : "Invalid";
+    }
+}
+```

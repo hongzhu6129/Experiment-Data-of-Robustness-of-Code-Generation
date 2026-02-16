@@ -1,0 +1,44 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = (long) Math.pow(2, Math.pow(2, n)) + 1;  // Calculate Fermat number
+
+            if (fermatNumber > 0) { //check for overflow
+                System.out.println(fermatNumber);
+            } else {
+                System.out.println("Fermat number for n = " + n + " is too large to represent as a long.");
+            }
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **`public static void main(String[] args)`:** This is the main method, the entry point of your Java program.
+
+2. **`System.out.println("First 10 Fermat Numbers:");`:** This line prints a header to the console.
+
+3. **`for (int n = 0; n < 10; n++)`:** This loop iterates 10 times, from `n = 0` to `n = 9`, calculating the Fermat number for each value of `n`.
+
+4. **`long fermatNumber = (long) Math.pow(2, Math.pow(2, n)) + 1;`:** This line calculates the Fermat number using the formula 2^(2^n) + 1. 
+   - `Math.pow()` is used to calculate the powers.
+   - The result is cast to `long` because Fermat numbers grow very quickly and can exceed the capacity of `int`.
+
+5. **Overflow Check:** The `if (fermatNumber > 0)` condition checks for potential overflow.  If the Fermat number becomes too large to store in a `long`, it will wrap around to a negative value. This check helps detect and report such overflows.
+
+6. **`System.out.println(fermatNumber);`:**  If there's no overflow, this line prints the calculated Fermat number.
+
+7. **`System.out.println("Fermat number for n = " + n + " is too large...");`:** If an overflow is detected, this line prints a message indicating that the Fermat number is too large to be represented as a `long`.
+
+
+Key improvements in this version:
+
+- **`long` Data Type:** Using `long` instead of `int` allows the program to correctly calculate and display the first few Fermat numbers before they exceed the maximum value of an `int`.
+- **Overflow Handling:** The added overflow check makes the code more robust. It informs the user when the calculated Fermat number is too large to be represented.
+- **Clearer Output:** The output is formatted more clearly with a header and information about overflows.

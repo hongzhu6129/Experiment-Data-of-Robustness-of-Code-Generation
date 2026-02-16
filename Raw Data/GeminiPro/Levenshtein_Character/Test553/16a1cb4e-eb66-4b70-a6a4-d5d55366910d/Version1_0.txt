@@ -1,0 +1,79 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class LongestWordInFile {
+
+    public static void main(String[] args) {
+        LongestWordInFile lwf = new LongestWordInFile();
+        String longestWords = lwf.findLongestWords();
+        System.out.println("Longest word(s): " + longestWords); 
+    }
+
+    public String findLongestWords() {
+        String filePath = "input.txt"; // Replace with your file path
+        List<String> longestWords = new ArrayList<>();
+        int maxLength = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split the line into words using whitespace as a delimiter
+                String[] words = line.split("\\s+"); 
+
+                for (String word : words) {
+                    // Remove punctuation and convert to lowercase for fair comparison
+                    String cleanedWord = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
+
+                    if (cleanedWord.length() > maxLength) {
+                        longestWords.clear(); // Start a new list of longest words
+                        longestWords.add(cleanedWord);
+                        maxLength = cleanedWord.length();
+                    } else if (cleanedWord.length() == maxLength) {
+                        longestWords.add(cleanedWord); // Add to the list if equal in length
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+            return ""; // Return empty string in case of error
+        }
+
+        return String.join(", ", longestWords); // Return comma-separated longest words
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **File Path:** The `filePath` variable now stores "input.txt."  You should replace "input.txt" with the actual path to your text file.  You could also make this a command-line argument for more flexibility.
+
+2. **Error Handling:** The `try-catch` block handles potential `IOExceptions` that might occur if the file isn't found or there's a problem reading it.  It now returns an empty string if there is an error.
+
+3. **Word Cleaning:** The code now cleans each word by:
+   - Removing punctuation using a regular expression `replaceAll("[^a-zA-Z]", "")`. This makes the comparison more robust.
+   - Converting the word to lowercase using `toLowerCase()` so that "Word" and "word" are considered the same length.
+
+4. **Multiple Longest Words:** The `longestWords` is now a `List<String>` to store multiple words if they have the same maximum length.
+
+5. **Clear List:**  The `longestWords.clear()` is essential.  When a longer word is found, the previous list of longest words is cleared before the new longest word is added.
+
+6. **Return Comma-Separated String:** The `findLongestWords()` method returns a comma-separated string of the longest words found.
+
+
+**To Compile and Run:**
+
+1. **Save:** Save the code as `LongestWordInFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac LongestWordInFile.java`
+3. **Run:**  `java LongestWordInFile`
+
+**Create `input.txt`:**
+
+Make sure to create a file named `input.txt` in the same directory as your Java file and put some text in it.  For example:
+
+```
+This is a test file.  Testing for the longest word.  Floccinaucinihilipilification is a long word.
+```

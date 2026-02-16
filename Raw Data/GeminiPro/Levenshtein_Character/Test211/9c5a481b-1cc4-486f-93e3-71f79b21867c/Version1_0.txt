@@ -1,0 +1,71 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicate elements from a sorted integer array.
+     *
+     * @param nums The sorted integer array.
+     * @return The new length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Example 1: Length = " + len1 + ", Array = " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Example 2: Length = " + len2 + ", Array = " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Example 3 (Empty Array): Length = " + len3 + ", Array = " + Arrays.toString(nums3) );
+
+         int[] nums4 = null; // null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Example 4 (Null Array): Length = " + len4 ); // No array to print
+
+
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty input gracefully.
+   - Uses `uniqueIndex` to keep track of where the next unique element should be placed.
+   - Iterates from the second element (`i = 1`) onwards.
+   - If the current element (`nums[i]`) is different from the element at `nums[uniqueIndex]`, it means a new unique element is found.
+   - Increment `uniqueIndex` and copy the current element to `nums[uniqueIndex]`.
+   - Finally, returns `uniqueIndex + 1` because `uniqueIndex` represents the last index of unique elements (0-based indexing), so the length is one more than that.
+
+2. **`main(String[] args)`:**
+   - Provides test cases to demonstrate how the function works, including handling empty and null arrays to ensure robustness.
+   - Uses `Arrays.copyOfRange` to print only the relevant part of the array after removing duplicates, as the original array is modified in-place.  This avoids printing the "garbage" values that remain after the unique portion of the array.
+
+
+
+
+**Key Improvement:**
+
+The provided solution addresses the crucial aspect of handling edge cases like empty or null input arrays, making the code more robust and less prone to errors.  It also clarifies the output by showing the actual updated array contents alongside the length.
+

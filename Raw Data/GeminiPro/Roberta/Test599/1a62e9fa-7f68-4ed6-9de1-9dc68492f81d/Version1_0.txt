@@ -1,0 +1,79 @@
+```java
+import java.util.LinkedList;
+
+public class CompareLinkedLists {
+
+    public static void main(String[] args) {
+        // Create two LinkedLists
+        LinkedList<Integer> list1 = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
+
+        // Populate list1
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        // Populate list2 - make it initially the same as list1
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+
+        // Compare using equals() - checks content and order
+        System.out.println("Are list1 and list2 equal (content and order)? " + list1.equals(list2)); // Output: true
+
+
+        // Modify list2
+        list2.removeLast(); // Remove the last element
+        System.out.println("Are list1 and list2 equal after removing from list2? " + list1.equals(list2)); // Output: false
+
+        // Make list2 the same size but different order
+        list2.add(3); // Add it back, but now list2 is 1,2,3
+        list2.clear();
+        list2.add(3);
+        list2.add(2);
+        list2.add(1);
+
+
+        System.out.println("Are list1 and list2 equal (different order)? " + list1.equals(list2)); // Output: false
+
+
+
+        // Compare sizes
+        System.out.println("Size of list1: " + list1.size());
+        System.out.println("Size of list2: " + list2.size());
+
+
+        // Check if list1 contains all elements of list2 (ignoring order and duplicates)
+        System.out.println("Does list1 contain all elements of list2? " + list1.containsAll(list2)); // Output: true (in this specific example, may be false in other cases)
+
+         // Check if list2 contains all elements of list1 (ignoring order and duplicates) - important for checking containment both ways
+        System.out.println("Does list2 contain all elements of list1? " + list2.containsAll(list1)); // Output: true (in this specific example)
+
+
+        //Example demonstrating that containsAll() doesn't consider order:
+        LinkedList<Integer> list3 = new LinkedList<>();
+        list3.add(1);
+        list3.add(3);
+        list3.add(2);
+
+
+        System.out.println("list1 contains all of list3 (different order): " + list1.containsAll(list3)); // True, even though order differs
+
+        // Clear the lists (optional)
+        list1.clear();
+        list2.clear();
+
+        System.out.println("Are list1 and list2 equal after clearing? " + list1.equals(list2)); // true, as both are now empty
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Comments:**  Extensive comments explain each comparison method and the expected outcomes.
+* **Different Scenarios:** Demonstrates comparing lists with different sizes, contents, and order.
+* **`containsAll()` Explanation:**  Shows how `containsAll()` checks for element presence regardless of order and handles potential differences in behavior.
+* **Empty List Comparison:** Includes a case where both lists are empty to show that `equals()` handles this correctly.
+* **Conciseness:** Removed unnecessary code or redundant explanations.  The code now focuses on the core comparison methods.

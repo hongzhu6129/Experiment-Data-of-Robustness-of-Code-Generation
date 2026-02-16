@@ -1,0 +1,33 @@
+```java
+import java.util.List;
+import java.util.Arrays;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "apricot", "banana", "Avocado", "orange", "Apple");
+
+        char specificLetterLower = 'a';
+        char specificLetterUpper = 'A';
+
+
+        long count = strings.stream()
+                .filter(s -> s.startsWith(String.valueOf(specificLetterLower)) || s.startsWith(String.valueOf(specificLetterUpper)))
+                .count();
+
+        System.out.println("Number of strings starting with '" + specificLetterLower + "' or '" + specificLetterUpper + "': " + count);
+
+
+         //Example with different letters and list:
+        List<String> strings2 = Arrays.asList("Boat", "box", "cat", "Cow", "dog", "CaT");
+        char startCharLower = 'b';
+        char startCharUpper = 'B';
+
+        long count2 = strings2.stream()
+                .filter(str -> str.startsWith(String.valueOf(startCharLower)) || str.startsWith(String.valueOf(startCharUpper)) )
+                .count();
+
+        System.out.println("Number of strings starting with '" + startCharLower+ "' or '" + startCharUpper + "': " + count2);
+    }
+}
+```

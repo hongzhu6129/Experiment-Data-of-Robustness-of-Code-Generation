@@ -1,0 +1,57 @@
+```java
+import java.util.TreeSet;
+
+public class FarFromSeven {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(3);
+        numbers.add(5);
+        numbers.add(7);
+        numbers.add(9);
+        numbers.add(12);
+
+        System.out.println("Numbers far than 7 (absolute difference > 2):");
+        findFarFromSeven(numbers); 
+    }
+
+    private static void findFarFromSeven(TreeSet<Integer> numbers) {
+        for (int num : numbers) {
+            if (Math.abs(num - 7) > 2) {
+                System.out.println(num);
+            }
+        }
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **`TreeSet` for Efficiency:**  A `TreeSet` is used to store the numbers because it automatically maintains the elements in sorted order, which can be beneficial for certain operations (though not strictly necessary here).
+
+2. **Clear Method Signature:** The `main` method is kept as the entry point, and a helper method `findFarFromSeven` is introduced to encapsulate the logic of finding numbers far from 7.
+
+3. **Absolute Difference:** The `Math.abs()` function calculates the absolute difference between each number and 7. This ensures that we're considering distances in both directions (greater than and less than 7).
+
+4. **Clearer Output:** The output is made more descriptive to indicate what "far than 7" means (in this case, an absolute difference greater than 2).
+
+5. **Iterating through the TreeSet:** The enhanced `for` loop (for-each loop) is used to efficiently iterate through the elements of the `TreeSet`.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as a `.java` file (e.g., `FarFromSeven.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac FarFromSeven.java
+   ```
+3. **Run:** Execute the compiled class:
+   ```bash
+   java FarFromSeven
+   ```
+
+This will print the numbers from the `TreeSet` that have an absolute difference greater than 2 from 7.
+
+
+

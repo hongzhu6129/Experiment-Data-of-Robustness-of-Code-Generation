@@ -1,0 +1,58 @@
+```java
+public class RotateArray {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};
+
+        // Rotate the array to the left by one position
+        int temp = arr[0];
+        arr[0] = arr[1];
+        arr[1] = arr[2];
+        arr[2] = temp;
+
+
+        // Print the rotated array
+        System.out.print("Rotated array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+
+
+         // Example with different initial array
+        int[] arr2 = {10, 20, 30};
+        rotateLeft(arr2);
+        System.out.print("Rotated array 2: ");
+        printArray(arr2); // Using a helper function for printing (optional)
+
+
+
+         // Example with another different initial array
+        int[] arr3 = {5, 15, 25};
+        rotateLeft(arr3);
+        System.out.print("Rotated array 3: ");
+        printArray(arr3);
+    }
+
+
+
+
+    //Helper function to rotate (you could inline this logic in main if strictly only main allowed)
+    public static void rotateLeft(int[] arr) {
+       int temp = arr[0];
+       arr[0] = arr[1];
+       arr[1] = arr[2];
+       arr[2] = temp;
+    }
+
+    //Helper function for printing (optional, you can directly print in main)
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+
+```

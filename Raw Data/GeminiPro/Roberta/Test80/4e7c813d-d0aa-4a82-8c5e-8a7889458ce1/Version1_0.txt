@@ -1,0 +1,42 @@
+```java
+public class MeasureExecutionTime {
+
+    public static void main(String[] args) {
+
+        long startTime = System.nanoTime();
+
+        // Code to measure execution time of
+        int sum = 0;
+        for (int i = 0; i < 1000000; i++) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum); // Print the result (optional)
+
+
+        long endTime = System.nanoTime();
+
+        long duration = endTime - startTime;
+
+        System.out.println("Execution time in nanoseconds: " + duration);
+    }
+}
+```
+
+
+This code measures the execution time of a simple loop that calculates the sum of numbers from 0 to 999,999.  You can replace the code inside the timed section with any other code you want to measure.
+
+Key improvements in this version:
+
+* **Clearer Variable Names:** `startTime`, `endTime`, and `duration` improve readability.
+* **Informative Output:** Includes both the result of the calculation (optional) and the execution time.
+* **Realistic Example:** Uses a loop that takes a measurable amount of time to execute.
+
+
+How to use it:
+
+1. **Save:** Save the code as a `.java` file (e.g., `MeasureExecutionTime.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler: `javac MeasureExecutionTime.java`
+3. **Run:** Execute the compiled code: `java MeasureExecutionTime`
+
+
+The output will show the calculated sum (if you keep the `println` for the sum) and the execution time of the code within the timed block, in nanoseconds.  The execution time will vary slightly each time you run the code.

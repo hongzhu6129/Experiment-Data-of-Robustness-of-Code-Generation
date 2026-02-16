@@ -1,0 +1,42 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: `5`
+   - Expected Output: `615` (5 + 55 + 555)
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+3. **Negative Number:**
+   - Input: `-2`
+   - Expected Output: `-246` (-2 + -22 + -222)
+
+4. **Large Positive Number (Corner Case for Integer Overflow if not using `long`):**
+   - Input: `9`
+   - Expected Output: `1107` (9 + 99 + 999)
+
+5. **Large Negative Number (Corner Case for Integer Overflow if not using `long`):**
+   - Input: `-9`
+   - Expected Output: `-1107` (-9 + -99 + -999)
+
+6. **Invalid Input (Non-Integer):**
+   - Input: `abc`
+   - Expected Output: "Invalid input. Please enter an integer."
+
+7. **Number with Leading Zeroes (should be treated as the integer value):**
+    - Input: `005`
+    - Expected Output: `615`
+
+
+**Explanation of Improvements and Corner Case Handling:**
+
+* **Input Validation:** The code now includes input validation using `scanner.hasNextInt()` to ensure that the user enters a valid integer.  This prevents the program from crashing if the user enters non-numeric input.
+* **Long Data Type:** The `calculateNNN` method and the variables `nn`, `nnn`, and the return value are now of type `long`. This is crucial to handle potentially large results, especially when the input `n` is large. If we use `int`, integer overflow could occur, leading to incorrect results.
+* **Clearer Error Message:**  The error message is more user-friendly.
+* **Test Cases Cover Corner Cases:** The test cases now specifically address corner cases like large positive and negative numbers, zero, and invalid input, ensuring that the code handles these scenarios correctly.
+
+
+This improved version is more robust and handles a wider range of inputs correctly. It addresses the potential integer overflow problem and provides a more user-friendly experience.

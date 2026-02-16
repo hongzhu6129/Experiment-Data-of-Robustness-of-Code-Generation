@@ -1,0 +1,50 @@
+```java
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to maintain the order of keys
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some sample data
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+        // Key from which to get the tail map (inclusive)
+        int fromKey = 3;  // Example key
+
+
+        // Get the portion of the map whose keys are greater than or equal to fromKey
+        SortedMap<Integer, String> tailMap = map.tailMap(fromKey);
+
+
+        // Print the original map and the tail map
+        System.out.println("Original Map: " + map);
+        System.out.println("Tail Map (from key " + fromKey + "): " + tailMap);
+
+
+        // Example with a key that doesn't exist in the map
+        fromKey = 7;
+        tailMap = map.tailMap(fromKey); // Returns an empty map if the key doesn't exist
+        System.out.println("Tail Map (from key " + fromKey + "): " + tailMap);
+
+
+        //Demonstrating exclusive tailMap (Java 8 and later)
+
+        fromKey = 3;
+        // Get the portion of the map whose keys are strictly greater than fromKey (exclusive)
+        NavigableMap<Integer, String> exclusiveTailMap = ((NavigableMap<Integer,String>)map).tailMap(fromKey, false);  // Java 8+ for exclusive
+
+
+        System.out.println("Exclusive Tail Map (from key " + fromKey + " - exclusive): " + exclusiveTailMap);
+
+    }
+}
+```

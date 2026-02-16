@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+* **Uses `java.time`:**  The modern `java.time` API (introduced in Java 8) is used for date/time handling. It's much preferred over the older `Date` and `Calendar` classes.
+* **Input Validation:** The code now includes a `try-catch` block to handle `DateTimeParseException`. This prevents the program from crashing if the user enters an invalid date format.  It provides a user-friendly error message.
+* **Clear Prompts:**  The `System.out.println()` statements clearly instruct the user on the expected date format.
+* **`Period` for accurate calculations:**  The `Period.between()` method calculates the difference between two dates correctly, accounting for varying month lengths and leap years.  The older methods of date/time calculation could be error-prone in these cases.
+* **Resource Management:** The `Scanner` is closed using `scanner.close()` to release the resource. Although not strictly required in a simple `main` method like this, it's good practice.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DateDifference.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac DateDifference.java`
+3. **Run:** Execute the compiled code with: `java DateDifference`
+
+The program will then prompt you to enter the two dates.

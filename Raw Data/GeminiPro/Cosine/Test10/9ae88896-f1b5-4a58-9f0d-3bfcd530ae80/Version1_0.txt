@@ -1,0 +1,74 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+Since this program doesn't take any input, the testing focuses on verifying the correct output.  "Corner cases" in this context are less about input values and more about ensuring the output format is maintained across different environments (e.g., different operating systems, console sizes).  Traditional unit testing isn't as applicable here as with programs that process data.  The primary testing approach would be visual inspection.
+
+1. **Standard Output:**  Run the program and visually verify the output matches the expected face.  Check for correct spacing and characters.
+
+2. **Output Redirection:** Redirect the output to a file to ensure the characters and formatting are preserved.  This helps test for potential issues related to character encoding or platform-specific newline characters.
+   ```bash
+   java FacePrinter > output.txt
+   ```
+   Then, examine the `output.txt` file.
+
+
+3. **Different Operating Systems (if possible):**  If you have access to different OS environments (Windows, macOS, Linux), test the program on each to ensure consistent output.  This helps catch any OS-specific issues related to newline characters (\r\n vs. \n).
+
+4. **Console Size (Less critical but good to consider):**  Although less crucial for a simple program like this, resizing the console window shouldn't affect the face's structure.  It should still be rendered correctly, even if the console becomes very narrow or very wide.
+
+
+**Example of a more testable approach (if you wanted to demonstrate unit testing principles):**
+
+If you wanted to create a more testable version, you could separate the face construction from the printing:
+
+```java
+public class TestableFacePrinter {
+
+    public static String getFaceString() {
+        return "  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+";
+    }
+
+    public static void printFace() {
+        System.out.println(getFaceString());
+    }
+
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+Now you can use a unit testing framework (like JUnit) to test the `getFaceString()` method and verify that it returns the expected string:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestableFacePrinterTest {
+
+    @Test
+    void testGetFaceString() {
+        String expectedFace = "  +\"\"\"\"\"+\n [| o o |] \n  |  ^  | \n  | '-' | \n  +-----+";
+        String actualFace = TestableFacePrinter.getFaceString();
+        assertEquals(expectedFace, actualFace);
+    }
+}
+```
+
+
+
+This example demonstrates how to make a more testable design even for seemingly simple output tasks.  This approach is generally preferred in larger projects.  For the original, simple face printer, visual inspection is sufficient.
+

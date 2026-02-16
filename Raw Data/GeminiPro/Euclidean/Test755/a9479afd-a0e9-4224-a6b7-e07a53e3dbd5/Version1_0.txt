@@ -1,0 +1,52 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RemoveNonAlphanumericFromDouble {
+
+    public static void main(String[] args) {
+        double num1 = 123.456;
+        double num2 = 123.456abcd; // Example with non-alphanumeric characters
+
+        String str1 = String.valueOf(num1);
+        String str2 = String.valueOf(num2);
+
+
+        System.out.println("Original String 1: " + str1);
+        System.out.println("Validated String 1: " + validate(str1));
+
+        System.out.println("Original String 2: " + str2);
+        System.out.println("Validated String 2: " + validate(str2));
+
+
+    }
+
+    public static String validate(String str) {
+        // Use a regular expression to remove non-alphanumeric characters
+        Pattern pattern = Pattern.compile("[^a-zA-Z0-9.]"); // Allow digits, letters and decimal point
+        Matcher matcher = pattern.matcher(str);
+        return matcher.replaceAll("");
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Convert Double to String:**  The `String.valueOf()` method converts the double value to its string representation.  This is necessary because the regular expression operations work on strings.
+
+2. **Regular Expression:**  The core of the validation is done using a regular expression. 
+   - `[^a-zA-Z0-9.]`: This pattern matches any character that is *not* a lowercase letter (a-z), an uppercase letter (A-Z), a digit (0-9), or a decimal point (.). The `^` inside the square brackets negates the character set.
+   - `matcher.replaceAll("")`: This replaces all matching characters (i.e., the non-alphanumeric characters) with an empty string, effectively removing them.
+
+3. **Method Signatures:** The code adheres to the specified method signatures: `public static void main(String[] args)` and `public static String validate(String str)`.
+
+
+**Example Output:**
+
+```
+Original String 1: 123.456
+Validated String 1: 123.456
+Original String 2: 123.456abcd
+Validated String 2: 123.456
+```

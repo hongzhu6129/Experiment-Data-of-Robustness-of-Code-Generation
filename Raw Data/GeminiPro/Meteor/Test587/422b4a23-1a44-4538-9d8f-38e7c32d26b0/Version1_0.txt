@@ -1,0 +1,73 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to remove
+        String elementToRemove = "Orange";
+
+        // Remove the element (first occurrence)
+        boolean removed = linkedList.remove(elementToRemove);  
+
+        if (removed) {
+            System.out.println("LinkedList after removing '" + elementToRemove + "': " + linkedList);
+        } else {
+            System.out.println(elementToRemove + " not found in the LinkedList.");
+        }
+
+
+        // Example removing by index:
+        LinkedList<String> linkedList2 = new LinkedList<>();
+        linkedList2.add("Apple");
+        linkedList2.add("Banana");
+        linkedList2.add("Orange");
+        linkedList2.add("Grape");
+        linkedList2.add("Mango");
+
+
+        int indexToRemove = 2; // Remove element at index 2 (Orange)
+
+        try {
+            String removedElement = linkedList2.remove(indexToRemove);
+            System.out.println("LinkedList after removing element at index " + indexToRemove + ": " + linkedList2);
+            System.out.println("Removed element: " + removedElement);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index.  Index out of bounds.");
+        }
+
+        //Demonstrating removing all occurrences: (requires iteration and a bit more)
+         LinkedList<Integer> linkedList3 = new LinkedList<>();
+         linkedList3.add(1);
+         linkedList3.add(2);
+         linkedList3.add(3);
+         linkedList3.add(2);
+         linkedList3.add(2);
+         linkedList3.add(4);
+
+         int valueToRemove = 2;
+
+         System.out.println("Original list: " + linkedList3);
+
+         while (linkedList3.remove(Integer.valueOf(valueToRemove))) {  // Keep removing until no more instances
+             // Loop continues as long as remove() returns true (meaning it found and removed something)
+         }
+
+         System.out.println("List after removing all occurrences of " + valueToRemove + ": " + linkedList3);
+
+
+    }
+}
+```

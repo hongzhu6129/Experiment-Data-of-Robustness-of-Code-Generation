@@ -1,0 +1,44 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+
+public class DateComparison {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate date 1 year ago
+        LocalDate dateBeforeOneYear = currentDate.minus(Period.ofYears(1));
+
+        // Calculate date 1 year from now
+        LocalDate dateAfterOneYear = currentDate.plus(Period.ofYears(1));
+
+
+        System.out.println("Current Date: " + currentDate);
+        System.out.println("Date 1 year ago: " + dateBeforeOneYear);
+        System.out.println("Date 1 year from now: " + dateAfterOneYear);
+
+
+        // Comparisons
+        System.out.println("\nComparisons:");
+
+        if (dateBeforeOneYear.isBefore(currentDate)) {
+            System.out.println(dateBeforeOneYear + " is before " + currentDate);
+        }
+
+        if (dateAfterOneYear.isAfter(currentDate)) {
+            System.out.println(dateAfterOneYear + " is after " + currentDate);
+        }
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:**  Improved variable names and added comments make the code easier to understand.
+* **`java.time` API:** Uses the modern `java.time` API (introduced in Java 8) which is much preferred over older, clunkier date/time classes.
+* **`Period.ofYears()`:** Uses `Period.ofYears()` for clarity and correctness when adding/subtracting years. This handles leap years correctly.
+* **Direct Comparisons:**  Uses `isBefore()` and `isAfter()` methods for date comparisons, which is cleaner than using `compareTo()`.
+* **Output Formatting:**  Provides more descriptive output to clearly show the results of the comparisons.

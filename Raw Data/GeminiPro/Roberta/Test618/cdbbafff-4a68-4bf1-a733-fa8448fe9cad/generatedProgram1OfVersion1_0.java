@@ -1,0 +1,58 @@
+import java.util.TreeSet;
+
+public class TreeSetFirstLast {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet of Strings
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add some elements
+        treeSet.add("apple");
+        treeSet.add("banana");
+        treeSet.add("orange");
+        treeSet.add("grape");
+        treeSet.add("kiwi");
+
+
+        // Check if the TreeSet is empty before attempting to get elements
+        if (!treeSet.isEmpty()) {
+            // Get the first element (lowest value)
+            String firstElement = treeSet.first();
+
+            // Get the last element (highest value)
+            String lastElement = treeSet.last();
+
+
+            System.out.println("TreeSet elements: " + treeSet);
+            System.out.println("First element: " + firstElement);
+            System.out.println("Last element: " + lastElement);
+
+
+            // Demonstrating what happens with an empty TreeSet
+            TreeSet<Integer> emptyTreeSet = new TreeSet<>();
+
+            try {
+                Integer firstEmpty = emptyTreeSet.first(); 
+                System.out.println("First element of empty set (this won't print): " + firstEmpty);
+            } catch (NoSuchElementException e) {
+                System.out.println("Attempting to get the first element of an empty TreeSet throws a NoSuchElementException: " + e.getMessage());
+            }
+
+
+            try {
+               Integer lastEmpty = emptyTreeSet.last();
+               System.out.println("Last element of empty set (this won't print): " + lastEmpty);
+
+            } catch (NoSuchElementException e) {
+                System.out.println("Attempting to get the last element of an empty TreeSet throws a NoSuchElementException: " + e.getMessage());
+            }
+
+        } else {
+            System.out.println("The TreeSet is empty.");
+        }
+
+
+
+    }
+}

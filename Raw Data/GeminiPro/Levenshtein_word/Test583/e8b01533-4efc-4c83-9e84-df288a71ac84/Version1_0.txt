@@ -1,0 +1,63 @@
+```java
+import java.util.LinkedList;
+
+public class EditLastElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Edit the last element (several ways to do this)
+
+        // 1. Using set() method (most efficient)
+        if (!linkedList.isEmpty()) { // Check if the list is empty to avoid IndexOutOfBoundsException
+            linkedList.set(linkedList.size() - 1, "Grape"); 
+        }
+
+
+        // 2. Using removeLast() and addLast() (less efficient)
+        // if (!linkedList.isEmpty()) {
+        //    linkedList.removeLast();
+        //    linkedList.addLast("Grape");
+        //}
+
+
+
+        System.out.println("Modified LinkedList: " + linkedList);
+
+
+        // Example with an Integer LinkedList
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("Original Integer LinkedList: " + numbers);
+
+        if (!numbers.isEmpty()) {
+            numbers.set(numbers.size() - 1, 10);
+        }
+
+        System.out.println("Modified Integer LinkedList: " + numbers);
+
+
+
+        // Handling empty list case explicitly
+        LinkedList<String> emptyList = new LinkedList<>();
+
+        if (emptyList.isEmpty()) {
+            System.out.println("Cannot edit last element. List is empty.");
+        } else {
+            emptyList.set(emptyList.size() - 1, "Something");
+        }
+
+    }
+}
+```

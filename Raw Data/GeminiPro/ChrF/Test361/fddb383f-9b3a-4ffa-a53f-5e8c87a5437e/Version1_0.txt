@@ -1,0 +1,43 @@
+```java
+class Solution {
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if (str.length() == 0) {
+            return;
+        }
+
+        reverseString(str.substring(1)); // Recursively call with the substring excluding the first character
+        System.out.print(str.charAt(0)); // Print the first character after the recursive call
+    }
+
+    /**
+     * Main method to demonstrate the string reversal.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        String str = "hello";
+        Solution obj = new Solution();
+        obj.reverseString(str); // Call the reverseString method
+        System.out.println(); // Print a newline for better formatting
+
+        str = "world";
+        obj.reverseString(str);
+        System.out.println();
+
+
+        str = ""; // Test with empty string
+        obj.reverseString(str); 
+        System.out.println();
+
+         str = "a"; // Test with single character string
+        obj.reverseString(str); 
+        System.out.println();
+
+    }
+}
+```

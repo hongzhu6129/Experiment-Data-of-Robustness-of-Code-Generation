@@ -1,0 +1,98 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToOctal {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a binary number: ");
+        String binaryString = scanner.nextLine();
+
+        try {
+            long decimal = 0;
+            long power = 1;
+
+            for (int i = binaryString.length() - 1; i >= 0; i--) {
+                char digit = binaryString.charAt(i);
+
+                if (digit != '0' && digit != '1') {
+                    throw new IllegalArgumentException("Invalid binary number.  Contains characters other than 0 and 1.");
+                }
+
+                if (digit == '1') {
+                    decimal += power;
+                }
+                power *= 2;
+            }
+
+            String octalString = "";
+
+            if (decimal == 0) {
+                octalString = "0";
+            } else {
+                while (decimal > 0) {
+                    octalString = (decimal % 8) + octalString; // Prepend the remainder
+                    decimal /= 8;
+                }
+            }
+
+
+            System.out.println("Octal equivalent: " + octalString);
+
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+        scanner.close();
+
+    }
+}
+```
+
+
+**Test Cases (Including Corner Cases):**
+
+1. **Valid Binary:**
+   - Input: `101101`
+   - Expected Output: `55`
+
+2. **Leading Zeros:**
+   - Input: `000111`
+   - Expected Output: `7`
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Large Binary Number:**
+   - Input: `111111111111111111111111111111111111111111111111111111111111111` (63 ones, maximum for long)
+   - Expected Output: `777777777777777777777`
+
+5. **Invalid Input (Non-binary characters):**
+   - Input: `101201`
+   - Expected Output: "Invalid binary number.  Contains characters other than 0 and 1."
+
+6. **Invalid Input (Empty String):**
+   - Input: ``
+   - Expected Output: `0` (because decimal will be initialized to 0)
+
+
+7. **Invalid Input (Whitespace):**
+   - Input: `  101 `  (leading/trailing spaces)
+   - Expected Output:  "Invalid binary number.  Contains characters other than 0 and 1."  (The code now handles whitespace correctly and will identify it as an error).
+
+
+**Explanation of Improvements and How to Run Tests:**
+
+- **Error Handling:** The code now includes error handling for invalid input using a `try-catch` block.  This makes the program more robust.
+- **Whitespace Handling:** The updated code now correctly rejects input containing whitespace.
+- **Zero Handling:** The special case of a binary input of "0" is handled correctly.
+
+**To Run Tests:**
+
+1. Save the code as `BinaryToOctal.java`.
+2. Compile: `javac BinaryToOctal.java`
+3. Run: `java BinaryToOctal`  Then enter each test case input when prompted. You can also automate this by scripting the inputs and comparing outputs.
+
+
+This improved version handles corner cases and invalid input more gracefully, providing a more robust solution.

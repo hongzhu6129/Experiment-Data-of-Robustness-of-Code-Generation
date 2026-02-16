@@ -1,0 +1,27 @@
+```java
+import java.util.TimeZone;
+import java.util.Arrays;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+
+        // Get all available time zone IDs
+        String[] availableIDs = TimeZone.getAvailableIDs();
+
+        // Sort the IDs alphabetically for easier viewing
+        Arrays.sort(availableIDs);
+
+        System.out.println("All Available Time Zones:");
+        for (String id : availableIDs) {
+            System.out.println(id);
+        }
+
+        System.out.println("\nUTC:");
+        System.out.println(TimeZone.getTimeZone("UTC"));
+
+        System.out.println("\nGMT:");
+        System.out.println(TimeZone.getTimeZone("GMT")); 
+    }
+}
+```

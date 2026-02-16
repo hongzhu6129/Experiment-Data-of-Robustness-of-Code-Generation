@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Type Casting:** Fermat numbers grow very rapidly.  Even `long` (64-bit integer) can only hold the first five accurately.  The casting to `long` is necessary to prevent compile-time errors and to store the result of `Math.pow()`, which returns a `double`. We acknowledge that after the first few, the values will overflow and won't be the true Fermat numbers.
+
+2. **Clear Output:** The code now includes a descriptive message indicating what the output represents.
+
+3. **Loop Efficiency:**  The loop directly iterates from 0 to 9, making the code more concise.
+
+4. **Correct Formula:** The code uses the correct formula for Fermat numbers: 2<sup>2<sup>n</sup></sup> + 1.
+
+**Limitations (Due to `long` Overflow):**
+
+It's essential to understand that using `long` will lead to incorrect results for Fermat numbers beyond the first few because they exceed the maximum value a `long` can store.  For truly large Fermat numbers, you would need to use a `BigInteger` class (which handles arbitrary-precision integers).
+
+
+**Example using `BigInteger` (for accurate representation):**
+

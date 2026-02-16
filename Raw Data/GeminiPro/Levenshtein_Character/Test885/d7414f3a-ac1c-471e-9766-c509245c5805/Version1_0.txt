@@ -1,0 +1,30 @@
+```java
+public class SquareRoot {
+
+    public static void main(String[] args) {
+        int num = 25; // You can change this to any positive integer
+        int sqrtResult = sqrt(num);
+        System.out.println("Square root of " + num + " is: " + sqrtResult);
+    }
+
+    private static int sqrt(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Input must be a non-negative integer.");
+        }
+
+        if (num == 0) {
+            return 0;
+        }
+
+        int x = num;
+        int y = (x + 1) / 2;  // Initial guess
+
+        while (y < x) { 
+            x = y;
+            y = (x + num / x) / 2; // Babylonian method for integer square root
+        }
+
+        return x;
+    }
+}
+```

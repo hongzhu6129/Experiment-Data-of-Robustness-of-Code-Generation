@@ -1,0 +1,61 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky.");
+    }
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider some aspects for testing, focusing primarily on the output format:
+
+1. **Basic Functionality Test:**  Verify the program prints the poem correctly with the specified indentation. This is the primary test case.  You can do this visually or by redirecting the output to a file and comparing it to the expected output.
+
+2. **Whitespace Sensitivity Test (Indirect):**  Java's `println()` handles newline characters (`\n`) and tabs (`\t`) directly.  We're not manipulating strings in a way where extra spaces or incorrect whitespace could be introduced easily. So, a direct test for this is less critical here. However, carefully examine the output to ensure the spacing matches the requirement.
+
+3. **Character Encoding Test (Corner Case - Less likely but possible):**  If you're dealing with different character encodings (e.g., UTF-8, ASCII), there's a very remote chance you could encounter issues with special characters like commas or apostrophes.  Try running the program in different environments/locales (if applicable) to check if the output remains consistent. This is more relevant if you were reading the poem from an external file.
+
+4. **Output Redirection Test (If applicable):** If your program is designed to output to a file or other stream instead of the console, test that the output is correctly written to the intended destination with the proper formatting.
+
+
+**How to test output visually:**
+
+Run the program and compare its output in your console to the desired output:
+
+```
+Twinkle, twinkle, little star,
+	How I wonder what you are!
+		Up above the world so high,
+		Like a diamond in the sky.
+```
+
+**How to test by redirecting output to a file and comparing:**
+
+1. **Run the program redirecting output to a file:**
+   ```bash
+   java TwinkleTwinkle > output.txt 
+   ```
+
+2. **Create an expected output file (expected.txt):**  Paste the desired output into this file.
+
+3. **Compare the two files:** Use a diff tool (like `diff` on Linux/macOS or a text comparison tool on Windows) or manually compare the contents of `output.txt` and `expected.txt` to ensure they are identical. Example using `diff`:
+
+   ```bash
+   diff output.txt expected.txt
+   ```
+
+   If there are no differences, `diff` will not produce any output.  If there are differences, it will show them.
+
+
+
+
+Because this program is very simple,  the primary testing focuses on verifying the correct formatting of the printed output. More complex string manipulation or input handling would require more extensive test cases.

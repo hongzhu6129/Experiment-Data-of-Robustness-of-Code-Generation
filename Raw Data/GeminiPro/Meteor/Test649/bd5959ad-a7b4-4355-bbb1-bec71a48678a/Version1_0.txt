@@ -1,0 +1,57 @@
+```java
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.TreeMap;
+
+public class CheckTimelineMapping {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to represent the timeline.
+        // The key is the LocalDateTime, and the value is any Object (e.g., String in this example).
+        TreeMap<LocalDateTime, String> timeline = new TreeMap<>();
+
+        // Add some events to the timeline
+        timeline.put(LocalDateTime.of(2024, Month.JANUARY, 15, 10, 0), "Event A");
+        timeline.put(LocalDateTime.of(2024, Month.FEBRUARY, 20, 12, 0), "Event B");
+        timeline.put(LocalDateTime.of(2024, Month.MARCH, 10, 9, 30), "Event C");
+
+
+        // Value to search for
+        String valueToSearch = "Event B";
+
+        // Check if the timeline contains a mapping for the specified value
+        boolean containsValue = timeline.containsValue(valueToSearch);
+
+        if (containsValue) {
+            System.out.println("The timeline contains a mapping for the value: " + valueToSearch);
+
+            // If you need to find the key(s) associated with the value:  (Not required by prompt but helpful)
+            for (LocalDateTime key : timeline.keySet()) {
+                if (timeline.get(key).equals(valueToSearch)) {
+                    System.out.println("Found at time: " + key);
+                 //  break; // Uncomment if you only need the first occurrence.
+                }
+            }
+
+
+        } else {
+            System.out.println("The timeline does not contain a mapping for the value: " + valueToSearch);
+        }
+
+
+
+
+        //Another example with a value that's not in the timeline:
+        valueToSearch = "Event D"; // This event doesn't exist in our timeline
+
+        containsValue = timeline.containsValue(valueToSearch);
+        if (containsValue) {
+            System.out.println("The timeline contains a mapping for the value: " + valueToSearch);
+        } else {
+            System.out.println("The timeline does not contain a mapping for the value: " + valueToSearch);
+        }
+    }
+}
+
+
+```

@@ -1,0 +1,62 @@
+```java
+import java.util.Scanner;
+
+public class SumEqualsThird {
+
+    public static boolean checkSum(int num1, int num2, int num3) {
+        return (num1 + num2) == num3;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third integer: ");
+        int num3 = scanner.nextInt();
+
+
+        boolean result = checkSum(num1, num2, num3);
+
+        if (result) {
+            System.out.println("The sum of the first two integers is equal to the third integer.");
+        } else {
+            System.out.println("The sum of the first two integers is NOT equal to the third integer.");
+        }
+
+        scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`checkSum` Method:** This method takes three integers as input and returns `true` if the sum of the first two equals the third, and `false` otherwise.  This improves code organization and makes the logic reusable.
+
+2. **User Input:** The code now uses a `Scanner` to get input from the user, making it interactive.
+
+3. **Clear Output:** The output messages clearly state whether the sum is equal to the third integer or not.
+
+4. **Resource Management:** The `scanner.close()` statement is crucial for closing the `Scanner` and preventing resource leaks.
+
+5. **Error Handling (Optional):**  For more robust code, you could add error handling to check if the user's input is actually an integer.  You could use a `try-catch` block to handle `InputMismatchException`.
+
+
+**Example Usage:**
+
+```
+Enter the first integer: 5
+Enter the second integer: 7
+Enter the third integer: 12
+The sum of the first two integers is equal to the third integer.
+
+Enter the first integer: 2
+Enter the second integer: 3
+Enter the third integer: 6
+The sum of the first two integers is NOT equal to the third integer.
+```

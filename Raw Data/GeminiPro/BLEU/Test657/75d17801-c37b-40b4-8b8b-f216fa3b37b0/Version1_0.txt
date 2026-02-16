@@ -1,0 +1,72 @@
+```java
+import java.util.TreeMap;
+
+public class TreeTimelineSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to represent the timeline.
+        // The keys are timestamps (e.g., years, milliseconds since epoch), 
+        // and the values are the events associated with those timestamps.
+        TreeMap<Integer, String> timeline = new TreeMap<>();
+
+        // Populate the timeline with some sample data
+        timeline.put(1950, "Event A");
+        timeline.put(1960, "Event B");
+        timeline.put(1975, "Event C");
+        timeline.put(1980, "Event D");
+        timeline.put(2000, "Event E");
+        timeline.put(2010, "Event F");
+
+
+        // Search for a specific value (event)
+        String searchValue = "Event C";
+        Integer searchKey = null; 
+
+        for (Integer key : timeline.keySet()) {  // Iterate to find the key
+            if (timeline.get(key).equals(searchValue)) {
+                searchKey = key;
+                break; // Exit loop once found
+            }
+        }
+
+
+        if (searchKey != null) {
+            System.out.println(searchValue + " found at timestamp: " + searchKey);
+        } else {
+            System.out.println(searchValue + " not found in the timeline.");
+        }
+
+
+        // Search for an event at or before a specific time (floorEntry)
+        int searchTime1 = 1978;
+        Integer floorKey = timeline.floorKey(searchTime1); // Key equal or less
+        if (floorKey != null) {
+            System.out.println("Event at or before " + searchTime1 + ": " + timeline.get(floorKey) + " (Time: " + floorKey + ")");
+        } else {
+            System.out.println("No events found at or before " + searchTime1);
+        }
+
+        // Search for an event at or after a specific time (ceilingEntry)
+        int searchTime2 = 1978;
+        Integer ceilingKey = timeline.ceilingKey(searchTime2);  // key equal or greater
+         if (ceilingKey != null) {
+            System.out.println("Event at or after " + searchTime2 + ": " + timeline.get(ceilingKey) + " (Time: " + ceilingKey + ")");
+        } else {
+            System.out.println("No events found at or after " + searchTime2);
+        }
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **TreeMap:** Uses a `TreeMap` which is specifically designed for sorted key-value pairs. This is highly efficient for timeline-like data.
+* **Clearer Search:**  The search for a value is now much more straightforward. It iterates and finds the corresponding key if the value exists.
+* **`floorKey` and `ceilingKey`:** Demonstrates how to use these powerful `TreeMap` methods to find entries at or before/after a given time efficiently.
+* **Error Handling:** Includes checks (using `!= null`) to handle cases where the searched-for event or timestamp doesn't exist in the timeline, preventing `NullPointerExceptions`.
+* **Informative Output:** Provides helpful output messages indicating the search results or if an event is not found.
+
+
+This revised code is more efficient, robust, and demonstrates the best practices for working with timeline-like data in Java.

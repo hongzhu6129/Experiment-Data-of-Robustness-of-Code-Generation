@@ -1,0 +1,50 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListPositions {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+        linkedList.add("Date");
+        linkedList.add("Elderberry");
+
+
+        // Method 1: Using ListIterator (recommended for LinkedList)
+        System.out.println("Using ListIterator:");
+        ListIterator<String> iterator = linkedList.listIterator();
+        while (iterator.hasNext()) {
+            int index = iterator.nextIndex(); // Get the index *before* getting the element
+            String element = iterator.next();
+            System.out.println("Element at position " + index + ": " + element);
+        }
+        System.out.println();
+
+
+
+        // Method 2: Using a for loop with get() (less efficient for LinkedList)
+        System.out.println("Using for loop with get():");
+        for (int i = 0; i < linkedList.size(); i++) {
+            String element = linkedList.get(i);
+            System.out.println("Element at position " + i + ": " + element);
+        }
+        System.out.println();
+
+
+
+        // Method 3: Enhanced for loop with a separate index counter (less efficient than ListIterator)
+        System.out.println("Using enhanced for loop with index:");
+        int index = 0;
+        for (String element : linkedList) {
+            System.out.println("Element at position " + index + ": " + element);
+            index++;
+        }
+
+
+    }
+}
+```

@@ -1,0 +1,43 @@
+```java
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class NumberFormatter {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = -1234567;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+    }
+
+    public static String validate(int number) {
+        // Using NumberFormat for locale-sensitive formatting
+        NumberFormat numberFormat = NumberFormat.getInstance(Locale.US); // You can change the locale if needed
+
+        return numberFormat.format(number);
+    }
+}
+```
+
+
+This code uses the `NumberFormat` class with the US locale to format the number.  This automatically adds thousand separators according to the conventions of the specified locale.  If you need a different locale's formatting, you can change `Locale.US` to the desired locale (e.g., `Locale.GERMANY`, `Locale.FRANCE`, etc.).  The `NumberFormat` class handles negative numbers and zero correctly as well.
+
+
+Key improvements in this version:
+
+* **Handles different locales:** Using `NumberFormat` makes it adaptable to various number formatting conventions.
+* **Clearer and more concise:** The code is now much simpler and easier to understand.
+* **Correct handling of negative numbers and zero:**  The `NumberFormat` class handles these cases automatically.
+* **Uses standard library:** Leverages the built-in Java libraries for better efficiency and maintainability.

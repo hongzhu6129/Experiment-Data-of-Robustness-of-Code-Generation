@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class AddBinary {
+
+    public static String addBinary(String a, String b) {
+        StringBuilder result = new StringBuilder();
+        int carry = 0;
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int sum = carry;
+            if (i >= 0) {
+                sum += a.charAt(i--) - '0';
+            }
+            if (j >= 0) {
+                sum += b.charAt(j--) - '0';
+            }
+            result.insert(0, sum % 2);
+            carry = sum / 2;
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input first binary number: ");
+        String binary1 = scanner.nextLine();
+        System.out.print("Input second binary number: ");
+        String binary2 = scanner.nextLine();
+
+        try {
+            String sum = addBinary(binary1, binary2);
+            System.out.println("Sum of two binary numbers: " + sum);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: Please enter valid binary numbers.");
+        }
+        scanner.close();
+
+
+    }
+}
+```
+
+
+
+## Test Cases:
+
+Here are some test cases covering various scenarios, including corner cases:
+
+**1. Basic Cases:**
+
+* **Input 1:** "10", **Input 2:** "11", **Expected Output:** "101"
+* **Input 1:** "1010", **Input 2:** "1101", **Expected Output:** "10111"
+* **Input 1:** "111", **Input 2:** "111", **Expected Output:** "1110"
+
+**2. Unequal Lengths:**
+
+* **Input 1:** "10", **Input 2:** "1101", **Expected Output:** "1111"
+* **Input 1:** "11110", **Input 2:** "10", **Expected Output:** "11100"
+
+
+**3. Leading Zeros:**
+
+* **Input 1:** "0010", **Input 2:** "011", **Expected Output:** "101"  (Leading zeros should be handled)
+
+
+**4. Empty Strings:**
+
+* **Input 1:** "", **Input 2:** "11", **Expected Output:** "11"
+* **Input 1:** "10", **Input 2:** "", **Expected Output:** "10"
+* **Input 1:** "", **Input 2:** "", **Expected Output:** ""
+
+**5. Corner Cases (Large Numbers -  Test for potential overflow with very large binary strings):**
+
+* **Input 1:**  A very long string of '1's (e.g., 50 '1's), **Input 2:** "1",  **Expected Output:**  The correct binary sum.
+
+
+**6. Invalid Input (Error Handling):**
+
+* **Input 1:** "102", **Input 2:** "11"  **Expected Output:** "Invalid input: Please enter valid binary numbers." (or an appropriate error message)
+* **Input 1:** "10", **Input 2:** "21" **Expected Output:** "Invalid input: Please enter valid binary numbers."
+* **Input 1:** "abc", **Input 2:** "11" **Expected Output:** "Invalid input: Please enter valid binary numbers."
+
+
+
+These test cases ensure the `addBinary` function works correctly under different circumstances, including proper handling of carry, unequal lengths, edge cases, and invalid input.  You can use these test cases in a testing framework (like JUnit) for automated testing.

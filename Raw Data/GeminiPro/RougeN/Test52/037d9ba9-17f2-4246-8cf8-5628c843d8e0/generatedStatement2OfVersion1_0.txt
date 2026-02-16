@@ -1,0 +1,28 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handle Null and Empty Input:** The code now explicitly checks for `null` and empty (or whitespace-only) input strings and returns an empty string in these cases.  This prevents `NullPointerException` and handles cases where there's no penultimate word.
+
+2. **Trim and Split:** The `trim()` method is used to remove leading and trailing whitespace from the input sentence. This is crucial for handling inputs like "  hello world  ".  The `split("\\s+")` splits the string by one or more whitespace characters, handling cases with multiple spaces between words.
+
+3. **Check for Fewer Than Two Words:** The code checks if the array of words has at least two elements before attempting to access the second-to-last element.  This prevents `ArrayIndexOutOfBoundsException` when there are fewer than two words.
+
+
+**Test Cases:**
+
+The provided test cases cover the following scenarios:
+
+* **Normal Case:** A sentence with multiple words.
+* **Two Words:**  A sentence with exactly two words.
+* **Single Word:** A sentence with only one word.
+* **Empty String:**  An empty input string.
+* **Null Input:** A `null` input.
+* **Leading/Trailing Spaces:** A string with leading and trailing spaces.
+* **Multiple Spaces between Words:**  A string with multiple spaces between words.
+* **Whitespace Only:** A String containing only whitespace.
+
+
+
+This comprehensive set of test cases ensures the function works correctly in various situations, including corner cases that could cause errors.

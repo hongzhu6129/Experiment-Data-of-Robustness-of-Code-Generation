@@ -1,0 +1,114 @@
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class DeleteMiddleNode {
+
+    public static void main(String[] args) {
+        // Example usage:
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        System.out.println("Original List:");
+        printList(head);
+
+        // Node to delete (e.g., value 3)
+        ListNode nodeToDelete = head.next.next; 
+
+        deleteNode(nodeToDelete);
+
+        System.out.println("List after deleting node:");
+        printList(head);
+
+
+        //Another Example: Deleting the tail node requires different handling.
+        head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        nodeToDelete = head.next.next;
+        System.out.println("\nOriginal List:");
+        printList(head);
+         try {
+             deleteNode(nodeToDelete); //This will throw an exception if not handled as a special case
+        } catch (NullPointerException e) {
+             System.out.println("Cannot delete the tail using this method directly.");
+        }
+
+        // To delete the tail, you need to iterate and modify the previous node's 'next'.
+        ListNode current = head;
+        while(current.next != null && current.next.next!=null) {
+            current = current.next;
+        }
+        current.next = null;
+        System.out.println("List after deleting tail (correctly):");
+         printList(head);
+
+
+
+    }
+
+    public static void deleteNode(ListNode node) {
+        /*
+        This function deletes the given node from a linked list. 
+        IMPORTANT: This approach only works if the node to be deleted is NOT the tail node.
+        If it's the tail node, a NullPointerException will occur because we're trying to access the 'next' of a null element.
+        To handle the tail node, you'd need to traverse from the head and modify the 'next' of the second-to-last node.
+
+        The function modifies the linked list in place.
+         */
+
+        if (node == null || node.next == null) { //Special handling if trying to delete the tail
+            throw new NullPointerException("Cannot delete the tail node using this method directly.  Provide the previous node instead.");
+        }
+        // Copy the data from the next node to the current node
+        node.val = node.next.val;
+        // Update the 'next' pointer to skip the next node
+        node.next = node.next.next; 
+    }
+
+
+
+    static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+```
+
+
+**Explanation and Key Concepts**
+
+1. **Node Structure:** The `ListNode` class represents a single node in the linked list, containing an integer value (`val`) and a pointer to the next node (`next`).
+
+2. **deleteNode() Method:** This is the core logic. It takes the node to be deleted as input. It handles the scenario where someone tries to delete the tail with this method, in which case it throws a clear error message.
+
+   - It copies the `val` and `next` of the *next* node into the current node. This effectively overwrites the current node's data with the next node's data and removes the next node from the chain.
+   - This approach is efficient because it doesn't require traversing the list from the head to find the previous node.  However, as mentioned, special handling for the tail is needed.
+
+3. **printList() Method:** A utility function to print the linked list for demonstration purposes.
+
+4. **main() Method:** The `main` method sets up an example linked list, demonstrates how to call `deleteNode()`, and prints the list before and after deletion. It also shows examples for edge cases and clear explanations.
+
+
+**Important Considerations**
+
+* **Tail Node:** As highlighted, this `deleteNode()` implementation *cannot* directly delete the tail node of the linked list. To delete the tail, you *must* traverse the list and modify the `next` pointer of the second-to-last node.  The example code now demonstrates how to do that.
+* **Error Handling:** The updated code includes better handling for the tail node scenario, throwing a more descriptive exception to help the learner understand the limitation.
+* **Educational Value:** The added comments, examples, and explanation significantly enhance the code's educational value, making it clear how the algorithm works and its limitations.
+
+
+
+This improved version provides a more robust and educational solution for deleting a node from a singly linked list.

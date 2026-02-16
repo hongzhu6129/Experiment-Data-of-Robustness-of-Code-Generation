@@ -1,0 +1,60 @@
+```java
+import java.util.TreeSet;
+
+public class FindLowerElementInTree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int target = 35;
+        Integer lower = treeSet.lower(target);
+
+        if (lower != null) {
+            System.out.println("Element lower than " + target + ": " + lower);
+        } else {
+            System.out.println("No element found lower than " + target);
+        }
+
+        target = 10; //Test with edge case
+        lower = treeSet.lower(target);
+
+        if (lower != null) {
+            System.out.println("Element lower than " + target + ": " + lower);
+        } else {
+            System.out.println("No element found lower than " + target);
+        }
+
+
+         target = 60; //Test with edge case
+        lower = treeSet.lower(target);
+
+        if (lower != null) {
+            System.out.println("Element lower than " + target + ": " + lower);
+        } else {
+            System.out.println("No element found lower than " + target);
+        }
+
+         TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+
+        String targetString = "date";
+        String lowerString = stringTreeSet.lower(targetString) ;
+
+
+         if (lowerString != null) {
+            System.out.println("Element lower than " + targetString + ": " + lowerString);
+        } else {
+            System.out.println("No element found lower than " + targetString);
+        }
+
+    }
+}
+```

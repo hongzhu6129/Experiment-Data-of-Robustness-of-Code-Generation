@@ -1,0 +1,79 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetCeilingExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet of Integer objects
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some elements to the TreeSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Element to search for
+        int searchElement = 25;
+
+        // Get the element greater than or equal to searchElement (ceiling)
+        Integer ceilingElement = numbers.ceiling(searchElement);
+
+
+        // Print the results
+        System.out.println("TreeSet: " + numbers);
+        System.out.println("Search Element: " + searchElement);
+
+        if (ceilingElement != null) {
+            System.out.println("Ceiling Element (greater than or equal to " + searchElement + "): " + ceilingElement);
+        } else {
+            System.out.println("No element found greater than or equal to " + searchElement);
+        }
+
+
+
+        // Example 2:  Ceiling of an element already present
+        searchElement = 30;
+        ceilingElement = numbers.ceiling(searchElement);
+         System.out.println("\nSearch Element: " + searchElement);
+        if (ceilingElement != null) {
+            System.out.println("Ceiling Element (greater than or equal to " + searchElement + "): " + ceilingElement);
+        } else {
+            System.out.println("No element found greater than or equal to " + searchElement);
+        }
+
+
+        // Example 3: Ceiling when the search element is greater than all elements
+        searchElement = 60;
+        ceilingElement = numbers.ceiling(searchElement);
+         System.out.println("\nSearch Element: " + searchElement);
+        if (ceilingElement != null) {
+            System.out.println("Ceiling Element (greater than or equal to " + searchElement + "): " + ceilingElement);
+        } else {
+            System.out.println("No element found greater than or equal to " + searchElement);
+        }
+
+
+
+        // Example with Strings (natural ordering)
+        TreeSet<String> fruits = new TreeSet<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Peach");
+
+        String searchFruit = "Mango";
+        String ceilingFruit = fruits.ceiling(searchFruit);
+
+        System.out.println("\nTreeSet: " + fruits);
+        System.out.println("Search Fruit: " + searchFruit);
+        if (ceilingFruit != null) {
+            System.out.println("Ceiling Fruit (greater than or equal to " + searchFruit + "): " + ceilingFruit);
+        } else {
+            System.out.println("No fruit found greater than or equal to " + searchFruit);
+        }
+    }
+}
+```

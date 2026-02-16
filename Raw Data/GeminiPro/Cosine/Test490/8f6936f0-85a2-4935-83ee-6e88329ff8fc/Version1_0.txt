@@ -1,0 +1,41 @@
+```java
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        // Display the first 50 pentagonal numbers
+        displayPentagonalNumbers(50);
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+
+    public static void displayPentagonalNumbers(int count) {
+        int numbersPerLine = 10; // Display 10 numbers per line
+        for (int i = 1; i <= count; i++) {
+            System.out.printf("%7d", getPentagonalNumber(i)); // Format output for alignment
+            if (i % numbersPerLine == 0) {
+                System.out.println(); // New line after every 10 numbers
+            }
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`getPentagonalNumber(int n)`:** This method efficiently calculates the nth pentagonal number using the formula `n * (3 * n - 1) / 2`.
+
+2. **`displayPentagonalNumbers(int count)`:** 
+   - This method handles the display logic.  It takes `count` as input (in this case, 50).
+   - It uses a `numbersPerLine` variable to control how many numbers are printed on each line for better readability.
+   - `System.out.printf("%7d", ...)` is used for formatted output. `%7d` ensures that each number takes up 7 spaces, aligning the output nicely in columns.
+
+3. **`main` Method:** The `main` method simply calls `displayPentagonalNumbers(50)` to start the process.
+
+4. **Clarity and Readability:** The code now includes comments to explain the purpose of each section, making it easier to understand.
+
+
+
+This improved version is more efficient, readable, and produces well-formatted output.

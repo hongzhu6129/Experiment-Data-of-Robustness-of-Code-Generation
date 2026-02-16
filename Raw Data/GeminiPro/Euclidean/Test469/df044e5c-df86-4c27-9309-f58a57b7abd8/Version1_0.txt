@@ -1,0 +1,42 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class CalculateAge {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your date of birth in YYYY-MM-DD format (e.g., 1990-12-25):");
+
+        String dobString = scanner.nextLine();
+
+        try {
+            LocalDate dob = LocalDate.parse(dobString, DateTimeFormatter.ISO_DATE);
+            LocalDate currentDate = LocalDate.now();
+
+            Period age = Period.between(dob, currentDate);
+
+            System.out.println("Your age is: " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days.");
+
+
+        } catch (DateTimeParseException e) {
+            System.err.println("Invalid date format. Please use YYYY-MM-DD.");
+        } 
+        scanner.close();
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Error Handling:** The `try-catch` block handles `DateTimeParseException` to gracefully deal with incorrect date formats entered by the user.  It prints a clear error message.
+* **Clearer Prompts:**  The prompt now explicitly states the expected date format.
+* **Resource Management:** The `scanner.close()` statement is included to release the `Scanner` resource.
+* **ISO 8601 Date Format:** Using `DateTimeFormatter.ISO_DATE` ensures compatibility with the standard date format.
+* **Concise Output:** The output is formatted to display the age in years, months, and days.

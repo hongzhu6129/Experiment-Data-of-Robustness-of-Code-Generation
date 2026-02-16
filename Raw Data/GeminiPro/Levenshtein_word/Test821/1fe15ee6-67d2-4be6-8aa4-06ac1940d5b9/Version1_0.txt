@@ -1,0 +1,49 @@
+```java
+public class CheckJavaInstallation {
+
+    public static void main(String[] args) {
+        System.out.println("Java Version: " + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path"));
+
+
+        // A more robust check (in addition to printing the properties):
+        try {
+            // Try executing a simple Java command.  If Java isn't installed
+            // or configured correctly, this will throw an exception.
+            Runtime.getRuntime().exec("java -version"); 
+            System.out.println("\nJava appears to be installed and configured correctly.");
+
+        } catch (Exception e) {
+            System.err.println("\nError checking Java installation: " + e.getMessage());
+            System.err.println("Java might not be installed or properly configured in your environment variables (PATH).");
+
+        }
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **System Properties:** The original approach of printing system properties like `java.version` is a good starting point. It gives you information about the Java installation *if it's accessible* from the current environment.
+
+2. **Robust Check with `Runtime.exec()`:**  The most reliable way to verify a Java installation is to attempt to *run* a Java command.  This code now includes a `try-catch` block that attempts to execute `java -version`.  If Java is not installed or not in the system's PATH,  `Runtime.getRuntime().exec()` will throw an exception, and the catch block will handle it gracefully, informing the user of the potential issue.
+
+3. **Error Handling:**  The `try-catch` block ensures that the program doesn't crash if Java isn't found. It provides a more informative error message.
+
+4. **Clarity:** I've added some extra print statements to make the output clearer and added comments to explain the logic.
+
+
+**How to Run:**
+
+1. **Save:** Save the code as `CheckJavaInstallation.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile: `javac CheckJavaInstallation.java`
+3. **Run:**  `java CheckJavaInstallation`
+
+
+If Java is installed and configured correctly, you'll see the Java version information and a confirmation message. If there's a problem, you'll get an error message explaining what might be wrong.

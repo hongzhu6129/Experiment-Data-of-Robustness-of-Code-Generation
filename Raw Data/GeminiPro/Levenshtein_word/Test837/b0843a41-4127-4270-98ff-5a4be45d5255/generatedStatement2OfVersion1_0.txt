@@ -1,0 +1,25 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling:** The code now includes error handling for the case where the file is not found.  It prints an error message and exits gracefully using `System.exit(1)`. Returning `null` from `readWordsFromFile`  signals to `main` that there was a problem. This is crucial for robust code.
+
+2. **Word Validation:** The code uses a regular expression `[a-zA-Z]+` to ensure that only words starting with a letter (a-z or A-Z) are added to the list.
+
+3. **Clearer `main` Method:** The `main` method is more focused on the core logic: getting the filename, reading the words, sorting, and displaying. The file reading and word validation is handled in a separate `readWordsFromFile` method, improving readability and organization.
+
+4. **Descending Sort:**  `Collections.sort(words, Collections.reverseOrder());` efficiently sorts the `words` list in descending alphabetical order.
+
+5. **`display` Method:** The `display` method is used as requested to print each word.
+
+6. **Comments:**  Comments are included to explain key parts of the code.
+
+7. **Alternative `main`:** The code includes the alternative `main` method signature (commented out) as requested, even though having both is redundant.  You would only need one `main` method in your actual program.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DescendingWords.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   

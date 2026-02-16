@@ -1,0 +1,90 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +'''''+ ");
+        System.out.println(" [ | o o | ]");
+        System.out.println("  |   ^   |");
+        System.out.println("  |  '-'  |");
+        System.out.println("  +-------+");
+
+    }
+
+
+    public static void main(String[] args) {
+        printFace();
+
+
+       // Test cases (though for simple output, visual inspection is usually sufficient)
+        //  You could redirect output to a file and compare against expected output for more automated tests. 
+        //  Example: java FacePrinter > output.txt  then compare output.txt with expected_output.txt using a diff tool.
+
+       // Corner cases:  There aren't really corner cases for this particular problem as there's no input.  The output is fixed.
+       //  If the face was parameterized (e.g., different eye types, mouth shapes), then you would test those variations.
+
+    }
+}
+```
+
+
+
+**Test Cases (Conceptual - Explained)**
+
+Because the output of the `printFace()` method is a fixed image, traditional unit testing with assertions isn't very effective.  The primary way to "test" this is through visual inspection � does the face look as expected when you run the program?
+
+However, if we were to make the `printFace()` method more complex (and therefore more testable), we could introduce parameters to customize the face.  Here's how we could approach testing with an enhanced version (not implemented here for simplicity, but conceptually):
+
+**Example of Parameterized `printFace()` (Conceptual)**
+
+```java
+public static void printFace(String eyeType, String mouthType) {
+   // ... code to print the face using eyeType and mouthType ...
+}
+
+```
+
+**Test Cases (with a Parameterized `printFace`)**
+
+1. **Normal Cases:**
+   - `printFace("o", "-")`:  Test with standard eyes and mouth (our original face).
+   - `printFace("x", "o")`: Test with 'x' eyes and an 'o' mouth.
+
+2. **Boundary/Edge Cases (if applicable):**
+   - `printFace("", "")`: Test with empty strings for eyes and mouth (what should happen?).
+   - `printFace(null, null)`: Test with null values (should handle gracefully, perhaps with default values).  This is a very important test!
+
+3. **Invalid Input Cases:**
+   - `printFace("verylongeyestring", "anotherlongstring")`:  Test with very long strings (should truncate or handle appropriately � maybe throw an exception if that's the designed behavior).
+
+
+
+**How to Automate Testing (for the simple version)**
+
+To automate testing the basic `printFace()` (without parameters), you would typically redirect the program's output to a file and then compare that file against a file containing the expected output.
+
+
+1. **Run and redirect output:**
+   ```bash
+   java FacePrinter > actual_output.txt
+   ```
+
+2. **Create an expected output file (`expected_output.txt`):**
+   ```
+   +'''''+ 
+   [ | o o | ]
+   |   ^   |
+   |  '-'  |
+   +-------+
+   ```
+
+3. **Compare the files (using a diff tool like `diff` on Linux/macOS or similar tools on Windows):**
+   ```bash
+   diff actual_output.txt expected_output.txt 
+   ```
+
+   If there are no differences, the `diff` command will produce no output. Any differences will be highlighted.
+
+
+
+
+This demonstrates a basic approach to testing output that is more difficult to test using typical assertion-based unit test frameworks.

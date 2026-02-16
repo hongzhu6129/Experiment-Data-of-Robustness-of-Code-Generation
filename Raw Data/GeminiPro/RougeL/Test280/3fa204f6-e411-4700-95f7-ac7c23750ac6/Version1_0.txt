@@ -1,0 +1,82 @@
+**Java program:**
+
+```java
+import java.util.Scanner;
+
+public class PalindromeSubstring {
+
+    static String longestPalindrome(String str) {
+		// get the length of the string
+        int n = str.length();
+
+		// initialize the maximum length of the palindrome substring
+        int maxLen = 0;
+
+		// initialize the start and end index of the maximum length palindrome substring
+        int start = 0;
+        int end = 0;
+
+		// check each substring of the string
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                String subStr = str.substring(i, j + 1);
+
+				// if the substring is a palindrome
+                if (isPalindrome(subStr)) {
+					// if the length of the substring is greater than the maximum length
+                    if (subStr.length() > maxLen) {
+						// update the maximum length
+                        maxLen = subStr.length();
+
+						// update the start and end index
+                        start = i;
+                        end = j;
+                    }
+                }
+            }
+        }
+
+		// return the maximum length palindrome substring
+        return str.substring(start, end + 1);
+    }
+
+	// function to check if a string is a palindrome
+    static boolean isPalindrome(String str) {
+        int n = str.length();
+
+        for (int i = 0; i < n/2; i++) {
+            if (str.charAt(i) != str.charAt(n - i - 1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the string: ");
+        String str = scanner.nextLine();
+
+        String longestPalindrome = longestPalindrome(str);
+
+        System.out.println("The longest palindrome substring is: " + longestPalindrome);
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:**
+	* Input: "racecar"
+	* Output: "racecar"
+* **Edge case 1:**
+	* Input: "aaaa"
+	* Output: "aaaa"
+* **Edge case 2:**
+	* Input: "a"
+	* Output: "a"
+* **Edge case 3:**
+	* Input: "abcd"
+	* Output: "d"

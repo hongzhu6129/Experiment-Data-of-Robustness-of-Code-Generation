@@ -1,0 +1,97 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = (num1 + num2 + num3) / 3;
+
+        System.out.println("The average is: " + average);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                   |
+|-----------|---------|---------|---------|-----------------|----------------------------------------|
+| 1        | 10      | 20      | 30      | 20.0           | Standard positive numbers                |
+| 2        | -5      | 0       | 5       | 0.0            | Includes negative and zero              |
+| 3        | 0       | 0       | 0       | 0.0            | All zeros                             |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5            | Decimal numbers                         |
+| 5        | 100000  | 200000  | 300000  | 200000.0       | Large numbers                           |
+| 6        | -1000   | -2000   | -3000   | -2000.0       | Large negative numbers                  |
+| 7        | Double.MAX_VALUE | Double.MAX_VALUE |  Double.MAX_VALUE | Infinity/Exception | Check for overflow/exception handling  |  // Corner case: Overflow
+| 8        | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | ~0.0 (very small) | Check handling of very small numbers | // Corner Case: Underflow (close to zero)
+| 9        | 5       | 5       | 5       | 5.0            | All same numbers                        |
+
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:** You can manually input these values into the program and verify the output against the expected output.
+
+2. **Automated Testing (Recommended):**  Using a testing framework like JUnit is the better approach for larger projects.  Here's a basic example using JUnit:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+   import java.io.ByteArrayInputStream;
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+   import java.util.Scanner;
+
+   public class AverageCalculatorTest {
+
+       @Test
+       void testAverageCalculation() {
+           // Test Case 1: Standard positive numbers
+           String input = "10\n20\n30\n";
+           String expectedOutput = "The average is: 20.0\n";
+           testWithInput(input, expectedOutput);
+
+
+        // Test Case 7: Overflow (adjust as needed based on exception handling)
+          input = String.valueOf(Double.MAX_VALUE) + "\n" + String.valueOf(Double.MAX_VALUE) + "\n" +String.valueOf(Double.MAX_VALUE) + "\n";
+        expectedOutput = "The average is: Infinity\n"; // Or expect an exception message
+        testWithInput(input,expectedOutput);
+
+
+
+           // Add more test cases here following the same pattern
+       }
+
+
+      private void testWithInput(String input, String expectedOutput) {
+            ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+            System.setIn(in);
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+
+            AverageCalculator.main(new String[0]);  // Run your main method
+
+            assertEquals(expectedOutput, out.toString());
+     }
+
+
+
+   }
+   ```
+
+Remember to add the JUnit dependency to your project if you are using an IDE like IntelliJ or Eclipse, or configure your build tool (Maven/Gradle) appropriately.  This automated approach makes it much easier to run and manage your tests.

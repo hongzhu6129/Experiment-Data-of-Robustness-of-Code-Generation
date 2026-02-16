@@ -1,0 +1,60 @@
+```java
+public class ExcelColumnName {
+
+    public static String Column(int n) {
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = n % 26;
+
+            if (rem == 0) {
+                columnName.append("Z");
+                n = (n / 26) - 1;
+            } else {
+                columnName.append((char) ((rem - 1) + 'A'));
+                n = n / 26;
+            }
+        }
+
+        return columnName.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Column Name for 1: " + Column(1));      // Output: A
+        System.out.println("Column Name for 28: " + Column(28));     // Output: AB
+        System.out.println("Column Name for 701: " + Column(701));    // Output: ZY
+        System.out.println("Column Name for 702: " + Column(702));    // Output: ZZ
+        System.out.println("Column Name for 703: " + Column(703));    // Output: AAA
+        System.out.println("Column Name for 16384: " + Column(16384)); // Output: XFD
+        System.out.println("Column Name for 26: " + Column(26));    // Output: Z
+
+    }
+}
+
+```
+
+
+Explanation:
+
+1. **`public static String Column(int n)`:**
+   - Takes an integer `n` (the column number) as input.
+   - Uses a `StringBuilder` to build the column name efficiently.
+   - The `while` loop continues as long as `n` is greater than 0.
+   - Inside the loop:
+     - `rem` stores the remainder when `n` is divided by 26.
+     - If `rem` is 0, it means we need to append "Z" and adjust `n` accordingly (subtract 1 after dividing by 26 to handle the "Z" case correctly).
+     - Otherwise, calculate the character by adding `rem - 1` to 'A' (ASCII value) and append it.
+     - Divide `n` by 26 in each iteration.
+   - Finally, reverse the `StringBuilder` (because we're building the name from right to left) and convert it to a `String`.
+
+2. **`public static void main(String[] args)`:**
+   - Contains test cases to demonstrate the `Column` function.
+   - Prints the column names for different input values.
+
+
+
+Key improvements over less efficient solutions:
+
+- Uses `StringBuilder` for efficient string manipulation, avoiding repeated string concatenations which can be slow.
+- Handles the "Z" cases (multiples of 26) correctly.
+- Clearly explained logic with comments.

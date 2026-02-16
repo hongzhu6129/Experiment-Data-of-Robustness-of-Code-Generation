@@ -1,0 +1,49 @@
+```java
+public class StringConversions {
+
+    public static void main(String[] args) {
+
+        String str = "12345"; // Example string
+
+        try {
+            // Convert to int
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer value: " + intValue);
+
+            // Convert to long
+            long longValue = Long.parseLong(str);
+            System.out.println("Long value: " + longValue);
+
+            // Convert to float
+            float floatValue = Float.parseFloat(str);
+            System.out.println("Float value: " + floatValue);
+
+            // Convert to double
+            double doubleValue = Double.parseDouble(str);
+            System.out.println("Double value: " + doubleValue);
+
+
+
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid string format for conversion: " + e.getMessage());
+        }
+
+         // Example with a decimal string
+        String decimalStr = "123.45";
+
+        try {
+           
+             // Convert to float
+            float floatValueDecimal = Float.parseFloat(decimalStr);
+            System.out.println("Float value (decimal): " + floatValueDecimal);
+
+            // Convert to double
+            double doubleValueDecimal = Double.parseDouble(decimalStr);
+            System.out.println("Double value (decimal): " + doubleValueDecimal);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid string format for conversion: " + e.getMessage());
+        }
+    }
+}
+```

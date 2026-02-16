@@ -1,0 +1,23 @@
+```java
+public class AbsoluteValueConverter {
+
+    public static void main(String[] args) {
+        float num1 = -5.2f;
+        float num2 = 3.7f;
+
+        System.out.println("Absolute value of " + num1 + " is: " + convert(num1));
+        System.out.println("Absolute value of " + num2 + " is: " + convert(num2));
+
+    }
+
+    public static float convert(float num) {
+        if (num < 0) {
+            return -num; // If negative, multiply by -1 to get the positive equivalent
+        } else {
+            return num;    // If positive or zero, return the number itself
+        }
+        // Alternatively, use Math.abs() which handles both floats and doubles:
+        // return Math.abs(num); 
+    }
+}
+```

@@ -1,0 +1,59 @@
+```java
+import java.util.Scanner;
+
+public class StringContainsSequence {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter a string: ");
+        String str = scanner.nextLine();
+
+        // Get the sequence of characters to search for
+        System.out.println("Enter the sequence of characters to search for: ");
+        String sequence = scanner.nextLine();
+
+        // Check if the string contains the sequence
+        boolean contains = str.contains(sequence);
+
+        // Print the result
+        if (contains) {
+            System.out.println("The string contains the sequence.");
+        } else {
+            System.out.println("The string does not contain the sequence.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Corner cases:**
+    * Input string is empty
+    * Sequence is empty
+    * Sequence is longer than the input string
+* **Normal cases:**
+    * Input string contains the sequence
+    * Input string does not contain the sequence
+    * Sequence is at the beginning of the input string
+    * Sequence is at the end of the input string
+    * Sequence is in the middle of the input string
+
+**Example test cases:**
+
+* **Corner cases:**
+    * Input string: ""
+    * Sequence: ""
+    * Sequence: "abc" (input string is "ab")
+* **Normal cases:**
+    * Input string: "abcde"
+    * Sequence: "bc"
+    * Input string: "abcde"
+    * Sequence: "ef"
+    * Input string: "abcde"
+    * Sequence: "ab"
+    * Input string: "abcde"
+    * Sequence: "de"
+    * Input string: "abcde"
+    * Sequence: "cde"

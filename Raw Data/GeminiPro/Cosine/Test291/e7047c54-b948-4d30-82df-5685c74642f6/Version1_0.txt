@@ -1,0 +1,70 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+        boolean[][] anotherBoolArray = {
+                {true, true},
+                {false, false}
+        };
+        System.out.println(); // Add a newline for separation
+        printBooleanArray(anotherBoolArray);
+
+
+
+        boolean[][] emptyArray = {};
+        System.out.println(); // Add a newline for separation
+        printBooleanArray(emptyArray);
+
+        boolean[][] nullArray = null;
+        System.out.println(); // Add a newline for separation
+        printBooleanArray(nullArray);
+
+
+        // Test case with jagged array (rows with different lengths)
+        boolean[][] jaggedArray = {
+                {true, false},
+                {false, true, true},
+                {true}
+        };
+
+        System.out.println();
+        printBooleanArray(jaggedArray);
+
+
+    }
+
+
+
+
+    public static void printBooleanArray(boolean[][] arr) {
+        if (arr == null) {
+            System.out.println("The array is null.");
+            return;
+        }
+
+        if (arr.length == 0) {
+            System.out.println("The array is empty.");
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == null) {  // Check if an inner array is null
+                System.out.println("Row " + i + " is null.");
+                continue;  // Proceed to next row
+            }
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] ? "t " : "f ");
+            }
+            System.out.println();
+        }
+    }
+}
+```

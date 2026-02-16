@@ -1,0 +1,80 @@
+**Problem Description:**
+Write a Java method that takes three strings as input and returns the longest possible string that can be formed by concatenating the third character of each string. However, if any of the input strings do not have a third character, the corresponding character should be ignored.
+
+**Java Code:**
+
+```java
+import java.util.Arrays;
+
+public class StringConcatenation {
+
+    public static String concatenateThirdCharacters(String s1, String s2, String s3) {
+        String result = "";
+
+        if (s1.length() >= 3) {
+            result += s1.charAt(2);
+        }
+        if (s2.length() >= 3) {
+            result += s2.charAt(2);
+        }
+        if (s3.length() >= 3) {
+            result += s3.charAt(2);
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String s1 = "Hello";
+        String s2 = "World";
+        String s3 = "Java";
+
+        String result = concatenateThirdCharacters(s1, s2, s3);
+
+        System.out.println("Concatenated third characters: " + result); // Output: orl
+
+        s1 = "Hello";
+        s2 = "World";
+        s3 = "";
+
+        result = concatenateThirdCharacters(s1, s2, s3);
+
+        System.out.println("Concatenated third characters: " + result); // Output: or
+
+        s1 = "";
+        s2 = "World";
+        s3 = "Java";
+
+        result = concatenateThirdCharacters(s1, s2, s3);
+
+        System.out.println("Concatenated third characters: " + result); // Output: rj
+
+        s1 = "";
+        s2 = "";
+        s3 = "Java";
+
+        result = concatenateThirdCharacters(s1, s2, s3);
+
+        System.out.println("Concatenated third characters: " + result); // Output: j
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* Input strings can be empty.
+* Input strings may not have a third character.
+
+**Regular Cases:**
+
+* Input strings have varying lengths.
+* Input strings contain different characters.
+
+**Examples:**
+
+* Input: "Hello", "World", "Java" | Output: "orl"
+* Input: "Hello", "World", "" | Output: "or"
+* Input: "", "World", "Java" | Output: "rj"
+* Input: "", "", "Java" | Output: "j"

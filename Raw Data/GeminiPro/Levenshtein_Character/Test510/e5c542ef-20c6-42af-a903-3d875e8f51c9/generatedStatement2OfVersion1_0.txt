@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Leading Zeros:** The code now explicitly checks for and handles leading zeros in the right part of the split square.  This prevents incorrect identification of Kaprekar numbers when the right part starts with a zero.
+
+2. **Handles Single-Digit Squares:** The code now correctly handles cases where the square of a single-digit number (like 1 or 9) is also a single digit. It avoids `NumberFormatException` by treating the left part as 0 in such cases.
+
+3. **Clearer Variable Names:**  More descriptive variable names like `numDigits` and `sqrStr` improve readability.
+
+4. **Long for Square:** The `square` is calculated using `long` to prevent integer overflow for larger numbers, even though the problem only requires checking up to 1000. This makes the code more robust if the range were ever extended.
+
+5. **Conciseness:**  The code is slightly more concise while remaining clear.
+
+6. **Correct Output Formatting:** The output now matches the specified format exactly, including the final count of Kaprekar numbers.
+
+
+This revised version addresses the potential issues in the previous version and provides a more robust and accurate solution for finding Kaprekar numbers.

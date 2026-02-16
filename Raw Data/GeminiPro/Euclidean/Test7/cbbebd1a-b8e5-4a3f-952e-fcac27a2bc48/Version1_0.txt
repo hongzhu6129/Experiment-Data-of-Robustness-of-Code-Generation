@@ -1,0 +1,76 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close(); // Close the scanner
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Ensure floating-point division for accuracy
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| 1 | 10 | 20 | 30 | 20.0 | Standard positive numbers |
+| 2 | -5 | 0 | 5 | 0.0 | Including zero and negative numbers |
+| 3 | 0 | 0 | 0 | 0.0 | All zeros |
+| 4 | 1.5 | 2.5 | 3.5 | 2.5 | Decimal numbers |
+| 5 | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | 2.147483647E9 | Large positive integers (potential overflow if integer division used) |
+| 6 | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE | -2.147483648E9 | Large negative integers (potential overflow if integer division used) |
+| 7 | Double.MAX_VALUE | 0 | 0 | Double.POSITIVE_INFINITY if integer division or 5.397605346934027E307  if floating-point division | Handling Double.MAX_VALUE |
+| 8 | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | 4.9E-324 | Handling Double.MIN_VALUE |
+| 9 | 5 | 5 | Double.NaN | NaN | Handling NaN (Not a Number) - If any input is NaN the output should be NaN|
+
+
+
+**How to Run the Test Cases:**
+
+You can manually test these cases by inputting the values when prompted.  For more automated testing, consider using a testing framework like JUnit.  Here's a very simple example of how you *could* implement one of these tests with JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    // Add more @Test methods for other test cases
+}
+```
+
+
+This revised answer addresses important considerations like:
+
+* **Input Validation:** While not explicitly implemented here (for simplicity in the core average calculation), production code should ideally validate user input (e.g., check for non-numeric input).
+* **Closing the Scanner:** The `scanner.close()` line is now included to release the resource.
+* **Floating-Point Division:** Explicitly using `3.0` ensures more accurate average calculation.
+* **Comprehensive Test Cases:**  Includes corner cases and an explanation of potential overflow if integer division were used.
+* **JUnit Example:** Shows how to start testing with a testing framework.

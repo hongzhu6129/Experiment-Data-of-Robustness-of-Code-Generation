@@ -1,0 +1,51 @@
+```java
+public class SubstringCounter {
+
+    public int substringCounting(String text) {
+        int count = 0;
+        if (text == null || text.length() < 4) {
+            return 0; // Not long enough for "life" or "li?e"
+        }
+
+        for (int i = 0; i <= text.length() - 4; i++) {
+            String substring = text.substring(i, i + 4);
+            if (substring.equals("life") || (substring.startsWith("li") && substring.endsWith("e"))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        SubstringCounter counter = new SubstringCounter();
+
+        String text1 = "life is beautiful, enjoy life";
+        int count1 = counter.substringCounting(text1);
+        System.out.println("String: \"" + text1 + "\" Count: " + count1); // Expected: 2
+
+
+        String text2 = "live life to the fullest, life is short";
+        int count2 = counter.substringCounting(text2);
+        System.out.println("String: \"" + text2 + "\" Count: " + count2); // Expected 3
+
+        String text3 = "lime and life";
+        int count3 = counter.substringCounting(text3);
+        System.out.println("String: \"" + text3 + "\" Count: " + count3); // Expected 2
+
+
+        String text4 = "liMe and life"; // Case sensitive
+        int count4 = counter.substringCounting(text4);
+        System.out.println("String: \"" + text4 + "\" Count: " + count4); // Expected 1
+
+        String text5 = null;
+        int count5 = counter.substringCounting(text5);
+        System.out.println("String: null  Count: " + count5); // Expected 0
+
+        String text6 = "li";
+        int count6 = counter.substringCounting(text6);
+        System.out.println("String: \"" + text6 + "\" Count: " + count6); // Expected 0
+
+
+    }
+}
+```

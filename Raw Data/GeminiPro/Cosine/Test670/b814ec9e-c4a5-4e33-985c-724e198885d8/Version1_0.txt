@@ -1,0 +1,44 @@
+```java
+import java.util.TreeMap;
+
+public class FloorKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        System.out.println("Floor key of 4: " + floorKey(treeMap, 4)); // Output: 3
+        System.out.println("Floor key of 1: " + floorKey(treeMap, 1)); // Output: null
+        System.out.println("Floor key of 0: " + floorKey(treeMap, 0)); // Output: null
+        System.out.println("Floor key of 10: " + floorKey(treeMap, 10)); // Output: 9
+
+
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        System.out.println("Floor key of 'banana': " + floorKey(stringTreeMap, "banana")); // Output: apple
+        System.out.println("Floor key of 'apricot': " + floorKey(stringTreeMap, "apricot")); // Output: apple
+        System.out.println("Floor key of 'apple': " + floorKey(stringTreeMap,"apple")); // Output: null
+        System.out.println("Floor key of 'zebra': " + floorKey(stringTreeMap, "zebra")); // Output: orange
+
+
+    }
+
+    public static <K, V> K floorKey(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        K floorKey = treeMap.lowerKey(key); // TreeMap's lowerKey method directly provides the floor key.
+
+        return floorKey; 
+    }
+}
+```

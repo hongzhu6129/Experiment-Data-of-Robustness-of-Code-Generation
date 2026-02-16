@@ -1,0 +1,79 @@
+```java
+class Node {
+    int data;
+    Node left, middle, right;
+
+    public Node(int item) {
+        data = item;
+        left = middle = right = null;
+    }
+}
+
+public class TernaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftDepth = maxDepth(node.left);
+            int middleDepth = maxDepth(node.middle);
+            int rightDepth = maxDepth(node.right);
+
+            return Math.max(leftDepth, Math.max(middleDepth, rightDepth)) + 1;
+        }
+    }
+
+    public static void main(String[] args) {
+        TernaryTreeMaxDepth tree = new TernaryTreeMaxDepth();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.middle = new Node(3);
+        root.right = new Node(4);
+        root.left.left = new Node(5);
+        root.left.middle = new Node(6);
+        root.left.right = new Node(7);
+
+
+
+        System.out.println("Maximum depth of ternary tree is: " + tree.maxDepth(root));
+
+
+        // Additional test cases  (you can uncomment these for more thorough testing)
+        /*
+        Node root2 = null;  // Empty tree
+        System.out.println("Maximum depth of ternary tree is: " + tree.maxDepth(root2)); // Should print 0
+
+
+        Node root3 = new Node(10); // Single node tree
+        System.out.println("Maximum depth of ternary tree is: " + tree.maxDepth(root3)); // Should print 1
+
+
+        root.left.left.left = new Node(8); // Deeper on the left side
+        System.out.println("Maximum depth of ternary tree is: " + tree.maxDepth(root)); // Should print 4 now
+        */
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Node Class:** A `Node` class is defined to represent the structure of a ternary tree node, containing data and pointers to left, middle, and right children.
+
+2. **Recursive `maxDepth` Method:** This method efficiently calculates the maximum depth using recursion.
+   - **Base Case:** If the node is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**  It recursively calculates the depths of the left, middle, and right subtrees.  Then, it returns the maximum of these depths + 1 (to account for the current node).
+
+3. **`main` Method with Example:**
+   - A sample ternary tree is created to demonstrate the usage of the `maxDepth` method.
+   - The output clearly shows the calculated maximum depth.
+
+4. **Clearer Code Style:** The code is formatted for improved readability, with comments explaining the logic.
+
+5. **Optional Test Cases:**  I've included commented-out test cases (empty tree, single-node tree, deeper left subtree) for you to easily uncomment and test more scenarios.  This helps ensure your code handles different situations correctly.
+
+
+This improved version provides a robust and understandable solution to the problem. The recursive approach is efficient and elegant for tree traversal problems like finding maximum depth.
+

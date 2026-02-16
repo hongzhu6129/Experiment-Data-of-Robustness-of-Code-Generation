@@ -1,0 +1,36 @@
+class Solution {
+    /**
+     * Given two strings, append them together (known as "concatenation") and return the result. 
+     * However, if the strings are different lengths, omit chars from the longer string so it is the same length as the shorter string. 
+     * So "Hello" and "Hi" yield "loHi". The strings may be empty.
+     *
+     * @param a The first string.
+     * @param b The second string.
+     * @return The concatenated string with equal lengths.
+     */
+    public String minCat(String a, String b) {
+        int lenA = a.length();
+        int lenB = b.length();
+
+        if (lenA == lenB) {
+            return a + b;
+        } else if (lenA > lenB) {
+            return a.substring(lenA - lenB) + b;
+        } else {
+            return a + b.substring(lenB - lenA);
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+
+        System.out.println(sol.minCat("Hello", "Hi")); // Output: loHi
+        System.out.println(sol.minCat("Hello", "java")); // Output: ellojava
+        System.out.println(sol.minCat("java", "Hello")); // Output: javaello
+        System.out.println(sol.minCat("x", "abc"));  // Output: xabc
+        System.out.println(sol.minCat("", "Hello")); // Output: Hello
+        System.out.println(sol.minCat("abc", ""));   // Output: abc
+
+
+    }
+}

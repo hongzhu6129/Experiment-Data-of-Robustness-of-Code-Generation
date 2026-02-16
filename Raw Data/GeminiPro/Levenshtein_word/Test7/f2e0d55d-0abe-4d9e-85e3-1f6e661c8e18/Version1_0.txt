@@ -1,0 +1,72 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = (num1 + num2 + num3) / 3.0;  // Use 3.0 for floating-point division
+
+        System.out.println("The average is: " + average);
+
+        input.close(); // Close the scanner
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30   **Expected Output:** 20.0
+2. **Input:** 1.5, 2.5, 3.5  **Expected Output:** 2.5
+3. **Input:** -5, 0, 5    **Expected Output:** 0.0
+
+**Corner/Edge Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:**  (Should handle potential overflow gracefully, likely resulting in Infinity)
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE  **Expected Output:** (Should handle potential underflow gracefully, likely resulting in -Infinity)
+6. **Input:** 0, 0, 0       **Expected Output:** 0.0
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Infinity
+8. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE  **Expected Output:** (A very small positive number close to 0)  
+9. **Input:** Double.NaN, 1, 2 **Expected Output:** NaN (Not a Number � if any input is NaN, the result should be NaN).
+10. **Input:** Double.POSITIVE_INFINITY, 1, 2 **Expected Output:** Infinity
+11. **Input:** Double.NEGATIVE_INFINITY, 1, 2 **Expected Output:** -Infinity
+
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by running the program and entering the input values.  For more automated testing, you would typically use a testing framework like JUnit.  Here's a very basic example of how you might structure a JUnit test:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase() {
+        // You'd normally simulate input and capture output, 
+        // but this is a simplified demonstration.
+        double result = (10 + 20 + 30) / 3.0; // Simulate the calculation
+        assertEquals(20.0, result, 0.001); // Check with a delta for floating-point comparison
+    }
+
+    // ... more test methods for other cases
+}
+```
+
+
+This JUnit example demonstrates the basic idea.  In a real test, you'd likely refactor the `AverageCalculator` to have a separate method for calculating the average, which would make testing easier. You'd also use techniques to simulate input and capture output for a more complete test.

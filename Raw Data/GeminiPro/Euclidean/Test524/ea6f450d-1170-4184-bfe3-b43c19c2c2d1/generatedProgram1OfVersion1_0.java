@@ -1,0 +1,68 @@
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        // Test with other numbers
+        number = 27;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        number = 30;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+         number = 0; // Test edge case
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+        
+         number = -8; // Test negative numbers
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int n) {
+        // Handle negative numbers
+        if (n < 0) {
+            return isCube(-n);  // Check the cube of the absolute value
+        }
+
+        // Binary search for the cube root
+        long low = 0;
+        long high = n; // Or a more optimized upper bound 
+
+        while (low <= high) {
+            long mid = low + (high - low) / 2;
+            long cube = mid * mid * mid;
+
+            if (cube == n) {
+                return true;
+            } else if (cube < n) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return false;
+    }
+}

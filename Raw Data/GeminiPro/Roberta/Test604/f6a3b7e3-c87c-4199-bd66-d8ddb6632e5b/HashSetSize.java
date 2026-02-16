@@ -1,0 +1,39 @@
+import java.util.HashSet;
+
+public class HashSetSize {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+        hashSet.add("Mango");
+
+        // Get the number of elements in the HashSet
+        int size = hashSet.size();
+
+        // Print the size
+        System.out.println("The number of elements in the HashSet is: " + size);
+
+
+        // Example with integers:
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(1); // Adding a duplicate, it won't be counted twice
+
+        System.out.println("The number of elements in the integer HashSet is: " + numbers.size());
+
+
+        // Example with an initially sized HashSet:
+         HashSet<String> initialSizedHashSet = new HashSet<>(10); // Initial capacity 10, but size is 0 initially.
+         initialSizedHashSet.add("Red");
+         initialSizedHashSet.add("Blue");
+         System.out.println("The number of elements in the initially sized HashSet is: " + initialSizedHashSet.size()); 
+    }
+}

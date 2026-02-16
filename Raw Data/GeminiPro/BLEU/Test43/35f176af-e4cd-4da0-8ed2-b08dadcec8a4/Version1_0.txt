@@ -1,0 +1,111 @@
+```java
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+
+        System.out.println("Numbers divisible by 3:");
+        printDivisibleBy(3, 1, 100);
+
+        System.out.println("\nNumbers divisible by 5:");
+        printDivisibleBy(5, 1, 100);
+
+        System.out.println("\nNumbers divisible by both 3 and 5:");
+        printDivisibleByBoth(3, 5, 1, 100);
+    }
+
+    public static void printDivisibleBy(int divisor, int start, int end) {
+        for (int i = start; i <= end; i++) {
+            if (i % divisor == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // New line for readability
+    }
+
+    public static void printDivisibleByBoth(int divisor1, int divisor2, int start, int end) {
+        for (int i = start; i <= end; i++) {
+            if (i % divisor1 == 0 && i % divisor2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // New line for readability
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Standard Case:**
+   - Start: 1
+   - End: 100  (As specified in the original prompt)
+
+2. **Start Greater than End:**
+   - Start: 100
+   - End: 1
+   - Expected Output:  (Nothing should be printed as the loop condition is immediately false)
+
+3. **Negative Range:**
+   - Start: -50
+   - End: -1
+   -  (Will print negative numbers divisible by 3, 5, or both within the range.)
+
+4. **Zero Included:**
+   - Start: -5
+   - End: 5
+   -  (Will print 0 as it's divisible by both 3 and 5).
+
+5. **Single Number Range:**
+   - Start: 15
+   - End: 15
+   - (Will print 15 as it's divisible by both 3 and 5)
+
+
+6. **Large Range:**
+   - Start: 1
+   - End: 1000  (Tests efficiency with a broader range.)
+
+
+**How to Run Test Cases:**
+
+You could either:
+
+* **Manually verify:** Change the `start` and `end` values in the `main` method of the Java program and run it for each test case.  Check the output against the expected results.
+
+* **Automated testing (Recommended):** Write JUnit tests (or tests using another Java testing framework) to automate the process.  This is better for regression testing and ensuring correctness as you modify the code.  Example using JUnit (you'll need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class DivisibleBy3And5Test {
+
+    @Test
+    public void testStandardCase() {
+         // ... (Similar tests for other cases)
+    }
+
+
+
+    private String getOutput(int start, int end) { // Helper function
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        DivisibleBy3And5.printDivisibleBy(3, start, end);   // Test printDivisibleBy
+       // ... Call other functions you want to test...
+
+        System.setOut(System.out); // Restore System.out
+        return outputStream.toString().trim(); // Remove trailing whitespace
+    }
+}
+
+
+```
+
+By using automated testing, you can be more confident in the correctness and robustness of your Java program.

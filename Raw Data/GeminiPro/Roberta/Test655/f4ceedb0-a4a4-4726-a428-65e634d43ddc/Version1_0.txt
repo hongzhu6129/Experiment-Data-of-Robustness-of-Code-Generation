@@ -1,0 +1,32 @@
+```java
+import java.util.TreeMap;
+import java.util.concurrent.ConcurrentSkipListMap;
+
+public class CopyTreeMapToTimeline {
+
+    public static void main(String[] args) {
+        // Create a sample TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+
+
+        //Method 1: Using the constructor
+        ConcurrentSkipListMap<Integer, String> timeline1 = new ConcurrentSkipListMap<>(treeMap);
+
+        System.out.println("Timeline 1 (using constructor): " + timeline1);
+
+        // Method 2: Using putAll()
+        ConcurrentSkipListMap<Integer, String> timeline2 = new ConcurrentSkipListMap<>();
+        timeline2.putAll(treeMap);
+
+        System.out.println("Timeline 2 (using putAll()): " + timeline2);
+
+
+
+    }
+}
+```

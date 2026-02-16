@@ -1,0 +1,54 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        Integer key1 = 35;
+        Integer key2 = 15;
+        Integer key3 = 5;
+
+        System.out.println("Greatest key less than " + key1 + ": " + getGreatestKeyLessThan(treeMap, key1)); // Output: 30
+        System.out.println("Greatest key less than " + key2 + ": " + getGreatestKeyLessThan(treeMap, key2)); // Output: 10
+        System.out.println("Greatest key less than " + key3 + ": " + getGreatestKeyLessThan(treeMap, key3)); // Output: null
+
+
+        // Additional test cases (feel free to add more)
+         TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("cherry", 3);
+
+        String key4 = "date";
+        String key5 = "apricot";
+
+
+        System.out.println("Greatest key less than " + key4 + ": " + getGreatestKeyLessThan(stringTreeMap, key4)); // Output: cherry
+        System.out.println("Greatest key less than " + key5 + ": " + getGreatestKeyLessThan(stringTreeMap, key5)); // Output: null
+
+    }
+
+    public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> treeMap, K key) {
+        return treeMap.lowerKey(key); 
+    }
+}
+```
+
+
+Explanation:
+
+1. **TreeMap:** We use a `TreeMap` because it stores keys in a sorted order, which makes finding the greatest key less than a given key efficient.
+
+2. **lowerKey() method:** The `TreeMap` class provides the `lowerKey(K key)` method. This method directly returns the greatest key strictly less than the given key.  If no such key exists, it returns `null`.
+
+3. **Generics:** The `getGreatestKeyLessThan` method uses generics `<K, V>` so it can work with TreeMaps of any key-value type.
+
+4. **Example Usage in main():** The `main` method demonstrates how to create a TreeMap, add some entries, and then call the `getGreatestKeyLessThan` method to find the desired key.  It includes examples with both `Integer` and `String` keys to show the generic nature of the method.

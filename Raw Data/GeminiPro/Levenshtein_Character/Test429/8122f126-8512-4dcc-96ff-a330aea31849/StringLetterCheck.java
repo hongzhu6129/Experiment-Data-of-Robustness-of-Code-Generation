@@ -1,0 +1,46 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class StringLetterCheck {
+
+    public static void main(String[] args) {
+        System.out.println(test("programming", "program")); // true
+        System.out.println(test("programming", "Programming")); // false (case-sensitive)
+        System.out.println(test("abc", "abcd")); // false
+        System.out.println(test("aabbc", "abc")); // true
+        System.out.println(test("aabbc", "abbc")); // true
+         System.out.println(test("", "")); // true
+        System.out.println(test("a", "")); // true
+        System.out.println(test("", "a")); // false
+
+
+    }
+
+    public static boolean test(String str1, String str2) {
+        if (str2.length() > str1.length()) {
+            return false;
+        }
+
+        Map<Character, Integer> charCounts1 = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            charCounts1.put(c, charCounts1.getOrDefault(c, 0) + 1);
+        }
+
+        Map<Character, Integer> charCounts2 = new HashMap<>();
+        for (char c : str2.toCharArray()) {
+            charCounts2.put(c, charCounts2.getOrDefault(c, 0) + 1);
+        }
+
+
+        for (Map.Entry<Character, Integer> entry : charCounts2.entrySet()) {
+            char char2 = entry.getKey();
+            int count2 = entry.getValue();
+
+            if (!charCounts1.containsKey(char2) || charCounts1.get(char2) < count2) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

@@ -1,0 +1,33 @@
+public class StringLetterCheck {
+
+    public static void main(String[] args) {
+        System.out.println(test("programming", "program")); // true
+        System.out.println(test("Programming", "program")); // false (case sensitive)
+        System.out.println(test("program", "programming")); // false (second string is longer)
+        System.out.println(test("abc", "cba")); // true (order doesn't matter)
+        System.out.println(test("abc", "abcc")); // false (duplicate 'c' in second string)
+
+
+    }
+
+    public static boolean test(String str1, String str2) {
+        // Create character arrays to track letter counts
+        int[] charCounts1 = new int[256]; // Assuming ASCII characters
+        int[] charCounts2 = new int[256];
+
+        // Count character occurrences in str1
+        for (char c : str1.toCharArray()) {
+            charCounts1[c]++;
+        }
+
+        // Count character occurrences in str2 and check against str1
+        for (char c : str2.toCharArray()) {
+            charCounts2[c]++;
+            if (charCounts2[c] > charCounts1[c]) {
+                return false; // str2 has more of a character than str1
+            }
+        }
+
+        return true; // All characters in str2 are present in str1
+    }
+}

@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block
+        }
+    }
+
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the `AverageCalculator` program:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30    **Expected Output:** 20.0
+2. **Input:** 1.5, 2.5, 3.0  **Expected Output:** 2.3333333333333335
+3. **Input:** -5, 0, 5      **Expected Output:** 0.0
+
+**Edge Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:** Overflow handling (Double.POSITIVE_INFINITY is acceptable)
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE  **Expected Output:** Overflow handling (Double.NEGATIVE_INFINITY is acceptable)
+
+
+**Corner Cases:**
+
+6. **Input:** 0, 0, 0        **Expected Output:** 0.0
+7. **Input:** -1, -2, -3    **Expected Output:** -2.0
+8. **Input:**  Double.MAX_VALUE,  Double.MIN_VALUE, 0  **Expected Output:** A very large positive number close to Double.MAX_VALUE / 2 (Due to the magnitude difference between MAX_VALUE and MIN_VALUE)
+
+**Error Handling:**
+
+9. **Input:** 1, a, 2       **Expected Output:** "Invalid input. Please enter numbers only." (The program should handle non-numeric input gracefully).
+10. **Input:** 1.5, 2.5      **Expected Output:**  The program should ideally prompt for the third number, or if it takes input as a whole line, it should handle this case appropriately and perhaps indicate insufficient input.
+
+
+**How to run the tests:**
+
+1. **Manual Testing:**  You can run the program and enter these test cases manually, observing the output.
+
+2. **Automated Testing (Recommended):** You can create a test class (using JUnit or TestNG) to automate the testing process.  This is the more robust approach, especially for larger projects. Here's a basic example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverage_normalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverage_withNegativeNumbers() {
+         assertEquals(-2.0, AverageCalculator.calculateAverage(-1, -2, -3));
+    }
+
+     // Add more test cases here following the above examples
+
+}
+
+```
+
+By implementing these test cases, you can ensure that the `AverageCalculator` functions correctly under various conditions, including normal inputs, edge cases, corner cases, and error scenarios.  Automated testing frameworks like JUnit make it easier to manage and run these tests regularly.

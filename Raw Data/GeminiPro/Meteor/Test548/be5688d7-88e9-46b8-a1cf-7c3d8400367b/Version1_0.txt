@@ -1,0 +1,68 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFileLineByLine {
+
+    public static void main(String[] args) {
+        String filePath = ""; // Replace with the actual file path
+
+        if (args.length > 0) {
+            filePath = args[0]; // Get file path from command-line arguments
+        } else {
+            System.err.println("Please provide the file path as a command-line argument.");
+            return; // Exit if no file path is provided
+        }
+        
+
+        StringBuilder fileContent = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                fileContent.append(line).append(System.lineSeparator()); // Append each line to the StringBuilder
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+            return; // Exit if an error occurs
+        }
+
+        String fileData = fileContent.toString(); // Store the entire file content in a String variable
+        System.out.println(fileData); // Print the file content (optional)
+
+
+    }
+}
+```
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `ReadFileLineByLine.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the following command:
+   ```bash
+   javac ReadFileLineByLine.java
+   ```
+3. **Run:**  Execute the compiled code, providing the file path as a command-line argument:
+   ```bash
+   java ReadFileLineByLine /path/to/your/file.txt  
+   ```
+   Replace `/path/to/your/file.txt` with the actual path to the file you want to read.
+
+
+
+**Explanation:**
+
+1. **Import necessary classes:** `BufferedReader`, `FileReader`, and `IOException`.
+2. **Get file path:**  The code now checks for command-line arguments to get the file path.  This is a more robust approach. If no argument is provided, an error message is printed, and the program exits.
+3. **StringBuilder:** Uses a `StringBuilder` for efficient concatenation of lines, as repeatedly concatenating strings directly is inefficient.
+4. **Try-with-resources:**  The `BufferedReader` is used inside a try-with-resources block to ensure that the file is closed automatically even if exceptions occur.
+5. **Read line by line:** The `readLine()` method reads the file line by line until it returns `null` (end of file).
+6. **Append to StringBuilder:** Each line is appended to the `StringBuilder` along with the system's line separator (`System.lineSeparator()`) to preserve the original line breaks.
+7. **Store in String:** After reading all lines, the `toString()` method converts the `StringBuilder`'s content to a single `String`.
+8. **Error Handling:** The `catch` block handles potential `IOExceptions` that might occur during file reading.
+9. **Output:** The `fileData` string now holds the complete contents of the file. The program prints it to the console (you can remove this line if you don't want to print the output).
+
+
+This improved version addresses the efficiency and error-handling aspects, making it a more robust solution for reading files in Java.  The command-line argument handling also makes it easier to use with different files without modifying the code.

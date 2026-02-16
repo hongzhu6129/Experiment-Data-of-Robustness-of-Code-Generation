@@ -1,0 +1,62 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't have inputs to vary,  we can still think about testing from a slightly different perspective.  These aren't traditional "input-output" test cases but rather verifications:
+
+1. **Visual Inspection:** Run the code and visually check if the output matches the intended face design.  This is the primary test for this kind of program.
+
+
+2. **Character Accuracy:** Examine the output string literals closely.  Ensure that:
+   - The correct characters are used (e.g., `"` vs. `'`, correct spacing).
+   - There are no extra or missing characters. This could be automated by comparing the output to an expected string literal if you wanted more robust tests. Example below:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+
+   public class FacePrinterTest {
+       @Test
+       public void testPrintFace() {
+           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outputStream));
+
+           FacePrinter.printFace();
+
+           String expectedOutput = "  +\"\"\"\"+"+ System.lineSeparator() +
+                   " [| o o |]"+ System.lineSeparator() +
+                   "  |  ^  |"+ System.lineSeparator() +
+                   "  | '-' |"+ System.lineSeparator() +
+                   "  +-----+"+ System.lineSeparator();
+
+           assertEquals(expectedOutput, outputStream.toString());
+           System.setOut(System.out); // Restore standard output
+       }
+   }
+   ```
+
+
+3. **Platform Independence (If applicable):** If you intend this code to run on different operating systems, test it on those platforms to ensure consistent output. Line separators might vary (`\n` vs. `\r\n`), so the test case above using `System.lineSeparator()` is important for cross-platform compatibility.
+
+4. **Character Encoding:**  While less likely an issue in this simple case, with more complex output involving special characters, you might consider testing with different character encodings to ensure correct display.
+
+
+Although the face printer is simple, these testing approaches demonstrate good practice, which is crucial for more complex programs.  The automated test example using JUnit and `ByteArrayOutputStream` shows how you'd start to incorporate more structured testing for even simple output.  This provides a regression safety net as your code evolves.
+

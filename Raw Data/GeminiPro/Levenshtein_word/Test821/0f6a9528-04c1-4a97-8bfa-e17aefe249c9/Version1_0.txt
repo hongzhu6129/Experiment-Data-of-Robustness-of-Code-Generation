@@ -1,0 +1,41 @@
+```java
+public class CheckJavaInstallation {
+
+    public static void main(String[] args) {
+        System.out.println("Java Version: " + System.getProperty("java.version"));
+        System.out.println("Java Runtime Version: " + System.getProperty("java.runtime.version"));
+        System.out.println("Java Home: " + System.getProperty("java.home"));
+        System.out.println("Java Vendor: " + System.getProperty("java.vendor"));
+        System.out.println("Java Vendor URL: " + System.getProperty("java.vendor.url"));
+        System.out.println("Java Class Path: " + System.getProperty("java.class.path")); 
+
+        // A more concise way to check (if you only care about *a* version being present):
+        if (System.getProperty("java.version") != null) {
+            System.out.println("\nJava appears to be installed.");
+        } else {
+            System.out.println("\nJava does not appear to be installed.");
+        }
+    }
+}
+```
+
+**Explanation:**
+
+The core of this solution relies on the `System.getProperty()` method. This method retrieves system properties, including information about the Java installation.  If Java is installed,  `System.getProperty("java.version")` (and the other properties) will return a string representing the version information. If Java isn't installed, it will return `null`.  We can then use this to determine if Java is present.  
+
+The code prints out several key Java properties to give more detailed information about the installation.  The final `if/else` block provides a simpler "yes/no" answer to the question "Is Java installed?"
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code above as `CheckJavaInstallation.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac CheckJavaInstallation.java
+   ```
+3. **Run:**  After successful compilation, run the program:
+   ```bash
+   java CheckJavaInstallation
+   ```
+
+If Java is installed, it will print the version information and the "Java appears to be installed" message. Otherwise, it will indicate that Java does not appear to be installed.

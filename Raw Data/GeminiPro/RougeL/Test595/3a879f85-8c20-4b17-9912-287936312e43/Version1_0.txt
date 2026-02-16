@@ -1,0 +1,47 @@
+```java
+import java.util.LinkedList;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some books to the list
+        books.add("The Lord of the Rings");
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+
+        // Check if the list is empty before retrieving the first element
+        if (!books.isEmpty()) {
+            // Retrieve the first element using peek() or getFirst() 
+            String firstBook = books.peek(); // peek() retrieves without removing
+             //String firstBook = books.getFirst(); //getFirst() also retrieves without removing, but throws NoSuchElementException if the list is empty.  peek() returns null in this case, which can be safer.
+
+            System.out.println("The first book in the list is: " + firstBook);
+
+            // Print the list to demonstrate that the element was not removed
+            System.out.println("The list remains: " + books);
+
+        } else {
+            System.out.println("The list is empty.");
+        }
+
+
+        // Example demonstrating the difference between peek() and poll():
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(20);
+
+        System.out.println("Original list: " + numbers);
+
+        Integer peekedValue = numbers.peek();
+        System.out.println("Peeked value: " + peekedValue);
+        System.out.println("List after peek(): " + numbers); // List remains unchanged
+
+        Integer polledValue = numbers.poll();
+        System.out.println("Polled value: " + polledValue);
+        System.out.println("List after poll(): " + numbers); // First element removed
+    }
+}
+```

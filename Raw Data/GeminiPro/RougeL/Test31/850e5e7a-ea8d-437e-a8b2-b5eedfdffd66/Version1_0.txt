@@ -1,0 +1,88 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 (180 degrees opposite longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Distance: ~10007.54 km (approximately Earth's circumference / 4)
+
+
+6. **Points near the International Date Line (Longitude wrapping):**
+   - lat1: 30
+   - lon1: 179
+   - lat2: 30
+   - lon2: -179
+   - Expected Distance:  A relatively small value (the shortest distance is across the date line)
+
+
+7. **Invalid Input (Optional):**  While not strictly part of the calculation logic, you should consider adding input validation to your program to handle cases where the user enters latitudes outside the range -90 to +90 or longitudes outside the range -180 to +180. These could be handled by either throwing an exception or prompting the user to re-enter valid coordinates.
+
+
+
+By testing these cases, you can be more confident that your Java program correctly calculates the distance between two points on the Earth's surface.  The test cases cover various scenarios, including extremes like the poles and antipodes, to help ensure the formula's accuracy. Remember to use `Math.toRadians()` to convert degrees to radians before using the trigonometric functions.

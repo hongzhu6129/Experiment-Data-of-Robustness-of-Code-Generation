@@ -1,0 +1,33 @@
+```java
+class Solution {
+    /**
+     * Counts the number of occurrences of the digit 2 in a non-negative integer.
+     *
+     * @param n The non-negative integer.
+     * @return The count of the digit 2 in the integer.
+     */
+    public static int test(int n) {
+        int count = 0;
+        String numStr = String.valueOf(n);
+
+        for (int i = 0; i < numStr.length(); i++) {
+            if (numStr.charAt(i) == '2') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 22222;
+        System.out.println("Count of 2 in " + num1 + ": " + test(num1)); // Output: 5
+
+        int num2 = 12345;
+        System.out.println("Count of 2 in " + num2 + ": " + test(num2)); // Output: 1
+
+        int num3 = 0;
+        System.out.println("Count of 2 in " + num3 + ": " + test(num3)); // Output: 0
+    }
+}
+```

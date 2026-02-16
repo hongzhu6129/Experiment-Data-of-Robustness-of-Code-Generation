@@ -1,0 +1,67 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class IncreaseArrayListSize {
+
+    public static void main(String[] args) {
+
+        // 1. Create an ArrayList
+        List<Integer> numbers = new ArrayList<>();
+
+        // 2. Add some initial elements (optional)
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("Initial size: " + numbers.size());
+        System.out.println("Initial list: " + numbers);
+
+
+        // 3. Increase the size by adding more elements:
+
+        // Method a) Adding individual elements:
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+
+
+
+        // Method b) Adding elements from another collection:
+        List<Integer> moreNumbers = new ArrayList<>();
+        moreNumbers.add(7);
+        moreNumbers.add(8);
+        numbers.addAll(moreNumbers);
+
+
+
+        System.out.println("Final size: " + numbers.size());
+        System.out.println("Final list: " + numbers);
+
+
+
+        // 4.  Ensure capacity (not size, but underlying array size).  Useful for performance if you know you'll be adding many more elements.
+        int newCapacity = 20; // Example capacity
+        numbers.ensureCapacity(newCapacity); // Requests the ArrayList to allocate enough space for at least this many elements. Doesn't change size.
+
+        System.out.println("Capacity after ensureCapacity(20): " + numbers.size()); // Size stays the same
+                                                                                     // Capacity might be >= 20 (implementation dependent)
+
+
+
+
+    }
+}
+```
+
+
+Key Points:
+
+* **ArrayList Size vs. Capacity:**  An ArrayList's `size` is the number of elements it currently holds.  Its `capacity` is the size of the underlying array that stores the elements. The capacity is usually larger than the size, allowing for efficient addition of new elements.  When the size reaches the capacity, the ArrayList automatically creates a larger array and copies the existing elements (which is a relatively expensive operation).
+
+* `ensureCapacity()` does not change the size of the ArrayList; it influences the *capacity*. Use it when you have a good estimate of how many elements you'll eventually add to avoid frequent resizing operations.
+
+* `add()` and `addAll()` increase the *size* (and may increase the capacity if needed).  `addAll()` is more efficient when adding multiple elements at once than calling `add()` repeatedly in a loop.
+
+
+This improved answer clarifies the distinction between size and capacity, demonstrates adding multiple elements using `addAll()`, and provides the `ensureCapacity()` method as a way to optimize performance.

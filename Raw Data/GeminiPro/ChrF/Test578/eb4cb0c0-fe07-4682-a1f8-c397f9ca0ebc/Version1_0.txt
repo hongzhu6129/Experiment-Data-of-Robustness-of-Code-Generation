@@ -1,0 +1,58 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> days = new LinkedList<>();
+        days.add("Monday");
+        days.add("Tuesday");
+        days.add("Wednesday");
+        days.add("Thursday");
+        days.add("Friday");
+        days.add("Saturday");
+        days.add("Sunday");
+
+        // Specify the starting position (e.g., 2 for Wednesday)
+        int startPosition = 2;
+
+        // Iterate through the LinkedList from the specified position using a ListIterator
+        ListIterator<String> iterator = days.listIterator(startPosition);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+        // Example of handling invalid start position (out of bounds)
+        startPosition = 10; // Invalid position
+
+        if (startPosition < 0 || startPosition > days.size()) {
+            System.out.println("Invalid start position.");
+        } else {
+            iterator = days.listIterator(startPosition);
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+            }
+        }
+
+
+        // Example with an empty LinkedList
+        LinkedList<String> emptyList = new LinkedList<>();
+        startPosition = 0;
+
+        if (startPosition < 0 || startPosition > emptyList.size()) { // Correctly handles empty lists
+            System.out.println("Invalid start position or empty list.");
+        } else {
+             iterator = emptyList.listIterator(startPosition); // Will not enter the loop as the list is empty
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next()); 
+            }
+        }
+
+
+
+    }
+}
+```

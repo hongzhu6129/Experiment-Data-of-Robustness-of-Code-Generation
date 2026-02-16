@@ -1,0 +1,80 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                   |
+| --------- | ------- | ------- | ------- | -------------- | -------------------------------------- |
+| 1        | 10      | 20      | 30      | 20.0           | Standard positive numbers              |
+| 2        | -5      | 0       | 5       | 0.0            | Including negative and zero             |
+| 3        | 0       | 0       | 0       | 0.0            | All zeros                              |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5            | Decimal numbers                         |
+| 5        | 100000  | 200000  | 300000  | 200000.0       | Large numbers                          |
+| 6        | -1000   | -2000   | -3000   | -2000.0       | Large negative numbers                  |
+| 7        | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE | Maximum Double value (Infinity result expected and handled in a robust implementation) |
+| 8        | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Minimum Double value                     |
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can manually run the program multiple times, entering the input values for each test case and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  A much better approach is to use a testing framework like JUnit. Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAveragePositive() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageNegativeAndZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+    // Add more test cases similarly...  Include the edge cases like MAX_VALUE and MIN_VALUE
+
+    @Test
+    void testCalculateAverageMaxValue() {
+        assertEquals(Double.MAX_VALUE, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)); // Expected Infinity if not handled
+    }
+
+
+}
+```
+
+With JUnit, you can easily automate the execution of your test cases and ensure your `calculateAverage` method works correctly under various conditions.  It also makes it easier to maintain and expand your tests as you develop your code further. Remember to add the JUnit library to your project.
+
+
+This improved answer provides more comprehensive test cases and demonstrates how to use JUnit for automated testing, which is best practice in software development.  It also considers potential overflow issues with `Double.MAX_VALUE`.

@@ -1,0 +1,76 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array of integers, removes duplicate elements in-place such that each element appears only once.
+     * The relative order of the elements should be kept the same.
+     *
+     * Since the array is modified in-place, the function returns the new length of the array, representing the number of unique elements.
+     *
+     * Example:
+     * Input: nums = [1,1,2]
+     * Output: 2, nums = [1,2,_]  (Note that the original array is modified)
+     *
+     * Input: nums = [0,0,1,1,1,2,2,3,3,4]
+     * Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+     *
+     * @param nums The sorted integer array
+     * @return The new length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: Length: 2, Array: [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: Length: 5, Array: [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Length: " + len3 + ", Array: " + Arrays.toString(nums3)); // Output: Length: 0, Array: []
+
+
+        int[] nums4 = {1};
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Length: " + len4 + ", Array: " + Arrays.toString(nums4)); // Output: Length: 1, Array: [1]
+    }
+}
+```
+
+
+
+Key improvements and explanations in this version:
+
+1. **Clear Javadoc documentation:** The `removeDuplicates` method now has comprehensive Javadoc explaining its purpose, parameters, return value, and providing examples. This makes the code much easier to understand and use.
+
+2. **Handles edge cases:** The code now explicitly handles edge cases like an empty array or a `null` array, making it more robust.
+
+3. **Efficient in-place modification:** The code directly modifies the input array `nums` to remove duplicates in-place, saving memory and improving efficiency.  
+
+4. **Clear variable names:** Using `uniqueIndex` instead of just `i` or `j` makes the logic clearer to follow.
+
+5. **Comprehensive `main` method:** The `main` method provides multiple test cases, including edge cases (empty array, single element array), demonstrating how to use the `removeDuplicates` method and how to print the updated array. It also uses `Arrays.copyOfRange` to only print the relevant portion of the modified array.
+
+
+This revised version is a better educational example as it's more readable, robust, efficient, and clearly demonstrates the in-place modification of the array while handling edge cases.

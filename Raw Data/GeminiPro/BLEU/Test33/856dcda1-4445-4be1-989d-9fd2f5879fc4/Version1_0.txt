@@ -1,0 +1,97 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nCount of unique three-digit numbers: " + uniqueNumbers.size());
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Case:**
+   - Input: `digits = {1, 2, 3, 4}`
+   - Expected Output: 24 unique three-digit numbers (all permutations of 1, 2, 3, 4). Count: 24
+
+**2. Repeated Digits:**
+   - Input: `digits = {1, 1, 2, 3}` (This tests the uniqueness check)
+   - Expected Output:  18 unique three-digit numbers.  Count: 18 (e.g., 112 and 113 would be eliminated)
+
+**3. Fewer Digits:**
+   - Input: `digits = {1, 2, 3}` 
+   - Expected Output: 6 unique three-digit numbers. Count: 6 (All permutations of 1, 2, and 3).
+
+**4. More Digits (Beyond the Problem Scope, but good for robustness):**
+   - Input: `digits = {1, 2, 3, 4, 5}`
+   - Expected Output: 60 unique three-digit numbers (5 * 4 * 3). Count: 60
+
+**5.  Digits with Zero:**  (Corner case, tests handling of leading zeros. While not explicitly stated in the question, this is a good general test).
+   - Input: `digits = {0, 1, 2, 3}`
+   - Expected Output: 18 unique three-digit numbers (0 cannot be the leading digit, but can be in other positions). Count: 18 (e.g., 012 would be treated as 12, potentially leading to less numbers depending on your implementation - my example above would handle this correctly as it uses a Set).
+
+**6. All Same Digit:** (Corner Case)
+   - Input:  `digits = {1, 1, 1, 1}`
+   - Expected Output: 0 unique three-digit numbers. Count: 0
+
+**How to Run Tests (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbersTest {
+
+    private Set<Integer> getUniqueNumbers(int[] digits) { // Helper function
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        // ... (same logic as the main method)
+        return uniqueNumbers;
+    }
+
+
+    @Test
+    void testBasicCase() {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> result = getUniqueNumbers(digits);
+        assertEquals(24, result.size());
+    }
+
+    @Test
+    void testRepeatedDigits() {
+        int[] digits = {1, 1, 2, 3};
+        Set<Integer> result = getUniqueNumbers(digits);
+        assertEquals(18, result.size());
+    }
+
+    // ... (Add tests for other cases similarly) ...
+
+}
+```
+
+
+
+By creating these kinds of test cases, you can thoroughly validate your Java code and ensure that it handles all possible scenarios correctly. Using a testing framework like JUnit makes the process much more structured and efficient.

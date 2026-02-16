@@ -1,0 +1,72 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class GreatestKeyVisualization {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap is used because it maintains sorted order of keys.
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap with some sample data
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        // Key to search for
+        int givenKey = 35;
+
+        // Get the entry associated with the greatest key less than or equal to the given key
+        Map.Entry<Integer, String> entry = treeMap.floorEntry(givenKey);
+
+
+        if (entry != null) {
+            // Visualize the key-value pair
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+
+            // Additional visualization (optional - you can customize this part)
+            visualizeTreeMap(treeMap, entry.getKey()); 
+
+        } else {
+            System.out.println("No key found less than or equal to " + givenKey);
+        }
+    }
+
+
+    // Optional:  A simple visualization method (you can customize this)
+    public static void visualizeTreeMap(TreeMap<Integer, String> map, int highlightKey) {
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            String output = entry.getKey() + ":" + entry.getValue();
+            if (entry.getKey() == highlightKey) {
+                output = ">> " + output + " <<"; // Highlight the found key
+            }
+            System.out.println(output);
+        }
+        System.out.println("---------------------"); // Separator
+    }
+}
+```
+
+
+Explanation and improvements:
+
+1. **TreeMap:**  Uses `TreeMap` to store key-value pairs.  TreeMap automatically keeps keys in sorted order, which is essential for efficiently finding the "greatest key less than or equal to".
+
+2. **`floorEntry()`:** The core of the solution is `treeMap.floorEntry(givenKey)`. This method directly returns the `Map.Entry` associated with the greatest key less than or equal to `givenKey`. If no such key exists, it returns `null`.
+
+3. **Visualization:** The code provides a basic visualization by printing the key and value. The `visualizeTreeMap()` method is an optional addition to demonstrate a slightly more elaborate way to visualize the TreeMap contents and highlight the found key. You can customize the visualization to suit your needs.
+
+4. **Error Handling:** Includes a `null` check to handle the case where no key less than or equal to the given key is found.
+
+5. **Clear Comments:**  Added comments to explain the purpose of each section of the code.
+
+6. **Example Usage:** The `main` method provides a clear example of how to use the code with sample data.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `GreatestKeyVisualization.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:  `javac GreatestKeyVisualization.java`
+3. **Run:**  Execute the compiled class: `java GreatestKeyVisualization`

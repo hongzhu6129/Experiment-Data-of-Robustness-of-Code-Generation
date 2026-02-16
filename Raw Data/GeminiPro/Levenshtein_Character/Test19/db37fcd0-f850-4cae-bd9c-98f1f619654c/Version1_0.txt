@@ -1,0 +1,82 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToOctal {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a binary number: ");
+        String binaryString = scanner.nextLine();
+
+        // Validate input (only 0s and 1s)
+        for (char c : binaryString.toCharArray()) {
+            if (c != '0' && c != '1') {
+                System.out.println("Invalid binary input.");
+                return;
+            }
+        }
+
+
+        long decimal = 0;
+        long power = 1;
+
+        // Convert binary to decimal
+        for (int i = binaryString.length() - 1; i >= 0; i--) {
+            if (binaryString.charAt(i) == '1') {
+                decimal += power;
+            }
+            power *= 2;
+        }
+
+
+        String octalString = "";
+
+        //Convert decimal to octal
+        if (decimal == 0) {
+            octalString = "0"; // Handle the case where the input is 0
+        } else {
+            while (decimal > 0) {
+                octalString = (decimal % 8) + octalString;
+                decimal /= 8;
+            }
+        }
+
+        System.out.println("Octal equivalent: " + octalString);
+
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `101101`
+   - Expected Output: `55`
+
+2. **Leading Zeros:**
+   - Input: `000111`  
+   - Expected Output: `7`
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Large Binary:**
+   - Input: `1111111111111111111111111111111` (31 ones - max for signed integer)
+   - Expected Output: `37777777777`
+
+5. **Invalid Input (Non-binary characters):**
+   - Input: `101201`
+   - Expected Output: `Invalid binary input.`
+
+6. **Invalid Input (Empty String):**
+   - Input: ``
+   - Expected Output: (The program handles this gracefully and will produce an octal output of 0, as the decimal equivalent would be 0. You could add an explicit check for empty string if desired)
+
+7. **Boundary Case (Max positive int represented in Binary):**
+   - Input: `111111111111111111111111111111` (31 ones, excluding the sign bit which we assume here)
+   - Expected Output: `17777777777`
+
+
+
+This enhanced version includes input validation and handles corner cases like leading zeros, zero input, and invalid input effectively.  It also includes comments to clarify the logic.  It avoids any built-in library functions apart from `System.out.println` and `Scanner` (which is really needed for user input).

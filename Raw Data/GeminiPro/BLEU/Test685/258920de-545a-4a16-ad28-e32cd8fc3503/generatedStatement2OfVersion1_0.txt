@@ -1,0 +1,23 @@
+
+
+
+To compile and run this:
+
+1. **Save:** Save the code as a `.java` file (e.g., `ReverseNumber.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler: `javac ReverseNumber.java`
+3. **Run:**  Execute the compiled code, providing the number to be reversed as a command-line argument: `java ReverseNumber 12345` (This would output `Reversed number: 54321`).
+
+
+
+**Explanation:**
+
+1. **Input:** The program takes the number to be reversed as a command-line argument.  `args` is an array of strings, where `args[0]` is the first command-line argument.
+
+2. **Error Handling:**  A `try-catch` block is used to handle potential `NumberFormatException` if the user provides non-numeric input.
+
+3. **Reversal Logic:** The `while` loop iterates through the digits of the number:
+   - `digit = num % 10;` extracts the last digit.
+   - `reversedNum = reversedNum * 10 + digit;` builds the reversed number by appending the extracted digit.
+   - `num /= 10;` removes the last digit from the original number.
+
+4. **Output:** Finally, the reversed number is printed to the console.

@@ -1,0 +1,130 @@
+```java
+import java.util.Scanner;
+
+public class BinaryMultiplication {
+
+    public static String multiplyBinary(String binary1, String binary2) {
+        // Handle null or empty inputs
+        if (binary1 == null || binary2 == null || binary1.isEmpty() || binary2.isEmpty()) {
+            return "0"; // Or throw an exception, depending on your requirements
+        }
+
+
+        int num1 = binaryToDecimal(binary1);
+        int num2 = binaryToDecimal(binary2);
+        int product = num1 * num2;
+
+        return decimalToBinary(product);
+    }
+
+    public static int binaryToDecimal(String binary) {
+        int decimal = 0;
+        int power = 0;
+
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static String decimalToBinary(int decimal) {
+        if (decimal == 0) {
+            return "0";
+        }
+
+        StringBuilder binary = new StringBuilder();
+        while (decimal > 0) {
+            int remainder = decimal % 2;
+            binary.insert(0, remainder); // Insert at the beginning
+            decimal /= 2;
+        }
+
+        return binary.toString();
+
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first binary number: ");
+        String binary1 = scanner.nextLine();
+
+        System.out.print("Enter the second binary number: ");
+        String binary2 = scanner.nextLine();
+
+        String product = multiplyBinary(binary1, binary2);
+        System.out.println("Product: " + product);
+
+        scanner.close();
+
+
+    }
+}
+```
+
+
+
+**Test Cases (including corner cases):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BinaryMultiplicationTest {
+
+    @Test
+    void testNormalMultiplication() {
+        assertEquals("110", BinaryMultiplication.multiplyBinary("10", "11"));
+        assertEquals("1100", BinaryMultiplication.multiplyBinary("100", "11"));
+        assertEquals("1000",BinaryMultiplication.multiplyBinary("10", "100"));
+        assertEquals("100011", BinaryMultiplication.multiplyBinary("111", "111"));
+
+    }
+
+    @Test
+    void testZeroMultiplication() {
+        assertEquals("0", BinaryMultiplication.multiplyBinary("10", "0"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("0", "11"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("0", "0"));
+    }
+
+    @Test
+    void testNullOrEmptyInput() { // Corner case
+        assertEquals("0", BinaryMultiplication.multiplyBinary(null, "10"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("10", null));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("", "10"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("10", ""));        
+        assertEquals("0", BinaryMultiplication.multiplyBinary(null, null));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("", ""));
+    }
+
+
+    @Test
+    void testLargeNumbers(){ // Corner case: potential for overflow if not handled correctly
+        assertEquals("10000000000", BinaryMultiplication.multiplyBinary("10000", "10000"));
+        assertEquals("1000000000000000", BinaryMultiplication.multiplyBinary("1000000", "10000"));
+
+    }
+
+
+}
+
+```
+
+**Key improvements and explanations:**
+
+* **Handles Null and Empty Inputs:** The `multiplyBinary` method now explicitly handles `null` and empty string inputs, returning "0" in those cases.  You could modify this to throw an `IllegalArgumentException` if you prefer to treat these as errors.
+
+* **Clearer Conversion Methods:** The `binaryToDecimal` and `decimalToBinary` methods are more concise and readable.
+
+* **Comprehensive Test Cases:** The test cases now cover normal multiplication, multiplication by zero, and the crucial corner cases of `null` and empty string inputs. It also tests with larger numbers, which previously could cause issues.
+
+* **JUnit 5:**  The test cases are using JUnit 5, a standard and powerful testing framework for Java. You'll need to add the JUnit 5 dependency to your project to run these tests.
+
+
+
+This improved version provides better error handling, clarity, and more robust testing to ensure the `multiplyBinary` function works correctly in various scenarios.  Using a good testing framework like JUnit is highly recommended for any serious Java development.

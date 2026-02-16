@@ -1,0 +1,51 @@
+import java.util.LinkedList;
+
+public class InsertElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> days = new LinkedList<>();
+
+        // Add some initial elements
+        days.add("Monday");
+        days.add("Tuesday");
+        days.add("Wednesday");
+        days.add("Thursday");
+        days.add("Friday");
+
+
+        // Element to insert
+        String newDay = "Sunday";
+
+        // Position to insert (0-indexed)
+        int position = 2;
+
+
+        try {
+            // Insert the element at the specified position
+            days.add(position, newDay);
+
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + days);
+
+
+            // Example: Insert at the beginning (position 0)
+            days.add(0, "Saturday");
+            System.out.println("Updated LinkedList (insert at beginning): " + days);
+
+
+            // Example: Insert at the end (using size() as the position)
+            days.add(days.size(), "Another Day"); // equivalent to days.addLast(...)
+            System.out.println("Updated LinkedList (insert at end): " + days);
+
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid position. Position should be between 0 and " + days.size());
+
+        }
+
+
+    }
+}

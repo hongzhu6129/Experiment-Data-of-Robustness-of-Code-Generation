@@ -1,0 +1,39 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class NumberFormatter {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 12345;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = -1234567;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = Integer.MAX_VALUE; //Testing max
+         formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+
+    }
+
+    public static String validate(int number) {
+        // Using NumberFormat for locale-specific formatting
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US); // You can change the locale if needed
+
+        return numberFormat.format(number);
+
+
+    }
+}

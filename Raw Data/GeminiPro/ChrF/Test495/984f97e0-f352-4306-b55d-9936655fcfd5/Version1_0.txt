@@ -1,0 +1,66 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("X "); // Or print any desired character/value
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+**Explanation and how to run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java` and compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java
+   ```
+
+2. **Execution:** Run the compiled code, providing the matrix size `n` as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // This will print a 5x5 matrix
+   ```
+   Replace `5` with the desired matrix size.
+
+3. **Method `printMatrix(int n)`:**
+   - This method takes the size `n` as input.
+   - It uses nested loops to iterate through rows and columns.
+   - `System.out.print("X ")` prints an "X" followed by a space for each cell in the matrix.  You can change "X" to any character or even calculate and print a value here if needed (e.g., `i*j`, `i+j`, etc.)
+   - `System.out.println()` prints a new line after each row is complete, creating the matrix structure.
+
+4. **Method `main(String[] args)`:**
+   - Handles command-line arguments to get the value of `n`.
+   - Includes error handling (using a `try-catch` block) to check for invalid input (non-integer or negative `n`).
+   - Calls the `printMatrix` method to generate and display the matrix.
+
+
+**Example Output (for `java MatrixPrinter 3`):**
+
+```
+X X X 
+X X X 
+X X X 
+```

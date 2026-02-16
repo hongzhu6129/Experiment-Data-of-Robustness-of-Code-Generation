@@ -1,0 +1,71 @@
+```java
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class TimelineKeys {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to represent the timeline. 
+        // The keys are Instants (representing points in time) and the values can be any relevant data.
+        TreeMap<Instant, String> timeline = new TreeMap<>();
+
+        // Add some events to the timeline
+        timeline.put(Instant.now(), "Event 1");
+        timeline.put(Instant.now().plusSeconds(60), "Event 2");
+        timeline.put(Instant.now().minusSeconds(30), "Event 3");
+        timeline.put(Instant.now().plusSeconds(120), "Event 4");
+
+        // Get a NavigableSet view of the keys (Instants)
+        NavigableSet<Instant> instants = timeline.navigableKeySet();
+
+        // Print the Instants
+        System.out.println("Instants in the timeline:");
+        for (Instant instant : instants) {
+            System.out.println(instant); // Prints the Instant in UTC
+
+            // Convert Instant to a more readable format (e.g., LocalDateTime in your local timezone)
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+            System.out.println(localDateTime); 
+
+            // Or, if you need to retain timezone information:
+            ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault());
+            System.out.println(zonedDateTime);
+
+             System.out.println("--------"); // Separator for clarity
+        }
+
+
+        // Demonstrate some NavigableSet operations (optional)
+        System.out.println("\nNavigableSet Operations:");
+        Instant firstInstant = instants.first();  // Earliest instant
+        Instant lastInstant = instants.last(); // Latest Instant
+        Instant instantBefore = instants.lower(Instant.now());  // Instant before 'now'
+        Instant instantAfter = instants.higher(Instant.now()); // Instant after 'now'
+
+
+        System.out.println("First Instant: " + firstInstant);
+        System.out.println("Last Instant: " + lastInstant);
+
+        if (instantBefore != null) {
+             System.out.println("Instant before 'now': " + instantBefore);
+        }
+
+        if(instantAfter != null) {
+            System.out.println("Instant after 'now': " + instantAfter);
+        }
+    }
+}
+```
+
+
+Key improvements:
+
+* **Clarity and Comments:**  Added comments to explain each step and the purpose of using a `TreeMap` and `NavigableSet`.
+* **Readable Date/Time Output:** Shows how to convert `Instant` to `LocalDateTime` or `ZonedDateTime` for easier interpretation.  `Instant` by itself represents a point in time in UTC, which might not be very user-friendly.
+* **Example `NavigableSet` operations:** Includes demonstrations of how to use methods like `first()`, `last()`, `lower()`, and `higher()` to access elements in the `NavigableSet`.
+* **Error Handling:** Includes null checks for `lower()` and `higher()` as they can return null if the specified element is the lowest/highest element or not present.
+* **`TreeMap` is ideal:** Uses `TreeMap` which provides an ordered set of keys, making it perfectly suited for a timeline representation.  `NavigableSet`  provides efficient methods for navigating the sorted keys.

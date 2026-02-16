@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class ClearLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Discard all elements using clear()
+        linkedList.clear();
+
+        System.out.println("LinkedList after discarding elements: " + linkedList);
+
+
+        // Example with integers
+        LinkedList<Integer> numbers = new LinkedList<>();
+        for (int i = 1; i <= 5; i++) {
+            numbers.add(i);
+        }
+        System.out.println("Original Numbers LinkedList: " + numbers);
+        numbers.clear();
+        System.out.println("Numbers LinkedList after clear(): " + numbers);
+
+
+        // Demonstrating that clear() handles an already empty list gracefully:
+        LinkedList<Double> emptyList = new LinkedList<>();
+        System.out.println("Initially empty List: " + emptyList);
+        emptyList.clear(); // Clearing an already empty list - no error
+        System.out.println("After clear() on empty list: " + emptyList);
+
+
+    }
+}
+
+
+

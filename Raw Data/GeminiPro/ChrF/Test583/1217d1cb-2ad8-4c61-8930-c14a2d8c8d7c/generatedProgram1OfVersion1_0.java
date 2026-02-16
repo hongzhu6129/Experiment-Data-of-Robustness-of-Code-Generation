@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddToList {
+
+    public static void main(String[] args) {
+        // Create a sample list
+        List<String> myList = new ArrayList<>();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("cherry");
+
+        // Element to insert
+        String newElement = "grape";
+
+        // Insert the element at the end
+        myList.add(newElement); // The add() method by default adds at the end.
+
+        // Print the updated list
+        System.out.println("Updated list: " + myList);
+
+
+        // Example with Integer List
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        int newNumber = 4;
+        numbers.add(newNumber);
+
+        System.out.println("Updated numbers list: " + numbers);
+
+
+        // Another Example illustrating adding at a specific index (Not required by the problem but good to know)
+        List<String> anotherList = new ArrayList<>();
+        anotherList.add("one");
+        anotherList.add("two");
+        anotherList.add("four"); // We want to insert "three" *before* four
+
+
+        anotherList.add(2, "three");  // add(index, element) inserts at a specified index
+
+        System.out.println("Another updated list: " + anotherList);
+    }
+}

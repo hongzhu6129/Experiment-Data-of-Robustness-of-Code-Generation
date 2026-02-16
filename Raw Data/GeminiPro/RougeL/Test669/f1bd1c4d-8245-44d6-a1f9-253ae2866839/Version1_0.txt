@@ -1,0 +1,46 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class LowerKeyMapping {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        int givenKey1 = 6;
+        Map.Entry<Integer, String> result1 = getLowerKeyMapping(treeMap, givenKey1);
+        System.out.println("For key " + givenKey1 + ": " + result1); // Output: For key 6: 5=Five
+
+        int givenKey2 = 2;
+        Map.Entry<Integer, String> result2 = getLowerKeyMapping(treeMap, givenKey2);
+        System.out.println("For key " + givenKey2 + ": " + result2); // Output: For key 2: 1=One
+
+        int givenKey3 = 0;
+        Map.Entry<Integer, String> result3 = getLowerKeyMapping(treeMap, givenKey3);
+        System.out.println("For key " + givenKey3 + ": " + result3); // Output: For key 0: null
+
+
+        int givenKey4 = 9; // Key exists, but no lower key
+        Map.Entry<Integer,String> result4 = getLowerKeyMapping(treeMap, givenKey4);
+        System.out.println("For key " + givenKey4 + ": " + result4); // Output: For key 9: 7=Seven
+        
+        int givenKey5 = 10; // Key doesn't exist and larger than the largest key
+        Map.Entry<Integer,String> result5 = getLowerKeyMapping(treeMap, givenKey5);
+        System.out.println("For key " + givenKey5 + ": " + result5); // Output: For key 10: 9=Nine
+
+    }
+
+    public static <K, V> Map.Entry<K, V> getLowerKeyMapping(TreeMap<K, V> map, K key) {
+        return map.lowerEntry(key); 
+    }
+}
+
+
+
+```

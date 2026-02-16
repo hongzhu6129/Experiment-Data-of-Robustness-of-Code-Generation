@@ -1,0 +1,45 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Position to insert at (index starts from 0)
+        int insertionPosition = 1; // Insert at index 1 (between Apple and Banana)
+
+
+        // Check if the position is valid
+        if (insertionPosition >= 0 && insertionPosition <= linkedList.size()) {
+            linkedList.add(insertionPosition, elementToInsert); 
+            System.out.println("Linked List after insertion: " + linkedList);
+        } else {
+            System.out.println("Invalid insertion position.");
+        }
+
+
+        // Example 2: Inserting at the beginning (position 0)
+         linkedList.add(0, "Mango");
+         System.out.println("Linked List after inserting at beginning: " + linkedList);
+
+
+         // Example 3: Inserting at the end (position linkedList.size())
+         linkedList.add(linkedList.size(), "Kiwi");
+         System.out.println("Linked List after inserting at the end: " + linkedList);
+
+
+
+
+    }
+}
+```

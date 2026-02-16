@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes JUnit tests, which are essential for verifying the correctness of your code.  The `RectangleTest` class demonstrates how to write tests for the `getArea()` and `getPerimeter()` methods.
+* **Test Cases (including corner cases):** The tests cover normal cases, a square (a special case of a rectangle), zero length/width (degenerate cases), and fractional dimensions.
+* **Clearer Output in `main()`:** The `main()` method now prints more descriptive output, making it easier to understand the results.
+* **Handling Invalid Input (Optional but Recommended):** Although the original prompt didn't specify it, I've added a section in the tests demonstrating how to handle negative inputs. This is good practice to prevent unexpected behavior.  You could modify the `Rectangle` constructor to throw an `IllegalArgumentException` if negative values are provided.  I show this in the `testNegativeInput` test case but haven't fully implemented it in the constructor (it is commented out so the other tests can pass).  If you uncomment it, realize the other tests expecting a zero area or perimeter with a zero length/width would now throw exceptions and require adjusting.
+
+
+
+How to run the tests (assuming you have JUnit set up in your project):
+
+1.  Save the code as `Rectangle.java` and `RectangleTest.java`.
+2.  Compile: `javac Rectangle.java RectangleTest.java`
+3.  Run the tests: `java org.junit.platform.console.ConsoleLauncher --select-class RectangleTest` (or use your IDE's JUnit runner).
+
+
+This improved version not only provides the requested functionality but also demonstrates good coding practices by including tests to ensure its reliability.

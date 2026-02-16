@@ -1,0 +1,62 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveFirstLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        System.out.println("Original LinkedList: " + languages);
+
+        // Remove and return the first element using removeFirst()
+        if (!languages.isEmpty()) {  // Check if the list is empty to avoid exceptions
+            String firstElement = languages.removeFirst(); // or languages.remove() for just the head
+            System.out.println("Removed element: " + firstElement);
+            System.out.println("Updated LinkedList: " + languages);
+
+            //Illustrate using pollFirst() which returns null if empty, avoiding exception handling:
+            LinkedList<String> anotherList = new LinkedList<>();
+            String polledElement = anotherList.pollFirst();
+            System.out.println("Polled element from empty list (null expected): " + polledElement); // Output: null
+
+
+            anotherList.add("Kotlin");
+            polledElement = anotherList.pollFirst();
+            System.out.println("Polled element : " + polledElement + ". Updated List: " + anotherList);
+
+
+        } else {
+            System.out.println("The LinkedList is empty. Cannot remove an element.");
+        }
+
+
+
+        // Example using element() which throws NoSuchElementException if empty:
+        try {
+            LinkedList<Integer> numbers = new LinkedList<>();
+            int firstNum = numbers.element(); // Throws exception!
+            System.out.println("First element (should not reach here): " + firstNum);
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println("Caught NoSuchElementException: " + e.getMessage()); // Explains the error
+        }
+
+
+        // Using peekFirst(), which is like element() but returns null if list is empty
+        LinkedList<Integer> numList = new LinkedList<>();
+        Integer peekedNum = numList.peekFirst();
+        System.out.println("Peeked element (null expected): " + peekedNum); // Output: null
+        numList.add(100);
+        peekedNum = numList.peekFirst();
+        System.out.println("Peeked element: " + peekedNum); // Output: 100. List is NOT modified.
+
+
+    }
+}
+
+
+```

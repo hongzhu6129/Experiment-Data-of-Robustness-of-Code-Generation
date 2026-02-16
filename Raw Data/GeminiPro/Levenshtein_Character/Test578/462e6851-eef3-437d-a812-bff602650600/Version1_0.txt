@@ -1,0 +1,53 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        // Specify the starting position (e.g., index 2)
+        int startPosition = 2;
+
+        // Iterate through the LinkedList from the specified position
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+
+
+         //Example starting from the beginning (index 0)
+        System.out.println("\nIterating from the beginning:");
+        ListIterator<String> iteratorFromBeginning = linkedList.listIterator(0); // Start from index 0
+        while (iteratorFromBeginning.hasNext()) {
+            String element = iteratorFromBeginning.next();
+            System.out.println(element);
+        }
+
+
+
+        // Example: Handle invalid start position (e.g., negative index or index greater than size)
+        int invalidStartPosition = -1; // Or any index outside the valid range 
+        try {
+            ListIterator<String> invalidIterator = linkedList.listIterator(invalidStartPosition); // This will throw an IndexOutOfBoundsException if the start position is invalid
+             while(invalidIterator.hasNext()){
+                System.out.println(invalidIterator.next());
+             }
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid start position. " + e.getMessage());
+        }
+
+
+    }
+}
+```

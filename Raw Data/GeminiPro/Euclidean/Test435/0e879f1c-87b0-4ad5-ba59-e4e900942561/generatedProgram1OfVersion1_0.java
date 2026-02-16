@@ -1,0 +1,97 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringSorter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "banana", "orange", "grape", "kiwi", "fig", "mango");
+
+        // Ascending Sort
+        List<String> ascendingSorted = strings.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending Sort: " + ascendingSorted);
+
+        // Spiral Sort (clockwise)
+        List<String> spiralSorted = spiralSort(strings); 
+        System.out.println("Spiral Sort (clockwise): " + spiralSorted);
+
+
+    }
+
+    private static List<String> spiralSort(List<String> strings) {
+        // Sort alphabetically first
+        List<String> sortedStrings = new ArrayList<>(strings.stream().sorted().collect(Collectors.toList()));
+
+        if (sortedStrings.isEmpty() || sortedStrings.size() == 1) {
+            return sortedStrings;
+        }
+
+
+        List<String> result = new ArrayList<>();
+        int m = sortedStrings.size();
+        int n = sortedStrings.get(0).length(); // Assuming all strings have the same length for simplicity.  Handle variable lengths if needed
+
+
+        char[][] matrix = new char[m][n];  // Simulate a matrix - could use a different data structure if string lengths vary significantly
+
+        for(int i = 0; i < m; i++){
+             // Pad with spaces - this handles cases where strings are shorter than the longest string
+             String paddedString = String.format("%-" + n + "s", sortedStrings.get(i));
+             matrix[i] = paddedString.toCharArray();
+         }
+
+
+         int top = 0, bottom = m - 1, left = 0, right = n - 1;
+         int dir = 0; // 0: right, 1: down, 2: left, 3: up
+
+        while (top <= bottom && left <= right) {
+            if (dir == 0) {
+                for (int i = left; i <= right; i++) {
+                    if (matrix[top][i] != ' ') { // Don't add padding spaces
+                        result.add(String.valueOf(matrix[top][i]));
+                    }
+
+                }
+                top++;
+            } else if (dir == 1) {
+                for (int i = top; i <= bottom; i++) {
+                     if (matrix[i][right] != ' ') {
+                          result.add(String.valueOf(matrix[i][right]));
+                     }
+                }
+                right--;
+            } else if (dir == 2) {
+                for (int i = right; i >= left; i--) {
+                     if (matrix[bottom][i] != ' ') {
+                          result.add(String.valueOf(matrix[bottom][i]));
+                     }
+                }
+                bottom--;
+            } else if (dir == 3) {
+                for (int i = bottom; i >= top; i--) {
+                    if (matrix[i][left] != ' ') {
+                        result.add(String.valueOf(matrix[i][left]));
+                    }
+                }
+                left++;
+            }
+            dir = (dir + 1) % 4;
+        }
+
+
+
+        return result.stream() // Join back into strings (after spiral traversal)
+                .collect(Collectors.joining())
+                .chars()
+                .mapToObj(c -> String.valueOf((char)c)) // Convert back to list of strings
+                .filter(s -> !s.equals(" ")) // Remove added spaces
+                .collect(Collectors.toList());
+    }
+
+
+}

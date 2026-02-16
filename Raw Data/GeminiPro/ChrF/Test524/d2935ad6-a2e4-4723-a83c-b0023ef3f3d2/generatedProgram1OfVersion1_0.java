@@ -1,0 +1,57 @@
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for demonstration, ideally would be read from user input)
+        int num = 8;
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        // Test with other numbers:
+        num = 27; // Cube
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+        num = 30; // Not a cube
+         if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+       
+        num = 0; // Cube
+         if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+       
+        num = -8; //Cube
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+    }
+
+
+    // Helper function to check if a number is a perfect cube
+    private static boolean isCube(int num) {
+        // Handle negative numbers (cube root of a negative number is negative)
+        int absNum = Math.abs(num);
+
+        // Efficiently check if it's a cube using cubic root
+        double cubeRoot = Math.cbrt(absNum);
+        return Math.round(cubeRoot) * Math.round(cubeRoot) * Math.round(cubeRoot) == absNum;
+
+
+    }
+}

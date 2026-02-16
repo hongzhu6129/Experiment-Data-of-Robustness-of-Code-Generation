@@ -1,0 +1,49 @@
+import java.util.TreeMap;
+
+public class FloorKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(10, "Ten");
+        map.put(15, "Fifteen");
+        map.put(20, "Twenty");
+
+
+        System.out.println("Floor key of 3: " + getFloorEntry(map, 3)); // Output: 1=One
+        System.out.println("Floor key of 1: " + getFloorEntry(map, 1)); // Output: null
+        System.out.println("Floor key of 12: " + getFloorEntry(map, 12)); // Output: 10=Ten
+        System.out.println("Floor key of 25: " + getFloorEntry(map, 25)); // Output: 20=Twenty
+        System.out.println("Floor key of 0: " + getFloorEntry(map, 0));  // Output: null
+
+
+        // Additional Test Cases:
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        System.out.println("Floor key of 5 in empty map: " + getFloorEntry(emptyMap, 5)); // Output: null
+
+        TreeMap<Integer, String> singleEntryMap = new TreeMap<>();
+        singleEntryMap.put(7, "Seven");
+        System.out.println("Floor key of 8 in single entry map: " + getFloorEntry(singleEntryMap, 8)); // Output: 7=Seven
+        System.out.println("Floor key of 7 in single entry map: " + getFloorEntry(singleEntryMap, 7)); // Output: null
+
+
+
+    }
+
+
+    public static <K, V> String getFloorEntry(TreeMap<K, V> map, K key) {
+        if (map == null || map.isEmpty()) {
+            return null;
+        }
+
+        K floorKey = map.lowerKey(key); //TreeMap's lowerKey method directly finds greatest key strictly less than
+
+        if (floorKey == null) {
+            return null;
+        } else {
+            return floorKey + "=" + map.get(floorKey); // Return in "key=value" format
+        }
+    }
+}

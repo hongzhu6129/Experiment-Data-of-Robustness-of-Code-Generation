@@ -1,0 +1,30 @@
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30  **Expected Output:** 20.0
+2. **Input:** 1.5, 2.5, 3.5  **Expected Output:** 2.5
+3. **Input:** -5, 0, 5  **Expected Output:** 0.0
+
+**Corner Cases:**
+
+4. **Input:** 0, 0, 0  **Expected Output:** 0.0  (Testing all zeros)
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE **Expected Output:** 2.147483647E9 (Testing large positive numbers, potential overflow if using `int` instead of `double`)
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE **Expected Output:** -2.147483648E9 (Testing large negative numbers)
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Infinity (Testing extremely large positive doubles - expected behavior is Infinity)
+8. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE **Expected Output:** 1.0E-323 (Testing very small positive doubles)
+
+
+**Invalid Input Cases (These require error handling which isn't in the basic program above but should be considered for a robust solution):**
+
+9. **Input:** 1, 2, a (Non-numeric input) � The program will currently throw an `InputMismatchException`.  A more robust program should handle this gracefully.
+10. **Input:** 1, 2  (Insufficient input) � The program will currently wait for the third input. Error handling would improve the user experience.
+
+
+
+**How to run the tests:**
+
+You can manually test by providing these inputs when prompted. For automated testing, consider using a testing framework like JUnit.  Here's a simple JUnit example (requires adding JUnit to your project):
+

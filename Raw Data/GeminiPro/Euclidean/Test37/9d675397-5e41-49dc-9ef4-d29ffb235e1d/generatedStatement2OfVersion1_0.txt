@@ -1,0 +1,53 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Positive single-digit:**
+   - Input: `n = 5`
+   - Expected Output: `615` (5 + 55 + 555)
+
+2. **Positive multi-digit:**
+   - Input: `n = 12`
+   - Expected Output: `13332` (12 + 1212 + 121212)
+
+3. **Zero:**
+   - Input: `n = 0`
+   - Expected Output: `0` (0 + 00 + 000)
+
+
+4. **Negative single-digit:**
+   - Input: `n = -3`
+   - Expected Output: `-369` (-3 + -33 + -333)
+
+5. **Negative multi-digit:**
+   - Input: `n = -10`
+   - Expected Output: `-11110` (-10 + -1010 + -101010)
+
+
+6. **Largest possible single digit:**
+   - Input: `n = 9`
+   - Expected Output: `1107` (9 + 99 + 999)
+
+7. **Smallest possible single digit:**
+   - Input: `n = -9`
+   - Expected Output: `-1107`
+
+8. **Edge case (close to integer overflow, positive):** � This test case is crucial for checking potential integer overflow issues.  If you were just adding `int` values together without casting to `long`, this would produce an incorrect result.
+   - Input: `n = 214748364`  (Integer.MAX_VALUE/10, approximately)
+   - Expected Output: `236223198646214764`
+
+
+9. **Edge case (close to integer overflow, negative):**  Similar overflow check for negative numbers.
+    - Input: `n = -214748364`
+    - Expected Output: `-236223198646214764`
+
+
+
+
+**How to run the tests:**
+
+You can manually test these cases by entering the input values into the console when prompted.  Alternatively, if you're using an IDE like IntelliJ or Eclipse, you could create unit tests (using JUnit or TestNG) for more automated testing.  Example JUnit test:
+

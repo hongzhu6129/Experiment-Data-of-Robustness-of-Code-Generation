@@ -1,0 +1,101 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nCount of unique three-digit numbers: " + uniqueNumbers.size());
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Basic Case:**
+   - Input: {1, 2, 3, 4} (as in the code)
+   - Expected Output: 24 unique three-digit numbers (4 * 3 * 2 = 24 permutations), printed in any order, and the count 24.
+
+2. **Repeated Digits:**
+   - Input: {1, 1, 2, 3}
+   - Expected Output: 18 unique three-digit numbers.  (The repeated '1' reduces the number of unique combinations) and the count 18.
+
+3. **Fewer Digits:**
+   - Input: {1, 2, 3}
+   - Expected Output: 6 unique three-digit numbers (3 * 2 * 1 = 6 permutations), and the count 6.
+
+4. **More Digits (But Still Unique):**
+   - Input: {1, 2, 3, 4, 5}
+   - Expected Output: 60 unique three-digit numbers (5 * 4 * 3 = 60 permutations) and the count 60.
+
+5. **All Same Digits (Corner Case):**
+   - Input: {1, 1, 1, 1}
+   - Expected Output: 0 unique three-digit numbers (no combinations are unique) and the count 0.
+
+6. **Zero Included (Corner Case):**
+    - Input {0, 1, 2, 3}
+    - Expected Output: 18 unique three-digit numbers (because numbers like "012" or "023" will be treated as two-digit numbers if you don't account for leading zeros in your output) and the count 18.  If you want to consider "012" as a valid three-digit number, you'd need to format the output accordingly (e.g., using `String.format("%03d", number)`).
+
+
+
+**How to Run Test Cases (Manually):**
+
+You can manually modify the `digits` array in the `main` method of the Java code and run it to see if the output matches the expected results.
+
+**How to Run Test Cases (with JUnit - Recommended):**
+
+For more robust testing, create a separate test class using a testing framework like JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbersTest {
+
+    private Set<Integer> getUniqueNumbers(int[] digits) {
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        // ... (The same logic as in the main method to generate the numbers)
+        return uniqueNumbers;
+    }
+
+    @Test
+    void testBasicCase() {
+        assertEquals(24, getUniqueNumbers(new int[]{1, 2, 3, 4}).size());
+    }
+
+    @Test
+    void testRepeatedDigits() {
+         assertEquals(18, getUniqueNumbers(new int[]{1, 1, 2, 3}).size());
+    }
+
+    // ... Add more @Test methods for the other test cases
+}
+```
+
+JUnit provides assertions like `assertEquals` to compare the actual output with the expected output and will report any failures. This approach makes testing more systematic and automated.
+
+
+This enhanced approach with test cases and (ideally) JUnit makes the code more robust and easier to verify its correctness under various conditions.

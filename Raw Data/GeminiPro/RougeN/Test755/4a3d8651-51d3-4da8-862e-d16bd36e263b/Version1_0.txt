@@ -1,0 +1,35 @@
+```java
+public class RemoveNonAlphanumeric {
+
+    public static void main(String[] args) {
+        String inputString = "This string contains some #$%^&* non-alphanumeric characters!@#$";
+        String cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+
+        inputString = "Hello123World";
+        cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+        inputString = "";
+        cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+
+
+        inputString = "   "; //All spaces
+        cleanedString = validate(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Cleaned string: " + cleanedString);
+    }
+
+    public static String validate(String str) {
+        if (str == null) { // Handle null input
+            return ""; 
+        }
+        return str.replaceAll("[^a-zA-Z0-9]", ""); 
+    }
+}
+```

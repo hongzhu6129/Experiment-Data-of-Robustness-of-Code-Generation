@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ColorArray {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using an ArrayList (more flexible)
+        List<String> colorsList = new ArrayList<>();
+        colorsList.add("Red");
+        colorsList.add("Green");
+        colorsList.add("Blue");
+        colorsList.add("Yellow");
+
+        System.out.println("Colors (ArrayList): " + colorsList);
+
+
+
+        // Method 2: Using a fixed-size array (less flexible)
+        String[] colorsArray = new String[4]; 
+        colorsArray[0] = "Cyan";
+        colorsArray[1] = "Magenta";
+        colorsArray[2] = "Black";
+        colorsArray[3] = "White";
+
+        System.out.println("Colors (Array): " + Arrays.toString(colorsArray));
+
+
+        //Method 3: Using a fixed size array and array initializer list
+        String[] moreColors = {"Orange", "Purple", "Pink", "Brown"};
+        System.out.println("More Colors: "+ Arrays.toString(moreColors));
+
+
+    }
+}

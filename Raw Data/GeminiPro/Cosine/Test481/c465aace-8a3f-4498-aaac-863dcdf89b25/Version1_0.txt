@@ -1,0 +1,57 @@
+```java
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class TimeZoneOffsets {
+
+    public static void main(String[] args) {
+        Set<String> zoneIds = ZoneId.getAvailableZoneIds();
+
+        for (String zoneIdString : zoneIds) {
+            ZoneId zoneId = ZoneId.of(zoneIdString);
+            ZonedDateTime now = ZonedDateTime.now(zoneId);
+            ZoneOffset offset = now.getOffset();
+
+            int offsetSeconds = offset.getTotalSeconds();
+            String formattedOffset = formatOffset(offsetSeconds);
+
+            System.out.println("Zone ID: " + zoneIdString + ", Offset: " + formattedOffset);
+        }
+    }
+
+
+    private static String formatOffset(int offsetSeconds) {
+        String sign = offsetSeconds >= 0 ? "+" : "-";
+        int absoluteOffsetSeconds = Math.abs(offsetSeconds);
+        int hours = absoluteOffsetSeconds / 3600;
+        int minutes = (absoluteOffsetSeconds % 3600) / 60;
+        int seconds = absoluteOffsetSeconds % 60;
+
+        return String.format("%s%02d:%02d:%02d", sign, hours, minutes, seconds); // Format as +HH:mm:ss or -HH:mm:ss
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Iterating through Available Zone IDs:** The code uses `ZoneId.getAvailableZoneIds()` to get a set of all available time zone IDs. It then iterates through this set to process each zone.
+
+2. **Getting Current Time in Zone:** Inside the loop, `ZoneId.of(zoneIdString)` creates a `ZoneId` object. `ZonedDateTime.now(zoneId)` gets the current date and time in that specific zone.
+
+3. **Extracting Offset:** `now.getOffset()` extracts the `ZoneOffset` for the current time in the specified zone.
+
+4. **Formatting the Offset:**  The `formatOffset` method takes the offset in seconds as input and formats it into the desired `+HH:mm:ss` or `-HH:mm:ss` format. This makes the output more readable.
+
+5. **Clear Output:** The `System.out.println` statement clearly displays the zone ID and its corresponding formatted offset.
+
+
+**How to Run:**
+
+1. Save the code as `TimeZoneOffsets.java`.
+2. Compile: `javac TimeZoneOffsets.java`
+3. Run: `java TimeZoneOffsets`
+
+This will print a list of available time zone IDs and their current offsets to the console.

@@ -1,0 +1,107 @@
+```java
+import java.util.Scanner;
+
+public class Rectangle {
+
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double getArea() {
+        return length * width;
+    }
+
+    public double getPerimeter() {  // Assuming "guarding" means perimeter
+        return 2 * (length + width);
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the length of the rectangle: ");
+        double length = scanner.nextDouble();
+
+        System.out.print("Enter the width of the rectangle: ");
+        double width = scanner.nextDouble();
+
+
+        Rectangle rectangle = new Rectangle(length, width);
+
+        System.out.println("Area: " + rectangle.getArea());
+        System.out.println("Perimeter: " + rectangle.getPerimeter());
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases (including corner cases):**
+
+1. **Valid Input:**
+   - Length: 5, Width: 10  Expected: Area = 50, Perimeter = 30
+   - Length: 7.5, Width: 2.5 Expected: Area = 18.75, Perimeter = 20
+
+2. **Zero Input:**
+   - Length: 0, Width: 10  Expected: Area = 0, Perimeter = 20
+   - Length: 5, Width: 0 Expected: Area = 0, Perimeter = 10
+   - Length: 0, Width: 0 Expected: Area = 0, Perimeter = 0  (This is a degenerate rectangle � a point)
+
+3. **Negative Input (Invalid, should be handled):**
+   - Length: -5, Width: 10  Expected:  The program should handle this gracefully, perhaps by throwing an exception or printing an error message and exiting/prompting for valid input. The same applies to negative width or both negative.  In a real-world application, you might want to use absolute values or throw  `IllegalArgumentException` with a clear message.
+
+4. **Large Inputs (to check for potential overflow issues, though less likely with doubles):**
+   - Length: Double.MAX_VALUE, Width: 1  Expected: Area = Double.MAX_VALUE, Perimeter = Infinity (or Double.POSITIVE_INFINITY)
+   - Length: Double.MAX_VALUE, Width: Double.MAX_VALUE Expected: Area = Infinity, Perimeter = Infinity
+
+
+**How to Run the Tests (Manually):**
+
+1. Save the code as `Rectangle.java`.
+2. Compile: `javac Rectangle.java`
+3. Run: `java Rectangle`
+4. Enter the test values when prompted.
+
+**Automated Testing (JUnit - Best Practice):**
+
+For larger projects or professional development, automated tests using a testing framework like JUnit are strongly recommended.  Here's a simple example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RectangleTest {
+
+    @Test
+    void testValidInput() {
+        Rectangle rect = new Rectangle(5, 10);
+        assertEquals(50, rect.getArea());
+        assertEquals(30, rect.getPerimeter());
+    }
+
+    @Test
+    void testZeroInput() {
+        Rectangle rect = new Rectangle(0, 10);
+        assertEquals(0, rect.getArea());
+        assertEquals(20, rect.getPerimeter());
+    }
+
+
+    @Test
+    void testNegativeInput() {
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(-5, 10)); // Example of exception handling
+    }
+
+
+    // ... more tests for other corner cases
+}
+```
+
+This JUnit test demonstrates how to assert expected values and handle exceptions. You would need to add the JUnit library to your project to run these tests. Automated tests make it much easier to ensure your code behaves correctly as you make changes.
+
+
+This enhanced answer provides more comprehensive test cases, explains how to test them, and shows the best practice of using automated testing with JUnit. Remember to modify the exception handling in the `Rectangle` class itself if you choose to throw `IllegalArgumentException`.

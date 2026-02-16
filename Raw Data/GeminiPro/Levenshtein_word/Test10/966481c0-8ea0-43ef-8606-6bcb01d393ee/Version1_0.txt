@@ -1,0 +1,74 @@
+```java
+public class FacePrinter {
+
+    public static void printFace() {
+        System.out.println("  +'''''+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases (Conceptual - since visual output is involved):**
+
+1. **Basic Functionality:**  Run the `printFace()` method and visually verify it produces the expected face output:
+
+```
+  +'''''+
+ [| o o |]
+  |  ^  |
+  | '-' |
+  +-----+
+```
+
+2. **Character Encoding:** (Especially important if using different operating systems or consoles) Ensure your console/terminal supports the characters used (', [, ], |, o, ^, -, +). If you see distorted output, it might be an encoding issue.  Try using a unicode-aware console.
+
+3. **Output Redirection:** Test redirecting the output to a file.  The face should be correctly written to the file.  This tests that the program's output is being sent to the standard output stream correctly.  You can use a command like this in your terminal:  `java FacePrinter > face.txt`
+
+4. **No Input Required:** This program doesn't take any input.  Confirm that running it without any command-line arguments produces the expected output.
+
+
+**Automated Testing (using JUnit - more advanced):**
+
+While visual inspection is the most straightforward approach, you can use JUnit (or other testing frameworks) to automate testing output if needed. This is slightly more complex because it involves comparing strings.
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class FacePrinterTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        FacePrinter.printFace();
+
+        String expectedOutput = "  +'''''+\r\n" +  // \r\n for Windows line endings - adjust if needed
+                              " [| o o |]\r\n" +
+                              "  |  ^  |\r\n" +
+                              "  | '-' |\r\n" +
+                              "  +-----+\r\n";
+
+        assertEquals(expectedOutput, outputStream.toString()); 
+
+        // Restore System.out (important!)
+        System.setOut(System.out);
+    }
+}
+```
+
+This JUnit test captures the program's output and compares it to the expected string.  It's a more robust approach for larger projects.  The `\r\n` in `expectedOutput` accounts for Windows line endings. Adjust to `\n` if you are on Linux/macOS.  Always restore `System.out` after redirecting it in tests.
+
+
+The "corner cases" for this particular program are primarily related to output handling and character encoding, rather than complex input validation.  The provided tests address those concerns.

@@ -1,0 +1,58 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example based on the prompt)
+        int number = 8;
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        // Example with user input (requires exception handling):
+        /*  Scanner scanner = new Scanner(System.in);
+            System.out.print("Input a number: ");
+            try {
+                int num = scanner.nextInt();
+                if (isPerfectCube(num)) {
+                    System.out.println("Number is a cube.");
+                } else {
+                    System.out.println("Number is not a cube.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+            }
+        */
+
+
+    }
+
+    private static boolean isPerfectCube(int num) {
+        // Handle negative numbers
+        if (num < 0) {
+            return isPerfectCube(-num); // Check the absolute value for negative cubes
+        }
+
+
+        //Efficient approach using cubic root 
+        int cubeRoot = (int) Math.round(Math.cbrt(num)); // Calculate the integer cubic root
+        return cubeRoot * cubeRoot * cubeRoot == num;
+
+
+        //Less efficient brute-force loop.  Okay for smaller numbers.
+        /*  for (int i = 0; i * i * i <= num; i++) {
+                if (i * i * i == num) {
+                    return true;
+                }
+            }
+            return false;
+        */
+
+
+    }
+}
+```

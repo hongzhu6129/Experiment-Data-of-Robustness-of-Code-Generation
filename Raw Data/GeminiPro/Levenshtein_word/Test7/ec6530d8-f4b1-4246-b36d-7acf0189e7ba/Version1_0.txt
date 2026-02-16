@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close(); 
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Regular Positive Numbers:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Regular Negative Numbers:**
+   - Input: -10, -20, -30
+   - Expected Output: -20.0
+
+3. **Mix of Positive and Negative Numbers:**
+   - Input: -10, 20, 30
+   - Expected Output: 13.333333333333334
+
+4. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000000, 2000000000, 3000000000
+   - Expected Output: 2.0E9  (2 billion - handles large numbers correctly)
+
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 4.2
+   - Expected Output: 3.466666666666667
+
+7. **Corner Case: Very large numbers close to the limit:**
+    - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE
+    - Expected Output: Infinity (Handles overflow gracefully)
+
+8. **Corner Case: Very small numbers close to zero:**
+    - Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE // MIN_VALUE is the smallest *positive* number
+    - Expected Output:  A value close to Double.MIN_VALUE
+
+
+9. **At least one number is Double.NaN:**
+    - Input: Double.NaN, 20, 30  (or 10, Double.NaN, 30 etc.)
+    - Expected Output: NaN (Handles NaN correctly)
+
+
+
+**How to Run Test Cases (Example with JUnit):**
+
+While you could manually check the outputs, using a testing framework like JUnit is much more efficient. Here's a simple example of how you could write JUnit tests for the `calculateAverage` method:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testRegularPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testLargeNumbers() {
+        assertEquals(2.0E9, AverageCalculator.calculateAverage(1000000000, 2000000000, 3000000000));
+    }
+    // ... Add more tests for other cases
+    @Test
+    void testNaNInput() {
+         assertTrue(Double.isNaN(AverageCalculator.calculateAverage(Double.NaN, 20, 30)));
+    }
+
+
+}
+```
+
+
+By using a testing framework, you can automate the process of running these tests and ensuring that your code functions correctly under various conditions. This becomes extremely important as your projects grow in size and complexity.

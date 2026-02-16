@@ -1,0 +1,56 @@
+public class StringRegionMatch {
+
+    public static void main(String[] args) {
+        String string1 = "Hello World";
+        String string2 = "World Peace";
+
+        // Example 1: Matching region exists
+        boolean match1 = regionMatches(string1, 6, string2, 0, 5);
+        System.out.println("Match 1: " + match1); // Output: true (because "World" matches)
+
+        // Example 2: Matching region does not exist (case-sensitive)
+        boolean match2 = regionMatches(string1, 0, string2, 0, 5);
+        System.out.println("Match 2: " + match2); // Output: false (because "Hello" != "World")
+
+
+        // Example 3: Matching region exists (case-insensitive)
+        boolean match3 = regionMatchesIgnoreCase(string1, 0, "hello there", 0, 5);
+        System.out.println("Match 3: " + match3); // Output: true
+
+
+         // Example 4: Partial Match
+        boolean match4 = regionMatches(string1, 0, "Helicopter", 0, 2);  // Check first 2 characters "He"
+        System.out.println("Match 4: " + match4); // Output: true
+
+        // Example 5:  Offset beyond the end of string
+        boolean match5 = regionMatches(string1, 9, string2, 0, 3); //Starting at index 9 in string1 ("d"), try to match 3 characters
+        System.out.println("Match 5: " + match5); // Output: false
+
+
+
+    }
+
+
+    public static boolean regionMatches(String str1, int toffset, String str2, int ooffset, int len) {
+        if (toffset < 0 || ooffset < 0 || toffset + len > str1.length() || ooffset + len > str2.length()) {
+            return false; // Check for invalid offsets or lengths
+        }
+
+        for (int i = 0; i < len; i++) {
+            if (str1.charAt(toffset + i) != str2.charAt(ooffset + i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static boolean regionMatchesIgnoreCase(String str1, int toffset, String str2, int ooffset, int len) {
+        if (toffset < 0 || ooffset < 0 || toffset + len > str1.length() || ooffset + len > str2.length()) {
+             return false; // Check for invalid offsets or lengths
+        }
+
+        return str1.regionMatches(true, toffset, str2, ooffset, len); // Built-in case-insensitive regionMatches
+    }
+
+}

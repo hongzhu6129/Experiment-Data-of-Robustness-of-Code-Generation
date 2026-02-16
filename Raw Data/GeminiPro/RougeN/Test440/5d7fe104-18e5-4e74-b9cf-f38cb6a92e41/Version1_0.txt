@@ -1,0 +1,24 @@
+```java
+import java.util.Calendar;
+
+public class MaxCalendarValues {
+
+    public static void main(String[] args) {
+        // Get a default calendar instance (represents current date and time).
+        Calendar calendar = Calendar.getInstance();
+
+        // Get the year, month, week of year, and day of month.
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH); // Month is 0-indexed (0 = January, 1 = February, etc.)
+        int weekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Find the maximum value among year, month, week of year, and day of month.
+        int max = Math.max(year, Math.max(month + 1, Math.max(weekOfYear, dayOfMonth))); // Add 1 to month to adjust for 0-indexing.
+
+        // Print the maximum value
+        System.out.println("Maximum value: " + max);
+
+    }
+}
+```

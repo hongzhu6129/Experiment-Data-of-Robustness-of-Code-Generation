@@ -1,0 +1,59 @@
+```java
+public class EnvironmentAndSecurityManager {
+
+    public static void main(String[] args) {
+
+        // 6. Check if a security manager is established
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        System.out.println("--------------------");
+
+
+        // 90. Get environment variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // On Windows
+        String username = System.getenv("USERNAME"); // On Windows
+
+        // Cross-platform way for temp directory:
+        String tempDir = System.getProperty("java.io.tmpdir");
+
+
+        // Cross-platform way for username:
+        String userName = System.getProperty("user.name");
+
+
+
+        if (path != null) {
+            System.out.println("PATH: " + path);
+        } else {
+            System.out.println("PATH environment variable not found.");
+        }
+
+        if (temp != null) {
+            System.out.println("TEMP (Windows): " + temp);
+        } else {
+            System.out.println("TEMP (Windows) environment variable not found.");
+        }
+
+
+         System.out.println("TEMP (Cross-Platform): " + tempDir);
+
+
+
+        if (username != null) {
+            System.out.println("USERNAME (Windows): " + username);
+        } else {
+            System.out.println("USERNAME (Windows) environment variable not found.");
+        }
+
+        System.out.println("USERNAME (Cross-Platform): " + userName);
+
+
+    }
+}
+```

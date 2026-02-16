@@ -1,0 +1,23 @@
+```java
+public class DecimalToBinary {
+
+    public static void main(String[] args) {
+        int decimalNumber = 5; // You can change this to any decimal number
+
+        if (decimalNumber == 0) {
+            System.out.println("Binary number is: 0"); // Special case for 0
+            return;
+        }
+
+        StringBuilder binary = new StringBuilder();
+
+        while (decimalNumber > 0) {
+            int remainder = decimalNumber % 2;
+            binary.insert(0, remainder); // Insert at the beginning for correct order
+            decimalNumber /= 2;
+        }
+
+        System.out.println("Binary number is: " + binary.toString());
+    }
+}
+```

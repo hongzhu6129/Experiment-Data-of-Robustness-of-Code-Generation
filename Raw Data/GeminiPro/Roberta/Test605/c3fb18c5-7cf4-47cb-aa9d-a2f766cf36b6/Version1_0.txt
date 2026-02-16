@@ -1,0 +1,42 @@
+```java
+import java.util.HashSet;
+
+public class EmptyHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet of strings
+        HashSet<String> set = new HashSet<>();
+
+        // Add some elements to the HashSet
+        set.add("apple");
+        set.add("banana");
+        set.add("orange");
+
+        // Print the initial HashSet
+        System.out.println("Initial HashSet: " + set);
+
+        // Method 1: Using the clear() method
+        set.clear(); 
+        System.out.println("HashSet after clear(): " + set);
+
+
+        // Repopulate the HashSet for demonstration of the second method
+        set.add("red");
+        set.add("green");
+        set.add("blue");
+        System.out.println("Repopulated HashSet: " + set);
+
+
+        // Method 2: Creating a new HashSet (less efficient, generally avoid this)
+        set = new HashSet<>(); // This creates a completely new HashSet, discarding the old one.
+        System.out.println("HashSet after creating a new one: " + set);
+
+
+        // Explanation:
+        System.out.println("\nExplanation:");
+        System.out.println("The `clear()` method is the most efficient and preferred way to empty a HashSet. It removes all elements from the existing HashSet.");
+        System.out.println("Creating a new HashSet using `set = new HashSet<>();`  achieves the same outcome but is generally less efficient because it involves discarding the existing object and creating a new one in memory.  Use this approach sparingly, typically when you want to ensure no references to the old HashSet remain."); 
+    }
+}
+```

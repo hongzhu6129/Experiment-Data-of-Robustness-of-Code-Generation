@@ -1,0 +1,45 @@
+import java.util.LinkedList;
+import java.util.List;
+
+public class JoinSevenLinkedLists {
+
+    public static void main(String[] args) {
+        // Create seven linked lists
+        LinkedList<Integer> list1 = new LinkedList<>(List.of(1, 2, 3));
+        LinkedList<Integer> list2 = new LinkedList<>(List.of(4, 5));
+        LinkedList<Integer> list3 = new LinkedList<>(List.of(6, 7, 8, 9));
+        LinkedList<Integer> list4 = new LinkedList<>(List.of(10));
+        LinkedList<Integer> list5 = new LinkedList<>(List.of(11, 12));
+        LinkedList<Integer> list6 = new LinkedList<>(); // Empty list
+        LinkedList<Integer> list7 = new LinkedList<>(List.of(13, 14, 15, 16));
+
+        // Join the lists using addAll()
+        LinkedList<Integer> joinedList = new LinkedList<>();
+        joinedList.addAll(list1);
+        joinedList.addAll(list2);
+        joinedList.addAll(list3);
+        joinedList.addAll(list4);
+        joinedList.addAll(list5);
+        joinedList.addAll(list6); // Adding an empty list is fine
+        joinedList.addAll(list7);
+
+        // Print the joined list
+        System.out.println("Joined List: " + joinedList);
+
+
+        // Demonstrating joining lists with different data types.
+        LinkedList<String> stringList = new LinkedList<>(List.of("a", "b"));
+        LinkedList<Double> doubleList = new LinkedList<>(List.of(1.1, 2.2));
+
+        // Create a list to hold objects of any type
+        LinkedList<Object> combinedList = new LinkedList<>();
+        combinedList.addAll(joinedList); // Add the integer list
+        combinedList.addAll(stringList); // Add the string list
+        combinedList.addAll(doubleList);  // Add the double list
+
+        System.out.println("Combined List (different types): " + combinedList);
+
+
+
+    }
+}

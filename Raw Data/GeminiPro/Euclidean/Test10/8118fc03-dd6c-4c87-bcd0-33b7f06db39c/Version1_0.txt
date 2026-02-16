@@ -1,0 +1,68 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases (Conceptual - since output is visual):**
+
+While you can't directly unit test the output of `System.out.println()` easily without more advanced techniques (e.g., capturing output streams), you can conceptually test by ensuring:
+
+1. **Correct Output:**  Visually inspect the output to confirm it resembles a face as intended by the design.
+
+2. **Character Accuracy:** Verify that the correct characters are used (e.g., `"` for the hair, `o` for the eyes, `^` for the nose, `-` for the mouth).  A small typo can ruin the face.
+
+3. **Spacing and Alignment:**  Ensure consistent spacing.  For example, the "hair" line should be centered above the "eyes" line, and the features should be correctly aligned within the face outline.
+
+4. **Platform Independence (Basic):**  Run the code on different operating systems (if possible) to check that the face displays consistently.  Character encoding differences can sometimes cause issues.
+
+
+**More Advanced Testing (If you wanted to go further):**
+
+If you really wanted automated testing, you'd need to redirect `System.out`.  Here's a basic example using `ByteArrayOutputStream`:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class FacePrinterTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); // Redirect System.out
+
+        FacePrinter.printFace();
+
+        String expectedOutput = "  +\"\"\"\"+ \r\n" + // \r\n for Windows line endings
+                               "[| o o |] \r\n" +
+                               "  |  ^  | \r\n" +
+                               "  | '-' | \r\n" +
+                               "  +-----+ \r\n";
+
+        assertEquals(expectedOutput, outputStream.toString()); // Compare the output
+
+        // Restore System.out (important!)
+        System.setOut(System.out);
+    }
+}
+```
+
+
+This advanced example uses JUnit 5.  Make sure you have the JUnit dependency in your project if you use this.  It demonstrates capturing the output and then comparing it to the expected string.  Note the handling of line endings (`\r\n` for Windows). You might need to adjust this based on your operating system.
+
+
+The conceptual checks are usually sufficient for this simple program.  The more complex the output, the more useful automated testing becomes.

@@ -1,0 +1,19 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class NextPreviousSaturday {
+
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+
+        LocalDate nextSaturday = today.with(TemporalAdjusters.next(DayOfWeek.SATURDAY));
+        LocalDate previousSaturday = today.with(TemporalAdjusters.previous(DayOfWeek.SATURDAY));
+
+        System.out.println("Today: " + today);
+        System.out.println("Next Saturday: " + nextSaturday);
+        System.out.println("Previous Saturday: " + previousSaturday);
+    }
+}
+```

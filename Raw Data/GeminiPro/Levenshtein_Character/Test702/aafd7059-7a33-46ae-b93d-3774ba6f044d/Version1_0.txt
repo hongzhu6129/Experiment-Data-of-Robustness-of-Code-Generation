@@ -1,0 +1,55 @@
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+public class PolynomialEvaluation {
+
+    public static void main(String[] args) {
+        // Example usage: -19 + 7x - 4x^2 + 6x^3 at x = 3
+        List<Double> coefficients = new ArrayList<>();
+        coefficients.add(-19.0); // Constant term
+        coefficients.add(7.0);   // Coefficient of x
+        coefficients.add(-4.0);  // Coefficient of x^2
+        coefficients.add(6.0);   // Coefficient of x^3
+
+        double x = 3.0;
+
+        double result = polyEval(coefficients, x);
+        System.out.println("Result: " + result); // Output should be 124.0
+    }
+
+    public static double polyEval(List<Double> coefficients, double x) {
+        double result = 0.0;
+
+        for (int i = coefficients.size() - 1; i >= 0; i--) {
+            result = result * x + coefficients.get(i);
+        }
+
+        return result;
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Horner's Method:** The provided method `polyEval` implements Horner's method (or Horner's scheme), which is an efficient way to evaluate polynomials.  It reduces the number of multiplications required compared to a naive approach.
+
+2. **Clarity and Comments:**  The code includes comments explaining the purpose of the code and the example usage.  This makes it more understandable.
+
+3. **Generality:** The `polyEval` method works for polynomials of any degree (as determined by the size of the `coefficients` list).
+
+4. **Error Handling (Optional):**  For a more robust solution, you might want to add error handling to `polyEval` to check for an empty `coefficients` list:
+
+
+```java
+public static double polyEval(List<Double> coefficients, double x) {
+    if (coefficients == null || coefficients.isEmpty()) {
+        throw new IllegalArgumentException("Coefficient list cannot be null or empty.");
+        // Or return a default value like 0.0 if that's more appropriate for your application.
+    }
+    // ... (rest of the code remains the same)
+}
+```
+
+5. **Example Usage:** The `main` method demonstrates how to use the `polyEval` method with a clear example.  It initializes the coefficients and the value of `x`, calls the `polyEval` method, and then prints the result.

@@ -1,0 +1,75 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ShoppingListToArray {
+
+    public static void main(String[] args) {
+        String filePath = "shopping_list.txt"; // Replace with your file path
+        String[] shoppingArray = readShoppingListToArray(filePath);
+
+        if (shoppingArray != null) {
+            System.out.println("Shopping List Array:");
+            System.out.println(Arrays.toString(shoppingArray)); 
+        }
+    }
+
+
+    private static String[] readShoppingListToArray(String filePath) {
+        List<String> shoppingList = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                shoppingList.add(line.trim()); // Remove leading/trailing whitespace
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            return null; // Indicate an error
+        }
+
+        // Convert List<String> to String[]
+        return shoppingList.toArray(new String[0]);
+    }
+}
+```
+
+**Explanation and Improvements:**
+
+1. **Error Handling:**  The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur if the file is not found or there are other reading issues. It prints an error message and returns `null` to signal a problem.
+2. **Whitespace Trimming:** The `.trim()` method is used to remove leading and trailing whitespace from each line read from the file. This ensures that extra spaces don't become part of the array elements.
+3. **Dynamic Array Sizing:** The `ArrayList` is used as an intermediary to store the lines. This allows the array to grow dynamically as the file is read.  The final conversion to a `String[]` is done using `shoppingList.toArray(new String[0])`, which creates an array of the correct size.
+4. **Clearer Output:** The output now clearly labels the printed array as the "Shopping List Array."
+5. **Helper Method:** The file reading and array creation logic is encapsulated in a separate private helper method (`readShoppingListToArray`). This improves code organization and readability.
+
+
+
+**To use this code:**
+
+1. **Create a text file** named `shopping_list.txt` (or whatever you choose as the `filePath`) in the same directory as your Java file.
+2. **Add your shopping list items** to the file, each item on a separate line.
+3. **Compile and run** the Java program.  The output will be the shopping list items in an array format.
+
+
+
+Example `shopping_list.txt`:
+
+```
+Milk
+Eggs
+Bread
+Cheese
+Apples
+```
+
+Output:
+
+```
+Shopping List Array:
+[Milk, Eggs, Bread, Cheese, Apples]
+```

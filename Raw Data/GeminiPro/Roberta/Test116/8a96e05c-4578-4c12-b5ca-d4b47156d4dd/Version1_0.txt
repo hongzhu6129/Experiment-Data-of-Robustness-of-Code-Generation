@@ -1,0 +1,53 @@
+```java
+public class MoveZeros {
+
+    public static int[] move_zero(int[] arr) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If element encountered is non-zero, then
+        // replace the element at index 'count' with this element
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                swap(arr, count++, i); // Efficiently moves non-zeros to the front
+            }
+        }
+        return arr;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {0, 3, 4, 0, 1, 2, 5, 0};
+        int[] result = move_zero(arr);
+        System.out.print("result: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Efficiency with `swap`:** The code now uses the `swap` method effectively.  Instead of repeatedly shifting elements (which is O(n) within the loop), it swaps the non-zero element directly to the next available position at the front of the array. This makes the overall time complexity O(n).
+
+2. **`count` for Tracking:** The `count` variable keeps track of the index where the next non-zero element should be placed.  This eliminates unnecessary swaps or shifts.
+
+3. **Clearer Logic:**  The code's logic is more straightforward.  The loop iterates once, and for each non-zero element, it's swapped to its correct position.
+
+4. **Adherence to Method Signatures:**  The code uses the exact method signatures specified in the prompt.
+
+5. **Correct Output:** The output now matches the desired result: `[3, 4, 1, 2, 5, 0, 0, 0]`
+
+
+
+This improved version is much more efficient and follows best practices for moving non-zero elements to the front of an array (and implicitly moving zeros to the end).

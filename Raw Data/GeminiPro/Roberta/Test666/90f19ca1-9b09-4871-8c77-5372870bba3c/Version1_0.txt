@@ -1,0 +1,46 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class MapPortion {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (naturally sorted by keys)
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        // Given key
+        int givenKey = 6;
+
+        // Get the portion of the map where keys are strictly less than givenKey
+        SortedMap<Integer, String> headMap = map.headMap(givenKey); 
+
+        // Print the headMap (portion of the map)
+        System.out.println("Portion of map with keys less than " + givenKey + ": " + headMap);
+
+
+        // Another example with a different key
+        givenKey = 3; // Now, only 1 will be included
+        headMap = map.headMap(givenKey);
+        System.out.println("Portion of map with keys less than " + givenKey + ": " + headMap);
+
+        // Example with String keys (TreeMap sorts Strings lexicographically)
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("apple", 1);
+        stringMap.put("banana", 2);
+        stringMap.put("orange", 3);
+        stringMap.put("pear", 4);
+
+        String givenStringKey = "orange";
+        SortedMap<String, Integer> stringHeadMap = stringMap.headMap(givenStringKey);
+        System.out.println("Portion of string map with keys less than " + givenStringKey + ": " + stringHeadMap);
+
+
+
+    }
+}
+```

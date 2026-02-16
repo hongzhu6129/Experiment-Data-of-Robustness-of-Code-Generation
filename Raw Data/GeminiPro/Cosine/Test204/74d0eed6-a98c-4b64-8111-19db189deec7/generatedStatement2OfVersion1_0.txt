@@ -1,0 +1,18 @@
+
+
+**Test Cases**
+
+**Normal Cases:**
+
+* Current minor buffer: "abc", suggested minor buffer: "abc" (true)
+* Current minor buffer: "abc", suggested minor buffer: "ab" (true)
+* Current minor buffer: "abc", suggested minor buffer: "bcd" (false)
+
+**Corner Cases:**
+
+* Current minor buffer: empty, suggested minor buffer: empty (true)
+* Current minor buffer: "abc", suggested minor buffer: empty (false)
+* Current minor buffer: empty, suggested minor buffer: "abc" (false)
+* Current minor buffer: null, suggested minor buffer: "abc" (false)
+* Current minor buffer: "abc", suggested minor buffer: null (false)
+* Current minor buffer: "abc", suggested minor buffer: "123" (false)

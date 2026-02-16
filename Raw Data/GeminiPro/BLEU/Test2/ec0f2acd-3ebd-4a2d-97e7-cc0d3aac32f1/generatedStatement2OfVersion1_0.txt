@@ -1,0 +1,25 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1 | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2 | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 3 | 0 | 10 | 10 | -10 | 0 | 0 | 0 |
+| 4 | 7 | 0 | 7 | 7 | 0 | Division by zero | Remainder by zero | // **Corner Case: Division by zero**
+| 5 | 0 | 0 | 0 | 0 | 0 | Division by zero | Remainder by zero | // **Corner Case: Division and remainder by zero**
+| 6 | 10.5 | 2.5 | 13.0 | 8.0 | 26.25 | 4.2 | 0.0 | // Floating-point numbers
+| 7 | -5.2 | -2.1 | -7.3 | -3.1 | 10.92 | 2.476190476...  | -0.92 | // Negative floating-point numbers. Remainders can be tricky with floating points.
+| 8 | Integer.MAX_VALUE | 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MAX_VALUE - 1 | Integer.MAX_VALUE | Integer.MAX_VALUE | 0 | // **Corner Case: Integer Overflow**  Notice the potential for overflow.
+| 9 | Integer.MIN_VALUE | -1 | Integer.MIN_VALUE - 1 (overflow) | Integer.MIN_VALUE + 1 | Integer.MIN_VALUE * -1 (overflow) | Integer.MIN_VALUE | 0 | // **Corner Case: Integer Overflow and underflow**
+
+
+**How to Run the Test Cases:**
+
+While you could manually enter these values into the program, a better approach for thorough testing is to create automated tests (using JUnit or TestNG).  Here's a very simple example of what a JUnit test might look like for a couple of these cases:
+
+
+

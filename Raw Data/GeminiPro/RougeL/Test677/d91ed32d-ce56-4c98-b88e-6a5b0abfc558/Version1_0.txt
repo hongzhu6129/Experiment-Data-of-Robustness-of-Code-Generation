@@ -1,0 +1,67 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (sorted map)
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+
+        // Example 1: Get submap where keys are strictly greater than 3
+        int fromKey = 3;
+        SortedMap<Integer, String> subMapExclusive = map.tailMap(fromKey, false); 
+        System.out.println("Submap (exclusive): " + subMapExclusive);
+
+
+        // Example 2: Get submap where keys are greater than or equal to 3
+        fromKey = 3;
+        SortedMap<Integer, String> subMapInclusive = map.tailMap(fromKey); //inclusive by default
+        System.out.println("Submap (inclusive): " + subMapInclusive);
+
+
+        // Example 3:  Demonstrating with Strings (natural ordering)
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("Apple", 1);
+        stringMap.put("Banana", 2);
+        stringMap.put("Cherry", 3);
+        stringMap.put("Date", 4);
+
+        String fromStringKey = "Banana";
+        SortedMap<String, Integer> stringSubMap = stringMap.tailMap(fromStringKey);
+        System.out.println("String Submap: " + stringSubMap);
+
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+1. **Uses `TreeMap`:** `TreeMap` is a sorted map implementation, which is essential for efficiently getting a submap based on key ranges.  Other map types like `HashMap` do not maintain order.
+
+2. **`tailMap()` method:** The `tailMap()` method is the correct way to get a portion of the map whose keys are greater than or equal to a given key.  The `false` argument makes it strictly greater than.
+
+3. **Clear Examples:** The code provides multiple examples with different key types (Integer, String) and demonstrates both inclusive and exclusive submaps.
+
+4. **Explanatory Comments:**  Comments clearly explain the code's purpose and how the `tailMap()` method works.
+
+5. **Correct Output:**  The `println` statements show the resulting submaps clearly, making it easy to understand the output.
+
+
+How to Compile and Run:
+
+1. Save the code as `SubMapExample.java`.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where you saved the file.
+4. Compile: `javac SubMapExample.java`
+5. Run: `java SubMapExample`

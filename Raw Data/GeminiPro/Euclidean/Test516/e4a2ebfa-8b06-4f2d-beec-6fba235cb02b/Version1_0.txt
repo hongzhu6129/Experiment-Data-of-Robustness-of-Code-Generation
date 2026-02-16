@@ -1,0 +1,53 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt (and a few more)
+        System.out.println("7 is happy: " + isHappy_number(7)); //true
+        System.out.println("10 is happy: " + isHappy_number(10));//true
+        System.out.println("13 is happy: " + isHappy_number(13)); //true
+        System.out.println("2 is happy: " + isHappy_number(2)); //false
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **HashSet for Cycle Detection:** The `isHappy_number` function now uses a `HashSet` called `seen` to keep track of numbers encountered during the process. This efficiently detects cycles. If a number is encountered again, it means the sequence has entered a loop, and the number is not happy.
+
+2. **Clearer Loop Condition:** The `while` loop condition is simplified to `n != 1 && !seen.contains(n)`.  This makes it more readable.
+
+3. **Digit Sum Calculation:** The inner `while` loop calculates the sum of the squares of digits correctly.
+
+4. **Return Boolean:** The function returns a `boolean` value (true if happy, false if not) as required by the prompt.
+
+5. **Example Usage in `main`:** The `main` method demonstrates how to use the `isHappy_number` function with a couple of examples.  I've added several test cases including ones explicitly mentioned in comments on previous responses.

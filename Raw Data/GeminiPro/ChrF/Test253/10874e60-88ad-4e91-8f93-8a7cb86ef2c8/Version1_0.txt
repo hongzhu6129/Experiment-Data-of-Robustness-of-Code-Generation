@@ -1,0 +1,57 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 1; // Index of the next unique element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueIndex] = nums[i];
+                uniqueIndex++;
+            }
+        }
+
+        return uniqueIndex; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+
+        int[] nums3 = {}; //Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+         int[] nums4 = {1, 2, 3, 4, 5}; // No duplicates
+         int len4 = removeDuplicates(nums4);
+         System.out.println("Updated length: " + len4 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4))); // Output: 5, [1, 2, 3, 4, 5]
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Empty Array:**  Added a check at the beginning to handle the case where the input array is empty. This prevents potential `ArrayIndexOutOfBoundsException`.
+2. **Clearer Variable Naming:** `uniqueIndex` is used instead of just `i` (for the index tracking unique elements) to make the code's purpose more obvious.
+3. **In-place Modification:** The `removeDuplicates` function modifies the original `nums` array directly (in-place) as requested by the problem.  The unique elements are placed at the beginning of the array.
+4. **Return Value:**  The function returns the length of the updated array (the number of unique elements).
+5. **Comprehensive `main` method:** The `main` method provides several test cases (including an empty array and an array with no duplicates) to demonstrate the functionality.
+6. **Outputting the modified array:** The `main` method uses `Arrays.copyOfRange` to print only the relevant portion of the modified array (up to the new length), avoiding displaying the unmodified elements after the unique values.  This makes the output clearer.
+
+
+
+This improved version addresses potential issues and provides clearer, more robust code while adhering to the given method signature requirements.

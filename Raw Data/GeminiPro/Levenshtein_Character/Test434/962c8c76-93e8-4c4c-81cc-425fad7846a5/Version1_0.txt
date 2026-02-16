@@ -1,0 +1,44 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class CountStringsStartingWithLetter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple123", "banana456", "apple789", "orange123", "grape456", "apple000");
+        char startingLetter = 'a';
+
+        long count = strings.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+
+        // Example with numbers only
+        List<String> numStrings = Arrays.asList("123", "456", "789", "123a", "456b");
+
+
+        long numCount = numStrings.stream().filter(s -> {
+            try{
+                Integer.parseInt(s);
+                return true;
+            }catch (NumberFormatException e){
+                return false;
+            }
+        }).count();
+
+        System.out.println("Number of numeric strings : " + numCount);
+
+
+        // Example with part numbers
+        List<String> partNumbers = Arrays.asList("ABC123", "DEF456", "GHI789", "123XYZ", "456PQR");
+          startingLetter = 'A';
+        count = partNumbers.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+        System.out.println("Number of part numbers starting with '" + startingLetter + "': " + count);
+    }
+}
+```

@@ -1,0 +1,26 @@
+
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Takes a command-line argument `n` (as a String).
+   - Uses `Integer.parseInt()` to convert the String to an integer.
+   - Includes error handling to ensure the input is a valid positive integer.
+   - Calls the `printMatrix` method.
+
+2. **`printMatrix` method:**
+   - Uses nested loops to iterate through the rows and columns of the matrix.
+   - `System.out.print((i * n + j + 1) % 10 + " ");` calculates the value to be printed.  The formula `i * n + j + 1` calculates a sequential number for each cell in the matrix (starting from 1). `% 10` gets the last digit of that number, which helps keep the output visually appealing for larger values of `n`.
+   - `System.out.println();` prints a newline after each row to format the output correctly.
+
+
+**How to compile and run:**
+
+1. Save the code as `MatrixPrinter.java`.
+2. Compile: `javac MatrixPrinter.java`
+3. Run: `java MatrixPrinter 5` (replace 5 with your desired value of `n`)
+
+
+**Example Output (n=5):**
+

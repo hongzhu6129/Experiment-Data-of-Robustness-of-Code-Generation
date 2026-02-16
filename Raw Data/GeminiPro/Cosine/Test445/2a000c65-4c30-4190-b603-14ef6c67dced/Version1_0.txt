@@ -1,0 +1,35 @@
+```java
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
+public class LastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the year and month from the current date
+        int year = currentDate.getYear();
+        int month = currentDate.getMonthValue();
+
+        // Alternatively, you can specify a different year and month
+        // int year = 2024;
+        // int month = 2; // February
+
+
+        // Use YearMonth to get the last day of the specified month
+        YearMonth yearMonth = YearMonth.of(year, month);
+        LocalDate lastDayOfMonth = yearMonth.atEndOfMonth();
+
+        // Format the date for output (optional)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = lastDayOfMonth.format(formatter);
+
+
+        // Print the last day of the month
+        System.out.println("Last day of the month: " + formattedDate); 
+
+    }
+}
+```

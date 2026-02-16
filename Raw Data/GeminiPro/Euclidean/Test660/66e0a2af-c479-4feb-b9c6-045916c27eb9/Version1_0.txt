@@ -1,0 +1,72 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class SortGreenMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom comparator
+        TreeMap<String, String> greenMap = new TreeMap<>(new StringComparator());
+
+        // Add some key-value pairs
+        greenMap.put("apple", "green");
+        greenMap.put("banana", "yellow");
+        greenMap.put("grape", "purple");
+        greenMap.put("avocado", "green");
+        greenMap.put("lime", "green");
+
+
+        // Print the sorted map (keys are sorted according to the comparator)
+        System.out.println(greenMap);
+
+
+        TreeMap<String, String> reverseSortedMap = new TreeMap<>(new StringComparator().reversed()); // Reverse order
+
+        reverseSortedMap.putAll(greenMap);  //Add all entries from the original map.
+
+        System.out.println(reverseSortedMap);
+
+
+
+
+    }
+
+    public static class StringComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            // Basic String comparison (lexicographical order)
+            return s1.compareTo(s2);
+
+
+            // Example: To sort by string length then alphabetically
+//            int lenComparison = Integer.compare(s1.length(), s2.length());
+//            if (lenComparison != 0) {
+//                return lenComparison; // Sort by length first
+//            } else {
+//                return s1.compareTo(s2); // If lengths are equal, sort alphabetically
+//            }
+
+        }
+    }
+}
+
+
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Clearer Comparator Implementation:**  The `StringComparator` now clearly shows how to implement the `compare` method. It defaults to standard string comparison (lexicographical order).  I've also included a commented-out example showing how you could sort by length first, then alphabetically, which is a common requirement.
+
+2. **Illustrative Example:**  The `main` method populates the `TreeMap` with more sample data to demonstrate the sorting more effectively.
+
+3. **Reverse Sorting Demonstration:** The code now shows how to easily create a `TreeMap` that sorts in reverse order using `reversed()`.
+
+4. **Conciseness and Readability:**  The code is organized and formatted for better readability.
+
+
+How to Use/Adapt:
+
+* **Change the Sorting Logic:** Modify the `compare` method in `StringComparator` to implement any sorting criteria you need.  The commented-out example provides a good starting point for custom logic.
+
+* **Different Value Types:** If you want to store values other than `String` in your map (e.g., integers, custom objects), simply change the second type parameter in the `TreeMap` declaration:  `TreeMap<String, Integer>`,  `TreeMap<String, YourCustomObject>`, etc.  You don't need to modify the `StringComparator` unless you are sorting based on the values as well.

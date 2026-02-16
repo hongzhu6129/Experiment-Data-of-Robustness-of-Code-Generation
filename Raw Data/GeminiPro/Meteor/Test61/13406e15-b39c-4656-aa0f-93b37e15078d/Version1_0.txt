@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class CompareStringToStringBuffer {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the string and string buffer to compare
+        System.out.println("Enter the string: ");
+        String string1 = scanner.nextLine();
+
+        System.out.println("Enter the string buffer: ");
+        StringBuffer stringBuffer = new StringBuffer(scanner.nextLine());
+
+        // Compare the string and string buffer
+        boolean isEqual = string1.equals(stringBuffer.toString());
+
+        // Print the result
+        if (isEqual) {
+            System.out.println("The string and string buffer are equal.");
+        } else {
+            System.out.println("The string and string buffer are not equal.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Valid test case 1:**
+    * String: "Hello"
+    * String buffer: "Hello"
+    * Expected output: "The string and string buffer are equal."
+* **Valid test case 2:**
+    * String: "World"
+    * String buffer: "World!"
+    * Expected output: "The string and string buffer are not equal."
+* **Corner case 1:**
+    * String: null
+    * String buffer: "Hello"
+    * Expected output: "The string and string buffer are not equal."
+* **Corner case 2:**
+    * String: "Hello"
+    * String buffer: null
+    * Expected output: "The string and string buffer are not equal."
+* **Corner case 3:**
+    * String: ""
+    * String buffer: ""
+    * Expected output: "The string and string buffer are equal."

@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ShuffleArrayList {
+
+    public static void main(String[] args) {
+
+        // 1. Create an ArrayList
+        List<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Orange");
+
+        // 2. Print the original ArrayList
+        System.out.println("Original ArrayList: " + colors);
+
+        // 3. Shuffle the ArrayList using Collections.shuffle()
+        Collections.shuffle(colors);
+
+
+        // 4. Print the shuffled ArrayList
+        System.out.println("Shuffled ArrayList: " + colors);
+
+
+
+        // Example with Integers:
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+
+        System.out.println("\nOriginal Integer List: " + numbers);
+        Collections.shuffle(numbers);
+        System.out.println("Shuffled Integer List: " + numbers);
+
+
+
+        // Example with custom objects (assuming you have a Card class):
+        // List<Card> deck = new ArrayList<>();
+        // // ... add Card objects to the deck ...
+        // Collections.shuffle(deck);
+
+
+        // Using a specific Random seed (for reproducible shuffles)
+        //  If you provide a Random object to the shuffle method, it will use that Random object's seed. This makes your shuffles reproducible.
+
+        List<String> reproducibleShuffleList = new ArrayList<>();
+        reproducibleShuffleList.add("Apple");
+        reproducibleShuffleList.add("Banana");
+        reproducibleShuffleList.add("Cherry");
+
+        long seed = 12345; // Your chosen seed
+
+        System.out.println("\nOriginal List for reproducible shuffle : " + reproducibleShuffleList);
+
+        Collections.shuffle(reproducibleShuffleList, new java.util.Random(seed));
+        System.out.println("Shuffled List with seed " + seed + ": " + reproducibleShuffleList);
+
+        //If you run this code again with the same seed, you will get the same shuffled order.  This is useful for testing or when you need consistent randomness.
+
+
+    }
+}

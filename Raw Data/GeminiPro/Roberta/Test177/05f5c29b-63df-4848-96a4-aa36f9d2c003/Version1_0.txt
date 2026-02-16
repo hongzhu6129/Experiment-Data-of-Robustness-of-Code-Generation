@@ -1,0 +1,53 @@
+**Java Code:**
+
+```java
+import java.util.*;
+
+public class NonRepeatingCharacters {
+
+    public static void main(String[] args) {
+        // Initialize the string
+        String str = "java";
+
+        // Create a HashSet to store the non-repeating characters
+        Set<Character> nonRepeatingChars = new HashSet<>();
+
+        // Iterate over the string and add each character to the HashSet
+        for (char c : str.toCharArray()) {
+            if (!nonRepeatingChars.contains(c)) {
+                nonRepeatingChars.add(c);
+            }
+        }
+
+        // Iterate over the HashSet and print the non-repeating characters
+        for (char c : nonRepeatingChars) {
+            System.out.println(c);
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty String:** Input string is empty, so there are no non-repeating characters.
+* **String with All Repeating Characters:** Input string contains only repeating characters, so there are no non-repeating characters.
+* **Single Character String:** Input string contains only one character, so that character is the only non-repeating character.
+
+**Regular Test Cases:**
+
+* **Input:** "hello"
+* **Expected Output:** "h", "e", "l", "o"
+
+* **Input:** "programming"
+* **Expected Output:** "p", "r", "o", "g", "a", "m"
+
+* **Input:** "1234567890"
+* **Expected Output:** "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
+
+* **Input:** "This is a test string"
+* **Expected Output:** "T", "h", "i", "s", "a", "t", "e", "r", "n", "g"
+
+* **Input:** "!@#$%^&*()"
+* **Expected Output:** "!", "@", "#", "$", "%", "^", "&", "*", "(", ")"

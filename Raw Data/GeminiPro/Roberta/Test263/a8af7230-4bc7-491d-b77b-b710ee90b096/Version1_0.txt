@@ -1,0 +1,58 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the placement of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+         int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated Length: " + len4 ); // Output: 0
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles empty arrays (`{}`) and `null` inputs, returning 0 as the length in both cases.
+
+2. **Clearer Variable Naming:** `uniqueIndex` is used instead of just `i` (in a slightly different role than the loop counter) to make the purpose of the variable more obvious.
+
+3. **In-Place Modification:**  The function modifies the original `nums` array directly (as the question seems to intend, although this might not always be the best practice in a larger project).  The unique elements are placed at the beginning of the `nums` array.
+
+4. **Correct Length Return:** The function returns `uniqueIndex + 1` because `uniqueIndex` represents the *index* of the last unique element, and the length is always one greater than the last index.
+
+5. **Improved `main` Method:**  The `main` method now includes more comprehensive test cases (empty array, null input) and uses `Arrays.copyOfRange` to print only the relevant, updated portion of the array after duplicate removal. This prevents printing the "garbage" values that might remain in the array after the unique elements.
+
+
+This revised version addresses the previous issues and provides a more robust and clear solution to the problem of removing duplicates from a sorted array in Java.

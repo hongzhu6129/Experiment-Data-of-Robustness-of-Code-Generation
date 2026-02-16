@@ -1,0 +1,64 @@
+```java
+public class SumOfSeven {
+
+    public static void main(String[] args) {
+        // Test data:  74 + 36 + ... (we need 7 numbers)
+        int num1 = 74;
+        int num2 = 36;
+        int num3 = 12;
+        int num4 = 5;
+        int num5 = 8;
+        int num6 = 20;
+        int num7 = 3;
+
+        int sum = num1 + num2 + num3 + num4 + num5 + num6 + num7;
+
+        System.out.println(sum); // Output: 158 (with these example numbers)
+
+
+        //Alternatively, you can take command line arguments:
+        if (args.length == 7) {
+            try {
+                int sumFromArgs = 0;
+                for (String arg : args) {
+                    sumFromArgs += Integer.parseInt(arg);  // Convert string arguments to integers
+                }
+                System.out.println(sumFromArgs);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input: Please provide 7 integer arguments.");
+            }
+        } else {
+            System.out.println("Please provide seven numbers as command line arguments.");
+
+        }
+
+
+
+    }
+}
+```
+
+**Explanation and How to Run with Command-Line Arguments:**
+
+1. **Hardcoded Values:** The first part of the `main` method shows how to sum seven numbers directly within the code.
+
+2. **Command-Line Arguments:** The second part demonstrates how to make your program more flexible by accepting numbers as command-line arguments.  This is how you would run it from your terminal or command prompt:
+
+   ```bash
+   java SumOfSeven 10 20 30 40 50 60 70  // Example: provide 7 numbers
+   ```
+
+   * `java SumOfSeven`:  This command executes your Java program.
+   * `10 20 30 40 50 60 70`: These are the command-line arguments.  They are passed as strings into the `args` array in your `main` method.
+   * The code inside the `if (args.length == 7)` block checks if you provided exactly seven arguments.
+   * `Integer.parseInt(arg)` converts each string argument to an integer so you can perform the addition.
+   * The `try-catch` block handles potential errors if the user enters non-numeric arguments.
+
+**Key improvements in this version:**
+
+* **Error Handling:** The `try-catch` block prevents the program from crashing if the user provides invalid input.  It prints a helpful error message instead.
+* **Flexibility:** Using command-line arguments makes the program much more reusable. You don't have to change the code every time you want to sum different numbers.
+* **Clearer Instructions:** The `else` block provides instructions to the user if they don't provide enough arguments.
+
+
+This revised response provides a much more robust and practical solution for summing seven numbers in Java using only the `main` method.

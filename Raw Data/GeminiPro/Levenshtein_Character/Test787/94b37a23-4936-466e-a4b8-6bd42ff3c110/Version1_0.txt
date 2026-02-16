@@ -1,0 +1,51 @@
+```java
+public class BinaryToHexadecimal {
+
+    public static void main(String[] args) {
+        // Input binary number as a string (since it can be long)
+        String binaryNumber = "1101"; 
+
+        // Convert binary to integer, then integer to hex
+        try {
+            int decimalEquivalent = Integer.parseInt(binaryNumber, 2);
+            String hexadecimalEquivalent = Integer.toHexString(decimalEquivalent);
+
+            System.out.println("Hexadecimal value: " + hexadecimalEquivalent.toUpperCase());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary number input.");
+        }
+    }
+}
+```
+
+
+This code takes the binary number as a String input.  We use `Integer.parseInt(binaryNumber, 2)` to convert the binary string to its integer equivalent. The `2` specifies that the input string is in base 2 (binary). Then,  `Integer.toHexString(decimalEquivalent)` converts the integer to its hexadecimal string representation.  The `.toUpperCase()` is added to make the output consistent (e.g., "D" instead of "d").  The `try-catch` block handles potential `NumberFormatException` if the input is not a valid binary string.
+
+
+If you need to handle very large binary numbers that exceed the capacity of `int`, you would need to use `BigInteger`:
+
+```java
+import java.math.BigInteger;
+
+public class BinaryToHexadecimal {
+
+    public static void main(String[] args) {
+        String binaryNumber = "110110101010101010101011111111111111"; // Example of a very long binary number
+
+        try {
+            BigInteger decimalEquivalent = new BigInteger(binaryNumber, 2);
+            String hexadecimalEquivalent = decimalEquivalent.toString(16);
+
+            System.out.println("Hexadecimal value: " + hexadecimalEquivalent.toUpperCase());
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary number input.");
+        }
+    }
+}
+```
+
+
+This version uses `BigInteger` for arbitrary-precision integer arithmetic, allowing it to handle very long binary strings. The `toString(16)` method of `BigInteger` converts the number to its hexadecimal string representation.
+

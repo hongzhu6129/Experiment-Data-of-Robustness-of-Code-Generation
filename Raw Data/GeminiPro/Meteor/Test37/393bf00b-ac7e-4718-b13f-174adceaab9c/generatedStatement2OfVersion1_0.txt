@@ -1,0 +1,41 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Input (n) | Expected Output | Reason/Notes                               |
+|------------|----------------|--------------------------------------------|
+| 0         | 0             | All terms become zero                      |
+| 1         | 123           | 1 + 11 + 111 = 123                        |
+| 2         | 246           | 2 + 22 + 222 = 246                        |
+| 5         | 615           | 5 + 55 + 555 = 615                        |
+| 9         | 1107          | 9 + 99 + 999 = 1107                       |
+| -1        | -123          | Handles negative numbers correctly         |
+| -5        | -615          | Handles negative numbers correctly         |
+| Integer.MAX_VALUE (2147483647)|  Long Overflow  | Corner case: Demonstrates potential integer overflow if not handled with `long`|
+
+
+**Explanation of the Code and Test Cases:**
+
+1. **Input:** The program takes an integer `n` as input using the `Scanner` class.
+
+2. **Calculation:**
+   - `nn` is calculated by multiplying `n` by 10 and adding `n` to it. (Effectively, it creates the number `nn` as a numerical value, not just a string concatenation).
+   - `nnn` is calculated similarly by multiplying `nn` by 10 and adding `n`.
+   - The sum `n + nn + nnn` is then computed and stored in the `result` variable.
+
+3. **Output:** The program prints the calculated `result`.
+
+4. **Data Type (long):**  Crucially, the variables `nn`, `nnn`, and `result` are declared as `long`. This is extremely important because if `n` is a large integer (e.g., close to `Integer.MAX_VALUE`), the intermediate calculations and the final result can easily exceed the maximum value that an `int` can hold, leading to integer overflow. Using `long` helps prevent this by providing a larger range.
+
+5. **Test Cases:**  The provided test cases cover a good range of inputs:
+   - Positive numbers
+   - Zero
+   - Negative numbers
+   - A large number to demonstrate the potential integer overflow issue if `long` isn't used correctly.
+
+
+**How to Run the Test Cases:**
+
+You can either manually enter each input and check the output, or you can write a simple test program (using JUnit or a similar testing framework) to automate the testing process.  Automated testing is highly recommended, especially for more complex programs.

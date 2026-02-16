@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterateArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        // Method 1: Using a basic for loop with indexes
+        System.out.println("Using basic for loop:");
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println(fruits.get(i));
+        }
+
+        // Method 2: Using an enhanced for loop (for-each loop)
+        System.out.println("\nUsing enhanced for loop:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        // Method 3: Using a while loop with an iterator. Less common but demonstrates iterator usage.
+        System.out.println("\nUsing while loop and iterator:");
+        java.util.Iterator<String> iterator = fruits.iterator();
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println(fruit);
+        }
+
+
+
+        //  Method 4: Using Java 8 Streams and forEach (functional approach)
+        System.out.println("\nUsing Java 8 Stream forEach:");
+        fruits.stream().forEach(System.out::println);  // Method reference
+
+
+        // Method 5: Using a forEach loop with a lambda expression (Java 8+)
+        System.out.println("\nUsing forEach with lambda:");
+        fruits.forEach(fruit -> System.out.println(fruit));
+
+
+
+    }
+}

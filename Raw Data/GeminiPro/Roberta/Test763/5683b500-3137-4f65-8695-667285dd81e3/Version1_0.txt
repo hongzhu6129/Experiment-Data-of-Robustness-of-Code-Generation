@@ -1,0 +1,30 @@
+```java
+public class StringDashInsert {
+
+    public static void main(String[] args) {
+        String input1 = "HelloWorld";
+        String input2 = "codingChallenges";
+        String input3 = "LeetCode";
+
+        System.out.println(validate(input1)); // Hello-World
+        System.out.println(validate(input2)); // coding-Challenges
+        System.out.println(validate(input3)); // Leet-Code
+
+    }
+
+    public static String validate(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            result.append(str.charAt(i));
+            if (i < str.length() - 1) {
+                char currentChar = str.charAt(i);
+                char nextChar = str.charAt(i + 1);
+                if (Character.isUpperCase(currentChar) && Character.isLowerCase(nextChar)) {
+                    result.append('-');
+                }
+            }
+        }
+        return result.toString();
+    }
+}
+```

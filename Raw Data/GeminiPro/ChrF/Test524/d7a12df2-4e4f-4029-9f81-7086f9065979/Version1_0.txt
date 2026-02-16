@@ -1,0 +1,28 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    // Helper function to check if a number is a perfect cube
+    private static boolean isPerfectCube(int n) {
+        if (n < 0) {  // Handle negative numbers (cube root of a negative number is negative)
+             return isPerfectCube(-n); // Check the absolute value for simplicity
+        } else if (n == 0) {
+            return true;
+        }
+        
+        int cubeRoot = Math.round((float) Math.cbrt(n)); // Calculate cube root and round to nearest integer
+        return (cubeRoot * cubeRoot * cubeRoot == n); // Check if cube of the root is equal to the original number
+    }
+}
+```

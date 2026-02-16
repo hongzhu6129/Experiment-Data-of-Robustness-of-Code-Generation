@@ -1,0 +1,36 @@
+```java
+public class HexValidator {
+
+    public static void main(String[] args) {
+        String testHex1 = "00FFAA";
+        String testHex2 = "123456";
+        String testHex3 = "ZZZZZZ";
+        String testHex4 = "0x1234";
+        String testHex5 = "FF";
+        String testHex6 = "12345";
+        String testHex7 = "00000000";
+
+
+        System.out.println(testHex1 + ": " + validate(testHex1)); // True
+        System.out.println(testHex2 + ": " + validate(testHex2)); // True
+        System.out.println(testHex3 + ": " + validate(testHex3)); // False
+        System.out.println(testHex4 + ": " + validate(testHex4)); // False (no prefix allowed)
+        System.out.println(testHex5 + ": " + validate(testHex5)); // True
+        System.out.println(testHex6 + ": " + validate(testHex6)); // False (odd length)
+        System.out.println(testHex7 + ": " + validate(testHex7)); // True
+    }
+
+    public static boolean validate(String hexCode) {
+        if (hexCode == null || hexCode.length() == 0 || hexCode.length() % 2 != 0) {
+            return false;
+        }
+
+        for (char c : hexCode.toCharArray()) {
+            if (!((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'))) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```

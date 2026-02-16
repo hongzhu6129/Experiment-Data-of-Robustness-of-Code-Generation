@@ -1,0 +1,92 @@
+**Problem Description:**
+
+Write a Java program that replaces a given character with another character in a string.
+
+**Sample Output:**
+
+```
+Enter the string: Hello World
+Enter the character to be replaced: e
+Enter the replacement character: a
+
+The replaced string is: Hallo World
+```
+
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class CharacterReplacement {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the original string
+        System.out.println("Enter the string:");
+        String originalString = scanner.nextLine();
+
+        // Get the character to be replaced
+        System.out.println("Enter the character to be replaced:");
+        char characterToBeReplaced = scanner.nextLine().charAt(0);
+
+        // Get the replacement character
+        System.out.println("Enter the replacement character:");
+        char replacementCharacter = scanner.nextLine().charAt(0);
+
+        // Replace the character
+        String replacedString = originalString.replace(characterToBeReplaced, replacementCharacter);
+
+        // Print the replaced string
+        System.out.println("The replaced string is: " + replacedString);
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+```
+Enter the string: Hello World
+Enter the character to be replaced: e
+Enter the replacement character: a
+
+Output:
+The replaced string is: Hallo World
+```
+
+**Corner Cases:**
+
+**1. Empty String:**
+
+```
+Enter the string:
+Enter the character to be replaced: e
+Enter the replacement character: a
+
+Output:
+The replaced string is:
+```
+
+**2. Character to be replaced does not exist:**
+
+```
+Enter the string: Hello World
+Enter the character to be replaced: z
+Enter the replacement character: a
+
+Output:
+The replaced string is: Hello World
+```
+
+**3. Character to be replaced is the same as the replacement character:**
+
+```
+Enter the string: Hello World
+Enter the character to be replaced: e
+Enter the replacement character: e
+
+Output:
+The replaced string is: Hello World
+```

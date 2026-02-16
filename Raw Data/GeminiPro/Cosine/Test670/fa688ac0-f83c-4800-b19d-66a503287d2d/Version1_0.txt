@@ -1,0 +1,58 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        Integer key1 = 35;
+        Integer key2 = 15;
+        Integer key3 = 5;
+
+
+        Integer result1 = getGreatestKeyLessThan(treeMap, key1);
+        Integer result2 = getGreatestKeyLessThan(treeMap, key2);
+        Integer result3 = getGreatestKeyLessThan(treeMap, key3);
+
+
+
+        System.out.println("Greatest key less than " + key1 + ": " + result1); // Output: 30
+        System.out.println("Greatest key less than " + key2 + ": " + result2); // Output: 10
+        System.out.println("Greatest key less than " + key3 + ": " + result3); // Output: null
+
+
+        // Additional tests (feel free to add more).  Edge cases are important!
+
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        Integer resultEmpty = getGreatestKeyLessThan(emptyMap, 25);
+        System.out.println("Greatest key less than 25 in empty map: " + resultEmpty); // Output: null
+
+
+
+        TreeMap<Integer, String> singleValueMap = new TreeMap<>();
+        singleValueMap.put(50, "fifty");
+
+        Integer resultSingle1 = getGreatestKeyLessThan(singleValueMap, 60);
+        Integer resultSingle2 = getGreatestKeyLessThan(singleValueMap, 40);
+
+        System.out.println("Greatest key less than 60 in single value map: " + resultSingle1);  // 50
+        System.out.println("Greatest key less than 40 in single value map: " + resultSingle2);  // null
+
+
+    }
+
+    public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> map, K key) {
+        if (map == null || map.isEmpty()) {
+            return null;
+        }
+        return map.lowerKey(key); 
+    }
+}
+```

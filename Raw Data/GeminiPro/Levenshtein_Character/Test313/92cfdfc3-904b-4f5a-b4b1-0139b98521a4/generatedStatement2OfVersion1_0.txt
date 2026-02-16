@@ -1,0 +1,29 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Edge Cases:** The code now includes handling for `null` input arrays and demonstrates behavior with already partitioned, empty, all even, and all odd arrays. This makes the code more robust.
+
+2. **Two Pointers:**  The `partitionArray2` method now uses two pointers (`evenIndex` and `oddIndex`) for efficient partitioning in a single pass. 
+   - `evenIndex` starts at the beginning and places even numbers.
+   - `oddIndex` starts at the end and places odd numbers.
+
+3. **Clarity and Readability:** Variable names are more descriptive (e.g., `evenIndex`, `oddIndex`).  Comments have been added where appropriate.
+
+4. **Main Method Tests:** The `main` method demonstrates the function's usage with different input examples, which helps in verifying correctness and understanding the output.
+
+**How it Works (Two Pointers):**
+
+The two-pointer approach efficiently partitions the array in-place (or into a new array of the same size without needing extra lists):
+
+1. **Initialization:** `evenIndex` is set to 0, `oddIndex` is set to `arr.length - 1`.
+
+2. **Iteration:** The code iterates through the input array `arr`.
+
+3. **Even Number:** If a number is even, it's placed at `partitionedArr[evenIndex]` and `evenIndex` is incremented.
+
+4. **Odd Number:** If a number is odd, it's placed at `partitionedArr[oddIndex]` and `oddIndex` is decremented.
+
+
+This process continues until all elements are processed, resulting in a partitioned array with even numbers at the beginning and odd numbers at the end.

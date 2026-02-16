@@ -1,0 +1,55 @@
+```java
+import java.util.Scanner;
+
+public class ReplaceChars {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter a string: ");
+        String input = scanner.nextLine();
+
+        // Get the character to be replaced from the user
+        System.out.println("Enter the character to be replaced: ");
+        char oldChar = scanner.next().charAt(0);
+
+        // Get the character to replace with from the user
+        System.out.println("Enter the character to replace with: ");
+        char newChar = scanner.next().charAt(0);
+
+        // Replace the old character with the new character
+        String output = input.replace(oldChar, newChar);
+
+        // Print the output string
+        System.out.println("The output string is: " + output);
+    }
+}
+```
+
+**Test cases:**
+
+* **Input:** "Hello world"
+* **Character to be replaced:** "l"
+* **Character to replace with:** "x"
+* **Output:** "Hxoxo worxd"
+
+* **Input:** "The quick brown fox jumps over the lazy dog"
+* **Character to be replaced:** "e"
+* **Character to replace with:** "a"
+* **Output:** "Tha quicx brown fox jumps ovar tha lazy dog"
+
+* **Input:** "1234567890"
+* **Character to be replaced:** "5"
+* **Character to replace with:** "a"
+* **Output:** "1234a67890"
+
+* **Input:** ""
+* **Character to be replaced:** "a"
+* **Character to replace with:** "b"
+* **Output:** ""
+
+* **Input:** "aaaaaaaaa"
+* **Character to be replaced:** "a"
+* **Character to replace with:** "b"
+* **Output:** "bbbbbbbbbb"

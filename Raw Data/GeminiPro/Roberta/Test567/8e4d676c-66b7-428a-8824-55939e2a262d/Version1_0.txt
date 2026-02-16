@@ -1,0 +1,56 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SwapArrayListElements {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+
+        System.out.println("Original ArrayList: " + colors);
+
+        // Swap elements at index 1 and 2
+        int index1 = 1;
+        int index2 = 2;
+
+        // Check if the indices are valid
+        if (index1 >= 0 && index1 < colors.size() && index2 >= 0 && index2 < colors.size()) {
+            Collections.swap(colors, index1, index2);
+
+
+            System.out.println("ArrayList after swapping: " + colors);
+
+        } else {
+            System.out.println("Invalid indices for swapping.");
+        }
+
+
+
+         //Example with Integers
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        System.out.println("\nOriginal Integer ArrayList: " + numbers);
+
+        //Swap elements at index 0 and 3
+        index1 = 0;
+        index2 = 3;
+
+         // Check if the indices are valid
+        if (index1 >= 0 && index1 < numbers.size() && index2 >= 0 && index2 < numbers.size()) {
+            Collections.swap(numbers, index1, index2);
+            System.out.println("Integer ArrayList after swapping: " + numbers);
+        } else {
+            System.out.println("Invalid indices for swapping.");
+        }
+    }
+}
+```

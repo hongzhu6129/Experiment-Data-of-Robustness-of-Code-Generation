@@ -1,0 +1,17 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **HashSet for Cycle Detection:** The `isHappy_number` function uses a `HashSet` called `seen` to keep track of numbers encountered during the process.  This is crucial for detecting cycles. If a number is already in `seen`, it means we're in a cycle, and the number is not happy.
+
+2. **Clearer While Loop Condition:** The `while` loop continues as long as `n` is not equal to 1 AND `n` has not been seen before.  This concisely combines the two termination conditions.
+
+3. **Digit Extraction and Sum Calculation:**  The inner `while` loop efficiently extracts digits and calculates the sum of squares.
+
+4. **Return Condition:** The function returns `true` if `n` eventually becomes 1, and `false` otherwise (meaning it's trapped in a cycle).
+
+5. **Main Method with Examples:** The `main` method demonstrates how to use the `isHappy_number` function with sample inputs.  I've included tests for both happy and unhappy numbers.  You can uncomment the additional test cases for more thorough testing.
+
+
+This improved version addresses potential infinite loops and provides a more robust and understandable solution.

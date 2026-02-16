@@ -1,0 +1,41 @@
+```java
+public class StartsWithWord {
+
+    public static void main(String[] args) {
+        String str = "Hello World, this is a test string.";
+        String word = "Hello World";
+        String word2 = "hello world"; // Case-sensitive check
+        String word3 = "This";         // Doesn't start with this
+
+
+        // Method 1: Using startsWith() directly - preferred
+        boolean startsWithWord = str.startsWith(word); 
+        System.out.println("\"" + str + "\" starts with \"" + word + "\"? " + startsWithWord);
+
+        boolean startsWithWord2 = str.startsWith(word2);
+        System.out.println("\"" + str + "\" starts with \"" + word2 + "\"? " + startsWithWord2);
+
+        boolean startsWithWord3 = str.startsWith(word3);
+        System.out.println("\"" + str + "\" starts with \"" + word3 + "\"? " + startsWithWord3);
+
+
+
+        // Method 2: Using substring() and equals() -  less efficient, but demonstrates another way
+        if (str.length() >= word.length()) {
+            boolean startsWithSubstring = str.substring(0, word.length()).equals(word);
+            System.out.println("\"" + str + "\" starts with \"" + word + "\" (using substring)? " + startsWithSubstring);
+
+
+            if (str.length() >= word3.length()) { //Avoid StringIndexOutOfBoundsException
+                boolean startsWithSubstring3 = str.substring(0, word3.length()).equals(word3);
+                System.out.println("\"" + str + "\" starts with \"" + word3 + "\" (using substring)? " + startsWithSubstring3);
+            }
+        } else {
+            System.out.println("The string is shorter than the word to check.");
+        }
+
+
+
+    }
+}
+```

@@ -1,0 +1,56 @@
+```java
+public class AmicableNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 220;
+        int num2 = 284;
+
+        if (areAmicable(num1, num2)) {
+            System.out.println("These numbers are amicable.");
+        } else {
+            System.out.println("These numbers are not amicable.");
+        }
+
+
+        // Test cases from the prompt
+        testAmicable(220, 284);  // Expected: amicable
+        testAmicable(1184, 1210); // Expected: amicable
+        testAmicable(2620, 2924); // Expected: amicable
+        testAmicable(5020, 5564); // Expected: amicable
+        testAmicable(6232, 6368); // Expected: amicable
+        testAmicable(10744, 10856);// Expected: amicable
+        testAmicable(12285, 14595);// Expected: amicable
+        testAmicable(17296, 18416);// Expected: amicable
+        testAmicable(63020, 76084);// Expected: amicable
+        testAmicable(66928, 66992);// Expected: amicable
+        testAmicable(220, 221);   // Expected: not amicable
+
+    }
+
+    public static boolean areAmicable(int num1, int num2) {
+        return sumOfProperDivisors(num1) == num2 && sumOfProperDivisors(num2) == num1;
+    }
+
+    public static int sumOfProperDivisors(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+
+    // Helper function for testing (can be removed after verifying)
+    public static void testAmicable(int num1, int num2) {
+        if (areAmicable(num1, num2)) {
+            System.out.println(num1 + " and " + num2 + " are amicable.");
+        } else {
+            System.out.println(num1 + " and " + num2 + " are not amicable.");
+        }
+    }
+
+}
+
+```

@@ -1,0 +1,42 @@
+```java
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. test";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' is not found in the string.");
+        }
+
+
+
+        // More examples:
+
+         mainString = "Find the last 'the'";
+         subString = "the";
+         lastIndex = mainString.lastIndexOf(subString);
+
+         if (lastIndex != -1) {
+             System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+         } else {
+            System.out.println("'" + subString + "' is not found in the string.");
+         }
+
+
+         mainString = "aaaaa";
+         subString = "aa";  // Demonstrating overlapping occurrences
+         lastIndex = mainString.lastIndexOf(subString);
+
+         if (lastIndex != -1) {
+             System.out.println("Last index of '" + subString + "' is: " + lastIndex); // Output: 3 (starting at index 3)
+         } else {
+            System.out.println("'" + subString + "' is not found in the string.");
+         }
+    }
+}
+```

@@ -1,0 +1,55 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public class LocalizedDayOfWeek {
+
+    public static void main(String[] args) {
+
+        // Get the current date
+        LocalDate today = LocalDate.now();
+
+        // Get the day of the week
+        DayOfWeek dayOfWeek = today.getDayOfWeek();
+
+
+        // Print the localized day of week in different locales
+
+        // English (US)
+        System.out.println("US English: " + dayOfWeek.getDisplayName(TextStyle.FULL, Locale.US));
+        System.out.println("US English (Short): " + dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.US));
+
+
+        // French (France)
+        System.out.println("French: " + dayOfWeek.getDisplayName(TextStyle.FULL, Locale.FRANCE));
+        System.out.println("French (Short): " + dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.FRANCE));
+
+
+        // German (Germany)
+        System.out.println("German: " + dayOfWeek.getDisplayName(TextStyle.FULL, Locale.GERMANY));
+        System.out.println("German (Short): " + dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.GERMANY));
+
+
+
+        // Spanish (Spain)
+        System.out.println("Spanish: " + dayOfWeek.getDisplayName(TextStyle.FULL, new Locale("es", "ES")));
+        System.out.println("Spanish (Short): " + dayOfWeek.getDisplayName(TextStyle.SHORT, new Locale("es", "ES")));
+
+
+        // Japanese (Japan)
+        System.out.println("Japanese: " + dayOfWeek.getDisplayName(TextStyle.FULL, Locale.JAPAN));
+        System.out.println("Japanese (Short): " + dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.JAPAN));
+
+        // Example using DateTimeFormatter for more control over formatting
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE", Locale.ITALY);  // Full day name
+        System.out.println("Italian (Formatted): " + formatter.format(today));
+
+
+
+
+    }
+}
+```

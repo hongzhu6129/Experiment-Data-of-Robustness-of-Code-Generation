@@ -1,0 +1,54 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueInMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+
+        // Value to search for
+        int valueToSearch = 2;
+
+        // Check if the map contains the value
+        boolean containsValue = map.containsValue(valueToSearch);
+
+        if (containsValue) {
+            System.out.println("The map contains the value " + valueToSearch);
+        } else {
+            System.out.println("The map does not contain the value " + valueToSearch);
+        }
+
+
+        // Example with a value that's not present
+        valueToSearch = 5;  // A value not in the map
+        containsValue = map.containsValue(valueToSearch);
+
+        if (containsValue) {
+            System.out.println("The map contains the value " + valueToSearch);
+        } else {
+            System.out.println("The map does not contain the value " + valueToSearch);
+        }
+
+        // Important Note about containsValue and autoboxing/unboxing:
+
+        // Be careful with autoboxing when using containsValue with primitive wrapper classes like Integer, Boolean etc.
+        Integer value = 4; // Integer object
+        map.put("Grape", 4); // The 4 is autoboxed to an Integer object
+        System.out.println("Map contains 4 (Integer): " + map.containsValue(4)); // This works � 4 is autoboxed
+        System.out.println("Map contains 4 (int): " + map.containsValue(4));     // This also works � 4 is autoboxed
+
+        int primitiveValue = 4;
+        System.out.println("Map contains 4 (int variable): " + map.containsValue(primitiveValue)); // Works as well � autoboxing
+
+        // containsValue uses equals() for comparison.
+        // Autoboxing creates Integer objects, and equals() for Integer compares by value.
+
+
+    }
+}
+```

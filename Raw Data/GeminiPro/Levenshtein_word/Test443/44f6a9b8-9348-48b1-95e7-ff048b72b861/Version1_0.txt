@@ -1,0 +1,28 @@
+```java
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
+public class CurrentPreviousTime {
+
+    public static void main(String[] args) {
+        // Get the current time
+        LocalDateTime currentTime = LocalDateTime.now();
+        System.out.println("Current Time: " + currentTime);
+
+        // Calculate the previous time (e.g., 5 minutes ago)
+        LocalDateTime previousTime = currentTime.minus(5, ChronoUnit.MINUTES); 
+        System.out.println("Previous Time (5 minutes ago): " + previousTime);
+
+
+        // You can adjust the ChronoUnit and the amount to get different previous times
+        // For example, 1 hour ago:
+        LocalDateTime oneHourAgo = currentTime.minus(1, ChronoUnit.HOURS);
+        System.out.println("Time 1 Hour Ago: " + oneHourAgo);
+
+        // Or 1 day ago:
+        LocalDateTime oneDayAgo = currentTime.minus(1, ChronoUnit.DAYS);
+        System.out.println("Time 1 Day Ago: " + oneDayAgo);
+
+    }
+}
+```

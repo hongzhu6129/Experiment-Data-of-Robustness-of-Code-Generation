@@ -1,0 +1,36 @@
+public class EnvironmentVariables {
+
+    public static void main(String[] args) {
+        // Get the values of the environment variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // Or "TMP" on some systems
+        String username = System.getenv("USERNAME"); // Or "USER" on some systems
+
+
+        // Print the values (or handle null if they are not set)
+        System.out.println("PATH: " + (path != null ? path : "Not set"));
+        System.out.println("TEMP: " + (temp != null ? temp : "Not set"));
+        System.out.println("USERNAME: " + (username != null ? username : "Not set"));
+
+        // Perform comparisons (examples):
+
+        // 1. Compare if PATH contains a specific directory:
+        if (path != null && path.contains("C:\\Windows\\System32")) {
+            System.out.println("System32 is in the PATH.");
+        }
+
+        // 2. Compare if TEMP is on a specific drive:
+        if (temp != null && temp.startsWith("C:\\")) {
+            System.out.println("Temp directory is on the C: drive.");
+        }
+
+        // 3. Compare usernames (case-insensitive):
+        String anotherUser = "TestUser";  // Example username to compare with
+        if (username != null && username.equalsIgnoreCase(anotherUser)) {
+            System.out.println("Usernames are the same (case-insensitive).");
+        } else {
+            System.out.println("Usernames are not the same");
+        }
+
+    }
+}

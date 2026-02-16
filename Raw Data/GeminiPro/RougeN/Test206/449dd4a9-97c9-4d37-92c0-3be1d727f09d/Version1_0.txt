@@ -1,0 +1,88 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class Solution {
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example usage:
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+
+        System.out.println("Maximum depth of the tree is: " + solution.maxDepth(root)); // Output: 3
+
+
+        // Another example (empty tree)
+        Node emptyRoot = null;
+        System.out.println("Maximum depth of the empty tree is: " + solution.maxDepth(emptyRoot)); // Output: 0
+
+         // Another example (single node tree)
+        Node singleNodeRoot = new Node(7);
+        System.out.println("Maximum depth of the single node tree is: " + solution.maxDepth(singleNodeRoot)); // Output: 1
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Node Class:**  Represents a node in the binary tree. It stores the data and pointers to the left and right children.
+
+2. **maxDepth(Node root):**
+   - **Base Case:** If `root` is `null` (empty tree or end of a path), return 0.
+   - **Recursive Step:** 
+     - Calculate the depth of the left subtree (`leftDepth`).
+     - Calculate the depth of the right subtree (`rightDepth`).
+     - Return the maximum of `leftDepth` and `rightDepth`, plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates a `Solution` object.
+   - Creates sample binary trees (including an empty tree and a single-node tree) to demonstrate the `maxDepth` method.
+   - Prints the maximum depth of each tree.
+
+
+
+**How it works (example):**
+
+For the tree:
+
+```
+     1
+    / \
+   2   3
+  / \
+ 4   5 
+```
+
+- `maxDepth(1)`:
+  - `leftDepth = maxDepth(2)`
+    - `leftDepth = maxDepth(4)` returns 1
+    - `rightDepth = maxDepth(5)` returns 1
+    - Returns `max(1, 1) + 1 = 2`
+  - `rightDepth = maxDepth(3)` returns 1
+  - Returns `max(2, 1) + 1 = 3`
+
+
+So, the final output is 3, which is the correct maximum depth.

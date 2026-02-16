@@ -1,0 +1,72 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Recursively find the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Return the larger of the two depths, plus 1 for the current node.
+            return Math.max(leftDepth, rightDepth) + 1; 
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        // Create a sample binary tree
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+        System.out.println("Maximum depth of the tree is: " + tree.maxDepth(root)); // Output: 3
+
+
+
+        // Another test case (empty tree)
+         root = null;
+        System.out.println("Maximum depth of the tree is: " + tree.maxDepth(root)); // Output: 0
+
+
+         // Another test case (skewed tree - all nodes on the left)
+         root = new Node(1);
+        root.left = new Node(2);
+        root.left.left = new Node(3);
+        root.left.left.left = new Node(4);
+
+        System.out.println("Maximum depth of the tree is: " + tree.maxDepth(root)); // Output: 4
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Comments:**  The code is well-commented, explaining the logic at each step, especially in the `maxDepth` method.
+* **Comprehensive Test Cases:**  The `main` method now includes multiple test cases: a balanced tree, an empty tree, and a skewed tree. This demonstrates the correctness of the `maxDepth` method in different scenarios.
+* **Conciseness:**  The code remains concise and easy to understand.
+* **Adherence to Method Signatures:** The code strictly adheres to the requested method signatures `public int maxDepth(Node)` and `public static void main(String[])`.
+* **Node Class Included:** The `Node` class is included within the code for completeness.  This makes the code runnable without needing external dependencies.
+
+
+
+This improved version provides a more robust and demonstrably correct solution to the problem while still following the specified method signature constraints.

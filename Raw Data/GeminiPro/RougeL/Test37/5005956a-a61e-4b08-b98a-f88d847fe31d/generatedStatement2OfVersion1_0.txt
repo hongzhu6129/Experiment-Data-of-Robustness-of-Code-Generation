@@ -1,0 +1,29 @@
+
+
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Notes                                  |
+|------------|-----------------|---------------------------------------|
+| 5          | 615             | Standard case                         |
+| 0          | 0               | Zero input                           |
+| 1          | 123             |                                       |
+| 9          | 1107            | Largest single-digit input              |
+| -1         | Error message    | Negative input (corner case)         |
+| 10         | Error message   | Two-digit input (corner case - exceeding single digit limit)|
+| a          | Error message    | Non-numeric input (corner case)      |
+| 2.5        | Error message    | Floating-point input (corner case) |
+| 2147483647| Error Message   | Integer Max Value (corner case - exceeding single digit limit and might cause potential overflow if the restriction is removed)|
+
+
+
+**Explanation of Corner Cases and Improvements:**
+
+* **Single-Digit Restriction:**  The code now explicitly restricts input to single digits (0-9). This is important for two reasons: clarity of the problem (the original wording implies single-digit input) and to avoid potential integer overflow if larger numbers were used. The `if` condition enforces this restriction.
+* **Negative Input:**  The code now handles negative single-digit input correctly by including it in the valid range in the `if` condition.
+* **Input Validation:** The `try-catch` block handles `InputMismatchException`, ensuring that the program doesn't crash if the user enters non-numeric input.
+* **Scanner Closure:**  The `finally` block ensures that the `Scanner` is closed even if an exception occurs. This is good practice for resource management.
+* **Integer Overflow (If Restriction Removed):**  If you were to remove the single-digit restriction, you'd need to consider integer overflow. For very large values of `n`, `nnn` could exceed the maximum value that an `int` can hold.  You might use `long` to store the result or implement a check to prevent overflow.
+
+
+This improved version is more robust and handles various scenarios, making it better suited for real-world use.

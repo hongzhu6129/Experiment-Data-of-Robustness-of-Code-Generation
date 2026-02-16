@@ -1,0 +1,111 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = (num1 + num2 + num3) / 3;
+
+        System.out.println("The average is: " + average);
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the program:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Decimal Numbers:**
+   - Input: 2.5, 5.7, 8.2
+   - Expected Output: 5.466666666666667
+
+3. **Negative Numbers:**
+   - Input: -5, 10, 15
+   - Expected Output: 6.666666666666667
+
+4. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Combination of Positive, Negative, and Zero:**
+   - Input: -10, 0, 20
+   - Expected Output: 3.3333333333333335
+
+
+7. **Edge Case: Very Large Numbers (potential overflow with integers, hence using doubles):**
+    - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE  (or close to these limits)
+    - Expected Output: Double.MAX_VALUE (or Infinity if overflow occurs, which is less likely with doubles)
+
+8. **Edge Case: Very Small Numbers (close to zero):**
+    - Input: 0.0000001, 0.0000002, 0.0000003
+    - Expected Output:  0.0000002
+
+
+**How to run the tests:**
+
+You can manually input these values when prompted by the program. For a more automated testing approach, you could use JUnit or TestNG (testing frameworks for Java) to write unit tests.  This is especially useful for more complex programs.  Here's a very simple example of a JUnit test (you'd need to add the JUnit library to your project):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+
+public class AverageCalculatorTest {
+
+    @Test
+    public void testNormalCase() {
+        String input = "10\n20\n30\n";
+        String expectedOutput = "The average is: 20.0\n"; // Note:  match the exact output incl. newline.
+        testAverage(input, expectedOutput);
+    }
+
+
+
+    // ... add more @Test methods for other test cases
+
+
+    private void testAverage(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        AverageCalculator.main(new String[0]); // Run your main method
+
+        assertEquals(expectedOutput, out.toString()); // Assert that the output matches the expected output
+
+        System.setIn(System.in); // Restore System.in
+        System.setOut(System.out); // Restore System.out
+    }
+}
+```
+
+
+This test example simulates user input and captures the program's output to compare it with the expected output, providing a more automated way to test your code.  It is highly recommended to write unit tests as you code, particularly for production-level applications.

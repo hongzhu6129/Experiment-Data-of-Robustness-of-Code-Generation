@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class EvenNumberChecker {
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (isEven(num)) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is not even (odd).");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input | Expected Output |
+|---|---|---|
+| Positive Even | 10 | 10 is even. |
+| Positive Odd | 7 | 7 is not even (odd). |
+| Zero | 0 | 0 is even. |
+| Negative Even | -8 | -8 is even. |
+| Negative Odd | -15 | -15 is not even (odd). |
+| Large Positive Even | 2147483646 (Integer.MAX_VALUE - 1)  | 2147483646 is even. | // Corner case: near maximum positive integer
+| Large Negative Even| -2147483648 (Integer.MIN_VALUE) | -2147483648 is even. | // Corner case: minimum negative integer
+| Large Positive Odd | 2147483647 (Integer.MAX_VALUE)  | 2147483647 is not even (odd). | // Corner case: maximum positive integer
+| Large Negative Odd | -2147483647 | -2147483647 is not even (odd). |
+
+
+**How to run the tests (using JUnit - optional but recommended):**
+
+1. **Add JUnit to your project:** If you are using an IDE like IntelliJ or Eclipse, it usually has built-in support for adding JUnit.  If not, you can add the JUnit dependency to your project's build file (e.g., `pom.xml` for Maven).
+
+2. **Create a test class:**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EvenNumberCheckerTest {
+
+    @Test
+    void testIsEvenPositiveEven() {
+        assertTrue(EvenNumberChecker.isEven(10));
+    }
+
+    @Test
+    void testIsEvenPositiveOdd() {
+        assertFalse(EvenNumberChecker.isEven(7));
+    }
+
+    // ... add tests for all the other cases listed in the table above ...
+    @Test
+    void testIsEvenZero() {
+        assertTrue(EvenNumberChecker.isEven(0));
+    }
+
+     @Test
+    void testIsEvenNegativeEven() {
+        assertTrue(EvenNumberChecker.isEven(-8));
+    }
+
+
+    @Test
+    void testIsEvenLargePositiveEven() {
+        assertTrue(EvenNumberChecker.isEven(Integer.MAX_VALUE - 1));
+    }
+    // ... more tests
+
+}
+```
+
+3. **Run the tests:**  Your IDE will have an option to run the JUnit tests.  This will execute all the methods annotated with `@Test` and report the results.
+
+
+
+
+Using a testing framework like JUnit is highly recommended, especially as your programs become more complex. It helps ensure that your code works correctly for a wide range of inputs and catches potential bugs early on.

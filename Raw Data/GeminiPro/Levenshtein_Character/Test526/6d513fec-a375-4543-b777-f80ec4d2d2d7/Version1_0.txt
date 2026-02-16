@@ -1,0 +1,54 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) Math.pow(2, Math.pow(2, n)) + 1; 
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` method:** This helper method calculates the Fermat number for a given `n`. It uses `Math.pow()` to perform the exponentiation.  The result is cast to `long` because Fermat numbers grow very large quickly.
+
+2. **`main` method:**
+   - It prints a descriptive message.
+   - The loop iterates from `n = 0` to `n = 9` (inclusive) to calculate the first 10 Fermat numbers.
+   - Inside the loop, `calculateFermatNumber` is called, and the result is printed.
+
+3. **Long Data Type:**  Using `long` allows us to store larger Fermat numbers than `int` would. However, even `long` will not be able to hold Fermat numbers beyond the first few, as they grow extremely rapidly.  If you need to represent arbitrarily large numbers, you'd need to use `BigInteger` (see the alternative version below).
+
+**Alternative Version using BigInteger (for arbitrarily large Fermat numbers):**
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        BigInteger two = BigInteger.valueOf(2);
+        return two.pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+    }
+}
+```
+
+This version uses `BigInteger` to handle the very large numbers.  This way, it will correctly calculate and display all 10 Fermat numbers without overflow issues.

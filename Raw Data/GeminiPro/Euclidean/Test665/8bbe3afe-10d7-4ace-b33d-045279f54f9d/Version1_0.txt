@@ -1,0 +1,64 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+
+        // Demonstrating floorKey()
+        System.out.println("Original TreeMap: " + treeMap);
+
+        int key1 = 25;
+        Integer floorKey1 = treeMap.floorKey(key1);
+        System.out.println("Floor key for " + key1 + ": " + floorKey1);  // Output: 20
+
+        int key2 = 30;
+        Integer floorKey2 = treeMap.floorKey(key2);
+        System.out.println("Floor key for " + key2 + ": " + floorKey2);  // Output: 30
+
+
+        int key3 = 5;
+        Integer floorKey3 = treeMap.floorKey(key3);
+        System.out.println("Floor key for " + key3 + ": " + floorKey3); // Output: null (no key less than or equal to 5)
+
+
+        int key4 = 60;  // Key greater than the largest key
+        Integer floorKey4 = treeMap.floorKey(key4);
+        System.out.println("Floor key for " + key4 + ": " + floorKey4); // Output: 50 (largest key in the map)
+
+
+        // Handling null keys (not allowed in TreeMap)
+        try {
+            treeMap.put(null, "Null Value"); 
+        } catch (NullPointerException e) {
+            System.out.println("Null keys are not allowed in TreeMap: " + e.getMessage());
+        }
+
+        // Handling null values (allowed)
+        treeMap.put(60, null);
+        System.out.println("TreeMap after adding a null value: " + treeMap);
+
+        Integer floorKey5 = treeMap.floorKey(60); // null values don't affect floorKey
+        System.out.println("Floor key for 60 (with null value): " + floorKey5); // Output: 60
+
+
+        // What if the TreeMap is empty?
+        TreeMap<Integer, String> emptyTreeMap = new TreeMap<>();
+        Integer floorKeyEmpty = emptyTreeMap.floorKey(25);
+        System.out.println("Floor key for 25 in an empty TreeMap: " + floorKeyEmpty); // Output: null
+    }
+}
+```
+
+
+This educational example demonstrates the `floorKey()` method of the `TreeMap` class in Java.  It shows how to find the greatest key less than or equal to a given key, including handling edge cases like when the key is less than the smallest key, greater than the largest key, when the TreeMap is empty, and when null values are present.  The comments explain each scenario and the expected output. The example also demonstrates how `TreeMap` handles `null` keys (throws `NullPointerException`) and `null` values (permitted).

@@ -1,0 +1,71 @@
+```java
+import java.util.HashMap;
+
+public class HexToBinary {
+
+    public static int hex_to_binary(String hex) {
+        HashMap<Character, String> hexCharToBinary = new HashMap<>();
+        hexCharToBinary.put('0', "0000");
+        hexCharToBinary.put('1', "0001");
+        hexCharToBinary.put('2', "0010");
+        hexCharToBinary.put('3', "0011");
+        hexCharToBinary.put('4', "0100");
+        hexCharToBinary.put('5', "0101");
+        hexCharToBinary.put('6', "0110");
+        hexCharToBinary.put('7', "0111");
+        hexCharToBinary.put('8', "1000");
+        hexCharToBinary.put('9', "1001");
+        hexCharToBinary.put('A', "1010");
+        hexCharToBinary.put('B', "1011");
+        hexCharToBinary.put('C', "1100");
+        hexCharToBinary.put('D', "1101");
+        hexCharToBinary.put('E', "1110");
+        hexCharToBinary.put('F', "1111");
+
+        StringBuilder binary = new StringBuilder();
+        for (char c : hex.toUpperCase().toCharArray()) {
+            if (hexCharToBinary.containsKey(c)) {
+                binary.append(hexCharToBinary.get(c));
+            } else {
+                // Handle invalid hex characters (optional)
+                System.err.println("Invalid hex character: " + c);
+                return -1; // Or throw an exception
+            }
+        }
+
+       try {
+           return Integer.parseInt(binary.toString(), 2); //Convert binary string to integer
+       } catch (NumberFormatException e) {
+           System.err.println("Resulting binary is too large for an integer: " + binary.toString());
+           return -1; // Or throw an exception
+       }
+    }
+
+    public static void main(String[] args) {
+        String hex = "37";
+        int binary = hex_to_binary(hex);
+        if (binary != -1) { // Check if conversion was successful
+            System.out.println("Equivalent binary number is: " + Integer.toBinaryString(binary));
+        }
+
+        hex = "AF"; //Test with another hex
+        binary = hex_to_binary(hex);
+          if (binary != -1) { // Check if conversion was successful
+              System.out.println("Equivalent binary number is: " + Integer.toBinaryString(binary));
+          }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes error handling for invalid hexadecimal characters (like 'G' or 'H') and for cases where the resulting binary string is too large to fit into an `int`.  It returns -1 to indicate an error.  You could alternatively throw an exception.
+2. **Case-Insensitivity:** The `.toUpperCase()` method is used to handle both lowercase and uppercase hexadecimal input.
+3. **HashMap for Efficiency:** A `HashMap` is used to store the hexadecimal-to-binary mappings, making the lookup process very efficient.
+4. **Clearer Output:** The output now clearly labels the result as the "binary number".
+5. **Concise Conversion:** The `Integer.parseInt(binary.toString(), 2)` converts the binary string directly to an integer using base 2. Then, the  `Integer.toBinaryString(binary)` in the `main` method prints out the binary representation, keeping with the format of the original prompt.
+6. **Additional Test Case:**  A second test case is included to demonstrate the program with a different hex input.
+
+
+This revised version is more robust, efficient, and easier to understand. It addresses potential issues and provides a better user experience.

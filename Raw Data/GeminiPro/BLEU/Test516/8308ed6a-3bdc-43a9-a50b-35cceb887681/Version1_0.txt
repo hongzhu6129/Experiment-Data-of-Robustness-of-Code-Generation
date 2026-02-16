@@ -1,0 +1,54 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's examples (though they weren't explicitly requested to be printed).
+        System.out.println("7 is a happy number: " + isHappy_number(7));  // true
+        System.out.println("2 is a happy number: " + isHappy_number(2));  // false
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **HashSet for Cycle Detection:** The `seen` HashSet is crucial. It stores the numbers encountered during the process. If we encounter a number already in `seen`, it indicates a cycle, and the number is not happy. This prevents infinite loops.
+
+2. **Clearer Loop Condition:** The `while` loop condition `n != 1 && !seen.contains(n)` concisely expresses the two termination conditions: reaching 1 (happy) or entering a cycle (unhappy).
+
+3. **Digit Extraction:** The inner `while` loop efficiently extracts digits using the modulo (%) and division (/) operators.
+
+4. **Concise Return:** The `return n == 1;` directly returns the result after the loop terminates.
+
+5. **Example Usage in `main`:** The `main` method demonstrates how to call `isHappy_number` and print the results, making the code easier to understand and test.  I've added a couple more examples based on numbers mentioned in the prompt.
+
+
+This improved version is more efficient, readable, and robust in handling both happy and unhappy numbers correctly.

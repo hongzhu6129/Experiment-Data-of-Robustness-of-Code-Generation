@@ -1,0 +1,62 @@
+**Java program to check whether two String objects contain the same data:**
+
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+        // Create two String objects
+        String str1 = "Hello World";
+        String str2 = "Hello World";
+
+        // Check if the two strings are equal using the equals() method
+        boolean isEqual = str1.equals(str2);
+
+        // Print the result
+        System.out.println("Are the two strings equal? " + isEqual);
+    }
+}
+```
+
+**Test cases including corner cases:**
+
+**Test case 1:**
+
+* Input 1: "" (empty string)
+* Input 2: "" (empty string)
+* Expected output: true
+
+**Test case 2:**
+
+* Input 1: "Hello World"
+* Input 2: "Hello World"
+* Expected output: true
+
+**Test case 3:**
+
+* Input 1: "Hello"
+* Input 2: "World"
+* Expected output: false
+
+**Test case 4:**
+
+* Input 1: "Hello World!"
+* Input 2: "Hello World"
+* Expected output: false (strings are not equal due to the exclamation mark)
+
+**Test case 5:**
+
+* Input 1: null
+* Input 2: null
+* Expected output: false (null is not equal to null)
+
+**Test case 6:**
+
+* Input 1: "Hello World"
+* Input 2: new String("Hello World")
+* Expected output: true (strings are equal even though they are not the same object)
+
+**Test case 7:**
+
+* Input 1: "Hello\nWorld" (string with newline character)
+* Input 2: "Hello\nWorld" (string with newline character)
+* Expected output: true (strings are equal including whitespace characters)

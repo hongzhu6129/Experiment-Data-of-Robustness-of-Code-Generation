@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+        int indexToUpdate = 2;  // Update the element at index 2 (which is currently 3)
+        int newValue = 99;
+
+        // Update the array element:
+        if (indexToUpdate >= 0 && indexToUpdate < originalArray.length) {
+            originalArray[indexToUpdate] = newValue;
+            System.out.println("Updated array: " + Arrays.toString(originalArray)); // Output: [1, 2, 99, 4, 5]
+        } else {
+            System.out.println("Invalid index. Index must be within the bounds of the array.");
+        }
+
+
+        // Another example demonstrating updating multiple elements.
+        int[] anotherArray = {10, 20, 30, 40, 50};
+        int[] indicesToUpdate = {0, 3}; // Update elements at indices 0 and 3
+        int[] newValues = {100, 400};
+
+
+        // Ensure indices and new values arrays have the same length.
+        if (indicesToUpdate.length == newValues.length) {
+            for (int i = 0; i < indicesToUpdate.length; i++) {
+                int currentIndex = indicesToUpdate[i];
+                if (currentIndex >= 0 && currentIndex < anotherArray.length) {
+                    anotherArray[currentIndex] = newValues[i];
+                } else {
+                    System.out.println("Invalid index: " + currentIndex); //Handle out-of-bounds indices.
+                }
+            }
+            System.out.println("Updated array (multiple elements): " + Arrays.toString(anotherArray));
+        } else {
+             System.out.println("Error: Indices and new values arrays must have the same length.");
+        }
+
+
+    }
+}

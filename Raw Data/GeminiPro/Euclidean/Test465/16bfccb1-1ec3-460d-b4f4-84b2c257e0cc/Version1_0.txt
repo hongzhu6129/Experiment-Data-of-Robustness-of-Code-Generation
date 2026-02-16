@@ -1,0 +1,70 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class DateTimeBeforeHoursMinutes {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of hours: ");
+        int hours = scanner.nextInt();
+
+        System.out.print("Enter the number of minutes: ");
+        int minutes = scanner.nextInt();
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        LocalDateTime pastDateTime = currentDateTime.minus(hours, ChronoUnit.HOURS).minus(minutes, ChronoUnit.MINUTES);
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = pastDateTime.format(formatter);
+
+
+        System.out.println("Current Date and Time: " + currentDateTime.format(formatter));
+        System.out.println("Date and Time " + hours + " hours and " + minutes + " minutes ago: " + formattedDateTime);
+
+        scanner.close();
+    }
+}
+```
+
+
+Explanation:
+
+1. **Import necessary classes:**
+   - `java.time.LocalDateTime`:  Represents date and time.
+   - `java.time.format.DateTimeFormatter`: For formatting the date and time output.
+   - `java.time.temporal.ChronoUnit`:  For manipulating date and time units (hours, minutes).
+   - `java.util.Scanner`: For user input.
+
+2. **Get user input:**
+   - Prompt the user to enter the number of hours and minutes.
+
+3. **Get current date and time:**
+   - `LocalDateTime currentDateTime = LocalDateTime.now();` gets the current date and time.
+
+4. **Calculate past date and time:**
+   - `LocalDateTime pastDateTime = currentDateTime.minus(hours, ChronoUnit.HOURS).minus(minutes, ChronoUnit.MINUTES);` subtracts the specified hours and minutes from the current date and time.
+
+5. **Format the date and time:**
+   - `DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");` creates a formatter with the desired format.
+   - `String formattedDateTime = pastDateTime.format(formatter);` formats the `pastDateTime` according to the specified pattern.
+
+6. **Print the results:**
+   - Display both the current date and time and the calculated past date and time.
+
+7. **Close the scanner:**  It's good practice to close the `Scanner` to release resources. `scanner.close();`
+
+
+Example Usage:
+
+```
+Enter the number of hours: 2
+Enter the number of minutes: 30
+Current Date and Time: 2024-03-20 16:45:10  (Example - your current time will be different)
+Date and Time 2 hours and 30 minutes ago: 2024-03-20 14:15:10
+```

@@ -1,0 +1,40 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveLastTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some elements
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Check if the TreeSet is empty
+        if (treeSet.isEmpty()) {
+            System.out.println("TreeSet is empty.");
+        } else {
+            // Retrieve and remove the last element
+            Integer lastElement = treeSet.pollLast(); 
+
+            if (lastElement != null) {
+                System.out.println("Removed last element: " + lastElement);
+                System.out.println("Updated TreeSet: " + treeSet);
+            }
+        }
+
+
+
+         // Example demonstrating behavior with an empty TreeSet
+         TreeSet<Integer> emptyTreeSet = new TreeSet<>();
+         Integer lastElementEmpty = emptyTreeSet.pollLast();
+         if(lastElementEmpty == null){
+              System.out.println("TreeSet is empty, nothing to remove.");
+         }
+    }
+}
+```

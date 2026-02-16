@@ -1,0 +1,79 @@
+```java
+import java.util.Scanner;
+
+public class DivideMinor {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the minor and the number of parts
+        System.out.print("Enter the minor: ");
+        int minor = input.nextInt();
+
+        System.out.print("Enter the number of parts: ");
+        int numParts = input.nextInt();
+
+        // Check if the minor is valid
+        if (minor <= 0) {
+            System.out.println("Invalid minor");
+            return;
+        }
+
+        // Check if the number of parts is valid
+        if (numParts <= 0) {
+            System.out.println("Invalid number of parts");
+            return;
+        }
+
+        // Divide the minor into the specified number of parts
+        int[] parts = new int[numParts];
+        for (int i = 0; i < numParts; i++) {
+            parts[i] = minor / numParts;
+        }
+
+        // Add the remainder to the last part
+        parts[numParts - 1] += minor % numParts;
+
+        // Print the parts
+        System.out.println("The parts are: ");
+        for (int part : parts) {
+            System.out.println(part);
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Corner cases:**
+    * Minor = 0
+    * Number of parts = 0
+    * Minor = 1
+    * Number of parts = 1
+* **Normal cases:**
+    * Minor = 10
+    * Number of parts = 2
+    * Minor = 15
+    * Number of parts = 3
+* **Large values:**
+    * Minor = 1000
+    * Number of parts = 10
+* **Negative values:**
+    * Minor = -10
+    * Number of parts = 2
+
+**Expected output:**
+
+* **Corner cases:**
+    * Minor = 0: Invalid minor
+    * Number of parts = 0: Invalid number of parts
+    * Minor = 1: [1]
+    * Number of parts = 1: [10]
+* **Normal cases:**
+    * Minor = 10, Number of parts = 2: [5, 5]
+    * Minor = 15, Number of parts = 3: [5, 5, 5]
+* **Large values:**
+    * Minor = 1000, Number of parts = 10: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+* **Negative values:**
+    * Minor = -10: Invalid minor
+    * Number of parts = 2: Invalid number of parts

@@ -1,0 +1,52 @@
+```java
+class Solution {
+    /**
+     * Given a string, return a new string without the first two characters. 
+     * Keep the first character if it is 'g' and keep the second character if it is 'h'.
+     *
+     * @param str The input string.
+     * @return The modified string.
+     */
+    public String exceptFirstTwo(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        if (str.length() > 0 && str.charAt(0) == 'g') {
+            result.append('g');
+        }
+
+        if (str.length() > 1 && str.charAt(1) == 'h') {
+            result.append('h');
+        }
+
+        if (str.length() > 2) {
+            result.append(str.substring(2));
+        }
+        
+        return result.toString();
+
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.exceptFirstTwo("abcdefg")); // cdefg
+        System.out.println(solution.exceptFirstTwo("gabcdefg")); // gabcdefg
+        System.out.println(solution.exceptFirstTwo("abcdefgh")); // hcdefgh
+        System.out.println(solution.exceptFirstTwo("ghabcdefgh")); // ghabcdefgh
+        System.out.println(solution.exceptFirstTwo("ab")); // ""
+        System.out.println(solution.exceptFirstTwo("gb")); // gb
+        System.out.println(solution.exceptFirstTwo("ah")); // h
+        System.out.println(solution.exceptFirstTwo("gh")); // gh
+        System.out.println(solution.exceptFirstTwo("g")); // g
+        System.out.println(solution.exceptFirstTwo("h")); // ""
+        System.out.println(solution.exceptFirstTwo("")); // ""
+         System.out.println(solution.exceptFirstTwo(null)); // ""
+
+    }
+}
+```

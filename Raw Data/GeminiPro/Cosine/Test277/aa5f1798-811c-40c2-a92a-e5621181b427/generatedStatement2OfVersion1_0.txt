@@ -1,0 +1,17 @@
+
+
+
+Key changes and explanations:
+
+1. **Interval Class:**  Created a separate `Interval` class to encapsulate start and end values. This improves code organization and readability.  It includes the required `getStart()` and `getEnd()` methods.
+
+2. **Comparator:** The `merge` method now uses a `Comparator` with the `compare` method inside the `Collections.sort` call  to sort the intervals based on their start times.  This is crucial for the merging logic to work correctly.
+
+3. **Merging Logic:** The core merging logic iterates through the sorted intervals. It compares the `end` of the `current` interval with the `start` of the `next` interval. If they overlap, a new interval is created with the `start` of the `current` and the maximum of their `end` values.  Otherwise, the `current` interval is added to the `merged` list, and the `next` becomes the new `current`.
+
+4. **Adding the Last Interval:**  After the loop, the last `current` interval is added to the `merged` list, as it wouldn't have been added within the loop.
+
+5. **Example Usage in `main`:**  The `main` method demonstrates how to create `Interval` objects, add them to an `ArrayList`, and then call the `merge` function. It also prints the resulting merged intervals.
+
+
+This revised code addresses the prompt's constraints and provides a clear and functional solution to the interval merging problem.

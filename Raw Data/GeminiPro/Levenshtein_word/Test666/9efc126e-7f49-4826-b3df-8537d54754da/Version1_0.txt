@@ -1,0 +1,57 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some data
+        map.put(10, "Ten");
+        map.put(20, "Twenty");
+        map.put(30, "Thirty");
+        map.put(40, "Forty");
+        map.put(50, "Fifty");
+
+        // Given key
+        int givenKey = 40; 
+
+        // Get the portion of the map whose keys are strictly less than givenKey
+        SortedMap<Integer, String> subMap = map.headMap(givenKey);  // Important: headMap is exclusive of the 'toKey'
+
+        // Print the submap
+        System.out.println("Original Map: " + map);
+        System.out.println("Submap with keys strictly less than " + givenKey + ": " + subMap);
+
+
+        // Example with a key that doesn't exist in the map:
+        givenKey = 25;
+        subMap = map.headMap(givenKey);
+        System.out.println("Submap with keys strictly less than " + givenKey + ": " + subMap);
+
+
+        // Example with the smallest key:  demonstrates that headMap returns an empty map if no keys are smaller
+        givenKey = 10;
+        subMap = map.headMap(givenKey);
+        System.out.println("Submap with keys strictly less than " + givenKey + ": " + subMap);
+
+       // Example demonstrating modification to the submap affects the original map (because it's a view, not a copy)
+        givenKey = 40;
+        subMap = map.headMap(givenKey);
+        subMap.put(5, "Five"); // This will be reflected in the original map because subMap is a view.
+        System.out.println("Original Map after modification through subMap: " + map);
+        
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Explanation:**  Added comments to explain each step and the behavior of `headMap`.
+* **Illustrative Examples:** Included multiple examples with different `givenKey` values to showcase how `headMap` works, including cases where the key doesn't exist in the map and when it's the smallest key.
+* **Important Note on `headMap`:** Explicitly stated that `headMap` is *exclusive* of the `toKey`. This is crucial for understanding its behavior.
+* **View vs. Copy Clarification:** Added a final example to demonstrate that the submap returned by `headMap` is a *view* of the original map, not a copy. Modifications made to the submap affect the original map. This is a critical point to understand to avoid unexpected side effects.

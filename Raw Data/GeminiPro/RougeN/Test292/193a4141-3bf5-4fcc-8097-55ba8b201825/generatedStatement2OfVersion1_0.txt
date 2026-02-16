@@ -1,0 +1,15 @@
+
+
+
+Key improvements and explanations:
+
+1. **Square Matrix Check:** The `transpose` method now checks if the input matrix is square (rows == cols).  In-place transposition (modifying the original array directly) only works correctly for square matrices.  The code now prints an error message and returns if the matrix isn't square.  A more robust approach would be to throw an exception.
+
+2. **Optimized Swapping:** The inner loop in `transpose` now starts from `j = i + 1`. This avoids redundant swaps and improves efficiency. We only need to swap elements above the main diagonal with elements below it.
+
+3. **Clearer Output:** Added labels ("Original Array" and "Transposed Array") to the output for better readability.
+
+4. **Enhanced `print_array`:** The `print_array` method uses enhanced for loops (for-each loops) for more concise and readable code.
+
+
+This revised code provides a more correct and efficient solution for transposing a 2D array in Java, specifically addressing the in-place transposition requirement while handling non-square matrices gracefully.

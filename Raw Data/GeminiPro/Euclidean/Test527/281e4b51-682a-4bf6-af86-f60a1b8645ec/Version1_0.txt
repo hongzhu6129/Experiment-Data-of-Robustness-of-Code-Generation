@@ -1,0 +1,28 @@
+```java
+public class RamanujanNumbers {
+
+    public static void main(String[] args) {
+        int n = 10000; // Adjust the upper limit as needed
+
+        // Use a boolean array to track which numbers are the sum of two cubes
+        boolean[] isSumOfTwoCubes = new boolean[n + 1];
+
+        // Iterate through all possible pairs of cubes
+        for (int a = 1; a * a * a < n; a++) {
+            for (int b = a + 1; a * a * a + b * b * b <= n; b++) {
+                int sum = a * a * a + b * b * b;
+                if (isSumOfTwoCubes[sum]) { // Already found a different way to express this sum
+                    System.out.println(sum + " is a taxicab number (can be expressed as the sum of two cubes in at least two ways).");
+
+                    // Optimization: If we only need to find *one* such number, exit here
+                    return; // or break if you want to find all such numbers within 'n'
+                }
+                isSumOfTwoCubes[sum] = true;
+            }
+        }
+    }
+}
+
+
+
+```

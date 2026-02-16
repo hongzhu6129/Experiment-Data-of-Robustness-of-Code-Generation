@@ -1,0 +1,59 @@
+```java
+public class StoogeSort {
+
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 8, 1, 9, 4, 7, 3, 6};
+        stoogeSort(arr);
+
+        System.out.print("Sorted array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void stoogeSort(int[] arr) {
+        stoogeSort(arr, 0, arr.length - 1);
+    }
+
+    public static void stoogeSort(int[] arr, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+
+        if (arr[low] > arr[high]) {
+            int temp = arr[low];
+            arr[low] = arr[high];
+            arr[high] = temp;
+        }
+
+        if (high - low + 1 > 2) {
+            int t = (high - low + 1) / 3;
+            stoogeSort(arr, low, high - t);
+            stoogeSort(arr, low + t, high);
+            stoogeSort(arr, low, high - t); 
+        }
+    }
+}
+```
+
+
+Explanation of Stooge Sort and the Code:
+
+1. **Stooge Sort Algorithm:**
+   - **Base Case:** If the subarray has one or two elements, sort them directly (if needed).
+   - **Recursive Step:**
+     - Recursively sort the first two-thirds of the array.
+     - Recursively sort the last two-thirds of the array.
+     - Recursively sort the first two-thirds of the array again (to ensure the largest element is in its correct place).
+
+2. **Code Breakdown:**
+   - `stoogeSort(int[] arr)`: This is the main entry point for sorting. It calls the recursive helper function with the initial indices.
+   - `stoogeSort(int[] arr, int low, int high)`: The recursive function.
+     - **Base Case:** `if (low >= high)`: If `low` is greater than or equal to `high`, the subarray has 0 or 1 element, so it's already sorted.
+     - **Swap:** `if (arr[low] > arr[high])`: Swaps the elements at `low` and `high` if they are out of order. This handles the case of a 2-element subarray and also helps in the general sorting process.
+     - **Recursive Calls:**
+       - `int t = (high - low + 1) / 3;`: Calculates the size of two-thirds of the current subarray.
+       - The three recursive calls implement the Stooge Sort algorithm as described above.
+
+
+3. **Time Complexity:**  Stooge Sort has a very poor time complexity of O(n<sup>(log 3 / log 1.5)</sup>) which is approximately O(n<sup>2.71</sup>).  This is worse than even bubble sort (O(n<sup>2</sup>)).  It's mostly used as a theoretical example and not for practical applications.

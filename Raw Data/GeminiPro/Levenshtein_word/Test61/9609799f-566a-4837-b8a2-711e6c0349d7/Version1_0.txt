@@ -1,0 +1,61 @@
+```java
+public class SubstringOrHash {
+
+    public static String getFirstThreeChars(String str) {
+        if (str == null) {
+            return "###"; // Handle null input
+        }
+
+        int len = str.length();
+        if (len >= 3) {
+            return str.substring(0, 3);
+        } else {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < 3; i++) {
+                if (i < len) {
+                    result.append(str.charAt(i));
+                } else {
+                    result.append("#");
+                }
+            }
+            return result.toString();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println(getFirstThreeChars("abcdef"));   // Output: abc
+        System.out.println(getFirstThreeChars("ab"));      // Output: ab#
+        System.out.println(getFirstThreeChars("a"));       // Output: a##
+        System.out.println(getFirstThreeChars(""));        // Output: ###
+        System.out.println(getFirstThreeChars(null));     // Output: ### (Handles null input)
+        System.out.println(getFirstThreeChars("12345"));  // Output: 123
+        System.out.println(getFirstThreeChars("12"));     // Output: 12#
+        System.out.println(getFirstThreeChars(" "));     // Output:  ## (Handles spaces)
+
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Null Handling:** The code now explicitly handles `null` input strings, returning "###" in that case.  This prevents `NullPointerExceptions`.
+
+2. **StringBuilder for Efficiency:** When building the string with "#" substitutions, a `StringBuilder` is used. This is more efficient than repeated string concatenation (using `+`).
+
+3. **Clearer Logic:** The `if/else` structure makes the code easier to read and understand.
+
+4. **Comprehensive Test Cases:**  The test cases cover various scenarios, including:
+   - Strings longer than 3 characters.
+   - Strings shorter than 3 characters (1 and 2 characters).
+   - Empty string.
+   - `null` string.
+   - Strings with numbers.  (Demonstrating it works with any characters).
+   - Strings containing spaces.
+
+
+
+This improved version is more robust and handles edge cases correctly, making it more reliable.

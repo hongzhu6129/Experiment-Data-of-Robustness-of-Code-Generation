@@ -1,0 +1,49 @@
+```java
+public class DecimalToHexadecimal {
+
+    public static void main(String[] args) {
+        int decimal = 15;
+        String hexadecimal = Integer.toHexString(decimal);
+        System.out.println("hexadecimal number is: " + hexadecimal);
+
+        // Additional examples demonstrating direct output and handling different inputs within main
+        System.out.println("Hex of 255 is: " + Integer.toHexString(255)); 
+        System.out.println("Hex of 10 is: " + Integer.toHexString(10));
+
+        // Example with user input (requires exception handling for non-integer input)
+        if (args.length > 0) {
+            try {
+                int inputDecimal = Integer.parseInt(args[0]);
+                String inputHex = Integer.toHexString(inputDecimal);
+                System.out.println("Hex of " + inputDecimal + " is: " + inputHex);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input: Please provide an integer.");
+            }
+
+        }
+
+
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Direct use of `Integer.toHexString()`:** This is the most straightforward and efficient way to convert a decimal to hexadecimal in Java.
+* **Clear output:**  The output now clearly labels the result.
+* **Additional examples:** The code now includes a couple of other examples to show how `Integer.toHexString()` handles different decimal values.
+* **Input Handling (with error management):** The code now shows how to take a decimal number as input from the command line arguments (using `args`). It also includes a `try-catch` block to gracefully handle potential `NumberFormatException` if the user enters something that isn't an integer.  This demonstrates more robust code.
+
+
+
+How to compile and run (from the command line):
+
+1. **Save:** Save the code as `DecimalToHexadecimal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac DecimalToHexadecimal.java`
+3. **Run:**  `java DecimalToHexadecimal`  (This will use the default value of 15)
+4. **Run with input:** `java DecimalToHexadecimal 255` (This will convert 255 to hexadecimal)
+
+
+This revised answer provides a more complete and practical solution for converting decimal to hexadecimal in Java, directly within the `main` method, while addressing input and error handling.

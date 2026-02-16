@@ -1,0 +1,63 @@
+```java
+import java.util.Arrays;
+
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Variable to keep track of the new array length
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 6, 7, 6, 2};
+        int val = 6;
+
+        System.out.println("Original array: " + Arrays.toString(nums));
+
+        int newLength = removeElement(nums, val);
+
+        System.out.println("The length of the new array is: " + newLength);
+
+
+        // Print the updated array (optional - the problem only asks for the length)
+         System.out.print("Updated array: [");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i]);
+            if (i < newLength - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]"); 
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeElement(int[] nums, int val)` Method:**
+   - Initializes `k` to 0.  `k` will represent the index of the next position to place a non-`val` element.
+   - Iterates through the `nums` array.
+   - If the current element `nums[i]` is *not* equal to `val`, it's copied to the `k`-th position, and `k` is incremented.  This effectively overwrites any occurrences of `val` with elements that are not equal to `val`.
+   - Finally, `k` is returned. This represents the number of elements in the updated array (excluding the removed `val` occurrences).
+
+2. **`main(String[] args)` Method:**
+   - Creates a sample array `nums`.
+   - Sets the value to be removed (`val`).
+   - Prints the original array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the new length.
+   - (Optional) The updated array is printed to demonstrate the changes.  Note that the elements after the `newLength` index in the original array are still present, but they are considered discarded after the `removeElement` operation.
+
+
+**Key Improvement:**
+
+This code is more efficient because it does the removal in-place within the original array, avoiding the need for a separate array and thus saving space.  It has a time complexity of O(n) and a space complexity of O(1).

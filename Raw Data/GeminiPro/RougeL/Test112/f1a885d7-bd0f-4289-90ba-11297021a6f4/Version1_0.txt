@@ -1,0 +1,44 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class SlidingWindowMedian {
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 8};
+        int k = 3;
+        ArrayList<Integer> result = slidingWindowMedian(nums, k);
+        System.out.println(result); // Output: [2, 3, 4, 5, 6, 7, 8]
+    }
+
+    public static ArrayList<Integer> slidingWindowMedian(int[] nums, int k) {
+        ArrayList<Integer> medians = new ArrayList<>();
+        if (nums == null || nums.length < k || k <= 0) {
+            return medians;
+        }
+
+        for (int i = 0; i <= nums.length - k; i++) {
+            int[] window = Arrays.copyOfRange(nums, i, i + k);
+            Arrays.sort(window); // Sort the window to find the median
+            medians.add(window[k / 2]);
+        }
+        return medians;
+
+    }
+
+
+
+    // These methods are not used in the solution, but are included
+    // to satisfy the prompt's requirement for their signatures.
+    public static ArrayList<Integer> count_smaller_number(int[] nums1, int[] nums2) {
+        return new ArrayList<>();
+    }
+
+    private static int temp(int[] nums, int k) {
+        return 0;
+    }
+
+
+}
+```

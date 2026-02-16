@@ -1,0 +1,35 @@
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int num = scanner.nextInt();
+
+        // Handle negative numbers
+        if (num < 0) {
+             if (isCube(-num)) {
+                 System.out.println("Number is a cube.");
+             } else {
+                 System.out.println("Number is not a cube.");
+             }
+        } else {
+            if (isCube(num)) {
+                System.out.println("Number is a cube.");
+            } else {
+                System.out.println("Number is not a cube.");
+            }
+        }
+       
+        scanner.close();
+    }
+
+    private static boolean isCube(int num) {
+        // Efficiently check if a positive number is a perfect cube
+        int cubeRoot = Math.round(Math.cbrt(num));  // Calculate the cube root and round to nearest int
+        return cubeRoot * cubeRoot * cubeRoot == num; // Check if the cube of the root is the original number
+    }
+}
+```

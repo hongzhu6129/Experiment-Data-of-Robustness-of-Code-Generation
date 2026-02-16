@@ -1,0 +1,51 @@
+```java
+public class RemoveCharacters {
+
+    public static void main(String[] args) {
+        String inputString = "abracadabra";
+        String charsToRemove1 = "b";
+        String charsToRemove2 = "ac";
+
+        removeSetofCharacters(inputString, charsToRemove1, charsToRemove2);
+
+        inputString = "cabac";
+        removeSetofCharacters(inputString, charsToRemove1, charsToRemove2); // Example 2
+
+
+    }
+
+    public static void removeSetofCharacters(String inputString, String charsToRemove1, String charsToRemove2) {
+        // Remove characters in charsToRemove1
+        String result = inputString.replaceAll("[" + charsToRemove1 + "]", "");
+
+        // Remove characters in charsToRemove2 from the intermediate result
+        result = result.replaceAll("[" + charsToRemove2 + "]", "");
+
+        System.out.println("Modified string: " + result);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+
+1. **Character Classes in Regular Expressions:** The `replaceAll` method uses regular expressions. Square brackets `[]` define a character class.  `[b]` matches any single 'b', and  `[ac]` matches either 'a' or 'c'.
+
+2. **Two-Step Removal:**  The code first removes all occurrences of characters in `charsToRemove1` and then removes characters in `charsToRemove2` from the intermediate result. This ensures correct removal even if the removal of one set of characters creates a new sequence that matches the second set (as in the case of "bac" becoming "a" after 'b' and 'c' are removed, and then 'a' is removed in the second step).
+
+3. **Clearer Method Signature:** The method name `removeSetofCharacters` is more descriptive of its function than a generic name.
+
+4. **Example Usage:** The `main` method demonstrates how to use the `removeSetofCharacters` method with different input strings. This makes the code more understandable and easier to test.
+
+
+**How it handles the "bac" case:**
+
+Let's trace the "cabac" example:
+
+1. `inputString = "cabac"`
+2. Remove "b": `result = "caac"`
+3. Remove "a" and "c": `result = ""`  (empty string)
+
+
+This demonstrates that the two-step approach correctly handles cases where the removal of one set of characters might influence the removal of the other set.

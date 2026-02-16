@@ -1,0 +1,54 @@
+```java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateFormats {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+
+        // Format 1: MM-dd-yyyy (e.g., 01-05-2024)
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        String formattedDate1 = currentDate.format(formatter1);
+        System.out.println("MM-dd-yyyy: " + formattedDate1);
+
+        // Format 2: yyyy/MM/dd (e.g., 2024/01/05)
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String formattedDate2 = currentDate.format(formatter2);
+        System.out.println("yyyy/MM/dd: " + formattedDate2);
+
+        // Format 3: dd-MMM-yyyy (e.g., 05-Jan-2024)
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        String formattedDate3 = currentDate.format(formatter3);
+        System.out.println("dd-MMM-yyyy: " + formattedDate3);
+
+
+        // Format 4:  yyyyMMdd (e.g., 20240105)
+        DateTimeFormatter formatter4 = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String formattedDate4 = currentDate.format(formatter4);
+        System.out.println("yyyyMMdd: " + formattedDate4);
+
+
+
+        // Date and Time examples (using LocalDateTime)
+
+        // Format 5: MM-dd-yyyy HH:mm:ss (e.g., 01-05-2024 10:30:00)
+        DateTimeFormatter formatter5 = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        String formattedDateTime1 = currentDateTime.format(formatter5);
+        System.out.println("MM-dd-yyyy HH:mm:ss: " + formattedDateTime1);
+
+
+
+
+        //Example with a specific date (if you don't want the current date)
+        LocalDate specificDate = LocalDate.of(2023, 12, 25);
+        DateTimeFormatter specificFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");  //Example format
+        String specificFormattedDate = specificDate.format(specificFormatter);
+        System.out.println("Specific Date (dd/MM/yyyy): " + specificFormattedDate); 
+
+    }
+}
+```

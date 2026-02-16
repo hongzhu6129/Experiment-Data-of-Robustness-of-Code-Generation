@@ -1,0 +1,25 @@
+```java
+import java.util.TimeZone;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        // Get all available time zone IDs
+        Set<String> availableZoneIds = TimeZone.getAvailableIDs();
+
+        // Print UTC and GMT time zones
+        System.out.println("Available Time Zones (UTC/GMT):");
+        for (String zoneId : availableZoneIds) {
+            if (zoneId.startsWith("Etc/UTC") || zoneId.startsWith("Etc/GMT") || zoneId.startsWith("GMT") || zoneId.equals("UTC")) {
+                TimeZone tz = TimeZone.getTimeZone(zoneId);
+                System.out.println(zoneId + " (Raw Offset: " + tz.getRawOffset() + " ms)"); // Display raw offset for clarity
+
+            }
+
+        }
+
+       
+    }
+}
+```

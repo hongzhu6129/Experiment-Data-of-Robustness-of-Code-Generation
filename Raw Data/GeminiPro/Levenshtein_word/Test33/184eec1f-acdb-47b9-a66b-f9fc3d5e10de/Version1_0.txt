@@ -1,0 +1,86 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + uniqueNumbers.size());
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Basic Case:**
+   - Input: {1, 2, 3, 4} (as in the code)
+   - Expected Output: 24 unique three-digit numbers (4 * 3 * 2 = 24 permutations) and the numbers themselves printed.
+
+**2. Repeated Digits Input:**  (This tests handling of duplicates in the input which shouldn't affect the unique 3-digit number count using 1,2,3,4 if the program is correct.)
+   - Input: {1, 2, 3, 4, 1, 2} 
+   - Expected Output: Still 24 unique three-digit numbers and the numbers themselves printed.  The duplicate 1s and 2s should be ignored.
+
+
+**3. Fewer Digits Input:** (Corner Case)
+   - Input: {1, 2, 3}
+   - Expected Output: 6 unique three-digit numbers (3 * 2 * 1 = 6 permutations).
+
+**4. Single Digit Input:** (Corner Case)
+   - Input: {1}
+   - Expected Output: 0 unique three-digit numbers.  It's impossible to form a 3-digit number with only one distinct digit. You might want to handle this with a specific message like "Not enough unique digits to form a three-digit number."
+
+
+**5. Empty Input:** (Corner Case)
+   - Input: {}
+   - Expected Output: 0 unique three-digit numbers. A similar message as the previous case could be used.
+
+
+**How to Run Test Cases (using JUnit - a standard Java testing framework):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbersTest {
+
+    @Test
+    void testBasicCase() {
+        Set<Integer> result = generateUniqueNumbers(new int[]{1, 2, 3, 4});
+        assertEquals(24, result.size()); // Check count
+        // You could also add assertions to check if specific numbers are present
+    }
+
+    // ... (Add tests for other cases using the same pattern) ...
+
+     private Set<Integer> generateUniqueNumbers(int[] digits) { // Helper function
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        // ... (Same logic as in your main method to generate numbers) ...
+        return uniqueNumbers;
+    }
+}
+```
+
+By using a testing framework like JUnit, you can automate your test cases and easily verify the correctness of your program under different scenarios.  This is essential good programming practice.

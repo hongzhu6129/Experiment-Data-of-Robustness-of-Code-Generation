@@ -1,0 +1,121 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        printScalarTable(num);
+    }
+
+    public static void printScalarTable(int num) {
+        System.out.println("Scalar Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner and edge cases:
+
+1. **Positive Number:**
+   - Input: `5`
+   - Expected Output:
+     ```
+     Scalar Table for 5:
+     5 x 1 = 5
+     5 x 2 = 10
+     5 x 3 = 15
+     5 x 4 = 20
+     5 x 5 = 25
+     5 x 6 = 30
+     5 x 7 = 35
+     5 x 8 = 40
+     5 x 9 = 45
+     5 x 10 = 50
+     ```
+
+2. **Negative Number:**
+   - Input: `-3`
+   - Expected Output:
+     ```
+     Scalar Table for -3:
+     -3 x 1 = -3
+     -3 x 2 = -6
+     -3 x 3 = -9
+     -3 x 4 = -12
+     -3 x 5 = -15
+     -3 x 6 = -18
+     -3 x 7 = -21
+     -3 x 8 = -24
+     -3 x 9 = -27
+     -3 x 10 = -30
+     ```
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Scalar Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     0 x 3 = 0
+     0 x 4 = 0
+     0 x 5 = 0
+     0 x 6 = 0
+     0 x 7 = 0
+     0 x 8 = 0
+     0 x 9 = 0
+     0 x 10 = 0
+     ```
+
+4. **Large Positive Number:**  (To test potential overflow issues, though Java's `int` type handles this well)
+   - Input: `2147483647` (Integer.MAX_VALUE)
+   - Expected Output:  (Check that the output is correct mathematically; there shouldn't be overflow exceptions)
+
+
+5. **Large Negative Number:**
+   - Input: `-2147483648` (Integer.MIN_VALUE)
+   - Expected Output: (Similar check as above)
+
+
+**How to Run Test Cases:**
+
+You can either:
+
+* **Manually:** Run the program multiple times, entering each test input.  Compare the output with the expected output.
+* **Automated Tests (Recommended):**  Use a testing framework like JUnit. This is a much more robust and efficient way to test.  Here's a simple JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ScalarTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        ScalarTable.printScalarTable(5); 
+
+        String expectedOutput = "Scalar Table for 5:\n5 x 1 = 5\n5 x 2 = 10\n... (rest of the table)\n"; // Fill in the full expected output
+        assertEquals(expectedOutput, outContent.toString());
+
+        System.setOut(System.out); // Restore standard output
+    }
+
+
+    // Add more @Test methods for other test cases (negative, zero, large numbers)
+}
+```
+
+
+This JUnit example captures the printed output and compares it to the expected output string. You would need to add JUnit to your project to use this approach (which is highly recommended for any serious Java development).

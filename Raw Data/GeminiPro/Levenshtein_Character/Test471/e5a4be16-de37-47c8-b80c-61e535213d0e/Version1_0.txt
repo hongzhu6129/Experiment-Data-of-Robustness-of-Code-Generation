@@ -1,0 +1,24 @@
+```java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class PreviousMidnight {
+
+    public static void main(String[] args) {
+        // Get today's date
+        LocalDate today = LocalDate.now();
+
+        // Calculate yesterday's date
+        LocalDate yesterday = today.minusDays(1);
+
+        // Combine yesterday's date with midnight time (00:00:00)
+        LocalDateTime yesterdayMidnight = LocalDateTime.of(yesterday, LocalTime.MIDNIGHT);
+
+        // Print the result
+        System.out.println("Yesterday at midnight: " + yesterdayMidnight);
+
+
+    }
+}
+```

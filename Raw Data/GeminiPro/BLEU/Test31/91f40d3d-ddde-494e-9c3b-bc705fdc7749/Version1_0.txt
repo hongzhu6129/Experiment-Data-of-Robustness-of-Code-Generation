@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, along with expected outputs (approximate due to floating-point calculations).  You can put these in a separate testing class using a testing framework like JUnit or TestNG for automated testing.
+
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Output: 0 km
+
+3. **Opposite Sides of Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 
+   - Expected Output: ~20015.09 km (close to Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0   (Longitude doesn't matter at the poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.09 km
+
+5. **Equator Points:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (quarter of Earth's circumference)
+
+
+6. **Near Antipodal Points (to test floating-point precision):**
+    - lat1: 89.999
+    - lon1: 0
+    - lat2: -89.999
+    - lon2: 180
+    - Expected output: ~20015.09 (should still be close to diameter)
+
+7. **Invalid Input (Handling is left to the developer. The current code will crash with `InputMismatchException` if you enter non-numeric data.  You may want to add error handling):**
+   - lat1: "abc" (or any non-double value)
+
+
+
+Key improvements in the refined code:
+
+- **Clarity and Readability:** More descriptive variable names and comments.
+- **Error Prevention (optional):**  Consider adding input validation (e.g., using `try-catch` blocks) to gracefully handle invalid input like non-numeric data or latitudes/longitudes outside the acceptable range.
+
+
+This comprehensive set of test cases will help ensure the correctness and robustness of your Java program. Remember to handle potential errors like invalid input gracefully.

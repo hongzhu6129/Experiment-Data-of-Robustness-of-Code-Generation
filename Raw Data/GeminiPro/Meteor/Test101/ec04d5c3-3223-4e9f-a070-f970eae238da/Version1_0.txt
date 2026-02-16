@@ -1,0 +1,42 @@
+```java
+public class AddWithoutArithmetic {
+
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 5;
+
+        while (num2 != 0) {
+            int carry = num1 & num2;  // Calculate the carry using bitwise AND
+            num1 = num1 ^ num2;      // Calculate the sum without carry using bitwise XOR
+            num2 = carry << 1;       // Shift the carry to the left by 1
+        }
+
+        System.out.println("Sum: " + num1); 
+    }
+}
+```
+
+
+**Explanation:**
+
+This code uses bitwise operators to simulate addition.  Here's how it works:
+
+1. **`carry = num1 & num2;`**: This line calculates the carry. The bitwise AND operator (`&`) sets a bit to 1 only if both corresponding bits in `num1` and `num2` are 1. This effectively gives us the carry bits.
+
+2. **`num1 = num1 ^ num2;`**:  This line calculates the sum without the carry. The bitwise XOR operator (`^`) sets a bit to 1 if either of the corresponding bits in `num1` or `num2` is 1, but not both. This is equivalent to adding the digits without considering carry.
+
+3. **`num2 = carry << 1;`**: This line shifts the carry bits one position to the left. This is because the carry from the current position needs to be added to the next higher position.
+
+4. **`while (num2 != 0)`**: The process is repeated until the carry becomes zero, which means there are no more carry bits to process.  The final sum will be stored in `num1`.
+
+
+**Example:**
+
+Let's trace the execution with `num1 = 10` (binary 1010) and `num2 = 5` (binary 0101):
+
+- **Iteration 1:**
+    - `carry = 1010 & 0101 = 0000`
+    - `num1 = 1010 ^ 0101 = 1111`
+    - `num2 = 0000 << 1 = 0000`
+
+Since `num2` is now 0, the loop terminates, and `num1` (1111 in binary, 15 in decimal) holds the correct sum.

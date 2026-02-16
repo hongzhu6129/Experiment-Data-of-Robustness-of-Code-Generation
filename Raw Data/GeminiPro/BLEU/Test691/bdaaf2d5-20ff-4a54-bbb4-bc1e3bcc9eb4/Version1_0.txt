@@ -1,0 +1,84 @@
+```java
+class Solution {
+    /**
+     * Counts the number of prime numbers less than a non-negative number, n.
+     *
+     * This educational solution demonstrates prime number counting using a simple,
+     * albeit not highly optimized, approach. It iterates through numbers from 2 to n-1
+     * and checks for primality using the isPrime helper function.
+     *
+     * @param n A non-negative integer.
+     * @return The number of prime numbers less than n.
+     *
+     * @throws IllegalArgumentException if n is negative.
+     */
+
+    public static int countPrimes(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Input must be non-negative.");
+        }
+
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (isPrime(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Helper function to check if a number is prime.
+     * 
+     * This function demonstrates a basic primality test by checking for divisibility
+     * from 2 up to the square root of the number.  We only need to check up to 
+     * the square root because if a number has a divisor greater than its square root,
+     * it must also have a divisor smaller than its square root.
+     *
+     * @param num The number to check for primality.
+     * @return True if the number is prime, false otherwise.
+     */
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) { // Optimized: Check up to the square root
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static void main(String[] args) {
+        int n1 = 10;
+        int primeCount1 = countPrimes(n1);
+        System.out.println("Number of primes less than " + n1 + ": " + primeCount1); // Expected: 4
+
+        int n2 = 0;
+        int primeCount2 = countPrimes(n2);
+        System.out.println("Number of primes less than " + n2 + ": " + primeCount2); // Expected: 0
+
+
+        int n3 = 1;
+        int primeCount3 = countPrimes(n3);
+        System.out.println("Number of primes less than " + n3 + ": " + primeCount3); // Expected: 0
+
+
+        int n4 = 2;
+        int primeCount4 = countPrimes(n4);
+        System.out.println("Number of primes less than " + n4 + ": " + primeCount4); // Expected: 0
+
+        int n5 = 100;
+        int primeCount5 = countPrimes(n5);
+        System.out.println("Number of primes less than " + n5 + ": " + primeCount5); // Expected 25
+
+
+        // Test case demonstrating the IllegalArgumentException
+        // int n6 = -5;  // uncomment to test exception
+        // int primeCount6 = countPrimes(n6); 
+
+    }
+}
+```

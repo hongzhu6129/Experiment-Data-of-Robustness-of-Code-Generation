@@ -1,0 +1,99 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime(String format) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String format = "yyyy/MM/dd HH:mm:ss.SSS"; // Example format
+        String currentDateTime = getCurrentDateTime(format);
+        System.out.println(currentDateTime);
+
+
+        // Example with a different format
+        String format2 = "EEEE, MMMM dd, yyyy hh:mm:ss a";
+        System.out.println(getCurrentDateTime(format2));
+
+
+        // Example with just the date
+        String format3 = "yyyy-MM-dd";
+        System.out.println(getCurrentDateTime(format3));
+
+
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **Valid Format:**
+   - Input Format: `yyyy/MM/dd HH:mm:ss.SSS`
+   - Expected Output: A correctly formatted date and time string like `2024/10/27 10:30:00.123` (the actual numbers will vary depending on the current time).  Verify that the year, month, day, hour, minute, second, and milliseconds are correctly displayed.
+
+2. **Different Valid Format:**
+   - Input Format: `MMM dd, yyyy hh:mm a` (e.g., Oct 27, 2024 10:30 AM)
+   - Expected Output:  The date and time in the specified format. This tests different formatting characters.
+
+3. **Date Only Format:**
+   - Input Format: `yyyy-MM-dd`
+   - Expected Output:  The date in the specified format (e.g., 2024-10-27). This tests omitting the time component.
+
+4. **Time Only Format:**
+   - Input Format: `HH:mm:ss`
+   - Expected Output: The time in the specified format (e.g., 10:30:00). This tests omitting the date component.
+
+
+5. **Invalid Format:**  (Corner Case)
+   - Input Format: `yyyy/MM/dd HHmmssSSS` (missing separators) or other invalid patterns like `yy/M/d` (incorrect number of characters).
+   - Expected Output: A `DateTimeParseException` should be thrown and handled gracefully.  You can add a `try-catch` block in your `getCurrentDateTime` function to catch this and perhaps return an error message or a default value.
+
+   ```java
+   public static String getCurrentDateTime(String format) {
+       try {
+           // ... (Existing code)
+       } catch (DateTimeParseException e) {
+           System.err.println("Invalid date/time format: " + e.getMessage());
+           return "Invalid Format"; // Or handle it as needed
+       }
+   }
+   ```
+
+6. **Single-Digit Values:** (Edge Case)
+   - Verify that the output correctly pads single-digit months, days, hours, minutes, seconds, and milliseconds with leading zeros (e.g., `2024/01/09 03:05:07.008`).
+
+7. **Leap Year:** (Edge Case)
+   - Run the test during a leap year (like 2024) to ensure February 29th is handled correctly.
+
+8. **Time Zone:** (If needed)
+   - If you require time zone support, use `ZonedDateTime` instead of `LocalDateTime` and test with different time zones to make sure the output is as expected.
+
+
+
+
+How to run the tests:
+
+You can either create a separate testing class (using JUnit or TestNG, which is recommended for larger projects) or add some simple `assert` statements to your `main` method for basic testing.  The example using a simple `assert` is shown below (but JUnit or TestNG is much better for organized testing).
+
+
+```java
+public static void main(String[] args) {
+   // ... (previous code)
+
+   String result = getCurrentDateTime("yyyy/MM/dd");
+   assert result.matches("\\d{4}/\\d{2}/\\d{2}") : "Date format incorrect";  // Basic assertion
+   System.out.println("Test passed for yyyy/MM/dd");
+
+   // ... More tests ...
+}
+```
+
+
+By thoroughly testing these different scenarios, you can ensure that your `getCurrentDateTime` function is robust and handles a wide range of inputs correctly.

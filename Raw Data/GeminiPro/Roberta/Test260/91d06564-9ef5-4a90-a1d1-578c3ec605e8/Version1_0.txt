@@ -1,0 +1,66 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Initialize with 1 as the first element is always unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i];  // Overwrite duplicates with unique elements
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int length1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + length1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, length1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int length2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + length2+ ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, length2)));// Output: 5, [0, 1, 2, 3, 4]
+
+        // Test cases for empty and null arrays
+        int[] nums3 = {};
+        int length3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + length3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, length3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int length4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + length4); // Output: 0
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty arrays gracefully.
+   - Initializes `uniqueCount` to 1 (the first element is always unique).
+   - Iterates from the second element (`i = 1`).
+   - If the current element `nums[i]` is different from the previous element `nums[i - 1]`, it means we've encountered a new unique element.  We then overwrite the next position in the `nums` array at index `uniqueCount` with this new unique element and increment `uniqueCount`. This effectively moves all the unique elements to the beginning of the array, overwriting the duplicates.
+   - Finally, it returns the `uniqueCount`, which represents the length of the updated array without duplicates.
+
+2. **`main(String[] args)`:**
+   - Demonstrates how to use the `removeDuplicates` function with example arrays.
+   - **Important:** The original array is modified in place. To print the updated array without the duplicates, we use `Arrays.copyOfRange(nums, 0, length)` to create a copy of the relevant portion of the modified array.
+
+
+**Key improvements in this code:**
+
+- **Handles edge cases:**  Correctly deals with empty and `null` input arrays.
+- **Clearer variable names:** `uniqueCount` makes the code easier to understand.
+- **In-place modification:**  The function modifies the original array directly, which is generally more efficient than creating a new array.
+- **Thorough testing:** Includes multiple test cases in `main` to demonstrate the function's behavior.
+- **Improved output:** The `main` method now prints the updated array as well as the length, making it much easier to verify the results.

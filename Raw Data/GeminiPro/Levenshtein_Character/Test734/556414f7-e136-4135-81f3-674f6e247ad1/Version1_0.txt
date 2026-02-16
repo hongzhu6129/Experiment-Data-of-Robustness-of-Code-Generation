@@ -1,0 +1,64 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int m = arr.length;
+        int n = arr[0].length;
+        int target = 14;
+
+
+        int[] result = Saddleback(arr, m, n, target);
+
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Signatures:** The code strictly adheres to the required `main` and `Saddleback` method signatures.
+
+2. **Saddleback Search Algorithm:** The `Saddleback` function efficiently implements the saddleback search algorithm. It starts from the top-right corner of the matrix and moves either down or left based on the comparison with the target.
+
+3. **Return an Array:** The `Saddleback` function now returns an `int[]` containing the row and column indices of the target. If the target is not found, it returns `{-1, -1}`.
+
+4. **Clearer Output:** The `main` function handles the result from `Saddleback` and prints a user-friendly message indicating whether the target was found and its location.
+
+5. **Example Usage:**  The `main` method provides a clear example of how to use the `Saddleback` function with a sample 2D array and target value.
+
+6. **Comments:** Added comments to explain the logic and the steps involved in the `Saddleback` function.
+
+
+This improved version is more efficient, readable, and adheres to the specified requirements, making it a complete and functional solution.

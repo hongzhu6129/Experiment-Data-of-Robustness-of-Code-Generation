@@ -1,0 +1,32 @@
+```java
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class TenDaysBeforeAndAfter {
+
+    public static void main(String[] args) {
+        // Get today's date
+        LocalDate today = LocalDate.now();
+
+        // Calculate 10 days before today
+        LocalDate tenDaysBefore = today.minusDays(10);
+
+        // Calculate 10 days after today
+        LocalDate tenDaysAfter = today.plusDays(10);
+
+
+        // Format the dates for output  (Optional, but makes it nicer)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Or any format you prefer
+        String formattedToday = today.format(formatter);
+        String formattedBefore = tenDaysBefore.format(formatter);
+        String formattedAfter = tenDaysAfter.format(formatter);
+
+
+
+        // Print the results
+        System.out.println("Today: " + formattedToday);
+        System.out.println("10 days before: " + formattedBefore);
+        System.out.println("10 days after: " + formattedAfter); 
+    }
+}
+```

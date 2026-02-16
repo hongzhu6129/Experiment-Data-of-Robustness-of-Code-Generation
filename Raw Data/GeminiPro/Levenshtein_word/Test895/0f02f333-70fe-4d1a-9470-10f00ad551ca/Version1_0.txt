@@ -1,0 +1,62 @@
+```java
+import java.util.Arrays;
+
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Variable to track the length of the new array
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i]; // Move elements not equal to val to the front
+                k++;
+            }
+        }
+
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 4, 6, 7, 6, 2};
+        int valToRemove = 6;
+
+        int newLength = removeElement(originalArray, valToRemove);
+
+
+        System.out.println("Original array: " + Arrays.toString(originalArray)); 
+        System.out.println("The length of the new array is: " + newLength);
+
+        // Print the updated array (optional, but good for visualization)
+        int[] newArray = Arrays.copyOfRange(originalArray, 0, newLength);
+        System.out.println("New array (first " + newLength + " elements): " + Arrays.toString(newArray));
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **`removeElement` Method:**
+   - Uses a `k` variable as a pointer to build the new array in-place within the original array.
+   - Iterates through the original array. If an element is *not* equal to `val`, it's copied to the `k`-th position, and `k` is incremented.  This effectively overwrites elements equal to `val`.
+   - Returns `k`, which is the length of the new array (number of elements not equal to `val`).
+
+2. **`main` Method:**
+   - Creates a sample array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the original array (to demonstrate the in-place modification).
+   - Prints the new length.
+   - **Added (optional but recommended):**  Creates a new array `newArray` using `Arrays.copyOfRange` to get only the relevant part (the first `newLength` elements) of the modified array. This makes it clearer to see what the effective "new" array looks like after removing the elements.  This is especially helpful for visualization and debugging.
+
+
+**Example Output:**
+
+```
+Original array: [1, 4, 2, 7, 2, 2]
+The length of the new array is: 4
+New array (first 4 elements): [1, 4, 7, 2]
+```
+
+
+**Important Note:** The original array is modified in-place.  The function returns the length of the new array, which is the number of elements *not equal* to `val`. The elements beyond this new length in the original array are not guaranteed to have any specific values after the function call.  That's why we use `Arrays.copyOfRange` in the `main` method to create a clean new array with just the desired elements.

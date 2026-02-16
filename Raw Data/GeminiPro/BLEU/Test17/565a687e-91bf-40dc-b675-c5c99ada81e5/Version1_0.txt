@@ -1,0 +1,74 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToDecimal {
+
+    public static int functionone(String binary) {
+        int decimal = 0;
+        int power = 0;
+
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            char digit = binary.charAt(i);
+
+            if (digit != '0' && digit != '1') {
+                throw new IllegalArgumentException("Invalid binary number: " + binary);
+            }
+
+
+            if (digit == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        try {
+            int decimal = functionone(binaryString);
+            System.out.println("Decimal number: " + decimal);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Binary Input | Expected Decimal Output | Explanation/Corner Case |
+|---|---|---|
+| "101" | 5 | Basic test case |
+| "1111" | 15 |  All ones |
+| "0" | 0 |  Single zero |
+| "1" | 1 | Single one |
+| "10000" | 16 | Power of 2 |
+| "1001101" | 77 |  Larger number |
+| "" | 0 | Empty string (could be handled as an error if desired)|
+| "10a" | IllegalArgumentException: Invalid binary number: 10a |  Invalid character 'a' |
+| "201"  | IllegalArgumentException: Invalid binary number: 201 | Invalid character '2' |
+| "-101" | IllegalArgumentException: Invalid binary number: -101 | Invalid character '-' (negative sign) |
+| " 101" | IllegalArgumentException: Invalid binary number:  101 | Leading space (consider trimming if needed) |
+| "101 " | IllegalArgumentException: Invalid binary number: 101  | Trailing space (consider trimming if needed) |
+
+
+
+**How to run the test cases (manually):**
+
+1. Compile the Java code: `javac BinaryToDecimal.java`
+2. Run the code and provide each binary input as requested.
+3. Check the output against the expected decimal value.  For the error cases, verify that the correct exception message is printed.
+
+**How to improve error handling (optional):**
+
+- You could modify `functionone` to return -1 (or another special value) in case of an invalid input, rather than throwing an exception. This would simplify error handling in `main`.
+-  You could handle leading/trailing whitespace by using `binaryString.trim()` before calling `functionone`.
+
+
+This revised answer provides more comprehensive test cases including error handling, along with explanations of the corner cases being tested. This makes it easier to understand the testing strategy and verify the correctness of the code.

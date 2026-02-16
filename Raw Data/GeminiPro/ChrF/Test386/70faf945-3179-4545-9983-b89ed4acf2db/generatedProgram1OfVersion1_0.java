@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * Returns the substring between the first and last appearances of "toast" in the given string.
+     * If "toast" appears less than twice, or not at all, returns an empty string.
+     *
+     * @param str The input string.
+     * @return The substring between the first and last "toast" occurrences, or an empty string.
+     */
+    public String pickMiddleOfBread(String str) {
+        int firstIndex = str.indexOf("toast");
+        int lastIndex = str.lastIndexOf("toast");
+
+        if (firstIndex == -1 || lastIndex == -1 || firstIndex == lastIndex) {
+            return "";
+        }
+
+        return str.substring(firstIndex + "toast".length(), lastIndex);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(solution.pickMiddleOfBread("toastjam"));      // Output: ""
+        System.out.println(solution.pickMiddleOfBread("jamtoast"));      // Output: ""
+        System.out.println(solution.pickMiddleOfBread("toast"));         // Output: ""
+        System.out.println(solution.pickMiddleOfBread("toasttoast"));    // Output: "" 
+        System.out.println(solution.pickMiddleOfBread("toastbutterjamtoast")); // Output: butterjam
+        System.out.println(solution.pickMiddleOfBread(""));             // Output: ""
+
+
+    }
+}

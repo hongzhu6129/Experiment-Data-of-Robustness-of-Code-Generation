@@ -1,0 +1,66 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> bookPrices = new HashMap<>();
+        bookPrices.put("Java Programming", 50);
+        bookPrices.put("Python Basics", 40);
+        bookPrices.put("Data Structures", 60);
+
+        // Value to search for
+        int searchValue = 40;
+
+        // Check if the map contains the value using containsValue()
+        if (bookPrices.containsValue(searchValue)) {
+            System.out.println("The map contains the value " + searchValue);
+        } else {
+            System.out.println("The map does not contain the value " + searchValue);
+        }
+
+
+        // Demonstrate that containsValue() checks for object equality (important for custom objects)
+        Map<String, Book> library = new HashMap<>();
+        library.put("B123", new Book("Java Programming", 50));
+        library.put("B456", new Book("Python Basics", 40));
+
+        Book searchBook = new Book("Python Basics", 40); // New object with same data
+
+        if (library.containsValue(searchBook)) {
+            System.out.println("The library contains the book (using containsValue): " + searchBook.title);
+        } else {
+            System.out.println("The library does not contain the book (using containsValue): " + searchBook.title +  " (because containsValue uses equals() which is not overridden)");
+        }
+
+        // A more reliable way to check for values with custom objects in a loop:
+        boolean found = false;
+        for (Book book : library.values()) {
+            if (book.title.equals(searchBook.title) && book.price == searchBook.price) { 
+                System.out.println("The library contains the book (using manual check): " + searchBook.title);
+                found = true;
+                break; // Exit loop once found
+            }
+        }
+
+        if (!found) {
+            System.out.println("The library does not contain the book (using manual check): " + searchBook.title);
+        }
+    }
+
+
+
+
+    static class Book { // Inner class for demonstration
+        String title;
+        int price;
+
+        public Book(String title, int price) {
+            this.title = title;
+            this.price = price;
+        }
+    } 
+}
+```

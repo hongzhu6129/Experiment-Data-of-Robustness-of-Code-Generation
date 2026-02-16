@@ -1,0 +1,109 @@
+```java
+import java.util.Scanner;
+
+public class DistanceBetweenTwoPoints {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Same Coordinates:**
+   - lat1 = 25, lon1 = 35
+   - lat2 = 25, lon2 = 35
+   - Expected Distance: 0
+
+2. **Provided Example:**
+   - lat1 = 25, lon1 = 35
+   - lat2 = 35.5, lon2 = 25.5
+   - Expected Distance: ~1480.08
+
+3. **Antipodal Points (Opposite sides of Earth):**
+   - lat1 = 0, lon1 = 0
+   - lat2 = 0, lon2 = 180
+   - Expected Distance: ~20015.08  (approximately Earth's diameter * pi / 2)
+
+4. **North and South Poles:**
+   - lat1 = 90, lon1 = 0  (North Pole)
+   - lat2 = -90, lon2 = 0 (South Pole)
+   - Expected Distance: ~20015.08
+
+5. **Points near the Poles:**
+   - lat1 = 89.9, lon1 = 0
+   - lat2 = 89.5, lon2 = 180
+   - Expected Distance: A value close to but less than the pole-to-pole distance.
+
+
+6. **Points with Large Longitude Differences (crossing 180�):**
+   - lat1 = 0, lon1 = 179
+   - lat2 = 0, lon2 = -179
+   - Expected Distance: A small value as the points are close despite the longitude difference.
+
+
+7. **Zero Latitude and Different Longitudes:**
+    - lat1 = 0, lon1 = 0
+    - lat2 = 0, lon2 = 90
+    - Expected Distance: ~10007.54 (quarter of Earth's circumference)
+
+
+8. **Invalid Inputs (handle gracefully):**
+   - lat1 = "abc", lon1 = 35  (non-numeric input)
+   - lat2 = 35.5, lon2 = 25.5
+   - Expected:  The program should handle this error (e.g., display an error message or use exception handling) and not crash.  Consider adding `try-catch` blocks around the `input.nextDouble()` calls.
+
+
+**How to Test:**
+
+You can test these cases by either:
+
+* **Manually entering the values** into the console when prompted.
+* **Modifying the `main` method** to hardcode the test values and compare the output to the expected distances.  This is more efficient for multiple tests. For example:
+
+```java
+// ... (rest of the code) ...
+
+public static void main(String[] args) {
+
+    double lat1 = Math.toRadians(25);  // Test case 1
+    double lon1 = Math.toRadians(35);
+    double lat2 = Math.toRadians(25);
+    double lon2 = Math.toRadians(35);
+
+
+    // ... (rest of the calculation) ...
+
+    System.out.println("The distance between those points is: " + distance);
+    // Add an assertion or check here to compare with the expected value for this test case
+}
+```
+
+
+
+By running these tests, you can ensure your program correctly calculates distances under various conditions, including those that might lead to errors.  Adding robust error handling is crucial, especially when taking user input.

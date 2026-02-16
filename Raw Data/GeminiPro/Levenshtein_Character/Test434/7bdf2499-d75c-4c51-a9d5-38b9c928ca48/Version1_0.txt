@@ -1,0 +1,65 @@
+```java
+import java.util.List;
+import java.util.Arrays;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("Hello World", "Hello Java", "Goodbye World", "Hello Python", "Java is cool");
+        String startsWith = "Hello";
+
+        long count = strings.stream()
+                .filter(s -> s.startsWith(startsWith))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startsWith + "': " + count);
+
+
+        // Example with an empty list:
+        List<String> emptyList = Arrays.asList();
+        startsWith = "Anything";
+
+         count = emptyList.stream()
+                .filter(s -> s.startsWith(startsWith))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startsWith + "' in empty list: " + count);
+
+
+        // Example with null values in the list:  (Handles nulls safely)
+        List<String> listWithNulls = Arrays.asList("Hello there", null, "Hello again", "Not hello", null);
+        startsWith = "Hello";
+
+        count = listWithNulls.stream()
+                .filter(s -> s != null && s.startsWith(startsWith)) // Important null check
+                .count();
+
+        System.out.println("Number of strings starting with '" + startsWith + "' in list with nulls: " + count);
+
+
+
+        // Example with an empty "startsWith" string: (Matches all strings, except nulls if we check for them)
+        List<String> moreStrings = Arrays.asList("One", "Two", "Three", "");
+        startsWith = "";
+
+        count = moreStrings.stream()
+                .filter(s -> s != null && s.startsWith(startsWith)) //  Null check optional but good practice.
+                .count();
+
+        System.out.println("Number of strings starting with '' (empty string): " + count);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Clearer Variable Names:**  Using `strings` and `startsWith` improves readability.
+* **Multiple Examples:** Demonstrates the code's behavior with various scenarios (empty list, nulls in list, empty `startsWith` string).
+* **Null Handling:**  The code now explicitly handles potential `null` values in the list to prevent `NullPointerException`s. This is very important in real-world applications.
+* **Empty String Handling:** Shows how an empty `startsWith` string behaves (it matches all non-null strings).  
+* **Comments:**  Explains the purpose of different sections and important considerations.
+
+
+
+This improved version is more robust, handles edge cases, and is easier to understand. It provides a more comprehensive demonstration of how to count strings starting with a specific prefix using Java streams.

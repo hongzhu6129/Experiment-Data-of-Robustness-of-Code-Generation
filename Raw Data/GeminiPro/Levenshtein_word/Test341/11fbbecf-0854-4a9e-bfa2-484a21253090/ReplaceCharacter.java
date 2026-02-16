@@ -1,0 +1,49 @@
+public class ReplaceCharacter {
+
+    public static void main(String[] args) {
+        String originalString = "This is a sample string.";
+        char oldChar = 's';
+        char newChar = 'z';
+
+        String replacedString = replaceCharacter(originalString, oldChar, newChar);
+
+        System.out.println("Original String: " + originalString);
+        System.out.println("Replaced String: " + replacedString);
+
+
+        //Demonstrating with no replacements needed
+        String originalString2 = "This is a sample string.";
+        char oldChar2 = 'x';
+        char newChar2 = 'z';
+
+        String replacedString2 = replaceCharacter(originalString2, oldChar2, newChar2);
+
+        System.out.println("\nOriginal String: " + originalString2);
+        System.out.println("Replaced String: " + replacedString2);
+
+
+         //Demonstrating with an empty string
+        String originalString3 = "";
+        char oldChar3 = 'x';
+        char newChar3 = 'z';
+
+        String replacedString3 = replaceCharacter(originalString3, oldChar3, newChar3);
+
+        System.out.println("\nOriginal String: " + originalString3);
+        System.out.println("Replaced String: " + replacedString3);
+    }
+
+    private static String replaceCharacter(String str, char oldChar, char newChar) {
+        if (str == null || str.isEmpty()) {
+            return str; // Handle null or empty strings
+        }
+
+        char[] charArray = str.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] == oldChar) {
+                charArray[i] = newChar;
+            }
+        }
+        return new String(charArray);
+    }
+}

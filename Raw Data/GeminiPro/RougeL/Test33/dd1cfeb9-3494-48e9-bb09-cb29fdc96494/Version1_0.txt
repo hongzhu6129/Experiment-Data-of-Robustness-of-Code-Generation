@@ -1,0 +1,102 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueThreeDigitNumbers {
+
+    public static void main(String[] args) {
+        int[] digits = {1, 2, 3, 4};
+        Set<Integer> uniqueNumbers = new HashSet<>();
+        int count = 0;
+
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) { // Ensure digits are unique
+                        int number = digits[i] * 100 + digits[j] * 10 + digits[k];
+                        uniqueNumbers.add(number);
+                        count++;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Unique three-digit numbers:");
+        for (int number : uniqueNumbers) {
+            System.out.println(number);
+        }
+
+        System.out.println("\nTotal count of unique three-digit numbers: " + count);
+        System.out.println("Total count of unique three-digit numbers (using set size): " + uniqueNumbers.size()); // Verification
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Basic Case:**
+   - Input: {1, 2, 3, 4}
+   - Expected Output: 24 unique three-digit numbers (all permutations of 1, 2, 3, 4 taken 3 at a time) and a count of 24.
+
+2. **Repeated Digits:**  (This case is handled by the `if` condition in the code)
+   - Input: {1, 1, 2, 3} 
+   - Expected Output:  Should still produce unique numbers.  For example, 112 and 121 are different, but 111 wouldn't be included. The count would be less than 24 because of the repeated digit.
+
+3. **Empty Input:** (Corner Case)
+   - Input: {}
+   - Expected Output: No output, count = 0.
+
+4. **Input with fewer than 3 digits:** (Corner Case)
+   - Input: {1, 2}
+   - Expected Output: No output, count = 0 (since three-digit numbers cannot be formed).
+
+5. **Input with more than 4 unique digits:** (This case isn't strictly a corner case, but it's good to test)
+   - Input: {1, 2, 3, 4, 5}
+   - Expected Output:  60 unique numbers (5 * 4 * 3) and a count of 60. This tests the generality of the code beyond the initial 4-digit requirement.
+
+
+**How to Implement Tests (using JUnit as an example):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors; // for easy conversion to List
+
+public class UniqueThreeDigitNumbersTest {
+
+    private List<Integer> generateNumbers(int[] digits) {
+         Set<Integer> uniqueNumbers = new HashSet<>();
+        for (int i = 0; i < digits.length; i++) {
+            for (int j = 0; j < digits.length; j++) {
+                for (int k = 0; k < digits.length; k++) {
+                    if (i != j && i != k && j != k) {
+                        uniqueNumbers.add(digits[i] * 100 + digits[j] * 10 + digits[k]);
+                    }
+                }
+            }
+        }
+        return uniqueNumbers.stream().sorted().collect(Collectors.toList()); // Sorted for consistent test comparisons
+    }
+
+
+    @Test
+    void testBasicCase() {
+        assertEquals(24, generateNumbers(new int[]{1, 2, 3, 4}).size());
+    }
+
+    @Test
+    void testRepeatedDigits() {
+        assertTrue(generateNumbers(new int[]{1, 1, 2, 3}).size() < 24); // Count should be less than 24
+    }
+
+
+    // ... (Add tests for other cases similarly) ...
+}
+```
+
+
+This provides a more comprehensive approach to testing the `UniqueThreeDigitNumbers` program and ensures its correctness for different input scenarios.  You can adapt the JUnit example to other testing frameworks if desired.

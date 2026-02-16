@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class OctalToBinary {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = input.nextLine();
+
+        try {
+            long octal = Long.parseLong(octalString, 8); // Parse octal string directly
+
+
+            long binary = 0;
+            long power = 1;
+
+
+            while (octal > 0) {
+                int lastDigit = (int)(octal % 10);
+                if (lastDigit < 0 || lastDigit > 7) {
+                    System.out.println("Invalid octal number. Digits must be between 0 and 7.");
+                    return; // Exit if invalid octal digit
+                }
+
+
+                long binaryEquivalent = 0;
+                long powerOfTwo = 1;
+                while (lastDigit > 0) {
+                    binaryEquivalent += (lastDigit % 2) * powerOfTwo;
+                    lastDigit /= 2;
+                    powerOfTwo *= 10;
+                }
+
+                binary += binaryEquivalent*power;
+
+                octal /= 10;
+                power*=1000;
+
+            }
+
+            System.out.println("Binary equivalent: " + binary);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid octal number.");
+        }
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Octal Number:**
+   - Input: 123
+   - Expected Output: 1010011
+
+2. **Leading Zero:**
+   - Input: 0123
+   - Expected Output: 1010011 (Leading zeros should be handled correctly).
+
+3. **Large Octal Number:**
+   - Input: 7777777
+   - Expected Output: 1111111111111111111
+
+4. **Invalid Octal Number (containing digits other than 0-7):**
+   - Input: 1283  
+   - Expected Output: Invalid octal number. Digits must be between 0 and 7.
+
+5. **Invalid Input (Non-numeric):**
+   - Input: abc
+   - Expected Output: Invalid input. Please enter a valid octal number.
+
+
+6. **Zero:**
+    - Input: 0
+    - Expected Output: 0
+
+
+
+7.  **Octal Number with internal zeros**
+    - Input: 1007
+    - Expected Output: 1000000111
+
+
+
+These test cases cover various scenarios, including valid octal numbers, invalid inputs, and edge cases like leading zeros and large numbers, helping to ensure the program's correctness and robustness.

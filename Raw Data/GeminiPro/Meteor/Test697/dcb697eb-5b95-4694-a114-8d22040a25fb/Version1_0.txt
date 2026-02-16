@@ -1,0 +1,72 @@
+```java
+class Solution {
+    /**
+     * Counts the number of integers from 1 to n (inclusive) that do not contain the digit 7.
+     *
+     * @param n The upper limit (inclusive).
+     * @return The count of numbers without the digit 7.
+     */
+    static int count_nums_not_7(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (!containsDigit7(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Checks if a number contains the digit 7.
+     *
+     * @param num The number to check.
+     * @return True if the number contains 7, false otherwise.
+     */
+    private static boolean containsDigit7(int num) {
+        while (num > 0) {
+            if (num % 10 == 7) {
+                return true;
+            }
+            num /= 10;
+        }
+        return false;
+    }
+
+    /**
+     * Main method for testing.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int n = 20;
+        int count = count_nums_not_7(n);
+        System.out.println("Count of numbers without 7 from 1 to " + n + ": " + count);
+
+
+        n = 100;
+        count = count_nums_not_7(n);
+        System.out.println("Count of numbers without 7 from 1 to " + n + ": " + count);
+
+
+         n = 77; // Example with numbers containing 7
+        count = count_nums_not_7(n);
+        System.out.println("Count of numbers without 7 from 1 to " + n + ": " + count);
+
+
+
+        n = 0; // Example with zero
+        count = count_nums_not_7(n);
+        System.out.println("Count of numbers without 7 from 1 to " + n + ": " + count);
+    }
+}
+```
+
+
+Key improvements in this version:
+
+- **Clearer helper function:** The `containsDigit7` function is now separated, making the `count_nums_not_7` function more readable.
+- **More comprehensive testing:** The `main` method now includes test cases with different inputs, including numbers containing 7 and the edge case of 0.
+- **Comments:**  Added comments to explain the logic and purpose of each part of the code.  Good comments are essential for maintainability.
+
+
+This revised answer addresses the prompt's requirements more effectively and presents a more robust and understandable solution.

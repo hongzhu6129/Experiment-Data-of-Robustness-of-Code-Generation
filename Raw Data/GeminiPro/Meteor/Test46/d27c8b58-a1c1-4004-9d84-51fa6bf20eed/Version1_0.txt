@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check for equality among the digits
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three non-negative integers: ");
+        int num1 = input.nextInt();
+        int num2 = input.nextInt();
+        int num3 = input.nextInt();
+
+        // Validate input (non-negative)
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Error: Input must be non-negative.");
+            return; // Exit if input is invalid
+        }
+
+        boolean result = function(num1, num2, num3);
+        System.out.println(result);
+        input.close();
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+**1. Positive Cases:**
+
+* **Input:** 22, 32, 45  **Expected Output:** true (22 and 32 share the rightmost digit 2)
+* **Input:** 10, 20, 30  **Expected Output:** true (All share the rightmost digit 0)
+* **Input:** 107, 207, 306 **Expected Output:** true (107 and 207 share the rightmost digit 7)
+* **Input:** 1, 11, 111 **Expected Output:** true
+
+
+
+**2. Negative Cases:**
+
+* **Input:** 1, 2, 3  **Expected Output:** false
+* **Input:** 12, 23, 34  **Expected Output:** false
+* **Input:** 101, 102, 103 **Expected Output:** false
+
+
+
+**3. Corner/Edge Cases:**
+
+* **Input:** 0, 0, 0  **Expected Output:** true (All share the rightmost digit 0)
+* **Input:** 0, 10, 20 **Expected Output:** true
+* **Input:** 1, 1, 1 **Expected Output:** true
+* **Input:**  Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE -1  **Expected Output:** true (Tests large numbers and potential overflow issues, though the modulo operator handles this well).
+* **Input:** 123456789, 987654321, 111111119 **Expected Output:** true (Tests longer numbers)
+
+
+
+**How to Run Test Cases:**
+
+1.  **Manually:** You can run these test cases by entering the input values when prompted by the program.
+2.  **Automated Testing (Recommended):** Using a testing framework like JUnit is the best approach. You can write test methods that call the `function` with different inputs and assert that the output matches your expected results. This makes testing more efficient and repeatable.  A simple JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SameRightmostDigitTest {
+
+    @Test
+    void testPositiveCase() {
+        assertTrue(SameRightmostDigit.function(22, 32, 45));
+    }
+
+    @Test
+    void testNegativeCase() {
+        assertFalse(SameRightmostDigit.function(1, 2, 3));
+    }
+
+    // Add more test cases as needed...
+}
+```

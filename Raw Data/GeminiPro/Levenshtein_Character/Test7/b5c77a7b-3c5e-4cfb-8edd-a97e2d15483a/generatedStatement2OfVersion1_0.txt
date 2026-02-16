@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering normal cases, edge cases, and corner cases, along with expected outputs:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| Normal Case 1 | 10, 20, 30 | 20.0 |
+| Normal Case 2 | 1.5, 2.5, 3.5 | 2.5 |
+| Normal Case 3 | -5, 0, 5 | 0.0 |
+| Edge Case 1 (Zeros) | 0, 0, 0 | 0.0 |
+| Edge Case 2 (Large Numbers) | 1000000, 2000000, 3000000 | 2000000.0 |
+| Edge Case 3 (Small Numbers) | 0.0001, 0.0002, 0.0003 | 0.0002 |
+| Corner Case 1 (Negative Numbers) | -10, -20, -30 | -20.0 |
+| Corner Case 2 (Mixed Signs) | -5, 10, 15 | 6.666666666666667 |  // Demonstrates potential rounding.
+| Corner Case 3 (Integer Overflow - less likely in doubles but good to consider if using ints)|  Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity |
+| Corner Case 4 (Integer Underflow - less likely in doubles but good to consider if using ints) | -Double.MAX_VALUE, -Double.MAX_VALUE, -Double.MAX_VALUE | -Infinity |
+| Corner Case 5 (NaN Input)| Double.NaN, 10, 20 | NaN | // If any input is NaN, the output is NaN
+
+
+**How to run the tests:**
+
+1.  **Manually:** You can run the Java program and enter the input values for each test case to verify the output.
+
+2.  **Using JUnit (recommended):**  JUnit is a testing framework for Java.  It's much more efficient for automated testing.  Here's an example of how you could create a JUnit test class:
+

@@ -1,0 +1,52 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class DateTimeBeforeHoursMinutes {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of hours: ");
+        int hours = scanner.nextInt();
+
+        System.out.print("Enter the number of minutes: ");
+        int minutes = scanner.nextInt();
+
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        LocalDateTime pastDateTime = currentDateTime.minus(hours, ChronoUnit.HOURS).minus(minutes, ChronoUnit.MINUTES);
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  // Customize format as needed
+
+        System.out.println("Current Date and Time: " + currentDateTime.format(formatter));
+        System.out.println("Date and Time " + hours + " hours and " + minutes + " minutes ago: " + pastDateTime.format(formatter));
+
+        scanner.close();
+    }
+}
+```
+
+
+Here's how this code addresses the problem:
+
+1. **Input:** It takes the number of hours and minutes as input from the user.
+2. **Current Date and Time:** `LocalDateTime.now()` gets the current date and time.
+3. **Calculating Past Date and Time:** `minus(hours, ChronoUnit.HOURS)` and `minus(minutes, ChronoUnit.MINUTES)` subtract the specified hours and minutes from the current date and time.
+4. **Formatting:** `DateTimeFormatter` is used to format the date and time into a readable string (you can customize the format if needed).
+5. **Output:** It prints both the current date and time and the calculated past date and time.
+6. **Resource Management:** The `Scanner` is closed to release the resource.
+
+
+**Example Usage:**
+
+If the current date and time is 2024-07-27 15:30:00, and the user enters 2 hours and 15 minutes, the output would be:
+
+```
+Current Date and Time: 2024-07-27 15:30:00
+Date and Time 2 hours and 15 minutes ago: 2024-07-27 13:15:00
+```

@@ -1,0 +1,86 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class PLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int p = 3;
+
+        findPLargest(arr, p);
+
+
+        // Example 2
+        int[] arr2 = {11,5,3,25,1,9,6,7,10};
+        int p2 = 4;
+        findPLargest(arr2,p2);
+
+        //Example 3 - edge case: p larger than array size
+        int[] arr3 = {1,2,3};
+        int p3 = 5;
+        findPLargest(arr3, p3);
+
+
+        // Example 4: Empty array
+        int[] arr4 = {};
+        int p4 = 2;
+        findPLargest(arr4,p4);
+    }
+
+    public static void findPLargest(int[] arr, int p) {
+        if(arr == null || arr.length == 0) {
+            System.out.println("Array is empty. No largest elements to find.");
+            return;
+        }
+
+        if (p <= 0) {
+            System.out.println("p must be a positive integer.");
+            return; 
+        }
+
+        // Handle the case where p is larger than the array size
+        p = Math.min(p, arr.length);
+
+
+        // Use a min-heap to keep track of the p largest elements seen so far
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            if (minHeap.size() < p) {
+                minHeap.offer(num);
+            } else if (num > minHeap.peek()) {
+                minHeap.poll();
+                minHeap.offer(num);
+            }
+        }
+
+        // Print the p largest elements from the min-heap
+        int[] result = new int[p];
+        for(int i = p-1; i>=0; i--) {
+            result[i] = minHeap.poll(); 
+        }
+
+
+        System.out.println("The " + p + " largest elements are: " + Arrays.toString(result));
+
+
+    }
+}
+```
+
+
+
+Key improvements and explanations:
+
+* **Min-Heap for Efficiency:** Using `PriorityQueue` (which implements a min-heap) makes finding the `p` largest elements efficient.  The smallest element among the `p` largest is always at the top of the heap.  This is O(n log p) time complexity.
+* **Handles Edge Cases:** The code includes checks for:
+    * `p` being larger than the array size.
+    * Empty input array.
+    * `p` being zero or negative.
+* **Clearer Output:** Prints the result in a formatted array using `Arrays.toString()` making it easier to read.
+* **Correct Ordering of Results:**  The results are extracted from the heap in reverse order to ensure they are in descending order (largest to smallest).
+* **Example Usages:**  Included multiple example calls in `main` to demonstrate usage with different inputs and edge cases.
+
+
+This improved version provides better error handling, efficiency, and output clarity compared to directly sorting the entire array.  It's the preferred approach for finding the `p` largest elements, especially when `p` is significantly smaller than the array size.

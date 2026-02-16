@@ -1,0 +1,18 @@
+
+
+
+Explanation within `main` method limitations:
+
+1. **TreeMap:** We use a `TreeMap` because it automatically stores keys in sorted order, making it efficient to find the least key greater than or equal to a given key.
+
+2. **ceilingKey():**  The `ceilingKey()` method of `TreeMap` directly does what we need.  It returns the least key greater than or equal to the given key, or `null` if there's no such key.
+
+3. **Example:**  The `main` method demonstrates how to create a `TreeMap`, add elements, and use `ceilingKey()` to get the desired result.  The different examples show how it handles various cases, including when the exact key exists, when a larger key exists, and when no larger key exists.
+
+4. **String Keys:**  The example with `stringTreeMap` shows that `TreeMap` can handle String keys as well (or any other comparable type).  The comparison will be based on the natural ordering of Strings (lexicographical order).
+
+
+Important Notes due to `main` method restriction:
+
+* Error handling (e.g., for invalid input) is minimal in this example for brevity. In a more complete program, you would typically include more robust error handling.
+*  More complex scenarios (e.g., handling custom comparison logic) would typically be handled by separate classes/methods, which is not possible within a single `main` method.

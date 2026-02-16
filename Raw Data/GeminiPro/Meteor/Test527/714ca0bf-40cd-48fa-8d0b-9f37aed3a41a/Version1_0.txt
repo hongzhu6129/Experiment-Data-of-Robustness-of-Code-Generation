@@ -1,0 +1,53 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // Example value, you can change this
+
+        for (int a = 1; a <= n; a++) {
+            for (int b = a + 1; b <= n; b++) { // Ensure b > a to avoid duplicate pairs
+                int sum = a * a * a + b * b * b;
+
+                if (sum <= n) {
+                    int count = 0;
+                    for (int c = 1; c < b ; c++) { // Iterate through potential pairs (c,d) where c<b to prevent duplicates
+                        for (int d = c + 1; d <= n; d++) { // Ensure d > c to avoid duplicate pairs within the inner loop
+
+                            if (c * c * c + d * d * d == sum) {
+                                count++;
+                                if(count >=1 && (c !=a || d!=b) ){ //Check if at least two pairs exist for the current sum and avoid duplicate
+                                    System.out.println(sum + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                                    return; // Exit after finding the first such number
+                                }
+                            }
+                        }
+
+                    }
+                    
+
+                }
+            }
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Efficiency:**  The code avoids redundant calculations by ensuring `b > a` in the outer loops and `d > c` in the inner loops. This prevents checking the same pair of cubes twice (e.g., 1^3 + 2^3 and 2^3 + 1^3).  The return statement in the main method will exit once we've found one number.
+
+2. **Clarity:** Variables are more descriptively named (e.g., `sum`, `count`).
+
+3. **Correctness:** The logic now accurately reflects the problem statement by only considering *distinct* pairs of cubes and by returning from main once we've confirmed that a sum can be represented by two different cube pairs. Added a check using `c != a || d != b` so that we don't return when the same pair is found again.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `Ramanujan.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run `javac Ramanujan.java`.
+3. **Run:** After successful compilation, run `java Ramanujan`.
+
+
+
+If you want to test with a larger `n`,  change the value of `n` in the `main` method. Keep in mind that the time complexity of the code increases.

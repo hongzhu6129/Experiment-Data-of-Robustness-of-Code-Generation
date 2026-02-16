@@ -1,0 +1,39 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+class Solution {
+
+    public static void main(String[] args) {
+        String numStr1 = "12.345";
+        String numStr2 = "12";
+        String numStr3 = "12.34.56"; // Invalid
+        String numStr4 = "-12.345";
+        String numStr5 = "12345.00";
+
+
+        System.out.println(validate(numStr1)); // Output: 3
+        System.out.println(validate(numStr2)); // Output: 0
+        System.out.println(validate(numStr3)); // Output: null (Invalid input)
+        System.out.println(validate(numStr4)); // Output: 3
+        System.out.println(validate(numStr5)); // Output 2
+
+    }
+
+
+    public static Integer validate(String numStr) {
+        // Regular expression to check for valid decimal number format (optional negative sign, digits, optional single decimal point, and digits)
+        Pattern pattern = Pattern.compile("^-?\\d+(\\.\\d+)?$"); 
+        Matcher matcher = pattern.matcher(numStr);
+
+        if (!matcher.matches()) {
+            return null; // Invalid input
+        }
+
+        int decimalIndex = numStr.indexOf('.');
+        if (decimalIndex == -1) {
+            return 0; // No decimal point
+        } else {
+            return numStr.length() - decimalIndex - 1;
+        }
+    }
+}

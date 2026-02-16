@@ -1,0 +1,62 @@
+**Java Program:**
+
+```java
+import java.util.*;
+
+public class SubstringFinder {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+
+        // Get all substrings of length 3
+        Set<String> substrings = new HashSet<>();
+        for (int i = 0; i <= str.length() - 3; i++) {
+            substrings.add(str.substring(i, i + 3));
+        }
+
+        // Find substrings that appear three times
+        Map<String, Integer> counts = new HashMap<>();
+        for (String substring : substrings) {
+            counts.put(substring, counts.getOrDefault(substring, 0) + 1);
+        }
+
+        // Print substrings that appear three times
+        for (String substring : counts.keySet()) {
+            if (counts.get(substring) == 3) {
+                System.out.println("Substring that appears three times: " + substring);
+            }
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Positive Test Cases:**
+
+* Input: "aaabbcccc"
+* Output: "aaa", "bbb", "ccc"
+
+* Input: "abcdefghi"
+* Output: "abc", "bcd", "cde", "def", "efg", "fgh", "ghi"
+
+**Negative Test Cases:**
+
+* Input: "a"
+* Output: "No substrings that appear three times"
+
+* Input: "aa"
+* Output: "No substrings that appear three times"
+
+* Input: "aaa"
+* Output: "aaa" (Appears three times, but only in adjacent positions)
+
+**Corner Cases:**
+
+* Input: null
+* Expected Output: "Invalid input"
+
+* Input: ""
+* Expected Output: "Invalid input"

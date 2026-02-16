@@ -1,0 +1,98 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());  // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Original Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected: 0 km
+
+3. **Antipodal Points (opposite sides of Earth):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40  
+   - lon2: 110   (180 degrees opposite longitude)
+   - Expected: ~20015.08 km (approximately Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0   (Longitude doesn't matter at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected: ~20015.08 km
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected: ~10007.54 km (approximately 1/4 Earth's circumference)
+
+
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected: Small distance (because they are close despite the large longitude difference)
+
+
+
+7. **Invalid Input (Latitude out of range):**
+   - lat1: 100  (Invalid Latitude - must be between -90 and 90)
+   - Your program should handle this gracefully, either by throwing an exception or printing an error message.
+
+8. **Zero Longitude and Latitude:** 
+   - lat1: 0
+   - lon1: 0
+   - lat2: 10
+   - lon2: 10
+   - Expected: Calculate distance normally. This tests cases where one or both coordinates are zero.
+
+
+By testing these cases, you can ensure that your program correctly calculates the distance between any two points on Earth, including handling special cases like poles, antipodes, and points near the International Date Line.  It's also important to consider how your program handles invalid input.  You could add error checking to the code to prevent unexpected results or crashes.

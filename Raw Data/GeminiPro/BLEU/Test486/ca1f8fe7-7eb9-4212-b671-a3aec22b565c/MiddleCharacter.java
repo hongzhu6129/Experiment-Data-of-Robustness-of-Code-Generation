@@ -1,0 +1,26 @@
+public class MiddleCharacter {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "worldd";
+        String str3 = "a";
+
+        System.out.println("Middle of " + str1 + ": " + middle(str1)); // Output: ll
+        System.out.println("Middle of " + str2 + ": " + middle(str2)); // Output: rl
+        System.out.println("Middle of " + str3 + ": " + middle(str3)); // Output: a
+
+    }
+
+    public static String middle(String str) {
+        int len = str.length();
+        int middleIndex = len / 2;
+
+        if (len % 2 == 0) {
+            // Even length, return the middle two characters
+            return str.substring(middleIndex - 1, middleIndex + 1);
+        } else {
+            // Odd length, return the middle character
+            return str.substring(middleIndex, middleIndex + 1);
+        }
+    }
+}

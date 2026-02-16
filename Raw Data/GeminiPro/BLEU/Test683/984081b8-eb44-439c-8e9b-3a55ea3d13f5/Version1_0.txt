@@ -1,0 +1,73 @@
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+
+        // Example 1: Rounding to 2 decimal places
+        float number1 = 123.4567f;
+        int decimalPlaces1 = 2;
+        float roundedNumber1 = roundFloat(number1, decimalPlaces1);
+        System.out.println(number1 + " rounded to " + decimalPlaces1 + " decimal places: " + roundedNumber1); // Output: 123.46
+
+        // Example 2: Rounding to 3 decimal places
+        float number2 = 987.654321f;
+        int decimalPlaces2 = 3;
+        float roundedNumber2 = roundFloat(number2, decimalPlaces2);
+        System.out.println(number2 + " rounded to " + decimalPlaces2 + " decimal places: " + roundedNumber2); // Output: 987.654
+
+        // Example 3: Rounding to 0 decimal places (nearest integer)
+        float number3 = 5.7f;
+        int decimalPlaces3 = 0;
+        float roundedNumber3 = roundFloat(number3, decimalPlaces3);
+        System.out.println(number3 + " rounded to " + decimalPlaces3 + " decimal places: " + roundedNumber3); // Output: 6.0
+
+
+        // Example 4: Handling negative decimal places (rounding to nearest 10, 100 etc)
+        float number4 = 12345.67f;
+        int decimalPlaces4 = -1; // rounds to the nearest ten
+        float roundedNumber4 = roundFloat(number4, decimalPlaces4);
+        System.out.println(number4 + " rounded to " + decimalPlaces4 + " decimal places: " + roundedNumber4); // Output: 12350.0
+        
+
+        //Example 5: Demonstrate different Rounding Modes.
+        float number5 = 2.5f;
+        System.out.println(number5 + " rounded up   to 0 decimal places : " + roundFloatWithMode(number5,0, RoundingMode.UP));       // 3.0
+        System.out.println(number5 + " rounded down to 0 decimal places : " + roundFloatWithMode(number5,0, RoundingMode.DOWN));     // 2.0
+        System.out.println(number5 + " rounded half up to 0 decimal places : " + roundFloatWithMode(number5,0, RoundingMode.HALF_UP)); // 3.0
+        System.out.println(number5 + " rounded half down to 0 decimal places : " + roundFloatWithMode(number5,0, RoundingMode.HALF_DOWN));// 2.0
+
+
+
+    }
+
+    public static float roundFloat(float number, int decimalPlaces) {
+        return roundFloatWithMode(number, decimalPlaces, RoundingMode.HALF_UP);  // Default to HALF_UP rounding
+    }
+     public static float roundFloatWithMode(float number, int decimalPlaces, RoundingMode mode) {
+         BigDecimal bd = new BigDecimal(Float.toString(number)); //Convert to BigDecimal for accurate rounding
+         bd = bd.setScale(decimalPlaces, mode);  // Set the scale and rounding mode
+         return bd.floatValue();
+     }
+
+
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **BigDecimal for Accuracy:**  Using `BigDecimal` is crucial for accurate rounding, especially with floating-point numbers.  `float` and `double` can have representation errors that lead to incorrect rounding.
+
+2. **Rounding Mode:** The code now explicitly demonstrates how to use different rounding modes (e.g., `HALF_UP`, `UP`, `DOWN`).  This is important because different situations might require different rounding behaviors. The default rounding mode chosen is  `HALF_UP`.  This is the most common rounding mode, where values exactly halfway between rounded decimal values are rounded towards the next higher value.
+
+3. **Handling Negative Decimal Places:** The code now correctly handles negative `decimalPlaces` values, allowing you to round to the nearest 10, 100, 1000, etc.
+
+4. **Clearer Examples:** The `main` method includes more examples demonstrating different rounding scenarios and the use of various rounding modes.
+
+5. **Helper Method for Rounding Mode:**  A `roundFloatWithMode` method is introduced to handle the rounding logic, making the code more modular and easier to understand. `roundFloat` method is also included to maintain backwards compatibility and to allow the user to round using the default rounding mode.
+
+
+This improved version provides a much more robust and educational example of how to round float numbers in Java.

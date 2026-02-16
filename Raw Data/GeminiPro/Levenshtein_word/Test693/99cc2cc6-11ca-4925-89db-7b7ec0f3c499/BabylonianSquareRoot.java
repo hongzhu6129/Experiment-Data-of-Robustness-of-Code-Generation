@@ -1,0 +1,49 @@
+public class BabylonianSquareRoot {
+
+    public static float square_Root(float n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Cannot calculate square root of a negative number.");
+        }
+
+        if (n == 0) {
+            return 0;
+        }
+
+        float x = n;
+        float y = 1;
+        float e = 0.000001f; // Tolerance level
+
+        while (x - y > e) {
+            x = (x + y) / 2;
+            y = n / x;
+        }
+        return x;
+    }
+
+    public static void main(String[] args) {
+        float number = 9; // Example number. Change this to test other values.
+        float sqrt = square_Root(number);
+        System.out.println("Square root of " + number + " is: " + sqrt);
+
+
+        number = 2; // Example number. Change this to test other values.
+        sqrt = square_Root(number);
+        System.out.println("Square root of " + number + " is: " + sqrt);
+
+        number = 0.25f; // Example number. Change this to test other values.
+        sqrt = square_Root(number);
+        System.out.println("Square root of " + number + " is: " + sqrt);
+
+
+         try {
+             number = -4;
+             sqrt = square_Root(number);
+             System.out.println("Square root of " + number + " is: " + sqrt);
+
+        } catch (IllegalArgumentException ex) {
+             System.out.println(ex.getMessage());
+        }
+
+
+    }
+}

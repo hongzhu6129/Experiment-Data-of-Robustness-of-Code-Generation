@@ -1,0 +1,134 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Multiplication Table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Multiplication Table of 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Multiplication Table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: 12345
+   - Expected Output:  (Verify a few calculations)
+     ```
+     Multiplication Table of 12345:
+     12345 x 1 = 12345
+     12345 x 2 = 24690
+     ...
+     12345 x 10 = 123450
+     ```
+
+
+5. **Large Negative Number:**
+   - Input: -98765
+   - Expected Output: (Verify a few calculations)
+     ```
+     Multiplication Table of -98765:
+     -98765 x 1 = -98765
+     -98765 x 2 = -197530
+     ...
+     -98765 x 10 = -987650
+     ```
+
+**How to Run Test Cases (Manually):**
+
+1. Compile the Java code: `javac MultiplicationTable.java`
+2. Run the code and provide the input when prompted: `java MultiplicationTable`  (Then type in the test input and press Enter).
+3. Compare the output with the expected output for each test case.
+
+
+
+**Automated Testing (Using JUnit -  more advanced, but recommended for larger projects):**
+
+JUnit is a Java unit testing framework. Here's an example of how you could write a JUnit test for this:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    public void testPositiveNumber() {
+        String input = "7\n";  // Input with newline
+        String expectedOutput = "Multiplication Table of 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n";
+        testMultiplicationTable(input, expectedOutput);
+    }
+
+     // ... (Add more @Test methods for other test cases) ...
+
+    private void testMultiplicationTable(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in); // Redirect System.in
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out)); // Redirect System.out
+
+        MultiplicationTable.main(new String[0]);  // Run the main method
+
+        assertEquals(expectedOutput, out.toString()); // Assert expected vs actual output
+
+        // Restore System.in and System.out (Good practice)
+        System.setIn(System.in);
+        System.setOut(System.out);
+    }
+}
+
+```
+
+To use JUnit, you'll need to add the JUnit library to your project (e.g., using Maven or Gradle).  Automated tests like this make it much easier to test and maintain your code as it grows.

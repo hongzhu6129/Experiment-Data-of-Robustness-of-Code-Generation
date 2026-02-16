@@ -1,0 +1,63 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digit of each number
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check if any two or more digits are the same
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first non-negative integer: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Enter the second non-negative integer: ");
+        int num2 = input.nextInt();
+
+        System.out.print("Enter the third non-negative integer: ");
+        int num3 = input.nextInt();
+
+
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Invalid input: Numbers must be non-negative.");
+            return; // or handle the error in a way that makes sense for your program
+        }
+
+
+        boolean result = function(num1, num2, num3);
+        System.out.println(result);
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | num3 | Expected Output | Justification |
+|---|---|---|---|---|---|
+| 1 | 22 | 32 | 42 | `true` | All numbers have the same rightmost digit (2). |
+| 2 | 15 | 25 | 41 | `true` | num1 and num2 share the same rightmost digit (5). |
+| 3 | 10 | 20 | 30 | `true` | All numbers share the same rightmost digit (0). |
+| 4 | 1 | 2 | 3 | `false` | No numbers share the same rightmost digit. |
+| 5 | 123 | 456 | 789 | `false` | No numbers share the same rightmost digit. |
+| 6 | 0 | 0 | 0 | `true` | All numbers are 0 (and share the rightmost digit 0). |  // Corner case: all zeros
+| 7 | 100 | 200 | 300 | `true` | All numbers have 0 as the rightmost digit. | //Corner case: multiples of 10
+| 8 | 1 | 11 | 21 | `true` |  Testing with numbers that have the same rightmost digit but different numbers of digits.|
+| 9 | 99 | 19 | 29 | `true` |  Testing with two-digit and one-digit numbers. |
+| 10 | 5 | 12 | 5 | `true` |  Testing when the first and third numbers are the same.|
+
+
+
+These test cases cover various combinations of same and different rightmost digits, including cases with zeros and numbers with varying numbers of digits.  Always try to include a variety of test cases like these when testing your code to ensure its robustness.

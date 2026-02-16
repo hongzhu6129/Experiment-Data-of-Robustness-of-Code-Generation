@@ -1,0 +1,99 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printMultiplicationTable(num);
+
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: `10000` (or any other large positive number)
+   - Expected Output:  Multiplication table should be correctly calculated and printed. This tests for potential overflow issues (though Java's `int` type can handle this range).
+
+5. **Large Negative Number:**
+   - Input: `-10000`  (or any other large negative number)
+   - Expected Output: Similar to the large positive number case, this tests for correct handling of large negative values.
+
+6. **Input Validation (Non-Integer):**
+   - Input: `2.5` (or any non-integer value)
+   - Expected Behavior: The program should handle this gracefully. The `Scanner.nextInt()` method will throw an `InputMismatchException` if the input is not an integer.  A robust program would catch this exception and prompt the user for valid input.  The provided code does not include this exception handling, so it will terminate with an error.  Adding a `try-catch` block would improve robustness:
+
+   ```java
+   import java.util.InputMismatchException; // Import for InputMismatchException
+
+   // ... (rest of the code)
+
+       try {
+           int num = scanner.nextInt();
+           printMultiplicationTable(num);
+       } catch (InputMismatchException e) {
+           System.out.println("Invalid input. Please enter an integer.");
+       }
+
+       scanner.close(); 
+   ```
+
+
+**How to Run the Tests:**
+
+You can manually run these tests by compiling and running the Java program, entering each input value and verifying the output against the expected results.  For more automated testing, you would use a testing framework like JUnit.  JUnit allows you to write test methods that automatically run and verify the output of your `printMultiplicationTable` function.
+
+
+
+This enhanced set of test cases and the explanation of input validation provide a more comprehensive testing approach.  Remember to handle exceptions appropriately in your code to make it robust.

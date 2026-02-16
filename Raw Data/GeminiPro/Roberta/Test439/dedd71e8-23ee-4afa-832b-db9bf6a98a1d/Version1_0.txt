@@ -1,0 +1,53 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class ImageInformation {
+
+    public static void main(String[] args) {
+        // Get a default calendar instance (typically Gregorian in most locales)
+        Calendar calendar = new GregorianCalendar(); 
+
+        // Extract information about the current date and time from the calendar
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1; // Month is 0-indexed, so add 1
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY); // 24-hour format
+        int minute = calendar.get(Calendar.MINUTE);
+
+
+        // Print the extracted information (formatted as you desire)
+        System.out.println("Image Information (from default calendar):");
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + month);
+        System.out.println("Day: " + day);
+        System.out.println("Hour: " + hour);
+        System.out.println("Minute: " + minute); 
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Naming:** The class is renamed to `ImageInformation` to reflect the purpose of the program.
+
+2. **Explicit Calendar Type:** The code now uses `GregorianCalendar` explicitly. While the default calendar is typically Gregorian, being explicit is good practice.
+
+3. **Month Correction:** The `Calendar.MONTH` field is 0-indexed (January is 0, February is 1, etc.). The code now correctly adds 1 to get the conventional month number.
+
+4. **24-Hour Format:**  `Calendar.HOUR_OF_DAY` is used to get the hour in 24-hour format (0-23) for consistency.
+
+5. **Formatted Output:** The output is formatted with labels for clarity.
+
+6. **Comments:** Comments explain the purpose of each part of the code.
+
+
+**How to Use:**
+
+1. Save the code as `ImageInformation.java`.
+2. Compile: `javac ImageInformation.java`
+3. Run: `java ImageInformation`
+
+The output will display the current year, month, day, hour, and minute based on your system's default calendar and time zone.  Since the problem does not specify any image file to read or any particular time to get, it fetches the current time by default. If you intended to get information from an image file, you would need to clarify how that image file stores or relates to time information.  

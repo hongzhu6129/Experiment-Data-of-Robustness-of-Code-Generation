@@ -1,0 +1,56 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (colors)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.offer("Red");
+        colorQueue.offer("Green");
+        colorQueue.offer("Blue");
+        colorQueue.offer("Yellow");
+        colorQueue.offer("Orange");
+
+
+        // Print the queue - Note: Elements are not guaranteed to be in a specific order
+        System.out.println("Priority Queue (natural ordering): " + colorQueue);
+
+        // Print elements one by one using poll() (removes elements in natural order)
+        System.out.print("Elements retrieved in natural order: ");
+        while (!colorQueue.isEmpty()) {
+            System.out.print(colorQueue.poll() + " ");
+        }
+        System.out.println();
+
+
+        // Add colors again (since they were removed by poll()) to demonstrate toArray()
+        colorQueue.offer("Red");
+        colorQueue.offer("Green");
+        colorQueue.offer("Blue");
+        colorQueue.offer("Yellow");
+        colorQueue.offer("Orange");
+
+        // Convert to an array
+        Object[] colorArray = colorQueue.toArray();
+        System.out.print("Elements in array form: ");
+        for (Object color : colorArray) {
+            System.out.print(color + " ");
+        }
+        System.out.println();
+
+
+
+        // Demonstrating iterating through the PriorityQueue (without removing elements)
+        System.out.print("Iterating through the queue: ");
+        for(String color : colorQueue) {
+            System.out.print(color + " ");
+        }
+        System.out.println();
+
+    }
+}
+
+```

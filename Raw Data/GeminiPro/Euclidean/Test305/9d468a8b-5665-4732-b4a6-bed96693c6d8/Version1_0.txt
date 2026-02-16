@@ -1,0 +1,35 @@
+```java
+import java.util.regex.*;
+
+public class WildcardChords {
+
+    public static void main(String[] args) {
+        String[] chords = {"Am", "C", "G"};
+
+        // Create a regular expression that matches chords with a minor third
+        Pattern pattern = Pattern.compile(".*m.*");
+
+        // Iterate over the chords and print any that match the pattern
+        for (String chord : chords) {
+            if (pattern.matcher(chord).matches()) {
+                System.out.println(chord);
+            }
+        }
+    }
+}
+```
+
+Test cases:
+
+* **Positive test cases:**
+    * "Am" should match
+    * "Dm" should match
+    * "Gm" should match
+* **Negative test cases:**
+    * "C" should not match
+    * "G" should not match
+    * "A" should not match
+* **Corner cases:**
+    * An empty string should not match
+    * A string with only whitespace should not match
+    * A string with only numbers should not match

@@ -1,0 +1,120 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40.7128
+   - Longitude 1: -74.0060  (New York City)
+   - Latitude 2: 40.7128
+   - Longitude 2: -74.0060
+   - Expected Distance: 0 km
+
+3. **Antipodal Points (Opposite sides of the Earth):**
+   - Latitude 1: 40.7128
+   - Longitude 1: -74.0060   (New York City)
+   - Latitude 2: -40.7128
+   - Longitude 2: 105.9940 (Approximately antipodal to NYC)
+   - Expected Distance: ~20015.09 km (Close to Earth's diameter)
+
+4. **North Pole to South Pole:**
+   - Latitude 1: 90
+   - Longitude 1: 0 
+   - Latitude 2: -90
+   - Longitude 2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.09 km
+
+
+5. **Points on the Equator:**
+   - Latitude 1: 0
+   - Longitude 1: 0
+   - Latitude 2: 0
+   - Longitude 2: 90
+   - Expected Distance: ~10007.54 km (Quarter of Earth's circumference)
+
+6. **Points near the International Date Line:**
+   - Latitude 1: 20
+   - Longitude 1: 179
+   - Latitude 2: 20
+   - Longitude 2: -179
+   - Expected Distance:  A small distance (because they are close despite the longitude difference).
+
+
+
+7. **Invalid Input (Handle gracefully):**
+   - Latitude 1: "abc"  (or any non-numeric input)
+   - Test how your program handles invalid input. It should ideally provide an error message and exit or prompt the user to re-enter the data.  Consider using a `try-catch` block for exception handling.
+
+
+**How to Use the Test Cases:**
+
+1. **Manually:** Substitute the values into your program and check if the calculated distance matches the expected distance (within a reasonable tolerance due to floating-point precision).
+
+2. **Automated Testing (Recommended):** Write unit tests (using JUnit or a similar framework) to automate the testing process.  This is a much more robust approach, especially for larger programs.  Here's a very basic example using JUnit:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class EarthDistanceTest {
+     @Test
+     public void testSamePoint() {
+          assertEquals(0.0, EarthDistance.calculateDistance(40.7128, -74.0060, 40.7128, -74.0060), 0.001); // Tolerance of 0.001 km
+    }
+
+    // ... add more test methods for other test cases ...
+
+
+    // Helper function (you might want to refactor your code to use this):
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+          //  ... your distance calculation logic here (same as in your main method) ...
+    }
+
+ }
+```
+
+
+By having a comprehensive set of test cases, you can be more confident that your `EarthDistance` program is working correctly in various situations.

@@ -1,0 +1,41 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.Set;
+
+public class ReverseMapKeys {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap automatically sorts keys in ascending order.
+        Map<Integer, String> map = new TreeMap<>();
+
+        // Add some sample data
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
+        map.put(4, "Four");
+        map.put(3, "Three");
+
+
+        // Get the set of keys (which are already sorted in ascending order by TreeMap)
+        Set<Integer> keys = map.keySet();
+
+        // Use a descendingSet() view of the keys to iterate in reverse (descending) order.
+        //  This does *not* modify the original map.
+        Set<Integer> reverseKeys = ((TreeMap<Integer, String>) map).descendingKeySet(); 
+
+        // Print the keys in reverse order
+        System.out.print("Keys in reverse order: ");
+        for (Integer key : reverseKeys) {
+            System.out.print(key + " ");
+        }
+        System.out.println();
+
+         // Clear the map
+        map.clear();
+
+        //Verify map is cleared
+        System.out.println("Map is cleared: " + map.isEmpty()); 
+    }
+}
+```

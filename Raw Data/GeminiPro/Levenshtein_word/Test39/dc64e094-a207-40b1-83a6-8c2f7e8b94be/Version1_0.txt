@@ -1,0 +1,97 @@
+```java
+import java.time.Duration;
+import java.time.Instant;
+
+public class UserTime {
+
+    private static Instant startTime;
+
+    public static void startTracking() {
+        startTime = Instant.now();
+    }
+
+    public static void displayUserTime() {
+        if (startTime == null) {
+            System.out.println("Tracking hasn't started yet.");
+            return;
+        }
+
+        Instant endTime = Instant.now();
+        Duration elapsedTime = Duration.between(startTime, endTime);
+
+        long seconds = elapsedTime.getSeconds();
+        long milliseconds = elapsedTime.toMillisPart(); // Java 9+ for millisecond part directly
+
+        // Format the output nicely
+        String formattedTime = String.format("%d seconds, %d milliseconds", seconds, milliseconds);
+        System.out.println("Elapsed user time: " + formattedTime);
+
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+
+        // Test case 1: Basic usage
+        startTracking();
+        Thread.sleep(2500);  // Simulate some work (2.5 seconds)
+        displayUserTime();
+
+
+
+        // Test case 2: Immediate display
+        startTracking();
+        displayUserTime();  // Should show very little time
+
+
+        // Test case 3:  No tracking started
+        startTime = null; // Reset startTime
+        displayUserTime(); // Should handle the case where tracking hasn't begun
+
+        // Test case 4: Longer duration
+        startTracking();
+        Thread.sleep(10500); // Simulate longer work (10.5 seconds)
+        displayUserTime();
+
+        // Test case 5: Sub-millisecond timings (not reliably measurable)
+        startTracking();
+        displayUserTime();
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`Instant` for Precision:** Uses `java.time.Instant` for accurate time measurement.  This is preferred over `System.currentTimeMillis()` for time differences.
+2. **`Duration` for Time Difference:**  `java.time.Duration` handles the time difference calculation correctly.
+3. **Clear Output Formatting:**  The output is formatted for readability (seconds and milliseconds).
+4. **Handles Untracked Case:** Checks if `startTime` is null (tracking hasn't begun) and provides a message.
+5. **`toMillisPart()` (Java 9+):** For Java 9 and later, you can directly get the millisecond part using `toMillisPart()`.  For older Java versions, you would need to calculate the remainder after dividing seconds by 1000 to get the milliseconds.
+6. **Test Cases:**  The `main` method now includes several test cases:
+   - Basic usage with a sleep
+   - Immediate display after starting
+   - Displaying when tracking hasn't started
+   - Longer duration test
+   - A test showing that sub-millisecond timings aren't very reliable (due to system limitations).
+
+
+
+**Example Output (will vary slightly due to execution time):**
+
+```
+Elapsed user time: 2 seconds, 500 milliseconds
+Elapsed user time: 0 seconds, 0 milliseconds
+Tracking hasn't started yet.
+Elapsed user time: 10 seconds, 501 milliseconds
+Elapsed user time: 0 seconds, 0 milliseconds 
+```
+
+
+**Key improvements over the original version:**
+
+- **Correctness:**  Handles time differences more accurately using `Instant` and `Duration`.
+- **Clarity:**  The code is more readable and easier to understand.
+- **Robustness:** Handles the case where tracking hasn't started.
+- **Testability:** Provides example test cases to demonstrate usage and corner cases.

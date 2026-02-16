@@ -1,0 +1,74 @@
+```java
+import java.util.TreeMap;
+
+public class CopyTreeMap {
+
+    public static void main(String[] args) {
+        // Create a source TreeMap
+        TreeMap<String, Integer> sourceTreeMap = new TreeMap<>();
+        sourceTreeMap.put("Apple", 10);
+        sourceTreeMap.put("Banana", 20);
+        sourceTreeMap.put("Orange", 30);
+        sourceTreeMap.put("Grape", 40);
+
+        // Create a destination TreeMap using putAll() for a shallow copy
+        TreeMap<String, Integer> destinationTreeMap = new TreeMap<>();
+        destinationTreeMap.putAll(sourceTreeMap);
+
+
+        // Print both TreeMaps to verify the copy
+        System.out.println("Source TreeMap: " + sourceTreeMap);
+        System.out.println("Destination TreeMap: " + destinationTreeMap);
+
+
+        // Demonstrate that changes to the original affect the copy (shallow copy)
+        sourceTreeMap.put("Mango", 50);  // Add a new entry to the source
+
+        System.out.println("\nAfter modifying source:");
+        System.out.println("Source TreeMap: " + sourceTreeMap);
+        System.out.println("Destination TreeMap: " + destinationTreeMap); // Destination is NOT affected since keys and values themselves are immutable
+
+         // Example if values were mutable objects (like a custom Product class)
+         TreeMap<String, StringBuilder> mutableTreeMap = new TreeMap<>();
+         StringBuilder productName = new StringBuilder("Phone");
+         mutableTreeMap.put("Electronics", productName);
+
+         TreeMap<String, StringBuilder> mutableCopy = new TreeMap<>();
+         mutableCopy.putAll(mutableTreeMap);
+
+         productName.append(" Case"); // Modify the original StringBuilder
+
+         System.out.println("\nMutable Example:");
+         System.out.println("Original: " + mutableTreeMap);
+         System.out.println("Copy: " + mutableCopy); // Copy IS affected because the StringBuilder is shared
+
+
+
+        // For a deep copy (if values are mutable and you want independent copies), 
+        // you'd need to iterate and clone/copy the values individually. Demonstrated below:
+        TreeMap<String, StringBuilder> deepCopy = new TreeMap<>();
+        for (String key : mutableTreeMap.keySet()) {
+            deepCopy.put(key, new StringBuilder(mutableTreeMap.get(key))); // Create new StringBuilder instances
+        }
+
+
+        productName.append(" Accessory"); // Further modify the original
+
+        System.out.println("\nAfter Deep Copy and further modifications:");
+        System.out.println("Original: " + mutableTreeMap);
+        System.out.println("Deep Copy: " + deepCopy); // Deep copy remains unaffected
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Explanation of Shallow vs. Deep Copy:** The code now explicitly demonstrates the difference between a shallow copy (using `putAll()`) and a deep copy, highlighting the implications when values are mutable objects.
+2. **Example with Mutable Values:**  The example using `StringBuilder` illustrates how a shallow copy can lead to unexpected behavior if the values in the TreeMap are mutable objects.
+3. **Deep Copy Implementation:** The code includes a deep copy implementation using a loop to create independent copies of the values.  This addresses the issue of shared mutable objects.
+4. **More Comprehensive Comments:** The comments have been improved to provide a better understanding of each step in the process.
+5. **Output for Clarity:** `println` statements are used to clearly show the contents of the TreeMaps at different stages, making it easier to observe the effects of shallow and deep copying.
+
+
+This improved code addresses the complexities of copying TreeMaps with different types of values and provides a practical understanding of shallow vs. deep copying in Java.

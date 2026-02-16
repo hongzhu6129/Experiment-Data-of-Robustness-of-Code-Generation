@@ -1,0 +1,55 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumberChecker {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's examples (though not explicitly required)
+        System.out.println("7 is a happy number: " + isHappy_number(7)); //true
+        System.out.println("2 is a happy number: " + isHappy_number(2)); //false
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+1. **HashSet for Cycle Detection:** The code uses a `HashSet` called `seen` to efficiently keep track of numbers encountered during the process.  This is crucial for detecting cycles and preventing infinite loops, which is the defining characteristic of unhappy numbers.
+
+2. **Clearer Loop Condition:** The `while` loop condition `n != 1 && !seen.contains(n)` combines the two termination conditions: reaching 1 (happy number) or encountering a cycle (unhappy number).
+
+3. **Concise Sum Calculation:** The inner `while` loop calculates the sum of the squares of digits efficiently.
+
+4. **Return Boolean Result:** The function returns `true` if the number is happy and `false` otherwise, directly answering the question.
+
+5. **Illustrative Main Method:** The `main` method provides examples to demonstrate how to use the `isHappy_number` function and shows both happy and unhappy number cases.  It now also includes the test cases suggested within the prompt's examples (7 and 2).
+
+
+
+This improved version is more robust, efficient, and adheres to best practices for happy number determination. It also addresses the specific requirements of using only the provided method signatures.

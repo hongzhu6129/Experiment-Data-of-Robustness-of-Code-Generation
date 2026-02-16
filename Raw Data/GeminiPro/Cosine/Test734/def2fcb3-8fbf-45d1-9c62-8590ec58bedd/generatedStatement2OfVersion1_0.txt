@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature:** The `Saddleback` method's signature now includes `m` and `n` (dimensions of the array) as parameters, making the code more readable and less reliant on accessing `arr.length` and `arr[0].length` internally.  This is better practice when the dimensions might not be immediately obvious from the calling context.
+
+2. **Returns an `int[]`:** The `Saddleback` method returns an `int[]` of size 2 to represent the row and column index. This is much cleaner than relying on output parameters or printing within the method.  A `{-1, -1}` return indicates the target wasn't found.
+
+3. **Enhanced `main` method:** The `main` method demonstrates how to use the `Saddleback` method effectively and includes a test case where the target value is *not* present in the array.
+
+4. **Concise Comments:** Comments explain the logic clearly.
+
+5. **Error Handling:**  Returns `{-1, -1}` if the target is not found, providing a way for the calling function to handle the case where the target isn't in the array.
+
+
+How the Saddleback Search works:
+
+The algorithm starts at the top-right corner of the matrix.  It then compares the current element with the target:
+
+* **If they are equal:** The target is found.
+* **If the current element is smaller:**  The target cannot be in the current row (because rows are sorted ascending), so move down to the next row.
+* **If the current element is larger:** The target cannot be in the current column (because columns are sorted ascending), so move left to the previous column.
+
+
+This process continues until the target is found or the boundaries of the matrix are crossed (meaning the target is not present).

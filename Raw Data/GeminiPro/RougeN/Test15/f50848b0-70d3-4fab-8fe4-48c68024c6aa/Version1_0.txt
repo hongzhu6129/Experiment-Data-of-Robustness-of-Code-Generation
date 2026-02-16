@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        StringBuilder hexadecimal = new StringBuilder();
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            char hexDigit;
+            if (remainder < 10) {
+                hexDigit = (char) (remainder + '0');
+            } else {
+                hexDigit = (char) (remainder - 10 + 'A');
+            }
+            hexadecimal.insert(0, hexDigit);
+            decimal /= 16;
+        }
+
+        return hexadecimal.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a decimal number: ");
+        int decimalNumber = scanner.nextInt();
+
+
+        String hexadecimalNumber = function(decimalNumber);
+        System.out.println("Hexadecimal equivalent: " + hexadecimalNumber);
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 255
+   - Expected Output: FF
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: 0  (This is a corner case and important to test explicitly)
+
+3. **Negative Number:** (Though the question doesn't specify, it's good practice to handle this)
+   - Input: -1
+   - Expected Output: FFFFFFFF (or similar representation of a negative number in two's complement using hex)  The exact representation will depend on the machine architecture (e.g., 32-bit or 64-bit) as Java treats `int` as a signed type. You might want to handle this case separately if you intend to only convert positive numbers.
+
+4. **Large Number:**
+   - Input: 123456789
+   - Expected Output: 75BCD15
+
+5. **Small Positive Number:**
+   - Input: 10
+   - Expected Output: A
+
+6. **Power of 2:**
+   - Input: 16
+   - Expected Output: 10
+
+7. **Number with a repeating hex digit:**
+   - Input: 4097 (1000000000001 in binary, tests if the loop handles the repeated 0s correctly)
+   - Expected Output: 1001
+
+**How to run the tests (Manual Testing):**
+
+1. Compile the Java code: `javac DecimalToHexadecimal.java`
+2. Run the code: `java DecimalToHexadecimal`
+3. Enter each of the test inputs one by one and verify the output against the expected output.
+
+
+
+**Improving the Code (Optional):**
+
+- **Handling Negative Numbers:** You could add logic within the `function` method to handle negative numbers explicitly if you want a particular representation (e.g., two's complement).  One approach is to convert the negative `int` to a `long` first and then take the modulus and division with 16, similar to the existing logic, but using `long` data type operations throughout.
+- **Using `toHexString()` (Built-in):** While the question asks to implement the conversion logic, be aware that Java provides a built-in method `Integer.toHexString(decimal)` for decimal to hexadecimal conversion. This would make the `function` very simple:  `return Integer.toHexString(decimal).toUpperCase();` (The `toUpperCase()` ensures uppercase hex digits). This is a much more concise and efficient way to achieve the conversion. However, for learning purposes, implementing the algorithm manually is valuable.

@@ -1,0 +1,57 @@
+```java
+public class BinaryToDecimal {
+
+    public static void main(String[] args) {
+        // Input binary number as a string from command-line arguments.
+        if (args.length == 0) {
+            System.out.println("Please provide a binary number as a command-line argument.");
+            return;
+        }
+
+        String binaryString = args[0];
+
+        try {
+            // Convert binary string to decimal integer.
+            int decimal = Integer.parseInt(binaryString, 2);
+
+            // Output the decimal equivalent.
+            System.out.println("decimal number: " + decimal);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary number input. Please enter a valid binary string (e.g., 101101).");
+        }
+    }
+}
+```
+
+**How to compile and run:**
+
+1. **Save:** Save the code above as `BinaryToDecimal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac BinaryToDecimal.java`
+3. **Run:** Execute the compiled code with the binary number as a command-line argument: `java BinaryToDecimal 100` (This will convert "100" to decimal).  You can change "100" to any other binary number you want to convert.
+
+
+
+**Explanation:**
+
+* The program takes the binary number as a command-line argument (using `args[0]`).
+* `Integer.parseInt(binaryString, 2)` is the core part:  It parses the `binaryString` using base 2 (binary) and converts it into an integer.
+* The `try-catch` block handles potential `NumberFormatException` if the input is not a valid binary string.  This provides robust error handling.
+* The output is printed to the console.
+
+
+**Example Usage:**
+
+```
+java BinaryToDecimal 1111
+decimal number: 15
+
+java BinaryToDecimal 10101
+decimal number: 21
+
+java BinaryToDecimal 110011
+decimal number: 51
+
+java BinaryToDecimal abc  // Invalid input
+Invalid binary number input. Please enter a valid binary string (e.g., 101101). 
+```

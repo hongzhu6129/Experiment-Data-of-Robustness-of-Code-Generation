@@ -1,0 +1,36 @@
+```java
+class Solution {
+    /**
+     * Checks if every digit of a given integer is even.
+     *
+     * @param n The integer to check.
+     * @return True if every digit is even, false otherwise.
+     */
+    public static boolean test(int n) {
+        // Handle negative numbers by converting to positive.
+        n = Math.abs(n);
+
+        // Iterate through digits.
+        while (n > 0) {
+            int digit = n % 10;
+            if (digit % 2 != 0) { // Check if the digit is odd.
+                return false; // If an odd digit is found, return false.
+            }
+            n /= 10;
+        }
+        return true; // If the loop completes without finding odd digits, return true.
+
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(test(2468)); // Output: true
+        System.out.println(test(24681)); // Output: false
+        System.out.println(test(0));    // Output: true (0 is considered even)
+        System.out.println(test(-246)); // Output: true (handles negative numbers)
+         System.out.println(test(1)); // false
+        System.out.println(test(13579)); // false
+        System.out.println(test(24680)); // true
+    }
+}
+```

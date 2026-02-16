@@ -1,0 +1,46 @@
+```java
+import java.util.Scanner;
+
+public class RemoveMovesWord {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the input string
+        System.out.println("Enter the input string:");
+        String inputString = scanner.nextLine();
+
+        // Remove the word "moves" from the input string
+        String outputString = inputString.replaceAll("moves", "");
+
+        // Print the output string
+        System.out.println("The output string is:");
+        System.out.println(outputString);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Normal case:**
+```
+Input: I love to watch movies.
+Output: I love to watch .
+```
+
+* **Corner cases:**
+* **Empty string:**
+```
+Input: 
+Output: 
+```
+* **String with only the word "moves":**
+```
+Input: moves
+Output: 
+```
+
+**Explanation:**
+The Java program uses the `replaceAll()` method of the `String` class to remove all occurrences of the word "moves" from the input string. The `replaceAll()` method takes two arguments: a regular expression that defines the pattern to be replaced, and the replacement string. In this case, the regular expression is `"moves"`, which matches the word "moves", and the replacement string is an empty string, which replaces the matched word with nothing.
+
+The program reads the input string from the user, removes the word "moves" from the input string, and then prints the output string.

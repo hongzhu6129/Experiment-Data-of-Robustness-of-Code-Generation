@@ -1,0 +1,51 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 if k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; // Efficient calculation to avoid overflow
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+        if (n < 0 || k < 0) {
+            System.out.println("n and k must be non-negative.");
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        }
+        scanner.close();
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Error Handling:** The code now checks for invalid input (negative `n` or `k`) and provides a clear error message.
+* **Efficiency:** The `binomial_Coefficient` method includes an optimization: `if (k > n / 2) { k = n - k; }`. This utilizes the property that C(n, k) = C(n, n-k) to reduce the number of iterations in the loop, making the calculation more efficient, especially for large values.
+* **Overflow Prevention:** The calculation within the loop is carefully structured as `result = result * (n - i + 1) / i;` to minimize the risk of integer overflow.  By performing the multiplication first and then the division, we avoid intermediate values that could exceed the `long` data type's capacity.
+* **Clearer Prompts and Output:**  The `main` method uses more descriptive prompts and output messages to improve user interaction.
+* **Resource Management:**  The `Scanner` is closed using `scanner.close()` after it's no longer needed, which is good practice for resource management.
+
+
+This improved version addresses potential issues, provides better error handling, and enhances overall efficiency and clarity.

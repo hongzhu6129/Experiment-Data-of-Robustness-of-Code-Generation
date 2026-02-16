@@ -1,0 +1,94 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close(); // Close the scanner to prevent resource leaks
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Regular Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+3. **Negative Numbers:**
+   - Input: -10, -20, -30
+   - Expected Output: -20.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -10, 20, 30
+   - Expected Output: 13.333333333333334
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.7, 8.9
+   - Expected Output: 5.7
+
+7. **Edge Case (potential overflow with integers -  less likely with doubles but good to consider if using int):**
+   - Input: Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  (If you were using `int` this would likely overflow)
+   - Expected Output: With doubles: 2.147483647E9 (approx)
+
+
+
+**How to Run the Test Cases:**
+
+You can manually enter these values when prompted by the program.  For more automated testing, you could create a separate test class (using JUnit or TestNG, for example) that calls the `calculateAverage()` method with these inputs and asserts that the returned value matches the expected output.  This is the recommended approach for larger projects.
+
+
+
+Example of a simple JUnit test (you'd need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testRegularCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testZeroValues() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(0, 0, 0));
+    }
+
+    // Add more test cases here...
+}
+```
+
+
+This improved answer provides more comprehensive test cases, explains how to run them, and shows a basic example of using JUnit for automated testing. Remember to handle potential exceptions, especially if you're taking user input (e.g., `InputMismatchException` if the user enters text instead of numbers).  Closing the scanner also prevents resource leaks.

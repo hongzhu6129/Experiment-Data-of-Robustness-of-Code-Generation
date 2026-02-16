@@ -1,0 +1,81 @@
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+public class CloneBinaryTree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        TreeNode clonedTree = cloneTree(root);
+
+        System.out.println("Original Tree:");
+        traverseTree(root);
+        System.out.println("\nCloned Tree:");
+        traverseTree(clonedTree); 
+    }
+
+    public static TreeNode cloneTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode newNode = new TreeNode(root.val);
+        newNode.left = cloneTree(root.left);
+        newNode.right = cloneTree(root.right);
+
+        return newNode;
+    }
+
+    private static void traverseTree(TreeNode node) {
+        if (node != null) {
+            System.out.print(node.val + " ");
+            traverseTree(node.left);
+            traverseTree(node.right);
+        }
+    }
+}
+```
+
+
+**Explanation and adherence to the specified method signatures:**
+
+1. **TreeNode Class:**  Represents a node in the binary tree.  It contains the `val`, `left` child, and `right` child.
+
+2. **`public static void main(String[] args)`:**
+   - Creates an example binary tree.
+   - Calls `cloneTree()` to create a copy.
+   - Calls `traverseTree()` to print both the original and cloned trees (for verification).
+
+3. **`public static TreeNode cloneTree(TreeNode root)`:**
+   - This is the core cloning logic. It uses recursion:
+     - **Base Case:** If `root` is `null` (empty subtree), return `null`.
+     - **Recursive Step:**
+       - Create a new node (`newNode`) with the same value as the current node.
+       - Recursively clone the left subtree and assign it to `newNode.left`.
+       - Recursively clone the right subtree and assign it to `newNode.right`.
+       - Return the `newNode`.
+
+4. **`private static void traverseTree(TreeNode node)`:**
+   - This is a helper function to print the tree using a preorder traversal (root, left, right). It's used to demonstrate that the cloned tree has the same structure and values as the original.
+
+
+**How it works (Cloning Logic):**
+
+The `cloneTree()` method essentially recreates the tree structure by making a copy of each node and recursively connecting the copies in the same way as the original tree.  Because it creates entirely new nodes, modifying the cloned tree will not affect the original, and vice-versa.  This is what "deep copying" means.

@@ -1,0 +1,74 @@
+```java
+public class StringConversions {
+
+    public static void main(String[] args) {
+        String str = "12345";
+        String strDecimal = "12345.6789";
+        String strLong = "9876543210";  // Larger than max int
+
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer: " + intValue);
+
+            long longValue = Long.parseLong(strLong);
+            System.out.println("Long: " + longValue);
+
+            float floatValue = Float.parseFloat(strDecimal);
+            System.out.println("Float: " + floatValue);
+
+            double doubleValue = Double.parseDouble(strDecimal);
+            System.out.println("Double: " + doubleValue);
+
+
+            // Handling potential NumberFormatExceptions
+            String invalidStr = "abc";  // Example of an invalid string
+
+            try {
+                int invalidInt = Integer.parseInt(invalidStr);
+                System.out.println("Integer (Invalid): " + invalidInt); // This won't be reached if an exception is thrown
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid integer format: " + e.getMessage()); 
+            }
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format: " + e.getMessage());
+        }
+
+
+
+        // Demonstrating conversion with error handling using methods
+        convertAndPrintInt("123");       // Valid
+        convertAndPrintInt("123.45");   // Invalid
+        convertAndPrintInt("abcdef");    // Invalid
+
+
+    }
+
+    // Helper method to demonstrate conversion and error handling within main
+    public static void convertAndPrintInt(String str) {
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer (from method): " + intValue);
+        } catch (NumberFormatException e) {
+            System.out.println("Error converting '" + str + "' to int: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling (NumberFormatException):** The code now includes `try-catch` blocks to handle `NumberFormatException`. This is crucial because if the input string cannot be parsed into the desired numeric type, the program will crash without it. The `try-catch` prevents this and allows you to handle the error gracefully (e.g., print an error message).
+
+2. **Demonstrates long conversion:** Shows how to convert to `long` which is important for numbers larger than the maximum value an `int` can hold.
+
+3. **Clearer Output:** The output is more descriptive, indicating the type of each converted value.
+
+4. **Helper Method Example:** The `convertAndPrintInt` method demonstrates how you could encapsulate the conversion and error handling logic within a separate method within your `main` method if you need to perform these conversions repeatedly.  This improves code organization.
+
+5. **Handles Invalid Input Demonstrated:** Shows how the error handling works with specific invalid input examples (e.g., "abc", "123.45" for int conversion).
+
+
+This revised version is much more robust and practical because it addresses the very important issue of handling invalid input, making it less prone to errors.

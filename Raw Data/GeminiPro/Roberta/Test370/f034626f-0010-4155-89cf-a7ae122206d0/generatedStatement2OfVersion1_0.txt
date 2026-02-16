@@ -1,0 +1,16 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Memoization (Dynamic Programming):** The `lookup` table (2D boolean array) is used to store the results of subproblems. This avoids redundant calculations and significantly improves performance, especially for larger input strings.  This makes the solution much more efficient.
+* **Clearer Base Cases:** The base cases are more explicitly handled, covering scenarios like reaching the end of either string or encountering a '*' at the end of the pattern.
+* **Correct Handling of '*' Wildcard:** The logic for the '*' wildcard is corrected. It now correctly considers both possibilities: matching one or more characters (including zero characters).  The `||` (OR) condition ensures that both paths are explored:
+    * `chkMatching(str1, str2, i + 1, j, lookup)`: '*' matches at least one character from `str1`.
+    * `chkMatching(str1, str2, i, j + 1, lookup)`: '*' matches zero characters (effectively skipping the '*').
+* **Correct Handling of '?' Wildcard:**  Handles the '?' correctly (matching any single character).
+* **Initialized lookup table:** The `lookup` table is initialized to avoid `NullPointerException`.
+
+
+This revised version is more robust, efficient, and correctly handles the wildcard matching problem using the specified method signatures.

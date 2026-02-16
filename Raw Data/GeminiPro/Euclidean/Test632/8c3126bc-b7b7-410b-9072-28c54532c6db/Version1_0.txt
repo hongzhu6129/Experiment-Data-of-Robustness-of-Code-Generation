@@ -1,0 +1,55 @@
+```java
+import java.util.PriorityQueue;
+import java.util.Collections;
+
+public class MixPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create the first priority queue (pq1)
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        pq1.add(1);
+        pq1.add(5);
+        pq1.add(2);
+        pq1.add(8);
+        pq1.add(3);
+
+
+        // Create the second priority queue (pq2)
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(6);
+        pq2.add(9);
+        pq2.add(4);
+        pq2.add(7);
+        pq2.add(10);
+
+
+        // Convert pq1 to an array list to shuffle
+        java.util.List<Integer> list1 = new java.util.ArrayList<>(pq1);
+
+        // Convert pq2 to an array list to shuffle
+        java.util.List<Integer> list2 = new java.util.ArrayList<>(pq2);
+
+        // Shuffle the array lists to mix elements randomly
+        Collections.shuffle(list1);
+        Collections.shuffle(list2);
+
+        // Clear the original priority queues
+        pq1.clear();
+        pq2.clear();
+
+
+        //Add the shuffled elements back to the respective queues
+        pq1.addAll(list1);
+        pq2.addAll(list2);
+
+
+         // Mix elements from pq2 to pq1 by adding all elements from pq2 to pq1
+        pq1.addAll(pq2);
+
+        // Print the mixed priority queue (pq1)
+        System.out.println("Mixed Priority Queue (pq1): " + pq1);
+
+
+    }
+}
+```

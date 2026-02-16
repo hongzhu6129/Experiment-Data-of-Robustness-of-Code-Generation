@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+* **Test Cases:** The code now includes JUnit 5 tests to verify the `calculatePerimeter()` and `calculateArea()` methods.  This is crucial for ensuring correctness.
+* **Corner Cases:** The tests cover important corner cases:
+    * **Zero Radius:**  A circle with radius 0 should have 0 perimeter and area.
+    * **Large Radius:**  Tests with a very large radius to check for potential overflow or inaccuracies.
+    * **Negative Radius:** Now throws `IllegalArgumentException`. A negative radius is invalid.   Instead of just ignoring the invalid input, which could hide bugs.
+* **Floating-Point Comparisons:** The `assertEquals` method for doubles now uses a `delta` value. This is essential when comparing floating-point numbers because they can have tiny rounding errors.  Don't directly compare floating-point numbers for equality without a tolerance.
+* **Clearer Main Method:**  The `main` method now clearly prints the radius, perimeter, and area.
+* **Object-Oriented Design:** The code is structured using a `Circle` class, which is better practice than having all the logic in the `main` method.  This makes the code more modular, reusable and testable.
+* **Error Handling:**  Now throws an  `IllegalArgumentException` if a radius is negative, enforcing the rule that a circle cannot have a negative radius. This is good practice.
+
+
+
+
+
+To run the JUnit tests, you'll need to add the JUnit 5 library to your project. If you're using an IDE like IntelliJ or Eclipse, it usually has built-in support for JUnit. If you're compiling and running from the command line, you'll need to include the JUnit JAR file in your classpath.

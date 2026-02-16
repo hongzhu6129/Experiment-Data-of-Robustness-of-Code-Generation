@@ -1,0 +1,75 @@
+```java
+class Solution {
+    /**
+     * Multiplies two integers without using multiplication, division, bitwise operators, or loops.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The product of a and b.
+     */
+    public static int multiply_two_nums(int a, int b) {
+        if (b == 0) {
+            return 0;
+        }
+
+        if (b > 0) {
+            return a + multiply_two_nums(a, b - 1);
+        } else {
+            return -multiply_two_nums(a, -b); 
+        }
+    }
+
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 3;
+        int product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+        num1 = -5;
+        num2 = 3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+        num1 = 5;
+        num2 = -3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+        num1 = -5;
+        num2 = -3;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+
+
+         num1 = 5;
+        num2 = 0;
+        product = multiply_two_nums(num1, num2);
+        System.out.println("Product of " + num1 + " and " + num2 + " is: " + product);
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Recursion:** The core of the solution is recursion.  The `multiply_two_nums` function calls itself with a smaller value of `b` until the base case (`b == 0`) is reached.
+
+2. **Handling Negative Numbers:** The code now correctly handles negative numbers by using the following logic:
+   - If `b` is negative, the function returns the negative of the product of `a` and `-b` (effectively handling the negative sign).
+
+3. **Base Case:** The base case `b == 0` stops the recursion and ensures the function doesn't run infinitely.
+
+4. **No Loops or Bitwise Operations:** The solution strictly adheres to the requirement of not using loops or bitwise operators.  The multiplication is achieved solely through repeated addition (using recursion).
+
+
+**How it works (example):**
+
+Let's say `a = 3` and `b = 4`:
+
+1. `multiply_two_nums(3, 4)`: `4 > 0`, so it returns `3 + multiply_two_nums(3, 3)`
+2. `multiply_two_nums(3, 3)`: `3 > 0`, so it returns `3 + multiply_two_nums(3, 2)`
+3. `multiply_two_nums(3, 2)`: `2 > 0`, so it returns `3 + multiply_two_nums(3, 1)`
+4. `multiply_two_nums(3, 1)`: `1 > 0`, so it returns `3 + multiply_two_nums(3, 0)`
+5. `multiply_two_nums(3, 0)`: `0 == 0`, so it returns `0`
+
+Substituting back up the chain, we get: 3 + 3 + 3 + 3 + 0 = 12, which is the correct product.

@@ -1,0 +1,56 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (colors)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1: Iterate and remove (this removes elements from the queue)
+        // while (!colorQueue.isEmpty()) {
+        //     System.out.println(colorQueue.poll()); // poll() retrieves and removes the head
+        // }
+
+
+        // Method 2: Iterate without removing (preferred to keep the queue intact)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+        // Method 3: Using Java 8 Stream API (also doesn't remove elements)
+        // colorQueue.stream().forEach(System.out::println);
+
+
+         // Method 4:  Using a simple for loop with toArray (doesn't remove elements)
+         // Object[] colorsArray = colorQueue.toArray();
+         // for (int i = 0; i < colorsArray.length; i++) {
+         //   System.out.println(colorsArray[i]);
+         // }
+
+    }
+}
+```
+
+
+Key improvements in this revised code:
+
+* **Clarity:**  The code is well-commented, explaining each step.
+* **Multiple Iteration Methods:** It demonstrates four different ways to print the elements of the PriorityQueue, explaining the implications of each (whether elements are removed or not).
+* **Preferred Method Highlighted:**  Method 2 (enhanced for loop) is now the primary method shown for printing, as it's efficient and doesn't modify the queue.
+* **Correct Terminology:** Uses the term "priority queue" consistently (not "priority crawl").
+
+
+This improved version provides a more comprehensive and helpful example of using a `PriorityQueue` in Java. Choose the iteration method that best suits your needs based on whether you want to retain the elements in the queue after printing.

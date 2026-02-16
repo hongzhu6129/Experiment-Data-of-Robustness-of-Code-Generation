@@ -1,0 +1,55 @@
+```java
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ZoneOffsets {
+
+    public static void main(String[] args) {
+        // Define some ZoneIds
+        ZoneId losAngeles = ZoneId.of("America/Los_Angeles");
+        ZoneId newYork = ZoneId.of("America/New_York");
+        ZoneId london = ZoneId.of("Europe/London");
+
+        // Get current time in specified zones
+        ZonedDateTime nowLosAngeles = ZonedDateTime.now(losAngeles);
+        ZonedDateTime nowNewYork = ZonedDateTime.now(newYork);
+        ZonedDateTime nowLondon = ZonedDateTime.now(london);
+
+
+        // Extract and print the offsets using the formatOffset method
+        System.out.println("Los Angeles: " + formatOffset(nowLosAngeles.getOffset().getTotalSeconds()));
+        System.out.println("New York: " + formatOffset(nowNewYork.getOffset().getTotalSeconds()));
+        System.out.println("London: " + formatOffset(nowLondon.getOffset().getTotalSeconds()));
+
+
+
+        //Demonstrating with a specific date and time (optional):
+        ZonedDateTime specificTime = ZonedDateTime.of(2024, 10, 27, 10, 30, 0, 0, london); // Example date/time
+        System.out.println("London (Specific Time): " + formatOffset(specificTime.getOffset().getTotalSeconds()));
+
+
+    }
+
+    private static String formatOffset(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = Math.abs((totalSeconds % 3600) / 60); // Use absolute value for minutes
+
+        String sign = (hours >= 0) ? "+" : "-";
+        return String.format("GMT%s%02d:%02d", sign, Math.abs(hours), minutes); // Pad with zeros for consistent format
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Variable Names:**  Using names like `losAngeles` instead of `zoneId1` makes the code easier to understand.
+* **`formatOffset` Method:**  Handles formatting the offset into a string like "GMT-08:00" or "GMT+01:00", making the output much more readable.  It now also correctly handles the sign and pads with zeros.
+* **Optional Specific Time Example:** Demonstrates how to get the offset for a specific date and time, as sometimes offsets can change due to daylight saving time.
+* **Comments:** Explaining each section of the code.
+* **Absolute Value for Minutes:** Ensures the minutes are always positive in the formatted offset.
+
+
+This revised code provides a much better solution for defining, extracting, and displaying zone offsets in Java.  It addresses the prompt's requirement to use only `main` and `formatOffset` methods effectively.

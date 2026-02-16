@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        printScalarTable(num);
+
+        scanner.close();
+    }
+
+    public static void printScalarTable(int num) {
+        System.out.println("Scalar Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+## Test Cases
+
+Here are some test cases, including corner cases, to thoroughly test the `printScalarTable` method:
+
+**1. Positive Integer:**
+
+* **Input:** 7
+* **Expected Output:**
+```
+Scalar Table for 7:
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+```
+
+**2. Zero:**
+
+* **Input:** 0
+* **Expected Output:**
+```
+Scalar Table for 0:
+0 x 1 = 0
+0 x 2 = 0
+0 x 3 = 0
+0 x 4 = 0
+0 x 5 = 0
+0 x 6 = 0
+0 x 7 = 0
+0 x 8 = 0
+0 x 9 = 0
+0 x 10 = 0
+```
+
+**3. Negative Integer:**
+
+* **Input:** -5
+* **Expected Output:**
+```
+Scalar Table for -5:
+-5 x 1 = -5
+-5 x 2 = -10
+-5 x 3 = -15
+-5 x 4 = -20
+-5 x 5 = -25
+-5 x 6 = -30
+-5 x 7 = -35
+-5 x 8 = -40
+-5 x 9 = -45
+-5 x 10 = -50
+```
+
+**4. Large Positive Integer:**  (Tests potential overflow issues, though Java's `int` type can handle this)
+
+* **Input:** 2147483647  (Integer.MAX_VALUE)
+* **Expected Output:** (Check for correct calculation, especially the last line)
+```
+Scalar Table for 2147483647:
+...  (correct values up to 9)
+2147483647 x 10 = 21474836470
+```
+
+**5. Large Negative Integer:**
+
+* **Input:** -2147483648 (Integer.MIN_VALUE)
+* **Expected Output:** (Again, verify the last line for correctness)
+
+
+These test cases cover a good range of scenarios and help ensure that your `printScalarTable` function is robust and handles various inputs as expected.  If you were implementing automated testing, you would use a testing framework (like JUnit) to write these tests programmatically.

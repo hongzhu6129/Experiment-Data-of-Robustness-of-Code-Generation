@@ -1,0 +1,13 @@
+
+
+
+**Explanation and Key Differences:**
+
+* **`equals()` method:** This method compares the *content* of the strings.  It's the preferred way to check if two strings represent the same sequence of characters.
+
+* **`==` operator:** This operator compares *references*.  It checks if two string variables point to the same memory location.  With string literals (like "hello"), Java often uses "string interning" (stores only one copy in memory), so `==` might return `true` even for separately declared literals.  However, if you create strings using `new String()`, `==` will likely be `false` because new objects are created.
+
+* **`Objects.equals()`:**  This method from the `java.util.Objects` class provides a null-safe way to compare strings (or any objects). It handles the case where one or both strings are `null` without throwing a `NullPointerException`. This is the most robust approach.
+
+
+**In Summary:** Always use `equals()` or `Objects.equals()` (for null safety) to compare the content of strings. Avoid using `==` unless you specifically intend to check if two string variables refer to the same object in memory.

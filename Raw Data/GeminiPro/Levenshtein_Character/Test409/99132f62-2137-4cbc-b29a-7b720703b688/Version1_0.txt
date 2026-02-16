@@ -1,0 +1,70 @@
+```java
+public class RemoveSubstring {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or throw an exception, depending on your requirements
+        }
+
+        return mainString.replace(removeString, ""); 
+    }
+
+    public static void main(String[] args) {
+        RemoveSubstring rs = new RemoveSubstring();
+
+        String mainString1 = "This is a test string.";
+        String removeString1 = "is";
+        String result1 = rs.removeString(mainString1, removeString1);
+        System.out.println("Original: \"" + mainString1 + "\"");
+        System.out.println("Removed \"" + removeString1 + "\": \"" + result1 + "\""); // Output: Th  a test string.
+
+
+        String mainString2 = "abababa";
+        String removeString2 = "aba";
+        String result2 = rs.removeString(mainString2, removeString2);
+        System.out.println("Original: \"" + mainString2 + "\"");
+        System.out.println("Removed \"" + removeString2 + "\": \"" + result2 + "\"");  // Output: b
+
+        String mainString3 = "Hello World!";
+        String removeString3 = "xyz"; // Removing a string that doesn't exist
+        String result3 = rs.removeString(mainString3, removeString3);
+        System.out.println("Original: \"" + mainString3 + "\"");
+        System.out.println("Removed \"" + removeString3 + "\": \"" + result3 + "\""); // Output: Hello World! (no change)
+
+        // Test null/empty cases
+        System.out.println(rs.removeString(null, "test")); // Output: null (or handle as needed)
+        System.out.println(rs.removeString("test", null)); // Output: test  (or handle as needed)
+        System.out.println(rs.removeString("test", "")); // Output: test
+        System.out.println(rs.removeString("", "test")); // Output: ""
+
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`removeString(String, String)` Method:**
+   - Uses the built-in `replace()` method which is the most efficient way to remove all occurrences of a substring.
+   - Includes a null check to handle cases where either the main string or the string to remove is null. This prevents `NullPointerExceptions`. You can modify this to throw an `IllegalArgumentException` if nulls are not allowed.
+
+
+2. **`main(String[])` Method:**
+   - Provides several test cases to demonstrate different scenarios:
+     - Removing a substring that appears multiple times.
+     - Removing a substring that doesn't exist.
+     - Handling null and empty strings.
+   - The output clearly shows the original string and the result after removal.
+
+
+3. **Key improvements over using a loop and `substring()`:**
+   - **Efficiency:** `String.replace()` is highly optimized compared to manually iterating and concatenating substrings, especially for larger strings and frequent removals.
+   - **Simplicity and Readability:**  The code is much cleaner and easier to understand using `replace()`.
+   - **Correctness:**  The loop and substring approach can easily introduce errors if not handled carefully (off-by-one errors, etc.).  `replace()` takes care of all these details for you.
+
+
+4. **Handling Edge Cases (Nulls/Empty Strings):**
+    - The provided code demonstrates how to handle `null` inputs.  You can choose to return the original string, return `null`, or throw an exception as appropriate for your requirements.
+    - The code also shows how to handle empty strings (`""`). Removing an empty string does nothing, while removing from an empty string also results in an empty string.  These are standard behaviors.

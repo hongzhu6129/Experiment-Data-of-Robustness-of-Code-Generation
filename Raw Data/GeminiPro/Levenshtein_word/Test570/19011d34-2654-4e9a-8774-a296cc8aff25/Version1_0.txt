@@ -1,0 +1,60 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmptyArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of Strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        System.out.println("Original ArrayList: " + fruits);
+
+        // Method 1: Using clear()
+        fruits.clear();  // This is the most common and efficient way
+
+        System.out.println("ArrayList after clear(): " + fruits);
+
+
+        // Repopulate the list for the next demonstration
+        fruits.add("Grape");
+        fruits.add("Mango");
+        fruits.add("Pineapple");
+
+
+        // Method 2: Using removeAll() -  More general, removes all elements that are also in the specified collection.  In this case, we remove everything.
+        fruits.removeAll(fruits);  // Effectively clears the list because we remove all elements present in itself.
+
+        System.out.println("ArrayList after removeAll(): " + fruits);
+
+
+
+        // Repopulate the list for the next demonstration
+        fruits.add("Kiwi");
+        fruits.add("Watermelon");
+        fruits.add("Strawberry");
+
+
+
+        // Method 3:  Creating a new ArrayList (less efficient, generally not recommended for simply clearing)
+        fruits = new ArrayList<>(); // This assigns a brand new, empty ArrayList to the 'fruits' variable.  The original ArrayList becomes eligible for garbage collection.
+
+        System.out.println("ArrayList after creating a new ArrayList: " + fruits);
+
+
+        // Explanation of why clear() is generally preferred:
+
+        /*
+         * clear() is usually the best choice because it's designed specifically for emptying an ArrayList. 
+         * It's likely more efficient internally than removeAll() because it doesn't need to iterate and compare elements.
+         * Creating a new ArrayList involves allocating new memory, which can be less efficient than simply clearing the existing ArrayList, especially for large lists.
+         */
+
+
+    }
+}
+```

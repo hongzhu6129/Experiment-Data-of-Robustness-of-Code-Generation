@@ -1,0 +1,65 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; //  Ramanujan's number is a well-known example
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) {
+                break; // Optimization:  a^3 cannot be greater than n
+            }
+
+            for (int b = a + 1; b <= n; b++) { // b starts from a+1 to avoid duplicates and ensure distinct pairs
+                int b3 = b * b * b;
+                int sum = a3 + b3;
+
+                if (sum > n) {
+                    break; // Optimization: No need to continue if the sum exceeds n
+                }
+
+                if (isSumOfTwoCubesInAnotherWay(a, b, sum, n)) {
+                    System.out.println(sum + " can be expressed as the sum of two cubes in more than one way.");
+                    return; // Stop after finding the first such number
+                }
+            }
+        }
+
+       System.out.println("No such numbers found between 1 and " + n);
+    }
+
+
+
+    private static boolean isSumOfTwoCubesInAnotherWay(int a, int b, int sum, int n) {
+        for (int c = 1; c <= n; c++) {
+            int c3 = c * c * c;
+            if (c3 > sum) break;  // Optimization
+
+            for (int d = c + 1; d <= n; d++) {  // d starts from c+1 for distinct pairs
+                int d3 = d * d * d;
+                if (c3 + d3 > sum) break;
+
+                if (c3 + d3 == sum && (c != a || d != b)) { // Check if the sum matches and pairs are different
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clarity and Readability:**  The code is formatted for better readability with clear variable names and comments.
+2. **Efficiency Optimizations:**  Several optimizations are added to significantly reduce execution time:
+   - The inner loops break early when the sum of cubes exceeds `n` or the cube itself exceeds `n`.
+   - The inner loop for `b` starts from `a + 1` and the loop for `d` starts from `c + 1` to avoid duplicate pairs and consider only distinct pairs.
+3. **Correctness:** The `isSumOfTwoCubesInAnotherWay` method correctly checks if the sum can be expressed as the sum of two *different* pairs of cubes.
+4. **Handles No Solution Case:** The code now prints a message if no such number is found within the given range.
+5. **Adherence to Prompt:**  Uses only the `public static void main(String[] args)` method signature as requested.  Helper functions are made `private`.
+
+
+
+This revised code is much more efficient and accurately addresses the problem of finding a number expressible as the sum of two cubes in at least two different ways.

@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        try {
+            int decimal = 0;
+            int power = 0;
+            // Convert binary to decimal
+            for (int i = binaryString.length() - 1; i >= 0; i--) {
+                char digit = binaryString.charAt(i);
+                if (digit == '1') {
+                    decimal += Math.pow(2, power);
+                } else if (digit != '0') {
+                    System.out.println("Invalid binary input.");
+                    return; // Exit if not a valid binary digit
+                }
+                power++;
+            }
+
+
+            String hexString = "";
+
+            // Convert decimal to hexadecimal
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit;
+                if (remainder < 10) {
+                    hexDigit = (char) (remainder + '0');
+                } else {
+                    hexDigit = (char) (remainder - 10 + 'a');
+                }
+                hexString = hexDigit + hexString;
+                decimal /= 16;
+
+            }
+             if (hexString.isEmpty()) { // Handle the case where input is 0
+                hexString = "0";
+            }
+
+
+            System.out.println("Hexadecimal value: '" + hexString + "'");
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid binary input.");
+        }
+
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `'d'`
+   - Input: `101010`
+   - Expected Output: `'2a'`
+   - Input: `11111111`
+   - Expected Output: `'ff'`
+
+2. **Invalid Binary Input:**
+   - Input: `10201` (Contains '2')
+   - Expected Output: `Invalid binary input.`
+   - Input: `111a11` (Contains 'a')
+   - Expected Output: `Invalid binary input.`
+   - Input: `abc`  (Completely invalid)
+   - Expected Output: `Invalid binary input.`
+
+3. **Boundary Cases:**
+   - Input: `0`
+   - Expected Output: `'0'` (Handles zero correctly)
+   - Input: `1`
+   - Expected Output: `'1'`
+   - Input: (Empty string) 
+   - Expected Output: *Program should ideally not crash but an empty string is not technically invalid binary so handling may vary.*  (The provided code treats this as 0 which is a reasonable interpretation).
+
+4. **Large Binary Input:**
+   - Input: `1111111111111111` (16 ones)
+   - Expected Output: `'ffff'`
+   - Input: A very long string of 1s and 0s. This tests for potential integer overflow if the decimal conversion isn't handled carefully.  The code provided uses `int` which limits the size of the binary number you can input.
+
+
+
+This enhanced code and the test cases cover a broader range of scenarios, including error handling and boundary conditions, making it a more robust solution.  It also avoids using any built-in conversion methods as requested.

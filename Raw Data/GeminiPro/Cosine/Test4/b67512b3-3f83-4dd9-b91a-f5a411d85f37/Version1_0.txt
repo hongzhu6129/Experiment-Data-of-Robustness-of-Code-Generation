@@ -1,0 +1,85 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Option 1: Hardcoded radius
+        double radius = 7.5; 
+        calculateAndPrint(radius);
+
+
+        // Option 2: User input for radius (uncomment for interactive use)
+        /*
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = scanner.nextDouble();
+        scanner.close();
+        calculateAndPrint(radius);
+        */
+
+    }
+
+    public static void calculateAndPrint(double radius) {
+        if (radius < 0) {
+            System.out.println("Radius cannot be negative.");
+            return;
+        }
+
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+        System.out.printf("Perimeter is = %.15f\n", perimeter); // Increased precision for testing
+        System.out.printf("Area is = %.15f\n", area);      // Increased precision for testing
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Radius:**
+   - Input: `radius = 7.5`
+   - Expected Output:
+     ```
+     Perimeter is = 47.123889803846898
+     Area is = 176.71458676442586
+     ```
+
+2. **Zero Radius:**
+   - Input: `radius = 0`
+   - Expected Output:
+     ```
+     Perimeter is = 0.000000000000000
+     Area is = 0.000000000000000
+     ```
+
+3. **Negative Radius (Corner Case):**
+   - Input: `radius = -5`
+   - Expected Output:
+     ```
+     Radius cannot be negative.
+     ```
+
+4. **Very Large Radius (Boundary Case):**
+   - Input: `radius = 1e15` (or `Double.MAX_VALUE` for the largest possible double)
+   - Expected Output:  (The values will be extremely large)
+     - Verify that no exceptions are thrown and the program handles very large numbers gracefully. You may have to adjust the output format for really big numbers if you want to inspect them.
+
+5. **Very Small Radius (Boundary Case):**
+   - Input: `radius = 1e-15` (a very small positive number)
+   - Expected Output: (The values will be extremely small)
+     - Check that the program calculates the correct, very small values.  Again, you'll likely want increased precision in the output to inspect these values accurately.
+
+
+
+
+**Explanation of Improvements:**
+
+* **Error Handling:** The code now includes a check for negative radius values, which is a crucial corner case.
+* **Increased Precision:** The output format is changed to `%.15f` to provide more decimal places, allowing for better verification against expected values, especially for the test cases with extremely large or small numbers.
+* **Clarity and Modularity:**  The calculation and printing are separated into a `calculateAndPrint` method. This makes the code more organized and easier to test and modify in the future.
+* **User Input Option:** The code now has commented-out code showing how to take user input.  If you uncomment this section, remember to uncomment the closing of the `Scanner` too.
+
+
+This improved version provides more robust error handling, clearer output, and greater flexibility. The test cases help ensure that the program works correctly across various input scenarios, including corner and boundary cases.

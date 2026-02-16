@@ -1,0 +1,18 @@
+
+
+
+**Explanation:**
+
+* **`import java.io.*`:** Imports necessary classes for file I/O.
+* **`try-with-resources`:**  Ensures the `BufferedReader` and `FileReader` are automatically closed, even if exceptions occur. This is crucial for proper resource management.
+* **`BufferedReader`:** Reads the file line by line efficiently.
+* **`FileReader`:**  Connects to the specified file for reading.
+* **`while` loop:**  Reads each line from the file until the end is reached (`readLine()` returns `null`).
+* **`System.out.println()`:** Prints each line to the console.
+* **`catch (IOException e)`:** Handles potential `IOExceptions` that may occur during file reading (e.g., file not found, permissions issues).  It prints an error message to the console.
+* **Command-line arguments:**  The code now checks for a file path provided as a command-line argument (using `args[0]`). If provided, this overrides the hardcoded path.  This makes the program more flexible.
+* **Error Handling if Filepath missing:** Now includes a check for a missing file path (empty string) and prints an informative error message if neither the command-line argument nor the hardcoded path is provided.
+
+
+
+This improved version is more robust, user-friendly, and demonstrates good coding practices.

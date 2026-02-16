@@ -1,0 +1,11 @@
+
+
+
+
+Key improvements in this version:
+
+* **Regex for Accuracy:**  Uses `\b\w+[mM]|[nN]\b` to correctly identify whole words ending in 'm' or 'n'. `\b` matches word boundaries to prevent partial matches (e.g., "programming"). `\w+` matches one or more word characters.
+* **Case-Insensitive:** The `[mM]` and `[nN]` parts of the regex handle both uppercase and lowercase 'm' and 'n'.
+* **Handles Null/Empty:** Includes checks for `null` or empty input strings to prevent `NullPointerExceptions`.
+* **Clearer Variable Names:** Uses more descriptive variable names (e.g., `pattern`, `matcher`).
+* **Comprehensive Test Cases:** Added more test cases in `main` to demonstrate the code's behavior with different inputs, including null, empty, and mixed-case examples.

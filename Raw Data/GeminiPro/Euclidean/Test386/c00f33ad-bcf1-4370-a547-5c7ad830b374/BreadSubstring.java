@@ -1,0 +1,27 @@
+public class BreadSubstring {
+
+    public String pickMiddleOfBread(String str) {
+        int firstOccurrence = str.indexOf("toast");
+        int lastOccurrence = str.lastIndexOf("toast");
+
+        if (firstOccurrence == -1 || lastOccurrence == -1 || firstOccurrence == lastOccurrence) {
+            return ""; // "toast" doesn't exist or appears only once
+        }
+
+        return str.substring(firstOccurrence + "toast".length(), lastOccurrence);
+    }
+
+    public static void main(String[] args) {
+        BreadSubstring bread = new BreadSubstring();
+
+        System.out.println(bread.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(bread.pickMiddleOfBread("toastbuttertoast")); // Output: butter
+        System.out.println(bread.pickMiddleOfBread("toasttoast")); // Output: 
+        System.out.println(bread.pickMiddleOfBread("jamtoast")); // Output:
+        System.out.println(bread.pickMiddleOfBread("toastjam")); // Output: 
+        System.out.println(bread.pickMiddleOfBread("justjam")); // Output: 
+         System.out.println(bread.pickMiddleOfBread("toastpeanutbuttertoast")); //peanutbutter
+
+
+    }
+}

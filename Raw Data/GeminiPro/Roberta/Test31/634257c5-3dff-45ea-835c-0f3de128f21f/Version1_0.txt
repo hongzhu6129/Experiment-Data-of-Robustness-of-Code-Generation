@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians immediately
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Same Coordinates:**
+   - Latitude 1: 40.7128
+   - Longitude 1: -74.0060 (New York)
+   - Latitude 2: 40.7128
+   - Longitude 2: -74.0060 (New York)
+   - Expected Distance: 0 km
+
+2. **North and South Poles:**
+   - Latitude 1: 90 (North Pole)
+   - Longitude 1: 0
+   - Latitude 2: -90 (South Pole)
+   - Longitude 2: 0
+   - Expected Distance: ~20015.08 km (half the Earth's circumference)
+
+3. **Opposite Sides of the Earth (Antipodes):**
+   - Latitude 1: 40.7128 (New York)
+   - Longitude 1: -74.0060
+   - Latitude 2: -40.7128 
+   - Longitude 2: 105.9940  (approx. antipode of New York)
+   - Expected Distance: ~20015.08 km
+
+4. **Points on the Equator:**
+   - Latitude 1: 0
+   - Longitude 1: 0
+   - Latitude 2: 0
+   - Longitude 2: 90
+   - Expected Distance: ~10007.54 km (quarter of Earth's circumference)
+
+
+5. **Example from Prompt:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+6. **Dateline Crossing:**
+   - Latitude 1: 0
+   - Longitude 1: 179
+   - Latitude 2: 0
+   - Longitude 2: -179
+   - Expected Distance: ~400.30 km (small distance across dateline)
+
+7. **Invalid Input:**
+   - Try latitude values outside the range -90 to +90 and longitude values outside the range -180 to +180. The program should ideally handle these gracefully, perhaps by throwing an exception or printing an error message.
+
+
+
+
+These test cases cover a good range of scenarios to verify the correctness of your distance calculation.  You can easily adapt them into a testing framework (like JUnit) for automated testing.  Make sure your program handles the `Math.acos()` calculation correctly, as it can return `NaN` (Not a Number) for invalid inputs.
+
+
+
+

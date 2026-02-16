@@ -1,0 +1,55 @@
+```java
+public class RemoveSubstring {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or throw an exception, depending on desired behavior
+        }
+
+        return mainString.replace(removeString, "");
+    }
+
+    public static void main(String[] args) {
+        RemoveSubstring rs = new RemoveSubstring();
+
+        String mainString1 = "This is a test string.";
+        String removeString1 = "is";
+        String result1 = rs.removeString(mainString1, removeString1);
+        System.out.println("Original: " + mainString1);
+        System.out.println("Removed \"" + removeString1 + "\": " + result1);
+
+
+        String mainString2 = "abababa";
+        String removeString2 = "aba";
+        String result2 = rs.removeString(mainString2, removeString2);
+        System.out.println("\nOriginal: " + mainString2);
+        System.out.println("Removed \"" + removeString2 + "\": " + result2);
+
+
+        String mainString3 = "Hello world!";
+        String removeString3 = "xyz"; // Substring not present
+        String result3 = rs.removeString(mainString3, removeString3);
+        System.out.println("\nOriginal: " + mainString3);
+        System.out.println("Removed \"" + removeString3 + "\": " + result3);
+
+        //Test null cases
+        System.out.println("\nTesting null handling:");
+        System.out.println("Null main string: " + rs.removeString(null, "test"));
+        System.out.println("Null remove string: " + rs.removeString("test", null));
+        System.out.println("Both null: " + rs.removeString(null, null));
+        
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles `null` inputs gracefully:**  The `removeString` method now checks for `null` values for both `mainString` and `removeString`. This prevents `NullPointerExceptions`.  Currently, it simply returns the original string if either is null. You could modify it to throw an exception or return an empty string if that better suits your needs.
+* **Clearer `main` method:** The `main` method provides several test cases, demonstrating the function's behavior with different inputs, including cases where the substring to remove is present multiple times, not present at all, and when nulls are passed.  This makes the code easier to understand and test.
+* **Uses `String.replace()`:**  The most efficient way to remove all instances of a substring in Java is to use the built-in `replace()` method. This is much simpler and more efficient than iterative or manual removal.
+
+
+This revised code is more robust, efficient, and easier to understand and test.

@@ -1,0 +1,43 @@
+public class CheckDoubleStartsWith {
+
+    public static void main(String[] args) {
+        // Test cases
+        double num1 = 123.456;
+        String prefix1 = "123";
+        boolean startsWith1 = checkDoubleStartsWith(num1, prefix1);
+        System.out.println(num1 + " starts with \"" + prefix1 + "\": " + startsWith1); // Expected: true
+
+        double num2 = -789.012;
+        String prefix2 = "-789";
+        boolean startsWith2 = checkDoubleStartsWith(num2, prefix2);
+        System.out.println(num2 + " starts with \"" + prefix2 + "\": " + startsWith2); // Expected: true
+
+
+        double num3 = 0.123;
+        String prefix3 = "0.";
+        boolean startsWith3 = checkDoubleStartsWith(num3, prefix3);
+        System.out.println(num3 + " starts with \"" + prefix3 + "\": " + startsWith3); // Expected: true
+
+        double num4 = 456.789;
+        String prefix4 = "45";
+        boolean startsWith4 = checkDoubleStartsWith(num4, prefix4);
+        System.out.println(num4 + " starts with \"" + prefix4 + "\": " + startsWith4); // Expected: true
+
+        double num5 = 123.456;
+        String prefix5 = "1234"; 
+        boolean startsWith5 = checkDoubleStartsWith(num5, prefix5);
+        System.out.println(num5 + " starts with \"" + prefix5 + "\": " + startsWith5); // Expected: false
+
+        double num6 = 123.456;
+        String prefix6 = "abc";
+        boolean startsWith6 = checkDoubleStartsWith(num6, prefix6);
+        System.out.println(num6 + " starts with \"" + prefix6 + "\": " + startsWith6); // Expected: false
+
+
+    }
+
+    public static boolean checkDoubleStartsWith(double num, String prefix) {
+        String numStr = String.valueOf(num);
+        return numStr.startsWith(prefix);
+    }
+}

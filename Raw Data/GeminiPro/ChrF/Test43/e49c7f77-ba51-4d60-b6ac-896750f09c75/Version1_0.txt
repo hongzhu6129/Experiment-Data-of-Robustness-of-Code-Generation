@@ -1,0 +1,100 @@
+```java
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+
+        System.out.println("Numbers divisible by 3:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for readability
+
+        System.out.println("Numbers divisible by 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("\n"); // Newline for readability
+
+        System.out.println("Numbers divisible by both 3 and 5:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Final newline
+    }
+}
+```
+
+
+## Test Cases
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+**1. Basic Cases:**
+
+* **Input Range:** 1 to 100 (as specified)
+* **Expected Output:** The program should correctly print numbers divisible by 3, 5, and both within this range. Verify against a manually calculated list.  For example, divisible by both 3 and 5 should output: 15 30 45 60 75 90.
+
+**2. Boundary Cases:**
+
+* **Input Range:** 0 to 100  (Check inclusivity of 0)
+* **Input Range:** 1 to 105 (Check inclusivity of number at upper boundary)
+* **Expected Output:** Ensure that the program handles the boundary values correctly.  0 is divisible by 3 and 5. 105 should be printed in the lists for 3 and 5, but not both.
+
+**3. Empty Range:**
+
+* **Input Range:** 101 to 100 (Empty range)
+* **Expected Output:** The program should not print anything or handle the empty range gracefully without errors.
+
+**4. Negative Range:**
+
+* **Input Range:** -100 to 0
+* **Expected Output:**  While not explicitly required, consider how the program should behave with negative numbers. Correct behavior would be to print the negative multiples of 3, 5, and 15.
+
+**5. Large Range:**
+
+* **Input Range:** 1 to 10000 (A larger range to test performance � though the algorithm is efficient already)
+* **Expected Output:** Correctly print the multiples within the larger range.
+
+**6. Single Number Range:**
+
+* **Input Range:** 15 to 15.
+* **Expected Output:** Should correctly output 15 in all three lists.
+
+
+**How to Automate the Tests (Optional but Recommended)**
+
+While you can manually verify the output, automated tests are more robust.  Here's a basic JUnit example (you would need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DivisibleBy3And5Test {
+
+    @Test
+    void testStandardRange() {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        DivisibleBy3And5.main(new String[]{}); // Run your main method
+
+        String expectedOutput = /* ... expected output for 1 to 100 ... */;  // Long string, create separately
+        assertTrue(outContent.toString().contains(expectedOutput)); // Partial match is usually enough
+
+        System.setOut(System.out); // Restore standard output
+    }
+
+    // ... Add more test methods for other ranges ...
+}
+```
+
+
+This example redirects `System.out` to capture the program's output and then compares it to the expected output.  You would need to create the `expectedOutput` strings for your different test cases.  This is a simplified example; more sophisticated test frameworks can provide better output comparison features.

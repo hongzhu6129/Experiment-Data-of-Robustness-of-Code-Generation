@@ -1,0 +1,30 @@
+```java
+class Solution {
+    /**
+     * Given a string, return a new string containing only the characters at even positions.
+     *
+     * @param str The input string.
+     * @return A new string with characters at even positions.
+     *
+     * Examples:
+     * makeWithEvenCharacters("Python") => "yhn"
+     * makeWithEvenCharacters("JavaScript") => "aaScipt"
+     */
+    public String makeWithEvenCharacters(String str) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 1; i < str.length(); i += 2) {
+            result.append(str.charAt(i));
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.makeWithEvenCharacters("Python"));  // Output: yhn
+        System.out.println(solution.makeWithEvenCharacters("JavaScript")); // Output: aaScipt
+        System.out.println(solution.makeWithEvenCharacters("")); // Output: ""
+        System.out.println(solution.makeWithEvenCharacters("a")); // Output: ""
+        System.out.println(solution.makeWithEvenCharacters("ab")); // Output: "b"
+    }
+}
+```

@@ -1,0 +1,68 @@
+```java
+import java.util.Scanner;
+
+public class CheckIfSameMinorBeginsAndOneString {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the two strings from the user.
+        System.out.print("Enter the first string: ");
+        String firstString = input.nextLine();
+        System.out.print("Enter the second string: ");
+        String secondString = input.nextLine();
+
+        // Check if the two strings have the same minor.
+        boolean sameMinor = firstString.toLowerCase().startsWith(secondString.toLowerCase());
+
+        // Print the result.
+        if (sameMinor) {
+            System.out.println("The two strings have the same minor.");
+        } else {
+            System.out.println("The two strings do not have the same minor.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+**Test case 1:**
+
+* Input:
+    * First string: "Hello"
+    * Second string: "hello"
+* Output:
+    * The two strings have the same minor.
+
+**Test case 2:**
+
+* Input:
+    * First string: "Hello"
+    * Second string: "World"
+* Output:
+    * The two strings do not have the same minor.
+
+**Test case 3:**
+
+* Input:
+    * First string: ""
+    * Second string: ""
+* Output:
+    * The two strings have the same minor.
+
+**Test case 4:**
+
+* Input:
+    * First string: "a"
+    * Second string: "A"
+* Output:
+    * The two strings have the same minor.
+
+**Test case 5:**
+
+* Input:
+    * First string: "A"
+    * Second string: "a"
+* Output:
+    * The two strings have the same minor.

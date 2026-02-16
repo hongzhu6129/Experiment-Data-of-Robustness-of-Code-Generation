@@ -1,0 +1,36 @@
+```java
+public class CharCopy {
+
+    public static void main(String[] args) {
+        // Example usage: Copy characters from 'a' to 'z', printing 5 characters per line
+        print_Chars('a', 'z', 5);
+
+        // Another example: Copy characters from 'A' to 'Z', printing 10 characters per line
+        print_Chars('A', 'Z', 10);
+    }
+
+    public static void print_Chars(char char1, char char2, int numCharsPerLine) {
+        if (char1 > char2) {
+            System.out.println("Error: char1 should be less than or equal to char2");
+            return;
+        }
+
+        int count = 0;
+        for (char c = char1; c <= char2; c++) {
+            System.out.print(c);
+            count++;
+
+            if (count == numCharsPerLine) {
+                System.out.println(); // New line
+                count = 0;
+            }
+        }
+
+        // If there are remaining characters at the end, add a newline
+        if (count > 0) {
+            System.out.println();
+        }
+    }
+}
+```
+

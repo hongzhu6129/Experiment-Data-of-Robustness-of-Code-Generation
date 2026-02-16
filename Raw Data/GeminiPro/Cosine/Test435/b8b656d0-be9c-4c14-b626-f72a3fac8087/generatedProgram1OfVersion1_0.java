@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class StringSorter {
+
+    public static void main(String[] args) {
+        List<String> strings = new ArrayList<>();
+        strings.add("banana");
+        strings.add("apple");
+        strings.add("orange");
+        strings.add("grape");
+        strings.add("kiwi");
+
+
+        System.out.println("Original list: " + strings);
+
+        // Ascending sort
+        Collections.sort(strings);  // uses natural ordering (alphabetical for Strings)
+        System.out.println("Ascending sort: " + strings);
+
+
+        // Descending sort using a Comparator
+        Collections.sort(strings, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                return s2.compareTo(s1); // Reverse the comparison for descending order
+            }
+        });
+
+
+        System.out.println("Descending sort: " + strings);
+
+
+        // Demonstrating with another list (to show the sorts are in-place)
+
+         List<String> strings2 = new ArrayList<>();
+        strings2.add("Zebra");
+        strings2.add("apple");
+        strings2.add("Orange");
+        strings2.add("Grape");
+        strings2.add("kiwi");
+
+
+        System.out.println("\nOriginal list 2: " + strings2);
+
+
+        Collections.sort(strings2);
+        System.out.println("Ascending sort 2: " + strings2);
+
+
+        Collections.sort(strings2, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                 return s2.compareToIgnoreCase(s1); // Case-insensitive descending 
+            }
+        });
+        System.out.println("Descending sort 2 (case-insensitive): " + strings2);
+
+
+    }
+}

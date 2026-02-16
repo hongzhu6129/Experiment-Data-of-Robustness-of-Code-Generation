@@ -1,0 +1,47 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetCeiling {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and add some elements
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to search for
+        int element = 25;
+
+        // Get the element greater than or equal to the given element
+        Integer ceilingElement = treeSet.ceiling(element);
+
+        // Print the result
+        if (ceilingElement != null) {
+            System.out.println("The element greater than or equal to " + element + " is: " + ceilingElement);
+        } else {
+            System.out.println("No element found greater than or equal to " + element);
+        }
+
+
+        // Example with a String TreeSet
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+        stringTreeSet.add("date");
+
+        String searchString = "blueberry";
+
+        String ceilingString = stringTreeSet.ceiling(searchString);
+
+        if (ceilingString != null) {
+            System.out.println("The string greater than or equal to " + searchString + " is: " + ceilingString);
+        } else {
+            System.out.println("No string found greater than or equal to " + searchString);
+        }
+    }
+}
+```

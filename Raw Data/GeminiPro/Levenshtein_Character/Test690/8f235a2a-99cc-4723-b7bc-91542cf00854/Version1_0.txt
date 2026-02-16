@@ -1,0 +1,29 @@
+```java
+class Solution {
+    /**
+     * Given two integers, return true if either one is 15 or if their sum or absolute difference is 15.
+     *
+     * @param a the first integer
+     * @param b the second integer
+     * @return true if either one is 15 or if their sum or absolute difference is 15
+     */
+    public static boolean calculate(int a, int b) {
+        if (a == 0 || b == 0) {
+            return false; // Handle the nonzero requirement explicitly
+        }
+
+        return a == 15 || b == 15 || (a + b) == 15 || Math.abs(a - b) == 15;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(calculate(10, 5)); // Output: true (difference is 5)
+        System.out.println(calculate(7, 8));  // Output: true (sum is 15)
+        System.out.println(calculate(15, 5)); // Output: true (a is 15)
+        System.out.println(calculate(5, 15)); // Output: true (b is 15)
+        System.out.println(calculate(10, 10));// Output: false
+        System.out.println(calculate(0, 15)); // Output: false (0 is not nonzero)
+        System.out.println(calculate(15, 0)); // Output: false (0 is not nonzero)
+
+    }
+}
+```

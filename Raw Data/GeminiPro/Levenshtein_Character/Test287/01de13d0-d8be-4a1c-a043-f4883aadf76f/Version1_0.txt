@@ -1,0 +1,50 @@
+```java
+import java.util.*;
+
+public class FindProductsWithOneWord {
+
+    public static void main(String[] args) {
+        // Create a list of products
+        List<String> products = new ArrayList<>();
+        products.add("Apple");
+        products.add("Banana");
+        products.add("Orange");
+        products.add("Strawberry");
+        products.add("Grape");
+        products.add("Pineapple");
+        products.add("Watermelon");
+        products.add("Mango");
+        products.add("Peach");
+        products.add("Pear");
+
+        // Find the products that contain only one word
+        List<String> productsWithOneWord = findProductsWithOneWord(products);
+
+        // Print the products
+        for (String product : productsWithOneWord) {
+            System.out.println(product);
+        }
+    }
+
+    public static List<String> findProductsWithOneWord(List<String> products) {
+        List<String> productsWithOneWord = new ArrayList<>();
+
+        for (String product : products) {
+            if (product.split(" ").length == 1) {
+                productsWithOneWord.add(product);
+            }
+        }
+
+        return productsWithOneWord;
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:** A list of products is given, and the program should return the products that contain only one word.
+* **Empty list:** The program should return an empty list if the input list is empty.
+* **Null list:** The program should throw a NullPointerException if the input list is null.
+* **List with products containing multiple words:** The program should return a list with the products that contain only one word.
+* **List with products containing special characters:** The program should return a list with the products that contain only one word, regardless of whether they contain special characters.
+* **List with products containing numbers:** The program should return a list with the products that contain only one word, regardless of whether they contain numbers.

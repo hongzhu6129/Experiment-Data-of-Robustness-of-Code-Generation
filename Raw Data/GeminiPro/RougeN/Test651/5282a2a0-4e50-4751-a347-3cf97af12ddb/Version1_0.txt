@@ -1,0 +1,56 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class GetComparable {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which stores keys in sorted order)
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+
+        // Specify the key for which to find the comparable
+        Integer key = 3;
+
+        // Get the comparable of the specified key
+        Integer comparableKey = map.ceilingKey(key); // Get the least key greater than or equal to the given key
+
+
+         if (comparableKey != null) {
+            System.out.println("Comparable key for " + key + ": " + comparableKey + " (Value: " + map.get(comparableKey) + ")");
+        } else {
+            System.out.println("No comparable key found for " + key + " (it's the largest in the map)");
+        }
+
+         // Demonstrate other comparable-related methods:
+
+        // Get the greatest key less than or equal to the given key
+        comparableKey = map.floorKey(key);
+        if (comparableKey != null) {
+             System.out.println("Floor key for " + key + ": " + comparableKey + " (Value: " + map.get(comparableKey) + ")");
+         }
+
+         // Get the greatest key strictly less than the given key
+         comparableKey = map.lowerKey(key);
+        if (comparableKey != null) {
+             System.out.println("Lower key for " + key + ": " + comparableKey + " (Value: " + map.get(comparableKey) + ")");
+         }
+
+
+        // Get the least key strictly greater than the given key
+        comparableKey = map.higherKey(key);
+        if (comparableKey != null) {
+            System.out.println("Higher key for " + key + ": " + comparableKey + " (Value: " + map.get(comparableKey) + ")");
+         }
+
+
+
+    }
+}
+```

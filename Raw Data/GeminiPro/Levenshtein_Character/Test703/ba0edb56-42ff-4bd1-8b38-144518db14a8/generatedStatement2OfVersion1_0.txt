@@ -1,0 +1,17 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes input validation to ensure that both `n` and `k` are non-negative and that `k` is not greater than `n`.  It returns 0 for invalid input as per binomial coefficient definition.
+
+2. **Efficiency:** The `binomial_Coefficient` method now incorporates an optimization:  `C(n, k) = C(n, n-k)`.  This reduces the number of iterations in the loop when `k` is larger than `n/2`.
+
+3. **Overflow Prevention:** The calculation within the loop is done carefully to minimize the risk of integer overflow. By multiplying by `(n-i+1)` before dividing by `i`, we ensure that the intermediate results remain within the `long` data type's range as much as possible.
+
+4. **Clearer User Interaction:** The `main` method uses a `Scanner` to get input from the user and provides informative prompts and output messages.
+
+5. **Resource Management:** The `Scanner` is closed at the end of the `main` method to release system resources.
+
+
+This improved version addresses potential issues and provides a more robust and user-friendly solution for calculating binomial coefficients.

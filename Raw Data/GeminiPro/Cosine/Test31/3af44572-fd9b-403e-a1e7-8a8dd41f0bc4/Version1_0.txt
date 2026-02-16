@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double radius = 6371.01;
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close(); 
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **Antipodal Points (opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 
+   - Expected Distance: ~20015.08 km (approximately Earth's diameter)
+
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Distance: ~10007.54 km (quarter of Earth's circumference)
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Distance: ~222.64 km  (small distance as they are close despite the longitude difference)
+
+
+7. **Points with large longitude difference but close in latitude (near poles):**
+    - lat1: 89
+    - lon1: 0
+    - lat2: 89
+    - lon2: 180
+    - Expected Distance: ~19.95 km (small distance due to proximity to the pole).
+
+
+8. **Invalid Input:** You should also test how your code handles invalid inputs (e.g., latitudes outside -90 to +90, non-numeric inputs) and either throw an appropriate exception or handle it gracefully.  This could be part of separate unit tests if you were using a testing framework like JUnit.
+
+
+
+
+To automate the testing process, create a separate test class (e.g., `EarthDistanceTest.java`) and use a testing framework like JUnit to define these test cases formally. JUnit provides assertions (like `assertEquals()`) to verify that the calculated distances match the expected values within a certain tolerance (due to floating-point approximations). This ensures the correctness of your `EarthDistance` class.
+

@@ -1,0 +1,30 @@
+```java
+class Solution {
+    /**
+     * Gets the first occurrence (position starts from 0) of a substring within a given string.
+     *
+     * @param haystack The string to search within.
+     * @param needle   The substring to search for.
+     * @return The index of the first occurrence of the substring, or -1 if not found.
+     */
+    public int strStr(String haystack, String needle) {
+        if (needle.isEmpty()) {
+            return 0;
+        }
+
+        return haystack.indexOf(needle);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        System.out.println(solution.strStr("hello", "ll"));   // Output: 2
+        System.out.println(solution.strStr("aaaaa", "bba"));  // Output: -1
+        System.out.println(solution.strStr("", ""));        // Output: 0
+        System.out.println(solution.strStr("hello", ""));     // Output: 0
+        System.out.println(solution.strStr("abc", "c"));      // Output: 2
+
+    }
+}
+```

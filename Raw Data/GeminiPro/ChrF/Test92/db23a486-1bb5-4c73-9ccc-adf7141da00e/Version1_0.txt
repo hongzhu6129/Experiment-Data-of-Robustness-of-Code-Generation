@@ -1,0 +1,54 @@
+```java
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 10, 12, 15, 4, 6};
+        int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] arr3 = {1, 2, 3, 10, 12, 10, 15, 4, 6};
+        int[] arr4 = {10, 1, 2, 3, 10, 12, 15, 4, 6};
+
+
+        printArray(createSubArrayAfterLast10(arr1)); // Output: [12, 15, 4, 6]
+        printArray(createSubArrayAfterLast10(arr2)); // Output: []
+        printArray(createSubArrayAfterLast10(arr3)); // Output: [15, 4, 6]
+        printArray(createSubArrayAfterLast10(arr4)); // Output: [12, 15, 4, 6]
+    }
+
+    public static int[] createSubArrayAfterLast10(int[] arr) {
+        int lastIndex = -1;
+
+        // Find the index of the last occurrence of 10
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                lastIndex = i;
+            }
+        }
+
+        if (lastIndex == -1 || lastIndex == arr.length - 1) { //10 not present or it's the last element
+            return new int[0]; // Return an empty array
+        }
+
+        int newArrayLength = arr.length - (lastIndex + 1);
+        int[] newArray = new int[newArrayLength];
+
+        for (int i = 0; i < newArrayLength; i++) {
+            newArray[i] = arr[lastIndex + 1 + i];
+        }
+        return newArray;
+
+    }
+
+
+    public static void printArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+}
+```

@@ -1,0 +1,77 @@
+```java
+public class SumTwoNumbers {
+
+    public static void main(String[] args) {
+        // Method 1: Using command-line arguments
+        if (args.length == 2) {
+            try {
+                double num1 = Double.parseDouble(args[0]);
+                double num2 = Double.parseDouble(args[1]);
+                double sum = num1 + num2;
+                System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter numeric values as command-line arguments.");
+            }
+        } else {
+            System.out.println("Please provide two numbers as command-line arguments.");
+        }
+
+
+
+        // Method 2: Hardcoded values (if command-line arguments are not desired)
+        double hardcodedNum1 = 10;  // Example values
+        double hardcodedNum2 = 25;
+        double hardcodedSum = hardcodedNum1 + hardcodedNum2;
+        System.out.println("\nThe sum of the hardcoded values " + hardcodedNum1 + " and " + hardcodedNum2 + " is: " + hardcodedSum);
+
+
+        // Method 3: User input within main (less common but possible)
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+
+        System.out.print("\nEnter the first number: ");
+        if(scanner.hasNextDouble()) {  // Check if input is a double
+           double inputNum1 = scanner.nextDouble();
+           System.out.print("Enter the second number: ");
+             if(scanner.hasNextDouble()) {
+                double inputNum2 = scanner.nextDouble();
+                double inputSum = inputNum1 + inputNum2;
+                System.out.println("The sum of the input numbers " + inputNum1 + " and " + inputNum2 + " is: " + inputSum);
+
+             } else {
+                System.out.println("Invalid input for the second number.");
+             }
+         } else {
+            System.out.println("Invalid input for the first number.");
+         }
+         scanner.close();
+
+
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Command-Line Arguments:**  The code now checks if two command-line arguments are provided. It uses a `try-catch` block to handle potential `NumberFormatException` if the user enters non-numeric input. This is robust error handling.
+
+2. **Hardcoded Values:** If you don't want to use command-line arguments, you can hardcode the numbers directly into the `main` method, as shown in the example.
+
+3. **User Input (within main):** I've added a more robust way to handle user input directly within `main`.  It uses a `Scanner` and now includes input validation to ensure the user enters valid numbers (using `hasNextDouble()`). This prevents the program from crashing due to invalid input.
+
+4. **Clearer Output:** The output messages are more informative, making it easier to understand the results.
+
+5. **Comments:** Added more comments to explain the code sections.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SumTwoNumbers.java`.
+
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac SumTwoNumbers.java`
+
+3. **Run (with command-line arguments):**  `java SumTwoNumbers 15 20` (replace 15 and 20 with your desired numbers)
+
+
+4. **Run (without command-line arguments, using hardcoded/input values):** `java SumTwoNumbers` - the program will then use the hardcoded values and also prompt for user input.

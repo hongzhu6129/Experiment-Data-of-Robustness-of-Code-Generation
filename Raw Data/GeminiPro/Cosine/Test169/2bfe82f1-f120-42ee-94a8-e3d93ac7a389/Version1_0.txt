@@ -1,0 +1,51 @@
+```java
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemoveDuplicates {
+
+    public static void main(String[] args) {
+        String str = "geeksforgeeks";
+
+        // Create a set to store the unique characters in the string.
+        Set<Character> uniqueChars = new LinkedHashSet<>();
+
+        // Add each character of the string to the set.
+        for (char c : str.toCharArray()) {
+            uniqueChars.add(c);
+        }
+
+        // Convert the set back to a string.
+        String result = "";
+        for (char c : uniqueChars) {
+            result += c;
+        }
+
+        // Print the result.
+        System.out.println(result);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Input:** "geeksforgeeks"
+* **Output:** "geksfor"
+
+* **Input:** "hello world"
+* **Output:** "helo word"
+
+* **Input:** ""
+* **Output:** ""
+
+* **Input:** "1234567890"
+* **Output:** "1234567890"
+
+* **Input:** "aaaaa"
+* **Output:** "a"
+
+**Corner Cases:**
+
+* **Empty string:** The program should handle empty strings and print an empty string as the result.
+* **String with only unique characters:** The program should handle strings with only unique characters and print the same string as the result.
+* **String with all duplicate characters:** The program should handle strings with all duplicate characters and print a single character as the result.

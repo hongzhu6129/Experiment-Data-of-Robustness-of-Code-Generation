@@ -1,0 +1,24 @@
+
+
+
+**Test Cases:**
+
+| Binary Input | Expected Hexadecimal Output | Notes                                   |
+|-------------|---------------------------|----------------------------------------|
+| "1101"     | 'd'                       | Example from the prompt                 |
+| "1010"     | 'a'                       |                                        |
+| "1111"     | 'f'                       |                                        |
+| "10000"    | '10'                      | Tests two-digit hexadecimal output    |
+| "11111111"| 'ff'                      | Tests two-digit hexadecimal output    |
+| "0"        | '0'                       | Tests zero input                       |
+| "1"        | '1'                       | Tests single digit input              |
+| ""         |  (empty string, or handle it gracefully, like printing 0) | Tests empty input string              |
+| "101a"     | "Invalid binary number."    | Tests invalid input (non-binary char) |
+| "111 000" | "Invalid binary number."    | Tests invalid input (space)            |
+| "12010"   | "Invalid binary number."    | Tests invalid input (non-binary char) |
+| "2"        | "Invalid binary number."    | Tests invalid input (non-binary char) |
+| "11111111111111111111111111111111" (32 ones) | "ffffffff"                   | Tests large binary input         |
+
+
+
+These test cases cover a range of scenarios, including valid binary numbers of different lengths, invalid input with non-binary characters, empty input, and a large binary number to ensure the conversion handles larger values correctly. The case of binary "0" is also specifically addressed. It's good practice to cover these different possibilities to ensure your program is robust.

@@ -1,0 +1,78 @@
+```java
+import java.util.Arrays;
+
+public class LexicographicRank {
+
+    public static int makefactorial(int n) {
+        int fact = 1;
+        for (int i = 2; i <= n; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    public static int calcuLexicoRank(String str, int n) {
+        int rank = 1;
+        int mul = makefactorial(n);
+        int[] count = new int[256]; // Assuming ASCII characters
+
+        // Count occurrences of each character
+        for (int i = 0; i < n; i++) {
+            count[str.charAt(i)]++;
+        }
+
+        // Calculate cumulative counts
+        for (int i = 1; i < 256; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = 0; i < n; i++) {
+            mul /= (n - i);
+            rank += count[str.charAt(i) - 1] * mul; // Characters smaller than current
+
+            // Update counts for characters after current
+            for (int j = str.charAt(i); j < 256; j++) {
+                count[j]--;
+            }
+        }
+        return rank;
+    }
+
+
+    public static void main(String[] args) {
+        String str = "STRING"; // Example usage
+        int n = str.length();
+        int rank = calcuLexicoRank(str, n);
+        System.out.println("Lexicographic Rank of " + str + " is: " + rank);
+
+
+        str = "CBA";  // Another example
+        n = str.length();
+        rank = calcuLexicoRank(str, n);
+        System.out.println("Lexicographic Rank of " + str + " is: " + rank);
+
+        str = "QUESTION";  // Another example
+        n = str.length();
+        rank = calcuLexicoRank(str, n);
+        System.out.println("Lexicographic Rank of " + str + " is: " + rank);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Character Counting Array:** Uses an `int[] count` of size 256 to efficiently handle ASCII characters.  This avoids sorting or repeated iterations through the string to find smaller characters.
+
+2. **Cumulative Counts:** Calculates cumulative counts in the `count` array. This allows for fast lookup of the number of smaller characters.
+
+3. **Factorial Calculation:** The `makefactorial` method efficiently calculates factorials.
+
+4. **Clearer Logic:** The logic within `calcuLexicoRank` is streamlined and follows the standard algorithm for lexicographic rank calculation more closely.
+
+5. **Example Usage:** The `main` method includes a couple of examples to demonstrate the functionality.
+
+6. **Comments:** Added comments to explain the code's logic.
+
+
+This improved version is more efficient, easier to understand, and handles character counting in a more robust way than the initial version, especially for a larger character set.

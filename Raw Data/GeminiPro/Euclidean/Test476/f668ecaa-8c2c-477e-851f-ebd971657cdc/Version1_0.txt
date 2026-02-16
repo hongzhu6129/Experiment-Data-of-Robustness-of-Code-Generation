@@ -1,0 +1,61 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZonedDateTime;
+
+public class StringDateTimeConversion {
+
+    public static void main(String[] args) {
+        // String to Date and Time
+        String dateTimeString = "2023-10-27T10:30:00"; // Example ISO 8601 format
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, formatter);
+
+        System.out.println("Converted LocalDateTime: " + dateTime);
+
+        String dateString = "2023-10-27";  // Example ISO date
+        LocalDate date = LocalDate.parse(dateString);
+        System.out.println("Converted LocalDate: " + date);
+
+        String timeString = "10:30:00"; //Example ISO time
+        LocalTime time = LocalTime.parse(timeString);
+        System.out.println("Converted LocalTime: " + time);
+
+
+        // Handling different formats with explicit formatter
+        String customDateTimeString = "27/10/2023 10:30 AM";
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        LocalDateTime customDateTime = LocalDateTime.parse(customDateTimeString, customFormatter);
+        System.out.println("Converted Custom LocalDateTime: " + customDateTime);
+
+
+
+        // Date and Time to String
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDateTime = now.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        System.out.println("Formatted LocalDateTime: " + formattedDateTime);
+
+
+        String customFormattedDateTime = now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        System.out.println("Custom Formatted LocalDateTime: " + customFormattedDateTime);
+
+        LocalDate currentDate = LocalDate.now();
+        String formattedDate = currentDate.format(DateTimeFormatter.ISO_DATE);
+        System.out.println("Formatted LocalDate: " + formattedDate);
+
+        LocalTime currentTime = LocalTime.now();
+        String formattedTime = currentTime.format(DateTimeFormatter.ISO_LOCAL_TIME);
+        System.out.println("Formatted LocalTime: " + formattedTime);
+
+        //Example with Timezone
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+        String formattedZonedDateTime = zonedDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
+        System.out.println("Formatted ZonedDateTime: " + formattedZonedDateTime);
+
+
+
+    }
+}
+```

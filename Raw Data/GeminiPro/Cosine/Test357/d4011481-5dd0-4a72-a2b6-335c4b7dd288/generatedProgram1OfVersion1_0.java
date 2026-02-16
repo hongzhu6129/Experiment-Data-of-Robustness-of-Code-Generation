@@ -1,0 +1,72 @@
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            System.out.println("Input string is empty or null.");
+            return;
+        }
+
+        int strLength = str.length();
+
+        if (n <= 0) {
+            System.out.println("Number of parts (n) must be a positive integer.");
+            return;
+        }
+
+
+        if (strLength % n != 0) {
+            System.out.println("String cannot be divided into " + n + " equal parts.");
+            return;
+        }
+
+        int partSize = strLength / n;
+
+        for (int i = 0; i < n; i++) {
+            int startIndex = i * partSize;
+            int endIndex = startIndex + partSize;
+            System.out.println(str.substring(startIndex, endIndex));
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcdefghijklmnopqrst";
+        int n1 = 4;
+        System.out.println("Splitting \"" + str1 + "\" into " + n1 + " parts:");
+        splitString(str1, n1);  // Output: abcd, efgh, ijkl, mnopqrst
+
+        System.out.println("\n---");
+
+
+        String str2 = "HelloWorld";
+        int n2 = 2;
+        System.out.println("Splitting \"" + str2 + "\" into " + n2 + " parts:");
+        splitString(str2, n2);  // Output: Hello, World
+
+        System.out.println("\n---");
+
+        String str3 = "programming"; // Cannot be divided evenly by 3
+        int n3 = 3;
+        System.out.println("Splitting \"" + str3 + "\" into " + n3 + " parts:");
+        splitString(str3, n3); // Output: appropriate error message
+
+
+        System.out.println("\n---");
+
+        String str4 = "";  // Empty string
+        int n4 = 2;
+        System.out.println("Splitting \"" + str4 + "\" into " + n4 + " parts:");
+        splitString(str4, n4); // Output: appropriate error message
+
+
+        System.out.println("\n---");
+
+        String str5 = "java";
+        int n5 = 0; // Invalid n (must be > 0)
+        System.out.println("Splitting \"" + str5 + "\" into " + n5 + " parts:");
+        splitString(str5, n5);  // Output: appropriate error message
+
+
+
+
+    }
+}

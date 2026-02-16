@@ -1,0 +1,72 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int target = 5;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Method Signature Adherence:** The code strictly adheres to the requested `main` and `Saddleback` method signatures.
+
+2. **Saddleback Search Implementation:** The `Saddleback` method efficiently searches the matrix.  It starts at the top-right corner.
+   - If the current element is equal to the target, the position is returned.
+   - If the current element is smaller than the target, it means the target cannot be in the current row (since rows are sorted), so we move down to the next row.
+   - If the current element is larger than the target, it means the target cannot be in the current column (since columns are sorted), so we move left to the previous column.
+
+3. **Return Array for Coordinates:** The `Saddleback` method returns an `int[]` containing the row and column indices of the target. If the target is not found, it returns `{-1, -1}`. This makes it easy for the `main` method to handle both cases.
+
+4. **Example Usage in `main`:** The `main` method provides a sample matrix and target value.  It calls `Saddleback` and then prints the result in a user-friendly format.
+
+
+**How Saddleback Search Works (Example):**
+
+Let's say `target = 5` in the given matrix:
+
+1. Start at `matrix[0][4]` (15). 15 > 5, so move left.
+2. `matrix[0][3]` (11). 11 > 5, so move left.
+3. `matrix[0][2]` (7). 7 > 5, so move left.
+4. `matrix[0][1]` (4). 4 < 5, so move down.
+5. `matrix[1][1]` (5). Found! Return {1, 1}.
+
+
+This approach is efficient because it eliminates a row or a column in each step, leading to a time complexity of O(m + n), where 'm' is the number of rows and 'n' is the number of columns. It's much better than a brute-force search (O(m*n)).

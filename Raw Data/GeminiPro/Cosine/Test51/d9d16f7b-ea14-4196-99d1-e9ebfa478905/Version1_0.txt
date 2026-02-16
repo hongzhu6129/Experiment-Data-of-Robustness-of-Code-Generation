@@ -1,0 +1,20 @@
+```java
+public class StringToLowercase {
+
+    public static void main(String[] args) {
+        String inputString = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.";
+        char[] charArray = inputString.toCharArray();
+        String lowercaseString = "";
+
+        for (char c : charArray) {
+            if (c >= 'A' && c <= 'Z') {
+                lowercaseString += (char) (c + 32); // Convert uppercase to lowercase
+            } else {
+                lowercaseString += c;
+            }
+        }
+
+        System.out.println(lowercaseString);
+    }
+}
+```

@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                     |
+| --------- | ------- | ------- | ------- | -------------- | ---------------------------------------- |
+| 1        | 10      | 20      | 30      | 20.0           | Standard positive numbers                 |
+| 2        | -5      | 0       | 5       | 0.0            | Includes negative and zero                |
+| 3        | 0       | 0       | 0       | 0.0            | All zeros                               |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5            | Decimal numbers                          |
+| 5        | 100000  | 200000  | 300000  | 200000.0       | Large numbers                           |
+| 6        | -1000   | -2000   | -3000   | -2000.0       | Large negative numbers                    |
+| 7        | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE | Double.POSITIVE_INFINITY | Overflow (Positive Infinity Expected)  |  // Corner case: Overflow
+| 8        | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE / 3 | Very small numbers                   |
+| 9        | 0       | Double.MAX_VALUE | Double.MIN_VALUE | (MAX_VALUE + MIN_VALUE) / 3 | Mix of Max, Min, and zero             |
+
+
+
+
+**How to Run the Test Cases (Manually):**
+
+1. **Compile:** Save the code as `AverageCalculator.java` and compile it using a Java compiler (e.g., `javac AverageCalculator.java`).
+2. **Run:** Execute the compiled code (e.g., `java AverageCalculator`).
+3. **Input:** Enter the three numbers for each test case when prompted.
+4. **Verify:** Check if the output matches the expected output for each test case.
+
+**Automated Testing (Using JUnit - Recommended):**
+
+For more robust testing, use a testing framework like JUnit. Here's an example:
+
+

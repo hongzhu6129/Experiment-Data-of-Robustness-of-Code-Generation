@@ -1,0 +1,48 @@
+```java
+public class EnvironmentAndSecurityManager {
+
+    public static void main(String[] args) {
+
+        // 16. Check for Security Manager
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("A security manager has already been established.");
+        } else {
+            System.out.println("No security manager has been established.");
+        }
+
+        // 90. Get Environment Variables
+        System.out.println("Path: " + System.getenv("Path")); // Windows
+        System.out.println("PATH: " + System.getenv("PATH")); // Linux/macOS/etc. (case-sensitive!)
+        System.out.println("Temp: " + System.getenv("TEMP")); // Windows
+        System.out.println("Tmp: " + System.getenv("TMP"));  // Windows (alternative)
+        System.out.println("temp: " + System.getenv("temp")); // Linux/macOS/etc. (case-sensitive!)
+        System.out.println("USERNAME: " + System.getenv("USERNAME")); // Windows
+        System.out.println("USER: " + System.getenv("USER")); // Linux/macOS/etc.
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+* **Case-Sensitivity of Environment Variables:** Environment variables are often case-sensitive (especially on Unix-like systems like Linux and macOS).  The code now correctly handles both the Windows (`Path`, `TEMP`, `USERNAME`) and Linux/macOS/etc. (`PATH`, `temp`, `USER`) versions for more robust retrieval.  It checks for common variations to be more comprehensive.
+
+* **Clarity and Readability:** The output is formatted more clearly to indicate which environment variable is being printed.
+
+* **Error Handling (Optional):**  If you need to handle the case where an environment variable might *not* be set, you can add a check for `null` before printing the value:
+
+   ```java
+   String path = System.getenv("PATH"); // Example
+   if (path != null) {
+       System.out.println("PATH: " + path);
+   } else {
+       System.out.println("PATH environment variable is not set.");
+   }
+   ```
+
+
+This improved version is much more likely to work correctly across different operating systems and handle various cases where environment variables might or might not be defined.

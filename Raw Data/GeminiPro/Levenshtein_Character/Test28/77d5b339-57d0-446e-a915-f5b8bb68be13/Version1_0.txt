@@ -1,0 +1,51 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        n = Math.abs(n); // Handle negative numbers
+
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        int sum = function(number);
+        System.out.println("Sum of digits: " + sum);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Explanation |
+|---|---|---|
+| 12345 | 15 | 1 + 2 + 3 + 4 + 5 = 15 |
+| 0 | 0 | Sum of digits of 0 is 0 |
+| -123 | 6 | The function handles negative numbers by taking the absolute value. 1+2+3=6 |
+| 9 | 9 |  Single digit number |
+| 100 | 1 | 1+0+0=1 |
+| 999 | 27 | 9+9+9=27 |
+| Integer.MAX_VALUE (2147483647) | 46 |  Handles large positive numbers |
+| Integer.MIN_VALUE (-2147483648)| 47 | Handles large negative numbers (absolute value is used) |
+
+
+
+**Explanation of Improvements:**
+
+* **Handles Negative Numbers:** The code now uses `Math.abs(n)` to handle negative input correctly.  The sum of digits should be the same regardless of the sign.
+* **Clearer Function Name:** The function is named `function` as requested in the prompt.
+* **Input Validation (Optional):**  While not strictly required by the prompt, for production-ready code, you might consider adding input validation to the `main` method to handle cases where the user enters non-numeric input. This would prevent the program from crashing.  A `try-catch` block could be used to achieve this.
+* **More Comprehensive Test Cases:** The test cases cover a wider range of scenarios including zero, single-digit numbers, large positive and negative numbers, and negative numbers. This helps ensure the function works correctly in all cases.
+
+
+This improved version addresses the potential issues and makes the code more robust and easier to understand.

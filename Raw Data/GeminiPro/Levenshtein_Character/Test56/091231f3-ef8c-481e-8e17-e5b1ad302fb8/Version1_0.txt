@@ -1,0 +1,60 @@
+**Problem Description:**
+
+Write a Java program to test that the following code snippet:
+
+```java
+public class Aznable {
+
+    private static int aznable(int n) {
+        int result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(aznable(5)); // 120
+        System.out.println(aznable(10)); // 3628800
+    }
+}
+```
+
+**Test Cases:**
+
+| Input | Expected Output |
+|---|---|
+| 0 | 1 |
+| 1 | 1 |
+| 5 | 120 |
+| 10 | 3628800 |
+| -1 | 1 |
+| -5 | 1 |
+| 2147483647 | 2147483647 |
+
+**Corner Cases:**
+
+* **Negative inputs:** The method should return 1 for negative inputs.
+* **Zero input:** The method should return 1 for zero input.
+* **Extreme positive inputs:** The method should return the correct result for extremely large positive inputs (e.g., `2147483647`).
+
+**Java Program:**
+
+```java
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class AznableTest {
+
+    @Test
+    public void testAznable() {
+        assertEquals(1, Aznable.aznable(0));
+        assertEquals(1, Aznable.aznable(1));
+        assertEquals(120, Aznable.aznable(5));
+        assertEquals(3628800, Aznable.aznable(10));
+        assertEquals(1, Aznable.aznable(-1));
+        assertEquals(1, Aznable.aznable(-5));
+        assertEquals(2147483647, Aznable.aznable(2147483647));
+    }
+}
+```

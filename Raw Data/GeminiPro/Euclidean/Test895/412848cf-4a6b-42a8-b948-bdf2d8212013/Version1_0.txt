@@ -1,0 +1,66 @@
+```java
+import java.util.Arrays;
+
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Variable to track the length of the new array
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 6, 7, 6, 2};
+        int val = 6;
+
+        System.out.println("Original array: " + Arrays.toString(nums));
+
+        int newLength = removeElement(nums, val);
+
+        System.out.println("The length of the new array is: " + newLength);
+
+
+        // Print the updated array (optional - as the problem only asks for length)
+        System.out.print("Updated array: [");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i]);
+            if (i < newLength - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+Explanation:
+
+1. **`removeElement(int[] nums, int val)`:**
+   - Takes the integer array `nums` and the value `val` to be removed as input.
+   - Initializes `k` to 0. `k` will keep track of the index where the next non-`val` element should be placed.
+   - Iterates through the `nums` array.
+   - If `nums[i]` is not equal to `val`, it means we want to keep this element. So, we copy it to `nums[k]` and increment `k`.
+   - Finally, returns `k`, which represents the new length of the array (containing only elements different from `val`).
+
+2. **`main(String[] args)`:**
+   - Creates a sample array `nums` and sets the value to be removed (`val`).
+   - Prints the original array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the new length.
+   - (Optional) Prints the updated array for better visualization.
+
+
+Key Improvements:
+
+- **In-place Modification:** The `removeElement` function modifies the input array directly instead of creating a new one, making it more memory-efficient.
+- **Clearer Variable Naming:** Using `k` for the new array's length improves readability.
+- **Concise Logic:** The code is simplified to focus on the core logic of removing elements.
+- **Optional Printing of Updated Array:**  The code now includes the option to print the updated array, which can be helpful for verification.

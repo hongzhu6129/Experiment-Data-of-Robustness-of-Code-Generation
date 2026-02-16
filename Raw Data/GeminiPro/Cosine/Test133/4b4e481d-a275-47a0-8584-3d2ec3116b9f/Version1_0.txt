@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class CharacterReplacement {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter the input string: ");
+        String inputString = scanner.nextLine();
+
+        // Get the character to be replaced from the user
+        System.out.println("Enter the character to be replaced: ");
+        char characterToReplace = scanner.nextLine().charAt(0);
+
+        // Get the character to replace with from the user
+        System.out.println("Enter the character to replace with: ");
+        char characterToReplaceWith = scanner.nextLine().charAt(0);
+
+        // Replace the character in the string
+        String replacedString = inputString.replace(characterToReplace, characterToReplaceWith);
+
+        // Print the replaced string
+        System.out.println("The replaced string is: " + replacedString);
+    }
+}
+```
+
+**Test cases with corner cases**
+
+* **Empty string**
+```java
+Input: ""
+Character to replace: 'a'
+Character to replace with: 'b'
+
+Output: ""
+```
+
+* **String with no character to replace**
+```java
+Input: "abcdef"
+Character to replace: 'z'
+Character to replace with: 'y'
+
+Output: "abcdef"
+```
+
+* **String with multiple occurrences of the character to replace**
+```java
+Input: "abcabc"
+Character to replace: 'a'
+Character to replace with: 'b'
+
+Output: "bbbbbc"
+```
+
+* **String with the character to replace at the beginning**
+```java
+Input: "abcdef"
+Character to replace: 'a'
+Character to replace with: 'b'
+
+Output: "bbcdef"
+```
+
+* **String with the character to replace at the end**
+```java
+Input: "abcdef"
+Character to replace: 'f'
+Character to replace with: 'g'
+
+Output: "abcdeg"
+```
+
+* **String with the character to replace in the middle**
+```java
+Input: "abcdef"
+Character to replace: 'c'
+Character to replace with: 'd'
+
+Output: "abdef"
+```

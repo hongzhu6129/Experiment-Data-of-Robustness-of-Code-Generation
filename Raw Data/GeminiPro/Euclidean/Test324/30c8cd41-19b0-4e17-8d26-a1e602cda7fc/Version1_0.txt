@@ -1,0 +1,34 @@
+```java
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = " World";
+
+        // Method 1: Using the + operator
+        String concatenatedString1 = str1 + str2;
+        System.out.println("Concatenated string (using +): " + concatenatedString1);
+
+
+        // Method 2: Using the concat() method
+        String concatenatedString2 = str1.concat(str2);
+        System.out.println("Concatenated string (using concat()): " + concatenatedString2);
+
+
+        // Example with a  "this" string demonstrating that "this" is just a normal string.
+        String str3 = "this"; 
+        String concatenatedString3 = "Another string " + str3;
+        System.out.println("Concatenated string with \"this\": " + concatenatedString3);
+
+
+        String thisString = "this ";
+        String anotherString = "is a string";
+        String combined = anotherString + thisString;
+        System.out.println(combined); // Output: is a stringthis 
+
+        combined = thisString + anotherString; // The order in which you concatenate matters
+        System.out.println(combined);  // Output: this is a string
+
+     }
+}
+```

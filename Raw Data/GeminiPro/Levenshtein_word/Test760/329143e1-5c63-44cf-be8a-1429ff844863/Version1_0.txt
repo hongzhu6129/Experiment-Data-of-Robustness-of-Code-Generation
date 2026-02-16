@@ -1,0 +1,43 @@
+```java
+public class AddDashToVowels {
+
+    public static void main(String[] args) {
+        String inputString = "hello world";
+        String result = validate(inputString);
+        System.out.println(result); // Output: -h-e-ll-o- -w-o-r-l-d-
+
+        inputString = "coding";
+        result = validate(inputString);
+        System.out.println(result); // Output: -c-o-d-i-ng-
+
+        inputString = "AEIOUaeiou";
+        result = validate(inputString);
+        System.out.println(result); //-A-E-I-O-U-a-e-i-o-u-
+
+
+        inputString = ""; // Empty string
+        result = validate(inputString);
+        System.out.println(result); // Output: -
+
+
+        inputString = "rhythm"; // No vowels
+        result = validate(inputString);
+        System.out.println(result);// Output: -r-h-y-t-h-m-
+    }
+
+    public static String validate(String inputString) {
+        StringBuilder result = new StringBuilder("-"); // Start with a dash
+
+        for (char c : inputString.toCharArray()) {
+            if ("AEIOUaeiou".indexOf(c) != -1) { // Check if vowel
+                result.append("-").append(c).append("-");
+            } else {
+                result.append(c);
+            }
+        }
+         result.append("-"); // End with a dash
+
+        return result.toString();
+    }
+}
+```

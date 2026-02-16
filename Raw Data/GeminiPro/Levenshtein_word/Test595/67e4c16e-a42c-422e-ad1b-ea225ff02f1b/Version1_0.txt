@@ -1,0 +1,42 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListPeek {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+
+        if (!linkedList.isEmpty()) {
+            // Retrieve the first element using peek()
+            String firstElement = linkedList.peek();
+
+            // Print the first element
+            System.out.println("First element: " + firstElement);
+
+
+            //Verify that the element is still in the list
+            System.out.println("Linked List contents: " + linkedList);
+        } else {
+            System.out.println("The linked list is empty.");
+        }
+
+        //Demonstrate peekFirst() which is equivalent to peek()
+         if (!linkedList.isEmpty()) {
+            String firstElementPeekFirst = linkedList.peekFirst();
+            System.out.println("First element using peekFirst(): " + firstElementPeekFirst);
+            System.out.println("Linked List contents: " + linkedList);
+        } else {
+            System.out.println("The linked list is empty.");
+        }
+
+
+    }
+}
+```

@@ -1,0 +1,11 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber` Method:** This helper method is introduced to encapsulate the Fermat number calculation.  It takes an integer `n` as input and returns the corresponding Fermat number as a `long`.  Using a separate method improves code organization and readability.
+
+2. **`long` Data Type:** Fermat numbers grow very rapidly.  Using `int` would quickly lead to overflow. `long` provides a larger range, but even `long` will not be able to hold all 10 Fermat numbers.  After the 5th Fermat number, you'll see incorrect values due to overflow.
+
+3. **BigInteger (For Larger Fermat Numbers):**  To calculate and display *all* the first 10 Fermat numbers correctly, you'd need to use `BigInteger`, which can handle arbitrarily large integers:
+

@@ -1,0 +1,33 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class PrintArrayListElementsWithPosition {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> myArrayList = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        myArrayList.add("Apple");
+        myArrayList.add("Banana");
+        myArrayList.add("Orange");
+        myArrayList.add("Grape");
+
+        // Print the elements with their positions using a for loop and get()
+        System.out.println("Elements with their positions (using get()):");
+        for (int i = 0; i < myArrayList.size(); i++) {
+            System.out.println("Element at position " + i + ": " + myArrayList.get(i));
+        }
+
+
+        // Print using enhanced for loop with a separate index variable (less efficient but demonstrates another way)
+        System.out.println("\nElements with their positions (using enhanced for loop and index):");
+        int index = 0;
+        for (String element : myArrayList) {
+            System.out.println("Element at position " + index + ": " + element);
+            index++;
+        }
+    }
+}
+```

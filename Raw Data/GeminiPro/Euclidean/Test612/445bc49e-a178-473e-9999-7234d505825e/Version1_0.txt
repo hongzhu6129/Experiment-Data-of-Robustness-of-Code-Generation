@@ -1,0 +1,46 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetIntersection {
+
+    public static void main(String[] args) {
+        // Create two sample sets
+        Set<String> set1 = new HashSet<>();
+        set1.add("apple");
+        set1.add("banana");
+        set1.add("cherry");
+        set1.add("date");
+
+        Set<String> set2 = new HashSet<>();
+        set2.add("banana");
+        set2.add("cherry");
+        set2.add("grape");
+        set2.add("fig");
+
+
+        // Retain only the common elements in set1
+        set1.retainAll(set2);  // Modifies set1 directly
+
+
+        // Print the resulting set (intersection)
+        System.out.println("Common elements (Intersection): " + set1); 
+
+
+        // Example of creating a new set with the intersection without modifying the originals:
+        Set<String> intersection = new HashSet<>(set1); // Start with a copy of one set
+        Set<String> originalSet1 = new HashSet<>(set1); //Keep a copy of the original
+        Set<String> originalSet2 = new HashSet<>(set2); //Keep a copy of the original
+
+        intersection.retainAll(originalSet2);
+
+        System.out.println("Original set1: "+ originalSet1);
+        System.out.println("Original set2: "+ originalSet2);
+        System.out.println("Intersection (new set): " + intersection);
+
+
+
+
+    }
+}
+```

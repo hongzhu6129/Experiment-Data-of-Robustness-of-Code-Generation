@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference: " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder: " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            if (num1 == 0) { // Handling 0/0 indeterminate form
+                System.out.println("Remainder is undefined for 0/0.");
+            } else {
+                System.out.println("Remainder is undefined when dividing by zero."); // Clarified remainder behavior
+            }
+
+        }
+
+        input.close(); 
+    }
+}
+```
+
+
+## Test Cases:
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1 (or 1 depending on implementation. Java uses truncated division)|
+| 3. Mixed Signs | 8 | -3 | 5 | 11 | -24 | -2.666... | 2 |
+| 4. Zero as num1 | 0 | 7 | 7 | -7 | 0 | 0 | 0 |
+| 5. Zero as num2 | 12 | 0 | 12 | 12 | 0 | Division by zero error | Remainder undefined |  
+| 6. Both Zero | 0 | 0 | 0 | 0 | 0 | Division by zero error | Remainder undefined |
+| 7. Large Numbers | 100000 | 5000 | 105000 | 95000 | 500000000 | 20 | 0 |
+| 8. Decimal Numbers | 2.5 | 1.2 | 3.7 | 1.3 | 3 | 2.0833... | 0.1 (approx. due to floating-point limitations. Be mindful of how you compare floating point results in tests)|
+| 9. Integer Overflow (potential issue) | Integer.MAX_VALUE | 1 | Overflow behavior (result might wrap around) |  | Overflow behavior |  |  |
+
+
+
+**How to Run Test Cases:**
+
+You can either manually input these values into your program or, better yet, create automated tests using a testing framework like JUnit. This allows for more robust and repeatable testing.
+
+
+Example JUnit Test (partial):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ArithmeticOperationsTest {
+
+    @Test
+    void testPositiveNumbers() {
+        // ... (Set up input or call your methods directly)
+        assertEquals(15, ArithmeticOperations.add(10, 5)); // Example using a hypothetical add method.  You'll likely need to refactor your code a bit to unit test it properly.
+        // ... (More assertions for other operations)
+    }
+
+
+    @Test
+    void testDivisionByZero(){
+        // Demonstrating an exception test:
+        assertThrows(ArithmeticException.class, () -> ArithmeticOperations.divide(10, 0));  // Assuming you have a separate divide() method
+
+    }
+
+    // ... (More test methods for other test cases)
+}
+```
+
+
+Using a testing framework like JUnit is strongly recommended for real-world projects, as it makes testing more organized, comprehensive, and easier to automate.  It's a good practice to start incorporating testing early in your development process.

@@ -1,0 +1,69 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
+                {13, 14, 15, 16}
+        };
+
+        int target = 7;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col};
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search:** The `Saddleback` (or sometimes called `staircase search`) method efficiently searches a sorted 2D array. It starts from the top-right corner.  If the current element is smaller than the target, it moves down (to a larger element). If the current element is larger than the target, it moves left (to a smaller element).
+
+2. **Clearer Return:**  The `Saddleback` function returns an `int[]` of size 2.  If the target is found, the array contains the row and column indices.  If the target is *not* found, it returns `{-1, -1}` to clearly indicate failure.
+
+3. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` function. It creates a sample matrix, sets a target value, and then calls `Saddleback` to search. The result is printed to the console.
+
+4. **Error Handling:** The `main` method now checks the result from `Saddleback`. If `{-1, -1}` is returned, it prints a message that the target was not found.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SaddlebackSearch.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:
+   ```bash
+   javac SaddlebackSearch.java
+   ```
+3. **Run:** Execute the compiled code:
+   ```bash
+   java SaddlebackSearch 
+   ```
+
+
+This improved version provides a more robust and understandable solution to the saddleback search problem.  It handles the case where the target is not found and makes the code easier to use and maintain.

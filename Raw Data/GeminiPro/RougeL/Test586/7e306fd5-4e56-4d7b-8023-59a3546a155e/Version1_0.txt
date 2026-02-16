@@ -1,0 +1,43 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListFormsAndPositions {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (representing forms)
+        LinkedList<String> forms = new LinkedList<>();
+
+        // Add some forms to the list
+        forms.add("Circle");
+        forms.add("Square");
+        forms.add("Triangle");
+        forms.add("Rectangle");
+        forms.add("Pentagon");
+
+
+        // Display the forms and their positions
+        System.out.println("Forms and their positions in the linked list:");
+
+        for (int i = 0; i < forms.size(); i++) {
+            String form = forms.get(i);
+            System.out.println("Position " + i + ": " + form);
+        }
+
+
+         //Alternative using enhanced for loop with an index counter:
+         int index = 0;
+         for(String form : forms){
+             System.out.println("Position " + index + ": " + form);
+             index++;
+         }
+
+        //  Another Alternative: Java 8+ Stream API:
+        //  This approach uses the IntStream to generate indices.
+       // int[] indexes = IntStream.range(0, forms.size()).toArray();  // needed if you need a separate index array
+        // IntStream.range(0, forms.size()).forEach(i -> System.out.println("Position " + i + ": " + forms.get(i)) );
+
+
+
+    }
+}
+```

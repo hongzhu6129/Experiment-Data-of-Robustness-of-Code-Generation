@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class FutureInvestmentValue {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter investment amount: ");
+        double investmentAmount = input.nextDouble();
+
+        System.out.print("Enter annual interest rate in percentage: ");
+        double annualInterestRate = input.nextDouble();
+
+        System.out.print("Enter number of years: ");
+        int numberOfYears = input.nextInt();
+
+        double futureValue = futureInvestmentValue(investmentAmount, annualInterestRate, numberOfYears);
+
+        System.out.printf("Future value is $%.2f\n", futureValue);
+        input.close(); 
+    }
+
+    public static double futureInvestmentValue(double investmentAmount, double monthlyInterestRate, int years) {
+        double monthlyInterestRateDecimal = monthlyInterestRate / 1200.0; // Convert percentage to decimal and divide by 12
+        int numberOfMonths = years * 12;
+
+        double futureValue = investmentAmount * Math.pow(1 + monthlyInterestRateDecimal, numberOfMonths);
+
+        return futureValue;
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **User Input:** The `main` method now uses a `Scanner` to get input from the user for the investment amount, annual interest rate, and number of years.  This makes the code more interactive and useful.
+
+2. **Clear Prompts:** Added prompts to tell the user what kind of input is expected.
+
+3. **Error Handling (Optional but Recommended):**  While not strictly required by the prompt, in real-world code, you would add error handling (e.g., using `try-catch` blocks) to handle invalid input (like non-numeric values or negative numbers) gracefully.
+
+4. **Formatted Output:** The output is formatted using `printf` to display the future value with two decimal places, making it look more professional.
+
+5. **Closing the Scanner:** Added `input.close()` to release the `Scanner` resource after use. This is good practice to prevent resource leaks.
+
+
+6. **`futureInvestmentValue` Method:** This method calculates the future investment value correctly using the formula:
+   ```
+   futureValue = investmentAmount * (1 + monthlyInterestRate)^numberOfMonths
+   ```
+   It receives the annual interest rate, converts it to a monthly decimal rate, calculates the total number of months, and then applies the formula.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `FutureInvestmentValue.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac FutureInvestmentValue.java 
+   ```
+3. **Run:** Execute the compiled code with:
+   ```bash
+   java FutureInvestmentValue
+   ```
+
+The program will then prompt you to enter the required values.
+
+
+

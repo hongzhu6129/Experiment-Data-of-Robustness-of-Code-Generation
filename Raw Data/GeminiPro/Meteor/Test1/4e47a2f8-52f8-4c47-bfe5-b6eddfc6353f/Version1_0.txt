@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfThree {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first number:");
+        int num1 = scanner.nextInt();
+
+        System.out.println("Enter the second number:");
+        int num2 = scanner.nextInt();
+
+        System.out.println("Enter the third number:");
+        int num3 = scanner.nextInt();
+
+
+        long product = (long)num1 * num2 * num3; // Use long to prevent potential integer overflow
+
+        System.out.println("The product of the three numbers is: " + product);
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                    |
+|-----------|---------|---------|---------|----------------|-----------------------------------------|
+| 1        | 2       | 3       | 4       | 24             | Basic positive integers                   |
+| 2        | -2      | 3       | 4       | -24            | Negative input                          |
+| 3        | 0       | 3       | 4       | 0              | Zero input                              |
+| 4        | 2       | -3      | -4       | 24             | Two negative inputs                      |
+| 5        | 100000  | 100000 | 2      | 20000000000   | Large numbers (check for potential overflow if not using `long`) |
+| 6        | -100000 | 100000 | 2      | -20000000000  | Large negative numbers                  |
+| 7        | Integer.MAX_VALUE | 1      | 2 | 2147483646 (or overflow if not using long) | Integer overflow check       |
+| 8        | Integer.MIN_VALUE | 1 | 2 | -4294967296 (or overflow if not using long) | Integer underflow/overflow check |
+
+
+
+
+
+**Explanation of improvements and key considerations:**
+
+* **`long` data type for the product:**  Using `long` is crucial to handle potential integer overflow.  If the product of the three numbers exceeds the maximum value that an `int` can hold, using `int` will result in an incorrect answer. `long` provides a wider range and prevents this issue.
+* **Clear prompts for user input:** The code provides clear instructions to the user about what input is expected.
+* **`Scanner.close()`:** Closing the `Scanner` is good practice to release system resources.
+* **Comprehensive test cases:**  The test cases cover positive, negative, zero, and large number inputs to ensure the program works correctly under various conditions.  Critically, tests for potential integer overflow are included.
+
+
+
+This improved version addresses potential overflow issues and makes the program more robust and user-friendly. Remember to compile and run the Java code using a Java Development Kit (JDK).
+

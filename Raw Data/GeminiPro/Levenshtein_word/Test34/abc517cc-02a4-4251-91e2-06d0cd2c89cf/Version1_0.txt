@@ -1,0 +1,53 @@
+```java
+import java.nio.charset.Charset;
+import java.util.SortedMap;
+
+public class ListAvailableCharsets {
+
+    public static void listCharsets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        System.out.println("Available Character Sets:");
+        for (String charsetName : charsets.keySet()) {
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + " (aliases: " + charset.aliases() + ")");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        listCharsets();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+It's difficult to have traditional "test cases" with assertions for this program since the available charsets can vary slightly depending on the Java runtime environment (JRE) and operating system.  The focus should be on verifying the program behaves correctly in different situations:
+
+1. **Basic Functionality:** Run the program on a standard JRE.  Visually inspect the output to confirm that a reasonable list of charsets is printed, including common ones like UTF-8, UTF-16, US-ASCII, ISO-8859-1, etc.  Check that aliases are printed correctly.
+
+2. **Empty or Minimal JRE:** If possible, try running the program in a very minimal or stripped-down JRE environment. The goal is to see how the program handles a situation where fewer charsets might be available.  It shouldn't crash; it should simply print the smaller list, or possibly nothing if no charsets are found.  This is difficult to set up, but provides good coverage if you can do it.
+
+
+3. **Large or Custom JRE (Optional - Advanced):** If you have access to a JRE with a very large number of charsets or a custom JRE with added charsets, run the program there. This helps verify that the code scales and handles a large volume of charsets correctly.
+
+
+4. **Concurrency (Less relevant):**  Concurrency isn't a major concern here, but if you wanted to be extremely thorough, you *could*  start multiple threads that each call `listCharsets()`.  The output might be interleaved, but this wouldn't be a program error. The key point is to observe that the program doesn't crash or deadlock under concurrent execution.
+
+
+**Corner Cases (Difficult to test directly, more about code robustness):**
+
+
+* **`Charset.availableCharsets()` returning null (highly unlikely):** While the Java documentation doesn't explicitly say `availableCharsets()` can return `null`, defensively coding against this scenario could prevent a `NullPointerException`.  You might simulate it in a test environment by temporarily modifying the source code (not recommended for production).  A more sensible approach is to ensure any code that *uses* the returned `SortedMap` handles `null` gracefully.
+
+
+* **Changes in Java's `Charset` implementation:** Future Java versions might change how `Charset` or its related classes work. This is out of your control, but good coding practices (e.g., avoiding direct dependencies on internal implementation details) make the program less brittle.
+
+
+
+
+
+This approach focuses on practical verification, recognizing that exhaustive testing against all possible charset configurations across all JREs is infeasible.  The aim is to build confidence that the program works reliably under typical conditions and is robust against unexpected variations.

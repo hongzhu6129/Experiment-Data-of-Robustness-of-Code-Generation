@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1, num2, num3;
+
+        try {
+            num1 = scanner.nextDouble();
+            num2 = scanner.nextDouble();
+            num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average of " + num1 + ", " + num2 + ", and " + num3 + " is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close();
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to test the `AverageCalculator` program:
+
+**1. Normal Case:**
+
+* Input: `10 20 30`
+* Expected Output: `The average of 10.0, 20.0, and 30.0 is: 20.0`
+
+**2. Decimal Numbers:**
+
+* Input: `2.5 5.7 8.9`
+* Expected Output: `The average of 2.5, 5.7, and 8.9 is: 5.7`
+
+**3. Negative Numbers:**
+
+* Input: `-10 -20 -5`
+* Expected Output: `The average of -10.0, -20.0, and -5.0 is: -11.666666666666666`
+
+**4. Zero Values:**
+
+* Input: `0 0 0`
+* Expected Output: `The average of 0.0, 0.0, and 0.0 is: 0.0`
+
+**5. Mixed Positive and Negative:**
+
+* Input: `-5 15 5`
+* Expected Output: `The average of -5.0, 15.0, and 5.0 is: 5.0`
+
+**6. Large Numbers:**
+
+* Input: `1000000 2000000 3000000`
+* Expected Output: `The average of 1000000.0, 2000000.0, and 3000000.0 is: 2000000.0`
+
+
+**7. Edge Case: Very Small Numbers (close to zero):**
+
+* Input: `0.000001 0.000002 0.000003`
+* Expected Output: (Check for correct handling of very small decimals)
+
+
+**8. Invalid Input (Corner Case):**
+
+* Input: `10 a 20`
+* Expected Output: `Invalid input. Please enter numbers only.`
+
+**9. Invalid Input (Corner Case):**
+
+* Input: `10 20` (Only two numbers)
+* Expected Output:  The program will wait for the third number as it uses `scanner.nextDouble()` three times.  If you just press enter, it will likely treat the third number as 0.
+
+**10. Overflow (Edge Case - Less likely with doubles, but important to consider with other data types):**
+
+* Input: `Double.MAX_VALUE Double.MAX_VALUE Double.MAX_VALUE`  (Use the maximum possible double value)
+* Expected Output:  (Check that the program handles potential overflow gracefully; in the case of `double`, you'll probably get `Infinity`)
+
+
+
+These test cases cover various scenarios and help ensure the program works correctly under different conditions, including handling invalid inputs and potential edge cases like overflow and very small numbers.  You can run these tests by manually entering the input or, ideally, by creating automated tests using a testing framework like JUnit.

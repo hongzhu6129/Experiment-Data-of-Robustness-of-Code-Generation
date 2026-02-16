@@ -1,0 +1,40 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int num) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (num != 1 && !seen.contains(num)) {
+            seen.add(num);
+            int sum = 0;
+            while (num > 0) {
+                int digit = num % 10;
+                sum += digit * digit;
+                num /= 10;
+            }
+            num = sum;
+        }
+
+        return num == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        if (isHappy_number(num1)) {
+            System.out.println(num1 + " is a happy number");
+        } else {
+            System.out.println(num1 + " is not a happy number");
+        }
+
+        int num2 = 20;
+        if (isHappy_number(num2)) {
+            System.out.println(num2 + " is a happy number");
+        } else {
+            System.out.println(num2 + " is not a happy number");
+        }
+    }
+}
+```

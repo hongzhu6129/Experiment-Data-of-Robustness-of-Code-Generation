@@ -1,0 +1,58 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListSearch {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some elements to the list
+        books.add("The Lord of the Rings");
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+        books.add("To Kill a Mockingbird");
+
+
+        // Element to search for
+        String searchBook = "Pride and Prejudice";
+
+        // Check if the element exists using contains()
+        if (books.contains(searchBook)) {
+            System.out.println(searchBook + " found in the linked list.");
+        } else {
+            System.out.println(searchBook + " not found in the linked list.");
+        }
+
+
+        // Search for another element
+        searchBook = "1984"; //Not in the List
+
+         if (books.contains(searchBook)) {
+            System.out.println(searchBook + " found in the linked list.");
+        } else {
+            System.out.println(searchBook + " not found in the linked list.");
+        }
+
+        //Demonstrate searching for null
+         searchBook = null;
+
+         if (books.contains(searchBook)) { //LinkedList.contains() handles null correctly
+            System.out.println("null found in the linked list.");
+        } else {
+            System.out.println("null not found in the linked list."); //This will execute if null wasn't added
+        }
+
+          // Adding null to the list for demonstration (Linked List allows nulls)
+        books.add(null);
+
+         if (books.contains(searchBook)) { //Now contains will return true.
+            System.out.println("null found in the linked list.");
+        } else {
+            System.out.println("null not found in the linked list.");
+        }
+
+
+    }
+}
+```

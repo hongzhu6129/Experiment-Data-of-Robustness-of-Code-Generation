@@ -1,0 +1,87 @@
+```java
+import java.util.Scanner;
+
+public class ReverseWords {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Reverse the words in the string
+        String reversedString = reverseWords(inputString);
+
+        // Print the reversed string
+        System.out.println("Reversed string: " + reversedString);
+    }
+
+    public static String reverseWords(String inputString) {
+        // Split the input string into words
+        String[] words = inputString.split(" ");
+
+        // Reverse each word in the array
+        for (int i = 0; i < words.length; i++) {
+            words[i] = reverseWord(words[i]);
+        }
+
+        // Join the reversed words into a single string
+        String reversedString = String.join(" ", words);
+
+        // Return the reversed string
+        return reversedString;
+    }
+
+    public static String reverseWord(String word) {
+        // Create a new StringBuilder object to store the reversed word
+        StringBuilder reversedWord = new StringBuilder();
+
+        // Iterate over the characters in the word in reverse order
+        for (int i = word.length() - 1; i >= 0; i--) {
+            // Append the ith character of the word to the StringBuilder
+            reversedWord.append(word.charAt(i));
+        }
+
+        // Return the reversed word as a string
+        return reversedWord.toString();
+    }
+}
+```
+
+### Test Cases
+
+**Test Case 1:**
+
+```
+Input: "Hello world"
+Output: "olleH dlrow"
+```
+
+**Test Case 2:**
+
+```
+Input: "This is a test"
+Output: "siht si a tset"
+```
+
+**Test Case 3:**
+
+```
+Input: "A man a plan a canal Panama"
+Output: "A nam a nalp a nacal amanap"
+```
+
+**Test Case 4:**
+
+```
+Input: " "
+Output: " "
+```
+
+**Test Case 5:**
+
+```
+Input: null
+Output: null
+```

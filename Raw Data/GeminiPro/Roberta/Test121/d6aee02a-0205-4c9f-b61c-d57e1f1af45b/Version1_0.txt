@@ -1,0 +1,44 @@
+```java
+public class EuclidsAlgorithm {
+
+    public static int euclid(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        // Test cases demonstrating Euclid's algorithm and verifying the GCD
+        int num1 = 12, num2 = 18;
+        int gcd = euclid(num1, num2);
+        System.out.println("GCD of " + num1 + " and " + num2 + " (Euclid's Algorithm): " + gcd);
+        System.out.println("Expected GCD (by listing factors/inspection): 6"); // Verification
+
+        num1 = 48; num2 = 180;
+        gcd = euclid(num1, num2);
+        System.out.println("GCD of " + num1 + " and " + num2 + " (Euclid's Algorithm): " + gcd);
+        System.out.println("Expected GCD (by listing factors/inspection): 12");// Verification
+
+
+        num1 = 25; num2 = 15;
+        gcd = euclid(num1, num2);
+        System.out.println("GCD of " + num1 + " and " + num2 + " (Euclid's Algorithm): " + gcd);
+        System.out.println("Expected GCD (by listing factors/inspection): 5");// Verification
+
+
+
+         num1 = 17; num2 = 29; // Co-prime numbers
+        gcd = euclid(num1, num2);
+        System.out.println("GCD of " + num1 + " and " + num2 + " (Euclid's Algorithm): " + gcd);
+        System.out.println("Expected GCD (by listing factors/inspection): 1");// Verification
+
+
+        // You can add more test cases here to further demonstrate the correctness. 
+    }
+}
+
+
+```

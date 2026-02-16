@@ -1,0 +1,36 @@
+```java
+public class CheckFirstLast {
+
+    public static void main(String[] args) {
+
+        int[][] arrays = {
+                {1, 2, 3, 4, 1},
+                {5, 6, 7, 8, 9},
+                {10, 11, 12, 13, 10},
+                {14, 15, 16, 17, 14},
+                {18, 19, 20, 21, 22}
+        };
+
+        for (int i = 0; i < arrays.length; i++) {
+            int[] currentArray = arrays[i];
+
+            if (currentArray.length > 0 && currentArray[0] == currentArray[currentArray.length - 1]) {
+                System.out.println("Array " + (i + 1) + ": First and last elements are the same.");
+            } else {
+                System.out.println("Array " + (i + 1) + ": First and last elements are NOT the same.");
+            }
+        }
+    }
+}
+```
+
+
+Key improvements in this code:
+
+* **Handles empty arrays:** The `currentArray.length > 0` check prevents `ArrayIndexOutOfBoundsException` if any of the arrays are empty.
+* **Clearer output:**  The output now explicitly indicates which array is being checked and whether the first and last elements are the same or not.  This makes it much easier to interpret the results.
+* **Uses 2D array properly:**  The code now correctly iterates through a 2D array.
+* **Simplified logic:** The code is slightly more concise and easier to read.
+
+
+This revised answer addresses the prompt's requirements and is a robust and well-structured solution.

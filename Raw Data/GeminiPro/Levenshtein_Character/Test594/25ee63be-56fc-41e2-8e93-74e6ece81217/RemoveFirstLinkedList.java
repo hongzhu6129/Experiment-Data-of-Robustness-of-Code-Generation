@@ -1,0 +1,41 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> myList = new LinkedList<>();
+        myList.add("Apple");
+        myList.add("Banana");
+        myList.add("Orange");
+
+        System.out.println("Original LinkedList: " + myList);
+
+        // Remove and return the first element (if the list is not empty)
+        if (!myList.isEmpty()) {
+            String removedElement = myList.removeFirst();  // or myList.pollFirst(); for null if empty
+            System.out.println("Removed element: " + removedElement);
+            System.out.println("Updated LinkedList: " + myList);
+
+        } else {
+            System.out.println("The LinkedList is empty. Nothing to remove.");
+        }
+
+
+
+        // Example with integers:
+        LinkedList<Integer> intList = new LinkedList<>();
+        intList.add(10);
+        intList.add(20);
+        intList.add(30);
+        
+        System.out.println("\nOriginal Integer LinkedList: " + intList);
+        if (!intList.isEmpty()) {
+            Integer removedInt = intList.removeFirst();
+            System.out.println("Removed element: " + removedInt);
+            System.out.println("Updated Integer LinkedList: " + intList);
+        } else {
+            System.out.println("The Integer LinkedList is empty. Nothing to remove.");
+        }
+    }
+}

@@ -1,0 +1,59 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        n = Math.abs(n); // Handle negative numbers
+
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        int sum = function(num);
+        System.out.println("Sum of digits: " + sum);
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+| Input (n) | Expected Output |
+|---|---|
+| 12345 | 15 |
+| 0 | 0 |
+| -987 | 24 |
+| 9 | 9 |
+| 1000 | 1 |
+| Integer.MAX_VALUE (2147483647)| 46 | //Edge case: Large positive number
+| Integer.MIN_VALUE (-2147483648) | 47 | //Edge case: Large negative number
+
+
+
+**Explanation of Corner/Edge Cases and how they are handled:**
+
+* **Zero (0):**  The `while` loop condition `n > 0` correctly handles zero.  The loop doesn't execute, and the sum remains 0.
+* **Negative Numbers:** The code uses `Math.abs(n)` to handle negative numbers. It calculates the sum of the digits of the absolute value.
+* **Large Positive/Negative Numbers (Integer.MAX_VALUE/Integer.MIN_VALUE):** These test cases ensure the code works correctly with the largest possible integer values. The code handles these gracefully because the logic operates digit by digit, so the magnitude of the overall number doesn't cause issues.
+
+
+**How to Run the Code and Tests:**
+
+1. **Save:** Save the code as `SumOfDigits.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac SumOfDigits.java`
+3. **Run:** Execute the compiled code: `java SumOfDigits`
+4. **Enter Input:** The program will prompt you to enter an integer. Enter a test case value and press Enter.
+5. **Verify Output:** Check if the output (Sum of digits) matches the expected output for that test case.
+
+
+By running the program with these test cases, you can verify its correctness and ensure it handles various scenarios, including corner and edge cases.

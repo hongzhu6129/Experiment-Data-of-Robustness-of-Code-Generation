@@ -1,0 +1,58 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet of Strings. TreeSet stores elements in a sorted order.
+        TreeSet<String> colors = new TreeSet<>();
+
+        // Add some colors to the TreeSet
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Orange");
+
+        // Print out the TreeSet. Notice the sorted order.
+        System.out.println("Colors in the TreeSet:");
+        System.out.println(colors);
+
+
+        // Demonstrating some common TreeSet operations:
+
+        // Check if an element exists
+        System.out.println("\nDoes the TreeSet contain 'Blue'? " + colors.contains("Blue"));
+        System.out.println("Does the TreeSet contain 'Purple'? " + colors.contains("Purple"));
+
+
+        // Remove an element
+        colors.remove("Yellow");
+        System.out.println("\nTreeSet after removing 'Yellow':");
+        System.out.println(colors);
+
+        // Get the first (lowest) element
+        System.out.println("\nFirst element (lowest): " + colors.first());
+
+        // Get the last (highest) element
+        System.out.println("Last element (highest): " + colors.last());
+
+
+        // Iterate through the TreeSet (in sorted order)
+        System.out.println("\nIterating through the TreeSet:");
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+        //Get the size of the treeset
+        System.out.println("\nSize of the TreeSet: " + colors.size());
+
+        // Clear the TreeSet
+        colors.clear();
+        System.out.println("\nTreeSet after clearing: " + colors);
+
+
+    }
+}
+```

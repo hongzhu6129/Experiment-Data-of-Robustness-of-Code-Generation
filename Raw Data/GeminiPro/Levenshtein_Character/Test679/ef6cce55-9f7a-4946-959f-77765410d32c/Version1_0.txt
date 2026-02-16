@@ -1,0 +1,48 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class LeastKeyBenefit {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> benefits = new TreeMap<>();
+        benefits.put(10, "Benefit A");
+        benefits.put(20, "Benefit B");
+        benefits.put(30, "Benefit C");
+        benefits.put(40, "Benefit D");
+
+        int key1 = 25;
+        String benefit1 = getLeastKeyBenefit(benefits, key1);
+        System.out.println("Least key benefit for " + key1 + ": " + benefit1); // Output: Benefit B
+
+        int key2 = 5;
+        String benefit2 = getLeastKeyBenefit(benefits, key2);
+        System.out.println("Least key benefit for " + key2 + ": " + benefit2); // Output: null
+
+
+        int key3 = 40;
+        String benefit3 = getLeastKeyBenefit(benefits, key3);
+        System.out.println("Least key benefit for " + key3 + ": " + benefit3); // Output: Benefit D
+        
+        int key4 = 45;
+        String benefit4 = getLeastKeyBenefit(benefits, key4);
+        System.out.println("Least key benefit for " + key4 + ": " + benefit4); // Output: null
+
+
+    }
+
+    public static <K extends Comparable<K>, V> V getLeastKeyBenefit(TreeMap<K, V> benefits, K key) {
+        // Use floorEntry to get the entry with the greatest key less than or equal to the given key
+        Map.Entry<K, V> entry = benefits.floorEntry(key); 
+
+        // If no such key exists, floorEntry returns null
+        if (entry == null) {
+            return null;
+        }
+
+        // Return the value associated with the found key
+        return entry.getValue();
+    }
+}
+```

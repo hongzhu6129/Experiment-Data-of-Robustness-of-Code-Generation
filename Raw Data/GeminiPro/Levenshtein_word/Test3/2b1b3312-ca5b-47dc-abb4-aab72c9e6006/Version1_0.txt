@@ -1,0 +1,97 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void printMultiplicationTable(int num) {
+        if (num == 0) {
+            System.out.println("Multiplication table of 0 is all zeros.");
+            System.out.println("0 x 1 = 0"); // Show at least one entry
+            return; // Exit early to avoid unnecessary loops
+        }
+
+
+        System.out.println("Multiplication table of " + num + ":");
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+        printMultiplicationTable(number);
+        scanner.close();
+
+    }
+}
+```
+
+
+
+## Test Cases
+
+Here are some test cases, including corner and edge cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication table of 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     ...
+     7 x 11 = 77
+     ```
+
+2. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication table of -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 11 = -55
+     ```
+
+3. **Zero:**  (Corner case)
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table of 0 is all zeros.
+     0 x 1 = 0 
+     ```
+
+4. **Large Positive Number:**
+   - Input: `1000`
+   - Expected Output:
+     ```
+     Multiplication table of 1000:
+     1000 x 1 = 1000
+     ...
+     1000 x 11 = 11000
+     ```
+
+5. **Large Negative Number:**
+   - Input: `-1000`
+   - Expected output:
+     ```
+     Multiplication table of -1000:
+     -1000 x 1 = -1000
+     ...
+     -1000 x 11 = -11000
+     ```
+
+6. **Integer.MAX_VALUE** (Edge case � check for overflow)
+   - Input: `2147483647`  (Maximum positive integer)
+   - Observe the results. Very large numbers will result in arithmetic overflow (the number wraps around to a negative value). This is expected behavior with integer arithmetic.
+
+7. **Integer.MIN_VALUE** (Edge case � check for overflow)
+   - Input: `-2147483648` (Minimum negative integer)
+   - Observe the results, looking specifically for overflow.  Like the positive maximum integer, multiplying this will likely result in overflow.
+
+
+
+By testing with these cases, you can ensure that the `printMultiplicationTable` function works correctly for a wide range of inputs, including those that might cause issues due to overflow or special handling required for zero.

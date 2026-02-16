@@ -1,0 +1,53 @@
+```java
+public class StringChecker {
+
+    public static void main(String[] args) {
+        String str1 = "programming";
+        String str2 = "program";
+        boolean result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+        str1 = "Hello";
+        str2 = "World";
+        result = test(str1, str2);
+        System.out.println(result); // Output: false
+
+        str1 = "CaseSensitive";
+        str2 = "casesensitive";
+        result = test(str1, str2);
+        System.out.println(result); // Output: false
+
+
+        str1 = "aabbc";
+        str2 = "abc";
+        result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+        str1 = "aabbc";
+        str2 = "abcc"; // c appears twice in str2, only once in str1
+        result = test(str1, str2);
+        System.out.println(result); // Output: false
+    }
+
+    public static boolean test(String str1, String str2) {
+        // Create character arrays for efficient checking
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        // Check if each character in str2 is present in str1
+        for (char c2 : charArray2) {
+            boolean found = false;
+            for (char c1 : charArray1) {
+                if (c1 == c2) {
+                    found = true;
+                    break; // Move to the next character in str2 once found
+                }
+            }
+            if (!found) {
+                return false; // Character from str2 not found in str1
+            }
+        }
+        return true; // All characters from str2 found in str1
+    }
+}
+```

@@ -1,0 +1,123 @@
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SwapVariables {
+
+    public static void swap(int[] variables) {
+        if (variables == null || variables.length < 2) {
+            return; // Or throw an exception, depending on desired behavior
+        }
+
+        variables[0] = variables[0] + variables[1];
+        variables[1] = variables[0] - variables[1];
+        variables[0] = variables[0] - variables[1];
+    }
+
+
+    public static void main(String[] args) {
+        int[] values = {5, 10};
+        System.out.println("Before swap: a = " + values[0] + ", b = " + values[1]);
+        swap(values);
+        System.out.println("After swap: a = " + values[0] + ", b = " + values[1]);
+
+
+        values[0] = Integer.MAX_VALUE;
+        values[1] = Integer.MIN_VALUE;
+        System.out.println("Before swap: a = " + values[0] + ", b = " + values[1]);
+
+        try {
+             swap(values); // This will trigger arithmetic overflow with the current method.
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Overflow occurred.");
+        }
+         System.out.println("After attempted swap: a = " + values[0] + ", b = " + values[1]);
+
+
+
+    }
+
+
+
+    @Test
+    void testSwap() {
+        int[] values = {5, 10};
+        swap(values);
+        assertArrayEquals(new int[]{10, 5}, values);
+    }
+
+    @Test
+    void testSwapZero() {
+        int[] values = {0, 0};
+        swap(values);
+        assertArrayEquals(new int[]{0, 0}, values);
+    }
+
+    @Test
+    void testSwapNegative() {
+        int[] values = {-5, 10};
+        swap(values);
+        assertArrayEquals(new int[]{10, -5}, values);
+    }
+    @Test
+    void testSwapNull() {
+        int[] values = null;
+        swap(values);
+        assertNull(values); // or assert an exception if you choose to throw one
+    }
+
+    @Test
+    void testSwapEmptyArray() {
+        int[] values = new int[0];  // Empty Array
+        swap(values);
+        assertArrayEquals(new int[0], values);  // Should remain empty
+    }
+
+     @Test
+    void testSwapOneElementArray(){
+         int[] values = {5};
+         swap(values);
+         assertArrayEquals(new int[]{5}, values); // Should remain unchanged.
+     }
+
+
+
+
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Using an array for input:**  The `swap` method now takes an `int[]` as input. This is a more robust way to modify values within a method and have the changes reflected outside.
+
+2. **Handling Edge Cases:**  The code now handles `null` or arrays smaller than 2 elements. This prevents `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+
+3. **JUnit Tests:**  The code includes JUnit tests to cover various scenarios:
+   - `testSwap()`: General case.
+   - `testSwapZero()`: Swapping zeros.
+   - `testSwapNegative()`: Swapping a negative number.
+    - `testSwapNull()`: Handles null input.
+    - `testSwapEmptyArray()`: Handles empty arrays.
+    - `testSwapOneElementArray()`:  Handles arrays with only one element.
+
+
+4. **Main Method Demonstration and Overflow Example:** The `main` method demonstrates regular usage and *crucially* demonstrates what happens with potential overflow, highlighting the limitations of the addition/subtraction swap method.
+
+5. **Clearer Output:** The output in `main` is more informative.
+
+**Important Note about Arithmetic Overflow:**  The addition/subtraction swap method is susceptible to arithmetic overflow if the sum of the two numbers exceeds `Integer.MAX_VALUE` or goes below `Integer.MIN_VALUE`.  The example in `main` shows this and how you might handle it.  A safer approach for general integer swapping in Java is to use a temporary variable, even if it's slightly less "clever":
+
+```java
+public static void safeSwap(int[] variables) {
+    if (variables == null || variables.length < 2) {
+        return;
+    }
+    int temp = variables[0];
+    variables[0] = variables[1];
+    variables[1] = temp;
+}
+```
+
+
+This `safeSwap` method avoids overflow issues and is the recommended approach in most real-world scenarios.  The original method with addition/subtraction is presented for educational purposes (to show potential pitfalls) and because it's often asked in interview contexts. However, for reliable code, always use the `safeSwap` method or the bitwise XOR method, which also avoids overflow.

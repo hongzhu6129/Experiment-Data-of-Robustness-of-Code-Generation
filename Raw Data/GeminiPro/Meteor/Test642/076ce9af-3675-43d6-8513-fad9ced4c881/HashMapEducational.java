@@ -1,0 +1,82 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapEducational {
+
+    public static void main(String[] args) {
+        // Create a new HashMap.  We specify the types for the key and value
+        // This HashMap will store String keys and Integer values.
+        Map<String, Integer> studentGrades = new HashMap<>();
+
+        // Associate values with keys using the put() method
+        studentGrades.put("Alice", 95);
+        studentGrades.put("Bob", 88);
+        studentGrades.put("Charlie", 75);
+        studentGrades.put("David", 92);
+
+
+        // Print the HashMap to see the key-value pairs.
+        System.out.println("Student Grades HashMap: " + studentGrades);
+
+        // Retrieving a value using the get() method.
+        int aliceGrade = studentGrades.get("Alice");  
+        System.out.println("Alice's grade: " + aliceGrade);
+
+
+        // Demonstrating what happens when you put a value with an existing key
+        // The previous value associated with that key is overwritten.
+        studentGrades.put("Bob", 90); // Bob's grade is updated
+        System.out.println("Updated Student Grades: " + studentGrades);
+
+        // Checking if a key exists using containsKey()
+        if (studentGrades.containsKey("Eve")) {
+            System.out.println("Eve's grade is in the map.");
+        } else {
+            System.out.println("Eve's grade is not in the map.");
+        }
+
+        // Removing a key-value pair using remove()
+        studentGrades.remove("Charlie");
+        System.out.println("Student Grades after removing Charlie: " + studentGrades);
+
+
+
+        // Iterating through a HashMap (One way - keySet)
+        System.out.print("Iterating using keySet: ");
+        for (String name : studentGrades.keySet()) { // Get the set of keys
+            System.out.print(name + "=" + studentGrades.get(name) + " ");
+        }
+        System.out.println();
+
+
+        // Iterating through a HashMap (Another Way - entrySet) - More Efficient
+        System.out.print("Iterating using entrySet: ");
+        for (Map.Entry<String, Integer> entry : studentGrades.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.print(key + "=" + value + " ");
+        }
+        System.out.println();
+
+
+
+        // Example: Counting word frequencies (Common HashMap use case)
+
+        String sentence = "the quick brown fox jumps over the lazy dog the";
+        String[] words = sentence.split(" ");  // Split the sentence into words
+
+        Map<String, Integer> wordCounts = new HashMap<>();
+
+        for (String word : words) {
+            if (wordCounts.containsKey(word)) {
+                // If the word is already in the map, increment the count
+                wordCounts.put(word, wordCounts.get(word) + 1); 
+            } else {
+                // If the word is not in the map, add it with a count of 1
+                wordCounts.put(word, 1);
+            }
+        }
+
+        System.out.println("Word counts: " + wordCounts);
+    }
+}

@@ -1,0 +1,66 @@
+```java
+import java.util.Arrays;
+
+public class OddBeforeEven {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        rearrangeOddEven(arr);
+
+        System.out.println(Arrays.toString(arr));
+
+
+        // Test with more diverse arrays:
+        int[] arr2 = {2, 4, 6, 8, 1, 3, 5, 7, 9};
+        rearrangeOddEven(arr2);
+        System.out.println(Arrays.toString(arr2));
+
+        int[] arr3 = {1, 3, 5, 7, 9, 2, 4, 6, 8, 10}; // Already arranged
+        rearrangeOddEven(arr3);
+        System.out.println(Arrays.toString(arr3));
+        
+        int[] arr4 = {}; // Empty array
+        rearrangeOddEven(arr4);
+        System.out.println(Arrays.toString(arr4));
+
+
+        int[] arr5 = {2, 4, 6, 8}; // All even
+        rearrangeOddEven(arr5);
+        System.out.println(Arrays.toString(arr5));
+
+        int[] arr6 = {1, 3, 5, 7}; // All odd
+        rearrangeOddEven(arr6);
+        System.out.println(Arrays.toString(arr6));
+
+
+    }
+
+    public static void rearrangeOddEven(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+
+            // Find the next even number from the left
+            while (left < right && arr[left] % 2 != 0) {
+                left++;
+            }
+
+            // Find the next odd number from the right
+            while (left < right && arr[right] % 2 == 0) {
+                right--;
+            }
+
+            // Swap if necessary
+            if (left < right) {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+}
+```

@@ -1,0 +1,44 @@
+```java
+import java.time.Year;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class GetYearInfo {
+
+    public static void main(String[] args) {
+        // Get current year information
+        int currentYear = Year.now().getValue();
+        System.out.println("Current Year: " + currentYear);
+        System.out.println("Is current year a leap year? " + Year.isLeap(currentYear));
+
+
+        // Get information for a specific year (e.g., 2024)
+        int specificYear = 2024;  // You can change this to any year
+        System.out.println("\nSpecific Year: " + specificYear);
+        System.out.println("Is " + specificYear + " a leap year? " + Year.isLeap(specificYear));
+
+
+
+        // Using GregorianCalendar (for additional information if needed)
+        // Note:  Year class is generally preferred for simple year-related operations.
+        GregorianCalendar calendar = new GregorianCalendar();
+        int year = calendar.get(Calendar.YEAR);
+        System.out.println("\nCurrent Year (using GregorianCalendar): " + year);
+
+
+        // Example: Check if a specific year is a leap year using GregorianCalendar
+        GregorianCalendar cal = new GregorianCalendar(specificYear, Calendar.JANUARY, 1);
+        boolean isLeap = cal.isLeapYear(specificYear);  // Example usage
+        System.out.println("Is " + specificYear + " a leap year? (using GregorianCalendar) " + isLeap);
+
+        // Day of Year example:
+        int dayOfYear = calendar.get(Calendar.DAY_OF_YEAR);
+        System.out.println("Current Day of Year: " + dayOfYear);
+
+        // You can get more information using Calendar constants (e.g., WEEK_OF_YEAR, MONTH)
+        // Refer to the Calendar class documentation for more details.
+
+
+    }
+}
+```

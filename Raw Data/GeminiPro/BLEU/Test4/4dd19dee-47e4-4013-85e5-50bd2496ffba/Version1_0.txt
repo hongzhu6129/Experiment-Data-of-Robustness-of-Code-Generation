@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using a Scanner to allow user input (optional - you can hardcode the radius)
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = scanner.nextDouble(); 
+        scanner.close(); // Close the scanner when finished
+
+        // Calculate the perimeter (circumference)
+        double perimeter = 2 * Math.PI * radius;
+
+        // Calculate the area
+        double area = Math.PI * radius * radius;
+
+        // Print the results
+        System.out.println("Perimeter is = " + perimeter);
+        System.out.println("Area is = " + area);
+
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases to consider, including corner/edge cases:
+
+1. **Standard Case:**
+   - Radius: 7.5
+   - Expected Perimeter: ~47.12
+   - Expected Area: ~176.71
+
+2. **Zero Radius:**
+   - Radius: 0
+   - Expected Perimeter: 0
+   - Expected Area: 0
+
+3. **Negative Radius (Invalid Input):**
+   - Radius: -5
+   - Expected Behavior:  The program should ideally handle this gracefully.  A good approach is to print an error message indicating that the radius cannot be negative, or throw an `IllegalArgumentException`.  Simply calculating with the negative value will produce a numerically correct but conceptually meaningless result.
+
+4. **Very Large Radius:**
+   - Radius: 1000000 (or some other large number)
+   - Purpose:  To test if the program handles large numbers correctly without overflow or other issues.
+
+5. **Small Radius (Close to Zero):**
+   - Radius: 0.0001
+   - Purpose: Test behavior with very small numbers, checking for potential rounding errors or unexpected results.
+
+6. **Maximum Double Value:**
+   - Radius: Double.MAX_VALUE
+   - Expected Behavior:  Test the limits of the `double` data type. You might expect an `Infinity` result for the area.
+
+
+**How to Implement the Tests (using JUnit as an example):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testStandardCase() {
+        double radius = 7.5;
+        double expectedPerimeter = 47.12388980384689;
+        double expectedArea = 176.71458676442586;
+        CircleCalculations cc = new CircleCalculations(); // Assuming you've adapted the class to have methods for area/perimeter
+        assertEquals(expectedPerimeter, cc.calculatePerimeter(radius), 0.0001);  // Delta for tolerance
+        assertEquals(expectedArea, cc.calculateArea(radius), 0.0001);
+    }
+
+    @Test
+    void testZeroRadius() {
+        // ... (similar structure as above)
+    }
+
+    @Test
+    void testNegativeRadius(){
+        assertThrows(IllegalArgumentException.class, () -> {
+           new CircleCalculations().calculateArea(-5); // Example using lambda expression 
+        });
+
+    }
+
+
+    // ... other test cases
+}
+```
+
+Remember to adapt the test code to how you structure your `CircleCalculations` class (whether it's using input from the user within `main` or has separate methods for calculating area and perimeter).  JUnit is a powerful testing framework and makes it very easy to create and run comprehensive tests for your Java code.

@@ -1,0 +1,73 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class StepArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6);
+        numbers.add(7);
+        numbers.add(8);
+        numbers.add(9);
+        numbers.add(10);
+
+
+        // Step through the ArrayList with a step of 2
+        int step = 2;
+
+        System.out.println("Stepping through the ArrayList with a step of " + step + ":");
+        for (int i = 0; i < numbers.size(); i += step) {
+            System.out.println(numbers.get(i));
+        }
+
+        // Example with a different step value (3)
+        step = 3;
+        System.out.println("\nStepping through the ArrayList with a step of " + step + ":");
+        for (int i = 0; i < numbers.size(); i += step) {
+            System.out.println(numbers.get(i));
+        }
+
+
+        // Handling potential IndexOutOfBoundsException if step is 0:
+        step = 0; // or any invalid step that could lead to an infinite loop
+        System.out.println("\nStepping through the ArrayList with a step of " + step + ":");
+
+        if (step <= 0) {
+            System.out.println("Step must be a positive integer greater than 0.");
+        } else {
+            for (int i = 0; i < numbers.size(); i += step) {
+                System.out.println(numbers.get(i));
+            }
+        }
+
+        // You can also step backwards.  Just make sure you handle the start and end indices properly
+        // to avoid IndexOutOfBoundsExceptions
+        step = 2; // stepping backwards by 2
+
+        System.out.println("\nStepping backwards through the ArrayList with a step of " + step + ":");
+        for (int i = numbers.size() -1 ; i >=0; i -= step) {
+            System.out.println(numbers.get(i));
+        }
+
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+* **Clearer Comments:** More descriptive comments explain each part of the code.
+* **Flexibility:**  The code demonstrates stepping with different step values (2 and 3).
+* **Error Handling:**  Includes a check to prevent `IndexOutOfBoundsException` if the step is 0 or negative, ensuring robustness.
+* **Backwards Stepping Example:** Shows how to step through the ArrayList in reverse.
+* **More Realistic Example:** Uses a slightly larger ArrayList for better demonstration.

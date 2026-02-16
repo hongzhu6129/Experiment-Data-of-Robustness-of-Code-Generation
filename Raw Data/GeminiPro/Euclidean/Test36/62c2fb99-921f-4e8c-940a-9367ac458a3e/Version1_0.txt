@@ -1,0 +1,66 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still test it in a few ways, focusing primarily on output verification:
+
+1. **Standard Output Test:**  Run the program and visually verify that the output matches the expected format precisely (including capitalization, punctuation, and indentation).  This is the most basic and important test.
+
+2. **Automated Output Comparison (using a testing framework like JUnit):**
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class TwinkleTwinkleTest {
+
+       @Test
+       public void testPrintTwinkleTwinkle() {
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent));
+
+           TwinkleTwinkle.printTwinkleTwinkle();
+
+           String expectedOutput = "Twinkle, twinkle, little star,\r\n" + // \r\n for Windows line endings
+                                   "\tHow I wonder what you are!\r\n" +
+                                   "\t\tUp above the world so high,\r\n" +
+                                   "\t\tLike a diamond in the sky.\r\n";
+
+
+           assertEquals(expectedOutput, outContent.toString());
+
+           System.setOut(System.out); // Restore standard output
+       }
+   }
+   ```
+
+   This test captures the output of the `printTwinkleTwinkle()` method and compares it to the expected string.  It uses `ByteArrayOutputStream` to redirect the standard output to a stream that can be easily checked. **Important:**  Adapt the `\r\n` (Windows line endings) to `\n` (Unix/Linux/macOS) if necessary based on your operating system.
+
+3. **Corner Cases (not really applicable here):**  This program doesn't have traditional corner cases because it doesn't process input.  There are no edge values or unexpected input to consider. However, if the program were modified to take input (e.g., the number of times to print the rhyme or variations of the rhyme), then corner cases would become relevant.  You would then test with inputs like 0, negative numbers, very large numbers, and potentially invalid string inputs.
+
+
+**How to run the JUnit test:**
+
+1. **Using an IDE:** Most IDEs (IntelliJ, Eclipse, NetBeans) have built-in support for JUnit. You can simply right-click on the test class and select "Run".
+
+2. **Using Maven:** If you are using Maven, include the JUnit dependency in your `pom.xml` and run `mvn test`.
+
+3. **Using Gradle:** If you are using Gradle, include the JUnit dependency in your `build.gradle` and run `gradle test`.
+
+
+
+These tests ensure that the output is formatted correctly and remains consistent even if the program is modified in the future.  The automated test is especially valuable as part of a continuous integration/continuous deployment (CI/CD) pipeline.

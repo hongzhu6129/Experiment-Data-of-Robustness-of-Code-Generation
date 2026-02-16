@@ -1,0 +1,26 @@
+```java
+public class PronicNumber {
+
+    public static void main(String[] args) {
+        int num = 110; // You can change this to any number you want to check
+
+        checkPronic(num);
+    }
+
+    public static void checkPronic(int num) {
+        boolean isPronic = false;
+        for (int i = 0; i * (i + 1) <= num; i++) {
+            if (i * (i + 1) == num) {
+                isPronic = true;
+                break;
+            }
+        }
+
+        if (isPronic) {
+            System.out.println("Pronic number.");
+        } else {
+            System.out.println("Not a pronic number.");
+        }
+    }
+}
+```

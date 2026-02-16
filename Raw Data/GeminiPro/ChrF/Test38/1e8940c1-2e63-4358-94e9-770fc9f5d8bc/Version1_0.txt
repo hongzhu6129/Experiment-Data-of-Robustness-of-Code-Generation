@@ -1,0 +1,56 @@
+**Java Program:**
+
+```java
+import java.util.*;
+
+public class replaceParameters {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the original string
+        System.out.println("Enter the original string:");
+        String originalString = scanner.nextLine();
+
+        // Get the parameter to be replaced
+        System.out.println("Enter the parameter to be replaced:");
+        String parameterToBeReplaced = scanner.nextLine();
+
+        // Get the replacement character
+        System.out.println("Enter the replacement character:");
+        char replacementCharacter = scanner.next().charAt(0);
+
+        // Replace the parameter with the replacement character
+        String modifiedString = originalString.replaceAll(parameterToBeReplaced, String.valueOf(replacementCharacter));
+
+        // Print the modified string
+        System.out.println("The modified string is:");
+        System.out.println(modifiedString);
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty original string:** Expected output: "The modified string is: "
+* **Empty parameter to be replaced:** Expected output: "The modified string is: [original string]"
+* **Replacement character is the same as the parameter to be replaced:** Expected output: "The modified string is: [original string]"
+
+**Valid Test Cases:**
+
+* **Original string:** "The interactive spoken 'd make instead can is: java."
+* **Parameter to be replaced:** "can"
+* **Replacement character:** 'c'
+* **Expected output:** "The interactive spoken 'd make instead c is: java."
+
+* **Original string:** "Hello world, this is a test."
+* **Parameter to be replaced:** "world"
+* **Replacement character:** 'Universe'
+* **Expected output:** "Hello Universe, this is a test."
+
+* **Original string:** "1234567890"
+* **Parameter to be replaced:** "5"
+* **Replacement character:** 'X'
+* **Expected output:** "1234X67890"

@@ -1,0 +1,51 @@
+```java
+public class ArrayAfterTen {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 5, 10, 12, 3, 7, 10, 2, 9, 15}; // Example array
+
+        int lastTenIndex = -1;
+
+        // Find the index of the last occurrence of 10
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                lastTenIndex = i;
+            }
+        }
+
+        // If 10 is not found, print a message or handle it as needed.
+        if (lastTenIndex == -1) {
+            System.out.println("10 not found in the array.");
+            return; // Exit the program
+        }
+
+
+        // Calculate the size of the new array
+        int newArraySize = originalArray.length - (lastTenIndex + 1);
+
+
+        // If 10 is the last element, the new array is empty
+        if (newArraySize == 0) {
+            System.out.println("New array is empty as 10 is the last element."); // Or return an empty array if you prefer.
+            return;
+        }
+
+        // Create the new array
+        int[] newArray = new int[newArraySize];
+
+        // Copy elements after the last 10 to the new array
+        for (int i = 0; i < newArraySize; i++) {
+            newArray[i] = originalArray[lastTenIndex + 1 + i];
+        }
+
+        // Print the new array (for demonstration)
+        System.out.print("New array: ");
+        for (int i = 0; i < newArray.length; i++) {
+            System.out.print(newArray[i] + " ");
+        }
+        System.out.println(); // Newline for cleaner output
+
+
+    }
+}
+```

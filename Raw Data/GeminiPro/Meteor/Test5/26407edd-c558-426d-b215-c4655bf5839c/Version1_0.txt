@@ -1,0 +1,92 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering normal scenarios, edge cases, and potential issues:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| Normal Case 1 | 10 | 20 | 30 | 20.0 |  |
+| Normal Case 2 | 1.5 | 2.5 | 3.5 | 2.5 |  Handles decimals |
+| Normal Case 3 | -5 | 0 | 5 | 0.0 | Handles negative and zero |
+| Edge Case 1 | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE |  Overflow/Infinity (or large incorrect value) | Tests overflow behavior.  Java `double` can handle this. |
+| Edge Case 2 | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE |  Underflow/Negative Infinity (or large incorrect negative value)| Tests underflow behavior. Java `double` can handle this. |
+| Edge Case 3 | Double.MAX_VALUE | 0 | 0 | Infinity or very large number | Tests behavior with extremely large values |
+| Edge Case 4 | Double.NaN | 10 | 20 | NaN |  Should handle NaN correctly. |
+| Edge Case 5 | 10 | Double.POSITIVE_INFINITY | 20 | Infinity |  Handles Infinity input. |
+| Edge Case 6 | 10 | Double.NEGATIVE_INFINITY | 20 | -Infinity | Handles Negative Infinity input. |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:**  You can manually run the program and enter the input values for each test case. Observe if the output matches the "Expected Output".
+
+2. **Automated Testing (Recommended):**  For more robust testing, use a testing framework like JUnit.  Here's an example of a JUnit test class:
+
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverageDecimals() {
+        assertEquals(2.5, AverageCalculator.calculateAverage(1.5, 2.5, 3.5));
+    }
+
+    // ... Add more tests for other cases (edge cases, NaN, Infinity, etc.)
+    @Test
+    void calculateAverageOverflow() {
+       assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+
+
+    @Test
+    void calculateAverageNaN() {
+       assertTrue(Double.isNaN(AverageCalculator.calculateAverage(Double.NaN, 10, 20))); // Use assertTrue and Double.isNaN
+    }
+
+   // ... (Add more tests similarly)
+
+}
+```
+
+
+With JUnit, you can automate the execution of these tests and ensure that your `calculateAverage` method works correctly under various conditions.  This is highly recommended, especially as the complexity of your code increases.

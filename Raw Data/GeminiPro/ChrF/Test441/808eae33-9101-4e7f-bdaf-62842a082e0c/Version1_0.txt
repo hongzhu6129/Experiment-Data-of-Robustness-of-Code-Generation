@@ -1,0 +1,48 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinimumDateValues {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        Calendar calendar = new GregorianCalendar();
+
+        // Get minimum values for year, month, week of year, and day of month
+        int minYear = calendar.getActualMinimum(Calendar.YEAR);
+        int minMonth = calendar.getActualMinimum(Calendar.MONTH); // Month is 0-indexed (0 = January)
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR);
+        int minDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+
+        // Output the results
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month (0-indexed): " + minMonth); // January is 0
+        System.out.println("Minimum Week of Year: " + minWeekOfYear); 
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+
+
+        // Demonstrate how to set the calendar to minimum values (for illustration)
+        calendar.set(Calendar.YEAR, minYear); // Sets the calendar's date to minimum values
+        calendar.set(Calendar.MONTH, minMonth);  
+        calendar.set(Calendar.DAY_OF_MONTH, minDayOfMonth);
+
+        System.out.println("Date set to minimums: " + calendar.getTime()); // Shows the effect
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Get a Calendar Instance:** `Calendar calendar = new GregorianCalendar();` creates a `Calendar` object representing the current date and time.
+2. **`getActualMinimum()`:**  The `getActualMinimum()` method is used to get the lowest possible value for a particular field (e.g., YEAR, MONTH) in the given calendar system.  
+3. **Field Constants:**  `Calendar.YEAR`, `Calendar.MONTH`, `Calendar.WEEK_OF_YEAR`, and `Calendar.DAY_OF_MONTH` are constants that specify the field we are interested in (year, month, etc.).
+4. **Month is 0-indexed:** The `Calendar` class uses 0-based indexing for months (January = 0, February = 1, ..., December = 11).
+5. **Output:** The code prints the minimum values.
+6. **Demonstration (Setting minimums):** The code also includes a section that demonstrates how to actually *set* the calendar's date to the minimum values for each field. This part is just for illustration and to show how the minimum values can be used in practice.
+
+
+Important Notes on Week of Year:
+
+The minimum week of year (`Calendar.WEEK_OF_YEAR`) can be either 1 or possibly 52/53 (especially if the locale's first day of the week is set to Sunday and the year begins on a day very late in the last week of the previous year).  The behavior depends on the calendar's locale and how weeks are defined.  The Java documentation provides more details.

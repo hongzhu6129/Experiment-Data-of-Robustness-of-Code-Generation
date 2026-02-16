@@ -1,0 +1,72 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int target = 20;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+
+
+         target = 5;
+         result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Found, return row and col
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row (larger values)
+            } else {
+                col--; // Move left to the previous column (smaller values)
+            }
+        }
+
+        return new int[]{-1, -1}; // Not found
+    }
+}
+```
+
+
+Key improvements:
+
+* **Clarity and Readability:**  The code is now well-commented, explaining the logic. Variable names are more descriptive.
+* **Efficiency:**  The Saddleback search is implemented correctly, starting from the top-right corner and efficiently eliminating rows or columns in each step. This is much more efficient than a linear search or even a binary search on each row/column.
+* **Correctness:**  The code now handles the "not found" case properly by returning `{-1, -1}`.
+* **Example Usage:** The `main` method demonstrates how to use the `Saddleback` method and handles the returned result.  It now includes an example where the target is found and an example where it isn't.
+
+
+
+How the Saddleback search works:
+
+1. **Start at the top-right corner:**  This position gives you the most information initially.
+2. **Compare with target:**
+   - If `matrix[row][col] == target`:  You've found the element!
+   - If `matrix[row][col] < target`:  The target must be in a row below (since rows are sorted in ascending order). Increment `row`.
+   - If `matrix[row][col] > target`: The target must be in a column to the left (since columns are sorted in ascending order). Decrement `col`.
+3. **Repeat step 2** until the target is found or you go out of bounds (meaning the target is not in the matrix).

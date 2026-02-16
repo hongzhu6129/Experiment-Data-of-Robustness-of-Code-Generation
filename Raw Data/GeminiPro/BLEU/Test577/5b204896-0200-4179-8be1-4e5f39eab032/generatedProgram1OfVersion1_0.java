@@ -1,0 +1,79 @@
+import java.util.LinkedList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+public class LinkedListIteration {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        System.out.println("Iterating using a for loop and get():");
+        // 1. Using a for loop and get() method
+        for (int i = 0; i < linkedList.size(); i++) {
+            System.out.println(linkedList.get(i));
+        }
+
+        System.out.println("\nIterating using an enhanced for loop (for-each loop):");
+        // 2. Using an enhanced for loop (for-each loop)
+        for (String fruit : linkedList) {
+            System.out.println(fruit);
+        }
+
+
+        System.out.println("\nIterating using an Iterator:");
+        // 3. Using an Iterator
+        Iterator<String> iterator = linkedList.iterator();
+        while (iterator.hasNext()) {
+            String fruit = iterator.next();
+            System.out.println(fruit);
+        }
+
+
+        System.out.println("\nIterating using a ListIterator (forward):");
+        // 4. Using a ListIterator (forward iteration)
+        ListIterator<String> listIterator = linkedList.listIterator();
+        while (listIterator.hasNext()) {
+            String fruit = listIterator.next();
+            System.out.println(fruit);
+        }
+
+        System.out.println("\nIterating using a ListIterator (backward):");
+        // 5. Using a ListIterator (backward iteration - only possible with ListIterator)
+        // Note: We need to traverse forward first before traversing backward using hasPrevious().
+         listIterator = linkedList.listIterator(linkedList.size()); // Start from the end
+        while (listIterator.hasPrevious()) {
+            String fruit = listIterator.previous();
+            System.out.println(fruit);
+        }
+
+
+        System.out.println("\nIterating using a while loop and poll():"); // Less common, removes elements.
+        // 6. While loop and poll()  (Removes elements from the list)
+        // Be careful: This method modifies the original LinkedList by removing elements.
+        while (!linkedList.isEmpty()) { // Check if the list is empty.
+            String fruit = linkedList.poll(); // Retrieves and removes the head.
+            System.out.println(fruit);
+        }
+
+        // Add the elements back since `poll()` removed them 
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+
+
+        System.out.println("\nIterating using Java 8 streams and forEach():");
+        // 7. Java 8 Streams and forEach() 
+        linkedList.stream().forEach(System.out::println);  // Using method reference
+        // Or
+        // linkedList.stream().forEach(fruit -> System.out.println(fruit)); // Using lambda expression
+
+
+    }
+}

@@ -1,0 +1,85 @@
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+}
+
+public class DeleteMiddleNode {
+
+    public static void main(String[] args) {
+        // Example usage:
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        System.out.println("Original List:");
+        printList(head);
+
+        // Delete the node with value 3 (middle node in this case)
+        ListNode nodeToDelete = head.next.next; 
+        deleteNode(nodeToDelete);
+
+        System.out.println("List after deletion:");
+        printList(head);
+
+
+        //Another example, deleting from the "middle" in a different sized list
+        ListNode head2 = new ListNode(1);
+        head2.next = new ListNode(2);
+        head2.next.next = new ListNode(3);
+        head2.next.next.next = new ListNode(4);
+        head2.next.next.next.next = new ListNode(5);
+         head2.next.next.next.next.next = new ListNode(6);
+
+        System.out.println("\nOriginal List 2:");
+        printList(head2);
+
+        // Delete the node with value 4
+        ListNode nodeToDelete2 = head2.next.next.next;
+        deleteNode(nodeToDelete2);
+
+
+        System.out.println("List 2 after deletion:");
+        printList(head2);
+    }
+
+
+    public static void deleteNode(ListNode node) {
+        // This function assumes the node to be deleted is NOT the tail
+        if (node == null || node.next == null) {
+            return; // Nothing to delete or cannot delete the tail this way
+        }
+        node.val = node.next.val;
+        node.next = node.next.next;
+
+    }
+
+
+    static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+```
+
+
+**Explanation and Key Improvement:**
+
+The crucial aspect of the `deleteNode` function is that it *doesn't* require traversing the list from the head to find the node to delete. Instead, it directly receives the node to be deleted as input.  This is more efficient if you already have a reference to the node.
+
+**How `deleteNode` works (when not the tail):**
+
+1. **Copy the value:** It copies the value of the *next* node into the current node.
+2. **Skip the next node:** It then updates the `next` pointer of the current node to point to the node *after* the next node.  This effectively removes the original "next" node from the list.
+
+**Important Limitation:** This method *cannot* delete the tail node of the linked list.  If you attempt to do so, it will either do nothing (if the node is `null`) or throw a `NullPointerException` (if you try to access `node.next.val` when `node.next` is `null`).  If deleting the tail is a requirement, you *must* traverse the list from the head to the node before the tail and update its `next` pointer to `null`.

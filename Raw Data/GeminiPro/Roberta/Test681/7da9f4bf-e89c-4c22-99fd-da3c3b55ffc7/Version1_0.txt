@@ -1,0 +1,46 @@
+```java
+public class GetDoubleParts {
+
+    public static void main(String[] args) {
+
+        double num = 123.456;
+
+        // Method 1: Using casting to get the whole number part
+        int wholePart1 = (int) num;
+
+        // Method 2: Using Math.floor to get the whole number part
+        int wholePart2 = (int) Math.floor(num);
+
+
+        // Method 1:  Getting fractional part by subtracting the whole number part
+        double fractionalPart1 = num - wholePart1;
+
+        // Method 2: Using modulo operator (%) to get the fractional part  (less accurate due to floating-point representation)
+        double fractionalPart2 = num % 1;
+
+
+
+        System.out.println("Original number: " + num);
+
+        System.out.println("Whole part (using casting): " + wholePart1);
+        System.out.println("Fractional part (using subtraction): " + fractionalPart1);
+
+
+        System.out.println("Whole part (using Math.floor): " + wholePart2);
+        System.out.println("Fractional part (using modulo): " + fractionalPart2);
+
+
+
+        //Example with a negative number:
+        double negativeNum = -789.012;
+
+        int wholeNegative = (int) negativeNum;
+        double fractionalNegative = negativeNum - wholeNegative;
+
+        System.out.println("\nOriginal negative number: " + negativeNum);
+        System.out.println("Whole part (negative): " + wholeNegative);
+        System.out.println("Fractional part (negative): " + fractionalNegative);
+
+    }
+}
+```

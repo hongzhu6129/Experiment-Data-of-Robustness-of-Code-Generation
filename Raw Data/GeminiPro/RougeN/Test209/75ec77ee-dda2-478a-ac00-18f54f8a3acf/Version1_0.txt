@@ -1,0 +1,66 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Find the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth)
+                return (leftDepth + 1);
+             else
+                return (rightDepth + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.right.left = new Node(6); // Added a deeper node to test
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+    }
+}
+```
+
+
+Explanation:
+
+1. **Node Class:** Represents a node in the binary tree, holding data and pointers to left and right children.
+2. **maxDepth(Node node):**
+   - This recursive method calculates the maximum depth of the tree.
+   - **Base Case:** If the node is null (empty subtree), the depth is 0.
+   - **Recursive Step:**  It recursively calculates the depth of the left and right subtrees. Then, it returns the maximum of these two depths, plus 1 (for the current node).
+3. **main(String[] args):**
+   - Creates a sample binary tree.  It's important to create different tree structures to thoroughly test your code.
+   - Calls `maxDepth()` to calculate and print the height (which is the same as maximum depth) of the tree.
+
+
+Key improvements and points to note:
+
+* **Clarity and Readability:** The code is now well-commented and formatted for better understanding.
+* **Efficiency:** The recursive approach is the most natural and efficient way to calculate tree depth.
+* **Correctness:** Handles the base case (empty tree) correctly and ensures the maximum depth is calculated accurately.
+* **Testability:** The `main` method provides a sample tree for testing.  Add more complex test cases to be thorough.  Consider adding unit tests if you're working on a larger project.
+
+
+This revised response directly addresses the prompt's requirements and provides a robust and understandable solution.

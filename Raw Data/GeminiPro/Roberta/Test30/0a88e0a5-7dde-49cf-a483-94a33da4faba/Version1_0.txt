@@ -1,0 +1,139 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PolygonArea {
+
+    public static double calculateArea(List<Point> vertices) {
+        if (vertices.size() < 3) {
+            return 0; // Not a polygon
+        }
+
+        double area = 0.0;
+        int n = vertices.size();
+
+        for (int i = 0; i < n; i++) {
+            Point p1 = vertices.get(i);
+            Point p2 = vertices.get((i + 1) % n); // Wrap around to the first vertex for the last edge
+            area += (p1.x * p2.y - p2.x * p1.y);
+        }
+
+        return Math.abs(area) / 2.0;
+    }
+
+    static class Point {
+        double x, y;
+
+        public Point(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of vertices: ");
+        int numVertices = scanner.nextInt();
+
+        List<Point> vertices = new ArrayList<>();
+        for (int i = 0; i < numVertices; i++) {
+            System.out.print("Enter x and y coordinates of vertex " + (i + 1) + ": ");
+            double x = scanner.nextDouble();
+            double y = scanner.nextDouble();
+            vertices.add(new Point(x, y));
+        }
+
+        double area = calculateArea(vertices);
+        System.out.println("Area of the polygon: " + area);
+
+        scanner.close();
+
+       // Test cases (you would typically separate these into a proper test class like JUnit)
+        runTests();
+
+    }
+
+
+
+    public static void runTests() {
+        // Test cases
+        List<Point> triangle = new ArrayList<>();
+        triangle.add(new Point(0, 0));
+        triangle.add(new Point(0, 5));
+        triangle.add(new Point(5, 0));
+        assert calculateArea(triangle) == 12.5 : "Triangle test failed";
+
+
+        List<Point> square = new ArrayList<>();
+        square.add(new Point(0, 0));
+        square.add(new Point(0, 2));
+        square.add(new Point(2, 2));
+        square.add(new Point(2, 0));
+        assert calculateArea(square) == 4 : "Square test failed";
+
+
+
+        List<Point> concaveQuad = new ArrayList<>();
+        concaveQuad.add(new Point(0,0));
+        concaveQuad.add(new Point(3,4));
+        concaveQuad.add(new Point(5,1));
+        concaveQuad.add(new Point(2,0));
+        assert  Math.abs(calculateArea(concaveQuad) - 9.5) < 1e-9 : "Concave quad test failed"; // Use 1e-9 to compare floating point
+
+        // Corner cases
+
+        List<Point> twoPoints = new ArrayList<>();
+        twoPoints.add(new Point(0, 0));
+        twoPoints.add(new Point(1, 1));
+        assert calculateArea(twoPoints) == 0 : "Two points test failed";
+
+
+        List<Point> onePoint = new ArrayList<>();
+        onePoint.add(new Point(0, 0));
+        assert calculateArea(onePoint) == 0 : "One point test failed";
+
+        List<Point> emptyList = new ArrayList<>();
+        assert calculateArea(emptyList) == 0 : "Empty list test failed";
+
+         List<Point> collinearPoints = new ArrayList<>();
+        collinearPoints.add(new Point(0, 0));
+        collinearPoints.add(new Point(1, 1));
+        collinearPoints.add(new Point(2, 2));
+        assert calculateArea(collinearPoints) == 0 : "Collinear points test failed";
+
+
+        System.out.println("All tests passed!");
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Point Class:**  Encapsulates x and y coordinates for better organization.
+* **Handles Fewer Than 3 Vertices:** Returns 0 if the number of vertices is less than 3 (not a polygon).
+* **Modulus Operator for Wrapping:** Uses the modulus operator `%` to correctly wrap around to the first vertex when calculating the area.  This avoids index out-of-bounds errors.
+* **Math.abs():** Uses `Math.abs()` to ensure the area is positive, regardless of the order in which vertices are entered.
+* **Test Cases:** Includes a variety of test cases:
+    * Triangle
+    * Square
+    * Concave Quadrilateral (important for the shoelace formula)
+    * Corner Cases (2 points, 1 point, empty list, collinear points)
+* **Assertions (for testing):**  Uses assertions (`assert`) for simple test validation.  Ideally, you would use a proper testing framework like JUnit, but this shows the basic principle.
+* **Clearer User Input:** Uses a `Scanner` for better input handling.
+
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `PolygonArea.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac PolygonArea.java`
+3. **Run:** `java PolygonArea`
+
+
+
+
+This improved version is more robust, handles edge cases, and is easier to test, making it a much better solution overall.  Remember that for serious projects, separate testing with a framework like JUnit is highly recommended.

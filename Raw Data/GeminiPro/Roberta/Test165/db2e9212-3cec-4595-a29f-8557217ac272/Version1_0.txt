@@ -1,0 +1,62 @@
+```java
+import java.util.Scanner;
+
+public class DivideMinor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the minor and the number of parts
+        System.out.println("Enter the minor:");
+        int minor = scanner.nextInt();
+        System.out.println("Enter the number of parts:");
+        int parts = scanner.nextInt();
+
+        // Check if the minor is valid
+        if (minor <= 0) {
+            System.out.println("Invalid minor");
+            return;
+        }
+
+        // Check if the number of parts is valid
+        if (parts <= 0) {
+            System.out.println("Invalid number of parts");
+            return;
+        }
+
+        // Calculate the value of each part
+        int partValue = minor / parts;
+
+        // Print the value of each part
+        System.out.println("The value of each part is:");
+        System.out.println(partValue);
+    }
+}
+```
+
+**Test cases:**
+
+* **Valid minor and number of parts:**
+    * Minor: 100
+    * Number of parts: 5
+    * Expected output: "The value of each part is: 20"
+
+* **Invalid minor (negative):**
+    * Minor: -100
+    * Number of parts: 5
+    * Expected output: "Invalid minor"
+
+* **Invalid number of parts (non-positive):**
+    * Minor: 100
+    * Number of parts: 0
+    * Expected output: "Invalid number of parts"
+
+* **Corner case: Minor is 1 and number of parts is 1:**
+    * Minor: 1
+    * Number of parts: 1
+    * Expected output: "The value of each part is: 1"
+
+* **Corner case: Minor is 1 and number of parts is greater than 1:**
+    * Minor: 1
+    * Number of parts: 2
+    * Expected output: "The value of each part is: 0"

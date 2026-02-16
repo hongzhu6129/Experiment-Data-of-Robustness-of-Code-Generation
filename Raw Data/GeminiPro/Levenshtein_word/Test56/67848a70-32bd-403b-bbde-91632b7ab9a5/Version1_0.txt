@@ -1,0 +1,49 @@
+```java
+public class InsertWordInMiddle {
+
+    public static String insertWordInMiddle(String originalString, String wordToInsert) {
+        int middleIndex = originalString.length() / 2;
+        return originalString.substring(0, middleIndex) + wordToInsert + originalString.substring(middleIndex);
+    }
+
+    public static void main(String[] args) {
+        String originalString = "Python";
+        String wordToInsert = " Tutorial "; // Include spaces if desired
+
+        String result = insertWordInMiddle(originalString, wordToInsert);
+        System.out.println(result); // Output: Pyt Tutorial hon 
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`insertWordInMiddle(String originalString, String wordToInsert)` method:**
+   - Takes the original string and the word to insert as input.
+   - Calculates the middle index of the original string using `originalString.length() / 2`. Integer division ensures the middle index is an integer.
+   - Uses the `substring()` method to extract the first half of the original string (from index 0 to `middleIndex`).
+   - Concatenates the first half, the `wordToInsert`, and the second half (from `middleIndex` to the end) of the original string using the `+` operator.
+   - Returns the resulting string.
+
+2. **`main` method:**
+   - Sets the `originalString` to "Python" and `wordToInsert` to " Tutorial ".
+   - Calls the `insertWordInMiddle()` method with these strings.
+   - Prints the returned string to the console.
+
+
+**Key improvements in this version:**
+
+* **Clearer method name:**  `insertWordInMiddle` is more descriptive than just `insert`.
+* **Handles spaces correctly:**  If the `wordToInsert` contains spaces (e.g., " Tutorial "), the spaces will be included in the output.
+* **Concise and efficient:** Uses `substring()` and string concatenation effectively.
+* **Good commenting:**  Explains the logic clearly.
+
+
+**Example Output:**
+
+If `originalString` is "Python" and `wordToInsert` is " Tutorial ", the output will be:
+
+```
+Pyt Tutorial hon
+```

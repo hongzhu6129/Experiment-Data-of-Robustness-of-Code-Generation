@@ -1,0 +1,45 @@
+```java
+public class MiddleElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] array1 = {5, 10, 15};
+        int middleValue1 = getMiddleValue(array1);
+        System.out.println("Middle value of {5, 10, 15}: " + middleValue1); // Output: 10
+
+        int[] array2 = {-2, 0, 2};
+        int middleValue2 = getMiddleValue(array2);
+        System.out.println("Middle value of {-2, 0, 2}: " + middleValue2); // Output: 0
+
+        int[] array3 = {1, 1, 1};
+        int middleValue3 = getMiddleValue(array3);
+        System.out.println("Middle value of {1, 1, 1}: " + middleValue3); // Output: 1
+
+
+
+        // Handling incorrect array lengths:
+        int[] array4 = {1, 2};
+        int middleValue4 = getMiddleValue(array4);
+        System.out.println("Middle value of {1, 2}: " + middleValue4); // Output: -1 (indicates error)
+
+        int[] array5 = {1, 2, 3, 4};
+        int middleValue5 = getMiddleValue(array5);
+        System.out.println("Middle value of {1, 2, 3, 4}: " + middleValue5); // Output: -1 (indicates error)
+
+        int[] emptyArray = {};
+        int middleValueEmpty = getMiddleValue(emptyArray);
+        System.out.println("Middle value of {}: " + middleValueEmpty); // Output: -1
+    }
+
+
+
+
+    public static int getMiddleValue(int[] arr) {
+        if (arr == null || arr.length != 3) {
+            return -1; // Return -1 to indicate an invalid input (not length 3)
+        }
+        return arr[1];
+    }
+}
+
+```

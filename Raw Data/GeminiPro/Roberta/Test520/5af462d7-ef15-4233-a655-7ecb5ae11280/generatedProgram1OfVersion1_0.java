@@ -1,0 +1,23 @@
+public class Main {
+    public static void main(String[] args) {
+        // Example usage:
+        checkAutomorphic(5);
+        checkAutomorphic(6);
+        checkAutomorphic(76);
+        checkAutomorphic(890625);
+        checkAutomorphic(25); // Not automorphic
+        checkAutomorphic(13); // Not automorphic
+    }
+
+    public static void checkAutomorphic(int num) {
+        long square = (long) num * num;
+        String numStr = String.valueOf(num);
+        String squareStr = String.valueOf(square);
+
+        if (squareStr.endsWith(numStr)) {
+            System.out.println(num + " is an automorphic number.");
+        } else {
+            System.out.println(num + " is not an automorphic number.");
+        }
+    }
+}

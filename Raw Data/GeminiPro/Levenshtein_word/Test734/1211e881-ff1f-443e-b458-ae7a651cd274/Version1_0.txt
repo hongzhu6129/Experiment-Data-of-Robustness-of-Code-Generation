@@ -1,0 +1,80 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int target = 5;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+
+         target = 20; // Test a value not present
+         result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1 && result[1] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+
+    }
+
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Found the target
+            } else if (matrix[row][col] < target) {
+                row++; // Target is greater, move down
+            } else {
+                col--; // Target is smaller, move left
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  `m` and `n` are more descriptive than just using `matrix.length` and `matrix[0].length` repeatedly inside the `Saddleback` method.
+
+2. **Return an `int[]`:** Returning an `int[]` to store both row and column is more standard practice and easier to handle than separate variables.
+
+3. **Error Handling:**  The code now returns `{-1, -1}` if the target is not found, which allows `main` to check and provide a "not found" message.
+
+4. **Saddleback Search Logic:** The core logic of the `Saddleback` function correctly implements the search algorithm. It starts at the top-right corner and efficiently eliminates rows or columns based on the comparison with the target.
+
+5. **Example Usage and Testing:** The `main` method demonstrates how to use the `Saddleback` method and includes an example with a value that's *not* in the matrix to show the error handling.
+
+
+How the Saddleback Search Works:
+
+The algorithm is efficient because it leverages the sorted nature of the matrix:
+
+- **Start at top-right:** This position gives you maximum information about the rest of the matrix.
+- **Compare to target:**
+    - **If equal:** You found the target.
+    - **If target is greater:** The entire current row is smaller than the target, so move down (increment `row`).
+    - **If target is smaller:** The entire current column is larger than the target, so move left (decrement `col`).
+
+This process continues until the target is found, or you go out of the matrix bounds (meaning the target isn't present).  It avoids unnecessary comparisons and has a time complexity of O(m + n), which is much better than a linear search through all elements.

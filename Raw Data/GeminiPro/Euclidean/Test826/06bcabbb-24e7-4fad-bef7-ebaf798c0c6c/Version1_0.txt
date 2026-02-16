@@ -1,0 +1,54 @@
+```java
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+        // Check if two arguments are provided
+        if (args.length != 2) {
+            System.out.println("Please provide two numbers as command-line arguments.");
+            return; // Exit if the input is invalid
+        }
+
+        try {
+            // Parse the input arguments as integers
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[1]);
+
+            // Calculate the product
+            int product = num1 * num2;
+
+            // Display the result
+            System.out.println(num1 + " x " + num2 + " = " + product);
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter valid integers.");
+        }
+    }
+}
+```
+
+**How to run this code:**
+
+1. **Save:** Save the code as `ProductOfTwoNumbers.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the command: `javac ProductOfTwoNumbers.java`
+3. **Run:** After successful compilation, run the program with two numbers as command-line arguments: `java ProductOfTwoNumbers 25 5`  (Replace 25 and 5 with your desired numbers).
+
+**Explanation:**
+
+* **`public static void main(String[] args)`:**  This is the main method, the entry point of your Java program. The `args` array contains the command-line arguments passed to the program.
+* **Input Validation:** The code first checks if exactly two arguments are provided. If not, it prints an error message and exits. This prevents unexpected behavior.
+* **`try-catch` block:** This handles potential `NumberFormatException` if the user enters non-integer input.
+* **`Integer.parseInt()`:** This method converts the string arguments from the `args` array to integers.
+* **Calculation and Output:** The product is calculated, and the result is printed in the desired format.
+
+
+**Example Usage:**
+
+If you run the program with `java ProductOfTwoNumbers 25 5`, the output will be:
+
+```
+25 x 5 = 125
+```
+
+
+If you run the program with incorrect input (e.g., `java ProductOfTwoNumbers a b` or `java ProductOfTwoNumbers 1`), you'll get an appropriate error message.

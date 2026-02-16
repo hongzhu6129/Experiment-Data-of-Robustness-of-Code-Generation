@@ -1,0 +1,57 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted integer array and returns the new length.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the position for unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+         int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4 ); // Output: 0
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:** The code now correctly handles empty arrays (`nums == null || nums.length == 0`) returning 0.
+2. **Clearer Variable Names:** `uniqueIndex` more clearly describes the purpose of the index variable.
+3. **In-Place Modification:** The code directly modifies the input array `nums` as intended by the problem (even though the elements after `uniqueIndex` aren't relevant anymore).
+4. **Comprehensive `main` Method:**  The examples in `main` now demonstrate the function's behavior with different inputs, including an empty array and the example cases from LeetCode, making testing and understanding easier.
+5. **Correct Output:** The `main` method now prints the correct new length and also prints the modified array up to the new length using `Arrays.copyOfRange` to avoid showing the leftover elements from the original array.
+6. **Comments:**  Added comments to explain the logic, making the code more readable and understandable.

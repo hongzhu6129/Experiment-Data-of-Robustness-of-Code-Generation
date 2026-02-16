@@ -1,0 +1,57 @@
+```java
+public class RoundOffIntegerDivision {
+
+    public static void main(String[] args) {
+
+        int numerator = 10;
+        int denominator = 3;
+
+        // Method 1: Using Math.round() with type casting to double
+        float result1 = (float) numerator / denominator;
+        int roundedResult1 = Math.round(result1);
+        System.out.println("Rounded result (Method 1): " + roundedResult1);
+
+        // Method 2:  Adding half the denominator before dividing (for positive numbers)
+        int roundedResult2 = (numerator + denominator / 2) / denominator;
+        System.out.println("Rounded result (Method 2): " + roundedResult2);
+
+
+        // Example with negative numbers (adjust Method 2 accordingly)
+        numerator = -10;
+        denominator = 3;
+
+        float result3 = (float) numerator / denominator;
+        int roundedResult3 = Math.round(result3);
+        System.out.println("Rounded result (negative, Method 1): " + roundedResult3);
+
+        // For negative numerator and positive denominator, subtract half the denominator
+        int roundedResult4 = (numerator - denominator / 2) / denominator;
+        System.out.println("Rounded result (negative, adjusted Method 2): " + roundedResult4);
+
+
+        //More robust handling of negative numbers
+        int roundedResult5 = (int) Math.round((double) numerator / denominator);
+        System.out.println("Rounded result (robust handling, Method 3): " + roundedResult5);
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+* **Method 1 (Using `Math.round()`):** This is the most straightforward and generally preferred method. Casting the integers to `float` before the division ensures a floating-point division is performed. Then, `Math.round()` correctly rounds the result to the nearest integer.
+
+* **Method 2 (Adding half the denominator):** This method works well for positive numbers. By adding half the denominator before the integer division, you effectively bias the result towards rounding up when the fractional part is 0.5 or greater.
+
+* **Handling Negative Numbers:** The original Method 2 doesn't work correctly for negative numbers.  I've demonstrated how to adjust it (subtracting half the denominator) and provided a more robust Method 3 using `Math.round()` with casting to `double`, which works correctly for both positive and negative numbers without needing special adjustments.
+
+* **Clearer Explanations:**  The code now includes comments to explain the different methods and why the adjustments for negative numbers are necessary.
+
+* **More Examples:** The code now includes examples with both positive and negative numerators to demonstrate the different rounding behaviors.
+
+* **Robust Method 3:** The added Method 3 is the most robust and handles all cases correctly, so it's generally the best choice.
+
+
+This revised code provides a more complete and accurate demonstration of how to round off integer division results in Java.  Method 1 (using `Math.round()`) or the robust Method 3 are generally the best approaches for clean, reliable rounding.

@@ -1,0 +1,69 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        int target = 21;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+
+        int[] result = Saddleback(matrix, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] matrix, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Signatures:** The code adheres to the specified method signatures `main` and `Saddleback`.
+
+2. **Saddleback Search Algorithm:** The `Saddleback` method efficiently searches the matrix. It starts from the top-right corner.  If the current element is smaller than the target, it moves down (to a larger element). If the current element is larger than the target, it moves left (to a smaller element). This leverages the sorted nature of the rows and columns.
+
+3. **Return int[]:** The `Saddleback` method returns an `int[]` containing the row and column index of the target.  If the target is not found, it returns `{-1, -1}`. This makes it clear whether the search was successful.
+
+4. **Example Usage in main:** The `main` method demonstrates how to use the `Saddleback` method with a sample matrix and target value. It handles the case where the target is not found and prints an appropriate message.
+
+5. **Conciseness and Clarity:** The code is more concise and readable, focusing on the core logic of the Saddleback search.
+
+6. **Correctness:** The algorithm is correct for matrices where each row and column is sorted in ascending order.
+
+
+**How to Compile and Run:**
+
+1. Save the code as `SaddlebackSearch.java`.
+2. Compile: `javac SaddlebackSearch.java`
+3. Run: `java SaddlebackSearch`
+
+
+This improved version addresses the previous issues and provides a robust and efficient implementation of the Saddleback search algorithm.

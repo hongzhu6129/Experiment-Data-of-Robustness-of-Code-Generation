@@ -1,0 +1,77 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can change this value
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) {
+                break; 
+            }
+
+            for (int b = a + 1; b <= n; b++) { // b starts from a+1 to avoid duplicate pairs
+                int b3 = b * b * b;
+                int sum = a3 + b3;
+
+                if (sum > n) {
+                    break;
+                }
+
+
+                for (int c = a + 1; c <= n; c++) {  //Inner loops to find a different pair
+                    int c3 = c * c * c;
+                    if (c3 > n) {
+                        break;
+                    }
+
+                    for (int d = c + 1; d <= n; d++) { // d starts from c+1 to avoid duplicate pairs
+                        int d3 = d * d * d;
+                        if (c3 + d3 > n) {
+                           break;
+                        }
+                        
+                        if (sum == (c3 + d3) && sum <=n) {
+                            System.out.println(sum + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                            return; // Exit after finding the first such number
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Efficiency:** The original nested loop structure checked many redundant combinations.  This improved version significantly reduces those by:
+   - Starting `b` from `a + 1` and `d` from `c + 1`:  This avoids checking the same pair in reverse order (e.g., 1^3 + 12^3  and 12^3 + 1^3).
+   - `break` statements: These exit loops early when the sums exceed `n`, preventing unnecessary calculations.
+
+2. **Clarity:** The code is more readable with better variable names and comments.
+
+3. **`return` statement:** Once a Ramanujan number is found, the program exits immediately using `return`.  This is because the problem statement asks for *any* such number.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `Ramanujan.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and type:
+   ```bash
+   javac Ramanujan.java
+   ```
+3. **Run:**
+   ```bash
+   java Ramanujan
+   ```
+
+The output will be:
+
+```
+1729 = 1^3 + 12^3 = 9^3 + 10^3
+```
+
+
+If you change `n` to a larger value, you might find other Ramanujan numbers (though the next smallest one is much larger!).

@@ -1,0 +1,56 @@
+```java
+public class MoveZeros {
+
+    public static int[] move_zero(int[] arr) {
+        int count = 0; // Count of non-zero elements
+
+        // Traverse the array. If element encountered is non-zero, then
+        // replace the element at index 'count' with this element
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                swap(arr, count, i);  // Efficiently swap using a helper function
+                count++;
+            }
+        }
+        return arr;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {0, 3, 4, 0, 1, 2, 5, 0};
+        int[] result = move_zero(arr);
+
+        System.out.print("result: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Efficiency:** The `swap` function is used to efficiently swap elements in the array, avoiding unnecessary assignments within the main loop.
+
+2. **Clarity:** The code is well-commented, explaining the logic and the purpose of each section.
+
+3. **Correctness:**  The logic ensures that all non-zero elements are moved to the left and zeros are shifted to the right while maintaining the relative order of the non-zero elements.  The `count` variable tracks the index where the next non-zero element should be placed.
+
+4. **Adherence to requirements:**  The solution strictly adheres to the provided method signatures: `public static int[] move_zero(int[])`, `private static void swap(int[], int, int)`, and `public static void main(String[])`.
+
+5. **Output formatting:** The `main` method now prints the output in the desired format: `result: [3, 4, 1, 2, 5, 0, 0, 0]`.
+
+
+
+This revised version is more efficient, clear, and adheres to all the specified requirements while producing the correct output.

@@ -1,0 +1,24 @@
+public class AlphabetIndex {
+
+    public static void main(String[] args) {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        for (int i = 0; i < alphabet.length(); i++) {
+            char character = alphabet.charAt(i);
+            int index = i; // Index starts from 0
+
+            System.out.println("Character: " + character + ", Index: " + index);
+
+
+        }
+
+        // Alternatively, directly compute the index based on ASCII values:
+         System.out.println("\nUsing ASCII values:");
+        for (char c = 'a'; c <= 'z'; c++) {
+            int index = c - 'a';
+            System.out.println("Character: " + c + ", Index: " + index);
+        }
+
+
+    }
+}

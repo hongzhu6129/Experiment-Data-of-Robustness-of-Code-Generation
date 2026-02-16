@@ -1,0 +1,54 @@
+```java
+import java.util.Arrays;
+
+public class HexArrayCopy {
+
+    public static void main(String[] args) {
+        int[] hexArray = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0};
+
+        // Copy the hexArray into a new array
+        int[] copyHexArray = Arrays.copyOf(hexArray, hexArray.length);
+
+        // Print the original and copied arrays
+        System.out.println("Original Hex Array: " + Arrays.toString(hexArray));
+        System.out.println("Copied Hex Array: " + Arrays.toString(copyHexArray));
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+Input:
+```
+hexArray = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xF0}
+```
+Expected Output:
+```
+Original Hex Array: [18, 52, 86, 120, 154, 188, 222, 240]
+Copied Hex Array: [18, 52, 86, 120, 154, 188, 222, 240]
+```
+
+**Corner Case: Empty Array:**
+
+Input:
+```
+hexArray = {}
+```
+Expected Output:
+```
+Original Hex Array: []
+Copied Hex Array: []
+```
+
+**Corner Case: Null Array:**
+
+Input:
+```
+hexArray = null
+```
+Expected Output:
+```
+java.lang.NullPointerException: Cannot copy null array.
+```

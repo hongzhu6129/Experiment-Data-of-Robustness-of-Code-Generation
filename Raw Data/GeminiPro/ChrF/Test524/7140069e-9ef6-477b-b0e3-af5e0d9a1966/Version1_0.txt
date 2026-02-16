@@ -1,0 +1,66 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input handling (replace with your preferred method, e.g., Scanner)
+        int number = 8; // Example input, replace with actual input
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int number) {
+        // Handle negative numbers
+        if (number < 0) {
+            return isCube(-number); 
+        }
+
+         // Efficient cube root check using Math.cbrt() and comparing with rounded down value
+        int cubeRoot = (int) Math.cbrt(number); //Cast to int to truncate decimal part
+
+        return cubeRoot * cubeRoot * cubeRoot == number; 
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Input Handling:**  The code now assumes an input of `8` for demonstration.  In a real application, you would use `Scanner` or command-line arguments to get input from the user. Example using `Scanner`:
+
+   ```java
+   import java.util.Scanner;
+   // ... inside main()
+   Scanner scanner = new Scanner(System.in);
+   System.out.print("Input a number: ");
+   int number = scanner.nextInt();
+   // ... rest of the code
+   ```
+
+2. **Negative Number Handling:** The `isCube` method now correctly handles negative numbers.  The cube of a negative number is negative, so we just check the absolute value.
+
+
+3. **Efficient Cube Root Calculation and Comparison:** Instead of looping or using `Math.pow()`, we use `Math.cbrt()` (cube root) which is a more direct and efficient approach. Casting the result to `int` effectively rounds down to the nearest integer, which is what we want for the comparison.
+
+
+4. **Clearer Output:** The output messages are more informative.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile:
+   ```bash
+   javac CubeChecker.java
+   ```
+3. **Run:**
+   ```bash
+   java CubeChecker 
+   ```  (The output will be based on the hardcoded input of 8)
+
+If you use the `Scanner` version, you'll be prompted to enter a number.
+

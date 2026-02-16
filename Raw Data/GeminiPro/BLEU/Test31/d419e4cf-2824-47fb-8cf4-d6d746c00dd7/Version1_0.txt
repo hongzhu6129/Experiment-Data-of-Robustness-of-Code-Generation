@@ -1,0 +1,124 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+
+
+
+
+```
+
+**Test Cases (including corner cases):**
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North & South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106 (Near Perth, Australia)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+
+5. **Points near the 180th Meridian (International Date Line):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: A small value, as these points are close despite the longitude difference.  *This is a crucial test for handling the discontinuity at the date line.*
+
+6. **Invalid Input:**
+    - Test with non-numeric input (e.g., "abc") to ensure the program handles it gracefully without crashing.  You might want to add input validation to your code for this.
+
+7. **Boundary values for Latitude:**
+    - lat1: 90 (North Pole)
+    - lon1: Any
+    - lat2: 89.999 (very close to North Pole)
+    - lon2: Any
+    - Should calculate a small distance.
+
+8. **Points near the equator:**
+   - Test various points near the equator to ensure accuracy in these regions.
+
+**How to Run Test Cases:**
+
+- You can either manually input these values into your program multiple times.
+- Or, even better, create a separate test class using a testing framework like JUnit. This will automate the process and provide more structured results.
+
+
+
+
+```java
+// Example of a simple JUnit test (requires JUnit library)
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    public void testSamePoint() {
+        assertEquals(0, EarthDistance.calculateDistance(40, -74, 40, -74), 0.001); // delta allows for small rounding errors
+    }
+
+    // Add more @Test methods for other test cases
+
+    // Helper method to encapsulate the distance calculation (modify EarthDistance class to include this)
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        lat1 = Math.toRadians(lat1);
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+        double radius = 6371.01;
+        return radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+    }
+}
+```
+
+
+This comprehensive testing approach will greatly improve the reliability and robustness of your Earth distance calculation program.  Remember to test with a variety of inputs, including edge cases and invalid data, to ensure your program behaves correctly in all situations.

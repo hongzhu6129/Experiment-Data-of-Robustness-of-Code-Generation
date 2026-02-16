@@ -1,0 +1,75 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TekelecTreeMapSort {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator (TekelecComparator)
+        TreeMap<String, String> tekelecMap = new TreeMap<>(new TekelecComparator());
+
+        // Add some sample key-value pairs
+        tekelecMap.put("12345", "Value1");
+        tekelecMap.put("67890", "Value2");
+        tekelecMap.put("13579", "Value3");
+        tekelecMap.put("24680", "Value4");
+
+        // Print the sorted map (keys are sorted according to the TekelecComparator)
+        System.out.println(tekelecMap);
+    }
+
+    public static class TekelecComparator implements Comparator<String> {
+        @Override
+        public int compare(String s1, String s2) {
+            // Tekelec sorting logic (example: even digits first, then odd digits)
+            String even1 = s1.replaceAll("[13579]", "");
+            String odd1 = s1.replaceAll("[02468]", "");
+            String even2 = s2.replaceAll("[13579]", "");
+            String odd2 = s2.replaceAll("[02468]", "");
+
+            int evenComparison = even1.compareTo(even2);
+            if (evenComparison != 0) {
+                return evenComparison;
+            } else {
+                return odd1.compareTo(odd2);
+            }
+
+
+            // OR Implement any other desired Tekelec sorting logic here...
+            // For instance, if Tekelec sorting means sorting by string length:
+            // return Integer.compare(s1.length(), s2.length());
+        }
+    }
+}
+
+
+
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **TekelecComparator Class:**  The crucial part is the `TekelecComparator` class which implements the `Comparator<String>` interface. This allows us to define custom sorting logic.
+
+2. **compare Method:**  The `compare(String s1, String s2)` method within `TekelecComparator` is where you implement the specific Tekelec sorting rules.  The provided example demonstrates sorting even digits before odd digits.  You'll need to replace this with the *actual* Tekelec sorting algorithm you need to use (as it's not standard and implementation-dependent).
+
+3. **TreeMap Construction:** The `TreeMap` is constructed with an instance of `TekelecComparator`:
+   ```java
+   TreeMap<String, String> tekelecMap = new TreeMap<>(new TekelecComparator()); 
+   ```
+   This tells the `TreeMap` to use your custom comparator to order the keys.
+
+4. **Example Tekelec Logic (Replace this!):**  The current `compare` method provides a placeholder example: sorting even digits before odd digits.  You *must* replace this with the real Tekelec sorting rules.  If you can provide more details on what "Tekelec sorting" means, I can give you a more precise implementation of the `compare` method.
+
+5. **Clearer Example in main():** The `main` method now provides a clearer demonstration of how to add elements and then print the sorted `TreeMap`.
+
+
+
+**How to Use:**
+
+1. **Replace Placeholder Logic:** Modify the `compare` method in `TekelecComparator` to implement your specific Tekelec sorting algorithm.
+2. **Add Your Data:** Add your key-value pairs to the `tekelecMap` in the `main` method.
+3. **Run the Code:** The `TreeMap` will automatically sort the keys according to your Tekelec logic.
+
+
+If you can provide more specific details on how Tekelec sorting works, I can refine the `compare` method to match the exact requirements.

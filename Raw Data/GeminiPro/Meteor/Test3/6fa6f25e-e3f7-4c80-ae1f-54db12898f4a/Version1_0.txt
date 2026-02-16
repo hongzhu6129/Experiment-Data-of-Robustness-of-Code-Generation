@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num;
+
+
+        // Input validation loop.  Important for robust code!
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Consume the invalid input
+        }
+        num = scanner.nextInt();
+
+
+
+        System.out.println("Multiplication Table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 5
+   **Expected Output:**
+   ```
+   Multiplication Table for 5:
+   5 x 1 = 5
+   5 x 2 = 10
+   5 x 3 = 15
+   5 x 4 = 20
+   5 x 5 = 25
+   5 x 6 = 30
+   5 x 7 = 35
+   5 x 8 = 40
+   5 x 9 = 45
+   5 x 10 = 50
+   ```
+
+2. **Input:** 12
+   **Expected Output:** (similarly up to 12 x 10 = 120)
+
+**Corner/Edge Cases:**
+
+3. **Input:** 0
+   **Expected Output:** (all results will be 0)
+
+4. **Input:** -7  (Negative Number)
+   **Expected Output:** (correctly handles negative multiplication)
+
+5. **Input:**  2147483647 (Integer.MAX_VALUE) � Tests for potential overflow. Although the multiplication *itself* won't overflow with `int * int`,  intermediate calculations might for very large multipliers.
+   **Expected Output:**  Correct results or potential overflow behavior (which you might want to handle gracefully in a more advanced program).
+
+
+6. **Input:** -2147483648 (Integer.MIN_VALUE) � Similar overflow check for the most negative integer.
+
+7. **Input:**  "abc" (Invalid Input - Non-integer)
+   **Expected Output:** The program should prompt the user again to enter a valid integer, thanks to the input validation loop.  This is crucial for robust code handling.
+
+
+
+**How to run the test cases:**
+
+1. **Save:** Save the code as `MultiplicationTable.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file.  Compile using `javac MultiplicationTable.java`
+3. **Run:** Execute the compiled code using `java MultiplicationTable`.  The program will prompt you to enter an integer.  Enter each test case input and verify the output against the expected output.
+
+
+This improved version handles invalid inputs gracefully using a `while` loop and `hasNextInt()` for validation, which makes the program much more robust. I've also included more comprehensive test cases covering various scenarios, including edge and corner cases and how to handle non-integer inputs, which are essential for thorough testing.

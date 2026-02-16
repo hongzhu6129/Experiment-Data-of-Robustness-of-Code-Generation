@@ -1,0 +1,25 @@
+```java
+public class WordValidator {
+
+    public static void main(String[] args) {
+        String[] words = {"gaming", "frog", "green", "google", "gag", "aggregate", "dogmatic"};
+
+        for (String word : words) {
+            String result = validate(word);
+            System.out.println(word + ": " + result);
+        }
+    }
+
+    public static String validate(String word) {
+        if (word == null || word.length() < 3) {
+            return "Invalid";
+        }
+
+        if (word.contains("g") && word.charAt(0) != 'g' && word.charAt(word.length() - 1) != 'g') {
+            return "Valid";
+        } else {
+            return "Invalid";
+        }
+    }
+}
+```

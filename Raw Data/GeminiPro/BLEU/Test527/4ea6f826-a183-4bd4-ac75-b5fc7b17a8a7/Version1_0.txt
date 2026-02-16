@@ -1,0 +1,42 @@
+```java
+public class RamanujanNumbers {
+
+    public static void main(String[] args) {
+        int n = 1729; // Example: Find Ramanujan numbers up to 1729
+
+        for (int a = 1; a <= n; a++) {
+            for (int b = 1; b <= n; b++) {
+                int sum = a * a * a + b * b * b;
+                if (sum <= n) {
+                    int count = 0;
+                    for (int c = 1; c < a ; c++) { // Ensure distinct pairs
+                        for (int d = 1; d <= n; d++) {
+                             if(c * c * c + d* d * d == sum && (c!=a || d!=b) && (c!=b || d!=a)) { 
+                                count++;
+
+                                 if(count ==1 ) {  //Optimization to stop searching for pairs
+                                   // Print the number and the pairs if it's expressible in two ways
+                                   System.out.println(sum + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                                   
+                                  } else if( count > 1)
+                                   {
+                                      //System.out.println( "Additional pair found for " + sum + ": " + c + "^3 + " + d + "^3");
+                                     break; // optimization: stop searching if it appears twice
+                                   }
+                             }
+                         }
+
+                        if (count >1) break; // if we found more than one pair already
+                    }
+                }
+
+            }
+
+
+        }
+    }
+}
+
+
+
+```

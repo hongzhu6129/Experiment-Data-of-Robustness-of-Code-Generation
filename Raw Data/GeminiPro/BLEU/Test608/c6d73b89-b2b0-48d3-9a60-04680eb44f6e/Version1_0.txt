@@ -1,0 +1,77 @@
+```java
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetToArray {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+        hashSet.add("apple");
+        hashSet.add("banana");
+        hashSet.add("orange");
+        hashSet.add("grape");
+
+        // Method 1: Using toArray() with a pre-sized array
+        String[] stringArray = new String[hashSet.size()];
+        hashSet.toArray(stringArray); 
+        System.out.println("String array (pre-sized): " + Arrays.toString(stringArray));
+
+
+        // Method 2: Using toArray() with a zero-length array (more common)
+        String[] anotherStringArray = hashSet.toArray(new String[0]);
+        System.out.println("String array (zero-length): " + Arrays.toString(anotherStringArray));
+
+        // Example with Integers
+        Set<Integer> integerHashSet = new HashSet<>();
+        integerHashSet.add(1);
+        integerHashSet.add(2);
+        integerHashSet.add(3);
+
+        Integer[] integerArray = integerHashSet.toArray(new Integer[0]);
+        System.out.println("Integer array: " + Arrays.toString(integerArray));
+
+
+         //Example with custom objects (requires proper equals() and hashCode() implementation in the class)
+        Set<MyObject> objectHashSet = new HashSet<>();
+        objectHashSet.add(new MyObject("Object 1"));
+        objectHashSet.add(new MyObject("Object 2"));
+
+        MyObject[] objectArray = objectHashSet.toArray(new MyObject[0]);
+        System.out.println("Object array: " + Arrays.toString(objectArray));
+
+
+    }
+}
+
+class MyObject {
+    String name;
+
+    public MyObject(String name) {
+        this.name = name;
+    }
+
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+     //Important for HashSet functionality (and toArray with custom objects)
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        MyObject other = (MyObject) obj;
+        return name.equals(other.name); // Compare based on the name field.
+    }
+
+
+    @Override
+    public int hashCode() {
+        return name.hashCode(); // Hash based on the name field
+    }
+}
+
+```

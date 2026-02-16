@@ -1,0 +1,43 @@
+```java
+public class LongestIncreasingSubsequence {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5, 4, 7};
+        System.out.println(longest_seq(arr1)); // Output: 3
+
+        int[] arr2 = {2, 2, 2, 2, 2};
+        System.out.println(longest_seq(arr2)); // Output: 1
+
+        int[] arr3 = {1, 3, 5, 7, 9};
+        System.out.println(longest_seq(arr3)); // Output: 5
+
+        int[] arr4 = {9, 8, 7, 6, 5};
+        System.out.println(longest_seq(arr4)); // Output: 1
+
+        int[] arr5 = {};
+        System.out.println(longest_seq(arr5)); // Output: 0
+
+
+    }
+
+    public static int longest_seq(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return 0;
+        }
+
+        int longest = 1;
+        int currentLength = 1;
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) {
+                currentLength++;
+            } else {
+                currentLength = 1; 
+            }
+            longest = Math.max(longest, currentLength);
+        }
+
+        return longest;
+    }
+}
+```

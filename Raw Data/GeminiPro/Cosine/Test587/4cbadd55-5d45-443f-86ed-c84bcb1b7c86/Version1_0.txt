@@ -1,0 +1,62 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of names
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        names.add("Eve");
+
+        System.out.println("Original LinkedList: " + names);
+
+        // Specify the element to remove
+        String elementToRemove = "Charlie";
+
+        // Remove the element (first occurrence)
+        boolean removed = names.remove(elementToRemove);
+
+        if (removed) {
+            System.out.println("Element '" + elementToRemove + "' removed successfully.");
+            System.out.println("Updated LinkedList: " + names);
+        } else {
+            System.out.println("Element '" + elementToRemove + "' not found in the LinkedList.");
+        }
+
+
+        // Example removing by index:
+        names.add("Frank"); //Add another name back
+        names.add("Grace");
+        System.out.println("New LinkedList: " + names);
+
+        int indexToRemove = 1; // Remove the element at index 1 (Bob in this case)
+         try{
+             String removedByIndex = names.remove(indexToRemove);
+             System.out.println("Element at index " + indexToRemove + " ('" + removedByIndex + "') removed.");
+             System.out.println("Updated LinkedList: " + names);
+
+
+         } catch (IndexOutOfBoundsException e) {
+             System.out.println("Invalid index: " + indexToRemove);
+         }
+        
+        // Example removing all occurrences (if there are duplicates)
+        names.add("David"); // Adding a duplicate
+        System.out.println("LinkedList with duplicate: " + names);
+        
+        while (names.remove("David")) { // Keep removing until none are left.
+           //Removing is done in the loop condition itself
+        } 
+       
+        System.out.println("LinkedList after removing all occurrences of 'David': " + names);
+
+
+
+
+    }
+}
+```

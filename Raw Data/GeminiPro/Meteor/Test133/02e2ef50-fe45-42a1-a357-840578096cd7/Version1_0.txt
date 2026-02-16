@@ -1,0 +1,35 @@
+```java
+import java.util.Scanner;
+
+public class ReplaceCharacter {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the original string from the user.
+        System.out.print("Enter the original string: ");
+        String originalString = input.nextLine();
+
+        // Get the character to be replaced from the user.
+        System.out.print("Enter the character to be replaced: ");
+        char characterToReplace = input.next().charAt(0);
+
+        // Get the replacement character from the user.
+        System.out.print("Enter the replacement character: ");
+        char replacementCharacter = input.next().charAt(0);
+
+        // Replace the character in the string.
+        String replacedString = originalString.replace(characterToReplace, replacementCharacter);
+
+        // Print the replaced string.
+        System.out.println("The replaced string is: " + replacedString);
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:** Replace the character 'a' with the character 'b' in the string "Hello world". Expected output: "Hello world".
+* **Corner case:** Replace the character 'z' with the character 'a' in the string "Hello world". Expected output: "Hello world".
+* **Edge case:** Replace the character ' ' (space) with the character 'b' in the string "Hello world". Expected output: "Hellobworld".
+* **Empty string:** Replace the character 'a' with the character 'b' in the empty string "". Expected output: "".

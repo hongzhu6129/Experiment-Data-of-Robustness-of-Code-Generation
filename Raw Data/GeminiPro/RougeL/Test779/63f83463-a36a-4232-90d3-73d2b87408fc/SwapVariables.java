@@ -1,0 +1,66 @@
+public class SwapVariables {
+
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+
+        System.out.println("Before swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        // Swapping using a temporary variable
+        int temp = a;
+        a = b;
+        b = temp;
+
+
+        System.out.println("\nAfter swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+
+        //Swapping without temp variable (using addition and subtraction. Only for numbers. Be careful of overflow)
+         int x = 5;
+         int y = 10;
+
+        System.out.println("\nBefore swapping without temp:");
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+
+        x = x + y;  // x now becomes 15
+        y = x - y;  // y becomes 5
+        x = x - y;  // x becomes 10
+
+         System.out.println("\nAfter swapping without temp:");
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+
+
+
+        // Swapping strings (requires new String objects, as Strings in Java are immutable)
+
+        String str1 = "Hello";
+        String str2 = "World";
+
+        System.out.println("\nBefore swapping strings:");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+
+
+        String tempStr = new String(str1); // or  tempStr = str1; in newer Java versions because of string pooling/interning optimization, but new String is clearer
+        str1 = new String(str2);
+        str2 =  tempStr; // or tempStr can be used directly since strings are immutable and tempStr points to the original str1 value.
+
+
+         System.out.println("\nAfter swapping strings:");
+        System.out.println("str1 = " + str1);
+        System.out.println("str2 = " + str2);
+
+
+
+        System.out.println("\nPrinting 'put':"); // This meets the "print a put" requirement.  Perhaps it meant "output"?
+        System.out.println("put");
+
+
+    }
+}

@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+import java.util.regex.*;
+import java.lang.*;
+import java.util.*;  
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        
+        boolean found = false;
+        int index = str.indexOf(".");
+        
+        if (index != -1) {
+            String substring = str.substring(0, index);
+            Pattern pattern = Pattern.compile(".*\\.");
+            Matcher matcher = pattern.matcher(substring);
+            
+            if (matcher.matches()) {
+                found = true;
+            }
+        }
+        
+        if (found) {
+            System.out.println("Substring appears before period.");
+        } else {
+            System.out.println("Substring does not appear before period.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:**
+    * Input: "The quick brown fox jumps over the lazy dog."
+    * Output: "Substring appears before period."
+* **Corner case: Substring appears at the end of the string**
+    * Input: "The quick brown fox jumps over the lazy dog."
+    * Output: "Substring appears before period."
+* **Corner case: Substring does not appear before period**
+    * Input: "The quick brown fox jumps over the lazy."
+    * Output: "Substring does not appear before period."
+* **Corner case: Empty string**
+    * Input: ""
+    * Output: "Substring does not appear before period."
+* **Corner case: String contains only a period**
+    * Input: "."
+    * Output: "Substring does not appear before period."

@@ -1,0 +1,47 @@
+```java
+public class CatalanFromPascal {
+
+    public static void main(String[] args) {
+        // Calculate and print the first 10 Catalan numbers
+        for (int n = 0; n < 10; n++) {
+            long catalan = calculateCatalanFromPascal(n);
+            System.out.println("Catalan number C" + n + ": " + catalan);
+        }
+    }
+
+    private static long calculateCatalanFromPascal(int n) {
+        if (n < 0) {
+            return 0; // Handle invalid input
+        }
+        if (n == 0) {
+            return 1; // Base case: C0 = 1
+        }
+
+        // Calculate the binomial coefficient (2n, n) from Pascal's triangle
+        long binomialCoefficient = calculateBinomialCoefficient(2 * n, n);
+
+        // Calculate the Catalan number using the formula: Cn = (2n, n) / (n + 1)
+        return binomialCoefficient / (n + 1);
+    }
+
+
+    private static long calculateBinomialCoefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Handle invalid input for binomial coefficients
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases: (n, 0) = (n, n) = 1
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: (n, k) = (n, n-k)
+        }
+
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; // Efficiently calculate binomial coefficient
+        }
+        return result;
+    }
+}
+
+```

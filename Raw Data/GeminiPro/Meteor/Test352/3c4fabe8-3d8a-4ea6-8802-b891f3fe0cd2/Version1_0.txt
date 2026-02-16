@@ -1,0 +1,54 @@
+```java
+public class PermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String input = "ab"; // Example input string
+        permutationWithRepeation(input);
+    }
+
+    private static void permutationWithRepeation(String input) {
+        showPermutation(input, "");
+    }
+
+    private static void showPermutation(String input, String currentPermutation) {
+        if (currentPermutation.length() == input.length()) {
+            System.out.println(currentPermutation);
+            return;
+        }
+
+        for (int i = 0; i < input.length(); i++) {
+            showPermutation(input, currentPermutation + input.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation and Example Output:**
+
+1. **`main(String[] args)`:**
+   - This method starts the program.  It calls `permutationWithRepeation` with the input string "ab".
+
+2. **`permutationWithRepeation(String input)`:**
+   - This method initiates the recursive process by calling `showPermutation` with the input string and an initially empty `currentPermutation`.
+
+3. **`showPermutation(String input, String currentPermutation)`:**
+   - This is the recursive method that generates the permutations.
+   - **Base Case:**  If the `currentPermutation` has reached the length of the `input` string, it means a full permutation has been formed.  It prints the permutation and returns.
+   - **Recursive Step:** It iterates through each character of the `input` string. For each character, it adds it to the `currentPermutation` and makes a recursive call to `showPermutation` with the updated `currentPermutation`.  This explores all possible combinations.
+
+**For the input "ab", the output will be:**
+
+```
+aa
+ab
+ba
+bb
+```
+
+
+**Key improvements in this version:**
+
+- **Clearer Method Names:**  `showPermutation` is a more descriptive name than just `permutation`.
+- **Simplified Logic:**  The code is more concise and easier to understand.
+- **Correct Handling of Repetition:** The code now correctly generates permutations *with* repetition, as requested in the prompt.

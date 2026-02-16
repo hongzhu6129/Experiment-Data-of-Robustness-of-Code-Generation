@@ -1,0 +1,50 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertElementArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of Strings
+        List<String> myList = new ArrayList<>();
+
+        // Add some initial elements
+        myList.add("Apple");
+        myList.add("Banana");
+        myList.add("Orange");
+
+        // Element to insert
+        String newElement = "Grape";
+
+        // Position to insert (index)
+        int position = 1; // Insert at index 1 (second position)
+
+        // Check if the position is valid
+        if (position >= 0 && position <= myList.size()) {
+            myList.add(position, newElement);  // Insert at the specified position
+
+            System.out.println("ArrayList after insertion: " + myList); 
+        } else {
+            System.out.println("Invalid position.  Position must be between 0 and " + myList.size());
+        }
+
+
+        // Example with int ArrayList
+         List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        int newNumber = 15;
+        int numberPosition = 1;
+
+        if (numberPosition >= 0 && numberPosition <= numbers.size()) {
+             numbers.add(numberPosition, newNumber);
+            System.out.println("ArrayList of numbers after insertion: " + numbers);
+        } else {
+             System.out.println("Invalid position for number insertion.");
+        }
+
+    }
+}
+```

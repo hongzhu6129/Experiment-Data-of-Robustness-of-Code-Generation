@@ -1,0 +1,94 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToOctal {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a binary number: ");
+        String binaryString = input.nextLine();
+
+
+        try {
+            long binary = Long.parseLong(binaryString);
+            if (!binaryString.matches("[01]+")) {  // Validate binary input
+                throw new NumberFormatException("Invalid binary format.  Only 0s and 1s are allowed.");
+            }
+
+            long decimal = 0;
+            long power = 1; // Represents 2^0, 2^1, 2^2, etc.
+
+            // Binary to Decimal conversion
+            for (int i = binaryString.length() - 1; i >= 0; i--) {
+                if (binaryString.charAt(i) == '1') {
+                    decimal += power;
+                }
+                power *= 2;
+            }
+
+
+            String octalString = "";
+
+
+            // Handle the corner case of input 0
+            if(decimal == 0) {
+                octalString = "0";
+            } else {
+                // Decimal to Octal conversion
+                while(decimal > 0) {
+                    long remainder = decimal % 8;
+                    octalString = remainder + octalString;  // Prepend the remainder
+                    decimal /= 8;
+                }
+            }
+
+
+            System.out.println("Octal equivalent: " + octalString);
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: " + e.getMessage());
+        }
+
+        input.close();
+    }
+}
+
+
+
+```
+
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `101101`
+   - Expected Output: `55`
+
+2. **Leading Zeros:**
+   - Input: `000110`
+   - Expected Output: `6`
+
+3. **Large Binary:**
+   - Input: `1111111111111111111111111111111` (31 ones, maximum for a signed int)
+   - Expected Output: `37777777777`
+
+4. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+5. **Invalid Input (Non-binary characters):**
+   - Input: `101201`
+   - Expected Output: `Invalid input: Invalid binary format. Only 0s and 1s are allowed.`
+
+6. **Invalid Input (Empty String):**
+   - Input: ``
+   - Expected Output: `Invalid input: For input string: ""`
+
+7. **Invalid Input (Very large number - overflow):**
+   - Input: `100000000000000000000000000000000000000000000000000000` (Should cause a NumberFormatException)
+   - Expected Output: `Invalid input: For input string: "100000000000000000000000000000000000000000000000000000"`
+
+
+This comprehensive set of test cases helps to ensure the robustness of the code by covering various scenarios, including valid inputs, edge cases, and error handling.  It's crucial to thoroughly test your code to identify and fix potential bugs.

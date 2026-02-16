@@ -1,0 +1,37 @@
+```java
+import java.sql.Timestamp;
+import java.time.Instant;
+
+public class CurrentTimestamp {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using java.sql.Timestamp
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println("Current Timestamp (java.sql.Timestamp): " + timestamp);
+
+
+        // Method 2: Using java.time.Instant (Java 8 and later - preferred)
+        Instant instant = Instant.now();
+        System.out.println("Current Timestamp (java.time.Instant): " + instant);
+
+
+        // If you need a formatted string representation:
+        //  You can use DateTimeFormatter with Instant or convert to LocalDateTime/ZonedDateTime
+
+        // Example (requires java.time.format.DateTimeFormatter):
+        //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        //  String formatted = instant.atZone(ZoneId.systemDefault()).format(formatter); 
+        //  System.out.println("Formatted Timestamp: " + formatted);
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Comments:** Added comments to explain the different methods.
+* **Java 8+ Method (Preferred):** Shows how to use `java.time.Instant`, which is generally preferred in modern Java for time-related operations.  It's more robust and has a cleaner API.
+* **Formatting Option (Commented Out):** Provides a commented-out example of how you could format the timestamp into a specific string representation if needed, using `DateTimeFormatter`. This helps if you want to control the output format.  I left it commented as the prompt specifically asked for the timestamp, not a formatted string.
+* **`java.sql.Timestamp` still included:** Keeps the original `java.sql.Timestamp` example for completeness, but highlights that `Instant` is generally better.

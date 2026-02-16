@@ -1,0 +1,54 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveFromGreenSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet (which by convention is often referred to as a "green set"
+        // due to its sorted nature and efficient operations)
+        TreeSet<String> greenSet = new TreeSet<>();
+
+        // Add some elements to the set
+        greenSet.add("Apple");
+        greenSet.add("Banana");
+        greenSet.add("Orange");
+        greenSet.add("Grape");
+
+        // Element to remove
+        String elementToRemove = "Banana";
+
+
+        System.out.println("Original Green Set: " + greenSet);
+
+        // Remove the element
+        boolean removed = greenSet.remove(elementToRemove);
+
+        if (removed) {
+            System.out.println("Green Set after removing '" + elementToRemove + "': " + greenSet);
+        } else {
+            System.out.println(elementToRemove + " was not found in the Green Set.");
+        }
+
+
+
+        //Example with an Integer TreeSet
+         TreeSet<Integer> numberSet = new TreeSet<>();
+        numberSet.add(10);
+        numberSet.add(5);
+        numberSet.add(20);
+        numberSet.add(15);
+
+        Integer numberToRemove = 5;
+
+        System.out.println("\nOriginal Number Set: " + numberSet);
+
+        boolean numberRemoved = numberSet.remove(numberToRemove);
+
+         if (numberRemoved) {
+            System.out.println("Number Set after removing '" + numberToRemove + "': " + numberSet);
+        } else {
+            System.out.println(numberToRemove + " was not found in the Number Set.");
+        }
+    }
+}
+```

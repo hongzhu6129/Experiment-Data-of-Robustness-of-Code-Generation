@@ -1,0 +1,76 @@
+```java
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+        // Check if an argument is provided
+        if (args.length == 0) {
+            System.out.println("Please provide a number as an argument.");
+            return;
+        }
+
+        // Try to parse the argument as an integer
+        int num;
+        try {
+            num = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            return;
+        }
+
+
+        // Print the multiplication table
+        System.out.println("Multiplication table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `MultiplicationTable.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   ```bash
+   javac MultiplicationTable.java 
+   ```
+3. **Run:** Execute the compiled code with the desired number as a command-line argument:
+   ```bash
+   java MultiplicationTable 8 
+   ```
+   Replace `8` with any other integer you want to generate the table for.
+
+
+**Explanation:**
+
+1. **Input Handling:**
+   - The code first checks if any command-line arguments are provided using `args.length == 0`. If no arguments are given, it prints an error message and exits.
+   - It then uses `Integer.parseInt(args[0])` to convert the first command-line argument (which is expected to be the number) into an integer. It also includes a `try-catch` block to handle potential `NumberFormatException` if the user enters something that's not a valid integer.
+
+2. **Multiplication Table Logic:**
+   - A `for` loop iterates from 1 to 10 (inclusive).
+   - Inside the loop, `System.out.println()` prints each row of the multiplication table in the format "num x i = result".  The calculation `num * i` performs the multiplication.
+
+3. **Output:** The program will print the multiplication table of the given number up to 10 to the console.
+
+
+**Example Usage:**
+
+If you run:  `java MultiplicationTable 8`
+
+The output will be:
+
+```
+Multiplication table for 8:
+8 x 1 = 8
+8 x 2 = 16
+8 x 3 = 24
+8 x 4 = 32
+8 x 5 = 40
+8 x 6 = 48
+8 x 7 = 56
+8 x 8 = 64
+8 x 9 = 72
+8 x 10 = 80
+```

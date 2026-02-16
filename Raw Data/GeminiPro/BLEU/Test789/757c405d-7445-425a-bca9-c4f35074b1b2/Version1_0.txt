@@ -1,0 +1,42 @@
+```java
+public class OctalToDecimal {
+
+    public static void main(String[] args) {
+        String octalString = "10"; // Replace with user input if needed
+
+        try {
+            int decimal = Integer.parseInt(octalString, 8);
+            System.out.println("Equivalent decimal number: " + decimal);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid octal number format.");
+        }
+    }
+}
+```
+
+
+This improved version handles potential `NumberFormatException` if the input string isn't a valid octal number. It defaults to "10" as per the prompt but can easily be modified to take user input.  For example:
+
+```java
+import java.util.Scanner;
+
+public class OctalToDecimal {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input any octal number: ");
+        String octalString = scanner.nextLine();
+        scanner.close();
+
+
+        try {
+            int decimal = Integer.parseInt(octalString, 8);
+            System.out.println("Equivalent decimal number: " + decimal);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid octal number format.");
+        }
+    }
+}
+```
+

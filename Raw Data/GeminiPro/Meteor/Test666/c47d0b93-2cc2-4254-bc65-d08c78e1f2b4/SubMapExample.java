@@ -1,0 +1,44 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some data
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+
+        // Given key
+        int givenKey = 4;
+
+        // Get the portion of the map whose keys are strictly less than givenKey
+        SortedMap<Integer, String> subMap = map.headMap(givenKey);
+
+
+        // Print the submap
+        System.out.println("Submap with keys strictly less than " + givenKey + ":");
+        System.out.println(subMap);
+
+
+        // Example with a key that doesn't exist in the map
+        givenKey = 7;  // Key not present
+        subMap = map.headMap(givenKey);
+        System.out.println("\nSubmap with keys strictly less than " + givenKey + " (key not present):");
+        System.out.println(subMap); // Will return all entries less than 7 (which is the whole map in this case)
+
+
+        // Example with the smallest key
+        givenKey = 1; // Smallest key
+        subMap = map.headMap(givenKey);
+        System.out.println("\nSubmap with keys strictly less than " + givenKey + " (smallest key):");
+        System.out.println(subMap); // Will return an empty map as there are no keys less than 1.
+    }
+}

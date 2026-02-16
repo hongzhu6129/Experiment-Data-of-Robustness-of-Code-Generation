@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Handle invalid input
+        }
+        if (k == 0 || k == n) {
+            return 1;
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: C(n, k) = C(n, n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i; // Efficient calculation to avoid overflow
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+        if (n < 0 || k < 0) {  //check input validity
+            System.out.println("Invalid input. n and k must be non-negative.");
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        }
+        scanner.close();
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The `binomial_Coefficient` method now handles invalid input (k < 0 or k > n) by returning 0. The `main` method also checks for negative inputs.
+
+2. **Optimization:** The code includes the optimization `if (k > n / 2) { k = n - k; }`. This utilizes the property C(n, k) = C(n, n-k) to reduce the number of iterations in the loop, improving efficiency, especially for larger values of `n` and `k`.
+
+3. **Efficient Calculation:** The calculation within the loop `result = result * (n - i + 1) / i;` is designed to avoid potential integer overflow by performing the multiplication before the division.  It ensures that the intermediate results stay within the `long` data type's range as much as possible.
+
+4. **Clearer User Input:** The `main` method uses `Scanner` to get input from the user and provides clear prompts.
+
+5. **Input Validation in main:** The main method now validates the input to ensure n and k are not negative.
+
+6. **Resource Management:** The `scanner.close()` statement is added to release the `Scanner` resource after it's used.
+
+
+
+This improved version provides more robust and efficient calculation of binomial coefficients. It also demonstrates better coding practices with input validation and resource management.

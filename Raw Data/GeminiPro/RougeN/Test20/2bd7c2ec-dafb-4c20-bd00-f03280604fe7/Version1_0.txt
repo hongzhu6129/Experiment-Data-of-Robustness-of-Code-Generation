@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class OctalToDecimal {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = scanner.nextLine();
+
+        try {
+            long octal = Long.parseLong(octalString);
+            long decimal = 0;
+            long power = 1;
+
+            // Handle negative numbers (although strictly, octal is unsigned)
+            boolean isNegative = false;
+            if (octalString.startsWith("-")) {
+                isNegative = true;
+                octal = -octal; // Make it positive for processing
+                octalString = octalString.substring(1); // Remove the minus sign for validation
+            }
+
+
+            // Validate octal input (digits 0-7 only)
+            for (char c : octalString.toCharArray()) {
+                if (c < '0' || c > '7') {
+                    System.out.println("Invalid octal number.  Digits must be 0-7.");
+                    return;
+                }
+            }
+
+
+            // Convert
+            long tempOctal = octal;  // Use a temp variable to preserve original input
+            while (tempOctal != 0) {
+                long lastDigit = tempOctal % 10;
+                tempOctal /= 10;
+                decimal += lastDigit * power;
+                power *= 8;
+
+                // Overflow check  (Important for larger octal numbers)
+                if (decimal < 0 && !isNegative) { // Detect unintended sign change (overflow)
+                  System.out.println("Octal number too large to represent as a long decimal.");
+                  return;
+                }
+
+            }
+
+            if (isNegative) {
+                decimal = -decimal; // Restore the negative sign if necessary
+            }
+            System.out.println("Decimal equivalent: " + decimal);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input.  Please enter a valid octal number.");
+        }
+        scanner.close();
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Numbers:**
+   - Input: 123  Output: 83
+   - Input: 777  Output: 511
+   - Input: 0    Output: 0
+   - Input: 10   Output: 8
+   - Input: 42   Output: 34
+
+2. **Invalid Octal Numbers:**
+   - Input: 888  Output: Invalid octal number. Digits must be 0-7.
+   - Input: 12A  Output: Invalid octal number. Digits must be 0-7.
+   - Input: -128 Output: Invalid octal number. Digits must be 0-7.  (Even if negative is allowed)
+   - Input: hello Output: Invalid input. Please enter a valid octal number.
+
+3. **Negative Octal Numbers (handling as negative decimals):**
+   - Input: -123 Output: -83
+   - Input: -777 Output: -511
+
+4. **Corner Cases:**
+   - Input: "" (empty string) Output: Invalid input. Please enter a valid octal number.
+   - Input: " " (space) Output: Invalid input. Please enter a valid octal number.
+
+
+5. **Overflow Case (important):**
+    - Input: 1777777777777777777777 (a very large octal number) Output: Octal number too large to represent as a long decimal.
+
+
+These test cases cover various scenarios, including valid and invalid inputs, negative numbers, empty input, and a crucial overflow condition that can easily occur if you don't check for it when converting large octal values to decimal.  The overflow check is very important because it prevents potentially incorrect results due to limitations of the `long` data type.

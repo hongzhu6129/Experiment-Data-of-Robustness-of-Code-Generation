@@ -1,0 +1,68 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapContainsKey {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> studentScores = new HashMap<>();
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+
+
+        // 1. Using containsKey() method:  Most straightforward and efficient.
+        String keyToCheck = "Bob";
+        if (studentScores.containsKey(keyToCheck)) {
+            System.out.println(keyToCheck + " exists in the map with score: " + studentScores.get(keyToCheck));
+        } else {
+            System.out.println(keyToCheck + " does not exist in the map.");
+        }
+
+        keyToCheck = "David"; // A key not in the map
+        if (studentScores.containsKey(keyToCheck)) {
+            System.out.println(keyToCheck + " exists in the map with score: " + studentScores.get(keyToCheck));
+        } else {
+            System.out.println(keyToCheck + " does not exist in the map.");
+        }
+
+
+        // 2. Using get() method (less efficient, but can be useful if you also need the value)
+        //  If get() returns null, the key is not present.
+        keyToCheck = "Alice";
+        Integer score = studentScores.get(keyToCheck);
+        if (score != null) {
+            System.out.println(keyToCheck + " exists in the map with score: " + score);
+        } else {
+            System.out.println(keyToCheck + " does not exist in the map.");
+        }
+
+
+        //  Demonstrating the inefficiency of get() for just checking existence:
+        keyToCheck = "Eve"; // Not in the map
+        long startTime = System.nanoTime();  // Measure time taken
+
+        for(int i = 0; i < 1000000; i++) { // Simulate many checks
+            studentScores.get(keyToCheck); // Repeated calls to get() for a non-existent key.
+        }
+
+
+        long endTime = System.nanoTime();
+        long durationGet = (endTime - startTime);
+
+        startTime = System.nanoTime();
+
+        for(int i = 0; i < 1000000; i++) {
+            studentScores.containsKey(keyToCheck);  // containsKey is more efficient for just checking existence
+        }
+        endTime = System.nanoTime();
+        long durationContainsKey = (endTime - startTime);
+
+        System.out.println("Time using get(): " + durationGet + " ns");
+        System.out.println("Time using containsKey(): " + durationContainsKey + " ns");
+
+
+       // Conclusion:  containsKey() is generally the preferred and most efficient method for checking 
+       // if a key exists in a map. Use get() only if you need to retrieve the associated value.
+    }
+}

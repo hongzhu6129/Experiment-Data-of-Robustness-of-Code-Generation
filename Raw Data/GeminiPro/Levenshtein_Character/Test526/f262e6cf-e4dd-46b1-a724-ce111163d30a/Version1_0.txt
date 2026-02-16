@@ -1,0 +1,53 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            // Calculate the Fermat number using Math.pow() and casting to long
+            long fermatNumber = (long) (Math.pow(2, Math.pow(2, n)) + 1);
+
+            // Handle potential overflow for larger Fermat numbers
+            if (fermatNumber > 0) {  // Check for overflow (negative values indicate overflow)
+                System.out.println(fermatNumber);
+            } else {
+                System.out.println("Fermat number for n = " + n + " is too large to represent as a long.");
+            }
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`long` Data Type:**  Fermat numbers grow very rapidly.  Using `int` will lead to overflow very quickly. We use `long` to accommodate larger values, but even `long` has limits.
+
+2. **Overflow Handling:** The code now checks for overflow.  If the calculated `fermatNumber` becomes negative (a sign of overflow), a message is printed indicating that the number is too large.
+
+3. **Clear Output:** The output is formatted to be more readable, clearly indicating which Fermat number corresponds to which value of `n`.
+
+4. **Efficiency (minor):** `Math.pow(2, n)` is used.  We could slightly optimize by using bit-shifting (`1L << n`) to calculate powers of 2, but for small values of `n`, the difference in performance is negligible.  `Math.pow()` is more readable for this purpose.
+
+5. **BigInteger (for truly large Fermat Numbers):**  If you need to calculate Fermat numbers beyond what `long` can handle, you'll need to use `BigInteger`:
+
+   ```java
+   import java.math.BigInteger;
+
+   public class FermatNumbersBigInteger {
+
+       public static void main(String[] args) {
+           System.out.println("First 10 Fermat Numbers (using BigInteger):");
+
+           for (int n = 0; n < 10; n++) {
+               BigInteger two = BigInteger.valueOf(2);
+               BigInteger exponent = two.pow(n);
+               BigInteger fermatNumber = two.pow(exponent.intValueExact()).add(BigInteger.ONE); // Careful with intValueExact()!
+               System.out.println(fermatNumber);
+           }
+       }
+   }
+   ```
+
+   The `BigInteger` version will handle arbitrarily large Fermat numbers without overflow.  The `intValueExact()` method is used carefully to check for potential `ArithmeticException` if the exponent becomes too large to represent as an `int`.

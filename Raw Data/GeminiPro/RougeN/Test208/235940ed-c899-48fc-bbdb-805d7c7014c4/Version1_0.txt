@@ -1,0 +1,80 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth) {
+                return (leftDepth + 1);
+            } else {
+                return (rightDepth + 1);
+            }
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        BinaryTreeDepth tree = new BinaryTreeDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+        // Example of a tree that exceeds a certain depth (let's say 5)
+         root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.left.left = new Node(6); // Depth 4
+        root.left.left.left.left = new Node(7); // Depth 5
+        root.left.left.left.left.left = new Node(8); // Depth exceeds 5
+
+
+        if(tree.maxDepth(root)>5){
+            System.out.println("Tree exceeds depth 5. Max Depth is : " + tree.maxDepth(root));
+        } else {
+            System.out.println("Tree does not exceed depth 5. Max Depth is : " + tree.maxDepth(root));
+        }
+
+    }
+}
+```
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Node Class:** The `Node` class is defined to represent the nodes of the binary tree.
+
+2. **Recursive `maxDepth()`:**  The `maxDepth()` function recursively calculates the depth of the tree.  The base case is when `node` is `null` (empty subtree), returning 0. Otherwise, it recursively calls `maxDepth()` on the left and right subtrees, takes the maximum of the two depths, and adds 1 (for the current node).
+
+3. **Illustrative `main()` Method:**  The `main()` method provides examples of how to create a binary tree and use the `maxDepth()` function to calculate its height. The second example in `main()` demonstrates checking if the tree's depth exceeds a specific value (5 in this case).
+
+4. **Handling exceeding depth in `main()`:** The main method demonstrates how you can compare the calculated `maxDepth()` with a target depth and print appropriate messages if the maximum depth exceeds a specified value.
+
+
+This improved code addresses the prompt's requirements accurately and provides a robust and understandable solution for calculating the depth of a binary tree and checking if it exceeds a given depth.

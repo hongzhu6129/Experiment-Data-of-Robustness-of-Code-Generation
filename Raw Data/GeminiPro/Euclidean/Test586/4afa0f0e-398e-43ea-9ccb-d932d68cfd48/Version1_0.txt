@@ -1,0 +1,33 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListMilitaryTime {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (representing elements)
+        LinkedList<String> elements = new LinkedList<>();
+
+        // Add some elements to the list
+        elements.add("Alpha");
+        elements.add("Bravo");
+        elements.add("Charlie");
+        elements.add("Delta");
+        elements.add("Echo");
+
+
+        // Display elements with their "military time" (index as if it were an hour)
+        ListIterator<String> iterator = elements.listIterator();
+        while (iterator.hasNext()) {
+            int index = iterator.nextIndex(); // Get the current index (0-based)
+            String element = iterator.next();    // Get the current element
+
+            // Format the index like military time (00, 01, 02, ..., 23)
+            String militaryTime = String.format("%02d", index); 
+
+            System.out.println(militaryTime + ": " + element);
+
+        }
+    }
+}
+```

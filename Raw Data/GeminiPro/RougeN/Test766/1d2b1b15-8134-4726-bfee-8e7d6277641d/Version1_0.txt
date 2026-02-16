@@ -1,0 +1,53 @@
+```java
+public class SumOfTwoNumbers {
+
+    public static void main(String[] args) {
+        int num1 = 74;
+        int num2 = 36;
+        int sum = num1 + num2;
+
+        System.out.println("The sum of " + num1 + " and " + num2 + " is: " + sum); // Output: The sum of 74 and 36 is: 110
+
+        // Alternatively, for user input (requires exception handling in a real application):
+        // if (args.length == 2) {  //Check if two arguments are provided.
+        //     try {
+        //         int num3 = Integer.parseInt(args[0]);
+        //         int num4 = Integer.parseInt(args[1]);
+        //         int sum2 = num3 + num4;
+        //         System.out.println("The sum is: " + sum2); 
+        //     } catch (NumberFormatException e) {
+        //         System.err.println("Invalid input: Please provide two integers.");
+        //     }
+        // } else {
+        //     System.err.println("Please provide two numbers as command-line arguments.");
+        // }
+    }
+}
+```
+
+
+Explanation:
+
+1. **Declare Variables:** We declare two integer variables, `num1` and `num2`, and initialize them with the values 74 and 36, respectively.  We also declare a variable `sum` to store the result of the addition.
+
+2. **Calculate Sum:**  The line `int sum = num1 + num2;` calculates the sum of `num1` and `num2` and stores the result in the `sum` variable.
+
+3. **Print Output:** `System.out.println(...)` prints the result to the console. We use string concatenation (`+`) to create a clear output message.
+
+**Alternative with User Input (Commented-out):**
+
+The commented-out section shows how you could accept numbers as command-line arguments.  
+
+* `args` is an array of strings that holds the command-line arguments.
+* `Integer.parseInt()` converts the string arguments to integers.
+* The `try-catch` block handles potential `NumberFormatException` if the user enters non-numeric input.  This is crucial for robust code, but is slightly beyond the absolute basic scope of this "educational" example.  I've left it commented out for initial simplicity but strongly encourage you to uncomment and explore it once you grasp the fundamentals.
+
+
+To compile and run this with command-line arguments (after uncommenting the relevant section):
+
+1. **Save:** Save the code as `SumOfTwoNumbers.java`.
+2. **Compile:**  Open a terminal or command prompt, navigate to the directory where you saved the file, and type: `javac SumOfTwoNumbers.java`
+3. **Run:** `java SumOfTwoNumbers 10 25` (replace 10 and 25 with your desired numbers).
+
+
+If you're using an IDE like IntelliJ IDEA, Eclipse, or NetBeans, you can simply create a new Java project, paste the code in, and run it directly from the IDE. You can provide command-line arguments through the IDE's run configurations.

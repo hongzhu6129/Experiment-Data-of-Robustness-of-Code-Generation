@@ -1,0 +1,34 @@
+```java
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "t " : "f "); // Print 't' for true, 'f' for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+This code directly addresses the prompt's requirement of using only the `public static void main(String[])` signature for the program entry point.  It neatly separates the printing logic into a helper function `printBooleanArray` within the same class, avoiding cluttering the `main` method. This approach improves code organization and readability.  The `printBooleanArray` method iterates through the 2D array using enhanced for loops (for-each loops) and prints 't' or 'f' based on the boolean value.
+
+
+**Example Output (for the sample array):**
+
+```
+t f t 
+f t f 
+t t f 
+```

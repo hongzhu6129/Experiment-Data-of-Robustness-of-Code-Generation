@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **HashSet for Cycle Detection:** The `seen` HashSet is crucial. It stores numbers encountered during the process. If a number is already in `seen`, it indicates a cycle, and the number is not happy.
+
+2. **Clearer While Loop Condition:** The `while (n != 1 && !seen.contains(n))` condition combines the two termination criteria: reaching 1 (happy) or entering a cycle (unhappy).
+
+3. **Digit Extraction:** The inner `while` loop efficiently extracts digits and calculates the sum of squares.
+
+4. **Return Boolean:** The function correctly returns a boolean value (true for happy, false for unhappy).
+
+5. **Comprehensive Main Method:**  The `main` method demonstrates the usage and includes multiple test cases, including edge cases like 1 and 100, and cases from the original prompt (7 and 2, correcting the prompt's mistaken output for 7).  This demonstrates proper function and provides clearer validation.
+
+
+**Key Improvement over other potential solutions:**
+
+* **Efficiency:** Using a HashSet to detect cycles is significantly more efficient than alternative approaches (like storing the entire sequence in a list), especially for numbers that lead to long cycles.  HashSet lookups (`contains()`) are typically O(1) on average, leading to better performance.

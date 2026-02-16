@@ -1,0 +1,45 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1);
+    }
+}
+```
+
+
+This code addresses the overflow issue by using `long` to store the Fermat numbers. While `long` can hold larger values than `int`, it still has limitations.  Fermat numbers grow very rapidly, so even `long` will overflow beyond the first few.  If you need to calculate even larger Fermat numbers, you'll need to use `BigInteger`.
+
+Here's the version using `BigInteger` if you're interested:
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBigInteger {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println(fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.valueOf(2).pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+    }
+}
+```
+
+
+This version using `BigInteger` can handle arbitrarily large Fermat numbers without overflow.

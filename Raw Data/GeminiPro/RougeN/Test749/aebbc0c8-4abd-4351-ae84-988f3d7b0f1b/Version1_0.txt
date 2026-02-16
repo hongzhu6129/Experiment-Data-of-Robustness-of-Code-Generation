@@ -1,0 +1,56 @@
+```java
+public class RemoveVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello World";
+        String updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: Hll Wrld
+
+        inputString = "AEIOUaeiou";
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: 
+
+        inputString = "This is a test string.";
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: Ths s  tst strng.
+
+
+        inputString = ""; // Empty String
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output:
+
+
+        inputString = null; // Null String  (important to handle this!)
+        updatedString = validate(inputString);
+        System.out.println(updatedString); // Output: null
+
+
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null) {  // Handle null input
+            return null;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            // Check if the character is NOT a vowel (case-insensitive)
+            if (!"AEIOUaeiou".contains(String.valueOf(c))) { 
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Null Handling:** The `validate` method now explicitly handles `null` input.  This is crucial for robust code to prevent `NullPointerExceptions`.  It returns `null` if the input is `null`.
+2. **StringBuilder for Efficiency:** Using `StringBuilder` is significantly more efficient than repeated string concatenation (using `+=` or `+` with Strings). Strings are immutable in Java, so each concatenation creates a new String object, which is inefficient, especially in loops.
+3. **Clearer Vowel Check:** The vowel check `!"AEIOUaeiou".contains(String.valueOf(c))` is now more readable and concise.  It converts the character `c` to a String so it can be used with the `contains()` method.
+4. **Comprehensive Test Cases in `main`:** The `main` method now includes several test cases, including empty strings, strings with only vowels, strings with mixed characters, and the very important `null` input test case.  This demonstrates the functionality thoroughly.
+
+
+This improved version is more efficient, handles edge cases correctly, and is overall better structured and more robust.

@@ -1,0 +1,25 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinimumCalendarValues {
+
+    public static void main(String[] args) {
+        // Get the current date and time using the default calendar (GregorianCalendar)
+        Calendar calendar = new GregorianCalendar();
+
+        // Get the minimum values
+        int minYear = calendar.getActualMinimum(Calendar.YEAR);
+        int minMonth = calendar.getActualMinimum(Calendar.MONTH);
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR);
+        int minDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+        int minDayOfYear = calendar.getActualMinimum(Calendar.DAY_OF_YEAR);
+
+
+        // Print the results
+        System.out.println("Minimum Year: " + minYear);         // Usually 1
+        System.out.println("Minimum Month: " + (minMonth +1));    // 0 (January)  - We add 1 for user-friendliness as Calendar uses 0-based indexing
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);  //  Depends on the calendar system; may be 1 or a different value
+        System.out.println("Minimum Day of Month: " + minDayOfMonth); // Always 1
+        System.out.println("Minimum Day of Year: "+ minDayOfYear); // Always 1
+    }
+}

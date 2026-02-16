@@ -1,0 +1,92 @@
+```java
+public class OctalToByte {
+
+    public static void main(String[] args) {
+
+        if (args.length != 1) {
+            System.err.println("Usage: java OctalToByte <octalNumber>");
+            return;
+        }
+
+        String octalStr = args[0];
+
+        try {
+            // Check for invalid characters (anything other than 0-7)
+            for (char c : octalStr.toCharArray()) {
+                if (c < '0' || c > '7') {
+                    throw new NumberFormatException("Invalid octal digit: " + c);
+                }
+            }
+
+
+            // Parse octal string to an integer
+            int octal = Integer.parseInt(octalStr, 8);
+
+            // Check if the octal number can fit into a byte
+            if (octal < Byte.MIN_VALUE || octal > Byte.MAX_VALUE) {
+                throw new NumberFormatException("Octal number out of range for byte.");
+            }
+
+            // Convert integer to byte
+            byte byteValue = (byte) octal;
+
+            System.out.println("Octal: " + octalStr + ", Byte: " + byteValue);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Test Cases (including corner and error cases):**
+
+1. **Valid Octal:**
+   - Input: `10` (Octal)
+   - Expected Output: `Octal: 10, Byte: 8`
+
+2. **Valid Octal with Leading Zero:**
+   - Input: `010`
+   - Expected Output: `Octal: 010, Byte: 8`
+
+3. **Maximum Positive Byte Value:**
+   - Input: `177` (Octal for 127)
+   - Expected Output: `Octal: 177, Byte: 127`
+
+4. **Minimum Negative Byte Value:**
+   - Input: `200` (Octal for -128, two's complement representation) 
+   - Expected Output: `Octal: 200, Byte: -128`
+
+5. **Octal Number too large (positive overflow):**
+   - Input: `2000` (Octal for 1024)
+   - Expected Output: `Error: Octal number out of range for byte.`
+
+6. **Octal Number too small (negative overflow):**
+   - Input: `377` (Octal for -1, but -129 is too small) *Careful with this one, interpreting overflow depends on how you think about the conversion*  If you directly parse with `Integer.parseInt` and cast to `byte`, Java handles overflow silently through truncation.
+   - Expected Output: If directly cast: `Octal: 377, Byte: -1`
+
+7. **Invalid Octal (contains invalid digit):**
+   - Input: `128`
+   - Expected Output: `Error: Invalid octal digit: 8`
+
+8. **Invalid Octal (contains invalid character):**
+   - Input: `1A2`
+   - Expected Output: `Error: Invalid octal digit: A`
+
+9. **Empty Input:**
+   - Input: ``
+   - Expected Output: `Usage: java OctalToByte <octalNumber>`
+
+10. **Multiple Arguments:**
+    - Input: `10 20`
+    - Expected Output: `Usage: java OctalToByte <octalNumber>`
+
+
+
+
+**How to run the test cases:**
+
+Save the code as `OctalToByte.java`. Compile it: `javac OctalToByte.java`.  Then run with each test case like this: `java OctalToByte 10` (replace `10` with the input you want to test).
+
+
+This improved code handles various error conditions and edge cases, providing a more robust solution.  It avoids reliance on any methods outside of `main`, as requested.

@@ -1,0 +1,19 @@
+
+
+
+Explanation and Key Improvements:
+
+1. **TreeMap:** Uses `TreeMap` which is a sorted map implementation. This is crucial because `headMap()` relies on the natural ordering of keys (or a provided `Comparator`) to efficiently extract the submap.  If you were using a `HashMap` (which is unordered), the concept of "less than" a key wouldn't be well-defined.
+
+2. **headMap():**  The `headMap(K toKey)` method efficiently returns a view of the portion of the map whose keys are strictly less than `toKey`. This is precisely what the problem asks for.
+
+3. **Clearer Examples:** Includes multiple examples:
+   - One with integer keys.
+   - One demonstrating what happens when the `givenKey` is larger than any key in the map.
+   - An example with string keys to show that it works with different data types that have a natural ordering.
+
+4. **Output:**  Prints both the original map and the submap for easy comparison and understanding.
+
+5. **Correct Handling of Non-Existent Keys:** The code correctly handles the case when `givenKey` is not present in the map (it returns all entries with keys smaller than  `givenKey`).
+
+6. **Conciseness and Efficiency:** The code is concise, avoids unnecessary loops or iterations, and leverages the built-in efficiency of `TreeMap` and `headMap()`.

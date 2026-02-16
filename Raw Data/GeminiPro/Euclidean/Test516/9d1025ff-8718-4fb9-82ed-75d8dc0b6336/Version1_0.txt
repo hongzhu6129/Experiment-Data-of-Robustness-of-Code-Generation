@@ -1,0 +1,56 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    /**
+     * Checks if a given number is a happy number.
+     *
+     * @param n The number to check.
+     * @return True if the number is happy, false otherwise.
+     */
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            n = sumOfSquaresOfDigits(n);
+        }
+
+        return n == 1;
+    }
+
+    private static int sumOfSquaresOfDigits(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 10;
+            sum += digit * digit;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    /**
+     * Main method to test the isHappy_number function.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int num1 = 19;
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+
+        int num2 = 2;
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        int num3 = 7;
+        System.out.println(num3 + " is a happy number: " + isHappy_number(num3)); // Output: true
+
+        int num4 = 1;
+        System.out.println(num4 + " is a happy number: " + isHappy_number(num4)); // Output: true
+
+        int num5 = 100;
+        System.out.println(num5 + " is a happy number: " + isHappy_number(num5)); // Output: true
+    }
+}
+```

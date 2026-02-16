@@ -1,0 +1,12 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("a\ta^2\ta^3\ta^4"); // Print header row
+
+        for (int a = 1; a <= 4; a++) {
+            System.out.print(a + "\t"); // Print the value of 'a'
+            System.out.print(a * a + "\t"); // Print a^2
+            System.out.print(a * a * a + "\t"); // Print a^3
+            System.out.println(a * a * a * a); // Print a^4 and move to the next line
+        }
+    }
+}

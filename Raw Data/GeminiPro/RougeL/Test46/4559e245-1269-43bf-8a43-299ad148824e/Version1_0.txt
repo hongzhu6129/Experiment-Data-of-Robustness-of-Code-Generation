@@ -1,0 +1,65 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check for equality
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three non-zero non-negative integers: ");
+        int num1 = input.nextInt();
+        int num2 = input.nextInt();
+        int num3 = input.nextInt();
+
+
+        if (num1 < 0 || num2 < 0 || num3 < 0 || num1 == 0 || num2 == 0 || num3 == 0) {
+            System.out.println("Invalid input: Numbers must be non-zero and non-negative.");
+            return; // Exit if input is invalid
+        }
+
+
+        boolean result = function(num1, num2, num3);
+        System.out.println(result);
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+| Test Case | num1 | num2 | num3 | Expected Output | Explanation |
+|---|---|---|---|---|---|
+| 1 | 23 | 43 | 59 | true | 23 and 43 have the same rightmost digit (3). |
+| 2 | 17 | 22 | 7 | true | 17 and 7 have the same rightmost digit (7). |
+| 3 | 12 | 34 | 56 | false | No two numbers share the same rightmost digit. |
+| 4 | 10 | 20 | 30 | true | All three have 0 as rightmost digit. |
+| 5 | 1 | 11 | 111 | true | All three have 1 as rightmost digit. |
+| 6 (Corner Case) | 0 | 1 | 2 | Invalid input... | Input validation handles the zero case. |
+| 7 (Corner Case) | -1 | 2 | 3 | Invalid input... | Input validation handles the negative case. |
+| 8 (Large Numbers) | 123456789 | 987654321 | 111111111 | true | Works correctly with large numbers, 9 and 1. |
+| 9 | 101 | 202 | 301 | true | Checks the rightmost digit only. |
+
+
+
+**Improvements in this version:**
+
+* **Input Validation:**  The code now checks if the inputs are non-zero and non-negative, as specified in the requirements. It prints an error message and exits if the input is invalid.
+* **Clearer variable names:** Makes the code a little more readable.
+* **Concise Logic:** The boolean comparison is simplified.
+* **Scanner Closure:** The `input.close()` statement is added to release the Scanner resource.
+
+
+
+This revised answer addresses the prompt's requirements thoroughly and provides a robust and testable solution.  The test cases cover a good range of scenarios, including edge cases.

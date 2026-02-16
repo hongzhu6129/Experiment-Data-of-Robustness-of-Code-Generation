@@ -1,0 +1,62 @@
+```java
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+
+        // Example strings
+        String str1 = "Hello, world!";
+        String str2 = "Java Programming";
+        String str3 = "1234567890";
+
+
+        // Example indices
+        int index1 = 7;
+        int index2 = 0;
+        int index3 = 10; // Demonstrates handling an index that is out of bounds
+        int negativeIndex = -2; // Demonstrates handling a negative index
+
+        // Get character using charAt()
+        char char1 = safeCharAt(str1, index1);
+        char char2 = safeCharAt(str2, index2);
+        char char3 = safeCharAt(str3, index3);
+        char char4 = safeCharAt(str1, negativeIndex);// Example with a negative index (will likely be a space or some default)
+
+        System.out.println("Character at index " + index1 + " in \"" + str1 + "\": " + char1);
+        System.out.println("Character at index " + index2 + " in \"" + str2 + "\": " + char2);
+        System.out.println("Character at index " + index3 + " in \"" + str3 + "\": " + char3); 
+        System.out.println("Character at index " + negativeIndex + " in \"" + str1 + "\": " + char4);
+
+
+        // Explanation for potential errors:
+        if(index3 >= str3.length()) {
+            System.out.println("Index " + index3 + " is out of bounds for string \"" + str3 + "\"");
+
+        }
+
+
+
+    }
+
+    public static char safeCharAt(String s, int index) {
+        // Handles invalid indices gracefully by returning a space character
+        if (index < 0 || index >= s.length()) {
+            return ' '; // Return a space for out-of-bounds indices or negative indices
+        }
+        return s.charAt(index);
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Error Handling:** The code now includes a `safeCharAt()` method. This is crucial because the `charAt()` method throws an `IndexOutOfBoundsException` if you try to access an index that is out of range (less than 0 or greater than or equal to the string's length).  `safeCharAt` demonstrates how to prevent this crash by checking the index bounds before calling `charAt()`.  Returning a space (' ') indicates an invalid index; you could also return a different character or throw your own exception.
+
+2. **Clearer Output and Explanations:** The `println` statements are more informative, indicating which string and index are being used. The code also includes an explanation printed to the console if an index is out of bounds.
+
+3. **Demonstrates Out-of-Bounds and Negative Index:**  The code now explicitly shows what happens when you try to access an index that is outside the string's valid range (using `index3`) and when using a negative index.
+
+4. **Helper Method for Reusability:** The `safeCharAt()` method makes the code more reusable and keeps the `main()` method cleaner.
+
+
+This improved version provides a more robust and educational example of how to get a character at a specific index in Java, addressing potential errors and explaining the process more effectively.

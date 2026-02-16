@@ -1,0 +1,68 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+ ");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases (While you can't directly unit test output to the console, these are conceptual tests and ways you *could* test if you redirected System.out):**
+
+1. **Basic Functionality:**  Run the program and visually verify it prints the face correctly as shown in the output example.  This is the most straightforward test.
+
+2. **Character Encoding:**  (This is less of a *unit* test and more of an environment check.)  Ensure the environment/terminal/console where you run the program supports the characters used (", +, [, ], |, o, ^, -).  In rare cases, character encoding issues could cause the face to display incorrectly. You could simulate this test by changing your system's default encoding temporarily.
+
+3. **Output Redirection:** (A more technical test).  Redirect the output of the program to a file. Then, compare the contents of the file with the expected output string. This allows for automated testing.  Example (using bash-like shell): `java FacePrinter > output.txt` then compare `output.txt` to the expected face string.
+
+4. **No Input:**  The program doesn't take any command-line arguments, so verify it runs correctly without providing any input.  This tests that the `main` method handles the `args` array being empty, even though it doesn't use it in this simple example. (This might seem trivial, but it's a good practice to consider).
+
+**Corner Cases (While there aren't true corner cases for this program because it doesn't take input, we can consider boundary conditions related to the output itself):**
+
+1. **Empty Lines:**  While not a corner case in the traditional sense,  verify that the output includes the correct blank spaces or newlines between the parts of the face.  Incorrect spacing would distort the face. You could write a test that checks for the presence of `\n` characters in the output.
+
+2. **Character Substitution:**  (Again, more of a robustness/environment test) Deliberately change one of the characters in the `printFace()` method (e.g., change `"` to `'`). Verify that the output reflects this change, demonstrating that the program correctly prints the specified characters and isn't relying on some unintended default behavior.
+
+
+**How to do Output Redirection Testing in more detail (Java):**
+
+```java
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FacePrinterTest {
+
+    @Test
+    void testPrintFace() {
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+
+        FacePrinter.printFace(); // Call the method that prints
+
+        // Reset System.out (important!)
+        System.setOut(System.out);
+
+        String expectedOutput = "  +\"\"\"\"+ \n" +
+                                "[| o o |] \n" +
+                                "  |  ^  | \n" +
+                                "  | '-' | \n" +
+                                "  +-----+ \n"; // Note: Include newline \n
+
+        assertEquals(expectedOutput, outputStream.toString());
+    }
+}
+```
+
+This uses JUnit 5. You'll need to add the JUnit dependency to your project.  This test now captures the output and compares it to the expected string, allowing for a proper automated test.

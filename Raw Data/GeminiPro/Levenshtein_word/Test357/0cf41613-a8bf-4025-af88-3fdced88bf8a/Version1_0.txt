@@ -1,0 +1,65 @@
+```java
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            System.out.println("Input string cannot be null or empty.");
+            return;
+        }
+
+        int strLength = str.length();
+
+        if (n <= 0) {
+            System.out.println("Number of parts (n) must be a positive integer.");
+            return;
+        }
+
+        if (strLength < n) {
+            System.out.println("The string length is less than the number of parts. Cannot split.");
+            return;
+        }
+
+        int partLength = strLength / n;  // Length of each part
+
+        for (int i = 0; i < n; i++) {
+            int startIndex = i * partLength;
+            int endIndex = (i + 1) * partLength;
+
+            if (i == n - 1) { // Adjust for last part if there's a remainder
+                endIndex = strLength;  // Include any remaining characters 
+            }
+            System.out.println(str.substring(startIndex, endIndex));
+
+
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "abcdefghijklmnopqrstuvwxyz";
+        int n = 4;
+
+        System.out.println("Splitting string \"" + str + "\" into " + n + " parts:");
+        splitString(str, n);
+
+
+        System.out.println("\nExample with remainder:");
+        String str2 = "abcdefghijklm";
+        int n2 = 4;
+
+         System.out.println("Splitting string \"" + str2 + "\" into " + n2 + " parts:");
+        splitString(str2, n2);
+
+
+        System.out.println("\nExample with invalid input (n=0):");
+        splitString(str, 0);
+
+        System.out.println("\nExample with invalid input (empty string):");
+        splitString("", 3);
+
+
+        System.out.println("\nExample with invalid input (n greater than length");
+        splitString("abc",5); //n > length
+
+    }
+}
+```

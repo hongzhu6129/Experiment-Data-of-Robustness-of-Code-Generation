@@ -1,0 +1,90 @@
+**Problem Description:**
+
+Write a Java program that removes all nearby duplicate characters from a given string.
+
+**Implementation:**
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class RemoveNearbyDuplicates {
+
+    public static String removeNearbyDuplicates(String s) {
+        if (s == null || s.length() <= 1) {
+            return s;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        Map<Character, Integer> lastIdxMap = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int lastIdx = lastIdxMap.getOrDefault(c, -1);
+
+            if (i - lastIdx > 1) {
+                sb.append(c);
+                lastIdxMap.put(c, i);
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String s1 = "abbaca";
+        String result1 = removeNearbyDuplicates(s1);
+        System.out.println("Original: " + s1);
+        System.out.println("Result: " + result1); // Expected: ca
+
+        String s2 = "azxxzy";
+        String result2 = removeNearbyDuplicates(s2);
+        System.out.println("Original: " + s2);
+        System.out.println("Result: " + result2); // Expected: ay
+
+        String s3 = "aabbaa";
+        String result3 = removeNearbyDuplicates(s3);
+        System.out.println("Original: " + s3);
+        System.out.println("Result: " + result3); // Expected: a
+
+        String s4 = "a";
+        String result4 = removeNearbyDuplicates(s4);
+        System.out.println("Original: " + s4);
+        System.out.println("Result: " + result4); // Expected: a
+
+        String s5 = null;
+        String result5 = removeNearbyDuplicates(s5);
+        System.out.println("Original: " + s5);
+        System.out.println("Result: " + result5); // Expected: null
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty string:** The program should return `null` for an empty string.
+* **Single-character string:** The program should return the same character if there's only one.
+* **Special characters:** The program should handle special characters and spaces correctly.
+
+**Regular Cases:**
+
+* **No duplicate characters:** The program should return the original string if there are no duplicate characters nearby.
+* **Consecutive duplicate characters:** The program should remove all duplicate characters that are next to each other.
+* **Non-consecutive duplicate characters:** The program should remove only nearby duplicate characters, leaving non-nearby duplicates intact.
+
+**Test Case Examples:**
+
+| Input | Expected Output |
+|---|---|
+| "abbaca" | "ca" |
+| "azxxzy" | "ay" |
+| "aabbaa" | "a" |
+| "a" | "a" |
+| "hello world" | "helo wrd" |
+| "1234567890" | "1234567890" |
+| null | null |
+| "" | null |
+| "***" | "*" |
+| "aaabbbccc" | "abc" |

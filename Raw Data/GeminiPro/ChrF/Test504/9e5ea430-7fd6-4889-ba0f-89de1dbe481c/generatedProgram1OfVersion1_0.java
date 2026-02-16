@@ -1,0 +1,28 @@
+class Solution {
+    /**
+     * Given an integer, display its factors.
+     *
+     * For example:
+     * test(12) should print: 1 2 3 4 6 12
+     * test(10) should print: 1 2 5 10
+     */
+    public static void test(int n) {
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Add a newline for cleaner output
+    }
+
+    public static void main(String[] args) {
+        test(12);
+        test(10);
+        test(1); // Test with 1
+        test(0); // Test with 0 -  will print 0 and all other positive integers
+        test(17); // Test with a prime number
+        test(-5); // Test with negative number - handles absolute value for factors
+        test(24);
+
+    }
+}

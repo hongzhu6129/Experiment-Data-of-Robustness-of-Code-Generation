@@ -1,0 +1,63 @@
+public class SwapFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+        int[] newArray = swapFirstLastElements(originalArray);
+
+        // Print the original and new arrays
+        System.out.print("Original Array: ");
+        printArray(originalArray);
+
+        System.out.print("New Array: ");
+        printArray(newArray);
+
+
+        // Another example with a single element array:
+        int[] singleElementArray = {7};
+        int[] newSingleElementArray = swapFirstLastElements(singleElementArray);
+
+        System.out.print("Original Single Element Array: ");
+        printArray(singleElementArray);  //Output: 7
+
+        System.out.print("New Single Element Array: ");
+        printArray(newSingleElementArray); // Output: 7
+
+
+        // Example with a larger array:
+        int[] largerArray = {10, 20, 30, 40, 50, 60, 70};
+        int[] newLargerArray = swapFirstLastElements(largerArray);
+
+        System.out.print("Original Larger Array: ");
+        printArray(largerArray);
+
+        System.out.print("New Larger Array: ");
+        printArray(newLargerArray);
+
+
+    }
+
+    public static int[] swapFirstLastElements(int[] arr) {
+        if (arr == null || arr.length < 1) { // Handling null or empty arrays.  Could also throw an exception
+            return new int[0]; // Return an empty array if input is invalid. 
+        }
+
+        int[] newArray = arr.clone(); // Create a new array to avoid modifying the original.  
+
+        if(newArray.length > 1) { // Only swap if there are at least two elements.
+            int temp = newArray[0];
+            newArray[0] = newArray[newArray.length - 1];
+            newArray[newArray.length - 1] = temp;
+        }
+
+        return newArray;
+    }
+
+
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}

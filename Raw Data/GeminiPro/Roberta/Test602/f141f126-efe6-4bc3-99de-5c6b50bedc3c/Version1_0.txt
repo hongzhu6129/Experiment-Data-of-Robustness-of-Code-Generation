@@ -1,0 +1,66 @@
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+
+        // 1. Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // 2. Add initial elements (optional)
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+
+        // 3. Append an element to the HashSet using add()
+        String newElement = "Grape";
+        boolean isAdded = hashSet.add(newElement); 
+
+        // 4. Check if the element was added (add() returns false if the element already exists)
+        if (isAdded) {
+            System.out.println(newElement + " was added to the HashSet.");
+        } else {
+            System.out.println(newElement + " already exists in the HashSet.");
+        }
+
+
+        // 5. Print the updated HashSet (demonstrate the appended element)
+        System.out.println("Updated HashSet:");
+        // Method 1: Using an enhanced for loop (recommended for simplicity)
+        for (String element : hashSet) {
+            System.out.println(element);
+        }
+
+        // Method 2: Using an Iterator (more flexible)
+        System.out.println("Using Iterator:");
+        Iterator<String> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+         // Important Note about HashSets:
+         // * Elements in a HashSet are unordered.  The order you see printed might not 
+         //    be the order you added them in. 
+         // * HashSets do not allow duplicate elements. If you try to add a duplicate,
+         //    the add() method will return false and the HashSet will remain unchanged.
+
+         //Example with Integer
+         HashSet<Integer> numbers = new HashSet<>();
+         numbers.add(10);
+         numbers.add(20);
+         numbers.add(30);
+
+         int newNumber = 40;
+         numbers.add(newNumber);  // Append
+
+         System.out.println("\nHashSet of numbers:");
+         for(int num : numbers) {
+             System.out.println(num);
+         }
+
+    }
+}
+```

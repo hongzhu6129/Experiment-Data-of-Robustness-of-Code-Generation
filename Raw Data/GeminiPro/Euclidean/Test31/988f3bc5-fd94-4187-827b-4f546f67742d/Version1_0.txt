@@ -1,0 +1,66 @@
+```java
+import java.util.Scanner;
+
+public class DistanceBetweenTwoPoints {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        double latitude1, longitude1, latitude2, longitude2, distance;
+        final double RADIUS = 6371.01;
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        latitude1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        longitude1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        latitude2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        longitude2 = Math.toRadians(input.nextDouble());
+
+        distance = RADIUS * Math.acos(Math.sin(latitude1) * Math.sin(latitude2) +
+                Math.cos(latitude1) * Math.cos(latitude2) * Math.cos(longitude1 - longitude2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Latitude 1 | Longitude 1 | Latitude 2 | Longitude 2 | Expected Distance (approx.) | Notes                                  |
+| --------- | ----------- | ------------ | ----------- | ------------ | ---------------------------- | ------------------------------------- |
+| 1        | 25          | 35          | 35.5        | 25.5        | 1480.08                      | Example from the prompt              |
+| 2        | 0           | 0           | 0           | 0           | 0                             | Same point                        |
+| 3        | 90          | 0           | -90         | 0           | 20015.09                     | North to South Pole                |
+| 4        | 0           | 0           | 0           | 180         | 20015.09                     | Opposite sides of the equator       |
+| 5        | 40.7128     | -74.0060    | 34.0522     | -118.2437   | 3935.75                      | New York to Los Angeles             |
+| 6        | 0          | 90          | 0           | -90         | 20015.09                     | Opposite sides along the equator     |
+| 7         | -25         | -35         | -35.5       | -25.5       | 1480.08                      | Negative coordinates                  |
+| 8        | 89.9       | 179.9      | -89.9       | -179.9      | ~20015.09                   | Near poles and anti-meridian - numerical precision might introduce slight variations from the exact Pole-to-Pole distance |
+
+
+**Explanation of Corner Cases:**
+
+* **Test Case 2:**  Tests the scenario where both points are the same. The distance should be zero.
+* **Test Case 3 & 4:** Tests the largest possible distances (between the poles or opposite sides of the Earth along the equator).
+* **Test Case 6:** Tests points on opposite sides of the Earth along the equator, using positive and negative longitudes.
+* **Test Case 7:**  Uses negative latitude and longitude values to ensure the formula handles them correctly.
+* **Test Case 8:** Tests points very close to the poles and on opposite sides of the anti-meridian.  This is important to check for any potential numerical instability in the calculations, especially when dealing with trigonometric functions near their limits.
+
+
+**How to Run the Test Cases:**
+
+While you could manually enter these values into the program, a better approach would be to create a separate test class (using JUnit or TestNG) to automate these tests.  This is best practice for software development.  You would call the distance calculation method with the input values and assert that the returned distance is within an acceptable tolerance of the expected value.
+
+
+
+This comprehensive set of test cases helps ensure your program is robust and correctly calculates distances across various locations on Earth, including edge cases and those involving potential numerical issues. Remember, thorough testing is crucial for reliable software.
+

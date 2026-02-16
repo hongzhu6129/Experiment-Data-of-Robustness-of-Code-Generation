@@ -1,0 +1,36 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class StringCounter {
+
+    public static void main(String[] args) {
+        List<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("avocado");
+        strings.add("apricot");
+        strings.add("orange");
+
+        char startingLetter = 'a';
+        int count = countStringsStartingWith(strings, startingLetter);
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+
+        startingLetter = 'b'; // Test with a different letter
+        count = countStringsStartingWith(strings, startingLetter);
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+    }
+
+    public static int countStringsStartingWith(List<String> list, char letter) {
+        int count = 0;
+        for (String str : list) {
+            if (!str.isEmpty() && str.charAt(0) == letter) {  // Handle potential empty strings
+                count++;
+            }
+        }
+        return count;
+    }
+}
+```

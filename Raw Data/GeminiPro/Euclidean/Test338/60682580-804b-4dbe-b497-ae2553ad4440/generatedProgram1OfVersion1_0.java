@@ -1,0 +1,18 @@
+public class LastIndexOfTwo {
+
+    public static void main(String[] args) {
+        String str1 = "01232452";
+        String str2 = "12345";
+        String str3 = "012345222";
+
+        System.out.println("Last index of '2' in \"" + str1 + "\": " + findLastIndexOfTwo(str1));
+        System.out.println("Last index of '2' in \"" + str2 + "\": " + findLastIndexOfTwo(str2));
+        System.out.println("Last index of '2' in \"" + str3 + "\": " + findLastIndexOfTwo(str3));
+
+
+    }
+
+    private static int findLastIndexOfTwo(String str) {
+        return str.lastIndexOf('2');
+    }
+}

@@ -1,0 +1,65 @@
+```java
+public class PrintFace {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases (Conceptual - since output is visual):**
+
+While we can't directly unit test the output of `System.out.println()`, we can think about conceptual test cases to ensure our face is printing correctly:
+
+1. **Basic Face:**  Run the program normally.  Visually verify that the face prints as expected with all elements (eyes, nose, mouth, head outline) in the correct positions and using the correct characters.
+
+2. **Character Encoding:**  Test the program on different operating systems and consoles with different character encodings to ensure the special characters like `"` and `-` are displayed correctly.  Problems might arise if the encoding doesn't support these characters.
+
+3. **Output Redirection:** Redirect the output to a file (e.g., `java PrintFace > face.txt`). Open the file and verify the face is correctly written to the file. This tests output streams other than the console.
+
+4. **Modified Face (Optional - for more advanced testing):**
+
+   *  If you were to make the face more dynamic (e.g., allowing changes to the eyes, nose, or mouth through parameters), you would then need to add unit tests to verify that the output changes correctly based on the input parameters.  For example:
+      ```java
+      public static void printFace(String eyes, String nose, String mouth) {
+          System.out.println("  +\"\"\"\"+");
+          System.out.println(" [| " + eyes + " |]");
+          System.out.println("  |  " + nose + "  |");
+          System.out.println("  | " + mouth + " |");
+          System.out.println("  +-----+");
+      }
+
+
+      // In a separate testing class (using JUnit or TestNG)
+      @Test
+      public void testSadFace() {
+          ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+          System.setOut(new PrintStream(outContent));
+
+          PrintFace.printFace("x x", "-", "("); // Sad face
+
+          String expectedOutput = "  +\"\"\"\"+ \n" +
+                                  "[| x x |] \n" +
+                                  "  |  -  | \n" +
+                                  "  | ( | \n" +
+                                  "  +-----+ \n";
+
+          assertEquals(expectedOutput, outContent.toString());
+
+          System.setOut(System.out); // Restore System.out
+      }
+      ```
+
+   * **Corner cases** for a modified face would include empty strings, very long strings for the facial features (to see how they affect the overall layout), and strings containing special characters that might need escaping (e.g., newline characters).
+
+
+
+These testing strategies help ensure that the `printFace()` method behaves correctly and produces the desired output under various conditions.  While true unit tests require capturing and comparing the output, the conceptual test cases provide a good starting point for verifying the visual correctness of the output.  The example with `ByteArrayOutputStream` illustrates how to capture output for automated tests if you introduce parameters to customize the face.

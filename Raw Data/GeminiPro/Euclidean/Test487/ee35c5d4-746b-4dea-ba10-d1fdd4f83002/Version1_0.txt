@@ -1,0 +1,46 @@
+```java
+class Solution {
+    /**
+     * Counts the number of vowels (a, e, i, o, u) in a given string.
+     *
+     * @param str The input string.
+     * @return The number of vowels in the string.
+     */
+    public static int count_Vowels(String str) {
+        int count = 0;
+        if (str == null) {
+            return 0; // Handle null input
+        }
+
+        str = str.toLowerCase(); // Case-insensitive counting
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String testString1 = "Hello World";
+        int vowelCount1 = count_Vowels(testString1);
+        System.out.println("Vowel count in \"" + testString1 + "\": " + vowelCount1);  // Output: 3
+
+
+        String testString2 = "AEIOUaeiou";
+        int vowelCount2 = count_Vowels(testString2);
+        System.out.println("Vowel count in \"" + testString2 + "\": " + vowelCount2);  // Output: 10
+
+        String testString3 = null; // Testing null input
+        int vowelCount3 = count_Vowels(testString3);
+        System.out.println("Vowel count in \"" + testString3 + "\": " + vowelCount3);  // Output: 0
+
+        String testString4 = ""; // Testing empty string
+        int vowelCount4 = count_Vowels(testString4);
+        System.out.println("Vowel count in \"" + testString4 + "\": " + vowelCount4);  // Output: 0
+
+    }
+}
+```

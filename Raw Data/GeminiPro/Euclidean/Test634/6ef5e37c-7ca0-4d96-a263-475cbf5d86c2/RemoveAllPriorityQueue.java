@@ -1,0 +1,22 @@
+import java.util.PriorityQueue;
+
+public class RemoveAllPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a Priority Queue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the Priority Queue
+        pq.add(10);
+        pq.add(20);
+        pq.add(15);
+        pq.add(5);
+
+        System.out.println("Priority Queue before removing elements: " + pq);
+
+        // Remove all elements from the Priority Queue using clear()
+        pq.clear();
+
+        System.out.println("Priority Queue after removing elements: " + pq); 
+    }
+}

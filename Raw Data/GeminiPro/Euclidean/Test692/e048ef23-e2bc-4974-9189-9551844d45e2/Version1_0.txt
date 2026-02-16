@@ -1,0 +1,28 @@
+```java
+public class LongestZeroSequence {
+
+    public static void main(String[] args) {
+        int n = 1041; // Example integer (binary: 10000010001)
+
+        String binaryString = Integer.toBinaryString(n);
+
+        int maxLength = 0;
+        int currentLength = 0;
+
+        for (int i = 0; i < binaryString.length(); i++) {
+            if (binaryString.charAt(i) == '0') {
+                currentLength++;
+            } else {
+                maxLength = Math.max(maxLength, currentLength);
+                currentLength = 0;
+            }
+        }
+
+        // Check for trailing zeros
+        maxLength = Math.max(maxLength, currentLength);
+
+        System.out.println("Longest sequence of zeros: " + maxLength); 
+    }
+}
+```
+

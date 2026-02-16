@@ -1,0 +1,33 @@
+public class CompareArrays {
+
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {1, 6, 7, 8, 5};
+        int[] array3 = {1, 2, 3, 4, 6};
+        int[] array4 = {2, 2, 3, 4, 5};
+
+        System.out.println("Array 1 and Array 2: " + compareFirstAndLast(array1, array2)); // Output: true
+        System.out.println("Array 1 and Array 3: " + compareFirstAndLast(array1, array3)); // Output: false
+        System.out.println("Array 1 and Array 4: " + compareFirstAndLast(array1, array4)); // Output: false
+        // Test cases with different array lengths or null arrays
+        System.out.println("Array 1 and null: " + compareFirstAndLast(array1, null)); // Output: false
+        System.out.println("null and Array 2: " + compareFirstAndLast(null, array2)); // Output: false
+        System.out.println("Array 1 and empty array: " + compareFirstAndLast(array1, new int[0])); // Output: false
+        System.out.println("Empty array and Array 2: " + compareFirstAndLast(new int[0], array2)); // Output: false
+        System.out.println("Empty array and empty array: " + compareFirstAndLast(new int[0], new int[0])); // Output: false
+
+
+    }
+
+    public static boolean compareFirstAndLast(int[] arr1, int[] arr2) {
+        // Handle null or empty arrays
+        if (arr1 == null || arr2 == null || arr1.length == 0 || arr2.length == 0) {
+            return false;
+        }
+      
+        return arr1[0] == arr2[0] && arr1[arr1.length - 1] == arr2[arr2.length - 1];
+    }
+}
+
+
+

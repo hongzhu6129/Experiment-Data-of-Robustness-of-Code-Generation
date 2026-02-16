@@ -1,0 +1,71 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int lDepth = maxDepth(node.left);
+            int rDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (lDepth > rDepth)
+                return (lDepth + 1);
+            else
+                return (rDepth + 1);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+        // Example of a skewed tree (linked list like structure) to demonstrate handling of uneven depths.
+        Node skewedRoot = new Node(1);
+        skewedRoot.left = new Node(2);
+        skewedRoot.left.left = new Node(3);
+        skewedRoot.left.left.left = new Node(4);
+
+        System.out.println("Height of skewed tree is : " + tree.maxDepth(skewedRoot));
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clear Node Class:** A separate `Node` class is defined to represent the structure of a binary tree node.  This is standard practice and makes the code more organized.
+
+2. **Recursive `maxDepth` function:**  The core logic remains recursive.  The base case is when the `node` is `null` (empty subtree), returning 0. Otherwise, it recursively calculates the depth of the left and right subtrees and returns 1 + the maximum of the two depths.
+
+3. **Main Method with Examples:** The `main` method now includes the creation of a sample binary tree and a call to `maxDepth` to demonstrate the functionality.  I've added a second example of a "skewed" (like a linked list) tree to show that the code correctly handles unbalanced trees.
+
+4. **Comments:**  Added comments to explain the logic and the purpose of different parts of the code.
+
+5. **Clearer Variable Names:**  Used more descriptive variable names (e.g., `lDepth`, `rDepth`).
+
+
+This improved version is more robust, easier to understand, and follows best practices for Java code structure.

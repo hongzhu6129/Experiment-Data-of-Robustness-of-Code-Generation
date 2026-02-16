@@ -1,0 +1,66 @@
+```java
+public class StringSubstring {
+
+    public String appearInBothEnds(String str) {
+        if (str == null || str.length() == 0) {
+            return ""; // Handle empty or null strings
+        }
+
+        int n = str.length();
+        String longestSubstring = "";
+
+        for (int len = n / 2; len >= 1; len--) { // Iterate through possible substring lengths (starting from the largest possible)
+            String prefix = str.substring(0, len);
+            String suffix = str.substring(n - len);
+
+            if (prefix.equals(suffix)) {
+                longestSubstring = prefix;
+                break;  // Found a match, no need to check smaller lengths
+            }
+        }
+
+        return longestSubstring;
+    }
+
+    public static void main(String[] args) {
+        StringSubstring obj = new StringSubstring();
+
+        String str1 = "abXYab";
+        System.out.println("Longest substring appearing at both ends of \"" + str1 + "\": " + obj.appearInBothEnds(str1)); // Output: ab
+
+        String str2 = "abaaba";
+        System.out.println("Longest substring appearing at both ends of \"" + str2 + "\": " + obj.appearInBothEnds(str2)); // Output: aba
+
+        String str3 = "xxxyxx";
+        System.out.println("Longest substring appearing at both ends of \"" + str3 + "\": " + obj.appearInBothEnds(str3)); // Output: xx
+
+        String str4 = "xxxx";
+        System.out.println("Longest substring appearing at both ends of \"" + str4 + "\": " + obj.appearInBothEnds(str4)); // Output: xx
+
+        String str5 = "abcdefgh"; //No matching substring
+        System.out.println("Longest substring appearing at both ends of \"" + str5 + "\": " + obj.appearInBothEnds(str5)); // Output: ""
+
+        String str6 = "";  // Empty String
+        System.out.println("Longest substring appearing at both ends of \"" + str6 + "\": " + obj.appearInBothEnds(str6)); // Output: ""
+
+        String str7 = null; // Null string
+        System.out.println("Longest substring appearing at both ends of \"" + str7 + "\": " + obj.appearInBothEnds(str7)); // Output: ""
+
+         String str8 = "abcabc";
+        System.out.println("Longest substring appearing at both ends of \"" + str8 + "\": " + obj.appearInBothEnds(str8)); // Output: abc
+
+
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+- **Handles edge cases:**  The code now correctly handles empty strings (`""`) and `null` strings without throwing exceptions.
+- **Clearer logic:** The loop condition and `break` statement make the logic easier to follow.
+- **More comprehensive testing:** The `main` method includes several test cases demonstrating different scenarios.
+- **Efficiency:** The code starts checking from the largest possible substring length and stops as soon as a match is found. This avoids unnecessary comparisons.
+- **Comments:** Added comments to explain important parts of the code.

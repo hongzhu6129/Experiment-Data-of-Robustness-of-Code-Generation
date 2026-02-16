@@ -1,0 +1,66 @@
+```java
+import java.util.Scanner;
+
+public class TriangleArea {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the lengths of the three sides of the triangle: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+
+        if (is_Valid(a, b, c)) {
+            double area = area_triangle(a, b, c);
+            System.out.println("The area of the triangle is: " + area);
+        } else {
+            System.out.println("Invalid triangle. The sum of any two sides must be greater than the third side.");
+        }
+        input.close();
+    }
+
+    public static boolean is_Valid(double a, double b, double c) {
+        return (a + b > c) && (a + c > b) && (b + c > a);
+    }
+
+    public static double area_triangle(double a, double b, double c) {
+        double s = (a + b + c) / 2; // Calculate semi-perimeter
+        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c)); // Heron's formula
+        return area;
+    }
+}
+```
+
+
+Explanation:
+
+1. **`main` Method:**
+   - Takes input for the three sides of the triangle using a `Scanner`.
+   - Calls `is_Valid` to check if the triangle is valid.
+   - If valid, calls `area_triangle` to calculate and print the area.
+   - If invalid, prints an error message.
+   - Closes the `Scanner` to release resources.
+
+2. **`is_Valid` Method:**
+   - Takes three `double` values (sides of the triangle) as input.
+   - Implements the triangle inequality theorem: the sum of any two sides must be greater than the third side.
+   - Returns `true` if the triangle is valid, `false` otherwise.
+
+3. **`area_triangle` Method:**
+   - Takes three `double` values (sides of the triangle) as input.
+   - Calculates the semi-perimeter `s`.
+   - Uses Heron's formula to calculate the area: `sqrt(s * (s - a) * (s - b) * (s - c))`.
+   - Returns the calculated area.
+
+
+Key improvements in this version:
+
+- **Input Validation:**  The `is_Valid` method ensures that the input forms a valid triangle before attempting to calculate the area.
+- **Heron's Formula:**  Uses Heron's formula, which is suitable for calculating the area of a triangle given its three sides.
+- **Clear Error Handling:** Provides a user-friendly error message if the input is invalid.
+- **Resource Management:** Closes the `Scanner` to prevent resource leaks.
+- **Comments:** Includes comments to explain the logic.
+
+
+This improved version is more robust and provides a better user experience.

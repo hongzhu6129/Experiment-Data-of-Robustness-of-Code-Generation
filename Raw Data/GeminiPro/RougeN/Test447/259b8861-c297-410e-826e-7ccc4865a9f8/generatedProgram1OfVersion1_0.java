@@ -1,0 +1,31 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class FirstAndLastDayOfEarlierMonth {
+
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+        LocalDate earlierMonth = today.minusMonths(1); // Get the previous month
+
+        // Get the first day of the earlier month
+        LocalDate firstDay = earlierMonth.with(TemporalAdjusters.firstDayOfMonth());
+
+        // Get the last day of the earlier month
+        LocalDate lastDay = earlierMonth.with(TemporalAdjusters.lastDayOfMonth());
+
+        System.out.println("First day of the earlier month: " + firstDay);
+        System.out.println("Last day of the earlier month: " + lastDay);
+
+
+        // Example of getting the first and last  Monday of the earlier month:
+        LocalDate firstMonday = firstDay.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
+        LocalDate lastMonday = lastDay.with(TemporalAdjusters.lastInMonth(DayOfWeek.MONDAY));
+
+
+        System.out.println("First Monday of the earlier month: " + firstMonday);
+        System.out.println("Last Monday of the earlier month: " + lastMonday);
+
+
+    }
+}

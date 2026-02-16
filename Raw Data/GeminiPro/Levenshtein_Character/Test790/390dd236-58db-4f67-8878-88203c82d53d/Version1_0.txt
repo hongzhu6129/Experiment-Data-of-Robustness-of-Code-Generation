@@ -1,0 +1,23 @@
+```java
+import java.util.Scanner;
+
+public class OctalToBinary {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input any octal number: ");
+        String octalString = input.nextLine();
+
+        try {
+            int octal = Integer.parseInt(octalString, 8);
+            String binary = Integer.toBinaryString(octal);
+            System.out.println("Equivalent binary number: " + binary);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid octal number entered.");
+        }
+
+        input.close(); 
+    }
+}
+```

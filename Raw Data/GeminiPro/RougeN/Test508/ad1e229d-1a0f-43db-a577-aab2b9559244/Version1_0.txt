@@ -1,0 +1,64 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class ProperDivisorSum {
+
+    public static void main(String[] args) {
+        long num = 12; // Example usage
+        long sum = proper_Divs_Sum(num);
+        System.out.println("The sum of proper divisors of " + num + " is: " + sum);
+
+
+        num = 284; // Example for amicable numbers.
+        long sum1 = proper_Divs_Sum(num);
+
+        long num2 = 220; // Example for amicable numbers.
+        long sum2 = proper_Divs_Sum(num2);
+        System.out.println("Sum of divisors of 284: " + sum1);
+        System.out.println("Sum of divisors of 220: " + sum2);
+
+
+
+    }
+
+    public static Long proper_Divs_Sum(long n) {
+        if (n <= 1) {
+            return 0L; // Handle cases where n is 0 or 1.
+        }
+
+        long sum = 1; // Start with 1 as 1 is always a proper divisor
+
+        // Optimization: Check divisors only up to the square root of n
+        for (long i = 2; i * i <= n; i++) {
+            if (n % i == 0) {
+                sum += i;
+                if (i * i != n) { // Avoid adding the same divisor twice if n is a perfect square
+                    sum += n / i;
+                }
+            }
+        }
+
+        return sum;
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles edge cases:** The code now correctly handles the cases where `n` is 0 or 1, returning 0 as the sum of proper divisors in those cases.
+
+2. **Efficiency with square root optimization:**  Iterating only up to the square root of `n` significantly improves efficiency, especially for large numbers.  The explanation for why this works is included in the code comments.
+
+3. **Avoids duplicate divisors for perfect squares:** The `if (i * i != n)` check prevents adding the same divisor twice when `n` is a perfect square (e.g., for 25, we add 5 only once).
+
+4. **Clearer comments:**  The comments explain the logic and the optimization used, making the code easier to understand.
+
+5. **Long return type:**  The `proper_Divs_Sum` method now returns `Long` to handle potentially large sums of divisors.
+
+
+Example Usage in `main` Demonstrated:
+
+The `main` method now demonstrates how to use `proper_Divs_Sum` and print the result. I've also included the classic example of amicable numbers (220 and 284) to further illustrate how to use the function.

@@ -1,0 +1,36 @@
+```java
+import java.util.TreeSet;
+
+public class RemoveLastTreeSetElement {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet (TreeSet automatically sorts them)
+        treeSet.add(10);
+        treeSet.add(5);
+        treeSet.add(20);
+        treeSet.add(15);
+        treeSet.add(30);
+
+        System.out.println("Original TreeSet: " + treeSet);
+
+
+        if (!treeSet.isEmpty()) {
+            // Get the last element (largest in a TreeSet)
+            Integer lastElement = treeSet.last();
+
+            // Remove the last element
+            treeSet.remove(lastElement);
+
+
+            System.out.println("TreeSet after removing last element: " + treeSet);
+            System.out.println("Removed element: " + lastElement);
+
+        } else {
+            System.out.println("TreeSet is empty. Cannot remove last element.");
+        }
+    }
+}
+```

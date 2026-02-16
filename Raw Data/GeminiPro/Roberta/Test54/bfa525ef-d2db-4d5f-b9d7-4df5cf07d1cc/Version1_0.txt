@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class LargestOfTwo {
+
+    public static int findLargest(int num1, int num2) {
+        return Math.max(num1, num2); // Use Math.max for conciseness
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        int largest = findLargest(num1, num2);
+        System.out.println("The largest number is: " + largest);
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | num1 | num2 | Expected Output |
+|---|---|---|---|
+| 1 | 5 | 10 | 10 |
+| 2 | -2 | 3 | 3 |
+| 3 | 0 | 0 | 0 |
+| 4 | -5 | -10 | -5 |  // Corner case: negative numbers
+| 5 | Integer.MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE | // Corner case: Max and Min Integer values
+| 6 | Integer.MIN_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | // Corner case: Max and Min Integer values (reversed)
+| 7 | 10 | 5 | 10 | // Ensures correct output when num1 > num2
+| 8 | 7 | 7 | 7 | // Corner Case: Equal numbers
+
+
+**How to Run the Test Cases:**
+
+While you could manually input these test values, a more robust approach is to create unit tests using a testing framework like JUnit.  Here's an example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LargestOfTwoTest {
+
+    @Test
+    void testFindLargest() {
+        assertEquals(10, LargestOfTwo.findLargest(5, 10));
+        assertEquals(3, LargestOfTwo.findLargest(-2, 3));
+        assertEquals(0, LargestOfTwo.findLargest(0, 0));
+        assertEquals(-5, LargestOfTwo.findLargest(-5, -10));
+        assertEquals(Integer.MAX_VALUE, LargestOfTwo.findLargest(Integer.MAX_VALUE, Integer.MIN_VALUE));
+        assertEquals(Integer.MAX_VALUE, LargestOfTwo.findLargest(Integer.MIN_VALUE, Integer.MAX_VALUE));
+        assertEquals(10, LargestOfTwo.findLargest(10, 5));
+        assertEquals(7, LargestOfTwo.findLargest(7, 7));
+
+
+    }
+}
+```
+
+To run these JUnit tests, you would need to include the JUnit library in your project.  Most IDEs (like IntelliJ or Eclipse) have built-in support for running JUnit tests.
+
+
+Using a testing framework is highly recommended as it allows you to automate the testing process and ensures that your code continues to work as expected even after you make changes. It's a best practice for software development.
+

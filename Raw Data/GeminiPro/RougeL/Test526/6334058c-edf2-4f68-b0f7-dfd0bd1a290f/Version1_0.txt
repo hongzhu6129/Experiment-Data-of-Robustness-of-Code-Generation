@@ -1,0 +1,44 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("First 10 Fermat Numbers:");
+
+        for (int n = 0; n < 10; n++) {
+            // Calculate Fermat number using Math.pow() and explicit type casting to long
+            long fermatNumber = (long) (Math.pow(2, Math.pow(2, n)) + 1); 
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Type Casting:** Fermat numbers grow very quickly.  Even `long` (64-bit integer) can only hold the first five accurately.  The code includes an explicit cast to `long` to handle the initial smaller Fermat numbers correctly.  Beyond the fifth, they will overflow, resulting in incorrect values.
+
+2. **BigInteger for Larger Numbers:** To handle Fermat numbers beyond the fifth (which exceed the capacity of `long`), you would need to use `BigInteger`:
+
+   ```java
+   import java.math.BigInteger;
+
+   public class FermatNumbers {
+       public static void main(String[] args) {
+           System.out.println("First 10 Fermat Numbers:");
+
+           for (int n = 0; n < 10; n++) {
+               BigInteger two = BigInteger.valueOf(2);
+               BigInteger fermatNumber = two.pow((int) Math.pow(2, n)).add(BigInteger.ONE);
+               System.out.println(fermatNumber);
+           }
+       }
+   }
+   ```
+
+   This version uses `BigInteger`'s `pow()` and `add()` methods to perform calculations without overflow, allowing you to accurately represent all the first ten Fermat numbers.
+
+
+3. **Clear Output:** The code now includes a descriptive message to indicate what's being printed.
+
+4. **Simplified Calculation:** While `(long) (Math.pow(2, Math.pow(2, n)) + 1)` works for the initial numbers, the `BigInteger` version is more consistent and avoids potential issues with floating-point precision when using `Math.pow()` for larger values of `n`.  The `BigInteger` approach is generally the preferred way to calculate large Fermat numbers.

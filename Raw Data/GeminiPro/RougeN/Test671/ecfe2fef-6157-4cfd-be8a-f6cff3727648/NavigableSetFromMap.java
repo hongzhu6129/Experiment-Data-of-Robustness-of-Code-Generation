@@ -1,0 +1,54 @@
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class NavigableSetFromMap {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> studentScores = new TreeMap<>();
+
+        // Add some entries to the map
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+        studentScores.put("David", 78);
+        studentScores.put("Eve", 88);
+
+        // Get a NavigableSet view of the keys
+        NavigableSet<String> keys = studentScores.navigableKeySet();
+
+        // Print the keys (they will be sorted alphabetically)
+        System.out.println("NavigableSet of keys:");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+        // Demonstrate some NavigableSet methods
+        System.out.println("\nFirst key: " + keys.first()); // Alice
+        System.out.println("Last key: " + keys.last()); // Eve
+        System.out.println("Key lower than 'Charlie': " + keys.lower("Charlie")); // Bob
+        System.out.println("Key higher than 'Bob': " + keys.higher("Bob")); // Charlie
+        System.out.println("Keys from 'Bob' (inclusive) to 'David' (exclusive): " + keys.subSet("Bob", true, "David", false)); // [Bob, Charlie]
+
+
+
+
+
+        // Example using a regular Map (e.g., HashMap) - you'll get a regular Set
+        Map<String, Integer> anotherMap = new TreeMap<>(); // Even if you use a TreeMap, if you store it as a Map, you will only get a Set
+        anotherMap.put("Apple", 1);
+        anotherMap.put("Banana", 2);
+
+        // This will be a regular Set, not a NavigableSet
+        // If anotherMap was a HashMap, it wouldn't be sorted.
+        System.out.println("\nRegular Set of keys (from a regular Map):");
+        for(String key: anotherMap.keySet()){
+            System.out.println(key);
+        }
+
+
+    }
+}

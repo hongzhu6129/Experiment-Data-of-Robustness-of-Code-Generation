@@ -1,0 +1,61 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void main(String[] args) {
+        printTwinkleTwinkle();
+    }
+
+    public static void printTwinkleTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky.");
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+
+
+    }
+}
+```
+
+**Output:**
+
+```
+Twinkle, twinkle, little star,
+	How I wonder what you are!
+		Up above the world so high,
+		Like a diamond in the sky.
+Twinkle, twinkle, little star,
+	How I wonder what you are!
+```
+
+
+
+**Test Cases:**
+
+While there aren't traditional "corner cases" for a simple printing program like this (it doesn't take input that could cause errors), we can consider a few aspects for testing:
+
+1. **Correct Output Format:**  Verify that the output precisely matches the required format, including capitalization, punctuation, spacing, and the use of tabs (`\t`) for indentation.  Visual inspection is usually sufficient.  You could, in a more complex program, use string comparison to check the output against the expected output.
+
+2. **Character Encoding:**  Although less likely an issue in modern environments, you might (especially if dealing with internationalization) want to ensure that the character encoding is handled correctly so that special characters like commas, apostrophes, and even non-English characters are printed as expected.
+
+3. **Redirect Output to File:** Test redirecting the output to a file and verify the file content.  This is useful if you were to integrate this code into a larger system where output might not go directly to the console.   In a command-line environment, you would do something like: `java TwinkleTwinkle > output.txt`.
+
+
+4. **Method Call within Another Class:** If you were to use the `printTwinkleTwinkle()` method in another class, test to make sure it functions as intended when called externally.  This tests the public access modifier.  Example:
+
+
+   ```java
+   public class TestTwinkle {
+       public static void main(String[] args) {
+           TwinkleTwinkle.printTwinkleTwinkle();  // Call from another class
+       }
+   }
+   ```
+
+5. **Empty String or Null:** While not applicable in this specific case because the program doesn't take string input, in general, if you had string variables within a program, you should consider empty strings (`""`) and null values as potential test cases to ensure your program handles them gracefully.
+
+
+
+In a real-world scenario, even for simple programs, automated tests using a testing framework (like JUnit) are highly recommended. They provide a structured and repeatable way to verify program behavior.  For such a simple program, the tests might seem like overkill, but the practice is good.
+

@@ -1,0 +1,70 @@
+**Problem Description:**
+
+Write a Java program that takes a string, splits it into individual words, and then prints the words in reverse order.
+
+**Java Code:**
+
+```java
+import java.util.Scanner;
+
+public class ReverseString {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Get the input string from the user
+        System.out.print("Enter a string: ");
+        String str = input.nextLine();
+
+        // Split the string into words
+        String[] words = str.split(" ");
+
+        // Print the words in reverse order
+        for (int i = words.length - 1; i >= 0; i--) {
+            System.out.print(words[i] + " ");
+        }
+
+        System.out.println();
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* **Empty string:** The program should handle an empty string without crashing.
+* **String with a single word:** The program should handle a string with only one word without crashing.
+
+**Other Test Cases:**
+
+* **String with multiple words:** The program should correctly reverse the order of the words in the string.
+* **String with special characters:** The program should handle strings that contain special characters, such as punctuation marks and spaces.
+* **String with multiple spaces:** The program should handle strings that contain multiple spaces between words.
+* **Long string:** The program should be able to handle long strings without crashing or running out of memory.
+
+**Example Input and Output:**
+
+**Input:**
+
+```
+Hello world!
+```
+
+**Output:**
+
+```
+world! Hello
+```
+
+**Input:**
+
+```
+This is a test string.
+```
+
+**Output:**
+
+```
+string test a is This
+```

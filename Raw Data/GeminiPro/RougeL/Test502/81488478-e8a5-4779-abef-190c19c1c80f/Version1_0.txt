@@ -1,0 +1,24 @@
+```java
+public class MiddlePoint {
+
+    public static void main(String[] args) {
+        System.out.println(test(2, 4, 6)); // Output: true (4 is the midpoint between 2 and 6)
+        System.out.println(test(4, 2, 6)); // Output: true (4 is the midpoint between 2 and 6)
+        System.out.println(test(2, 6, 4)); // Output: true (4 is the midpoint between 2 and 6)
+        System.out.println(test(2, 4, 8)); // Output: false
+        System.out.println(test(4, 8, 2)); // Output: false
+        System.out.println(test(4, 4, 4)); // Output: true (all the same - consider this a valid midpoint case)
+        
+    }
+
+    public static boolean test(int a, int b, int c) {
+        // Calculate the midpoint between two numbers
+        double mid1 = (double) (a + b) / 2;
+        double mid2 = (double) (a + c) / 2;
+        double mid3 = (double) (b + c) / 2;
+
+
+        return (mid1 == c || mid2 == b || mid3 == a);
+    }
+}
+```

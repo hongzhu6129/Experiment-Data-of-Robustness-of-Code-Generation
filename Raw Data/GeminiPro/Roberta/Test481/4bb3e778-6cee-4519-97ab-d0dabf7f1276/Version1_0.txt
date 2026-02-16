@@ -1,0 +1,58 @@
+```java
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class ZoneOffsets {
+
+    public static void main(String[] args) {
+        // Get the current date and time in a specific time zone
+        ZonedDateTime nowLosAngeles = ZonedDateTime.now(ZoneId.of("America/Los_Angeles"));
+        System.out.println("Current time in Los Angeles: " + nowLosAngeles.format(DateTimeFormatter.ISO_DATE_TIME));
+
+        // Extract the zone offset
+        ZoneOffset offsetLA = nowLosAngeles.getOffset();
+        System.out.println("Zone offset for Los Angeles: " + formatOffset(offsetLA.getTotalSeconds()));
+
+
+        ZonedDateTime nowNewYork = ZonedDateTime.now(ZoneId.of("America/New_York"));
+        System.out.println("Current time in New York: " + nowNewYork.format(DateTimeFormatter.ISO_DATE_TIME));
+        ZoneOffset offsetNY = nowNewYork.getOffset();
+        System.out.println("Zone offset for New York: " + formatOffset(offsetNY.getTotalSeconds()));
+
+
+
+        // Example with a fixed offset
+        ZoneOffset fixedOffset = ZoneOffset.ofHoursMinutes(5, 30); // +5:30
+        System.out.println("Fixed offset: " + formatOffset(fixedOffset.getTotalSeconds()));
+
+        // Using ZoneId instead of ZoneOffset
+        ZoneId zoneIdKolkata = ZoneId.of("Asia/Kolkata");
+        ZonedDateTime nowKolkata = ZonedDateTime.now(zoneIdKolkata);
+        System.out.println("Current time in Kolkata: " + nowKolkata.format(DateTimeFormatter.ISO_DATE_TIME));
+        ZoneOffset offsetKolkata = nowKolkata.getOffset(); //Get offset from ZoneId
+        System.out.println("Zone Offset for Kolkata: " + formatOffset(offsetKolkata.getTotalSeconds()));
+
+    }
+
+    private static String formatOffset(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = Math.abs((totalSeconds % 3600) / 60); // Use absolute value for minutes
+        String sign = (hours >= 0) ? "+" : "-";
+        return String.format("UTC%s%02d:%02d", sign, Math.abs(hours), minutes); // Use absolute value for formatting
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clearer Examples:** Demonstrates getting offsets from both `ZonedDateTime` and a fixed offset.  It also shows getting the offset from a  `ZoneId`.  Provides multiple examples with different timezones (Los Angeles, New York, Kolkata).
+* **`formatOffset` method improved:**  Handles positive and negative offsets correctly and formats the output in a standard "UTC+HH:MM" or "UTC-HH:MM" format. Uses absolute values to handle minutes and hour formatting to avoid issues with negative signs.
+* **Uses `ZonedDateTime`:**  `ZonedDateTime` is the preferred way to work with time zones in modern Java, as it keeps track of both date, time, and time zone information.
+* **ISO_DATE_TIME Format:** Uses `DateTimeFormatter.ISO_DATE_TIME` for standardized output.
+* **Comments:**  Added comments to explain the code's functionality.
+
+
+This improved code provides more practical and robust examples of working with zone offsets in Java.

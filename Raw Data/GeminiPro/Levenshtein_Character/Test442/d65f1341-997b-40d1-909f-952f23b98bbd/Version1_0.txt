@@ -1,0 +1,27 @@
+```java
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class NewYorkTime {
+
+    public static void main(String[] args) {
+        // Get the current time in New York
+        ZoneId newYorkZoneId = ZoneId.of("America/New_York");
+        ZonedDateTime nowNewYork = ZonedDateTime.now(newYorkZoneId);
+
+        // Format the time (optional, but makes output nicer)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+        String formattedDateTime = nowNewYork.format(formatter);
+
+        // Print the current time
+        System.out.println("Current time in New York: " + formattedDateTime);
+
+
+        // Alternatively, for just the time:
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = nowNewYork.format(timeFormatter);
+        System.out.println("Current time in New York (just time): " + formattedTime);
+    }
+}
+```

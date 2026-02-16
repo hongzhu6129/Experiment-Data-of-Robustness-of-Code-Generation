@@ -1,0 +1,78 @@
+```java
+import java.util.Scanner;
+
+public class SumOfDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        // Handle negative numbers by taking their absolute value
+        n = Math.abs(n); 
+
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        int sum = function(num);
+        System.out.println("Sum of digits: " + sum);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Explanation |
+|---|---|---|
+| 12345 | 15 | 1 + 2 + 3 + 4 + 5 = 15 |
+| 0 | 0 | Sum of digits of 0 is 0 |
+| -123 | 6 |  Handles negative numbers: 1 + 2 + 3 = 6 |
+| 9 | 9 | Single digit number |
+| 100 | 1 | Leading zeros don't affect the sum |
+| 9999 | 36 | Large number test |
+| Integer.MAX_VALUE (2147483647) | 46 |  Maximum integer value test |
+| Integer.MIN_VALUE (-2147483648) | 47 | Minimum integer value test (absolute value used) |
+
+
+
+**Explanation of the code and improvements:**
+
+1. **Handles Negative Numbers:** The code now uses `Math.abs(n)` to handle negative input correctly.  The sum of digits should be the same regardless of the sign.
+
+2. **Clear Function Name:**  The function is named `function` as requested by the prompt.  However, in real-world code, it's better to use more descriptive names like `sumOfDigits` to improve readability.
+
+3. **Input Validation (Optional):** While not strictly required by the prompt, for a more robust program, you might want to add input validation within `main` to ensure the user enters a valid integer.
+
+4. **Resource Management:** The `Scanner` is closed using `scanner.close()` to release the resource.
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** Enter each input value when prompted and verify the output matches the expected value.
+
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit to write automated tests.  This is the preferred approach for larger projects.  Here's a simple example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SumOfDigitsTest {
+
+    @Test
+    public void testSumOfDigits() {
+        assertEquals(15, SumOfDigits.function(12345));
+        assertEquals(0, SumOfDigits.function(0));
+        assertEquals(6, SumOfDigits.function(-123));
+        // ... add more test cases
+    }
+}
+```
+
+
+This improved version is more complete and addresses potential issues like negative input.  Remember to use descriptive function names and consider adding input validation and automated testing for real-world applications.

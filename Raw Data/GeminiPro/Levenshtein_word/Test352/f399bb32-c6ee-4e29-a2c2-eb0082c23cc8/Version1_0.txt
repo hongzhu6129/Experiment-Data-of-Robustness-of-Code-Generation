@@ -1,0 +1,76 @@
+```java
+public class StringPermutationWithRepetition {
+
+    public static void main(String[] args) {
+        String inputString = "abc";
+        permutationWithRepeation(inputString);
+    }
+
+    private static void permutationWithRepeation(String inputString) {
+        showPermutation(inputString, "");
+    }
+
+    private static void showPermutation(String inputString, String currentPermutation) {
+        if (currentPermutation.length() == inputString.length()) {
+            System.out.println(currentPermutation);
+            return;
+        }
+
+        for (int i = 0; i < inputString.length(); i++) {
+            showPermutation(inputString, currentPermutation + inputString.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation and How it adheres to the specified method signatures:**
+
+1. **`public static void main(String[] args)`:**
+   - This is the entry point of the program.
+   - It takes a sample string `inputString` (you can modify this to any string).
+   - It calls `permutationWithRepeation` to start the permutation process.
+
+2. **`private static void permutationWithRepeation(String inputString)`:**
+   - This method initializes the recursive process.
+   - It calls `showPermutation` with the original `inputString` and an empty string `""` representing the initial permutation.
+
+3. **`private static void showPermutation(String inputString, String currentPermutation)`:**
+   - This is the recursive method that generates the permutations.
+   - **Base Case:** If the `currentPermutation` has reached the length of the `inputString`, it means a complete permutation is formed, so it prints the `currentPermutation` and returns.
+   - **Recursive Step:** It iterates through each character of the `inputString`.  For each character, it makes a recursive call to `showPermutation`, adding the current character to the `currentPermutation`. This explores all possible combinations with repetition.
+
+
+**Example Usage and Output (with "abc" as input):**
+
+The output for the input "abc" will be:
+
+```
+aaa
+aab
+aac
+aba
+abb
+abc
+aca
+acb
+acc
+baa
+bab
+bac
+bba
+bbb
+bbc
+bca
+bcb
+bcc
+caa
+cab
+cac
+cba
+cbb
+cbc
+cca
+ccb
+ccc
+```

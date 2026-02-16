@@ -1,0 +1,55 @@
+```java
+public class StringPermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String inputString = "ab"; // Example input string
+        permutationWithRepeation(inputString);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **`main` Method:**
+   - Takes a string as input (hardcoded in this example for simplicity, but could be modified to take user input).
+   - Calls the `permutationWithRepeation` method to start the permutation process.
+
+2. **`permutationWithRepeation` Method:**
+   - Initializes the recursive process by calling `showPermutation` with the input string and an empty prefix.
+
+3. **`showPermutation` Method (Recursive):**
+   - **Base Case:** If the length of the `prefix` equals the length of the original string (`str`), it means a complete permutation has been formed. Print the `prefix` and return.
+   - **Recursive Step:** Iterates through each character of the input string (`str`).
+   - For each character, it recursively calls `showPermutation` with:
+     - The same input string (`str`) � ensuring characters can be repeated.
+     - An updated `prefix` � appending the current character to the existing `prefix`.  This builds up the permutation one character at a time.
+
+
+
+**Example Output (for input "ab"):**
+
+```
+aa
+ab
+ba
+bb
+```
+
+
+This output shows all possible 2-character permutations of "a" and "b" with repetition allowed.
+

@@ -1,0 +1,36 @@
+```java
+import java.util.Scanner;
+
+public class DuckNumberChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        String numStr = scanner.nextLine();
+
+        boolean isDuckNumber = checkDuckNumber(numStr);
+
+        if (isDuckNumber) {
+            System.out.println(numStr + " is a duck number.");
+        } else {
+            System.out.println(numStr + " is not a duck number.");
+        }
+        scanner.close();
+    }
+
+    private static boolean checkDuckNumber(String numStr) {
+        if (numStr.charAt(0) == '0') {
+            return false; // Not a duck number if it starts with 0
+        }
+
+        for (int i = 1; i < numStr.length(); i++) {
+            if (numStr.charAt(i) == '0') {
+                return true; // Found a zero after the first digit
+            }
+        }
+
+        return false; // No zero found after the first digit
+    }
+}
+```
+

@@ -1,0 +1,57 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Given Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: 40
+   - Longitude 2: -74
+   - Expected Output: 0 km
+
+3. **Opposite Sides of Earth (Antipodes):**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: -40  
+   - Longitude 2: 106  (180 degrees opposite of -74)
+   - Expected Output: ~20015.09 km (Approximately Earth's diameter)
+
+4. **North Pole to Equator:**
+   - Latitude 1: 90
+   - Longitude 1: 0 
+   - Latitude 2: 0
+   - Longitude 2: 0  (Longitude doesn't matter when one point is at a pole)
+   - Expected Output: ~10007.54 km (Approximately a quarter of Earth's circumference)
+
+
+5. **Points near the International Date Line:**
+   - Latitude 1: 10
+   - Longitude 1: 179
+   - Latitude 2: 10
+   - Longitude 2: -179
+   - Expected Output:  A small distance, not a large one.  The formula correctly handles the date line wraparound.
+
+
+6. **Invalid Input (optional):**
+   - Test with latitude values outside the range -90 to +90 and longitude values outside the range -180 to +180.  Your program should ideally handle these cases gracefully, perhaps by throwing an exception or printing an error message.
+
+
+
+
+**How to Run Test Cases:**
+
+You can manually input these values into your program or, for a more automated approach, consider creating a separate test class using a testing framework like JUnit.  A JUnit test would allow you to define these test cases and automatically compare the actual output of your `EarthDistance` program with the expected values. This is a good practice for any serious Java development.
+
+
+**Example JUnit Test (using JUnit 5):**
+

@@ -1,0 +1,61 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int n) {
+        if (n < 0) {  // Handle negative numbers (their cubes are negative)
+            return isCube(-n); // Check the absolute value and return the opposite
+        } else if (n == 0) {
+            return true; // 0 is a cube
+        }
+
+        // Efficiently check for perfect cube using integer arithmetic
+        int root = Math.round(Math.cbrt(n));  // Calculate the cube root and round to nearest int
+
+        return (root * root * root) == n;     // Check if the cube of the root equals the number
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Negative Numbers:** The `isCube` method now correctly handles negative numbers.  The cube of a negative number is negative, so we check the absolute value and adjust the result accordingly.
+
+2. **Efficiency:** Instead of iterating or using floating-point arithmetic with `Math.pow`, we calculate the integer cube root efficiently using `Math.cbrt` and round it to the nearest integer. This avoids potential precision issues with floating-point calculations.
+
+3. **Clarity and Readability:** The code is well-commented and uses descriptive variable names.
+
+4. **Testability (though not asked for):**  The core logic is separated into the `isCube` function, making it easier to test independently.  (While this question asked for only `main`, good practice is to separate logic for future development.)
+
+**How to get user input within `main`:**
+
+If you need actual user input, you can use the `Scanner` class:
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = input.nextInt();  // Get integer input from user
+        input.close(); // Close the scanner
+
+        if (isCube(number)) { // ... (rest of the code remains the same)
+        }
+       // ... rest of the code
+    }
+    // ... (isCube method remains the same)
+}
+```

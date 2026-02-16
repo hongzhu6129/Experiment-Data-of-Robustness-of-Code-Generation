@@ -1,0 +1,49 @@
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+        hashSet.add("Mango");
+
+        // Method 1: Using an Iterator
+        System.out.println("Iterating using an Iterator:");
+        Iterator<String> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // Method 2: Enhanced for loop (for-each loop)
+        System.out.println("\nIterating using an enhanced for loop:");
+        for (String element : hashSet) {
+            System.out.println(element);
+        }
+
+
+        //Method 3: Using a simple for loop (requires converting to array) - less efficient
+        System.out.println("\nIterating using a simple for loop (after converting to array):");
+        String[] hashSetArray = hashSet.toArray(new String[0]); // Convert to array
+        for (int i = 0; i < hashSetArray.length; i++) {
+            System.out.println(hashSetArray[i]);
+        }
+
+          // Method 4: Java 8+ Stream and forEach
+        System.out.println("\nIterating using Java 8 Stream and forEach:");
+        hashSet.stream().forEach(System.out::println); // Or (element -> System.out.println(element))
+
+
+
+
+    }
+}
+```

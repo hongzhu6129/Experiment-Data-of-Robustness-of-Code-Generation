@@ -1,0 +1,31 @@
+class FibonacciChecker {
+
+    static boolean isPerfectSquare(int n) {
+        if (n < 0)
+            return false;
+
+        int root = (int) Math.sqrt(n);
+        return (root * root == n);
+    }
+
+    static boolean isFibonacci(int n) {
+        // A number is Fibonacci if and only if one or both of (5*n^2 + 4) or (5*n^2 � 4) is a perfect square
+        return isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4);
+    }
+
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 10;
+
+        System.out.println(num1 + " is a Fibonacci number: " + isFibonacci(num1)); // Output: true
+        System.out.println(num2 + " is a Fibonacci number: " + isFibonacci(num2)); // Output: false
+
+        // Test more cases as needed
+         System.out.println(0 + " is a Fibonacci number: " + isFibonacci(0)); // true
+         System.out.println(1 + " is a Fibonacci number: " + isFibonacci(1)); // true
+         System.out.println(2 + " is a Fibonacci number: " + isFibonacci(2)); // true
+         System.out.println(3 + " is a Fibonacci number: " + isFibonacci(3)); // true
+         System.out.println(4 + " is a Fibonacci number: " + isFibonacci(4)); // false
+
+    }
+}

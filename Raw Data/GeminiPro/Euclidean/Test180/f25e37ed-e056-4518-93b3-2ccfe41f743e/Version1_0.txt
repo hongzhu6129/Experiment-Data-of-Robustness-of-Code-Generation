@@ -1,0 +1,80 @@
+**Java program to print duplicate characters from a string:**
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class DuplicateCharacters {
+
+    public static void main(String[] args) {
+        String str = "Hello World";
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        // Iterate over the string and store the character count in the map
+        for (char c : str.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Iterate over the map and print the characters with count greater than 1
+        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println("Duplicate character: " + entry.getKey() + " Count: " + entry.getValue());
+            }
+        }
+    }
+}
+```
+
+**Test cases:**
+
+**Input 1:**
+```
+Hello World
+```
+
+**Expected Output:**
+```
+Duplicate character: l Count: 3
+Duplicate character: o Count: 2
+```
+
+**Input 2:**
+```
+Mississippi
+```
+
+**Expected Output:**
+```
+Duplicate character: i Count: 4
+Duplicate character: s Count: 4
+```
+
+**Input 3:**
+```
+1234567890
+```
+
+**Expected Output:**
+```
+No duplicate characters found
+```
+
+**Input 4:**
+```
+""
+```
+
+**Expected Output:**
+```
+No duplicate characters found
+```
+
+**Input 5:**
+```
+abcdefghijklmnopqrstuvwxyz
+```
+
+**Expected Output:**
+```
+No duplicate characters found
+```

@@ -1,0 +1,61 @@
+**Problem Description**
+
+Write a Java program that simulates a non-repeating protagonist in a flow of characters.
+
+**Implementation**
+
+```java
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class NonRepeatingProtagonist {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter the input string: ");
+        String input = scanner.nextLine();
+
+        // Create a HashSet to store the unique characters
+        HashSet<Character> uniqueCharacters = new HashSet<>();
+
+        // Create a StringBuilder to store the output string
+        StringBuilder output = new StringBuilder();
+
+        // Iterate over the input string
+        for (int i = 0; i < input.length(); i++) {
+            char character = input.charAt(i);
+
+            // If the character is already in the HashSet, skip it
+            if (uniqueCharacters.contains(character)) {
+                continue;
+            }
+
+            // Otherwise, add the character to the HashSet and the output string
+            uniqueCharacters.add(character);
+            output.append(character);
+        }
+
+        // Print the output string
+        System.out.println("The output string is: " + output);
+    }
+}
+```
+
+**Test Cases**
+
+**Corner Cases**
+
+* **Empty string:** The program should handle empty strings by printing an empty string.
+* **Single character:** The program should handle strings with a single character by printing that character.
+* **Repeated characters:** The program should handle strings with repeated characters by printing the unique characters in the order they appear.
+
+**Regular Cases**
+
+* **Input:** "abcabc"
+* **Output:** "abc"
+* **Input:** "hello world"
+* **Output:** "helo wrd"
+* **Input:** "This is a test string"
+* **Output:** "This aetsig"

@@ -1,0 +1,36 @@
+import java.util.HashSet;
+
+public class AddHashSetToAnother {
+
+    public static void main(String[] args) {
+        // Create the first HashSet
+        HashSet<String> hashSet1 = new HashSet<>();
+        hashSet1.add("Apple");
+        hashSet1.add("Banana");
+        hashSet1.add("Orange");
+
+        // Create the second HashSet
+        HashSet<String> hashSet2 = new HashSet<>();
+        hashSet2.add("Grape");
+        hashSet2.add("Mango");
+
+        // Add all elements from hashSet1 to hashSet2
+        hashSet2.addAll(hashSet1);
+
+        // Print the updated hashSet2
+        System.out.println("Updated HashSet 2: " + hashSet2);
+
+
+        // Example with integers:
+        HashSet<Integer> set1 = new HashSet<>();
+        set1.add(1);
+        set1.add(2);
+
+        HashSet<Integer> set2 = new HashSet<>();
+        set2.add(3);
+
+        set2.addAll(set1);
+        System.out.println("Updated HashSet 2 (Integers): " + set2);
+
+    }
+}

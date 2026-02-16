@@ -1,0 +1,43 @@
+```java
+import java.util.Scanner;
+
+public class StringEquality {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the three strings from the user.
+        System.out.println("Enter the first string:");
+        String string1 = scanner.nextLine();
+        System.out.println("Enter the second string:");
+        String string2 = scanner.nextLine();
+        System.out.println("Enter the third string:");
+        String string3 = scanner.nextLine();
+
+        // Check if the three strings are equal.
+        boolean isEqual = string1.equals(string2) && string2.equals(string3);
+
+        // Print the result.
+        if (isEqual) {
+            System.out.println("The three strings are equal.");
+        } else {
+            System.out.println("The three strings are not equal.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Valid cases:**
+    * string1 = "abc", string2 = "abc", string3 = "abc"
+    * string1 = "123", string2 = "123", string3 = "123"
+    * string1 = "Hello world!", string2 = "Hello world!", string3 = "Hello world!"
+* **Invalid cases:**
+    * string1 = "abc", string2 = "abcd", string3 = "abcde"
+    * string1 = "123", string2 = "1234", string3 = "12345"
+    * string1 = "Hello world!", string2 = "Hello world", string3 = "Hello world!!"
+* **Corner cases:**
+    * string1 = "", string2 = "", string3 = ""
+    * string1 = null, string2 = null, string3 = null
+    * string1 = "abc", string2 = null, string3 = null

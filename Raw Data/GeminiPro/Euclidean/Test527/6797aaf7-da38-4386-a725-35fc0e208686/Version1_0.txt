@@ -1,0 +1,63 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; //  You can change n to a larger value if needed
+
+        for (int a = 1; a <= n; a++) {
+            for (int b = a + 1; b <= n; b++) { // Ensure b > a to avoid duplicates
+
+                int sum1 = a * a * a + b * b * b;
+                if (sum1 > n) {
+                    break; // Optimization: If the sum exceeds n, no need to continue with this b
+                }
+
+
+                for (int c = 1; c <= n; c++) {
+                    for (int d = c + 1; d <= n; d++) { // Ensure d > c
+
+                        int sum2 = c * c * c + d * d * d;
+
+                        if (sum2 > n) {
+                            break; // Optimization: If the sum exceeds n, no need to continue with this d
+                        }
+
+
+                        if (sum1 == sum2 && sum1 <= n && (a != c || b != d)) { //  Check if sum1 and sum2 are equal and distinct pairs
+                            System.out.println(sum1 + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                             return; //  If you only need to find one such number, exit after finding it.
+                        }
+                    }
+
+                }
+
+
+            }
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this optimized version:
+
+1. **Avoids Duplicate Pairs:** The inner loops (for `b` and `d`) start from `a + 1` and `c + 1` respectively. This ensures that we don't count the same pair of cubes twice (e.g., 1� + 12� and 12� + 1� are considered the same).
+
+
+2. **Early Exit Optimization:** Inside the inner loops, if the sum (`sum1` or `sum2`) exceeds `n`, the loops are immediately broken using `break`.  This is a significant optimization because it avoids unnecessary calculations.
+
+3. **Distinct Pair Check:** The condition `(a != c || b != d)` explicitly checks that the pairs of cubes are distinct.
+
+4. **Clear Output:** The output is formatted to clearly show the number and its two representations as sums of cubes.
+
+
+5. **Optional Early Return:** If you only need to find *one* such number, the `return;` statement after printing the result will exit the program immediately, preventing further unnecessary computation.  If you want to find *all* such numbers up to `n`, remove the `return;` statement.
+
+
+6. **Uses Nested Loops Efficiently:** The nested loop structure is necessary to check all possible combinations of `a`, `b`, `c`, and `d`, but the optimizations make the process much more efficient.
+
+
+
+This revised code is more efficient and directly addresses the requirements of the problem while providing a clear and understandable solution.

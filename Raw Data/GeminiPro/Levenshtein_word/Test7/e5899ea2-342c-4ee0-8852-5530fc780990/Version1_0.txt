@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close(); // Close the scanner
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the `calculateAverage` method and the overall program:
+
+**1. Normal Case:**
+
+* Input: num1 = 10, num2 = 20, num3 = 30
+* Expected Output: 20.0
+
+**2. Negative Numbers:**
+
+* Input: num1 = -5, num2 = 15, num3 = 5
+* Expected Output: 5.0
+
+**3. Zeroes:**
+
+* Input: num1 = 0, num2 = 0, num3 = 0
+* Expected Output: 0.0
+
+**4. Large Numbers:**
+
+* Input: num1 = 1000000, num2 = 2000000, num3 = 3000000
+* Expected Output: 2000000.0
+
+**5. Decimal Numbers:**
+
+* Input: num1 = 2.5, num2 = 3.7, num3 = 1.8
+* Expected Output: 2.6666666666666665
+
+**6.  All Same Numbers:**
+
+* Input: num1 = 7, num2 = 7, num3 = 7
+* Expected Output: 7.0
+
+
+
+**How to Run Test Cases (using JUnit - recommended):**
+
+While you can manually test by inputting values, using a testing framework like JUnit is far more efficient and robust for larger projects.  Here's a basic example using JUnit 5:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageNegativeNumbers() {
+        assertEquals(5.0, AverageCalculator.calculateAverage(-5, 15, 5));
+    }
+
+    // Add more test methods for the other test cases similarly...
+
+    @Test
+    void testCalculateAverageDecimalNumbers() {
+        assertEquals(2.6666666666666665, AverageCalculator.calculateAverage(2.5, 3.7, 1.8));
+    }
+
+
+}
+```
+
+
+
+This makes your testing process automated and repeatable, a crucial part of good software development practice. Remember to add JUnit to your project dependencies if you're using an IDE or build tool.

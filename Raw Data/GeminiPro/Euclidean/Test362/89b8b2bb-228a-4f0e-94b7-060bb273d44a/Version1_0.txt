@@ -1,0 +1,61 @@
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseWords {
+
+    public static String WordsInReverse(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            return ""; // Handle empty or null input
+        }
+
+        List<String> words = Arrays.asList(str.trim().split("\\s+")); // Split into words
+        Collections.reverse(words); // Reverse the list of words
+        return String.join(" ", words); // Join back into a string
+
+    }
+
+    public static void main(String[] args) {
+        String str1 = "This is a test string";
+        String reversedStr1 = WordsInReverse(str1);
+        System.out.println("Original string: " + str1);
+        System.out.println("Reversed string: " + reversedStr1);
+
+
+        String str2 = " leading and trailing spaces  ";
+        String reversedStr2 = WordsInReverse(str2);
+        System.out.println("Original string: " + str2);
+        System.out.println("Reversed string: " + reversedStr2);
+
+
+        String str3 = null; // Test null input
+        String reversedStr3 = WordsInReverse(str3);
+        System.out.println("Original string: " + str3);
+        System.out.println("Reversed string: " + reversedStr3);
+
+        String str4 = " "; // Test empty string
+        String reversedStr4 = WordsInReverse(str4);
+        System.out.println("Original string: " + str4);
+        System.out.println("Reversed string: " + reversedStr4);
+
+
+        String str5 = "single";
+        String reversedStr5 = WordsInReverse(str5);
+        System.out.println("Original string: " + str5);
+        System.out.println("Reversed string: " + reversedStr5);
+    }
+}
+```
+
+
+Key improvements in this revised version:
+
+* **Handles Edge Cases:**  It now correctly manages `null` and empty string inputs, returning an empty string in those cases.
+* **Trimming Whitespace:** The `trim()` method is used to remove leading and trailing whitespace, preventing extra spaces in the reversed string.
+* **Splitting on Multiple Spaces:**  `\\s+` is used in the `split()` method.  This handles cases where there might be multiple spaces between words.
+* **Clearer Variable Names:**  More descriptive variable names improve readability.
+* **Thorough Testing in `main()`:** The `main` method now includes tests with a variety of input strings, including edge cases, to demonstrate the correctness of the `WordsInReverse` method.
+
+
+This version addresses the original prompt's requirements and provides a robust and well-tested solution for reversing the words in a string.

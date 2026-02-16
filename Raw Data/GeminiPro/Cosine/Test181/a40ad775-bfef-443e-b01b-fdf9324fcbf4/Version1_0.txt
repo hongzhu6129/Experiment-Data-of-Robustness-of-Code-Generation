@@ -1,0 +1,68 @@
+**Java Program**
+
+```java
+import java.util.Arrays;
+
+public class ChordRotationChecker {
+
+    public static boolean areRotations(int[] chord1, int[] chord2) {
+        // Check if the chords have the same length
+        if (chord1.length != chord2.length) {
+            return false;
+        }
+
+        // Create a rotated version of chord1
+        int[] rotatedChord1 = new int[chord1.length];
+        for (int i = 0; i < chord1.length; i++) {
+            rotatedChord1[(i + 1) % chord1.length] = chord1[i];
+        }
+
+        // Check if the rotated chord matches chord2
+        return Arrays.equals(rotatedChord1, chord2);
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        int[] chord1 = { 1, 3, 5 };
+        int[] chord2 = { 5, 1, 3 };
+        System.out.println(areRotations(chord1, chord2)); // true
+
+        chord1 = new int[] { 1, 3, 5, 7 };
+        chord2 = new int[] { 3, 5, 7, 1 };
+        System.out.println(areRotations(chord1, chord2)); // true
+
+        chord1 = new int[] { 1, 3, 5 };
+        chord2 = new int[] { 3, 5, 1, 7 };
+        System.out.println(areRotations(chord1, chord2)); // false
+
+        chord1 = new int[] {};
+        chord2 = new int[] {};
+        System.out.println(areRotations(chord1, chord2)); // true
+
+        chord1 = new int[] { 1 };
+        chord2 = new int[] { 1 };
+        System.out.println(areRotations(chord1, chord2)); // true
+    }
+}
+```
+
+**Test Cases**
+
+**Corner Cases:**
+
+1. Empty chords (`{}`)
+2. Single-element chords (`{1}`)
+
+**Normal Cases:**
+
+1. Chords with different rotations (`{1, 3, 5}`, `{5, 1, 3}`)
+2. Chords with the same rotation (`{1, 3, 5, 7}`, `{3, 5, 7, 1}`)
+3. Chords with different lengths (`{1, 3, 5}`, `{3, 5, 1, 7}`)
+
+**Expected Outputs:**
+
+1. true (empty chords are considered rotations)
+2. true (single-element chords are considered rotations)
+3. true
+4. true
+5. false

@@ -1,0 +1,103 @@
+```java
+import java.util.Scanner;
+
+public class PrintFacing {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter facing direction (N, S, E, W): ");
+        String facing = scanner.nextLine().toUpperCase();
+
+        String direction;
+
+        switch (facing) {
+            case "N":
+                direction = "North";
+                break;
+            case "S":
+                direction = "South";
+                break;
+            case "E":
+                direction = "East";
+                break;
+            case "W":
+                direction = "West";
+                break;
+            default:
+                direction = "Invalid Input";
+                break; // Important: Handle invalid input!
+        }
+
+        System.out.println(direction);
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Inputs:**
+   - Input: `N`  Expected Output: `North`
+   - Input: `S`  Expected Output: `South`
+   - Input: `E`  Expected Output: `East`
+   - Input: `W`  Expected Output: `West`
+   - Input: `n`  Expected Output: `North` (Case-insensitive)
+   - Input: `wEst` Expected Output: `West` (Case-insensitive)
+
+2. **Invalid Inputs (Corner Cases):**
+   - Input: `A`  Expected Output: `Invalid Input`
+   - Input: `North` Expected Output: `Invalid Input` (Only single letters accepted)
+   - Input: `NW` Expected Output: `Invalid Input`
+   - Input: ` ` (Empty String) Expected Output: `Invalid Input`
+   - Input: `1`  Expected Output: `Invalid Input`
+   - Input: `!`  Expected Output: `Invalid Input`
+
+
+**How to Run the Tests:**
+
+1. **Manual Testing:** You can run the program and enter the test inputs one by one, verifying the output against the expected output.
+2. **Automated Testing (Recommended - using JUnit):**
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+   import java.io.ByteArrayInputStream;
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+   import java.util.Scanner;
+
+   public class PrintFacingTest {
+
+       @Test
+       public void testValidInputs() {
+           testFacing("N", "North");
+           testFacing("s", "South"); // Testing case-insensitivity
+           testFacing("eAsT", "East"); // Testing case-insensitivity
+       }
+
+       @Test
+       public void testInvalidInputs() {
+           testFacing("A", "Invalid Input");
+           testFacing("North", "Invalid Input");
+           testFacing(" ", "Invalid Input");  // Empty String
+           testFacing("123", "Invalid Input");
+       }
+
+
+       private void testFacing(String input, String expectedOutput) {
+           ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+           System.setIn(in); // Redirect System.in
+
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent)); // Redirect System.out
+
+           PrintFacing.main(new String[]{}); // Run main method
+
+           String actualOutput = outContent.toString().trim(); // Remove extra whitespace
+           assertTrue(actualOutput.contains(expectedOutput)); // Use contains because the output has "Enter..." text
+       }
+   }
+   ```
+
+   To run these tests, you will need a testing framework like JUnit set up in your project. The automated tests provide a more robust and efficient way to verify your code's behavior.  The use of `contains()` in the assertions is because the prompt "Enter facing direction..." will also be part of the captured output.

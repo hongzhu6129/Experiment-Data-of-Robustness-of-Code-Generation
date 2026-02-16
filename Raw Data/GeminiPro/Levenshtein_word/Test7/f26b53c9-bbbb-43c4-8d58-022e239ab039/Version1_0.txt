@@ -1,0 +1,93 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                   |
+|-----------|---------|---------|---------|----------------|----------------------------------------|
+| 1        | 10      | 20      | 30      | 20.0          | General case                            |
+| 2        | 0       | 0       | 0       | 0.0           | All zeros                               |
+| 3        | -5      | 10      | 15      | 6.666666666666667 | Negative number included                |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5           | Decimal numbers                         |
+| 5        | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE | Infinity or Exception        | Overflow (potential issue, handle carefully) |
+| 6        | Integer.MIN_VALUE | Integer.MIN_VALUE| Integer.MIN_VALUE| -Infinity or Exception       | Underflow (potential issue, handle carefully)|
+| 7        | Double.MAX_VALUE  | 0        | 0        | Infinity or Exception     | Overflow with double                     |
+| 8         | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE / 3 (very small number) | Handling very small double values |
+|9| 10 | 20 | Double.NaN | NaN | NaN input results in NaN output|
+
+
+**How to run the test cases (Manually):**
+
+1.  Compile the Java code: `javac AverageCalculator.java`
+2.  Run the program multiple times, entering the input values for each test case: `java AverageCalculator`
+
+
+**Important Considerations for Robust Code:**
+
+* **Input Validation:** While the provided code works for basic cases, a robust program should include input validation to handle invalid input (e.g., non-numeric characters) gracefully.  You can use a `try-catch` block to handle potential `InputMismatchException` if the user enters something that's not a number.
+* **Overflow/Underflow:**  Be aware of the limitations of integer and floating-point data types.  For real-world applications where very large or very small numbers might be input, consider using `BigDecimal` for more precise calculations.
+* **NaN Handling:**  Consider how to handle `NaN` (Not a Number) values if they might be input or result from calculations.
+
+
+This improved version demonstrates better input handling and NaN checks:
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class AverageCalculator {
+    // ... (rest of the code as before)
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        if (Double.isNaN(num1) || Double.isNaN(num2) || Double.isNaN(num3)) {
+            return Double.NaN; // Propagate NaN
+        }
+        return (num1 + num2 + num3) / 3;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double num1, num2, num3;
+
+        try {
+             // ... (input code as before, inside try block)
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numbers only.");
+            return; // or handle the error differently
+        }
+
+        // ... (rest of the main method)
+    }
+}
+
+```

@@ -1,0 +1,67 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] arr = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = arr.length;
+        int n = arr[0].length;
+
+        int target = 14;
+        int[] result = Saddleback(arr, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Element " + target + " found at: (" + result[0] + ", " + result[1] + ")");
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] arr, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (arr[row][col] == target) {
+                return new int[]{row, col}; // Element found
+            } else if (arr[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Element not found
+    }
+}
+```
+
+
+
+Explanation of the `Saddleback` method:
+
+1. **Initialization:**
+   - `row` starts at the top row (index 0).
+   - `col` starts at the rightmost column (index `n-1`).
+
+2. **Iteration:**
+   - The `while` loop continues as long as `row` is within the array bounds and `col` is a valid column index.
+
+3. **Comparison:**
+   - Inside the loop, the current element `arr[row][col]` is compared with the `target`.
+
+4. **Conditional Movement:**
+   - **If `arr[row][col] == target`:** The element is found, and its row and column indices are returned in an `int[]`.
+   - **If `arr[row][col] < target`:**  Since rows are sorted in ascending order, the target cannot be in the current row or any rows above it. Therefore, we move down to the next row by incrementing `row`.
+   - **If `arr[row][col] > target`:** Since columns are sorted in ascending order, the target cannot be in the current column or any columns to the right of it. Therefore, we move left to the previous column by decrementing `col`.
+
+5. **Element Not Found:** If the loop completes without finding the target, it means the target is not present in the array. In this case, `{-1, -1}` is returned to indicate that the element was not found.
+
+
+This saddleback search approach is efficient because it eliminates a row or a column in each comparison, leading to a time complexity of O(m + n), where 'm' is the number of rows and 'n' is the number of columns. It's much better than a linear search on the entire 2D array (O(m*n)) when the array is sorted row-wise and column-wise.

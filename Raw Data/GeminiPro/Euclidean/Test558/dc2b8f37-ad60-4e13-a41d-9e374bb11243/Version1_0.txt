@@ -1,0 +1,33 @@
+```java
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] myArray = {1, 2, 3, 4, 5};
+        int elementToUpdate = 3;  // The element to find and update
+        int newValue = 10;      // The new value
+
+        // Update the element if found
+        updateElement(myArray, elementToUpdate, newValue);
+
+        // Print the updated array
+        System.out.print("Updated Array: ");
+        for (int num : myArray) {
+            System.out.print(num + " ");
+        }
+        System.out.println(); 
+    }
+
+
+    // Method to update the array element (within main)
+    private static void updateElement(int[] arr, int element, int newValue) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == element) {
+                arr[i] = newValue;
+                return; // Exit after updating (if you only want to update the first occurrence)
+               // To update all occurences of 'element', simply remove this return statement
+            }
+        }
+    }
+}
+```

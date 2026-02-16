@@ -1,0 +1,67 @@
+```java
+import java.util.Scanner;
+
+public class TriangleArea {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of side a: ");
+        double a = input.nextDouble();
+
+        System.out.print("Enter the length of side b: ");
+        double b = input.nextDouble();
+
+        System.out.print("Enter the length of side c: ");
+        double c = input.nextDouble();
+
+        if (is_Valid(a, b, c)) {
+            double area = area_triangle(a, b, c);
+            System.out.println("The area of the triangle is: " + area);
+        } else {
+            System.out.println("Invalid triangle sides.  The sum of any two sides must be greater than the third.");
+        }
+        input.close();
+    }
+
+
+    public static boolean is_Valid(double a, double b, double c) {
+        return (a + b > c) && (a + c > b) && (b + c > a);
+    }
+
+    public static double area_triangle(double a, double b, double c) {
+        double s = (a + b + c) / 2.0; // Calculate semi-perimeter
+        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c)); // Heron's formula
+        return area;
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Input Validation:** The `is_Valid()` method is crucial. It checks if the given side lengths can actually form a triangle using the triangle inequality theorem.  This prevents the program from attempting to calculate the area with invalid inputs which could lead to incorrect results (e.g., taking the square root of a negative number).
+
+2. **Heron's Formula:** `area_triangle()` uses Heron's formula which is well-suited for calculating the area when you have the lengths of all three sides.
+
+3. **Clearer Prompts:** The `main()` method uses clear prompts to guide the user on what input is expected.
+
+4. **Error Handling:** If the triangle is invalid, an informative message is printed.
+
+5. **Resource Management:** The `Scanner` is closed using `input.close()`  to release the system resources.
+
+6. **Comments:**  Comments have been added to explain the purpose of the code sections, making it more readable and maintainable.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `TriangleArea.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:
+   ```bash
+   javac TriangleArea.java
+   ```
+3. **Run:** After successful compilation, run the program:
+   ```bash
+   java TriangleArea 
+   ```
+The program will then prompt you to enter the side lengths.

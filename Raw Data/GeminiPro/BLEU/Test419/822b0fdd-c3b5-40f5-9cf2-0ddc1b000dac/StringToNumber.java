@@ -1,0 +1,51 @@
+public class StringToNumber {
+
+    public static void main(String[] args) {
+
+        String str = "12345";
+        String floatStr = "123.45";
+        String doubleStr = "67890.12345";
+
+        try {
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer value: " + intValue);
+
+            long longValue = Long.parseLong(str);
+            System.out.println("Long value: " + longValue);
+
+            float floatValue = Float.parseFloat(floatStr);
+            System.out.println("Float value: " + floatValue);
+
+
+            double doubleValue = Double.parseDouble(doubleStr);
+            System.out.println("Double value: " + doubleValue);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format: " + e.getMessage());
+        }
+
+
+        // Demonstrating measurements  (using parsed values)
+        System.out.println("\nExample Measurements:");
+        int lengthCm = 150; // Example
+        System.out.println("Length in cm: " + lengthCm);
+
+        double weightKg = 65.5; // Example
+        System.out.println("Weight in kg: " + weightKg);
+
+
+
+        //Illustrating String conversion to numbers within a measurement context:
+        String heightStr = "175";
+        try {
+            int heightCm = Integer.parseInt(heightStr);
+            System.out.println("Height from string: " + heightCm + " cm");
+
+        } catch (NumberFormatException e) {
+             System.out.println("Error converting height: " + e.getMessage());
+        }
+
+
+
+    }
+}

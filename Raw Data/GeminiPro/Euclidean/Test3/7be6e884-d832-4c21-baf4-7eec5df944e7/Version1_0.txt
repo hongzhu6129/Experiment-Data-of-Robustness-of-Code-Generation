@@ -1,0 +1,101 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+
+        // Input validation: Ensure the input is an integer
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Consume the invalid input
+        }
+        int num = scanner.nextInt();
+
+
+        printScalarTable(num);
+
+        scanner.close();
+    }
+
+    public static void printScalarTable(int num) {
+        System.out.println("Scalar Table for " + num + " up to 11:");
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Integer:**
+   Input: 7
+   Expected Output:
+   ```
+   Scalar Table for 7 up to 11:
+   7 x 1 = 7
+   7 x 2 = 14
+   ...
+   7 x 11 = 77
+   ```
+
+2. **Zero:**
+   Input: 0
+   Expected Output:
+   ```
+   Scalar Table for 0 up to 11:
+   0 x 1 = 0
+   0 x 2 = 0
+   ...
+   0 x 11 = 0
+   ```
+
+3. **Negative Integer:**
+   Input: -5
+   Expected Output:
+   ```
+   Scalar Table for -5 up to 11:
+   -5 x 1 = -5
+   -5 x 2 = -10
+   ...
+   -5 x 11 = -55
+   ```
+
+4. **Large Integer:**
+   Input: 123456789 
+   Expected Output: (Verify the calculations)
+   ```
+   Scalar Table for 123456789 up to 11:
+   123456789 x 1 = 123456789
+   ...
+   123456789 x 11 = 1358024679
+   ```
+
+5. **Invalid Input (Corner Case):**
+   Input: abc
+   Expected Output:
+   ```
+   Invalid input. Please enter an integer. 
+   (prompts again for input)
+   ```
+
+6. **Invalid Input (Corner Case):**
+   Input: 1.5 (or any floating-point number)
+   Expected Output:
+   ```
+   Invalid input. Please enter an integer.
+   (prompts again for input)
+   ```
+
+
+
+**How to Run the Test Cases:**
+
+You can easily test these cases by running the Java program and providing the respective inputs. For the invalid input cases, observe that the program correctly handles the error and prompts the user again for valid integer input.  The large integer test case will help confirm that your code can handle larger numbers and doesn't overflow.  The zero and negative cases cover important boundaries.
+
+
+This improved answer provides more comprehensive test cases, including corner cases for invalid input and demonstrates how to use a `Scanner` for robust input handling.  The use of a separate `printScalarTable` method improves code organization.

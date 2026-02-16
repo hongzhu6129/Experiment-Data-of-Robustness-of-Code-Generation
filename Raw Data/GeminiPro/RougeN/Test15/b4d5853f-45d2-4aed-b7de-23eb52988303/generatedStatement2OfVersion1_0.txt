@@ -1,0 +1,29 @@
+
+
+
+
+**Test Cases:**
+
+| Decimal Input | Expected Hexadecimal Output | Notes                                  |
+|---------------|---------------------------|---------------------------------------|
+| 0            | 0                         | Corner case: zero input              |
+| 1            | 1                         | Basic test case                       |
+| 10           | A                         | Testing A-F output                   |
+| 15           | F                         | Testing the highest single-digit hex |
+| 16           | 10                        | Testing two-digit hex output         |
+| 255          | FF                        | Testing maximum value for two digits  |
+| 256          | 100                       | Testing three-digit hex output        |
+| 4095         | FFF                       | Testing maximum value for three digits |
+| -1           | (Handle appropriately)   | Corner case: negative input. You might want to throw an exception or handle it differently.  For this example, I'm assuming you print an error message |
+| Integer.MAX_VALUE | 7FFFFFFF                  | Corner case: maximum integer value    |
+| Integer.MIN_VALUE | 80000000                  | Corner case: minimum integer value     |
+
+
+
+**How to run the test cases:**
+
+1. **Manual testing:**  You can manually input these decimal numbers and verify the output against the expected hexadecimal values.
+
+2. **Automated testing (recommended):**  Create a separate test class using a testing framework like JUnit.  Here's a basic example using JUnit:
+
+

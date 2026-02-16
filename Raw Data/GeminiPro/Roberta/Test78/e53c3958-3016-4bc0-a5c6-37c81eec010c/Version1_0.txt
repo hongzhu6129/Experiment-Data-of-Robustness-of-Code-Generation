@@ -1,0 +1,69 @@
+```java
+public class EnvironmentAndManagerCheck {
+
+    public static void main(String[] args) {
+
+        // 8. Check for Civilian Manager (Simulated)
+        // In a real application, this would involve checking a configuration file, database,
+        // or some other system-specific mechanism to determine if a civilian manager
+        // has been assigned. We'll simulate this with a boolean variable.
+
+        boolean isCivilianManagerEstablished = false; // Set to true if a manager exists
+
+        if (isCivilianManagerEstablished) {
+            System.out.println("A civilian manager has been established for this application.");
+        } else {
+            System.out.println("No civilian manager has been established yet.");
+        }
+
+
+        // 90. Get Environment Variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // Or System.getenv("TMP") on some systems
+        String username = System.getenv("USERNAME"); // Or USER on some systems
+
+
+
+        if (path != null) {
+            System.out.println("PATH: " + path);
+        } else {
+            System.out.println("PATH environment variable not found.");
+        }
+
+        if (temp != null) {
+            System.out.println("TEMP: " + temp);
+        } else {
+            System.out.println("TEMP environment variable not found.");
+        }
+
+        if (username != null) {
+            System.out.println("USERNAME: " + username);
+        } else {
+            System.out.println("USERNAME environment variable not found.");
+        }
+
+    }
+}
+```
+
+
+**Explanation and Important Notes:**
+
+**8. Civilian Manager Check:**
+
+* **Simulation:**  The code simulates the check. In a real-world scenario, replace `isCivilianManagerEstablished = false;` with the actual logic to determine the manager's presence. This might involve querying a database, reading a configuration file, or using other application-specific methods.
+* **Context Matters:**  The concept of a "civilian manager" is application-specific. This code provides a basic framework; you need to adapt it to your particular system's requirements.
+
+**90. Environment Variables:**
+
+* **`System.getenv()`:** The `System.getenv(String name)` method is used to retrieve the value of the environment variable specified by `name`.
+* **Null Checks:** It's crucial to check if the returned value from `System.getenv()` is `null`. An environment variable might not be set, and trying to use a null value will result in a `NullPointerException`.
+* **OS Differences:** The names of environment variables can vary slightly across different operating systems (e.g., `TEMP` vs. `TMP`, `USERNAME` vs. `USER`). The code includes alternatives for common variations.
+* **Security:** Be careful when handling environment variables, especially if you're using them to construct file paths or execute external commands.  Ensure that the values are validated to prevent security vulnerabilities.
+
+
+To compile and run this code:
+
+1. Save it as `EnvironmentAndManagerCheck.java`.
+2. Compile: `javac EnvironmentAndManagerCheck.java`
+3. Run: `java EnvironmentAndManagerCheck`

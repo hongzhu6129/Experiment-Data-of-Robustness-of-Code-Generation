@@ -1,0 +1,52 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Add some entries to the TreeMap
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+
+        // Given key
+        int givenKey = 4;
+
+        // Get the portion of the map whose keys are strictly less than givenKey
+        SortedMap<Integer, String> subMap = treeMap.headMap(givenKey);
+
+
+        // Print the submap
+        System.out.println("Submap with keys strictly less than " + givenKey + ":");
+        System.out.println(subMap);
+
+
+
+        //Example with a String key TreeMap
+
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("A", 1);
+        stringTreeMap.put("B", 2);
+        stringTreeMap.put("C", 3);
+        stringTreeMap.put("D", 4);
+        stringTreeMap.put("E", 5);
+
+
+        String givenStringKey = "D";  // Example key
+
+        SortedMap<String, Integer> stringSubMap = stringTreeMap.headMap(givenStringKey);
+
+        System.out.println("\nSubmap with String keys strictly less than " + givenStringKey + ":");
+        System.out.println(stringSubMap);
+
+
+
+    }
+}

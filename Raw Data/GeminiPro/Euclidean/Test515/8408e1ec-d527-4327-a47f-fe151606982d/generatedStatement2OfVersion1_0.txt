@@ -1,0 +1,25 @@
+
+
+
+This code adheres strictly to the requested method signatures: `public static void main(String[])` and `public static boolean happy_num(long)`.
+
+**Explanation:**
+
+1. **`main` method:**
+   - Initializes a `count` to keep track of how many happy numbers have been found.
+   - Starts a `while` loop that continues until 10 happy numbers are found.
+   - Calls `happy_num` to check if the current `num` is happy.
+   - If `happy_num` returns `true`, prints the number and increments the `count`.
+   - Increments `num` to check the next number.
+
+2. **`happy_num` method:**
+   - Uses a `HashSet` called `seen` to keep track of numbers encountered during the process.  This is crucial for detecting cycles (non-happy numbers).
+   - Enters a `while` loop that continues as long as `num` is not 1 and `num` has not been seen before.
+   - Inside the loop:
+     - Adds the current `num` to the `seen` set.
+     - Calculates the sum of the squares of the digits of `num`.
+     - Updates `num` to the calculated sum.
+   - After the loop, returns `true` if `num` is 1 (happy number), and `false` otherwise (unhappy number, stuck in a cycle).
+
+
+This revised answer directly addresses the prompt's requirements by using only the specified method signatures and providing a clear and concise solution.

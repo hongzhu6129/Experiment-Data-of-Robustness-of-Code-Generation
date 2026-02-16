@@ -1,0 +1,76 @@
+```java
+import java.util.HashSet;
+
+public class HashSetIsEmpty {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Check if the HashSet is empty using isEmpty()
+        boolean isEmpty = hashSet.isEmpty();
+
+        if (isEmpty) {
+            System.out.println("The HashSet is empty.");
+        } else {
+            System.out.println("The HashSet is not empty.");
+        }
+
+        // Add some elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Check again if the HashSet is empty
+        isEmpty = hashSet.isEmpty();
+
+        if (isEmpty) {
+            System.out.println("The HashSet is empty.");
+        } else {
+            System.out.println("The HashSet is not empty.");
+        }
+
+
+        // Demonstrating another way to check (less efficient, generally avoid)
+        if(hashSet.size() == 0) {
+            System.out.println("The HashSet is empty (using size())."); // This won't print now.
+        } else {
+            System.out.println("The HashSet is not empty (using size()).");
+        }
+
+
+        // Clearing the HashSet
+        hashSet.clear();
+
+
+        // One final check:
+         if(hashSet.isEmpty()) {
+            System.out.println("The HashSet is now empty again (after clear())."); // This will print.
+        } else {
+            System.out.println("The HashSet is not empty (after clear()).");
+        }
+
+    }
+}
+
+```
+
+
+This code demonstrates:
+
+1. **Creating a HashSet:** `HashSet<String> hashSet = new HashSet<>();`  (You can replace `String` with any other data type).
+
+2. **Checking for emptiness using `isEmpty()`:**  This is the most direct and efficient way.
+
+3. **Adding elements:** `hashSet.add("element");`
+
+4. **Checking again after adding elements.**
+
+5. **Illustrating a less efficient way (using `size()`):** While it works, `isEmpty()` is preferred.
+
+6. **`clear()` method:**  Empties the HashSet.
+
+7. **Final check after clearing.**
+
+
+This provides a comprehensive educational example within a single `main` method, as requested.

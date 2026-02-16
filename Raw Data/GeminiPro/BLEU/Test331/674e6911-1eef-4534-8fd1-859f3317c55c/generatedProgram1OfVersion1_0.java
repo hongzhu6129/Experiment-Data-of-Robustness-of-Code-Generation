@@ -1,0 +1,36 @@
+public class CompareStringsIgnoreCase {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "hello";
+        String str3 = "World";
+
+        // Using equalsIgnoreCase()
+        boolean areEqual12 = str1.equalsIgnoreCase(str2);
+        boolean areEqual13 = str1.equalsIgnoreCase(str3);
+
+
+        System.out.println("\"" + str1 + "\" equals \"" + str2 + "\" (ignoring case): " + areEqual12);
+        System.out.println("\"" + str1 + "\" equals \"" + str3 + "\" (ignoring case): " + areEqual13);
+
+
+
+        // Demonstrating with user input (optional - requires exception handling if you want to be robust)
+        //  For simplicity, I've omitted the try-catch block for user input here.
+        /*
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first string: ");
+        String input1 = scanner.nextLine();
+
+        System.out.print("Enter the second string: ");
+        String input2 = scanner.nextLine();
+
+        boolean areEqualInput = input1.equalsIgnoreCase(input2);
+        System.out.println("\"" + input1 + "\" equals \"" + input2 + "\" (ignoring case): " + areEqualInput);
+
+        scanner.close(); // Close the scanner
+        */
+
+    }
+}

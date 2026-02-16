@@ -1,0 +1,21 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:** The code now includes JUnit tests. This is crucial for verifying the correctness of the `Rectangle` class.  The tests cover normal cases, a square (a special case of a rectangle), and important corner cases like zero length/width.  I've also added tests for large numbers and for negative input, demonstrating how to use `assertThrows`.
+
+* **Clearer `main` Method:** The `main` method now provides example usage and demonstrates creating both a regular rectangle and a square.
+
+* **Corner Case Handling (Improved):** The tests now explicitly check the behavior with zero length and width.  More importantly, I've added exception handling for negative length/width.  This makes the code more robust. You can implement the exception throwing in the `Rectangle` class constructor as well if you want that behavior at runtime in your `main` method.
+
+
+
+
+How to run the JUnit tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, you should be able to right-click on the `RectangleTest` class and select "Run 'RectangleTest'".
+
+2. **Command Line (with Maven):** If you're using Maven, you can run the tests from the command line in the project's root directory: `mvn test`
+
+3. **Command Line (without build tool):** If you don't have a build tool, it's slightly more complex. You'll need to ensure JUnit is on your classpath and then use the `java` command to run the test runner. This approach is less recommended, especially for larger projects.

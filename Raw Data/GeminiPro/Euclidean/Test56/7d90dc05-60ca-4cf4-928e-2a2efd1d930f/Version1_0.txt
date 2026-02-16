@@ -1,0 +1,57 @@
+```java
+import java.util.Scanner;
+
+public class StringContainsSequence {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the string and the sequence to search for
+        System.out.println("Enter the string:");
+        String string = scanner.nextLine();
+
+        System.out.println("Enter the sequence to search for:");
+        String sequence = scanner.nextLine();
+
+        // Check if the string contains the sequence
+        boolean containsSequence = string.contains(sequence);
+
+        // Print the result
+        if (containsSequence) {
+            System.out.println("The string contains the sequence.");
+        } else {
+            System.out.println("The string does not contain the sequence.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Positive test cases:**
+    * String: "Hello world"
+    * Sequence: "llo"
+    * Expected result: true
+    * String: "abracadabra"
+    * Sequence: "abra"
+    * Expected result: true
+* **Negative test cases:**
+    * String: "Hello world"
+    * Sequence: "abc"
+    * Expected result: false
+    * String: "abracadabra"
+    * Sequence: "cad"
+    * Expected result: false
+* **Corner cases:**
+    * String: ""
+    * Sequence: ""
+    * Expected result: true
+    * String: null
+    * Sequence: null
+    * Expected result: false (throws NullPointerException)
+    * String: "Hello world"
+    * Sequence: "l"
+    * Expected result: true
+    * String: "Hello world"
+    * Sequence: "world"
+    * Expected result: true

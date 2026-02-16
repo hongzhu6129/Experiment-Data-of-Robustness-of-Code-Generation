@@ -1,0 +1,63 @@
+```java
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int target = 5;
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+
+        int[] result = Saddleback(matrix, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+
+    private static int[] Saddleback(int[][] matrix, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row (larger values)
+            } else {
+                col--; // Move left to the previous column (smaller values)
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search Algorithm:** The `Saddleback` (or staircase search) method efficiently searches a sorted 2D array.  It starts at the top-right corner.  If the current element is smaller than the target, it moves down (to larger values). If the current element is larger than the target, it moves left (to smaller values).
+
+2. **Return an Array:** The `Saddleback` function returns an `int[]` of size 2.  The array contains the row and column indices of the target if found. If the target is not found, it returns `{-1, -1}`. This makes it clear whether the target was found and provides its location in a single return value.
+
+3. **Clearer Variable Names:** Using `m` and `n` for the dimensions of the matrix is more conventional and easier to understand than using `row` and `col` for these purposes (as in a previous version of the answer).
+
+4. **Example in `main`:** The `main` method now includes a sample matrix and target value to demonstrate how to use the `Saddleback` function.
+
+5. **Output Handling:** The `main` method now handles the output based on the result of the `Saddleback` search.  It prints the location of the target if found, and a "not found" message otherwise.
+
+
+
+
+This revised code is more robust, efficient, and easier to understand, adhering to the provided method signature requirements.

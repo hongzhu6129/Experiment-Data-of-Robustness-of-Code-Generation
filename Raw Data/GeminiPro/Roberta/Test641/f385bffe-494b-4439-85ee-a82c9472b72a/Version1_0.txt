@@ -1,0 +1,98 @@
+```java
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class MaxPriorityQueueExample {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using Collections.reverseOrder() comparator
+
+        PriorityQueue<Integer> maxPQ1 = new PriorityQueue<>(Collections.reverseOrder());
+
+        maxPQ1.add(5);
+        maxPQ1.add(10);
+        maxPQ1.add(1);
+        maxPQ1.add(7);
+
+        System.out.println("Max PriorityQueue using Collections.reverseOrder():");
+        while (!maxPQ1.isEmpty()) {
+            System.out.print(maxPQ1.poll() + " "); // Output: 10 7 5 1
+        }
+        System.out.println();
+
+
+
+        // Method 2: Using a custom Comparator (Lambda expression)
+
+        PriorityQueue<Integer> maxPQ2 = new PriorityQueue<>((a, b) -> b - a); // Reverse of natural ordering
+
+
+        maxPQ2.add(5);
+        maxPQ2.add(10);
+        maxPQ2.add(1);
+        maxPQ2.add(7);
+
+
+        System.out.println("Max PriorityQueue using a custom Comparator (lambda):");
+        while (!maxPQ2.isEmpty()) {
+            System.out.print(maxPQ2.poll() + " "); // Output: 10 7 5 1 
+        }
+        System.out.println();
+
+
+
+        // Method 3: Using a custom Comparator (separate class) - more verbose
+        class MyComparator implements java.util.Comparator<Integer> {
+            @Override
+            public int compare(Integer a, Integer b) {
+                return b - a; // Reverse of natural ordering
+            }
+        }
+
+        PriorityQueue<Integer> maxPQ3 = new PriorityQueue<>(new MyComparator());
+
+
+        maxPQ3.add(5);
+        maxPQ3.add(10);
+        maxPQ3.add(1);
+        maxPQ3.add(7);
+
+
+        System.out.println("Max PriorityQueue using a custom Comparator (separate class):");
+        while (!maxPQ3.isEmpty()) {
+            System.out.print(maxPQ3.poll() + " "); // Output: 10 7 5 1
+        }
+        System.out.println();
+
+
+
+         // Example with Strings (using reverseOrder)
+        PriorityQueue<String> maxPQStrings = new PriorityQueue<>(Collections.reverseOrder());
+        maxPQStrings.add("apple");
+        maxPQStrings.add("banana");
+        maxPQStrings.add("zebra");
+        maxPQStrings.add("cat");
+
+        System.out.println("Max PriorityQueue with Strings:");
+         while (!maxPQStrings.isEmpty()) {
+            System.out.print(maxPQStrings.poll() + " "); // Output: zebra cat banana apple
+        }
+        System.out.println();
+    }
+}
+```
+
+
+Key explanations:
+
+1. **`Collections.reverseOrder()`:** This is the simplest and most recommended way to create a max `PriorityQueue`. It provides a ready-made `Comparator` that reverses the natural ordering of elements.
+
+2. **Custom `Comparator` (Lambda):**  You can use a lambda expression to define a custom `Comparator`. `(a, b) -> b - a` reverses the natural ordering (which is `a - b`).
+
+3. **Custom `Comparator` (Separate Class):**  This method is more verbose but demonstrates the underlying mechanism clearly. You create a class that implements the `Comparator` interface and override the `compare()` method.
+
+4. **Strings Example:**  The example with strings demonstrates how `Collections.reverseOrder()` works with non-numeric types.  Strings are ordered lexicographically (alphabetical order) by default.  `reverseOrder()` reverses this to give reverse alphabetical order.
+
+
+This educational example provides multiple approaches, making it easier for learners to understand how to create a max `PriorityQueue` in Java.  It's important to emphasize that using `Collections.reverseOrder()` is generally the preferred method due to its conciseness and clarity.

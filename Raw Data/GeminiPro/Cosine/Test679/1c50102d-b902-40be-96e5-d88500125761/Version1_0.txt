@@ -1,0 +1,40 @@
+```java
+import java.util.TreeMap;
+
+public class LeastKeyGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        int key1 = 25;
+        Integer result1 = getLeastKeyGreaterOrEqual(treeMap, key1);
+        System.out.println("Least key greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        int key2 = 10;
+        Integer result2 = getLeastKeyGreaterOrEqual(treeMap, key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+
+        int key3 = 55;
+        Integer result3 = getLeastKeyGreaterOrEqual(treeMap, key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + result3); // Output: null
+
+        int key4 = 5;
+        Integer result4 = getLeastKeyGreaterOrEqual(treeMap, key4);
+        System.out.println("Least key greater than or equal to " + key4 + ": " + result4); // Output: 10
+
+
+
+    }
+
+    public static <K, V> K getLeastKeyGreaterOrEqual(TreeMap<K, V> map, K key) {
+        return map.ceilingKey(key); 
+    }
+}
+```

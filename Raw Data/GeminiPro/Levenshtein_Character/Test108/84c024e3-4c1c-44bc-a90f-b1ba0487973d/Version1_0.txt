@@ -1,0 +1,63 @@
+```java
+class Solution {
+    /**
+     * Given a double and a string, find the first occurrence of the string within the double's string representation.
+     *
+     * @param haystack The double to search within.
+     * @param needle   The string to search for.
+     * @return The index of the first occurrence of needle within haystack's string representation, or -1 if not found.
+     */
+    public int strStr(double haystack, String needle) {
+        String haystackStr = String.valueOf(haystack);
+        return strStr(haystackStr, needle);
+    }
+
+    /**
+     * Given two strings, find the first occurrence of the second string (needle) within the first string (haystack).
+     *
+     * @param haystack The string to search within.
+     * @param needle   The string to search for.
+     * @return The index of the first occurrence of needle within haystack, or -1 if not found.
+     */
+    public int strStr(String haystack, String needle) {
+        if (needle == null || needle.isEmpty()) {
+            return 0; 
+        }
+
+        if (haystack == null || haystack.isEmpty()) {
+            return -1;
+        }
+
+
+        return haystack.indexOf(needle);
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        double haystackDouble = 3.14159265358979323846;
+        String needle1 = "1415";
+        String needle2 = "9793";
+        String needle3 = "xyz";
+
+        System.out.println("First occurrence of '" + needle1 + "' in " + haystackDouble + ": " + solution.strStr(haystackDouble, needle1)); // Output: 2
+        System.out.println("First occurrence of '" + needle2 + "' in " + haystackDouble + ": " + solution.strStr(haystackDouble, needle2)); // Output: 10
+        System.out.println("First occurrence of '" + needle3 + "' in " + haystackDouble + ": " + solution.strStr(haystackDouble, needle3)); // Output: -1
+
+
+        String haystackString = "hello";
+        String needle4 = "ll";
+        String needle5 = "world";
+
+         System.out.println("First occurrence of '" + needle4 + "' in " + haystackString + ": " + solution.strStr(haystackString, needle4)); // Output: 2
+        System.out.println("First occurrence of '" + needle5 + "' in " + haystackString + ": " + solution.strStr(haystackString, needle5)); // Output: -1
+
+        // Test empty needle
+        System.out.println("First occurrence of '' in " + haystackString + ": " + solution.strStr(haystackString, "")); // Output: 0
+       
+
+    }
+}
+```

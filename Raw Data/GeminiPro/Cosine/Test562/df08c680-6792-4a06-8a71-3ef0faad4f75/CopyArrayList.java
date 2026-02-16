@@ -1,0 +1,63 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class CopyArrayList {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using the constructor
+        ArrayList<String> originalList = new ArrayList<>(Arrays.asList("apple", "banana", "cherry"));
+        ArrayList<String> copiedList1 = new ArrayList<>(originalList);
+
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List (Constructor): " + copiedList1);
+
+        // Modifying the copied list doesn't affect the original
+        copiedList1.add("date");
+        System.out.println("Original List (after modification): " + originalList);
+        System.out.println("Copied List (after modification): " + copiedList1);
+
+
+
+        // Method 2: Using addAll()
+        ArrayList<String> copiedList2 = new ArrayList<>();
+        copiedList2.addAll(originalList);
+
+        System.out.println("\nCopied List (addAll): " + copiedList2);
+
+
+
+        // Method 3: Using Java 8 Streams (for more advanced users)
+        List<String> copiedList3 = originalList.stream().toList(); // Note: This creates a fixed-size list
+
+        System.out.println("\nCopied List (Streams): " + copiedList3);
+
+        // Method 4: Using Collections.copy() (important considerations below)
+        ArrayList<String> copiedList4 = new ArrayList<>(originalList.size()); // Pre-size is CRUCIAL
+        Collections.copy(copiedList4, originalList);  // Throws IndexOutOfBoundsException if copiedList4 is not big enough
+
+        System.out.println("\nCopied List (Collections.copy): " + copiedList4);
+
+        // Demonstrating why pre-sizing with Collections.copy() is essential:
+        ArrayList<String> smallList = new ArrayList<>();
+        smallList.add("grape");
+
+        ArrayList<String> tooSmallCopy = new ArrayList<>();  // Deliberately too small
+        // The next line will throw IndexOutOfBoundsException: Source does not fit in destination
+        // Collections.copy(tooSmallCopy, originalList);  <-- Uncommenting this will crash the program.
+
+        // Explanation of Collections.copy():
+        /*
+        Collections.copy() replaces the elements of the destination list with the elements of the source list. 
+        It does *not* add elements; it overwrites them. Therefore, if the destination list is smaller than the 
+        source list, you'll get an IndexOutOfBoundsException. If the destination list is larger, the extra 
+        elements at the end will remain unchanged.
+         */
+
+
+
+
+    }
+}

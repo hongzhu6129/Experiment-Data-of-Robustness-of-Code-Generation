@@ -1,0 +1,38 @@
+
+
+
+**Test Cases:**
+
+**1. Normal Cases:**
+
+* **Input 1:** 10, **Input 2:** 11, **Expected Output:** 110
+* **Input 1:** 101, **Input 2:** 10, **Expected Output:** 1010
+* **Input 1:** 1111, **Input 2:** 111, **Expected Output:** 1101001
+* **Input 1:** 10000, **Input 2:** 100, **Expected Output:** 1000000
+
+
+**2. Corner Cases:**
+
+* **Input 1:** 0, **Input 2:** 11, **Expected Output:** 0
+* **Input 1:** 10, **Input 2:** 0, **Expected Output:** 0
+* **Input 1:** 0, **Input 2:** 0, **Expected Output:** 0
+
+
+**3. Edge Cases/Error Handling:**
+
+* **Input 1:** 101a, **Input 2:** 11 (Invalid Input - Non-binary), **Expected Output:** Invalid binary input
+* **Input 1:** 10, **Input 2:** 210 (Invalid Input - Non-binary), **Expected Output:** Invalid binary input
+* **Input 1:**  "", **Input 2:** 11 (Empty Input), **Expected Output:** Invalid binary input  (Technically, an empty string parses as 0 for `Integer.parseInt(s, 2)` , but it's better to treat this as an error for clear user experience.)
+* **Input 1:**  11111111111111111111111111111111111111111111,  **Input 2:** 11111111111111111111111111111111111111111 (Large inputs � potential overflow), **Expected Output:**  May vary depending on how Java handles large binary strings/integers.  Test for potential `NumberFormatException`.
+
+
+
+**How to run the test cases:**
+
+You can either:
+
+1. **Manual Testing:** Change the input values in the `main` method and run the code.
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit. Create test methods for each of the test cases and assert the expected output against the actual output. This is the standard practice for testing in Java and ensures better code quality and maintainability.  Example JUnit test:
+
+
+

@@ -1,0 +1,46 @@
+import java.util.Arrays;
+
+class Solution {
+
+    static void streamAvg(float[] arr) {
+        if (arr == null || arr.length == 0) {
+            System.out.println(0.0f); // Handle empty array case
+            return;
+        }
+
+        float sum = 0;
+        int count = 0;
+
+        for (float num : arr) {
+            sum = getAvg(sum, num, count + 1); // Use getAvg for incremental average
+            count++;
+        }
+        
+         System.out.println(sum);
+
+    }
+
+
+    static float getAvg(float prevAvg, float newNum, int count) {
+        return (prevAvg * (count - 1) + newNum) / count;
+    }
+
+
+    public static void main(String[] args) {
+        float[] arr1 = {10.0f, 20.0f, 30.0f, 40.0f, 50.0f};
+        streamAvg(arr1);  // Output: 30.0
+
+        float[] arr2 = {1.0f, 2.0f, 3.0f};
+        streamAvg(arr2);   // Output: 2.0
+
+        float[] arr3 = {}; // Empty array
+        streamAvg(arr3);   // Output: 0.0
+
+        float[] arr4 = null; // Null array
+        streamAvg(arr4);   // Output: 0.0
+
+        float[] arr5 = {1.5f, 2.5f, 3.5f};
+        streamAvg(arr5);   // Output: 2.5
+
+    }
+}

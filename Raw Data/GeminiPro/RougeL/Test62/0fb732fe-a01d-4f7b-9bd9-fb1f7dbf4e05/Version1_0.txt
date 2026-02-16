@@ -1,0 +1,39 @@
+```java
+public class CombineStrings {
+
+    public static void main(String[] args) {
+        String str1 = "Python";
+        String str2 = "Java";
+        System.out.println(function(str1, str2)); // Output: P#a
+
+        str1 = "";
+        str2 = "Java";
+        System.out.println(function(str1, str2)); // Output: #J#
+
+        str1 = "Python";
+        str2 = "";
+        System.out.println(function(str1, str2)); // Output: P#a
+
+        str1 = "";
+        str2 = "";
+        System.out.println(function(str1, str2));  // Output: ##
+
+
+    }
+
+    public static String function(String str1, String str2) {
+        char firstChar = '#';
+        char lastChar = '#';
+
+        if (str1.length() > 0) {
+            firstChar = str1.charAt(0);
+        }
+
+        if (str2.length() > 0) {
+            lastChar = str2.charAt(str2.length() - 1);
+        }
+
+        return String.valueOf(firstChar) + "#" + String.valueOf(lastChar);
+    }
+}
+```

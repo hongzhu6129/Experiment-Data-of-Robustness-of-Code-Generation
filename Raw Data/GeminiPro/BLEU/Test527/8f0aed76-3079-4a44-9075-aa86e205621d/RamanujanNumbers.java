@@ -1,0 +1,59 @@
+public class RamanujanNumbers {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can change this to any desired upper limit
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) {
+                break; // Optimization: No need to check further if a^3 exceeds n
+            }
+
+            int count = 0;
+            for (int b = 1; b < a; b++) { // b < a to avoid duplicate pairs
+                int b3 = b * b * b;
+                int sum = a3 + b3;
+                if (sum > n) {
+                    break; // Optimization: No need to check further if sum exceeds n
+                }
+
+
+                for (int c = 1; c < a ; c++) {
+                    int c3 = c * c * c;
+                    if(c3 > sum ) break; //optimization
+
+                    for (int d = 1; d < c; d++) { // d<c to avoid duplicate pairs and same pair as b
+                        int d3 = d * d * d;
+                        if(d3 > sum) break; //optimization
+
+                        if (c3 + d3 == sum) {
+
+                           count++;
+                        }
+                    }
+                 }
+
+                if (count > 0){
+                     System.out.println(sum + " can be expressed as the sum of two cubes in " + (count + 1) + " different ways:");
+
+                    // Print the combinations for debugging purposes
+                    for (int b1 = 1; b1 < a; b1++) {
+                        int b13 = b1* b1 *b1;
+                        if (a3 + b13 == sum) System.out.println(a +"^3 + "+ b1 +"^3");
+                     }
+                    for (int c = 1; c < a; c++) {
+                        int c3 = c * c * c;
+                        for (int d = 1; d < c; d++) {
+                            int d3 = d * d * d;
+                            if (c3 + d3 == sum){
+                                System.out.println(c +"^3 + "+ d +"^3");
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+}

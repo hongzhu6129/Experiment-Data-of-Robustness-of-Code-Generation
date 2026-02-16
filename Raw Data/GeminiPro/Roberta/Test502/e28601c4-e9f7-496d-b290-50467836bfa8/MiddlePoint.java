@@ -1,0 +1,22 @@
+public class MiddlePoint {
+
+    public static void main(String[] args) {
+        System.out.println(test(2, 4, 6)); // false
+        System.out.println(test(2, 6, 4)); // true
+        System.out.println(test(4, 2, 6)); // false
+        System.out.println(test(4, 6, 2)); // true
+        System.out.println(test(6, 2, 4)); // true
+        System.out.println(test(6, 4, 2)); // true
+        System.out.println(test(4, 4, 4)); // true // Consider all same values as true
+        System.out.println(test(2, 2, 4)); // false
+        System.out.println(test(4, 2, 2)); // false
+
+    }
+
+    public static boolean test(int a, int b, int c) {
+        // Check if any of the numbers is the midpoint of the other two.
+        return (a + c) / 2.0 == b || (a + b) / 2.0 == c || (b + c) / 2.0 == a;
+
+
+    }
+}

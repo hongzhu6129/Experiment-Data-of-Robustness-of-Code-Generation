@@ -1,0 +1,75 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime(String format) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String format = "yyyy/MM/dd HH:mm:ss.SSS"; // Example format
+        String currentDateTime = getCurrentDateTime(format);
+        System.out.println("Current Date and Time: " + currentDateTime);
+
+
+        // Test cases (demonstrated in main for simplicity, ideally would be separate test methods)
+        System.out.println(getCurrentDateTime("yyyy-MM-dd")); // Different date format
+        System.out.println(getCurrentDateTime("HH:mm:ss")); // Time only
+        System.out.println(getCurrentDateTime("EEEE, MMMM dd, yyyy")); // Day of week, month name
+        System.out.println(getCurrentDateTime("yyyy/MM/dd'T'HH:mm:ss.SSSZ")); // ISO 8601 format with timezone
+
+
+        // Corner cases (handling potential exceptions)
+        try {
+            System.out.println(getCurrentDateTime("yy/M/d")); // Minimal date format
+            System.out.println(getCurrentDateTime("yyyy/MMMM/dd HH:mm:ss.SSSSSS")); // More milliseconds than supported (should truncate)
+
+
+            //Invalid format - expect exception
+            System.out.println(getCurrentDateTime("yyyy/MMM/dd/HH")); // Invalid format, expect exception 
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());  // Handle exceptions gracefully
+        }
+
+         //Edge case: Year 1 (or any other valid year)
+        LocalDateTime specificDateTime = LocalDateTime.of(1, 1, 1, 0, 0, 0, 0);
+        DateTimeFormatter formatterEdge = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+        System.out.println("Edge Case (Year 1): " + formatterEdge.format(specificDateTime));
+
+
+
+
+
+    }
+}
+```
+
+
+
+**Test Cases and Corner Cases:**
+
+The `main` method now includes a series of test cases demonstrating different scenarios:
+
+1. **Different Date and Time Formats:**  Tests with variations in date and time formatting strings.
+2. **Time Only:** Extracts and displays only the time portion.
+3. **Day and Month Names:**  Formats the output to include the full day of the week and month name.
+4. **ISO 8601 Format:** Uses the standard ISO 8601 format, including the timezone.
+5. **Minimal Date Format:** Tests with a minimal valid date format (`yy/M/d`).
+6. **Excess Milliseconds:** Provides more millisecond precision than supported (should truncate gracefully).
+7. **Invalid Format (Corner Case):**  Intentionally uses an incorrect format string (`yyyy/MMM/dd/HH`) to demonstrate exception handling (the `try...catch` block ensures a clean exit).  This shows how the program gracefully handles unexpected or invalid input.
+8. **Edge Case (Year 1):**  Tests with the year 1 (a valid but sometimes edge case for date/time libraries).
+
+
+**Key Improvements:**
+
+* **Exception Handling:** The `try...catch` block prevents the program from crashing if an invalid date/time format string is provided.
+* **Clearer Output:** The test cases now have more descriptive output to make it easier to understand what is being tested.
+* **Edge Case Testing:**  Including the year 1 test helps ensure the code works correctly with less common but still valid inputs.
+* **More Comprehensive Testing:** The added test cases cover a wider range of scenarios, improving the robustness of the code.
+
+
+This improved version provides better error handling, clearer output, and more thorough testing, including corner cases and edge cases, making it much more robust and reliable.  This would be a good starting point for adding more formal unit tests if needed.

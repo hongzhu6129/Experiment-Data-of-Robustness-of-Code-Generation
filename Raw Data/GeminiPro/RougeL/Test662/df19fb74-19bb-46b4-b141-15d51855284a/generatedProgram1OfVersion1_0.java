@@ -1,0 +1,36 @@
+import java.util.Map;
+import java.util.TreeMap;
+
+public class GetFirstAndLastKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap. TreeMap is used because it stores keys in sorted order.
+        Map<Integer, String> map = new TreeMap<>();
+
+        // Put some key-value pairs into the map
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
+        map.put(4, "Four");
+        map.put(3, "Three");
+
+
+        if (!map.isEmpty()) { // Check if the map is empty before accessing elements
+            // Get the first key (lowest)
+            Integer firstKey = map.keySet().stream().findFirst().orElse(null);
+
+
+            // Get the last key (highest)
+            Integer lastKey = map.keySet().stream().reduce((first, second) -> second).orElse(null);
+
+
+
+            System.out.println("First Key (Lowest): " + firstKey);
+            System.out.println("Last Key (Highest): " + lastKey);
+
+
+        } else {
+            System.out.println("The map is empty.");
+        }
+    }
+}

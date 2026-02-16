@@ -1,0 +1,34 @@
+```java
+public class FormulaCalculation {
+
+    public static void main(String[] args) {
+        // Formula: 4.0 * (1 - (1.0/3) + (1.0/5) - (1.0/7) + (1.0/9) - (1.0/11))
+
+        double result = 4.0 * (1.0 - (1.0/3.0) + (1.0/5.0) - (1.0/7.0) + (1.0/9.0) - (1.0/11.0));
+
+        System.out.println(result); // Output: 2.9760461760461765
+
+
+        //  More efficient and flexible approach using a loop:
+        double sum = 0.0;
+        int sign = 1; // Start with positive sign
+        for (int i = 1; i <= 11; i += 2) {
+            sum += (double) sign / i;
+            sign *= -1; // Alternate the sign
+        }
+        double resultLoop = 4.0 * sum;
+
+        System.out.println(resultLoop); // Output: 2.9760461760461765
+
+        //Explanation of the loop approach:
+        /*
+        1. Initialize sum to 0.0 and sign to 1.
+        2. Loop through odd numbers from 1 to 11 (inclusive).
+        3. In each iteration, add the current term (sign/i) to the sum.
+        4. Multiply the sign by -1 to alternate between positive and negative terms.
+        5. Finally, multiply the sum by 4.0 to get the final result.
+        This approach is more flexible because you can easily change the number of terms in the series by modifying the loop condition.
+        */
+    }
+}
+```

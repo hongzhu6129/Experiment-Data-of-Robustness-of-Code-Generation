@@ -1,0 +1,65 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListSearch {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        // Search for an element using contains()
+        String searchTerm = "Orange";
+        if (fruits.contains(searchTerm)) {
+            System.out.println(searchTerm + " found in the list.");
+        } else {
+            System.out.println(searchTerm + " not found in the list.");
+        }
+
+
+        // Search for an element and get its index using indexOf()
+        searchTerm = "Grape";
+        int index = fruits.indexOf(searchTerm);
+
+        if (index != -1) { // indexOf() returns -1 if not found
+            System.out.println(searchTerm + " found at index: " + index);
+        } else {
+            System.out.println(searchTerm + " not found in the list.");
+        }
+
+
+
+        // Example with integers (demonstrates searching for a value, not an object reference).
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        int searchNumber = 30;
+        if (numbers.contains(searchNumber)) { // Autoboxing handles the int to Integer conversion
+            System.out.println(searchNumber + " found in the list.");
+            System.out.println(searchNumber + " found at index: " + numbers.indexOf(searchNumber));
+        } else {
+            System.out.println(searchNumber + " not found in the list.");
+        }
+
+
+         // Search for a non-existent element
+        searchTerm = "Pineapple"; 
+        if (fruits.contains(searchTerm)) {
+            System.out.println(searchTerm + " found in the list.");
+        } else {
+            System.out.println(searchTerm + " not found in the list.");
+        }
+
+    }
+}
+```

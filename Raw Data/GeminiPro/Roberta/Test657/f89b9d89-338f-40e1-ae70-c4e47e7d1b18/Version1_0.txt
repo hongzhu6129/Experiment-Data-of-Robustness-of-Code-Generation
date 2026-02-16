@@ -1,0 +1,67 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapTracker {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Add some elements to the TreeMap
+        treeMap.put(1, "Apple");
+        treeMap.put(3, "Orange");
+        treeMap.put(2, "Banana");
+        treeMap.put(4, "Grape");
+
+        // Value to track
+        String valueToTrack = "Banana";
+
+
+        // Check if the value exists in the TreeMap
+        if (treeMap.containsValue(valueToTrack)) {
+            System.out.println("The value '" + valueToTrack + "' exists in the TreeMap.");
+
+            // Find the key associated with the value (a bit more involved)
+            for (Integer key : treeMap.keySet()) {
+                if (treeMap.get(key).equals(valueToTrack)) {
+                    System.out.println("The key associated with '" + valueToTrack + "' is: " + key);
+                    break; // Stop searching after finding the first occurrence
+                }
+            }
+
+
+        } else {
+            System.out.println("The value '" + valueToTrack + "' does not exist in the TreeMap.");
+        }
+
+
+        //Demonstrate tracking changes after adding/removing
+        treeMap.remove(2); // Remove Banana
+
+
+        if (treeMap.containsValue(valueToTrack)) {
+            System.out.println("The value '" + valueToTrack + "' exists in the TreeMap.");
+        } else {
+            System.out.println("The value '" + valueToTrack + "' does not exist in the TreeMap (after removal).");
+        }
+
+
+
+        treeMap.put(5, "Banana"); //Re-add Banana with different key
+
+        if (treeMap.containsValue(valueToTrack)) {
+            System.out.println("The value '" + valueToTrack + "' exists in the TreeMap (after re-adding).");
+
+             for (Integer key : treeMap.keySet()) {
+                if (treeMap.get(key).equals(valueToTrack)) {
+                    System.out.println("The key associated with '" + valueToTrack + "' is now: " + key); // Key will be different
+                    break;
+                }
+            }
+        } else {
+            System.out.println("The value '" + valueToTrack + "' does not exist in the TreeMap.");
+        }
+
+    }
+}
+```

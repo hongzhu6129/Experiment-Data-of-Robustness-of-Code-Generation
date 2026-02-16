@@ -1,0 +1,67 @@
+```java
+public class SeparateConsonantsVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello World"; // Example input
+        String result = validate(inputString);
+        System.out.println(result); 
+
+        inputString = "aeiou"; // Example input with only vowels
+        result = validate(inputString);
+        System.out.println(result);
+
+        inputString = "bcdfgh"; // Example input with only consonants
+        result = validate(inputString);
+        System.out.println(result);        
+
+        inputString = ""; // Example input with empty string
+        result = validate(inputString);
+        System.out.println(result); 
+
+        inputString = "12345"; // Example input with numbers and symbols
+        result = validate(inputString);
+        System.out.println(result); 
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null) {
+            return "Invalid input: null";
+        }
+
+        StringBuilder vowels = new StringBuilder();
+        StringBuilder consonants = new StringBuilder();
+
+        inputString = inputString.toLowerCase();  // Handle both uppercase and lowercase
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) { // Only process letters 
+                if ("aeiou".indexOf(c) != -1) {
+                    vowels.append(c);
+                } else {
+                    consonants.append(c);
+                }
+            }
+        }
+
+        return "Vowels: " + vowels.toString() + ", Consonants: " + consonants.toString();
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:** The code now includes handling for `null` input and empty strings, making it more robust.  It also explicitly handles non-letter characters (like numbers and symbols) by ignoring them.
+
+2. **Case-Insensitive:** Converts the input to lowercase using `toLowerCase()` to correctly identify vowels regardless of their case.
+
+3. **Clearer Output:**  The output format is more descriptive, indicating "Vowels:" and "Consonants:" clearly.
+
+4. **StringBuilder for Efficiency:** Uses `StringBuilder` for building the vowel and consonant strings.  This is much more efficient than using string concatenation (`+`) repeatedly inside a loop, especially for longer input strings.
+
+5. **Character.isLetter():**  Uses `Character.isLetter()` to ensure only alphabetic characters are processed, excluding numbers, spaces, and symbols.
+
+6. **Example Usage in `main()`:** The `main` method demonstrates how to use the `validate` method with different types of input, showcasing the handling of various cases (vowels only, consonants only, empty string, mixed case, numbers/symbols).
+
+
+This improved version addresses potential issues, enhances readability, and provides a more educational and robust solution.

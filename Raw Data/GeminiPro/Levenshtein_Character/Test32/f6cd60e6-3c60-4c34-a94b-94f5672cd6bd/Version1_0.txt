@@ -1,0 +1,131 @@
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        int letters = 0;
+        int spaces = 0;
+        int numbers = 0;
+        int others = 0;
+
+        for (char c : inputString.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters++;
+            } else if (Character.isWhitespace(c)) {
+                spaces++;
+            } else if (Character.isDigit(c)) {
+                numbers++;
+            } else {
+                others++;
+            }
+        }
+
+        System.out.println("letter: " + letters);
+        System.out.println("space: " + spaces);
+        System.out.println("number: " + numbers);
+        System.out.println("other: " + others);
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Example Case:**
+   Input:  `Aa kiu, I swd skieo 236587. GH kiu: sieo?? 25.33`
+   Expected Output:
+   ```
+   letter: 23
+   space: 9
+   number: 10
+   other: 6
+   ```
+
+2. **Empty String:**
+   Input: ``
+   Expected Output:
+   ```
+   letter: 0
+   space: 0
+   number: 0
+   other: 0
+   ```
+
+3. **Only Spaces:**
+   Input: `     `
+   Expected Output:
+   ```
+   letter: 0
+   space: 5
+   number: 0
+   other: 0
+   ```
+
+4. **Only Numbers:**
+   Input: `1234567890`
+   Expected Output:
+   ```
+   letter: 0
+   space: 0
+   number: 10
+   other: 0
+   ```
+
+5. **Only Letters:**
+   Input: `HelloWorld`
+   Expected Output:
+   ```
+   letter: 10
+   space: 0
+   number: 0
+   other: 0
+   ```
+
+6. **Special Characters:**
+   Input: `!@#$%^&*()`
+   Expected Output:
+   ```
+   letter: 0
+   space: 0
+   number: 0
+   other: 10
+   ```
+
+7. **Mixed Case with Unicode:**
+   Input: `H�llo W�rld 123 !@#$`  // Includes Unicode characters
+   Expected Output:
+   ```
+   letter: 10
+   space: 2
+   number: 3
+   other: 5
+   ```
+
+8. **String with Leading/Trailing Spaces:**
+   Input: `   Hello World   `
+   Expected Output:
+   ```
+   letter: 10
+   space: 6
+   number: 0
+   other: 0
+   ```
+
+9. **String with Tabs and Newlines:**  // Important to test whitespace handling
+   Input: `Hello\tWorld\n123`
+   Expected Output:
+   ```
+   letter: 10
+   space: 0  // \t and \n are not counted as spaces by Character.isWhitespace
+   number: 3
+   other: 2 // \t and \n are counted as "other"
+   ```
+
+
+These test cases cover various scenarios, including empty strings, strings with only one type of character, mixed character strings, Unicode characters, and strings with leading/trailing spaces and special whitespace characters like tabs and newlines.  This helps to ensure the program is robust and handles different inputs correctly.

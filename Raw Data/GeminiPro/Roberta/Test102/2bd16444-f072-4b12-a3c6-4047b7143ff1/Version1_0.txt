@@ -1,0 +1,52 @@
+```java
+public class MoveZeros {
+
+    public static int[] move_zero(int[] arr) {
+        int count = 0;  // Count of non-zero elements
+
+        // Traverse the array. If element encountered is non-zero, then
+        // replace the element at index 'count' with this element
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                swap(arr, count++, i); // Optimized swap to avoid unnecessary swaps if i == count
+            }
+        }
+        return arr;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        if (i != j) { // Only swap if indices are different
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {0, 3, 4, 0, 1, 2, 5, 0};
+        int[] result = move_zero(arr);
+
+        System.out.print("result: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Optimized Swap:** The `swap` method now includes a check `if (i != j)`.  This avoids unnecessary swaps when `i` and `j` are the same, improving efficiency slightly.  This is important because in the `move_zero` method, the same index might be passed to `swap` in some cases.
+
+2. **Clearer `move_zero` Logic:**  The code uses a `count` variable to track the index where the next non-zero element should be placed.  This makes the logic more straightforward and readable.  The comments also explain the process.
+
+3. **Correct Output Formatting:** The `main` method now prints the output in the desired format `[3, 4, 1, 2, 5, 0, 0, 0]`.
+
+
+This revised code adheres to the specified method signatures, is more efficient, and provides clearer and more correctly formatted output.

@@ -1,0 +1,65 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean function(int num1, int num2, int num3) {
+        int right1 = num1 % 10;
+        int right2 = num2 % 10;
+        int right3 = num3 % 10;
+
+        return (right1 == right2) || (right1 == right3) || (right2 == right3);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first non-negative integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second non-negative integer: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third non-negative integer: ");
+        int num3 = scanner.nextInt();
+
+
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Please enter non-negative integers.");
+        } else {
+            boolean result = function(num1, num2, num3);
+            System.out.println(result);
+        }
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1 | 23, 33, 43 | true |
+| 2 | 17, 25, 37 | true |
+| 3 | 10, 20, 30 | true | // Corner case: all ending in 0
+| 4 | 1, 2, 3 | false |
+| 5 | 12, 22, 22 | true | // Corner case: all the same rightmost digit
+| 6 | 0, 0, 0 | true |   // Corner case: all zeros
+| 7 | 100, 200, 300 | true | // Corner case: larger numbers ending in 0
+| 8 | 12345, 67895, 101115| true | // Larger numbers
+| 9 | 1, 11, 111 | true |
+| 10| 2, 3, 4  | false |
+
+
+
+**Explanation of Corner Cases and How the Code Handles Them:**
+
+* **All Zeros (Test cases 6 and 7):** The code correctly handles cases where all numbers end in zero because the modulo operator (%) will return 0 for all of them, leading to the condition `(right1 == right2)` evaluating to `true`.
+* **All Same Rightmost Digit (Test case 5):**  The code handles this scenario correctly as well. Any pair of rightmost digits will be equal, satisfying the conditions in the `function`.
+* **Numbers ending in zero along with other digits:** The code is designed to handle this correctly as it only considers the last digit which may be 0.
+
+
+
+This comprehensive set of test cases helps ensure that the `function` method behaves correctly under various conditions, increasing confidence in the code's reliability.  It's good practice to always test your code with a range of inputs, especially including edge cases and boundary conditions.

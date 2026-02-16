@@ -1,0 +1,80 @@
+```java
+public class Prime2DArray {
+
+    public static int prime_cell(int i, int j) {
+        // Check if i is prime
+        boolean iIsPrime = true;
+        if (i <= 1) {
+            iIsPrime = false;
+        } else {
+            for (int k = 2; k * k <= i; k++) {
+                if (i % k == 0) {
+                    iIsPrime = false;
+                    break;
+                }
+            }
+        }
+
+        // Check if j is prime
+        boolean jIsPrime = true;
+        if (j <= 1) {
+            jIsPrime = false;
+        } else {
+            for (int k = 2; k * k <= j; k++) {
+                if (j % k == 0) {
+                    jIsPrime = false;
+                    break;
+                }
+            }
+        }
+
+        // Return 0 if both i and j are prime, 1 otherwise
+        return (iIsPrime && jIsPrime) ? 0 : 1; 
+    }
+
+
+    public static void main(String[] args) {
+        int m = 3; // Example size, you can change this
+        boolean[][] a = new boolean[m][m];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                a[i][j] = (prime_cell(i, j) == 1); // Set to true if NOT both prime
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+    }
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **`prime_cell(int i, int j)`:**
+   - This method efficiently checks if `i` and `j` are prime using a loop up to the square root of the number.
+   - It returns 0 if both are prime, and 1 otherwise. This simplifies the logic in `main`.
+
+2. **`main(String[] args)`:**
+   - Creates a 2D boolean array `a` of size `m x m`.
+   - Iterates through the array using nested loops.
+   - Calls `prime_cell(i, j)` to determine the value of `a[i][j]`.
+   - Sets `a[i][j]` to `true` if `prime_cell` returns 1 (meaning at least one of `i` or `j` is not prime).  
+   - Prints the array elements.
+
+3. **Clarity and Efficiency:**
+   - The code is now more readable and concise.
+   - The prime checking is optimized by iterating only up to the square root.
+   - The logic in `main` is simplified by using the return value of `prime_cell` directly.
+
+
+
+**Example Output (for `m = 3`):**
+
+```
+true true true 
+true true true 
+true true false 
+```

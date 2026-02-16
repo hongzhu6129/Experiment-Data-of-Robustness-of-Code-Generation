@@ -1,0 +1,16 @@
+
+
+
+Explanation using the `headSet()` method (most efficient):
+
+1. **TreeSet `headSet(E toElement)`:** This method returns a view of the portion of the `TreeSet` whose elements are strictly less than `toElement`. In our case, `toElement` is 7. This is very efficient as it leverages the sorted nature of the `TreeSet`.
+
+2. **Iteration:** We iterate through the `headSet` which directly gives us the elements less than 7 without any explicit comparisons.
+
+
+
+Key improvements over just iterating and comparing:
+
+* **Efficiency with `headSet()`:** Using `headSet()` is generally more efficient than iterating through the whole set and comparing each element, especially for larger `TreeSet`s.  `TreeSet` is implemented as a balanced tree, so `headSet()` can efficiently find the correct subset.
+
+* **Clarity and conciseness (especially streams):**  The Java 8 streams approach (and `headSet`) makes the code more concise and clearly expresses the intent � to filter the set based on the condition of being less than 7.

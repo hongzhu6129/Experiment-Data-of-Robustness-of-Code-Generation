@@ -1,0 +1,67 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java MatrixPrinter <n>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+            if (n <= 0) {
+                System.out.println("n must be a positive integer.");
+                return;
+            }
+            printMatrix(n);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: n must be an integer.");
+        }
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("[" + i + "," + j + "] "); // Print the matrix elements
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```
+
+
+**Explanation and How to Run:**
+
+1. **Compilation:** Save the code as `MatrixPrinter.java` and compile it using a Java compiler:
+   ```bash
+   javac MatrixPrinter.java 
+   ```
+
+2. **Execution:** Run the compiled code with the desired matrix size `n` as a command-line argument:
+   ```bash
+   java MatrixPrinter 5  // Prints a 5x5 matrix
+   java MatrixPrinter 3  // Prints a 3x3 matrix
+   ```
+
+3. **`main` Method:**
+   - Takes a command-line argument (a string representing `n`).
+   - Handles potential errors:
+     - Checks if exactly one argument is provided.
+     - Uses a `try-catch` block to handle `NumberFormatException` if the input is not a valid integer.
+     - Checks if `n` is a positive integer.
+   - Calls `printMatrix(n)` to print the matrix.
+
+4. **`printMatrix` Method:**
+   - Uses nested loops to iterate through rows and columns (from 0 to `n-1`).
+   - `System.out.print("[i,j] ")` prints the matrix element at row `i` and column `j` in the format `[i,j]` (you can customize the output format if needed).
+   - `System.out.println()` adds a newline after each row to format the output correctly.
+
+
+**Example Output (for `n = 3`):**
+
+```
+[0,0] [0,1] [0,2] 
+[1,0] [1,1] [1,2] 
+[2,0] [2,1] [2,2] 
+```

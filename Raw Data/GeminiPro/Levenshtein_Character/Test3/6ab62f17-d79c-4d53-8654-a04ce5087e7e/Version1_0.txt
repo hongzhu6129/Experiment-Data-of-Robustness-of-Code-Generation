@@ -1,0 +1,103 @@
+```java
+import java.util.Scanner;
+
+public class ScalarTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+
+        printScalarTable(number);
+
+        scanner.close();
+    }
+
+    public static void printScalarTable(int number) {
+        System.out.println("Scalar Table for " + number + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " x " + i + " = " + (number * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 7
+   - Expected Output:
+     ```
+     Scalar Table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     7 x 4 = 28
+     7 x 5 = 35
+     7 x 6 = 42
+     7 x 7 = 49
+     7 x 8 = 56
+     7 x 9 = 63
+     7 x 10 = 70
+     ```
+
+2. **Negative Number:**
+   - Input: -5
+   - Expected Output:
+     ```
+     Scalar Table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     -5 x 3 = -15
+     -5 x 4 = -20
+     -5 x 5 = -25
+     -5 x 6 = -30
+     -5 x 7 = -35
+     -5 x 8 = -40
+     -5 x 9 = -45
+     -5 x 10 = -50
+     ```
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output:
+     ```
+     Scalar Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     0 x 3 = 0
+     0 x 4 = 0
+     0 x 5 = 0
+     0 x 6 = 0
+     0 x 7 = 0
+     0 x 8 = 0
+     0 x 9 = 0
+     0 x 10 = 0
+     ```
+
+4. **Large Number:**
+   - Input: 12345
+   - Expected Output (truncated for brevity):
+     ```
+     Scalar Table for 12345:
+     12345 x 1 = 12345
+     12345 x 2 = 24690
+     ...
+     12345 x 10 = 123450
+     ```
+
+5. **Small Number:**  (Not really a corner case, but good to test)
+   - Input: 2
+   - Expected Output:
+    ```
+    Scalar Table for 2:
+    2 x 1 = 2
+    2 x 2 = 4
+    ...
+    2 x 10 = 20
+    ```
+
+
+These test cases cover positive, negative, zero, large, and small number inputs, ensuring that the `printScalarTable` method works correctly for a range of values.  You could also add tests for very large numbers to check for potential integer overflow (although the multiplication in Java will just wrap around in that case). Testing with these different inputs will help validate the correctness and robustness of the program.

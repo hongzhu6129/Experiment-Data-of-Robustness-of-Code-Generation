@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Null and Empty Input:** The `endWithmOrn` method now checks for `null` or empty input strings and returns 0 in those cases to prevent `NullPointerException` or other unexpected behavior.
+
+2. **Word Boundary Matching:**  The regular expression `\\b\\w*[mn]\\b` uses word boundaries (`\b`) to ensure it only matches whole words ending in 'm' or 'n'.  This prevents it from matching substrings like "man" inside "mandate".
+
+3. **Case-Insensitive Matching:** The `Pattern.CASE_INSENSITIVE` flag makes the regex case-insensitive, so it correctly counts words like "RAM" or "Problem".
+
+4. **Clearer Method Name:** The method name `endWithmOrn` clearly describes its purpose.
+
+5. **More Comprehensive Tests:** The `main` method now includes tests with different input strings, including `null`, empty, and whitespace-only strings, to demonstrate how the code handles these cases.
+
+6. **Uses `Pattern` and `Matcher`:** The most efficient and robust way to perform complex string matching in Java is using the `Pattern` and `Matcher` classes from the `java.util.regex` package. This code uses that approach.

@@ -1,0 +1,60 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumbers {
+
+    public static void main(String[] args) {
+        int count = 0;
+        long num = 1;
+
+        while (count < 10) {
+            if (happy_num(num)) {
+                System.out.println(num);
+                count++;
+            }
+            num++;
+        }
+    }
+
+    public static boolean happy_num(long num) {
+        Set<Long> seen = new HashSet<>();
+
+        while (num != 1 && !seen.contains(num)) {
+            seen.add(num);
+            long sum = 0;
+            while (num > 0) {
+                long digit = num % 10;
+                sum += digit * digit;
+                num /= 10;
+            }
+            num = sum;
+        }
+
+        return num == 1;
+    }
+}
+```
+
+
+Here's how the code works, respecting the specified method signatures:
+
+1. **`main` method:**
+   - Initializes a `count` to keep track of how many happy numbers have been found.
+   - Starts a `while` loop that continues until 10 happy numbers are found.
+   - Inside the loop, it calls `happy_num` to check if the current number (`num`) is happy.
+   - If `happy_num` returns `true`, it prints the number and increments the `count`.
+   - Increments `num` to check the next number.
+
+2. **`happy_num` method:**
+   - Takes a `long` `num` as input.
+   - Uses a `HashSet` called `seen` to store numbers encountered during the process. This prevents infinite loops for non-happy numbers.
+   - Enters a `while` loop that continues as long as `num` is not 1 and `num` has not been seen before.
+   - Inside the loop:
+     - Adds the current `num` to the `seen` set.
+     - Calculates the sum of the squares of the digits of `num`.
+     - Updates `num` to the calculated sum.
+   - After the loop, returns `true` if `num` is 1 (meaning it's a happy number), and `false` otherwise.
+
+
+This revised version efficiently detects happy numbers and adheres to the given method signature constraints.

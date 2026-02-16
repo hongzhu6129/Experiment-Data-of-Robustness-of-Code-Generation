@@ -1,0 +1,33 @@
+```java
+public class CapitalizeFirstLetter {
+
+    public static void main(String[] args) {
+        String sentence = "the quick brown fox jumps over the lazy dog. the quick brown fox jumps over the lazy dog.";
+        String capitalizedSentence = capitalizeWords(sentence);
+        System.out.println(capitalizedSentence);
+    }
+
+    private static String capitalizeWords(String sentence) {
+        if (sentence == null || sentence.isEmpty()) {
+            return sentence;
+        }
+
+        StringBuilder result = new StringBuilder();
+        boolean capitalizeNext = true; // Flag to capitalize the next character
+
+        for (char c : sentence.toCharArray()) {
+            if (Character.isWhitespace(c)) {
+                capitalizeNext = true;
+                result.append(c);
+            } else if (capitalizeNext) {
+                result.append(Character.toUpperCase(c));
+                capitalizeNext = false;
+            } else {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+}
+```

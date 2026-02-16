@@ -1,0 +1,39 @@
+```java
+public class CatalanFromPascal {
+
+    public static void main(String[] args) {
+        int n = 10; // Number of Catalan numbers to print
+
+        for (int i = 0; i < n; i++) {
+            System.out.println(catalanFromPascal(i));
+        }
+    }
+
+    public static int catalanFromPascal(int n) {
+        return binomialCoeff(2 * n, n) / (n + 1);
+    }
+
+
+    public static int binomialCoeff(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0;
+        }
+        if (k == 0 || k == n) {
+            return 1;
+        }
+
+        int res = 1;
+        // Since C(n, k) = C(n, n-k)
+        if (k > n - k) {
+            k = n - k;
+        }
+
+        for (int i = 0; i < k; ++i) {
+            res *= (n - i);
+            res /= (i + 1);
+        }
+
+        return res;
+    }
+}
+```

@@ -1,0 +1,62 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class CheckCharacters {
+
+    static void checkExistance(String item, String languageChars) {
+        boolean containsAll = true;
+        for (char langChar : languageChars.toCharArray()) {
+            if (item.indexOf(langChar) == -1) {
+                containsAll = false;
+                break;
+            }
+        }
+        if (containsAll) {
+            System.out.println(item);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        String languageChars = "java"; // Characters defining the "language"
+        List<String> items = new ArrayList<>();
+        items.add("javascript"); 
+        items.add("java");
+        items.add("avaj");
+        items.add("python");
+        items.add("vaja");
+
+
+        System.out.println("Items containing all characters of '" + languageChars + "':");
+
+        for (String item : items) {
+            checkExistance(item, languageChars);
+        }
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Clear Method Signature Adherence:**  The code strictly uses `static void checkExistance(String, String)` and `public static void main(String[])` as required.
+
+2. **Improved Logic in `checkExistance`:** The method now iterates through the `languageChars` and checks if *each* character is present in the `item` string.  It uses a boolean flag `containsAll` to track whether all characters are found.  This is more efficient and accurate than previous versions.
+
+3. **Example Usage in `main`:** The `main` method demonstrates how to use the `checkExistance` method with a sample list of items and a "language" string.  The output clearly indicates which items contain all the required characters.
+
+4. **Case Sensitivity:**  The current code is case-sensitive. If you want case-insensitive checking, you can convert both the `item` and `languageChars` to lowercase before the comparison:
+
+   ```java
+   static void checkExistance(String item, String languageChars) {
+       String lowerItem = item.toLowerCase();
+       String lowerLangChars = languageChars.toLowerCase();
+       // ... rest of the code using lowerItem and lowerLangChars
+   }
+   ```
+
+5. **Error Handling (Optional):** You could add basic error handling (e.g., checking for null or empty strings) to make the code more robust.
+
+
+This revised version is more efficient, accurate, and demonstrates good coding practices while adhering to the specified method signatures.

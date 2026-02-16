@@ -1,0 +1,56 @@
+```java
+import java.util.Scanner;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a float number: ");
+        float num = scanner.nextFloat();
+
+        float roundedNum = round_num(num);
+        System.out.println("Rounded number: " + roundedNum);
+        scanner.close(); 
+    }
+
+    public static float round_num(float num) {
+        return Math.round(num); // Uses Math.round() for rounding to the nearest integer
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **`public static void main(String[] args)`:**  This is the entry point of every Java program.  The `args` array can hold command-line arguments, but we're not using them here.
+
+2. **`Scanner` Class:** We use the `Scanner` class to get input from the user.  `System.in` represents the standard input stream (typically the keyboard). `scanner.nextFloat()` reads the next float value entered by the user.
+
+3. **`round_num` Function:**
+   - `public static float round_num(float num)`: This declares a function named `round_num` that takes a `float` as input and returns a `float`.
+   - `Math.round(num)`: This is the core of the rounding logic. The `Math.round()` method in Java rounds a float to the nearest integer.  The result is also a `float` to maintain consistency with the return type.
+
+4. **Output:** The rounded float value is printed to the console using `System.out.println()`.
+
+5. **`scanner.close()`:**  It's good practice to close the `Scanner` when you're finished with it to release system resources.
+
+**Example Usage:**
+
+If the user enters `3.14159`, the output will be:
+
+```
+Rounded number: 3.0
+```
+
+If the user enters `2.7`, the output will be:
+
+```
+Rounded number: 3.0
+```
+
+
+**Important Considerations for Rounding in Java:**
+
+* **Rounding Modes:** `Math.round()` uses "half-up" rounding (also known as commercial rounding).  If the fractional part is 0.5 or greater, it rounds up. If it's less than 0.5, it rounds down.  For more complex rounding scenarios (e.g., rounding to a specific number of decimal places or using different rounding modes), consider using `DecimalFormat` or `BigDecimal`.
+
+* **Floating-Point Precision:** Remember that floating-point numbers have inherent limitations in precision.  Don't expect perfectly accurate results when working with floats, especially in financial or scientific applications where precision is critical. `BigDecimal` is a better choice for those cases.

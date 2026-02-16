@@ -1,0 +1,53 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListIteration {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+        linkedList.add("Date");
+        linkedList.add("Elderberry");
+
+        // Specify the starting position (index)
+        int startPosition = 2; // Start iterating from "Cherry"
+
+        // Iterate through the LinkedList from the specified position using ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+
+        System.out.println("Iterating from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+         // Demonstrate iterating from a different starting position.
+        startPosition = 0; // Start from the beginning
+        iterator = linkedList.listIterator(startPosition); 
+
+        System.out.println("\nIterating from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        //Handling the case where start position is out of bounds
+        startPosition = 10; // Intentionally out of bounds
+        if (startPosition >= 0 && startPosition < linkedList.size()) {
+            iterator = linkedList.listIterator(startPosition);
+            System.out.println("\nIterating from position " + startPosition + ":");
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+            }
+
+        } else {
+            System.out.println("\nInvalid start position: " + startPosition);
+        }
+    }
+}
+```

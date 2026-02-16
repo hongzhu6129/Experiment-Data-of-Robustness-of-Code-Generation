@@ -1,0 +1,53 @@
+```java
+public class SumOfTwoNumbers {
+
+    public static void main(String[] args) {
+        // Declare two integer variables
+        int num1 = 74;
+        int num2 = 36;
+
+        // Calculate the sum
+        int sum = num1 + num2;
+
+        // Print the sum to the console
+        System.out.println(num1 + " + " + num2 + ": " + sum); 
+
+        //  Alternative, more concise printing using string formatting:
+        System.out.printf("%d + %d: %d\n", num1, num2, sum);
+
+
+        // Example showing how to get input from command line arguments (optional):
+        if (args.length == 2) {
+            try {
+                int arg1 = Integer.parseInt(args[0]);
+                int arg2 = Integer.parseInt(args[1]);
+                int argSum = arg1 + arg2;
+                System.out.printf("%d + %d: %d\n", arg1, arg2, argSum);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please provide two integers as command-line arguments.");
+            }
+        }
+
+
+    }
+}
+```
+
+
+**Explanation and Educational Points:**
+
+1. **Variables:**  `int num1` and `int num2` declare variables of integer type to store the numbers.
+2. **Arithmetic Operator:** The `+` operator performs addition.
+3. **Assignment:** `sum = num1 + num2;` calculates the sum and assigns the result to the `sum` variable.
+4. **Output:** `System.out.println()` displays the result on the console.  `System.out.printf()` provides formatted output, which is often more readable.
+5. **Comments:** The comments (`// ...`) explain each step of the code, making it easier to understand.
+6. **Command-Line Arguments (Optional):** The code includes an example of how to read numbers from the command line. This demonstrates a basic way to make the program more interactive.  The `try-catch` block handles potential errors if the user provides non-numeric input.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SumOfTwoNumbers.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and type:  `javac SumOfTwoNumbers.java`
+3. **Run:** After successful compilation, type: `java SumOfTwoNumbers` (or `java SumOfTwoNumbers <number1> <number2>` to use command-line input).
+
+
+This enhanced answer provides a more comprehensive educational example, including explanations, comments, formatted output, and optional command-line input handling.

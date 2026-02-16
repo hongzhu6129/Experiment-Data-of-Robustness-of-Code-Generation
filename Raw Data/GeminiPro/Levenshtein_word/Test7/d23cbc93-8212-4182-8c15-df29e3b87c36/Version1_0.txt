@@ -1,0 +1,100 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter three integers:");
+
+        try {
+            int num1 = input.nextInt();
+            int num2 = input.nextInt();
+            int num3 = input.nextInt();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter integers only.");
+        } finally {
+            input.close(); // Close the scanner in the finally block to ensure it's closed even if an exception occurs
+        }
+    }
+
+    public static double calculateAverage(int num1, int num2, int num3) {
+        return (double) (num1 + num2 + num3) / 3;  // Cast to double for accurate average
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10 20 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5 0 5
+   - Expected Output: 0.0
+
+3. **Large Numbers:**
+   - Input: 1000000000 2000000000 3000000000  (Close to Integer.MAX_VALUE)
+   - Expected Output: 2.0E9 (or similar scientific notation representing 2 billion)
+
+4. **Zeroes:**
+   - Input: 0 0 0
+   - Expected Output: 0.0
+
+5. **Mixed Positive and Negative:**
+   - Input: -10 20 -30
+   - Expected Output: -6.666666666666667
+
+6. **Integer Overflow (Corner Case):**
+   - Input: Integer.MAX_VALUE Integer.MAX_VALUE Integer.MAX_VALUE
+   - Expected Output: Will likely result in an incorrect average due to overflow. This demonstrates the limitations of using `int` for potentially very large numbers.  Consider using `long` if very large sums are expected.
+
+
+
+7. **Input Mismatch (Corner Case):**
+   - Input: 10 a 20  (Non-integer input)
+   - Expected Output: "Invalid input. Please enter integers only."
+
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can run the program and manually enter the input values for each test case to verify the output.
+2. **Automated Testing (Recommended):**  Create a separate test class (e.g., using JUnit) to automate the testing process. Here's a simple JUnit example:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class AverageCalculatorTest {
+
+       @Test
+       void testNormalCase() {
+           assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+       }
+
+       // Add more test methods for other cases...
+
+       @Test
+       void testIntegerOverflow() {
+           // Demonstrates overflow. Consider using assertions to check for specific behavior if needed.
+           double result = AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+           System.out.println("Overflow Result: " + result); // Inspect output for overflow behavior
+       }
+
+   }
+   ```
+
+Using JUnit or similar testing frameworks makes it much easier to manage and run test cases, especially as your program grows.  It helps ensure code quality and catch regressions.

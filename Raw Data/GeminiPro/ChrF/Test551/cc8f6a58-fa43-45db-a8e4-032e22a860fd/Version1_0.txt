@@ -1,0 +1,54 @@
+```java
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AppendToFile {
+
+    public static void main(String[] args) {
+        String filePath = "path/to/your/file.txt"; // Replace with the actual file path
+        String textToAppend = "This is the text to append.\n"; // Text to append, including a newline
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(textToAppend);
+            System.out.println("Text appended successfully!");
+        } catch (IOException e) {
+            System.err.println("An error occurred while appending to the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Explanation:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedWriter`: Used for efficient writing to files.
+   - `java.io.FileWriter`: Used to open a file for writing.
+   - `java.io.IOException`: Handles potential file I/O errors.
+
+2. **Specify file path:**
+   - Replace `"path/to/your/file.txt"` with the actual path to the file you want to append to.
+
+3. **Specify text to append:**
+   - The `textToAppend` variable holds the text you want to add.  The `\n` adds a newline character, so subsequent appends will start on a new line.
+
+4. **Use try-with-resources:**
+   - The `try (BufferedWriter writer = ...)` syntax ensures that the `BufferedWriter` is automatically closed, even if an error occurs. This is crucial for preventing resource leaks.
+
+5. **Open file in append mode:**
+   - `new FileWriter(filePath, true)` opens the file in append mode. The `true` argument signifies that we want to add to the existing content rather than overwrite it.
+
+6. **Write to file:**
+   - `writer.write(textToAppend)` writes the specified text to the file.
+
+7. **Handle exceptions:**
+   - The `catch (IOException e)` block catches potential errors during file operations and prints an error message.
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `AppendToFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run: `javac AppendToFile.java`
+3. **Run:**  `java AppendToFile`
+
+
+This will append the text to the specified file.  If the file doesn't exist, it will be created.  If it does exist, the new text will be added to the end.

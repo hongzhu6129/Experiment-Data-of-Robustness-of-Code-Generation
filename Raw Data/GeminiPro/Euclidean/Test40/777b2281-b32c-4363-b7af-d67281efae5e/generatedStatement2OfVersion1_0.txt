@@ -1,0 +1,47 @@
+
+
+
+**Test Cases:**
+
+1. **Standard Format:**
+   - Input Format:  `yyyy/MM/dd HH:mm:ss.SSS`
+   - Expected Output:  A date and time string matching the format. (e.g., 2024/01/20 15:30:15.234)
+
+2. **Date Only:**
+   - Input Format: `yyyy-MM-dd`
+   - Expected Output: Date in the specified format.
+
+3. **Time Only:**
+   - Input Format: `HH:mm:ss`
+   - Expected Output: Time in the specified format.
+
+4. **Day and Date Format:**
+   - Input Format: `EEEE, MMMM dd, yyyy` (e.g., Saturday, January 20, 2024)
+   - Expected Output:  Date and day formatted accordingly.
+
+
+**Corner Cases:**
+
+5. **Invalid Format Specifier:**
+   - Input Format: `yyyy/MM/tt HH:mm:ss` (incorrect `tt`)
+   - Expected Outcome:  A `DateTimeParseException` (or similar exception depending on Java version) should be caught and handled gracefully. The program should not crash.
+
+
+6. **Missing Separators:**
+    - Input Format: `yyyy/MM/dd HHmm:ss` (no space between date and time)
+    - Expected Outcome: `DateTimeParseException` should be caught and handled.
+
+7. **Nanoseconds Overflow:**
+   - Input Format: `yyyy/MM/dd HH:mm:ss.nnnnnnnnn` (9 'n's - the maximum) and `yyyy/MM/dd HH:mm:ss.nnnnnnnnnnnnn` (more than 9 'n's)
+   - Expected Output:  Up to 9 digits of nanoseconds should be displayed correctly. If more than 9 'n's are provided, the output might truncate or round, but should not cause an error.  (Java handles this, so you'll see the nanoseconds part of the actual LocalDateTime value, potentially truncated/rounded visually.)
+
+
+8. **Leap Year:**
+   - Test with a date in a leap year (e.g., February 29, 2024) to ensure correct handling.
+
+
+9. **Time Zone (If applicable):**  If your program handles time zones (although not requested in the initial prompt), test with different time zones to verify correct behavior.
+
+
+
+By testing with these cases, you can ensure that your `getCurrentDateTime` function is robust and handles different formatting requirements and potential errors effectively.

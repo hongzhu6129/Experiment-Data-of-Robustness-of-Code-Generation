@@ -1,0 +1,92 @@
+```java
+import java.util.Scanner;
+
+public class DistanceBetweenTwoPoints {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -70
+   - Latitude 2: 40
+   - Longitude 2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - Latitude 1: 90  (North Pole)
+   - Longitude 1: 0
+   - Latitude 2: -90 (South Pole)
+   - Longitude 2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+4. **Antipodes (opposite sides of the Earth):**
+   - Latitude 1: 40
+   - Longitude 1: -70
+   - Latitude 2: -40
+   - Longitude 2: 110 
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+5. **Points on the Equator:**
+   - Latitude 1: 0
+   - Longitude 1: 0
+   - Latitude 2: 0
+   - Longitude 2: 180
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+6. **Points near the International Date Line:**
+   - Latitude 1: 60
+   - Longitude 1: 179
+   - Latitude 2: 60
+   - Longitude 2: -179
+   - Expected Distance:  A small distance (because they are close despite the longitude difference).
+
+7. **Invalid Input (handle gracefully):**
+   - Latitude 1: "abc" (or any non-numeric input)
+   - The program should handle this gracefully, displaying an error message or prompting for valid input. The same applies for other invalid inputs like latitudes outside the -90 to 90 range or longitudes outside the -180 to 180 range.
+
+
+
+**How to Test:**
+
+- You can manually enter these test cases into your program and verify the output. 
+- For more automated testing, you could create a JUnit test class (or use another testing framework) where you call your distance calculation function with these inputs and use `assertEquals()` to check if the calculated distance matches the expected distance (within a small tolerance for floating-point comparisons).
+
+
+By covering these different scenarios, you can be more confident that your program calculates distances correctly across a range of inputs.  Remember to test with boundary conditions and invalid inputs to ensure robustness.

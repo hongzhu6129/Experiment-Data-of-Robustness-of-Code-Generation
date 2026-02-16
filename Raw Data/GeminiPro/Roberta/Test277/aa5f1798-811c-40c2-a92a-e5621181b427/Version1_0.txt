@@ -1,0 +1,99 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Interval {
+    private int start;
+    private int end;
+
+    public Interval(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+
+    @Override
+    public String toString() {
+        return "[" + start + "," + end + "]";
+    }
+}
+
+public class MergeIntervals {
+
+    public static void main(String[] args) {
+        ArrayList<Interval> intervals = new ArrayList<>();
+        intervals.add(new Interval(1, 3));
+        intervals.add(new Interval(2, 6));
+        intervals.add(new Interval(8, 10));
+        intervals.add(new Interval(15, 18));
+        intervals.add(new Interval(17,20)); //Overlaps with previous
+
+        ArrayList<Interval> mergedIntervals = merge(intervals);
+
+        System.out.print("Merged Intervals: ");
+        for (Interval interval : mergedIntervals) {
+            System.out.print(interval + " ");
+        }
+        System.out.println();
+    }
+
+    public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+        if (intervals == null || intervals.size() <= 1) {
+            return intervals;
+        }
+
+
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval i1, Interval i2) {
+                return i1.getStart() - i2.getStart();
+            }
+        });
+       
+
+        ArrayList<Interval> merged = new ArrayList<>();
+        Interval current = intervals.get(0);
+
+        for (int i = 1; i < intervals.size(); i++) {
+            Interval next = intervals.get(i);
+
+            if (current.getEnd() >= next.getStart()) {
+                current = new Interval(current.getStart(), Math.max(current.getEnd(), next.getEnd()));
+            } else {
+                merged.add(current);
+                current = next;
+            }
+        }
+        merged.add(current); // Add the last interval
+
+        return merged;
+    }
+
+
+}
+```
+
+
+Key changes and explanations:
+
+1. **Interval Class:**  Created a separate `Interval` class to encapsulate start and end values. This improves code organization and readability.  It includes the required `getStart()` and `getEnd()` methods.
+
+2. **Comparator:** The `merge` method now uses a `Comparator` with the `compare` method inside the `Collections.sort` call  to sort the intervals based on their start times.  This is crucial for the merging logic to work correctly.
+
+3. **Merging Logic:** The core merging logic iterates through the sorted intervals. It compares the `end` of the `current` interval with the `start` of the `next` interval. If they overlap, a new interval is created with the `start` of the `current` and the maximum of their `end` values.  Otherwise, the `current` interval is added to the `merged` list, and the `next` becomes the new `current`.
+
+4. **Adding the Last Interval:**  After the loop, the last `current` interval is added to the `merged` list, as it wouldn't have been added within the loop.
+
+5. **Example Usage in `main`:**  The `main` method demonstrates how to create `Interval` objects, add them to an `ArrayList`, and then call the `merge` function. It also prints the resulting merged intervals.
+
+
+This revised code addresses the prompt's constraints and provides a clear and functional solution to the interval merging problem.

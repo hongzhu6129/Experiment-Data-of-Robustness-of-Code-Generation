@@ -1,0 +1,53 @@
+```java
+public class CanonicalString {
+
+    public static void main(String[] args) {
+
+        // Example strings
+        String str1 = "hello";
+        String str2 = new String("hello");
+        String str3 = "hello".intern();
+        String str4 = new String("hello").intern();
+
+
+        // Get the canonical representation using String.intern()
+        String canonicalStr1 = str1.intern();
+        String canonicalStr2 = str2.intern();
+        String canonicalStr3 = str3.intern();
+        String canonicalStr4 = str4.intern();
+
+
+        // Demonstrate that the canonical representations are the same
+        System.out.println("str1 == str2: " + (str1 == str2)); // Likely false
+        System.out.println("str1 == str3: " + (str1 == str3)); // True (because str3 uses intern())
+        System.out.println("str1 == str4: " + (str1 == str4)); // True (because str4 uses intern())
+
+
+        System.out.println("canonicalStr1 == canonicalStr2: " + (canonicalStr1 == canonicalStr2)); // True
+        System.out.println("canonicalStr1 == canonicalStr3: " + (canonicalStr1 == canonicalStr3)); // True
+        System.out.println("canonicalStr1 == canonicalStr4: " + (canonicalStr1 == canonicalStr4)); // True
+
+
+        // Another example demonstrating  the "==" operator compares references
+        String a = new String("abc").intern();
+        String b = "abc";
+
+        System.out.println(a == b); // True: 'a' and 'b' now refer to the same interned string.
+
+    }
+}
+```
+
+
+**Explanation and Key Concepts:**
+
+1. **String Interning:**  The `intern()` method is the key to getting the canonical representation of a string in Java.  It returns a canonical representation for the string object.  If the string pool already contains a string equal to this `String` object as determined by the `equals(Object)` method, then the string from the pool is returned. Otherwise, this `String` object is added to the pool and a reference to this `String` object is returned.
+
+2. **String Pool (String Constant Pool):** The string pool (part of the "PermGen" in older Java versions, and part of the heap in modern Java (Java 7 onwards)) is a special memory area where unique string literals are stored.  When you create a string using literals (e.g., `String str1 = "hello";`), the JVM first checks if that string already exists in the string pool. If it does, a reference to the existing string is returned. If not, a new string object is created in the pool, and a reference to it is returned.
+
+3. **`new String()`:**  When you use the `new` keyword to create a string (e.g., `String str2 = new String("hello");`), a new string object is *always* created in the heap, regardless of whether an identical string already exists in the string pool.
+
+4. **`==` vs. `equals()`:**  The `==` operator compares *references* (memory addresses).  The `equals()` method compares the *content* of the strings.  This is why `str1 == str2` is likely `false` in the example, but `str1.equals(str2)` would be `true`. After interning `str2`, the references become the same, so `canonicalStr1 == canonicalStr2` is `true`.
+
+
+This improved example demonstrates how `intern()` ensures that all interned strings with the same content refer to the same object in memory, thus achieving canonicalization.

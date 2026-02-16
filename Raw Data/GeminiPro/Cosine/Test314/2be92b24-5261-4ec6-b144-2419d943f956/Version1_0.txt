@@ -1,0 +1,86 @@
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() {}
+
+    TreeNode(int val) { this.val = val; }
+
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+public class CloneBinaryTree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+
+        TreeNode clonedTree = cloneTree(root);
+
+        System.out.println("Original Tree:");
+        traverseTree(root);
+        System.out.println("\nCloned Tree:");
+        traverseTree(clonedTree); 
+    }
+
+    public static TreeNode cloneTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+        TreeNode clonedRoot = new TreeNode(root.val);
+        clonedRoot.left = cloneTree(root.left);
+        clonedRoot.right = cloneTree(root.right);
+
+        return clonedRoot;
+    }
+
+
+
+    private static void traverseTree(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            TreeNode curr = queue.poll();
+            System.out.print(curr.val + " ");
+
+            if (curr.left != null) {
+                queue.offer(curr.left);
+            }
+            if (curr.right != null) {
+                queue.offer(curr.right);
+            }
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+- **Clearer Example in `main`:** The `main` method now demonstrates how to create a sample tree and clone it. It also prints both the original and cloned trees using the `traverseTree` method, making it easier to verify the functionality.
+- **Iterative `traverseTree`:**  The traversal method now uses Breadth-First Search (BFS) with a queue for level order traversal. This is more efficient than recursive approaches, especially for large, skewed trees.
+- **Informative Output:** The `traverseTree` method prints the node values to the console, making it clear which tree is being traversed.
+- **Robustness:**  Handles the case of an empty input tree (where `root` is null).
+
+
+
+This improved version provides a complete and working example that demonstrates how to clone a binary tree using the specified method signatures, while addressing the efficiency and clarity issues of the previous attempt.

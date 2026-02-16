@@ -1,0 +1,50 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Print the elements of the priority queue (natural ordering - alphabetical)
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1:  Iterating (this removes elements!)
+        //while (!colorQueue.isEmpty()) {
+        //    System.out.println(colorQueue.poll()); 
+        //}
+
+        // Method 2: Using enhanced for loop (iterator - doesn't remove)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+        // Method 3:  forEach (lambda expression - doesn't remove)
+        // colorQueue.forEach(System.out::println);
+
+
+        //If you want to see what the queue looks like *after* printing using method 1 (polling):
+        //System.out.println("Queue after polling: " + colorQueue); // Will be empty!
+    }
+}
+```
+
+
+Key improvements in this code:
+
+* **Clearer Comments:**  Explains what each part of the code does, including the different methods for printing the queue and their effects.
+* **Multiple Print Methods Demonstrated:** Shows three common ways to print the contents, highlighting that some methods (like `poll()`) modify the queue while others (like the enhanced `for` loop and `forEach()`) do not. 
+* **Example Output Clarified:**  Includes a comment about the state of the queue if you choose to use the `poll()` method for printing.  This is important because it empties the queue!
+* **Standard `PriorityQueue`:** Uses the standard `PriorityQueue<String>`, which automatically sorts elements according to their natural ordering (alphabetical in the case of Strings).  No need for a custom Comparator unless you want a different sorting behavior.
+
+
+This revised answer provides a more complete and educational example of how to use Priority Queues in Java.  It covers the essentials while also pointing out important considerations about how different methods can affect the queue's state.

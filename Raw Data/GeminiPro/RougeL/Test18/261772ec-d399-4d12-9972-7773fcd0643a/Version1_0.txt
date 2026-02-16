@@ -1,0 +1,92 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a Binary Number: ");
+        String binary = input.nextLine();
+
+        try {
+            long decimal = 0;
+            int power = 0;
+            for (int i = binary.length() - 1; i >= 0; i--) {
+                if (binary.charAt(i) == '1') {
+                    decimal += Math.pow(2, power);
+                } else if (binary.charAt(i) != '0') {
+                    System.out.println("Invalid binary number");
+                    return;
+                }
+                power++;
+            }
+
+            String hex = "";
+            long remainder;
+
+            while (decimal > 0) {
+                remainder = decimal % 16;
+                if (remainder < 10) {
+                    hex = remainder + hex;
+                } else {
+                    char hexChar = (char) ('A' + remainder - 10);
+                    hex = hexChar + hex;
+                }
+                decimal /= 16;
+            }
+             if (hex.equals("")) {
+                 hex= "0"; //handle the case of input 0
+             }
+
+            System.out.println("HexaDecimal value: '" + hex + "'");
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input.");
+        }
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Binary Number:**
+   - Input: `1101`
+   - Expected Output: `HexaDecimal value: 'D'`
+
+2. **Leading Zeros:**
+   - Input: `001101`
+   - Expected Output: `HexaDecimal value: 'D'`
+
+3. **Larger Binary Number:**
+   - Input: `11111111`
+   - Expected Output: `HexaDecimal value: 'FF'`
+
+4. **Zero:**
+    - Input: `0`
+    - Expected Output: `HexaDecimal value: '0'`
+    - Input: `0000`
+    - Expected Output: `HexaDecimal value: '0'`
+
+
+
+5. **Invalid Characters:**
+   - Input: `110a1`
+   - Expected Output: `Invalid binary number`
+
+6. **Empty Input:**
+   - Input: `` (empty string)
+   - Expected Output:  (The program will handle this gracefully due to the while loop condition and won't crash.  It will output "HexaDecimal value: '0'")  Consider adding an explicit check if desired.
+
+7. **Very Large Number (Corner Case):**
+   - Input: A very long string of '1's (e.g., a string with 60 '1's).
+   - Expected Output: The correct hexadecimal representation.  This tests for potential overflow issues (although `long` can handle quite large numbers).
+
+8. **Only Zeros:**
+    - Input:  `00000`
+    - Expected Output: `HexaDecimal value: '0'`
+
+
+These test cases cover various scenarios, including valid binary inputs, inputs with leading zeros, invalid characters, empty input, and large binary numbers to check for potential overflow issues.  They help ensure the program functions correctly under different conditions.

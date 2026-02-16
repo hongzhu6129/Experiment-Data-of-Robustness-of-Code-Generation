@@ -1,0 +1,46 @@
+```java
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentTimeInNewYork {
+
+    public static void main(String[] args) {
+        // Get the current time in New York (Eastern Time)
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("America/New_York")); 
+
+        // Format the time for output (optional, but makes it more readable)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+        String formattedTime = now.format(formatter);
+
+        // Print the current time
+        System.out.println("Current time in New York: " + formattedTime); 
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Using `ZonedDateTime`:**  This is the recommended way to handle time zones in modern Java.  It avoids the ambiguities and potential issues of older classes like `Calendar` or `TimeZone`.
+
+2. **`ZoneId.of("America/New_York")`:** This precisely specifies the "America/New_York" time zone, which correctly handles daylight saving time transitions.
+
+3. **`DateTimeFormatter` (Optional):**  While not strictly required, formatting the time output makes it more user-friendly. You can customize the `formatter` to display the date and time in your preferred style.
+
+4. **Clarity and Comments:**  The code includes comments explaining the purpose of each section.
+
+**To Compile and Run:**
+
+1. **Save:** Save the code as `CurrentTimeInNewYork.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it:
+   ```bash
+   javac CurrentTimeInNewYork.java
+   ```
+3. **Run:** Execute the compiled class:
+   ```bash
+   java CurrentTimeInNewYork
+   ```
+
+
+This will print the current date and time in New York to your console.

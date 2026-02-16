@@ -1,0 +1,68 @@
+```java
+import java.util.LinkedList;
+import java.util.Iterator;
+
+public class LinkedListClear {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        System.out.println("Initial LinkedList: " + languages);
+
+        // Method 1: Using clear() method (most efficient)
+        languages.clear(); 
+        System.out.println("LinkedList after clear(): " + languages);
+
+
+        // Re-populate for demonstration of other methods
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+
+        // Method 2: Using remove() method in a loop (less efficient)
+        while (!languages.isEmpty()) {
+            languages.remove(); // Removes the first element
+        }
+        System.out.println("LinkedList after removing in loop: " + languages);
+
+         // Re-populate for demonstration of iterator method
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+
+        // Method 3: Using an Iterator (less efficient than clear())
+        Iterator<String> iterator = languages.iterator();
+        while (iterator.hasNext()) {
+            iterator.next(); // Move to the next element
+            iterator.remove();  // Remove the current element 
+        }
+
+        System.out.println("LinkedList after removing with iterator: " + languages);
+
+
+
+        // Explanation:
+        // 1. clear(): The clear() method is the most efficient way to remove all elements from a LinkedList. It directly removes all elements internally.
+
+        // 2. remove() in a loop:  This method works but is less efficient than clear() because it repeatedly removes the first element, requiring the LinkedList to adjust internally on each iteration.
+
+        // 3. Iterator:  Using an iterator allows you to remove elements while iterating, but it's still less efficient than clear() because of the overhead involved in using the iterator.
+
+
+
+        // Recommendation: Always use clear() when you want to remove all elements from a LinkedList. It is the simplest and most efficient method.
+    }
+}
+```

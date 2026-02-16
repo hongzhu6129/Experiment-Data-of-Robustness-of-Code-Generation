@@ -1,0 +1,61 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0 
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Antipodes (opposite sides of Earth):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110
+   - Expected Output: ~20015.08 km
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (approximately Earth's circumference / 4)
+
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: Small distance (because they are close despite the longitude difference)
+
+7. **Invalid Input (optional - you could add input validation to your code):**
+   - lat1: "abc" (or any non-numeric input)
+   - Expected behavior: Your program should handle this gracefully, perhaps by displaying an error message or prompting for valid input.  The `Scanner` will throw an `InputMismatchException` which you'd want to catch.
+
+
+
+**How to run tests:**
+
+The easiest way to test these cases is to manually enter the values into your program.  For more automated testing, you could write unit tests using JUnit (a Java testing framework).  Here's a very basic example of how to do this with JUnit (you'd need to add the JUnit library to your project):
+
+
+

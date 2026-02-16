@@ -1,0 +1,57 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  | '-' |\n  +-----+");
+    }
+}
+```
+
+**Test Cases and Corner Cases:**
+
+While this program doesn't have inputs that can cause logical errors (like calculations or data processing), we can still consider a few aspects for testing:
+
+1. **Basic Functionality:**  Does the program compile and run without errors? Does it print the face as expected?  This is the most important test. Run the program and visually verify the output.
+
+2. **Character Encoding:** Ensure the output is displayed correctly with the special characters like ", [, ], ^, -, +.  This might depend on your console or terminal's character encoding settings. Try running the program in different environments (e.g., IDE, command line) to check for discrepancies.
+
+3. **Output Redirection:** Test redirecting the output to a file. This verifies that the program's output stream works as intended.  You can do this from the command line: `java FacePrinter > output.txt`  Then check the contents of `output.txt`.
+
+4. **Integration (if applicable):** If this `printFace()` method were part of a larger program, you'd want to test its integration with other parts of the system.  For example, if the face was printed in response to a user action or as part of a graphical user interface, you would need to test those scenarios.
+
+
+Although these tests might seem trivial for this simple program, the principles are important.  Thinking about these aspects, even for simple code, helps develop good testing habits for more complex projects.
+
+
+**Example using JUnit (for more robust testing, though overkill for this specific case):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FacePrinterTest {
+
+    @Test
+    public void testPrintFace() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); // Capture the output
+        System.setOut(new PrintStream(outputStream)); // Redirect System.out
+
+        FacePrinter.printFace();
+
+        String expectedOutput = "  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  | '-' |\n  +-----+\n"; // Note the \n at the end!
+        assertEquals(expectedOutput, outputStream.toString());
+
+        // Restore System.out (important!)
+        System.setOut(System.out); 
+    }
+}
+
+```
+
+This JUnit test captures the program's output and compares it to the expected string.  It demonstrates a more structured approach to testing, which becomes invaluable as code complexity increases.  It also highlights the importance of including newline characters (`\n`) when comparing strings representing printed output.

@@ -1,0 +1,64 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("apple");
+        fruits.add("banana");
+        fruits.add("orange");
+        fruits.add("grape");
+        fruits.add("mango");
+
+
+        // Element to search for
+        String searchElement = "orange";
+
+        // Search using contains() method  (Simplest approach)
+        if (fruits.contains(searchElement)) {
+            System.out.println(searchElement + " found at index " + fruits.indexOf(searchElement));
+        } else {
+            System.out.println(searchElement + " not found in the list.");
+        }
+
+
+        // Search using a loop (Manual search - useful for more complex scenarios)
+        int index = -1; // Initialize index to -1 (not found)
+        for(int i = 0; i < fruits.size(); i++){
+            if(fruits.get(i).equals(searchElement)){
+                index = i;
+                break; // Exit loop once found
+            }
+        }
+
+        if(index != -1){
+            System.out.println(searchElement + " found at index " + index + " (using loop).");
+        } else {
+            System.out.println(searchElement + " not found in the list (using loop).");
+        }
+
+
+
+        // Example: Searching for an integer in an ArrayList of Integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+
+        int searchNumber = 5;
+
+        if (numbers.contains(searchNumber)) {  // Autoboxing handles int to Integer conversion
+            System.out.println(searchNumber + " found in the number list.");
+        } else {
+            System.out.println(searchNumber+ " not found in the number list.");
+        }
+
+
+
+    }
+}
+```

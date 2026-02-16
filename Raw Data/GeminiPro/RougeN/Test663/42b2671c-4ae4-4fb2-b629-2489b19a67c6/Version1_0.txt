@@ -1,0 +1,35 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+import java.util.NavigableMap;
+
+public class ReverseMapKeys {
+
+    public static void main(String[] args) {
+        // Create a sample TreeMap (naturally sorted by keys)
+        Map<String, Integer> originalMap = new TreeMap<>();
+        originalMap.put("apple", 1);
+        originalMap.put("banana", 2);
+        originalMap.put("orange", 3);
+        originalMap.put("grape", 4);
+
+        // Get a reverse order view of the keys using descendingKeySet()
+        NavigableMap<String, Integer> navigableMap = new TreeMap<>(originalMap);
+        NavigableMap<String, Integer> reversedMap = navigableMap.descendingMap();
+
+        // Print the reversed keys
+        System.out.println("Original Map: " + originalMap);
+        System.out.println("Reversed Keys: " + reversedMap.keySet());
+
+
+        // Another way to achieve the same result (without creating a NavigableMap explicitly)
+        System.out.print("Reversed Keys (Alternative): [");
+        for (String key : new TreeMap<>(originalMap).descendingKeySet()) {
+            System.out.print(key + ", ");
+        }
+        System.out.println("]"); // Removes the trailing comma and space
+
+
+    }
+}
+```

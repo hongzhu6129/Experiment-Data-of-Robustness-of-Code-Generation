@@ -1,0 +1,56 @@
+**Java Program:**
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class CharactersOfWord {
+
+    public static List<Character> getCharactersOfWord(String word) {
+        List<Character> characters = new ArrayList<>();
+
+        for (char c : word.toCharArray()) {
+            characters.add(c);
+        }
+
+        return characters;
+    }
+
+    public static void main(String[] args) {
+        String word = "HelloWorld";
+        List<Character> characters = getCharactersOfWord(word);
+
+        System.out.println("Characters of the word '" + word + "': ");
+        for (Character character : characters) {
+            System.out.println(character);
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Case:**
+
+* Input: "HelloWorld"
+* Expected Output: [H, e, l, l, o, W, o, r, l, d]
+
+**Empty String Case:**
+
+* Input: ""
+* Expected Output: []
+
+**Null Case:**
+
+* Input: null
+* Expected Output: null
+
+**Whitespace Case:**
+
+* Input: "   "
+* Expected Output: []
+
+**Special Character Case:**
+
+* Input: "!@#$%^&*"
+* Expected Output: [!, @, #, $, %, ^, &, *]

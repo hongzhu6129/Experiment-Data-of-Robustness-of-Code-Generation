@@ -1,0 +1,74 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    /**
+     * Educational method to remove duplicates from a sorted array and return the new length.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;  // Handle empty or null input
+        }
+
+        int uniqueIndex = 0; // Index to track the position of unique elements
+
+
+        // Iterate through the array, starting from the second element
+        for (int i = 1; i < nums.length; i++) {
+            // If the current element is different from the previous unique element
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++; // Move to the next unique position
+                nums[uniqueIndex] = nums[i]; // Place the unique element at its correct position
+
+            }
+        }
+
+
+        // The length of the unique subarray is uniqueIndex + 1
+        return uniqueIndex + 1;
+
+
+
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Example 1: Updated Length = " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1,0,len1)));
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Example 2: Updated Length = " + len2+ ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2,0,len2)));
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Example 3 (Empty Array): Updated Length = " + len3 + ", Array: " + Arrays.toString(nums3)); // Output: []
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Example 4 (Null Array): Updated Length = " + len4); // Output: 0
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Clearer Variable Names:** `uniqueIndex` is more descriptive than just `i` for tracking the unique elements.
+2. **Comments and Explanations:** Added comments within the `removeDuplicates` method to explain the logic step by step. This makes the code educational.
+3. **Comprehensive `main` Method:** Included multiple test cases in `main` to demonstrate how the function works with various inputs, including empty and null arrays. It also prints the modified array (the part containing the unique elements) for clarity.
+4. **Handles Edge Cases:** The code explicitly handles null and empty input arrays, returning 0 in those cases. This makes the function more robust.
+5. **Conciseness and Efficiency:**  The core logic remains efficient, using a single loop to achieve the desired result.  There's no unnecessary copying or creation of new arrays.
+6. **Use of `Arrays.copyOfRange`:** In the `main` method, `Arrays.copyOfRange` is used to print only the relevant portion of the modified array (the unique elements), preventing the output of trailing garbage values.
+
+
+
+This enhanced version is much more suitable as an educational example, making it easier to understand how the algorithm works and demonstrating good coding practices.

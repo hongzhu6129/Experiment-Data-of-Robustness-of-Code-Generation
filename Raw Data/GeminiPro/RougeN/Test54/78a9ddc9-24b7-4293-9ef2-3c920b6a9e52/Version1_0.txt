@@ -1,0 +1,68 @@
+```java
+import java.util.Scanner;
+
+public class LargestShare {
+
+    public static int findLargestShare(int num1, int num2) {
+        if (num1 > num2) {
+            return num1;
+        } else {
+            return num2;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second integer: ");
+        int num2 = scanner.nextInt();
+
+        int largest = findLargestShare(num1, num2);
+        System.out.println("The largest share is: " + largest);
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output |
+|---|---|---|---|
+| Positive Numbers | 10 | 5 | 10 |
+| Negative Numbers | -5 | -10 | -5 |
+| Zero and Positive | 0 | 5 | 5 |
+| Zero and Negative | 0 | -5 | 0 |
+| Positive and Zero | 10 | 0 | 10 |
+| Negative and Zero |-10 | 0 | 0 |
+| Equal Positive Numbers | 5 | 5 | 5 |
+| Equal Negative Numbers | -5 | -5 | -5 |
+| Large Positive and Small Negative | 1000 | -1 | 1000 |
+| Small Positive and Large Negative | 1 | -1000 | 1 |
+| Integer.MAX_VALUE and Integer.MIN_VALUE | Integer.MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE |  // Corner case: Max and Min integer values
+
+
+**Explanation of Corner Cases:**
+
+* **Integer.MAX_VALUE and Integer.MIN_VALUE:** This tests the behavior with the extreme limits of integer values. It's crucial to ensure the program handles these values correctly without overflow or other unexpected issues.
+
+* **Equal Numbers:**  Testing with equal numbers ensures the program correctly identifies and returns one of the equal values as the "largest" (which in this case, is just the same value).
+
+* **Zero and Positive/Negative:** Including zero helps ensure the comparison logic works as expected when one of the inputs is zero.
+
+* **Large Positive and Small Negative/Vice-versa:** These tests ensure the program handles scenarios where the magnitudes of the positive and negative numbers are significantly different.
+
+
+**How to Run the Tests (Manually):**
+
+1.  **Compile the code:**  Save the code as `LargestShare.java` and compile it using a Java compiler (e.g., `javac LargestShare.java`).
+2.  **Run the compiled code:** Execute the code using `java LargestShare`.  The program will prompt you to enter the two integer inputs.
+3.  **Enter test case values:**  For each test case in the table, enter the corresponding Input 1 and Input 2 values when prompted.  Verify that the output matches the Expected Output.
+
+
+You can automate these tests with JUnit or other testing frameworks for a more robust testing approach, especially in larger projects.  This manual approach is suitable for small programs like this example.

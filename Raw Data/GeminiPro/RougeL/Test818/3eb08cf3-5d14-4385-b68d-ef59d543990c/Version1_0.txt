@@ -1,0 +1,73 @@
+```java
+public class HexToDecimalConverter {
+
+    public static int hex_to_decimal(String hex) {
+        int decimal = 0;
+        int power = 0;
+        for (int i = hex.length() - 1; i >= 0; i--) {
+            char digit = hex.charAt(i);
+
+            if (digit >= '0' && digit <= '9') {
+                decimal += (digit - '0') * Math.pow(16, power);
+            } else if (digit >= 'A' && digit <= 'F') {
+                decimal += (digit - 'A' + 10) * Math.pow(16, power);
+            } else if (digit >= 'a' && digit <= 'f') {
+                decimal += (digit - 'a' + 10) * Math.pow(16, power);
+            }  else {
+                // Handle invalid input (optional)
+                 return -1; // Or throw an exception
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static void main(String[] args) {
+        String hex = "25"; // Example input
+        int decimal = hex_to_decimal(hex);
+
+
+        if (decimal != -1) {  // Check for invalid input if handled that way
+             System.out.println("Equivalent decimal number is: " + decimal);
+        } else {
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+
+        hex = "1A"; //Another test case
+        decimal = hex_to_decimal(hex);
+
+        if (decimal != -1) {  // Check for invalid input if handled that way
+             System.out.println("Equivalent decimal number is: " + decimal);
+        } else {
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+
+         hex = "FF"; //Another test case
+        decimal = hex_to_decimal(hex);
+
+        if (decimal != -1) {  // Check for invalid input if handled that way
+             System.out.println("Equivalent decimal number is: " + decimal);
+        } else {
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+
+
+         hex = "g3"; //Invalid input test case
+        decimal = hex_to_decimal(hex);
+
+        if (decimal != -1) {  // Check for invalid input if handled that way
+             System.out.println("Equivalent decimal number is: " + decimal);
+        } else {
+            System.out.println("Invalid hexadecimal input.");
+        }
+
+
+    }
+}
+```

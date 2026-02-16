@@ -1,0 +1,43 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class CatalogueViewOfMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        Map<String, Integer> productCatalogue = new HashMap<>();
+        productCatalogue.put("Laptop", 1200);
+        productCatalogue.put("Mouse", 25);
+        productCatalogue.put("Keyboard", 75);
+        productCatalogue.put("Monitor", 300);
+        productCatalogue.put("Webcam", 50);
+
+        // Method 1: Using entrySet() for a catalogue-like view
+        System.out.println("Method 1: Using entrySet()");
+        Set<Map.Entry<String, Integer>> entries = productCatalogue.entrySet();
+        for (Map.Entry<String, Integer> entry : entries) {
+            System.out.println(entry.getKey() + ": $" + entry.getValue());
+        }
+
+        System.out.println("\nMethod 2: Using keySet() and get()");  // More verbose but demonstrates another way
+        System.out.println("---------------------------------");
+        Set<String> keys = productCatalogue.keySet();
+        for (String key : keys) {
+            System.out.println(key + ": $" + productCatalogue.get(key));
+        }
+
+
+        System.out.println("\nMethod 3:  Using forEach() with lambda (Java 8+)"); // Most concise
+        System.out.println("------------------------------------------------");
+        productCatalogue.forEach((key, value) -> System.out.println(key + ": $" + value));
+
+         System.out.println("\nMethod 4:  Formatted output using String.format");
+         System.out.println("------------------------------------------------");
+         productCatalogue.forEach((key, value) -> System.out.println(String.format("%-10s $%d", key, value))); // Left-align key
+
+
+
+    }
+}

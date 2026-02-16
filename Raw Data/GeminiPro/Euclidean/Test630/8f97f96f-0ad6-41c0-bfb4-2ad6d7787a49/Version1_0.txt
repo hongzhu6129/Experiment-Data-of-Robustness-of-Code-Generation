@@ -1,0 +1,59 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings. By default, it uses natural ordering (alphabetical).
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Method 1: Print using enhanced for loop (recommended as it doesn't remove elements)
+        System.out.println("Colors in the Priority Queue (using enhanced for):");
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+        // Method 2: Print by polling (removes elements!)  Uncomment if you want to see this method.
+        /*
+        System.out.println("\nColors in the Priority Queue (using poll - removes elements):");
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); 
+        }
+        */
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Import `PriorityQueue`:** We import the `java.util.PriorityQueue` class to use priority queues.
+
+2. **Create a `PriorityQueue`:**  `PriorityQueue<String> colorQueue = new PriorityQueue<>();` creates a new priority queue that will store strings.  Since we don't provide a comparator, it will use the *natural ordering* of strings, which is alphabetical order.
+
+3. **Add elements:** We use `colorQueue.add()` to add string elements (representing colors) to the queue.
+
+4. **Print elements (Method 1 - Enhanced For Loop):** The recommended approach is to use an enhanced `for` loop ( `for (String color : colorQueue)` )  This iterates over the elements *without removing them* from the queue.  This preserves the queue's contents.
+
+5. **Print elements (Method 2 - Polling - Optional):** The commented-out section shows how to print elements using the `poll()` method.  `poll()` retrieves and *removes* the head (highest priority element) of the queue.  If you uncomment this section, you'll see the colors printed in alphabetical order, but the queue will be empty afterward.
+
+
+**Output (using the enhanced for loop method):**
+
+```
+Colors in the Priority Queue (using enhanced for):
+Blue
+Green
+Orange
+Red
+Yellow 
+```

@@ -1,0 +1,82 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Now: " + getCurrentDateTime());
+    }
+}
+```
+
+**Test Cases:**
+
+**1. Basic Functionality Test:**
+
+* **Input:** None (The program gets the current time)
+* **Expected Output:**  A date and time string in the format `yyyy/MM/dd HH:mm:ss.SSS`.  The exact values will depend on the current system time when the test runs.
+* **How to test:** Run the program multiple times and visually inspect the output to ensure it conforms to the specified format.
+
+
+**2. Time Zone Test (Indirect):**
+
+* **Input:** None
+* **Expected Output:** The date and time should reflect the system's default time zone.
+* **How to test:**  Change your system's time zone and re-run the program.  Observe that the output reflects the new time zone. This is an indirect test because you are manipulating the system environment, not directly providing input to the program.
+
+**3. Edge Case: Start/End of Day/Month/Year:**
+
+While these aren't strictly corner cases in terms of program logic, they are good to check for formatting consistency:
+
+* Run the program very close to midnight (23:59:59.999) to ensure the rollover to the next day is handled correctly.
+* Run it near the end of a month (e.g., January 31st) and near the end of a year (December 31st) to confirm date formatting remains accurate during transitions.
+
+
+**4. (Advanced/Optional) Testing with Mocking (for automated tests):**
+
+For more rigorous testing, you'd use a testing framework like JUnit and mock the `LocalDateTime.now()` method to provide specific date-time instances for testing various scenarios:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import static org.mockito.Mockito.*;
+
+
+class CurrentDateTimeTest {
+
+    @Test
+    void testGetCurrentDateTime() {
+        // Mock LocalDateTime.now() to control the time for testing
+        LocalDateTime mockNow = LocalDateTime.of(2024, Month.OCTOBER, 31, 23, 59, 59, 999000000); // Example near end of day/month/year
+        LocalDateTime now = mock(LocalDateTime.class); // Mocking LocalDateTime
+        when(now.now()).thenReturn(mockNow);
+
+        // Use reflection to access and override the now method in getCurrentDateTime (a bit complex for a simple example, but necessary for full control in unit tests)
+      // [Reflection code to replace the LocalDateTime.now() call in getCurrentDateTime with the mock would go here]
+
+        String expected = "2024/10/31 23:59:59.999";
+        String actual = CurrentDateTime.getCurrentDateTime();  // Calling the method with the mocked time
+
+        assertEquals(expected, actual);
+
+
+    }
+
+
+}
+
+```
+
+
+
+These tests will help ensure your `getCurrentDateTime()` method functions reliably and produces the correct output format under different conditions. Remember to add JUnit and Mockito libraries to your project if you use the mocking approach.  The reflection code is complex and often best avoided, but shows how to gain full control over static methods in testing. Simpler methods might include dependency injection to manage the date source.

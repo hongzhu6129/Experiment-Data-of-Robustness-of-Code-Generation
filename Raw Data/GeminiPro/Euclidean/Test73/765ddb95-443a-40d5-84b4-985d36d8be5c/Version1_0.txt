@@ -1,0 +1,47 @@
+```java
+public class StringStartsWith {
+
+    public static void main(String[] args) {
+        // Test cases
+        String str1 = "Hello World";
+        String prefix1 = "Hello";
+        String str2 = "Java Programming";
+        String prefix2 = "Java";
+        String str3 = "Coding is fun";
+        String prefix3 = "fun"; // Doesn't start with "fun"
+        String str4 = "short";
+        String prefix4 = "longer prefix"; // Edge case: prefix longer than string
+        String str5 = null;      // Edge cases for null handling
+        String prefix5 = "Test";
+        String str6 = "Test";
+        String prefix6 = null;
+
+
+        System.out.println("\"" + str1 + "\" starts with \"" + prefix1 + "\": " + startsWith(str1, prefix1));
+        System.out.println("\"" + str2 + "\" starts with \"" + prefix2 + "\": " + startsWith(str2, prefix2));
+        System.out.println("\"" + str3 + "\" starts with \"" + prefix3 + "\": " + startsWith(str3, prefix3));
+        System.out.println("\"" + str4 + "\" starts with \"" + prefix4 + "\": " + startsWith(str4, prefix4));
+        System.out.println("\"" + str5 + "\" starts with \"" + prefix5 + "\": " + startsWith(str5, prefix5));
+        System.out.println("\"" + str6 + "\" starts with \"" + prefix6 + "\": " + startsWith(str6, prefix6));
+    }
+
+
+    public static boolean startsWith(String str, String prefix) {
+        if (str == null || prefix == null) {
+            return false; // Or handle nulls as needed
+        }
+
+        if (prefix.length() > str.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < prefix.length(); i++) {
+            if (str.charAt(i) != prefix.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+}
+```

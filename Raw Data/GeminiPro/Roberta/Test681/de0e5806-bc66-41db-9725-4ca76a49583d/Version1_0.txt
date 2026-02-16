@@ -1,0 +1,47 @@
+```java
+public class SeparateDoubleParts {
+
+    public static void main(String[] args) {
+        double num = 123.456;
+
+        // Extract the whole part (integer part)
+        int wholePart = (int) num;
+
+        // Extract the fractional part
+        double fractionalPart = num - wholePart;
+
+        System.out.println("Original Number: " + num);
+        System.out.println("Whole Part: " + wholePart);
+        System.out.println("Fractional Part: " + fractionalPart);
+
+
+        // Demonstrating with another number and formatting for cleaner output
+        double num2 = -987.654;
+        int whole2 = (int) num2;
+        double fractional2 = num2 - whole2;
+
+        System.out.println("\nOriginal Number: " + num2);
+        System.out.println("Whole Part: " + whole2);
+        System.out.println("Fractional Part: " + String.format("%.3f", fractional2)); // Format to 3 decimal places
+
+
+        // Handling edge cases (0 and negative fractional parts)
+        double num3 = 7.0;
+        int whole3 = (int) num3;
+        double fractional3 = num3 - whole3;
+
+        System.out.println("\nOriginal Number: " + num3);
+        System.out.println("Whole Part: " + whole3);
+        System.out.println("Fractional Part: " + fractional3); // Output will be 0.0
+
+
+        double num4 = -5.1;
+        int whole4 = (int) num4;
+        double fractional4 = num4 - whole4;
+
+        System.out.println("\nOriginal Number: " + num4);
+        System.out.println("Whole Part: " + whole4);
+        System.out.println("Fractional Part: " + fractional4);
+    }
+}
+```

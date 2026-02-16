@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using Scanner for user input (optional - you can hardcode radius as 7.5)
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble();
+        input.close();  // Close the scanner
+
+
+        double perimeter = calculatePerimeter(radius);
+        double area = calculateArea(radius);
+
+        System.out.println("Perimeter is = " + perimeter);
+        System.out.println("Area is = " + area);
+
+    }
+
+    public static double calculatePerimeter(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    public static double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Radius Input | Expected Perimeter (approx) | Expected Area (approx) |
+|---|---|---|---|
+| 1. Normal Case | 7.5 | 47.12 | 176.71 |
+| 2. Zero Radius | 0 | 0 | 0 |
+| 3. Negative Radius (Invalid) | -5 |  (Should handle gracefully - either return NaN or throw an exception) | (Should handle gracefully) |
+| 4. Large Radius | 1000 | 6283.19 | 3141592.65 |
+| 5. Small Radius | 0.001 | 0.00628 | 0.00000314 |
+| 6. Integer Radius | 10 | 62.83 | 314.16 |
+
+
+
+**How to implement error handling for invalid input (like negative radius):**
+
+```java
+public static double calculatePerimeter(double radius) {
+    if (radius < 0) {
+        // Option 1: Throw an exception
+        throw new IllegalArgumentException("Radius cannot be negative.");
+
+        // Option 2: Return NaN (Not a Number)
+        // return Double.NaN;  
+    }
+    return 2 * Math.PI * radius;
+}
+
+// Similar error handling can be added to the calculateArea() method.
+```
+
+**Explanation of changes and improvements:**
+
+* **Methods for Calculation:** The code now uses separate methods (`calculatePerimeter` and `calculateArea`) to improve code organization and reusability.
+* **Scanner for Input (Optional):**  The code includes a `Scanner` to get user input for the radius.  You can comment this out and hardcode the radius if you prefer. Remember to close the scanner after use with `input.close();`
+* **Test Cases:**  Comprehensive test cases are provided to ensure the code works correctly under different conditions.
+* **Error Handling:** The code demonstrates how to handle invalid input (negative radius) by either throwing an exception or returning `Double.NaN`. Choose the approach that best suits your needs.
+* **Clearer Output:** The output is formatted to clearly label the perimeter and area.
+
+
+
+This improved version is more robust, organized, and easier to test.  Remember to choose the error-handling approach (exception or `NaN`) that best fits your overall program design.

@@ -1,0 +1,46 @@
+```java
+import java.util.Scanner;
+
+public class RemoveCharsFromString {
+
+    public static void main(String[] args) {
+        // Get the input string from the user
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        // Remove the characters 'b' and "ac" from the input string
+        String outputString = inputString.replaceAll("b", "").replaceAll("ac", "");
+
+        // Print the output string
+        System.out.println("The output string is: " + outputString);
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:**
+    * Input: "abcabc"
+    * Output: "a"
+* **Case with multiple 'b' characters:**
+    * Input: "bbbbbbb"
+    * Output: ""
+* **Case with multiple "ac" characters:**
+    * Input: "acacacac"
+    * Output: ""
+* **Case with 'b' and "ac" characters:**
+    * Input: "abcabcabc"
+    * Output: "a"
+* **Case with only 'b' characters:**
+    * Input: "bbbbbb"
+    * Output: ""
+* **Case with only "ac" characters:**
+    * Input: "acacacac"
+    * Output: ""
+* **Case with empty string:**
+    * Input: ""
+    * Output: ""
+* **Case with null string:**
+    * Input: null
+    * Output: null

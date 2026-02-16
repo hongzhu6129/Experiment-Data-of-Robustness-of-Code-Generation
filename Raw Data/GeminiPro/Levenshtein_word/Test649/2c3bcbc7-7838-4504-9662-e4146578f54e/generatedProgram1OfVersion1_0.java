@@ -1,0 +1,56 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckMapMapping {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> map = new HashMap<>();
+        map.put("apple", 1);
+        map.put("banana", 2);
+        map.put("orange", 3);
+
+        // Test cases
+        String key1 = "banana";
+        String key2 = "grape";
+
+        // Check if the map contains a mapping for key1
+        if (map.containsKey(key1)) {
+            System.out.println("The map contains a mapping for key: " + key1);
+        } else {
+            System.out.println("The map does not contain a mapping for key: " + key1);
+        }
+
+        // Check if the map contains a mapping for key2
+        if (map.containsKey(key2)) {
+            System.out.println("The map contains a mapping for key: " + key2);
+        } else {
+            System.out.println("The map does not contain a mapping for key: " + key2);
+        }
+
+
+
+                // Demonstrating with different data types (Integer keys)
+        Map<Integer, String> map2 = new HashMap<>();
+        map2.put(10, "Ten");
+        map2.put(20, "Twenty");
+
+        Integer intKey1 = 20;
+        Integer intKey2 = 30;
+
+
+        if (map2.containsKey(intKey1)) {
+            System.out.println("map2 contains a mapping for key: " + intKey1);
+        } else {
+            System.out.println("map2 does not contain a mapping for key: " + intKey1);
+        }
+
+        if (map2.containsKey(intKey2)) {
+             System.out.println("map2 contains a mapping for key: " + intKey2);
+        } else {
+            System.out.println("map2 does not contain a mapping for key: " + intKey2);
+        }
+
+
+    }
+}

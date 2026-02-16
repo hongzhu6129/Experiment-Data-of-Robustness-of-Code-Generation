@@ -1,0 +1,47 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (sorted map)
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+        // Get the portion of the map whose keys are less than or equal to 3 (inclusive)
+        int givenKey = 3;
+        boolean inclusive = true; 
+        SortedMap<Integer, String> subMapInclusive = map.headMap(givenKey, inclusive);
+
+
+        // Get the portion of the map whose keys are strictly less than 4 (exclusive)
+        givenKey = 4;
+        inclusive = false;
+        SortedMap<Integer, String> subMapExclusive = map.headMap(givenKey, inclusive);
+
+
+        // Print the submaps
+        System.out.println("Submap (inclusive): " + subMapInclusive); // Output: {1=One, 2=Two, 3=Three}
+        System.out.println("Submap (exclusive): " + subMapExclusive); // Output: {1=One, 2=Two, 3=Three}
+
+
+        //Example demonstrating difference between inclusive and exclusive with a boundary key present in the map
+        givenKey = 5;
+        inclusive = true;
+        subMapInclusive = map.headMap(givenKey, inclusive);  //Includes 5
+
+        inclusive = false;
+        subMapExclusive = map.headMap(givenKey, inclusive); //Excludes 5
+
+        System.out.println("Submap (inclusive): " + subMapInclusive); // {1=One, 2=Two, 3=Three, 4=Four, 5=Five}
+        System.out.println("Submap (exclusive): " + subMapExclusive); // {1=One, 2=Two, 3=Three, 4=Four}
+
+
+
+    }
+}

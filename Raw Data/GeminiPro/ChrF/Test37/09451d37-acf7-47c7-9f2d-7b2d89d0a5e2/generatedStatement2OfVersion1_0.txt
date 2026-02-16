@@ -1,0 +1,40 @@
+
+
+**Test Cases:**
+
+1. **Positive Single Digit:**
+   - Input: `5`
+   - Expected Output: `615` (5 + 55 + 555)
+
+2. **Positive Double Digit:**
+   - Input: `12`
+   - Expected Output: `1332` (12 + 1212 + 121212)
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Negative Single Digit:**
+   - Input: `-2`
+   - Expected Output: `-246`  (-2 + (-22) + (-222))
+
+5. **Negative Double Digit:**
+   - Input: `-15`
+   - Expected Output: `-1665` (-15 + (-1515) + (-151515))
+
+6. **Large Positive Number (to test potential overflow with int):**
+   - Input: `99999`  (or a similar large number)
+   - Expected Output: `11109888889`
+
+7. **Invalid Input:**
+   - Input: `abc`
+   - Expected Output: `Invalid input: Please enter a valid integer.`
+
+8. **Input Leading with Zeroes:**
+   - Input: `007`
+   - Expected Output: `777` (The program should treat 007 as 7)
+
+9. **Corner case resulting in potential overflow with long:**  Try an extremely large number that would cause `Long.parseLong()` to throw a `NumberFormatException`.  For example: `999999999999999999999` (or even larger, adjust based on your system). The expected output should be the error message: `"Error: The result is too large to be represented."`
+
+
+This comprehensive set of test cases covers various scenarios, including positive and negative numbers, zero, large numbers to test for overflow, and invalid input handling.  It's important to test your code with these examples to ensure correctness and robustness.

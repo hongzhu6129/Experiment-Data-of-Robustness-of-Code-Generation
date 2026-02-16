@@ -1,0 +1,68 @@
+```java
+import java.util.Arrays;
+
+public class SieveOfEratosthenes {
+
+    private static int[] generatePrimes(int n) {
+        // Create a boolean array "prime[0..n]" and initialize
+        // all entries it as true. A value in prime[i] will
+        // finally be false if i is Not a prime, else true.
+        boolean prime[] = new boolean[n + 1];
+        Arrays.fill(prime, true);
+
+        for (int p = 2; p * p <= n; p++) {
+            // If prime[p] is not changed, then it is a prime
+            if (prime[p]) {
+                // Update all multiples of p
+                for (int i = p * p; i <= n; i += p)
+                    prime[i] = false;
+            }
+        }
+
+        // Count the number of primes
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                count++;
+            }
+        }
+
+        // Create an array to store the prime numbers
+        int[] primes = new int[count];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primes[index++] = i;
+            }
+        }
+
+
+        return primes;
+    }
+
+    public static void main(String[] args) {
+        int n = 30; // Example limit, you can change this
+        int[] primes = generatePrimes(n);
+
+        System.out.print("Prime numbers less than or equal to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println(); // Add a newline for better formatting
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Clarity and Readability:**  Improved comments and variable names make the code easier to understand.  Added a newline at the end of the output for better formatting.
+* **Efficiency:**  The `generatePrimes` function is optimized:
+    * It only iterates up to the square root of `n` in the outer loop, as any factor of a number greater than its square root must have a corresponding factor smaller than the square root.
+    * It starts the inner loop at `p*p`, as all smaller multiples would have already been marked as non-prime by previous iterations.
+* **Direct Calculation of Prime Count:** The code efficiently counts the number of primes before allocating the array, avoiding unnecessary resizing.
+* **Conciseness:** The code is more concise and directly implements the Sieve of Eratosthenes algorithm.
+
+
+This improved version addresses the issues in the previous responses and provides a more efficient and understandable solution.

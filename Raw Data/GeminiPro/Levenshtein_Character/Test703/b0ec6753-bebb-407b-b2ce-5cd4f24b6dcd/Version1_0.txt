@@ -1,0 +1,55 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Binomial coefficient is 0 if k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1; // Base cases
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: nCk = nC(n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i;  // Efficient calculation to avoid overflow
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+
+        if (n < 0 || k < 0) {
+             System.out.println("n and k must be non-negative.");
+        } else {
+             long coefficient = binomial_Coefficient(n, k);
+             System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        }
+
+         scanner.close();
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles Invalid Input:**  Checks for negative `n` and `k` and prints an appropriate message.
+* **Efficiency:** Uses the `k = n - k` optimization to reduce calculations when `k` is larger than `n/2`.
+* **Overflow Prevention:** The calculation `result = result * (n - i + 1) / i` is structured to avoid intermediate overflows that could occur if you calculated the numerator and denominator separately.  The division is performed within the loop, keeping the numbers smaller.
+* **Clearer User Interaction:**  Prompts the user for input and prints the result in a user-friendly format.
+* **Resource Management:** Closes the `Scanner` using `scanner.close()` to release the resource.
+
+
+This revised version is more robust, efficient, and presents a better user experience. It addresses potential errors and uses an efficient algorithm for calculating binomial coefficients.

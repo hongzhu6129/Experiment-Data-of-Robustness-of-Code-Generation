@@ -1,0 +1,58 @@
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "Hello"; // Sample string
+        StringBuffer strBuf = new StringBuffer("Hello"); // Sample StringBuffer
+
+        // Method 1: Convert StringBuffer to String and compare
+        String str2 = strBuf.toString();
+        if (str1.equals(str2)) {
+            System.out.println("Strings are equal (using .toString() and .equals())");
+        } else {
+            System.out.println("Strings are NOT equal (using .toString() and .equals())");
+        }
+
+
+        // Method 2: Using contentEquals() (more efficient for StringBuffer comparison)
+        if (str1.contentEquals(strBuf)) { // Directly compare String with StringBuffer
+            System.out.println("Strings are equal (using .contentEquals())");
+        } else {
+            System.out.println("Strings are NOT equal (using .contentEquals())");
+        }
+
+
+
+        // Demonstrating a case where they are NOT equal:
+        strBuf.append(" World!");
+
+         if (str1.contentEquals(strBuf)) { 
+            System.out.println("Strings are equal (using .contentEquals() after append)");
+        } else {
+            System.out.println("Strings are NOT equal (using .contentEquals() after append)");
+        }
+
+        if (str1.equals(strBuf.toString())) { 
+            System.out.println("Strings are equal (using .toString() and equals() after append)");
+        } else {
+            System.out.println("Strings are NOT equal (using .toString() and equals() after append)");
+        }
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Method 1:  Convert StringBuffer to String:**
+   - `strBuf.toString()` converts the `StringBuffer` object to a `String` object.
+   - `str1.equals(str2)` compares the two `String` objects for equality using the `equals()` method. This is a common and straightforward approach.
+
+2. **Method 2: Using `contentEquals()`:**
+   - `str1.contentEquals(strBuf)` is a more efficient way to compare a `String` directly with a `StringBuffer` (or other `CharSequence` types).  It avoids the overhead of creating a new `String` object from the `StringBuffer`.  This is generally the preferred method when comparing `String` with `StringBuffer`.
+
+
+Important Note about `==` :
+
+Don't use `==` to compare the *contents* of strings in Java.  `==` checks for reference equality (whether the two variables refer to the same object in memory).  For string comparisons, always use `equals()` (for two `String` objects) or `contentEquals()` (for `String` compared to `StringBuffer`/`CharSequence`).

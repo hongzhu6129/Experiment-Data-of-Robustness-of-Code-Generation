@@ -1,0 +1,65 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class KSmallestElements {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 4, 17, 7, 25, 3, 100};
+        int k = 3;
+
+        System.out.println("Original Array: " + Arrays.toString(originalArray));
+
+        // Method 1: Using a PriorityQueue (Min-Heap) - Efficient for larger k
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : originalArray) {
+            minHeap.offer(num);
+        }
+
+        int[] kSmallest = new int[k];
+        for (int i = 0; i < k; i++) {
+            kSmallest[i] = minHeap.poll();
+        }
+
+        System.out.println(k + " smallest elements of the said array are: " + Arrays.toString(kSmallest));
+
+
+
+        // Method 2: Sorting and then taking the first k elements - Simpler for small k
+        Arrays.sort(originalArray);
+
+        int[] kSmallest2 = Arrays.copyOfRange(originalArray, 0, k);
+        System.out.println(k + " smallest elements of the said array are: " + Arrays.toString(kSmallest2));
+
+
+
+        //  Method 3: Using QuickSelect (more advanced, average O(n) time complexity but more complex to implement) - suitable for larger datasets and varying k.
+        //  (Implementation omitted for brevity as main method is requested)
+
+
+        // Illustrative example with k-largest (misinterpreted problem statement initially - left as optional extra)
+        int[] kLargest = findKLargest(originalArray, k);
+        System.out.println(k + " largest elements of the said array are: " + Arrays.toString(kLargest));
+
+
+    }
+
+
+    // Helper function for finding k-largest (optional - for illustrative purposes as problem statement might have been misinterpreted initially)
+    public static int[] findKLargest(int[] nums, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : nums) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        int[] result = new int[k];
+        int i = k - 1; // Fill from the end to maintain descending order
+        while (!minHeap.isEmpty()) {
+            result[i--] = minHeap.poll();
+        }
+        return result;
+    }
+}

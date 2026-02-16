@@ -1,0 +1,46 @@
+```java
+import java.util.TimeZone;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        String[] availableIDs = TimeZone.getAvailableIDs();
+
+        System.out.println("Available Time Zones (UTC/GMT):");
+
+        for (String id : availableIDs) {
+            TimeZone tz = TimeZone.getTimeZone(id);
+
+            // Filter and display only UTC/GMT time zones
+            if (id.startsWith("Etc/GMT") || id.startsWith("UTC") || id.startsWith("GMT")) {  
+                 System.out.println(id + ": " + tz.getDisplayName()); // Optionally display the longer name as well              
+            }
+
+           // Alternative using getRawOffset for exact UTC/GMT offsets
+            // if (tz.getRawOffset() % (3600 * 1000) == 0) { // Check if the offset is a whole number of hours (like GMT/UTC)
+            //     System.out.println(id + ": " + tz.getDisplayName() + " (Offset: " + tz.getRawOffset() / (3600 * 1000) + " hours)");
+            //}
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Filtering for UTC/GMT:**  The code now efficiently filters for time zones that start with "Etc/GMT", "GMT", or "UTC".  This provides a more precise list of relevant time zones.
+
+2. **`getDisplayName()` (Optional):**  I've added `tz.getDisplayName()` to show the longer, more human-readable name of the time zone along with its ID. This is optional but can make the output clearer.
+
+3. **Alternative Using `getRawOffset()` (Commented out):**  I've included a commented-out section that demonstrates how to use `getRawOffset()` to filter for time zones with offsets that are exact multiples of one hour (as GMT/UTC time zones are). This approach might be useful in some cases but is generally less reliable than filtering by ID because some time zones might accidentally have a whole-hour offset but not be true GMT/UTC zones.
+
+4. **Clarity and Comments:** The code now has better comments to explain the filtering logic.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TimeZones.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it: `javac TimeZones.java`
+3. **Run:**  Execute the compiled code: `java TimeZones`
+
+
+This improved version will give you a more accurate and user-friendly list of available UTC/GMT time zones.

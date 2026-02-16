@@ -1,0 +1,66 @@
+```java
+import java.util.LinkedList;
+
+public class CompareLinkedLists {
+
+    public static void main(String[] args) {
+
+        // Create two LinkedLists
+        LinkedList<String> list1 = new LinkedList<>();
+        LinkedList<String> list2 = new LinkedList<>();
+
+        // Populate list1
+        list1.add("apple");
+        list1.add("banana");
+        list1.add("cherry");
+
+        // Populate list2 - make it initially different
+        list2.add("apple");
+        list2.add("grape");
+        list2.add("cherry");
+
+
+        // 1. Comparing using equals() method:
+        System.out.println("Comparing using equals(): " + list1.equals(list2)); // Output: false (initially)
+
+
+        // Modify list2 to be the same as list1
+        list2.set(1, "banana"); 
+
+        System.out.println("Comparing using equals() after modification: " + list1.equals(list2)); // Output: true
+
+
+        // 2. Comparing element by element (useful when order matters):
+        boolean areEqual = true;
+        if (list1.size() != list2.size()) {
+            areEqual = false;
+        } else {
+            for (int i = 0; i < list1.size(); i++) {
+                if (!list1.get(i).equals(list2.get(i))) {
+                    areEqual = false;
+                    break; // Optimization: exit loop early if a mismatch is found
+                }
+            }
+        }
+
+        System.out.println("Comparing element by element: " + areEqual); // Output: true
+
+
+
+        // 3. Comparing using containsAll() (checks if one list contains all elements of the other, regardless of order)
+        //  Note: This doesn't check for duplicates. If list1 has two "apple" and list2 has one, containsAll will still return true.
+        System.out.println("list1 contains all elements of list2: " + list1.containsAll(list2)); //Output: true
+        System.out.println("list2 contains all elements of list1: " + list2.containsAll(list1)); //Output: true
+
+         // Example demonstrating containsAll() limitation with duplicates
+        list1.add("apple"); // Add a duplicate "apple" to list1
+        System.out.println("list1 contains all elements of list2 (after adding duplicate): " + list1.containsAll(list2)); // Still true!
+        System.out.println("list2 contains all elements of list1 (after adding duplicate): " + list2.containsAll(list1)); // False now!
+
+
+
+
+    }
+}
+
+```

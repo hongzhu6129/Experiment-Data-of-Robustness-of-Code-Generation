@@ -1,0 +1,110 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListSearch {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Mango");
+        fruits.add("Grape");
+
+        // Search for an element using contains()
+        String searchTerm = "Mango";
+        if (fruits.contains(searchTerm)) {
+            System.out.println(searchTerm + " is found in the list.");
+        } else {
+            System.out.println(searchTerm + " is not found in the list.");
+        }
+
+        // Search for an element using indexOf() to get its position
+        searchTerm = "Orange";
+        int index = fruits.indexOf(searchTerm);
+        if (index != -1) {
+            System.out.println(searchTerm + " is found at index " + index);
+        } else {
+            System.out.println(searchTerm + " is not found in the list.");
+        }
+
+
+        // Example with integers:
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+
+
+        int searchNumber = 25;
+        if (numbers.contains(searchNumber)) {  // Autoboxing handles int to Integer conversion
+            System.out.println(searchNumber + " is found in the list.");
+        } else {
+            System.out.println(searchNumber + " is not found in the list.");
+        }
+
+
+        // Searching for a non-primitive type (e.g., custom class):
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("The Lord of the Rings", "J.R.R. Tolkien"));
+        books.add(new Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams"));
+
+        Book searchBook = new Book("The Lord of the Rings", "J.R.R. Tolkien");
+
+        if (books.contains(searchBook)) { // Requires equals() method to be correctly implemented in the Book class
+            System.out.println(searchBook.getTitle() + " is found in the list.");
+        } else {
+            System.out.println(searchBook.getTitle() + " is not found in the list.");
+        }
+
+    }
+
+
+}
+
+class Book {
+    private String title;
+    private String author;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return title.equals(book.title) && author.equals(book.author); // Comparing both title and author
+    }
+
+
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Examples:** Added examples with both `String` and `Integer` ArrayLists to demonstrate how to search different data types.
+
+2. **`indexOf()` method:** Shows how to use `indexOf()` to find the position (index) of an element in the list.  It returns -1 if the element is not found.
+
+3. **Integer Search with Autoboxing:** Explained how autoboxing (automatic conversion from `int` to `Integer`) works when searching for integers.
+
+4. **Custom Object Search (Book Example):** Includes an example of searching for a custom object (a `Book` class) in the ArrayList. This illustrates the crucial point that you *must* override the `equals()` method in your custom class for `contains()` to work correctly.  The provided `Book` class now has a correct `equals()` method.
+
+5. **Comments and Explanations:**  Added more comments to explain the code and the importance of `equals()`.
+
+6. **Error Handling (indexOf()):**  Included a check for `index == -1` to handle cases where the element is not found using `indexOf()`.
+
+
+This revised code provides a more comprehensive and educational example of searching ArrayLists in Java.

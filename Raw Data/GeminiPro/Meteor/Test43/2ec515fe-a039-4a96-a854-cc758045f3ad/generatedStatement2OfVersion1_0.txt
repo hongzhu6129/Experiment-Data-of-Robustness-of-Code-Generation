@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+**1. Normal Cases:**
+
+* **Input Range:** 1 to 100 (as specified)
+* **Expected Output:** The program should correctly print numbers divisible by 3, 5, and both within this range.  For example, it should print 15, 30, 45, etc., for numbers divisible by both.
+
+**2. Boundary Cases:**
+
+* **Input Range:** 1 to 1  (smallest possible valid range)
+* **Expected Output:** If 1 is divisible by 3 or 5 (it's not), it should be printed in the appropriate section.
+* **Input Range:** 1 to 3 (includes a number divisible by 3)
+* **Input Range:** 1 to 5 (includes a number divisible by 5)
+* **Input Range:** 1 to 15 (includes the first number divisible by both)
+
+
+**3. Corner Cases/Invalid Inputs (Though the program doesn't take direct input):**
+
+* **Empty Range:** While the program doesn't take range input directly, consider a hypothetical scenario where the loop start is greater than the loop end (e.g., `for (int i = 101; i <= 100; i++)`). The program should not print anything.
+* **Negative Numbers (Hypothetical):**  If the program *were* to accept input ranges including negative numbers (which it currently doesn't), you'd need to test how it handles them.  Does it produce the correct results for negative numbers divisible by 3 and/or 5?
+
+
+
+**How to test effectively:**
+
+1. **Manual Inspection:** Run the code and carefully check the output against the expected values for each case.
+2. **Automated Testing (Recommended):** Use a testing framework like JUnit.  Write test methods that call the `main` method (you might want to refactor your code slightly to separate the logic into testable methods) and assert that the output matches what's expected. This allows for easy regression testing as you make changes to your code.
+
+
+Example JUnit Test (requires refactoring the code slightly):
+

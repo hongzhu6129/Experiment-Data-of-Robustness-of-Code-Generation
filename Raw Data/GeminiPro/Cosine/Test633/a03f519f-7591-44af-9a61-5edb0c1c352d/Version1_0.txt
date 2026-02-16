@@ -1,0 +1,69 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueInsertion {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers (you can use other data types as well)
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // By default, this creates a min-heap
+
+        // Add elements to the priority queue
+        pq.offer(5);  // offer() is the preferred way to add elements
+        pq.add(2);  // add() can also be used, but throws an exception if the queue is full (capacity restricted queues)
+        pq.offer(8);
+        pq.offer(1);
+        pq.offer(10);
+
+
+        System.out.println("Initial Priority Queue: " + pq); // Output: [1, 2, 8, 5, 10] (Order may vary slightly due to heap implementation)
+
+        // Insert a new element (e.g., 7)
+        int newElement = 7;
+        pq.offer(newElement);
+
+
+        System.out.println("Priority Queue after inserting " + newElement + ": " + pq); // Output: [1, 2, 7, 5, 10, 8] (Order may vary slightly)
+
+
+        // Example with a max-heap
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a); // Comparator for max-heap
+
+        maxHeap.offer(5);
+        maxHeap.offer(2);
+        maxHeap.offer(8);
+        maxHeap.offer(1);
+        maxHeap.offer(10);
+
+        System.out.println("Initial Max-Heap: " + maxHeap);
+
+        int newElementMaxHeap = 7;
+        maxHeap.offer(newElementMaxHeap);
+
+        System.out.println("Max-Heap after inserting " + newElementMaxHeap + ": " + maxHeap);
+
+
+        // Important Note:  Elements are stored based on their natural ordering (for Integers, smaller values have higher priority) or using a custom Comparator (as shown with the max-heap). The `peek()` method retrieves the highest priority element (without removing it), and `poll()` retrieves and removes the highest priority element.
+        System.out.println("Highest priority element (min-heap): " + pq.peek()); // Output: 1
+        System.out.println("Highest priority element (max-heap): " + maxHeap.peek()); // Output 10
+
+    }
+}
+```
+
+
+Key Improvements and Explanations:
+
+1. **Clearer Explanations:** Added comments to explain the purpose of each code section and the expected output.  Explained the difference between `offer()` and `add()`.
+
+2. **Min-Heap and Max-Heap Examples:**  Provided both a min-heap (default) and a max-heap example, showing how to use a `Comparator` to create a max-heap.
+
+3. **`offer()` vs. `add()`:** Clarified the difference and recommended using `offer()` as it is generally safer.
+
+4. **`peek()` and `poll()` explanation:** Added a note about the important `peek()` and `poll()` methods for accessing elements based on priority.
+
+5. **Concise and Focused:** The code is more focused on demonstrating priority queue insertion and related concepts.
+
+6. **Improved Formatting:** Enhanced the formatting for better readability.
+
+
+This revised example provides a more comprehensive and educational demonstration of priority queue insertion in Java.

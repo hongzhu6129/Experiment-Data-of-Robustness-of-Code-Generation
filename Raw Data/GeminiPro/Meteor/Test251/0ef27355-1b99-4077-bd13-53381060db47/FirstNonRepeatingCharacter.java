@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        String str = "GeeksforGeeks";
+        System.out.println("The first non-repeating character in '" + str + "' is: " + firstNonRepeatingCharacter(str));
+
+        str = "aabbbccddd";
+        System.out.println("The first non-repeating character in '" + str + "' is: " + firstNonRepeatingCharacter(str));
+
+        str = "zzzzzzzz";
+        System.out.println("The first non-repeating character in '" + str + "' is: " + firstNonRepeatingCharacter(str));
+
+        str = "";
+        System.out.println("The first non-repeating character in '" + str + "' is: " + firstNonRepeatingCharacter(str));
+    }
+
+    public static Character firstNonRepeatingCharacter(String str) {
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        for (char c : str.toCharArray()) {
+            charCountMap.merge(c, 1, Integer::sum);
+        }
+
+        for (char c : str.toCharArray()) {
+            if (charCountMap.get(c) == 1) {
+                return c;
+            }
+        }
+
+        return null;
+    }
+}

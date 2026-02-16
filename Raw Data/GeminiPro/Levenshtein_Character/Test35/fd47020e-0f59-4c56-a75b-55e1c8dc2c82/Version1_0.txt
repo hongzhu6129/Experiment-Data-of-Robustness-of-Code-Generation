@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class AsciiValue {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a character: ");
+
+        // Read a single character from the user.  Handles potential empty input.
+        String input = scanner.nextLine();
+        if (input.isEmpty()) {
+            System.out.println("You did not enter a character.");
+            return; // Exit if no input provided
+        }
+        char character = input.charAt(0);
+
+
+        int asciiValue = (int) character;
+
+        System.out.println("The ASCII value of " + character + " is: " + asciiValue);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Normal Character:**
+   - Input: `A`
+   - Expected Output: `The ASCII value of A is: 65`
+
+2. **Lowercase Character:**
+   - Input: `z`
+   - Expected Output: `The ASCII value of z is: 122`
+
+3. **Digit:**
+   - Input: `7`
+   - Expected Output: `The ASCII value of 7 is: 55`
+
+4. **Special Character:**
+   - Input: `$`
+   - Expected Output: `The ASCII value of $ is: 36`
+
+5. **Space:**
+   - Input: ` `  (a space)
+   - Expected Output: `The ASCII value of   is: 32`
+
+6. **Extended ASCII (Non-printable character - test depends on your console/terminal):**
+   - Input: (Press Ctrl+A, representing ASCII 1).  Note: handling may vary based on the IDE or command line.
+   - Expected Output: `The ASCII value of  is: 1`
+
+
+7. **Empty Input:**
+   - Input: (Just press enter without typing anything)
+   - Expected Output: `You did not enter a character.`
+
+
+8. **Multiple Characters (Handles only the first):**
+   - Input:  `hello`
+   - Expected Output: `The ASCII value of h is: 104`  (Only the first character 'h' is considered)
+
+
+9. **Unicode characters (within the BMP - Basic Multilingual Plane):**
+   - Input:  `�` (or some other non-ASCII character)
+   - Expected Output: (Will print the Unicode code point, which is also considered the ASCII value in Java. E.g.,  `The ASCII value of � is: 233` )
+
+
+
+These test cases cover a good range of input scenarios, including normal alphanumeric characters, special characters, spaces, empty input, and handling of multiple character input. The test with a non-printable character lets you explore how your system handles such input (it might show a placeholder character, or it might not be entered correctly at all depending on your setup).  The Unicode test demonstrates Java's approach where `char` represents UTF-16 code units. For characters in the BMP (like the example), the code unit and code point are the same, hence it behaves as you'd expect for ASCII.  For supplementary characters (beyond the BMP), it would require some additional work.

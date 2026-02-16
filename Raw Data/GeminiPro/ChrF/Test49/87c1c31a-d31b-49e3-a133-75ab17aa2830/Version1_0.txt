@@ -1,0 +1,111 @@
+```java
+import java.util.Scanner;
+
+public class CountFactors {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+
+        if (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            return; // Exit if the input is not an integer
+        }
+
+        int number = scanner.nextInt();
+        int count = 0;
+
+
+        if (number == 0) {
+            System.out.println("The number of factors for 0 is infinite."); // Handle 0 separately
+            return;
+        }
+
+        // Handle negative numbers (make them positive for factor calculation)
+         if (number < 0) {
+             number = -number;
+         }
+
+
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                count++;
+            }
+        }
+
+        System.out.println("The number of factors of " + number + " is: " + count);
+        scanner.close();
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 12   **Expected Output:** 6 (Factors: 1, 2, 3, 4, 6, 12)
+2. **Input:** 7    **Expected Output:** 2 (Factors: 1, 7)
+3. **Input:** 25   **Expected Output:** 3 (Factors: 1, 5, 25)
+4. **Input:** 100  **Expected Output:** 9 (Factors: 1, 2, 4, 5, 10, 20, 25, 50, 100)
+
+
+**Corner/Edge Cases:**
+
+5. **Input:** 0    **Expected Output:** The number of factors for 0 is infinite.
+6. **Input:** 1    **Expected Output:** 1 (Factor: 1)
+7. **Input:** -5   **Expected Output:** 2 (Factors: 1, 5)  (Handles negatives correctly)
+8. **Input:** -12  **Expected Output:** 6 (Factors: 1, 2, 3, 4, 6, 12) (Handles negatives correctly)
+9. **Input:**  A very large prime number (e.g., 1299709) **Expected Output:** 2 (Handles large primes � should only have 1 and itself as factors)
+
+**Invalid Input Case:**
+
+10. **Input:** abc (or any non-integer)   **Expected Output:** Invalid input. Please enter an integer.
+
+
+**How to Run Test Cases:**
+
+You can run these test cases by:
+
+1. **Manual Input:**  Compile the Java code and run it. Enter each test input value when prompted.
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit to create automated tests.  This is the best approach for regression testing and ensuring correctness over time.  You can provide the test cases as input to your test methods and assert that the output from your program matches the expected output.
+
+
+Example JUnit Test (partial):
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CountFactorsTest {
+
+    @Test
+    void testInput12() {
+        String input = "12";
+        String expectedOutput = "The number of factors of 12 is: 6\n";
+        test(input, expectedOutput);
+    }
+
+    // ... (Add other test methods similarly)
+
+
+    private void test(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        CountFactors.main(new String[0]); // Run the main method
+
+        assertEquals(expectedOutput, out.toString());  // Assert output
+    }
+}
+
+```
+
+Remember to add the JUnit dependency to your project if using automated testing.  This is the more robust and maintainable way to test your code.

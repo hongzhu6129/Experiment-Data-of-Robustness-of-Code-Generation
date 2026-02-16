@@ -1,0 +1,44 @@
+```java
+import java.util.Arrays;
+
+public class CompareBytes {
+
+    public static void main(String[] args) {
+        // Create two byte arrays
+        byte[] array1 = {1, 2, 3, 4, 5};
+        byte[] array2 = {1, 2, 3, 4, 5};
+
+        // Compare the two byte arrays
+        boolean areEqual = Arrays.equals(array1, array2);
+
+        // Print the result
+        System.out.println("Are the two byte arrays equal? " + areEqual);
+    }
+}
+```
+
+**Test Cases**
+
+**Corner Cases**
+
+* **Empty arrays:**
+    * `byte[] array1 = {};`
+    * `byte[] array2 = {};`
+* **Arrays of different lengths:**
+    * `byte[] array1 = {1, 2, 3};`
+    * `byte[] array2 = {1, 2, 3, 4};`
+* **Arrays with different values:**
+    * `byte[] array1 = {1, 2, 3};`
+    * `byte[] array2 = {1, 2, 4};`
+
+**Normal Cases**
+
+* **Arrays of the same length with the same values:**
+    * `byte[] array1 = {1, 2, 3, 4, 5};`
+    * `byte[] array2 = {1, 2, 3, 4, 5};`
+* **Arrays of different lengths with the same values:**
+    * `byte[] array1 = {1, 2, 3};`
+    * `byte[] array2 = {1, 2, 3, 0, 0};`
+* **Arrays of the same length with different values:**
+    * `byte[] array1 = {1, 2, 3, 4, 5};`
+    * `byte[] array2 = {1, 2, 3, 4, 6};`

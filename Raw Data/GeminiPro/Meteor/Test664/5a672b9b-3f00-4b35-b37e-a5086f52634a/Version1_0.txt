@@ -1,0 +1,72 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap with some key-value pairs
+        treeMap.put(1, "One");
+        treeMap.put(5, "Five");
+        treeMap.put(10, "Ten");
+        treeMap.put(15, "Fifteen");
+        treeMap.put(20, "Twenty");
+
+
+        int givenKey1 = 7;
+        int givenKey2 = 15;
+        int givenKey3 = 25; // Key greater than any in the map
+        int givenKey4 = 0; // Key smaller than any in the map
+
+
+        // Get the key-value mapping associated with the greatest key less than or equal to the given key.
+        printResult(treeMap, givenKey1);
+        printResult(treeMap, givenKey2);
+        printResult(treeMap, givenKey3);
+        printResult(treeMap, givenKey4);
+
+
+    }
+
+    private static void printResult(TreeMap<Integer, String> treeMap, int givenKey) {
+         Integer key = treeMap.floorKey(givenKey);  // floorKey() finds greatest key <= givenKey
+
+
+         if (key != null) {
+            String value = treeMap.get(key);
+            System.out.println("For given key " + givenKey + ": Key = " + key + ", Value = " + value);
+        } else {
+            System.out.println("For given key " + givenKey + ": No key found less than or equal to the given key.");
+        }
+
+        System.out.println(); // Add an extra line for clarity
+    }
+}
+```
+
+
+Output of this code:
+
+```
+For given key 7: Key = 5, Value = Five
+
+For given key 15: Key = 15, Value = Fifteen
+
+For given key 25: Key = 20, Value = Twenty
+
+For given key 0: No key found less than or equal to the given key.
+
+```
+
+
+Explanation:
+
+1. **TreeMap:** We use a `TreeMap` because it automatically stores keys in sorted order, which makes it efficient to find the greatest key less than or equal to a given key.
+2. **floorKey():** The crucial method is `treeMap.floorKey(givenKey)`.  This method returns the greatest key less than or equal to `givenKey`. If no such key exists (e.g., if `givenKey` is smaller than all keys in the map), it returns `null`.
+3. **Handling null:** We check if the result of `floorKey()` is `null` to avoid a `NullPointerException` when trying to access the value associated with the key.
+4. **Example Usage:**  The `main` method demonstrates how to use `floorKey()` with several example keys, including cases where the given key is present in the map, greater than all keys, and smaller than all keys.  The `printResult()` method neatly handles displaying the output.
+
+
+This improved version is more concise, efficient, and correctly handles edge cases where the key may not be present in the `TreeMap`. It also provides clearer output with helpful explanations.

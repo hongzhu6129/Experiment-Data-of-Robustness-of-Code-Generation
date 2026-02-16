@@ -1,0 +1,71 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class RetrieveElementArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        // Specify the index of the element to retrieve
+        int indexToRetrieve = 2;
+
+        try {
+            // Retrieve the element at the specified index
+            String retrievedElement = fruits.get(indexToRetrieve);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + indexToRetrieve + ": " + retrievedElement);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid index. Index should be between 0 and " + (fruits.size() - 1));
+        }
+
+
+
+         //Example with an integer arraylist
+
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        indexToRetrieve = 1;
+
+        try {
+            Integer retrievedNumber = numbers.get(indexToRetrieve);
+            System.out.println("Number at index " + indexToRetrieve + ": " + retrievedNumber);
+
+        } catch (IndexOutOfBoundsException e) {
+             System.err.println("Error: Invalid index. Index should be between 0 and " + (numbers.size() - 1));
+        }
+
+
+
+        //Example demonstrating handling an empty list:
+
+        List<String> emptyList = new ArrayList<>();
+
+        indexToRetrieve = 0; //Trying to access any index in an empty list will result in an exception.
+
+        try {
+            String element = emptyList.get(indexToRetrieve); //This will throw an IndexOutOfBoundsException
+            System.out.println("Element at index " + indexToRetrieve + ": " + element); //This line will not be reached
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: The list is empty.  Cannot retrieve an element.");
+        }
+
+
+    }
+}
+```

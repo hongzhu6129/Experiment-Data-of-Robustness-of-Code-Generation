@@ -1,0 +1,85 @@
+```java
+class Solution {
+    /**
+     * Given two integer arrays, test if the first and last elements are the same.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {1, 6, 7, 8, 5};
+
+        boolean sameFirstAndLast = false;
+
+        if (arr1.length > 0 && arr2.length > 0) {
+            if (arr1[0] == arr2[0] && arr1[arr1.length - 1] == arr2[arr2.length - 1]) {
+                sameFirstAndLast = true;
+            }
+        }
+
+
+
+        if(sameFirstAndLast){
+            System.out.println("The first and last elements are the same.");
+        } else {
+             System.out.println("The first and last elements are NOT the same.");
+        }
+
+        // Test with empty arrays
+        int[] emptyArr1 = {};
+        int[] emptyArr2 = {};
+
+        sameFirstAndLast = false; // Reset for the next test
+
+
+        if (emptyArr1.length > 0 && emptyArr2.length > 0) {
+            if (emptyArr1[0] == emptyArr2[0] && emptyArr1[emptyArr1.length - 1] == emptyArr2[emptyArr2.length - 1]) {
+                sameFirstAndLast = true;
+            }
+        }
+
+        if(sameFirstAndLast){
+            System.out.println("The first and last elements are the same.");
+        } else {
+             System.out.println("The first and last elements are NOT the same."); // This should print due to empty arrays
+        }
+
+           // Test with single element arrays
+        int[] singleArr1 = {5};
+        int[] singleArr2 = {5};
+
+        sameFirstAndLast = false; // Reset for the next test
+
+
+        if (singleArr1.length > 0 && singleArr2.length > 0) {
+            if (singleArr1[0] == singleArr2[0] && singleArr1[singleArr1.length - 1] == singleArr2[singleArr2.length - 1]) {
+                sameFirstAndLast = true;
+            }
+        }
+
+        if(sameFirstAndLast){
+            System.out.println("The first and last elements are the same."); // This should print
+        } else {
+             System.out.println("The first and last elements are NOT the same."); 
+        }
+
+
+         // Different lengths
+        int[] diffLengthArr1 = {1,2,3};
+        int[] diffLengthArr2 = {1,2,3,4,5};
+
+        sameFirstAndLast = false; // Reset for the next test
+
+        if (diffLengthArr1.length > 0 && diffLengthArr2.length > 0) {
+            if (diffLengthArr1[0] == diffLengthArr2[0] && diffLengthArr1[diffLengthArr1.length - 1] == diffLengthArr2[diffLengthArr2.length - 1]) {
+                sameFirstAndLast = true;
+            }
+        }
+         if(sameFirstAndLast){
+            System.out.println("The first and last elements are the same."); 
+        } else {
+             System.out.println("The first and last elements are NOT the same."); //This should print
+        }
+    }
+}
+```

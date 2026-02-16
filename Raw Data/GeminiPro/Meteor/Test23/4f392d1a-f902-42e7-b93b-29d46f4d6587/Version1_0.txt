@@ -1,0 +1,91 @@
+```java
+public class HexToDecimal {
+
+    public static void main(String[] args) {
+
+        // Test cases (including corner cases)
+        String[] hexValues = {
+                "0", "1", "A", "F", "1A", "FF", "100", "FFFF",  // Regular cases
+                "0000", "000A", // Leading zeros
+                "", null, "G", "1G", "-1A", "FFFFF", // Invalid inputs - handle gracefully
+                "0x1A", "0X1A",  // With or without "0x" prefix
+        };
+
+
+        for (String hex : hexValues) {
+            try {
+                if (hex == null || hex.isEmpty()) {
+                    System.out.println("Input: " + hex + ", Output: Invalid input (null or empty)");
+                    continue;
+                }
+
+
+                hex = hex.toUpperCase(); // Handle lowercase as well
+                if (hex.startsWith("0X")) {
+                    hex = hex.substring(2);
+                }
+
+
+                long decimal = 0;
+                long power = 1;
+
+
+                for (int i = hex.length() - 1; i >= 0; i--) {
+                    char digit = hex.charAt(i);
+                    int digitValue;
+
+
+                    if (digit >= '0' && digit <= '9') {
+                        digitValue = digit - '0';
+                    } else if (digit >= 'A' && digit <= 'F') {
+                        digitValue = digit - 'A' + 10;
+                    } else {
+                        throw new IllegalArgumentException("Invalid hexadecimal character: " + digit);
+                    }
+                    decimal += digitValue * power;
+                    power *= 16;
+
+                }
+
+                System.out.println("Input: " + hex + ", Output: " + decimal);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Input: " + hex + ", Output: " + e.getMessage());
+            }
+
+        }
+    }
+}
+
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles `null` and Empty Strings:** Checks explicitly for `null` and empty input strings to prevent `NullPointerException` and other unexpected behavior.  Prints a clear error message.
+
+2. **Case-Insensitive:** Converts the input to uppercase using `toUpperCase()` so the program works correctly with both "a" and "A".
+
+3. **"0x" Prefix Handling:**  Now handles hexadecimal values with or without the "0x" or "0X" prefix.
+
+4. **Clear Error Messages:**  Provides more informative error messages in case of invalid hexadecimal characters or other issues.
+
+
+5. **Uses `long` for Larger Numbers:**  Uses `long` instead of `int` to accommodate larger hexadecimal values and prevent integer overflow.
+
+6. **Comprehensive Test Cases:** Includes various test cases, including edge cases and invalid inputs, to thoroughly test the program's robustness:
+   - Valid hexadecimal values (with and without prefix)
+   - Leading zeros
+   - Empty string, `null`
+   - Invalid characters
+   - Potentially very large hexadecimal numbers
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `HexToDecimal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac HexToDecimal.java`
+3. **Run:** Execute the compiled code: `java HexToDecimal`
+
+
+This improved version is more robust, handles a wider range of inputs, and provides clearer error messages, making it a more complete and practical solution for hexadecimal to decimal conversion.

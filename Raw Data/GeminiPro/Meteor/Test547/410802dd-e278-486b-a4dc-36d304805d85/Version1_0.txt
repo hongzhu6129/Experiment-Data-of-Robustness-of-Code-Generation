@@ -1,0 +1,84 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadTextFile {
+
+    public static void main(String[] args) {
+
+        // 1. Specify the file path.
+        String filePath = "path/to/your/textfile.txt"; // Replace with your file's path
+
+        // 2. Use try-with-resources to handle file opening and closing automatically.
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            // 3. Read the file line by line.
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // 4. Process each line (e.g., print it, store it in a list, etc.).
+                System.out.println(line); 
+            }
+
+        } catch (IOException e) {
+            // 5. Handle potential exceptions (e.g., file not found).
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
+        // ---  Alternative way using java.nio.file (Java 7 and later)  ---
+        // This method is generally preferred for its simpler exception handling
+        // and better performance for large files.
+        /*
+        Path path = Paths.get("path/to/your/textfile.txt");
+        try {
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8); // Specify character encoding if needed
+            for (String line : lines) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+        */
+
+    }
+}
+
+
+
+```
+
+
+**Explanation and Educational Points:**
+
+1. **File Path:**  The `filePath` variable stores the location of your text file.  Make sure to replace `"path/to/your/textfile.txt"` with the actual path.  You can use relative paths (relative to your project's directory) or absolute paths.
+
+2. **Try-with-resources:** The `try (BufferedReader reader = ...)` syntax is called "try-with-resources". It ensures that the `BufferedReader` (and the underlying `FileReader`) is automatically closed, even if an exception occurs. This is crucial for preventing resource leaks.
+
+3. **BufferedReader:** `BufferedReader` reads the file efficiently, buffering the input for better performance.  `FileReader` is used to connect to the file itself.
+
+4. **Reading Line by Line:**  The `reader.readLine()` method reads a single line from the file and returns it as a `String`.  The loop continues until `readLine()` returns `null`, which indicates the end of the file.
+
+5. **Processing each Line:** Inside the loop, you can do whatever you need with the `line` String.  The example prints it to the console.  You could also store the lines in a `List<String>`, process the text, or perform other operations.
+
+6. **Exception Handling:**  The `catch (IOException e)` block handles potential exceptions, such as the file not being found (`FileNotFoundException`) or other I/O errors.  Printing an error message is essential for debugging.
+
+
+**Using Java NIO (Java 7 and later - Alternative in the commented-out section):**
+
+The alternative code demonstrates using `java.nio.file.Files.readAllLines()`. This approach is generally preferred because:
+
+* **Simpler Exception Handling:**  It handles file closing automatically, and the `try-catch` block is more concise.
+* **Performance:** For larger files, it often performs better than the `BufferedReader` approach.
+* **Character Encoding:** You can explicitly specify the character encoding (e.g., UTF-8) to avoid encoding issues.
+
+
+
+
+**To run this code:**
+
+1. **Save:** Save the code as a `.java` file (e.g., `ReadTextFile.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac ReadTextFile.java`
+3. **Run:**  Execute the compiled code: `java ReadTextFile`
+
+
+Make sure you have a text file at the path you specified in the code.

@@ -1,0 +1,89 @@
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {}
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
+
+public class RemoveNthFromEnd {
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        System.out.print("Original node: ");
+        printList(head);
+
+        head = removeNthFromEnd(head, 2);
+
+        System.out.print("After removing 2nd element from end: ");
+        printList(head);
+
+
+        //Additional test cases
+        ListNode head2 = new ListNode(1);
+        System.out.print("\nOriginal node: ");
+        printList(head2);
+        head2 = removeNthFromEnd(head2, 1); //Remove the only element
+        System.out.print("After removing 1st element from end: ");
+        printList(head2);
+
+
+
+        ListNode head3 = new ListNode(1);
+        head3.next = new ListNode(2);
+        System.out.print("\nOriginal node: ");
+        printList(head3);
+        head3 = removeNthFromEnd(head3, 2); //Remove the first element
+        System.out.print("After removing 2nd element from end: ");
+        printList(head3);
+    }
+
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode first = dummy;
+        ListNode second = dummy;
+
+        // Advance first pointer n + 1 steps ahead
+        for (int i = 1; i <= n + 1; i++) {
+            if(first == null) return head; //If n is invalid (larger than list size)
+            first = first.next;
+        }
+
+        // Move both pointers until first reaches the end
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+
+        // Remove the nth node from the end
+        second.next = second.next.next;
+
+        return dummy.next;
+    }
+
+
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+```

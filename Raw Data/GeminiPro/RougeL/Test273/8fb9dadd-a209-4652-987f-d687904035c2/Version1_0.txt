@@ -1,0 +1,102 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+
+    /**
+     * Finds the number of distinct paths from the top-left corner (0,0) to the bottom-right corner (m-1, n-1) of a grid.
+     * You can only move down or right.
+     *
+     * @param m The number of rows in the grid.
+     * @param n The number of columns in the grid.
+     * @return The total number of distinct paths.
+     */
+    public int uniquePaths(int m, int n) {
+        // Method 1: Recursion with Memoization (Top-down Dynamic Programming)
+        // return uniquePathsRecursiveMemo(m, n, new int[m][n]);
+
+        // Method 2: Iterative Dynamic Programming (Bottom-up)
+        return uniquePathsIterativeDP(m, n);
+
+        // Method 3:  Combinations (Math) - Most efficient but not demonstrating DP
+        // return uniquePathsCombinations(m, n); 
+
+    }
+
+
+
+    private int uniquePathsRecursiveMemo(int m, int n, int[][] memo) {
+        if (m < 1 || n < 1) {
+            return 0;
+        }
+        if (m == 1 && n == 1) {
+            return 1;
+        }
+        if (memo[m - 1][n - 1] != 0) {
+            return memo[m - 1][n - 1];
+        }
+        memo[m - 1][n - 1] = uniquePathsRecursiveMemo(m - 1, n, memo) + uniquePathsRecursiveMemo(m, n - 1, memo);
+        return memo[m - 1][n - 1];
+
+    }
+
+
+    private int uniquePathsIterativeDP(int m, int n) {
+        int[][] dp = new int[m][n];
+
+        // Initialize first row and column (base cases)
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = 1;
+        }
+        for (int j = 0; j < n; j++) {
+            dp[0][j] = 1;
+        }
+
+        // Fill the rest of the dp table
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+
+        return dp[m - 1][n - 1];
+    }
+
+
+
+    // Optional: Math solution (most efficient but not the focus of a DP tutorial)
+    private int uniquePathsCombinations(int m, int n) {
+        int N = m + n - 2; // Total number of steps
+        int k = m - 1; // Number of steps down (or right)
+
+        long res = 1;
+        for (int i = 1; i <= k; i++)
+            res = res * (N - i + 1) / i;
+        return (int) res;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Separation:**  The code now clearly separates the different approaches (recursive memoization, iterative DP, and the combinations approach) into distinct private helper methods. This enhances readability and organization.
+
+2. **Comments:**  Added comments to explain the logic of each approach and important steps within the methods.
+
+3. **Base Cases:**  The recursive method now handles base cases for invalid inputs (m < 1 or n < 1) more explicitly.
+
+4. **Iterative DP Efficiency:** The iterative DP approach is now the default (uncommented) solution, as it is generally more efficient than the recursive memoization approach in Java due to function call overhead.
+
+
+How to use it:
+
+```java
+public static void main(String[] args) {
+    Solution solution = new Solution();
+    int m = 3; // Rows
+    int n = 7; // Columns
+    int paths = solution.uniquePaths(m, n);
+    System.out.println("Number of unique paths: " + paths); 
+}
+```

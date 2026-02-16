@@ -1,0 +1,34 @@
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringSorter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+
+        // Ascending order
+        List<String> ascendingSorted = strings.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending order: " + ascendingSorted);
+
+
+        // Descending order
+        List<String> descendingSorted = strings.stream()
+                .sorted(String::compareToIgnoreCase).reversed() // Use compareToIgnoreCase for case-insensitive sorting
+                .collect(Collectors.toList());
+
+        System.out.println("Descending order: " + descendingSorted);
+
+
+        //Alternative for descending (using Comparator.reverseOrder())
+        List<String> descendingSorted2 = strings.stream()
+                .sorted(String::compareToIgnoreCase).sorted(java.util.Comparator.reverseOrder())  // Case-insensitive
+                .collect(Collectors.toList());
+        System.out.println("Descending order (alternative method): " + descendingSorted2);
+    }
+}
+```

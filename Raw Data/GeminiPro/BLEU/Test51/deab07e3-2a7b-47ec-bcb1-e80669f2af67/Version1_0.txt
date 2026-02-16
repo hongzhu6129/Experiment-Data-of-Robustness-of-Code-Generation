@@ -1,0 +1,108 @@
+```java
+import java.util.Scanner;
+
+public class StringToLowerCase {
+
+    public static String convertToLowercase(String inputString) {
+        if (inputString == null) {
+            return null; // Handle null input
+        }
+        return inputString.toLowerCase();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a string: ");
+        String inputString = scanner.nextLine();
+        String lowercaseString = convertToLowercase(inputString);
+        System.out.println(lowercaseString);
+        scanner.close();
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: "The Quick Brown Fox Jumps Over The Lazy Dog."
+   - Expected Output: "the quick brown fox jumps over the lazy dog."
+
+2. **Already Lowercase:**
+   - Input: "hello world"
+   - Expected Output: "hello world"
+
+3. **Mixed Case with Special Characters:**
+   - Input: "HeLlO 123!@#$%^&*()_+ WoRlD"
+   - Expected Output: "hello 123!@#$%^&*()_+ world"
+
+4. **Empty String:**
+   - Input: ""
+   - Expected Output: ""
+
+5. **Null Input:**
+   - Input: `null`
+   - Expected Output: `null` (The function should handle this gracefully and not throw a NullPointerException)
+
+
+6. **String with Unicode Characters:**  (Important for proper testing)
+   - Input: "Gr�� Gott" (German greeting)
+   - Expected Output: "gr�� gott"
+
+7. **String with Leading/Trailing Whitespace:**
+   - Input: "   Hello World   "
+   - Expected Output: "   hello world   " (Whitespace should be preserved)
+
+8. **String with Numbers and Symbols Only:**
+   - Input: "1234567890!@#$%^&*()"
+   - Expected Output: "1234567890!@#$%^&*()"  (No change expected)
+
+
+
+
+**How to run the tests (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StringToLowerCaseTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals("the quick brown fox jumps over the lazy dog.", StringToLowerCase.convertToLowercase("The Quick Brown Fox Jumps Over The Lazy Dog."));
+    }
+
+    @Test
+    void testAlreadyLowercase() {
+        assertEquals("hello world", StringToLowerCase.convertToLowercase("hello world"));
+    }
+
+    @Test
+    void testSpecialCharacters() {
+         assertEquals("hello 123!@#$%^&*()_+ world", StringToLowerCase.convertToLowercase("HeLlO 123!@#$%^&*()_+ WoRlD"));
+    }
+
+    @Test
+    void testEmptyString() {
+        assertEquals("", StringToLowerCase.convertToLowercase(""));
+    }
+
+    @Test
+    void testNullInput() {
+        assertNull(StringToLowerCase.convertToLowercase(null));
+    }
+     @Test
+    void testUnicode() {
+        assertEquals("gr�� gott", StringToLowerCase.convertToLowercase("Gr�� Gott"));
+    }
+
+
+    // Add tests for the other cases similarly.
+}
+```
+
+By using a testing framework like JUnit, you can easily automate these tests and ensure that your `convertToLowercase` function works correctly for a variety of inputs.  It's good practice to write tests *before* or *alongside* your main code.

@@ -1,0 +1,73 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        double sum = num1 + num2;
+        double difference = num1 - num2;
+        double product = num1 * num2;
+        double quotient = 0; 
+        double remainder = 0;
+
+        if (num2 != 0) {
+            quotient = num1 / num2;
+            remainder = num1 % num2;
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+        System.out.println("Product: " + product);
+        if(num2 != 0) { // Only print if division was performed
+            System.out.println("Quotient: " + quotient);
+            System.out.println("Remainder: " + remainder);
+        }
+        input.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 5 | 2 | 7 | 3 | 10 | 2.5 | 1 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1 |
+| 3. Mixed Signs | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 | 5 | 0 | 5 | 5 | 0 | Division by zero error | Division by zero error |
+| 6. Large Numbers | 100000 | 5000 | 105000 | 95000 | 500000000 | 20 | 0 |
+| 7. Decimal Numbers | 5.5 | 2.5 | 8.0 | 3.0 | 13.75 | 2.2 | 0.5 |
+| 8. Integer Overflow (potential corner case) | Integer.MAX_VALUE | 1 | Overflow behavior (depends on how Java handles it) |  |  |  |  |
+| 9. Integer Underflow (potential corner case) | Integer.MIN_VALUE | -1 | Underflow behavior (depends on how Java handles it) |  |  |  |  |
+| 10. Floating-point precision limitations (corner case) | 0.1 | 0.2 | 0.3 (may have very slight inaccuracies due to floating-point representation) |  |  |  |  |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Test Case 5):** This is the most important corner case. The program should explicitly handle this situation and avoid crashing. The provided code now includes a check and prints an appropriate error message.
+* **Integer Overflow/Underflow (Test Cases 8 & 9):** If you're working with integers and the result of an operation exceeds the maximum or minimum value that an `int` can hold, overflow or underflow occurs. The behavior in Java is wrap-around (the value wraps around to the opposite end of the range). It's important to be aware of this if you're dealing with potentially large numbers.
+* **Floating-Point Precision (Test Case 10):** Floating-point numbers have limitations in their precision.  You might not get exactly the mathematically correct result due to the way these numbers are represented in binary.  Small discrepancies are common and should be considered when comparing floating-point values.
+
+
+**How to run these Test Cases:**
+
+You could either:
+
+1. Manually enter these values when prompted by the program.
+2.  Create a more robust testing framework (using JUnit, for example) where you can automate these tests and check the results programmatically. This is highly recommended for larger projects.  JUnit allows you to write separate test methods for each scenario and easily compare expected vs. actual results.

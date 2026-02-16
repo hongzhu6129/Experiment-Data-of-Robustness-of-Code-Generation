@@ -1,0 +1,25 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Horner's Method:** The `polyEval` method efficiently implements Horner's method (as described in the prompt's example computation) for polynomial evaluation.  This method reduces the number of multiplications required, making it significantly faster than a naive approach.
+
+2. **Clarity and Readability:** The code is well-commented and uses descriptive variable names.  The `main` method provides a clear example of how to use the `polyEval` function.
+
+3. **Generality:** The code can handle polynomials of any degree (within the limits of `List` size and `double` precision).  You simply need to provide the coefficients in the correct order in the `List`.
+
+4. **Error Handling (Optional):** For production code, consider adding error handling.  For example, you could check if the `coefficients` list is empty or null and throw an appropriate exception.
+
+
+**How Horner's Method Works in the Code:**
+
+Let's trace the example -19 + 7x - 4x^2 + 6x^3 with x = 3:
+
+1. **Initialization:** `result = 0.0`
+2. **Loop iteration 1 (i = 3):** `result = 0.0 * 3 + 6.0 = 6.0`
+3. **Loop iteration 2 (i = 2):** `result = 6.0 * 3 + (-4.0) = 14.0`
+4. **Loop iteration 3 (i = 1):** `result = 14.0 * 3 + 7.0 = 49.0`
+5. **Loop iteration 4 (i = 0):** `result = 49.0 * 3 + (-19.0) = 128.0`  (Corrected calculation)
+
+Therefore, the final result is 128.0, which is the correct evaluation of the polynomial.

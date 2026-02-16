@@ -1,0 +1,91 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        scanner.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30  **Expected Output:** 20.0
+2. **Input:** 5.5, 10.5, 15.0  **Expected Output:** 10.333333333333334
+3. **Input:** -5, 0, 5  **Expected Output:** 0.0
+
+**Corner/Edge Cases:**
+
+4. **Input:** 0, 0, 0  **Expected Output:** 0.0  (All zeros)
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:** 2.147483647E9 (Handling large numbers, potential overflow if using `int` instead of `double`)
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE **Expected Output:** -2.147483648E9 (Handling large negative numbers)
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Infinity (Handling Double max values)
+8. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE **Expected Output:** 1.0E-323 (Handling small double values)
+9. **Input:** 1.0, 2.5, Double.NaN **Expected Output:** NaN (Handling NaN input � the average will be NaN if any input is NaN)
+10. **Input:** Double.POSITIVE_INFINITY, 10, 20 **Expected Output:** Infinity (Handling Infinity input)
+11. **Input:** Double.NEGATIVE_INFINITY, 10, 20 **Expected Output:** -Infinity (Handling Negative Infinity)
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    public void testNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    public void testDecimals() {
+        assertEquals(10.333333333333334, AverageCalculator.calculateAverage(5.5, 10.5, 15.0));
+    }
+
+    @Test
+    public void testZeros(){
+        assertEquals(0.0, AverageCalculator.calculateAverage(0,0,0));
+    }
+    // ... Add more test cases using the examples above
+
+    @Test
+    public void testNaNInput() {
+      assertTrue(Double.isNaN(AverageCalculator.calculateAverage(1.0, 2.0, Double.NaN)));
+    }
+       @Test
+    public void testPositiveInfinity() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.POSITIVE_INFINITY, 10, 20));
+    }
+
+     @Test
+    public void testNegativeInfinity() {
+        assertEquals(Double.NEGATIVE_INFINITY, AverageCalculator.calculateAverage(Double.NEGATIVE_INFINITY, 10, 20));
+    }
+
+}
+```
+
+Remember to add JUnit to your project if you're not already using it.  These tests provide a comprehensive check of your `calculateAverage` function's behavior under various conditions, making your code more robust and reliable.

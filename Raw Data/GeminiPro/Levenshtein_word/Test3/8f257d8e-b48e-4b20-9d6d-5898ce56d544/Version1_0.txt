@@ -1,0 +1,105 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: 7
+   - Expected Output: Multiplication table of 7 from 7x1 to 7x10.
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: Multiplication table of 0 (all results will be 0).  This is a corner case.
+
+3. **Negative Number:**
+   - Input: -5
+   - Expected Output: Multiplication table of -5 from -5x1 to -5x10.
+
+4. **Large Positive Number:**
+   - Input: 12345
+   - Expected Output: Multiplication table of 12345 from 12345x1 to 12345x10.  Tests handling of larger numbers.
+
+5. **Large Negative Number:**
+   - Input: -98765
+   - Expected Output: Multiplication table of -98765 from -98765x1 to -98765x10.
+
+6. **One:**
+   - Input: 1
+   - Expected Output: Multiplication table of 1 (which is essentially just counting from 1 to 10).
+
+
+**How to run the test cases (manually):**
+
+1. Compile the Java code: `javac MultiplicationTable.java`
+2. Run the compiled code with each input value: `java MultiplicationTable`  (Then enter the input number when prompted).
+3. Verify that the output matches the expected output for each test case.
+
+
+**Automated Testing (JUnit Example - Optional but recommended):**
+
+For more robust testing, you can use a testing framework like JUnit. Here's an example:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    public void testPositiveNumber() {
+        testMultiplicationTable(7, "7 x 1 = 7\n7 x 2 = 14\n...7 x 10 = 70\n"); // ... represents the other lines
+    }
+
+    // Add similar @Test methods for other test cases (0, negative, large numbers, etc.)
+
+    private void testMultiplicationTable(int input, String expectedOutput) {
+        // Redirect System.out to capture the output
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Provide input to System.in
+        String inputString = String.valueOf(input) + "\n"; // Add newline
+        System.setIn(new ByteArrayInputStream(inputString.getBytes()));
+
+        // Run the main method
+        MultiplicationTable.main(new String[]{});
+
+
+        // Check the captured output
+        String actualOutput = outputStream.toString();
+        assertTrue(actualOutput.contains(expectedOutput), "Incorrect output for input: " + input);
+    }
+
+
+
+}
+
+```
+
+Remember to add the JUnit dependency to your project if you use this approach.  Automated testing is crucial for ensuring the correctness of your code, especially as it evolves.

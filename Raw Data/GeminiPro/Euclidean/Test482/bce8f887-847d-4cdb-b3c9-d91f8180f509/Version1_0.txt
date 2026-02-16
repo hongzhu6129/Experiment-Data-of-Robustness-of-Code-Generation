@@ -1,0 +1,51 @@
+```java
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeFormats {
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = now.atZone(ZoneId.systemDefault());
+
+        // yyyy-mm-dd
+        System.out.println(now.format(DateTimeFormatter.ISO_DATE));
+
+        // hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        // yyyy-mm-dd hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        // e mmm yyyy hh:mm:ss z  (Note: 'leibstandarte' is not a standard format specifier and is removed)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("E MMM yyyy HH:mm:ss z")));
+
+
+         // yyyy-mm-dd hh:mm:ss.SSSz (milliseconds and Zone)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSz")));
+
+
+        // hh:mm:ss, Z (hours, minutes, seconds, Zone offset)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss, Z")));
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Uses `java.time`:**  The modern `java.time` API (introduced in Java 8) is used, replacing the older and less robust `Date` and `Calendar` classes.
+* **`LocalDateTime` and `ZonedDateTime`:**  `LocalDateTime` is used for date and time without time zone information. `ZonedDateTime` is used when time zone is required.
+* **`DateTimeFormatter`:** This class provides flexible formatting options.  Various patterns are demonstrated.
+* **Clearer Formatting Patterns:**  The code uses explicit format patterns to match the requested output.
+* **Handles "leibstandarte":** The non-standard "leibstandarte" has been removed from the format string, as it's not a valid date/time format specifier.
+* **Millisecond and Zone Example:** Added an example to show how to include milliseconds and the time zone short name (SSSz).
+* **Zone Offset Example:**  Added an example for HH:mm:ss, Z to show how to include the zone offset.
+* **System Time Zone:** `ZoneId.systemDefault()` is used to get the system's current time zone.  You can specify a different zone if needed (e.g., `ZoneId.of("America/New_York")`).
+
+
+This revised code addresses the prompt's requirements correctly and efficiently, using best practices for date and time handling in Java.

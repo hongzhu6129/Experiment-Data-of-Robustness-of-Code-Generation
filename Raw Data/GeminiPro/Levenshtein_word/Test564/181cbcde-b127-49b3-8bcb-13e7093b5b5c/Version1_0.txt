@@ -1,0 +1,85 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseArrayList {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using Collections.reverse() - The simplest and most efficient way.
+
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        System.out.println("Original ArrayList: " + numbers);
+
+        Collections.reverse(numbers);
+
+        System.out.println("Reversed ArrayList using Collections.reverse(): " + numbers);
+
+
+
+        // Method 2: Using a loop (for educational purposes - less efficient)
+
+        List<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("cherry");
+
+        System.out.println("\nOriginal ArrayList: " + strings);
+
+        List<String> reversedStrings = new ArrayList<>();
+
+        for (int i = strings.size() - 1; i >= 0; i--) {
+            reversedStrings.add(strings.get(i));
+        }
+
+        System.out.println("Reversed ArrayList using a loop: " + reversedStrings);
+
+
+
+         // Method 3: Reversing in-place using a loop (most efficient if you need to modify the original list)
+        List<Double> doubles = new ArrayList<>();
+        doubles.add(1.1);
+        doubles.add(2.2);
+        doubles.add(3.3);
+        doubles.add(4.4);
+
+
+        System.out.println("\nOriginal ArrayList: " + doubles);
+
+        int start = 0;
+        int end = doubles.size() - 1;
+
+        while (start < end) {
+            // Swap elements at start and end indices
+            Collections.swap(doubles, start, end);  // Or manual swap:
+            //Double temp = doubles.get(start);
+            //doubles.set(start, doubles.get(end));
+            //doubles.set(end, temp);
+
+
+            start++;
+            end--;
+        }
+
+        System.out.println("Reversed ArrayList in-place using a loop: " + doubles);
+
+
+    }
+}
+```
+
+
+This educational example demonstrates three ways to reverse an ArrayList in Java:
+
+1. **`Collections.reverse()`:** This is the simplest and most recommended approach for most cases. It efficiently reverses the order of elements within the original ArrayList.
+
+2. **Loop to create a new reversed list:** This method iterates through the original ArrayList from the last element to the first, adding each element to a new ArrayList. This creates a reversed copy, leaving the original list unchanged.  It's less efficient because it creates a new list.
+
+3. **In-place reversal using a loop:**  This method reverses the ArrayList by swapping elements from the beginning and end, working inwards. This is the most efficient if you *need* to modify the list in place, but `Collections.reverse()` is generally preferred for its clarity and conciseness.  I've included both `Collections.swap()` and commented-out code showing how to do the swap manually.

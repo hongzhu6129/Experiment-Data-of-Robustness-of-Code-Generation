@@ -1,0 +1,59 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example based on prompt)
+        int number = 8;
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        // Example with user input (requires exception handling)
+         java.util.Scanner scanner = new java.util.Scanner(System.in);
+         System.out.print("Input a number: ");
+
+         if (scanner.hasNextInt()) {
+             int userNum = scanner.nextInt();
+             if (isCube(userNum)) {
+                 System.out.println("Number is a cube.");
+             } else {
+                 System.out.println("Number is not a cube.");
+             }
+         } else {
+             System.out.println("Invalid input. Please enter an integer.");
+         }
+         scanner.close();
+    }
+
+
+
+
+    private static boolean isCube(int num) {
+        // Handle negative numbers (their cubes are also negative)
+        if (num < 0) {
+            return isCube(-num); // Check the absolute value
+        }
+
+        // Efficiently check for cube using cbrt (cube root)
+        double cubeRoot = Math.cbrt(num);
+        return Math.round(cubeRoot) * Math.round(cubeRoot) * Math.round(cubeRoot) == num;
+    }
+}
+```
+
+
+Key improvements:
+
+* **Handles negative numbers:** The `isCube` method now correctly handles negative input values, as the cube of a negative number is also negative.
+* **More efficient cube root check:** The code uses `Math.cbrt()` to calculate the cube root, which is more efficient and accurate than a loop-based approach, especially for larger numbers.
+* **Rounding for precision:**  The cube root calculation can sometimes result in very small floating-point errors.  The `Math.round()` function addresses this by rounding the cube root to the nearest integer before checking if its cube equals the original number. This ensures accurate results for perfect cubes.
+* **User Input Example:** Includes an example demonstrating how to take user input and gracefully handle invalid input (non-integer values) using a `Scanner` and `hasNextInt()`.
+* **Resource Management:**  The `Scanner` is closed using `scanner.close()` after it's no longer needed to release system resources.  This is good practice, especially in larger applications.
+* **Clearer comments and structure:** Improved comments and code structure enhance readability and maintainability.
+
+
+This improved version is more robust, efficient, and handles a wider range of inputs correctly.

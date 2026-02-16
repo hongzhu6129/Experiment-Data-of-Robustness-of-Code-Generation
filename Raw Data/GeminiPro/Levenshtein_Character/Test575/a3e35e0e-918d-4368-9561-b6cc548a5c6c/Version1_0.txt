@@ -1,0 +1,45 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListAccess {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        System.out.println("Accessing elements using their position (index):");
+
+        // Method 1: Using a traditional for loop (index-based)
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println("Element at index " + i + ": " + fruits.get(i));
+        }
+
+        System.out.println("\nAlternative method (using enhanced for loop - less common for showing index):");
+
+        // Method 2: Enhanced for loop (for-each loop - doesn't directly give you the index)
+        int index = 0; // Need to maintain index manually
+        for (String fruit : fruits) {
+            System.out.println("Element at index " + index + ": " + fruit);
+            index++;
+        }
+
+
+
+        System.out.println("\nExample of what happens when you try to access an invalid index:");
+        try {
+            System.out.println(fruits.get(10)); // Trying to access element at index 10 (out of bounds)
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage()); // Catch and handle the exception
+        }
+
+    }
+}
+```

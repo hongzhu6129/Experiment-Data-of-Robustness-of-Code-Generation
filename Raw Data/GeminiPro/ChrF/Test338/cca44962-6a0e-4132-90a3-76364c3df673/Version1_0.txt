@@ -1,0 +1,32 @@
+```java
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. This is another test.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' not found in the string.");
+        }
+
+
+        // Example with a starting point for the search
+        mainString = "Find the test test.";
+        subString = "test";
+        int fromIndex = 10;  // Start searching backwards from index 10
+
+        lastIndex = mainString.lastIndexOf(subString, fromIndex);
+
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' (starting from index " + fromIndex + ") is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' not found in the string (starting from index " + fromIndex + ").");
+        }
+    }
+}
+```

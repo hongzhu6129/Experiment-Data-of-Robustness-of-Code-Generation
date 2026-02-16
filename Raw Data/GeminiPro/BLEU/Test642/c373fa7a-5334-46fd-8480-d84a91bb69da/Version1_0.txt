@@ -1,0 +1,69 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapEducational {
+
+    public static void main(String[] args) {
+
+        // Create a HashMap to store key-value pairs
+        Map<String, Integer> studentGrades = new HashMap<>();
+
+        // Associate values with keys using put()
+        studentGrades.put("Alice", 95);   // Key: "Alice", Value: 95
+        studentGrades.put("Bob", 88);     // Key: "Bob", Value: 88
+        studentGrades.put("Charlie", 75); // Key: "Charlie", Value: 75
+        studentGrades.put("David", 92);  // Key: "David", Value 92
+        studentGrades.put("Eve", 80);
+
+
+        // Demonstrate retrieving values using get()
+        System.out.println("Alice's grade: " + studentGrades.get("Alice")); // Output: 95
+        System.out.println("Bob's grade: " + studentGrades.get("Bob"));   // Output: 88
+
+        // Demonstrate checking if a key exists using containsKey()
+        if (studentGrades.containsKey("Charlie")) {
+            System.out.println("Charlie is in the class.");
+        }
+
+
+        // Demonstrate iterating through the HashMap
+        System.out.println("\nIterating through the HashMap:");
+
+        // Method 1: Using a for-each loop with entrySet() (Recommended)
+
+        for (Map.Entry<String, Integer> entry : studentGrades.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + ": " + value);
+        }
+
+
+
+        // Method 2: Using keySet() and get()
+        System.out.println("\nIterating using keySet():");
+        for (String key : studentGrades.keySet()) {
+            System.out.println(key + ": " + studentGrades.get(key));
+        }
+
+
+        // Demonstrate updating a value
+        studentGrades.put("Bob", 90); // Bob's grade is updated
+        System.out.println("\nBob's updated grade: " + studentGrades.get("Bob")); // Output: 90
+
+
+        // Demonstrate removing a key-value pair
+        studentGrades.remove("Charlie"); // Charlie is removed
+        System.out.println("\nIs Charlie still in the class? " + studentGrades.containsKey("Charlie")); // Output: false
+
+
+
+        //Demonstrate what happens when you try to get a value for non-existent key
+        System.out.println("Grade for a student who doesn't exist:" + studentGrades.get("Frank")); //Output:null (no exception is thrown)
+
+        System.out.println("\nFinal HashMap contents:" + studentGrades);
+
+
+    }
+}
+```

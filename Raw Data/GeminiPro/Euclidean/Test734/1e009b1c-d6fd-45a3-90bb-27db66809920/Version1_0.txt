@@ -1,0 +1,71 @@
+```java
+import java.util.Arrays;
+
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {2, 3, 4, 5},
+                {3, 4, 5, 6},
+                {4, 5, 6, 7}
+        };
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int target = 5;
+
+        int[] result = Saddleback(matrix, m, n, target);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+
+
+        // Test with a target that doesn't exist
+        target = 10;
+        result = Saddleback(matrix, m, n, target);
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the matrix.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] matrix, int m, int n, int target) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (matrix[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (matrix[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Saddleback Search Algorithm:** The `Saddleback` method efficiently searches the sorted matrix. It starts from the top-right corner.  If the current element is smaller than the target, it moves down (to a larger element). If it's larger, it moves left (to a smaller element).
+
+2. **Clearer Return Value:** The `Saddleback` method returns an `int[]` where `result[0]` is the row and `result[1]` is the column. If the target is not found, it returns `{-1, -1}`. This makes it easier to check the result in `main`.
+
+3. **Error Handling:** The `main` method now properly handles the case where the target is not found.
+
+4. **Example Usage:** The `main` method demonstrates how to use the `Saddleback` method with a sample matrix and target value. It also includes a test case where the target is not present.
+
+5. **Comments:**  Added comments to explain the logic within the `Saddleback` function.
+
+
+This improved version is more robust, easier to understand, and handles edge cases correctly.  It follows the specified method signatures.
+

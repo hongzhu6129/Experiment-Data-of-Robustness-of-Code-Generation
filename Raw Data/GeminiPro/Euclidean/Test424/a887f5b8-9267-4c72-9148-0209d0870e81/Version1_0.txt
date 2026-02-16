@@ -1,0 +1,59 @@
+```java
+import java.util.Scanner;
+
+public class CharacterCounter {
+
+    public static void main(String[] args) {
+        long startTime = System.nanoTime();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String inputString = scanner.nextLine();
+
+        System.out.print("Enter the character to count: ");
+        char targetChar = scanner.nextLine().charAt(0);
+
+        int count = 0;
+        for (int i = 0; i < inputString.length(); i++) {
+            if (inputString.charAt(i) == targetChar) {
+                count++;
+            }
+        }
+
+        System.out.println("Occurrences of '" + targetChar + "' in the string: " + count);
+
+        long endTime = System.nanoTime();
+        displayExecutionTime(endTime - startTime);
+
+        scanner.close(); 
+    }
+
+    private static void displayExecutionTime(long timeElapsed) {
+        System.out.println("Execution time: " + timeElapsed + " nanoseconds");
+    }
+}
+```
+
+
+Explanation and improvements:
+
+1. **User Input:** The program now takes user input for both the string and the character to count using the `Scanner` class. This makes it more interactive.
+
+2. **Character Counting Logic:** The core logic remains the same � iterating through the string and incrementing the `count` whenever the target character is found.
+
+3. **Clear Output:** The output message is more informative, clearly indicating the character being counted and its total occurrences.
+
+4. **Execution Time Measurement:**  The `displayExecutionTime` method is used to show the execution time of the counting process.
+
+5. **Resource Management:** The `Scanner` is closed at the end of the `main` method using `scanner.close()` to release the resource. This is good practice.
+
+
+Example Usage:
+
+```
+Enter a string: Hello World!
+Enter the character to count: o
+Occurrences of 'o' in the string: 2
+Execution time: ... nanoseconds
+```

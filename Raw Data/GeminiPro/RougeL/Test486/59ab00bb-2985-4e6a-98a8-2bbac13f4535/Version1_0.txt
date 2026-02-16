@@ -1,0 +1,52 @@
+```java
+class Solution {
+    /**
+     * Displays the middle character(s) of a string.
+     * If the string length is odd, there will be one middle character.
+     * If the string length is even, there will be two middle characters.
+     *
+     * @param str The input string.
+     * @return The middle character(s) of the string.
+     */
+    public static String middle(String str) {
+        if (str == null || str.isEmpty()) {
+            return ""; // Or handle empty/null as needed 
+        }
+
+        int len = str.length();
+        int middle = len / 2;
+
+        if (len % 2 == 0) { // Even length
+            return str.substring(middle - 1, middle + 1);
+        } else { // Odd length
+            return str.substring(middle, middle + 1);
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String mid1 = middle(str1);
+        System.out.println("Middle of '" + str1 + "': " + mid1); // Output: l
+
+        String str2 = "world";
+        String mid2 = middle(str2);
+        System.out.println("Middle of '" + str2 + "': " + mid2);  // Output: r
+
+        String str3 = "even";
+        String mid3 = middle(str3);
+        System.out.println("Middle of '" + str3 + "': " + mid3);  // Output: ve
+
+        String str4 = ""; // Empty string
+        String mid4 = middle(str4);
+        System.out.println("Middle of '" + str4 + "': " + mid4);  // Output: 
+
+
+         String str5 = null; // Null string
+        String mid5 = middle(str5);
+        System.out.println("Middle of '" + str5 + "': " + mid5);  // Output: 
+
+    }
+}
+```

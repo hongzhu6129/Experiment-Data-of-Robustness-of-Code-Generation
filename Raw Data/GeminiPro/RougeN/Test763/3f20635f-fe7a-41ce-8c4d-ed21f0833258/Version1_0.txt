@@ -1,0 +1,48 @@
+```java
+public class InsertDash {
+
+    public static void main(String[] args) {
+        String inputString = "HelloWorldJavaCode";
+        String result = validate(inputString);
+        System.out.println(result); // Output: Hello-World-Java-Code
+
+        inputString = "UPPERlowerUPPERlower";
+        result = validate(inputString);
+        System.out.println(result); // Output: UPPER-lowerUPPER-lower
+
+        inputString = "allLower";
+        result = validate(inputString);
+        System.out.println(result); // Output: allLower
+
+        inputString = "ALLUPPER";
+        result = validate(inputString);
+        System.out.println(result); // Output: ALLUPPER
+
+        inputString = "";
+        result = validate(inputString);
+        System.out.println(result); // Output: 
+
+
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return inputString; 
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < inputString.length(); i++) {
+            char currentChar = inputString.charAt(i);
+            result.append(currentChar);
+
+            if (i < inputString.length() - 1) {
+                char nextChar = inputString.charAt(i + 1);
+                if (Character.isUpperCase(currentChar) && Character.isLowerCase(nextChar)) {
+                    result.append('-');
+                }
+            }
+        }
+        return result.toString();
+    }
+}
+```

@@ -1,0 +1,70 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean function(int num1, int num2, int num3) {
+        // Extract the rightmost digits
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        // Check for equality among the digits
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter three non-negative integers: ");
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        int num3 = scanner.nextInt();
+
+
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            System.out.println("Please enter non-negative integers.");
+        } else {
+            boolean result = function(num1, num2, num3);
+            System.out.println(result);
+        }
+        scanner.close();
+
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+**1. Positive Cases:**
+
+* **Input:** 22, 32, 45   **Expected Output:** true (22 and 32 share the rightmost digit 2)
+* **Input:** 10, 20, 30   **Expected Output:** true (All share the rightmost digit 0)
+* **Input:** 17, 27, 25   **Expected Output:** true (17 and 27 share the rightmost digit 7)
+* **Input:** 111, 221, 331 **Expected Output:** true (All share the rightmost digit 1)
+
+**2. Negative Cases:**
+
+* **Input:** 1, 2, 3       **Expected Output:** false (No shared rightmost digits)
+* **Input:** 12, 23, 34    **Expected Output:** false (No shared rightmost digits)
+* **Input:** 100, 201, 302 **Expected Output:** false (No shared rightmost digits)
+
+
+**3. Corner/Edge Cases:**
+
+* **Input:** 0, 0, 0      **Expected Output:** true  (All share the rightmost digit 0)
+* **Input:** 10, 10, 10   **Expected Output:** true (All share the rightmost digit 0)
+* **Input:** 1, 1, 2      **Expected Output:** true (1 and 1 share the rightmost digit 1)
+* **Input:**  7, 1007, 207  **Expected Output:** true (7, 1007, and 207 share rightmost digit 7)
+
+**4. Invalid Input Cases (handled in the `main` method):**
+
+* **Input:** -1, 2, 3   **Expected Output:** "Please enter non-negative integers."
+* **Input:** 1, -2, 3   **Expected Output:** "Please enter non-negative integers."
+* **Input:** 1, 2, -3   **Expected Output:** "Please enter non-negative integers."
+
+
+
+These test cases cover a range of scenarios, including cases where all digits are the same, only two are the same, none are the same, and boundary cases involving zero and larger numbers with the same rightmost digit. The invalid input handling ensures the program behaves correctly when negative numbers are provided.

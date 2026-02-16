@@ -1,0 +1,84 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (replace with user input if needed)
+        int number = 8; 
+
+        // Check if the number is a cube using a brute-force approach 
+        // (suitable for smaller numbers)
+        boolean isCube = false;
+        for (int i = 1; i * i * i <= Math.abs(number); i++) {
+            if (i * i * i == Math.abs(number)) {
+                isCube = true;
+                break;
+            }
+        }
+
+        //Handle negative numbers
+        if (number < 0 && isCube) {
+          // Negative numbers can be perfect cubes  
+            System.out.println("Number is a cube."); 
+        } else if (number >= 0 && isCube) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Brute-Force Approach:** The code iterates through numbers, cubing them and checking against the input `number`. This is straightforward but becomes inefficient for very large numbers.
+
+2. **Handling Negative Numbers:**  Cubes of negative numbers are negative.  The code has been updated to correctly handle negative inputs.
+
+3. **Using `Math.abs()`:**  The `Math.abs()` function ensures the code works correctly for both positive and negative inputs.
+
+4. **More Efficient Approach (for larger numbers - not using only `main` as requested but provided for reference):**
+   ```java
+   public class CubeCheckerEfficient {
+
+       public static void main(String[] args) {
+           double number = 8;
+
+           double cubeRoot = Math.cbrt(number);  // Use cbrt() for cube root
+
+           if (cubeRoot == Math.round(cubeRoot)) {  // Check if it's an integer
+               System.out.println("Number is a cube.");
+           } else {
+               System.out.println("Number is not a cube.");
+           }
+       }
+   }
+   ```
+   This method uses `Math.cbrt()` (cube root) and checks if the result is an integer.  It's more efficient for larger numbers.
+
+
+**How to Get User Input (if needed - within `main` only):**  Since the prompt asked for only a `main` method, standard input is a bit tricky. Here's one way if you absolutely must use only `main`:
+
+```java
+public class CubeCheckerWithInput {
+    public static void main(String[] args) {
+        if (args.length > 0) { // Check if an argument is provided
+            try {
+                int number = Integer.parseInt(args[0]);
+                // ... (rest of the cube checking logic from the first example) ...
+
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please enter an integer.");
+            }
+        } else {
+            System.err.println("Please provide a number as a command-line argument.");
+        }
+    }
+}
+```
+
+You would run this from the command line like: `java CubeCheckerWithInput 8`
+
+
+
+

@@ -1,0 +1,105 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close(); // Close the scanner to release resources
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases designed to cover various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes                                   |
+| --------- | -------- | -------- | -------- | --------------- | -------------------------------------- |
+| 1        | 10      | 20      | 30      | 20.0           | General positive numbers                 |
+| 2        | -5      | 0       | 5       | 0.0            | Including negative and zero              |
+| 3        | 0       | 0       | 0       | 0.0            | All zeros                               |
+| 4        | 1.5     | 2.5     | 3.5     | 2.5            | Decimal numbers                         |
+| 5        |         |          |          | *InputMismatchException*      | Empty input (handle this gracefully)   |  // Important!
+| 6        | "abc"   |          |          | *InputMismatchException*      | Non-numeric input (handle this gracefully) | // Important!
+| 7       | Double.MAX_VALUE | Double.MAX_VALUE | Double.MAX_VALUE | Infinity or Double.POSITIVE_INFINITY |  Overflow check (handle this in code if needed) |
+| 8       | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE or a very small number | Underflow (less critical but good to check)|
+
+
+
+
+**How to Run and Test:**
+
+1. **Save:** Save the code as `AverageCalculator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac AverageCalculator.java`
+3. **Run:** Execute the compiled code: `java AverageCalculator`
+4. **Input:** Enter the three numbers when prompted.
+
+**Handling Corner Cases (Robustness):**
+
+The provided code is functional for most valid numeric inputs. However, to make it more robust, especially in production code, you should handle potential exceptions:
+
+* **InputMismatchException:** This occurs when the user enters non-numeric input.
+* **Overflow/Underflow:** Although less common with `double`, it's good practice to be aware of the possibility of overflow/underflow with extreme values.
+
+
+Here's an improved version with exception handling:
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double num1, num2, num3;
+
+
+        try {
+            System.out.print("Enter the first number: ");
+            num1 = input.nextDouble();
+
+            System.out.print("Enter the second number: ");
+            num2 = input.nextDouble();
+
+            System.out.print("Enter the third number: ");
+            num3 = input.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+            System.out.println("The average of the three numbers is: " + average);
+
+        } catch (InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally { // Always close the scanner in a finally block
+           input.close(); 
+        }
+
+    }
+
+
+    // ... (calculateAverage function remains the same) ...
+}
+```
+
+
+This improved version guides the user to enter valid numbers and handles potential input errors gracefully. Remember to test with the provided test cases to ensure correct behavior in all scenarios.

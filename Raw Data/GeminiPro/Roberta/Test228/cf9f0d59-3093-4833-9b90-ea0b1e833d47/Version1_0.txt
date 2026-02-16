@@ -1,0 +1,62 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; 
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; // Overwrite duplicate with next unique element
+            }
+        }
+
+        return uniqueIndex + 1; // Return the length of the unique portion
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: []
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4); // Output: 0 (Handles null input gracefully)
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles empty (`{}`) and `null` arrays without throwing exceptions. This makes it more robust.
+
+2. **Clearer Variable Naming:**  `uniqueIndex` is more descriptive than just `i` or `j` for tracking the index of the last unique element.
+
+3. **In-Place Modification:** The `removeDuplicates` function modifies the input array `nums` in-place (as the original problem implicitly suggested).  The unique elements are placed at the beginning of the array.
+
+4. **Returns Length:** The function returns the length of the unique part of the array, which is the core requirement of the problem.
+
+5. **Illustrative `main` Method:** The `main` method now provides several example test cases, including edge cases, and clearly prints the updated length and the unique portion of the modified array using `Arrays.copyOfRange`.  This demonstrates how to use the function and interpret its results.
+
+
+**How it works:**
+
+The `removeDuplicates` function uses a single loop. `uniqueIndex` keeps track of the index where the next unique element should be placed.  We iterate through the array, and if we find an element that's different from the one at `uniqueIndex`, we increment `uniqueIndex` and copy the new unique element to that position. This overwrites any duplicates that may have been present earlier.  Finally, `uniqueIndex + 1` gives us the length of the unique portion.

@@ -1,0 +1,47 @@
+```java
+public class DecimalToHexadecimal {
+
+    public static void main(String[] args) {
+        int decimal = 15;
+        String hexadecimal = Integer.toHexString(decimal);
+
+        System.out.println("hexadecimal number is: " + hexadecimal);
+
+
+        // Example with user input (requires exception handling for robust code, but keeping it simple for this exercise)
+        if (args.length > 0) {  // Check if a command-line argument was provided
+            try {
+                decimal = Integer.parseInt(args[0]);
+                hexadecimal = Integer.toHexString(decimal);
+                System.out.println("Input: " + decimal);
+                System.out.println("Hexadecimal equivalent: " + hexadecimal);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid input. Please enter a valid integer.");
+            }
+
+        }
+
+    }
+}
+```
+
+
+To compile and run this code:
+
+1. **Save:** Save the code as `DecimalToHexadecimal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and type `javac DecimalToHexadecimal.java`.
+3. **Run:**  Type `java DecimalToHexadecimal` to run with the default value (15).  Or, type `java DecimalToHexadecimal <your_decimal_number>` (e.g., `java DecimalToHexadecimal 255`) to convert a different decimal number.
+
+
+**Explanation:**
+
+* **`Integer.toHexString(decimal)`:** This is the core of the conversion. The `toHexString()` method of the `Integer` class directly converts an integer to its hexadecimal string representation.
+* **User Input Handling (Optional but Recommended):**
+    * `args`: The `main` method's `String[] args` parameter receives command-line arguments as an array of strings.
+    * `if (args.length > 0)`: Checks if any arguments were provided.
+    * `Integer.parseInt(args[0])`: Converts the first command-line argument (which we assume is the decimal number) from a string to an integer. *Important:* This is where you would normally include error handling (a `try-catch` block) to handle potential `NumberFormatException` if the user enters something that's not a valid integer. I've added it to the revised code.
+    * `System.err.println(...)`: Prints error messages to the standard error stream (usually displayed in red in the console).
+
+
+
+This revised answer directly addresses the prompt's requirement to use only the `main` method and incorporates input handling, making it a more complete and practical solution.

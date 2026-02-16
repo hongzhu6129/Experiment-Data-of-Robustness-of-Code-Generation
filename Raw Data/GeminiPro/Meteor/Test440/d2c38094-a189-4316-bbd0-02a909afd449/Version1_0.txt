@@ -1,0 +1,72 @@
+```java
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class DateExceeds {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        Calendar calendar = new GregorianCalendar();
+
+        // Get the current year, month, week of year, and day of month
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH); // Month is 0-indexed (0-11)
+        int currentWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int currentDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        // Set arbitrary exceed values (you can change these)
+        int exceedYear = 2025;
+        int exceedMonth = 10; // November (0-indexed)
+        int exceedWeekOfYear = 40;
+        int exceedDayOfMonth = 15;
+
+
+        // Calculate the difference (exceeds)
+        int yearExceeds = exceedYear - currentYear;
+        int monthExceeds = exceedMonth - currentMonth;
+        int weekExceeds = exceedWeekOfYear - currentWeekOfYear;
+        int dayExceeds = exceedDayOfMonth - currentDayOfMonth;
+
+        // Output the results
+        System.out.println("Current Date: " + calendar.getTime()); // Display the current date for context
+
+        System.out.println("Year Exceeds: " + yearExceeds);
+        System.out.println("Month Exceeds: " + monthExceeds);
+        System.out.println("Week of Year Exceeds: " + weekExceeds);
+        System.out.println("Day of Month Exceeds: " + dayExceeds);
+    }
+}
+```
+
+
+**Explanation and Important Notes:**
+
+1. **Calendar and GregorianCalendar:** We use `GregorianCalendar`, a concrete implementation of the `Calendar` abstract class, to work with dates and times.
+
+2. **`get()` Method:** The `calendar.get(field)` method retrieves various date/time components.  Important fields are:
+   - `Calendar.YEAR`:  The year.
+   - `Calendar.MONTH`: The month (0-indexed, where 0 is January and 11 is December).
+   - `Calendar.WEEK_OF_YEAR`: The week number of the year.
+   - `Calendar.DAY_OF_MONTH`: The day of the month (1-31).
+
+3. **Exceed Values:**  The `exceedYear`, `exceedMonth`, etc., variables represent the target values you want to compare against. You can modify these to any desired date.
+
+4. **Calculating the Difference (Exceeds):** We simply subtract the current values from the exceed values to get the difference.
+
+5. **Output:** The code prints the exceeds values for each component (year, month, week, day).  It also prints the current date for clarity.
+
+6. **Month Indexing:**  Be very careful with the month!  `Calendar.MONTH` is zero-indexed.  January is 0, February is 1, ..., December is 11.   The code accounts for this.
+
+
+**Example Usage:**
+
+If the current date is August 28, 2024 (and the week of the year is, say, 35), and your exceed values are as set in the code (2025, November, week 40, day 15), the output would be similar to:
+
+```
+Current Date: Mon Aug 26 16:47:22 PDT 2024  // Your current date/time
+Year Exceeds: 1
+Month Exceeds: 3       // November (10) - August (7) = 3
+Week of Year Exceeds: 5   // 40 - 35 = 5
+Day of Month Exceeds: -13   // 15 - 28 = -13 (Meaning current day is 13 days *ahead* of the exceed day)
+```

@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class SameRightmostDigit {
+
+    public static boolean hasSameRightmostDigit(int num1, int num2, int num3) {
+        if (num1 < 0 || num2 < 0 || num3 < 0) {
+            throw new IllegalArgumentException("Integers must be non-negative.");
+        }
+
+        int digit1 = num1 % 10;
+        int digit2 = num2 % 10;
+        int digit3 = num3 % 10;
+
+        return (digit1 == digit2) || (digit1 == digit3) || (digit2 == digit3);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first non-negative integer: ");
+        int num1 = scanner.nextInt();
+
+        System.out.print("Enter the second non-negative integer: ");
+        int num2 = scanner.nextInt();
+
+        System.out.print("Enter the third non-negative integer: ");
+        int num3 = scanner.nextInt();
+
+
+        try {
+            boolean result = hasSameRightmostDigit(num1, num2, num3);
+            System.out.println("Do two or more numbers have the same rightmost digit? " + result);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+           scanner.close(); // Close the scanner in the finally block
+        }
+
+
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | num3 | Expected Result | Reason |
+|---|---|---|---|---|---|
+| 1 | 23 | 32 | 43 | true | 23 and 43 share the rightmost digit 3 |
+| 2 | 10 | 20 | 30 | true | All share the rightmost digit 0 |
+| 3 | 1 | 2 | 3 | false | No shared rightmost digits |
+| 4 | 17 | 27 | 37 | true | All share 7 |
+| 5 | 100 | 200 | 301 | false | Only 100 and 200 share 0 |
+| 6 | 0 | 0 | 0 | true | All share 0 |  // Corner case: all zeros
+| 7 | 1 | 11 | 21 | true | 1, 11, and 21 share 1 | //Numbers with different number of digits
+| 8 | 99 | 9 | 19 | true | 99, 9, and 19 share 9 |// Numbers with different number of digits
+| 9 | -5 | 10 | 15 | IllegalArgumentException | Negative input not allowed | // Corner case: Negative input
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:** You can run these test cases manually by inputting the values into the program and verifying the output.
+
+2. **JUnit (Recommended):**  For a more automated and robust approach, create JUnit tests.  Here's an example:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SameRightmostDigitTest {
+
+    @Test
+    void testSameRightmostDigit() {
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(23, 32, 43));
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(10, 20, 30));
+        assertFalse(SameRightmostDigit.hasSameRightmostDigit(1, 2, 3));
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(17, 27, 37));
+        assertFalse(SameRightmostDigit.hasSameRightmostDigit(100, 200, 301));
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(0, 0, 0));
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(1, 11, 21));
+        assertTrue(SameRightmostDigit.hasSameRightmostDigit(99,9,19));
+        assertThrows(IllegalArgumentException.class, () -> SameRightmostDigit.hasSameRightmostDigit(-5, 10, 15));
+
+
+    }
+}
+```
+
+
+With JUnit, you can easily run all the tests and get a clear report of which tests passed or failed. This makes testing much more efficient and reliable.  Be sure to add JUnit to your project dependencies.

@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ColorArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList to store strings (colors)
+        List<String> colors = new ArrayList<>();
+
+        // Add some colors to the ArrayList
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Orange");
+
+
+        // Print out the collection using a for-each loop (enhanced for loop)
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+
+         // Alternatively, you could print the whole ArrayList at once:
+         //System.out.println(colors); // This will print the list with brackets and commas.
+
+
+
+    }
+}

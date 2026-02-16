@@ -1,0 +1,53 @@
+```java
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMapExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Put elements to the map
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+
+        // Get the portion of the map whose keys are greater than 3 (inclusive)
+        SortedMap<Integer, String> tailMapInclusive = treeMap.tailMap(3);
+
+        // Print the tail map (inclusive)
+        System.out.println("Tail Map (inclusive): " + tailMapInclusive);
+
+
+         // Get the portion of the map whose keys are strictly greater than 3 (exclusive)
+        SortedMap<Integer, String> tailMapExclusive = treeMap.tailMap(3, false); // Note the 'false' for exclusive
+
+
+        // Print the tail map (exclusive)
+        System.out.println("Tail Map (exclusive): " + tailMapExclusive);
+
+         // Example with a key that doesn't exist
+        SortedMap<Integer, String> tailMapNonExistentKey = treeMap.tailMap(7);
+        System.out.println("Tail Map (non-existent key): " + tailMapNonExistentKey); // Returns an empty map if the key is greater than all existing keys
+
+
+        //Example with String keys
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("Apple", 1);
+        stringTreeMap.put("Banana", 2);
+        stringTreeMap.put("Orange", 3);
+        stringTreeMap.put("Peach", 4);
+
+        SortedMap<String, Integer> stringTailMap = stringTreeMap.tailMap("Banana");
+        System.out.println("Tail Map (String keys): " + stringTailMap);
+
+
+    }
+}
+```

@@ -1,0 +1,58 @@
+```java
+class Solution {
+    /**
+     * Replaces vowels in a string with a specified character.
+     *
+     * @param inputString The input string.
+     * @param replacementChar The character to replace vowels with.
+     * @return The modified string with vowels replaced.
+     */
+    public static String validate(String inputString, char replacementChar) {
+        if (inputString == null) {
+            return null;  // Handle null input
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if (isVowel(c)) {
+                result.append(replacementChar);
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        c = Character.toLowerCase(c); // Case-insensitive check
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
+
+
+    public static void main(String[] args) {
+        String inputString = "Hello World";
+        char replacementChar = '*';
+        String modifiedString = validate(inputString, replacementChar);
+        System.out.println("Modified string: " + modifiedString); // Output: H*ll* W*rld
+
+
+        inputString = "AEIOUaeiou";
+        replacementChar = '#';
+        modifiedString = validate(inputString, replacementChar);
+        System.out.println("Modified string: " + modifiedString); // Output: #########
+
+
+        inputString = null; // Test null input
+        replacementChar = '!';
+        modifiedString = validate(inputString, replacementChar);
+        System.out.println("Modified string: " + modifiedString); // Output: null
+
+
+         inputString = ""; // Test empty string
+        replacementChar = '$';
+        modifiedString = validate(inputString, replacementChar);
+        System.out.println("Modified string: " + modifiedString); // Output: "" (empty string)
+
+    }
+}
+```

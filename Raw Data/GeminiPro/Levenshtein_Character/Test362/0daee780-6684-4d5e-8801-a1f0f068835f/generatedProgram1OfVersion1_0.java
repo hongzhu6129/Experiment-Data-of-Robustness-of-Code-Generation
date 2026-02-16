@@ -1,0 +1,44 @@
+public class ReversePhrases {
+
+    public static String WordsInReverse(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            return ""; // Handle empty or null input
+        }
+
+        String[] words = str.split("\\s+"); // Split the string into words
+        StringBuilder reversedString = new StringBuilder();
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversedString.append(words[i]).append(" ");
+        }
+
+        return reversedString.toString().trim(); // Remove trailing space
+    }
+
+    public static void main(String[] args) {
+        String inputString = "This is a sample string";
+        String reversedString = WordsInReverse(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Reversed string: " + reversedString);
+
+
+        inputString = "  leading and trailing spaces  "; // Test case with spaces
+        reversedString = WordsInReverse(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Reversed string: " + reversedString);
+
+        inputString = ""; // Test case with empty string
+        reversedString = WordsInReverse(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Reversed string: " + reversedString);
+
+
+        inputString = null; // Test case with null string
+        reversedString = WordsInReverse(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("Reversed string: " + reversedString);
+    }
+}
+
+
+

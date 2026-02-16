@@ -1,0 +1,68 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToBinary {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input any decimal number: ");
+        int decimal = input.nextInt();
+
+        // Using built-in Integer.toBinaryString()
+        String binary = Integer.toBinaryString(decimal);
+
+        System.out.println("Equivalent binary number: " + binary);
+
+
+         //Alternative method using manual conversion (for demonstration):
+         /*
+        if (decimal == 0) {
+            System.out.println("Equivalent binary number: 0");
+            return; 
+        }
+
+        String binaryManual = "";
+        while (decimal > 0) {
+            int remainder = decimal % 2;
+            binaryManual = remainder + binaryManual; // Prepend the remainder
+            decimal = decimal / 2;
+        }
+
+        System.out.println("Equivalent binary number (manual): " + binaryManual); 
+        */
+
+        input.close(); 
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Input Handling:**
+   - The code now uses `Scanner` to take decimal input from the user.
+   - A prompt message makes it clear what input is expected.
+
+2. **Binary Conversion:**
+   - The most efficient and concise way to convert decimal to binary in Java is using the built-in `Integer.toBinaryString(decimal)` method. This is the recommended approach.
+   - I've included a commented-out section demonstrating the manual conversion algorithm (using repeated division and remainder). This is useful for understanding the underlying logic but less efficient than the built-in method.
+
+3. **Output:**
+   - The binary equivalent is printed with a clear label.
+
+4. **Resource Management:**
+   - The `input.close()` statement is added to release the `Scanner` resource. This is good practice, especially in larger applications.
+
+5. **Handling 0:**
+   - The code now explicitly handles the case where the input decimal is 0.
+
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `DecimalToBinary.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac DecimalToBinary.java`
+3. **Run:**  `java DecimalToBinary`
+
+
+The program will then prompt you to enter a decimal number, and upon entering it, it will output the corresponding binary representation.

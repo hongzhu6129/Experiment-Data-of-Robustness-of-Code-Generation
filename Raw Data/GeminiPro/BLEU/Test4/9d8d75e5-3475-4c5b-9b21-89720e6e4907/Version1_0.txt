@@ -1,0 +1,112 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using Scanner for user input (optional - you can directly set radius)
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); 
+        input.close(); // Close the scanner
+
+        // Calculate perimeter and area
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+
+        System.out.printf("Perimeter is = %.15f\n", perimeter); // Format to 15 decimal places for precision
+        System.out.printf("Area is = %.15f\n", area);
+
+       // Example with radius 7.5 (as per the prompt):
+        radius = 7.5;
+        perimeter = 2 * Math.PI * radius;
+        area = Math.PI * radius * radius;
+        System.out.println("\nFor radius 7.5:");
+        System.out.printf("Perimeter is = %.15f\n", perimeter);
+        System.out.printf("Area is = %.15f\n", area);
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to test the Java program:
+
+1. **Normal Case:**
+   - Input: radius = 7.5
+   - Expected Output: 
+     - Perimeter:  47.12388980384689
+     - Area: 176.71458676442586
+
+
+2. **Zero Radius:**
+   - Input: radius = 0
+   - Expected Output:
+     - Perimeter: 0.0
+     - Area: 0.0
+
+
+3. **Negative Radius (Invalid Input):**
+   - Input: radius = -5
+   - Expected Behavior:  While the code will run and produce results,  a negative radius doesn't make sense geometrically.  Consider adding input validation in your program to handle such cases:
+     ```java
+     if (radius < 0) {
+         System.out.println("Error: Radius cannot be negative.");
+         return; // Or throw an exception
+     }
+     ```
+
+
+4. **Large Radius:**
+   - Input: radius = 1000000
+   - Expected Output: (Check against a calculator to verify correctness with large numbers). This helps ensure your calculations are accurate with large inputs.
+
+
+5. **Small Radius:**
+   - Input: radius = 0.000001
+   - Expected Output: (Verify against a calculator) Test for potential rounding errors or issues with very small values.
+
+
+6. **Boundary/Edge Cases (if using integer input):**
+   - Input:  Integer.MAX_VALUE (Largest possible Java integer)
+   - Expected Behavior: Test for potential overflow issues.  You might consider using `double` for radius to handle a wider range.  If an overflow occurs, Java won't throw an exception, but the results will be incorrect.
+
+
+**How to run test cases:**
+
+- **Manually:** You can run these test cases by entering the input values one at a time and checking the output.
+- **Automated Testing (Recommended):**  Using a testing framework like JUnit is a much better approach.  JUnit allows you to write test methods that automatically run your code with different inputs and verify the outputs against expected values. This is much more efficient and reliable than manual testing, especially for more complex programs.
+
+
+Example of a JUnit test (you would need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testNormalCase() {
+        double radius = 7.5;
+        double expectedPerimeter = 47.12388980384689;
+        double expectedArea = 176.71458676442586;
+        // ... (call your calculation methods here)
+        // ... (use assertEquals to compare results with expected values)
+
+    }
+
+    // ... (Add more test methods for other cases) ...
+
+}
+
+```
+
+
+
+This approach makes testing more structured and helps ensure the correctness of your code over time.

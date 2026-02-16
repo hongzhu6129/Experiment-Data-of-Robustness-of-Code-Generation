@@ -1,0 +1,67 @@
+```java
+public class NarcissisticNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Narcissistic numbers between 1 and 1000:");
+
+        for (int i = 1; i <= 1000; i++) {
+            if (isNarcissistic(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static boolean isNarcissistic(int number) {
+        String numStr = String.valueOf(number);
+        int numDigits = numStr.length();
+        int sum = 0;
+
+        for (int i = 0; i < numDigits; i++) {
+            int digit = Character.getNumericValue(numStr.charAt(i));
+            sum += Math.pow(digit, numDigits);
+        }
+
+        return sum == number;
+    }
+}
+
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - The `main` method iterates through numbers from 1 to 1000.
+   - For each number, it calls the `isNarcissistic` method to check if it's a narcissistic number.
+   - If `isNarcissistic` returns `true`, the number is printed.
+
+2. **`isNarcissistic` method:**
+   - Takes an integer `number` as input.
+   - Converts the number to a string (`numStr`) to easily access individual digits.
+   - Gets the number of digits (`numDigits`).
+   - Initializes a `sum` to 0.
+   - Iterates through the digits of the number:
+     - Extracts each digit using `Character.getNumericValue()`.
+     - Raises the digit to the power of `numDigits` using `Math.pow()`.
+     - Adds the result to the `sum`.
+   - Finally, returns `true` if the `sum` is equal to the original `number` (meaning it's narcissistic), and `false` otherwise.
+
+
+Example Output:
+
+```
+Narcissistic numbers between 1 and 1000:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+153
+370
+371
+407
+```

@@ -1,0 +1,87 @@
+```java
+import java.util.Scanner;
+
+public class OctalToHex {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octal = scanner.nextLine();
+
+        try {
+            int decimal = 0;
+            int power = 0;
+
+            // Octal to Decimal Conversion
+            for (int i = octal.length() - 1; i >= 0; i--) {
+                int digit = octal.charAt(i) - '0';
+                if (digit < 0 || digit > 7) {
+                    throw new NumberFormatException("Invalid octal digit: " + octal.charAt(i));
+                }
+                decimal += digit * Math.pow(8, power);
+                power++;
+            }
+
+
+            // Decimal to Hexadecimal Conversion
+            String hex = "";
+            while (decimal > 0) {
+                int remainder = decimal % 16;
+                char hexDigit = (remainder < 10) ? (char) (remainder + '0') : (char) (remainder - 10 + 'A');
+                hex = hexDigit + hex;
+                decimal /= 16;
+
+            }
+
+            //Handle case where input is 0
+            if(hex.isEmpty()){
+                hex = "0";
+            }
+
+            System.out.println("Hexadecimal equivalent: " + hex);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Octal Number:**
+   - Input: 123
+   - Expected Output: Hexadecimal equivalent: 53
+
+2. **Octal Number with Leading Zeroes:**
+   - Input: 00077
+   - Expected Output: Hexadecimal equivalent: 3F
+
+3. **Octal Number with a large value:**
+   - Input: 7777777
+   - Expected Output:  Hexadecimal equivalent: 7FFFFF
+
+4. **Invalid Octal Number (Contains digits other than 0-7):**
+   - Input: 1289
+   - Expected Output: Invalid input: Invalid octal digit: 8
+
+5. **Invalid Octal Number (Empty String):**
+    - Input: "" (just press enter)
+    - Expected Output: Invalid input: For input string: ""   (This specific message depends on your Java version, but it should indicate invalid input).
+
+6. **Invalid Octal Number (Negative sign):**
+    - Input: -123
+    - Expected Output: Invalid input: Invalid octal digit: -
+
+7. **Corner Case: Zero:**
+    - Input: 0
+    - Expected Output: Hexadecimal equivalent: 0
+
+8. **Corner Case: Single Digit:**
+     - Input: 7
+     - Expected Output: Hexadecimal equivalent: 7
+
+
+These test cases cover various scenarios, including valid octal inputs, invalid inputs (containing invalid digits, empty string, negative sign), and corner cases like zero and single-digit octal numbers.  Running your code with these examples will help ensure that your octal-to-hexadecimal conversion works correctly.

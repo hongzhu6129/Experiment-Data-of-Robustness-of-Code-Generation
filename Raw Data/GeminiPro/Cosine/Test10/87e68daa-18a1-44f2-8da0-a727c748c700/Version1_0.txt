@@ -1,0 +1,76 @@
+```java
+public class PrintFace {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases (While there's not much to functionally "test" with a simple print, we can test output):**
+
+1. **Standard Output Test:**  Verify that the program prints the expected face.  This can be done visually or by redirecting the output to a file and comparing it with the expected output string.
+
+   ```bash
+   java PrintFace > output.txt
+   # Then compare output.txt with a file containing the expected output.
+   ```
+
+2. **Unicode Character Test:**  This might seem trivial, but ensure your console/terminal supports Unicode characters.  If it doesn't, the face might not display correctly.  Try running the program on different systems or terminals with varying character set support.
+
+3. **Whitespace Test:**  Verify the exact whitespace.  A single extra space or a missing space can change the face's appearance.  Again, comparing the output file to an expected output file is the best way to do this.
+
+4. **System.out Test (Advanced):**  While more complex than needed for this example, for more involved programs, you could explore testing `System.out` directly by using `ByteArrayOutputStream` to capture the output stream and then checking the contents of the byte array.  This is useful when you're testing methods that write to the console and you want to avoid relying on visual inspection or file I/O.
+
+   ```java
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class PrintFaceTest {
+
+       @Test
+       public void testPrintFace() {
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent)); 
+
+           PrintFace.printFace();
+
+           String expectedOutput = "  +\"\"\"\"\"+"+ System.lineSeparator() +
+                                  " [| o o |]"+ System.lineSeparator() +
+                                  "  |  ^  |"+ System.lineSeparator() +
+                                  "  | '-' |"+ System.lineSeparator() +
+                                  "  +-----+"+ System.lineSeparator();
+           assertEquals(expectedOutput, outContent.toString());
+
+           // Restore System.out (important!)
+           System.setOut(System.out); 
+       }
+   }
+   ```
+
+For this simple face-printing program, the visual inspection and file comparison tests are likely sufficient. The more advanced testing techniques become valuable as the complexity of your output and program logic increases.  Using a testing framework like JUnit (as shown in the last example) makes automated testing much easier and more robust.
+
+
+**Corner Cases:**
+
+While there aren't true "corner cases" for this specific program that would lead to unexpected behavior or errors, the concept of corner case testing is important to understand.  In a more complex drawing program, you might consider:
+
+* **Large outputs:** If your program dynamically generated a much larger face, you might want to test performance or memory usage.
+* **Invalid input:** If your program allowed customization of the face (e.g., specifying eye characters), invalid input (like extremely long strings) could be a corner case to handle.
+* **Resource limitations:** If the drawing relied on external resources (e.g., loading images), you would test scenarios where those resources are unavailable or corrupt.
+
+
+
+
+

@@ -1,0 +1,83 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example, could be read from user input)
+        int num = 8; 
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int num) {
+        if (num < 0) {  // Handle negative numbers (cube root is also negative)
+            return isCube(-num);
+        }
+
+        // Binary search for the cube root
+        long low = 0;
+        long high = num; 
+
+        while (low <= high) {
+            long mid = low + (high - low) / 2;  // Avoid potential overflow
+            long cube = mid * mid * mid;
+
+            if (cube == num) {
+                return true;
+            } else if (cube < num) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`isCube(int num)` Function:**
+   - Handles negative numbers by checking the cube of the absolute value.
+   - Uses a binary search approach to efficiently find the cube root. This is much faster than iterating through all possible cube roots.
+   - Uses `long` for `mid` and `cube` calculations to avoid potential overflow with larger input numbers.
+
+
+2. **`main` Method:**
+   - Hardcodes the input number for simplicity.  You can easily modify this to read input from the console using a `Scanner` if you need to take user input.
+
+3. **Clear Output:**
+   - Prints a message indicating whether the number is a cube or not.
+
+**How to compile and run:**
+
+1. Save the code as `CubeChecker.java`.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where you saved the file.
+4. Compile the code: `javac CubeChecker.java`
+5. Run the code: `java CubeChecker`
+
+
+
+**Example with user input (if needed):**
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+    // ... (rest of the code is the same)
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int num = scanner.nextInt();
+
+        if (isCube(num)) { // ... (rest of the main method)
+       
+    }
+}
+```

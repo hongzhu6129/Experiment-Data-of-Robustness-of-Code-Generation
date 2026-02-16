@@ -1,0 +1,61 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  xxxxxxx");
+        System.out.println(" x       x");
+        System.out.println("x  o   o  x");
+        System.out.println("x   ---   x");
+        System.out.println(" x       x");
+        System.out.println("  xxxxxxx");
+
+
+    }
+}
+```
+
+**Test Cases and Corner Cases:**
+
+Since this program primarily deals with printing a fixed output, traditional unit testing isn't as applicable.  Instead, we'll focus on visual inspection and ensuring the output remains consistent.  However, we can still consider a few scenarios:
+
+1. **Standard Output:**
+   - Run the program as is. Verify the face prints correctly to the console as designed.  Check for correct spacing and alignment of characters.
+
+2. **Redirection to File:**
+   - Redirect the output to a file (e.g., `java FacePrinter > face.txt`).  Open the file and verify the face is correctly written, including newline characters and proper formatting. This tests if the output behaves correctly when not directly printed to the console.
+
+3. **Empty Input:**
+   - This program doesn't take any command-line arguments, so there's no specific "empty input" case. However, it's good practice to run it without any arguments to confirm it still functions as expected.
+
+4. **Different Character Encoding:**
+   -  Although less common for basic ASCII art, consider running the program in environments with different character encodings to ensure the characters display correctly. This might be relevant if you were using more complex characters in your face design.
+
+5. **Modified Face Design (Extending the Code):**
+   -  A valuable test would be to modify the `printFace()` method to create different face expressions (e.g., smiling, frowning). This allows you to verify that changes to the printing logic produce the intended visual changes. Example:
+
+   ```java
+   public static void printSmilingFace() {
+       System.out.println("  xxxxxxx");
+       System.out.println(" x       x");
+       System.out.println("x  o   o  x");
+       System.out.println("x   \\_/   x"); // Smiling mouth
+       System.out.println(" x       x");
+       System.out.println("  xxxxxxx");
+   }
+   ```
+
+**Testing Strategy Summary:**
+
+For this type of program, the testing strategy involves primarily:
+
+- **Visual Inspection:** Carefully examine the output to confirm it matches the expected design.
+- **Output Redirection:** Test output to different destinations (console, file).
+- **Code Modification (Extension):** Introduce changes to the drawing logic to verify the program adapts correctly.
+
+
+
+While not strictly "corner cases" in the traditional sense, these approaches help ensure the correctness and robustness of the face printing program.  If the face was dynamically generated based on input parameters, then more traditional unit tests with different input values would be necessary.

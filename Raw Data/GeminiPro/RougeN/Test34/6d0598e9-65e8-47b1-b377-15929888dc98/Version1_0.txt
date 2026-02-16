@@ -1,0 +1,98 @@
+```java
+import java.nio.charset.Charset;
+import java.util.SortedMap;
+
+public class ListAvailableCharsets {
+
+    public static void listCharsets() {
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        for (String charsetName : charsets.keySet()) {
+            Charset charset = charsets.get(charsetName);
+            System.out.println(charsetName + ": " + charset.displayName());
+
+             // Optionally, you can also print aliases:
+            // System.out.println("   Aliases: " + charset.aliases());
+        }
+    }
+
+    public static void main(String[] args) {
+        listCharsets();
+    }
+}
+
+
+// Test Cases (using JUnit would be better for a real project,
+// but this demonstrates the basic ideas):
+
+class ListAvailableCharsetsTest {
+    public static void main(String[] args) {
+        testStandardCharset();
+        testEmptyInput(); // Corner case:  Nothing really to test here, but ensures no unexpected behavior
+        testPlatformSpecificCharset(); //  Harder to create a generalized test, see comments.
+
+    }
+
+
+
+    private static void testStandardCharset() {
+        // Check if at least one widely supported character set exists
+        SortedMap<String, Charset> charsets = Charset.availableCharsets();
+
+        // Check if a few standard charsets are present (UTF-8, UTF-16, etc.)
+        assert charsets.containsKey("UTF-8") : "UTF-8 charset not found";
+        assert charsets.containsKey("UTF-16") : "UTF-16 charset not found";
+        assert charsets.containsKey("US-ASCII") : "US-ASCII charset not found";
+        System.out.println("Standard charset test passed.");
+    }
+
+
+    private static void testEmptyInput() { // Corner case
+        // There's not an actual "input" here, but this ensures there's
+        // no unexpected exception or behavior when listing charsets.
+
+        ListAvailableCharsets.listCharsets(); // Just call the function, confirm no errors
+        System.out.println("Empty input test passed (no errors).");
+
+    }
+
+
+    private static void testPlatformSpecificCharset() {
+        // Harder to do a general test because this can vary by OS and Java version.
+
+        // 1.  Manually inspect the output on your system from ListAvailableCharsets.main()
+        // 2. Add asserts for specific charsets you expect on your platform (e.g., windows-1252).
+        // Example (replace with your expected charset):
+
+         SortedMap<String, Charset> charsets = Charset.availableCharsets();
+        //  assert charsets.containsKey("windows-1252") : "windows-1252 charset not found"; // Example
+
+
+        System.out.println("Platform-specific charset test requires manual verification (or platform-specific assertions).");
+    }
+
+
+}
+
+
+
+
+
+```
+
+
+Key improvements and explanations:
+
+* **Clearer Output:**  The code now prints the canonical name of the character set *and* its display name (which is often more user-friendly).
+* **Optional Alias Printing:**  I've added a commented-out line to print aliases if you need that information.
+* **Test Cases:** The code includes test cases demonstrating how to test for the presence of specific character sets (like UTF-8), handling a "corner case" (where there's no input to the listCharsets function�just making sure it doesn't crash), and discusses how to handle the challenge of testing platform-specific charsets.  I've provided examples and guidance on how to adapt these for your environment.
+* **JUnit (mentioned):**  I strongly recommend using a proper testing framework like JUnit for more robust and automated tests in real projects. The provided test cases illustrate the basic principles but are not as comprehensive as they could be with JUnit.
+
+
+How to run the tests:
+
+1.  Save the code as `ListAvailableCharsets.java` and `ListAvailableCharsetsTest.java` (two separate files).
+2.  Compile: `javac ListAvailableCharsets.java ListAvailableCharsetsTest.java`
+3.  Run the main method of your test class:  `java ListAvailableCharsetsTest`
+
+You'll see the output of both the list of charsets and the results of the test cases.  Remember to adapt the platform-specific test case to your environment as explained in the code comments.

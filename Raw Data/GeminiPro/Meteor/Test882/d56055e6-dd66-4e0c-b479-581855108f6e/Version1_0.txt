@@ -1,0 +1,46 @@
+```java
+public class CheckTenTwenty {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 10, 20, 3}; // True
+        int[] arr2 = {1, 10, 3, 20}; // True
+        int[] arr3 = {1, 20, 10, 3}; // False
+        int[] arr4 = {1, 20, 3, 10}; // False
+        int[] arr5 = {10, 3, 20, 10, 3}; // True
+        int[] arr6 = {20, 3}; // False
+        int[] arr7 = {10, 3}; // False
+        int[] arr8 = {}; // False
+
+
+        System.out.println(checkTenTwenty(arr1)); // True
+        System.out.println(checkTenTwenty(arr2)); // True
+        System.out.println(checkTenTwenty(arr3)); // False
+        System.out.println(checkTenTwenty(arr4)); // False
+        System.out.println(checkTenTwenty(arr5)); // True
+        System.out.println(checkTenTwenty(arr6)); // False
+        System.out.println(checkTenTwenty(arr7)); // False
+        System.out.println(checkTenTwenty(arr8)); // False
+    }
+
+
+    public static boolean checkTenTwenty(int[] arr) {
+        boolean foundTen = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                foundTen = true;
+            }
+
+            if (foundTen) {
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[j] == 20) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+}
+```

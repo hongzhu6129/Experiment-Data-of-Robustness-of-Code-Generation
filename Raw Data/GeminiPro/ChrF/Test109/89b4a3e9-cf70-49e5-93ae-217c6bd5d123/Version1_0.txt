@@ -1,0 +1,52 @@
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] myArray = {1, 2, 3, 4, 5, 2, 6};
+        int elementToFind = 2;
+
+        int firstOccurrence = findFirstOccurrence(myArray, elementToFind);
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " not found in the array.");
+        }
+
+         myArray = new int[]{1, 2, 3, 4, 5, 6}; // Example with no repeated element
+         elementToFind = 2;
+
+         firstOccurrence = findFirstOccurrence(myArray, elementToFind);
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " not found in the array.");
+        }
+
+        myArray = new int[]{1, 2, 3, 4, 5, 6}; // Example with element not present
+        elementToFind = 7;
+
+        firstOccurrence = findFirstOccurrence(myArray, elementToFind);
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " not found in the array.");
+        }
+
+
+    }
+
+    public static int findFirstOccurrence(int[] arr, int element) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == element) {
+                return i; // Return the index immediately upon finding the first match
+            }
+        }
+        return -1; // Return -1 if the element is not found
+    }
+}
+
+```

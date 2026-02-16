@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three numbers: ");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close(); 
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output | Notes                                    |
+| --------- | ------------------------ | --------------- | ------------------------------------------ |
+| 1        | 10, 20, 30              | 20.0           | Standard positive numbers                 |
+| 2        | -5, 0, 5                | 0.0            | Including negative and zero               |
+| 3        | 0, 0, 0                 | 0.0            | All zeros                                |
+| 4        | 1.5, 2.5, 3.5           | 2.5            | Decimal numbers                          |
+| 5        | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | 7.15827882E9 (approx.) | Integer overflow (positive) handled by using `double` |
+| 6        | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | -7.15827883E9 (approx.) | Integer underflow (negative) handled by using `double`|
+| 7        | Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity | Double Overflow results in Infinity        |
+| 8        | Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE | 1.6940658945086005E-313 (approx.) | Handles very small doubles                  |
+
+
+**How to Run the Test Cases:**
+
+1.  **Manually:**  You can manually input these values when prompted by the program.
+2.  **Automated Testing (Recommended):**  For more robust testing, create unit tests using a testing framework like JUnit.  Here's an example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNegativeAndZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+    // Add more tests for the remaining test cases
+
+    @Test
+    void testIntegerOverflow() {
+        assertEquals(7.15827882E9, AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE), 0.0001E9); // Delta for tolerance due to potential rounding
+    }
+
+     @Test
+    void testDoubleOverflow() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+}
+```
+
+This JUnit example demonstrates how to automate the testing process.  You would add similar `@Test` methods for each of your test cases.  The `assertEquals` method checks if the actual output of your `calculateAverage` function matches the expected output. The delta in the integer overflow test allows for a small margin of error in the calculation, due to potential rounding issues with very large numbers.
+
+
+
+By thoroughly testing your code with various inputs, you can increase confidence in its correctness and handle potential edge cases.

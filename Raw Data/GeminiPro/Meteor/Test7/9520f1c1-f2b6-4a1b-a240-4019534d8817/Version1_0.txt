@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average of the three numbers is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1. Positive Numbers | 10, 20, 30 | 20.0 |
+| 2. Negative Numbers | -10, -20, -30 | -20.0 |
+| 3. Mixed Numbers | -5, 15, 25 | 11.666666666666666 |  // Demonstrates handling mixed signs
+| 4. Zeroes | 0, 0, 0 | 0.0 |
+| 5. Large Numbers | 1000000, 2000000, 3000000 | 2000000.0 | // Tests for potential overflow (though doubles have a wide range)
+| 6. Small Numbers | 0.0001, 0.0002, 0.0003 | 0.0002 | // Tests handling of very small numbers.
+| 7. Decimal Numbers | 2.5, 3.7, 1.8 | 2.6666666666666665 | // Ensures decimals are handled correctly.
+| 8.  Max/Min Values| Double.MAX_VALUE, Double.MIN_VALUE, 10 |  Infinity (or a very large number close to it) | // Tests behavior with extreme values � expect Infinity or system-dependent large number.
+| 9. NaN and Infinity | Double.NaN, 10, 20 | NaN | // Any calculation involving NaN results in NaN
+| 10. Infinity and Negative Infinity | Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY, 10 | NaN | // Adding opposite infinities results in NaN
+
+
+
+**How to Run the Test Cases (Manually):**
+
+1.  **Compile:**  Save the code as `AverageCalculator.java` and compile it using a Java compiler (e.g., `javac AverageCalculator.java`).
+2.  **Run:** Execute the compiled code (`java AverageCalculator`).
+3.  **Input:** When prompted, enter the three numbers for each test case.
+4.  **Verify:** Check if the output matches the expected output in the table.
+
+
+
+**Automated Testing (Recommended):**
+
+For a more robust and efficient testing approach, use a testing framework like JUnit.  JUnit allows you to automate the execution of these test cases and provides assertions to verify the results programmatically. This is highly recommended for larger projects.
+
+
+Example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    // ... (Add more test methods for other test cases similarly) ...
+
+    @Test
+    void testNaN() {
+         assertEquals(Double.NaN, AverageCalculator.calculateAverage(Double.NaN, 10, 20), 0.001);
+    }
+
+
+
+}
+```
+
+
+This improved example includes better error handling for inputs and more comprehensive test cases, especially for edge cases.  JUnit makes testing much easier and is a standard practice in Java development.

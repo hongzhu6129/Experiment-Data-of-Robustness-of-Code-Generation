@@ -1,0 +1,60 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1 because the first element is always unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i]; // Overwrite duplicate with the unique element
+                uniqueCount++;
+            }
+        }
+        
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));  // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {};  // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+         
+        int[] nums4 = {1}; // Single element array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4))); // Output: 1, [1]
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles empty arrays and single-element arrays correctly.
+
+2. **Clearer Variable Names:** `uniqueCount` is used instead of `j`  to make the code more readable.
+
+3. **In-Place Modification:**  The `removeDuplicates` function modifies the input array `nums` in-place to store the unique elements at the beginning.
+
+4. **Returns the Length:** The function returns the length of the updated array (the number of unique elements), which is the required output according to the problem description.
+
+5. **Comprehensive `main` Method:** The `main` method includes several test cases, including edge cases (empty and single-element arrays), to demonstrate the function's correctness.
+
+6. **Output Clarity:** The `main` method now uses `Arrays.copyOfRange` and `Arrays.toString` to print only the relevant part of the modified array (the unique elements) to avoid showing the leftover duplicate values.
+
+
+This improved version is more robust, efficient, and adheres better to common Java coding practices.  It correctly addresses the problem description's requirements and provides more informative output.

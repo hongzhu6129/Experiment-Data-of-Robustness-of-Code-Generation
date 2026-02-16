@@ -1,0 +1,32 @@
+```java
+public class MiddleCharacter {
+
+    public static void main(String[] args) {
+        String inputString = "350"; // Replace with your desired input string
+        String middleChar = middle(inputString);
+        System.out.println("The middle character in the string: " + middleChar);
+
+
+        inputString = "abcd"; // Example with even length string
+        middleChar = middle(inputString);
+        System.out.println("The middle character in the string: " + middleChar);
+
+        inputString = "abcde"; // Example with odd length string
+        middleChar = middle(inputString);
+        System.out.println("The middle character in the string: " + middleChar);
+    }
+
+    public static String middle(String str) {
+        int length = str.length();
+        int middleIndex = length / 2;
+
+        if (length % 2 == 0) {
+            // Even length string, return the single middle character
+            return String.valueOf(str.charAt(middleIndex-1)) + String.valueOf(str.charAt(middleIndex)); // Corrected for even length
+        } else {
+            // Odd length string, return the middle character
+            return String.valueOf(str.charAt(middleIndex));
+        }
+    }
+}
+```

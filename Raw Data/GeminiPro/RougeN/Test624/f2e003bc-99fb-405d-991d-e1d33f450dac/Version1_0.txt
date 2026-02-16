@@ -1,0 +1,77 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and populate it with some integers
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Get the element less than or equal to 35
+        Integer floorValue = treeSet.floor(35); 
+
+        // Print the result
+        if (floorValue != null) {
+            System.out.println("The element less than or equal to 35 is: " + floorValue);
+        } else {
+            System.out.println("No element found less than or equal to 35.");
+        }
+
+
+        // Example with a value not in the set, and less than the smallest element
+        floorValue = treeSet.floor(5);
+        if (floorValue != null) {
+            System.out.println("The element less than or equal to 5 is: " + floorValue);
+        } else {
+            System.out.println("No element found less than or equal to 5."); // This will be printed
+        }
+
+
+        // Example with a value greater than all elements in the set
+        floorValue = treeSet.floor(60);
+        if (floorValue != null) {
+            System.out.println("The element less than or equal to 60 is: " + floorValue);  // Output: 50
+        } else {
+            System.out.println("No element found less than or equal to 60."); 
+        }
+
+
+
+         //Example with other data types (String)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        String floorString = stringTreeSet.floor("grape");
+        if (floorString != null) {
+            System.out.println("The string less than or equal to \"grape\" is: " + floorString); // Output: banana (lexicographically)
+        } else {
+            System.out.println("No string found less than or equal to \"grape\".");
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+* **Clearer Examples:** The code now includes examples demonstrating different scenarios:
+    * A value present in the set.
+    * A value not in the set but within the range of the set's elements.
+    * A value less than the smallest element in the set.
+    * A value greater than the largest element in the set.
+    * An example using Strings to show that `TreeSet` works with other comparable data types.
+* **Null Handling:** The code explicitly checks if `floor()` returns `null` (which happens if there's no element less than or equal to the given value) to avoid `NullPointerExceptions`.
+* **Comments:** More comments are added to explain each part of the code, making it easier to understand.
+* **String Example:** An example with a `TreeSet<String>` demonstrates how `floor()` works with strings (based on lexicographical order).
+
+
+This improved version is more robust, comprehensive, and easier to understand for anyone learning how to use the `floor()` method in a `TreeSet`.

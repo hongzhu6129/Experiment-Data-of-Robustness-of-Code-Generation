@@ -1,0 +1,68 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        // The subarray from index 0 to uniqueIndex (inclusive) contains the unique elements.
+        return uniqueIndex + 1; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Updated length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Updated length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Updated length: " + len3 + ", Array: " + Arrays.toString(nums3)); // Output: 0, []
+
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Updated length: " + len4 + ", Array: null" ); // Output: 0, null
+
+        int[] nums5 = {1}; // single element
+        int len5 = removeDuplicates(nums5);
+        System.out.println("Updated length: " + len5 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5))); // Output: 1, [1]
+
+
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles null or empty input arrays.
+   - `uniqueIndex`: Tracks the index where the next unique element should be placed. It starts at 0 because the first element is always unique.
+   - Iterates from the second element (`i = 1`) to the end of the array.
+   - If the current element (`nums[i]`) is different from the element at `uniqueIndex`, it means we've found a new unique element.
+   - Increment `uniqueIndex` and copy the new unique element (`nums[i]`) to the position `nums[uniqueIndex]`.
+   - Finally, `uniqueIndex + 1` represents the length of the updated array (number of unique elements).
+
+2. **`main(String[] args)`:**
+   - Example usage with different test cases, including empty and null arrays.
+   - The `Arrays.copyOfRange()` method is used in the `main` method to create a new array containing only the unique elements, so the original array is not modified beyond the new length. This makes the output clearer and demonstrates the effective new length after removing duplicates.
+
+
+
+This revised solution uses in-place modification and avoids unnecessary array creation, providing a more efficient way to remove duplicates from a sorted array.

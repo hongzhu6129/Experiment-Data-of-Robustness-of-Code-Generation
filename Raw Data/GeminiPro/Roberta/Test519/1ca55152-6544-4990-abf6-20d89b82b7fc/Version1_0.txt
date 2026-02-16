@@ -1,0 +1,46 @@
+```java
+public class PronicNumber {
+
+    public static void main(String[] args) {
+        int num = 110; // You can change this to any number you want to check
+
+        boolean isPronic = checkPronic(num);
+
+        if (isPronic) {
+            System.out.println("Pronic Number.");
+        } else {
+            System.out.println("Not a Pronic Number.");
+        }
+    }
+
+    private static boolean checkPronic(int num) {
+        if (num < 0) { // Pronic numbers are non-negative
+            return false;
+        }
+
+        for (int i = 0; i <= Math.sqrt(num); i++) { // Efficiently check up to the square root
+            if (i * (i + 1) == num) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+```
+
+
+Here's how it works:
+
+1. **`main` Method:**
+   - Takes the number to be checked (you can modify this to take input from the user if needed).
+   - Calls the `checkPronic` method.
+   - Prints the result ("Pronic Number" or "Not a Pronic Number").
+
+2. **`checkPronic` Method:**
+   - Takes an integer `num` as input.
+   - Handles negative numbers (they can't be pronic).
+   - Iterates from 0 up to the square root of `num`. This is an optimization because if `n * (n+1) == num`, then `n` must be less than or equal to the square root of `num`.
+   - Inside the loop, it checks if `i * (i + 1)` is equal to `num`. If it is, the number is pronic, and the method returns `true`.
+   - If the loop finishes without finding a match, the number is not pronic, and the method returns `false`.

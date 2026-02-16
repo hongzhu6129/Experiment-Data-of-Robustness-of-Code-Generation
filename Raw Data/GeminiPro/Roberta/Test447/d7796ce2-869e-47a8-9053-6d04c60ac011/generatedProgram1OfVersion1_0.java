@@ -1,0 +1,49 @@
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+
+public class GetFirstAndLastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current year and month (you can change these values)
+        int year = LocalDate.now().getYear();
+        int month = LocalDate.now().getMonthValue();
+
+
+        // Method 1: Using YearMonth (recommended)
+        YearMonth yearMonth = YearMonth.of(year, month);
+        LocalDate firstDay = yearMonth.atDay(1);
+        LocalDate lastDay = yearMonth.atEndOfMonth();
+
+        // Format and print the dates 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Customize the format if needed
+        System.out.println("First day of the month: " + firstDay.format(formatter));
+        System.out.println("Last day of the month: " + lastDay.format(formatter));
+
+
+        // Method 2: Using LocalDate and adjusting days (less elegant)
+        LocalDate firstDayAlternative = LocalDate.of(year, month, 1);
+        LocalDate lastDayAlternative = firstDayAlternative.plusMonths(1).minusDays(1); // Add a month, then go back one day
+
+
+        System.out.println("\nAlternative Method (using LocalDate):");
+        System.out.println("First day of the month: " + firstDayAlternative.format(formatter));
+        System.out.println("Last day of the month: " + lastDayAlternative.format(formatter));
+
+
+        // Example getting first and last day for a specific month/year:
+        year = 2024;
+        month = 2; // February
+
+        YearMonth specificYearMonth = YearMonth.of(year, month);
+        LocalDate specificFirstDay = specificYearMonth.atDay(1);
+        LocalDate specificLastDay = specificYearMonth.atEndOfMonth();
+        System.out.println("\nFirst and last day of February 2024:");
+        System.out.println("First day: " + specificFirstDay.format(formatter));
+        System.out.println("Last day: " + specificLastDay.format(formatter));
+
+
+
+
+    }
+}

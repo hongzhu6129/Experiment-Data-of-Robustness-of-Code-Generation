@@ -1,0 +1,84 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class NumberConverter {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        // Get the number from the user
+        System.out.print("Enter a number between 0 and 999: ");
+        int number = input.nextInt();
+        
+        // Initialize the string to store the converted number
+        String convertedNumber = "";
+        
+        // Check if the number is in the valid range
+        if (number < 0 || number > 999) {
+            System.out.println("Invalid number. Please enter a number between 0 and 999.");
+        } else {
+            // Convert the number to words
+            int hundreds = number / 100;
+            int tens = (number % 100) / 10;
+            int ones = number % 10;
+            
+            if (hundreds > 0) {
+                convertedNumber += getHundreds(hundreds) + " ";
+            }
+            if (tens > 0) {
+                convertedNumber += getTens(tens) + " ";
+            }
+            if (ones > 0) {
+                convertedNumber += getOnes(ones);
+            }
+        }
+        
+        // Print the converted number
+        System.out.println("The number in words is: " + convertedNumber.trim());
+    }
+    
+    private static String getHundreds(int hundreds) {
+        String[] hundredsArray = {"", "one hundred", "two hundred", "three hundred", "four hundred", "five hundred", "six hundred", "seven hundred", "eight hundred", "nine hundred"};
+        return hundredsArray[hundreds];
+    }
+    
+    private static String getTens(int tens) {
+        String[] tensArray = {"", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+        return tensArray[tens];
+    }
+    
+    private static String getOnes(int ones) {
+        String[] onesArray = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        return onesArray[ones];
+    }
+}
+```
+
+**Test Cases:**
+
+**Valid Cases:**
+
+* 0: Zero
+* 1: One
+* 10: Ten
+* 11: Eleven
+* 19: Nineteen
+* 20: Twenty
+* 21: Twenty-one
+* 99: Ninety-nine
+* 100: One hundred
+* 200: Two hundred
+* 350: Three hundred fifty
+* 478: Four hundred seventy-eight
+* 567: Five hundred sixty-seven
+* 690: Six hundred ninety
+* 723: Seven hundred twenty-three
+* 815: Eight hundred fifteen
+* 999: Nine hundred ninety-nine
+
+**Invalid Cases:**
+
+* -1: Invalid number. Please enter a number between 0 and 999.
+* 1000: Invalid number. Please enter a number between 0 and 999.

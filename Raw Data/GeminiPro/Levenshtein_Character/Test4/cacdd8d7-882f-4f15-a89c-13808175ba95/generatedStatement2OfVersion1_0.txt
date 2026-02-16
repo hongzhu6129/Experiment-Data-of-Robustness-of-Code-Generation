@@ -1,0 +1,25 @@
+
+
+
+
+**Explanation and Improvements:**
+
+1. **Encapsulation:** The code now uses a `Circle` class to encapsulate the radius, perimeter, and area calculations. This is better object-oriented design.
+
+2. **Clearer Output:** The `main` method now prints the radius, perimeter, and area with clear labels.
+
+3. **JUnit Tests:** The code includes JUnit tests, which are crucial for verifying the correctness of the calculations.
+   - `testZeroRadius()`: Tests the corner case of a zero radius.
+   - `testPositiveRadius()`: Tests a standard positive radius (using the provided example).
+   - `testLargeRadius()`: Tests a large radius to check for potential overflow or other issues.
+   - `testNegativeRadiusException()`: Checks if an `IllegalArgumentException` is thrown (or handles it appropriately) if a negative radius is used.  *This is very important because a circle cannot have a negative radius.*
+
+4. **Floating-Point Comparisons:** When comparing floating-point numbers, it's essential to use a delta (tolerance) because of potential rounding errors. The tests now use `assertEquals(expected, actual, delta)` to account for this.
+
+5. **Negative Radius Handling:** The `Circle` constructor could be modified to explicitly handle negative radii, either by throwing an `IllegalArgumentException` (as shown in the test case) or by taking the absolute value of the radius. Throwing an exception is generally preferred as negative radii are typically invalid input.  I've added a demonstration of this exception handling.
+
+
+
+**How to Run JUnit Tests:**
+
+If you're using an IDE like IntelliJ or Eclipse, you can typically right-click the test class or method and choose "Run."  If you're using the command line, you'll need to have JUnit set up in your project and use a build tool (like Maven or Gradle) or the `java` command with the appropriate classpath settings to run the tests.

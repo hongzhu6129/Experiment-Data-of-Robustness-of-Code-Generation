@@ -1,0 +1,74 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to find the floor (largest element less than or equal to)
+        int element = 35;
+
+        // Get the floor of the element
+        Integer floor = treeSet.floor(element);
+
+        // Print the floor
+        if (floor != null) {
+            System.out.println("Floor of " + element + " is: " + floor);
+        } else {
+            System.out.println("No element less than or equal to " + element + " found.");
+        }
+
+
+        // Example with a String TreeSet
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("grape");
+        stringTreeSet.add("orange");
+
+        String strElement = "cherry";
+        String strFloor = stringTreeSet.floor(strElement);
+
+        if (strFloor != null) {
+            System.out.println("Floor of \"" + strElement + "\" is: \"" + strFloor + "\"");
+        } else {
+            System.out.println("No element less than or equal to \"" + strElement + "\" found.");
+        }
+
+
+
+        // Example where the element is present in the set:
+        int element2 = 40;
+        Integer floor2 = treeSet.floor(element2);
+
+        if (floor2 != null) {
+            System.out.println("Floor of " + element2 + " is: " + floor2);
+        } else {
+            System.out.println("No element less than or equal to " + element2 + " found."); // This won't execute
+        }
+
+
+        // Example with an empty TreeSet
+        TreeSet<Integer> emptyTreeSet = new TreeSet<>();
+        int element3 = 25;
+        Integer floor3 = emptyTreeSet.floor(element3);
+         if (floor3 != null) {
+            System.out.println("Floor of " + element3 + " is: " + floor3);
+        } else {
+            System.out.println("No element less than or equal to " + element3 + " found in the empty set."); 
+        }
+
+
+
+    }
+}
+```

@@ -1,0 +1,12 @@
+
+
+
+Key points:
+
+* **String Interning:** The Java String pool (part of the "String constant pool" in older versions) automatically stores unique string literals (like "hello").  This process is called *interning*. When you create a string literal, Java checks if that literal already exists in the pool. If it does, a reference to the existing string is returned; if not, a new string object is created in the pool and a reference to it is returned.
+* **`intern()` method:** You can explicitly intern any string using the `intern()` method. This guarantees that you'll get the canonical representation of the string (the version from the string pool).
+* **`==` vs. `equals()`:** The `==` operator checks for *reference equality* (whether two variables point to the same object in memory). The `equals()` method checks for *content equality* (whether the characters in two strings are the same).  For interned strings, both `==` and `equals()` will return `true`.  For non-interned strings with the same content, `==` will be `false`, but `equals()` will be `true`.
+* **Canonical Representation:**  The canonical representation of a string is the version stored in the string pool.  The `intern()` method provides a way to obtain it.  String literals are automatically canonicalized.
+
+
+The code demonstrates the concepts and clearly illustrates how to get the canonical representation of strings using `intern()` and the inherent interning of string literals.

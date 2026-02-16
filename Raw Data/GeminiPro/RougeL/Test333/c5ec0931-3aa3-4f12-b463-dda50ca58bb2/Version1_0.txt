@@ -1,0 +1,68 @@
+```java
+public class StringToByteArray {
+
+    public static void main(String[] args) {
+        String str = "Hello, World!"; // Sample string
+
+        // Method 1: Using getBytes() with default charset
+        byte[] byteArray1 = str.getBytes();
+        System.out.println("Byte array (default charset): " + byteArrayToString(byteArray1));
+
+        // Method 2: Using getBytes() with specified charset (e.g., UTF-8)
+        try {
+            byte[] byteArray2 = str.getBytes("UTF-8");
+            System.out.println("Byte array (UTF-8): " + byteArrayToString(byteArray2));
+        } catch (java.io.UnsupportedEncodingException e) {
+            System.err.println("Error: " + e.getMessage()); // Handle the exception
+        }
+
+
+        // Example using a different charset (e.g., ISO-8859-1)
+        try {
+            byte[] byteArray3 = str.getBytes("ISO-8859-1");
+            System.out.println("Byte array (ISO-8859-1): " + byteArrayToString(byteArray3));
+
+            // Converting back to String (important to use the same charset)
+            String restoredString = new String(byteArray3, "ISO-8859-1");
+            System.out.println("Restored string: " + restoredString);
+
+        } catch (java.io.UnsupportedEncodingException e) {
+            System.err.println("Error: " + e.getMessage()); // Handle the exception
+        }
+
+    }
+
+
+    // Helper function to convert byte array to a readable string (for printing)
+    public static String byteArrayToString(byte[] byteArray) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : byteArray) {
+            sb.append(String.format("%02X ", b));
+        }
+        return sb.toString();
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Charset Handling:** The code now demonstrates how to use `getBytes()` with both the default charset and a specified charset (UTF-8). This is crucial because different charsets represent characters differently, and using the correct charset is essential for proper encoding and decoding.  I've also added an example with ISO-8859-1 and how to restore the string afterward using the same charset.
+
+2. **Exception Handling:** The code now includes `try-catch` blocks to handle `UnsupportedEncodingException`.  This is best practice because `getBytes(String charsetName)` can throw this exception if the specified charset is not supported.
+
+3. **Helper Function for Output:** The `byteArrayToString()` function makes the output more readable by formatting each byte in hexadecimal. This is helpful for inspecting the byte values.
+
+4. **Clearer Comments:**  The comments are more descriptive and explain the purpose of each section of the code.
+
+5. **Example of String Restoration:** The code demonstrates how to convert the byte array back into a String, emphasizing the importance of using the *same* charset for encoding and decoding.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `StringToByteArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac StringToByteArray.java`
+3. **Run:** Execute the compiled class using: `java StringToByteArray`
+
+
+The output will show the byte array representation of the string using different charsets. You'll see how the byte values can change depending on the chosen charset.

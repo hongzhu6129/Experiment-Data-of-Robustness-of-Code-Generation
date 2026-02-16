@@ -1,0 +1,62 @@
+```java
+import java.util.LinkedList;
+
+public class GetLastElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> books = new LinkedList<>();
+
+        // Add some elements to the list
+        books.add("The Hitchhiker's Guide to the Galaxy");
+        books.add("Pride and Prejudice");
+        books.add("To Kill a Mockingbird");
+
+        // Check if the list is empty before attempting to retrieve the last element.
+        if (!books.isEmpty()) {
+            // Retrieve the last element using peekLast() � this doesn't remove it.
+            String lastBook = books.peekLast();
+
+            // Print the last element
+            System.out.println("Last book (without removing): " + lastBook);
+
+
+            // Verify that the element is still in the list (peekLast doesn't remove)
+            System.out.println("List after peekLast(): " + books);
+
+
+            // Demonstration of getLast() which *does* throw an exception if the list is empty
+            try {
+                String lastBook2 = books.getLast(); // This will retrieve AND remove
+                System.out.println("Last book (using getLast - removes element): " + lastBook2);
+                System.out.println("List after getLast(): " + books); // List will be shorter
+            } catch (java.util.NoSuchElementException e) {
+                System.out.println("Exception caught (using getLast on an empty list): " + e.getMessage());
+            }
+
+        } else {
+            System.out.println("The list is empty.");
+        }
+
+
+
+
+        // Example with an empty list to demonstrate the exception handling
+        LinkedList<String> emptyList = new LinkedList<>();
+
+        try {
+            String lastEmpty = emptyList.peekLast();  // Safe - returns null for an empty list.
+            if (lastEmpty == null) {
+                System.out.println("peekLast() on empty list returns null.");
+            }
+
+            String lastOfEmpty = emptyList.getLast(); // Throws NoSuchElementException
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println("Exception caught (getLast on an empty list): " + e.getMessage());
+        }
+
+
+
+    }
+}
+```

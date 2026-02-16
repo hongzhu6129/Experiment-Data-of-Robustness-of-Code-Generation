@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong(); // Use long to handle larger numbers
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Notes                                  |
+| --------- | -------- | -------- | --------------- | ------------------------------------- |
+| 1        | 5       | 10      | 50             | Positive numbers                      |
+| 2        | -5      | 10      | -50            | Negative and positive numbers          |
+| 3        | -5      | -10     | 50             | Two negative numbers                 |
+| 4        | 0       | 10      | 0              | Zero multiplied by any number is zero |
+| 5        | 10      | 0       | 0              |                                       |
+| 6        | 0       | 0       | 0              |                                       |
+| 7        | 9223372036854775807 | 1      | 9223372036854775807 | Long.MAX_VALUE                       |
+| 8        | 9223372036854775807 | 2 | -2 | Overflow (corner case)              |
+| 9 | -9223372036854775808 | -1 | -9223372036854775808  | Long.MIN_VALUE                  |
+| 10 | -9223372036854775808 | 2 | 0 | Overflow (corner case) |
+| 11 | 1 | -9223372036854775808 | -9223372036854775808 | |
+| 12 |  2147483647 | 2 | 4294967294 | Integer.MAX_VALUE * 2 (within long range) |
+
+
+
+**Explanation of Corner Cases and Overflow:**
+
+* **Test Case 8 & 10:**  `Long.MAX_VALUE * 2` and `Long.MIN_VALUE * 2` will result in overflow. Java doesn't throw an exception for integer overflow; instead, it wraps around. This is why you get unexpected negative or zero results.
+
+
+**How to Run the Test Cases (Manually):**
+
+1. Compile the Java code: `javac ProductOfTwoNumbers.java`
+2. Run the code: `java ProductOfTwoNumbers`
+3. Enter the input values from the test cases one by one and verify the output against the "Expected Output" column.
+
+**How to Improve Overflow Handling (Optional):**
+
+If you need to detect and handle overflow explicitly, you could use the `Math.multiplyExact()` method introduced in Java 8.  This method throws an `ArithmeticException` if the result overflows.
+
+
+```java
+try {
+    long product = Math.multiplyExact(num1, num2);
+    System.out.println("The product is: " + product);
+} catch (ArithmeticException e) {
+    System.out.println("Overflow occurred!");
+}
+```
+
+
+By including these test cases and potentially handling overflow, you can ensure the reliability and robustness of your program.

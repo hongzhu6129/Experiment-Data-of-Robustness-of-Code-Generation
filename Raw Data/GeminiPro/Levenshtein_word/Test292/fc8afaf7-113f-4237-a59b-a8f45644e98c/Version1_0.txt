@@ -1,0 +1,73 @@
+```java
+public class TransposeArray {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println("Original Array:");
+        print_array(array);
+
+        transpose(array);
+
+        System.out.println("\nTransposed Array:");
+        print_array(array);
+    }
+
+    private static void transpose(int[][] array) {
+        int rows = array.length;
+        int cols = array[0].length;
+
+        if (rows != cols) {
+            System.out.println("Error: Matrix must be square for in-place transposition.");
+            return; // or throw an exception
+        }
+
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = i + 1; j < cols; j++) {  // Note: j starts from i+1 to avoid redundant swaps
+                int temp = array[i][j];
+                array[i][j] = array[j][i];
+                array[j][i] = temp;
+            }
+        }
+    }
+
+
+    private static void print_array(int[][] array) {
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Square Matrix Check:** The `transpose` method now checks if the input array is square (rows == cols).  Transposing a non-square matrix in-place is generally not possible without resizing, so this handles the case gracefully.  It prints an error message and returns; you could alternatively throw an exception.
+
+2. **Efficient Transposition:** The nested loops in `transpose` now iterate more efficiently. The inner loop starts from `j = i + 1`.  This prevents redundant swaps (swapping an element with itself) and also avoids undoing swaps that were already performed. This is the standard approach to in-place matrix transposition.
+
+3. **Clearer Printing:** The `print_array` method uses enhanced for loops (for-each loops) for better readability.
+
+
+**Example Usage and Output:**
+
+```
+Original Array:
+1 2 3 
+4 5 6 
+7 8 9 
+
+Transposed Array:
+1 4 7 
+2 5 8 
+3 6 9 
+```

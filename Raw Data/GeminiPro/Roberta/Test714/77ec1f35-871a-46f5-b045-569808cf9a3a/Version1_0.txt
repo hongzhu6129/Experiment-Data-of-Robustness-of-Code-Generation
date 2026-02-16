@@ -1,0 +1,75 @@
+```java
+import java.util.Arrays;
+
+public class SelectionSort {
+
+    public static void sort(int[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[min_idx]) {
+                    min_idx = j;
+                }
+            }
+
+            // Swap the found minimum element with the first element
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {64, 25, 12, 22, 11};
+        sort(arr1);
+        System.out.println("Sorted array: " + Arrays.toString(arr1));
+
+        int[] arr2 = {5, 1, 4, 2, 8};
+        sort(arr2);
+        System.out.println("Sorted array: " + Arrays.toString(arr2));
+
+
+         int[] arr3 = {}; // Empty array
+        sort(arr3);
+        System.out.println("Sorted array: " + Arrays.toString(arr3));
+
+
+        int[] arr4 = {7};  // Single element array
+        sort(arr4);
+        System.out.println("Sorted array: " + Arrays.toString(arr4));
+
+
+        // Example with duplicates
+        int[] arr5 = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
+        sort(arr5);
+        System.out.println("Sorted array: " + Arrays.toString(arr5));
+
+        // Already sorted array
+        int[] arr6 = {1, 2, 3, 4, 5};
+        sort(arr6);
+        System.out.println("Sorted array: " + Arrays.toString(arr6));
+
+
+        // Reverse sorted array
+        int[] arr7 = {5, 4, 3, 2, 1};
+        sort(arr7);
+        System.out.println("Sorted array: " + Arrays.toString(arr7));
+
+    }
+}
+```
+
+
+Key improvements:
+
+* **Clearer Variable Names:** `min_idx` is more descriptive than just `min`.
+* **Comprehensive Testing:** The `main` method includes various test cases (empty array, single-element array, duplicates, already sorted, reverse sorted) to demonstrate the robustness of the `sort` method.
+* **Output Formatting:** Using `Arrays.toString()` provides a clean and readable output of the sorted arrays.
+* **Adherence to Prompt:**  The code strictly uses only the specified method signatures `public static void sort(int[])` and `public static void main(String[])`.
+
+
+
+This improved version provides a more complete and demonstrably correct implementation of Selection Sort.  The additional test cases in `main` help verify that the algorithm works as expected in different scenarios.

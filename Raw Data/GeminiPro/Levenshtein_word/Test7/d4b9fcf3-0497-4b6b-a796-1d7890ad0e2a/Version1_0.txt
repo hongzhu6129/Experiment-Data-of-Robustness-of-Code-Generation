@@ -1,0 +1,114 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numeric values.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's always closed.
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 to ensure floating-point division
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -5, 10, 15
+   - Expected Output: 6.666666666666667
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 4.1
+   - Expected Output: 3.4333333333333336
+
+7. **Corner Case - Very Large Numbers (potential overflow with integers, but handled correctly with doubles):**
+    - Input:  Double.MAX_VALUE, Double.MAX_VALUE/2,  Double.MAX_VALUE/4  
+    - Expected Output: A very large number (approximately 1.44E308, may vary slightly depending on the system)
+
+
+
+8. **Corner Case: Infinity:**
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE
+   - Expected Output: Infinity
+
+
+9. **Invalid Input - Non-Numeric:**
+   - Input: a, b, c
+   - Expected Output: "Invalid input. Please enter numeric values."
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can run the program and enter the input values manually to verify the output against the expected output.
+
+2. **Automated Testing (Recommended):**  For more robust testing, create unit tests using a testing framework like JUnit.  This will allow you to automate the process of running the tests and checking the results.  Here's an example using JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void calculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void calculateAverageNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+     // Add more tests for other cases...
+
+    @Test
+    void calculateAverageLargeNumbers() {
+        assertEquals(2000000.0, AverageCalculator.calculateAverage(1000000, 2000000, 3000000));
+    }
+
+    @Test
+    void calculateAverageInfinity() {
+         assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE));
+    }
+}
+```
+
+
+By running these tests (e.g., in an IDE or using a build tool), you can automatically verify that your `calculateAverage` function is working correctly for a variety of inputs.  JUnit will report any failures, making it easier to identify and fix bugs.

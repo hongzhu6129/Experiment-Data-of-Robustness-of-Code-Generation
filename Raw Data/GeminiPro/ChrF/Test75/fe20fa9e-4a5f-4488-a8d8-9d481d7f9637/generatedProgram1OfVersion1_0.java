@@ -1,0 +1,17 @@
+public class CollatzConjecture {
+
+    public static void main(String[] args) {
+        int n = 10; // Example starting value. You can change this.
+
+        System.out.print(n);
+
+        while (n != 1) {
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                n = (n * 3) + 1;
+            }
+            System.out.print(" -> " + n);
+        }
+    }
+}

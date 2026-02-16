@@ -1,0 +1,25 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Radius (km) | Expected Perimeter (km) | Expected Area (km�) | Notes                                 |
+| --------- | ----------- | ------------------------ | ------------------- | ------------------------------------ |
+| 1        | 7.5         | 47.1238898...           | 176.7145867...       | Example from the prompt               |
+| 2        | 0           | 0                       | 0                   | Zero radius (corner case)            |
+| 3        | 1           | 6.2831853...           | 3.1415926...       | Unit radius                         |
+| 4        | 10          | 62.831853...           | 314.15926...       | Larger radius                       |
+| 5        | 0.5         | 3.1415926...           | 0.7853981...       | Smaller radius                       |
+| 6        | -1          | Error                    | Error                 | Invalid input (negative radius) Should handle gracefully, e.g., print an error message. |
+| 7        | Double.MAX_VALUE| Infinity or Error        | Infinity or Error      | Extremely large value (corner case). Might overflow depending on how Java handles `Double.MAX_VALUE` in these calculations. Expect an extremely large number or an error/exception.      |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering each radius value from the test cases.  Compare the output with the expected values.
+
+2. **Automated Testing (Recommended):**  For more robust testing, especially with many test cases, use JUnit or another testing framework.  Here�s a basic JUnit example:
+
+   

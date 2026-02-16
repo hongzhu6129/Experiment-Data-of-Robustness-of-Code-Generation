@@ -1,0 +1,52 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentTime {
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+
+        // Previous time (without date, only time) - assuming previous means one second ago
+        LocalDateTime previous = now.minusSeconds(1); 
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String previousTime = previous.format(timeFormatter);
+
+        // Current time (without date, only time)
+        String currentTime = now.format(timeFormatter);
+
+        System.out.println("Previous Time (without date): " + previousTime);
+        System.out.println("Current Time (without date): " + currentTime);
+
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **Import necessary classes:**
+   - `java.time.LocalDateTime`:  Used to work with date and time.
+   - `java.time.format.DateTimeFormatter`: Used to format the date and time into a specific string pattern.
+
+2. **Get current time:**
+   - `LocalDateTime now = LocalDateTime.now();` gets the current date and time.
+
+3. **Calculate previous time:**
+   - `LocalDateTime previous = now.minusSeconds(1);` calculates the time one second before the current time.  You can adjust this if "previous" means something else in your context (e.g., a minute, an hour ago).
+
+4. **Create a Time Formatter:**
+   - `DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");` creates a formatter that will display the time in the format `hours:minutes:seconds`.
+
+5. **Format and print the times:**
+   - `String previousTime = previous.format(timeFormatter);` formats the `previous` LocalDateTime object using the `timeFormatter` to get a string representation of the time.
+   - `String currentTime = now.format(timeFormatter);` does the same for the current time.
+   - `System.out.println(...)` prints the formatted times to the console.
+
+
+**Example Output:**
+
+```
+Previous Time (without date): 10:35:22
+Current Time (without date): 10:35:23 
+``` (The actual output will reflect the time when you run the code).

@@ -1,0 +1,92 @@
+```java
+import java.lang.Math;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Test cases (including corner cases)
+        testCircle(7.5); // Given example
+        testCircle(0);    // Zero radius
+        testCircle(-5);   // Negative radius (should handle gracefully)
+        testCircle(100);  // Large radius
+        testCircle(Double.MAX_VALUE); // Extremely large radius (potential overflow)
+
+
+
+    }
+
+    public static void testCircle(double radius) {
+        try {
+            double perimeter = calculatePerimeter(radius);
+            double area = calculateArea(radius);
+
+            System.out.println("Radius: " + radius);
+            System.out.println("Perimeter: " + perimeter);
+            System.out.println("Area: " + area);
+            System.out.println("--------------------");
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("--------------------");
+        }
+
+    }
+
+    public static double calculatePerimeter(double radius) {
+        if (radius < 0) {
+            throw new IllegalArgumentException("Radius cannot be negative.");
+        }
+        return 2 * Math.PI * radius;
+    }
+
+    public static double calculateArea(double radius) {
+        if (radius < 0) {
+            throw new IllegalArgumentException("Radius cannot be negative.");
+        }
+        return Math.PI * radius * radius;
+    }
+}
+
+```
+
+
+**Explanation and Improvements:**
+
+1. **Test Cases:** The code now includes a `testCircle()` method to systematically test different radius values, including:
+   - The original example (7.5).
+   - Zero radius.
+   - Negative radius (a corner case).
+   - A large radius.
+   - `Double.MAX_VALUE` (to check for potential overflow issues with very large numbers).
+
+2. **Error Handling:** The `calculatePerimeter()` and `calculateArea()` methods now throw an `IllegalArgumentException` if the radius is negative. This is good practice to prevent unexpected behavior or calculations with invalid inputs. The `testCircle` method uses a try-catch block to gracefully handle these exceptions.
+
+3. **Clarity and Readability:** The code is organized into methods for better structure. The output is formatted with clear labels for radius, perimeter, and area.  The `--------------------` visually separates test case outputs.
+
+
+**Output of the Test Cases:**
+
+```
+Radius: 7.5
+Perimeter: 47.12388980384689
+Area: 176.71458676442586
+--------------------
+Radius: 0.0
+Perimeter: 0.0
+Area: 0.0
+--------------------
+Error: Radius cannot be negative.
+--------------------
+Radius: 100.0
+Perimeter: 628.3185307179587
+Area: 31415.926535897932
+--------------------
+Radius: 1.7976931348623157E308
+Perimeter: Infinity   // Demonstrates potential overflow with very large radius.
+Area: Infinity
+--------------------
+```
+
+
+This improved version provides more robust error handling, clearer output, and comprehensive testing, making it a much better solution.  It also demonstrates how extremely large values can lead to `Infinity` in calculations, which is important to be aware of.

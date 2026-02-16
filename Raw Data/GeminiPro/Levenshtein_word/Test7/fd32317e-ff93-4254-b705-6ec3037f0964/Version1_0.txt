@@ -1,0 +1,113 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        try {
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            double num3 = scanner.nextDouble();
+
+            double average = calculateAverage(num1, num2, num3);
+
+            System.out.println("The average is: " + average);
+
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Invalid input. Please enter numbers only.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's closed even if an exception occurs.
+        }
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zero Included:**
+   - Input: 0, 10, 20
+   - Expected Output: 10.0
+
+4. **All Zeros:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.5, 7.5
+   - Expected Output: 5.166666666666667
+
+
+7. **Combination of Positive, Negative and Zero:**
+   - Input: -10, 0, 10
+   - Expected Output: 0.0
+
+8. **Integer Overflow (Corner Case):**  Though `double` can handle very large numbers, let's test near its limits.
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE
+   - Expected Output: Double.MAX_VALUE (or Infinity depending on how Java handles this specific overflow).
+
+9. **Underflow (Corner Case):** Similarly, test very small numbers.
+   - Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE
+   - Expected Output: Double.MIN_VALUE
+
+
+10. **Invalid Input (Corner Case):**
+    - Input: a, b, c  (or 10, 20, x)
+    - Expected Output: "Invalid input. Please enter numbers only."
+
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+While you could manually test, automated tests are better. Here's a JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+   // ... Add more test methods for other cases ...
+
+    @Test
+    void testOverflow(){
+        assertEquals(Double.MAX_VALUE, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)); // Or Infinity might be expected.
+    }
+
+
+}
+```
+
+
+This will give you a much more robust and reliable way to ensure your `AverageCalculator` works correctly under different conditions.  You'll need to add a JUnit library to your project to run these tests. Most IDEs (like IntelliJ or Eclipse) have built-in support for JUnit.

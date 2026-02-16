@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHexadecimal {
+
+    public static String binaryToHex(String binary) {
+        // Handle empty input
+        if (binary == null || binary.isEmpty()) {
+            return ""; 
+        }
+
+        // Handle invalid binary strings (containing characters other than 0 and 1)
+        for (char c : binary.toCharArray()) {
+            if (c != '0' && c != '1') {
+                return "Invalid Binary Input";
+            }
+        }
+
+
+        int decimal = 0;
+        int power = 0;
+
+        // Convert binary to decimal
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        // Convert decimal to hexadecimal
+        return Integer.toHexString(decimal).toUpperCase(); // Use toUpperCase for consistency
+
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+        String hex = binaryToHex(binary);
+        System.out.println("Hexadecimal value: '" + hex + "'");
+        input.close();
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: "1101"
+   - Expected Output: "D"
+
+2. **Leading Zeros:**
+   - Input: "0001101"
+   - Expected Output: "D"
+
+3. **Empty Input:**
+   - Input: ""
+   - Expected Output: ""
+
+4. **Invalid Input (Non-binary characters):**
+   - Input: "1102"
+   - Expected Output: "Invalid Binary Input"
+   - Input: "110a"
+   - Expected Output: "Invalid Binary Input"
+
+5. **Large Binary Number:**
+   - Input: "1111111111111111" (16 ones)
+   - Expected Output: "FFFF"
+
+6. **Zero:**
+   - Input: "0"
+   - Expected Output: "0"
+
+
+7. **Null Input:**
+   - Input:  (user presses enter without typing anything -  handled as null in Scanner)
+   - Expected Output: ""
+
+
+These test cases cover a range of scenarios, including normal operation, boundary conditions (empty input, large numbers, zero), and error handling (invalid input).  Always test your code thoroughly, especially with user inputs, to ensure it handles all possible situations gracefully.

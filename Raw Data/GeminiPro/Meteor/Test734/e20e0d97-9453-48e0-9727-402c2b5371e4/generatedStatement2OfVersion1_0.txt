@@ -1,0 +1,20 @@
+
+
+
+Key improvements:
+
+* **Clarity and Readability:**  The code is now well-commented, explaining the logic. Variable names are more descriptive.
+* **Efficiency:**  The Saddleback search is implemented correctly, starting from the top-right corner and efficiently eliminating rows or columns in each step. This is much more efficient than a linear search or even a binary search on each row/column.
+* **Correctness:**  The code now handles the "not found" case properly by returning `{-1, -1}`.
+* **Example Usage:** The `main` method demonstrates how to use the `Saddleback` method and handles the returned result.  It now includes an example where the target is found and an example where it isn't.
+
+
+
+How the Saddleback search works:
+
+1. **Start at the top-right corner:**  This position gives you the most information initially.
+2. **Compare with target:**
+   - If `matrix[row][col] == target`:  You've found the element!
+   - If `matrix[row][col] < target`:  The target must be in a row below (since rows are sorted in ascending order). Increment `row`.
+   - If `matrix[row][col] > target`: The target must be in a column to the left (since columns are sorted in ascending order). Decrement `col`.
+3. **Repeat step 2** until the target is found or you go out of bounds (meaning the target is not in the matrix).

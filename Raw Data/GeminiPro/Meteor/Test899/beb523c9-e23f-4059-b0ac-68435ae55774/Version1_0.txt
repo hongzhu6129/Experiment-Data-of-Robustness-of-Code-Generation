@@ -1,0 +1,73 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class FirstUniqueCharacter {
+
+    public static void main(String[] args) {
+        String str = "wresource";
+        int index = first_Uniq_Char(str);
+
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "aabbccddeeffgg"; // Example with no unique characters (violates assumption, handle as needed)
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "loveleetcode";  // Example with multiple unique characters
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+
+
+    }
+
+    public static int first_Uniq_Char(String s) {
+        Map<Character, Integer> charCounts = new HashMap<>();
+
+        // Count character frequencies
+        for (char c : s.toCharArray()) {
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+        }
+
+        // Find the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCounts.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+
+
+        // This should not happen if the assumption holds (at least one unique char)
+        //  but we return -1 to indicate no unique character found.
+        return -1; 
+    }
+}
+```
+
+
+Key improvements:
+
+* **Clearer Variable Names:** Using more descriptive names like `charCounts` improves readability.
+* **HashMap for Efficiency:**  Using a `HashMap` to store character counts makes looking up the frequency of each character very efficient (close to constant time).
+* **getOrDefault():**  Using `charCounts.getOrDefault(c, 0) + 1` is a concise way to handle the case where a character is encountered for the first time.
+* **Handles Edge Case (although violates the prompt):**  Added `return -1` to handle the (technically not allowed by the prompt) edge case where there might be no unique character.  This makes the code more robust if the assumption doesn't always hold.
+* **More test cases in `main`:**  Added additional examples to demonstrate the code's behavior.
+
+
+Output of the improved code:
+
+
+```
+Original String: wresource
+First unique character of the above: 0
+Original String: aabbccddeeffgg
+First unique character of the above: -1
+Original String: loveleetcode
+First unique character of the above: 2
+```

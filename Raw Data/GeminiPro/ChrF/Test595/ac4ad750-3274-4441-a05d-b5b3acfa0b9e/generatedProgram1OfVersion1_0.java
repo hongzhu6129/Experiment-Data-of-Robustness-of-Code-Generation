@@ -1,0 +1,31 @@
+import java.util.LinkedList;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> bookList = new LinkedList<>();
+
+        // Add some books to the list
+        bookList.add("The Lord of the Rings");
+        bookList.add("The Hitchhiker's Guide to the Galaxy");
+        bookList.add("Pride and Prejudice");
+
+
+        // Check if the list is empty before retrieving the first element
+        if (!bookList.isEmpty()) {
+            String firstBook = bookList.peek(); // Retrieve the first element (doesn't remove it)
+            //String firstBook = bookList.getFirst(); //  Alternative: getFirst() does the same
+
+
+            System.out.println("The first book in the list is: " + firstBook);
+
+
+            // Print the list to demonstrate that the first element is still there
+            System.out.println("The list remains: " + bookList);
+
+        } else {
+            System.out.println("The list is empty.");
+        }
+    }
+}

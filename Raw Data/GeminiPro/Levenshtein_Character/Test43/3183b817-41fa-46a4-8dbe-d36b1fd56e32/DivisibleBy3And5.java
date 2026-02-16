@@ -1,0 +1,32 @@
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+
+        System.out.println("Numbers divisible by 3:");
+        printDivisibleBy(3);
+
+        System.out.println("\nNumbers divisible by 5:");
+        printDivisibleBy(5);
+
+        System.out.println("\nNumbers divisible by both 3 and 5:");
+        printDivisibleByBoth(3, 5);
+    }
+
+    private static void printDivisibleBy(int divisor) {
+        for (int i = 1; i <= 100; i++) {
+            if (i % divisor == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Add a newline for better formatting
+    }
+
+    private static void printDivisibleByBoth(int divisor1, int divisor2) {
+        for (int i = 1; i <= 100; i++) {
+            if (i % divisor1 == 0 && i % divisor2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Add a newline for better formatting
+    }
+}

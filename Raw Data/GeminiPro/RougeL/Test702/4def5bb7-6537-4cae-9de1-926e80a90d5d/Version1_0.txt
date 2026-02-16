@@ -1,0 +1,57 @@
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+public class PolynomialEvaluation {
+
+    public static void main(String[] args) {
+        // Example coefficients (from highest to lowest power of x)
+        List<Double> coefficients = new ArrayList<>();
+        coefficients.add(6.0); // x^3
+        coefficients.add(-4.0); // x^2
+        coefficients.add(7.0); // x^1
+        coefficients.add(-19.0); // x^0 (constant)
+
+        double x = 3.0;
+
+        double result = polyEval(coefficients, x);
+        System.out.println("Result: " + result);
+    }
+
+    public static double polyEval(List<Double> coefficients, double x) {
+        double result = 0.0;
+        for (int i = 0; i < coefficients.size(); i++) {
+            result = result * x + coefficients.get(i); 
+        }
+        return result;
+    }
+}
+```
+
+**Explanation and How it Implements Horner's Method:**
+
+1. **Horner's Method:** The provided calculation ((((0)x+6)x+(-4))x+7)x+(-19) demonstrates Horner's method (also called Horner's rule or Horner's scheme). This method efficiently evaluates polynomials by minimizing the number of multiplications.
+
+2. **`polyEval` Implementation:**  The `polyEval` method precisely implements Horner's method.
+   - It initializes `result` to 0.
+   - The loop iterates through the coefficients from the highest power of x to the constant term.
+   - In each iteration:
+     - `result` is multiplied by `x`.
+     - The current coefficient is added to `result`.
+
+3. **Example Breakdown (Using x=3 and the provided polynomial):**
+   - **Iteration 1:** `result = (0 * 3) + 6 = 6`
+   - **Iteration 2:** `result = (6 * 3) + (-4) = 18 - 4 = 14`
+   - **Iteration 3:** `result = (14 * 3) + 7 = 42 + 7 = 49`
+   - **Iteration 4:** `result = (49 * 3) + (-19) = 147 - 19 = 128`
+
+Therefore, the final result is 128, as you would expect when evaluating -19 + 7x - 4x^2 + 6x^3 with x = 3.
+
+
+**Key Advantages of Horner's Method:**
+
+* **Efficiency:**  Reduces the number of multiplications compared to a naive approach.
+* **Numerical Stability:**  Can be more stable when dealing with floating-point numbers.
+
+
+This improved code directly implements Horner's method and provides clear comments to explain the process.  The example in `main` demonstrates its usage with the given polynomial and x value.

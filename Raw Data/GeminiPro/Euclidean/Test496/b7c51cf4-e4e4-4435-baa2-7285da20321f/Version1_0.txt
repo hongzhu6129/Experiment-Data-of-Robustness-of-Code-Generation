@@ -1,0 +1,66 @@
+```java
+import java.util.Scanner;
+
+public class TriangleArea {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the sides of the triangle:");
+        double a = scanner.nextDouble();
+        double b = scanner.nextDouble();
+        double c = scanner.nextDouble();
+
+        if (is_Valid(a, b, c)) {
+            double area = area_triangle(a, b, c);
+            System.out.println("The area of the triangle is: " + area);
+        } else {
+            System.out.println("Invalid triangle sides.");
+        }
+        scanner.close();
+    }
+
+    public static boolean is_Valid(double a, double b, double c) {
+        return (a + b > c) && (a + c > b) && (b + c > a) && (a > 0) && (b > 0) && (c > 0);
+    }
+
+    public static double area_triangle(double a, double b, double c) {
+        double s = (a + b + c) / 2; // Calculate semi-perimeter
+        double area = Math.sqrt(s * (s - a) * (s - b) * (s - c)); // Heron's formula
+        return area;
+    }
+}
+```
+
+
+Explanation:
+
+1. **`main` method:**
+   - Takes input for the three sides of the triangle using a `Scanner`.
+   - Calls `is_Valid` to check if the sides form a valid triangle.
+   - If valid, calls `area_triangle` to calculate the area and prints the result.
+   - If invalid, prints an error message.
+   - Closes the `Scanner` to release resources.
+
+
+2. **`is_Valid` method:**
+   - Takes three `double` values as input (sides of the triangle).
+   - Checks the triangle inequality theorem: the sum of any two sides must be greater than the third side. Also checks if all sides are positive.
+   - Returns `true` if the triangle is valid, `false` otherwise.
+
+
+3. **`area_triangle` method:**
+   - Takes three `double` values as input (sides of the triangle).
+   - Calculates the semi-perimeter `s`.
+   - Uses Heron's formula to calculate the area of the triangle.
+   - Returns the calculated area as a `double`.
+
+
+
+Improvements in this version:
+
+* **Input validation:** The `is_Valid` method now also checks for positive side lengths, preventing potential issues with negative or zero inputs.
+* **Error handling:** The `main` method now prints a clear error message if the input sides do not form a valid triangle.
+* **Resource management:** The `Scanner` is now closed after use to prevent resource leaks. 
+* **Clearer variable names:** Uses more descriptive variable names like `a`, `b`, `c` for sides and `s` for semi-perimeter.
+* **Comments:**  Added comments to explain the purpose of different parts of the code.

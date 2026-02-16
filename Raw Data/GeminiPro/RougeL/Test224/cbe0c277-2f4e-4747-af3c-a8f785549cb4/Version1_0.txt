@@ -1,0 +1,60 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index to track the placement of unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1; // New length of the array with unique elements
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+         int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New length: " + len3); // Output: 0
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New length: " + len4 ); // Output: 0
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles cases where the input array is `null` or empty, returning 0 in such scenarios. This makes it more robust.
+
+2. **Clearer Variable Naming:** `uniqueIndex` is used instead of just `j`, which makes the code more readable and understandable.
+
+3. **Efficient In-Place Modification:** The function modifies the array in-place, avoiding the need for extra space (except for the examples in `main` where we print a sub-array for demonstration).
+
+4. **Correct Return Value:**  The function returns the *length* of the updated array (number of unique elements), which is `uniqueIndex + 1`.
+
+5. **Comprehensive `main` Method:** The `main` method includes multiple test cases, including edge cases like an empty array and a `null` array, to demonstrate the function's correctness. It also prints the modified array (or the relevant portion of it) for better visualization.
+6. **Uses `Arrays.copyOfRange`:**  In the `main` method, `Arrays.copyOfRange` is used to print only the relevant portion of the modified array (up to the new length), preventing printing of the unmodified "garbage" values that may remain at the end of the original array.
+
+
+This improved version is more efficient, readable, robust, and adheres to the specified method signatures. It also provides a clear and complete example of how to use the `removeDuplicates` method.

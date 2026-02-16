@@ -1,0 +1,43 @@
+```java
+public class ExcelColumnName {
+
+    public static String Column(int n) {
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = n % 26;
+
+            if (rem == 0) {
+                columnName.insert(0, 'Z');
+                n = (n / 26) - 1;
+            } else {
+                columnName.insert(0, (char) ((rem - 1) + 'A'));
+                n = n / 26;
+            }
+        }
+        return columnName.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Column Name for 1: " + Column(1));  // Output: A
+        System.out.println("Column Name for 28: " + Column(28)); // Output: AB
+        System.out.println("Column Name for 701: " + Column(701));// Output: ZY
+        System.out.println("Column Name for 26: " + Column(26)); // Output: Z
+        System.out.println("Column Name for 52: " + Column(52)); // Output: AZ 
+        System.out.println("Column Name for 702: " + Column(702));// Output: ZZ
+        System.out.println("Column Name for 705: " + Column(705)); // Output: AAC
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles 0 correctly:**  The previous version had an issue where an input of `0` or numbers that resulted in intermediate calculations of `0` would cause problems. This version explicitly checks for a remainder of `0` and handles it appropriately by appending 'Z' and decrementing the quotient by 1.
+* **Clearer logic:** The `if/else` structure makes the special handling of `0` remainder much more obvious.
+* **StringBuilder for Efficiency:**  Uses `StringBuilder` instead of string concatenation for better performance, especially for larger column numbers.
+* **More comprehensive test cases:**  Includes a wider range of test cases to demonstrate the code's correctness, including edge cases and larger numbers.
+
+
+This improved version addresses the shortcomings of the previous versions and provides a more robust and efficient solution.

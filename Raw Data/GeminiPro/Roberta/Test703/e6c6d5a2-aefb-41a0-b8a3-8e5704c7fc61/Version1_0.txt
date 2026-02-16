@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class BinomialCoefficient {
+
+    private static long binomial_Coefficient(int n, int k) {
+        if (k < 0 || k > n) {
+            return 0; // Handle invalid input where k is out of range
+        }
+        if (k == 0 || k == n) {
+            return 1;
+        }
+        if (k > n / 2) {
+            k = n - k; // Optimization: nCk = nC(n-k)
+        }
+        long result = 1;
+        for (int i = 1; i <= k; i++) {
+            result = result * (n - i + 1) / i;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        System.out.print("Enter the value of k: ");
+        int k = scanner.nextInt();
+
+        if (n < 0 ) {  // Validate n 
+            System.out.println("n must be non-negative.");
+        } else if (k < 0) { // Validating k is done inside binomial_Coefficient
+             System.out.println("The binomial coefficient is: " + binomial_Coefficient(n,k));
+        } else {
+            long coefficient = binomial_Coefficient(n, k);
+            System.out.println("The binomial coefficient C(" + n + ", " + k + ") is: " + coefficient);
+        }
+        scanner.close();
+    }
+}
+
+```
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The `binomial_Coefficient` method now handles cases where `k` is outside the valid range (0 to `n`) by returning 0. This prevents unexpected results or exceptions. The `main` method also checks that 'n' is non-negative.
+
+2. **Optimization:** The code includes the optimization `k = n - k` if `k > n / 2`. This leverages the symmetry property of binomial coefficients (nCk = nC(n-k)) to reduce the number of calculations, especially for large values of `n` and `k`.
+
+3. **Clearer Calculation:** The calculation of the binomial coefficient within the loop is made more explicit using `result = result * (n - i + 1) / i;`. This approach minimizes the risk of integer overflow by performing the multiplication before the division.
+
+4. **User Input:** The `main` method uses a `Scanner` to take user input for `n` and `k`, making the program interactive.
+
+5. **Informative Output:** The program provides clear output, including the values of `n` and `k` used in the calculation.
+
+
+This improved version is more robust, efficient, and user-friendly. It adheres to the specified method signatures and effectively calculates binomial coefficients while handling potential errors and edge cases.

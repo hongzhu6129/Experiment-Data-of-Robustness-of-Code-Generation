@@ -1,0 +1,57 @@
+```java
+public class StringConversions {
+
+    public static void main(String[] args) {
+        String numStr = "12345";
+        String floatStr = "3.14159";
+        String doubleStr = "2.718281828459045";
+
+        try {
+            // Convert to int
+            int numInt = Integer.parseInt(numStr);
+            System.out.println("Integer: " + numInt);
+
+            // Convert to long
+            long numLong = Long.parseLong(numStr);
+            System.out.println("Long: " + numLong);
+
+
+            // Convert to float
+            float numFloat = Float.parseFloat(floatStr);
+            System.out.println("Float: " + numFloat);
+
+            // Convert to double
+            double numDouble = Double.parseDouble(doubleStr);
+            System.out.println("Double: " + numDouble);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid number format: " + e.getMessage());
+        }
+
+
+          // Demonstrating another potential string (handling errors gracefully)
+        String invalidNumStr = "123a45"; // Contains a non-numeric character
+
+          try {
+            int invalidInt = Integer.parseInt(invalidNumStr);
+            System.out.println("Invalid Integer: " + invalidInt); // This line won't be reached due to the exception
+          } catch (NumberFormatException e) {
+             System.err.println("Invalid number format for '123a45': " + e.getMessage());
+          }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Error Handling:** The code now includes `try-catch` blocks to handle potential `NumberFormatException` errors. This is crucial because if the input string cannot be parsed into the desired numeric type, the program would crash without error handling. The `try-catch` prevents this and provides informative error messages.
+* **Clearer Output:**  The output now clearly labels each converted value (e.g., "Integer:", "Float:", etc.), making it easier to understand the results.
+* **Example with Invalid Input:** An example with an invalid input string (`"123a45"`) is included to demonstrate how the error handling works.  This shows the user what happens when the conversion fails.
+* **Comments:**  Comments are added to explain the different parts of the code, making it more readable and maintainable.
+
+
+
+
+
+This revised version addresses the potential problems and provides a more robust and user-friendly solution.

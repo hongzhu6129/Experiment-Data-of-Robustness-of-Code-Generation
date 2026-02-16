@@ -1,0 +1,37 @@
+import java.util.HashMap;
+
+public class StringChecker {
+
+    public static void main(String[] args) {
+        System.out.println(test("abc", "cba")); // True
+        System.out.println(test("abc", "cbAa")); // False
+        System.out.println(test("aabbc", "abbc")); // True
+        System.out.println(test("aabbcc", "aabbc")); // True
+        System.out.println(test("abc", "cbac")); // False
+        System.out.println(test("", "")); // True
+        System.out.println(test("abc", "")); // True
+        System.out.println(test("", "abc")); // False
+
+
+    }
+
+    public static boolean test(String str1, String str2) {
+        if (str2.length() > str1.length()) {
+            return false; // str2 cannot be formed if it's longer
+        }
+
+        HashMap<Character, Integer> charCounts1 = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            charCounts1.put(c, charCounts1.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : str2.toCharArray()) {
+            if (!charCounts1.containsKey(c) || charCounts1.get(c) == 0) {
+                return false; // Character not present or not enough occurrences
+            }
+            charCounts1.put(c, charCounts1.get(c) - 1);
+        }
+
+        return true; 
+    }
+}

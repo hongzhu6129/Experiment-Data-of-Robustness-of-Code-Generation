@@ -1,0 +1,84 @@
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+        
+        // Method 1: Iterate and remove (destructive)
+        // While this approach clears the queue, it demonstrates how to retrieve elements
+        // in their natural order (for Strings, lexicographical).
+        // If preserving the queue is needed, use method 2.
+
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll());  // poll() retrieves and removes the head
+        }
+
+        // Method 2: Iterate without removing (non-destructive). Requires Java 8+
+        // This preserves the queue. If you need ordered retrieval *and* to keep the queue intact,
+        // this is the preferred way.  Requires adding elements again as method 1 empties the queue.
+        // Re-add elements:
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        System.out.println("\nElements without removing (Java 8+):");
+        colorQueue.forEach(System.out::println);
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **Import PriorityQueue:** The `java.util.PriorityQueue` class is imported to use priority queue functionality.
+
+2. **Create PriorityQueue:** A `PriorityQueue` named `colorQueue` is created to store strings (colors in this case). By default, a `PriorityQueue` orders elements in their natural order (for strings, this is lexicographical/alphabetical order).
+
+3. **Add elements:**  The `add()` method adds colors to the queue.
+
+4. **Print elements (Method 1: Destructive):** The `while` loop iterates as long as the queue is not empty. Inside the loop, `poll()` is used to retrieve and *remove* the head (the element with the highest priority � in this case, the lexicographically smallest string). This is printed to the console. This method empties the queue.
+
+5. **Print elements (Method 2: Non-Destructive - Java 8+):** This method shows how to print the elements *without* removing them from the queue using the `forEach` method (requires Java 8 or later).  Since Method 1 emptied the queue, the code re-adds the color strings.  This is the preferred way if you need to maintain the queue after printing its contents in order.
+
+
+Output of Method 1:
+
+```
+Elements of the priority queue:
+Blue
+Green
+Orange
+Red
+Yellow 
+```
+
+Output of Method 2 (added after Method 1):
+
+```
+Elements without removing (Java 8+):
+Blue
+Green
+Orange
+Red
+Yellow
+```
+

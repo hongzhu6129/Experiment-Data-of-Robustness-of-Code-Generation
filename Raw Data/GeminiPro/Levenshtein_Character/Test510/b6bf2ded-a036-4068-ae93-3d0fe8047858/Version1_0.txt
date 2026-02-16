@@ -1,0 +1,77 @@
+```java
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Kaprekar numbers less than 1000:");
+        int count = 0;
+        for (int i = 1; i < 1000; i++) {
+            if (isKaprekar(i)) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+        System.out.println("\n" + count + " Kaprekar numbers.");
+    }
+
+    private static boolean isKaprekar(int n) {
+        long square = (long) n * n;
+        String sqStr = String.valueOf(square);
+        int numDigits = sqStr.length();
+
+        for (int i = 1; i < numDigits; i++) {
+            String[] parts = split_num(sqStr, i);
+            if (parts[1].length() > 0 &&  // Avoid cases where right part is empty string
+                 Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]) == n ) { 
+                 return true;
+            }
+        }
+        return false;
+    }
+
+
+    private static String[] split_num(String numStr, int splitIndex) {
+        String left = numStr.substring(0, splitIndex);
+        String right = numStr.substring(splitIndex);
+
+         // Handle leading zeros in the right part.  If the whole right part is 0, that's valid.
+        if (right.length() > 0 && right.charAt(0) == '0' && !right.equals("0")) { 
+           return new String[]{"",""};  // Signal that this split is invalid
+        }
+
+        if(left.length() == 0 ){ // If the left side is 0 due to splitting, handle it as a single digit
+            return new String[] {"0", right}; 
+        }
+         
+
+        return new String[]{left, right};
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Handles Leading Zeros:** The original code didn't handle leading zeros in the right part of the split correctly (e.g., for 9, 9*9 = 81, it should consider 8 + 1, but the initial approach would interpret "01" as 1 which is okay). The updated `split_num` function addresses this by checking for leading zeros and returning an empty string array which signals that this particular split position is not valid. If the entire right part is "0", it's considered valid (like in the case of 9).
+
+2. **Clearer Variable Names:** More descriptive variable names improve readability.
+
+3. **Long for Square:**  Using `long` for the square prevents potential overflow issues when squaring larger numbers (although it's not strictly needed for numbers under 1000, it's good practice).
+
+4. **Handles Edge Cases:** Added a check for the empty string case in `split_num` using `right.length() > 0`. This addresses a potential `NumberFormatException` that might occur when trying to parse an empty string.
+
+5. **Comments and Structure:**  Added comments to explain the logic and improved code structure for clarity.
+
+
+
+**How it works:**
+
+- The `main` method iterates through numbers from 1 to 999.
+- `isKaprekar` checks if a number is a Kaprekar number by:
+    - Calculating the square.
+    - Splitting the square's string representation at different positions.
+    - Checking if the sum of the left and right parts equals the original number.
+- `split_num` handles the splitting of the squared number's string into two parts. The added check for the empty string ensures that the splitting operation yields meaningful segments for the Kaprekar number calculation.
+
+
+
+This improved version is more robust and accurate in identifying Kaprekar numbers while adhering to the specified method signatures.

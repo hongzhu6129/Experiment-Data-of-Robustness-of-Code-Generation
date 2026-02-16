@@ -1,0 +1,47 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadTextFile {
+
+    public static void main(String[] args) {
+        // Replace "path/to/your/file.txt" with the actual path to your file.
+        String filePath = "path/to/your/file.txt"; 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line); // Print each line of the file
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Try-with-resources:** The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` is automatically closed, even if an exception occurs. This is crucial for proper resource management.
+
+2. **Error Handling:** The `catch (IOException e)` block catches potential `IOExceptions` (e.g., file not found) and prints an informative error message to the console.  This is essential for robust code.
+
+3. **Clearer Variable Naming:**  `filePath` is a more descriptive variable name than just `file`.
+
+4. **Comments:**  Added comments explaining the purpose of the code and highlighting the need to replace the placeholder filepath.
+
+5. **Line-by-line Reading:** The `while` loop reads the file line by line using `reader.readLine()`, which is generally more efficient than reading the entire file into memory at once, especially for large files.
+
+
+**How to Use:**
+
+1. **Save:** Save the code as `ReadTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac ReadTextFile.java`
+3. **Run:** Execute the compiled code with: `java ReadTextFile`
+
+   * **Important:**  Make sure to replace `"path/to/your/file.txt"` with the *actual* path to the text file you want to read.  For example: `"C:/Users/YourName/Documents/my_text_file.txt"` or `"/home/youruser/documents/my_text_file.txt"`.  If the file is in the same directory as your Java file, you can just use the filename, e.g., `"my_text_file.txt"`.
+
+
+This improved version provides better error handling, resource management, and clarity, making it a more robust and practical solution for reading text files in Java.

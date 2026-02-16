@@ -1,0 +1,83 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReadFileLineByLine {
+
+    public static void main(String[] args) {
+
+        // 1. Specify the file path.  Make sure this path is correct for your system.
+        String filePath = "my_file.txt"; // Replace with your file's path
+
+        // 2. Create a List to store each line as a String.
+        List<String> fileLines = new ArrayList<>();
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            String line;
+
+            // 3. Read the file line by line until the end of the file is reached.
+            while ((line = reader.readLine()) != null) {
+                // 4. Add each line to the List.
+                fileLines.add(line); 
+            }
+
+        } catch (IOException e) {
+            // 5. Handle potential IOExceptions (e.g., file not found).
+            System.err.println("Error reading the file: " + e.getMessage());
+            // You might want to exit the program or take other actions here
+            System.exit(1); // Exit with an error code
+        }
+
+        // 6. Now 'fileLines' contains all lines from the file. You can process them.
+
+        // Example: Print the lines to the console:
+        System.out.println("File contents:");
+        for (String l : fileLines) {
+            System.out.println(l);
+        }
+
+
+        // Example: Store the entire file content as a single String (if needed)
+        StringBuilder sb = new StringBuilder();
+        for(String l : fileLines) {
+            sb.append(l).append("\n"); // Append each line with a newline character
+        }
+        String entireFileContent = sb.toString();
+
+
+        System.out.println("\nEntire file content as a single String:");
+        System.out.println(entireFileContent);
+
+
+    }
+}
+```
+
+
+**Explanation and Key improvements:**
+
+1. **Clearer file path handling:**  The `filePath` is now a variable, making it easier to change.  Emphasize the importance of providing the correct path.
+
+2. **List for storing lines:** Uses an `ArrayList` to store each line individually, which is a common and efficient way to handle file data.
+
+3. **Try-with-resources:** This ensures that the `BufferedReader` is closed automatically, even if exceptions occur, preventing resource leaks.
+
+4. **Robust error handling:** The `catch` block now provides more informative error messages and exits the program gracefully with an error code if the file cannot be read.
+
+5. **Clear comments:** The code is well-commented, explaining each step of the process.
+
+6. **Example usage:** The code demonstrates how to print the lines and how to combine them into a single string if required.
+
+7. **StringBuilder for concatenation:**  If you need the entire file as a single string, using `StringBuilder` is much more efficient than string concatenation using `+`.
+
+
+**To use this code:**
+
+1. **Create a text file named `my_file.txt`** (or whatever you set `filePath` to) in the same directory as your Java file (or specify the full path).
+2. **Put some text in the file.**
+3. **Compile and run the Java code.**  The contents of the file will be printed to the console.

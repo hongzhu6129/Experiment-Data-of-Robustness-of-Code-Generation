@@ -1,0 +1,59 @@
+```java
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        Set<String> allZoneIds = ZoneId.getAvailableZoneIds();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+
+        System.out.println("Time Zones with offset +06:00 and GMT:");
+        for (String zoneId : allZoneIds) {
+            ZoneId zone = ZoneId.of(zoneId);
+            ZonedDateTime now = ZonedDateTime.now(zone);
+
+            if (now.getOffset().getTotalSeconds() == 6 * 60 * 60 || zone.getId().equals("GMT") || zone.getId().equals("UTC") || zone.getId().equals("Etc/GMT")) { // Check for +06:00 offset or GMT/UTC
+                System.out.println(zone.getId() + ": " + formatter.format(now)); 
+            }
+        }
+    }
+}
+```
+
+
+Explanation:
+
+1. **Get Available Zone IDs:**
+   - `ZoneId.getAvailableZoneIds()` retrieves a set of strings representing all available time zone IDs.
+
+2. **Create a DateTimeFormatter:**
+   - `DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z")` creates a formatter to display the date and time in a specific format, including the time zone abbreviation.
+
+3. **Iterate through Zone IDs:**
+   - The code loops through each `zoneId` in the `allZoneIds` set.
+
+4. **Get Zone and Current Time:**
+   - `ZoneId.of(zoneId)` creates a `ZoneId` object from the string ID.
+   - `ZonedDateTime.now(zone)` gets the current date and time in the specified zone.
+
+5. **Filter for +06:00 or GMT/UTC:**
+   - `now.getOffset().getTotalSeconds() == 6 * 60 * 60` checks if the time zone offset is +06:00 (6 hours * 60 minutes/hour * 60 seconds/minute).
+   - `zone.getId().equals("GMT") || zone.getId().equals("UTC")  || zone.getId().equals("Etc/GMT")` checks if the time zone ID is "GMT", "UTC" (Coordinated Universal Time which is essentially the same as GMT) or "Etc/GMT" (another way to represent GMT/UTC).
+
+6. **Print Time Zone Information:**
+   - If the zone matches the criteria, the code prints the zone ID and the formatted date and time.
+
+
+Key Improvements:
+
+- **Handles GMT/UTC Correctly:**  Includes checks for "GMT", "UTC", and "Etc/GMT".
+- **Clearer Filtering:**  The `if` condition is more explicit about what's being checked.
+- **Uses ZonedDateTime:**  `ZonedDateTime` is the recommended class for working with date and time in a specific time zone.
+- **Formatted Output:** The output is formatted using a `DateTimeFormatter` for better readability.
+
+
+This revised code directly addresses the prompt's request and provides a more robust and accurate solution.

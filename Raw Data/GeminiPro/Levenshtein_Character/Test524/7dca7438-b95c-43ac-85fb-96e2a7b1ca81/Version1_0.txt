@@ -1,0 +1,88 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input handling (replace with your preferred method, e.g., Scanner)
+        int num = 8; // Example input, replace with user input
+        if (args.length > 0) {  // Read input from command line arguments
+            try {
+                num = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter an integer.");
+                return; // Exit if input is not a valid integer
+            }
+        }
+
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int num) {
+        if (num < 0) {  // Handle negative numbers (cubes can be negative)
+            return isCube(-num); 
+        } else if (num == 0) { // Handle zero explicitly
+            return true;
+        } else {
+            int cbrt = (int) Math.round(Math.cbrt(num)); // Calculate cube root
+            return cbrt * cbrt * cbrt == num;         // Check if cube root cubed equals original number
+        }
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Input Handling:** The code now uses command-line arguments for input. If you want to use `Scanner`, replace the input section with:
+
+   ```java
+   Scanner scanner = new Scanner(System.in);
+   System.out.print("Input a number: ");
+   if (scanner.hasNextInt()) {
+       num = scanner.nextInt();
+   } else {
+       System.out.println("Invalid input. Please enter an integer.");
+       return;
+   }
+   ```
+
+2. **Negative Numbers:** The `isCube` method now correctly handles negative numbers. The cube of a negative number is also negative.
+
+3. **Zero:**  Handles the case where the input is zero explicitly.
+
+4. **Cube Root Calculation:** Calculates the cube root using `Math.cbrt()`.
+
+5. **Verification:** Checks if the cube of the calculated cube root is equal to the original number. This ensures accuracy, especially for larger numbers.
+
+6. **Error Handling:** Includes basic error handling for non-integer input using a `try-catch` block.
+
+7. **Efficiency (for large numbers - optional):** If you are dealing with extremely large numbers where `Math.cbrt()` might have precision issues, you could consider using a binary search approach to find the cube root instead.
+
+
+**How to Compile and Run (Command Line):**
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile: `javac CubeChecker.java`
+3. **Run:**  `java CubeChecker 8` (replace 8 with the number you want to check)
+
+
+**Example Usage and Output:**
+
+```
+java CubeChecker 8
+Number is a cube.
+
+java CubeChecker 9
+Number is not a cube.
+
+java CubeChecker -27
+Number is a cube.
+
+java CubeChecker abc 
+Invalid input. Please enter an integer.
+```

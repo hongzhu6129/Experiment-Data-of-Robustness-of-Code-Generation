@@ -1,0 +1,82 @@
+```java
+public class FacePrinter {
+
+    public static void main(String[] args) {
+        printFace();
+    }
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"+");
+        System.out.println(" [| o o |]");
+        System.out.println("  |  ^  |");
+        System.out.println("  | '-' |");
+        System.out.println("  +-----+");
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider testing in a broader sense.  Here's how we can approach it:
+
+1. **Visual Inspection:**  The primary test is to run the program and visually verify that the output matches the intended face.  This is often the most practical approach for simple output-based programs.
+
+2. **Output Redirection (for automated testing):**  We can redirect the output to a file and compare it against an expected output file.  This allows for automated testing.
+
+   ```bash
+   java FacePrinter > output.txt
+   diff output.txt expected_output.txt 
+   ```
+
+   `expected_output.txt` would contain:
+
+   ```
+     +\"\"\"\"+
+   [| o o |]
+     |  ^  |
+     | '-' |
+     +-----+
+   ```
+
+3. **Character-by-Character Comparison (more robust automated testing):** In a unit testing framework like JUnit, you could capture the output stream and compare the actual output string against the expected string character by character.  This is more robust than simple file comparison, especially for handling whitespace differences.
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import java.io.ByteArrayOutputStream;
+   import java.io.PrintStream;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class FacePrinterTest {
+
+       @Test
+       public void testPrintFace() {
+           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outputStream)); // Redirect System.out
+
+           FacePrinter.printFace();
+
+           String expectedOutput = "  +\"\"\"\"+ \n" +  // Note: Include newlines!
+                                   "[| o o |] \n" +
+                                   "  |  ^  | \n" +
+                                   "  | '-' | \n" +
+                                   "  +-----+ \n";
+
+
+           assertEquals(expectedOutput, outputStream.toString());
+
+           System.setOut(System.out); // Restore System.out
+       }
+   }
+   ```
+
+**Corner Cases (Not Applicable in this Specific Example):**
+
+For this particular program, there are no real "corner cases" in the traditional input-based sense.  The output is fixed and doesn't depend on any external factors. However, if the program were modified to take input (e.g., to change the facial expression), then we would need to consider corner cases such as:
+
+* **Invalid input:**  What if the user enters non-expected characters or values?
+* **Empty input:** What if the user provides no input?
+* **Boundary conditions:** What if the input is at the limits of acceptable values (e.g., maximum length of a string)?
+
+
+
+This enhanced explanation provides a much more comprehensive understanding of how to test even simple programs like this and sets the stage for more complex testing scenarios.

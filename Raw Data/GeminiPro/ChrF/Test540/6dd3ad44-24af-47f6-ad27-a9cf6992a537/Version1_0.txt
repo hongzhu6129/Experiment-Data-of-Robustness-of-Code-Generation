@@ -1,0 +1,94 @@
+```java
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class CheckPathType {
+
+    public static void main(String[] args) {
+        // Example usage:  You can provide the path as a command-line argument
+        //                 or directly within the code as shown below.
+
+        // Method 1: Get path from command-line arguments
+        if (args.length > 0) {
+            checkPath(args[0]);  // Check the first argument provided
+        } else {
+            System.out.println("Please provide a pathname as a command-line argument.");
+        }
+
+        // Method 2: Hardcoded path (for demonstration)
+        String examplePath1 = "/path/to/your/directory"; // Replace with a real directory
+        String examplePath2 = "/path/to/your/file.txt";  // Replace with a real file
+
+
+        checkPath(examplePath1);
+        checkPath(examplePath2);
+
+        // Method 3: Using Path object 
+        Path path1 = Paths.get(examplePath1);
+        Path path2 = Paths.get(examplePath2);
+
+        checkPath(path1);
+        checkPath(path2);
+
+
+
+    }
+
+
+    private static void checkPath(String pathString) {
+        File file = new File(pathString);
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                System.out.println(pathString + " is a directory.");
+            } else if (file.isFile()) {
+                System.out.println(pathString + " is a file.");
+            }
+        } else {
+            System.out.println(pathString + " does not exist.");
+        }
+    }
+
+    // Overloaded method to handle Path objects directly
+    private static void checkPath(Path path) {
+        if (Files.exists(path)) { // More robust check, handles symbolic links better
+            if (Files.isDirectory(path)) {
+                System.out.println(path + " is a directory.");
+            } else if (Files.isRegularFile(path)) { // Use isRegularFile to specifically check for files (not symbolic links etc.)
+                System.out.println(path + " is a file.");
+            } else {
+                System.out.println(path + " exists but is not a regular file or directory (e.g., could be a symbolic link).");
+            }
+        } else {
+            System.out.println(path + " does not exist.");
+        }
+    }
+
+
+
+
+}
+```
+
+
+Key Improvements and Explanations:
+
+* **Handles Command-Line Arguments:**  The code now demonstrates how to accept the path as a command-line argument, making it more flexible.
+* **Clearer Output:** The output messages are more informative, indicating whether the path is a directory, a file, or doesn't exist.
+* **Overloaded `checkPath` Method:** An overloaded `checkPath` method is introduced to directly accept `Path` objects (from `java.nio.file.Path`). This is often a better approach when working with paths.
+* **Uses `Files` Class (java.nio.file):** `Files.exists()`, `Files.isDirectory()`, and `Files.isRegularFile()` offer better handling, especially when dealing with symbolic links or other special file types. `Files.isRegularFile()` ensures you're checking for standard files and not something like a symbolic link that might be mistaken for a file.
+* **Handles Nonexistent Paths:** The code correctly handles cases where the given path doesn't exist.
+* **Example Usage:** The `main` method provides example usage with both hardcoded paths and command-line arguments, making it easier to understand and test the code.
+* **Robustness:** Using the `Files` class makes the code more robust by handling edge cases more effectively. 
+
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CheckPathType.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac CheckPathType.java`
+3. **Run with command-line argument:** `java CheckPathType /path/to/your/directory` (replace `/path/to/your/directory` with the actual path you want to check).
+
+
+This improved version provides a more complete and robust solution to the problem of checking file/directory types in Java.

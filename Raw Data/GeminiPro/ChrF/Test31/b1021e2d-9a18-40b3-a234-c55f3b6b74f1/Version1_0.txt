@@ -1,0 +1,116 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble());
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble());
+
+        double radius = 6371.01; // Earth's radius in kilometers
+
+        double distance = radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) +
+                Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Given Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: 40
+   - Longitude 2: -74
+   - Expected Output: 0 km
+
+3. **Opposite Sides of Earth (Antipodes):**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: -40  
+   - Longitude 2: 106  (180 degrees opposite of -74)
+   - Expected Output: ~20015.09 km (Approximately Earth's diameter)
+
+4. **North Pole to Equator:**
+   - Latitude 1: 90
+   - Longitude 1: 0 
+   - Latitude 2: 0
+   - Longitude 2: 0  (Longitude doesn't matter when one point is at a pole)
+   - Expected Output: ~10007.54 km (Approximately a quarter of Earth's circumference)
+
+
+5. **Points near the International Date Line:**
+   - Latitude 1: 10
+   - Longitude 1: 179
+   - Latitude 2: 10
+   - Longitude 2: -179
+   - Expected Output:  A small distance, not a large one.  The formula correctly handles the date line wraparound.
+
+
+6. **Invalid Input (optional):**
+   - Test with latitude values outside the range -90 to +90 and longitude values outside the range -180 to +180.  Your program should ideally handle these cases gracefully, perhaps by throwing an exception or printing an error message.
+
+
+
+
+**How to Run Test Cases:**
+
+You can manually input these values into your program or, for a more automated approach, consider creating a separate test class using a testing framework like JUnit.  A JUnit test would allow you to define these test cases and automatically compare the actual output of your `EarthDistance` program with the expected values. This is a good practice for any serious Java development.
+
+
+**Example JUnit Test (using JUnit 5):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class EarthDistanceTest {
+
+    @Test
+    void testGivenExample() {
+        assertEquals(1480.084845, EarthDistance.calculateDistance(25, 35, 35.5, 25.5), 0.0001); // Delta for tolerance
+    }
+
+    // ... other test methods for the remaining test cases ...
+
+    // Helper method to encapsulate the distance calculation
+    private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        double radius = 6371.01;
+        lat1 = Math.toRadians(lat1); // Convert inside the helper method
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+        return radius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+    }
+
+
+}
+```
+
+Remember to add the JUnit library to your project if you use this testing approach.  The automated tests will help ensure your `EarthDistance` program is working correctly and continues to do so as you make changes.

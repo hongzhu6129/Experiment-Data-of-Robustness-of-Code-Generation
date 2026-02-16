@@ -1,0 +1,45 @@
+```java
+import java.util.Arrays;
+
+public class MergeSevenSortedArrays {
+
+    public static void main(String[] args) {
+        // Example sorted arrays (replace with your actual arrays)
+        int[] arr1 = {2, 5, 8};
+        int[] arr2 = {1, 4, 7};
+        int[] arr3 = {3, 6, 9};
+        int[] arr4 = {10, 12, 15};
+        int[] arr5 = {11, 13, 14};
+        int[] arr6 = {16, 18, 20};
+        int[] arr7 = {17, 19, 21};
+
+        // Calculate the total length of the merged array
+        int totalLength = arr1.length + arr2.length + arr3.length + arr4.length + arr5.length + arr6.length + arr7.length;
+
+        // Create the merged array
+        int[] mergedArray = new int[totalLength];
+
+        // Merge the arrays using arraycopy
+        int currentIndex = 0;
+        System.arraycopy(arr1, 0, mergedArray, currentIndex, arr1.length);
+        currentIndex += arr1.length;
+        System.arraycopy(arr2, 0, mergedArray, currentIndex, arr2.length);
+        currentIndex += arr2.length;
+        System.arraycopy(arr3, 0, mergedArray, currentIndex, arr3.length);
+        currentIndex += arr3.length;
+        System.arraycopy(arr4, 0, mergedArray, currentIndex, arr4.length);
+        currentIndex += arr4.length;
+        System.arraycopy(arr5, 0, mergedArray, currentIndex, arr5.length);
+        currentIndex += arr5.length;
+        System.arraycopy(arr6, 0, mergedArray, currentIndex, arr6.length);
+        currentIndex += arr6.length;
+        System.arraycopy(arr7, 0, mergedArray, currentIndex, arr7.length);
+
+        // Sort the merged array
+        Arrays.sort(mergedArray);
+
+        // Print the merged and sorted array (optional)
+        System.out.println(Arrays.toString(mergedArray));
+    }
+}
+```

@@ -1,0 +1,58 @@
+```java
+public class ExcelColumnName {
+
+    public static String Column(int n) {
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = n % 26;
+
+            if (rem == 0) {
+                columnName.append("Z");
+                n = (n / 26) - 1;
+            } else {
+                columnName.append((char) ((rem - 1) + 'A'));
+                n = n / 26;
+            }
+        }
+
+        return columnName.reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Column Name for 1: " + Column(1));     // Output: A
+        System.out.println("Column Name for 28: " + Column(28));    // Output: AB
+        System.out.println("Column Name for 701: " + Column(701));   // Output: ZY
+        System.out.println("Column Name for 702: " + Column(702));   // Output: ZZ
+        System.out.println("Column Name for 703: " + Column(703));   // Output: AAA
+        System.out.println("Column Name for 16384: " + Column(16384)); // Output: XFD
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **`Column(int n)` method:**
+   - Takes an integer `n` (the column number) as input.
+   - Uses a `StringBuilder` to build the column name because we need to append characters in reverse order.
+   - The `while` loop continues as long as `n` is greater than 0.
+   - Inside the loop:
+     - `rem = n % 26` calculates the remainder when `n` is divided by 26 (since there are 26 letters in the alphabet).
+     - **Handling the 'Z' case:** If `rem` is 0, it means the last letter should be 'Z', and we need to adjust `n` accordingly (subtract 1 after dividing by 26). This is crucial for cases like 26, 52, 78, etc.
+     - **Other letters:** If `rem` is not 0, we calculate the corresponding character by adding `rem - 1` to 'A'.
+     - `n = n / 26` updates `n` for the next iteration.
+   - Finally, we reverse the `StringBuilder` using `reverse()` and convert it to a string using `toString()`.
+
+2. **`main` method:**
+   - Includes test cases to demonstrate how to use the `Column` method and the expected output.
+
+
+
+Key improvements in this version:
+
+- **Handles 'Z' correctly:**  The code now correctly handles cases where the column name includes 'Z' (e.g., 26, 52, 702).
+- **Uses `StringBuilder`:**  Using `StringBuilder` for string manipulation within the loop is more efficient than repeated string concatenation.
+- **Clearer variable names:** Using more descriptive variable names like `columnName` improves readability.
+- **Comprehensive test cases:**  The included test cases cover a wider range of input values, including edge cases like 1, 26, 701, 702, and larger numbers.

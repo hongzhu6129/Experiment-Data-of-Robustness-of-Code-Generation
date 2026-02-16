@@ -1,0 +1,84 @@
+```java
+import java.util.Arrays;
+
+public class ExponentialSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+        int target = 12;
+        int index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+        // Test case 2: Element not present
+        target = 15;
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+          // Test case 3: Empty Array
+         int[] emptyArr = {};
+         target = 5;
+         index = exponentialSearch(emptyArr, target);
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+
+    }
+
+    private static int exponentialSearch(int[] arr, int target) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        int n = arr.length;
+
+        // If the element is at the first position
+        if (arr[0] == target) {
+            return 0;
+        }
+
+        // Find the range for binary search by repeated doubling
+        int i = 1;
+        while (i < n && arr[i] <= target) {
+            i = i * 2;
+        }
+
+        // Call binary search for the found range.
+        return Arrays.binarySearch(arr, Math.min(i, n -1 )/2, Math.min(i, n), target);
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Empty or Null Array:**  Added a check at the beginning of `exponentialSearch` to handle cases where the input array is `null` or empty. This prevents `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+
+2. **Clearer Range Calculation:**  The range calculation for the binary search is simplified and made more robust using  `Math.min(i, n - 1)` and `Math.min(i, n)`.  This ensures we don't go beyond the array bounds, especially if `i` becomes larger than the array size.  Using `n - 1` in the starting index is because  `Arrays.binarySearch` expects the *toIndex* to be exclusive.
+
+3. **Direct Binary Search Integration:** Uses `Arrays.binarySearch()` directly for the binary search part, which is more efficient and concise than implementing binary search manually.
+
+4. **Comprehensive Test Cases:** The `main` method now includes test cases to demonstrate the functionality with:
+   - Element present in the array
+   - Element not present in the array
+   - Empty array
+
+
+
+This improved version is more robust, efficient, and adheres to best practices.

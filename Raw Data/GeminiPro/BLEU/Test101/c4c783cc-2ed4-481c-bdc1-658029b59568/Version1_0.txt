@@ -1,0 +1,17 @@
+```java
+public class AddWithoutArithmetic {
+
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 12;
+
+        while (y != 0) {
+            int carry = x & y;  // Calculate the carry bits using bitwise AND
+            x = x ^ y;          // Calculate the sum without carry using bitwise XOR
+            y = carry << 1;     // Shift the carry bits to the left by 1
+        }
+
+        System.out.println("Sum: " + x); // Output: Sum: 22
+    }
+}
+```

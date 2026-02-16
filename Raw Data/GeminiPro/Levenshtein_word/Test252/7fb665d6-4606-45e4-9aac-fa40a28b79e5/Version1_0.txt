@@ -1,0 +1,55 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 1; // Index of the next unique element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) { // Check if the current element is different from the previous one
+                nums[uniqueIndex] = nums[i]; // If different, add it to the unique part of the array
+                uniqueIndex++;
+            }
+        }
+        return uniqueIndex; 
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("New length: " + newLength1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, newLength1))); // Output: New length: 2, Array: [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+        System.out.println("New length: " + newLength2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, newLength2)));// Output: New length: 5, Array: [0, 1, 2, 3, 4]
+
+
+        // Test cases for empty and null arrays
+        int[] nums3 = {};
+        int newLength3 = removeDuplicates(nums3);
+        System.out.println("New length: " + newLength3 + ", Array: " + Arrays.toString(nums3)); // Output: New length: 0, Array: []
+
+        int[] nums4 = null;
+        int newLength4 = removeDuplicates(nums4);
+        System.out.println("New length: " + newLength4); // Output: New length: 0
+        //System.out.println("Array: " + Arrays.toString(nums4)); // Avoid this as it will throw a NullPointerException
+
+
+    }
+}
+```
+
+
+Key improvements in this code:
+
+- **Handles edge cases:** It correctly handles empty (`{}`) and `null` input arrays.
+- **Clearer variable naming:** `uniqueIndex` is more descriptive.
+- **Comprehensive comments:**  The comments explain the logic clearly.
+- **`Arrays.copyOfRange()` in `main`:** This is crucial!  The `removeDuplicates` function modifies the original array *in-place*.  The original array still has the same length; only the *beginning* portion is now relevant. `Arrays.copyOfRange` creates a *new* array containing only the unique elements. This avoids printing out the "garbage" values that remain in the original array after the unique elements.
+- **More test cases:** Includes tests for common scenarios and edge cases.
+- **Avoids `NullPointerException`:**  The `main` method now correctly handles the `null` array case to prevent a `NullPointerException`.

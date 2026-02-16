@@ -1,0 +1,46 @@
+```java
+import java.util.Arrays;
+
+public class KthSmallestLargest {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+
+        findKthSmallestLargest(arr, k);
+
+
+        // Another example with duplicates to demonstrate handling:
+         int[] arr2 = {7, 10, 4, 3, 20, 15, 3, 4};
+         int k2 = 4;
+         findKthSmallestLargest(arr2, k2); 
+
+    }
+
+
+    public static void findKthSmallestLargest(int[] arr, int k) {
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k.  k must be between 1 and array length (inclusive)");
+            return; 
+        }
+
+        Arrays.sort(arr); // Sort the array in ascending order
+
+
+        System.out.println("kth smallest element (" + k + "th smallest): " + arr[k - 1]);
+        System.out.println("kth largest element (" + k + "th largest): " + arr[arr.length - k]);
+
+    }
+}
+```
+
+
+Explanation and Improvements:
+
+1. **Error Handling:** The code now includes a check to ensure that `k` is within a valid range (1 to the length of the array inclusive).  This prevents `ArrayIndexOutOfBoundsException` if `k` is incorrect.  It prints a helpful message to the user.
+2. **Clarity:** The output is made clearer by explicitly stating "kth smallest" and "kth largest".
+3. **Example Usage in `main`:**  The `main` method now shows how to call the `findKthSmallestLargest` method with sample data and different `k` values, including an example with duplicate elements.
+4. **Efficiency:**  The code is efficient for reasonably sized arrays because `Arrays.sort()` uses an optimized sorting algorithm (usually a variant of quicksort or mergesort) that has a time complexity of O(n log n).
+5. **Correctness with duplicates:** The sorting approach automatically handles arrays with duplicate elements correctly.  After sorting, if there are duplicates, the kth smallest/largest will still be found at the correct index.

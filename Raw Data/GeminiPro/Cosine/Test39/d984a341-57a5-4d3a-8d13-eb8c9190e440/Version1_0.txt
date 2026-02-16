@@ -1,0 +1,84 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static String getCurrentTime() {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Format the date and time (you can customize the format)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+
+        return formattedDateTime;
+    }
+
+    public static void main(String[] args) {
+        String currentTime = getCurrentTime();
+        System.out.println("Current System Time: " + currentTime);
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Basic Test:**  Simply run the program and verify that it prints a date and time string in the specified format (yyyy-MM-dd HH:mm:ss).  Manually check that the displayed time is reasonably close to the actual system time.
+
+2. **Format Test:**  Change the format string in `DateTimeFormatter.ofPattern()` (e.g., to "MM/dd/yyyy hh:mm:ss a") and verify the output changes accordingly. This tests the formatting logic.
+
+3. **Timezone Test (Advanced):**
+   -  Change your system's timezone.
+   -  Run the program again.
+   -  Verify that the displayed time reflects the new timezone.  This is important for applications that need to be timezone-aware.  Note: Java's `LocalDateTime` is *not* timezone-aware by itself; you'd need to use `ZonedDateTime` for true timezone handling. This test is more advanced, demonstrating a potential area for improvement in the provided code.
+
+4. **Edge Cases (Technically not applicable to `LocalDateTime`):**  `LocalDateTime` doesn't handle invalid dates or times. It uses the system clock.  Therefore, traditional "edge cases" related to invalid dates (like Feb 30th or a negative year) don't apply directly.  However, if you were working with a class that *did* parse dates, you'd test these:
+    - Invalid dates (e.g., "2024-02-30")
+    - Leap years (e.g., "2024-02-29" � valid, "2023-02-29" - invalid)
+    - Invalid times (e.g., "25:61:70")
+
+
+**How to Run the Tests:**
+
+1. **Manual Testing:**  For basic tests and format tests, you can visually inspect the output.
+2. **Automated Tests (Recommended):**  For more robust testing, especially the timezone test, you should write unit tests using a testing framework like JUnit.
+
+**Example JUnit Test (Timezone is tricky to simulate and is often left to integration/system tests):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit; // For time comparison
+
+public class SystemTimeTest {
+
+    @Test
+    public void testGetCurrentTime_basicFormat() {
+        String currentTime = SystemTime.getCurrentTime();
+        // Check that the string is not null and not empty.
+        assertNotNull(currentTime);
+        assertNotEquals("", currentTime);
+
+        // A very basic time difference check (within a few seconds is usually sufficient).  
+        //  A more precise test would require mocking the system clock, which is more complex.
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime parsedTime = LocalDateTime.parse(currentTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        assertTrue(ChronoUnit.SECONDS.between(now, parsedTime) < 5); // Allow up to 5 seconds difference
+    }
+
+
+    @Test
+    public void testGetCurrentTime_customFormat() {
+        // Modify SystemTime.getCurrentTime() temporarily or create a test version
+        // to use a different format. Then assert the output is correct.
+        // ... (Test implementation)
+    }
+}
+```
+
+
+This improved answer provides more comprehensive test cases and demonstrates how to start writing unit tests to automate the testing process. Remember to add the JUnit dependency to your project if you use the JUnit example.

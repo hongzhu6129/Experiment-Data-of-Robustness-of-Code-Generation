@@ -1,0 +1,42 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs in sorted order.
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Add some sample data.
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+        // Specify the key from which you want to get the tail map (inclusive).
+        int givenKey = 3;
+
+        // Get the tail map (inclusive).
+        SortedMap<Integer, String> tailMapInclusive = map.tailMap(givenKey);
+
+
+        // Print the tail map (inclusive).
+        System.out.println("Tail Map (Inclusive): " + tailMapInclusive);
+
+
+        // Specify the key from which you want to get the tail map (exclusive).
+        givenKey = 3;
+
+        // Get the tail map (exclusive).
+         SortedMap<Integer, String> tailMapExclusive = map.tailMap(givenKey +1);
+
+
+        // Print the tail map (exclusive).
+        System.out.println("Tail Map (Exclusive): " + tailMapExclusive);
+    }
+}
+
+
+

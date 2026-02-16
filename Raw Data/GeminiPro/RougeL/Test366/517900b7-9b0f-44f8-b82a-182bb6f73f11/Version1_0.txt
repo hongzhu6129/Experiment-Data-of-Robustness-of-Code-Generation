@@ -1,0 +1,41 @@
+```java
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String stream = "geeksforgeeksandgeeksquizfor";
+        findfirstNonRepeating(stream);
+
+        stream = "aabc";
+        findfirstNonRepeating(stream);
+
+        stream = "abacabad";
+        findfirstNonRepeating(stream);
+    }
+
+    public static void findfirstNonRepeating(String stream) {
+        Map<Character, Integer> charCount = new LinkedHashMap<>(); // Preserve insertion order
+
+        for (char c : stream.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+
+            // Check for the first non-repeating character after each character is processed
+             for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+                if (entry.getValue() == 1) {
+                    System.out.println("First non-repeating character in '" + stream + "' : " + entry.getKey());
+                    return; // Exit after finding the first one
+                }
+            }
+        }
+        
+        System.out.println("No non-repeating character found in '" + stream + "'");
+    }
+}
+
+
+
+
+```

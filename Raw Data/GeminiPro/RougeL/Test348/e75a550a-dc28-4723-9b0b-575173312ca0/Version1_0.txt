@@ -1,0 +1,40 @@
+```java
+public class TrimWhitespace {
+
+    public static void main(String[] args) {
+        String stringWithLeadingAndTrailingSpaces = "   This string has leading and trailing spaces.   ";
+
+        // Using trim() to remove leading and trailing whitespace
+        String trimmedString = stringWithLeadingAndTrailingSpaces.trim();
+
+        System.out.println("Original string: \"" + stringWithLeadingAndTrailingSpaces + "\"");
+        System.out.println("Trimmed string: \"" + trimmedString + "\"");
+
+
+        // Demonstrating strip() (Java 11 and later) which also handles other Unicode whitespace
+        String stringWithUnicodeWhitespace = "\u2000This string has Unicode whitespace.\u2001"; // \u2000 and \u2001 are Unicode spaces
+        String stripString = stringWithUnicodeWhitespace.strip();
+        System.out.println("Original string with Unicode whitespace: \"" + stringWithUnicodeWhitespace + "\"");
+        System.out.println("String after using strip(): \"" + stripString + "\"");
+
+
+        // Demonstrating stripLeading() and stripTrailing()  (Java 11 and later)
+        String stringWithLeadingSpaces = "   Leading spaces only.";
+        String stringWithTrailingSpaces = "Trailing spaces only.   ";
+
+        String strippedLeading = stringWithLeadingSpaces.stripLeading();
+        String strippedTrailing = stringWithTrailingSpaces.stripTrailing();
+
+
+        System.out.println("Original string with Leading spaces : \"" + stringWithLeadingSpaces + "\"");
+        System.out.println("String after using stripLeading(): \"" + strippedLeading + "\"");
+
+        System.out.println("Original string with Trailing spaces : \"" + stringWithTrailingSpaces + "\"");
+        System.out.println("String after using stripTrailing(): \"" + strippedTrailing + "\"");
+
+
+
+
+    }
+}
+```

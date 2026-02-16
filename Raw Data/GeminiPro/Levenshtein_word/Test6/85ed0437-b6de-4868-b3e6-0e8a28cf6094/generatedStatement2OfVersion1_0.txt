@@ -1,0 +1,35 @@
+
+
+
+
+**Test Cases:**
+
+1. **No Webcam:**  Unplug your webcam or disable it in device manager.  The program should print an error message to the console: "No webcam detected."
+
+2. **Name Length:**  Test with a very short name (e.g., "A") and a very long name to ensure the text wrapping or truncation (if any) works correctly.  The long name shouldn't crash the program.
+
+3. **Image Resolution:** If possible, change your webcam's resolution settings.  The text should still be drawn correctly and proportionally within the image, regardless of the resolution.
+
+4. **Special Characters:** Use special characters in your name (e.g., "Jos� Mar�a"). The program should handle Unicode characters correctly.
+
+5. **Concurrent Access:** (Advanced)  Try running another program that accesses the webcam simultaneously.  The program should handle potential conflicts gracefully (either by failing to open the webcam or by managing shared access appropriately).
+
+
+**Key Improvements in this Code:**
+
+* **Error Handling:** Checks for the presence of a webcam and provides an error message if none is found.
+* **Clearer Naming:** Uses more descriptive variable names.
+* **Centered Text:** Calculates text width and height to center the text both horizontally and vertically.
+* **Name Customization:** Makes it easy to change the displayed name.
+* **Image Saving:**  Saves the captured image to a file for verification.
+* **Image Display:**  Displays the image in a simple window (using AWT - for demonstration.  In a real application, you'd likely use Swing or JavaFX).
+* **Window Close Handling:** Ensures the program exits cleanly when the display window is closed.
+
+
+
+**Dependencies:**
+
+You need the `webcam-capture` library. Add it to your project using Maven or Gradle:
+
+**Maven:**
+

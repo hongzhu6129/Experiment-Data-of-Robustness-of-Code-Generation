@@ -1,0 +1,60 @@
+```java
+import java.util.Scanner;
+
+public class DaysBetweenYears {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the starting year: ");
+        int startYear = scanner.nextInt();
+
+        System.out.print("Enter the ending year: ");
+        int endYear = scanner.nextInt();
+
+        if (startYear > endYear) {
+            System.out.println("Invalid input: Starting year must be less than or equal to ending year.");
+            return;
+        }
+
+        int totalDays = 0;
+        for (int year = startYear; year < endYear; year++) {
+            totalDays += number_of_days(year);
+        }
+
+        System.out.println("The total number of days between " + startYear + " and " + endYear + " is: " + totalDays);
+        scanner.close();
+
+    }
+
+    public static int number_of_days(int year) {
+        if (is_Leap_Year(year)) {
+            return 366;
+        } else {
+            return 365;
+        }
+    }
+
+    public static boolean is_Leap_Year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Input Validation:** The code now checks if `startYear` is greater than `endYear`. If it is, it prints an error message and exits gracefully, preventing unexpected behavior.
+* **Clearer Prompts:**  User prompts are more descriptive, making it easier to understand what input is expected.
+* **Inclusive Calculation (up to endYear - 1):** The loop now iterates up to `endYear -1` (exclusive of the end year) to correctly calculate the number of days *between* the start and end years.  If you intend to include the full end year as well, change the loop to `year <= endYear`.
+* **Resource Management:** The `Scanner` is closed using `scanner.close()` after it's no longer needed, which is good practice for preventing resource leaks.
+* **Method Signatures Followed:** The code adheres strictly to the specified method signatures: `main`, `number_of_days`, and `is_Leap_Year`.
+
+
+**Example Usage:**
+
+```
+Enter the starting year: 2000
+Enter the ending year: 2004
+The total number of days between 2000 and 2004 is: 1461 
+``` (2000 is a leap year, adding 366, followed by three regular years adding 3 x 365).

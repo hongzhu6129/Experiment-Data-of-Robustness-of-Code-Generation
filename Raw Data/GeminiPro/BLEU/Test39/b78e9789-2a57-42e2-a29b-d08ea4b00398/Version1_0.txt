@@ -1,0 +1,85 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static void main(String[] args) {
+        displayCurrentSystemTime();
+    }
+
+    public static void displayCurrentSystemTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String formattedDateTime = now.format(formatter);
+        System.out.println("Current System Time: " + formattedDateTime);
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+1. **Normal Case:**  Run the program under normal circumstances.  Verify that the output is a date and time string in the specified format (yyyy-MM-dd HH:mm:ss.SSS) and that the date and time are reasonably close to the actual current time.
+
+2. **Time Zone Change:**  Change your system's time zone. Run the program again. The output should reflect the current time in the *new* time zone.  This tests that the program is correctly using the system's time zone settings.
+
+3. **Daylight Saving Time Transition:**  If possible, run the program shortly before and shortly after a Daylight Saving Time transition (either springing forward or falling back). Verify that the time changes correctly.  This is important to ensure the program handles time zone transitions gracefully. (This test is time-dependent and might not be easily automated).
+
+4. **Locale Change (Optional but recommended):**  Change your system's locale. While the date and time *format* shouldn't change (because we've explicitly specified it), changing the locale can reveal underlying issues related to time and date handling.  For a more thorough test, you could remove the explicit `DateTimeFormatter` and let the program use the default formatting for the locale, then verify that it's correct.
+
+**How to Automate Testing (Example with JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SystemTimeTest {
+
+    @Test
+    void testDisplayCurrentSystemTime() {
+        // Capture the current time before calling the method
+        LocalDateTime before = LocalDateTime.now();
+
+        // Call the method to get the formatted time string
+        String formattedDateTime = captureSystemOut(() -> SystemTime.displayCurrentSystemTime());
+
+
+        // Capture the current time after calling the method
+        LocalDateTime after = LocalDateTime.now();
+
+
+        // Parse the formatted string back into a LocalDateTime object
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        LocalDateTime parsedDateTime = LocalDateTime.parse(formattedDateTime.substring("Current System Time: ".length()), formatter);
+
+
+
+        // Assert that the parsed date/time is between the before and after times.
+        // Allow a small tolerance (e.g., 1 second) due to execution time.
+        assertTrue(parsedDateTime.isAfter(before.minus(1, ChronoUnit.SECONDS)));
+        assertTrue(parsedDateTime.isBefore(after.plus(1, ChronoUnit.SECONDS)));
+
+    }
+
+
+
+    // Helper function to capture System.out
+    private String captureSystemOut(Runnable runnable) {
+        java.io.ByteArrayOutputStream outContent = new java.io.ByteArrayOutputStream();
+        System.setOut(new java.io.PrintStream(outContent));
+        runnable.run();
+        System.setOut(System.out); // Restore System.out
+        return outContent.toString();
+    }
+
+}
+```
+
+
+This JUnit test provides a more robust way to check the program's output.  It's still a good idea to perform the manual tests (especially the time zone and DST tests) to cover those corner cases.

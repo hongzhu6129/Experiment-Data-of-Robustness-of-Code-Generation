@@ -1,0 +1,25 @@
+ (Note the blank line due to the `println` for the empty name).
+   - **How to test:** Run the modified program and verify the output, ensuring the blank line exists.
+
+3. **Name with Special Characters:**
+
+   - Change "Your Name" to a string containing special characters, e.g., `"O'Brien"`, `"Jos� Garc�a"`, `"Jean-Pierre"`.
+   - **Expected Output:**  The name should be printed correctly with the special characters.
+   - **How to test:** Run the program with these different names and visually inspect the output to ensure the characters are handled correctly (no encoding issues).  This tests the program's ability to handle Unicode characters.
+
+4. **Very Long Name (Boundary Condition):**
+
+   - Create a very long string (e.g., a string of 1000 characters) for the name.
+   - **Expected Output:** The entire name should be printed on the second line without truncation or errors.
+   - **How to test:** Run the program and check that the full name is printed.  This tests for potential buffer overflow issues, although unlikely in this simple example.
+
+5. **System.out Redirection (Advanced):**
+
+   - Redirect the standard output of the program to a file or a different stream.  (This is more of a system-level test).
+   - **Expected Outcome:** The "Hello" and the name should be written to the redirected location.
+   - **How to test:** Use command-line redirection (e.g., `java HelloWorld > output.txt`) or modify the Java code to use a different `PrintStream`.  This tests the program's reliance on the standard output stream.
+
+
+
+These test cases cover the basic functionality and potential edge cases related to string handling and output. While simple, they demonstrate good testing practices that can be applied to more complex Java programs. Remember to replace "Your Name" with your actual name for the standard tests.
+

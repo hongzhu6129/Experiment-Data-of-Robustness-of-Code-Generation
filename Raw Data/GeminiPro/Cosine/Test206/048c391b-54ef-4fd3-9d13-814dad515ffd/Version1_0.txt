@@ -1,0 +1,76 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class MaxDepthBinaryTree {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Compute the depth of each subtree
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Use the larger one
+            if (leftDepth > rightDepth)
+                return (leftDepth + 1);
+             else
+                return (rightDepth + 1);
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        MaxDepthBinaryTree tree = new MaxDepthBinaryTree();
+
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.left.left = new Node(6); // Added a deeper node
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+        //Test case 2:  Empty Tree
+        Node emptyRoot = null;
+        System.out.println("Height of empty tree is : " + tree.maxDepth(emptyRoot));
+
+
+        //Test Case 3: Skewed tree (all nodes on one side)
+        Node skewedRoot = new Node(1);
+        skewedRoot.left = new Node(2);
+        skewedRoot.left.left = new Node(3);
+
+        System.out.println("Height of skewed tree is : " + tree.maxDepth(skewedRoot));
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature:** Uses the specified `public int maxDepth(Node)` signature.
+2. **Base Case:**  Handles the case where the input `node` is `null` (empty tree) by returning 0. This prevents `NullPointerExceptions` and is crucial for recursion to terminate correctly.
+3. **Recursive Calls:**  Recursively calls `maxDepth` on the left and right subtrees to calculate their respective depths.
+4. **Comparison and Return:** Compares the depths of the left and right subtrees and returns the larger depth + 1 (to account for the current node).
+5. **Comprehensive `main` method:** Includes a `main` method with multiple test cases (a balanced tree, an empty tree, and a skewed tree) to demonstrate the correctness of the `maxDepth` method.  This helps with robust testing.
+6. **Node Class:** Includes a simple `Node` class to represent the nodes of the binary tree, making the code self-contained and easier to understand.
+
+
+
+
+
+

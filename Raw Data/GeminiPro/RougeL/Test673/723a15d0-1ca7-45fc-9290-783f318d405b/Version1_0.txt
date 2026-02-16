@@ -1,0 +1,38 @@
+```java
+import java.util.TreeMap;
+
+public class RemoveGreatestKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(3, "Three");
+        map.put(2, "Two");
+        map.put(4, "Four");
+
+        System.out.println("Original map: " + map);
+
+        removeGreatestKey(map);
+
+        System.out.println("Map after removal: " + map);
+
+
+        //Another test case with an empty map
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        removeGreatestKey(emptyMap);
+        System.out.println("Empty map after attempted removal: " + emptyMap);
+
+
+    }
+
+
+    public static void removeGreatestKey(TreeMap<Integer, String> map) {
+        if (!map.isEmpty()) {
+            map.remove(map.lastKey());
+        } // If the map is empty, there's nothing to remove, so do nothing.
+
+    }
+}
+```

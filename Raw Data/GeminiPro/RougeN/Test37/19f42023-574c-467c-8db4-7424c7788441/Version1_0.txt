@@ -1,0 +1,63 @@
+```java
+import java.util.Scanner;
+
+public class NNN {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter an integer (n): ");
+
+        try {
+            int n = input.nextInt();
+
+            if (n < 0 || n > 9) {  // Restrict input to single digits for simplicity and to avoid potential overflows
+                System.out.println("Please enter a single-digit integer (0-9).");
+                return;
+            }
+
+
+            int nn = n * 10 + n;
+            int nnn = n * 100 + nn;
+            int result = n + nn + nnn;
+
+            System.out.println("Result of n + nn + nnn: " + result);
+
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        } finally {
+            input.close();  // Close the scanner to prevent resource leaks
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Notes |
+|---|---|---|
+| 0 | 0 |  |
+| 1 | 123 |  |
+| 2 | 246 |  |
+| 5 | 615 | |
+| 9 | 1107 | |
+| -1 | "Please enter a single-digit integer (0-9)." | Negative input (corner case) |
+| 10 | "Please enter a single-digit integer (0-9)." |  Input greater than 9 (corner case) |
+| a | "Invalid input. Please enter an integer." |  Non-integer input (corner case) |
+| 1.5 | "Invalid input. Please enter an integer." | Floating point input |
+| 9999999999 | "Please enter a single-digit integer (0-9)." | Very large number (to demonstrate that it's restricted to 0-9) |
+
+
+
+
+
+**Explanation and Improvements:**
+
+1. **Input Validation:** The code now includes input validation to handle potential errors.  It checks if the input is within the range of 0-9 and also handles `InputMismatchException` if the user enters non-integer input. This makes the code more robust.
+2. **Clearer Error Messages:**  The error messages are more informative, guiding the user on what kind of input is expected.
+3. **Resource Management:** The `Scanner` is closed in a `finally` block. This ensures that the resource is released even if an exception occurs.
+4. **Single-Digit Restriction:**  The code explicitly restricts input to single digits (0-9). This avoids potential integer overflows if the user enters a very large number and simplifies the logic (you don't need to calculate the number of digits in `n` to construct `nn` and `nnn`).  If you need to handle larger numbers, you'd have to use `String` manipulation or a different approach.
+
+
+This improved version addresses the potential issues in the original code and provides a more robust and user-friendly solution.

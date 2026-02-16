@@ -1,0 +1,109 @@
+```java
+public class DivisibleBy3And5 {
+
+    public static void main(String[] args) {
+        printDivisibleNumbers(1, 100);
+    }
+
+    public static void printDivisibleNumbers(int start, int end) {
+        if (start > end) {
+            System.out.println("Invalid input: start should be less than or equal to end.");
+            return;
+        }
+
+        System.out.println("Divisible by 3:");
+        for (int i = start; i <= end; i++) {
+            if (i % 3 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Newline
+
+        System.out.println("Divisible by 5:");
+        for (int i = start; i <= end; i++) {
+            if (i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Newline
+
+
+        System.out.println("Divisible by both 3 and 5:");
+        for (int i = start; i <= end; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println(); // Newline
+    }
+}
+```
+
+**Test Cases:**
+
+1. **Standard Case:**
+   - `start = 1`, `end = 100` (as in the original prompt)  Expected output should include numbers like 3, 5, 6, 9, 10, 12, 15... for respective divisibility.
+
+2. **Start equals End:**
+   - `start = 50`, `end = 50`  If 50 is divisible by 3, 5 or both it should be printed in the respective section. Otherwise, nothing should be printed for that section.
+
+3. **Start greater than End:**
+   - `start = 100`, `end = 1`  The function should print an error message like "Invalid input: start should be less than or equal to end."
+
+4. **Negative Numbers:**
+   - `start = -50`, `end = 50`  Should correctly handle negative numbers and divisibility checks.
+
+5. **Zero:**
+   - `start = -5`, `end = 5`  Should correctly handle zero, which is divisible by both 3 and 5.
+
+6. **Large Range:**
+   - `start = 1`, `end = 1000`  (Test with a larger range to ensure efficiency)
+
+7. **Boundaries:**
+   - `start = 1`, `end = 2` (Tests the lower boundary where neither 3 nor 5 are included)
+   - `start = 99`, `end = 101` (Test around the multiples to ensure no off-by-one errors)
+
+
+
+**How to run the test cases:**
+
+You can either:
+
+- **Manually test:** Change the `start` and `end` values in the `main` method and run the code.
+- **Write Unit Tests (Recommended):** Use a testing framework like JUnit to create automated tests for each case. This is the preferred method for robust testing, especially as your programs get more complex.
+
+
+Example of a JUnit test (you'll need to add the JUnit library to your project):
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class DivisibleBy3And5Test {
+
+    @Test
+    void testStandardCase() {
+        // Capture system output
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        DivisibleBy3And5.printDivisibleNumbers(1, 100);
+
+        String expectedOutput = // Add your expected output here...
+        assertTrue(outContent.toString().contains("15")); //Example assertion
+        // ...More assertions...
+
+        // Restore system output
+        System.setOut(System.out);
+    }
+
+    // ... More test methods for other cases ...
+
+}
+
+```
+
+
+By using a comprehensive set of test cases, you can ensure your `printDivisibleNumbers` function behaves correctly under various conditions and avoid unexpected bugs.  JUnit or similar testing frameworks make it easier to manage and run these tests automatically.

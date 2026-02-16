@@ -1,0 +1,50 @@
+```java
+import java.util.Scanner;
+
+public class CompareStringsIgnoreCase {
+    public static boolean compareStringsIgnoreCase(String str1, String str2) {
+        return str1.equalsIgnoreCase(str2);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get two strings from the user.
+        System.out.println("Enter the first string:");
+        String str1 = scanner.nextLine();
+
+        System.out.println("Enter the second string:");
+        String str2 = scanner.nextLine();
+
+        // Compare the two strings, ignoring case.
+        boolean result = compareStringsIgnoreCase(str1, str2);
+
+        // Print the result.
+        if (result) {
+            System.out.println("The two strings are equal, ignoring case.");
+        } else {
+            System.out.println("The two strings are not equal, ignoring case.");
+        }
+    }
+}
+```
+
+**Test Cases**
+
+**Normal Cases**
+
+* Input 1: str1 = "Hello", str2 = "hello"
+* Output: The two strings are equal, ignoring case.
+* Input 2: str1 = "Java", str2 = "JAVA"
+* Output: The two strings are equal, ignoring case.
+* Input 3: str1 = "123", str2 = "123"
+* Output: The two strings are equal, ignoring case.
+
+**Corner Cases**
+
+* Input 1: str1 = null, str2 = null
+* Output: The two strings are equal, ignoring case.
+* Input 2: str1 = "", str2 = ""
+* Output: The two strings are equal, ignoring case.
+* Input 3: str1 = "Hello", str2 = null
+* Output: The two strings are not equal, ignoring case.

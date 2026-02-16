@@ -1,0 +1,73 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToDecimal {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input a binary number: ");
+        String binaryString = input.nextLine();
+
+        int decimal = 0;
+        int power = 0;
+        boolean isValid = true;
+
+
+        for (int i = binaryString.length() - 1; i >= 0; i--) {
+            char digit = binaryString.charAt(i);
+
+            if (digit == '0') {
+                // Do nothing, as 0 * 2^power is always 0
+            } else if (digit == '1') {
+                decimal += Math.pow(2, power);
+            } else {
+                isValid = false; // Invalid input (not 0 or 1)
+                break;
+            }
+            power++;
+        }
+
+        if (isValid) {
+            System.out.println("Decimal value: " + decimal);
+            System.out.println("Hexadecimal value: '" + Integer.toHexString(decimal) + "'"); // Using Integer.toHexString for hex conversion
+        } else {
+            System.out.println("Invalid binary input. Please enter a string containing only 0s and 1s.");
+        }
+
+        input.close(); // Close the scanner to release resources
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+| Binary Input | Expected Decimal Output | Expected Hexadecimal Output | Remarks |
+|---|---|---|---|
+| "1101" | 13 | 'd' | Valid input |
+| "101010" | 42 | '2a' | Valid input |
+| "1" | 1 | '1' | Valid input (single digit) |
+| "0" | 0 | '0' | Valid input (zero) |
+| "" | 0 | '0' | Valid input (empty string, treated as 0) |
+| "101a10" | Invalid binary input... |  | Invalid input (contains 'a') |
+| "11111111" | 255 | 'ff' | Valid input (maximum 8-bit value) |
+| "100000000" | 256 | '100' | Valid input (9-bit value) |  
+| "11111111111111111111111111111111" | 2147483647  | '7fffffff' | Valid input (Maximum 32-bit Integer) |
+| "10000000000000000000000000000000" | -2147483648 | '80000000'| Corner case: Overflow (33 bits results in the minimum integer value due to two's complement representation). Expecting hex output could be problematic as well due to the negative sign. | 
+| "12345" | Invalid binary input... | | Invalid input (contains non-binary digits) |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Empty String:** An empty string is treated as 0, which is a reasonable default behavior.
+* **Maximum Values:** Testing with the maximum 8-bit, and 32-bit integer values ensures the program handles large numbers correctly.
+* **Overflow:**  The overflow case demonstrates what happens when the binary number represents a value larger than what an `int` can hold in Java.  This is important to understand how the program behaves in such situations (wraps around to the negative minimum due to two's complement representation).
+* **Invalid Characters:**  Testing with non-binary characters ('a', '2', etc.) confirms that the program correctly identifies and handles invalid input.
+
+
+This enhanced set of test cases provides more comprehensive coverage for the binary-to-decimal conversion program, including important boundary conditions and error handling scenarios.

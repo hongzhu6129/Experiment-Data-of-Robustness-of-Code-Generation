@@ -1,0 +1,49 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CountPhrasesEndingMorN {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        // Use regex to find phrases ending with m or n (case-insensitive)
+        Pattern pattern = Pattern.compile("\\b\\w+[mM]|[nN]\\b"); // Word boundary followed by word characters and m/n
+        Matcher matcher = pattern.matcher(text);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        CountPhrasesEndingMorN counter = new CountPhrasesEndingMorN();
+
+        String text1 = "Sam, sun, MOON, man, plan, run, program";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 Count: " + count1); // Output: 5 (sam, sun, moon, man, plan)
+
+        String text2 = "This is an example. Item";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 Count: " + count2); // Output: 1 (item)
+
+
+        String text3 = "";  // Empty string
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 Count: " + count3); // Output: 0
+
+
+        String text4 = null; // Null string
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 Count: " + count4); // Output: 0
+
+        String text5 = " m n "; // Only m and n with spaces
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 Count: " + count5); // Output: 2
+    }
+}
+```

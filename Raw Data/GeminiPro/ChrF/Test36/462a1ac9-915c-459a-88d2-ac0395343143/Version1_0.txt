@@ -1,0 +1,62 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void printFormattedTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+    }
+
+    public static void main(String[] args) {
+        printFormattedTwinkle();
+    }
+}
+```
+
+**Test Cases:**
+
+While this specific program doesn't have complex logic that requires extensive testing, we can still demonstrate good testing practices.  Since the output is fixed, we'll primarily focus on verifying the correct formatting.  The core aspects to test are:
+
+1. **Correct Text:**  Ensure the poem's text is accurate (spelling, capitalization, punctuation).
+2. **Correct Indentation:** Validate the use of tabs (`\t`) for proper indentation.
+3. **Newlines:** Verify that each line is printed on a separate line using `println()`.
+
+
+**Conceptual Test Cases (How to approach testing if you had a testing framework):**
+
+* **Test 1: Verify Full Output:** Capture the entire output of `printFormattedTwinkle()` and compare it to the expected string (the correctly formatted poem). This is the most straightforward and comprehensive test.
+
+* **Test 2: Verify Individual Lines:**  Test each line individually.  This can help pinpoint errors if the full output test fails.  For example:
+    ```java
+    // Conceptual example using a hypothetical assertEquals method
+    String line1 = captureOutputOfLine(1); // Imagine a function to get line 1
+    assertEquals(line1, "Twinkle, twinkle, little star,");
+
+    String line2 = captureOutputOfLine(2);
+    assertEquals(line2, "\tHow I wonder what you are!"); // Check indentation
+
+    // ...and so on for the other lines
+    ```
+
+
+* **Test 3 (Corner/Edge Case - Empty Input):**  While this program doesn't take input, if it were modified in the future to accept the poem as input, you'd want to test how it handles edge cases like an empty string, very long lines, or lines containing special characters (e.g., Unicode characters, escape sequences).  For now, this test isn't strictly applicable but demonstrates a good testing mindset.  Example (if the program took the poem as input):
+   ```java
+   // Conceptual Example
+   String emptyPoem = "";
+   String formattedEmpty = formatPoem(emptyPoem); // Hypothetical format function
+   assertEquals(formattedEmpty, ""); // Or some other defined behavior for empty input
+   ```
+
+
+
+
+**How to manually verify (without a testing framework):**
+
+1. **Run the Java code.**
+2. **Visually inspect the output in your console/terminal.**  Carefully compare it to the expected output to confirm that the text, indentation, and newlines are all correct.
+
+
+
+By following these testing strategies, you can ensure that the `printFormattedTwinkle()` function produces the desired output correctly.  Using a testing framework (like JUnit) would automate these comparisons and make the testing process more robust and efficient, especially as the code becomes more complex.
+

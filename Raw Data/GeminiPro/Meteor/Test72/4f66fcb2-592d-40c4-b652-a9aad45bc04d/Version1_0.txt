@@ -1,0 +1,28 @@
+```java
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str1 = "Python";
+        String str2 = "JavaScript";
+        String str3 = "HTML";
+        String str4 = "a"; // Example with string length less than 3
+
+
+        System.out.println("Modified " + str1 + ": " + modifyString(str1)); // Output: honPythonhon
+        System.out.println("Modified " + str2 + ": " + modifyString(str2)); // Output: iptJavaScriptript
+        System.out.println("Modified " + str3 + ": " + modifyString(str3)); // Output: TMLHTMLTML
+        System.out.println("Modified " + str4 + ": " + modifyString(str4)); // Output: String too short: a
+
+    }
+
+
+    public static String modifyString(String str) {
+        if (str.length() < 3) {
+            return "String too short: " + str;
+        }
+
+        String lastThree = str.substring(str.length() - 3);
+        return lastThree + str + lastThree;
+    }
+}
+```

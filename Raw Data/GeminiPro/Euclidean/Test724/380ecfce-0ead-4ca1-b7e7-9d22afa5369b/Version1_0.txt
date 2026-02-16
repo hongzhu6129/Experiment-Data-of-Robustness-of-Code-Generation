@@ -1,0 +1,74 @@
+```java
+import java.util.Arrays;
+
+public class ShellSort {
+
+    public static void shell(int[] arr) {
+        int n = arr.length;
+
+        // Start with a large gap, then reduce the gap
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            // Do a gapped insertion sort for this gap size.
+            // The first gap elements a[0..gap-1] are already in gapped order
+            // keep adding one more element until the entire array is gap sorted
+            for (int i = gap; i < n; i += 1) {
+                // add a[i] to the elements that have been gap sorted
+                // save a[i] in temp and make a hole at position i
+                int temp = arr[i];
+
+                // shift earlier gap-sorted elements up until the correct location for a[i] is found
+                int j;
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                    arr[j] = arr[j - gap];
+
+                // put temp (the original a[i]) in its correct location
+                arr[j] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr = {12, 34, 54, 2, 3}; 
+
+        System.out.println("Array before sorting: " + Arrays.toString(arr));
+
+        shell(arr);
+
+        System.out.println("Array after sorting:  " + Arrays.toString(arr));
+
+
+        // Demonstrating how the "invalid literal for int() with base 10: 'sort'" error occurs
+        // and how to avoid it (this was the original problem in the prompt).  Don't try
+        // to convert non-numeric strings to ints!
+        String[] strArr = {"1", "2", "sort", "4"}; // Example with a non-numeric string
+
+        // Correct way to handle potential errors during conversion:
+        int[] numArr = new int[strArr.length];
+        for (int i = 0; i < strArr.length; i++) {
+            try {
+                numArr[i] = Integer.parseInt(strArr[i]);
+            } catch (NumberFormatException e) {
+                System.err.println("Error: Cannot convert '" + strArr[i] + "' to an integer.");
+                // Handle the error appropriately (e.g., skip the element, assign a default value, exit)
+                numArr[i] = -1; // Example: assign -1 to indicate an error
+            }
+        }
+        System.out.println("Converted integer array (with error handling): " + Arrays.toString(numArr));
+
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+1. **Clear Shell Sort Implementation:** The `shell()` method provides a concise and correct implementation of the Shell Sort algorithm.  It uses a sequence of decreasing gaps to sort the array.
+
+2. **Example Usage:** The `main()` method demonstrates how to use the `shell()` method with a sample array, printing the array before and after sorting.
+
+3. **Addressing the "invalid literal" Error:** The `main()` method now includes a demonstration of how the original "invalid literal for int() with base 10: 'sort'" error can occur and, most importantly, how to handle it correctly using a `try-catch` block. This is crucial for robust code that can handle unexpected input.
+
+4. **Error Handling:** The `try-catch` block attempts to parse each string in the `strArr` as an integer. If a `NumberFormatException` is thrown (because a string like "sort" cannot be converted to an integer), the `catch` block prints an error message and handles the error gracefully. In this example, it assigns -1 to the corresponding element in `numArr` to indicate an error.  You could adapt this to skip the element, use a default value, or terminate the program, depending on the specific requirements.
+
+5. **Comments and Explanations:** The code includes helpful comments to explain the steps of the Shell Sort algorithm and the error handling process. This makes the code easier to understand and maintain.

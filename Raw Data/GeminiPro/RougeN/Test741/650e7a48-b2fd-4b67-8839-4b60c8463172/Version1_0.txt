@@ -1,0 +1,27 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class WordValidator {
+
+    public static void main(String[] args) {
+        String word1 = "gaming";
+        String word2 = "greet";
+        String word3 = "program";
+        String word4 = "gold";
+        String word5 = "flag";
+
+        System.out.println(word1 + ": " + validate(word1)); // true
+        System.out.println(word2 + ": " + validate(word2)); // false
+        System.out.println(word3 + ": " + validate(word3)); // true
+        System.out.println(word4 + ": " + validate(word4)); // false
+        System.out.println(word5 + ": " + validate(word5)); // true
+    }
+
+    public static String validate(String word) {
+        Pattern pattern = Pattern.compile("\\b[^g].*g.*[^g]\\b"); // Matches words containing 'g' not at start or end
+        Matcher matcher = pattern.matcher(word);
+        return String.valueOf(matcher.matches());
+    }
+}
+```

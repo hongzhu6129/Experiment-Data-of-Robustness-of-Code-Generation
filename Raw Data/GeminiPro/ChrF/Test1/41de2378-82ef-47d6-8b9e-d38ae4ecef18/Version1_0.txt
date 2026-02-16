@@ -1,0 +1,83 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong();  // Use long to handle larger numbers and potential overflow
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to thoroughly test the program:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Purpose of Test |
+|---|---|---|---|---|
+| 1 | 5 | 3 | 15 | Positive integers |
+| 2 | -2 | 4 | -8 | One negative, one positive |
+| 3 | -7 | -6 | 42 | Two negative integers |
+| 4 | 0 | 10 | 0 | Multiplication by zero |
+| 5 | 10 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both inputs are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 |  Long.MAX_VALUE * 1 (Edge case) |
+| 8 | 9223372036854775807 | 2 | -2 | Long.MAX_VALUE * 2 (Overflow) |
+| 9 | -9223372036854775808 | -1 | -9223372036854775808 | Long.MIN_VALUE * -1 (Edge Case) |
+| 10 | -9223372036854775808 | -2 | 0 | Long.MIN_VALUE * -2 (Overflow) |
+| 11 | 123456789 | 987654321 | 121932631112635269 | Large positive integers |
+
+
+**How to Run Test Cases:**
+
+1. **Manually:** You can run the program multiple times, entering each pair of input values and verifying the output against the expected output.
+
+2. **Using a Testing Framework (Recommended):**  For more robust testing, especially as your programs become more complex, use a testing framework like JUnit. Here's a simple example of how you might use JUnit:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class ProductOfTwoNumbersTest {
+
+       @Test
+       void testPositiveNumbers() {
+           assertEquals(15, ProductOfTwoNumbers.calculateProduct(5, 3)); 
+       }
+
+       // ... other test methods for different cases ...
+
+       @Test
+       void testOverflow() {
+           assertEquals(-2, ProductOfTwoNumbers.calculateProduct(9223372036854775807L, 2)); 
+       }
+
+
+       //Helper function to avoid running main method inside the test
+       private long calculateProduct(long num1, long num2)
+       {
+           return num1*num2;
+       }
+   }
+   ```
+
+   This JUnit example shows how you can automate the process of testing various inputs and asserting (checking) that the output is what you expect.  You would need to add the JUnit library to your project.
+
+
+
+
+By using a variety of test cases, including edge cases and overflow scenarios, you can ensure that your program is robust and handles a wide range of inputs correctly. Using a testing framework like JUnit makes this process much more efficient and manageable.

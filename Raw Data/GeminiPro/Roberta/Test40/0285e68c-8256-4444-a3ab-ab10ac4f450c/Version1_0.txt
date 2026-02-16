@@ -1,0 +1,60 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static String getCurrentDateTime(String format) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String format = "yyyy/MM/dd HH:mm:ss.SSS"; // Example format
+        String currentDateTime = getCurrentDateTime(format);
+        System.out.println("Now: " + currentDateTime);
+
+
+        // Test cases
+        System.out.println(getCurrentDateTime("yyyy-MM-dd")); // Different date format
+        System.out.println(getCurrentDateTime("HH:mm:ss")); // Time only
+        System.out.println(getCurrentDateTime("yyyy/MMM/dd")); // Month abbreviation
+        System.out.println(getCurrentDateTime("EEEE, MMMM dd, yyyy")); // Full day and month names
+
+        try {
+            System.out.println(getCurrentDateTime("invalid format")); // Invalid format (will throw an exception)
+        } catch (Exception e) {
+            System.out.println("Exception caught for invalid format: " + e.getMessage());
+        }
+
+
+
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Valid Formats:**
+    * `yyyy/MM/dd HH:mm:ss.SSS`: Checks the default given format.
+    * `yyyy-MM-dd`:  Tests a different date separator.
+    * `HH:mm:ss`: Tests time-only formatting.
+    * `yyyy/MMM/dd`: Tests month abbreviations (e.g., "Jan", "Feb").
+    * `EEEE, MMMM dd, yyyy`: Tests full day and month names (e.g., "Monday", "January").  This helps verify correct locale handling.
+    * `yy/M/d h:m:s a`: Tests short year, single-digit month/day, 12-hour format with AM/PM.
+
+2. **Invalid Format:**
+    * `invalid format`:  This checks the error handling when an invalid format string is provided.  The program should gracefully catch the `DateTimeParseException` and print an informative message.  This is crucial for robustness.
+
+
+3. **Edge/Corner Cases (Consider these if needed, depending on the specific requirements):**
+    * **Daylight Saving Time Transition:** Test around the time change to ensure the time is adjusted correctly.  You might need to set your system time artificially for this or use a mocking library. Example: `2024-03-10 01:59:59` and `2024-03-10 03:00:00` (assuming a 2-hour DST shift).
+    * **Leap Year:** Use a date in February of a leap year (e.g., 2024-02-29) to make sure leap years are handled properly.
+    * **First and Last Day of the Month/Year:** Test with dates like `2024-01-01`, `2024-12-31`, `2024-02-01`, `2024-02-29` (leap year) to ensure correct boundary handling.
+    * **Locale:**  If your application needs to support different locales, you'll want to test with different `Locale` settings to verify that dates and times are formatted according to the specified locale (e.g., using `DateTimeFormatter.ofPattern(format, Locale.FRANCE)`).
+
+
+
+By incorporating these test cases, you'll ensure that your `getCurrentDateTime` function is robust and handles various scenarios correctly.  Remember to run your tests and verify the output against the expected values.

@@ -1,0 +1,35 @@
+```java
+public class PrintFace {
+
+    public static void printFace() {
+        System.out.println("  +\"\"\"\"\"+\n [| o o |]\n  |  ^  |\n  | '-' |\n  +-----+");
+    }
+
+    public static void main(String[] args) {
+        printFace();
+    }
+}
+```
+
+**Test Cases:**
+
+Since this program doesn't take any input, traditional unit testing with different inputs isn't applicable.  Instead, we'll focus on visual verification and potential modifications to ensure the face prints correctly under different circumstances.  These "tests" are more about verifying the output visually and checking for robustness against code changes.
+
+1. **Basic Functionality Test:**
+   - Run the `printFace()` method and visually verify that the face is printed as expected to the console. This checks the core logic of the program.
+
+2. **Character Encoding Test:**
+    - Run the program on systems with different character encodings (e.g., UTF-8, ASCII) to ensure the special characters like ", [, ], ^, -, + are displayed correctly.  This tests portability.  You might need to explicitly set the console's encoding to test this thoroughly.
+
+3. **Modification Tests (These aren't automated tests but manual checks):**
+
+   - **Spacing Changes:**  Modify the spacing within the strings in `printFace()`. For example, add or remove spaces around the eyes, nose, or mouth. Observe how these changes affect the face's appearance and ensure the structure remains recognizable. This tests the layout's sensitivity to spacing.
+
+   - **Character Replacement:**  Replace some of the special characters with others (e.g., use * instead of +, or # instead of "). Observe the impact on the face's appearance.  This tests the visual dependence on specific characters.
+
+   - **Line Break Changes:** Change the `\n` characters. For instance, use `System.out.print()` instead of `System.out.println()` for some lines, or add extra `\n` characters.  Verify the face is still displayed correctly, although possibly on multiple lines with different alignment. This tests the importance of line breaks for the face structure.
+
+   - **Multi-Face Test (not a corner case but tests repeated printing correctly):**  Call `printFace()` multiple times consecutively in `main()`. The faces should print correctly one after another without any overlapping or unexpected behavior.
+
+While these aren't formal unit tests, they represent a practical approach to verifying a program like this, focusing on the visual output and the code's robustness against modifications.  For more complex programs with input and logic, you would use proper unit testing frameworks like JUnit.
+

@@ -1,0 +1,28 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class NumberAtEndOfString {
+
+    public static void main(String[] args) {
+        String str1 = "Hello123";
+        String str2 = "World";
+        String str3 = "Java4";
+        String str4 = "123Test";
+
+        System.out.println(str1 + ": " + validate(str1)); // Output: true
+        System.out.println(str2 + ": " + validate(str2)); // Output: false
+        System.out.println(str3 + ": " + validate(str3)); // Output: true
+        System.out.println(str4 + ": " + validate(str4)); // Output: false
+
+
+    }
+
+    public static String validate(String str) {
+        // Regular expression to check if the string ends with one or more digits
+        Pattern pattern = Pattern.compile("\\d+$");
+        Matcher matcher = pattern.matcher(str);
+        return String.valueOf(matcher.find());
+    }
+}
+```

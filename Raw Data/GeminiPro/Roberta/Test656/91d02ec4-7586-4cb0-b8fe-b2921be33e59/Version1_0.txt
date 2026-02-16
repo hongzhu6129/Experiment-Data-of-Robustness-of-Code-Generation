@@ -1,0 +1,79 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. 
+        // TreeMap automatically sorts entries based on the natural ordering of keys (or a provided Comparator).
+        TreeMap<String, Integer> studentScores = new TreeMap<>();
+
+        // Add some sample data
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+        studentScores.put("David", 78);
+        studentScores.put("Eve", 88);
+
+
+        // 1. Searching for a key using containsKey():
+
+        String keyToSearch = "Bob";
+
+        if (studentScores.containsKey(keyToSearch)) {
+            System.out.println(keyToSearch + " found in the TreeMap.");
+        } else {
+            System.out.println(keyToSearch + " not found in the TreeMap.");
+        }
+
+
+
+        // 2. Searching for a key and retrieving its value using get():
+
+        keyToSearch = "Charlie";
+        Integer score = studentScores.get(keyToSearch);
+
+        if (score != null) {
+            System.out.println(keyToSearch + "'s score: " + score);
+        } else {
+            System.out.println(keyToSearch + " not found in the TreeMap.");
+        }
+
+
+
+        // 3. Handling null keys (important consideration for TreeMaps):
+        // Null keys are allowed *only once* in a TreeMap if the Comparator allows it (natural ordering doesn't).
+
+        try {
+           // studentScores.put(null, 100); // This might throw a NullPointerException if natural ordering is used
+            //If you use a custom Comparator that allows null keys, be careful about how you handle them
+           // as they can lead to unexpected behavior if not managed correctly.
+        }catch (NullPointerException e)
+        {
+            System.out.println("NullPointerException caught: null key cannot be inserted using default comparator.");
+        }
+        
+
+
+        // 4. Searching for keys within a range (using subMap):
+
+        // Get all students with scores between 80 and 90 (inclusive).
+        System.out.println("Students with scores between 80 and 90:");
+        //subMap returns a portion of the map whose keys range from fromKey to toKey.
+        studentScores.subMap("Bob","Eve").forEach((key,value)->System.out.println("Key:"+key+", Value:"+value)); // headMap returns a view of the portion of this map whose keys are strictly less than toKey.
+
+        System.out.println("Students with scores less than Bob:");
+
+       studentScores.headMap("Bob").forEach((key,value)->System.out.println("Key:"+key+", Value:"+value));
+       // tailMap returns a view of the portion of this map whose keys are greater than or equal to fromKey.
+
+       System.out.println("Students with scores greater than or equal to Eve:");
+
+       studentScores.tailMap("Eve").forEach((key,value)->System.out.println("Key:"+key+", Value:"+value));
+
+
+
+
+    }
+}
+```

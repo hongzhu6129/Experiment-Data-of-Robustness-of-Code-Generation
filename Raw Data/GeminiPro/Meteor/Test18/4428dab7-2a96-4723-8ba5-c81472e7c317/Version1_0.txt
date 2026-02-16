@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class BinaryToHex {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a binary number: ");
+        String binary = input.nextLine();
+
+        // Handle empty input
+        if (binary.isEmpty()) {
+            System.out.println("Hexadecimal value: '0'");
+            return;
+        }
+
+
+        // Validate input (only 0s and 1s) and handle leading zeros efficiently.
+        for (char c : binary.toCharArray()) {
+            if (c != '0' && c != '1') {
+                System.out.println("Invalid binary input.");
+                return;
+            }
+        }
+
+
+        long decimal = 0;
+        int power = 0;
+
+
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+
+        String hex = "";
+
+        while (decimal > 0) {
+            long remainder = decimal % 16;
+            if (remainder < 10) {
+                hex = remainder + hex; //prepend the remainder
+            } else {
+                char hexChar = (char) ('a' + (remainder - 10));
+                hex = hexChar + hex; //prepend the hex char
+            }
+            decimal /= 16;
+        }
+        
+        if(hex.isEmpty()){ //Handle the case where the input is 0.
+            System.out.println("Hexadecimal value: '0'");
+        } else {
+             System.out.println("Hexadecimal value: '" + hex + "'");
+        }
+       
+        input.close();
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+1. **Valid Binary:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+
+2. **Leading Zeros:**
+   - Input: `0001111`
+   - Expected Output: `Hexadecimal value: 'f'`
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+
+4. **Large Binary Number:**
+   - Input: `1111111111111111` (16 ones)
+   - Expected Output: `Hexadecimal value: 'ffff'`
+
+5. **Empty Input:**
+   - Input: ``
+   - Expected Output: `Hexadecimal value: '0'`
+
+6. **Invalid Input (contains characters other than 0 or 1):**
+   - Input: `101a01`
+   - Expected Output: `Invalid binary input.`
+
+7. **Invalid Input (Space):**
+   - Input: "101 011"
+   - Expected Output: `Invalid binary input.`
+
+
+These test cases cover various scenarios including valid binary numbers, handling leading zeros, the special case of zero, a large binary number to test potential overflow issues (although long should handle 16 bits comfortably), empty input, and invalid input containing non-binary characters and spaces to ensure robust error handling.

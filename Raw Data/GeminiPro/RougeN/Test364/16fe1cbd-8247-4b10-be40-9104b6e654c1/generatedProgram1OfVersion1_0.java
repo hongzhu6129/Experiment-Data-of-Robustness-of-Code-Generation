@@ -1,0 +1,140 @@
+import java.util.Arrays;
+
+public class StringRearrange {
+
+    public static void main(String[] args) {
+        String str = "aabbcc";
+        int distance = 2;
+        String rearrangedString = charRearrange(str, distance);
+        System.out.println(rearrangedString); 
+
+        str = "aaabc";
+        distance = 2;
+        rearrangedString = charRearrange(str, distance);
+        System.out.println(rearrangedString); // Output: null (not possible)
+
+
+        str = "aaa";
+        distance = 2;
+        rearrangedString = charRearrange(str, distance);
+        System.out.println(rearrangedString); // Output: null
+
+        str = "programmer";
+        distance = 3;
+        rearrangedString = charRearrange(str, distance);
+        System.out.println(rearrangedString); // Example output (may vary): rpoagmrmer 
+
+        str = "";
+        distance = 2;
+        rearrangedString = charRearrange(str, distance);
+        System.out.println(rearrangedString); // Output: "" (empty string)
+
+
+    }
+
+    public static String charRearrange(String str, int distance) {
+        if (str == null) {
+            return null;
+        }
+
+        int n = str.length();
+        if (n == 0) {
+            return "";
+        }
+
+        freqOfChar[] freq = new freqOfChar[26];
+        for (int i = 0; i < 26; i++) {
+            freq[i] = new freqOfChar((char) ('a' + i), 0);
+        }
+
+        for (char c : str.toCharArray()) {
+            freq[c - 'a'].freq++;
+        }
+
+        bldOfHeap(freq, 26);
+
+        char[] result = new char[n];
+        Arrays.fill(result, '\0');
+
+        for (int i = 0; i < 26; i++) {
+            freqOfChar current = freq[0];
+            if (current.freq == 0) break; // optimization in case some chars aren't present at all
+
+            int nextIndex = 0;
+
+            while (result[nextIndex] != '\0') {
+                nextIndex++;
+            }
+
+
+            for (int j = 0; j < current.freq; j++) {
+                if(nextIndex >= n) return null; // String can't be rearranged
+                if(result[nextIndex] != '\0') return null; // Collision
+                result[nextIndex] = current.ch;
+                nextIndex += distance;
+                if(nextIndex >= n && j < current.freq -1) return null;
+            }
+
+
+            extractMax(freq, 26-i);
+        }
+        
+        return new String(result);
+
+    }
+
+    private static class freqOfChar {
+        char ch;
+        int freq;
+
+        freqOfChar(char ch, int freq) {
+            this.ch = ch;
+            this.freq = freq;
+        }
+    }
+
+    private static void bldOfHeap(freqOfChar[] arr, int n) {
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            maxHeapify(arr, n, i);
+        }
+    }
+
+    private static void swap(freqOfChar f1, freqOfChar f2) {
+        char tempCh = f1.ch;
+        int tempFreq = f1.freq;
+        f1.ch = f2.ch;
+        f1.freq = f2.freq;
+        f2.ch = tempCh;
+        f2.freq = tempFreq;
+    }
+
+    private static void maxHeapify(freqOfChar[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && arr[left].freq > arr[largest].freq) {
+            largest = left;
+        }
+
+        if (right < n && arr[right].freq > arr[largest].freq) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            swap(arr[i], arr[largest]);
+            maxHeapify(arr, n, largest);
+        }
+    }
+
+    private static freqOfChar extractMax(freqOfChar[] arr, int n) {
+        if (n <= 0) {
+            return null;
+        }
+        freqOfChar max = arr[0];
+        arr[0] = arr[n-1];
+
+        maxHeapify(arr, n - 1, 0);
+        return max;
+    }
+}

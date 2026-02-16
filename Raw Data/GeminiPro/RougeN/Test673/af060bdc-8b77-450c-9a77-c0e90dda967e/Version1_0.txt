@@ -1,0 +1,68 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class GreatestKeyRemoval {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap automatically sorts entries by key.
+        TreeMap<Integer, String> myMap = new TreeMap<>();
+
+        // Add some entries to the map
+        myMap.put(1, "Apple");
+        myMap.put(5, "Banana");
+        myMap.put(3, "Orange");
+        myMap.put(8, "Grape");
+        myMap.put(2, "Mango");
+
+
+        // Print the initial map
+        System.out.println("Original Map: " + myMap);
+
+
+        if (!myMap.isEmpty()) {  // Check if the map is empty before proceeding
+
+            // Get the greatest key (lastKey in a TreeMap)
+            Integer greatestKey = myMap.lastKey();
+
+
+            // Get the value associated with the greatest key
+            String greatestKeyValue = myMap.get(greatestKey);
+
+
+            // Remove the entry with the greatest key
+            myMap.remove(greatestKey);
+
+
+            // Print the greatest key, its value, and the updated map
+            System.out.println("Greatest Key: " + greatestKey);
+            System.out.println("Value associated with greatest key: " + greatestKeyValue);
+            System.out.println("Updated Map: " + myMap);
+
+        } else {
+            System.out.println("The map is empty.");
+        }
+
+
+        // Example with a different data type for keys (String)
+        TreeMap<String, Double> stringKeyMap = new TreeMap<>();
+        stringKeyMap.put("Apple", 1.0);
+        stringKeyMap.put("Banana", 2.5);
+        stringKeyMap.put("Orange", 1.8);
+
+        if (!stringKeyMap.isEmpty()) {
+            String greatestStringKey = stringKeyMap.lastKey();
+            Double greatestStringValue = stringKeyMap.get(greatestStringKey);
+            stringKeyMap.remove(greatestStringKey);
+
+            System.out.println("\nString Key Map Example:");
+            System.out.println("Original String Key Map: " + stringKeyMap);
+            System.out.println("Greatest String Key: " + greatestStringKey);
+            System.out.println("Value associated with greatest String key: " + greatestStringValue);
+
+        } else {
+            System.out.println("The String Key map is empty.");
+        }
+    }
+}
+```

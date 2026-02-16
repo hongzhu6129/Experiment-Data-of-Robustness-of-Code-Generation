@@ -1,0 +1,75 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListCopy {
+
+    public static void main(String[] args) {
+        // Create the original linked list
+        LinkedList<String> originalList = new LinkedList<>();
+        originalList.add("apple");
+        originalList.add("banana");
+        originalList.add("cherry");
+
+        // Method 1: Using the constructor
+        LinkedList<String> copiedList1 = new LinkedList<>(originalList);
+
+
+        // Method 2: Using addAll()
+        LinkedList<String> copiedList2 = new LinkedList<>();
+        copiedList2.addAll(originalList);
+
+
+        // Method 3: Manual copy (iterative)  -- good for understanding linked list traversal
+        LinkedList<String> copiedList3 = new LinkedList<>();
+        for (String item : originalList) {
+            copiedList3.add(item);
+        }
+
+         //Method 4: Manual Copy (using Java 8 streams, functional approach)
+        LinkedList<String> copiedList4 = originalList.stream()
+                .collect(LinkedList::new, LinkedList::add, LinkedList::addAll);
+
+
+        // Print the original and copied lists
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+        System.out.println("Copied List 2 (addAll): " + copiedList2);
+        System.out.println("Copied List 3 (Iterative): " + copiedList3);
+        System.out.println("Copied List 4 (Streams): " + copiedList4);
+
+
+
+        //Demonstrate that changes in the copy don't affect the original (and vice-versa)
+        copiedList1.remove("banana"); 
+        originalList.add("grape");
+
+        System.out.println("\nAfter modifications:");
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+
+
+
+         //Deep copy example (if your LinkedList contains mutable objects)
+        LinkedList<StringBuilder> mutableList = new LinkedList<>();
+        mutableList.add(new StringBuilder("apple"));
+        mutableList.add(new StringBuilder("banana"));
+
+        // Incorrect - shallow copy. Changes to the StringBuilder objects will be reflected in both lists
+        // LinkedList<StringBuilder> shallowCopy = new LinkedList<>(mutableList);
+
+        // Correct - deep copy
+        LinkedList<StringBuilder> deepCopy = new LinkedList<>();
+        for(StringBuilder sb : mutableList) {
+            deepCopy.add(new StringBuilder(sb.toString())); // Create new StringBuilder objects
+        }
+
+
+        mutableList.get(0).append(" pie"); //Modify an element in the original list
+
+        System.out.println("\nDeep copy demonstration:");
+        System.out.println("Original mutable List: " + mutableList);
+        System.out.println("Deep copy List: " + deepCopy);
+
+    }
+}
+```

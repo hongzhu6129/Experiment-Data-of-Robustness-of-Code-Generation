@@ -1,0 +1,53 @@
+```java
+import java.util.Set;
+import java.util.TreeMap;
+
+public class TreeMapGetKeys {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs to the TreeMap
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+
+        // Method 1: Using keySet() to get a Set of keys
+        Set<String> keys = treeMap.keySet();
+
+        System.out.println("Keys using keySet():");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+        System.out.println(); // Print a blank line for better readability
+
+
+        // Method 2: Iterating through the TreeMap using entrySet() (demonstrating how to access both keys and values)
+        System.out.println("Keys and Values using entrySet():");
+        for (var entry : treeMap.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println("Key: " + key + ", Value: " + value);
+        }
+
+
+        // Method 3: Java 8+ Stream API  (more concise if you just need keys)
+        System.out.println("\nKeys using Stream API:");
+        treeMap.keySet().stream().forEach(System.out::println);
+
+
+        //Example of using the keys for something (e.g., lookup)
+        System.out.println("\nExample usage:");
+        if (treeMap.containsKey("banana")) {
+            System.out.println("The TreeMap contains the key 'banana'");
+            System.out.println("Value associated with 'banana': " + treeMap.get("banana"));
+        }
+
+
+    }
+}
+```

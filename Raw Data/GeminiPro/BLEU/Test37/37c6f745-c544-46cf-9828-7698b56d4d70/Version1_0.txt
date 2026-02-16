@@ -1,0 +1,74 @@
+```java
+import java.util.Scanner;
+
+public class NNN {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer (n): ");
+        int n = scanner.nextInt();
+
+        long result = calculateNNN(n);
+
+        System.out.println("Result of n + nn + nnn: " + result);
+        scanner.close();
+    }
+
+    public static long calculateNNN(int n) {
+        if (n < 0 || n > 9) { // Added validation for single digit
+            throw new IllegalArgumentException("Input must be a single digit non-negative integer.");
+        }
+        long nn = (long) n * 10 + n;
+        long nnn = nn * 10 + n;
+        return (long) n + nn + nnn;
+    }
+}
+
+
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 2
+   **Expected Output:** 246
+
+2. **Input:** 5
+   **Expected Output:** 615
+
+3. **Input:** 0
+   **Expected Output:** 0
+
+**Edge/Corner Cases:**
+
+4. **Input:** 9  (Largest single digit)
+   **Expected Output:** 1107
+
+5. **Input:** -1 (Negative input)
+   **Expected Output:** `IllegalArgumentException: Input must be a single digit non-negative integer.`
+
+6. **Input:** 10 (Two-digit input)
+   **Expected Output:** `IllegalArgumentException: Input must be a single digit non-negative integer.`
+
+
+**Explanation of Changes and Improvements:**
+
+* **Input Validation:** The code now includes input validation to ensure that `n` is a single-digit non-negative integer.  This prevents unexpected behavior or errors.  An `IllegalArgumentException` is thrown if the input is invalid.
+
+* **Use of `long`:**  The calculations are now performed using `long` to handle potential overflow issues, especially when `n` is close to 9. The `nn` and `nnn` are also declared as `long`. We also cast `n` to `long` before performing the final sum to ensure the entire calculation is done with `long`.
+
+* **Clearer Prompts and Output:**  The prompts and output messages are more informative.
+
+
+**How to Run the Test Cases:**
+
+1. **Save:** Save the code as `NNN.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac NNN.java`
+3. **Run:**  Run the program with different inputs using:  `java NNN`  (The program will prompt you to enter a value for `n`).
+
+
+
+This revised code is more robust, handles edge cases correctly, and is better structured. It's ready to be thoroughly tested with the provided test cases.

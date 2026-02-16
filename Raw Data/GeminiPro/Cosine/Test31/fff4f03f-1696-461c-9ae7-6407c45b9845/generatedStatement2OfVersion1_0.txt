@@ -1,0 +1,41 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Latitude 1 | Longitude 1 | Latitude 2 | Longitude 2 | Expected Distance (approx.) | Notes                                 |
+|-----------|-------------|--------------|-------------|--------------|-------------------------------|--------------------------------------|
+| 1        | 25          | 35           | 35.5        | 25.5        | 1480.08                       | Example from the problem           |
+| 2        | 0          | 0           | 0          | 0           | 0                              | Same point                        |
+| 3        | 90         | 0           | -90        | 0           | 20015.09                      | North Pole to South Pole             |
+| 4        | 0          | 0           | 0          | 180         | 20015.09                      | Opposite sides of the equator       |
+| 5        | 40.7128     | -74.0060    | 34.0522     | -118.2437   | 3935.73                       | New York to Los Angeles           |
+| 6        | 0          | 90          | 0          | -90         | 20015.09                      | Halfway around the Earth on equator|
+| 7        | 89.99      | 0           | 90         | 0           | 1.11                           | Very close to North Pole            |
+| 8         | -89.99     | 180         | -90         | -180        | 1.11                           | Very close to South Pole, date line | // Crossing the date line
+| 9 | 0 | 179.99 | 0 | -179.99 | 2.22 | Close to date line, opposite sides | // Another date line test
+
+
+
+**Explanation of Corner Cases:**
+
+* **Test Case 2:** Tests the scenario where both points are the same.
+* **Test Case 3:** Tests the distance between the North and South Poles.
+* **Test Case 4 & 6:**  Tests points on opposite sides of the Earth.
+* **Test Case 7 & 8:**  Tests points very close to the poles to ensure accuracy with small distances.
+* **Test Case 9**:  Tests what happens with points close to, and on opposing sides of the international dateline
+
+
+**How to run the test cases (Manually):**
+
+You would manually input the latitude and longitude values for each test case into the Java program and compare the outputted distance with the expected distance.
+
+**Automated Testing (recommended):**
+
+For proper testing, you should use a testing framework like JUnit. This allows you to write automated tests that verify the output of your `EarthDistance` class against the expected values for each test case.  This is much more efficient and reliable than manual testing.
+
+
+
+This comprehensive set of test cases will help you thoroughly verify the correctness of your Java program.  Using a testing framework like JUnit is highly recommended to automate the testing process.

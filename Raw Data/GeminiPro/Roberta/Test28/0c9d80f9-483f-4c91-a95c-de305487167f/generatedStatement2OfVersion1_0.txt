@@ -1,0 +1,37 @@
+
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Reason/Corner Case |
+|---|---|---|
+| 12345 | 15 | Positive multi-digit number |
+| 0 | 0 | Zero |
+| 9 | 9 | Single digit |
+| -123 | 6 | Negative number (absolute value used) |
+| 1000 | 1 | Number with zeros |
+| Integer.MAX_VALUE (2147483647) | 46 | Large positive number |
+| Integer.MIN_VALUE (-2147483648) | 47 | Large negative number (absolute value used) |
+
+
+**Explanation of the Code and Improvements:**
+
+1. **Handles Negative Numbers:** The code now uses `Math.abs(n)` to handle negative input correctly.  The sum of digits should be the same regardless of the sign.
+
+2. **Clear Function Name:** The function is named `function` as requested.  In a real-world scenario, a more descriptive name like `sumOfDigits` would be preferable.
+
+3. **Input Validation (Optional but Recommended):** While not strictly required by the prompt, in a robust application, you should add input validation to handle potential errors (like non-integer input) gracefully.  This could involve using a `try-catch` block around the `scanner.nextInt()` call.
+
+4. **Efficiency:** The algorithm used is efficient.  It iterates through the digits of the number only once.
+
+5. **Clarity:** The code is well-commented and easy to understand.
+
+
+**How to Run the Test Cases:**
+
+1. **Save:** Save the code as `SumOfDigits.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file.  Compile using `javac SumOfDigits.java`.
+3. **Run:** Execute the compiled code using `java SumOfDigits`.  Enter the test case input when prompted.
+4. **Verify:** Check if the output matches the expected output in the test case table.  You can automate this process by writing unit tests (using JUnit or TestNG, for example) for more thorough testing, especially for larger projects.
+
+
+This improved code and comprehensive set of test cases provides a much more robust and complete solution to the problem.

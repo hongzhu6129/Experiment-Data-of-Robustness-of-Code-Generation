@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+
+        // Input validation: Check if the input is an integer
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Clear the invalid input
+        }
+
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication table for " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Number:**
+   - Input: `5`
+   - Expected Output:
+     ```
+     Multiplication table for 5:
+     5 x 1 = 5
+     5 x 2 = 10
+     ...
+     5 x 10 = 50
+     ```
+
+2. **Negative Number:**
+   - Input: `-3`
+   - Expected Output:
+     ```
+     Multiplication table for -3:
+     -3 x 1 = -3
+     -3 x 2 = -6
+     ...
+     -3 x 10 = -30
+     ```
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+4. **Large Positive Number:**
+   - Input: `12345`
+   - Expected Output:  (Verify the calculations)
+     ```
+     Multiplication table for 12345:
+     12345 x 1 = 12345
+     ...
+     12345 x 10 = 123450 
+     ```
+
+5. **Large Negative Number:**
+   - Input: `-98765`
+   - Expected Output: (Verify the calculations)
+     ```
+     Multiplication table for -98765:
+     -98765 x 1 = -98765
+     ...
+     -98765 x 10 = -987650
+     ```
+
+6. **Invalid Input (Non-integer):**
+   - Input: `abc` or `3.14`
+   - Expected Output:
+     ```
+     Invalid input. Please enter an integer.  // Repeated until a valid integer is entered.
+     ```
+
+
+
+This comprehensive set of test cases helps ensure that the program functions correctly under different conditions and handles potential errors gracefully.  The input validation loop prevents the program from crashing if the user enters something that isn't an integer.

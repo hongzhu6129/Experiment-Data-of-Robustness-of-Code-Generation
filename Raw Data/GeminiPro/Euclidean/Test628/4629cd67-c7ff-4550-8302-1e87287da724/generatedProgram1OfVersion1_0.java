@@ -1,0 +1,51 @@
+import java.util.TreeSet;
+
+public class RemoveLastTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of strings
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add some elements to the TreeSet
+        treeSet.add("Apple");
+        treeSet.add("Banana");
+        treeSet.add("Orange");
+        treeSet.add("Grape");
+        treeSet.add("Mango");
+
+        // Print the original TreeSet
+        System.out.println("Original TreeSet: " + treeSet);
+
+        // Retrieve and remove the last element
+        if (!treeSet.isEmpty()) {  // Check if the TreeSet is empty to avoid exceptions
+            String lastElement = treeSet.last();
+            treeSet.remove(lastElement); 
+
+            System.out.println("Removed element: " + lastElement);
+            System.out.println("TreeSet after removal: " + treeSet);
+
+        } else {
+            System.out.println("TreeSet is empty, cannot remove last element.");
+        }
+
+         //Example demonstrating retrieving and removing a *particular* element (e.g., "Orange")
+        TreeSet<String> treeSet2 = new TreeSet<>();
+        treeSet2.add("Apple");
+        treeSet2.add("Banana");
+        treeSet2.add("Orange");
+        treeSet2.add("Grape");
+        treeSet2.add("Mango");
+
+        String particularElement = "Orange"; 
+
+        if (treeSet2.contains(particularElement)) {
+            treeSet2.remove(particularElement);
+            System.out.println("TreeSet after removing '" + particularElement + "': " + treeSet2);
+        } else {
+            System.out.println(particularElement + " not found in the TreeSet.");
+        }
+
+
+
+    }
+}

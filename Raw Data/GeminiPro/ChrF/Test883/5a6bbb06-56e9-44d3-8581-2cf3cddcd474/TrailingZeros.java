@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class TrailingZeros {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a non-negative integer: ");
+        int n = scanner.nextInt();
+
+        if (n < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+            return;
+        }
+
+        int trailingZeros = 0;
+        for (int i = 5; n / i >= 1; i *= 5) {
+            trailingZeros += n / i;
+        }
+
+        System.out.println("The number of trailing zeros in " + n + "! is: " + trailingZeros);
+        scanner.close();
+    }
+}

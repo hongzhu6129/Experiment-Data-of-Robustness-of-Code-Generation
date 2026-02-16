@@ -1,0 +1,65 @@
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class ClearMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample map
+        Map<String, Integer> studentGrades = new HashMap<>();
+        studentGrades.put("Alice", 90);
+        studentGrades.put("Bob", 85);
+        studentGrades.put("Charlie", 92);
+        studentGrades.put("David", 78);
+
+        // Print the original map
+        System.out.println("Original Map: " + studentGrades);
+
+        // Remove all mappings using clear()
+        studentGrades.clear();
+
+        // Print the map after clearing
+        System.out.println("Map after clearing: " + studentGrades);
+
+
+        // Example demonstrating checking for emptiness:
+        if (studentGrades.isEmpty()) {
+            System.out.println("The map is now empty.");
+        } else {
+            System.out.println("The map is not empty."); // This won't execute in this case.
+        }
+
+
+        //  Another example creating a new map after clearing:
+        studentGrades = new HashMap<>(); //  Now 'studentGrades' refers to a brand new, empty map.
+        studentGrades.put("Eve", 95);
+        System.out.println("New map: " + studentGrades);
+
+
+    }
+}
+```
+
+
+Output of the above code will be:
+
+```
+Original Map: {Bob=85, Alice=90, David=78, Charlie=92}
+Map after clearing: {}
+The map is now empty.
+New map: {Eve=95} 
+```
+
+
+Key points explained in the code and output:
+
+1. **Creating a Map:** The `HashMap` class is used to create a map, which stores key-value pairs.  In this example, student names (Strings) are keys, and their grades (Integers) are values.
+
+2. **`clear()` Method:** The core of this tutorial, `studentGrades.clear()`, removes all the key-value mappings from the map, making it empty.
+
+3. **Checking for Emptiness:** `studentGrades.isEmpty()` is a useful method to verify whether a map contains any entries.  It returns `true` if the map is empty and `false` otherwise.
+
+4. **Creating a New Map:**  After calling `clear()`, you can continue using the same map variable.  You can also create a completely new map by assigning a new `HashMap` instance to the variable (as shown in the last part of the example).
+
+5. **Output:**  The output clearly demonstrates how the map goes from containing elements to being empty after the `clear()` method is invoked. The curly braces `{}` denote an empty map.

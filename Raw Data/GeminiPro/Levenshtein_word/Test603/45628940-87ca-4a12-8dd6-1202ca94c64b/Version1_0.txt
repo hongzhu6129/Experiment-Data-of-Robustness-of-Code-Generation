@@ -1,0 +1,54 @@
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateThroughHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Method 1: Using an Iterator (Recommended for removing elements during iteration)
+        System.out.println("Iterating using an Iterator:");
+        Iterator<String> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+
+        // Method 2: Enhanced for loop (Simpler for just accessing elements)
+        System.out.println("\nIterating using an enhanced for loop:");
+        for (String element : hashSet) {
+            System.out.println(element);
+        }
+
+
+        // Method 3: Using a forEach loop (Java 8 and later) 
+        System.out.println("\nIterating using a forEach loop:");
+        hashSet.forEach(element -> System.out.println(element));
+
+
+
+        // Example of removing an element while iterating (safely using an Iterator)
+        System.out.println("\nRemoving 'Banana' while iterating:");
+        iterator = hashSet.iterator(); // Reset the iterator
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            if (element.equals("Banana")) {
+                iterator.remove();  // Safe removal
+            } else {
+                System.out.println(element);
+            }
+
+        }
+    }
+}
+```

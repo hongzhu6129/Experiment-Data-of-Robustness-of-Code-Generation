@@ -1,0 +1,52 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of Strings
+        List<String> fruits = new ArrayList<>();
+
+        // Add some initial elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        // Element to insert
+        String newFruit = "Mango";
+
+        // Position to insert (index)
+        int position = 1; // Insert at index 1 (second position)
+
+
+
+        try {
+            // Insert the element at the specified position.
+            fruits.add(position, newFruit);
+
+
+            // Print the updated ArrayList
+            System.out.println("ArrayList after insertion: " + fruits);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Invalid position.  Position must be between 0 and " + fruits.size());
+        }
+
+
+
+         // Example with an invalid position (out of bounds).  Will trigger catch block
+         fruits.clear(); // Start with an empty list
+         fruits.add("Grape");
+
+         position = 2; // Trying to insert at index 2 in a list with size 1
+         try {
+              fruits.add(position, "Pear");
+              System.out.println("ArrayList after insertion: " + fruits); // Won't reach here
+         } catch (IndexOutOfBoundsException e) {
+              System.err.println("Invalid position.  Position must be between 0 and " + fruits.size());
+         }
+    }
+}
+```

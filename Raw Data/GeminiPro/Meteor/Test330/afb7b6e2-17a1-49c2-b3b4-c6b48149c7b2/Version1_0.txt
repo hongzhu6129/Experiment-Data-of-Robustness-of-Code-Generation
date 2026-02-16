@@ -1,0 +1,56 @@
+```java
+public class StringComparison {
+
+    public static void main(String[] args) {
+
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");
+        String str4 = "world";
+
+
+        // Method 1: Using .equals() - recommended for content comparison
+        System.out.println("Using .equals():");
+        System.out.println(str1 + " equals " + str2 + ": " + str1.equals(str2)); // true
+        System.out.println(str1 + " equals " + str3 + ": " + str1.equals(str3)); // true
+        System.out.println(str1 + " equals " + str4 + ": " + str1.equals(str4)); // false
+
+
+
+        // Method 2: Using == (compares references, not always content)
+        System.out.println("\nUsing ==:");
+        System.out.println(str1 + " == " + str2 + ": " + (str1 == str2));       // true (because of string interning)
+        System.out.println(str1 + " == " + str3 + ": " + (str1 == str3));       // false (str3 is a new object)
+
+
+
+
+        //Illustrating a potential issue with == when not using literals or interned strings.
+        String str5 = new String("test");
+        String str6 = new String("test"); 
+        System.out.println(str5 + " == " + str6 + ": " + (str5 == str6));  //false: Different objects, even if content is same.
+
+
+        // Using equalsIgnoreCase() for case-insensitive comparison
+        String str7 = "Hello";
+        System.out.println("\nUsing equalsIgnoreCase():");
+        System.out.println(str1 + " equalsIgnoreCase " + str7 + ": " + str1.equalsIgnoreCase(str7)); // true
+
+    }
+}
+```
+
+
+**Explanation and Key Differences:**
+
+* **`equals()`:**  This method compares the *content* of two strings. It's the **recommended way** to check if two strings have the same characters.
+
+* **`==`:** This operator compares *references*.  It checks if two string variables are pointing to the *same object* in memory.  
+    * With string *literals* (e.g., `"hello"`), Java often uses a process called "string interning" which puts identical literals in the same memory location for efficiency.  This is why `str1 == str2` is true in the example.
+    * However, when you use the `new` keyword to create string objects (like `str3`), new objects are always created, even if their content is the same as an existing string. So `str1 == str3` is false.
+    * **Therefore, avoid using `==` for general string comparison unless you specifically want to check if they are the same object.**
+
+* **`equalsIgnoreCase()`:** This method compares the content of two strings, ignoring case. "hello" and "Hello" would be considered equal using this method.
+
+
+**Best Practice:** Always use `equals()` for comparing string content unless you have a specific reason to check for reference equality using `==`.

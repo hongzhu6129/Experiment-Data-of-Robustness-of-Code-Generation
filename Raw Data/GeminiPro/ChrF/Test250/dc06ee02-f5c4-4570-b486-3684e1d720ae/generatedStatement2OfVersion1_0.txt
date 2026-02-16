@@ -1,0 +1,17 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles the cases of an empty array (`nums.length == 0`) and a `null` array. This makes it more robust.
+
+2. **Clearer Variable Name:**  `uniqueIndex` replaces `k` to clearly indicate its purpose: tracking the index of the last unique element.
+
+3. **Concise Return:**  The return statement is simplified to `uniqueIndex + 1`.
+
+4. **Illustrative `main` Method:** The `main` method includes multiple test cases (including edge cases) to demonstrate the function's behavior. It also prints the updated array (the section with unique elements) using `Arrays.copyOfRange` to avoid displaying the untouched part of the original array.
+
+
+**How it Works:**
+
+The algorithm iterates through the sorted array. `uniqueIndex` keeps track of the index where the next unique element should be placed. When a new unique element is encountered (i.e., `nums[i] != nums[uniqueIndex]`), `uniqueIndex` is incremented, and the new unique element is placed at `nums[uniqueIndex]`.  Finally, `uniqueIndex + 1` represents the length of the updated array (containing only the unique elements).

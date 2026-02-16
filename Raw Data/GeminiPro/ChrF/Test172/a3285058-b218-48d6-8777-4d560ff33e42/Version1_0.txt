@@ -1,0 +1,65 @@
+**Java Program:**
+
+```java
+import java.util.List;
+import java.util.Arrays;
+
+public class PrintMaterials {
+
+    public static void main(String[] args) {
+        List<String> materials = Arrays.asList("wood", "metal", "glass", "plastic");
+        printMaterials(materials);
+    }
+
+    public static void printMaterials(List<String> materials) {
+        for (String material : materials) {
+            System.out.println(material);
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+**Positive Cases:**
+
+* **Input:** `["wood", "metal", "glass", "plastic"]`
+* **Expected Output:**
+```
+wood
+metal
+glass
+plastic
+```
+
+* **Input:** `["leather", "fabric", "rubber", "ceramic"]`
+* **Expected Output:**
+```
+leather
+fabric
+rubber
+ceramic
+```
+
+* **Input:** `["paper", "cardboard", "foam", "textile"]`
+* **Expected Output:**
+```
+paper
+cardboard
+foam
+textile
+```
+
+**Negative Cases (Corner Cases):**
+
+* **Input:** `[]` (Empty list)
+* **Expected Output:** No output
+
+* **Input:** `null` (Null list)
+* **Expected Output:** No output
+
+* **Input:** `["1", "2", "3"]` (Non-string elements)
+* **Expected Output:** No output
+
+* **Input:** List containing duplicate elements
+* **Expected Output:** Each unique element is printed only once

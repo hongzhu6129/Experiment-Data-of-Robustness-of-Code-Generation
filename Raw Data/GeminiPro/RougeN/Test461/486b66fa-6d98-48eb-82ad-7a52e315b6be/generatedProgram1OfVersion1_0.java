@@ -1,0 +1,66 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateFormats {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+
+        System.out.println("Current date and time using toString(): " + currentDateTime);
+
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        System.out.println("Current date in yyyy-MM-dd format: " + currentDate.format(formatter1));
+
+
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("d/M/yyyy");
+        System.out.println("Current date in d/M/yyyy format: " + currentDate.format(formatter2));
+
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("d-M-yyyy");
+        System.out.println("Current date in d-M-yyyy format: " + currentDate.format(formatter3));
+
+
+
+        DateTimeFormatter formatter4 = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        System.out.println("Current date in MM/dd/yyyy format: " + currentDate.format(formatter4));
+
+
+        DateTimeFormatter formatter5 = DateTimeFormatter.ofPattern("dd/MM/yy");
+        System.out.println("Current date in dd/MM/yy format: " + currentDate.format(formatter5));
+
+
+        DateTimeFormatter formatter6 = DateTimeFormatter.ofPattern("E, MMM dd yyyy"); // MMM gives short month name
+        System.out.println("Current date in E, MMM dd yyyy format: " + currentDate.format(formatter6));
+
+        DateTimeFormatter formatter7 = DateTimeFormatter.ofPattern("h:mm a"); // 12 hour format with am/pm
+        System.out.println("Current time in h:mm a format: " + currentTime.format(formatter7));
+
+
+        DateTimeFormatter formatter8 = DateTimeFormatter.ofPattern("HH:mm"); // 24 hour format
+        System.out.println("Current time in HH:mm format: " + currentTime.format(formatter8));
+
+
+
+        DateTimeFormatter formatter9 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Example with seconds
+        System.out.println("Current date and time in yyyy-MM-dd HH:mm:ss format: " + currentDateTime.format(formatter9));
+
+
+        DateTimeFormatter formatter10 = DateTimeFormatter.ofPattern("HH:mm:ss.SSS"); // Example with milliseconds
+        System.out.println("Current time in HH:mm:ss.SSS format: " + currentTime.format(formatter10));
+
+
+        DateTimeFormatter formatter11 = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy HH:mm:ss.SSS Z"); // Full day and month names with time zone.
+        System.out.println("Current date and time in a specific format : "+ currentDateTime.format(formatter11));
+
+
+
+        DateTimeFormatter formatter12 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"); // ISO 8601 format
+        System.out.println("Current date and time in ISO 8601 format : "+ currentDateTime.format(formatter12));
+
+
+    }
+}

@@ -1,0 +1,121 @@
+```java
+import java.util.Scanner;
+
+public class BinaryMultiplication {
+
+    public static String multiplyBinary(String binary1, String binary2) {
+        // Handle null or empty inputs
+        if (binary1 == null || binary2 == null || binary1.isEmpty() || binary2.isEmpty()) {
+            return "0"; // Or throw an exception as appropriate for your application
+        }
+
+
+        int num1 = binaryToDecimal(binary1);
+        int num2 = binaryToDecimal(binary2);
+
+        int product = num1 * num2;
+
+        return decimalToBinary(product);
+    }
+
+    public static int binaryToDecimal(String binary) {
+        int decimal = 0;
+        int power = 0;
+        for (int i = binary.length() - 1; i >= 0; i--) {
+            if (binary.charAt(i) == '1') {
+                decimal += Math.pow(2, power);
+            }
+            power++;
+        }
+        return decimal;
+    }
+
+    public static String decimalToBinary(int decimal) {
+        StringBuilder binary = new StringBuilder();
+        while (decimal > 0) {
+            binary.insert(0, decimal % 2);
+            decimal /= 2;
+        }
+        return binary.length() == 0 ? "0" : binary.toString();  //Handle 0 case
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the first binary number: ");
+        String binary1 = scanner.nextLine();
+        System.out.print("Enter the second binary number: ");
+        String binary2 = scanner.nextLine();
+
+        String product = multiplyBinary(binary1, binary2);
+        System.out.println("Product: " + product);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases including corner cases to thoroughly test the `multiplyBinary` function:
+
+* **Normal Cases:**
+    * `"11"` * `"10"`  (3 * 2 = 6 = `"110"`)
+    * `"101"` * `"111"` (5 * 7 = 35 = `"100011"`)
+    * `"1001"` * `"10"` (9 * 2 = 18 = `"10010"`)
+
+* **Zero Cases:**
+    * `"0"` * `"11"` (0 * 3 = 0 = `"0"`)
+    * `"101"` * `"0"` (5 * 0 = 0 = `"0"`)
+    * `"0"` * `"0"` (0 * 0 = 0 = `"0"`)
+
+* **Single Bit Cases:**
+    * `"1"` * `"1"` (1 * 1 = 1 = `"1"`)
+    * `"0"` * `"1"` (0 * 1 = 0 = `"0"`)
+
+* **Large Number Cases:** (Test the capacity of the multiplication)
+    * `"11111111"` * `"11111111"` (255 * 255 = 65025 = `"1111111000000001"`)
+
+* **Invalid Input Cases:** (These should be handled gracefully, either by returning "0" or throwing an exception).
+    * `null` * `"101"`
+    * `"11"` * `null`
+    * `""` * `"11"` // Empty strings
+    * `"11"` * `""`
+    * `"10a"` * `"11"` // Non-binary input (ideally, throw an exception or return an error message).
+    * `"101"` * `"1b0"` // Non-binary input
+
+
+
+It's important to test your code with a variety of inputs to ensure it handles all possible scenarios correctly, especially edge cases and invalid inputs, to prevent unexpected behavior or crashes.
+
+
+
+**How to Run Test Cases (using JUnit � recommended):**
+
+For more structured testing, use JUnit (or a similar testing framework).  This allows you to automate the testing process. Here's a simple example:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class BinaryMultiplicationTest {
+
+    @Test
+    void testNormalMultiplication() {
+        assertEquals("110", BinaryMultiplication.multiplyBinary("11", "10"));
+        assertEquals("100011", BinaryMultiplication.multiplyBinary("101", "111"));
+    }
+
+
+    @Test
+    void testZeroMultiplication(){
+        assertEquals("0", BinaryMultiplication.multiplyBinary("0", "11"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("101", "0"));
+        assertEquals("0", BinaryMultiplication.multiplyBinary("0", "0"));
+    }
+    // ... Add tests for other cases (single bit, large numbers, invalid input)
+
+}
+```
+
+
+Using a testing framework makes it easier to run and manage your tests as your code evolves.  You can run your JUnit tests directly from your IDE (like IntelliJ or Eclipse).

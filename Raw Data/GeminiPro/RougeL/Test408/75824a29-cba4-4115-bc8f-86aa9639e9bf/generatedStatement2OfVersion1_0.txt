@@ -1,0 +1,18 @@
+
+
+
+Key improvements:
+
+- **Regular Expression:** Uses `\b\w*(?i)(m|rap)\b` for accurate word matching:
+    - `\b`: Matches word boundaries to avoid counting "arm" in "farm".
+    - `\w*`: Matches zero or more word characters (letters, numbers, underscore).
+    - `(?i)`: Case-insensitive flag.
+    - `(m|rap)`: Matches either "m" or "rap".
+- **Handles Null/Empty:** Includes checks for `null` or empty input strings to prevent `NullPointerException`.
+- **Trimmed Input:** Uses `text.trim()` to handle leading/trailing whitespace, avoiding incorrect counts for spaces.
+- **Clearer Variable Names:** Uses more descriptive variable names (e.g., `text`, `count`).
+- **Comprehensive Tests:**  The `main` method provides several test cases, including `null`, empty string, and whitespace-only strings, demonstrating how the method handles different inputs.
+
+
+
+This improved version is more robust, accurate, and easier to understand.

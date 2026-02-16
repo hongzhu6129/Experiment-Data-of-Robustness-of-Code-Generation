@@ -1,0 +1,55 @@
+```java
+import java.util.TreeMap;
+
+public class NextKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        Integer key1 = 4;
+        Integer result1 = getNextKey(treeMap, key1);
+        System.out.println("Next key after " + key1 + ": " + result1); // Output: 5
+
+        Integer key2 = 9;
+        Integer result2 = getNextKey(treeMap, key2);
+        System.out.println("Next key after " + key2 + ": " + result2); // Output: null
+
+        Integer key3 = 0;
+        Integer result3 = getNextKey(treeMap, key3);
+        System.out.println("Next key after " + key3 + ": " + result3); // Output: 1
+
+
+        // Additional tests (feel free to add more)
+         TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String key4 = "apricot";
+        String result4 = getNextKey(stringTreeMap, key4);
+        System.out.println("Next key after " + key4 + ": " + result4); // Output: banana
+
+        String key5 = "orange";
+        String result5 = getNextKey(stringTreeMap, key5);
+        System.out.println("Next key after " + key5 + ": " + result5); // Output: null
+    }
+
+
+
+
+    public static <K, V> K getNextKey(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        return treeMap.higherKey(key);
+    }
+}
+```

@@ -1,0 +1,86 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close(); 
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering normal scenarios and corner/edge cases:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30  **Expected Output:** 20.0
+2. **Input:** 5.5, 10.5, 15.0  **Expected Output:** 10.333333333333334
+3. **Input:** -5, 0, 5  **Expected Output:** 0.0
+
+**Edge/Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:**  (Will likely overflow and give an incorrect result � this tests overflow handling)
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE **Expected Output:** (Will likely underflow and give an incorrect result � tests underflow handling)
+6. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Double.POSITIVE_INFINITY (Correct behavior according to floating-point arithmetic rules)
+7. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE **Expected Output:**  A very small positive double near zero.
+8. **Input:** 0, 0, 0  **Expected Output:** 0.0
+9. **Input:** -10, -20, -30 **Expected Output:** -20.0
+
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+While you can manually check the outputs, a more robust approach is to use a testing framework like JUnit. Here�s how you might structure a JUnit test class:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testNormalCase1() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testNormalCase2() {
+        assertEquals(10.333333333333334, AverageCalculator.calculateAverage(5.5, 10.5, 15.0));
+    }
+
+    // ... Add more test cases following the same pattern
+
+    @Test
+    void testOverflow() {
+        // Instead of assertEquals, check if the result is within an expected range
+        // or if an exception is thrown, depending on how you want to handle overflow
+        double result = AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE);
+        assertTrue(result > Integer.MAX_VALUE/2); // Example: checking it's larger than half max value
+
+    }
+
+    // ... similarly add tests for underflow, Double.MAX_VALUE, etc.
+}
+
+```
+
+Remember to add JUnit to your project dependencies if you haven't already.  This structured approach to testing will help ensure the correctness and robustness of your code.

@@ -1,0 +1,14 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes error handling for invalid hexadecimal characters (like 'G' or 'H') and for cases where the resulting binary string is too large to fit into an `int`.  It returns -1 to indicate an error.  You could alternatively throw an exception.
+2. **Case-Insensitivity:** The `.toUpperCase()` method is used to handle both lowercase and uppercase hexadecimal input.
+3. **HashMap for Efficiency:** A `HashMap` is used to store the hexadecimal-to-binary mappings, making the lookup process very efficient.
+4. **Clearer Output:** The output now clearly labels the result as the "binary number".
+5. **Concise Conversion:** The `Integer.parseInt(binary.toString(), 2)` converts the binary string directly to an integer using base 2. Then, the  `Integer.toBinaryString(binary)` in the `main` method prints out the binary representation, keeping with the format of the original prompt.
+6. **Additional Test Case:**  A second test case is included to demonstrate the program with a different hex input.
+
+
+This revised version is more robust, efficient, and easier to understand. It addresses potential issues and provides a better user experience.

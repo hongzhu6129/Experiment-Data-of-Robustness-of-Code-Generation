@@ -1,0 +1,53 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
+     * Do not allocate extra space for another array; you must do this by modifying the input array in-place with O(1) extra memory.
+     *
+     * @param nums sorted array of integers
+     * @return updated length of the array
+     */
+    static int remove_Duplicates_twice(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int index = 0; // Index for the updated array
+
+        for (int num : nums) {
+            if (index < 2 || num > nums[index - 2]) { // Allow up to two occurrences
+                nums[index++] = num;
+            }
+        }
+
+        return index;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 1, 2, 2, 3};
+        int len1 = remove_Duplicates_twice(nums1);
+        System.out.println("Updated array length: " + len1);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 1, 2, 3, 3};
+        int len2 = remove_Duplicates_twice(nums2);
+        System.out.println("Updated array length: " + len2);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+         int[] nums3 = {};
+        int len3 = remove_Duplicates_twice(nums3);
+        System.out.println("Updated array length: " + len3);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Empty array
+
+        int[] nums4 = null;
+        int len4 = remove_Duplicates_twice(nums4);
+        System.out.println("Updated array length: " + len4); //0
+        //System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums4, 0, len4)));  Avoid accessing null array
+
+    }
+}
+```

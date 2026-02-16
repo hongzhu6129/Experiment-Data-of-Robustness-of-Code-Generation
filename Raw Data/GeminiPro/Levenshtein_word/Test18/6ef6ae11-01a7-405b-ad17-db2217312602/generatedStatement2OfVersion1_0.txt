@@ -1,0 +1,41 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+   - Input: `101010`
+   - Expected Output: `Hexadecimal value: '2a'`
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+
+
+2. **Invalid Binary Input:**
+   - Input: `1102`  (Contains a digit other than 0 or 1)
+   - Expected Output: `Invalid binary input.`
+   - Input: `abc` (Contains non-numeric characters)
+   - Expected Output: `Invalid binary input.`
+   - Input: `111 000` (Contains spaces)
+   - Expected Output: `Invalid binary input.`
+
+
+3. **Edge Cases:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+   - Input: `1`
+   - Expected Output: `Hexadecimal value: '1'`
+   - Input: (Empty string)  
+   - Expected Output: `Hexadecimal value: '0'` (An empty string should ideally be treated as 0)
+
+
+4. **Large Binary Input (to check for potential integer overflow):**
+   - Input: `11111111111111111111111111111111` (32 ones - maximum for a Java int)
+   - Expected Output: `Hexadecimal value: 'ffffffff'`
+   - Input:  `100000000000000000000000000000000` (33 bits - should probably be handled gracefully, even though it exceeds the capacity of a Java int) -  The current code will not handle this correctly and *might* wrap around or cause other unexpected behavior. You would need `BigInteger` to handle truly arbitrary-length binary inputs.
+
+
+
+
+This enhanced version adds error handling for invalid binary input and clarifies the expected behavior for an empty input string.  The test cases cover various scenarios, including valid and invalid inputs, edge cases, and a large binary input to test for potential integer overflow.  Remember, Java's `int` type has limits, so extremely large binary numbers might require a different approach (using `BigInteger` for example).

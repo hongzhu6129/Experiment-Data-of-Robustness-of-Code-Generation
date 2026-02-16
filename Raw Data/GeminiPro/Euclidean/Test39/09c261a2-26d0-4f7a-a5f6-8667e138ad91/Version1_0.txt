@@ -1,0 +1,103 @@
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class SystemTime {
+
+    public static String getCurrentTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"); // Customize format as needed
+        return now.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        String currentTime = getCurrentTime();
+        System.out.println("Current System Time: " + currentTime);
+    }
+}
+```
+
+**Test Cases:**
+
+It's difficult to directly unit test `getCurrentTime()` because it relies on the system clock, which is constantly changing.  Instead, we can focus on testing the formatting and ensuring the output is reasonable.  Here are some approaches for testing:
+
+1. **Format Validation:**
+
+```java
+import org.junit.jupiter.api.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class SystemTimeTest {
+
+    @Test
+    public void testValidFormat() {
+        // Arrange:  Create a known LocalDateTime for testing
+        LocalDateTime testDateTime = LocalDateTime.of(2024, 10, 27, 10, 30, 0, 123456789);
+
+        // Act: Format the test date time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        String formattedTime = testDateTime.format(formatter);
+
+
+        // Assert: Check if the formatted string matches the expected format
+        assertEquals("2024-10-27 10:30:00.123", formattedTime);
+    }
+
+
+    @Test
+    public void testInvalidFormatThrowsException() {
+       // Arrange:  An invalid date time string. Note the incorrect month format
+       String invalidDateTimeString = "2024-Oct-27 10:30:00.123";
+
+       // Act and Assert:  Attempt parsing and expect an exception
+       assertThrows(DateTimeParseException.class, () -> {
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+           LocalDateTime.parse(invalidDateTimeString, formatter);
+       });
+
+    }
+
+}
+
+
+
+```
+
+2. **Reasonableness Check (Within a Delta):**
+
+Although we can't assert an exact time, we can check if the returned time is within a reasonable delta of the expected time.  This is more of an integration/system test:
+
+```java
+import org.junit.jupiter.api.Test;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import static org.junit.jupiter.api.Assertions.*;
+
+
+public class SystemTimeTest {
+
+    @Test
+    public void testTimeWithinDelta() {
+        // Act: Get the current time from the system
+        LocalDateTime currentTime = LocalDateTime.now();
+        String systemTimeString = SystemTime.getCurrentTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        LocalDateTime parsedSystemTime = LocalDateTime.parse(systemTimeString, formatter);
+
+
+        // Assert: Check if the parsed system time is "close enough" to the current time
+        assertTrue(ChronoUnit.MILLIS.between(currentTime, parsedSystemTime) < 100); // Adjust delta as needed
+    }
+}
+```
+
+3. **Edge Cases (Less Relevant):**
+
+Edge cases for `LocalDateTime` itself are handled internally by the `java.time` library.  We don't need to explicitly test for leap years, daylight saving time changes, etc., as the library handles these correctly.  However, you should consider testing with different locales if your application requires internationalization.
+
+
+
+These testing strategies provide a good balance between practicality and thoroughness when dealing with time-dependent functions. Remember to choose the approach that best suits your specific testing needs and risk tolerance.

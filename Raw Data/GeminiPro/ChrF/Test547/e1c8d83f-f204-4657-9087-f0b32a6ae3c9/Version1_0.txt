@@ -1,0 +1,49 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadPlainTextFile {
+
+    public static void main(String[] args) {
+        // Specify the path to your text file
+        String filePath = "path/to/your/file.txt"; // Replace with the actual path
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Explanation and How to Use:**
+
+1. **Replace `path/to/your/file.txt`:**  Change this placeholder to the *actual* path of the text file you want to read on your system.  For example:
+   -  `"C:\\Users\\YourName\\Documents\\my_text_file.txt"` (Windows)
+   -  `/home/yourname/documents/my_text_file.txt` (Linux/macOS)
+2. **Compile and Run:** Compile the Java code (e.g., `javac ReadPlainTextFile.java`) and then run it (e.g., `java ReadPlainTextFile`).
+3. **Output:** The program will print the contents of the text file to the console, line by line.
+4. **Error Handling:** The `try-catch` block handles potential `IOExceptions` that can occur if the file is not found or if there are other problems accessing it.  It prints an error message if an exception occurs.
+5. **Try-with-resources:** The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` is automatically closed even if an exception is thrown, preventing resource leaks.
+
+
+**Example `file.txt` Content:**
+
+```
+This is the first line.
+This is the second line.
+And this is the third.
+```
+
+**Output when you run the program (assuming the correct path is provided):**
+
+```
+This is the first line.
+This is the second line.
+And this is the third.
+```

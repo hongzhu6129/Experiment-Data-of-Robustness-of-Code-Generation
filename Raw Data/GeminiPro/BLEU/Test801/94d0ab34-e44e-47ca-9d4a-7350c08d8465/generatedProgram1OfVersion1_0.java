@@ -1,0 +1,20 @@
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+        // Given width (which is actually the diameter)
+        double diameter = 7.5;
+
+        // Calculate radius
+        double radius = diameter / 2;
+
+        // Calculate perimeter (circumference)
+        double perimeter = 2 * Math.PI * radius;
+
+        // Calculate area
+        double area = Math.PI * radius * radius;
+
+        // Print the results
+        System.out.println("perimeter is = " + perimeter);
+        System.out.println("area is = " + area); 
+    }
+}

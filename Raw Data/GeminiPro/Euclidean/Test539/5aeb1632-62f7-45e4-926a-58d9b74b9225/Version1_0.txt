@@ -1,0 +1,49 @@
+```java
+import java.io.File;
+
+public class FilePermissions {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println("Usage: java FilePermissions <file_or_directory_path>");
+            System.exit(1); // Exit with an error code
+        }
+
+        String filePath = args[0];
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            System.out.println("File or directory does not exist: " + filePath);
+            return; // or System.exit(1); if you want to indicate an error
+        }
+
+        boolean canRead = file.canRead();
+        boolean canWrite = file.canWrite();
+
+        System.out.println("File/Directory: " + filePath);
+        System.out.println("Read Permission: " + canRead);
+        System.out.println("Write Permission: " + canWrite);
+
+
+    }
+}
+```
+
+
+To compile and run this code:
+
+1. **Save:** Save the code as `FilePermissions.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the command:  `javac FilePermissions.java`
+3. **Run:** Execute the compiled program, providing the file or directory path as a command-line argument: `java FilePermissions /path/to/your/file.txt` (replace `/path/to/your/file.txt` with the actual path).  You can also test with a directory path.
+
+
+**Explanation and Improvements:**
+
+* **Error Handling:** The code now checks if a file path is provided as a command-line argument and prints an error message if not.
+* **Existence Check:**  It verifies if the file or directory actually exists before checking permissions.  This prevents `NullPointerExceptions`.
+* **Clear Output:** The output is more informative, clearly indicating the file/directory being checked and the individual read and write permissions.
+* **Return vs. System.exit():**  If the file doesn't exist, the `return` statement now exits the `main` method gracefully. You could alternatively use `System.exit(1)` to indicate an error to the operating system.  `System.exit()` is generally preferred for true error conditions where you want to stop the entire program immediately.
+
+
+
+This improved version provides better error handling, user experience, and adheres to best practices.

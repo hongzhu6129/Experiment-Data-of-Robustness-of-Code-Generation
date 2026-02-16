@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+class LinearSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 80, 30, 60, 50, 110, 100, 130, 170};
+        int x = 110;
+
+        int result = Linear_Search(arr, x);
+
+        if (result == -1) {
+            System.out.println("Element is not present in array");
+        } else {
+            System.out.println("Element is present at index " + result);
+        }
+
+
+        // Additional test cases
+        System.out.println("Searching for 10: " + Linear_Search(arr, 10)); // Should be 0
+        System.out.println("Searching for 170: " + Linear_Search(arr, 170)); // Should be 9
+        System.out.println("Searching for 5: " + Linear_Search(arr, 5)); // Should be -1
+        System.out.println("Searching for an element in an empty array: " + Linear_Search(new int[]{}, 5)); // Should be -1
+
+
+    }
+
+    private static int Linear_Search(int[] arr, int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+}

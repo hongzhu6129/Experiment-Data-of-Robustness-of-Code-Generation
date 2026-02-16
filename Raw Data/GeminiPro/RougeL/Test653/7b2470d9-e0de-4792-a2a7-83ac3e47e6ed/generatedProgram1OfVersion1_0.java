@@ -1,0 +1,38 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Collection;
+
+public class MapValuesView {
+
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, Integer> map = new HashMap<>();
+
+        // Add some key-value pairs to the map
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+        map.put("Grape", 4);
+
+        // Get a Collection view of the values
+        Collection<Integer> values = map.values();
+
+        // Print the values
+        System.out.println("Values in the map:");
+        for (Integer value : values) {
+            System.out.println(value);
+        }
+
+
+        //Demonstrate that changes to the Collection reflect in the map (and vice-versa)
+        System.out.println("\nDemonstrating changes to the collection reflect in the map:");
+        values.remove(2); // Remove the value 2
+        System.out.println("Map after removing 2 from the values collection: " + map);
+
+        map.put("Mango", 5); // Add a new entry
+        System.out.println("Values after adding 'Mango':5 to the map: " + values);
+
+
+
+    }
+}

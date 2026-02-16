@@ -1,0 +1,95 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 11; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        printMultiplicationTable(num);
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output: Multiplication table of 7 up to 11.
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:  All results will be 0.
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output: Multiplication table of -5 (negative results).
+
+4. **Large Positive Number:**
+   - Input: `10000` 
+   - Expected Output: Multiplication table of 10000. Checks for potential integer overflow issues (though Java's `int` can handle this size).
+
+5. **Large Negative Number:**
+   - Input: `-10000`
+   - Expected Output: Multiplication table of -10000.
+
+
+**How to Run the Test Cases:**
+
+You can manually run the test cases by compiling and running the Java code, entering the input values one at a time.  
+
+For more automated testing, consider using a testing framework like JUnit:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testMultiplicationTable(7, "7 x 1 = 7\n7 x 2 = 14\n... (up to 11)"); // ... represents the rest of the table
+    }
+
+    @Test
+    void testZero() {
+        testMultiplicationTable(0, "0 x 1 = 0\n0 x 2 = 0\n... (up to 11)");
+    }
+
+    @Test
+    void testNegativeNumber() {
+        testMultiplicationTable(-5, "-5 x 1 = -5\n-5 x 2 = -10\n... (up to 11)");
+    }
+
+    // ... other test cases (large positive/negative)
+
+
+    private void testMultiplicationTable(int input, String expectedOutputSnippet) {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();  // Capture system output
+        System.setOut(new PrintStream(outContent));
+
+        MultiplicationTable.printMultiplicationTable(input);
+
+        String actualOutput = outContent.toString();
+        assertTrue(actualOutput.contains(expectedOutputSnippet));  // Check if the expected output is present
+        System.setOut(System.out); // Restore system output
+    }
+}
+```
+
+
+Using JUnit (or similar frameworks) allows you to define your tests clearly, run them automatically, and easily verify the results.  This is extremely useful for larger projects and for regression testing (making sure that code changes don't break existing functionality).

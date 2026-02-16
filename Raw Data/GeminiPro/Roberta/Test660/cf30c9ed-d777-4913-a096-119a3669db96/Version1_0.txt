@@ -1,0 +1,67 @@
+```java
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class SortLocksTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom Comparator
+        TreeMap<String, String> locks = new TreeMap<>(new LockComparator());
+
+        // Add some locks (key is lock name, value could be any lock-related data)
+        locks.put("Lock C", "Some data for Lock C");
+        locks.put("Lock A", "Some data for Lock A");
+        locks.put("Lock B", "Some data for Lock B");
+        locks.put("Lock D", "Some data for Lock D");
+
+
+        // Print the sorted locks
+        System.out.println("Sorted Locks:");
+        for (String lockName : locks.keySet()) {
+            System.out.println(lockName + ": " + locks.get(lockName));
+        }
+    }
+
+
+    public int compare(String lock1, String lock2) { 
+        // Custom comparison logic (case-insensitive sorting)
+        return lock1.compareToIgnoreCase(lock2); 
+    }
+
+
+    // Inner class implementing Comparator for String comparison
+    // This is a workaround since we can't directly use the 'compare' method
+    // with the main method signature restriction as it can't be static.
+    private static class LockComparator implements Comparator<String> {
+        @Override
+        public int compare(String lock1, String lock2) {
+            // Delegate the comparison to the outer class's compare method.
+            return new SortLocksTreeMap().compare(lock1,lock2);
+
+        }
+    }
+}
+```
+
+
+**Explanation and Workaround for the Method Signature Restriction:**
+
+The main challenge here was the very strict limitation on method signatures.  We were only allowed `public static void main` and `public int compare`. We could not have a constructor or other helper methods.
+
+1. **TreeMap with Custom Comparator:**  We use a `TreeMap` because it automatically sorts its entries based on the provided `Comparator`.
+
+2. **Inner Comparator Class:** Since the `compare` method could not be static (a non-static method requires an instance of the class to be called), we have to create a workaround by creating a separate *inner class* `LockComparator` that *implements* the `Comparator` interface. This inner class has its own `compare` method that can then call the outer class's `compare` method.
+
+3. **Delegation within the inner class:**  Inside the `LockComparator`'s `compare` method, we create a new instance of the outer `SortLocksTreeMap` class. This allows us to call the `compare` method we were provided with, thus adhering to the strict method signature requirement.
+
+
+**Key Improvements and Best Practices:**
+
+* **Case-Insensitive Sorting:** The `compare` method now uses `compareToIgnoreCase` for more natural sorting of lock names.
+* **Clearer Comments:**  The code is well-commented to explain the purpose of each part.
+* **Inner class for Comparator:** The use of an inner class is a more structured approach.
+* **Meaningful Variable Names:**  Using descriptive names like `locks` and `lockName` enhances readability.
+
+
+
+This improved version provides a working solution within the confines of the specified method signatures. It demonstrates the use of a `TreeMap` and a custom `Comparator` for sorting, while also addressing the case-insensitivity and using an inner class workaround for better design within the given limitations.

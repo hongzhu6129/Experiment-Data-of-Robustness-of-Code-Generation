@@ -1,0 +1,58 @@
+```java
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeFormats {
+
+    public static void main(String[] args) {
+        LocalDateTime now = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+
+
+        // yyyy-mm-dd
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+        // hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        // yyyy-mm-dd hh:mm:ss
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+
+        // e mmm yyyy hh:mm:ss z  (Note: slight variation due to limitations)
+        //  "leibstandarte" isn't a standard format specifier and can't be directly included.
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("E MMM yyyy HH:mm:ss z")));
+
+
+
+        // yyyy-mm-dd hh:mm:ss.SSSz (milliseconds and zone)
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSz")));
+
+
+
+        // hh:mm:ss, Z (hours, minutes, seconds, zone offset) 
+        System.out.println(zonedDateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss, Z")));
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **LocalDateTime vs. ZonedDateTime:**  For formats involving time zones (z, Z, etc.), you *must* use `ZonedDateTime`. `LocalDateTime` doesn't have time zone information.
+* **Correct Format Specifiers:** The code now uses the correct format specifiers (e.g., `HH` for 24-hour format, `mm` for minutes, `z` for zone abbreviation, `Z` for zone offset). The original question had some inconsistencies.
+* **Handling Milliseconds:**  The `SSS` format specifier is used correctly to display milliseconds.
+* **"leibstandarte":** I've explained that  "leibstandarte" is not a valid date/time format specifier.  If you need to add custom text, you'd concatenate it to the formatted string.  For instance:
+
+   ```java
+   String formattedDateTime = zonedDateTime.format(DateTimeFormatter.ofPattern("E MMM yyyy HH:mm:ss z"));
+   System.out.println(formattedDateTime + " leibstandarte"); 
+   ```
+
+* **Clarity and Readability:**  The code is now better organized and includes comments to explain each format.
+
+
+This improved version addresses the original request while adhering to correct Java date and time formatting principles.

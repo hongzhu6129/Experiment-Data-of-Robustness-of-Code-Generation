@@ -1,0 +1,67 @@
+```java
+import java.util.Arrays;
+
+public class SaddlebackSearch {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+        int m = array.length;
+        int n = array[0].length;
+
+        int target = 16;  // Example target value
+
+        int[] result = Saddleback(array, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+
+
+        target = 20; // Example target value that is not present
+        result = Saddleback(array, target, m, n);
+
+        if (result[0] != -1) {
+            System.out.println("Target " + target + " found at row: " + result[0] + ", column: " + result[1]);
+        } else {
+            System.out.println("Target " + target + " not found in the array.");
+        }
+    }
+
+    private static int[] Saddleback(int[][] array, int target, int m, int n) {
+        int row = 0;
+        int col = n - 1;
+
+        while (row < m && col >= 0) {
+            if (array[row][col] == target) {
+                return new int[]{row, col}; // Target found
+            } else if (array[row][col] < target) {
+                row++; // Move down to the next row
+            } else {
+                col--; // Move left to the previous column
+            }
+        }
+
+        return new int[]{-1, -1}; // Target not found
+    }
+}
+```
+
+
+Key improvements:
+
+* **Clearer Variable Names:**  `m` and `n` are more descriptive than the original single-letter variables.
+* **Returns an Array:** The `Saddleback` function now returns an `int[]` containing the row and column index.  This makes it much easier to handle the case where the target is not found.  A `{-1, -1}` is returned to indicate this.
+* **Example Usage:** The `main` method demonstrates how to call the `Saddleback` method and interpret its result. It also includes an example where the target is not found.
+* **Comments:** Added comments to explain the logic.
+* **Error Handling:** Explicitly handles the case where the target is not found.
+
+
+This improved version is more robust, easier to understand, and follows best practices.

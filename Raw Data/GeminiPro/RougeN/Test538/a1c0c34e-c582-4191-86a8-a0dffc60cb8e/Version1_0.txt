@@ -1,0 +1,82 @@
+```java
+import java.io.File;
+
+public class CheckFileExists {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java CheckFileExists <pathname>");
+            return; // Exit if pathname isn't provided
+        }
+
+        String pathname = args[0];
+        File file = new File(pathname);
+
+        if (file.exists()) {
+            System.out.println(pathname + " exists.");
+
+            if (file.isDirectory()) {
+                System.out.println(pathname + " is a directory.");
+            } else {
+                System.out.println(pathname + " is a file.");
+            }
+        } else {
+            System.out.println(pathname + " does not exist.");
+        }
+    }
+}
+```
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code above as `CheckFileExists.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac CheckFileExists.java
+   ```
+3. **Run:** Execute the compiled program, providing the pathname as a command-line argument:
+   ```bash
+   java CheckFileExists /path/to/your/file/or/directory  
+   ```
+   Replace `/path/to/your/file/or/directory` with the actual path you want to check. For example:
+   ```bash
+   java CheckFileExists my_file.txt
+   java CheckFileExists /Users/yourname/Documents/
+   ```
+
+
+**Explanation:**
+
+1. **Import `java.io.File`:** This line imports the necessary class for working with files and directories.
+2. **`main` method:**  The `main` method is the entry point of the program.
+3. **Check for arguments:**  It first checks if a pathname is provided as a command-line argument.  If not, it prints usage instructions and exits.
+4. **Create `File` object:** It creates a `File` object representing the pathname provided.
+5. **`file.exists()`:** The core of the code. This method checks if the file or directory specified by the pathname exists and returns `true` if it does, `false` otherwise.
+6. **Output:**  The program then prints appropriate messages based on whether the file/directory exists and whether it is a file or a directory.
+
+
+**Example Usage and Output:**
+
+
+* **If the file exists:**
+   ```
+   java CheckFileExists my_file.txt 
+   my_file.txt exists.
+   my_file.txt is a file.
+   ```
+
+
+* **If the directory exists:**
+   ```
+   java CheckFileExists /Users/yourname/Documents
+   /Users/yourname/Documents exists.
+   /Users/yourname/Documents is a directory.
+   ```
+
+
+* **If the file/directory does not exist:**
+   ```
+   java CheckFileExists non_existent_file.txt
+   non_existent_file.txt does not exist.
+   ```

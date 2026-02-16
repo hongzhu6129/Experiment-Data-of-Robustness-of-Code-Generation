@@ -1,0 +1,97 @@
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class SwapArrayListElements {
+
+    public static void main(String[] args) {
+
+        // 1. Create an ArrayList
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        System.out.println("Original ArrayList: " + fruits);
+
+        // 2. Swap elements using Collections.swap()
+        int index1 = 1; // Index of "Banana"
+        int index2 = 2; // Index of "Orange"
+
+        try {
+            Collections.swap(fruits, index1, index2);
+            System.out.println("ArrayList after swapping using Collections.swap(): " + fruits);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid index for swapping.  Index must be within the bounds of the ArrayList (0-" + (fruits.size() -1 ) + ").");
+
+        }
+
+
+
+        // Reset for the next example
+        fruits = new ArrayList<>(List.of("Apple", "Banana", "Orange", "Grape"));
+
+
+        // 3. Swap elements manually (without Collections.swap)
+        index1 = 0; // Index of "Apple"
+        index2 = 3; // Index of "Grape"
+
+        try {
+           String temp = fruits.get(index1);
+           fruits.set(index1, fruits.get(index2));
+           fruits.set(index2, temp);
+
+           System.out.println("ArrayList after manual swapping: " + fruits);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid index for swapping. Index must be within the bounds of the ArrayList (0-" + (fruits.size() -1 ) + ").");
+        }
+
+
+
+         // Demonstrating potential issues with incorrect indices
+        fruits = new ArrayList<>(List.of("Apple", "Banana", "Orange", "Grape")); // Reset
+
+
+        System.out.println("\nDemonstrating error handling:");
+
+        // Intentionally using out-of-bounds indices to trigger the catch block
+        index1 = -1;
+        index2 = 5;
+         try {
+            Collections.swap(fruits, index1, index2); // This will throw an IndexOutOfBoundsException
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid index for swapping using Collections.swap(). Index must be within the bounds of the ArrayList (0-" + (fruits.size() -1 ) + ").");
+        }
+
+
+
+        try {
+            String temp = fruits.get(index1); //This will throw an IndexOutOfBoundsException
+            fruits.set(index1, fruits.get(index2));
+            fruits.set(index2, temp);
+         } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid index for swapping using manual swap. Index must be within the bounds of the ArrayList (0-" + (fruits.size() -1 ) + ").");
+
+        }
+
+
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+* **Clearer Explanations and Comments:**  More comments explain each step, making the educational aspect stronger.
+* **Two Swap Methods:** Shows both `Collections.swap()` (the easier and preferred way) and manual swapping using `get()` and `set()` to illustrate how swapping works under the hood.
+* **Error Handling (IndexOutOfBoundsException):** The code now includes `try-catch` blocks to handle `IndexOutOfBoundsException`. This is crucial for robustness and demonstrates good programming practices.  It also gives specific error messages about the valid index range.
+* **Demonstrates Error Handling:** The code now *intentionally* introduces invalid indices to show how the `try-catch` blocks prevent the program from crashing and provide informative error messages.
+* **Resets ArrayList:** After each swap demonstration, the `ArrayList` is reset to its original state to ensure that each example is independent.  This makes the output easier to follow.
+* **Clearer Output:** The `println` statements are more descriptive, making it easier to understand what's happening at each stage.
+
+
+This improved version provides a more comprehensive and robust educational example of swapping elements in an `ArrayList` in Java.

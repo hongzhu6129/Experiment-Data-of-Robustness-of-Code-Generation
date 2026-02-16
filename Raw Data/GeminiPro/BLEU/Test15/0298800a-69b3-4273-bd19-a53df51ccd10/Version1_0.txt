@@ -1,0 +1,109 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToHexadecimal {
+
+    public static String function(int decimal) {
+        StringBuilder hexadecimal = new StringBuilder();
+
+        if (decimal == 0) {
+            return "0";
+        }
+
+        while (decimal > 0) {
+            int remainder = decimal % 16;
+            char hexDigit;
+
+            if (remainder < 10) {
+                hexDigit = (char) (remainder + '0');
+            } else {
+                hexDigit = (char) (remainder - 10 + 'A');
+            }
+
+            hexadecimal.insert(0, hexDigit);
+            decimal /= 16;
+        }
+
+        return hexadecimal.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+
+        String hexadecimal = function(decimal);
+        System.out.println("Hexadecimal equivalent: " + hexadecimal);
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   Input: 255
+   Expected Output: FF
+
+2. **Zero:**
+   Input: 0
+   Expected Output: 0  (This is a corner case where the loop doesn't execute)
+
+3. **Negative Number:**  (Corner case)
+   Input: -1
+   Expected Output: FFFFFFFF (or similar representation depending on Java's handling of negative numbers and two's complement)  It's important to note that Java uses two's complement for negative numbers, so the hexadecimal representation will reflect this.
+
+4. **Large Positive Number:**
+   Input: 123456789
+   Expected Output: 75BCD15
+
+5. **Small Positive Number:**
+   Input: 10
+   Expected Output: A
+
+6. **One:** (Simple case, good for basic testing)
+   Input: 1
+   Expected Output: 1
+
+7. **Maximum Integer Value:** (Corner case)
+   Input: Integer.MAX_VALUE
+   Expected Output: 7FFFFFFF
+
+8. **Minimum Integer Value:** (Corner case)
+   Input: Integer.MIN_VALUE
+   Expected Output: 80000000
+
+
+
+
+**How to Run the Test Cases:**
+
+You can either:
+
+* **Manually:** Input each test case into the program and verify the output.
+* **Automated Testing (Recommended):**  Use a testing framework like JUnit to write automated tests.  This is the more robust and preferred way to test.  Here's a basic example of how to use JUnit (you would need to add the JUnit library to your project):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DecimalToHexadecimalTest {
+
+    @Test
+    void testPositiveNumber() {
+        assertEquals("FF", DecimalToHexadecimal.function(255));
+    }
+
+    @Test
+    void testZero() {
+        assertEquals("0", DecimalToHexadecimal.function(0));
+    }
+
+    // Add more test cases here...
+
+}
+```
+
+This JUnit example shows how you would write a test case for the positive number example.  You would then add similar tests for the other cases. Running the tests will automatically tell you if they pass or fail.  This makes testing much easier and more thorough, especially as your programs get larger.

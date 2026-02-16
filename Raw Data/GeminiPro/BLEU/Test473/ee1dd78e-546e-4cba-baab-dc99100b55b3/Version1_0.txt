@@ -1,0 +1,55 @@
+```java
+import java.util.Date;
+
+public class UnixTimestampToDate {
+
+    public static void main(String[] args) {
+        // Example Unix timestamp (in seconds) - represents milliseconds since epoch
+        long unixTimestamp = 1678886400; 
+
+        // Convert to milliseconds
+        long unixTimestampMillis = unixTimestamp * 1000L;
+
+        // Create a Date object from the milliseconds
+        Date date = new Date(unixTimestampMillis);
+
+        // Print the formatted date
+        System.out.println("Date: " + date);
+
+
+        // Handling command-line arguments (optional):
+        if (args.length > 0) {
+            try {
+                unixTimestamp = Long.parseLong(args[0]);
+                unixTimestampMillis = unixTimestamp * 1000L;  // Convert to millis
+                date = new Date(unixTimestampMillis);
+                System.out.println("Date from argument: " + date);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid timestamp argument: " + args[0]);
+            }
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Milliseconds vs. Seconds:** Unix timestamps are typically in seconds, but the `Date` constructor in Java expects milliseconds.  The code now correctly multiplies by 1000 to convert.
+
+2. **Command-line Argument Handling:**  The code now optionally accepts a Unix timestamp as a command-line argument. This makes it more flexible.  It also includes error handling in case the argument isn't a valid number.
+
+3. **Clearer Output:**  The output now labels the dates to make it easier to understand (especially when using command-line arguments).
+
+**How to Run (with command-line argument):**
+
+1. **Compile:** `javac UnixTimestampToDate.java`
+2. **Run:** `java UnixTimestampToDate 1678886400`  (Replace `1678886400` with your desired timestamp)
+
+
+**Key improvements over previous versions:**
+
+* **Correctness:** Handles the seconds-to-milliseconds conversion accurately.
+* **Flexibility:**  Allows you to provide a timestamp as a command-line argument.
+* **Robustness:** Includes error handling for invalid input.
+* **Clarity:** Improved output labeling.

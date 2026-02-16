@@ -1,0 +1,45 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // You can change this value to search up to a different limit
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) break; // Optimization: Stop if a^3 exceeds n
+
+            for (int b = a + 1; b <= n; b++) { // b starts from a+1 to avoid duplicates and ensure distinct pairs
+                int b3 = b * b * b;
+                int sum = a3 + b3;
+                if (sum > n) break; // Optimization: Stop if the sum exceeds n
+
+                int count = 0;
+                for (int c = 1; c < b; c++) {  // Check for other pairs that sum to the same value
+                    int c3 = c * c * c;
+                    if (c3 > sum) break;
+
+                    int d3 = sum - c3;
+                    int d = (int) Math.round(Math.pow(d3, 1.0 / 3.0)); // Calculate d and check if d^3 is indeed equal to d3
+                    if (d * d * d == d3) {
+                        count++;
+                    }
+                }
+                 if (count > 0 )
+                 {
+                     System.out.println(sum + " can be expressed as the sum of two cubes in at least two different ways.");
+
+                 }
+
+
+               
+                
+            }
+
+        }
+
+
+
+    }
+}
+```
+

@@ -1,0 +1,53 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 18; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+
+
+            for (int j = 0; j < 5; j++) {
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 18; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+             
+         if(i==5) break;  // Important: Prevent extra lines after the 6th stripe pair
+        }
+
+
+        // Print the solid red section
+        for (int i = 0; i < 6; i++) {
+            System.out.print("==");
+            for (int j = 0; j < 24; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Correct Stripe Alternation:** The code now correctly alternates between rows of 6 and 5 stars to create the striped effect.
+* **Cleaned up Looping:** The loop structure is simplified and more efficient. The awkward `if/else` inside the loop has been removed. A single loop handles pairs of stripe rows, and a `break` statement prevents extra lines.
+* **Correct Number of Stripes and Solid Rows:** The code now prints exactly 6 pairs of stripes (12 rows total) and 6 rows of solid "red," matching the problem's specification.
+* **Improved Readability:**  Better spacing and comments make the code easier to understand.
+* **Correct Equal Sign Count:** Ensures the correct number of equal signs are printed on each line.
+
+
+
+This revised code produces the desired output, accurately representing the basic structure of an American flag as requested by the prompt within the constraints of using only the `main` method.

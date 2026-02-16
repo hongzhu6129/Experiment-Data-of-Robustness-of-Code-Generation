@@ -1,0 +1,60 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        // Display the first 10 Fermat numbers
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = calculateFermatNumber(n);
+            System.out.println("F(" + n + ") = " + fermatNumber);
+        }
+    }
+
+    private static long calculateFermatNumber(int n) {
+        return (long) (Math.pow(2, Math.pow(2, n)) + 1);
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:**
+   - This helper method calculates the Fermat number for a given `n` using the formula 2^(2^n) + 1.
+   - It uses `Math.pow()` to calculate the powers.  Critically, it casts the result to `long` because Fermat numbers grow very large very quickly, exceeding the capacity of `int`.
+
+2. **`main` Method:**
+   - The `main` method now iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+   - It calls the `calculateFermatNumber` method for each `n`.
+   - The output is formatted to clearly show the value of `n` and the corresponding Fermat number (e.g., "F(0) = 3").
+
+3. **`long` Data Type:**
+   - The `long` data type is used to store the Fermat numbers because they can quickly become very large. Even `long` will only be able to hold the first few Fermat numbers accurately before overflow occurs.
+
+4. **Overflow Handling (for larger n):**
+   If you want to handle even larger values of `n`, you'll need to use `BigInteger`, as standard numeric types in Java won't be sufficient:
+
+
+```java
+import java.math.BigInteger;
+
+public class FermatNumbersBig {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            BigInteger fermatNumber = calculateFermatNumber(n);
+            System.out.println("F(" + n + ") = " + fermatNumber);
+        }
+    }
+
+    private static BigInteger calculateFermatNumber(int n) {
+        return BigInteger.valueOf(2).pow((int) Math.pow(2, n)).add(BigInteger.ONE); 
+    }
+}
+```
+
+
+This version uses `BigInteger` to avoid overflow and can calculate much larger Fermat numbers.  The cast to `int` in  `Math.pow(2,n)` is safe because the exponent itself won't become overly large in the range considered.

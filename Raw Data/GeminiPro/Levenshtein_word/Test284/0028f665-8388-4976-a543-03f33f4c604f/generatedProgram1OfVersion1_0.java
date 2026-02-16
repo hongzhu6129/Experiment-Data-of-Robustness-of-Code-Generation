@@ -1,0 +1,18 @@
+class Solution {
+    /**
+     * Given two integers, find the number of bits required to flip to convert one integer to another.
+     *
+     * @param a First integer
+     * @param b Second integer
+     * @return The number of bits required to flip to convert a to b
+     */
+    public int bitSwapRequired(int a, int b) {
+        int xorResult = a ^ b;
+        int count = 0;
+        while (xorResult != 0) {
+            count += (xorResult & 1);
+            xorResult >>= 1;
+        }
+        return count;
+    }
+}

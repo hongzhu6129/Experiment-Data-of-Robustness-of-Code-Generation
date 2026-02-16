@@ -1,0 +1,78 @@
+```java
+import java.util.Scanner;
+
+public class DecimalToOctal {
+
+    public static String functionone(int decimal) {
+        StringBuilder octal = new StringBuilder();
+        while (decimal > 0) {
+            int remainder = decimal % 8;
+            octal.insert(0, remainder); // Insert at the beginning for correct order
+            decimal /= 8;
+        }
+        return (octal.length() == 0) ? "0" : octal.toString(); // Handle the case of input 0
+    }
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input the decimal number: ");
+        int decimal = input.nextInt();
+
+        String octal = functionone(decimal);
+        System.out.println("Octal number is: " + octal);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+| Test Case | Input (Decimal) | Expected Output (Octal) | Description |
+|---|---|---|---|
+| 1 | 15 | 17 | Basic conversion |
+| 2 | 0 | 0 | Zero input |
+| 3 | 1 | 1 | Single digit input |
+| 4 | 8 | 10 |  Testing base case (8 in decimal is 10 in octal) |
+| 5 | 63 | 77 | Largest two-digit octal number |
+| 6 | 512 | 1000 | Power of 8 |
+| 7 | 2147483647 | 17777777777 | Maximum integer value |
+| 8 | -1 |  (Handle appropriately, perhaps throw an exception or return an error message. The example code will loop indefinitely with negative input, which should be addressed.) | Negative input (corner case - how do you want to handle negative numbers?) |
+
+
+**Explanation of improvements and handling corner cases:**
+
+* **`StringBuilder` for efficiency:**  Using `StringBuilder` to build the octal string is more efficient than string concatenation, especially for large numbers.
+* **Handling zero:** The code now explicitly checks for the case where the input decimal is 0 and returns "0" as the octal representation.
+* **Clearer method naming:**  Using `functionone` as specified in the prompt.
+* **Comprehensive test cases:** Includes tests for various inputs, including zero, single-digit numbers, base cases, large numbers, and the maximum integer value.  It also highlights the importance of considering how to handle negative input.
+
+
+**Handling Negative Input:**
+
+You could handle negative input in several ways, depending on the desired behavior:
+
+1. **Throw an exception:** This is a good approach if negative input is considered an error.
+
+   ```java
+   public static String functionone(int decimal) {
+       if (decimal < 0) {
+           throw new IllegalArgumentException("Decimal number must be non-negative.");
+       }
+       // ... (rest of the code)
+   ```
+
+2. **Return an error message:**
+
+   ```java
+   public static String functionone(int decimal) {
+       if (decimal < 0) {
+           return "Error: Negative input not allowed.";
+       }
+       // ... (rest of the code)
+   ```
+
+3. **Represent negative octal numbers (using two's complement or a sign indicator):** This approach requires careful consideration of how you want to represent and handle negative octal numbers.  It is more complex and depends on the specific requirements.
+
+
+Choose the method that best suits the needs of your program. The provided test cases will help you verify the correctness of your chosen approach.

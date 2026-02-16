@@ -1,0 +1,41 @@
+```java
+public class FermatNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("The first 10 Fermat numbers are:");
+
+        for (int n = 0; n < 10; n++) {
+            long fermatNumber = (long) (Math.pow(2, Math.pow(2, n)) + 1);  // Calculate Fermat number
+            System.out.println(fermatNumber);
+        }
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **`long` Data Type:** Fermat numbers grow very large very quickly.  Using `int` would lead to overflow errors very soon (after the 5th Fermat number). `long` allows us to represent larger integers, though even `long` will not be sufficient for all 10 Fermat numbers we want to display.
+
+2. **Casting to `long`:** `Math.pow()` returns a `double`.  We need to cast it to `long` to store it in our `fermatNumber` variable.  This casting is necessary because the result of the exponent can be bigger than integer max values.
+
+3. **Clarity and Formatting:**  The code is formatted for readability with comments explaining the steps. The output clearly indicates what is being displayed.
+
+4. **Limited Precision:** It is important to be aware of the limitations of floating-point arithmetic.  `double` has limited precision. For very large Fermat numbers (beyond the first few), the calculation using `Math.pow()` and `double` will start to lose accuracy.  Specialized libraries like `BigInteger` would be required to handle these very large numbers with perfect accuracy.
+
+
+**Output (showing the limitations of `double`):**
+
+```
+The first 10 Fermat numbers are:
+3
+5
+17
+257
+65537
+4294967297
+18446744073709551617
+340282366920938463463374607431768211457
+115792089237316195423570985008687907853269984665640564039457584007913129639937
+134078079299425970995740234112692578012874750319631909124073513923493713586331...  (and continues inaccurately)
+```

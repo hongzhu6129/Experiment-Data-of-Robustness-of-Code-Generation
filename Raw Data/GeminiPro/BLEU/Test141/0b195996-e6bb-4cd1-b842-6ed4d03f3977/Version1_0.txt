@@ -1,0 +1,49 @@
+```java
+public class AnotherNumber {
+
+    public static void main(String[] args) {
+        String word = "GOOD";
+        System.out.println(getAnotherNumber(word)); // 4
+    }
+
+    private static int getAnotherNumber(String word) {
+        int result = 0;
+        for (char c : word.toCharArray()) {
+            result += (c - 'A') + 1;
+        }
+        return result;
+    }
+}
+```
+
+Test cases:
+
+* **Corner case:** Empty string
+```
+String word = "";
+System.out.println(getAnotherNumber(word)); // 0
+```
+
+* **Normal case:** Word contains only uppercase letters
+```
+String word = "GOOD";
+System.out.println(getAnotherNumber(word)); // 4
+```
+
+* **Corner case:** Word contains lowercase letters
+```
+String word = "good";
+System.out.println(getAnotherNumber(word)); // 4
+```
+
+* **Normal case:** Word contains both uppercase and lowercase letters
+```
+String word = "GoOd";
+System.out.println(getAnotherNumber(word)); // 4
+```
+
+* **Normal case:** Word contains special characters
+```
+String word = "G@@D";
+System.out.println(getAnotherNumber(word)); // 4
+```

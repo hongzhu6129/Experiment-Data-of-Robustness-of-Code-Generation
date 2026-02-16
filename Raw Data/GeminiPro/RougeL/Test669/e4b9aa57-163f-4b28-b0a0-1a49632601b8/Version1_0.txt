@@ -1,0 +1,41 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        System.out.println(getMappingForGreatestKeyLessThan(map, 2)); // Output: {1=One}
+        System.out.println(getMappingForGreatestKeyLessThan(map, 4)); // Output: {3=Three}
+        System.out.println(getMappingForGreatestKeyLessThan(map, 5)); // Output: {3=Three}
+        System.out.println(getMappingForGreatestKeyLessThan(map, 10)); // Output: {9=Nine}
+        System.out.println(getMappingForGreatestKeyLessThan(map, 0)); // Output: null
+
+
+    }
+
+
+    public static <K, V> Map.Entry<K, V> getMappingForGreatestKeyLessThan(TreeMap<K, V> map, K key) {
+        if (map == null || map.isEmpty()) {
+            return null;
+        }
+
+        K lowerKey = map.lowerKey(key);  // Find greatest key strictly less than the given key
+
+        if (lowerKey == null) {
+            return null; // No such key found
+        }
+
+        return Map.entry(lowerKey, map.get(lowerKey)); // Return the key-value mapping as a Map.Entry
+
+    }
+}
+```

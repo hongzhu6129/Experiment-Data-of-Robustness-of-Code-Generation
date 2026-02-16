@@ -1,0 +1,79 @@
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class EmblazonText {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the path to the existing file: ");
+        String filePath = scanner.nextLine();
+
+        System.out.print("Enter the text to emblazon: ");
+        String emblazonText = scanner.nextLine();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath + ".emblazoned"))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(emblazonText + line); // Prepend the emblazon text
+                writer.newLine(); // Preserve original line breaks
+            }
+
+            System.out.println("Text emblazoned successfully to " + filePath + ".emblazoned");
+
+        } catch (IOException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        } finally {
+          scanner.close(); // Close the scanner in the finally block
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles exceptions gracefully:** The code now uses a `try-catch` block to handle potential `IOExceptions`.  This prevents the program from crashing and provides a user-friendly error message.
+* **Preserves original line breaks:** The `newLine()` method is used to ensure that the original line breaks in the input file are maintained in the output file.
+* **Creates a new output file:**  Instead of overwriting the original file, the emblazoned text is written to a new file with the extension ".emblazoned". This protects the original data.
+* **Uses `try-with-resources`:** This ensures that the `BufferedReader` and `BufferedWriter` are closed automatically, even if an exception occurs. This prevents resource leaks.
+* **Prompts for user input:**  The program now prompts the user for the file path and the text to emblazon, making it more interactive.
+* **Closes the scanner:** Prevents resource leaks.
+
+
+
+**How to compile and run:**
+
+1. Save the code as `EmblazonText.java`.
+2. Compile: `javac EmblazonText.java`
+3. Run: `java EmblazonText`
+
+
+The program will then ask you for the file path and the text to emblazon.  The output will be written to a new file with the ".emblazoned" extension.
+
+
+Example:
+
+If your existing file (`myFile.txt`) contains:
+
+```
+Line 1
+Line 2
+Line 3
+```
+
+And you emblazon it with the text "***Emblazoned*** ", the output file (`myFile.txt.emblazoned`) will contain:
+
+
+```
+***Emblazoned*** Line 1
+***Emblazoned*** Line 2
+***Emblazoned*** Line 3
+```

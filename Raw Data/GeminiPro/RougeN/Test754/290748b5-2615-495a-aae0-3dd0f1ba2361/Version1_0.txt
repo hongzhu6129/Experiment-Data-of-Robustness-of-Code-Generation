@@ -1,0 +1,41 @@
+```java
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class NumberFormatter {
+
+    public static void main(String[] args) {
+        int number = 1234567890;
+        String formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+
+        number = 1234;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);
+
+        number = 12;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber);       
+        
+        number = 0;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+
+         number = -1234567;
+        formattedNumber = validate(number);
+        System.out.println(formattedNumber); 
+    }
+
+    public static String validate(int number) {
+        // Use NumberFormat for locale-specific formatting
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.US); // Or Locale.getDefault() for system locale
+
+       //DecimalFormat can also be used, but NumberFormat is recommended.
+        //DecimalFormat formatter = new DecimalFormat("#,###");  
+        //return formatter.format(number);
+
+        return nf.format(number);
+    }
+}
+```

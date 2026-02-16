@@ -1,0 +1,51 @@
+```java
+public class RemoveVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        String updatedString = validate(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Updated String: " + updatedString);
+
+        inputString = "aeiouAEIOU";
+        updatedString = validate(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Updated String: " + updatedString);
+
+
+        inputString = "This is a test string.";
+        updatedString = validate(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Updated String: " + updatedString);
+
+        inputString = ""; // Empty string
+        updatedString = validate(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Updated String: " + updatedString);
+
+
+        inputString = null; // Null string
+        updatedString = validate(inputString);
+        System.out.println("Original String: " + inputString);
+        System.out.println("Updated String: " + updatedString);
+    }
+
+
+    public static String validate(String inputString) {
+        if (inputString == null) {
+            return null; // Handle null input
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            // Convert to lowercase for case-insensitive check
+            char lowerC = Character.toLowerCase(c);
+            if (lowerC != 'a' && lowerC != 'e' && lowerC != 'i' && lowerC != 'o' && lowerC != 'u') {
+                result.append(c);
+            }
+        }
+        return result.toString();
+
+    }
+}
+```

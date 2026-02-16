@@ -1,0 +1,40 @@
+```java
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<Integer> numbers = new HashSet<>();
+
+        // Add elements to the HashSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+
+        // Method 1: Using an enhanced for loop (for-each loop) - Simplest
+        System.out.println("Iterating using enhanced for loop:");
+        for (int number : numbers) {
+            System.out.println(number); 
+        }
+        System.out.println(); // Add a newline for clarity
+
+
+        // Method 2: Using an Iterator
+        System.out.println("Iterating using an Iterator:");
+        Iterator<Integer> iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            int number = iterator.next();
+            System.out.println(number);
+        }
+
+         // Note: HashSet doesn't guarantee any specific order of elements.  The order
+         // in which elements are printed might change between runs.
+
+    }
+}
+```

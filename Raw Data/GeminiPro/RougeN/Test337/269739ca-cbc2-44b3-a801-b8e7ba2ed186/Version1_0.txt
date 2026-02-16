@@ -1,0 +1,42 @@
+```java
+public class CanonicalString {
+
+    public static void main(String[] args) {
+
+        // Using String literals (automatically interned)
+        String str1 = "hello";
+        String str2 = "hello";
+
+        // Using the new keyword (creates a new object in the heap)
+        String str3 = new String("hello");
+        String str4 = new String("hello").intern(); // Forces interning
+
+
+        System.out.println("str1 == str2: " + (str1 == str2));  // True because of String interning
+        System.out.println("str1 == str3: " + (str1 == str3));  // False - different objects
+        System.out.println("str1 == str4: " + (str1 == str4));  // True because str4 is interned
+        System.out.println("str1.equals(str3): " + str1.equals(str3)); //True - the strings have the same content/value
+
+
+
+        // Demonstrating canonical representation even with string concatenation
+        String str5 = "hel" + "lo";  // Compiler optimizes this to "hello" at compile time
+        System.out.println("str1 == str5: " + (str1 == str5)); // True - the compiler does the optimization of the string
+
+
+        // More complex example
+        String s1 = "Java";
+        String s2 = "is";
+        String s3 = "cool";
+        String s4 = s1 + s2 + s3; // No compile-time optimization for complex concatenation.
+        String s5 = "Javaiscool"; // literal
+        String s6 = s4.intern();// forced to be canonical
+
+
+        System.out.println("s4 == s5: "+ (s4==s5));//false
+        System.out.println("s5 == s6: "+ (s5==s6));//true
+
+
+    }
+}
+```

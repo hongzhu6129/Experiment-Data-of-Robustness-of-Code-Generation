@@ -1,0 +1,13 @@
+
+
+
+**Explanation and why `swap` isn't used:**
+
+The most efficient way to move all zeros to the end of the array doesn't require swapping individual elements multiple times.  The provided solution uses a two-pointer approach (though `count` acts like the second pointer):
+
+1. **`count` tracks the position to place the next non-zero element.**  It starts at 0.
+2. **Iterate through the array:**
+   - If the current element is non-zero, place it at the `count` index and increment `count`.
+3. **Fill the remaining positions with zeros:** After the first loop, `count` will be at the index where the zeros should start. Fill the rest of the array (from `count` to the end) with zeros.
+
+This avoids unnecessary swaps and achieves the result in a single pass through the array, making it more efficient than a swap-based approach.  Therefore, the `swap` method, while provided in the signature requirements, is not actually needed for the optimal solution.

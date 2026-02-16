@@ -1,0 +1,72 @@
+```java
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.YearMonth;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public class GetMonthInfo {
+
+    public static void main(String[] args) {
+        // Get current month information
+        LocalDate currentDate = LocalDate.now();
+        Month currentMonth = currentDate.getMonth();
+
+        System.out.println("Current Month Information:");
+        printMonthInfo(currentMonth, currentDate.getYear());
+
+
+        // Get information for a specific month (e.g., February 2024)
+        int year = 2024;
+        Month specificMonth = Month.FEBRUARY; // Or Month.of(2) 
+
+        System.out.println("\nSpecific Month Information:");
+        printMonthInfo(specificMonth, year);
+
+
+         // Get information from command-line arguments (optional)
+        if (args.length == 2) {
+            try {
+                year = Integer.parseInt(args[0]);
+                int monthValue = Integer.parseInt(args[1]); // 1-12
+                specificMonth = Month.of(monthValue);
+
+                System.out.println("\nMonth Information from Arguments:");
+                printMonthInfo(specificMonth, year);
+
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid year or month input.  Usage: java GetMonthInfo <year> <month(1-12)>");
+            } catch (IllegalArgumentException e) { // Invalid month number
+                System.err.println("Invalid month number.  Please enter a number between 1 and 12.");
+
+            }
+        }
+
+
+
+    }
+
+    public static void printMonthInfo(Month month, int year) {
+        System.out.println("Month: " + month.getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        System.out.println("Month Number: " + month.getValue());
+        System.out.println("Number of Days: " + YearMonth.of(year, month).lengthOfMonth()); // Account for leap years
+        // Add other relevant information as needed (e.g., first day of week, etc.)
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles command-line arguments:**  The user can optionally provide the year and month as command-line arguments. This makes the program more flexible.
+* **Error handling:** The code now includes `try-catch` blocks to handle potential `NumberFormatException` (if the user enters non-numeric input) and `IllegalArgumentException` (if an invalid month number is entered).
+* **Clearer output:** The output is organized with section headings and descriptive labels.
+* **Leap year handling:** The `YearMonth` class is used to correctly calculate the number of days in the month, taking leap years into account.
+* **Flexibility:** The `printMonthInfo` method makes it easy to add or modify the information that's printed about the month.
+
+
+How to compile and run (with command-line arguments):
+
+1. **Save:** Save the code as `GetMonthInfo.java`.
+2. **Compile:** `javac GetMonthInfo.java`
+3. **Run:** `java GetMonthInfo 2025 3`  (This will get information for March 2025).  Or run `java GetMonthInfo` without arguments for the current month.

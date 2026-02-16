@@ -1,0 +1,78 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = input.nextLong(); // Use long to handle larger numbers
+
+        System.out.print("Enter the second number: ");
+        long num2 = input.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+        input.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Reason/Corner Case |
+|---|---|---|---|---|
+| 1 | 5 | 3 | 15 | Basic positive numbers |
+| 2 | -2 | 4 | -8 | One negative number |
+| 3 | -7 | -6 | 42 | Two negative numbers |
+| 4 | 0 | 10 | 0 | Multiplication by zero |
+| 5 | 10 | 0 | 0 | Multiplication by zero |
+| 6 | 0 | 0 | 0 | Both numbers are zero |
+| 7 | 9223372036854775807 | 1 | 9223372036854775807 | Maximum positive long value |
+| 8 | -9223372036854775808 | 1 | -9223372036854775808 | Minimum negative long value |
+| 9 | 9223372036854775807 | 2 | -2 | Overflow (positive * positive = negative) |
+| 10 | -9223372036854775808 | -1 | -9223372036854775808 | Overflow (negative * negative = negative) |
+| 11 | 1234567890 | 9876543210 | 12193263111263526900 | Large numbers |
+| 12 | 2147483647 | 2 | 4294967294 | Maximum integer value multiplied by 2 (overflows if using int) |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:**  Multiplying by zero always results in zero.
+* **Maximum/Minimum Long Values:**  Testing these boundary values ensures that the program correctly handles the largest and smallest possible `long` values in Java.
+* **Overflow:** When the product of two numbers exceeds the maximum value that a `long` can hold, overflow occurs. The result will be incorrect (it wraps around). Test cases 9 and 10 demonstrate this.  This is why it is important to use `long` instead of `int` if you anticipate potentially large products.
+* **Large Numbers:** Test case 11 uses large numbers to further verify the correctness of the multiplication.
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by running the program and entering the inputs.  For more automated testing, you could use a testing framework like JUnit.  In JUnit, you'd write test methods like this:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(15, ProductOfTwoNumbers.multiply(5, 3)); // Example test
+    }
+
+    // Add more test methods for other cases...
+
+    // Assuming you add a static multiply method to your class
+    static long multiply(long num1, long num2) {
+        return num1 * num2;
+    }
+}
+```
+
+
+This organized approach makes testing more efficient and thorough.  Remember to test a variety of cases to ensure your program is robust.

@@ -1,0 +1,43 @@
+```java
+public class CompareArrays {
+
+    public static void main(String[] args) {
+        // Example arrays
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {1, 6, 7, 8, 5};
+        int[] array3 = {1, 2, 3, 4, 6};
+        int[] array4 = {};
+        int[] array5 = {7};
+
+        // Test cases
+        System.out.println("Array 1 and Array 2 are equal at start and end: " + compareFirstLast(array1, array2)); // True
+        System.out.println("Array 1 and Array 3 are equal at start and end: " + compareFirstLast(array1, array3)); // False
+        System.out.println("Array 1 and Array 4 are equal at start and end: " + compareFirstLast(array1, array4)); // False
+        System.out.println("Array 4 and Array 5 are equal at start and end: " + compareFirstLast(array4, array5)); // False
+        System.out.println("Array 5 and Array 5 are equal at start and end: " + compareFirstLast(array5, array5)); // True
+
+
+    }
+
+    // Helper function to check if first and last elements are the same in two arrays.
+    // Handles empty arrays gracefully.
+    public static boolean compareFirstLast(int[] arr1, int[] arr2) {
+        if (arr1.length == 0 || arr2.length == 0) { // Check for empty arrays first
+            return false;  // If either array is empty, they can't match
+        }
+
+        return arr1[0] == arr2[0] && arr1[arr1.length - 1] == arr2[arr2.length - 1];
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Handles Empty Arrays:**  It now explicitly checks for empty arrays using `arr1.length == 0 || arr2.length == 0`. This prevents `ArrayIndexOutOfBoundsException` errors that would occur if you tried to access elements of an empty array.
+* **Clearer Logic:**  The `compareFirstLast` helper function makes the code more readable and organized.
+* **More Test Cases:**  Included additional test cases to demonstrate the handling of empty arrays and single-element arrays, which helps in ensuring correctness.
+* **Explanatory Comments:** Added comments to explain the logic and the purpose of the test cases.
+
+
+This revised version addresses the potential `ArrayIndexOutOfBoundsException` and provides a more robust and well-structured solution.

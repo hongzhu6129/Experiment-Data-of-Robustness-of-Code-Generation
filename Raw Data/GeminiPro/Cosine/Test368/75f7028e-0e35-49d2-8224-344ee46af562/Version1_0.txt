@@ -1,0 +1,86 @@
+```java
+import java.util.Arrays;
+
+public class StringDuplicates {
+
+    static void CountCharacters(String str, int[] charCounts) {
+        str = str.toLowerCase(); // Case-insensitive counting
+        for (char c : str.toCharArray()) {
+            if (Character.isLetter(c)) {
+                charCounts[c - 'a']++;
+            }
+        }
+    }
+
+    static void showDuplicates(String str) {
+        int[] charCounts = new int[26]; // Assuming only lowercase English letters
+
+        CountCharacters(str, charCounts);
+
+        System.out.print("Duplicate characters: ");
+        boolean foundDuplicates = false; // Flag to track if any duplicates were found
+
+        for (int i = 0; i < 26; i++) {
+            if (charCounts[i] > 1) {
+                System.out.print((char) ('a' + i) + " ");
+                foundDuplicates = true;
+            }
+        }
+
+        if (!foundDuplicates) {
+            System.out.print("No duplicates found.");
+        }
+        System.out.println();  // Add a newline for cleaner output
+
+
+    }
+
+    public static void main(String[] args) {
+        String str1 = "Programming";
+        System.out.println("Input String: " + str1);
+        showDuplicates(str1);
+
+
+        String str2 = "Java";
+        System.out.println("Input String: " + str2);
+
+        showDuplicates(str2);
+
+        String str3 = "abcab";
+        System.out.println("Input String: " + str3);
+        showDuplicates(str3);
+
+
+        String str4 = "xyz";        
+        System.out.println("Input String: " + str4);
+        showDuplicates(str4);
+
+
+    }
+}
+```
+
+
+Here's how this code addresses the problem, adhering to the provided method signatures:
+
+1. **`CountCharacters(String, int[])`**: This method efficiently counts the occurrences of each letter (case-insensitively) in the input string.  It uses an integer array `charCounts` of size 26 (for English lowercase letters) as a frequency counter.
+
+
+2. **`showDuplicates(String)`**:  This method does the following:
+   - Initializes `charCounts` to store character counts.
+   - Calls `CountCharacters` to populate `charCounts`.
+   - Iterates through `charCounts`. If a count is greater than 1, the corresponding character is a duplicate and printed.
+   -  Handles cases where no duplicates are found.
+
+
+
+3. **`main(String[])`**: The `main` method provides example strings to test the `showDuplicates` method, ensuring the code works as expected.
+
+
+
+Key improvements in this revised version:
+
+- **Case-Insensitivity:** The code now treats "P" and "p" as the same character.
+- **Clarity and Readability:**  Comments and variable names are more descriptive.
+- **Handles "No Duplicates" Case:** The code now explicitly informs the user if there are no duplicate characters.
+- **Conciseness and Efficiency:** The logic is more straightforward and efficient.

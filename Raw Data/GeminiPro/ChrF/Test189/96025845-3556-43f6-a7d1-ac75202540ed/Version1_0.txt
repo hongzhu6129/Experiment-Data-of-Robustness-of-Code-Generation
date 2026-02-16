@@ -1,0 +1,37 @@
+```java
+import java.util.Scanner;
+
+public class ReverseWord {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String str = scanner.nextLine();
+
+        String[] words = str.split(" ");
+        String reversedString = "";
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversedString += words[i] + " ";
+        }
+
+        System.out.println("Reversed string: " + reversedString);
+    }
+}
+```
+
+**Test Cases:**
+
+* **Input:** "Hello World"
+* **Expected Output:** "World Hello"
+
+* **Input:** "This is a test"
+* **Expected Output:** "test a is This"
+
+* **Input:** " "
+* **Expected Output:** "" (empty string)
+
+* **Input:** "12345"
+* **Expected Output:** "12345" (digits are not reversed)
+
+* **Input:** "A man, a plan, a canal, Panama!"
+* **Expected Output:** "Panama! canal a plan a man A" (punctuation is preserved)

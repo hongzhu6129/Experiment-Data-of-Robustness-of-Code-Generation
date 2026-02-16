@@ -1,0 +1,50 @@
+import java.util.TreeSet;
+
+public class LeastSetGreaterThanOrEqualToKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        Integer key1 = 25;
+        Integer result1 = getLeastSetGreaterThanOrEqualToKey(treeSet, key1);
+        System.out.println("Least set greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        Integer key2 = 10;
+        Integer result2 = getLeastSetGreaterThanOrEqualToKey(treeSet, key2);
+        System.out.println("Least set greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+        Integer key3 = 60;
+        Integer result3 = getLeastSetGreaterThanOrEqualToKey(treeSet, key3);
+        System.out.println("Least set greater than or equal to " + key3 + ": " + result3); // Output: null
+
+
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+
+        String stringKey1 = "blueberry";
+        String stringResult1 = getLeastSetGreaterThanOrEqualToKey(stringTreeSet, stringKey1);
+        System.out.println("Least set greater than or equal to " + stringKey1 + ": " + stringResult1); //cherry
+
+        String stringKey2 = "apple";
+        String stringResult2 = getLeastSetGreaterThanOrEqualToKey(stringTreeSet, stringKey2);
+        System.out.println("Least set greater than or equal to " + stringKey2 + ": " + stringResult2); // apple
+
+        String stringKey3 = "date";  //after all in set
+        String stringResult3 = getLeastSetGreaterThanOrEqualToKey(stringTreeSet, stringKey3);
+        System.out.println("Least set greater than or equal to " + stringKey3 + ": " + stringResult3); // null
+    }
+
+
+    public static <T extends Comparable<T>> T getLeastSetGreaterThanOrEqualToKey(TreeSet<T> treeSet, T key) {
+
+        return treeSet.ceiling(key);
+    }
+}

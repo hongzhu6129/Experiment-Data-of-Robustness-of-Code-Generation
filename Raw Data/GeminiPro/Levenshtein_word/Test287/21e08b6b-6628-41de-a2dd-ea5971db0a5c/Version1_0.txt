@@ -1,0 +1,64 @@
+```java
+class Node {
+    char data;
+    Node left, right;
+
+    Node(char item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class BinaryTree {
+    Node root1, root2;
+
+    // A utility function to check whether trees with roots as root1 and 
+    // root2 are identical or not
+    boolean areIdentical(Node root1, Node root2) {
+        // Your code goes here
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+
+        return (root1.data == root2.data &&
+                areIdentical(root1.left, root2.left) &&
+                areIdentical(root1.right, root2.right));
+
+    }
+
+    // This function returns true if S is a subtree of T, otherwise false
+    boolean isSubtree(Node T, Node S) {
+         // Your code goes here
+        if (S == null) {
+            return true;
+        }
+        if (T == null) {
+            return false;
+        }
+
+        if (areIdentical(T, S)) {
+            return true;
+        }
+
+        return isSubtree(T.left, S) || isSubtree(T.right, S);
+    }
+
+
+    public static void main(String args[]) {
+        BinaryTree tree = new BinaryTree();
+          String str1 = "xxyz", str2 = "yxzx";
+                
+                if(str1.contains(str2)){
+                     System.out.println("true");
+                }else{
+                    System.out.println("false");
+
+                }
+
+
+    }
+}
+```

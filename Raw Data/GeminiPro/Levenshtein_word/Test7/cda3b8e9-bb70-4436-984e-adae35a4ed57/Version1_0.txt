@@ -1,0 +1,104 @@
+```java
+import java.util.Scanner;
+
+public class PartAverage {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.print("Enter the third number: ");
+        double num3 = input.nextDouble();
+
+
+        double partAverage = calculatePartAverage(num1, num2, num3);
+
+        System.out.println("The part average is: " + partAverage);
+
+        input.close();
+    }
+
+    public static double calculatePartAverage(double a, double b, double c) {
+        return (a + b + c) / 3.0;  // Explicitly divide by 3.0 for double precision
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **General Case:**
+   - Input: 5, 10, 15
+   - Expected Output: 10.0
+
+2. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+3. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -5, 10, 5
+   - Expected Output: 3.3333333333333335  (or similar due to floating-point representation)
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Small Numbers (close to zero):**
+   - Input: 0.001, 0.002, 0.003
+   - Expected Output: 0.002
+
+7. **Decimal Numbers:**
+    - Input: 2.5, 5.7, 8.2
+    - Expected Output: 5.466666666666667 (or similar)
+
+
+**How to Run the Test Cases:**
+
+You can manually enter these inputs into the program when prompted.  For more automated testing, consider using a testing framework like JUnit.  Here's a very simple JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class PartAverageTest {
+
+    @Test
+    void testGeneralCase() {
+        assertEquals(10.0, PartAverage.calculatePartAverage(5, 10, 15));
+    }
+
+    @Test
+    void testZeroes() {
+        assertEquals(0.0, PartAverage.calculatePartAverage(0, 0, 0));
+    }
+
+     // Add more @Test methods for other cases
+
+    @Test
+    void testDecimalNumbers() {
+        assertEquals(5.466666666666667, PartAverage.calculatePartAverage(2.5, 5.7, 8.2)); // Example assertion
+    }
+
+}
+```
+
+This JUnit example shows how to create automated tests. You'll need to add the JUnit library to your project to use it.  This allows you to easily run your tests repeatedly and ensures the correctness of your code. Using `assertEquals` with doubles requires some caution due to potential floating-point inaccuracies, so you may sometimes use `assertEquals` with a `delta` argument (a tolerance for small differences).
+
+
+Key improvements in this code and explanation:
+
+* **Explicitly divides by `3.0`:** This ensures floating-point division, which is essential for accuracy with decimal inputs.
+* **Uses `Scanner.nextDouble()`:** Correctly handles decimal inputs.
+* **Includes comprehensive test cases:** Covers various scenarios including corner/edge cases.
+* **Introduces JUnit testing:** Provides a more robust way to test the code.  JUnit is highly recommended for any serious Java development.

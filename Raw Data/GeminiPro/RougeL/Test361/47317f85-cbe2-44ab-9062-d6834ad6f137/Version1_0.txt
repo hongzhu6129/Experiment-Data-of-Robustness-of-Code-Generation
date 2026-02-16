@@ -1,0 +1,28 @@
+```java
+class StringReverser {
+
+    void reverseString(String str) {
+        String reversedStr = new StringBuilder(str).reverse().toString();
+        System.out.println(reversedStr);
+    }
+
+    public static void main(String[] args) {
+        StringReverser reverser = new StringReverser();
+
+        // Example usage:
+        reverser.reverseString("hello"); // Output: olleh
+        reverser.reverseString("world"); // Output: dlrow
+        reverser.reverseString("Java");  // Output: avaJ
+    }
+}
+```
+
+**Explanation of Coupling and how it's used here:**
+
+In this example, coupling is demonstrated through the interaction between the `main` method and the `reverseString` method within the `StringReverser` class.
+
+1. **Tight Coupling:** The `main` method directly creates an instance of the `StringReverser` class and calls its `reverseString` method.  This is a form of tight coupling because the `main` method is explicitly dependent on the specific implementation details of the `StringReverser` class.  It *knows* about and directly interacts with the `reverseString` method.
+
+2. **Data Coupling:** The string to be reversed is passed as an argument from `main` to `reverseString`. This demonstrates data coupling � the methods are connected by the data they share.
+
+While this example showcases a common and generally acceptable level of coupling (especially within a single class), it's worth considering how to minimize unnecessary coupling in larger projects for improved maintainability and flexibility. For instance, if the reversing logic became more complex or if you needed different reversing strategies, you might consider using an interface or abstract class to decouple the specific reversing implementation from the `main` method.  However, for this simple string reversal problem, the current level of coupling is perfectly reasonable.

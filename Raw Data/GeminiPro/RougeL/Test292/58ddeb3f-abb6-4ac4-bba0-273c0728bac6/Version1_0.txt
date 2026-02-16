@@ -1,0 +1,63 @@
+```java
+public class TransposeArray {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println("Original Array:");
+        print_array(array);
+
+        transpose(array);
+
+        System.out.println("\nTransposed Array:");
+        print_array(array);
+
+    }
+
+    private static void transpose(int[][] array) {
+        int rows = array.length;
+        int cols = array[0].length;
+
+        if (rows != cols) {
+            System.out.println("Matrix must be square for in-place transposition.");
+            return; // Or throw an exception, depending on your needs
+        }
+
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = i + 1; j < cols; j++) { // Notice j starts from i+1 to avoid swapping twice
+                int temp = array[i][j];
+                array[i][j] = array[j][i];
+                array[j][i] = temp;
+            }
+        }
+    }
+
+    private static void print_array(int[][] array) {
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Square Matrix Check:** The `transpose` method now checks if the matrix is square (rows == columns).  Transposing a non-square matrix in-place isn't directly possible because the dimensions change.  The code now prints a message and returns if the matrix isn't square.  You could choose to throw an exception instead if that's more appropriate for your application.
+
+2. **Efficient In-Place Transposition:**  The nested loop in `transpose` is optimized to avoid unnecessary swaps. The inner loop starts from `j = i + 1`. This prevents swapping elements twice and correctly transposes the matrix in place.
+
+3. **Clearer Output:** The `print_array` method is used to print both the original and transposed arrays, making the output easier to understand.
+
+4. **Example Usage:** The `main` method demonstrates how to use the `transpose` and `print_array` methods with a sample 2D array.
+
+
+This revised code addresses the potential issues with the original approach and provides a robust and efficient solution for transposing a square 2D array. If you need to transpose non-square arrays, you would need to create a new array with swapped dimensions to store the result.

@@ -1,0 +1,70 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class BinaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            // Recursively calculate the depth of the left and right subtrees
+            int leftDepth = maxDepth(node.left);
+            int rightDepth = maxDepth(node.right);
+
+            // Return the larger of the two depths plus 1 (for the current node)
+            return Math.max(leftDepth, rightDepth) + 1;
+        }
+    }
+
+    public static void main(String[] args) {
+        BinaryTreeMaxDepth tree = new BinaryTreeMaxDepth();
+
+        // Construct a sample binary tree
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+
+        System.out.println("Max depth of the tree is: " + tree.maxDepth(root)); // Output: 3
+
+
+        // Another example (a more skewed tree)
+        Node root2 = new Node(1);
+        root2.left = new Node(2);
+        root2.left.left = new Node(3);
+        root2.left.left.left = new Node(4);
+
+        System.out.println("Max depth of the second tree is: " + tree.maxDepth(root2)); // Output: 4
+    }
+}
+
+```
+
+
+Key improvements and explanations in this code:
+
+1. **Clearer Node Class:** The `Node` class is defined explicitly for better structure and readability.  This is good practice when working with tree data structures.
+
+2. **Recursive Approach:** The `maxDepth` method uses recursion, which is the standard and elegant way to traverse tree structures.
+
+3. **Base Case:** The code handles the base case where `node` is `null` (empty tree or end of a branch) correctly, returning 0.
+
+4. **Recursive Calls:** It recursively calls `maxDepth` on the left and right subtrees.
+
+5. **Calculating Max:** `Math.max` is used to find the larger of the left and right subtree depths.
+
+6. **Adding 1:** We add 1 to the maximum depth of the subtrees to account for the current node's level.
+
+7. **Illustrative Main Method:** The `main` method provides examples of how to create binary trees and use the `maxDepth` method, making it easier to understand and test the code.
+8. **Comments:**  The code is well-commented, explaining the logic clearly.

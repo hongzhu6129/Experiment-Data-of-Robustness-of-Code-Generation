@@ -1,0 +1,31 @@
+public class MiddleCharacter {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "world";
+        String str3 = "a";
+        String str4 = "";
+
+        System.out.println(str1 + ": " + middle(str1)); // ll
+        System.out.println(str2 + ": " + middle(str2)); // r
+        System.out.println(str3 + ": " + middle(str3)); // a
+        System.out.println(str4 + ": " + middle(str4)); // "" (empty string)
+
+
+    }
+
+    public static String middle(String str) {
+        if (str == null || str.isEmpty()) {
+            return ""; // Handle empty or null strings
+        }
+
+        int length = str.length();
+        int middleIndex = length / 2;
+
+        if (length % 2 == 0) { // Even length
+            return str.substring(middleIndex - 1, middleIndex + 1);
+        } else { // Odd length
+            return str.substring(middleIndex, middleIndex + 1);
+        }
+    }
+}

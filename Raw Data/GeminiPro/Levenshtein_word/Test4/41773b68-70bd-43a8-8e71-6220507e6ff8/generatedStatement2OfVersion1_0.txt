@@ -1,0 +1,24 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes comprehensive JUnit tests to verify the correctness of the `calculatePerimeter` and `calculateArea` methods. This is crucial for robust code.
+* **Corner Cases:** The tests cover important corner cases:
+    * Zero radius.
+    * Very large radius (checking for potential overflow).
+    * Very small radius.
+    * Negative radius (expecting `IllegalArgumentException` � you'll need to add the exception handling to your main code if you want to handle it gracefully there).
+* **Floating-Point Comparisons:** When comparing floating-point numbers, use a `delta` value (a tolerance) to account for potential inaccuracies in floating-point representation.  `assertEquals(expected, actual, delta)`
+* **Clearer Output:** The `main` method output is more informative, labeling the radius, perimeter, and area.
+* **Exception Handling (in tests):**  `assertThrows()` in JUnit 5 is used to test that the expected exceptions are thrown in the appropriate cases (negative radius).  You can add exception handling to your `main` method as well if needed.
+
+
+How to run the tests (assuming you have JUnit 5 set up):
+
+1.  Save the code as `CircleCalculations.java` and `CircleCalculationsTest.java` in the appropriate directory in your project.
+2.  Compile: `javac CircleCalculations.java CircleCalculationsTest.java`
+3.  Run tests (using a test runner):  For example, with IntelliJ IDEA or Eclipse, you can right-click and choose "Run Tests."  From the command line, you might use a command like `java -cp <junit-jar-path> org.junit.runner.JUnitCore CircleCalculationsTest` (adjust the classpath as needed).
+
+
+This revised version is much more robust and demonstrates good testing practices.  It's essential to get in the habit of writing tests, especially when dealing with calculations or complex logic.

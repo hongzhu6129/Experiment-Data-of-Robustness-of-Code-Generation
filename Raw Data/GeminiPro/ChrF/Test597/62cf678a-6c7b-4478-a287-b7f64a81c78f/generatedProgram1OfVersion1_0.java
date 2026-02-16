@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+
+public class LinkedListElementCheck {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+
+        // Element to search for
+        int elementToSearch = 3;
+
+        // Check if the element exists in the LinkedList
+        boolean elementExists = linkedList.contains(elementToSearch);
+
+        // Print the result
+        if (elementExists) {
+            System.out.println(elementToSearch + " exists in the LinkedList");
+        } else {
+            System.out.println(elementToSearch + " does not exist in the LinkedList");
+        }
+
+
+        // Example with a String LinkedList
+         LinkedList<String> stringLinkedList = new LinkedList<>();
+        stringLinkedList.add("apple");
+        stringLinkedList.add("banana");
+        stringLinkedList.add("orange");
+
+        String stringToSearch = "banana";
+
+        if (stringLinkedList.contains(stringToSearch)) {
+            System.out.println(stringToSearch + " exists in the string LinkedList");
+        } else {
+            System.out.println(stringToSearch + " does not exist in the string LinkedList");
+        }
+
+
+        //Demonstrate handling null (empty) list:
+        LinkedList<Integer> emptyList = null; // or new LinkedList<>() for an empty, but not null, list
+        int elementToSearchInEmpty = 7;
+
+        if (emptyList == null || !emptyList.contains(elementToSearchInEmpty)) { // Safe check for null
+            System.out.println(elementToSearchInEmpty + " does not exist in the empty/null list");
+        }
+
+    }
+}

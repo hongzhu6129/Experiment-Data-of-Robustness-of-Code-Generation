@@ -1,0 +1,21 @@
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class MatchG {
+
+    public static void main(String[] args) {
+        String[] words = {"green", "programming", "google", "agile", "bag", "grab"};
+        for (String word : words) {
+            System.out.println(word + ": " + validate(word));
+        }
+    }
+
+    public static String validate(String word) {
+        // Regular expression:  matches a word containing 'g' not at the start or end
+        Pattern pattern = Pattern.compile("^[^g].*g.*[^g]$");
+        Matcher matcher = pattern.matcher(word);
+        return matcher.matches() ? "Match" : "No Match"; 
+    }
+}
+```

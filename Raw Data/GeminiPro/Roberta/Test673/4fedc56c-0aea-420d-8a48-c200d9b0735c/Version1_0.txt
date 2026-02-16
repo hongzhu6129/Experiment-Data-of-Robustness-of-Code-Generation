@@ -1,0 +1,57 @@
+```java
+import java.util.TreeMap;
+import java.util.Map;
+
+public class RemoveGreatestKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap is used because it maintains order based on the natural ordering of keys (or a provided Comparator).
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Add some key-value pairs
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(3, "Three");
+        map.put(2, "Two");
+        map.put(4, "Four");
+
+        // Check if the map is empty
+        if (map.isEmpty()) {
+            System.out.println("Map is empty. No element to remove.");
+            return; 
+        }
+
+        // Get the greatest key (lastKey() in TreeMap)
+        Integer greatestKey = map.lastKey();
+
+        // Remove and get the value associated with the greatest key (pollLastEntry() removes and returns the entry)
+        Map.Entry<Integer, String> removedEntry = map.pollLastEntry();
+
+        if (removedEntry != null) {
+            System.out.println("Removed entry: Key = " + removedEntry.getKey() + ", Value = " + removedEntry.getValue());
+        }
+
+
+        // Print the updated map 
+        System.out.println("Updated Map: " + map);
+
+
+         // Example with a different data type (String) as key
+        TreeMap<String, Integer> stringKeyMap = new TreeMap<>();
+        stringKeyMap.put("apple", 1);
+        stringKeyMap.put("banana", 2);
+        stringKeyMap.put("orange", 3);
+
+        if (!stringKeyMap.isEmpty()) {
+            String greatestStringKey = stringKeyMap.lastKey();
+            Map.Entry<String, Integer> removedStringEntry = stringKeyMap.pollLastEntry();
+            if (removedStringEntry != null) {
+                 System.out.println("Removed string entry: Key = " + removedStringEntry.getKey() + ", Value = " + removedStringEntry.getValue());
+            }
+            System.out.println("Updated String Map: " + stringKeyMap);
+        }
+
+
+    }
+}
+```

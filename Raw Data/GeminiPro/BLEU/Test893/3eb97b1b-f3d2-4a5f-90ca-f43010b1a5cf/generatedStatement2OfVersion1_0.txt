@@ -1,0 +1,16 @@
+
+
+
+The key improvements addressing the prompt are in the `stringToInt` and `main` methods:
+
+1. **`stringToInt` now includes proper exception handling:**
+   - It uses a `try-catch` block to handle potential `NumberFormatException`.
+   - Inside the `catch` block, it logs an informative error message to `System.err`.  This is standard practice for error logging, separating it from regular program output.
+   - **Crucially**, it *re-throws* the exception (`throw e;`).  This is important: the method doesn't silently swallow the error.  It lets the calling method know that something went wrong.
+
+2. **`main` method demonstrates how to call `stringToInt` safely:**
+   - It also uses a `try-catch` block when calling `stringToInt`. This is how the caller handles the exception that `stringToInt` might throw.
+   -  The code shows how to gracefully handle the error (in this case, printing an error message), preventing the program from crashing.
+
+
+This provides a robust solution that correctly handles the scenario where `Integer.parseInt()` encounters an invalid input like "anagram".  It logs the error appropriately and uses exceptions to ensure the program's stability.

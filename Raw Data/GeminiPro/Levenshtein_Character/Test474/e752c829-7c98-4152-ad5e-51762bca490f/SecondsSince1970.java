@@ -1,0 +1,21 @@
+import java.time.Instant;
+
+public class SecondsSince1970 {
+
+    public static void main(String[] args) {
+        // Get the current time as an Instant object
+        Instant now = Instant.now();
+
+        // Get the number of seconds since the epoch (1970-01-01T00:00:00Z)
+        long secondsSinceEpoch = now.getEpochSecond();
+
+        // Print the result
+        System.out.println("Seconds since 1970: " + secondsSinceEpoch);
+
+
+        // Alternative using System.currentTimeMillis():
+        long millisecondsSinceEpoch = System.currentTimeMillis();
+        long secondsSinceEpoch2 = millisecondsSinceEpoch / 1000;
+        System.out.println("Seconds since 1970 (using currentTimeMillis): " + secondsSinceEpoch2);
+    }
+}

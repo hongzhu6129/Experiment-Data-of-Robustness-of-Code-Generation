@@ -1,0 +1,15 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Data Type:** Fermat numbers grow very quickly.  Using `long` allows us to store larger values than `int`, but even `long` won't be sufficient for all 10 Fermat numbers.  For truly large numbers, `BigInteger` (which we'll use in the improved version below) is necessary.
+
+2. **Efficiency:** Repeatedly calling `Math.pow(2, n)` inside the loop is redundant. We can calculate the power of 2 iteratively for better performance.
+
+3. **BigInteger for Larger Numbers:**  The initial code will work correctly for the first few Fermat numbers, but beyond that, `long` will overflow. The improved version below addresses this with `BigInteger`.
+
+
+
+**Improved Version (using BigInteger):**
+

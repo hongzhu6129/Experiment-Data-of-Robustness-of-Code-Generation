@@ -1,0 +1,45 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void printTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+
+
+    }
+
+    public static void main(String[] args) {
+        printTwinkle();
+    }
+}
+```
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still consider some aspects for testing:
+
+1. **Correct Output Format:** Verify that the output precisely matches the desired formatting, including correct indentation with tabs (`\t`) and newlines (`\n`).  Visually compare the program's output to the expected output.
+
+2. **Character Encoding:** Ensure the output uses the correct character encoding (typically UTF-8) to display special characters like commas, apostrophes, and exclamation points correctly. This is usually handled by the Java environment and IDE, but it's good to be aware of.
+
+
+3. **Platform Independence:** Test the program on different operating systems (Windows, macOS, Linux) to ensure the output is consistent across platforms. Newlines are handled slightly differently on different OSs, but Java handles this internally.
+
+4. **Console Output Redirection:** Test redirecting the output to a file: `java TwinkleTwinkle > output.txt`.  Then, examine the `output.txt` file to ensure the formatting (tabs and newlines) is preserved. This confirms the program correctly writes to output streams.
+
+
+5. **Empty String:** While not applicable in this specific case as the strings are hardcoded, if the program were modified to accept input strings, consider an empty string (`""`) as input to see how it's handled. It should gracefully handle such a case, either printing nothing or a default message. (This is more of a future-proofing test for potential enhancements).
+
+
+
+**Corner Cases (Hypothetical, for future modifications):**
+
+* **Very Long Lines:** If the program were to handle very long lines of input, ensure it wraps or truncates them appropriately to avoid display issues.
+* **Unicode Characters:** Test with Unicode characters (e.g., emojis, non-English characters) to ensure the program can handle them correctly and doesn't cause unexpected behavior.
+
+
+Even though this simple program has no direct input, considering these testing aspects is a good practice to ensure correctness, robustness, and maintainability.  Thinking about potential future modifications and testing for them proactively is a helpful habit.

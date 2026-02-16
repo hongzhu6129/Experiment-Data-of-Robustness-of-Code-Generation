@@ -1,0 +1,48 @@
+```java
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        int givenKey1 = 35;
+        Integer lowerKey1 = treeMap.lowerKey(givenKey1); 
+        System.out.println("Greatest key less than " + givenKey1 + ": " + (lowerKey1 != null ? lowerKey1 : "No such key")); // Output: 30
+
+        int givenKey2 = 10;
+        Integer lowerKey2 = treeMap.lowerKey(givenKey2);
+        System.out.println("Greatest key less than " + givenKey2 + ": " + (lowerKey2 != null ? lowerKey2 : "No such key")); // Output: No such key
+
+
+        int givenKey3 = 55;  // Key greater than all existing keys
+        Integer lowerKey3 = treeMap.lowerKey(givenKey3);
+        System.out.println("Greatest key less than " + givenKey3 + ": " + (lowerKey3 != null ? lowerKey3 : "No such key")); // Output: 50
+
+
+
+        // Example with strings (you can use any Comparable type as keys)
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String givenStringKey = "grape";
+        String lowerStringKey = stringTreeMap.lowerKey(givenStringKey);
+        System.out.println("Greatest key less than " + givenStringKey + ": " + (lowerStringKey != null ? lowerStringKey : "No such key")); // Output: banana
+
+
+         givenStringKey = "aardvark"; // Key less than all existing keys
+         lowerStringKey = stringTreeMap.lowerKey(givenStringKey);
+        System.out.println("Greatest key less than " + givenStringKey + ": " + (lowerStringKey != null ? lowerStringKey : "No such key")); // Output: No such key
+
+
+    }
+}
+```

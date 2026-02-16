@@ -1,0 +1,60 @@
+```java
+public class EuclideanAlgorithm {
+
+    /**
+     * Calculates the greatest common divisor (GCD) of two integers using the Euclidean algorithm.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return The GCD of a and b.
+     */
+    public static int euclid(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.err.println("Usage: java EuclideanAlgorithm <integer1> <integer2>");
+            System.exit(1);  // Exit with error code
+        }
+
+        try {
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[1]);
+            int gcd = euclid(num1, num2);
+            System.out.println("GCD of " + num1 + " and " + num2 + " is: " + gcd);
+
+        } catch (NumberFormatException e) {
+            System.err.println("Error: Invalid input. Please enter integers only.");
+            System.exit(1); // Exit with an error code
+        }
+
+
+    }
+}
+```
+
+
+Explanation of the fix and improvements:
+
+1. **Error Handling:** The original error "invalid literal for int() with base 10: 'euclidean'" likely arose because the program was trying to convert a non-numeric string (perhaps "euclidean" itself or a command-line argument) to an integer using `Integer.parseInt()`. The updated code includes a `try-catch` block to handle `NumberFormatException`.  This prevents the program from crashing and provides a helpful error message to the user.
+
+2. **Input Validation:** The `main` method now checks if exactly two command-line arguments are provided.  If not, it prints a usage message and exits. This helps prevent errors caused by incorrect usage.
+
+3. **Clearer Error Messages:** The error messages now specify the problem (invalid input or incorrect number of arguments) more precisely, making it easier for the user to understand and correct the issue.
+
+4. **Exit Codes:** The use of `System.exit(1)` indicates an error when the program terminates.  This is standard practice and can be useful if the program is being called by a script or another program.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `EuclideanAlgorithm.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Compile the code using the command: `javac EuclideanAlgorithm.java`
+3. **Run:**  Execute the program with two integer arguments: `java EuclideanAlgorithm 12 18`  (Replace 12 and 18 with your desired integers).
+
+
+This improved version handles the error gracefully, provides better input validation, and offers clearer feedback to the user.

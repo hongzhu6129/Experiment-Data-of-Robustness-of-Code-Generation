@@ -1,0 +1,35 @@
+```java
+class Solution {
+    /**
+     * Returns the substring that is over the first and last appearance of the substring "toast" in the given string,
+     * or returns an empty string if the substring "toast" does not exist.
+     *
+     * @param str The input string.
+     * @return The substring between the first and last appearances of "toast", or an empty string.
+     */
+    public String pickMiddleOfBread(String str) {
+        int firstIndex = str.indexOf("toast");
+        int lastIndex = str.lastIndexOf("toast");
+
+        if (firstIndex == -1 || lastIndex == -1 || firstIndex == lastIndex) {
+            return "";
+        }
+
+        return str.substring(firstIndex + "toast".length(), lastIndex);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        System.out.println(solution.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(solution.pickMiddleOfBread("toastjam")); // Output: ""
+        System.out.println(solution.pickMiddleOfBread("jamtoast")); // Output: ""
+        System.out.println(solution.pickMiddleOfBread("toasttoast")); // Output: "" 
+        System.out.println(solution.pickMiddleOfBread("toastpeanutbuttertoast")); // Output: peanutbutter
+        System.out.println(solution.pickMiddleOfBread("toastThis is some texttoast")); // Output: This is some text
+
+
+    }
+}
+```

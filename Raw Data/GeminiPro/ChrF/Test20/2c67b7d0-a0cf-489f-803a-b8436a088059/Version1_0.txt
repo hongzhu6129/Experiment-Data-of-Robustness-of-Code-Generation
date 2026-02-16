@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class OctalToDecimal {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an octal number: ");
+        String octalString = scanner.nextLine();
+
+        try {
+            long decimal = 0;
+            long power = 1;
+
+            // Iterate through the octal string from right to left
+            for (int i = octalString.length() - 1; i >= 0; i--) {
+                char digitChar = octalString.charAt(i);
+                int digit = digitChar - '0'; // Convert char to int
+
+                if (digit < 0 || digit > 7) {  // Check for invalid octal digits
+                    System.out.println("Invalid octal number.");
+                    return;
+                }
+
+                decimal += digit * power;
+                power *= 8;
+            }
+
+            System.out.println("Decimal equivalent: " + decimal);
+
+        } catch (NumberFormatException e) { // Handle cases like empty input or non-numeric characters
+            System.out.println("Invalid input.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Valid Octal Numbers:**
+
+1. **Input:** 123  **Expected Output:** 83
+2. **Input:** 777  **Expected Output:** 511
+3. **Input:** 0  **Expected Output:** 0
+4. **Input:** 10  **Expected Output:** 8
+5. **Input:** 7  **Expected Output:** 7
+6. **Input:** 177777  **Expected Output:** 65535 (Largest 16-bit octal)
+
+
+**Invalid Octal Numbers (Corner Cases):**
+
+1. **Input:** 80 (Contains digit 8) **Expected Output:** Invalid octal number.
+2. **Input:** 99 (Contains digit 9) **Expected Output:** Invalid octal number.
+3. **Input:** 12A (Contains non-numeric char) **Expected Output:** Invalid octal number. 
+4. **Input:** "" (Empty String) **Expected Output:** Invalid input.
+5. **Input:** "   " (Whitespace only) **Expected Output:** Invalid input.
+6. **Input:** -123 (Negative) **Expected Output:** Invalid octal number. (The program doesn't handle negative octal numbers directly; it expects a string).
+7. **Input:** 1777777777777777777 (Very large number, exceeding `long` capacity) **Expected Output:** The program might produce incorrect results or a runtime error due to overflow.  It's good to be aware of the limitations of data types when dealing with potentially large numbers.
+
+
+
+
+**How to Run the Code and Test:**
+
+1. **Save:** Save the code as `OctalToDecimal.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile using: `javac OctalToDecimal.java`
+3. **Run:**  Execute the compiled code using: `java OctalToDecimal`
+4. **Enter Input:** The program will prompt you to enter an octal number. Enter the test case input and press Enter to see the output.
+
+
+This enhanced version includes more robust input validation and better error handling, making it more resistant to unexpected inputs.  The comments also explain the logic clearly.

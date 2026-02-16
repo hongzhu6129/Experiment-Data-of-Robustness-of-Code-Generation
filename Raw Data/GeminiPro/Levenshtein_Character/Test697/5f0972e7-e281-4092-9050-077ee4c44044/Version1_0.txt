@@ -1,0 +1,66 @@
+```java
+class Solution {
+    /**
+     * Counts the number of integers from 1 to n (inclusive) that do not contain the digit 7.
+     *
+     * @param n The upper limit (inclusive).
+     * @return The count of numbers without the digit 7.
+     */
+    static int count_nums_not_7(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (!containsDigit7(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Checks if a number contains the digit 7.
+     *
+     * @param num The number to check.
+     * @return True if the number contains 7, false otherwise.
+     */
+    private static boolean containsDigit7(int num) {
+        while (num > 0) {
+            if (num % 10 == 7) {
+                return true;
+            }
+            num /= 10;
+        }
+        return false;
+    }
+
+    /**
+     * Main method for testing.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int n = 20; // Example input 
+        int result = count_nums_not_7(n);
+        System.out.println("The number of integers without 7 from 1 to " + n + " is: " + result);
+
+
+        n = 100; // Example input
+        result = count_nums_not_7(n);
+        System.out.println("The number of integers without 7 from 1 to " + n + " is: " + result);
+
+        n= 75;
+        result = count_nums_not_7(n);
+        System.out.println("The number of integers without 7 from 1 to " + n + " is: " + result);
+
+
+    }
+}
+```
+
+
+Key improvements in this version:
+
+- **Clearer Method Names:** `count_nums_not_7` is still used as required, but the helper function is named `containsDigit7` which is more descriptive.
+- **Helper Function:**  The logic for checking if a number contains 7 is separated into `containsDigit7`, making the main function cleaner and easier to understand.
+- **Comments:**  Added comments to explain the purpose of each method and section of the code.
+- **Example Usage in `main`:** The `main` method now demonstrates how to use the `count_nums_not_7` function with a few example inputs. This makes it easier to test and understand the code's functionality.
+- **Efficiency:** While a more mathematically sophisticated approach could be slightly faster for very large `n`, this iterative method is clear, correct, and efficient enough for most practical purposes.  The complexity is O(n log n) as each number checked is at most log n digits long.

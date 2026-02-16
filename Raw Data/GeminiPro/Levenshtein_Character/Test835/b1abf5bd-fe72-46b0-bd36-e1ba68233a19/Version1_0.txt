@@ -1,0 +1,36 @@
+```java
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the star section
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (i % 2 == 0) { // Even rows have 6 stars
+                  System.out.print("* ");
+                } else if (j < 5) {  // Odd rows have 5 stars
+                  System.out.print("* ");
+                } 
+            }
+            if (i == 2) { // Add "pct" on the 3rd row of stars
+                System.out.print("pct ");
+            }
+            System.out.print("=="); // Separator between stars and stripes
+            for(int k = 0; k < 26; k++){
+                System.out.print("=");
+            }
+            System.out.println(); 
+        }
+
+        // Print the stripe section
+        for (int i = 0; i < 6; i++) {
+            for(int k = 0; k < 46; k++){
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+This code directly prints the American flag pattern to the console using nested loops and conditional statements to control the placement of stars and stripes. It combines the star and stripe printing into a single `main` method, as requested.  The "pct" is also added as specified.  The number of `=` characters was adjusted slightly to match the example output more closely while maintaining a reasonable visual representation.

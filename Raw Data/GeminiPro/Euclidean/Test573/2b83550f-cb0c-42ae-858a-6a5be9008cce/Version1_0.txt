@@ -1,0 +1,80 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class IncreaseArrayListSize {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using ensureCapacity()
+
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        System.out.println("Initial size of list1: " + list1.size()); // Output: 3
+
+        // Increase capacity to hold at least 10 elements
+        list1.ensureCapacity(10); 
+
+        // Size remains same unless more elements are added. Capacity is increased internally.
+        System.out.println("Size after ensureCapacity(10) on list1: " + list1.size()); // Output: 3
+
+
+        // Adding more elements to demonstrate increased capacity
+        for(int i=4; i<=7; i++) {
+            list1.add(i);
+        }
+        System.out.println("Size after adding more elements to list1: " + list1.size()); // Output: 7
+
+
+
+
+        // Method 2: Using addAll() with a larger collection
+
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("A", "B"));
+        System.out.println("Initial size of list2: " + list2.size()); // Output: 2
+
+        List<String> moreElements = Arrays.asList("C", "D", "E");
+        list2.addAll(moreElements);
+
+        System.out.println("Size after addAll() on list2: " + list2.size()); // Output: 5
+
+
+
+        // Method 3:  Creating a new ArrayList with larger initial capacity (less efficient than ensureCapacity if you already have a list)
+
+        ArrayList<Double> list3 = new ArrayList<>(20); // Initial capacity set to 20
+
+        list3.add(1.1);
+        list3.add(2.2);
+
+        System.out.println("Initial size of list3 (with initial capacity 20): " + list3.size()); // Output: 2
+
+
+
+        // Method 4: Using Collections.copy to copy to a larger list (less efficient if capacity increase is small)
+
+        ArrayList<Integer> list4 = new ArrayList<>(Arrays.asList(10, 20));
+        System.out.println("Initial size of list4: " + list4.size()); // Output: 2
+
+
+        ArrayList<Integer> largerList = new ArrayList<>(10); // Create a larger list
+        Collections.copy(largerList, list4); // This requires the destination list to already have enough capacity. Does not resize the destination. Improper usage throws IndexOutOfBoundsException
+
+        // This adds nulls up to the capacity of the larger list. So actual used size is still the original list size but the allocated space is more.
+        System.out.println("Size of largerList after copy: " + largerList.size());
+
+
+        // Demonstrate that nulls are added if the largerList has more capacity than needed
+        for(Integer i : largerList) {
+            System.out.print(i + " "); // Prints 10 20 null null...
+        }
+
+        System.out.println(); // New line for formatting
+    }
+}
+```

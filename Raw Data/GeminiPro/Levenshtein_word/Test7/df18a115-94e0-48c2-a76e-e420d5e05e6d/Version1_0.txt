@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three numbers: ");
+
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close();
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to thoroughly test the `calculateAverage` method:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -5, 10, 5
+   - Expected Output: 3.3333333333333335 (or similar due to floating-point representation)
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 1.8
+   - Expected Output: 2.6666666666666665 (or similar)
+
+7. **Edge Case - Very Large Numbers (potential overflow with integers, but handled correctly with doubles):**
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE/2, Double.MAX_VALUE/4
+   - Expected Output: A very large number (approximately  1.157920892373162E+308 / 1.333... which should not overflow a `double`)
+
+8. **Edge Case - Very Small Numbers (close to zero):**
+   - Input: 0.0000001, 0.0000002, 0.0000003
+   - Expected Output: 2.0E-7
+
+
+
+**How to Run Test Cases (Manually):**
+
+You can manually enter these values when prompted by the program.
+
+**How to Run Test Cases (Using JUnit - recommended for larger projects):**
+
+JUnit is a Java unit testing framework.  Here's an example of how you could write a JUnit test class for the `calculateAverage` method:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAverageNormalCase() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageNegativeNumbers() {
+        assertEquals(-10.0, AverageCalculator.calculateAverage(-5, -10, -15));
+    }
+
+    // Add more test methods for the other test cases...
+    @Test
+    void testCalculateAverageLargeNumbers(){
+        assertEquals(2000000.0, AverageCalculator.calculateAverage(1000000,2000000, 3000000));
+
+    }
+     @Test
+    void testCalculateAverageVeryLargeNumbers() {
+        double expectedAverage = (Double.MAX_VALUE + Double.MAX_VALUE/2 + Double.MAX_VALUE/4) / 3.0;
+        assertEquals(expectedAverage, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE/2, Double.MAX_VALUE/4));
+    }
+
+
+}
+```
+
+To use JUnit, you'll need to add it as a dependency to your project.  Many IDEs (like IntelliJ IDEA and Eclipse) have built-in support for JUnit.  This approach makes testing much more efficient and automated, especially for complex programs.

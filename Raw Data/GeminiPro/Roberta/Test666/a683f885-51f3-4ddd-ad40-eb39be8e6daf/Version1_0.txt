@@ -1,0 +1,63 @@
+```java
+import java.util.TreeMap;
+
+public class FillMapPortion {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        int givenKey = 6;
+        String fillValue = "Filled";
+
+        fillPortionLessThanKey(map, givenKey, fillValue);
+
+        System.out.println(map); // Output: {1=Filled, 3=Filled, 5=Filled, 7=Seven, 9=Nine}
+
+
+        // Another Example
+        TreeMap<Integer, String> map2 = new TreeMap<>();
+        map2.put(2, "Two");
+        map2.put(4, "Four");
+        map2.put(6, "Six");
+        map2.put(8, "Eight");
+        map2.put(10, "Ten");
+
+        int givenKey2 = 3;
+        String fillValue2 = "X";
+
+        fillPortionLessThanKey(map2,givenKey2, fillValue2);
+        System.out.println(map2); // Output: {2=X, 4=Four, 6=Six, 8=Eight, 10=Ten}
+
+
+
+        // Example with no keys less than the given key
+        TreeMap<Integer, String> map3 = new TreeMap<>();
+        map3.put(2, "Two");
+        map3.put(4, "Four");
+
+
+        int givenKey3 = 1;
+        String fillValue3 = "Y";
+        fillPortionLessThanKey(map3, givenKey3, fillValue3);
+        System.out.println(map3); // Output: {2=Two, 4=Four}
+
+
+    }
+
+    private static void fillPortionLessThanKey(TreeMap<Integer, String> map, int givenKey, String fillValue) {
+        for (Integer key : map.keySet()) { // Iterate through all keys. Because it's a TreeMap, they are in sorted order.
+            if (key < givenKey) {
+                map.put(key, fillValue); //Update value with fillValue. TreeMap handles existing keys.
+            } else { // Because keys are ordered, once we hit a key >= givenKey, no subsequent keys can be smaller.
+                break; //Important Optimization
+            }
+        }
+    }
+}
+```

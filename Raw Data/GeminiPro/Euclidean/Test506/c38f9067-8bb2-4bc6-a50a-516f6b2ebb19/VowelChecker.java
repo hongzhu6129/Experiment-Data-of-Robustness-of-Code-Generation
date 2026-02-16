@@ -1,0 +1,28 @@
+public class VowelChecker {
+
+    public static void main(String[] args) {
+        String testString1 = "aeiou";
+        String testString2 = "aeiouAEIOU";
+        String testString3 = "hello";
+        String testString4 = "rhythm";
+
+        System.out.println(test(testString1)); // true
+        System.out.println(test(testString2)); // false (due to uppercase)
+        System.out.println(test(testString3)); // false
+        System.out.println(test(testString4)); // false
+    }
+
+    public static boolean test(String str) {
+        if (str == null || str.isEmpty()) {
+            return false; // Empty string is considered not all vowels
+        }
+
+        for (char c : str.toCharArray()) {
+            if (!"aeiou".contains(String.valueOf(c))) {
+                return false; 
+            }
+        }
+
+        return true;
+    }
+}

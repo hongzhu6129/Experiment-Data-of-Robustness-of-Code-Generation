@@ -1,0 +1,124 @@
+```java
+import java.util.Scanner;
+
+public class FractionOperations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the numerator of the first fraction: ");
+        int num1 = input.nextInt();
+        System.out.print("Enter the denominator of the first fraction: ");
+        int den1 = input.nextInt();
+
+        System.out.print("Enter the numerator of the second fraction: ");
+        int num2 = input.nextInt();
+        System.out.print("Enter the denominator of the second fraction: ");
+        int den2 = input.nextInt();
+
+
+        // Input validation: denominators cannot be zero.
+        if (den1 == 0 || den2 == 0) {
+            System.out.println("Error: Denominator cannot be zero.");
+            return; // Exit the program if denominator is zero.
+        }
+
+
+        // Addition
+        int addNum = num1 * den2 + num2 * den1;
+        int addDen = den1 * den2;
+        System.out.println("Addition: " + addNum + "/" + addDen);
+
+
+        // Subtraction
+        int subNum = num1 * den2 - num2 * den1;
+        int subDen = den1 * den2;
+        System.out.println("Subtraction: " + subNum + "/" + subDen);
+
+
+        // Multiplication
+        int mulNum = num1 * num2;
+        int mulDen = den1 * den2;
+        System.out.println("Multiplication: " + mulNum + "/" + mulDen);
+
+
+        // Division
+        if (num2 == 0) { // Check for division by zero
+            System.out.println("Error: Cannot divide by zero.");
+        } else {
+            int divNum = num1 * den2;
+            int divDen = den1 * num2;
+            System.out.println("Division: " + divNum + "/" + divDen);
+        }
+
+
+
+        // Remainder (for fractions, we'll compute remainder of numerators after making denominators equal).
+        int remNum = (num1*den2) % (num2*den1);
+        int remDen = den1*den2;
+
+        System.out.println("Remainder of numerators after equalizing denominators: " + remNum + "/" + remDen);
+        
+
+        input.close();
+    }
+
+    // Optional: You can add a function to simplify fractions (e.g., using GCD). 
+}
+```
+
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** num1=1, den1=2, num2=1, den2=3
+   **Expected Output:** 
+   Addition: 5/6
+   Subtraction: 1/6
+   Multiplication: 1/6
+   Division: 3/2
+   Remainder: 3/6
+
+
+2. **Input:** num1=3, den1=4, num2=1, den2=2
+   **Expected Output:**
+   Addition: 10/8 (or simplified: 5/4)
+   Subtraction: 2/8  (or simplified: 1/4)
+   Multiplication: 3/8
+   Division: 6/4 (or simplified: 3/2)
+   Remainder: 6/8 (or simplified: 3/4)
+
+
+**Corner Cases:**
+
+1. **Zero Denominator:**
+   **Input:** num1=1, den1=2, num2=1, den2=0 
+   **Expected Output:** Error: Denominator cannot be zero.
+
+2. **Division by Zero:**
+   **Input:** num1=1, den1=2, num2=0, den2=3
+   **Expected Output:** Error: Cannot divide by zero.
+
+
+
+3. **Large Numbers:**  (Test for potential integer overflow � you might need `long` if you expect very large inputs):
+    **Input:** num1 = Integer.MAX_VALUE, den1=1, num2=1, den2=2
+    **Observe for overflows**
+
+
+
+4. **Negative Numbers:**
+    **Input:** num1=-2, den1=3, num2=1, den2=4
+    **Check if operations handle negative numbers correctly**
+
+
+5. **Zero Numerators:**
+    **Input:** num1=0, den1=5, num2=3, den2=7
+    **Ensure correct handling of zero in numerators**.
+
+
+
+
+By running these test cases, you can verify that your fraction operations program functions correctly in various scenarios, including handling potential errors.  If you implement fraction simplification (reducing to lowest terms), you'll need to adjust the expected output of some tests.

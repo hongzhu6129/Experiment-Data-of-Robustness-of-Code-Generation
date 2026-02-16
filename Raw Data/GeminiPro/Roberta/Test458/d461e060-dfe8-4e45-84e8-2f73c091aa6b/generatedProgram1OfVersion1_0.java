@@ -1,0 +1,15 @@
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Set;
+
+public class AllTimeZones {
+
+    public static void main(String[] args) {
+        Set<String> allZoneIds = ZoneId.getAvailableZoneIds();
+
+        for (String zoneId : allZoneIds) {
+            ZonedDateTime now = ZonedDateTime.now(ZoneId.of(zoneId));
+            System.out.println(zoneId + ": " + now.toString());
+        }
+    }
+}

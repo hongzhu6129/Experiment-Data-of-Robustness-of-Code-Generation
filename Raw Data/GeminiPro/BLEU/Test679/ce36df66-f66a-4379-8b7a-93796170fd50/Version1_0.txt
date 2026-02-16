@@ -1,0 +1,60 @@
+```java
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        Integer key1 = 25;
+        Integer leastKey1 = treeMap.ceilingKey(key1); 
+        System.out.println("Least key greater than or equal to " + key1 + ": " + leastKey1); // Output: 30
+
+        Integer key2 = 10;
+        Integer leastKey2 = treeMap.ceilingKey(key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + leastKey2); // Output: 10
+
+        Integer key3 = 60;
+        Integer leastKey3 = treeMap.ceilingKey(key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + leastKey3); // Output: null
+
+
+         // Example with different data types (String keys):
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("cherry", 3);
+
+        String key4 = "apricot";
+        String leastKey4 = stringTreeMap.ceilingKey(key4);
+        System.out.println("Least key greater than or equal to " + key4 + ": " + leastKey4); // Output: banana
+
+
+        String key5 = "banana";
+        String leastKey5 = stringTreeMap.ceilingKey(key5);
+        System.out.println("Least key greater than or equal to " + key5 + ": " + leastKey5); // Output: banana
+
+        String key6 = "date";
+        String leastKey6 = stringTreeMap.ceilingKey(key6);
+        System.out.println("Least key greater than or equal to " + key6 + ": " + leastKey6); // Output: null
+
+
+
+    }
+}
+```
+
+
+Explanation:
+
+1. **TreeMap:** We use a `TreeMap` because it stores its keys in sorted order, which makes it efficient to find the least key greater than or equal to a given key.
+
+2. **ceilingKey() method:** The `ceilingKey(K key)` method of the `TreeMap` class directly returns the least key greater than or equal to the given `key`. If no such key exists, it returns `null`.
+
+3. **Example Usage:** The `main` method demonstrates how to use `ceilingKey()` with different example keys and shows the output.  It also includes examples with String keys to illustrate that TreeMaps can be used with various data types.

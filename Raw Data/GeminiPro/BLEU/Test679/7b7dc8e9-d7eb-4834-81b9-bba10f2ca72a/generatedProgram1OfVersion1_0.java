@@ -1,0 +1,53 @@
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        Integer key1 = 25;
+        Integer key2 = 10;
+        Integer key3 = 60;
+
+
+        Integer ceilingKey1 = treeMap.ceilingKey(key1);
+        Integer ceilingKey2 = treeMap.ceilingKey(key2);
+        Integer ceilingKey3 = treeMap.ceilingKey(key3);
+
+
+
+        System.out.println("Least key greater than or equal to " + key1 + ": " + ceilingKey1); // Output: 30
+        System.out.println("Least key greater than or equal to " + key2 + ": " + ceilingKey2); // Output: 10
+        System.out.println("Least key greater than or equal to " + key3 + ": " + ceilingKey3); // Output: null
+
+
+        //Example with Strings as keys
+         TreeMap<String, Integer> treeMapString = new TreeMap<>();
+
+        treeMapString.put("apple", 1);
+        treeMapString.put("banana", 2);
+        treeMapString.put("cherry", 3);
+
+
+        String key4 = "apricot";
+        String key5 = "apple";
+        String key6 = "zucchini";
+
+
+        String ceilingKey4 = treeMapString.ceilingKey(key4);
+        String ceilingKey5 = treeMapString.ceilingKey(key5);
+        String ceilingKey6 = treeMapString.ceilingKey(key6);
+
+        System.out.println("Least key greater than or equal to " + key4 + ": " + ceilingKey4); // Output: banana
+        System.out.println("Least key greater than or equal to " + key5 + ": " + ceilingKey5); // Output: apple
+        System.out.println("Least key greater than or equal to " + key6 + ": " + ceilingKey6); // Output: null
+
+    }
+}

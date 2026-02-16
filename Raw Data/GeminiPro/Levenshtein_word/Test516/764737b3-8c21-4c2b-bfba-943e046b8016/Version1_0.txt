@@ -1,0 +1,56 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's examples (though not explicitly requested, good to include)
+        System.out.println("7 is a happy number: " + isHappy_number(7)); //true (Example in prompt)
+        System.out.println("2 is a happy number: " + isHappy_number(2)); //false (Example in prompt)
+    }
+}
+```
+
+
+Explanation and Key Improvements:
+
+1. **HashSet for Cycle Detection:** The `isHappy_number` method now uses a `HashSet` called `seen` to keep track of numbers encountered during the process.  This efficiently detects cycles (infinite loops) which are a characteristic of unhappy numbers.  If we re-encounter a number, we know we're in a cycle and the number is unhappy.
+
+2. **Clearer Loop Condition:** The `while` loop condition is now `n != 1 && !seen.contains(n)`. This makes the logic more explicit: we continue the process as long as the number is not 1 AND we haven't seen this number before.
+
+3. **Return Directly:** After the loop, we directly return `n == 1`. This simplifies the code and makes the result clear.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `isHappy_number` function and includes test cases with both happy and unhappy numbers (including those mentioned in the prompt).
+
+
+How it Works (Happy Number Logic):
+
+1. **Start:** Begin with the given number.
+2. **Sum of Squares:** Calculate the sum of the squares of its digits.
+3. **Repeat:** Replace the number with the calculated sum.
+4. **Termination:** Repeat steps 2 and 3.  If the number becomes 1, it's a happy number. If we encounter a cycle (the same number appears again), it's an unhappy number.

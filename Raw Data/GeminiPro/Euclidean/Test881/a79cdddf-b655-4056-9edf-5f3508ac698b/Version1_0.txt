@@ -1,0 +1,34 @@
+```java
+import java.util.Map;
+
+public class GetSystemInfo {
+
+    public static void main(String[] args) {
+
+        // Get System Environment Variables
+        Map<String, String> env = System.getenv();
+        System.out.println("System Environment Variables:");
+        for (String envName : env.keySet()) {
+            System.out.format("%s=%s%n", envName, env.get(envName));
+        }
+        System.out.println(); // Add a newline for better readability
+
+        // Get System Properties
+        System.out.println("System Properties:");
+        java.util.Properties props = System.getProperties();
+        props.list(System.out); // Directly list properties to System.out
+    }
+}
+```
+
+
+This code efficiently retrieves and prints both environment variables and system properties to the console.  It uses a clear format for displaying the information.  Key improvements from earlier versions:
+
+* **Direct listing of properties:** Uses `props.list(System.out)` for simpler, more concise printing of system properties.
+* **Clearer output:** Adds a newline between environment variables and system properties for improved readability.
+* **Conciseness:** Removes unnecessary comments and simplifies code structure.
+* **Uses `format` for output:** Improves the formatting of environment variables, ensuring consistent spacing and clarity.
+
+
+This version adheres strictly to the requirement of using only the `public static void main(String[] args)` method signature. It is a complete and functional solution.
+

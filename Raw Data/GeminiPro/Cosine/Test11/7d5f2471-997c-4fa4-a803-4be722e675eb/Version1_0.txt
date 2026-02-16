@@ -1,0 +1,80 @@
+```java
+public class DiamondPattern {
+
+    public static void printDiamond(int n) {
+        if (n <= 0 || n % 2 == 0) {
+            System.out.println("Input n must be a positive odd integer.");
+            return;
+        }
+
+        // Upper half of the diamond
+        for (int i = 1; i <= n; i += 2) {
+            for (int j = 0; j < (n - i) / 2; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Lower half of the diamond
+        for (int i = n - 2; i >= 1; i -= 2) {
+            for (int j = 0; j < (n - i) / 2; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        printDiamond(1);  // Corner case: smallest valid input
+        printDiamond(3);
+        printDiamond(5);
+        printDiamond(7); 
+        printDiamond(9);
+        printDiamond(0);  // Corner case: Invalid input (0)
+        printDiamond(-5); // Corner case: Invalid input (negative)
+        printDiamond(4);  // Corner case: Invalid input (even)
+    }
+}
+```
+
+
+
+**Test Cases and Corner Cases:**
+
+The `main` method includes several test cases, demonstrating various scenarios:
+
+1. **Smallest Valid Input (n=1):**  Prints a single asterisk.
+2. **Normal Odd Inputs (n=3, 5, 7, 9):** Prints diamonds of the respective sizes.
+3. **Invalid Input (n=0):** Prints an error message because 0 is not a positive odd integer.
+4. **Invalid Input (n=-5):** Prints an error message because the input is negative.
+5. **Invalid Input (n=4):**  Prints an error message because the input is even.
+
+
+**Explanation of the Code:**
+
+1. **Input Validation:** The `printDiamond` method first checks if the input `n` is a positive odd integer. If not, it prints an error message and returns.
+
+2. **Upper Half Loop:** The first `for` loop iterates from 1 to `n` (incrementing by 2) to print the upper half of the diamond.  Inside this loop:
+   - The first inner loop prints spaces for the left padding.
+   - The second inner loop prints asterisks.
+
+3. **Lower Half Loop:** The second `for` loop iterates from `n-2` down to 1 (decrementing by 2) to print the lower half of the diamond. The logic for printing spaces and asterisks is similar to the upper half.
+
+4. **Output:** The `System.out.println()` statement after each inner loop creates a new line, forming the diamond shape.
+
+
+**How to Run:**
+
+1. Save the code as `DiamondPattern.java`.
+2. Compile: `javac DiamondPattern.java`
+3. Run: `java DiamondPattern`
+
+
+This improved version handles invalid inputs gracefully and provides clear error messages, making it more robust and user-friendly.  The test cases cover various scenarios, including corner cases, to ensure the code functions correctly.

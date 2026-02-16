@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Method Signature Adherence:** The code strictly uses `public static void main` and `private static int[] Saddleback` as requested.
+
+2. **Return an `int[]`:** The `Saddleback` method returns an `int[]` of size 2. If the target is found, the array contains the row and column indices (0-based). If not found, it returns `{-1, -1}`. This makes handling the result in `main` much cleaner.
+
+3. **Saddleback Algorithm Implementation:** The `Saddleback` method correctly implements the saddleback search algorithm:
+   - Starts at the top-right corner (`row = 0`, `col = n-1`).
+   - Compares the current element with the target.
+   - If smaller, moves down (increments `row`).
+   - If larger, moves left (decrements `col`).
+   - Continues until the target is found or the boundaries of the matrix are crossed.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method and handles the returned array to print the result or indicate if the target is not found. It also includes an example with a target that's *not* present to show how the `-1, -1` result is handled.
+
+
+5. **Concise and Readable:** The code is well-formatted and includes comments to explain the logic.
+
+
+This improved version addresses the original prompt's requirements more effectively and provides a more robust and understandable solution.

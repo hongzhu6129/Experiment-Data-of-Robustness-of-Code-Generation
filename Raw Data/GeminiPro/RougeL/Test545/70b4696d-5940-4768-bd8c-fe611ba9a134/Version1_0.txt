@@ -1,0 +1,84 @@
+```java
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class ReadFileToByteArray {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println("Usage: java ReadFileToByteArray <filename>");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+
+        try {
+            byte[] byteArray = Files.readAllBytes(Paths.get(filename));
+
+            System.out.println("File contents read into byte array successfully.");
+
+            // Example: Print the size of the byte array.  You can process it further as needed.
+            System.out.println("Byte array size: " + byteArray.length);
+            
+             // Example: print a few bytes (for debugging - be careful with large files)
+            //for (int i = 0; i < Math.min(byteArray.length, 10); i++) {
+            //    System.out.print(byteArray[i] + " ");
+            //}
+            //System.out.println();
+
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            System.exit(1); // Indicate an error.
+        }
+    }
+}
+```
+
+
+To compile and run this:
+
+1. **Save:** Save the code as `ReadFileToByteArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it: `javac ReadFileToByteArray.java`
+3. **Run:** `java ReadFileToByteArray <filename>` (replace `<filename>` with the actual path to the file you want to read).
+
+
+**Important Improvements in this version:**
+
+* **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions`. This is crucial for robust file handling.  It also prints a helpful error message and exits with a non-zero status code to indicate an error.
+* **Argument Check:**  It verifies that a filename argument is provided.
+* **Clearer Output:**  The output message confirms success or prints a specific error.
+* **Example usage:** Shows how to access the byte array (printing size and a few bytes for demonstration).
+
+
+**Explanation using `Files.readAllBytes()`:**
+
+The `Files.readAllBytes(Paths.get(filename))` method is the most concise and efficient way to read an entire file into a byte array in Java. It does all the file opening, reading, and closing for you, simplifying the code significantly.  It handles files of any size (up to the limits of your system's memory).
+
+
+**Alternative using `FileInputStream` (less recommended for this specific task but good to know):**
+
+While `Files.readAllBytes()` is generally preferred, here's an alternative using `FileInputStream` if you need more fine-grained control (though it's generally more complex for this simple use case):
+
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ReadFileToByteArrayFileInputStream {
+
+    public static void main(String[] args) {
+        // ... (argument checking same as above)
+
+        try (FileInputStream fis = new FileInputStream(filename)) {
+            byte[] byteArray = fis.readAllBytes(); // Java 9+
+            // ... (rest of the code for processing byteArray is the same)
+        } catch (IOException e) {
+            // ... (error handling same as above)
+        }
+
+    }
+}
+
+```

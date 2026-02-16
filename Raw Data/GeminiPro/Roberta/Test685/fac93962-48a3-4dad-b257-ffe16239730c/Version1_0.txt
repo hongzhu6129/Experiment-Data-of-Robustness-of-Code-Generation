@@ -1,0 +1,57 @@
+```java
+public class ReverseInteger {
+
+    public static void main(String[] args) {
+        int number = 12345; // Example number, you can change this
+
+        int reversedNumber = 0;
+        int originalNumber = number; // Store the original number for printing
+
+
+        while (number != 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10; 
+        }
+
+        System.out.println("Original Number: " + originalNumber);
+        System.out.println("Reversed Number: " + reversedNumber);
+
+
+        // Handling integer overflow (optional, but good practice)
+        // Demonstrates a different approach to reversing that can help identify overflow
+        number = originalNumber;  // Reset number
+
+        try {
+             reversedNumber = Integer.parseInt(new StringBuilder(String.valueOf(Math.abs(number))).reverse().toString()) * (number < 0 ? -1 : 1);
+            System.out.println("Reversed Number (overflow check): " + reversedNumber); 
+        } catch (NumberFormatException e) {
+            System.out.println("Integer Overflow Occurred during reversal.");
+        }
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Variable Names:** Using `originalNumber` makes it easier to follow the logic and output.
+2. **Handles Negative Numbers (second method):**  The  `StringBuilder` method now correctly handles negative input. We take the absolute value, reverse, then reapply the negative sign if needed.
+3. **Integer Overflow Handling (second method):** The `try...catch` block demonstrates how to detect potential integer overflows, which can occur if the reversed number is too large to be stored as an `int`.
+4. **Two Methods Demonstrated:** The code now shows two different reversal approaches:
+   - The classic modulo/division method (more efficient, but doesn't automatically detect overflow).
+   - The `StringBuilder` method (easier to read, and helps with overflow detection).  This method converts the number to a string, reverses it, and then back to an integer.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReverseInteger.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run: `javac ReverseInteger.java`
+3. **Run:** After successful compilation, run: `java ReverseInteger`
+
+
+
+
+

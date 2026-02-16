@@ -1,0 +1,84 @@
+```java
+import java.util.Scanner;
+
+public class EvenNumberChecker {
+
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        if (isEven(num)) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is not even.");
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Input Number | Expected Output |
+|---|---|---|
+| Positive Even | 10 | 10 is even. |
+| Positive Odd | 7 | 7 is not even. |
+| Zero | 0 | 0 is even. |  *(Corner Case)*
+| Negative Even | -8 | -8 is even. |
+| Negative Odd | -13 | -13 is not even. |
+| Large Positive Even | 1000000 | 1000000 is even. |
+| Large Negative Even | -1000000 | -1000000 is even. |
+| Integer.MAX_VALUE (Odd) | 2147483647 | 2147483647 is not even. | *(Corner Case - Maximum positive int)*
+| Integer.MIN_VALUE (Even) | -2147483648 | -2147483648 is even. | *(Corner Case - Minimum negative int)*
+
+
+
+**How to run the test cases:**
+
+1. **Manually:**  You can run the program multiple times and enter each input value manually to verify the output.
+
+2. **Using JUnit (recommended):** Create a separate test class using a testing framework like JUnit.  This is the more robust and efficient way, especially as your program grows larger. Example using JUnit 5:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class EvenNumberCheckerTest {
+
+       @Test
+       void testIsEvenPositiveEven() {
+           assertTrue(EvenNumberChecker.isEven(10));
+       }
+
+       @Test
+       void testIsEvenPositiveOdd() {
+           assertFalse(EvenNumberChecker.isEven(7));
+       }
+
+       // ... Add tests for other cases (0, negative, large numbers, etc.) ...
+
+       @Test
+       void testIsEvenZero() {
+           assertTrue(EvenNumberChecker.isEven(0));
+       }
+
+       @Test
+       void testIsEvenNegativeEven() {
+           assertTrue(EvenNumberChecker.isEven(-8));
+       }
+
+       // ... and so on for all your test cases
+   }
+   ```
+
+JUnit allows you to automate the test execution and quickly identify any failures.  It's best practice to write tests for all critical parts of your code.

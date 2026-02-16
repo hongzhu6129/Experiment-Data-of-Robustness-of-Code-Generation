@@ -1,0 +1,50 @@
+```java
+import java.util.LinkedList;
+
+public class RemoveFirstLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+
+        System.out.println("Original LinkedList: " + languages);
+
+        // Discard and return the first element 
+        String removedElement = null;
+        if (!languages.isEmpty()) { // Check if the list is empty to avoid exceptions
+             removedElement = languages.removeFirst(); 
+        }
+
+        // Print the removed element and the modified LinkedList
+        if (removedElement != null) {
+            System.out.println("Removed element: " + removedElement);
+        } else {
+            System.out.println("The LinkedList was empty. No element removed.");
+        }
+        
+        System.out.println("Modified LinkedList: " + languages);
+
+
+
+         // Example demonstrating removing from an initially empty list
+         LinkedList<Integer> numbers = new LinkedList<>();
+         Integer removedNumber = null;
+         if (!numbers.isEmpty()) {
+             removedNumber = numbers.removeFirst();
+         }
+
+         if (removedNumber != null) {
+            System.out.println("Removed number: " + removedNumber); 
+         } else {
+            System.out.println("The numbers LinkedList was empty. No number removed.");
+         }
+
+        System.out.println("Numbers LinkedList: " + numbers);
+    }
+}
+
+```

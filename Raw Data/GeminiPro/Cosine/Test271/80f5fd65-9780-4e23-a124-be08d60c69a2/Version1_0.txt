@@ -1,0 +1,63 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicatesTwice {
+
+    static int remove_Duplicates_twice(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int index = 0; 
+        for (int num : nums) {
+            if (index < 2 || num > nums[index - 2]) {
+                nums[index++] = num;
+            }
+        }
+        return index;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 1, 2, 2, 3};
+        int len1 = remove_Duplicates_twice(nums1);
+        System.out.println("Updated length: " + len1);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Print updated portion
+
+        int[] nums2 = {0,0,1,1,1,1,2,3,3};
+        int len2 = remove_Duplicates_twice(nums2);
+        System.out.println("Updated length: " + len2);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+
+        int[] nums3 = {};
+        int len3 = remove_Duplicates_twice(nums3);
+        System.out.println("Updated length: " + len3);
+        System.out.println("Updated array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Empty array case
+
+         int[] nums4 = null;
+        int len4 = remove_Duplicates_twice(nums4);
+        System.out.println("Updated length: " + len4); // Null array case
+
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Variable Names:**  Using `index` instead of `i` enhances readability.
+
+2. **Handles Edge Cases:** The code now explicitly handles `null` and empty input arrays. This is important for robustness.
+
+3. **Concise Logic:** The core logic remains efficient, iterating through the array once. The condition `index < 2 || num > nums[index - 2]` ensures that we keep at most two occurrences of each element.
+
+4. **Informative Output:** The `main` method now provides more informative output, printing both the updated length and the actual updated portion of the array using `Arrays.copyOfRange`. This helps in verifying the correctness of the `remove_Duplicates_twice` method.
+
+5. **More Test Cases:** Added more test cases in `main` to demonstrate the behavior of the function with different inputs, including empty and null arrays.
+
+
+
+**How it Works:**
+
+The algorithm maintains an `index` pointing to the position where the next unique element (or allowed duplicate) should be placed. It iterates through the sorted `nums` array. If an element is encountered that is either within the first two positions (`index < 2`) or is greater than the element two positions before the current `index` (`num > nums[index - 2]`), it means we can include this element (either it's a new element or an allowed second occurrence of a duplicate).  The element is placed at `index`, and `index` is incremented.  Finally, `index` holds the length of the updated array.

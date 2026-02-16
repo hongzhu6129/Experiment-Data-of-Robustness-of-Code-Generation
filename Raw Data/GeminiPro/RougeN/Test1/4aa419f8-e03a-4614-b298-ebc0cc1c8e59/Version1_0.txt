@@ -1,0 +1,71 @@
+```java
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        long num1 = scanner.nextLong();  // Use long to handle larger numbers and potential overflow
+
+        System.out.print("Enter the second number: ");
+        long num2 = scanner.nextLong();
+
+        long product = num1 * num2;
+
+        System.out.println("The product of " + num1 + " and " + num2 + " is: " + product);
+
+        scanner.close(); // Close the scanner to release resources
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the Java program:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Notes                                  |
+| --------- | -------- | -------- | --------------- | ------------------------------------- |
+| 1        | 5       | 10      | 50             | Positive numbers                       |
+| 2        | -3      | 7       | -21            | Negative and positive number          |
+| 3        | 0       | 15      | 0              | Zero                                   |
+| 4        | -8      | -4      | 32             | Two negative numbers                   |
+| 5        | 999999999999 | 2      | 1999999999998 | Large numbers (using long to avoid overflow)|
+| 6        | -999999999999 | -2     | 1999999999998 | Large negative numbers |
+| 7        | 2147483647  | 2       | 4294967294    | Integer Max Value * 2 (overflow if using int) |
+| 8        | -2147483648 | -1      | 2147483648    | Integer Min Value * -1 |
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:**  You can run the program and enter these values one by one to check the output.
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit. This is a much better approach, especially as your program grows larger.  Here's a simple JUnit example:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ProductOfTwoNumbersTest {
+
+    @Test
+    void testPositiveNumbers() {
+        assertEquals(50, ProductOfTwoNumbers.calculateProduct(5, 10));  // Example test
+    }
+
+
+    // ... add more @Test methods for other test cases
+
+    // Helper method to isolate the product calculation for testing:
+    private long calculateProduct(long num1, long num2) {
+        return num1 * num2; // Extract this logic for cleaner testing. 
+    }
+}
+```
+
+Remember to add the JUnit library to your project.  Automated testing makes it easier to run your tests repeatedly and ensures that code changes don't introduce bugs.
+
+
+By using `long` instead of `int`, the program can handle larger numbers and avoid integer overflow in most practical scenarios.  However, `long` also has its limits. If you need truly arbitrary precision, use `BigInteger`.
+

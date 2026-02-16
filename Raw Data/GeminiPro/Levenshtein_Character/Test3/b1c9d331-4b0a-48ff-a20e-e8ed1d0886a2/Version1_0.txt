@@ -1,0 +1,102 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        
+        // Input validation loop
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            scanner.next(); // Consume the invalid input
+        }
+
+        int num = scanner.nextInt();
+
+        System.out.println("Multiplication Table of " + num + ":");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Positive Integer:**
+   - Input: 7
+   - Expected Output: Multiplication table of 7 up to 10 (7x1=7, 7x2=14,... 7x10=70)
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: Multiplication table of 0 (all results will be 0).  This is a corner case.
+
+3. **Negative Integer:**
+   - Input: -5
+   - Expected Output: Multiplication table of -5 (e.g., -5x1=-5, -5x2=-10,...,-5x10=-50).
+
+4. **Large Positive Integer:**
+   - Input: 12345
+   - Expected Output:  Multiplication table of 12345.  Tests handling of larger numbers.
+
+5. **Large Negative Integer:**
+   - Input: -98765
+   - Expected Output: Multiplication table of -98765.
+
+6. **Invalid Input (Non-Integer):**
+   - Input: hello
+   - Expected Output: "Invalid input. Please enter an integer."  (The program should prompt for input again).  This is crucial for robustness.
+
+7. **Invalid Input (Decimal):**
+    - Input: 3.14
+    - Expected Output: "Invalid input. Please enter an integer." (Handles non-integer numeric input)
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering each test case input manually and verifying the output.
+2. **Automated Testing (Recommended):**  For more thorough testing, especially for larger projects, use a testing framework like JUnit.  You would write separate test methods for each case, using assertions to check if the actual output matches the expected output. Example (using JUnit):
+
+
+```java
+import org.junit.jupiter.api.Test;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MultiplicationTableTest {
+
+    @Test
+    public void testPositiveInput() {
+        String input = "7\n";
+        String expectedOutput = "Multiplication Table of 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n";
+        testMultiplicationTable(input, expectedOutput);
+    }
+
+    // Add similar @Test methods for other test cases (zero, negative, invalid input, etc.)
+
+    private void testMultiplicationTable(String input, String expectedOutput) {
+        ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setIn(in);
+        System.setOut(new PrintStream(out));
+
+        MultiplicationTable.main(new String[0]); // Run the main method
+
+        assertEquals(expectedOutput, out.toString());
+    }
+}
+```
+
+
+This improved version uses a loop for input validation and includes more comprehensive test cases with a demonstration of how to perform automated testing using JUnit, which is a best practice for Java development.

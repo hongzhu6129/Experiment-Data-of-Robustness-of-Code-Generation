@@ -1,0 +1,58 @@
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class HappyNumber {
+
+    public static boolean isHappy_number(int n) {
+        Set<Integer> seen = new HashSet<>();
+
+        while (n != 1 && !seen.contains(n)) {
+            seen.add(n);
+            int sum = 0;
+            while (n > 0) {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+            n = sum;
+        }
+
+        return n == 1;
+    }
+
+    public static void main(String[] args) {
+        int num1 = 19;
+        int num2 = 20;
+
+        System.out.println(num1 + " is a happy number: " + isHappy_number(num1)); // Output: true
+        System.out.println(num2 + " is a happy number: " + isHappy_number(num2)); // Output: false
+
+
+        // Test cases from the prompt's example image (if applicable)
+        //System.out.println(isHappy_number(7)); // Should be true
+        //System.out.println(isHappy_number(2)); // Should be false
+
+        // Additional tests
+        //System.out.println(isHappy_number(1)); // True
+        //System.out.println(isHappy_number(100)); // True
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **HashSet for Cycle Detection:** The `isHappy_number` function uses a `HashSet` called `seen` to keep track of numbers encountered during the process.  This is crucial for detecting cycles. If a number is already in `seen`, it means we're in a cycle, and the number is not happy.
+
+2. **Clearer While Loop Condition:** The `while` loop continues as long as `n` is not equal to 1 AND `n` has not been seen before.  This concisely combines the two termination conditions.
+
+3. **Digit Extraction and Sum Calculation:**  The inner `while` loop efficiently extracts digits and calculates the sum of squares.
+
+4. **Return Condition:** The function returns `true` if `n` eventually becomes 1, and `false` otherwise (meaning it's trapped in a cycle).
+
+5. **Main Method with Examples:** The `main` method demonstrates how to use the `isHappy_number` function with sample inputs.  I've included tests for both happy and unhappy numbers.  You can uncomment the additional test cases for more thorough testing.
+
+
+This improved version addresses potential infinite loops and provides a more robust and understandable solution.

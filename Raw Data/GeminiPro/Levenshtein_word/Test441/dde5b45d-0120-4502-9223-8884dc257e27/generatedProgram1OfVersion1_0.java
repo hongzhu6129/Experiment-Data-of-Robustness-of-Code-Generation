@@ -1,0 +1,41 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinimumDateComponents {
+
+    public static void main(String[] args) {
+        // Get the current date and time using the default calendar
+        Calendar calendar = new GregorianCalendar();
+
+        // Set the date and time components to their minimum values
+        calendar.set(Calendar.YEAR, calendar.getActualMinimum(Calendar.YEAR)); // Minimum year supported by GregorianCalendar
+        calendar.set(Calendar.MONTH, calendar.getActualMinimum(Calendar.MONTH)); // 0 (January)
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH)); // 1
+        calendar.set(Calendar.HOUR_OF_DAY, calendar.getActualMinimum(Calendar.HOUR_OF_DAY)); // 0
+        calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE)); // 0
+        calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND)); // 0
+        calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND)); // 0
+
+        // Get the minimum year
+        int minYear = calendar.get(Calendar.YEAR);
+
+        // Get the minimum month (0-indexed)
+        int minMonth = calendar.get(Calendar.MONTH);
+
+        // Get the minimum week of year (1-indexed) - Week of year can be tricky as it depends on the locale and calendar rules
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR);
+
+
+        // Get the minimum day of the month (1-indexed)
+        int minDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month (0-indexed): " + minMonth); 
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);  // Note: Week of year may not always be 1
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+
+
+
+    }
+}

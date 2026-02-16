@@ -1,0 +1,76 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example, ideally would be taken from user input)
+        int num = 8; 
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            // The problem description says "check if a number is a cube or should"
+            // It's unclear what "or should" means.  Assuming it means it's *not* a cube:
+            System.out.println("Number is not a cube."); 
+        }
+    }
+
+    private static boolean isCube(int num) {
+        // Handle negative numbers (their cube roots are also negative)
+        if (num < 0) {
+            return isCube(-num);  // Check the absolute value
+        }
+
+        // Efficiently check for cubes using integer arithmetic
+        int cbrt = (int) Math.round(Math.cbrt(num)); // Calculate the integer cube root
+        return cbrt * cbrt * cbrt == num;           // Check if the cube of the root equals the number
+
+        // Less Efficient Alternative (iterative approach):
+        //for (int i = 0; i <= num; i++) {
+        //    if (i * i * i == num) {
+        //        return true;
+        //    }
+        //    if(i * i * i > num){ //optimization - if we overshoot num while i is positive, num cannot be a perfect cube.
+        //        return false;
+        //    }
+        //}
+        //return false;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **`isCube()` function:** Separates the cube-checking logic into a dedicated function, making the code more organized and reusable.
+
+2. **Handling negative numbers:** The `isCube()` function now correctly handles negative numbers by checking the cube of their absolute values.
+
+3. **Efficient cube root calculation:** The code uses `Math.cbrt()` and `Math.round()` to efficiently calculate the integer cube root. This is significantly faster than the iterative approach, especially for large numbers.
+
+4. **Clearer output:** The output messages are more informative and now address the ambiguous "or should" part of the problem description.
+
+5. **Commented-out less efficient alternative:** The iterative method is included as a comment for comparison, highlighting the efficiency of the `Math.cbrt()` method.
+
+
+To take user input, you could modify the `main` method:
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+    // ... (isCube() function remains the same)
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int num = scanner.nextInt();
+
+        if (isCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+        scanner.close();
+    }
+}
+```

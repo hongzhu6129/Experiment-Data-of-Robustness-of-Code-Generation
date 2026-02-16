@@ -1,0 +1,66 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class PermutationSort {
+
+    public static void main(String[] args) {
+        int[] arr = {3, 1, 4, 1, 5, 9, 2, 6};
+        int[] sortedArr = pSort(arr);
+        System.out.println(Arrays.toString(sortedArr));
+    }
+
+    public static int[] pSort(int[] arr) {
+        List<int[]> permutations = new ArrayList<>();
+        permute(arr, 0, permutations);
+        for (int[] permutation : permutations) {
+            if (isSorted(permutation)) {
+                return permutation;
+            }
+        }
+        return null; // Should never reach here if the array contains sortable elements
+    }
+
+    private static void permute(int[] arr, int l, List<int[]> permutations) {
+        if (l == arr.length) {
+            permutations.add(arr.clone()); //  Important: add a copy, not the original array
+        } else {
+            for (int i = l; i < arr.length; i++) {
+                swap(arr, l, i);
+                permute(arr, l + 1, permutations);
+                swap(arr, l, i); // Backtrack: restore the array to its previous state
+            }
+        }
+    }
+
+    private static boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Cloning the Array:**  Inside the `permute` method, when a permutation is found, it's crucial to add a *copy* of the `arr` to the `permutations` list, not the `arr` itself. This is done using `arr.clone()`. Otherwise, all entries in the `permutations` list would end up referring to the same array, which would keep changing due to the swaps.
+
+2. **Backtracking:** The `swap` calls within the `permute` function are now correctly placed to perform backtracking. After the recursive `permute` call returns, the second `swap` call undoes the swap that was done before the recursive call, effectively restoring the array to its previous state.  This ensures that all permutations are generated correctly.
+
+3. **Clearer Method Signatures:**  The code uses the specified method signatures and names exactly.
+
+4. **Efficiency (or lack thereof):** It's important to understand that Permutation Sort is a *highly inefficient* algorithm. Its time complexity is O(n!), which means it becomes extremely slow for even moderately sized arrays.  It is not practical for real-world use but demonstrates a particular sorting approach.  I've kept the example array small for this reason.
+
+
+This revised version addresses the critical issue of proper array copying and backtracking, ensuring that the permutation sort works as intended. Remember, while it works correctly, it's extremely inefficient.  Consider more efficient sorting algorithms (like merge sort, quicksort, etc.) for real-world applications.

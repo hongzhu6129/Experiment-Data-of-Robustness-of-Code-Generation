@@ -1,0 +1,81 @@
+```java
+import java.util.Scanner;
+
+public class SwapVariables {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the first variable:");
+        int a = scanner.nextInt();
+
+        System.out.println("Enter the second variable:");
+        int b = scanner.nextInt();
+
+        System.out.println("Before swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        // Swapping using a temporary variable
+        int temp = a;
+        a = b;
+        b = temp;
+
+        System.out.println("After swapping:");
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        scanner.close(); // Close the scanner to prevent resource leaks
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+1. **General Case:**
+   - Input: `a = 5`, `b = 10`
+   - Expected Output: `a = 10`, `b = 5`
+
+2. **Zero Values:**
+   - Input: `a = 0`, `b = 15`
+   - Expected Output: `a = 15`, `b = 0`
+
+3. **Negative Values:**
+   - Input: `a = -3`, `b = 7`
+   - Expected Output: `a = 7`, `b = -3`
+
+4. **Identical Values:**  This is a corner case where both variables hold the same value.
+   - Input: `a = 8`, `b = 8`
+   - Expected Output: `a = 8`, `b = 8` (The swap won't visibly change anything, but the logic should still execute).
+
+5. **Large Values (Integer Limits):** Test with values close to the maximum and minimum integer values to ensure the program handles them correctly. This helps check for potential overflow issues (though not present with swapping itself).
+   - Input: `a = Integer.MAX_VALUE`, `b = Integer.MIN_VALUE`
+   - Expected Output: `a = Integer.MIN_VALUE`, `b = Integer.MAX_VALUE`
+
+
+
+**How to Run the Test Cases (using command line/terminal):**
+
+1. **Save:** Save the code as `SwapVariables.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac SwapVariables.java`
+3. **Run:**  For each test case, run the program and provide the input values when prompted: `java SwapVariables`
+
+
+**Example Test Run (Test Case 1):**
+
+```
+Enter the first variable:
+5
+Enter the second variable:
+10
+Before swapping:
+a = 5
+b = 10
+After swapping:
+a = 10
+b = 5 
+```
+
+
+By running through these test cases, you can verify that your swapping logic works correctly for various input scenarios, including corner cases. Remember closing the scanner is good practice to avoid resource leaks.

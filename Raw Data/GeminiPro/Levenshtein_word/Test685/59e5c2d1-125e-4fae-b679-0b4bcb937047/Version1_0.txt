@@ -1,0 +1,86 @@
+```java
+public class ReverseInteger {
+
+    public static void main(String[] args) {
+
+        // Example integer
+        int num = 12345;
+
+        System.out.println("Original number: " + num);
+
+        // Method 1: Using String conversion
+        int reversedNumString = reverseUsingString(num);
+        System.out.println("Reversed number (using String): " + reversedNumString);
+
+        // Method 2: Using modulo operator
+        int reversedNumModulo = reverseUsingModulo(num);
+        System.out.println("Reversed number (using modulo): " + reversedNumModulo);
+
+
+        // Example with a negative number:
+        int negativeNum = -6789;
+        System.out.println("\nOriginal negative number: " + negativeNum);
+
+        int reversedNegativeString = reverseUsingString(negativeNum);
+        System.out.println("Reversed negative number (using String): " + reversedNegativeString);
+         int reversedNegativeModulo = reverseUsingModulo(negativeNum);
+        System.out.println("Reversed negative number (using Modulo): " + reversedNegativeModulo);
+
+        //Example with Integer overflow
+        int largeNum = Integer.MAX_VALUE;  // 2147483647
+        System.out.println("\nOriginal large number: " + largeNum);
+        int reversedLargeNumModulo = reverseUsingModulo(largeNum); // Will show overflow behavior.
+        System.out.println("Reversed large number (using modulo and showing overflow): " + reversedLargeNumModulo);
+
+
+    }
+
+
+    public static int reverseUsingString(int num) {
+        String numStr = String.valueOf(num);
+        StringBuilder reversedStr = new StringBuilder(numStr).reverse();
+        if (num < 0) {
+            reversedStr.deleteCharAt(reversedStr.length()-1); //remove the minus sign
+            try {
+                return Integer.parseInt("-" + reversedStr.toString()); //add it back to beginning
+            }
+             catch (NumberFormatException e) {
+                 return 0; //handle overflow
+            }
+        } else {
+           try {
+                return Integer.parseInt(reversedStr.toString());
+            }
+            catch(NumberFormatException e) {
+                return 0; // handle overflow
+            }
+        }
+
+
+    }
+
+
+    public static int reverseUsingModulo(int num) {
+        long reversedNum = 0; // Use long to handle potential overflow
+        boolean isNegative = num < 0;
+        if (isNegative) {
+            num = -num; // make it positive for the reversal logic
+        }
+        while (num > 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+
+        if (reversedNum > Integer.MAX_VALUE || reversedNum < Integer.MIN_VALUE) {
+            return 0; // Handle integer overflow
+        }
+
+        return  (int) (isNegative ? -reversedNum : reversedNum);
+    }
+
+}
+
+
+
+```

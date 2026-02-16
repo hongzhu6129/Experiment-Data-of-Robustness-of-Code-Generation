@@ -1,0 +1,93 @@
+```java
+public class SplitSortingArray {
+
+    public static int[] split_sorting_array(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            // Find a negative number from the left
+            while (left < right && arr[left] < 0) {
+                left++;
+            }
+
+            // Find a positive number from the right
+            while (left < right && arr[right] >= 0) {
+                right--;
+            }
+
+            // Swap if necessary
+            if (left < right) {
+                swap(arr, left, right);
+                left++;
+                right--;
+            }
+        }
+        return arr;
+    }
+
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, -2, 3, -4, 5, -6, 7, -8, 9, -10};
+        int[] result1 = split_sorting_array(arr1);
+        System.out.print("Result 1: ");
+        for (int num : result1) {
+            System.out.print(num + " "); // Expected: -10 -8 -6 -4 -2 9 7 5 3 1 (or similar ordering)
+        }
+        System.out.println();
+
+
+        int[] arr2 = {-1, 2, -3, 4, -5, 6};
+        int[] result2 = split_sorting_array(arr2);
+        System.out.print("Result 2: ");
+        for (int num : result2) {
+            System.out.print(num + " "); // Expected: -5 -3 -1 4 2 6 (or similar ordering)
+        }
+        System.out.println();
+
+
+        int[] arr3 = {1, 2, 3, 4, 5};
+        int[] result3 = split_sorting_array(arr3);
+        System.out.print("Result 3: ");
+        for (int num : result3) {
+            System.out.print(num + " "); // Expected: 1 2 3 4 5
+        }
+        System.out.println();
+
+        int[] arr4 = {-1,-2,-3,-4,-5};
+        int[] result4 = split_sorting_array(arr4);
+        System.out.print("Result 4: ");
+        for (int num : result4) {
+            System.out.print(num + " "); // Expected: -1 -2 -3 -4 -5
+        }
+        System.out.println();
+
+
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Method Signatures Adhered To:** The code strictly uses the specified method signatures.
+
+2. **Two-Pointer Approach:**  The `split_sorting_array` method uses a two-pointer approach ( `left` and `right`) for efficiency.  It iterates from both ends of the array, swapping elements as needed.
+
+3. **Clearer Logic:**  The `while` loop conditions and swapping logic are made more concise and readable.
+
+4. **In-Place Modification:** The array is modified in place (no new array is created), which is generally more memory-efficient.
+
+5. **Comprehensive Main Method:**  The `main` method provides various test cases (including all positive, all negative, and mixed arrays) to demonstrate the functionality and expected output.  This helps with understanding and debugging.
+
+
+How it works:
+
+The algorithm maintains two pointers, `left` and `right`. The `left` pointer starts at the beginning of the array and moves right, looking for positive numbers. The `right` pointer starts at the end of the array and moves left, looking for negative numbers.  When both pointers find an element that needs to be moved, they are swapped. This process continues until the `left` pointer crosses the `right` pointer, ensuring all negative numbers are on the left and positive numbers are on the right.

@@ -1,0 +1,70 @@
+```java
+import java.util.Scanner;
+
+public class PartAverage {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three integers:");
+
+        try {
+            int num1 = scanner.nextInt();
+            int num2 = scanner.nextInt();
+            int num3 = scanner.nextInt();
+
+            double average = calculatePartAverage(num1, num2, num3);
+
+            System.out.println("Part average: " + average);
+
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Error: Invalid input. Please enter integers only.");
+        } finally {
+            scanner.close();
+        }
+    }
+
+    public static double calculatePartAverage(int num1, int num2, int num3) {
+        if (num1 == 0 || num2 == 0 || num3 == 0) {
+            throw new ArithmeticException("Cannot divide by zero. At least one input is zero.");
+        }
+
+        return 3.0 / (1.0 / num1 + 1.0 / num2 + 1.0 / num3); // Part average formula
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering normal cases, edge cases, and error scenarios:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| Normal Case 1 | 2, 4, 6 | 3.6 |
+| Normal Case 2 | 10, 20, 30 | 16.36 |
+| Normal Case 3| -2, -4, -6 | -3.6 |
+| Edge Case 1 (All Same) | 5, 5, 5 | 5.0 |
+| Edge Case 2 (Large Numbers) | 1000000, 2000000, 3000000 | 1636363.636 |
+| Error Case 1 (Zero Input) | 0, 5, 10 | "Error: Cannot divide by zero. At least one input is zero." |
+| Error Case 2 (Zero Input) | 2, 0, 6 | "Error: Cannot divide by zero. At least one input is zero." |
+| Error Case 3 (Zero Input) | 4, 8, 0 | "Error: Cannot divide by zero. At least one input is zero." |
+| Error Case 4 (Non-Integer Input) | 2, 4.5, 6 | "Error: Invalid input. Please enter integers only." |
+| Error Case 5 (Non-Integer Input)| a, b, c  | "Error: Invalid input. Please enter integers only."|
+
+
+
+**Explanation of Improvements:**
+
+* **Error Handling:** The code now includes a `try-catch` block to handle potential `ArithmeticException` (division by zero) and `InputMismatchException` (non-integer input).  This prevents the program from crashing and provides informative error messages to the user.
+* **Clearer Error Messages:**  Error messages now explicitly state the cause of the error (e.g., "Cannot divide by zero").
+* **Input Validation:**  The code prompts the user to enter integers and handles the scenario where the user enters non-integer values.
+* **Resource Management:** The `Scanner` is closed in a `finally` block to ensure that resources are released even if an exception occurs.
+* **Testability:** The `calculatePartAverage` method is now a separate function, making it easier to unit test.
+
+
+This revised version is more robust, user-friendly, and easier to maintain and test.  Remember to compile and run this code using a Java development environment (like IntelliJ, Eclipse, or NetBeans) or from the command line using a Java compiler.

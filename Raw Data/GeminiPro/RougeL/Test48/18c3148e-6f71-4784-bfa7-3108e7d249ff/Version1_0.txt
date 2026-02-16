@@ -1,0 +1,76 @@
+```java
+import java.util.Scanner;
+
+public class DivisibleInRange {
+
+    public static int function(int start, int end, int divisor) {
+        if (divisor == 0) {
+            throw new IllegalArgumentException("Divisor cannot be zero.");
+        }
+
+        if (start > end) {
+            return 0; // Handle empty range
+        }
+
+        int count = 0;
+        for (int i = start; i <= end; i++) {
+            if (i % divisor == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the start of the range: ");
+        int start = scanner.nextInt();
+
+        System.out.print("Enter the end of the range: ");
+        int end = scanner.nextInt();
+
+        System.out.print("Enter the divisor: ");
+        int divisor = scanner.nextInt();
+
+        try {
+            int result = function(start, end, divisor);
+            System.out.println("The number of values divisible by " + divisor + " in the range [" + start + ", " + end + "] is: " + result);
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
+        scanner.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Start:** 1, **End:** 10, **Divisor:** 2  **Expected Output:** 5 (2, 4, 6, 8, 10)
+2. **Start:** 5, **End:** 20, **Divisor:** 3  **Expected Output:** 5 (6, 9, 12, 15, 18)
+3. **Start:** -10, **End:** 10, **Divisor:** 5 **Expected Output:** 5 (-10, -5, 0, 5, 10)
+
+
+
+**Corner/Edge Cases:**
+
+4. **Start:** 10, **End:** 1, **Divisor:** 2  **Expected Output:** 0 (Empty Range)
+5. **Start:** 5, **End:** 5, **Divisor:** 5  **Expected Output:** 1 (Only 5 is divisible)
+6. **Start:** 0, **End:** 10, **Divisor:** 2  **Expected Output:** 6 (0, 2, 4, 6, 8, 10)
+7. **Start:** -5, **End:** -1, **Divisor:** 2  **Expected Output:** 2 (-4, -2)
+8. **Start:** 1, **End:** 10, **Divisor:** 1  **Expected Output:** 10 (All numbers are divisible by 1)
+9. **Start:** 1, **End:** 10, **Divisor:** -2 **Expected Output:** 5 (Same as divisor 2 because of how modulo works)
+
+
+
+**Error Case:**
+
+10. **Start:** 1, **End:** 10, **Divisor:** 0  **Expected Output:** `IllegalArgumentException: Divisor cannot be zero.` (Handles division by zero)
+
+
+
+These test cases cover a good range of scenarios, including normal divisions, empty ranges, single-element ranges, ranges containing zero, negative ranges, division by 1, negative divisors, and the crucial division by zero error.  You can use these cases (or similar ones you create) to thoroughly test your `function` method.  I recommend either manually checking the output or using a testing framework like JUnit to automate your tests.

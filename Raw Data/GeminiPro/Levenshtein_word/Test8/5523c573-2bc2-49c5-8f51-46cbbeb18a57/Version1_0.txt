@@ -1,0 +1,65 @@
+A diagonal itself doesn't have an area or perimeter.  A diagonal is a line segment connecting two non-adjacent vertices in a polygon.  You likely meant to calculate the area and perimeter of a rectangle (or possibly another polygon) *given* its diagonal.
+
+Here's a Java program to calculate the area and perimeter of a rectangle given its diagonal and one of its sides:
+
+```java
+import java.util.Scanner;
+
+public class RectangleCalculations {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the length of the diagonal: ");
+        double diagonal = scanner.nextDouble();
+
+        System.out.print("Enter the length of one side: ");
+        double side1 = scanner.nextDouble();
+
+        if (side1 >= diagonal) {
+            System.out.println("Invalid input: Side cannot be greater than or equal to the diagonal.");
+            return; // Exit the program if input is invalid
+        }
+
+
+
+        double side2 = Math.sqrt(diagonal * diagonal - side1 * side1); //Pythagorean theorem
+
+        double area = side1 * side2;
+        double perimeter = 2 * (side1 + side2);
+
+        System.out.println("Area of the rectangle: " + area);
+        System.out.println("Perimeter of the rectangle: " + perimeter);
+
+        scanner.close();
+
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the program:
+
+1. **Valid Input:**
+   - Diagonal: 5, Side: 3  (Expected Area: 12, Perimeter: 16)
+   - Diagonal: 10, Side: 6 (Expected Area: 48, Perimeter: 32)
+   - Diagonal: 13, Side: 5 (Expected Area: 60, Perimeter: 36)
+
+2. **Corner Cases:**
+   - Diagonal: 5, Side: 4 (Almost a square, Expected Area: 12, Perimeter: 16) 
+   - Diagonal: 5, Side: 0 (Invalid input- zero side)
+   - Diagonal: 0, Side: 3 (Invalid input- zero diagonal)
+   - Diagonal: 5, Side: 5 (Invalid input - side equals diagonal)
+   - Diagonal: 5, Side: 6 (Invalid input - side greater than diagonal)
+   - Diagonal: -5, Side: 3 (Invalid input - Negative diagonal)
+   - Diagonal: 5, Side: -3 (Invalid input - Negative side)
+
+**How to Run Test Cases:**
+
+You can either manually enter these values when prompted by the program or, for more automated testing, you could write a separate testing class (using JUnit or TestNG, for example) that calls the calculation methods with these inputs and asserts that the outputs match the expected values.
+
+
+**Important Note:** This program assumes you are dealing with a *rectangle*. If you're working with other polygons, the calculations for area and perimeter will be different and you'll need more input (like other sides or angles).

@@ -1,0 +1,21 @@
+
+
+**Explanation:**
+
+1. **TreeMap with Comparator:**
+   - We create a `TreeMap` and pass an instance of our custom `MyComparator` to its constructor. This tells the `TreeMap` to use our specific logic for sorting keys.
+
+2. **Custom Comparator (MyComparator):**
+   - The `MyComparator` class implements the `Comparator<String>` interface.
+   - The crucial method is `compare(String s1, String s2)`.  It defines how two strings (`s1` and `s2`) should be compared to determine their order.
+   - In this example, `s2.compareTo(s1)` sorts the keys in reverse alphabetical order. If you want standard alphabetical order, use `s1.compareTo(s2)`.
+
+3. **Adding Elements:**
+   - We add key-value pairs to the `TreeMap` using the `put()` method.
+
+4. **Printing:**
+   - When we print the `TreeMap`, the keys will be displayed in the sorted order determined by the `MyComparator`.
+
+
+**Example Output (with reverse alphabetical order):**
+

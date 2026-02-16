@@ -1,0 +1,54 @@
+import java.util.PriorityQueue;
+
+public class ClearPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some elements
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+        pq.add(10);
+
+
+        System.out.println("Original PriorityQueue: " + pq); // Output: [1, 2, 8, 5, 10] (or similar, order not guaranteed)
+
+        // Method 1: Using clear()
+        pq.clear(); 
+
+        System.out.println("PriorityQueue after clear(): " + pq); // Output: []
+
+
+        // Repopulate for demonstrating the second method
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+        pq.add(10);
+
+        System.out.println("PriorityQueue repopulated: " + pq); // Output: [1, 2, 8, 5, 10] (or similar)
+
+
+        // Method 2: Removing elements one by one (Less Efficient)
+        while (!pq.isEmpty()) {
+            pq.poll(); // Retrieves and removes the head of the queue
+        }
+
+
+        System.out.println("PriorityQueue after removing all elements individually: " + pq); // Output: []
+
+        // Explanation:
+        /*
+         * The clear() method is the most efficient way to remove all elements from a PriorityQueue. 
+         * It directly clears the underlying data structure.
+         * 
+         * Removing elements one by one using poll() is less efficient, especially for large queues. 
+         *  It involves repeatedly removing the head, which can have a higher time complexity.
+         * 
+         * Therefore, it's recommended to use clear() whenever you need to completely empty a PriorityQueue.
+         */
+    }
+}

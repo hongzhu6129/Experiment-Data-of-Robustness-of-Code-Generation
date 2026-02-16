@@ -1,0 +1,86 @@
+```java
+public class StringPermutationsWithRepetition {
+
+    public static void main(String[] args) {
+        String str = "abc";
+        permutationWithRepeation(str);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`main` Method:**
+   - Takes the input string (e.g., "abc").
+   - Calls `permutationWithRepeation` to start the process.
+
+2. **`permutationWithRepeation` Method:**
+   - Initializes the process by calling `showPermutation` with the input string and an empty prefix.
+
+3. **`showPermutation` Method (Recursive):**
+   - **Base Case:** If the `prefix` length equals the input string length, it means a full permutation is formed. Print the `prefix` and return.
+   - **Recursive Step:**
+     - Iterates through each character of the input string.
+     - For each character, it recursively calls `showPermutation` with:
+       - The same input string (to allow repetition).
+       - A new prefix formed by appending the current character to the existing `prefix`.
+
+**How it Works (Example: "ab")**
+
+1. `permutationWithRepeation("ab")` calls `showPermutation("ab", "")`.
+2. `showPermutation("ab", "")`:
+   - `prefix` length is 0 (not equal to string length 2).
+   - Loop 1: `i = 0` (character 'a')
+     - `showPermutation("ab", "a")`
+3. `showPermutation("ab", "a")`:
+   - `prefix` length is 1.
+   - Loop 1: `i = 0` (character 'a')
+     - `showPermutation("ab", "aa")`
+4. `showPermutation("ab", "aa")`:
+   - `prefix` length is 2.  Print "aa". Return.
+3. `showPermutation("ab", "a")`:
+   - Loop 2: `i = 1` (character 'b')
+     - `showPermutation("ab", "ab")`
+4. `showPermutation("ab", "ab")`:
+   - `prefix` length is 2.  Print "ab". Return.
+2. `showPermutation("ab", "")`:
+   - Loop 2: `i = 1` (character 'b')
+     - `showPermutation("ab", "b")`
+3. `showPermutation("ab", "b")`:
+   - `prefix` length is 1.
+   - Loop 1: `i = 0` (character 'a')
+     - `showPermutation("ab", "ba")`
+4. `showPermutation("ab", "ba")`:
+   - `prefix` length is 2. Print "ba". Return.
+3. `showPermutation("ab", "b")`:
+   - Loop 2: `i = 1` (character 'b')
+     - `showPermutation("ab", "bb")`
+4. `showPermutation("ab", "bb")`:
+   - `prefix` length is 2. Print "bb". Return.
+
+
+Output for "ab" would be:
+aa
+ab
+ba
+bb
+
+
+This revised code strictly adheres to the provided method signature requirements.
+

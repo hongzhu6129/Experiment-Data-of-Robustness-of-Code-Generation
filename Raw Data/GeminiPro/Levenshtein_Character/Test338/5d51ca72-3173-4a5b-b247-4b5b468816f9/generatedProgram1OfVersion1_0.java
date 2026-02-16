@@ -1,0 +1,34 @@
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string with test repeated.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' not found in the string.");
+        }
+
+
+
+        // More examples
+        System.out.println("----More Examples----");
+
+        mainString = "Hello World World";
+        subString = "World";
+        System.out.println("Last index of '" + subString + "' in '" + mainString + "': "  + mainString.lastIndexOf(subString));
+
+
+        mainString = "abababa";
+        subString = "aba"; // Demonstrates overlapping matches, finds the LAST one
+        System.out.println("Last index of '" + subString + "' in '" + mainString + "': " + mainString.lastIndexOf(subString));
+
+         mainString = "xyz";
+        subString = "abc";
+        System.out.println("Last index of '" + subString + "' in '" + mainString + "': " + mainString.lastIndexOf(subString)); //-1 (not found)
+
+    }
+}

@@ -1,0 +1,41 @@
+```java
+class Solution {
+    /**
+     * Calculates the sum of digits present in a given string.
+     *
+     * @param str The input string.
+     * @return The sum of digits in the string. Returns 0 if no digits are present.
+     */
+    public int sumOfDigits(String str) {
+        int sum = 0;
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) {
+                sum += Character.getNumericValue(c);
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "Hello123World45";
+        int sum1 = solution.sumOfDigits(str1);
+        System.out.println("Sum of digits in \"" + str1 + "\": " + sum1); // Output: 21
+
+        String str2 = "NoDigitsHere";
+        int sum2 = solution.sumOfDigits(str2);
+        System.out.println("Sum of digits in \"" + str2 + "\": " + sum2); // Output: 0
+
+
+        String str3 = "12345";
+        int sum3 = solution.sumOfDigits(str3);
+        System.out.println("Sum of digits in \"" + str3 + "\": " + sum3); // Output: 15
+
+        String str4 = "";
+        int sum4 = solution.sumOfDigits(str4);
+        System.out.println("Sum of digits in \"" + str4 + "\": " + sum4); // Output: 0
+
+    }
+}
+```

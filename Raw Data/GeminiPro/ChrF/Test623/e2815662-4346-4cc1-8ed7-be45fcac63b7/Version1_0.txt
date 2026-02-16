@@ -1,0 +1,48 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int element = 25;
+
+        Integer greaterOrEqual = treeSet.ceiling(element);
+
+        if (greaterOrEqual != null) {
+            System.out.println("Element greater than or equal to " + element + ": " + greaterOrEqual);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the TreeSet.");
+        }
+
+
+        element = 60; // Example with no greater or equal element.
+        greaterOrEqual = treeSet.ceiling(element);
+
+        if (greaterOrEqual != null) {
+            System.out.println("Element greater than or equal to " + element + ": " + greaterOrEqual);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the TreeSet.");
+        }
+
+        element = 20; // Example where the element itself exists
+
+          greaterOrEqual = treeSet.ceiling(element);
+
+        if (greaterOrEqual != null) {
+            System.out.println("Element greater than or equal to " + element + ": " + greaterOrEqual);
+        } else {
+            System.out.println("No element greater than or equal to " + element + " found in the TreeSet.");
+        }
+
+
+    }
+}
+```

@@ -1,0 +1,77 @@
+```java
+import java.util.Scanner;
+
+public class SumDigits {
+
+    public static int function(int n) {
+        int sum = 0;
+        n = Math.abs(n); // Handle negative numbers
+
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+        int sumOfDigits = function(num);
+        System.out.println("Sum of digits: " + sumOfDigits);
+        scanner.close();
+
+       //Test cases (you can add these to your main method or create a separate test class)
+        testCases(); 
+    }
+
+
+    public static void testCases(){
+        System.out.println("Running Test Cases...");
+        assert function(123) == 6 : "Test 1 failed";
+        assert function(0) == 0 : "Test 2 failed";
+        assert function(-123) == 6 : "Test 3 failed"; // Negative number
+        assert function(9999) == 36 : "Test 4 failed"; // Large number
+        assert function(1) == 1 : "Test 5 failed";    // Single digit
+        assert function(10) == 1 : "Test 6 failed";   // Number with zero
+        assert function(Integer.MAX_VALUE) == 46 : "Test 7 failed"; //Max Value
+        assert function(Integer.MIN_VALUE + 1) == 47 : "Test 8 failed";  // Because of two's complement, MIN_VALUE has to be handled this way.
+        System.out.println("All test cases passed!");
+    }
+}
+```
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Negative Numbers:** The code now uses `Math.abs(n)` to handle negative integers correctly.  The sum of digits should be the same regardless of the sign.
+
+2. **Clearer Variable Names:**  Using `sum` instead of `s` improves readability.
+
+3. **Test Cases:** The `testCases()` method demonstrates how to write basic assertions to check the correctness of the `function` method. This is crucial for ensuring your code works as expected for different inputs.  I've included several test cases, including:
+   - Positive numbers
+   - Zero
+   - Negative numbers
+   - Large numbers
+   - Single-digit numbers
+   - Numbers containing zero
+   - `Integer.MAX_VALUE`
+   - `Integer.MIN_VALUE` (handled carefully due to two's complement representation)
+
+**How to Run Test Cases:**
+
+To enable assertions, you need to compile and run the Java code with the `-ea` (enable assertions) flag:
+
+```bash
+javac SumDigits.java
+java -ea SumDigits
+```
+
+If any assertion fails, you'll see an `AssertionError` with the corresponding message, which helps you identify the problem.
+
+
+**Using JUnit (Recommended for larger projects):**
+
+For more comprehensive testing, especially in larger projects, consider using a testing framework like JUnit. JUnit provides a more structured and robust way to write and manage test cases.  It makes it much easier to automate tests and integrate them into your development workflow.

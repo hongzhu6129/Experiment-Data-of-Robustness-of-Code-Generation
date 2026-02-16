@@ -1,0 +1,43 @@
+```java
+import java.util.LinkedList;
+
+public class LinkedListEdit {
+
+    public static void main(String[] args) {
+        // Create a new LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add some initial elements
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+
+        System.out.println("Initial LinkedList: " + languages);
+
+        // Add an element at the beginning (first position)
+        languages.addFirst("JavaScript");
+
+        // Add an element at the end (last position)
+        languages.addLast("Go");
+
+
+        System.out.println("Modified LinkedList: " + languages);
+
+
+        // Example of modifying existing elements at first and last
+        languages.set(0, "TypeScript"); // Modify first element
+        languages.set(languages.size() - 1, "Rust"); // Modify last element
+
+
+        System.out.println("Modified LinkedList (after set): " + languages);
+
+         //More concise example using offerFirst and offerLast
+         LinkedList<Integer> numbers = new LinkedList<>();
+         numbers.offerFirst(10);  // Adds 10 to the beginning
+         numbers.offerLast(20);   // Adds 20 to the end
+         numbers.offerFirst(5);   // Adds 5 to the beginning
+         System.out.println("Numbers LinkedList: " + numbers);
+
+    }
+}
+```

@@ -1,0 +1,55 @@
+```java
+public class TwinkleTwinkle {
+
+    public static void printFormattedTwinkle() {
+        System.out.println("Twinkle, twinkle, little star,");
+        System.out.println("\tHow I wonder what you are!");
+        System.out.println("\t\tUp above the world so high,");
+        System.out.println("\t\tLike a diamond in the sky."); 
+    }
+
+    public static void main(String[] args) {
+        printFormattedTwinkle();
+    }
+}
+```
+
+**Test Cases (including corner/edge cases aren't really applicable here, as the string is fixed.  The focus is on the formatting):**
+
+1. **Standard Output Check:**  Verify that the output matches the expected format exactly (including capitalization, punctuation, and indentation). You can visually inspect this or use a string comparison in a test framework (like JUnit).
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class TwinkleTwinkleTest {
+       @Test
+       public void testPrintFormattedTwinkle() {
+           ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+           System.setOut(new PrintStream(outContent));
+
+           TwinkleTwinkle.printFormattedTwinkle();
+
+           String expectedOutput = "Twinkle, twinkle, little star,\r\n" + 
+                                  "\tHow I wonder what you are!\r\n" +
+                                  "\t\tUp above the world so high,\r\n" +
+                                  "\t\tLike a diamond in the sky.\r\n"; // Note: \r\n for Windows line endings
+
+           assertEquals(expectedOutput, outContent.toString());
+
+           System.setOut(System.out); // Restore standard output
+       }
+   }
+   ```
+
+2. **Empty String Check (Not a real corner case, but for completeness):** If you were to modify the program to accept the poem as input, you could test with an empty string to ensure it handles this gracefully (perhaps by printing nothing or a default message).
+
+
+
+**Explanation of why traditional corner cases don't apply:**
+
+This program deals with a fixed string output.  There are no inputs that can cause unexpected behavior like integer overflow, division by zero, or null pointer exceptions.  The primary concern is ensuring the formatting is correct, which is what the provided test case addresses.
+
+
+
+If the program were more complex (e.g., taking user input, processing the string dynamically), then more extensive testing with edge and corner cases would be required.  For this simple example, the single test case above is sufficient.

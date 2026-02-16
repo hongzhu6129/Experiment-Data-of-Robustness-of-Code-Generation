@@ -1,0 +1,96 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        // Using Scanner for user input (optional - you can hardcode the radius)
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); 
+        input.close(); // Close the scanner
+
+        // Example with hardcoded radius (as provided in the prompt):
+        //double radius = 7.5;
+
+
+        double perimeter = 2 * Math.PI * radius;
+        double area = Math.PI * radius * radius;
+
+        System.out.printf("Perimeter is = %.15f\n", perimeter); // Formatted to 15 decimal places for precision
+        System.out.printf("Area is = %.15f\n", area);
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases to consider, including corner cases:
+
+1. **Normal Case (Positive Radius):**
+   - Input: `radius = 7.5` (as given)
+   - Expected Output:
+     ```
+     Perimeter is = 47.123889803846890
+     Area is = 176.71458676442586
+     ```
+
+2. **Zero Radius:**
+   - Input: `radius = 0`
+   - Expected Output:
+     ```
+     Perimeter is = 0.000000000000000
+     Area is = 0.000000000000000
+     ```
+
+3. **Negative Radius (Invalid Input):**  While mathematically a circle can't have a negative radius, it's important to test how your program handles this.  You could either:
+   - a) **Throw an exception:**  This is generally the preferred approach for truly invalid input.  You could add a check like:
+     ```java
+     if (radius < 0) {
+         throw new IllegalArgumentException("Radius cannot be negative.");
+     }
+     ```
+   - b) **Output the calculated values:** The formulas will still produce numerical results (perimeter will be negative, area positive).  Document in your program how this case is handled.
+
+4. **Very Large Radius:**
+   - Input: `radius = 1e10` (or some other large number)
+   - Expected Output:  Check that the results are still calculated correctly and don't cause overflow or other issues.
+
+5. **Very Small Radius:**
+   - Input: `radius = 1e-10` (or some other small number)
+   - Expected Output: Verify the program handles very small radii without significant loss of precision.
+
+6. **Input Validation:**  Test with non-numeric input (e.g., "abc") to ensure the program handles this gracefully and doesn't crash. You can use a `try-catch` block around `input.nextDouble()` to catch `InputMismatchException`.
+
+
+
+**How to Run the Test Cases:**
+
+You can either:
+
+* **Manual Testing:** Input these values directly when prompted by the `Scanner`.
+* **Automated Testing (Recommended):**  Create a separate testing class using a testing framework like JUnit.  This is a more robust approach, especially for larger projects. Here's a basic example using JUnit 5:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CircleCalculationsTest {
+
+    @Test
+    void testPositiveRadius() {
+        // ... your test code using assertions ...
+        assertEquals(47.12388980384689, CircleCalculations.calculatePerimeter(7.5), 1e-10); // Example assertion
+    }
+
+    // ... other test methods for zero radius, negative radius, etc. ...
+}
+```
+
+Remember to make `calculatePerimeter` and `calculateArea` static methods in `CircleCalculations` if you want to call them directly in your test class without creating an instance.
+
+
+
+By thoroughly testing your program with these various cases, you can ensure its correctness and robustness.

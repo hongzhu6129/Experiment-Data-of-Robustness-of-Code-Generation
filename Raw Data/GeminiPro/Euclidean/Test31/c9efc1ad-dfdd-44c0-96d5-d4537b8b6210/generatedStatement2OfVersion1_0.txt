@@ -1,0 +1,65 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Example Case (Provided in Prompt):**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0   (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite Sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points near the 180th Meridian (Date Line):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Distance: Small value (shouldn't be a huge distance due to date line wrap)
+
+
+6. **Points with large longitude differences (but not antipodes):**
+   - lat1: 30
+   - lon1: 10
+   - lat2: 30
+   - lon2: 170
+   - Expected Distance:  Significant but less than half Earth's circumference.
+
+7. **Zero Latitude and Longitude:**
+    - lat1: 0
+    - lon1: 0
+    - lat2: 10
+    - lon2: 10
+    - Expected Distance: ~1565.48
+
+
+**How to use these test cases:**
+
+You can either:
+
+* **Manually Input:** Run the program multiple times, entering the latitude and longitude values from each test case.  Compare the outputted distance to the expected distance.
+* **Automated Testing (Recommended):**  Write unit tests using a testing framework like JUnit. This makes it much easier to run these tests repeatedly and ensures your code behaves correctly as you make changes. Here's a simple example using JUnit:
+
+

@@ -1,0 +1,67 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.temporal.TemporalAdjusters;
+
+public class HolidayInfo {
+
+    public static void main(String[] args) {
+        // Example 1: New Year's Day (January 1st)
+        LocalDate newYearsDay = LocalDate.of(LocalDate.now().getYear(), Month.JANUARY, 1);
+        displayHolidayInfo("New Year's Day", newYearsDay.atStartOfDay());
+
+        // Example 2: Christmas Day (December 25th)
+        LocalDate christmasDay = LocalDate.of(LocalDate.now().getYear(), Month.DECEMBER, 25);
+        displayHolidayInfo("Christmas Day", christmasDay.atStartOfDay());
+
+        // Example 3: Labor Day (First Monday of September)
+        LocalDate laborDay = LocalDate.of(LocalDate.now().getYear(), Month.SEPTEMBER, 1)
+                .with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));
+        displayHolidayInfo("Labor Day", laborDay.atStartOfDay());
+
+
+
+        // Example 4: Thanksgiving (Fourth Thursday of November)
+        LocalDate thanksgiving = LocalDate.of(LocalDate.now().getYear(), Month.NOVEMBER, 1)
+                .with(TemporalAdjusters.dayOfWeekInMonth(4, DayOfWeek.THURSDAY));
+        displayHolidayInfo("Thanksgiving", thanksgiving.atStartOfDay());
+
+         // Example 5: Memorial day (Last Monday of May)
+        LocalDate memorialDay = LocalDate.of(LocalDate.now().getYear(), Month.MAY, 1)
+                .with(TemporalAdjusters.lastInMonth(DayOfWeek.MONDAY));
+
+        displayHolidayInfo("Memorial Day", memorialDay.atStartOfDay());
+
+
+    }
+
+    public static void displayHolidayInfo(String holidayName, LocalDateTime holidayDate) {
+        System.out.println(holidayName + ":");
+        System.out.println("Year: " + holidayDate.getYear());
+        System.out.println("Month: " + holidayDate.getMonth());
+        System.out.println("Day: " + holidayDate.getDayOfMonth());
+        System.out.println("Hour: " + holidayDate.getHour()); // Will be 0 as we use atStartOfDay()
+        System.out.println("Minute: " + holidayDate.getMinute()); // Will be 0 as we use atStartOfDay()
+        System.out.println("--------------------");
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **`java.time` API:** Uses the modern `java.time` API (introduced in Java 8) for date and time handling. This is preferred over the older `Date` and `Calendar` classes.
+* **Clearer examples:** Provides more examples of common holidays, including those that require calculations like "first Monday of September".
+* **`TemporalAdjusters`:** Uses `TemporalAdjusters` for easily finding specific days of the week within a month (e.g., first Monday, last Thursday).
+* **`LocalDateTime`:**  Uses `LocalDateTime` to store both date and time information, although the time is set to the beginning of the day (midnight) using `atStartOfDay()`.
+* **`displayHolidayInfo` method:**  Creates a separate method to avoid code duplication and make the main method cleaner.
+* **Comments:**  Includes comments to explain the purpose of different parts of the code.
+* **Formatted Output:** Uses `println()` for better readability of the output.
+* **Handles Variable Dates:**  Correctly calculates dates for holidays that don't fall on a fixed day of the month, like Labor Day and Thanksgiving.
+
+
+
+
+This improved version provides a more complete and robust solution for displaying information about default holidays in Java.

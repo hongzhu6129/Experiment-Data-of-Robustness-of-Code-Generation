@@ -1,0 +1,57 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class JoinArrayLists {
+
+    public static void main(String[] args) {
+        // Create two ArrayLists
+        List<String> list1 = new ArrayList<>();
+        list1.add("Apple");
+        list1.add("Banana");
+        list1.add("Orange");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("Grape");
+        list2.add("Mango");
+        list2.add("Pineapple");
+
+        // Method 1: Using addAll() - most efficient
+        List<String> joinedList1 = new ArrayList<>(list1); // Create a copy to avoid modifying original list1
+        joinedList1.addAll(list2);
+
+
+        // Method 2: Iterating and adding - less efficient
+        List<String> joinedList2 = new ArrayList<>();
+        for (String item : list1) {
+            joinedList2.add(item);
+        }
+        for (String item : list2) {
+            joinedList2.add(item);
+        }
+
+        // Print the joined lists
+        System.out.println("Joined List (addAll method): " + joinedList1);
+        System.out.println("Joined List (iteration method): " + joinedList2);
+
+
+        // Example with Integer ArrayLists
+        List<Integer> numbers1 = new ArrayList<>();
+        numbers1.add(1);
+        numbers1.add(2);
+        numbers1.add(3);
+
+
+        List<Integer> numbers2 = new ArrayList<>();
+        numbers2.add(4);
+        numbers2.add(5);
+        numbers2.add(6);
+
+        List<Integer> joinedNumbers = new ArrayList<>(numbers1);
+        joinedNumbers.addAll(numbers2);
+
+        System.out.println("Joined Numbers: " + joinedNumbers);
+
+    }
+}
+```

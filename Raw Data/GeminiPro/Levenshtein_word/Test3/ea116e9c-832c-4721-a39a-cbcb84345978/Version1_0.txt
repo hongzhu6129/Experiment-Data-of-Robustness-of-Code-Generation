@@ -1,0 +1,128 @@
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        printMultiplicationTable(number);
+        scanner.close();
+    }
+
+    public static void printMultiplicationTable(int num) {
+        System.out.println("Multiplication Table for " + num + ":");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(num + " x " + i + " = " + (num * i));
+        }
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to test the `printMultiplicationTable` function:
+
+1. **Positive Number:**
+   - Input: `7`
+   - Expected Output:
+     ```
+     Multiplication Table for 7:
+     7 x 1 = 7
+     7 x 2 = 14
+     7 x 3 = 21
+     ...
+     7 x 10 = 70
+     ```
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output:
+     ```
+     Multiplication Table for 0:
+     0 x 1 = 0
+     0 x 2 = 0
+     ...
+     0 x 10 = 0
+     ```
+
+3. **Negative Number:**
+   - Input: `-5`
+   - Expected Output:
+     ```
+     Multiplication Table for -5:
+     -5 x 1 = -5
+     -5 x 2 = -10
+     ...
+     -5 x 10 = -50
+     ```
+
+4. **Large Positive Number:**
+   - Input: `12345`
+   - Expected Output:  (Verify that the calculations are correct)
+     ```
+     Multiplication Table for 12345:
+     12345 x 1 = 12345
+     ...
+     12345 x 10 = 123450
+     ```
+
+5. **Large Negative Number:**
+   - Input: `-98765`
+   - Expected Output: (Verify that the calculations are correct)
+     ```
+     Multiplication Table for -98765:
+     -98765 x 1 = -98765
+     ...
+     -98765 x 10 = -987650
+     ```
+
+
+
+**How to run the test cases (Manually):**
+
+1. Compile the Java code: `javac MultiplicationTable.java`
+2. Run the code from your terminal: `java MultiplicationTable`
+3. Enter the input value when prompted and check if the output matches the expected output for each test case.
+
+
+**How to implement automated tests (using JUnit - best practice):**
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class MultiplicationTableTest {
+
+    @Test
+    void testPositiveNumber() {
+        testTable(7, "Multiplication Table for 7:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70\n");
+    }
+
+    @Test
+    void testZero() {
+       testTable(0, "Multiplication Table for 0:\n0 x 1 = 0\n0 x 2 = 0\n0 x 3 = 0\n0 x 4 = 0\n0 x 5 = 0\n0 x 6 = 0\n0 x 7 = 0\n0 x 8 = 0\n0 x 9 = 0\n0 x 10 = 0\n");
+    }
+
+    // Add more tests for negative, large positive, large negative numbers...
+
+    private void testTable(int input, String expectedOutput) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream)); 
+
+        MultiplicationTable.printMultiplicationTable(input);
+
+        assertEquals(expectedOutput, outputStream.toString());
+        System.setOut(System.out); // Restore standard output
+    }
+}
+```
+
+This JUnit example shows how to capture the printed output and assert that it is what you expect.  Add tests for the other cases in a similar way. This approach allows for more reliable, automated testing.  You would need to add the JUnit library to your project to use this code.

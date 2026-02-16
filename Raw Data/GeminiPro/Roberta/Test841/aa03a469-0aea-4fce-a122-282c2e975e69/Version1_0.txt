@@ -1,0 +1,53 @@
+```java
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        // Check if two arguments are provided
+        if (args.length != 2) {
+            System.out.println("Please provide two numbers as command-line arguments.");
+            return; // Exit the program
+        }
+
+        try {
+            // Parse the command-line arguments as integers
+            int num1 = Integer.parseInt(args[0]);
+            int num2 = Integer.parseInt(args[1]);
+
+            // Calculate the product
+            int product = num1 * num2;
+
+            // Display the result
+            System.out.println(num1 + " x " + num2 + " = " + product);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter valid numbers.");
+        }
+    }
+}
+```
+
+**How to compile and run:**
+
+1. **Save:** Save the code above as `ProductOfTwoNumbers.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac ProductOfTwoNumbers.java`
+3. **Run:**  Execute the compiled program, providing the two numbers as command-line arguments: `java ProductOfTwoNumbers 25 5`
+
+
+**Explanation:**
+
+* **`public static void main(String[] args)`:**  This is the main method, the entry point of your Java program.  The `args` array holds the command-line arguments passed to the program.
+* **Input Validation:** The code checks if exactly two arguments are provided.  If not, it displays an error message and exits.  This prevents `ArrayIndexOutOfBoundsException` if fewer than two arguments are given.
+* **Error Handling:** The `try-catch` block handles potential `NumberFormatException` if the user enters non-numeric input. This makes the program more robust.
+* **Parsing Arguments:** `Integer.parseInt()` converts the string arguments from the command line into integer values.
+* **Calculation and Output:** The code calculates the product and displays the result in the desired format.
+
+
+**Key improvements over a Scanner-based approach (for this specific problem):**
+
+* **Adheres to the prompt:** The prompt specifically requests using command-line arguments.
+* **More appropriate for this task:**  For simple calculations with a fixed number of inputs, command-line arguments are often cleaner and more efficient than using `Scanner`.  `Scanner` is better suited for interactive input.
+* **No unnecessary dependencies:**  Command-line arguments are built-in; no need to import `Scanner`.
+
+
+This version provides robust error handling and clear output, making it a more complete and practical solution for taking input from the command line.

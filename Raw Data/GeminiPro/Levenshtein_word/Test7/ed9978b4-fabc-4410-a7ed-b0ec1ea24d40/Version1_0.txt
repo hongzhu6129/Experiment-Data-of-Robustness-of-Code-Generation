@@ -1,0 +1,90 @@
+```java
+import java.util.Scanner;
+
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three numbers: ");
+        double num1 = input.nextDouble();
+        double num2 = input.nextDouble();
+        double num3 = input.nextDouble();
+
+        double average = calculateAverage(num1, num2, num3);
+
+        System.out.println("The average is: " + average);
+        input.close(); 
+    }
+
+    public static double calculateAverage(double num1, double num2, double num3) {
+        return (num1 + num2 + num3) / 3;
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output | Explanation |
+|---|---|---|---|
+| 1 | 10, 20, 30 | 20.0 | Standard positive numbers |
+| 2 | -5, 0, 5 | 0.0 | Including negative and zero |
+| 3 | 0, 0, 0 | 0.0 | All zeros |
+| 4 | 1.5, 2.5, 3.0 | 2.3333333333333335 |  Floating-point numbers |
+| 5 | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | 7.15827882E9 | Large positive integers (potential overflow if not using doubles)|
+| 6 | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | -7.15827883E9 |  Large negative integers |
+| 7 | Double.MAX_VALUE, Double.MAX_VALUE, 0 | Infinity | Handling Infinity |
+| 8 | Double.NaN, 1, 2 | NaN | Handling NaN (Not a Number) |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering the input values for each test case and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  A better approach is to use a testing framework like JUnit. Here's an example of how you would write a JUnit test for the `calculateAverage` method:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AverageCalculatorTest {
+
+    @Test
+    void testCalculateAveragePositive() {
+        assertEquals(20.0, AverageCalculator.calculateAverage(10, 20, 30));
+    }
+
+    @Test
+    void testCalculateAverageNegativeZero() {
+        assertEquals(0.0, AverageCalculator.calculateAverage(-5, 0, 5));
+    }
+
+    // Add more tests for other test cases (including corner cases)
+    @Test
+    void testCalculateAverageLargePositive() {
+        assertEquals(7.15827882E9, AverageCalculator.calculateAverage(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE));
+
+    }
+
+     @Test
+    void testCalculateAverageInfinity() {
+        assertEquals(Double.POSITIVE_INFINITY, AverageCalculator.calculateAverage(Double.MAX_VALUE, Double.MAX_VALUE, 0)); 
+    }
+
+    @Test
+    void testCalculateAverageNaN() {
+         assertTrue(Double.isNaN(AverageCalculator.calculateAverage(Double.NaN, 1, 2))); // Use assertTrue with Double.isNaN
+    }
+
+
+}
+```
+
+With JUnit, you can easily run all the tests and quickly identify any issues.  This is especially helpful for regression testing when you make changes to your code. You can add this testing class in same project along with `AverageCalculator.java`.  Many IDEs (like IntelliJ IDEA, Eclipse) have built-in support for JUnit.
+
+
+This comprehensive set of test cases and the demonstration of automated testing provides a more robust solution to ensuring the correctness of the `AverageCalculator` program.

@@ -1,0 +1,40 @@
+```java
+import java.util.TreeMap;
+
+public class RemoveGreatestKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap automatically sorts entries by key.
+        TreeMap<Integer, String> timeline = new TreeMap<>();
+
+        // Add some sample data
+        timeline.put(1, "Event A");
+        timeline.put(5, "Event B");
+        timeline.put(2, "Event C");
+        timeline.put(8, "Event D");
+        timeline.put(3, "Event E");
+
+
+        if (!timeline.isEmpty()) {
+            // Get the greatest key (lastKey() because TreeMap is sorted)
+            Integer greatestKey = timeline.lastKey();
+
+            // Get the value associated with the greatest key
+            String value = timeline.get(greatestKey);
+
+            // Remove the entry with the greatest key
+            timeline.remove(greatestKey);
+
+            // Print the removed key-value pair
+            System.out.println("Removed Entry: Key = " + greatestKey + ", Value = " + value);
+
+
+            // Print the remaining timeline
+            System.out.println("Remaining Timeline: " + timeline);
+
+        } else {
+            System.out.println("Timeline is empty.");
+        }
+    }
+}
+```

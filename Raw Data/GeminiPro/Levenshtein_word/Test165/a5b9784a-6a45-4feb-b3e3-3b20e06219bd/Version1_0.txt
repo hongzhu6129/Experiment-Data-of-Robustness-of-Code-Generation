@@ -1,0 +1,58 @@
+**Java Program:**
+
+```java
+import java.util.Scanner;
+
+public class DivideString {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string and number of parts
+        System.out.println("Enter the string: ");
+        String inputString = scanner.nextLine();
+        System.out.println("Enter the number of parts: ");
+        int numParts = Integer.parseInt(scanner.nextLine());
+
+        // Check if the number of parts is valid
+        if (numParts <= 0 || inputString.length() % numParts != 0) {
+            System.out.println("Invalid number of parts");
+        } else {
+            // Calculate the length of each part
+            int partLength = inputString.length() / numParts;
+
+            // Divide the string into parts
+            for (int i = 0; i < numParts; i++) {
+                int startIndex = i * partLength;
+                int endIndex = (i + 1) * partLength;
+                String part = inputString.substring(startIndex, endIndex);
+                System.out.println("Part " + (i + 1) + ": " + part);
+            }
+        }
+
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+* **Valid:**
+    * Input: "abcdefghij", numParts = 3
+    * Expected Output:
+        * Part 1: abc
+        * Part 2: def
+        * Part 3: ghi
+* **Invalid (number of parts too small):**
+    * Input: "abcdefghij", numParts = 0
+    * Expected Output: Invalid number of parts
+* **Invalid (string length not divisible by number of parts):**
+    * Input: "abcdefghij", numParts = 5
+    * Expected Output: Invalid number of parts
+* **Corner case (number of parts is 1):**
+    * Input: "abcdefghij", numParts = 1
+    * Expected Output:
+        * Part 1: abcdefghij
+* **Corner case (string is empty):**
+    * Input: "", numParts = 3
+    * Expected Output: Invalid number of parts

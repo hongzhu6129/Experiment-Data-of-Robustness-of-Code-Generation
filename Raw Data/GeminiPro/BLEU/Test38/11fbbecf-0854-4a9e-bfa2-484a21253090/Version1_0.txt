@@ -1,0 +1,69 @@
+```java
+import java.util.Scanner;
+
+public class ReplaceCharacter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter the string: ");
+        String str = scanner.nextLine();
+
+        // Get the character to be replaced
+        System.out.println("Enter the character to be replaced: ");
+        char ch1 = scanner.nextLine().charAt(0);
+
+        // Get the character to replace with
+        System.out.println("Enter the character to replace with: ");
+        char ch2 = scanner.nextLine().charAt(0);
+
+        // Replace the character
+        String newStr = str.replace(ch1, ch2);
+
+        // Print the new string
+        System.out.println("The new string is: " + newStr);
+    }
+}
+```
+
+**Test Cases**
+
+**Normal Cases:**
+
+* Input: "Hello world"
+* Character to be replaced: 'o'
+* Character to replace with: 'a'
+* Expected Output: "Halla warld"
+
+* Input: "Java programming"
+* Character to be replaced: 'a'
+* Character to replace with: 'e'
+* Expected Output: "Jeve pregremming"
+
+**Corner Cases:**
+
+* Input: "Empty string"
+* Character to be replaced: 'a'
+* Character to replace with: 'b'
+* Expected Output: "Empty string" (no change)
+
+* Input: "String with no character to be replaced"
+* Character to be replaced: 'z'
+* Character to replace with: 'x'
+* Expected Output: "String with no character to be replaced" (no change)
+
+* Input: "String with multiple occurrences of character to be replaced"
+* Character to be replaced: 'l'
+* Character to replace with: 'r'
+* Expected Output: "String with multiple eccurrences ef cherecter te be replaced"
+
+* Input: "String with character to be replaced at the beginning"
+* Character to be replaced: 'H'
+* Character to replace with: 'J'
+* Expected Output: "Jello world"
+
+* Input: "String with character to be replaced at the end"
+* Character to be replaced: 'd'
+* Character to replace with: 't'
+* Expected Output: "Hello werlt"

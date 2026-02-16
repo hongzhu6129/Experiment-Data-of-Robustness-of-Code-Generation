@@ -1,0 +1,84 @@
+```java
+public class TransposeArray {
+
+    public static void main(String[] args) {
+        int[][] array = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        System.out.println("Original Array:");
+        print_array(array);
+
+        transpose(array);
+
+        System.out.println("\nTransposed Array:");
+        print_array(array);
+    }
+
+    private static void transpose(int[][] array) {
+        int rows = array.length;
+        int cols = array[0].length;
+
+
+        if (rows != cols) {
+            System.out.println("Error: Matrix must be square for in-place transpose.");
+            return; // Or throw an exception
+        }
+        
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = i + 1; j < cols; j++) { // Note: j starts from i+1 to avoid swapping twice
+                int temp = array[i][j];
+                array[i][j] = array[j][i];
+                array[j][i] = temp;
+            }
+        }
+    }
+
+
+    private static void print_array(int[][] array) {
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Handles Non-Square Matrices:** The `transpose` method now includes a check for square matrices.  If the matrix is not square, it prints an error message and returns. This prevents `ArrayIndexOutOfBounds` exceptions and makes the code more robust. You could also choose to throw an exception instead of simply printing an error.
+
+2. **In-Place Transpose (for square matrices):**  The code performs the transpose in-place (modifying the original array directly) which is generally more efficient. The nested loops and swap operation are optimized to only iterate through the upper triangle of the matrix (elements above the main diagonal) to avoid unnecessary swaps.
+
+3. **Clearer Output:** The `print_array` method provides formatted output, making it easier to visualize the original and transposed matrices.
+
+4. **Comments:**  Added comments to explain the logic and the importance of the square matrix check.
+
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `TransposeArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac TransposeArray.java`
+3. **Run:** `java TransposeArray`
+
+
+Example Output (for the 3x3 array in the code):
+
+```
+Original Array:
+1 2 3 
+4 5 6 
+7 8 9 
+
+Transposed Array:
+1 4 7 
+2 5 8 
+3 6 9 
+```

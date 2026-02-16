@@ -1,0 +1,75 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and populate it with some elements
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to find the floor (greatest element less than or equal to)
+        int element = 35;
+
+        // Get the floor element using floor()
+        Integer floorElement = treeSet.floor(element);
+
+        // Print the floor element
+        if (floorElement != null) {
+            System.out.println("Floor of " + element + ": " + floorElement);
+        } else {
+            System.out.println("No element less than or equal to " + element + " found.");
+        }
+
+
+        // Example with a String TreeSet
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+        stringTreeSet.add("date");
+
+        String stringElement = "cranberry";
+
+        String stringFloor = stringTreeSet.floor(stringElement);
+
+        if (stringFloor != null) {
+            System.out.println("Floor of \"" + stringElement + "\": \"" + stringFloor + "\"");
+        } else {
+            System.out.println("No element less than or equal to \"" + stringElement + "\" found.");
+        }
+
+
+
+         element = 15;
+         floorElement = treeSet.floor(element);
+          if (floorElement != null) {
+            System.out.println("Floor of " + element + ": " + floorElement);
+        } else {
+            System.out.println("No element less than or equal to " + element + " found."); // Output:10
+        }
+
+
+         element = 5;
+         floorElement = treeSet.floor(element);
+          if (floorElement != null) {
+            System.out.println("Floor of " + element + ": " + floorElement);
+        } else {
+            System.out.println("No element less than or equal to " + element + " found."); // Output: No element...
+        }
+
+        element = 55;  // Demonstrating when the element is greater than all elements in the set
+        floorElement = treeSet.floor(element);
+        if (floorElement != null) {
+            System.out.println("Floor of " + element + ": " + floorElement); //Output: 50
+        } else {
+            System.out.println("No element less than or equal to " + element + " found."); 
+        }
+
+    }
+}
+```

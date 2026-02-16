@@ -1,0 +1,67 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class FloorKeyMapping {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+
+        // Demonstrate floorEntry()
+        demonstrateFloorEntry(treeMap, 15); // Expected output: 10 -> Ten
+        demonstrateFloorEntry(treeMap, 25); // Expected output: 20 -> Twenty
+        demonstrateFloorEntry(treeMap, 5);  // Expected output: null
+        demonstrateFloorEntry(treeMap, 50); // Expected output: 50 -> Fifty
+        demonstrateFloorEntry(treeMap, 55); // Expected output: 50 -> Fifty
+        demonstrateFloorEntry(treeMap,  null); //Handles null key gracefully � outputs an explanatory message.
+
+        // Example with String keys (natural ordering):
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        demonstrateFloorEntry(stringTreeMap, "avocado"); // Expected output: banana -> 2
+        demonstrateFloorEntry(stringTreeMap, "apricot"); // Expected output: apple -> 1
+        demonstrateFloorEntry(stringTreeMap, null);
+
+
+    }
+
+
+    public static <K, V> void demonstrateFloorEntry(TreeMap<K, V> map, K key) {
+        if (map == null) {
+            System.out.println("Error: The map cannot be null.");
+            return;
+        }
+
+        if (key == null) {
+            System.out.println("If the key is null, floorEntry(null) throws a NullPointerException in a real TreeMap, but here we handle it gracefully for educational purposes.");
+            return; // Or handle differently as needed for your use case
+        }
+
+
+        Map.Entry<K, V> entry = map.floorEntry(key);
+
+        if (entry != null) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        } else {
+            System.out.println("No mapping found for key less than or equal to " + key);
+        }
+
+
+    }
+
+
+}
+
+
+

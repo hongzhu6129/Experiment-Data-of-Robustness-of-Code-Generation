@@ -1,0 +1,75 @@
+```java
+import java.util.Scanner;
+
+public class AsciiValue {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a character: ");
+        String input = scanner.nextLine();
+
+        if (input.length() != 1) {
+            System.out.println("Please enter a single character.");
+            return; // Exit if the input is not a single character
+        }
+
+        char character = input.charAt(0);
+        int asciiValue = (int) character;
+
+        System.out.println("The ASCII value of '" + character + "' is: " + asciiValue);
+        scanner.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Basic Characters:**
+   - Input: `A`
+   - Expected Output: `The ASCII value of 'A' is: 65`
+   - Input: `a`
+   - Expected Output: `The ASCII value of 'a' is: 97`
+   - Input: `5`
+   - Expected Output: `The ASCII value of '5' is: 53`
+
+2. **Special Characters:**
+   - Input: `!`
+   - Expected Output: `The ASCII value of '!' is: 33`
+   - Input: `@`
+   - Expected Output: `The ASCII value of '@' is: 64`
+   - Input: `#`
+   - Expected Output: `The ASCII value of '#' is: 35`
+
+3. **Whitespace Characters:**
+   - Input: (space)
+   - Expected Output: `The ASCII value of ' ' is: 32`
+   - Input: `\t` (tab - enter a tab in the console)
+   - Expected Output: `The ASCII value of '	' is: 9`
+   - Input: `\n` (newline - though you'll typically enter this directly via the scanner so this test would be within the code itself. See below)
+
+
+4. **Extended ASCII Characters:**
+   - Input: `�` (or any character beyond the basic 127 ASCII characters.  Java uses UTF-16, so these will be handled correctly)
+   - Expected Output: `The ASCII value of '�' is: 233` (The output here might vary slightly depending on your console or IDE's encoding but should represent the correct UTF-16 value).
+
+
+5. **Corner Cases:**
+   - **Empty Input:** Input ""  Expected Output: `Please enter a single character.`
+   - **Multiple Characters:** Input: `ab` Expected Output: `Please enter a single character.`
+   - **Null Input:** (Hard to directly test via console input, but in code if the `input` String was null, it would throw a `NullPointerException`.  You could consider adding a null check in a more robust program).
+
+
+
+**Example of testing newline within the code:**
+
+```java
+char newlineChar = '\n';
+int newlineAscii = (int) newlineChar;
+System.out.println("The ASCII value of '\\n' is: " + newlineAscii); // Output: 10
+```
+
+
+By testing your program with this variety of inputs, you can ensure that it correctly handles all valid characters and appropriately manages corner cases where the input is not a single character. Remember to test with characters from different parts of the ASCII and extended ASCII/Unicode ranges.

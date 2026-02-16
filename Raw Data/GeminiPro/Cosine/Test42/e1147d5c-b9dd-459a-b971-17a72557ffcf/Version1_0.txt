@@ -1,0 +1,63 @@
+```java
+import java.util.Scanner;
+
+public class EvenOddChecker {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+
+        if (number % 2 == 0) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+| Input Number | Expected Output | Justification |
+|---|---|---|
+| 20 | 1 | Even number |
+| 15 | 0 | Odd number |
+| 0 | 1 | Zero is considered even |
+| -2 | 1 | Negative even number |
+| -5 | 0 | Negative odd number |
+| 2147483647 (Integer.MAX_VALUE) | 0 | Largest positive integer (odd) |
+| -2147483648 (Integer.MIN_VALUE) | 1 | Smallest negative integer (even) | 
+| 1000000 (Large positive even) | 1 | Testing with a larger even number|
+| 999999 (Large positive odd) | 0 | Testing with a larger odd number |
+
+
+**Explanation of Corner Cases:**
+
+* **Zero:** Zero is divisible by 2 with no remainder, so it is considered an even number.
+* **Negative Numbers:** The concept of even and odd applies to negative integers as well.  A negative integer is even if it's divisible by 2.
+* **Integer.MAX_VALUE and Integer.MIN_VALUE:** These represent the largest and smallest possible integer values in Java.  Testing these helps ensure the program handles the extreme ends of the integer range correctly.  It is specifically important to test `Integer.MIN_VALUE` because its absolute value cannot be represented as a positive integer.
+
+
+How to run the test cases (using a bash script -  adapt as needed for your environment):
+
+
+```bash
+#!/bin/bash
+
+java EvenOddChecker <<< 20; echo "Expected: 1"
+java EvenOddChecker <<< 15; echo "Expected: 0"
+java EvenOddChecker <<< 0; echo "Expected: 1"
+java EvenOddChecker <<< -2; echo "Expected: 1"
+java EvenOddChecker <<< -5; echo "Expected: 0"
+java EvenOddChecker <<< 2147483647; echo "Expected: 0"
+java EvenOddChecker <<< -2147483648; echo "Expected: 1"
+java EvenOddChecker <<< 1000000; echo "Expected: 1"
+java EvenOddChecker <<< 999999; echo "Expected: 0"
+
+
+```
+
+This script uses the  `<<<` (here string) operator to redirect the input values to the Java program's standard input.  It then prints the expected output for each case, making it easy to verify the results.  You can adapt this script for other testing approaches (e.g., unit testing frameworks).

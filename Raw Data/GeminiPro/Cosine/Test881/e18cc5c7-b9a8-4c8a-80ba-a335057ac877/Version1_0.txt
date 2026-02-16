@@ -1,0 +1,23 @@
+```java
+import java.util.Map;
+import java.util.Properties;
+
+public class GetEnvironmentAndSystemProperties {
+
+    public static void main(String[] args) {
+
+        // Get environment variables
+        Map<String, String> env = System.getenv();
+        System.out.println("Environment Variables:");
+        for (String envName : env.keySet()) {
+            System.out.format("%s=%s%n", envName, env.get(envName));
+        }
+
+        // Get system properties
+        Properties props = System.getProperties();
+        System.out.println("\nSystem Properties:");
+        props.list(System.out); // Prints to standard output
+
+    }
+}
+```

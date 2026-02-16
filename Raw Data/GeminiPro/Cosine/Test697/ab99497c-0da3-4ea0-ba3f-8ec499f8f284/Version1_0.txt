@@ -1,0 +1,25 @@
+```java
+class CountNumbersNot7 {
+
+    static int count_nums_not_7(int n) {
+        int count = 0;
+        for (int i = 1; i <= n; i++) {
+            if (String.valueOf(i).indexOf('7') == -1) { // Check if '7' is present in the number
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int n = 20; // Example input 
+        int count = count_nums_not_7(n);
+        System.out.println("The count of numbers without 7 from 1 to " + n + " is: " + count);
+
+
+        n = 100; // Another example
+        count = count_nums_not_7(n);
+        System.out.println("The count of numbers without 7 from 1 to " + n + " is: " + count);
+    }
+}
+```

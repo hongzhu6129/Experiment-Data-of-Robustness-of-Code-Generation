@@ -1,0 +1,41 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFile {
+
+    public static void main(String[] args) {
+        // Replace "path/to/your/file.txt" with the actual path to your file
+        String filePath = "path/to/your/file.txt"; 
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while reading the file: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions`.  This is crucial for robust file handling.  If an error occurs (e.g., the file doesn't exist), an informative error message is printed to the console.
+
+2. **Try-with-resources:** The `BufferedReader` is created within a `try-with-resources` statement (`try (...)`). This ensures that the `BufferedReader` is automatically closed, even if exceptions occur, preventing resource leaks.
+
+3. **Clearer Error Message:** The error message in the `catch` block now provides more context by including the exception message (`e.getMessage()`).
+
+4. **File Path Variable:**  The file path is stored in a variable (`filePath`), making it easier to change the file you want to read without modifying multiple parts of the code.  Remember to replace `"path/to/your/file.txt"` with the correct path to your file.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler: `javac ReadFile.java`
+3. **Run:** After successful compilation, run the program: `java ReadFile`
+
+Make sure the file you specify in `filePath` exists and is accessible by the Java program. If the file is in the same directory as your Java file, you can just use the filename (e.g., `"myFile.txt"`). If it's in a different location, provide the full path.

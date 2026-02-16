@@ -1,0 +1,50 @@
+```java
+public class CheckSecurityManagerAndEnvironment {
+
+    public static void main(String[] args) {
+
+        // 12. Check for Security Manager
+        SecurityManager securityManager = System.getSecurityManager();
+        if (securityManager != null) {
+            System.out.println("Security Manager is present.");
+        } else {
+            System.out.println("Security Manager is NOT present.");
+        }
+
+        // 90. Get Environment Variables
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP"); // On Windows 
+        String username = System.getenv("USERNAME"); // On Windows
+
+        // Cross-platform temp directory:
+        String tmpDir = System.getProperty("java.io.tmpdir");
+
+
+        // Print the values (handle null in case they aren't set)
+        System.out.println("PATH: " + (path != null ? path : "Not set")); 
+        System.out.println("TEMP: " + (temp != null ? temp : "Not set")); 
+        System.out.println("USERNAME: " + (username != null ? username : "Not set"));
+
+        // Cross-platform temp:
+        System.out.println("Temp Directory (java.io.tmpdir): " + tmpDir);
+
+
+        //  For USERNAME on other systems (like macOS/Linux) typically "USER"
+        String user = System.getenv("USER");
+        if(user != null) {
+             System.out.println("USER: " + user);
+        }
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Clearer output:** The output messages now explicitly state whether a security manager is present or not.  The environment variable outputs handle the case where a variable is not set, preventing `NullPointerExceptions`.
+* **Cross-platform TEMP:** The original code only reliably gets the `TEMP` environment variable on Windows.  This improved version uses `System.getProperty("java.io.tmpdir")` to obtain the temporary directory in a platform-independent way. This is much more robust.
+* **Cross-platform USERNAME:** The code now demonstrates how to obtain the username on systems other than Windows (e.g., macOS, Linux) using the `USER` environment variable.  It includes error handling in case the variable is not set. 
+* **Combined in one `main` method:** Both parts of the original prompt (checking the security manager and getting environment variables) are now efficiently combined into a single `main` method as requested.
+
+
+This enhanced version is more robust, informative, and adaptable to various operating systems.

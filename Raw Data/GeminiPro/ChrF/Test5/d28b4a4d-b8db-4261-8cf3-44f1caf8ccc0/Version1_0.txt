@@ -1,0 +1,109 @@
+```java
+import java.util.Scanner;
+
+public class AverageOfThree {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter three numbers:");
+
+        double num1 = scanner.nextDouble();
+        double num2 = scanner.nextDouble();
+        double num3 = scanner.nextDouble();
+
+        double average = (num1 + num2 + num3) / 3.0; // Use 3.0 for floating-point division
+
+        System.out.println("The average is: " + average);
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30
+   **Expected Output:** 20.0
+
+2. **Input:** 1.5, 2.5, 3.5
+   **Expected Output:** 2.5
+
+3. **Input:** -5, 0, 5
+   **Expected Output:** 0.0
+
+
+**Edge/Corner Cases:**
+
+4. **Input:** 0, 0, 0
+   **Expected Output:** 0.0
+
+5. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  (Test overflow, though Java handles this with doubles)
+   **Expected Output:** 2.147483647E9
+
+6. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE (Test underflow)
+   **Expected Output:** -2.147483648E9
+
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE (Test double overflow)
+   **Expected Output:** Infinity
+
+8. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE (Test double min value handling)
+   **Expected Output:** 4.9E-324
+
+9. **Input:** 1, 2, Double.NaN (Test NaN input)
+   **Expected Output:** NaN  (Any operation involving NaN results in NaN).
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+public class AverageOfThreeTest {
+
+    @Test
+    public void testNormalCase() {
+        testAverage(10, 20, 30, 20.0);
+    }
+
+    // Add tests for other cases similarly...
+    @Test
+    public void testNaNInput() {
+        testAverage(1, 2, Double.NaN, Double.NaN);
+    }
+
+
+    private void testAverage(double num1, double num2, double num3, double expectedAverage) {
+        String input = num1 + "\n" + num2 + "\n" + num3 + "\n";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        AverageOfThree.main(new String[]{}); // Run your main method
+
+        String output = outputStream.toString().trim();
+        String expectedOutput = "The average is: " + expectedAverage;
+
+        if (Double.isNaN(expectedAverage)) {
+            assertTrue(output.contains("NaN")); // Special handling for NaN comparisons
+        } else {
+            assertEquals(expectedOutput, output); // Normal comparison
+        }
+       
+        System.setIn(System.in); // Restore standard input
+        System.setOut(System.out); // Restore standard output
+    }
+}
+
+```
+
+This improved testing approach uses JUnit for better test organization and `ByteArrayInputStream` and `ByteArrayOutputStream` to simulate user input and capture output, making the tests more robust and automated.  It also shows the crucial step of handling NaN comparisons correctly. Remember to add the JUnit library to your project.

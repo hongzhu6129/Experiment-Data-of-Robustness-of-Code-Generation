@@ -1,0 +1,62 @@
+```java
+import java.util.Scanner;
+
+public class StringContainsSequence {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string and sequence from the user.
+        System.out.println("Enter the input string: ");
+        String inputString = scanner.nextLine();
+
+        System.out.println("Enter the sequence to search for: ");
+        String sequence = scanner.nextLine();
+
+        // Check if the input string contains the sequence.
+        boolean containsSequence = inputString.contains(sequence);
+
+        // Print the result.
+        if (containsSequence) {
+            System.out.println("The input string contains the sequence.");
+        } else {
+            System.out.println("The input string does not contain the sequence.");
+        }
+    }
+}
+```
+
+**Test cases:**
+
+* **Positive test cases:**
+    * Input string: "Hello world"
+    * Sequence: "llo"
+    * Expected output: true
+    * Input string: "1234567890"
+    * Sequence: "456"
+    * Expected output: true
+    * Input string: "Lorem ipsum dolor sit amet"
+    * Sequence: "or"
+    * Expected output: true
+
+* **Negative test cases:**
+    * Input string: "Hello world"
+    * Sequence: "world!"
+    * Expected output: false
+    * Input string: "1234567890"
+    * Sequence: "123456789"
+    * Expected output: false
+    * Input string: "Lorem ipsum dolor sit amet"
+    * Sequence: "lo"
+    * Expected output: false
+
+* **Corner cases:**
+    * Input string: "" (empty string)
+    * Sequence: "" (empty string)
+    * Expected output: true
+    * Input string: "a"
+    * Sequence: "a"
+    * Expected output: true
+    * Input string: "a"
+    * Sequence: "b"
+    * Expected output: false

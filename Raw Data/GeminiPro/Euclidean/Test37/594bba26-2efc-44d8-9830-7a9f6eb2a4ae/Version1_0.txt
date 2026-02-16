@@ -1,0 +1,78 @@
+```java
+import java.util.Scanner;
+
+public class NNN {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer (n): ");
+
+        try {
+            int n = scanner.nextInt();
+
+            if (n < 0 || n > 9) { // Handling corner case:  n should be a single digit
+                System.out.println("Input must be a single-digit non-negative integer.");
+                return; // Exit if invalid input
+            }
+
+
+            int nn = n * 10 + n;
+            int nnn = n * 100 + nn;
+            int result = n + nn + nnn;
+
+
+            System.out.println("n + nn + nnn = " + result);
+
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        } finally {
+            scanner.close(); // Close the scanner in the finally block to ensure it's always closed.
+        }
+
+    }
+}
+
+
+
+```
+
+**Test Cases:**
+
+1. **Valid Input:**
+   - Input: 5
+   - Expected Output: n + nn + nnn = 615  (5 + 55 + 555 = 615)
+
+2. **Zero Input:**
+   - Input: 0
+   - Expected Output: n + nn + nnn = 0
+
+3. **Maximum Single Digit:**
+   - Input: 9
+   - Expected Output: n + nn + nnn = 1107
+
+4. **Negative Input (Corner Case):**
+   - Input: -2
+   - Expected Output: Input must be a single-digit non-negative integer.
+
+5. **Two-Digit Input (Corner Case):**
+   - Input: 12
+   - Expected Output: Input must be a single-digit non-negative integer.
+
+
+6. **Non-Integer Input (Corner Case):**
+   - Input: a
+   - Expected Output: Invalid input. Please enter an integer.
+
+
+**Explanation of Improvements and Corner Case Handling:**
+
+* **Input Validation:** The code now checks if the input `n` is within the valid range (0-9). This handles the corner cases where the input is negative or has more than one digit.  An appropriate error message is printed if the input is invalid.
+* **Try-Catch Block:** The code uses a `try-catch` block to handle `InputMismatchException`.  This prevents the program from crashing if the user enters non-integer input and provides a helpful error message.
+* **Scanner Closure:**  The `scanner.close()` is now placed in a `finally` block.  This guarantees that the scanner is closed even if an exception occurs, preventing resource leaks.
+* **Clearer Output:** The output now explicitly states "n + nn + nnn = " before displaying the result, making it easier to understand.
+
+
+
+
+This improved version is more robust and handles a wider range of inputs, including corner cases, gracefully.

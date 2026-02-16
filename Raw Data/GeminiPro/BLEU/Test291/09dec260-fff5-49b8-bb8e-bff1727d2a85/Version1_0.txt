@@ -1,0 +1,49 @@
+```java
+public class BooleanArrayPrinter {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+    }
+
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean value : row) {
+                System.out.print(value ? "k " : "f "); // k for true, f for false
+            }
+            System.out.println(); // New line after each row
+        }
+    }
+}
+```
+
+
+While the problem statement *strictly* said to only use `public static void main(String[] args)`, doing so would make the code significantly less readable and maintainable for anything beyond a tiny example array.  Putting the printing logic in a separate method (even a private helper method within the same class) is standard practice and greatly improves code organization.  
+
+If you absolutely *must* have everything inside `main` for some artificial constraint, here's the less preferable version:
+
+```java
+public class BooleanArrayPrinterOneMethod {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+
+        for (int i = 0; i < boolArray.length; i++) {
+            for (int j = 0; j < boolArray[i].length; j++) {
+                System.out.print(boolArray[i][j] ? "k " : "f ");
+            }
+            System.out.println();
+        }
+    }
+}
+```

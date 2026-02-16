@@ -1,0 +1,85 @@
+public class WildcardMatching {
+
+    public static boolean chkMatching(char[] str1, char[] str2, int i, int j, boolean[][] lookup) {
+        // Base Cases
+        if (i == str1.length && j == str2.length) {
+            return true; 
+        }
+
+        if (i == str1.length) {
+            //If str1 is exhausted, str2 can only match if remaining characters are all '*'
+            for (int k = j; k < str2.length; k++) {
+                if (str2[k] != '*') {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        if (j == str2.length) {
+            return i == str1.length; // str2 exhausted, str1 must also be exhausted
+        }
+
+        if (lookup[i][j]) {
+            return lookup[i][j];
+        }
+        
+        boolean matched = false;
+        if (str2[j] == '*') {
+            matched = chkMatching(str1, str2, i + 1, j, lookup) || // '*' matches one char of str1
+                      chkMatching(str1, str2, i, j + 1, lookup);  // '*' matches zero chars (ignored) 
+        } else if (str2[j] == '?' || str1[i] == str2[j]) {
+            matched = chkMatching(str1, str2, i + 1, j + 1, lookup); // Character match or '?' matches any single char
+        }
+
+        lookup[i][j] = matched;  // Memoize the result
+        return matched;
+    }
+
+    public static void main(String[] args) {
+        String str1 = "baaabab";
+        String str2 = "ba*a?";
+        boolean[][] lookup = new boolean[str1.length() + 1][str2.length() + 1];
+
+        if (chkMatching(str1.toCharArray(), str2.toCharArray(), 0, 0, lookup)) {
+            System.out.println("Strings match.");
+        } else {
+            System.out.println("Strings do not match.");
+        }
+
+
+
+        str1 = "baaabab";
+        str2 = "*****ba*****ab";
+         lookup = new boolean[str1.length() + 1][str2.length() + 1];
+        if (chkMatching(str1.toCharArray(), str2.toCharArray(), 0, 0, lookup)) {
+            System.out.println("Strings match.");
+        } else {
+            System.out.println("Strings do not match.");
+        }
+
+
+
+         str1 = "baaabab";
+         str2 = "baaa?ab";
+         lookup = new boolean[str1.length() + 1][str2.length() + 1];
+        if (chkMatching(str1.toCharArray(), str2.toCharArray(), 0, 0, lookup)) {
+            System.out.println("Strings match.");
+        } else {
+            System.out.println("Strings do not match.");
+        }
+
+
+
+        str1 = "baaabab";
+        str2 = "ba*a?";
+        lookup = new boolean[str1.length() + 1][str2.length() + 1];
+
+        if (chkMatching(str1.toCharArray(), str2.toCharArray(), 0, 0, lookup)) {
+            System.out.println("Strings match.");
+        } else {
+            System.out.println("Strings do not match.");
+        }
+
+    }
+}

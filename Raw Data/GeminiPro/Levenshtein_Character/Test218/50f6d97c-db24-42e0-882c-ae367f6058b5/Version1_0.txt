@@ -1,0 +1,44 @@
+```java
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1 as the first element is unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i]; // Overwrite duplicate with the unique element
+                uniqueCount++;
+            }
+        }
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("Updated Length: " + newLength1); // Expected Output: 2
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int newLength2 = removeDuplicates(nums2);
+         System.out.println("Updated Length: " + newLength2); // Expected Output: 5
+
+        // Example demonstrating the in-place modification
+        int[] nums3 = {1, 2, 2, 3, 4, 4, 5};
+        int newLength3 = removeDuplicates(nums3);
+        int[] uniqueElements = Arrays.copyOfRange(nums3, 0, newLength3);
+        System.out.println("Unique Elements: " + Arrays.toString(uniqueElements)); // Output: [1, 2, 3, 4, 5]
+
+
+        int[] emptyArray = {};
+        int emptyLength = removeDuplicates(emptyArray);
+        System.out.println("Updated Length (Empty Array): " + emptyLength); // Output: 0
+    }
+}
+```

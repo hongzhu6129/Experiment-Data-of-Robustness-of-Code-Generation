@@ -1,0 +1,43 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class AddToLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(10);
+        linkedList.add(20);
+        linkedList.add(30);
+        linkedList.add(40);
+        linkedList.add(50);
+
+        int startingPosition = 2; // Start adding 2083 from the 3rd element (index 2)
+        int valueToAdd = 2083;
+
+        // Add 2083 to elements starting from the specified position
+        addFromPosition(linkedList, startingPosition, valueToAdd);
+
+        // Print the modified LinkedList
+        System.out.println(linkedList);
+    }
+
+
+    private static void addFromPosition(LinkedList<Integer> list, int start, int value) {
+         if (start < 0 || start >= list.size()) {
+             System.out.println("Invalid starting position.");
+             return; // Or throw an exception if you prefer
+         }
+
+         ListIterator<Integer> iterator = list.listIterator(start);
+
+         while (iterator.hasNext()) {
+             int currentVal = iterator.next();
+             iterator.set(currentVal + value);
+         }
+    }
+
+
+}
+```

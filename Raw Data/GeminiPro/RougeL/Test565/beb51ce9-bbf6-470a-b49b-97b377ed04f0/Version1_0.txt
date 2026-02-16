@@ -1,0 +1,63 @@
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExtractArrayListPortion {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("apple");
+        arrayList.add("banana");
+        arrayList.add("cherry");
+        arrayList.add("date");
+        arrayList.add("elderberry");
+
+        // Extract a portion of the ArrayList (from index 1 to 3 inclusive)
+        List<String> subList = arrayList.subList(1, 4); // Note: endIndex is exclusive
+
+        // Print the extracted portion
+        System.out.println("Extracted portion:");
+        for (String item : subList) {
+            System.out.println(item);
+        }
+
+
+        // Demonstrate modifying the sublist affects the original list
+        subList.set(0, "grapefruit"); // Modify the first element of the sublist
+
+        System.out.println("\nOriginal ArrayList after modifying sublist:");
+        for (String item : arrayList) {
+            System.out.println(item);
+        }
+
+
+        //Example using Integer ArrayList
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            numbers.add(i);
+        }
+
+        List<Integer> subNumbers = numbers.subList(3, 7); // Extract from index 3 to 6 (inclusive)
+
+        System.out.println("\nExtracted portion of integers:");
+        for (Integer num : subNumbers) {
+            System.out.println(num);
+        }
+
+
+        try {
+             List<Integer> invalidSubList = numbers.subList(5, 2); // Try to extract with invalid indices (from > to)
+        } catch (IllegalArgumentException e) {
+            System.out.println("\nCaught IllegalArgumentException: " + e.getMessage()); // Handle the exception
+        }
+
+
+          try {
+            List<Integer> outOfBoundsSublist = numbers.subList(8, 12);  // Try to extract past the end
+        }  catch (IndexOutOfBoundsException e) {
+            System.out.println("\nCaught IndexOutOfBoundsException: " + e.getMessage());  // Handle the exception
+        }
+    }
+}
+```

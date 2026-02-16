@@ -1,0 +1,48 @@
+```java
+import java.util.Scanner;
+
+public class Substring {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter a string: ");
+        String str = scanner.nextLine();
+
+        // Get the starting and ending positions of the substring
+        System.out.println("Enter the starting position: ");
+        int start = scanner.nextInt();
+
+        System.out.println("Enter the ending position: ");
+        int end = scanner.nextInt();
+
+        // Get the substring
+        String substring = str.substring(start, end);
+
+        // Print the substring
+        System.out.println("The substring is: " + substring);
+    }
+}
+```
+
+Test cases:
+
+* **Normal case:**
+    * Input: "Hello world", 0, 5
+    * Output: "Hello"
+* **Corner case 1:**
+    * Input: "Hello world", 0, 0
+    * Output: ""
+* **Corner case 2:**
+    * Input: "Hello world", 5, 10
+    * Output: "world"
+* **Corner case 3:**
+    * Input: "Hello world", 10, 15
+    * Output: ""
+* **Corner case 4:**
+    * Input: "Hello world", -1, 5
+    * Output: "Hello"
+* **Corner case 5:**
+    * Input: "Hello world", 5, -1
+    * Output: "world"

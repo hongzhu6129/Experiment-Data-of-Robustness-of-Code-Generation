@@ -1,0 +1,72 @@
+```java
+class ExponentialSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+        int target = 12;
+        int index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+
+        target = 22; // Test for element not present
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element found at index: " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+    }
+
+    private static int exponentialSearch(int[] arr, int target) {
+        int n = arr.length;
+
+        if (arr[0] == target) {
+            return 0;
+        }
+
+        int i = 1;
+        while (i < n && arr[i] <= target) {
+            i *= 2;
+        }
+
+        // Perform Binary Search within the range
+        return binarySearch(arr, target, i / 2, Math.min(i, n - 1)); 
+    }
+
+
+    private static int binarySearch(int[] arr, int target, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;  // prevent potential overflow
+
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1; // Element not found
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Used more descriptive names like `target` instead of `x`.
+2. **Binary Search Helper Function:**  Separated the binary search logic into a private `binarySearch` method. This makes the code more organized and readable. The  `binarySearch` method is a standard iterative implementation.
+3. **Edge Case Handling:** Added a check at the beginning of `exponentialSearch` to handle the case where the target element is the first element of the array. This avoids unnecessary computations.
+4. **Preventing Overflow:**  In `binarySearch`, calculate `mid` as `low + (high - low) / 2` to prevent potential integer overflow that could occur with `(low + high) / 2`.
+5. **Range Calculation in Binary Search:** The `Math.min(i, n - 1)` ensures that the high index for the binary search does not go beyond the bounds of the array. This is crucial when `i` (the bound found by the exponential part) exceeds the array size.
+6. **Comments and Documentation:** Added comments to explain the logic of both `exponentialSearch` and `binarySearch`, enhancing readability.
+7. **Example Usage in `main`:** The `main` method demonstrates how to use `exponentialSearch` with both a target element that is present and one that is not present in the array, providing a clear illustration of its functionality.
+
+
+This improved version addresses potential errors, enhances readability, and follows best practices for Java coding.

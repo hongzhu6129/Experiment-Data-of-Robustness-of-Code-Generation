@@ -1,0 +1,31 @@
+import java.util.Calendar;
+
+public class MinimumDateValues {
+
+    public static void main(String[] args) {
+        Calendar calendar = Calendar.getInstance();
+
+        // Minimum year is 1 (Calendar.YEAR uses 1 for year 1 AD)
+        int minYear = calendar.getActualMinimum(Calendar.YEAR); 
+
+        // Minimum month is 0 (January)
+        int minMonth = calendar.getActualMinimum(Calendar.MONTH);
+
+        // Minimum week of year is 1
+        int minWeekOfYear = calendar.getActualMinimum(Calendar.WEEK_OF_YEAR);
+
+        // Minimum day of month is 1
+        int minDayOfMonth = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+
+        //Alternatively, for week of month, we can use:
+        int minWeekOfMonth = calendar.getActualMinimum(Calendar.WEEK_OF_MONTH);
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month (0-indexed, January=0): " + minMonth);
+        System.out.println("Minimum Week of Year: " + minWeekOfYear);
+        System.out.println("Minimum Day of Month: " + minDayOfMonth);
+        System.out.println("Minimum Week of Month: " + minWeekOfMonth);
+
+
+    }
+}

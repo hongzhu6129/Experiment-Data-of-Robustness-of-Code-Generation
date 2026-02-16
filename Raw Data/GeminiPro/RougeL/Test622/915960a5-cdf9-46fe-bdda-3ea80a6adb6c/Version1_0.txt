@@ -1,0 +1,63 @@
+```java
+import java.util.TreeSet;
+
+public class TreeSetLessThanSeven {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer objects
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some numbers to the TreeSet
+        treeSet.add(2);
+        treeSet.add(9);
+        treeSet.add(5);
+        treeSet.add(1);
+        treeSet.add(7);
+        treeSet.add(12);
+        treeSet.add(3);
+
+        // Find and print numbers less than 7
+        System.out.println("Numbers less than 7 in the TreeSet:");
+
+        // Method 1: Using headSet (most efficient for TreeSets)
+        for (Integer num : treeSet.headSet(7)) { // headSet(7) excludes 7 itself
+            System.out.print(num + " ");
+        }
+        System.out.println();  // Add a newline for clarity
+
+
+        // Method 2: Enhanced for loop with a conditional check (works for any collection):
+        System.out.println("Numbers less than 7 (using enhanced for loop):");
+        for (Integer num : treeSet) {
+            if (num < 7) {
+                System.out.print(num + " ");
+            }
+        }
+        System.out.println();
+
+
+
+        // Method 3:  Java Streams API (Java 8+):  Demonstrative, but less efficient than headSet() for sorted sets.
+        System.out.println("Numbers less than 7 (using Java Streams):");
+        treeSet.stream()
+               .filter(num -> num < 7)
+               .forEach(num -> System.out.print(num + " "));
+        System.out.println();
+
+    }
+}
+```
+
+
+Key improvements and explanations in this revised code:
+
+* **`headSet()` Method (Most Efficient):** The `headSet(7)` method is the most efficient way to retrieve elements less than a specific value in a `TreeSet` because it takes advantage of the sorted nature of the `TreeSet`.  It directly returns a view of the portion of the set containing elements less than 7.  No iteration through the entire set is needed.
+
+* **Clarity and Readability:** The code is better structured and includes clear comments explaining the different approaches.  The output is also formatted for better readability.
+
+* **Multiple Demonstrations:** The code now shows three common approaches: `headSet()`, an enhanced for loop, and Java Streams. This provides a more complete understanding of how to solve this problem.
+
+* **Correctness:** The `headSet()` method *excludes* the upper bound (7 in this case), which is what the problem statement requires (numbers *less than* 7). The other methods explicitly check for `< 7`.
+
+
+This revised answer addresses all the points mentioned previously and offers a much more robust and educational solution.

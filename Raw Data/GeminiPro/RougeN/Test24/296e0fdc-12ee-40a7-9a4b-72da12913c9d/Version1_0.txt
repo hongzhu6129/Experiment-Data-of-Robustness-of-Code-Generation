@@ -1,0 +1,83 @@
+```java
+public class HexToBinary {
+
+    public static void main(String[] args) {
+
+        String hex = ""; // Initialize an empty string
+
+        if (args.length > 0) {
+            hex = args[0];
+        } else {
+            System.out.println("Please provide a hexadecimal number as a command-line argument.");
+            return; // Exit if no input is provided
+        }
+
+        String binary = "";
+
+        for (int i = 0; i < hex.length(); i++) {
+            char hexChar = hex.charAt(i);
+
+            switch (hexChar) {
+                case '0': binary += "0000"; break;
+                case '1': binary += "0001"; break;
+                case '2': binary += "0010"; break;
+                case '3': binary += "0011"; break;
+                case '4': binary += "0100"; break;
+                case '5': binary += "0101"; break;
+                case '6': binary += "0110"; break;
+                case '7': binary += "0111"; break;
+                case '8': binary += "1000"; break;
+                case '9': binary += "1001"; break;
+                case 'A': case 'a': binary += "1010"; break;
+                case 'B': case 'b': binary += "1011"; break;
+                case 'C': case 'c': binary += "1100"; break;
+                case 'D': case 'd': binary += "1101"; break;
+                case 'E': case 'e': binary += "1110"; break;
+                case 'F': case 'f': binary += "1111"; break;
+                default:
+                    System.out.println("Invalid hexadecimal character: " + hexChar);
+                    return; // Exit if an invalid character is found
+            }
+        }
+
+        System.out.println(binary);
+
+    }
+}
+
+```
+
+
+
+**Test Cases:**
+
+* **Valid Hexadecimal Numbers:**
+    * `0`:  Expected output: `0000`
+    * `1`:  Expected output: `0001`
+    * `9`:  Expected output: `1001`
+    * `A`:  Expected output: `1010`
+    * `a`:  Expected output: `1010` (case-insensitive)
+    * `F`:  Expected output: `1111`
+    * `f`:  Expected output: `1111` (case-insensitive)
+    * `1A`: Expected output: `00011010`
+    * `FF`: Expected output: `11111111`
+    * `Cafe`: Expected output: `1100101011111110` (case-insensitive)
+    *  `123456789ABCDEF`:  (A longer test case)
+
+
+* **Corner Cases:**
+    * **Empty Input:** ""  Expected behavior: Print "Please provide a hexadecimal number..." and exit.
+    * **Invalid Characters:** `G`, `H`, `Z`, `!`, `@`, `#`, etc. Expected behavior: Print "Invalid hexadecimal character: [character]" and exit.
+    * **Mixed Case:** `aBcDeF`  Expected output: `101010111100110111101111` (handles mixed case correctly)
+    * **Leading Zeroes:** `000A` Expected output: `0000000000001010` (handles leading zeroes)
+
+
+
+**How to run the tests:**
+
+1. Save the code as `HexToBinary.java`.
+2. Compile: `javac HexToBinary.java`
+3. Run with a test case: `java HexToBinary FF` (replace `FF` with your test case).  You can also omit the argument to test the empty input case.
+
+
+By testing with these different scenarios, you can verify that the program correctly converts hexadecimal numbers to binary and handles invalid input appropriately.

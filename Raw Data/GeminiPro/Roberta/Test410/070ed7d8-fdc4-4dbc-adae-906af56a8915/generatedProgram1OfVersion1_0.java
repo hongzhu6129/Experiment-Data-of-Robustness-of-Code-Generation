@@ -1,0 +1,41 @@
+class Solution {
+    /**
+     * Finds the longest substring that appears at both ends of a given string.
+     *
+     * @param str The input string.
+     * @return The longest substring appearing at both ends, or an empty string if none found.
+     */
+    public String appearInBothEnds(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        int n = str.length();
+        String longestSubstring = "";
+
+        for (int len = n; len > 0; len--) {
+            String prefix = str.substring(0, len);
+            String suffix = str.substring(n - len);
+
+            if (prefix.equals(suffix)) {
+                longestSubstring = prefix;
+                break; // Found the longest, no need to check shorter lengths
+            }
+        }
+
+        return longestSubstring;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.appearInBothEnds("playersplay"));  // Output: play
+        System.out.println(solution.appearInBothEnds("abcab"));       // Output: ab
+        System.out.println(solution.appearInBothEnds("java"));       // Output: 
+        System.out.println(solution.appearInBothEnds(""));          // Output: 
+        System.out.println(solution.appearInBothEnds(null));       // Output:
+        System.out.println(solution.appearInBothEnds("abaaba"));     // Output: abaaba  
+        System.out.println(solution.appearInBothEnds("abcabca"));    // Output: a
+
+    }
+}

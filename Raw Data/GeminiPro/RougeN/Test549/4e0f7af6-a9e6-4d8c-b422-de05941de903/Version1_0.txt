@@ -1,0 +1,95 @@
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class StoreTextFileInArray {
+
+    public static void main(String[] args) {
+        String filePath = "path/to/your/textfile.txt"; // Replace with the actual path to your text file
+
+        try {
+            // Method 1: Using BufferedReader and ArrayList (Dynamic Sizing)
+            List<String> linesList = readLinesUsingList(filePath);
+            String[] linesArrayFromList = linesList.toArray(new String[0]);
+
+            System.out.println("Lines from ArrayList (converted to array):");
+            System.out.println(Arrays.toString(linesArrayFromList));
+
+
+            // Method 2: Using BufferedReader and pre-counting lines for fixed-size array (Less efficient if file is large)
+            int lineCount = countLines(filePath);  // Count lines first
+            if (lineCount > 0) { // Check if file has content before proceeding
+                String[] linesArrayFixed = readLinesUsingArray(filePath, lineCount);
+
+                System.out.println("\nLines from fixed-size array:");
+                System.out.println(Arrays.toString(linesArrayFixed));
+            } else {
+                System.out.println("The file is empty or does not exist.");
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
+
+    }
+
+    private static List<String> readLinesUsingList(String filePath) throws IOException {
+        List<String> lines = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+        return lines;
+    }
+
+    private static int countLines(String filePath) throws IOException {
+        int count = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            while (reader.readLine() != null) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static String[] readLinesUsingArray(String filePath, int lineCount) throws IOException {
+        String[] lines = new String[lineCount];
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            for (int i = 0; i < lineCount; i++) {
+                lines[i] = reader.readLine();
+            }
+        }
+        return lines;
+    }
+}
+```
+
+
+Key Improvements and Explanations:
+
+1. **Error Handling:**  The code now includes a `try-catch` block to handle potential `IOExceptions` that can occur during file reading. This is crucial for robust code.
+
+2. **Clearer Output:**  The output now clearly labels which method is used to create the array and prints the array contents using `Arrays.toString()` for better readability.
+
+3. **Two Approaches:** The code demonstrates two approaches:
+   - **ArrayList (Dynamic Sizing):**  This is generally the preferred method. It uses an `ArrayList` to store the lines, which grows dynamically as needed. After reading all lines, it converts the `ArrayList` to a fixed-size array. This avoids the need to know the number of lines beforehand.
+   - **Fixed-Size Array (Pre-counting):** This method first counts the number of lines in the file and then creates an array of that size. This can be less efficient, especially for large files, as it requires two passes through the file. I have included a check to prevent issues if the file is empty.
+
+
+4. **Resource Management (try-with-resources):** The `BufferedReader` is used within a `try-with-resources` block to ensure that the file is closed properly, even if exceptions occur.
+
+5. **Helper Methods:** The code is organized with helper methods (`readLinesUsingList`, `countLines`, `readLinesUsingArray`) to make it more modular and readable.
+
+
+
+How to use:
+
+1. **Replace `"path/to/your/textfile.txt"`:** Change this placeholder to the actual path of your text file.
+2. **Compile and Run:** Compile the Java code and run it. The output will display the lines of the text file stored in arrays created using both methods.

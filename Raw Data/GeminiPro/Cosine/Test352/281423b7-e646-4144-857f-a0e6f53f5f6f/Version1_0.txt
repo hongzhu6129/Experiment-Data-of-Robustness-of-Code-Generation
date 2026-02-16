@@ -1,0 +1,66 @@
+```java
+public class StringPermutationWithRepetition {
+
+    public static void main(String[] args) {
+        String str = "abc";
+        permutationWithRepeation(str);
+    }
+
+    private static void permutationWithRepeation(String str) {
+        showPermutation(str, "");
+    }
+
+    private static void showPermutation(String str, String prefix) {
+        if (prefix.length() == str.length()) {
+            System.out.println(prefix);
+            return;
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            showPermutation(str, prefix + str.charAt(i));
+        }
+    }
+}
+```
+
+
+This code fulfills all the requirements:
+
+1. **Method Signatures:** It only uses `public static void main(String[])`, `private static void permutationWithRepeation(String)`, and `private static void showPermutation(String, String)`.
+
+2. **Permutation with Repetition:** The `showPermutation` method recursively generates all possible combinations by allowing characters to be repeated.  At each level of recursion, it considers every character in the original string as a possible next character in the prefix.
+
+3. **Example Usage:** The `main` method demonstrates how to use the `permutationWithRepeation` method with the sample string "abc".
+
+
+**Example Output (for input "abc"):**
+
+```
+aaa
+aab
+aac
+aba
+abb
+abc
+aca
+acb
+acc
+baa
+bab
+bac
+bba
+bbb
+bbc
+bca
+bcb
+bcc
+caa
+cab
+cac
+cba
+cbb
+cbc
+cca
+ccb
+ccc
+```

@@ -1,0 +1,38 @@
+```java
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class CalculateAge {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your date of birth in YYYY-MM-DD format:");
+        String dobString = scanner.nextLine();
+
+        try {
+            LocalDate dob = LocalDate.parse(dobString, DateTimeFormatter.ISO_DATE);
+            LocalDate currentDate = LocalDate.now();
+            Period age = Period.between(dob, currentDate);
+
+            System.out.println("Your age is: " + age.getYears() + " years, " + age.getMonths() + " months, and " + age.getDays() + " days.");
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use YYYY-MM-DD.");
+        }
+    }
+}
+```
+
+
+This code does the following:
+
+1. **Imports necessary classes:** `LocalDate`, `Period`, `DateTimeFormatter`, `DateTimeParseException`, and `Scanner`.
+2. **Gets user input:** Prompts the user to enter their date of birth in YYYY-MM-DD format and reads the input using a `Scanner`.
+3. **Parses the date:** Uses `LocalDate.parse()` with `DateTimeFormatter.ISO_DATE` to convert the input string into a `LocalDate` object. It includes a `try-catch` block to handle potential `DateTimeParseException` if the user enters the date in the wrong format.
+4. **Calculates the age:** Gets the current date using `LocalDate.now()` and then uses `Period.between()` to calculate the difference between the birth date and the current date. This gives a `Period` object representing the age.
+5. **Prints the age:** Extracts the years, months, and days from the `Period` object and prints the age in a user-friendly format.
+6. **Handles invalid input:**  If the date parsing fails, the `catch` block prints an error message informing the user about the correct format.

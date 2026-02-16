@@ -1,0 +1,44 @@
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class LongestWords {
+
+    static ArrayList<String> longestWords(String[] dictionary) {
+        ArrayList<String> longestWordsList = new ArrayList<>();
+        if (dictionary == null || dictionary.length == 0) {
+            return longestWordsList; // Return empty list for empty input
+        }
+
+        int maxLength = 0;
+        for (String word : dictionary) {
+            if (word.length() > maxLength) {
+                maxLength = word.length();
+                longestWordsList.clear(); // Discard shorter words
+                longestWordsList.add(word);
+            } else if (word.length() == maxLength) {
+                longestWordsList.add(word);
+            }
+        }
+        return longestWordsList;
+    }
+
+
+    public static void main(String[] args) {
+        String[] dictionary1 = {"cat", "flag", "green", "country", "w3resource"};
+        ArrayList<String> result1 = longestWords(dictionary1);
+        System.out.println("Example 1 Result: " + result1); // Output: [w3resource]
+
+        String[] dictionary2 = {"cat", "dog", "red", "is", "am"};
+        ArrayList<String> result2 = longestWords(dictionary2);
+        System.out.println("Example 2 Result: " + result2); // Output: [cat, dog, red]
+
+
+        // Test with empty and null dictionaries
+        String[] emptyDictionary = {};
+        System.out.println("Empty Dictionary Result: " + longestWords(emptyDictionary)); // Output: []
+
+        System.out.println("Null Dictionary Result: " + longestWords(null)); // Output: []
+    }
+}
+```

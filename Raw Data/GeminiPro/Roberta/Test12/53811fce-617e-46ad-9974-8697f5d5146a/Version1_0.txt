@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class AddBinary {
+
+    public static String addBinary(String a, String b) {
+        StringBuilder result = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1;
+        int carry = 0;
+
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int sum = carry;
+            if (i >= 0) {
+                sum += a.charAt(i--) - '0';
+            }
+            if (j >= 0) {
+                sum += b.charAt(j--) - '0';
+            }
+            result.insert(0, sum % 2);
+            carry = sum / 2;
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first binary number: ");
+        String a = scanner.nextLine();
+
+        System.out.print("Enter the second binary number: ");
+        String b = scanner.nextLine();
+
+        String sum = addBinary(a, b);
+        System.out.println("Sum: " + sum);
+
+        scanner.close();
+
+      
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | Binary Number 1 | Binary Number 2 | Expected Output |
+|---|---|---|---|
+| 1 | "11" | "1" | "100" |
+| 2 | "1010" | "1011" | "10101" |
+| 3 | "1111" | "1111" | "11110" |  // Max values for 4 bits
+| 4 | "0" | "0" | "0" |      // All zeros
+| 5 | "1" | "0" | "1" |      // One operand is zero
+| 6 | "0" | "1" | "1" |      // One operand is zero (other way)
+| 7 | "" | "" | "" |        // Both empty strings (should handle gracefully)
+| 8 | "111" | "" | "111" |   // One empty string
+| 9 | "" | "101" | "101" |   // One empty string (other way)
+| 10 | "100000000" | "1" | "100000001" | // Carry propagation over many bits
+| 11| "11111111" | "1" | "100000000" |// Overflow to a new bit (8-bit example) 
+| 12 | "10101010" | "01010101" | "11111111" | // Alternating bits
+| 13 | "11" | "11" | "110"|
+
+
+**How to Run Test Cases:**
+
+1. **Manually:** You can input the binary numbers from the test cases into the program and verify the output against the expected output.
+2. **JUnit (Recommended):** Create a separate test class (e.g., `AddBinaryTest.java`) and use JUnit assertions to automate the test cases. This is a more robust and efficient approach.
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AddBinaryTest {
+
+    @Test
+    void testAddBinary() {
+        assertEquals("100", AddBinary.addBinary("11", "1"));
+        assertEquals("10101", AddBinary.addBinary("1010", "1011"));
+        // ... add more test cases here ...
+        assertEquals("", AddBinary.addBinary("", "")); // Empty string case
+        assertEquals("111", AddBinary.addBinary("111", "")); // One empty string
+    }
+
+    // ... more test methods as needed
+}
+```
+
+Remember to add the JUnit library to your project if you choose to use it for testing.  It's a standard practice and will save you a lot of time and effort in the long run, especially as your programs become more complex.

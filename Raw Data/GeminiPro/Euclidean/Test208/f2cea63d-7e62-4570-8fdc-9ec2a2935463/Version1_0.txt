@@ -1,0 +1,85 @@
+```java
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class MaxDepthBinaryTree {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(node.left);
+        int rightDepth = maxDepth(node.right);
+
+        return Math.max(leftDepth, rightDepth) + 1; 
+    }
+
+    public static void main(String[] args) {
+        MaxDepthBinaryTree tree = new MaxDepthBinaryTree();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.left.left.left = new Node(6);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+
+        // Additional test cases (you can add more)
+        Node root2 = null; // Empty tree
+        System.out.println("Height of tree is : " + tree.maxDepth(root2));
+
+
+        Node root3 = new Node(7); // Single node tree
+        System.out.println("Height of tree is : " + tree.maxDepth(root3));
+
+
+        Node root4 = new Node(8);
+        root4.left = new Node(9);
+        root4.right = new Node(10);
+        System.out.println("Height of tree is : " + tree.maxDepth(root4));
+
+    }
+}
+```
+
+
+**Explanation and Key Improvements:**
+
+1. **Node Class:**  A `Node` class is defined to represent the nodes of the binary tree.  Each node stores its data and references to its left and right children.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Calls:**  Recursively calculate the depth of the left and right subtrees.
+   - **Return Max + 1:** The depth of the current node is the maximum of the depths of its left and right subtrees, plus 1 (for the current node itself).
+
+3. **main Method:**
+   - Creates instances of the `MaxDepthBinaryTree` and `Node` classes to build example trees.
+   - Calls the `maxDepth()` method to calculate and print the height (maximum depth) of the trees.
+   - **Added Test Cases:** The `main` method now includes several test cases (empty tree, single-node tree, more complex trees) to demonstrate that the `maxDepth()` method works correctly in various scenarios.  This is good practice for thorough testing.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `MaxDepthBinaryTree.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   ```bash
+   javac MaxDepthBinaryTree.java
+   ```
+3. **Run:**  Execute the compiled code:
+   ```bash
+   java MaxDepthBinaryTree
+   ```
+
+
+The output will show the calculated height of the different example trees.

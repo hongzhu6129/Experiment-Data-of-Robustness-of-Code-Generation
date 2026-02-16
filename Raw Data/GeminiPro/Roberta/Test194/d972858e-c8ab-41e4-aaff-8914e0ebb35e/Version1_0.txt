@@ -1,0 +1,32 @@
+```java
+import java.util.*;
+
+public class LexicographicallySortIgnoringCase {
+
+    public static void main(String[] args) {
+        // Create a list of strings
+        List<String> strings = Arrays.asList("apple", "banana", "cherry", "dog", "elephant");
+
+        // Sort the list of strings lexicographically, ignoring case
+        Collections.sort(strings, String.CASE_INSENSITIVE_ORDER);
+
+        // Print the sorted list of strings
+        System.out.println(strings);
+    }
+}
+```
+
+**Test cases:**
+
+* **Normal case:**
+    * Input: ["apple", "banana", "cherry", "dog", "elephant"]
+    * Output: ["apple", "banana", "cherry", "dog", "elephant"]
+* **Case-sensitive case:**
+    * Input: ["apple", "Banana", "cherry", "dog", "Elephant"]
+    * Output: ["apple", "Banana", "cherry", "dog", "Elephant"]
+* **Empty list case:**
+    * Input: []
+    * Output: []
+* **Null list case:**
+    * Input: null
+    * Output: []

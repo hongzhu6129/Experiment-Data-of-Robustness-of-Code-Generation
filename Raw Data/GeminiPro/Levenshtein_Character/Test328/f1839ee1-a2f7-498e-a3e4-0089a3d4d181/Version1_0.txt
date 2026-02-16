@@ -1,0 +1,32 @@
+```java
+public class StringFromArray {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using String constructor
+        char[] charArray1 = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+        String str1 = new String(charArray1);
+        System.out.println("String from char array (method 1): " + str1);
+
+        // Method 2: Using String.valueOf()
+        char[] charArray2 = {'J', 'a', 'v', 'a'};
+        String str2 = String.valueOf(charArray2);
+        System.out.println("String from char array (method 2): " + str2);
+
+        // Method 3: Using loops (less efficient, for demonstration)
+        char[] charArray3 = {'E', 'x', 'a', 'm', 'p', 'l', 'e'};
+        String str3 = "";
+        for (char c : charArray3) {
+            str3 += c; 
+        }
+        System.out.println("String from char array (method 3): " + str3);
+
+        //Example with a more complex expression string:
+        char[] expressionChars = {'2', '+', '3', '*', '(', '5', '-', '1', ')'};
+        String expressionString = new String(expressionChars);
+        System.out.println("Expression string: " + expressionString);
+
+
+    }
+}
+```

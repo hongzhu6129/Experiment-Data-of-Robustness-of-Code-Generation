@@ -1,0 +1,72 @@
+```java
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing purposes, replace with user input if needed)
+        int number = 8; 
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int number) {
+        if (number < 0) {  // Handle negative numbers (cubes can be negative)
+            return isCube(-number); // Check the absolute value 
+        }
+
+        // Efficiently check for perfect cubes using a cubic root calculation and check for integer result
+        double cubeRoot = Math.cbrt(number);
+        return Math.round(cubeRoot) == cubeRoot;
+
+
+        /*  Alternative method (less efficient, iterative)
+        for (int i = 1; i*i*i <= number; i++) {
+            if (i*i*i == number) {
+                return true;
+            }
+        }
+        return false;
+        */
+    }
+}
+```
+
+
+**Explanation:**
+
+1. **`main` Method:**
+   - The `main` method is the entry point of the program.  I've included a sample `number` for demonstration; in a real application, you'd typically get this input from the user (e.g., using `Scanner`).
+
+2. **`isCube` Method:**
+   - **Handles Negative Numbers:**  The code first checks if the input number is negative.  If it is, it calls `isCube` again with the positive version of the number.  This is because the cube of a negative number is negative, and the cube of a positive number is positive.
+   - **Efficient Cube Root Check:**  The most efficient way to check if a number is a perfect cube is to calculate its cube root and check if the result is an integer.  We use `Math.cbrt()` to get the cube root, then `Math.round()` to round it to the nearest integer. If the rounded value is equal to the original cube root, it means the cube root was an integer, and therefore, the original number is a perfect cube.
+   - **Alternative Iterative Method (commented out):** I've included a less efficient, but perhaps more intuitively understandable, iterative approach as a comment.  This method loops through integers, calculating their cubes, and checks if any of the cubes equal the input number.
+
+
+
+**How to use with user input:**
+
+```java
+import java.util.Scanner;
+
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int number = scanner.nextInt();
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+        scanner.close(); // Close the scanner when done
+    }
+
+    // ... (isCube method remains the same) 
+}
+```

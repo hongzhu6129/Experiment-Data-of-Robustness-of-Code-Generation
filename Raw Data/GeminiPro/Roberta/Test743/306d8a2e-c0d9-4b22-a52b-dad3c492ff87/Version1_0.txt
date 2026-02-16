@@ -1,0 +1,34 @@
+```java
+public class StringValidator {
+
+    public static void main(String[] args) {
+        String str1 = "123abc";
+        String str2 = "456def";
+        String str3 = "abc789";
+
+        System.out.println(str1 + ": " + validate(str1)); // true
+        System.out.println(str2 + ": " + validate(str2)); // true
+        System.out.println(str3 + ": " + validate(str3)); // false
+
+
+        String str4 = "1abc";
+        String str5 = "2def";
+        String str6 = "ghi";
+
+        System.out.println(str4 + ": " + validate(str4)); // true
+        System.out.println(str5 + ": " + validate(str5)); // true
+        System.out.println(str6 + ": " + validate(str6)); // false
+
+
+
+    }
+
+    public static String validate(String str) {
+        if (str == null || str.isEmpty()) {
+            return "false";  // Handle null or empty input
+        }
+        char firstChar = str.charAt(0);
+        return Character.isDigit(firstChar) ? "true" : "false";
+    }
+}
+```

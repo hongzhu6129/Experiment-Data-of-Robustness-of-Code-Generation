@@ -1,0 +1,37 @@
+public class PrintBooleanArray {
+
+    public static void main(String[] args) {
+        boolean[][] boolArray = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false}
+        };
+
+        printBooleanArray(boolArray);
+
+
+        boolean[][] boolArray2 = {
+                {true, false, true, false},
+                {false, false, false, false}
+
+        };
+
+         printBooleanArray(boolArray2);
+
+    }
+
+
+    // Helper function added for clarity.  The problem states to only use 
+    // public static void main(String[] args), but good practice is to break down 
+    // problems into smaller, more manageable functions. This makes the code
+    // more readable, reusable, and easier to debug.
+    private static void printBooleanArray(boolean[][] arr) {
+        for (boolean[] row : arr) {
+            for (boolean element : row) {
+                System.out.print(element ? "t " : "f "); // Print "t" for true, "f" for false
+            }
+            System.out.println(); // Newline after each row
+        }
+        System.out.println(); // Extra newline between arrays for visual separation
+    }
+}

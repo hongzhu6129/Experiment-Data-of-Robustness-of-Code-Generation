@@ -1,0 +1,80 @@
+```java
+import java.util.Scanner;
+
+public class HexagonArea {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the length of a side of the hexagon: ");
+        double s = input.nextDouble();
+
+        // Input validation: Side length must be positive
+        if (s <= 0) {
+            System.out.println("Side length must be a positive value.");
+            return; // Exit the program if input is invalid
+        }
+
+
+        double area = (3 * Math.sqrt(3) * s * s) / 2;
+
+        System.out.println("The area of the hexagon is: " + area);
+
+
+        // Test Cases (demonstrated through direct input for simplicity - ideally, automated tests would be preferred)
+        System.out.println("\n--- Test Cases ---");
+
+
+        System.out.print("Enter side length (Test 1 - Regular Value): ");
+        s = input.nextDouble();
+        if (s <= 0) {System.out.println("Side length must be a positive value."); return;}
+        area = (3 * Math.sqrt(3) * s * s) / 2; System.out.println("Area: " + area);
+
+        System.out.print("Enter side length (Test 2 - Small Value): ");
+        s = input.nextDouble();
+        if (s <= 0) {System.out.println("Side length must be a positive value."); return;}
+        area = (3 * Math.sqrt(3) * s * s) / 2; System.out.println("Area: " + area);
+
+
+        System.out.print("Enter side length (Test 3 - Large Value): ");
+        s = input.nextDouble();
+        if (s <= 0) {System.out.println("Side length must be a positive value."); return;}
+        area = (3 * Math.sqrt(3) * s * s) / 2; System.out.println("Area: " + area);
+
+
+        System.out.print("Enter side length (Test 4 - Zero/Negative): ");  // Corner case
+        s = input.nextDouble();
+        if (s <= 0) {System.out.println("Side length must be a positive value."); return;}
+        area = (3 * Math.sqrt(3) * s * s) / 2; System.out.println("Area: " + area);
+        
+        input.close();
+
+
+    }
+}
+```
+
+
+**Explanation and Improvements:**
+
+1. **Input Validation:** The code now includes input validation to handle cases where the user enters a non-positive side length. This prevents the program from producing incorrect results or throwing exceptions.
+
+2. **Clearer Output:**  The output is more descriptive, indicating what the user is being asked to enter and labeling the results clearly, including for the test cases.
+
+3. **Test Cases (Integrated into main):** The test cases are incorporated directly within the `main` method, using `Scanner` to simulate different inputs. While not ideal for larger projects (where separate testing frameworks would be better), this fulfills the requirement of demonstrating testing within the `main` method.
+
+4. **Corner Case Handling:** The test cases now explicitly include a test for zero or negative side length, which is a crucial corner case that the input validation now handles.
+
+
+**How to Run and Test:**
+
+1. **Save:** Save the code as `HexagonArea.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac HexagonArea.java`
+3. **Run:**  Execute the compiled code: `java HexagonArea`
+4. **Input:** The program will prompt you to enter the side length.  Enter different values, including the test cases mentioned in the code, to verify the results.
+
+
+**Ideal Testing (Beyond the `main` Method):**
+
+In a real-world scenario, you would use a testing framework like JUnit to create separate test methods for each scenario (regular values, small values, large values, boundary conditions, etc.). This makes testing more organized, automated, and repeatable. However, the provided code meets the specific prompt's constraints of using only the `main` method for testing.

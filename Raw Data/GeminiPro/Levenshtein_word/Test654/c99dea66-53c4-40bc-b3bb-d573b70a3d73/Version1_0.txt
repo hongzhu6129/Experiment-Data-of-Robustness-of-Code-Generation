@@ -1,0 +1,56 @@
+```java
+import java.util.TreeMap;
+
+public class TreeMapTutorial {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap to store key-value pairs.
+        // TreeMap automatically sorts entries based on the natural ordering of keys
+        // (or a custom Comparator if provided).
+        TreeMap<String, Integer> studentGrades = new TreeMap<>();
+
+
+        // Associate values with keys using the put() method.
+        studentGrades.put("Alice", 95);  // Associates "Alice" with the value 95
+        studentGrades.put("Bob", 88);   // Associates "Bob" with the value 88
+        studentGrades.put("Charlie", 75);// Associates "Charlie" with the value 75
+        studentGrades.put("David", 92);  // Associates "David" with the value 92
+        studentGrades.put("Eve", 80);    // Associates "Eve" with the value 80
+
+        // If you try to put a value with an existing key, the old value is replaced.
+        studentGrades.put("Alice", 98); // Alice's grade is updated to 98
+
+
+
+        // Print the TreeMap to see the key-value pairs (sorted by keys).
+        System.out.println("Student Grades (TreeMap): " + studentGrades);
+
+        // Get the value associated with a specific key using the get() method.
+        int aliceGrade = studentGrades.get("Alice");
+        System.out.println("Alice's Grade: " + aliceGrade);
+
+         // Check if a key exists using containsKey()
+        if (studentGrades.containsKey("Bob")) {
+            System.out.println("Bob is in the TreeMap.");
+        }
+
+
+        // Remove a key-value pair using remove()
+        studentGrades.remove("Charlie"); 
+        System.out.println("Student Grades after removing Charlie: " + studentGrades);
+
+
+        // Iterate through the TreeMap (in sorted order by key)
+
+        System.out.println("\nIterating through the TreeMap:");
+        for (String name : studentGrades.keySet()) {
+            System.out.println(name + ": " + studentGrades.get(name));
+        }
+
+
+
+
+    }
+}
+```

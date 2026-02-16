@@ -1,0 +1,53 @@
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class ZoneOffsets {
+
+    public static void main(String[] args) {
+        // Define some zone offsets
+        String offset1 = "+02:00";
+        String offset2 = "-05:00";
+        String offset3 = "Z"; // UTC
+
+        // Extract and print the offsets using ZonedDateTime (handles invalid offsets gracefully)
+        System.out.println("Offset 1: " + formatOffset(getOffsetInSeconds(offset1)));
+        System.out.println("Offset 2: " + formatOffset(getOffsetInSeconds(offset2)));
+        System.out.println("Offset 3: " + formatOffset(getOffsetInSeconds(offset3)));
+
+
+
+        // Demonstrate getting the offset for a specific time zone
+        ZoneId zoneId = ZoneId.of("Europe/London");
+        ZonedDateTime nowLondon = ZonedDateTime.now(zoneId);
+        ZoneOffset londonOffset = nowLondon.getOffset(); 
+        System.out.println("London Offset now: " + formatOffset(londonOffset.getTotalSeconds()));
+
+
+    }
+
+
+    private static int getOffsetInSeconds(String offsetString) {
+        try {
+            //Attempt to parse the offset directly. Handles "+02:00", "-05:00", "Z" formats
+            ZoneOffset offset = ZoneOffset.of(offsetString);
+            return offset.getTotalSeconds();
+        } catch (DateTimeParseException e) {
+            //Handle invalid offset strings - in a real application you might log this error.
+            System.err.println("Invalid offset string: " + offsetString);
+            return 0; // Or throw an exception depending on how you want to handle errors.
+        }
+    }
+
+
+
+    private static String formatOffset(int totalSeconds) {
+        int hours = totalSeconds / 3600;
+        int minutes = Math.abs((totalSeconds % 3600) / 60); // Use absolute value for minutes
+
+        String sign = (hours >= 0) ? "+" : "-";
+        return String.format("%s%02d:%02d", sign, Math.abs(hours), minutes);
+    }
+}

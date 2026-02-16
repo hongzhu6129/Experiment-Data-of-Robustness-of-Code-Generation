@@ -1,0 +1,89 @@
+```java
+import java.util.Scanner;
+
+public class CircleCalculations {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the radius of the circle in kilometers: ");
+        double radius = scanner.nextDouble();
+
+        // Calculate the perimeter (circumference)
+        double perimeter = 2 * Math.PI * radius;
+
+        // Calculate the area
+        double area = Math.PI * radius * radius;
+
+        System.out.println("Perimeter is = " + perimeter);
+        System.out.println("Area is = " + area);
+
+        scanner.close(); 
+    }
+}
+```
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Radius (km) | Expected Perimeter (km) | Expected Area (km�) | Notes                                   |
+| --------- | ----------- | ---------------------- | ------------------- | -------------------------------------- |
+| 1        | 7.5         | 47.1238898...          | 176.7145867...       | Example from the prompt                 |
+| 2        | 0           | 0                      | 0                    | Zero radius (corner case)              |
+| 3        | 1           | 6.2831853...          | 3.1415926...        | Simple positive radius                 |
+| 4        | 100         | 628.3185307...         | 31415.926535...      | Large radius                           |
+| 5        | 0.001       | 0.0062831...          | 0.0000031415...     | Very small radius (corner case)        |
+| 6        | -1           |  N/A (handle error)    | N/A (handle error)   | Invalid input (negative radius)      |  
+| 7         | Double.MAX_VALUE | N/A (handle overflow) | N/A (handle overflow) | Extremely large value (overflow check) |
+
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can manually input these values into the `Scanner` and verify the output against the expected values.
+
+2. **Automated Testing (Recommended):**  Using a testing framework like JUnit is a much more robust approach.  Here�s an example of how you'd write a JUnit test:
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import static org.junit.jupiter.api.Assertions.*;
+
+   public class CircleCalculationsTest {
+
+       @Test
+       void testCalculatePerimeter() {
+           assertEquals(47.12388980384689, CircleCalculations.calculatePerimeter(7.5), 0.000001); // Delta for floating-point comparison
+           assertEquals(0, CircleCalculations.calculatePerimeter(0), 0.000001);
+           assertEquals(6.283185307179586, CircleCalculations.calculatePerimeter(1), 0.000001);
+       }
+   // ... similar tests for calculateArea() and error handling
+   }
+
+
+   // Modified CircleCalculations class to have separate methods for perimeter and area:
+
+    public class CircleCalculations{
+        // ... (Existing main method)
+
+        public static double calculatePerimeter(double radius){
+             return 2 * Math.PI * radius;
+        }
+        public static double calculateArea(double radius){
+            return  Math.PI * radius * radius;
+        }
+
+    }
+
+   ```
+
+**Important Considerations for Handling Corner/Error Cases:**
+
+* **Negative Radius:**  The code as provided doesn't explicitly handle negative radii.  You should add a check to throw an `IllegalArgumentException` or print an error message if the radius is negative.
+* **Overflow:**  For extremely large radii (like `Double.MAX_VALUE`), the calculations might overflow. Consider checking for these conditions or using `BigDecimal` for arbitrary precision if needed.
+* **Floating-point Comparisons:** Never directly compare floating-point numbers for equality using `==`.  Use a tolerance (delta) as shown in the JUnit example.
+
+
+
+By implementing these test cases and error handling, you'll make your program much more robust and reliable.

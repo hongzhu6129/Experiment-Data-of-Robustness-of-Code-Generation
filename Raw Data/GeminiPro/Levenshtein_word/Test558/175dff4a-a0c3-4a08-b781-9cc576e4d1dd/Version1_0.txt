@@ -1,0 +1,56 @@
+```java
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] myArray = {1, 2, 3, 4, 5};
+
+        // Update the element at index 2 (which is currently 3) to 10
+        int indexToUpdate = 2;
+        int newValue = 10;
+
+        if (indexToUpdate >= 0 && indexToUpdate < myArray.length) {
+            myArray[indexToUpdate] = newValue;
+        } else {
+            System.out.println("Invalid index.  Array not updated.");
+        }
+
+
+        // Print the updated array
+        System.out.print("Updated array: ");
+        for (int i = 0; i < myArray.length; i++) {
+            System.out.print(myArray[i] + " ");
+        }
+        System.out.println(); // Add a newline for cleaner output
+
+
+
+        // Another Example (showing how to handle invalid input)
+        int[] anotherArray = {10, 20, 30};
+        int badIndex = 5;  // Out of bounds
+        int anotherNewValue = 50;
+
+         if (badIndex >= 0 && badIndex < anotherArray.length) {
+            anotherArray[badIndex] = anotherNewValue;
+        } else {
+            System.out.println("Invalid index. Array not updated.");
+        }
+
+        // Print the array (which remains unchanged because the index was invalid)
+        System.out.print("Array after attempting update with bad index: ");
+        for (int i = 0; i < anotherArray.length; i++) {
+            System.out.print(anotherArray[i] + " ");
+        }
+        System.out.println();
+    }
+}
+```
+
+
+Key improvements and explanations in this code:
+
+1. **Clearer Example Usage:**  Provides two example usages, including one that demonstrates handling an invalid index.
+2. **Input Validation:** The code now checks if the `indexToUpdate` is within the valid bounds of the array. This prevents `ArrayIndexOutOfBoundsException` errors, making the code more robust.
+3. **Informative Output:**  It prints the updated array to the console to verify the change and also includes a message if the index is invalid, explaining why the array wasn't modified.
+4. **Comments:** Added more comments to make the purpose of each section of the code clearer.
+5. **Better Formatting:** Improved spacing and indentation for better readability.

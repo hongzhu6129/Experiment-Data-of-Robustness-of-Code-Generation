@@ -1,0 +1,59 @@
+```java
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        // Example usage: Print a 5x5 matrix
+        printMatrix(5); 
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("X "); // Replace "X" with the desired element (e.g., i, j, a calculated value, etc.)
+            }
+            System.out.println(); // Newline after each row
+        }
+    }
+}
+```
+
+
+**Explanation and Enhancements:**
+
+1. **Method Signatures:** The code adheres strictly to the provided method signatures: `public static void main(String[])` and `public static void printMatrix(int)`.
+
+2. **Nested Loops:**  The `printMatrix` method uses nested loops to iterate through rows (outer loop `i`) and columns (inner loop `j`) of the matrix.
+
+3. **Printing:** Inside the inner loop, `System.out.print("X ")` prints the placeholder "X" followed by a space.  You can replace "X" with:
+   - `i` to display row numbers.
+   - `j` to display column numbers.
+   - `i * n + j` to display sequential numbers from 0 to n*n - 1.
+   - Any calculated value based on `i` and `j`.
+
+4. **Newline:** `System.out.println()` after the inner loop ensures each row is printed on a new line.
+
+5. **Example in `main`:** The `main` method demonstrates how to call `printMatrix` with a sample size (5 in this case). You can change this value to print matrices of different dimensions.
+
+
+**Example Output (with "X"):**
+
+If `n = 5`, the output will be:
+
+```
+X X X X X 
+X X X X X 
+X X X X X 
+X X X X X 
+X X X X X 
+```
+
+
+**Example Output (with `i * n + j`):**
+
+If `n = 3`, the output will be:
+
+```
+0 1 2 
+3 4 5 
+6 7 8 
+```

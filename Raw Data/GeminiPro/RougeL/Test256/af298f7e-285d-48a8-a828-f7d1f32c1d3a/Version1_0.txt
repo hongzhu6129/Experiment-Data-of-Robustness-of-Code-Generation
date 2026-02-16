@@ -1,0 +1,64 @@
+```java
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Removes duplicates from a sorted array in-place and returns the new length.
+     *
+     * @param nums The sorted array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index of the last unique element
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i]; 
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("New Length: " + len1 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1))); // Output: 2, [1, 2]
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("New Length: " + len2 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2))); // Output: 5, [0, 1, 2, 3, 4]
+
+
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("New Length: " + len3 + ", Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Output: 0, []
+
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("New Length: " + len4+ ", Array: null"); // Output: 0, null
+    }
+}
+```
+
+
+Key improvements and explanations in this version:
+
+1. **Clearer Variable Names:** `uniqueIndex` is more descriptive than just `j`.
+
+2. **Handles Edge Cases:**  Includes checks for `null` or empty input arrays.
+
+3. **In-Place Modification:** The code directly modifies the input array `nums` as requested.  
+
+4. **Concise Return:** Returns the new length directly.
+
+5. **Comprehensive `main` method:**  Demonstrates the usage with multiple examples, including edge cases (empty and null arrays), and clearly prints the new length and the modified array (only up to the new length).  Using `Arrays.copyOfRange` is crucial here to prevent printing the unmodified parts of the original array.
+
+
+
+This revised version addresses the prompt's requirements efficiently and effectively, with better style and more robustness.

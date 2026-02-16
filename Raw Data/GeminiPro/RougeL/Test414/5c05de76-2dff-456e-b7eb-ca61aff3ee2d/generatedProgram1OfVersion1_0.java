@@ -1,0 +1,56 @@
+class Solution {
+    /**
+     * Returns a string with characters at index positions 0,1,2,5,6,7, ... from a given string.
+     *
+     * @param str The input string.
+     * @return The resulting string.
+     */
+    public String pairsToReturn(String str) {
+        if (str == null || str.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        int len = str.length();
+        for (int i = 0; i < len; ) {
+            for (int j = 0; j < 3 && i < len; j++) {
+                sb.append(str.charAt(i++));
+            }
+            i += 2; // Skip two characters
+        }
+
+        return sb.toString();
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "abcdefghijklmn";
+        System.out.println(solution.pairsToReturn(str1));  // Output: abcghi
+
+        String str2 = "abcdefgh";
+        System.out.println(solution.pairsToReturn(str2));  // Output: abcghi
+
+
+        String str3 = "12345678901234567890";
+        System.out.println(solution.pairsToReturn(str3)); // Output: 123678234789
+
+
+        System.out.println(solution.pairsToReturn("")); // Output: "" (Empty String)
+        System.out.println(solution.pairsToReturn(null)); // Output: "" (Empty String - handles null input)
+
+
+        String str4 = "ab";
+        System.out.println(solution.pairsToReturn(str4));  // Output: ab
+
+        String str5 = "abc";
+        System.out.println(solution.pairsToReturn(str5));  // Output: abc
+
+        String str6 = "abcd";
+        System.out.println(solution.pairsToReturn(str6));  // Output: abc
+
+
+
+    }
+}

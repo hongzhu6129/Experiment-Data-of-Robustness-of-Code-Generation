@@ -1,0 +1,64 @@
+import java.util.TreeSet;
+
+public class LowerElementInTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and populate it with some elements
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+
+        // Element to find the lower value for
+        Integer element = 40;
+
+
+        // Get the element lower than the given element
+        Integer lowerElement = treeSet.lower(element);
+
+        // Print the result
+        if (lowerElement != null) {
+            System.out.println("The element lower than " + element + " is: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + element);
+        }
+
+
+         // Example 2: Element not present
+        element = 25;
+        lowerElement = treeSet.lower(element);
+        if (lowerElement != null) {
+            System.out.println("The element lower than " + element + " is: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + element);
+        }
+
+        // Example 3: Lowest element
+        element = 10;
+        lowerElement = treeSet.lower(element);
+        if (lowerElement != null) {
+            System.out.println("The element lower than " + element + " is: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + element);
+        }
+
+
+        // Example with Strings (to demonstrate different data types)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        String strElement = "banana";
+        String lowerStrElement = stringTreeSet.lower(strElement);
+
+        if (lowerStrElement != null) {
+            System.out.println("The element lower than " + strElement + " is: " + lowerStrElement);
+        } else {
+            System.out.println("No element found lower than " + strElement);
+        }
+    }
+}

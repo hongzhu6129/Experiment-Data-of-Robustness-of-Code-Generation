@@ -1,0 +1,30 @@
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (for testing within main method)
+        int number = 8; // You can change this value to test with different numbers
+        // int number = 27; // Example: 27 is a cube (3*3*3)
+        // int number = 30; // Example: 30 is not a cube
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+
+    // Helper function to check if a number is a perfect cube
+    private static boolean isCube(int n) {
+        if (n < 0) {
+            return isCube(-n);  // Handle negative numbers
+        }
+
+        // Efficient approach: Check if the cube root is an integer 
+        double cubeRoot = Math.cbrt(n); // Calculate cube root
+        return Math.round(cubeRoot) * Math.round(cubeRoot) * Math.round(cubeRoot) == n;
+    }
+}
+
+
+

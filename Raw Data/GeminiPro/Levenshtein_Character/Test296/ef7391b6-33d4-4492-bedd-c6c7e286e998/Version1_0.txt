@@ -1,0 +1,93 @@
+```java
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 2, 7, 15, 8}; // Example 2
+        k = 4;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{1}; // Edge Case: array with one element.
+        k = 1;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{5, 4, 3, 2, 1}; // Edge case: k is the size of the array.
+        k = 5;
+        findKLargest(arr, k);
+
+
+
+        arr = new int[]{5, 4, 3, 2, 1}; // Edge case: k is larger than array size (invalid).
+        k = 6;
+        findKLargest(arr, k);
+        
+        // Edge case: empty array
+        arr = new int[]{};
+        k = 2;
+        findKLargest(arr,k);
+
+
+    }
+
+
+    public static void findKLargest(int[] arr, int k) {
+        if (arr == null || arr.length == 0) {
+            System.out.println("Invalid input: Empty array.");
+            return;
+        }
+
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid input: k should be between 1 and array length.");
+            return;
+        }
+
+        // Use a min-heap (PriorityQueue in Java) to store the k largest elements.
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num);
+            if (minHeap.size() > k) {
+                minHeap.poll(); // Remove the smallest element if the heap size exceeds k.
+            }
+        }
+
+        // The elements remaining in the minHeap are the k largest elements.
+        Integer[] kLargest = minHeap.toArray(new Integer[0]);
+        Arrays.sort(kLargest); // Optional: Sort the result if required in ascending order
+        System.out.print("The " + k + " largest elements are: [");
+        for (int i = 0; i < kLargest.length; i++) {
+            System.out.print(kLargest[i]);
+            if (i < kLargest.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+* **Min-Heap Approach:** The most efficient way to find the k largest elements is using a min-heap data structure (implemented using `PriorityQueue` in Java).  The min-heap keeps track of the k largest elements seen so far.  If a new element is larger than the smallest element in the heap, the smallest is removed, and the new element is added.
+
+* **Clearer Output:**  The output now clearly indicates the k largest elements and handles edge cases gracefully.
+
+* **Edge Case Handling:**  The code now handles several important edge cases:
+    * Empty input array.
+    * `k` being less than 1 or greater than the array size.
+    * Array with only one element.
+    * `k` being equal to array size.
+
+* **Optional Sorting:** The `kLargest` array is sorted at the end. This isn't strictly necessary for the problem, but it makes the output easier to read and verify.  If you don't need the output sorted, you can remove the `Arrays.sort()` line.
+
+
+* **Efficiency:** Using a min-heap gives a time complexity of O(n log k), where n is the size of the input array. This is much better than sorting the entire array (O(n log n)), especially when k is significantly smaller than n.  Space complexity is O(k) to store the heap.

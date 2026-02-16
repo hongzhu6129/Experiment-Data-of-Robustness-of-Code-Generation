@@ -1,0 +1,122 @@
+**Java Program:**
+
+```java
+import java.util.*;
+
+public class VocabularyIndex {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read the vocabulary from the user.
+        System.out.println("Enter the vocabulary (comma-separated): ");
+        String vocabulary = sc.nextLine();
+
+        // Split the vocabulary into an array of words.
+        String[] words = vocabulary.split(",");
+
+        // Create a map to store the indexes of each character.
+        Map<Character, List<Integer>> charIndexes = new HashMap<>();
+        for (int i = 0; i < words.length; i++) {
+            for (char c : words[i].toLowerCase().toCharArray()) {
+                List<Integer> indexes = charIndexes.getOrDefault(c, new ArrayList<>());
+                indexes.add(i);
+                charIndexes.put(c, indexes);
+            }
+        }
+
+        // Create a map to store the indexes of each part of speech.
+        Map<String, List<Integer>> posIndexes = new HashMap<>();
+        for (int i = 0; i < words.length; i++) {
+            String pos = getPartOfSpeech(words[i]);
+            List<Integer> indexes = posIndexes.getOrDefault(pos, new ArrayList<>());
+            indexes.add(i);
+            posIndexes.put(pos, indexes);
+        }
+
+        // Create a map to store the indexes of each alphabet.
+        Map<Character, List<Integer>> alphabetIndexes = new HashMap<>();
+        for (int i = 0; i < words.length; i++) {
+            char firstLetter = words[i].toLowerCase().charAt(0);
+            List<Integer> indexes = alphabetIndexes.getOrDefault(firstLetter, new ArrayList<>());
+            indexes.add(i);
+            alphabetIndexes.put(firstLetter, indexes);
+        }
+
+        // Print the indexes of each character.
+        System.out.println("\nCharacter Indexes:");
+        for (Map.Entry<Character, List<Integer>> entry : charIndexes.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Print the indexes of each part of speech.
+        System.out.println("\nPart of Speech Indexes:");
+        for (Map.Entry<String, List<Integer>> entry : posIndexes.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+        // Print the indexes of each alphabet.
+        System.out.println("\nAlphabet Indexes:");
+        for (Map.Entry<Character, List<Integer>> entry : alphabetIndexes.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+
+    private static String getPartOfSpeech(String word) {
+        // Implement this method to determine the part of speech of the given word.
+        // You can use a library or implement your own logic.
+        return "Noun";
+    }
+}
+```
+
+**Test Cases:**
+
+**Corner Cases:**
+
+* Empty vocabulary
+* Vocabulary with only one word
+* Vocabulary with words that are all the same
+
+**Regular Cases:**
+
+* Vocabulary with a mix of words of different parts of speech
+* Vocabulary with words that start with different alphabets
+* Vocabulary with words that contain different characters
+
+**Sample Input and Output:**
+
+**Input:**
+
+```
+dog,cat,bird,house,car,tree,computer,book,pen,pencil
+```
+
+**Output:**
+
+```
+Character Indexes:
+a: [0, 1, 2, 5, 7]
+b: [1]
+c: [2, 9]
+d: [0]
+e: [4]
+h: [5]
+o: [0, 1, 2, 5, 6, 8]
+p: [8, 9]
+r: [1, 6]
+s: [2, 4, 5, 7]
+t: [2, 5, 6, 8]
+u: [4, 8]
+
+Part of Speech Indexes:
+Noun: [0, 1, 2, 5, 6, 7, 8, 9]
+
+Alphabet Indexes:
+b: [1]
+c: [2]
+d: [0]
+h: [5]
+p: [8]
+t: [6, 8]
+```

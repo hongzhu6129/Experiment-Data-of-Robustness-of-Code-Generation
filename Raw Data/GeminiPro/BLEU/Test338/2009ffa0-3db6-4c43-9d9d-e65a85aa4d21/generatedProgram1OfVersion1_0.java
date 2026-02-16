@@ -1,0 +1,21 @@
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String str = "This is a test string. This is a test.";
+        String subStr = "is";
+
+        int lastIndex = str.lastIndexOf(subStr);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subStr + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subStr + "' not found in the string.");
+        }
+
+
+        // Additional examples:
+        System.out.println("Last index of 'test': " + str.lastIndexOf("test"));
+        System.out.println("Last index of 'a': " + str.lastIndexOf("a"));
+        System.out.println("Last index of 'z': " + str.lastIndexOf("z")); // Not found, returns -1
+    }
+}

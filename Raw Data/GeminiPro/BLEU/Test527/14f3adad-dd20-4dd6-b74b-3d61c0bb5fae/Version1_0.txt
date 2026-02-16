@@ -1,0 +1,54 @@
+```java
+public class Ramanujan {
+
+    public static void main(String[] args) {
+
+        int n = 1729; //  Start with Ramanujan's number (or any upper limit)
+
+        for (int a = 1; a <= n; a++) {
+            int a3 = a * a * a;
+            if (a3 > n) break; // Optimization: No need to continue if a^3 exceeds n
+
+            for (int b = a + 1; b <= n; b++) { // b starts from a+1 to avoid duplicates and ensure distinct pairs
+                int b3 = b * b * b;
+                if (a3 + b3 > n) break; // Optimization
+
+                for (int c = 1; c <= n; c++) {
+                    int c3 = c * c * c;
+                    if (c3 > n) break; 
+
+                    for (int d = c + 1; d <= n; d++) {
+                        int d3 = d * d * d;
+                        if (c3 + d3 > n) break;
+
+                        if (a3 + b3 == c3 + d3 && a3 + b3 <=n) {
+                            if(a!=c && a!=d && b!=c && b!=d){ //ensure it is in two different ways. 
+                                System.out.println(a3 + b3 + " = " + a + "^3 + " + b + "^3 = " + c + "^3 + " + d + "^3");
+                                return; // Exit after finding the first such number
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("No such number found within the limit " + n +".");
+
+    }
+}
+```
+
+
+Key improvements and explanations:
+
+1. **Efficiency:** Added `break` statements inside the loops to avoid unnecessary calculations when the sums of cubes exceed the target number (`n`). This significantly speeds up the process, especially for larger values of `n`.
+
+2. **Distinct Pairs:** The inner loops now start from `b = a + 1` and `d = c + 1`. This ensures that we only consider distinct pairs of cubes (e.g., (1, 12) and (12, 1) are considered the same and won't be counted twice). It also prevents solutions like a=c and b=d.
+
+3. **Clarity:** Improved variable naming (e.g., `a3`, `b3`, etc.) and comments to explain the logic.
+
+4. **Correctness:** Ensured that the output is indeed the sum of two *different* pairs of cubes by adding the condition `a != c && a!=d && b!=c && b!= d`. This accurately reflects the problem statement's requirement.
+
+5. **Handling no solutions**: Added print statement if the loop does not find any solution. This is to indicate that there is no such number within the limit.
+
+
+This improved version is more efficient, correct, and easier to understand. It will find Ramanujan's number (1729) or any other number meeting the criteria much faster, especially when exploring a larger range.

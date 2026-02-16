@@ -1,0 +1,132 @@
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the latitude of coordinate 1: ");
+        double lat1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 1: ");
+        double lon1 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the latitude of coordinate 2: ");
+        double lat2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        System.out.print("Input the longitude of coordinate 2: ");
+        double lon2 = Math.toRadians(input.nextDouble()); // Convert to radians
+
+        double earthRadius = 6371.01; // Earth's radius in kilometers
+
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+**Test Cases:**
+
+Here are some test cases including corner cases:
+
+**1. Provided Example:**
+
+* Latitude 1: 25
+* Longitude 1: 35
+* Latitude 2: 35.5
+* Longitude 2: 25.5
+* Expected Output: ~1480.08 km
+
+**2. Same Point:**
+
+* Latitude 1: 45
+* Longitude 1: 10
+* Latitude 2: 45
+* Longitude 2: 10
+* Expected Output: 0 km
+
+**3. Antipodes (Opposite sides of the Earth):**
+
+* Latitude 1: 45
+* Longitude 1: 10
+* Latitude 2: -45
+* Longitude 2: 170  (10 + 180 modulo 360 is -170, but longitude should be between -180 and 180)
+* Expected Output: ~20015.08 km (approximately Earth's diameter * pi / 2 which is half the circumference of Earth)
+
+
+**4. North and South Poles:**
+
+* Latitude 1: 90  (North Pole)
+* Longitude 1: 0  (Longitude is irrelevant at the poles)
+* Latitude 2: -90 (South Pole)
+* Longitude 2: 10 (Longitude is irrelevant at the poles)
+* Expected Output: ~20015.08 km (approximately half the circumference of Earth)
+
+
+**5.  Points on the Equator, 90 degrees apart:**
+
+* Latitude 1: 0
+* Longitude 1: 0
+* Latitude 2: 0
+* Longitude 2: 90
+* Expected Output: ~10007.54 km  (approximately a quarter of the circumference of Earth)
+
+
+
+**6. Points near the International Date Line:**
+
+* Latitude 1: 10
+* Longitude 1: 179
+* Latitude 2: 10
+* Longitude 2: -179
+* Expected Output: A small distance (as they are close despite being on opposite sides of the date line).
+
+
+**7. Invalid Input (Handle these in your program):**
+
+* Latitude outside the range -90 to +90.
+* Longitude outside the range -180 to +180.
+
+
+**Improved Code with Input Validation:**
+
+```java
+import java.util.Scanner;
+
+public class EarthDistance {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        double lat1, lon1, lat2, lon2;
+
+        // Input validation loop for latitude 1
+        do {
+            System.out.print("Input the latitude of coordinate 1 (-90 to 90): ");
+            lat1 = input.nextDouble();
+        } while (lat1 < -90 || lat1 > 90);
+
+        // ... similar validation loops for lon1, lat2, and lon2 ...
+
+        lat1 = Math.toRadians(lat1);
+        lon1 = Math.toRadians(lon1);
+        lat2 = Math.toRadians(lat2);
+        lon2 = Math.toRadians(lon2);
+
+
+
+        double earthRadius = 6371.01; 
+        double distance = earthRadius * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));
+
+        System.out.println("The distance between those points is: " + distance);
+        input.close();
+    }
+}
+```
+
+By using these test cases and adding input validation, you can ensure your program is more robust and handles various scenarios correctly.  Remember that the Earth is not a perfect sphere, so these calculations are approximations.  For very precise geodetic calculations, more complex methods are needed.

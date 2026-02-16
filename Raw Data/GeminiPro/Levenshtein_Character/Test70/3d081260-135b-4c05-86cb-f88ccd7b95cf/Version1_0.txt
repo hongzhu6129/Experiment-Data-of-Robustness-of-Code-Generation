@@ -1,0 +1,49 @@
+```java
+public class LargestOfThree {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {10, 5, 20, 8, 15, 6};
+        findLargestOfThree(arr1); // Output: 20
+
+        int[] arr2 = {2, 8, 1, 9, 4, 6};
+        findLargestOfThree(arr2); // Output: 8
+
+        int[] arr3 = {1, 2, 3, 4, 5, 6};  //Demonstrate middle prioritized when tied.
+        findLargestOfThree(arr3); // Output: 3
+
+
+
+        // Test with empty or null array (Handles edge cases).
+        int[] arr4 = {};
+        findLargestOfThree(arr4); // Output: Array is empty or null
+
+
+        int[] arr5 = null;
+        findLargestOfThree(arr5); // Output: Array is empty or null
+
+         int[] arr6 = {1}; //Odd length array
+         findLargestOfThree(arr6); //Output: Array is empty or null. Only works on even length arrays.
+
+
+    }
+
+    public static void findLargestOfThree(int[] arr) {
+        if (arr == null || arr.length == 0 || arr.length % 2 != 0) {
+            System.out.println("Array is empty or null or not even length.");
+            return;
+        }
+
+        int first = arr[0];
+        int last = arr[arr.length - 1];
+        int middle = arr[arr.length / 2 -1]; // Adjust to get the first of the two middle elements
+
+        // Find the largest using Math.max
+        int largest = Math.max(first, Math.max(last, middle));
+
+
+
+        System.out.println(largest);
+    }
+}
+```

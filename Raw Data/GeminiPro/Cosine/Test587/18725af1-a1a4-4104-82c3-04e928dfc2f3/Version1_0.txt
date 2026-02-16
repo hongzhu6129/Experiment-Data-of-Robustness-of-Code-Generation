@@ -1,0 +1,76 @@
+```java
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Kotlin");
+
+        System.out.println("Initial LinkedList: " + languages);
+
+        // 1. Removing by value using remove()
+        String elementToRemove = "C++";
+        boolean removed = languages.remove(elementToRemove); 
+        System.out.println("Removed '" + elementToRemove + "' (by value): " + removed + ",  LinkedList: " + languages);
+
+
+        // 2. Removing by index using remove(int index)
+        int indexToRemove = 1; // Python (after C++ removal)
+        String removedElement = languages.remove(indexToRemove);
+        System.out.println("Removed element at index " + indexToRemove + ": '" + removedElement + "', LinkedList: " + languages);
+
+        // 3. Removing using an Iterator (more efficient for large lists, especially if removing multiple elements)
+        // Especially important for safely removing elements while iterating.
+        String elementToRemoveIterator = "Kotlin";
+        ListIterator<String> iterator = languages.listIterator();
+
+        while (iterator.hasNext()) {
+            String current = iterator.next();
+            if (current.equals(elementToRemoveIterator)) {
+                iterator.remove(); // Safely remove the element using the iterator's remove()
+                break; // If you only want to remove the first occurrence.
+            }
+        }
+
+        System.out.println("Removed '" + elementToRemoveIterator + "' using iterator: LinkedList: " + languages);
+
+
+
+        // 4. Removing the first element:
+        languages.removeFirst(); // Same as languages.remove(0) - throws exception if empty
+        System.out.println("Removed first element: LinkedList: " + languages);
+
+        // 5. Removing the last element:
+         if(!languages.isEmpty()) { // important to check before removeLast!
+             languages.removeLast(); // same as languages.remove(languages.size() -1) - throws exception if empty
+         }
+
+        System.out.println("Removed last element: LinkedList: " + languages);
+
+
+        // Example: Removing all elements that satisfy a condition
+        languages.add("Swift");
+        languages.add("Go");
+        languages.add("Rust");
+        System.out.println("LinkedList before conditional removal: " + languages);
+
+        languages.removeIf(str -> str.length() > 4); // Java 8+ Lambda expression for the condition
+
+        System.out.println("LinkedList after removing strings with length > 4: " + languages);
+
+        // Clearing the entire list:
+        languages.clear();
+        System.out.println("Cleared LinkedList: " + languages);
+
+
+
+    }
+}
+```

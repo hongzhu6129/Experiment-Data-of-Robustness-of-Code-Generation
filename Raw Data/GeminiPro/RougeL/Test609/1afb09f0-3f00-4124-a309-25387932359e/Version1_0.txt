@@ -1,0 +1,35 @@
+```java
+import java.util.HashSet;
+import java.util.TreeSet;
+
+public class HashSetToTreeSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Convert HashSet to TreeSet (natural ordering)
+        TreeSet<String> treeSet = new TreeSet<>(hashSet); 
+
+        // Print the TreeSet (elements will be sorted)
+        System.out.println("TreeSet: " + treeSet);
+
+
+        // Example with custom ordering (e.g., integers in descending order)
+        HashSet<Integer> numbersHashSet = new HashSet<>();
+        numbersHashSet.add(5);
+        numbersHashSet.add(2);
+        numbersHashSet.add(8);
+        numbersHashSet.add(1);
+
+        // Use a Comparator for custom sorting (descending order in this case)
+        TreeSet<Integer> numbersTreeSet = new TreeSet<>((a, b) -> b - a); // Reverse order
+        numbersTreeSet.addAll(numbersHashSet);
+        System.out.println("Numbers TreeSet (descending): " + numbersTreeSet);
+    }
+}
+```

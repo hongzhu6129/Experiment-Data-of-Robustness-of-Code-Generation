@@ -1,0 +1,48 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+* **Normal Case:**
+    * Input: `10 20 30`
+    * Expected Output: `20.0`
+
+* **Decimal Numbers:**
+    * Input: `2.5 5.7 8.8`
+    * Expected Output: `5.666666666666667`
+
+* **Negative Numbers:**
+    * Input: `-10 -20 -30`
+    * Expected Output: `-20.0`
+
+* **Mixed Positive and Negative:**
+    * Input: `-5 15 5`
+    * Expected Output: `5.0`
+
+* **Zeroes:**
+    * Input: `0 0 0`
+    * Expected Output: `0.0`
+
+* **Large Numbers:**
+    * Input: `1000000 2000000 3000000`
+    * Expected Output: `2000000.0`
+
+* **Corner Cases (potential issues):**
+    * **Non-numeric input:** Input: `a b c`  Expected Output: `"Invalid input. Please enter valid numbers."` (handled by the `try-catch` block)
+    * **Overflow/Underflow:** This is less of a concern with `double` but could occur with `int` if the sum of the numbers exceeds `Integer.MAX_VALUE` or goes below `Integer.MIN_VALUE`. With `double` the result might become `Infinity` or `-Infinity`.
+
+**How to Run the Test Cases:**
+
+1. **Save:** Save the code as `AverageCalculator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using `javac AverageCalculator.java`.
+3. **Run:** Execute the compiled code using `java AverageCalculator`.  The program will prompt you to enter the three numbers.
+
+
+**Improved Error Handling (Optional):**
+
+You could further enhance error handling by checking for specific exceptions like `InputMismatchException` within the `catch` block to provide more tailored error messages.
+
+
+
+This revised answer provides a more comprehensive set of test cases and explains how to run them, as well as includes error handling to make the program more robust.

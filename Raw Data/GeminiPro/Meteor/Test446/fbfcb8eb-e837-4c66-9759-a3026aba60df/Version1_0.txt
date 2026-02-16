@@ -1,0 +1,56 @@
+```java
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
+public class WeeklyDates {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Define the locale (important for week start day) - using default locale here
+        Locale locale = Locale.getDefault(); 
+        WeekFields weekFields = WeekFields.of(locale);
+
+        // Loop through weeks of the year (adjust 53 to a higher number if needed for years with more weeks)
+        for (int weekNumber = 1; weekNumber <= 53; weekNumber++) {
+            try {
+                // Calculate the first day of the week
+                LocalDate firstDayOfWeek = currentDate.with(weekFields.weekOfYear(), weekNumber)
+                        .with(TemporalAdjusters.previousOrSame(weekFields.getFirstDayOfWeek()));
+
+                // Calculate the last day of the week
+                LocalDate lastDayOfWeek = firstDayOfWeek.plusDays(6); // Add 6 days to the first day
+
+                System.out.println("Week " + weekNumber + ": " + firstDayOfWeek.toString() + " - " + lastDayOfWeek.toString());
+            } catch (Exception e) {
+               // Handle the case where week 53 (or a higher week number) doesn't exist in the current year.
+               // We just break out of the loop because we've reached the end of the weeks in this year.
+                break; 
+            }
+        }
+    }
+}
+```
+
+
+Key improvements in this version:
+
+* **Locale Handling:** Uses `Locale.getDefault()` and `WeekFields.of(locale)` to correctly determine the first day of the week based on the user's locale.  This is crucial for internationalization, as different regions have different week start days (Sunday or Monday).
+* **Error Handling:** Includes a `try-catch` block to handle the potential `DateTimeException` that can occur if a week number (e.g., 53) doesn't exist in the current year.  The program now exits the loop gracefully when it reaches a non-existent week.
+* **Clarity and Readability:** Improved variable names and comments make the code easier to understand.
+* **Efficiency:**  Calculates the last day of the week by adding 6 days to the first day, which is slightly more efficient than using another `with()` call.
+
+
+Example Output (will vary based on the current date and locale):
+
+```
+Week 1: 2024-01-01 - 2024-01-07
+Week 2: 2024-01-08 - 2024-01-14
+Week 3: 2024-01-15 - 2024-01-21
+...
+Week 52: 2024-12-23 - 2024-12-29 
+```

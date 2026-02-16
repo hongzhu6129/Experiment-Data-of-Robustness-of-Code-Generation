@@ -1,0 +1,36 @@
+```java
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseLongWords {
+
+    public static void main(String[] args) {
+        String inputString = "This is a sample string with some longer words";
+        String result = validate(inputString);
+        System.out.println(result); 
+    }
+
+    public static String validate(String inputString) {
+        if (inputString == null || inputString.trim().isEmpty()) {
+            return ""; // Handle null or empty input
+        }
+
+        List<String> words = Arrays.asList(inputString.split("\\s+")); // Split into words
+        StringBuilder sb = new StringBuilder();
+
+        for (String word : words) {
+            if (word.length() > 3) {
+                List<String> charList = Arrays.asList(word.split(""));
+                Collections.reverse(charList);
+                sb.append(String.join("", charList)).append(" "); // Reverse and append
+            } else {
+                sb.append(word).append(" "); // Append as is
+            }
+        }
+
+        return sb.toString().trim(); // Remove trailing space
+    }
+}
+```
+
