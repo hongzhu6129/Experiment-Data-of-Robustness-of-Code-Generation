@@ -1,0 +1,34 @@
+import java.util.PriorityQueue;
+import java.util.Collections;
+
+public class MixPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a Priority Queue
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+
+        // Add elements to the Priority Queue
+        pq1.add(10);
+        pq1.add(20);
+        pq1.add(15);
+        pq1.add(5);
+        pq1.add(25);
+
+        // Create another Priority Queue
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+
+        // Mix the elements of pq1 into pq2
+        pq2.addAll(pq1);
+
+        // Optional: Shuffle pq2 for a more thorough mix if desired
+        // Mixing alone maintains priority order, so if a randomized mix is desired, use this:
+        Collections.shuffle(pq2.stream().toList()); // Requires Java 16 or later
+
+        //Print the elements of pq2
+        System.out.print("Elements of pq2: ");
+        while (!pq2.isEmpty()) {
+            System.out.print(pq2.poll() + " ");
+        }
+    }
+}
+

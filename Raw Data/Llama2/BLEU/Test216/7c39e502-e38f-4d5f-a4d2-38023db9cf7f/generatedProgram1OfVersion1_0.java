@@ -1,0 +1,25 @@
+import java.util.Date;
+
+public class UnixTimestampToDate {
+
+    public static void main(String[] args) {
+        long unixTimestamp = 1678886400; // Example Unix timestamp (seconds)
+
+        // Convert to milliseconds
+        Date date = new Date(unixTimestamp * 1000);
+
+        System.out.println(date);
+
+
+        // Example with command-line argument for timestamp
+        if (args.length > 0) {
+            try {
+                unixTimestamp = Long.parseLong(args[0]);
+                date = new Date(unixTimestamp * 1000);
+                System.out.println(date);
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid timestamp: " + args[0]);
+            }
+        } 
+    }
+}

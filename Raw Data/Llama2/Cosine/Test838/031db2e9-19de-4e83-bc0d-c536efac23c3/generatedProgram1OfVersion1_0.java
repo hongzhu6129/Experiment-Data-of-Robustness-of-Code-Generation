@@ -1,0 +1,61 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+
+        // Get the submap from key 2 (inclusive) to 5 (exclusive)
+        SortedMap<Integer, String> subMap = treeMap.subMap(2, 5); 
+
+        // Print the submap
+        System.out.println("Submap: " + subMap);
+
+
+        // Example with strings (natural ordering)
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("Apple", 1);
+        stringMap.put("Banana", 2);
+        stringMap.put("Cherry", 3);
+        stringMap.put("Date", 4);
+        stringMap.put("Elderberry", 5);
+
+
+        SortedMap<String, Integer> stringSubMap = stringMap.subMap("Banana", "Elderberry"); // "Elderberry" exclusive
+        System.out.println("String Submap: " + stringSubMap);
+
+
+
+         // Handling edge cases (empty submap if fromKey >= toKey)
+        SortedMap<Integer, String> emptySubMap = treeMap.subMap(5, 2); // Will be empty
+        System.out.println("Empty Submap (fromKey >= toKey): " + emptySubMap);
+
+
+        // Handling keys that don't exist (toKey doesn't have to be present)
+        SortedMap<Integer, String> subMapToNonExistentKey = treeMap.subMap(3, 7); // 7 doesn't exist, but it works
+        System.out.println("Submap to Non-Existent Key: " + subMapToNonExistentKey);
+
+
+
+        // If fromKey doesn't exist, the submap starts from the next highest key
+        SortedMap<Integer, String> subMapFromNonExistentKey = treeMap.subMap(7,10); 
+        System.out.println("Submap from non-existent key: "+ subMapFromNonExistentKey); // Empty as 7 is greater than largest key
+
+       // Correct usage with fromKey not existing 
+        subMapFromNonExistentKey = treeMap.subMap(0, 3);  // Starts from 1 (the next highest after 0)
+        System.out.println("Submap from non-existent key (corrected): "+ subMapFromNonExistentKey);
+
+
+    }
+}

@@ -1,0 +1,28 @@
+public class RemoveChars {
+
+    public String exceptTwoO(String str) {
+        if (str == null || str.length() < 2) {
+            return str;
+        }
+
+        char specifiedChar = 'o'; // You can change this to any character
+
+        if (str.charAt(0) == specifiedChar || str.charAt(1) == specifiedChar) {
+            return str.substring(2);
+        } else {
+            return str;
+        }
+    }
+
+    public static void main(String[] args) {
+        RemoveChars remover = new RemoveChars();
+
+        System.out.println(remover.exceptTwoO("oracle")); // Output: acle
+        System.out.println(remover.exceptTwoO("apple")); // Output: apple
+        System.out.println(remover.exceptTwoO("oogle")); // Output: gle
+        System.out.println(remover.exceptTwoO("o")); // Output: o  (less than 2 chars, unchanged)
+        System.out.println(remover.exceptTwoO(null));  // Output: null (handles null input)
+        System.out.println(remover.exceptTwoO("boat")); // Output: boat
+
+    }
+}

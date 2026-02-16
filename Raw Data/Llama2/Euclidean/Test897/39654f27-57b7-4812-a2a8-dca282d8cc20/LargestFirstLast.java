@@ -1,0 +1,20 @@
+public class LargestFirstLast {
+
+    public static void main(String[] args) {
+        int[] numbers = {20, 30, 10}; // Example array
+
+        int largest = (numbers[0] > numbers[numbers.length - 1]) ? numbers[0] : numbers[numbers.length - 1];
+
+        System.out.println("Largest value between first and last element: " + largest);
+
+        //More examples for testing
+        int[] numbers2 = {10, 5, 10}; 
+        largest = (numbers2[0] > numbers2[numbers2.length - 1]) ? numbers2[0] : numbers2[numbers2.length - 1];
+        System.out.println("Largest value between first and last element: " + largest);
+
+
+        int[] numbers3 = {5, 10, 5}; 
+        largest = (numbers3[0] > numbers3[numbers3.length - 1]) ? numbers3[0] : numbers3[numbers3.length - 1];
+        System.out.println("Largest value between first and last element: " + largest);
+    }
+}

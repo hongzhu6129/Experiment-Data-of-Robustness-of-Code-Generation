@@ -1,0 +1,25 @@
+import java.util.LinkedList;
+import java.util.List;
+
+public class InsertAtFront {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        List<String> myList = new LinkedList<>();
+
+        // Add some initial elements (optional)
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("cherry");
+
+        // Element to insert at the front
+        String elementToInsert = "grape";
+
+        // Insert the element at the front
+        myList.add(0, elementToInsert); // LinkedList's add(index, element) is efficient for insertion at the beginning.
+
+
+        // Print the updated list
+        System.out.println(myList);
+    }
+}

@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:**  The code now correctly handles empty arrays (`[]`) and `null` inputs, returning 0 in both cases.
+
+2. **Clearer Variable Names:** `uniqueIndex` is used instead of `k` to make the purpose of the variable more obvious.
+
+3. **Improved Comments:** Comments explain the logic more thoroughly.
+
+4. **Concise Return:** The code returns `uniqueIndex + 1` directly, which is more efficient than creating a new array.
+
+5. **Main Method with Test Cases:** The `main` method includes various test cases, including edge cases, to demonstrate the function's correctness. It also prints the modified array up to the new length using `Arrays.copyOfRange`.
+
+
+**How it Works (Algorithm):**
+
+The code uses a two-pointer approach:
+
+- `uniqueIndex`: Points to the index where the next unique element should be placed.
+- `i`: Iterates through the array.
+
+The algorithm iterates through the sorted array. If `nums[i]` is different from `nums[uniqueIndex]`, it means a new unique element is found. The `uniqueIndex` is incremented, and the new unique element is placed at `nums[uniqueIndex]`. This effectively overwrites any duplicates in the array. Finally, `uniqueIndex + 1` is returned, representing the length of the array with duplicates removed.

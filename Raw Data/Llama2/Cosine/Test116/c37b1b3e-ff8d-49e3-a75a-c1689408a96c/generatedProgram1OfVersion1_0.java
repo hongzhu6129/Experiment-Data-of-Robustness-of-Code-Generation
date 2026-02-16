@@ -1,0 +1,29 @@
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class AddHoursToCurrentTime {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of hours to add: ");
+        int hoursToAdd = scanner.nextInt();
+
+        LocalTime currentTime = LocalTime.now();
+        LocalTime newTime = currentTime.plusHours(hoursToAdd);
+
+        System.out.println("Current Time: " + currentTime);
+        System.out.println("New Time after adding " + hoursToAdd + " hours: " + newTime);
+
+
+         //Demonstrate using ChronoUnit (more flexible for adding other units like minutes, seconds etc)
+        System.out.print("\nEnter another number of hours to add (using ChronoUnit): ");
+        int hoursToAdd2 = scanner.nextInt();
+
+        LocalTime newTime2 = currentTime.plus(hoursToAdd2, ChronoUnit.HOURS); //More general approach
+        System.out.println("New Time (using ChronoUnit) after adding " + hoursToAdd2 + " hours: " + newTime2);
+
+        scanner.close();
+    }
+}

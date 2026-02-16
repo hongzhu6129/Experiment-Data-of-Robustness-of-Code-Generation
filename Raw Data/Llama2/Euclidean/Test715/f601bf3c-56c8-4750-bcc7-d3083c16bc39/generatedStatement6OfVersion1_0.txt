@@ -1,0 +1,8 @@
+
+
+
+**Important Considerations for Rounding in Java:**
+
+* **Rounding Modes:** `Math.round()` uses "half-up" rounding (also known as commercial rounding).  If the fractional part is 0.5 or greater, it rounds up. If it's less than 0.5, it rounds down.  For more complex rounding scenarios (e.g., rounding to a specific number of decimal places or using different rounding modes), consider using `DecimalFormat` or `BigDecimal`.
+
+* **Floating-Point Precision:** Remember that floating-point numbers have inherent limitations in precision.  Don't expect perfectly accurate results when working with floats, especially in financial or scientific applications where precision is critical. `BigDecimal` is a better choice for those cases.

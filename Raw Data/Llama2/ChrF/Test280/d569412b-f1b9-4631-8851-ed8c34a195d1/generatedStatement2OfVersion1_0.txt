@@ -1,0 +1,22 @@
+
+
+
+**Explanation:**
+
+1. **Base Case:**  The recursion stops when the string is either `null` or has a length of 0 or 1. In this case, we simply print the string (or `null`).
+
+2. **Recursive Step:**
+   - We make a recursive call to `reverseString` with the substring of the input string starting from the second character (index 1). This effectively reverses the "rest" of the string.
+   - After the recursive call returns, we print the first character (at index 0) of the original string.  This ensures that the first character becomes the last character in the reversed output.
+
+**Example:**
+
+Let's trace `reverseString("hello")`:
+
+1. `reverseString("hello")`: Calls `reverseString("ello")` and then prints 'h'.
+2. `reverseString("ello")`: Calls `reverseString("llo")` and then prints 'e'.
+3. `reverseString("llo")`: Calls `reverseString("lo")` and then prints 'l'.
+4. `reverseString("lo")`: Calls `reverseString("o")` and then prints 'l'.
+5. `reverseString("o")`:  Prints 'o' (base case).
+
+The output becomes "olleh".

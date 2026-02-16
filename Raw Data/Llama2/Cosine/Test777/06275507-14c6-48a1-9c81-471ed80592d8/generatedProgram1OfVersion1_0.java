@@ -1,0 +1,33 @@
+public class CapitalizeFirstLetter {
+
+    public static void main(String[] args) {
+        String sentence = "the quick brown fox jumps over the lazy dog.";
+        String capitalizedSentence = capitalizeWords(sentence);
+        System.out.println(capitalizedSentence);
+
+
+        sentence = "The quick brown fox jumps over the lazy dog."; // Test with already partially capitalized
+        capitalizedSentence = capitalizeWords(sentence);
+        System.out.println(capitalizedSentence);
+
+
+    }
+
+    private static String capitalizeWords(String sentence) {
+        String[] words = sentence.split("\\s+"); // Split by whitespace
+        StringBuilder capitalizedSentence = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) { // Handle potential empty strings from multiple spaces
+                char firstChar = Character.toUpperCase(word.charAt(0));
+                String restOfWord = word.substring(1); 
+                capitalizedSentence.append(firstChar).append(restOfWord).append(" ");
+            }
+        }
+        return capitalizedSentence.toString().trim(); // Remove trailing space
+    }
+}
+
+
+
+

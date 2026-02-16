@@ -1,0 +1,22 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+public class TodaysDateAtMidnight {
+
+    public static void main(String[] args) {
+        // Get today's date.
+        LocalDate today = LocalDate.now();
+
+        // Get midnight time (00:00:00).
+        LocalTime midnight = LocalTime.MIDNIGHT; // or LocalTime.of(0, 0, 0)
+
+        // Combine the date and time to create a LocalDateTime object.
+        LocalDateTime todayAtMidnight = LocalDateTime.of(today, midnight);
+
+        // Print the result.
+        System.out.println("Today's date at midnight: " + todayAtMidnight);
+
+
+    }
+}

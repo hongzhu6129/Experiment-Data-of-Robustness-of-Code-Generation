@@ -1,0 +1,12 @@
+
+   Replace `/path/to/your/file.txt` with the actual path to the file you want to read.
+
+**Key improvements in this version:**
+
+* **Handles command-line arguments:**  The code now takes the file path as a command-line argument, making it more flexible.  It also provides a helpful error message if the argument is missing.
+* **Handles files with fewer than 3 lines:** The `if (line == null)` check prevents a `NullPointerException` if the file has fewer than three lines. It gracefully stops reading when it reaches the end of the file.
+* **Uses try-with-resources:** This ensures that the `BufferedReader` is automatically closed, even if exceptions occur, preventing resource leaks.
+* **Clearer error handling:** The `catch` block provides a more informative error message if there's a problem reading the file.
+
+
+This improved version is more robust and user-friendly.

@@ -1,0 +1,26 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Horner's Method:** The `polyEval` method efficiently implements Horner's method (as described in the prompt).  It iterates through the coefficients from highest degree to lowest, accumulating the result using multiplication and addition in the most efficient way.
+
+2. **Clarity and Readability:** The code is well-commented and uses descriptive variable names (e.g., `coefficients`, `x`, `result`).
+
+3. **Generality:** The method works for polynomials of any degree (as determined by the size of the `coefficients` list).
+
+4. **Error Handling (Optional):** While not strictly required by the prompt, in a real-world application, you might want to add a check within `polyEval` to ensure that the `coefficients` list is not null or empty to prevent potential `NullPointerException` or `IndexOutOfBoundsException`.
+
+
+**Example Breakdown:**
+
+Let's trace the execution with the provided example: -19 + 7x - 4x^2 + 6x^3 at x=3:
+
+- **Initialization:** `result = 0.0`
+- **Iteration 1 (i = 3):** `result = 0.0 * 3 + 6 = 6`
+- **Iteration 2 (i = 2):** `result = 6 * 3 + (-4) = 14`
+- **Iteration 3 (i = 1):** `result = 14 * 3 + 7 = 49`
+- **Iteration 4 (i = 0):** `result = 49 * 3 + (-19) = 128`
+
+
+This corresponds exactly to the nested evaluation ((((0)x+6)x+(-4))x+7)x+(-19) and gives the correct result of 128.  The given example output of 124.0 is wrong.

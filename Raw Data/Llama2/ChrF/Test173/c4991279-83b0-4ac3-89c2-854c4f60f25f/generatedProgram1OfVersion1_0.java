@@ -1,0 +1,41 @@
+import java.util.PriorityQueue;
+
+public class MergePriorityQueues {
+
+    public static void main(String[] args) {
+        // Create the first priority queue (source)
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        pq1.add(5);
+        pq1.add(1);
+        pq1.add(8);
+        pq1.add(3);
+
+        // Create the second priority queue (destination)
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(2);
+        pq2.add(7);
+        pq2.add(4);
+
+        // Add all elements from pq1 to pq2
+        pq2.addAll(pq1);
+
+        // Print the merged priority queue (pq2)
+        System.out.println("Merged Priority Queue: " + pq2);
+
+
+        //Example with String objects for demonstration:
+        PriorityQueue<String> stringPQ1 = new PriorityQueue<>();
+        stringPQ1.add("apple");
+        stringPQ1.add("banana");
+        stringPQ1.add("orange");
+
+
+        PriorityQueue<String> stringPQ2 = new PriorityQueue<>();
+        stringPQ2.add("grape");
+        stringPQ2.add("kiwi");
+
+        stringPQ2.addAll(stringPQ1);
+        System.out.println("Merged String Priority Queue: " + stringPQ2);
+
+    }
+}

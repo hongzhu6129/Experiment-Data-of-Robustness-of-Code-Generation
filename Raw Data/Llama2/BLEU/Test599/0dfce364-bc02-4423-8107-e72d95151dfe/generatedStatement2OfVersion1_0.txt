@@ -1,0 +1,15 @@
+
+
+
+Key improvements:
+
+* **Handles Nanoseconds Correctly:** Uses `duration.toNanosPart()` which specifically gets the nanoseconds *within* the second (not the total nanoseconds which `duration.toNanos()` would give). This is crucial for accurate nanosecond differences.
+* **Clearer Output:** Includes labels like "Hours:", "Minutes:" etc., making the output easier to understand.
+* **Days Calculation Added:**  Calculates the difference in full days and includes that in the output.  This provides more comprehensive difference information, especially for dates further apart.
+* **Input Validation:**  Uses a `try-catch` block to handle potential `DateTimeParseException` if the user enters the dates/times in the wrong format.  This prevents the program from crashing.
+* **Resource Management:** The `Scanner` is closed using `scanner.close()` after it's no longer needed, which is good practice.
+* **Uses `java.time`:** This modern Java date/time API is much preferred over the older `Date` and `Calendar` classes.
+
+
+Example Usage:
+

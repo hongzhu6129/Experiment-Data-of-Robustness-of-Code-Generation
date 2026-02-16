@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`isCube()` method:** This separate method makes the code more organized and reusable.  It handles both positive and negative numbers correctly.
+
+2. **Efficient Cube Root Check:** Instead of iterating through numbers, this code uses `Math.cbrt()` (cube root) to efficiently check. We round the result to the nearest integer using `Math.round()` because `Math.cbrt()` returns a `double`. Then we cube the rounded integer and compare it to the original number.  This is significantly faster, especially for larger numbers.
+
+3. **Handles Negative Numbers:** The code correctly handles negative numbers by taking the absolute value and checking if that is a perfect cube.
+
+4. **Clear Output:**  Provides clear output messages indicating whether the input is a cube or not.
+
+
+**How to use with User Input (if needed):**
+
+If you want to get the number from user input instead of hardcoding it, you can use the `Scanner` class:
+

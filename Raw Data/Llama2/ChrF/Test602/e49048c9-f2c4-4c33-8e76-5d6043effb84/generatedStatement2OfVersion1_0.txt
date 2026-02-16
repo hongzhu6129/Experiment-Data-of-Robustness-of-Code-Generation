@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Uses `NavigableMap` and `TreeMap`:**  `TreeMap` is a common implementation of the `NavigableMap` interface, which provides methods like `subMap` with precise control over inclusivity/exclusivity of the boundary keys.
+
+2. **Clearer variable names:**  `startKey` and `endKey` improve readability.
+
+3. **Illustrates inclusive and exclusive submaps:** Shows how to create submaps that include or exclude the end key.
+
+4. **Explains the important relationship between submap and original map:**  Highlights that changes in the submap affect the original, and provides a solution to create an independent copy if needed.
+
+5. **Handles potential `IllegalArgumentException`:** The `subMap` method can throw this exception if the provided range is invalid (e.g., `startKey` > `endKey`), although this is less likely in a simple demonstration. Robust code in a real application should handle these exceptions.
+
+6. **Comprehensive Example:** The code gives several different examples to show the various functionalities provided by the `subMap()` method.

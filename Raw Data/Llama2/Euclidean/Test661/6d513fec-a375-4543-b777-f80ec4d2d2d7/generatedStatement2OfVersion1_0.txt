@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` method:** This helper method calculates the Fermat number for a given `n`. It uses `Math.pow()` to perform the exponentiation.  The result is cast to `long` because Fermat numbers grow very large quickly.
+
+2. **`main` method:**
+   - It prints a descriptive message.
+   - The loop iterates from `n = 0` to `n = 9` (inclusive) to calculate the first 10 Fermat numbers.
+   - Inside the loop, `calculateFermatNumber` is called, and the result is printed.
+
+3. **Long Data Type:**  Using `long` allows us to store larger Fermat numbers than `int` would. However, even `long` will not be able to hold Fermat numbers beyond the first few, as they grow extremely rapidly.  If you need to represent arbitrarily large numbers, you'd need to use `BigInteger` (see the alternative version below).
+
+**Alternative Version using BigInteger (for arbitrarily large Fermat numbers):**
+

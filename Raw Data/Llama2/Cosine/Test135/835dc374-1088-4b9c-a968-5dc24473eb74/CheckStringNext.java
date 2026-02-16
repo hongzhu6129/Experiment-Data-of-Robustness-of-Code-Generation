@@ -1,0 +1,88 @@
+public class CheckStringNext {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String str1 = "hello";
+        String str2 = "world";
+        boolean areNext = checkNext(str1, str2);
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are next to each other alphabetically: " + areNext);
+
+
+        str1 = "apple";
+        str2 = "apricot";
+        areNext = checkNext(str1, str2);
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are next to each other alphabetically: " + areNext);
+
+
+         str1 = "banana";
+        str2 = "apple"; //out of order
+        areNext = checkNext(str1, str2);
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are next to each other alphabetically: " + areNext);
+
+
+
+         str1 = "zebra";
+        str2 = "zebras"; //out of order
+        areNext = checkNext(str1, str2);
+        System.out.println("\"" + str1 + "\" and \"" + str2 + "\" are next to each other alphabetically: " + areNext);
+    }
+
+    private static boolean checkNext(String str1, String str2) {
+        if (str1 == null || str2 == null) { // Handle null inputs
+            return false; 
+        }
+
+
+        int comparison = str1.compareTo(str2);
+
+        if (comparison > 0) { //str1 is after str2, swap to test 
+             return checkNext(str2, str1);
+        }
+
+
+        if (comparison == 0) {  // They are the same string, not next to each other
+            return false;
+        }
+
+
+        // Convert strings to character arrays for comparison
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+        if (charArray2.length < charArray1.length) { //if length of str2 is less than str1, it's not next
+            return false;
+        }
+
+
+
+        // Iterate and check if the character at each index is the same or next letter in alphabet
+        for (int i = 0; i < charArray1.length; i++) {
+            if (charArray1[i] != charArray2[i]) {
+                if (charArray2[i] - charArray1[i] != 1) {
+                    if (!(i == charArray1.length - 1 && charArray2.length > charArray1.length && charArray2[i] == 'a')) { //for cases where string lengths differ by 1 (zebra vs zebras)
+                      return false;
+                    }
+                }
+            }
+        }
+         
+       
+       //for cases where string lengths differ by 1, i.e. zebra and zebras
+        if(charArray2.length > charArray1.length){
+
+          if(charArray2[charArray1.length] != 'a'){ 
+             return false;
+          }
+          for(int k=charArray1.length + 1; k<charArray2.length; ++k){
+             if(charArray2[k] != 'a'){
+                 return false;
+             }
+          }
+
+
+        }
+
+        return true;
+
+    }
+}

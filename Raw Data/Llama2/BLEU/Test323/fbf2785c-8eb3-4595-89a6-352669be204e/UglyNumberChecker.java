@@ -1,0 +1,34 @@
+public class UglyNumberChecker {
+
+    public static void main(String[] args) {
+        int num = 235; // Replace with any number you want to check
+
+        System.out.println(num + ": " + (isUgly(num) ? "It is an ugly number." : "It is not an ugly number."));
+
+
+        // Test cases (optional):
+        System.out.println("1: " + (isUgly(1) ? "It is an ugly number." : "It is not an ugly number."));
+        System.out.println("6: " + (isUgly(6) ? "It is an ugly number." : "It is not an ugly number."));
+        System.out.println("14: " + (isUgly(14) ? "It is an ugly number." : "It is not an ugly number."));
+
+
+    }
+
+    public static boolean isUgly(int num) {
+        if (num <= 0) {
+            return false;
+        }
+
+        while (num % 2 == 0) {
+            num /= 2;
+        }
+        while (num % 3 == 0) {
+            num /= 3;
+        }
+        while (num % 5 == 0) {
+            num /= 5;
+        }
+
+        return num == 1;
+    }
+}

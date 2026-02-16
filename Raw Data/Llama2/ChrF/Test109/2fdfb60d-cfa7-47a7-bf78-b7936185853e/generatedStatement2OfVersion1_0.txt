@@ -1,0 +1,22 @@
+
+
+
+**Explanation and Important Notes:**
+
+1. **Calendar.getInstance():**  Gets the current date and time.
+
+2. **Minimum Year:**  The minimum year supported by the Gregorian calendar (which `Calendar` uses by default) is 1.
+
+3. **Minimum Month:** Calendar uses a 0-indexed representation for months (0 = January, 1 = February, ..., 11 = December). So, the minimum month value is `Calendar.JANUARY` which is equivalent to 0. The code prints this 0-indexed value.
+
+4. **Minimum Week of Month:** This is slightly trickier.  The first week of the month is the week containing the 1st day of the month.  The code first sets the calendar to the 1st of the current month using `calendar.set(Calendar.DAY_OF_MONTH, 1)` and then gets the `WEEK_OF_MONTH` value.
+
+5. **Minimum Day of Month:**  The minimum day of the month is always 1.
+
+6. **Output:** The output clarifies that the month is printed as a 0-indexed value. This is important to avoid confusion.  The week of the month will depend on the current locale and how weeks are defined (first day of the week, etc.).
+
+
+**Alternative for Week of Year (if needed):**
+
+If you needed the minimum week of the *year*, a similar approach applies.  Set the calendar to January 1st of the current year and get the `WEEK_OF_YEAR`.
+

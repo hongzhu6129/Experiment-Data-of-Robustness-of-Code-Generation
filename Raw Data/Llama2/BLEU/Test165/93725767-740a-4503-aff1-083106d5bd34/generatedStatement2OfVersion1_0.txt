@@ -1,0 +1,24 @@
+
+
+
+The term "exceeds measuring" isn't standard terminology. I've interpreted it to mean finding the maximum depth (or height) of the binary tree.  This is a common tree operation.
+
+**Explanation:**
+
+1. **Node Class:** Represents a node in the binary tree. It stores the data and references to the left and right children.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If the node is null (empty tree or end of a branch), the depth is 0.
+   - **Recursive Step:**
+     - Calculate the depth of the left subtree (`lDepth`).
+     - Calculate the depth of the right subtree (`rDepth`).
+     - Return the larger of the two depths, plus 1 (to account for the current node).
+
+3. **main(String[] args):**
+   - Creates example binary trees.
+   - Calls the `maxDepth` method to calculate and print the height of the trees.
+
+
+**How it works:**
+
+The `maxDepth` function recursively traverses the tree.  At each node, it compares the depths of its left and right subtrees.  The recursion naturally unwinds, and the final result is the maximum depth of the entire tree.

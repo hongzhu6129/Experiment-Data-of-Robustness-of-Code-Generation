@@ -1,0 +1,36 @@
+class Solution {
+    /**
+     * Counts the number of digits equal to 2 in a non-negative integer.
+     *
+     * @param n The non-negative integer.
+     * @return The count of digits equal to 2.
+     */
+    public static int test(int n) {
+        int count = 0;
+        String numStr = String.valueOf(n);
+
+        for (int i = 0; i < numStr.length(); i++) {
+            if (numStr.charAt(i) == '2') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int n1 = 2222;
+        System.out.println("Number of 2s in " + n1 + ": " + test(n1)); // Output: 4
+
+        int n2 = 123452;
+        System.out.println("Number of 2s in " + n2 + ": " + test(n2)); // Output: 1
+
+        int n3 = 0;
+        System.out.println("Number of 2s in " + n3 + ": " + test(n3)); // Output: 0
+
+        int n4 = 2022;
+        System.out.println("Number of 2s in " + n4 + ": " + test(n4)); // Output: 2
+
+
+    }
+}

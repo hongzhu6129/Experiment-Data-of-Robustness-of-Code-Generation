@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   Input: 123
+   Expected Output: 1010011
+
+2. **Leading Zeroes:**
+   Input: 0077
+   Expected Output: 111111
+
+3. **Single Digit Octal:**
+   Input: 5
+   Expected Output: 101
+
+4. **Zero:**
+   Input: 0
+   Expected Output: 0  (Corner case)
+
+5. **Empty String:**
+   Input: ""
+   Expected Output: "Invalid input: Empty string." (Corner case)
+
+
+6. **Non-Octal Character:**
+   Input: 12A
+   Expected Output: "Invalid input: Non-octal character detected." (Corner case)
+
+7. **Large Octal (within int limit):**
+   Input: 77777777
+   Expected Output: 1111111111111111111111111
+
+8. **Octal too large for int:**
+   Input: 2147483648 (or any larger octal)  (Corner case)
+   Expected Output: "Invalid input: Octal number too large."
+
+
+These test cases cover various scenarios, including normal octal numbers, leading zeros, single-digit octals, the important corner case of zero,  error handling for empty strings and invalid characters, and handling of potentially large octal values that might cause overflow issues.  The code has been improved to specifically address these edge cases more robustly.

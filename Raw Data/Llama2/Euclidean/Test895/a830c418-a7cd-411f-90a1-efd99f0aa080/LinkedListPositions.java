@@ -1,0 +1,55 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListPositions {
+
+    public static void main(String[] args) {
+
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Kotlin");
+
+
+        System.out.println("Displaying elements and their positions using a ListIterator:");
+
+        // Use a ListIterator to traverse the LinkedList
+        ListIterator<String> iterator = languages.listIterator();
+        while (iterator.hasNext()) {
+            int index = iterator.nextIndex(); // Get the index *before* moving to the next element
+            String element = iterator.next();
+            System.out.println("Element at position " + index + ": " + element);
+        }
+
+
+        System.out.println("\nDisplaying elements and their positions using a for loop and get():");
+
+        // Alternatively, use a for loop and get() method (less efficient)
+        for (int i = 0; i < languages.size(); i++) {
+            String element = languages.get(i);
+            System.out.println("Element at position " + i + ": " + element);
+        }
+
+
+
+
+        System.out.println("\nFinding and displaying the position of an element:");
+        String targetElement = "C++";
+
+         int targetIndex = languages.indexOf(targetElement);
+
+         if (targetIndex != -1) {
+             System.out.println(targetElement + " found at position: " + targetIndex);
+         } else {
+             System.out.println(targetElement + " not found in the list.");
+         }
+
+
+
+    }
+}

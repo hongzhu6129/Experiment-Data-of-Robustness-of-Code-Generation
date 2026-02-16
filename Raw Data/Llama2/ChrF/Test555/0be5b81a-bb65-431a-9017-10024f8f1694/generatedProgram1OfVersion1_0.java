@@ -1,0 +1,23 @@
+import java.util.TreeMap;
+
+public class ClearTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Add some elements to the TreeMap
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+
+        // Print the initial TreeMap
+        System.out.println("Initial TreeMap: " + treeMap);
+
+        // Delete all elements from the TreeMap
+        treeMap.clear();
+
+        // Print the TreeMap after clearing
+        System.out.println("TreeMap after clearing: " + treeMap); 
+    }
+}

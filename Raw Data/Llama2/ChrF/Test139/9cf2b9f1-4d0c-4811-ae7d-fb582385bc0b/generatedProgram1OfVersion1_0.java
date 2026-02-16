@@ -1,0 +1,63 @@
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class MaxPriorityQueue {
+
+    public static void main(String[] args) {
+        // Method 1: Using Collections.reverseOrder() comparator
+        PriorityQueue<Integer> maxPQ1 = new PriorityQueue<>(Collections.reverseOrder());
+
+        maxPQ1.add(3);
+        maxPQ1.add(1);
+        maxPQ1.add(4);
+        maxPQ1.add(2);
+
+        System.out.println("Max PriorityQueue (Method 1): " + maxPQ1); // Output: [4, 2, 3, 1]  (Order might vary slightly due to heap implementation)
+
+
+        // Method 2: Multiplying by -1 (for numerical data types)
+        PriorityQueue<Integer> maxPQ2 = new PriorityQueue<>();
+
+        maxPQ2.add(-3);  // Add the negative of the original values
+        maxPQ2.add(-1);
+        maxPQ2.add(-4);
+        maxPQ2.add(-2);
+
+        System.out.print("Max PriorityQueue (Method 2): [");
+        while (!maxPQ2.isEmpty()) {
+            System.out.print(-maxPQ2.poll() + ", ");  // Retrieve and multiply by -1 to get the original value
+        }
+        System.out.println("]"); // Output: [4, 3, 2, 1, ]
+
+
+
+        //Example with custom objects (using Comparator -  Method 1 variation)
+        PriorityQueue<MyObject> maxPQObjects = new PriorityQueue<>(Collections.reverseOrder((o1, o2) -> Integer.compare(o1.value, o2.value)));
+
+
+        maxPQObjects.add(new MyObject(5));
+        maxPQObjects.add(new MyObject(2));
+        maxPQObjects.add(new MyObject(8));
+
+        System.out.println("Max PriorityQueue (Custom Objects): " + maxPQObjects);
+
+    }
+
+
+
+}
+
+
+class MyObject {
+    int value;
+
+    public MyObject(int value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);  // Just for simplified printing
+    }
+
+}

@@ -1,0 +1,35 @@
+class Solution {
+    /**
+     * Calculates a raised to the power of b without using multiplication or division operators.
+     *
+     * @param a The base number.
+     * @param b The exponent.
+     * @return a raised to the power of b.
+     */
+    public static int power(int a, int b) {
+        if (b == 0) {
+            return 1;
+        }
+
+        int result = a;
+        int increment = a;
+
+        for (int i = 1; i < b; i++) {
+            // Simulate multiplication using repeated addition
+            for (int j = 1; j < a; j++) {
+                result += increment;
+            }
+            increment = result; // Update increment for the next iteration
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(power(2, 3)); // Output: 8
+        System.out.println(power(3, 4)); // Output: 81
+        System.out.println(power(5, 0)); // Output: 1
+        System.out.println(power(0, 5)); // Output: 0 
+        System.out.println(power(2, 10)); // Output: 1024
+    }
+}

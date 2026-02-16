@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ColorList {
+
+    public static void main(String[] args) {
+        // Create a sophisticated list (ArrayList in this case)
+        List<String> colors = new ArrayList<>();
+
+        // Add some colors
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        colors.add("Yellow");
+        colors.add("Magenta");
+        colors.add("Cyan");
+
+        // Print out the collection
+        System.out.println(colors);
+
+
+        //  Alternatively, loop and print individually (more sophisticated output):
+        System.out.println("\nPrinting colors individually:");
+        for (String color : colors) {
+            System.out.println(color);
+        }
+
+        // Or using Java 8 streams (another sophisticated approach):
+        System.out.println("\nPrinting using streams:");
+        colors.stream().forEach(System.out::println);
+
+
+         /*   Even more sophistication - using streams with formatting:
+              This demonstrates adding extra features like numbering the colors. */
+
+        System.out.println("\nPrinting with formatting:");
+        colors.stream()
+              .forEach(color ->  System.out.println(colors.indexOf(color) + 1 + ". " + color)); // Prints with numbers
+    }
+}

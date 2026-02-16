@@ -1,0 +1,37 @@
+public class StringToArray {
+
+    public static void main(String[] args) {
+        String str = "sample";
+
+        // Method 1: Using toCharArray() method
+        char[] charArray1 = str.toCharArray();
+        System.out.print("Method 1: ");
+        for (char c : charArray1) {
+            System.out.print(c);
+        }
+        System.out.println();
+
+
+        // Method 2: Iterating through the string
+        char[] charArray2 = new char[str.length()];
+        for (int i = 0; i < str.length(); i++) {
+            charArray2[i] = str.charAt(i);
+        }
+        System.out.print("Method 2: ");
+        for (char c : charArray2) {
+            System.out.print(c);
+        }
+        System.out.println();
+
+
+         //Method 3: Using getChars() (Less common but available)
+        char[] charArray3 = new char[str.length()];
+        str.getChars(0, str.length(), charArray3, 0); // Copies characters from string to array
+        System.out.print("Method 3: ");
+        for (char c : charArray3) {
+            System.out.print(c);
+        }
+        System.out.println();
+
+    }
+}

@@ -1,0 +1,15 @@
+public class JavaPattern {
+
+    public static void main(String[] args) {
+        System.out.println("j    a   v     v  a");
+        System.out.println("j   a a   v   v  a a");
+        System.out.println("j  a   a   v v  a   a");
+        System.out.println("jj aaaaa   v  aaaaa");
+        System.out.println(" jj a   a   v a   a");
+
+        // Extra line added based on user sample output:
+        System.out.println("    a     v   a");  //the  v a a (clarified spacing for the provided output)
+
+
+    }
+}

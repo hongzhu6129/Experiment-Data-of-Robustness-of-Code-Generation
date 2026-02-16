@@ -1,0 +1,24 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling for Command-line Argument:** The code now checks if a filename is provided as a command-line argument.  If not, it prints a usage message and exits.
+
+2. **File Not Found Handling:** The code uses a `try-catch` block to handle `FileNotFoundException`.  If the file is not found, it prints an error message and exits.
+
+3. **Word Filtering (Starts with a Letter):**  The code uses a regular expression `^[a-zA-Z].*` to ensure that only words starting with a letter (a-z or A-Z) are added to the `words` list.
+
+4. **Descending Sort:** `Collections.sort(words, Collections.reverseOrder());` sorts the `words` list in descending alphabetical order.
+
+5. **Clearer Output (display method):**  The `display` method now simply prints each word on a separate line, making the output more readable.
+
+6. **Resource Management (try-with-resources):** The `Scanner` is used inside a `try-with-resources` block. This ensures that the `Scanner` and the underlying file are closed automatically, even if an exception occurs.
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `DescendingWords.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   

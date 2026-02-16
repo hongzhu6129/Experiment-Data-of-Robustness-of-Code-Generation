@@ -1,0 +1,20 @@
+
+* **How to Test:**  Run the program and visually inspect the output.  Redirect the output to a file (e.g., `java HelloWorld > output.txt`) and compare the contents of `output.txt` to the expected output using a diff tool or by manually checking.
+
+**2. Name Variation Test (Not a true corner case, but good practice):**
+
+* **Purpose:**  Ensure the program works regardless of the name entered.
+* **How to Test:** Change the name string to different values:
+    * A very long name.
+    * A name with spaces.
+    * A name with special characters (e.g.,  `John O'Reilly`, `Jean-Pierre`).
+    * An empty string `""`.  This checks if the program handles an empty name gracefully (it should print a blank line after "hello").
+
+**3. System Output Stream Issues (Corner Case - less likely, but important to consider for robust code):**
+
+* **Purpose:** While rare in typical environments, check the program's behavior if there's an issue with the standard output stream.
+* **How to Test (Simulated Error):** This is harder to test directly without more sophisticated setups. You could potentially try redirecting output to a non-existent or inaccessible location (e.g., a protected directory) to simulate a failure. The expected behavior in such a case would be an exception, which you might want to handle in a more advanced version of the code.
+
+
+**Example of a test with a long name using JUnit (a Java testing framework):**
+

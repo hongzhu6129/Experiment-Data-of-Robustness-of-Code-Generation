@@ -1,0 +1,60 @@
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+class Solution {
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Example usage:
+        Node root = new Node(3);
+        root.left = new Node(9);
+        root.right = new Node(20);
+        root.right.left = new Node(15);
+        root.right.right = new Node(7);
+
+        int depth = solution.maxDepth(root);
+        System.out.println("Maximum depth of the tree is: " + depth);
+
+
+        // Another example (empty tree)
+        Node emptyRoot = null;
+        int emptyDepth = solution.maxDepth(emptyRoot);
+        System.out.println("Maximum depth of the empty tree is: " + emptyDepth);
+
+
+        // Another example (single node tree)
+        Node singleNodeRoot = new Node(1);
+        int singleNodeDepth = solution.maxDepth(singleNodeRoot);
+        System.out.println("Maximum depth of the single node tree is: " + singleNodeDepth);
+
+
+
+         // Example with a skewed tree
+        Node skewedRoot = new Node(1);
+        skewedRoot.left = new Node(2);
+        skewedRoot.left.left = new Node(3);
+        skewedRoot.left.left.left = new Node(4);
+
+
+        int skewedDepth = solution.maxDepth(skewedRoot);
+        System.out.println("Maximum depth of the skewed tree is: " + skewedDepth);
+    }
+}

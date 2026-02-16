@@ -1,0 +1,32 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Length | Width | Expected Area | Expected Perimeter | Notes                                 |
+| --------- | ------ | ----- | ------------- | ---------------- | ------------------------------------ |
+| 1        | 5      | 10    | 50           | 30              | Normal case                          |
+| 2        | 0      | 10    | 0            | 20              | Zero length                          |
+| 3        | 5      | 0     | 0            | 10              | Zero width                           |
+| 4        | 0      | 0     | 0            | 0               | Zero length and width                 |
+| 5        | -5     | 10    | Exception         | Exception              | Negative length (Invalid input)      |
+| 6        | 5      | -10   | Exception            | Exception              | Negative width (Invalid input)       |
+| 7        | 10.5   | 5.2   | 54.6          | 31.4            | Decimal values                     |
+| 8        | 1      | 1     | 1            | 4               | Square (special case of rectangle) |
+| 9        | Integer.MAX_VALUE      | 1     | Integer.MAX_VALUE            | 2 + 2*Integer.MAX_VALUE               | Very large length (potential overflow, handle carefully) |
+
+
+
+
+**How to Run Test Cases:**
+
+You can implement these test cases in a separate testing class (using a testing framework like JUnit is recommended for larger projects) or manually:
+
+**Manual Testing:**
+
+1.  Change the input values in the `main` method to match the values in the test case table.
+2.  Run the program and compare the output with the expected area and perimeter.
+3.  For test cases involving negative input,  modify the code to throw `IllegalArgumentException` to prevent calculation with invalid values as shown below:
+
+

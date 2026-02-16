@@ -1,0 +1,19 @@
+import java.util.HashMap;
+
+public class EmptyHashMap {
+
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("apple", 1);
+        hashMap.put("banana", 2);
+        hashMap.put("orange", 3);
+
+        System.out.println("Original HashMap: " + hashMap);
+
+        // Empty the HashMap using clear()
+        hashMap.clear(); 
+
+        System.out.println("HashMap after clearing: " + hashMap);
+    }
+}

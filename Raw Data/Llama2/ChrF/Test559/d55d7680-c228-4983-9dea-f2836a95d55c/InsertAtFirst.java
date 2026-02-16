@@ -1,0 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertAtFirst {
+
+    public static void main(String[] args) {
+        // Create an ArrayList
+        List<String> list = new ArrayList<>();
+
+        // Add some initial elements (optional)
+        list.add("element2");
+        list.add("element3");
+
+        // Element to insert at the beginning
+        String newElement = "element1";
+
+        // Insert the new element at the first position (index 0)
+        list.add(0, newElement);  // add(index, element) inserts at the specified index
+
+        // Print the updated ArrayList
+        System.out.println(list); 
+    }
+}

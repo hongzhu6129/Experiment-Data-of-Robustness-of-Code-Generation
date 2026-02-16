@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:**  This helper method encapsulates the Fermat number calculation, making the `main` method cleaner and more readable.  It uses `Math.pow()` to calculate 2^(2^n) and then adds 1. The result is cast to `long` to handle the potentially large values.
+
+2. **`long` Data Type:**  Using `long` is crucial because Fermat numbers grow very rapidly.  Even though `long` has a limited range, it's sufficient for the first few Fermat numbers.  Beyond that, you would need to use `BigInteger` to represent arbitrarily large integers.
+
+3. **Clarity and Output:** The code now prints a clear message indicating what the output represents.
+
+
+**Limitations (and how to handle them if required):**
+
+* **Overflow with `long`:**  `long` can only represent integers up to 2^63 - 1.  Fermat numbers quickly exceed this limit (the 5th Fermat number already does).  If you needed to calculate larger Fermat numbers, you'd have to use `BigInteger`:
+

@@ -1,0 +1,11 @@
+
+
+
+Key improvements and explanations in this version:
+
+1. **Clearer Examples:** Includes examples for `subMap()`, `headMap()`, and `tailMap()` with explanations of inclusivity/exclusivity.
+2. **Warning about Submap Modifications:**  Emphasizes the crucial point that modifying a submap obtained directly from `subMap()`, `headMap()` or `tailMap()` *also modifies the original map*.  This is often a source of bugs.
+3. **Independent Copy Example:** Demonstrates how to create a truly independent copy of a submap using a constructor, which is essential if you don't want changes to affect the original map.
+4. **IllegalArgumentException Handling:** Includes an example showing what happens if you try to insert a key outside the range of the original `subMap()` (illustrates how it enforces its boundaries).
+5. **`NavigableMap` and `TreeMap`:** Uses a `TreeMap` as the `NavigableMap` implementation, which is more appropriate than a plain `HashMap` when working with ranges of keys (as `TreeMap` maintains sorted order).
+6. **Comprehensive Comments:** Provides explanations for each step of the process, making the code easier to understand.

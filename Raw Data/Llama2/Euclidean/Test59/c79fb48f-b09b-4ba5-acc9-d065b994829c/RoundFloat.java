@@ -1,0 +1,48 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        // Example usage:
+        float number = 123.456789f;
+        int decimalPlaces = 2;
+
+        float roundedNumber = roundFloat(number, decimalPlaces);
+
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+
+
+        number = 987.654321f;
+        decimalPlaces = 3;
+
+        roundedNumber = roundFloat(number, decimalPlaces);
+
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+        number = 0.123456789f; //Demonstrate with a number < 1
+        decimalPlaces = 4; 
+
+        roundedNumber = roundFloat(number, decimalPlaces);
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+        number = -56.789f; //Demonstrate with negative numbers
+        decimalPlaces = 1;
+        roundedNumber = roundFloat(number, decimalPlaces);
+        System.out.println("Original number: " + number);
+        System.out.println("Rounded number: " + roundedNumber);
+
+
+
+    }
+
+    public static float roundFloat(float number, int decimalPlaces) {
+        BigDecimal bd = new BigDecimal(Float.toString(number)); // Convert float to BigDecimal to avoid precision issues.
+        bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP); // Round using HALF_UP (common rounding).
+        return bd.floatValue(); // Convert back to float.
+    }
+}

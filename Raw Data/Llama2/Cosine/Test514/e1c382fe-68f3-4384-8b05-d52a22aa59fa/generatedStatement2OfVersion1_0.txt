@@ -1,0 +1,37 @@
+
+
+
+**Test Cases:**
+
+1. **Regular Positive Numbers:**
+   - a = 5, b = 10  Expected output: a = 10, b = 5
+
+2. **Regular Negative Numbers:**
+   - a = -3, b = -7  Expected output: a = -7, b = -3
+
+3. **Zero and a Number:**
+   - a = 0, b = 15  Expected output: a = 15, b = 0
+   - a = -8, b = 0  Expected output: a = 0, b = -8
+
+4. **Identical Numbers:**  (This is a corner case because it's valid, but the swap has no visible effect)
+   - a = 7, b = 7  Expected output: a = 7, b = 7
+
+
+5. **Large Numbers:** (To check for potential overflow issues, especially when using the addition/subtraction method.  Although int in Java has a pretty large range)
+   - a = Integer.MAX_VALUE, b = Integer.MIN_VALUE  Expected output: a = Integer.MIN_VALUE, b = Integer.MAX_VALUE
+   - a = Integer.MAX_VALUE - 1, b = 1   (Important to check near the boundaries for overflow with add/subtract method)
+
+6. **Using the add/subtract method with numbers that could potentially lead to overflow:** (Important test case) For example, using Integer.MAX_VALUE and a positive number will lead to overflow. The program should handle this gracefully (or you might use a try-catch block to demonstrate how to handle it).  Java's behavior is to wrap around in case of overflow, so the results might not be what you'd intuitively expect.
+
+
+
+
+**How to Run Test Cases (Example using the first test case):**
+
+1. **Compile:**  `javac SwapVariables.java`
+2. **Run:** `java SwapVariables`
+3. **Input:** When prompted, enter `5` for the first variable and `10` for the second variable (and again for the c and d variables if you want to test the add/subtract method).
+4. **Verify:** Check that the output matches the expected output (a = 10, b = 5).
+
+
+Repeat steps 2-4 for each test case, providing the appropriate input values and checking the output.  For the large number test cases, you'll want to carefully examine the output to ensure it's correct, especially when using the addition/subtraction method.  The corner cases, like identical numbers, are important to ensure your logic is sound and handles all possible input scenarios.

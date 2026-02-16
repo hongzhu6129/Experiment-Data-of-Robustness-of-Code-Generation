@@ -1,0 +1,16 @@
+public class AddBinary {
+
+    public static void main(String[] args) {
+        String binary1 = "10";
+        String binary2 = "11";
+
+        int integer1 = Integer.parseInt(binary1, 2); // Convert binary to integer
+        int integer2 = Integer.parseInt(binary2, 2);
+
+        int sum = integer1 + integer2;
+
+        String binarySum = Integer.toBinaryString(sum); // Convert sum back to binary
+
+        System.out.println("Sum of two binary numbers: " + binarySum);
+    }
+}

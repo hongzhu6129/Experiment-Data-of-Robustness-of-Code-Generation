@@ -1,0 +1,80 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = scanner.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference: " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder (Modulo): " + (num1 % num2)); // "until" likely means remainder
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+
+        scanner.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Output (Sum, Difference, Product, Quotient, Remainder) |
+|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | 15, 5, 50, 2.0, 0.0 |
+| 2. Negative Integers | -10 | -5 | -15, -5, 50, 2.0, 0.0 |
+| 3. Mixed Integers | 10 | -5 | 5, 15, -50, -2.0, 0.0 |
+| 4. Zero and Positive | 0 | 5 | 5, -5, 0, 0.0, 0.0 |
+| 5. Positive and Zero | 5 | 0 | 5, 5, 0, Division by zero is not allowed.  |  // Corner Case: Division by Zero
+| 6. Zero and Zero | 0 | 0 | 0, 0, 0, Division by zero is not allowed. | // Corner Case: Division by Zero
+| 7. Positive Decimals | 2.5 | 1.5 | 4.0, 1.0, 3.75, 1.6666666666666667, 1.0 |
+| 8. Negative Decimals | -2.5 | -1.5 | -4.0, -1.0, 3.75, 1.6666666666666667, -1.0 |
+| 9. Large Numbers | 100000 | 50000 | 150000, 50000, 5.0E9, 2.0, 0.0 |
+| 10. Small Numbers | 0.001 | 0.002 | 0.003, -0.001, 2.0E-6, 0.5, 0.001 |
+
+
+
+**How to Run Test Cases:**
+
+While you can manually enter these values into the program, a more efficient way to test is to use a testing framework like JUnit. Here's a simple example using JUnit 5:
+
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ArithmeticOperationsTest {
+
+    @Test
+    void testPositiveIntegers() {
+        assertEquals(15, ArithmeticOperations.sum(10, 5)); // Example for sum, create similar tests for other operations
+        // ... more assertions for difference, product, quotient, remainder
+    }
+
+    // ... other test methods for remaining test cases
+
+    // Helper methods to avoid code duplication in test cases
+    private double sum(double num1, double num2){
+        return num1 + num2;
+    }
+
+    // Add similar helper methods for subtract, multiply, divide and modulo
+}
+```
+
+Remember to add the JUnit dependency to your project if you are using an IDE like IntelliJ or Eclipse.  This allows for automated testing and easier verification of your code's correctness.  You'll need to modify your `ArithmeticOperations` class slightly to make the methods (add, subtract, etc.) `static` and `public` so JUnit can access them directly without creating an instance of the class. This is standard practice for unit testing.

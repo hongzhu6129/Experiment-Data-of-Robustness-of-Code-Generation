@@ -1,0 +1,54 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class RemoveGreatestKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap is used because it automatically sorts entries by key.
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Add some sample data
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(3, "Three");
+        map.put(2, "Two");
+        map.put(4, "Four");
+
+        if (!map.isEmpty()) {  // Check if the map is empty to avoid exceptions.
+            // Get the greatest key (last entry in a TreeMap)
+            Integer greatestKey = map.lastKey();
+
+            // Get the value associated with the greatest key
+            String value = map.get(greatestKey);
+
+            // Remove the entry with the greatest key
+            map.remove(greatestKey);
+
+            // Print the removed key-value pair and the updated map
+            System.out.println("Removed Key-Value Pair: " + greatestKey + "=" + value);
+            System.out.println("Updated Map: " + map);
+        } else {
+            System.out.println("The map is empty.");
+        }
+
+
+
+        // Example with a different data type for keys (String)
+         TreeMap<String, Integer> stringKeyMap = new TreeMap<>();
+         stringKeyMap.put("apple", 1);
+         stringKeyMap.put("banana", 2);
+         stringKeyMap.put("orange", 3);
+
+         if (!stringKeyMap.isEmpty()) {
+             String greatestStringKey = stringKeyMap.lastKey();
+             Integer stringKeyValue = stringKeyMap.get(greatestStringKey);
+             stringKeyMap.remove(greatestStringKey);
+             System.out.println("Removed String Key-Value Pair: " + greatestStringKey + "=" + stringKeyValue);
+             System.out.println("Updated String Key Map: " + stringKeyMap);
+
+         } else {
+             System.out.println("The String Key map is empty.");
+         }
+
+    }
+}

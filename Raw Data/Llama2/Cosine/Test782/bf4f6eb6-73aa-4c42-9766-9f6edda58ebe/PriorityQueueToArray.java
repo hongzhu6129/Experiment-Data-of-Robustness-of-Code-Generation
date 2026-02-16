@@ -1,0 +1,60 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(9);
+        priorityQueue.add(3);
+        priorityQueue.add(7);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] array1 = new Integer[priorityQueue.size()];
+        array1 = priorityQueue.toArray(array1); 
+        System.out.println("Array 1 (pre-allocated): " + Arrays.toString(array1));
+
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] array2 = priorityQueue.toArray();
+        Integer[] array2Int = new Integer[array2.length];
+        // Need to manually cast each element from Object to Integer.
+        for (int i = 0; i < array2.length; i++) {
+            array2Int[i] = (Integer) array2[i];
+        }
+        System.out.println("Array 2 (not pre-allocated): " + Arrays.toString(array2Int));
+
+
+        // Method 3: Iterating through the PriorityQueue (preserves order for some PriorityQueue implementations*)
+         Integer[] array3 = new Integer[priorityQueue.size()];
+        int i = 0;
+        for (Integer element : priorityQueue) { // Enhanced for loop (iterator)
+            array3[i++] = element;
+        }
+
+
+        System.out.println("Array 3 (iterator): " + Arrays.toString(array3));
+
+
+
+
+        // *Note about order: The order of elements when iterating (Method 3) or converting 
+        // to an array (Method 2) isn't strictly guaranteed to be the priority order 
+        // for *all* PriorityQueue implementations. It's typically the insertion order or 
+        // some internal representation order.  Method 1, when used correctly with a
+        // pre-allocated array of the correct type and size, provides the most reliable
+        // behavior according to the Java documentation.
+
+
+        // If you need to get elements from the priority queue in priority order
+        // repeatedly, you might consider using a sorted array or list instead of
+        // converting to an array every time.  Alternatively, you could poll elements
+        // one by one from the priority queue to access them in order, but this would
+        // empty the queue.
+    }
+}

@@ -1,0 +1,30 @@
+class Solution {
+    /**
+     * Rounds a float value to the nearest integer.
+     *
+     * @param num The float value to round.
+     * @return The rounded float value.
+     */
+    public static float round_num(float num) {
+        return Math.round(num);
+    }
+
+    /**
+     * Main method to demonstrate the rounding function.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        float num1 = 3.14f;
+        float roundedNum1 = round_num(num1);
+        System.out.println(num1 + " rounded is " + roundedNum1);
+
+        float num2 = 4.5f;
+        float roundedNum2 = round_num(num2);
+        System.out.println(num2 + " rounded is " + roundedNum2);
+
+         float num3 = -2.7f;
+        float roundedNum3 = round_num(num3);
+        System.out.println(num3 + " rounded is " + roundedNum3);
+    }
+}

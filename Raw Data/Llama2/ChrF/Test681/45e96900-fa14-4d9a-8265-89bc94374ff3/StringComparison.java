@@ -1,0 +1,41 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        // Sample strings and character sequence for comparison
+        String str1 = "Hello World";
+        String str2 = "Hello world";
+        String str3 = "Hello World";
+        String seq = "World";
+
+
+        // Comparing using equals() - case-sensitive
+        System.out.println("String 1 equals String 3 (case-sensitive): " + str1.equals(str3)); // Output: true
+        System.out.println("String 1 equals String 2 (case-sensitive): " + str1.equals(str2)); // Output: false
+
+
+        // Comparing using equalsIgnoreCase() - case-insensitive
+        System.out.println("String 1 equals String 2 (case-insensitive): " + str1.equalsIgnoreCase(str2)); // Output: true
+
+
+        // Comparing parts of strings using contains()
+        System.out.println("String 1 contains \"" + seq + "\": " + str1.contains(seq)); // Output: true
+        System.out.println("String 2 contains \"" + seq + "\": " + str2.contains(seq)); // Output: true // Because contains() is case-sensitive by default. To do a case-insensitive contains you would need more complex logic.
+
+        // Comparing using compareTo() - lexicographical comparison
+        System.out.println("String 1 compared to String 2 (lexicographically): " + str1.compareTo(str2)); // Output: negative value (because 'W' < 'w' in ASCII)
+        System.out.println("String 1 compared to String 3 (lexicographically): " + str1.compareTo(str3)); // Output: 0 (because strings are identical)
+
+         // Comparing using compareToIgnoreCase() - lexicographical comparison (case-insensitive)
+        System.out.println("String 1 compared to String 2 (lexicographically, case-insensitive): " + str1.compareToIgnoreCase(str2)); // Output: 0
+
+        // startsWith() and endsWith() - check prefixes and suffixes
+        System.out.println("String 1 starts with \"Hello\": " + str1.startsWith("Hello")); // Output: true
+        System.out.println("String 1 ends with \"World\": " + str1.endsWith("World"));   // Output: true
+
+
+
+        // Demonstrating how to do a case-insensitive contains using toLowerCase
+         String seqLower = seq.toLowerCase();
+        System.out.println("String 2 contains \"" + seq + "\" (case-insensitive): " + str2.toLowerCase().contains(seqLower)); // Output: true
+    }
+}

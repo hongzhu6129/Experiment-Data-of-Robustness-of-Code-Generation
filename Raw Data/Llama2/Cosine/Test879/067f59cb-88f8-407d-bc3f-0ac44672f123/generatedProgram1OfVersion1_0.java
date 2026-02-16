@@ -1,0 +1,27 @@
+public class StringPairs {
+
+    public String pairsToReturn(String str) {
+        if (str == null || str.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (i % 5 < 3 ) { // Check if the index is within the first three positions of a group of five
+                result.append(str.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        StringPairs sp = new StringPairs();
+        System.out.println(sp.pairsToReturn("abcdefghij")); // Output: abcghi
+        System.out.println(sp.pairsToReturn("abcdefghijklmno")); // Output: abcghijkl
+        System.out.println(sp.pairsToReturn("123456789012345")); //Output: 123678123
+        System.out.println(sp.pairsToReturn("")); // Output: 
+        System.out.println(sp.pairsToReturn(null)); // Output:
+
+
+    }
+}

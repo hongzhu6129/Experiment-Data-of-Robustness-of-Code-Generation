@@ -1,0 +1,10 @@
+
+
+
+Key improvements in this version:
+
+- **Handles edge cases:**  Correctly handles empty and null strings.
+- **Uses `Pattern` and `Matcher`:** The most efficient way to count overlapping occurrences of substrings of specific lengths is to use regular expressions with `Pattern` and `Matcher` from `java.util.regex`.
+- **Lookahead assertion (fixed overlapping matches for length-4):** The crucial improvement is the use of a lookahead assertion `(?=.{4})` when matching the 4-character strings.  This ensures that we don't miss any counts.  Without it, the `Matcher` would advance by 4 characters after each match, potentially skipping valid 4-character sequences.
+- **Clearer Code and Comments:** Added comments to explain the logic and added more test cases.
+- **More Test Cases:** Included more examples in `main()` to demonstrate different scenarios.

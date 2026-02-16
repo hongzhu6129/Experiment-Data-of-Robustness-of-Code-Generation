@@ -1,0 +1,55 @@
+class Solution {
+    /**
+     * Finds the index of the first unique character in a given string.
+     *
+     * @param s The input string.
+     * @return The index of the first unique character.
+     */
+    public static int first_Uniq_Char(String s) {
+        int[] charCounts = new int[26]; // Assuming only lowercase English alphabet characters
+
+        // Count character frequencies
+        for (char c : s.toCharArray()) {
+            charCounts[c - 'a']++;
+        }
+
+        // Find the first unique character
+        for (int i = 0; i < s.length(); i++) {
+            if (charCounts[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1; // This line should never be reached because the problem states there's always a unique character.
+    }
+
+    public static void main(String[] args) {
+        String str = "wresource";
+        System.out.println("Original String: " + str);
+        int index = first_Uniq_Char(str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "leetcode";
+        System.out.println("Original String: " + str);
+        index = first_Uniq_Char(str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "aabb";
+        System.out.println("Original String: " + str);
+        index = first_Uniq_Char(str);
+        System.out.println("First unique character of the above: " + index);
+
+          str = "loveleetcode";
+        System.out.println("Original String: " + str);
+        index = first_Uniq_Char(str);
+        System.out.println("First unique character of the above: " + index);
+
+
+         str = "abcabcbb";
+        System.out.println("Original String: " + str);
+        index = first_Uniq_Char(str);
+        System.out.println("First unique character of the above: " + index);
+    }
+}

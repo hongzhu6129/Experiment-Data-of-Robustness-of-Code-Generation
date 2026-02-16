@@ -1,0 +1,38 @@
+
+
+**Test Cases and Corner Cases:**
+
+1. **Standard Case (Java Installed):**
+   - Expected Output: "Java is installed on your system."
+   - How to Test: Run the program on a system with a standard Java installation (Oracle JDK or OpenJDK).
+
+2. **Java Not Installed:**
+   - Expected Output: "Java is not installed on your system."
+   - How to Test:  Run the program on a system where Java is intentionally not installed, or temporarily modify the `PATH` environment variable to remove the Java bin directory.
+
+3. **Java Path Not Set:**
+   - Expected Output: "Java is not installed on your system." (Likely � this depends how the OS handles commands when the executable isn't on the PATH)
+   - How to Test:  Modify the `PATH` environment variable to remove the Java bin directory. This simulates a scenario where Java is installed but not accessible via the command line without explicitly specifying the full path.
+
+4. **Java Executable Renamed/Missing:**
+   - Expected Output: "Java is not installed on your system."
+   - How to Test (if you're comfortable): Temporarily rename the `java` executable in the Java bin directory. *Restore the original name after testing!*
+
+5. **Insufficient Permissions:** (Slightly harder to test, but important)
+   - Expected Output:  "Java is not installed on your system." (Most likely, though the specific error handling might vary depending on the OS and Java version)
+   - How to Test:  If possible, run the program with a user account that has restricted permissions that prevent it from executing the `java` command. (This test might require adjusting file system permissions).
+
+6. **OpenJDK vs. Oracle JDK:**
+    - Expected output: "Java is installed on your system."  (for both).
+    - How to Test: Test the program on systems with OpenJDK and Oracle JDK separately to ensure it correctly detects both distributions.
+
+
+**Explanation of Improvements over Simpler Approaches:**
+
+* **Reading from `getErrorStream()`:**  Java version information is typically printed to the standard error stream, not the standard output stream. This code correctly reads from `getErrorStream()` to capture this information.
+* **Handling both "java version" and "openjdk version":**  This ensures compatibility with various Java distributions, including OpenJDK, which may use slightly different output formatting.
+* **Robust Error Handling:** The `try-catch` block handles potential `IOExceptions`, preventing the program from crashing if there's an issue executing the command.
+
+
+These test cases and the refined code provide more thorough and reliable detection of Java installations compared to simpler approaches that just check for the existence of the `java` executable.  It's robust to various Java distributions (OpenJDK, Oracle),  environment configurations, and potential error conditions.
+

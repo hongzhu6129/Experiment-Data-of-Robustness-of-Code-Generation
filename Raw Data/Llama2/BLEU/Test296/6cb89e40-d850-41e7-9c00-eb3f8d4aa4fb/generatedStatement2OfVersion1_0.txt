@@ -1,0 +1,25 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Method Signature:** The `Saddleback` method now returns an `int[]` to represent the row and column index of the target element. This is more informative than just printing within the method.  If the element isn't found, it returns `{-1, -1}`.
+
+2. **Saddleback Search Logic:**  The `Saddleback` (or sometimes called "staircase search") method efficiently searches a sorted 2D array.  It starts at the top right corner.
+   - If the current element is equal to the target, it returns the row and column.
+   - If the current element is smaller than the target, we move down a row (because elements increase as you go down).
+   - If the current element is larger than the target, we move left a column (because elements decrease as you go left).
+
+3. **Handling Not Found:** The code now correctly returns `{-1, -1}` if the target is not found after exhausting the search space.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method, including how to check the result to determine if the target was found or not.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `SaddlebackSearch.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac SaddlebackSearch.java`
+3. **Run:**  After successful compilation, run the code using:  `java SaddlebackSearch`
+
+
+This improved version provides a robust and efficient solution for searching a sorted 2D array using the Saddleback search algorithm.

@@ -1,0 +1,97 @@
+import java.util.TreeSet;
+
+public class TreeSetLower {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and add some elements
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to find the lower value for
+        Integer element = 40;
+
+        // Get the element with a lower value
+        Integer lowerElement = treeSet.lower(element);
+
+        // Print the result
+        if (lowerElement != null) {
+            System.out.println("Lower element of " + element + " is: " + lowerElement);
+        } else {
+            System.out.println("No lower element found for " + element);
+        }
+
+
+        // Example with String TreeSet
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+        stringTreeSet.add("date");
+
+        String strElement = "cherry";
+        String lowerStrElement = stringTreeSet.lower(strElement);
+
+         if (lowerStrElement != null) {
+            System.out.println("Lower element of " + strElement + " is: " + lowerStrElement);
+        } else {
+            System.out.println("No lower element found for " + strElement);
+        }
+
+
+        //Example demonstrating handling when no lower element exists
+         Integer highestElement = 50;
+        Integer lowerThanHighest = treeSet.lower(highestElement);
+
+        if(lowerThanHighest != null){
+            System.out.println("Lower element of " + highestElement + " is: " + lowerThanHighest);
+        } else {
+            System.out.println("No lower element found for " + highestElement);
+        }
+
+        // Example with a custom object (requires implementing Comparable)
+        TreeSet<MyObject> objectTreeSet = new TreeSet<>();
+        objectTreeSet.add(new MyObject(1, "A"));
+        objectTreeSet.add(new MyObject(2, "B"));
+        objectTreeSet.add(new MyObject(3, "C"));
+
+        MyObject objElement = new MyObject(3, "C");
+        MyObject lowerObjElement = objectTreeSet.lower(objElement);
+
+        if (lowerObjElement != null) {
+            System.out.println("Lower element of " + objElement + " is: " + lowerObjElement);
+        } else {
+            System.out.println("No lower element found for " + objElement);
+        }
+    }
+
+
+
+    static class MyObject implements Comparable<MyObject> {
+        int id;
+        String name;
+
+        public MyObject(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+
+        @Override
+        public int compareTo(MyObject other) {
+            return Integer.compare(this.id, other.id); // Compare based on id
+        }
+
+
+        @Override
+        public String toString() {
+            return "MyObject{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
+    }
+}

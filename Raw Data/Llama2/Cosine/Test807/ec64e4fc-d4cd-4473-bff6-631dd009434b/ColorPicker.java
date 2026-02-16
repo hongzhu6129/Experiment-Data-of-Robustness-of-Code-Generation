@@ -1,0 +1,24 @@
+public class ColorPicker {
+
+    public String pickColor(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        if (input.startsWith("red")) {
+            return "red";
+        } else if (input.startsWith("black")) {
+            return "black";
+        } else {
+            return "";
+        }
+    }
+
+    public static void main(String[] args) {
+        ColorPicker cp = new ColorPicker();
+        System.out.println(cp.pickColor("redcar")); // Output: red
+        System.out.println(cp.pickColor("blackboard")); // Output: black
+        System.out.println(cp.pickColor("blue")); // Output: 
+        System.out.println(cp.pickColor(null)); // Output:
+        System.out.println(cp.pickColor("")); // Output:
+    }
+}

@@ -1,0 +1,29 @@
+public class VowelChecker {
+
+    public static void main(String[] args) {
+        String testString1 = "aeiou";
+        String testString2 = "aeiouz";
+        String testString3 = "hello";
+
+        System.out.println("\"" + testString1 + "\" is all vowels: " + test(testString1)); // Expected: true
+        System.out.println("\"" + testString2 + "\" is all vowels: " + test(testString2)); // Expected: true
+        System.out.println("\"" + testString3 + "\" is all vowels: " + test(testString3)); // Expected: false
+
+
+    }
+
+    public static boolean test(String input) {
+        if (input == null || input.isEmpty()) {
+            return true; // Empty string considered all vowels (or handle as needed)
+        }
+
+        for (char c : input.toCharArray()) {
+            char lowerC = Character.toLowerCase(c);
+            if (lowerC != 'a' && lowerC != 'e' && lowerC != 'i' && lowerC != 'o' && lowerC != 'u'&& lowerC !='z') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

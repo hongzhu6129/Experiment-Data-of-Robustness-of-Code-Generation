@@ -1,0 +1,32 @@
+public class Staircase {
+
+    public static void main(String[] args) {
+        int n = 10; // Example number of coins
+
+        int row = 1;
+        int coinsInRow = 0;
+        int coinsUsed = 0;
+
+        while (coinsUsed < n) {
+            coinsInRow = row; // Coins in current row
+
+            if (coinsUsed + coinsInRow <= n) { // Check if we have enough coins for the whole row
+                for (int i = 0; i < coinsInRow; i++) {
+                    System.out.print("O "); // Print a coin
+                }
+                System.out.println(); // New line after each row
+                coinsUsed += coinsInRow;
+                row++;
+            } else {  // Not enough coins for a full row, print remaining and exit
+                int remainingCoins = n - coinsUsed;
+                for (int i = 0; i < remainingCoins; i++) {
+                    System.out.print("O ");
+                }
+                System.out.println();
+                coinsUsed += remainingCoins; // Just to update coinsUsed for completeness.  Loop will terminate.
+            }
+        }
+    }
+}
+
+

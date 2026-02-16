@@ -1,0 +1,58 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference: " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) { // Check for division by zero
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder: " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+        }
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2 | 0 |
+| Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| Zero as num2 (except division) | 10 | 0 | 10 | 10 | 0 | Division by zero error | Division by zero error |
+| Decimal Numbers | 10.5 | 2.5 | 13 | 8 | 26.25 | 4.2 | 0 |
+| Large Numbers | 100000 | 5000 | 105000 | 95000 | 500000000 | 20 | 0 |
+| Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0 |
+| Integer Overflow (potential issue if using `int` instead of `double`) | Integer.MAX_VALUE | 1 | Overflow  | Overflow | Overflow | Overflow | Overflow|
+
+
+
+**Explanation of Corner Cases and How the Code Handles Them:**
+
+* **Division by Zero:** The code explicitly checks for `num2 == 0` before performing division and remainder operations.  If `num2` is zero, it prints an error message instead of crashing.  This is crucial for robustness.
+* **Integer Overflow (if using `int`):**  If very large integers are used and the data type is `int`, the arithmetic operations could result in overflow.  The provided code uses `double`, which has a much larger range and is less susceptible to overflow, though it can still occur with extremely large numbers. Note that the table describes overflow behavior assuming the use of `int`; the provided code uses `double`.  If you were to use `int`, you'd need to add overflow checks.
+* **Zero as an operand:**  The code correctly handles cases where either `num1` or `num2` (or both) are zero.  Pay particular attention to the remainder operation when `num2` is zero; it's undefined mathematically, so the code's handling of this is important.
+
+
+This comprehensive set of test cases helps ensure that the `ArithmeticOperations` program works correctly under a variety of conditions, including potentially problematic inputs.  Testing with these cases is essential for good software development practice.

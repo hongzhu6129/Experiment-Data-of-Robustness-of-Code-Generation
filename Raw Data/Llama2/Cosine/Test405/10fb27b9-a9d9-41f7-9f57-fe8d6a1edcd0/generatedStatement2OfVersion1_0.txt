@@ -1,0 +1,54 @@
+
+
+**Test Cases:**
+
+1. **Valid Octal Numbers:**
+
+* **Input:** 123
+* **Expected Output:** Hexadecimal equivalent: 53
+
+* **Input:** 777
+* **Expected Output:** Hexadecimal equivalent: 1FF
+
+* **Input:** 10
+* **Expected Output:** Hexadecimal equivalent: 8
+
+* **Input:** 0  (corner case - zero)
+* **Expected Output:** Hexadecimal equivalent: 0
+
+
+
+2. **Invalid Octal Numbers:**
+
+* **Input:** 800 (contains digit 8 which is invalid in octal)
+* **Expected Output:** Invalid octal number.
+
+* **Input:** 9abc (contains invalid characters)
+* **Expected Output:** Invalid octal number.
+
+* **Input:** -123 (negative number - although mathematically representable, this program assumes unsigned input)
+* **Expected Output:** Invalid octal number.
+
+* **Input:** 123.45 (floating-point number)
+* **Expected Output:** Invalid octal number.
+
+
+3. **Large Octal Number:**
+
+* **Input:** 777777777777777777777 (A very large octal - to test potential overflow if not using a `BigInteger` for decimal conversion. This test demonstrates a limitation of the current implementation. A more robust solution would handle larger numbers)
+* **Expected Output:** (Potentially incorrect results due to integer overflow or an exception).  A better implementation would handle this using `BigInteger`.
+
+
+
+**Explanation of Corner Case Handling:**
+
+* **Zero:** The `if (hex.isEmpty())` condition specifically handles the case where the input octal number is 0. Without this, the output would be an empty string, which is incorrect.  The expected output for octal 0 is hexadecimal 0.
+
+
+**Improvements for Robustness (Beyond scope of the original question but important to mention):**
+
+* **BigInteger:**  For truly robust handling of arbitrarily large octal numbers, use `BigInteger` instead of `int` for the `decimal` variable.  This avoids potential integer overflow issues with very large inputs.
+* **Input Validation:** More thorough input validation (using regular expressions, for example) can enhance the program's ability to reject a wider range of invalid input formats.
+
+
+This improved version with `BigInteger` and enhanced input validation is recommended for production code. This response, however, addresses the original question's constraint of only using the `main` method and no other library methods (except `Math.pow` which was specifically allowed).

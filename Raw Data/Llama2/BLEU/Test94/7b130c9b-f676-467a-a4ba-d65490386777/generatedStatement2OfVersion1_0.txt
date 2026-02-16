@@ -1,0 +1,34 @@
+
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Numbers:**
+
+* Input: 123   Output: 001010011
+* Input: 70    Output: 111000
+* Input: 456   Output: 100101110
+* Input: 1     Output: 001
+* Input: 0     Output: 0  (corner case)
+
+
+2. **Invalid Octal Numbers:**
+
+* Input: 8     Output: Error: Invalid octal number. Only digits 0-7 are allowed.
+* Input: 129   Output: Error: Invalid octal number. Only digits 0-7 are allowed.
+* Input: abc   Output: Error: Invalid octal number. Only digits 0-7 are allowed.
+
+
+3. **Large Input:**
+
+* Input:  A very long octal number (e.g., more than 19 digits). Output: Error: Input is too large to be parsed as a long.  (This is a corner case testing the limits of `Long.parseLong`)
+
+
+4. **Empty Input:**
+
+* Input: "" (Empty string) Output: Error: Invalid octal number. Only digits 0-7 are allowed.  (It is now handled properly).
+
+
+
+This improved version now correctly handles large inputs and empty inputs, improving its robustness.  It also includes clear error messages for invalid input.  The test cases cover a range of scenarios, including corner cases.

@@ -1,0 +1,31 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -0.0 (or 0.0) | 
+| 3. Mixed Signs | 10 | -2 | 8 | 12 | -20 | -5.0 | 0.0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0.0 | 0.0 |
+| 5. Zero as num2 (Corner Case) | 5 | 0 | 5 | 5 | 0 | Division by zero error | Division by zero error |
+| 6. Large Numbers | 100000 | 50000 | 150000 | 50000 | 5000000000 | 2.0 | 0.0 |
+| 7. Decimal Numbers | 5.5 | 2.5 | 8.0 | 3.0 | 13.75 | 2.2 | 0.5 |
+| 8. Integer Overflow (Corner Case � if using `int` instead of `double`) | Integer.MAX_VALUE | 1 |  Overflow | Overflow | Overflow |  Overflow | Overflow |
+| 9. Integer Underflow (Corner Case � if using `int` instead of `double`)| Integer.MIN_VALUE | -1| Underflow | Underflow| Overflow | Underflow | Underflow |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero:**  Attempting to divide by zero will result in an `ArithmeticException`.  The code now handles this by checking for `num2 == 0` and displaying an appropriate message.
+* **Integer Overflow/Underflow:**  If you were using the `int` data type instead of `double`, very large or very small numbers could cause the calculations to wrap around (overflow or underflow), leading to incorrect results.  Using `double` provides a much wider range, minimizing this risk.
+
+**How to run the test cases:**
+
+You can manually enter these values when prompted by the program, or, for a more automated approach, consider writing unit tests using a testing framework like JUnit.  This will allow you to easily and repeatedly run these test cases and verify the correctness of your program.
+
+
+Using the provided test cases helps you ensure that your `ArithmeticOperations` program functions correctly under various scenarios, including potential problem areas.  It's a good practice to test your code thoroughly, especially when dealing with mathematical operations.

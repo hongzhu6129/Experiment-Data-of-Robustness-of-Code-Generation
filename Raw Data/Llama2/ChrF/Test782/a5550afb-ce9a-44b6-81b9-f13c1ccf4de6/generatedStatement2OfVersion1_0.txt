@@ -1,0 +1,46 @@
+
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* Input: 10 20 30
+* Expected Output: 20.0
+
+**2. Decimal Numbers:**
+
+* Input: 2.5 5.7 8.2
+* Expected Output: 5.466666666666667
+
+**3. Negative Numbers:**
+
+* Input: -5 10 15
+* Expected Output: 6.666666666666667
+
+**4. Zeroes:**
+
+* Input: 0 0 0
+* Expected Output: 0.0
+
+**5. Large Numbers:**
+
+* Input: 1000000 2000000 3000000
+* Expected Output: 2000000.0
+
+**6. Corner Cases (Potential Overflow):**
+
+* Input: Double.MAX_VALUE Double.MAX_VALUE Double.MAX_VALUE  // Expecting Infinity
+* Input: Double.MIN_VALUE Double.MIN_VALUE Double.MIN_VALUE  // Expecting a very small negative number.
+
+
+**7. Invalid Input:**
+
+* Input: 10 a 20   // Expecting "Invalid input. Please enter numbers only."
+* Input: 10 20     // Expecting the program to wait for the third number (or an error if you press enter).  The program as written will wait for the third number until something is entered. You could modify it to handle this by adding input validation that checks that three numbers were input.
+
+
+**How to run these test cases:**
+
+1. **Manually:**  You can run the program from your IDE or command line and enter these inputs one by one to verify the outputs.
+2. **Automated Testing (Recommended):**  Use a testing framework like JUnit to write automated tests.  This is much more efficient and reliable for regression testing.  Here's a simple JUnit example:
+

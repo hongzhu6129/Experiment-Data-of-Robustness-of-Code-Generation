@@ -1,0 +1,47 @@
+class Solution {
+    /**
+     * Given a column number (integer value), find its corresponding Excel column name.
+     *
+     * @param n The column number (1-indexed).
+     * @return The Excel column name.
+     * @throws IllegalArgumentException If the input column number is invalid (n <= 0).
+     */
+    public static String Column(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid column number: " + n);
+        }
+
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int remainder = (n - 1) % 26; // 0-indexed remainder
+            char columnChar = (char) ('A' + remainder);
+            columnName.insert(0, columnChar);
+            n = (n - 1) / 26; // Update n for the next iteration
+        }
+
+        return columnName.toString();
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println("Column 1: " + Column(1));       // Output: A
+        System.out.println("Column 28: " + Column(28));    // Output: AB
+        System.out.println("Column 701: " + Column(701));   // Output: ZY
+        System.out.println("Column 702: " + Column(702));   // Output: ZZ
+        System.out.println("Column 703: " + Column(703));   // Output: AAA
+        System.out.println("Column 16384: " + Column(16384)); // Output: XFD
+
+        try {
+            Column(0); // Test invalid input
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught exception for invalid input: " + e.getMessage());
+        }
+
+          try {
+            Column(-5); // Test invalid input
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught exception for invalid input: " + e.getMessage());
+        }
+    }
+}

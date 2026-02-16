@@ -1,0 +1,38 @@
+class Solution {
+    /**
+     * Creates a new string by taking a specified number of characters from the 
+     * beginning and end of a given string.
+     *
+     * @param str The input string.
+     * @param n   The number of characters to take from both ends.
+     * @return A new string containing the specified characters, or the original
+     *         string if n is greater than or equal to the string length. If n is 
+     *         less than or equal to 0, returns an empty string.
+     */
+    public String nTwice(String str, int n) {
+        if (n <= 0) {
+            return "";
+        }
+        
+        int len = str.length();
+        if (n >= len) {
+            return str;
+        }
+
+        return str.substring(0, n) + str.substring(len - n);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.nTwice("Hello", 2)); // Heo
+        System.out.println(solution.nTwice("Chocolate", 3)); // Choate
+        System.out.println(solution.nTwice("Chocolate", 10)); // Chocolate  (n is too large, returns original string)
+        System.out.println(solution.nTwice("Java", 0)); // (empty string)
+        System.out.println(solution.nTwice("Java", -2)); // (empty string - negative n)
+        System.out.println(solution.nTwice("Ab", 1)); // Ab (n is half the length)
+        System.out.println(solution.nTwice("", 2));  // (empty string - original is empty)
+
+
+    }
+}

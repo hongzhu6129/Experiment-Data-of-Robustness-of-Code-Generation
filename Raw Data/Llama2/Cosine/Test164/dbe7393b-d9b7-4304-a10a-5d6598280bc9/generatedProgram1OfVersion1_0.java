@@ -1,0 +1,47 @@
+import java.util.LinkedList;
+
+public class InsertElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings
+        LinkedList<String> names = new LinkedList<>();
+
+        // Add some initial names
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        // Element to insert
+        String newElement = "David";
+
+        // Position to insert (0-indexed)
+        int position = 1;
+
+
+        // Check if the position is valid.
+        if (position < 0 || position > names.size()) {
+            System.out.println("Invalid position. Position should be between 0 and " + names.size());
+
+        } else {
+             // Insert the element at the specified position
+            names.add(position, newElement);
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + names);
+        }
+
+
+        // Example with an invalid position (out of bounds)
+
+        newElement = "Eve";
+        position = 5;  //Invalid position
+
+        if (position < 0 || position > names.size()) {
+            System.out.println("Invalid position. Position should be between 0 and " + names.size());
+        } else {
+            names.add(position, newElement);
+            System.out.println("Updated LinkedList: " + names);
+        }
+
+    }
+}

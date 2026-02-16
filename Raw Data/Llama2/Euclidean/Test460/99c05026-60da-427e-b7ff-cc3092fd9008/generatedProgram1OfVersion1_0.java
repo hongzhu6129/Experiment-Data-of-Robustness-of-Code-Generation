@@ -1,0 +1,64 @@
+class Solution {
+
+    private static int[] generatePrimes(int n) {
+        if (n <= 1) {
+            return new int[0]; // No primes if n <= 1
+        }
+
+        boolean[] isPrime = new boolean[n + 1];
+        for (int i = 2; i <= n; i++) {
+            isPrime[i] = true; // Initially assume all numbers are prime
+        }
+
+        for (int p = 2; p * p <= n; p++) {
+            if (isPrime[p]) {
+                // Mark multiples of p as not prime
+                for (int i = p * p; i <= n; i += p) {
+                    isPrime[i] = false;
+                }
+            }
+        }
+
+        // Count the number of primes
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                count++;
+            }
+        }
+
+        // Create an array to store the primes
+        int[] primes = new int[count];
+        int index = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime[i]) {
+                primes[index++] = i;
+            }
+        }
+
+        return primes;
+    }
+
+
+    public static void main(String[] args) {
+        int n = 30; // Example: find primes up to 30
+        int[] primes = generatePrimes(n);
+
+        System.out.print("Primes smaller than or equal to " + n + ": ");
+        for (int prime : primes) {
+            System.out.print(prime + " ");
+        }
+        System.out.println(); // Print a newline at the end
+
+
+         n = 1;
+         primes = generatePrimes(n); // Test with n = 1
+         System.out.print("Primes smaller than or equal to " + n + ": ");
+         for (int prime : primes) {
+             System.out.print(prime + " ");
+         }
+         System.out.println();
+
+
+    }
+}

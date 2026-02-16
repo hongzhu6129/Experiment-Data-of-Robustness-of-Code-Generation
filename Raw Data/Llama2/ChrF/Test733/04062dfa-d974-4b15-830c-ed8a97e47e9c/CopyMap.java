@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CopyMap {
+
+    public static void main(String[] args) {
+        // Create the source map
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("One", 1);
+        sourceMap.put("Two", 2);
+        sourceMap.put("Three", 3);
+
+        // Method 1: Using putAll()
+        Map<String, Integer> destinationMap1 = new HashMap<>();
+        destinationMap1.putAll(sourceMap); 
+
+        System.out.println("Copied map using putAll(): " + destinationMap1);
+
+
+        // Method 2: Using the constructor (less efficient for larger maps)
+        Map<String, Integer> destinationMap2 = new HashMap<>(sourceMap);
+
+        System.out.println("Copied map using constructor: " + destinationMap2);
+
+        // Method 3: Java 8 Stream API (requires creating a new map instance)
+        Map<String, Integer> destinationMap3 = sourceMap.entrySet().stream()
+                .collect(HashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), HashMap::putAll);
+
+
+        System.out.println("Copied map using Stream API: " + destinationMap3);
+
+
+
+        // Demonstrating that changes to the original do not affect the copy (important!)
+        sourceMap.put("Four", 4); // Modify the original map
+
+        System.out.println("Original map after modification: " + sourceMap);
+        System.out.println("Copied map 1 (unaltered): " + destinationMap1);
+        System.out.println("Copied map 2 (unaltered): " + destinationMap2);
+        System.out.println("Copied map 3 (unaltered): " + destinationMap3);
+
+
+
+    }
+}

@@ -1,0 +1,53 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs (TreeMap is sorted by key)
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some data
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+
+        // Get the portion of the map whose keys are strictly less than 4
+        int toKey = 4;
+        SortedMap<Integer, String> subMap = map.headMap(toKey);
+
+
+        // Print the submap
+        System.out.println("Submap with keys strictly less than " + toKey + ":");
+        for (Integer key : subMap.keySet()) {  // Iterate over the keys in subMap
+            System.out.println("Key: " + key + ", Value: " + subMap.get(key));
+        }
+
+
+        //Example 2:  Handle cases where the 'toKey' might not exist.
+        toKey = 10; // A key not present in the map
+
+        subMap = map.headMap(toKey);
+
+        System.out.println("\nSubmap with keys strictly less than " + toKey + " (even if " + toKey + " doesn't exist):");
+         for (Integer key : subMap.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + subMap.get(key));
+        }
+
+
+
+        // Example 3: Using headMap to get a submap up to a certain point, inclusive
+        toKey = 3;
+        SortedMap<Integer, String> inclusiveSubMap = map.headMap(toKey, true); //true for inclusive
+        System.out.println("\nInclusive Submap with keys less than or equal to " + toKey + ":");
+        for (Integer key : inclusiveSubMap.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + inclusiveSubMap.get(key));
+        }
+
+
+    }
+}

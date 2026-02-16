@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Variable Names:** Use more descriptive names like `rows` and `cols` instead of `m` and `n`.
+2. **Return an `int[]`:** The `Saddleback` method returns an `int[]` containing the row and column indices of the target.  If the target isn't found, it returns `{-1, -1}`.  This is a standard way to indicate a failed search.
+3. **Handle Edge Cases:**  The code now explicitly checks for `row < m` and `col >= 0` within the `while` loop to prevent out-of-bounds exceptions.
+4. **Example Usage in `main`:**  The `main` method demonstrates how to use the `Saddleback` function and how to interpret its result.
+5. **Comments:**  Added comments to explain the logic.
+
+**How Saddleback Search Works:**
+
+Saddleback search starts at the top-right corner of the matrix.  It compares the current element with the target:
+
+- If the current element is equal to the target, the search is successful.
+- If the current element is smaller than the target, we move down to the next row because the target cannot be in the current row (since the rows are sorted in ascending order).
+- If the current element is larger than the target, we move left to the previous column because the target cannot be in the current column (since the columns are sorted in ascending order).
+
+
+This process continues until either the target is found or we go out of the bounds of the matrix (which means the target is not present). This algorithm is efficient for searching in a sorted matrix and has a time complexity of O(m + n).

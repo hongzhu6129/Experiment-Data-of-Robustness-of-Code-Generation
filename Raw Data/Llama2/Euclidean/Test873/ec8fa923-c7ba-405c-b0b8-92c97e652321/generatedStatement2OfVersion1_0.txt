@@ -1,0 +1,57 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Coordinates:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite Sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110  (180 degrees opposite longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+5. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Distance:  A small distance (because these points are close despite the longitude difference)
+
+
+6. **Invalid Input (Error Handling - Optional):**
+   - lat1: "abc"  (non-numeric)
+   - lon1: 10
+   - lat2: 20
+   - lon2: 30
+   - Expected:  Your program should handle this gracefully (e.g., print an error message and exit or prompt for valid input).  Consider adding `try-catch` blocks to handle `InputMismatchException`.
+
+
+
+**How to Run Tests:**
+
+You can manually enter these values into your program or, for more automated testing, you could write a separate test class using a testing framework like JUnit.  A simple approach without JUnit would be to create a method to calculate distance and call it with different test values, comparing the result to the expected value.
+
+

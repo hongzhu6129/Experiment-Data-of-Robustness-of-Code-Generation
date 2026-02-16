@@ -1,0 +1,23 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  `m` and `n` clearly represent the dimensions of the array.
+
+2. **Return an Array:** The `Saddleback` function returns an `int[]`  to hold both row and column indices. This is more structured than returning a String.  If the target is not found, it returns `{-1, -1}`.
+
+3. **Enhanced Main Method:** The `main` method now demonstrates how to use `Saddleback` and interpret the result.  It also includes a test case where the target is *not* present in the array.
+
+4. **Comments and Documentation:** The code includes comments explaining the logic within the `Saddleback` function.
+
+
+How the Saddleback Search Works:
+
+The algorithm starts at the top-right corner of the matrix.  It then compares the target with the current element:
+
+- If the current element is equal to the target, we've found the element.
+- If the current element is smaller than the target, we know that the target cannot be in the current row (since the row is sorted in ascending order).  So, we move down to the next row.
+- If the current element is greater than the target, we know the target cannot be in the current column (since the column is sorted in ascending order). So we move left to the previous column.
+
+This process continues until the target is found or we've searched the entire matrix.

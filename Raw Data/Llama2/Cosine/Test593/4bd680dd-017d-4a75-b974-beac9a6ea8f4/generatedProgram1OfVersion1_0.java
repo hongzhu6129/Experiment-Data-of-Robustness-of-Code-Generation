@@ -1,0 +1,24 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings. By default, it uses natural ordering (alphabetical).
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        System.out.println("Elements of the priority queue:");
+
+        // Print and remove elements using poll() until the queue is empty
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); 
+        }
+    }
+}

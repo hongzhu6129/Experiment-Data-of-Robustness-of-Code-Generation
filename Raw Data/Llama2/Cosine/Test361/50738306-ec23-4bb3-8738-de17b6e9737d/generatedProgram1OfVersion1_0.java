@@ -1,0 +1,52 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class LongestSubstring {
+
+    static void longestSubstring(String str) {
+        int n = str.length();
+        int maxLength = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                if (areDistinct(str, i, j)) {
+                    maxLength = Math.max(maxLength, j - i + 1);
+                }
+            }
+        }
+        System.out.println(maxLength); 
+    }
+
+
+    static boolean areDistinct(String str, int i, int j) {
+        Set<Character> chars = new HashSet<>();
+
+        for (int k = i; k <= j; k++) {
+            if (chars.contains(str.charAt(k))) {
+                return false;
+            }
+            chars.add(str.charAt(k));
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcabcbb";
+        longestSubstring(str1); // Output: 3
+
+        String str2 = "bbbbb";
+        longestSubstring(str2); // Output: 1
+
+        String str3 = "pwwkew";
+        longestSubstring(str3); // Output: 3
+
+       String str4 = "";
+       longestSubstring(str4); // Output: 0
+
+       String str5 = "dvdf";
+       longestSubstring(str5);// Output: 3
+
+
+    }
+}

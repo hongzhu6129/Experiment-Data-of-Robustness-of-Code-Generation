@@ -1,0 +1,39 @@
+import java.time.Year;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class GetYearInfo {
+
+    public static void main(String[] args) {
+
+        // Get current year information using Year class (Java 8+)
+        int currentYear = Year.now().getValue();
+        System.out.println("Current Year: " + currentYear);
+        System.out.println("Is current year a leap year? " + Year.isLeap(currentYear));
+
+
+        // Get current year information using Calendar/GregorianCalendar 
+        // (older approach, but still valid)
+        Calendar cal = new GregorianCalendar(); // or Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR); 
+
+        System.out.println("\nCurrent Year (using Calendar): " + year);
+
+        // Check if leap year using Calendar
+        boolean isLeap = cal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365;
+        System.out.println("Is current year a leap year? (using Calendar) " + isLeap);
+
+
+
+        // Get information for a given year (example)
+        int givenYear = 2024;
+        System.out.println("\nGiven Year: " + givenYear);
+        System.out.println("Is given year a leap year? " + Year.isLeap(givenYear));
+
+        // Leap year check using Calendar for given year:
+        GregorianCalendar givenYearCal = new GregorianCalendar(givenYear, 0, 1);  // Month is 0-indexed (Jan=0)
+        boolean givenYearIsLeap = givenYearCal.getActualMaximum(Calendar.DAY_OF_YEAR) > 365;
+        System.out.println("Is given year a leap year? (using Calendar) " + givenYearIsLeap); 
+
+    }
+}

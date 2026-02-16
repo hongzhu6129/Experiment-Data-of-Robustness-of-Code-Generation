@@ -1,0 +1,26 @@
+public class StringFromCharArray {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using String constructor
+        char[] charArray = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'};
+        String str1 = new String(charArray);
+        System.out.println("String created using constructor: " + str1);
+
+
+        // Method 2: Using valueOf() method
+        char[] charArray2 = {'J', 'a', 'v', 'a'};
+        String str2 = String.valueOf(charArray2); 
+        System.out.println("String created using valueOf(): " + str2);
+
+
+
+        // Method 3: Creating a string from a subarray of characters (Example)
+        char[] charArray3 = {'P', 'r', 'o', 'g', 'r', 'a', 'm', 'm', 'i', 'n', 'g'};
+        String str3 = new String(charArray3, 0, 7); // Start at index 0, take 7 characters
+        System.out.println("String created from subarray: " + str3);
+
+
+
+    }
+}

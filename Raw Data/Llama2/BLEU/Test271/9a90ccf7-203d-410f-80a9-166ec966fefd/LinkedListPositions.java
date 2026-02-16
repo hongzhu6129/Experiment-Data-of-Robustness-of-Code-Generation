@@ -1,0 +1,38 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListPositions {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        // Display elements and their positions using ListIterator
+        System.out.println("Elements and their positions in the LinkedList:");
+        ListIterator<String> iterator = linkedList.listIterator();
+        while (iterator.hasNext()) {
+            int index = iterator.nextIndex(); // Get the index before moving to the next element
+            String element = iterator.next();
+            System.out.println("Element at position " + index + ": " + element);
+        }
+
+
+        // Alternative approach using a for loop and get() (less efficient for LinkedList)
+
+        /*
+        System.out.println("\nElements and positions (using for loop):"); 
+        for (int i = 0; i < linkedList.size(); i++) {
+            System.out.println("Element at position " + i + ": " + linkedList.get(i));
+        }
+        */
+
+    }
+}

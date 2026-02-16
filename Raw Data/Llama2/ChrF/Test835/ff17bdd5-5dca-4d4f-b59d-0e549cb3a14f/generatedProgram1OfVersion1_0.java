@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class CyclicNumber {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        long num = scanner.nextLong();
+
+        if (isCyclic(num)) {
+            System.out.println("It is a cyclic number.");
+        } else {
+            System.out.println("It is not a cyclic number.");
+        }
+        scanner.close();
+    }
+
+    private static boolean isCyclic(long num) {
+        long n = num;
+        int numDigits = String.valueOf(num).length();
+        long powerOf10 = (long) Math.pow(10, numDigits);
+
+        for (int i = 2; i <= numDigits; i++) {
+            long multipliedNum = num * i;
+
+            // Check if the multiplied number is a cyclic permutation
+            if (!isCyclicPermutation(num, multipliedNum)) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+
+
+
+    private static boolean isCyclicPermutation(long num1, long num2) {
+        String str1 = String.valueOf(num1);
+        String str2 = String.valueOf(num2);
+
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+
+       return (str1 + str1).contains(str2);
+
+
+
+
+    }
+}

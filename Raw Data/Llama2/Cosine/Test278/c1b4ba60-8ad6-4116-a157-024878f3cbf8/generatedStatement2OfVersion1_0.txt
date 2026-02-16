@@ -1,0 +1,25 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **`trimToSize()`:** The core of the solution is the `trimToSize()` method of the `ArrayList` class. This method reduces the capacity of the `ArrayList` to its current size.
+
+2. **Initial Capacity:** The `ArrayList` constructor is used with an initial capacity argument (e.g., 20) to demonstrate how `trimToSize()` works.  We then add fewer elements than the initial capacity.
+
+3. **Getting Capacity (Reflection):**  There's no direct public method to get the capacity of an `ArrayList`. In the example, we use reflection to get the capacity for demonstration purposes.  **Important Note:**  Reflection can have performance implications and is generally not recommended for production code except in rare, necessary cases where no other option is available.
+
+4. **Clearer Output:** The code prints the size and capacity before and after trimming, making it easier to see the effect of `trimToSize()`.
+
+5. **Error Handling (in Reflection):**  The `getCapacity` helper method includes a `try-catch` block to handle potential exceptions during reflection.  In a real-world application, you would want to handle these exceptions more robustly (e.g., logging, throwing a custom exception).
+
+
+
+**How to Run:**
+
+1. Save the code as `TrimArrayListCapacity.java`.
+2. Compile: `javac TrimArrayListCapacity.java`
+3. Run: `java TrimArrayListCapacity`
+
+
+You'll see the output showing the initial capacity, the size after adding elements, and the reduced capacity after calling `trimToSize()`.

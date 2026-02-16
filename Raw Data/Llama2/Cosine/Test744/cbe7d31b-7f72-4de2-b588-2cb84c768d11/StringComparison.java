@@ -1,0 +1,40 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");
+        String str4 = "world";
+
+        // Method 1: Using .equals() - preferred for content comparison
+        System.out.println("str1 equals str2 (using .equals()): " + str1.equals(str2)); // true
+        System.out.println("str1 equals str3 (using .equals()): " + str1.equals(str3)); // true
+        System.out.println("str1 equals str4 (using .equals()): " + str1.equals(str4)); // false
+
+        // Method 2: Using == - checks reference equality (memory location)
+        System.out.println("str1 == str2 (using ==): " + (str1 == str2)); // true (because of String interning/pooling)
+        System.out.println("str1 == str3 (using ==): " + (str1 == str3)); // false (str3 is a new object in memory)
+
+
+        // More comprehensive examples:
+        String str5 = null;
+        String str6 = "";
+        String str7 = "   "; // String with whitespace
+
+        // Handling null (important to avoid NullPointerException)
+        System.out.println("str1 equals str5 (handling null): " + (str1 != null && str1.equals(str5))); // false
+
+        // Empty String
+        System.out.println("str6 equals empty string: " + str6.equals("")); // true
+
+        // Whitespace
+        System.out.println("str7 equals empty string: " + str7.equals("")); // false
+        System.out.println("str7 equals whitespace string: " + str7.equals("   ")); // true
+
+         //Trimming whitespace before comparison
+        System.out.println("str7 equals empty string after trim: " + str7.trim().equals("")); // true
+
+
+
+    }
+}

@@ -1,0 +1,39 @@
+import java.util.LinkedList;
+
+public class LinkedListElementCheck {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.add(50);
+
+        // Element to search for
+        int elementToFind = 30;
+
+        // Check if the element exists using contains()
+        if (list.contains(elementToFind)) {
+            System.out.println(elementToFind + " exists in the linked list.");
+        } else {
+            System.out.println(elementToFind + " does not exist in the linked list.");
+        }
+
+
+        // Example with a String LinkedList
+        LinkedList<String> stringList = new LinkedList<>();
+        stringList.add("apple");
+        stringList.add("banana");
+        stringList.add("orange");
+
+        String stringToFind = "grape";
+
+        if (stringList.contains(stringToFind)) {
+            System.out.println(stringToFind + " exists in the linked list.");
+        } else {
+            System.out.println(stringToFind + " does not exist in the linked list.");
+        }
+    }
+}

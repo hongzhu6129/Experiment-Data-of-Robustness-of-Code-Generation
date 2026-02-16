@@ -1,0 +1,46 @@
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
+import java.util.NavigableSet;
+
+public class NavigableSetView {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> myMap = new TreeMap<>();
+
+        // Add some key-value pairs to the map
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+        myMap.put("grape", 4);
+        myMap.put("kiwi", 5);
+
+        // Get a NavigableSet view of the keys
+        NavigableSet<String> keys = myMap.navigableKeySet();
+
+        // Print the original map
+        System.out.println("Original Map: " + myMap);
+
+        // Print the NavigableSet of keys
+        System.out.println("NavigableSet of keys: " + keys);
+
+
+        // Demonstrate some NavigableSet operations (optional)
+        System.out.println("First key: " + keys.first());
+        System.out.println("Last key: " + keys.last());
+        System.out.println("Key less than 'grape': " + keys.lower("grape")); 
+        System.out.println("Key less than or equal to 'grape': " + keys.floor("grape"));
+        System.out.println("Key greater than 'banana': " + keys.higher("banana"));
+        System.out.println("Key greater than or equal to 'banana': " + keys.ceiling("banana"));
+
+
+         // Example of removing elements from the NavigableSet (which affects the map)
+        keys.pollFirst(); // Removes and returns the first (lowest) element
+        System.out.println("Map after removing first key: " + myMap);
+
+        keys.pollLast(); // Removes and returns the last (highest) element
+        System.out.println("Map after removing last key: " + myMap);
+
+    }
+}

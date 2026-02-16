@@ -1,0 +1,125 @@
+import java.util.Scanner;
+
+public class MinorBuffer {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the current minor buffer
+        System.out.println("Enter the current minor buffer: ");
+        String currentMinorBuffer = scanner.nextLine();
+
+        // Get the suggested minor buffer
+        System.out.println("Enter the suggested minor buffer: ");
+        String suggestedMinorBuffer = scanner.nextLine();
+
+        // Check if the suggested minor buffer is applicable
+        boolean isApplicable = isApplicable(currentMinorBuffer, suggestedMinorBuffer);
+
+        // Print the result
+        if (isApplicable) {
+            System.out.println("The suggested minor buffer is applicable.");
+        } else {
+            System.out.println("The suggested minor buffer is not applicable.");
+        }
+    }
+
+    private static boolean isApplicable(String currentMinorBuffer, String suggestedMinorBuffer) {
+        // Check if the suggested minor buffer is the same as the current minor buffer
+        if (currentMinorBuffer.equals(suggestedMinorBuffer)) {
+            return true;
+        }
+
+        // Check if the suggested minor buffer is a minor buffer
+        if (!isMinorBuffer(suggestedMinorBuffer)) {
+            return false;
+        }
+
+        // Check if the suggested minor buffer is compatible with the current minor buffer
+        return isCompatible(currentMinorBuffer, suggestedMinorBuffer);
+    }
+
+    private static boolean isMinorBuffer(String minorBuffer) {
+        // Check if the minor buffer is a non-empty string
+        if (minorBuffer == null || minorBuffer.isEmpty()) {
+            return false;
+        }
+
+        // Check if the minor buffer contains only lowercase letters
+        for (char c : minorBuffer.toCharArray()) {
+            if (!Character.isLetter(c) || Character.isUpperCase(c)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static boolean isCompatible(String currentMinorBuffer, String suggestedMinorBuffer) {
+        // Check if the suggested minor buffer is a subset of the current minor buffer
+        return suggestedMinorBuffer.length() <= currentMinorBuffer.length() && currentMinorBuffer.contains(suggestedMinorBuffer);
+    }
+
+    // Test cases
+    public static void test() {
+        // Test case 1: suggested minor buffer is the same as the current minor buffer
+        String currentMinorBuffer1 = "abc";
+        String suggestedMinorBuffer1 = "abc";
+        boolean isApplicable1 = isApplicable(currentMinorBuffer1, suggestedMinorBuffer1);
+        System.out.println("Test case 1: " + isApplicable1);  // Output: true
+
+        // Test case 2: suggested minor buffer is a minor buffer
+        String currentMinorBuffer2 = "abc";
+        String suggestedMinorBuffer2 = "bcd";
+        boolean isApplicable2 = isApplicable(currentMinorBuffer2, suggestedMinorBuffer2);
+        System.out.println("Test case 2: " + isApplicable2);  // Output: false
+
+        // Test case 3: suggested minor buffer is not a minor buffer
+        String currentMinorBuffer3 = "abc";
+        String suggestedMinorBuffer3 = "123";
+        boolean isApplicable3 = isApplicable(currentMinorBuffer3, suggestedMinorBuffer3);
+        System.out.println("Test case 3: " + isApplicable3);  // Output: false
+
+        // Test case 4: suggested minor buffer is compatible with the current minor buffer
+        String currentMinorBuffer4 = "abc";
+        String suggestedMinorBuffer4 = "ab";
+        boolean isApplicable4 = isApplicable(currentMinorBuffer4, suggestedMinorBuffer4);
+        System.out.println("Test case 4: " + isApplicable4);  // Output: true
+
+        // Test case 5: suggested minor buffer is not compatible with the current minor buffer
+        String currentMinorBuffer5 = "abc";
+        String suggestedMinorBuffer5 = "abd";
+        boolean isApplicable5 = isApplicable(currentMinorBuffer5, suggestedMinorBuffer5);
+        System.out.println("Test case 5: " + isApplicable5);  // Output: false
+
+        // Test case 6: suggested minor buffer is empty
+        String currentMinorBuffer6 = "abc";
+        String suggestedMinorBuffer6 = "";
+        boolean isApplicable6 = isApplicable(currentMinorBuffer6, suggestedMinorBuffer6);
+        System.out.println("Test case 6: " + isApplicable6);  // Output: false
+
+        // Test case 7: current minor buffer is empty
+        String currentMinorBuffer7 = "";
+        String suggestedMinorBuffer7 = "abc";
+        boolean isApplicable7 = isApplicable(currentMinorBuffer7, suggestedMinorBuffer7);
+        System.out.println("Test case 7: " + isApplicable7);  // Output: false
+
+        // Test case 8: both minor buffers are empty
+        String currentMinorBuffer8 = "";
+        String suggestedMinorBuffer8 = "";
+        boolean isApplicable8 = isApplicable(currentMinorBuffer8, suggestedMinorBuffer8);
+        System.out.println("Test case 8: " + isApplicable8);  // Output: true
+
+        // Test case 9: suggested minor buffer is null
+        String currentMinorBuffer9 = "abc";
+        String suggestedMinorBuffer9 = null;
+        boolean isApplicable9 = isApplicable(currentMinorBuffer9, suggestedMinorBuffer9);
+        System.out.println("Test case 9: " + isApplicable9);  // Output: false
+
+        // Test case 10: current minor buffer is null
+        String currentMinorBuffer10 = null;
+        String suggestedMinorBuffer10 = "abc";
+        boolean isApplicable10 = isApplicable(currentMinorBuffer10, suggestedMinorBuffer10);
+        System.out.println("Test case 10: " + isApplicable10);  // Output: false
+    }
+}

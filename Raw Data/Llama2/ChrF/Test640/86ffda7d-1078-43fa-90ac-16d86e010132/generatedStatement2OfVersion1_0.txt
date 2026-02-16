@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1. Positive Numbers | 10, 20, 30 | 20.0 |
+| 2. Negative Numbers | -10, -20, -30 | -20.0 |
+| 3. Mixed Numbers | -5, 15, 25 | 11.666666666666666 |  // Demonstrates floating-point result
+| 4. Zeroes | 0, 0, 0 | 0.0 |
+| 5. Large Numbers | 1000000, 2000000, 3000000 | 2000000.0 |
+| 6. Small Numbers | 0.001, 0.002, 0.003 | 0.002 |
+| 7.  Integer Overflow (Corner Case) | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | Positive Infinity or Exception (depends on how Java handles overflow) |
+| 8. Integer Underflow (Corner Case) | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | Negative Infinity or Exception |
+| 9.  Doubles with very large differences in magnitude (Corner Case)| 1.0e300, 1.0, 1.0 |  1.0E300 (effectively dominated by the largest number) |
+| 10. NaN Input (Corner Case) | Double.NaN, 10, 20  | NaN |
+
+
+
+**How to Run the Test Cases (using JUnit - recommended):**
+
+1. **Add JUnit to your project:**  If you're using an IDE like IntelliJ or Eclipse, this is usually a simple process (search for "add JUnit library" in your IDE's help).  Alternatively, you can manually include the JUnit JAR file in your project's classpath.
+
+2. **Create a test class:**
+

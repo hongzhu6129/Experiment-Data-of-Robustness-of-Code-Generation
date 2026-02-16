@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 10, 4, 5, 6};
+        int[] newArr1 = createArrayAfter10(arr1);
+        System.out.println("New array 1: " + Arrays.toString(newArr1)); // Output: [4, 5, 6]
+
+        int[] arr2 = {1, 2, 3, 4, 5, 6};
+        int[] newArr2 = createArrayAfter10(arr2);
+        System.out.println("New array 2: " + Arrays.toString(newArr2)); // Output: []
+
+        int[] arr3 = {1, 2, 10, 10, 3, 4};
+        int[] newArr3 = createArrayAfter10(arr3);
+        System.out.println("New array 3: " + Arrays.toString(newArr3)); // Output: [3, 4]
+
+        int[] arr4 = {10};
+        int[] newArr4 = createArrayAfter10(arr4);
+        System.out.println("New array 4: " + Arrays.toString(newArr4)); // Output: []
+
+         int[] arr5 = {1, 10, 2, 10, 3};
+        int[] newArr5 = createArrayAfter10(arr5);
+        System.out.println("New array 5: " + Arrays.toString(newArr5)); // Output: [3]
+
+        int[] arr6 = {}; // Empty array
+        int[] newArr6 = createArrayAfter10(arr6);
+        System.out.println("New array 6: " + Arrays.toString(newArr6)); // Output: []
+
+
+    }
+
+    public static int[] createArrayAfter10(int[] arr) {
+        List<Integer> newList = new ArrayList<>();
+        int last10Index = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                last10Index = i;
+            }
+        }
+
+        if (last10Index != -1 && last10Index < arr.length - 1) {
+            for (int i = last10Index + 1; i < arr.length; i++) {
+                newList.add(arr[i]);
+            }
+        }
+
+        // Convert List<Integer> to int[]
+        int[] newArray = new int[newList.size()];
+        for (int i = 0; i < newList.size(); i++) {
+            newArray[i] = newList.get(i);
+        }
+        return newArray;
+    }
+}

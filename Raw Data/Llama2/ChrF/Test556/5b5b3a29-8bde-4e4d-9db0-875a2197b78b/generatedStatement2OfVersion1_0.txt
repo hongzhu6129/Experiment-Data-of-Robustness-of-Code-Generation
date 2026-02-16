@@ -1,0 +1,22 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes JUnit 5 tests.  This is crucial for verifying the correctness of your calculations.  The tests cover positive, zero, and large radius values. Significantly, they also check for expected exceptions when a negative radius is provided, which is now handled.
+* **`assertEquals` with Delta:** When comparing floating-point numbers (like `double`), you should *never* use exact equality because of potential rounding errors.  The `assertEquals` method with a `delta` (tolerance) parameter is used to compare within an acceptable margin of error.
+* **Handling Invalid Input (Negative Radius):** The code now throws an `IllegalArgumentException` if the radius is negative.  This is important for robust code; you want your program to fail predictably if it receives bad data.  The tests check that these exceptions are thrown as expected.
+* **Test Cases:** The test suite includes corner cases:
+    * Zero radius
+    * Very large radius (to check for potential overflow)
+    * Negative radius (to check for exception handling)
+
+
+How to run the tests (assuming you have JUnit 5 set up):
+
+1.  Save the code as `CircleCalculations.java` and `CircleCalculationsTest.java` in the appropriate directory within your project.
+2.  Compile: `javac CircleCalculations.java CircleCalculationsTest.java`
+3.  Run the tests (the exact command depends on your IDE or build tool; if you're using the command line with JUnit directly, it would be something like `java -cp <junit-jar-path> org.junit.runner.JUnitCore CircleCalculationsTest`).
+
+
+This revised version is much more robust and reliable because of the comprehensive testing.  Always write tests for your code!

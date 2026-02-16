@@ -1,0 +1,20 @@
+import java.util.Map;
+
+public class SystemInfo {
+
+    public static void main(String[] args) {
+        // Get System Environment
+        Map<String, String> env = System.getenv();
+        System.out.println("System Environment:");
+        for (String envName : env.keySet()) {
+            System.out.format("%s=%s%n",
+                    envName,
+                    env.get(envName));
+        }
+
+        // Get System Properties
+        System.out.println("\nSystem Properties:");
+        java.util.Properties props = System.getProperties();
+        props.list(System.out); 
+    }
+}

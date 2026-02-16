@@ -1,0 +1,44 @@
+class Solution {
+    /**
+     * Given a column number (integer value), return its corresponding Excel column name.
+     *
+     * @param n The column number (1-indexed).
+     * @return The Excel column name.
+     * @throws IllegalArgumentException if the input column number is invalid.
+     *
+     * Examples:
+     * Column(1) == "A"
+     * Column(28) == "AB"
+     * Column(701) == "ZY"
+     * Column(2147483647) == "FXSHRXW"  (Max Integer value)
+     */
+    public static String Column(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid column number: " + n);
+        }
+
+        StringBuilder columnName = new StringBuilder();
+
+        while (n > 0) {
+            int rem = (n - 1) % 26; // Adjust for 0-based indexing
+            columnName.insert(0, (char)('A' + rem));
+            n = (n - 1) / 26;  // Adjust for 0-based indexing
+        }
+
+        return columnName.toString();
+    }
+
+
+
+    public static void main(String[] args) {
+        System.out.println(Column(1)); // "A"
+        System.out.println(Column(28)); // "AB"
+        System.out.println(Column(701)); // "ZY"
+        System.out.println(Column(26)); // "Z"
+        System.out.println(Column(702)); // "ZZ" //
+        System.out.println(Column(52)); // "AZ"
+        System.out.println(Column(2147483647)); // "FXSHRXW"
+        // Test an invalid input. Should throw an exception.
+        //System.out.println(Column(-5)); 
+    }
+}

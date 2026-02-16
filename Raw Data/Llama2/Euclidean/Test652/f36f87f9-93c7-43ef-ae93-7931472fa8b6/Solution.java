@@ -1,0 +1,31 @@
+class Solution {
+    /**
+     * Checks whether the first two characters of a string appear at the end.
+     *
+     * @param str The input string.
+     * @return True if the first two characters appear at the end, false otherwise.
+     */
+    public boolean firstInLast(String str) {
+        if (str == null || str.length() < 2) {
+            return false;
+        }
+
+        String firstTwo = str.substring(0, 2);
+        String lastTwo = str.substring(str.length() - 2);
+
+        return firstTwo.equals(lastTwo);
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        System.out.println(solution.firstInLast("edited")); // true
+        System.out.println(solution.firstInLast("edit")); // false
+        System.out.println(solution.firstInLast("ed"));  // true
+        System.out.println(solution.firstInLast("e")); // false
+        System.out.println(solution.firstInLast("")); // false
+        System.out.println(solution.firstInLast(null)); // false // Handles null input gracefully
+
+
+    }
+}

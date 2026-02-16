@@ -1,0 +1,59 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLastLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Kotlin");
+
+        System.out.println("Original LinkedList: " + languages);
+
+        // Check if the list is empty or has only one element
+        if (languages.size() <= 1) {
+            languages.clear(); // Clear the list if it's empty or has only one element
+        } else {
+            // Remove the first element
+            languages.removeFirst();
+
+            // Remove the last element
+            languages.removeLast();
+        }
+
+
+
+        System.out.println("LinkedList after removing first and last elements: " + languages);
+
+
+         // Example demonstrating handling of empty and single-element lists:
+
+        LinkedList<String> emptyList = new LinkedList<>();
+        System.out.println("Original empty List: " + emptyList);
+        if (emptyList.size() <= 1) {
+            emptyList.clear(); 
+        } else {
+            emptyList.removeFirst();
+            emptyList.removeLast();
+        }
+        System.out.println("Empty List after processing: " + emptyList);
+
+
+        LinkedList<String> singleElementList = new LinkedList<>();
+        singleElementList.add("Solo");
+        System.out.println("Original single-element List: " + singleElementList);
+        if (singleElementList.size() <= 1) {
+            singleElementList.clear(); 
+        } else {
+            singleElementList.removeFirst();
+            singleElementList.removeLast();
+        }
+        System.out.println("Single-element List after processing: " + singleElementList);
+
+    }
+}

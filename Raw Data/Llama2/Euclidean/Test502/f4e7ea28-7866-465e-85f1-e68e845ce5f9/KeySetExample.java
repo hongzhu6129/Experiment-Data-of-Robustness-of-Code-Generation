@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class KeySetExample {
+
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, Integer> map = new HashMap<>();
+
+        // Add some key-value pairs to the map
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+        map.put("Grape", 4);
+
+        // Get a set view of the keys
+        Set<String> keys = map.keySet();
+
+        // Print the keys
+        System.out.println("Keys in the map:");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+
+        // Example using enhanced for loop (alternative to iterator)
+        System.out.println("\nKeys using enhanced for loop:");
+        for (String key : map.keySet()) { // You can call keySet() directly in the loop
+             System.out.println(key);
+        }
+
+
+    }
+}

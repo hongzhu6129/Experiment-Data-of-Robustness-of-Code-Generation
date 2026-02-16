@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Test Cases:**
+
+1. **Integer Division and Modulo Operator:**  The core of the conversion relies on integer division (`/`) and the modulo operator (`%`).  Integer division gives you the whole number quotient, and modulo gives you the remainder.  This is how we extract hours, minutes, and the remaining seconds.
+
+2. **Test Cases:**
+   - **0:** Tests the zero-seconds case.  Expected output: 0 hours, 0 minutes, 0 seconds.
+   - **1:** Tests a small number of seconds.
+   - **59:** Tests seconds just before a minute.
+   - **60:** Tests a full minute.
+   - **61:** Tests seconds just after a minute.
+   - **3599:** Tests seconds just before an hour.
+   - **3600:** Tests a full hour.
+   - **3601:** Tests seconds just after an hour.
+   - **86399:** Tests seconds just before a day.
+   - **86400:** Tests a full day (24 hours).
+   - **86401:** Tests seconds just after a day.
+   - **Integer.MAX_VALUE:**  This is a crucial corner case.  It tests the behavior with the largest possible integer value for seconds. This helps identify potential integer overflow issues. (While unlikely to be practical, it's good practice to consider extreme values).
+
+**Example Output:**
+

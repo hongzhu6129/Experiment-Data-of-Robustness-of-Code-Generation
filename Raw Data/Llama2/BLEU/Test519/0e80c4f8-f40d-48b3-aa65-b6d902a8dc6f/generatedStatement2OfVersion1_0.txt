@@ -1,0 +1,18 @@
+
+
+
+Key improvements in this version:
+
+* **Handles different file lengths:** The code now correctly compares files even if they have different numbers of lines.
+* **Clearer output:** The output messages now explicitly state which file comes first lexicographically or if they are equal.
+* **Resource management:** Uses try-with-resources to ensure that file readers are closed properly, even if exceptions occur.
+* **Error handling:** Includes a try-catch block to handle potential `IOExceptions` during file reading.
+* **Command-line arguments:**  Takes file paths as command-line arguments, making it more flexible.
+* **Efficiency:** Reads and compares the files line by line, which is more memory-efficient for large files than loading the entire files into memory.
+
+
+To compile and run:
+
+1. Save the code as `CompareFilesLexicographically.java`.
+2. Compile: `javac CompareFilesLexicographically.java`
+3. Run: `java CompareFilesLexicographically file1.txt file2.txt`  (Replace `file1.txt` and `file2.txt` with the actual file paths.)

@@ -1,0 +1,23 @@
+
+
+
+Key improvements and explanations:
+
+1. **Efficiency:** The code now uses a two-pointer approach ( `left` and `right` ) which makes the splitting process more efficient (O(n) time complexity). It avoids unnecessary swaps.
+
+2. **Clarity:**  The `while` loop conditions are more concise and clearer, making the logic easier to follow.
+
+3. **Correctness:** The core logic is now correct.  It properly handles cases where all numbers are positive, all are negative, or the array is empty.
+
+4. **Main Method with Examples:**  I've added a `main` method with several test cases to demonstrate the code's functionality and help with debugging. This is essential for verifying your solution works as expected.
+
+5. **Adherence to Method Signatures:**  The code strictly adheres to the specified method signatures: `split_sorting_array(int[])`, `swap(int[], int, int)`, and `main(String[])`.
+
+
+How it works:
+
+- The `left` pointer starts at the beginning of the array, and the `right` pointer starts at the end.
+- The `left` pointer moves forward as long as it encounters negative numbers.
+- The `right` pointer moves backward as long as it encounters positive numbers.
+- When both pointers stop (meaning `left` is at a positive number and `right` is at a negative number), they are swapped.
+- This process continues until the `left` pointer crosses the `right` pointer, ensuring all negative numbers are on the left and positive numbers are on the right.

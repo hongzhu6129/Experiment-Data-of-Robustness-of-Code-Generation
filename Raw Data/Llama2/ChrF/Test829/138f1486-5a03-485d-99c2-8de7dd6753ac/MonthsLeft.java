@@ -1,0 +1,14 @@
+import java.time.LocalDate;
+import java.time.Month;
+
+public class MonthsLeft {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+        int currentMonth = currentDate.getMonthValue();
+
+        int monthsLeft = 12 - currentMonth;
+
+        System.out.println("Number of months left in the year: " + monthsLeft);
+    }
+}

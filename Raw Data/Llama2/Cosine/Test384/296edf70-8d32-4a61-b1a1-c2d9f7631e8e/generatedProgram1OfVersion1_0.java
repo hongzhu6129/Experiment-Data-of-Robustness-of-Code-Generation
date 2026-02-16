@@ -1,0 +1,37 @@
+public class VowelSuccessor {
+
+    public static void main(String[] args) {
+        String inputString = "hello world";
+        char successorChar = '*';
+        String result = validate(inputString, successorChar);
+        System.out.println(result); // Output: h*ll* w*rld
+
+        inputString = "AEIOUaeiou";
+        successorChar = '+';
+        result = validate(inputString, successorChar);
+        System.out.println(result); // Output: ++++++++++
+
+
+        inputString = "This is a test string.";
+        successorChar = '#';
+        result = validate(inputString, successorChar);
+        System.out.println(result); // Output: Th#s #s # t#st str#ng.
+
+    }
+
+    public static String validate(String inputString, char successorChar) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : inputString.toCharArray()) {
+            if (isVowel(c)) {
+                sb.append(successorChar);
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        return "AEIOUaeiou".indexOf(c) != -1; 
+    }
+}

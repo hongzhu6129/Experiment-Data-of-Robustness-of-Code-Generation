@@ -1,0 +1,16 @@
+
+
+
+Explanation:
+
+**7. Check Security Manager:**
+
+* `System.getSecurityManager()` returns the current security manager or `null` if none is set.
+* We check if the returned value is `null` to determine if a security manager is active.
+
+**90. Get Environment Variables:**
+
+* `System.getenv(String name)` retrieves the value of the specified environment variable.
+* We use this method to get the values of "PATH", "TEMP" (or "TMP"), and "USERNAME".
+* **Important:** Environment variables are case-sensitive on some operating systems (e.g., Linux/macOS), but case-insensitive on others (e.g., Windows). "TEMP" and "TMP" are often used interchangeably, but it's best to check your OS documentation. Similarly,  "USERNAME" or "USER" might be used for the username.
+* **Handling Nulls:**  Environment variables are not guaranteed to be set.  The code includes a check for `null` to avoid a `NullPointerException` if a variable isn't defined. It prints "Not set" if the variable is not found.

@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertElementInList {
+
+    public static void main(String[] args) {
+        // Create a sample list
+        List<String> myList = new ArrayList<>();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+
+        // Specify the element to insert and the position
+        String elementToInsert = "grape";
+        int position = 1; // Insert at index 1 (second position)
+
+
+        try {
+            // Insert the element at the specified position
+            myList.add(position, elementToInsert);
+
+
+            // Print the updated list
+            System.out.println("Updated List: " + myList);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid position.  Position must be between 0 and " + myList.size() + " inclusive.");
+        }
+
+         // Example with an int List
+        List<Integer> intList = new ArrayList<>();
+        intList.add(10);
+        intList.add(20);
+        intList.add(30);
+
+        int intToInsert = 15;
+        int intPosition = 1;
+
+        try {
+           intList.add(intPosition, intToInsert);
+           System.out.println("Updated Int List: " + intList);
+        }  catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid position for integer list. Position must be between 0 and " + intList.size()+ " inclusive.");
+        }
+    }
+}

@@ -1,0 +1,35 @@
+import java.util.LinkedList;
+
+public class LinkedListInsertAtEnd {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> days = new LinkedList<>();
+
+        // Add some initial elements
+        days.add("Monday");
+        days.add("Tuesday");
+        days.add("Wednesday");
+
+        // Element to insert at the end
+        String newDay = "Thursday";
+
+        // Insert the new element at the end
+        days.add(newDay); // LinkedList's add() method appends to the end by default.
+
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + days);
+
+        // Example with integers
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        int newNumber = 4;
+        numbers.add(newNumber); // Works the same with other data types
+
+        System.out.println("Updated LinkedList of numbers: " + numbers);
+    }
+}

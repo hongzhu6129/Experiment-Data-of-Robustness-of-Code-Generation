@@ -1,0 +1,65 @@
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    /**
+     * Given a sorted array of integers, removes duplicate elements in-place such that each unique element appears only once.
+     * The relative order of the elements should be kept the same.
+     *
+     * This method modifies the input array `nums` directly.
+     *
+     * Returns the new length of the array after removing duplicates, representing the number of unique elements.
+     *
+     * @param nums The sorted integer array.
+     * @return The new length of the array after removing duplicates.
+     *
+     * Example:
+     * Input: nums = [0,0,1,1,1,2,2,3,3,4]
+     * Output: 5
+     * Explanation: The unique elements are [0,1,2,3,4]. Modifies the array to: [0,1,2,3,4,2,2,3,3,4]
+     *              and returns 5.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with the first element as unique
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) { // Check if the current element is different from the previous
+                nums[uniqueCount] = nums[i]; // If different, place it at the next unique position
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Example 1: Updated array length: " + len1);
+        System.out.println("Example 1: Modified array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {1, 1, 2};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Example 2: Updated array length: " + len2);
+        System.out.println("Example 2: Modified array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+        int[] nums3 = {}; // Empty array
+        int len3 = removeDuplicates(nums3);
+        System.out.println("Example 3 (Empty array): Updated array length: " + len3);
+
+        int[] nums4 = null; // Null array
+        int len4 = removeDuplicates(nums4);
+        System.out.println("Example 4 (Null array): Updated array length: " + len4);
+
+         int[] nums5 = {1,2,3,4,5};
+        int len5 = removeDuplicates(nums5);
+        System.out.println("Example 5 (No duplicates): Updated array length: " + len5);
+        System.out.println("Example 5: Modified array: " + Arrays.toString(Arrays.copyOfRange(nums5, 0, len5)));
+    }
+}

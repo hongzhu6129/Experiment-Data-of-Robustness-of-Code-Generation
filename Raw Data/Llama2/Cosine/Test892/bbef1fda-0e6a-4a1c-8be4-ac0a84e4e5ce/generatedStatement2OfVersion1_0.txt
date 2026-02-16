@@ -1,0 +1,21 @@
+
+
+
+Explanation:
+
+1. **Get Available Zone IDs:**
+   - `ZoneId.availableZoneIds()` returns a `Set` containing all available time zone IDs as strings.
+
+2. **Iterate and Filter:**
+   - We loop through each `zoneId` in the `allZoneIds` set.
+   - **Filtering:**  The `if` condition checks if the `zoneId` starts with "UTC" or "GMT", or if it contains "Etc/GMT" or "Etc/UTC". This ensures we only display time zones related to UTC or GMT, including those with offsets like "Etc/GMT+1", "Etc/UTC-5", etc. which represent specific UTC/GMT offsets.
+
+3. **Print Zone IDs:**
+   - If a `zoneId` matches the filter, we print it to the console.
+
+
+Important Notes about UTC, GMT, and "Etc/..." zones:
+
+* **UTC (Coordinated Universal Time):** The primary time standard by which the world regulates clocks and time.
+* **GMT (Greenwich Mean Time):** Historically, GMT was the same as UTC. Now, GMT is often used informally as a synonym for UTC, but technically, it's a time zone.
+* **"Etc/UTC" and "Etc/GMT":** The "Etc" time zones are special.  "Etc/UTC" is equivalent to UTC.  "Etc/GMT" zones, confusingly, represent offsets *from* GMT/UTC, *in the opposite sign you might expect*.  For example, "Etc/GMT+1" is one hour *behind* UTC, not ahead.  This convention is used for consistency in offset calculations.  "Etc/GMT-1" is one hour *ahead* of UTC.  The `contains("Etc/GMT")` or `contains("Etc/UTC")` in the `if` condition is essential to capture these zones and handle them correctly.

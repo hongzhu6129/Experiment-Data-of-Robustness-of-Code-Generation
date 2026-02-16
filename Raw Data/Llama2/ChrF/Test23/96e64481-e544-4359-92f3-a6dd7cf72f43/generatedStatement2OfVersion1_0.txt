@@ -1,0 +1,41 @@
+
+
+
+
+**Test Cases:**
+
+* **Valid Octal Numbers:**
+    * Input: 123  Output: 83
+    * Input: 77  Output: 63
+    * Input: 0  Output: 0
+    * Input: 10 Output: 8
+    * Input: 42  Output: 34
+    * Input: 7777777 (Largest 7-digit octal) Output: 2097151
+
+
+
+* **Invalid Octal Numbers:**
+    * Input: 80  Output: Invalid octal number: Contains digits outside 0-7
+    * Input: 999 Output: Invalid octal number: Contains digits outside 0-7
+    * Input: 12A  Output: Invalid octal number: Contains digits outside 0-7
+    * Input: -123 Output: Invalid octal number: Contains digits outside 0-7 (and handles negative elegantly).
+
+
+
+* **Edge/Corner Cases:**
+    * Input: "" (Empty String)  Output: Invalid input: Not a valid octal number (or could be handled to print 0 � clarify requirements).  The current code outputs 0 which is reasonable.
+    * Input: " " (Whitespace) Output: Invalid input: Not a valid octal number. (The current code prints 0; it's better to handle whitespace explicitly for robustness).
+    * Input: 1777777777777777777777  (Very large octal number, testing for overflow) Output: Overflow detected: The octal number is too large.
+
+
+
+**Explanation of Improvements and Error Handling:**
+
+* **Handles Invalid Digits:** The code explicitly checks for digits outside the range 0-7 and provides an appropriate error message.
+* **Overflow Check:** The code now includes a check for potential overflow when dealing with large octal numbers that might exceed the capacity of a `long`.
+* **Input Validation:** The `try-catch` block handles `NumberFormatException` to catch invalid inputs like non-numeric characters or empty strings.
+* **Clearer Error Messages:** The error messages are more specific, helping the user understand the issue with their input.
+* **Whitespace Handling**: The code could be further improved by explicitly handling whitespace in the input string, either by trimming it or rejecting inputs containing whitespace.  The current code converts whitespace to 0. Consider whether this is desired or if an error message is preferable.
+
+
+This revised version is significantly more robust and handles various error conditions, making it a much better solution. Remember to test your code with a variety of inputs to ensure it works correctly in all cases.

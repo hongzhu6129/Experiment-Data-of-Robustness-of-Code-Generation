@@ -1,0 +1,20 @@
+public class StringFromCharArray {
+
+    public static void main(String[] args) {
+        // Create a character array
+        char[] charArray = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!'};
+
+        // Create a String object from the character array
+        String str = new String(charArray);
+
+        // Print the string
+        System.out.println(str);
+
+
+        // Another example, specifying a range of characters from the array
+        char[] anotherCharArray = {'J', 'a', 'v', 'a', ' ', 'i', 's', ' ', 'f', 'u', 'n', '!'};
+        String str2 = new String(anotherCharArray, 5, 7); // Start at index 5, take 7 characters
+
+        System.out.println(str2);
+    }
+}

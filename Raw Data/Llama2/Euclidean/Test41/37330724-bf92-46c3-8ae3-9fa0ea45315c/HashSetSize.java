@@ -1,0 +1,23 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetSize {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+
+        // Add some elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+        hashSet.add("Mango");
+
+        // Get the number of elements in the HashSet using size()
+        int size = hashSet.size();
+
+        // Print the size of the HashSet
+        System.out.println("The size of the HashSet is: " + size); 
+    }
+}

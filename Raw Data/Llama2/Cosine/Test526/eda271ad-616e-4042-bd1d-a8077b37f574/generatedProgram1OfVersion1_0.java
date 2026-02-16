@@ -1,0 +1,30 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueInsertion {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers (you can use other data types too)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Insert elements into the PriorityQueue
+        pq.offer(5);
+        pq.offer(1);
+        pq.offer(10);
+        pq.offer(3);
+
+
+        // Insert a new element (e.g., 7)
+        int newElement = 7;
+        pq.offer(newElement); // offer() is the preferred method for adding elements
+
+
+        // Print the PriorityQueue (elements are ordered according to their natural ordering, which is ascending for Integers)
+        System.out.println("PriorityQueue after insertion: " + pq);
+
+
+        // Demonstrate retrieving and removing elements (optional)
+        System.out.println("Head of the queue (smallest element): " + pq.peek()); // peek() retrieves but doesn't remove
+        System.out.println("Removed element: " + pq.poll()); // poll() retrieves and removes the head
+        System.out.println("PriorityQueue after removal: " + pq);
+    }
+}

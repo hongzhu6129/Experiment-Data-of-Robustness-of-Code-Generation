@@ -1,0 +1,59 @@
+import java.util.LinkedList;
+
+public class LinkedListIsEmptyCheck {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> myList = new LinkedList<>();
+
+        // Check if the list is empty using isEmpty()
+        if (myList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+
+
+        // Add some elements to the list
+        myList.add("Apple");
+        myList.add("Banana");
+        myList.add("Orange");
+
+        // Check again if the list is empty
+        if (myList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+
+
+        //Demonstrate using size() as an alternative (though less efficient)
+        LinkedList<Integer> anotherList = new LinkedList<>();
+        if(anotherList.size() == 0) {
+            System.out.println("Another list is empty (using size()).");
+        }
+
+        anotherList.add(1);
+        if(anotherList.size() == 0) {
+            System.out.println("Another list is empty (using size())."); //This won't print
+        } else {
+            System.out.println("Another list is not empty (using size()).");
+        }
+
+
+        // Example illustrating a null LinkedList (important distinction)
+        LinkedList<Double> nullList = null; 
+
+        // Checking for null before using isEmpty() is crucial to avoid NullPointerExceptions.
+        if (nullList == null) {
+            System.out.println("The linked list is null.");
+        } else if (nullList.isEmpty()) {  // Safe to call isEmpty() after null check.
+            System.out.println("The linked list is empty.");
+        } else {
+            System.out.println("The linked list is not empty.");
+        }
+
+
+
+    }
+}

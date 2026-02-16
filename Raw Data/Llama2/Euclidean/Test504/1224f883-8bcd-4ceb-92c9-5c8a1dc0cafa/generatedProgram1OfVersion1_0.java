@@ -1,0 +1,35 @@
+public class ConsecutiveLetters {
+
+    public static void main(String[] args) {
+        String str1 = "aabbccd";
+        System.out.println("String: " + str1 + ", Result: " + test(str1)); // Output: true
+
+        String str2 = "abcded";
+        System.out.println("String: " + str2 + ", Result: " + test(str2)); // Output: false
+
+        String str3 = "aabbccaadd";
+        System.out.println("String: " + str3 + ", Result: " + test(str3)); // Output: true
+
+
+        String str4 = ""; // Empty string
+        System.out.println("String: " + str4 + ", Result: " + test(str4)); // Output: false
+
+        String str5 = "a"; // Single character string
+        System.out.println("String: " + str5 + ", Result: " + test(str5)); // Output: false
+
+    }
+
+    public static boolean test(String str) {
+        if (str == null || str.length() < 2) {
+            return false; 
+        }
+
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}

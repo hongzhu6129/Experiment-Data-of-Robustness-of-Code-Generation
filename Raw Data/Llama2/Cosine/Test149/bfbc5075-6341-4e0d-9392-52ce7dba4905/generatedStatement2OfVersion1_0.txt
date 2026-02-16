@@ -1,0 +1,10 @@
+
+
+
+Explanation:
+
+1. **Get Calendar Instance:**  `Calendar calendar = Calendar.getInstance();` creates a Calendar object representing the current date and time in the default time zone and locale.
+2. **Set to Previous Date:** `calendar.add(Calendar.DATE, -1);` moves the calendar back by one day to get the previous date.
+3. **Get Maximum Values:** `calendar.getActualMaximum(field)` gets the maximum possible value for a specific field in the calendar.  We use this for YEAR, MONTH, WEEK_OF_YEAR, and DAY_OF_MONTH.
+4. **Month Adjustment:** The `Calendar.MONTH` field is 0-indexed (January is 0, February is 1, etc.), so we add 1 to `maxMonth` when printing to display the correct month number.
+5. **Day of Month Clarification:** The `maxDayOfMonth` value retrieved represents the maximum number of days possible in the *previous date's month*.  For example, if today is March 1st, the code calculates the maximum number of days in February.  The output clearly explains this.

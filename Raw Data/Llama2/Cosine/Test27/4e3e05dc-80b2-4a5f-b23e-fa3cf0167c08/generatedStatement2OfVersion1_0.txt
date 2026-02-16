@@ -1,0 +1,33 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Edge Cases:** The code now correctly handles empty (`{}`) and `null` arrays, returning 0 as the length in both cases.  This prevents `NullPointerExceptions`.
+
+2. **Clearer Variable Naming:** `uniqueIndex` is a more descriptive name than `j` for the index tracking the placement of unique elements.
+
+3. **Improved Comments:** The comments are now more concise and explain the logic more effectively.
+
+4. **Comprehensive Testing:** The `main` method includes test cases for various scenarios, including duplicates, no duplicates, empty arrays, and `null` arrays, demonstrating the robustness of the code.
+
+5. **Output Formatting:** The output in `main` is formatted to clearly show the new length and the updated array (only the relevant portion) using `Arrays.copyOfRange`. This makes the results easy to understand.
+
+
+How it works (the `removeDuplicates` method):
+
+1. **Initialization:** `uniqueIndex` is initialized to 0.  This will store the index where the next unique element should be placed.
+
+2. **Iteration:** The loop iterates from the second element (index 1) to the end of the array.
+
+3. **Comparison:** Inside the loop, the current element `nums[i]` is compared with the element at `nums[uniqueIndex]`.
+
+4. **Unique Element Found:** If `nums[i]` is different from `nums[uniqueIndex]`, it means a new unique element is found.  `uniqueIndex` is incremented, and the new unique element is placed at `nums[uniqueIndex]`.
+
+5. **Duplicate Found:** If `nums[i]` is the same as `nums[uniqueIndex]`, it's a duplicate, and the loop continues without doing anything.
+
+6. **Return:** Finally, `uniqueIndex + 1` is returned, which represents the length of the updated array (containing only unique elements).
+
+
+
+This improved version is more robust, efficient, and easier to understand.

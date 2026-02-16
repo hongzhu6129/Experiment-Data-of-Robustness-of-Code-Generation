@@ -1,0 +1,38 @@
+public class CountEvenOdd {
+
+    public static void main(String[] args) {
+        // Example array of non-zero integers
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        int evenCount = 0;
+        int oddCount = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        System.out.println("Number of even elements: " + evenCount);
+        System.out.println("Number of odd elements: " + oddCount);
+
+
+        //Alternative approach (slightly less efficient, but demonstrates another way)
+         evenCount = 0;
+         oddCount = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            evenCount += (arr[i] % 2 == 0) ? 1 : 0;  // Using ternary operator
+            oddCount += (arr[i] % 2 != 0) ? 1 : 0;
+        }
+
+        System.out.println("\nUsing alternative approach:");  // Just to separate output
+        System.out.println("Number of even elements: " + evenCount);
+        System.out.println("Number of odd elements: " + oddCount);
+
+
+
+    }
+}

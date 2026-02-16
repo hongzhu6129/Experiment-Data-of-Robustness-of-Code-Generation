@@ -1,0 +1,11 @@
+
+
+
+Key improvements and explanations:
+
+* **LocalDateTime vs. ZonedDateTime:**  For formats involving time zones (z, Z, etc.), you *must* use `ZonedDateTime`. `LocalDateTime` doesn't have time zone information.
+* **Correct Format Specifiers:** The code now uses the correct format specifiers (e.g., `HH` for 24-hour format, `mm` for minutes, `z` for zone abbreviation, `Z` for zone offset). The original question had some inconsistencies.
+* **Handling Milliseconds:**  The `SSS` format specifier is used correctly to display milliseconds.
+* **"leibstandarte":** I've explained that  "leibstandarte" is not a valid date/time format specifier.  If you need to add custom text, you'd concatenate it to the formatted string.  For instance:
+
+   

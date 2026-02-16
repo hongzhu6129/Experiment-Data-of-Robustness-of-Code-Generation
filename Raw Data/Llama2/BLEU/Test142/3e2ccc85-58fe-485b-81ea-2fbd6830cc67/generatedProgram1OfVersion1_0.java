@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class CountFactors {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int num = scanner.nextInt();
+
+        if (num < 0) {
+            num = -num; // Handle negative numbers
+        }
+
+        int count = 0;
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+            }
+        }
+
+        System.out.println("Number of factors: " + count);
+        scanner.close();
+    }
+}

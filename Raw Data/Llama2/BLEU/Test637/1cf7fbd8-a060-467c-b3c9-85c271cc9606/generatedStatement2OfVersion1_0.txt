@@ -1,0 +1,23 @@
+
+
+
+Key Improvements and Explanations:
+
+* **JUnit Tests:** The code now includes JUnit 5 tests, which are essential for verifying the correctness of the calculations.  The `@Test` annotation marks methods as test cases.  `assertEquals` checks if the calculated value matches the expected value within a specified delta (tolerance).
+
+* **Corner Cases:** The tests cover important corner cases:
+    * Zero radius:  A circle with zero radius should have zero area and zero perimeter.
+    * Extremely small radius:  Tests with a very small radius help ensure the calculations handle small values correctly.
+
+* **Negative Radius Handling:** The code now demonstrates how to use JUnit to test for exceptions. Since a negative radius is not physically meaningful, the tests are written to expect an `IllegalArgumentException` if you attempt to calculate with a negative radius.  (You'd need to add actual exception throwing within `calculateArea` and `calculatePerimeter` if you want the tests to pass as written. Alternatively, you could provide a default behavior for negative radius, like returning 0 or the absolute value).
+
+* **Clearer Output:** The `main` method now labels the output for better readability.
+
+* **Accuracy:** Using `Math.PI` provides more accurate calculations than using a hardcoded approximation like 3.14.
+
+How to Run JUnit Tests:
+
+Most IDEs (IntelliJ IDEA, Eclipse, NetBeans) have built-in support for running JUnit tests. You can usually right-click on the test class or method and select "Run".  Alternatively, you can run them from the command line using build tools like Maven or Gradle.
+
+
+This improved version is much more robust and demonstrates good testing practices, which are crucial for software development.

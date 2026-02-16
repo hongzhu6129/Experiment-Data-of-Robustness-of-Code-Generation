@@ -1,0 +1,18 @@
+
+
+**Test Cases:**
+
+| num1 | num2 | num3 | Expected Output | Reason                                  |
+|------|------|------|-----------------|-----------------------------------------|
+| 22   | 32   | 42   | true            | All have the same rightmost digit (2)    |
+| 10   | 20   | 30   | true            | All have the same rightmost digit (0)    |
+| 1    | 11   | 21   | true            | num1 and num3 have the same rightmost digit (1)|
+| 5    | 15   | 55   | true            | num2 and num3 have the same rightmost digit (5)|
+| 2    | 3    | 4    | false           | None share the same rightmost digit       |
+| 102  | 203  | 304  | false           | None share the same rightmost digit       |
+| 0    | 0    | 0    | true            | All have the same rightmost digit (0)    |  // Corner case: all zeros
+| 10   | 1    | 1    | true            | num2 and num3 have same rightmost digit |  // Corner case: single-digit numbers
+| 100  | 200  | 300  | true            | All have the same rightmost digit (0)    |  // Corner case: hundreds
+
+
+These test cases cover various scenarios, including cases where all three integers have the same rightmost digit, only two have the same, and none have the same.  The corner cases address single-digit numbers, all zeros, and numbers ending in two zeros (hundreds, etc.). This helps ensure the function behaves correctly in diverse situations.

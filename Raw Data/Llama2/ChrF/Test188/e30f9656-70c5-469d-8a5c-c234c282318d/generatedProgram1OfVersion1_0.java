@@ -1,0 +1,22 @@
+public class Operations {
+
+    public static void main(String[] args) {
+        // a. -5 + 8 % 6
+        int resultA = -5 + 8 % 6;
+        System.out.println("-5 + 8 % 6 = " + resultA); // Output: -5 + 8 % 6 = -3
+
+        // b. (55+9) % 9
+        int resultB = (55 + 9) % 9;
+        System.out.println("(55+9) % 9 = " + resultB); // Output: (55+9) % 9 = 7
+
+        // c. 20 + -3*5 / 8
+        int resultC = 20 + -3 * 5 / 8; 
+        System.out.println("20 + -3*5 / 8 = " + resultC); // Output: 20 + -3*5 / 8 = 18
+
+        // d. 5 + 15 / 3 * 2 - 8 % 3
+        int resultD = 5 + 15 / 3 * 2 - 8 % 3;
+        System.out.println("5 + 15 / 3 * 2 - 8 % 3 = " + resultD); // Output: 5 + 15 / 3 * 2 - 8 % 3 = 13
+
+
+    }
+}

@@ -1,0 +1,65 @@
+import java.util.LinkedList;
+
+public class LinkedListOccurrences {
+
+    public static void main(String[] args) {
+        // Example usage:
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(2);
+        list.add(4);
+        list.add(2);
+        list.add(5);
+
+        int element = 2;
+
+        findOccurrences(list, element);
+
+        // Example with element not present:
+         list = new LinkedList<>();
+        list.add(1);
+        list.add(7);
+        list.add(3);
+        list.add(9);
+        element = 2;
+        findOccurrences(list, element);
+
+
+        // Example with empty list
+        list = new LinkedList<>();
+        element = 2;
+        findOccurrences(list, element);
+
+    }
+
+
+
+    public static void findOccurrences(LinkedList<Integer> list, int element) {
+        int first = -1;
+        int last = -1;
+
+        if (list == null || list.isEmpty()) {
+            System.out.println("List is empty.  Element " + element + " not found.");
+            return;
+        }
+
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == element) {
+                if (first == -1) {
+                    first = i;
+                }
+                last = i;
+            }
+        }
+
+        if (first == -1) { //Element was not found at all
+            System.out.println("Element " + element + " not found in the list.");
+        } else {
+            System.out.println("First occurrence of " + element + ": " + first);
+            System.out.println("Last occurrence of " + element + ": " + last);
+        }
+    }
+}

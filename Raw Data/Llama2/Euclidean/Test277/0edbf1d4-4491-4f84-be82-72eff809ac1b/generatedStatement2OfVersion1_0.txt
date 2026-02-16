@@ -1,0 +1,29 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+| Test Case | Length | Width | Expected Area | Expected Perimeter | Notes/Purpose                                   |
+| --------- | ------- | ----- | ------------- | ------------------ | ------------------------------------------------- |
+| 1        | 5      | 3     | 15           | 16                | Standard positive values                        |
+| 2        | 10     | 1     | 10           | 22                | Testing a long, thin rectangle                 |
+| 3        | 2.5    | 4.5   | 11.25        | 14                | Testing decimal/floating-point values            |
+| 4        | 1      | 1     | 1            | 4                 | Testing a square (special case of rectangle)       |
+| 5        | 0      | 5     | Error         | Error              | **Corner case:** Zero length (invalid input)      |
+| 6        | 5      | 0     | Error         | Error              | **Corner case:** Zero width (invalid input)       |
+| 7        | -2     | 3     | Error         | Error              | **Corner case:** Negative length (invalid input)    |
+| 8        | 5      | -3     | Error         | Error              | **Corner case:** Negative width (invalid input)    |
+| 9       | Double.MAX_VALUE | 1.0  | Double.MAX_VALUE |  2*Double.MAX_VALUE + 2 (likely overflows)  | **Corner case:** Very large length (potential overflow) |
+| 10       | 1.0 | Double.MAX_VALUE  | Double.MAX_VALUE |  2*Double.MAX_VALUE + 2 (likely overflows)  | **Corner case:** Very large width (potential overflow) |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can manually enter these values when prompted by the program.
+
+2. **Automated Testing (Recommended):**  For more robust testing, especially with many cases, it's much better to use a testing framework like JUnit.  You would write separate test methods for each test case. Here�s a basic example using JUnit:
+
+

@@ -1,0 +1,17 @@
+
+
+
+To compile and run:
+
+1. **Save:** Save the code as `LastModifiedDate.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac LastModifiedDate.java`
+3. **Run:**  Execute the compiled class, providing the file path as a command-line argument: `java LastModifiedDate /path/to/your/file.txt`  (Replace `/path/to/your/file.txt` with the actual path to the file).
+
+
+This improved version:
+
+- **Handles command-line arguments:**  It checks if a file path is provided and prints an error message if not.
+- **Uses `java.nio.file.Files`:** This is the modern and preferred way to work with file attributes in Java.  It's more efficient and provides access to more attributes.
+- **Formats the date:** The `SimpleDateFormat` class is used to format the date into a readable string.
+- **Includes error handling:** It catches `IOException` in case there's a problem accessing the file.
+- **Demonstrates getting other file times:** Shows how to get creation and last access times as well.

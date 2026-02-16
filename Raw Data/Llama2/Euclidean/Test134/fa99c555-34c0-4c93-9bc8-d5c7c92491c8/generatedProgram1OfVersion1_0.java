@@ -1,0 +1,16 @@
+public class Summation {
+
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        System.out.println("The sum of 1 to 10 is: " + sum);
+
+
+        // Alternative approach (using a formula)  -- more efficient for larger ranges
+        int n = 10;
+        int sumFormula = n * (n + 1) / 2;
+        System.out.println("The sum of 1 to 10 (using formula): " + sumFormula); 
+    }
+}

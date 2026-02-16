@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:** The code now includes comprehensive JUnit tests to cover various scenarios:
+    * Normal rectangle
+    * Square (a special case of a rectangle)
+    * Zero length and zero width (corner cases)
+    * Large numbers (to check for potential overflow)
+    * Double values for length and width.
+* **Corner Case Handling:** The tests now explicitly address corner cases like zero length and zero width.
+* **Invalid Input Handling:**  The code is improved to handle invalid input (negative length or width) more robustly. It uses `assertThrows` in the tests to verify that `IllegalArgumentException` is thrown when creating a rectangle with negative dimensions.  You can also add this error handling directly to the `Rectangle` constructor if you prefer to handle it there instead of letting it throw an exception by default.
+
+
+To run these tests, you'll need to add JUnit 5 to your project.  If you're using an IDE like IntelliJ or Eclipse, they usually have built-in support for JUnit.  If you're using a build tool like Maven or Gradle, you'll need to add the JUnit dependency.
+
+
+

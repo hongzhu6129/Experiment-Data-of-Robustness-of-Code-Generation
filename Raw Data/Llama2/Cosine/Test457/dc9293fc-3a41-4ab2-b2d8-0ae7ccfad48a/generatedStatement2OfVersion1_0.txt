@@ -1,0 +1,16 @@
+
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  Checks for `null` or empty input array.
+* **Clearer variable names:** Uses `lowerIndex` and `higherIndex` for better readability.
+* **Improved pivot selection:**  Uses the middle element as the pivot to mitigate worst-case scenarios with already sorted or reverse-sorted inputs.  `(lowerIndex + higherIndex) / 2` can potentially overflow with very large arrays. The safer calculation is `lowerIndex + (higherIndex - lowerIndex) / 2`.
+* **Correct partitioning logic:** Ensures elements are correctly placed around the pivot.
+* **Recursive calls only when necessary:** Avoids unnecessary recursive calls when subarrays are already sorted.
+* **Example usage in `main`:**  Demonstrates how to use the `sort` method.
+* **Prints the sorted array:** Added a print statement to show the sorted output.
+
+
+
+This improved version addresses potential issues and provides a more robust and efficient implementation of Quick Sort.

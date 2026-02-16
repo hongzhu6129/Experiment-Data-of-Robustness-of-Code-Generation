@@ -1,0 +1,28 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **Valid Format:**
+   - Input Format: `yyyy/MM/dd HH:mm:ss.SSS`
+   - Expected Output: A correctly formatted date and time string like `2024/10/27 10:30:00.123` (the actual numbers will vary depending on the current time).  Verify that the year, month, day, hour, minute, second, and milliseconds are correctly displayed.
+
+2. **Different Valid Format:**
+   - Input Format: `MMM dd, yyyy hh:mm a` (e.g., Oct 27, 2024 10:30 AM)
+   - Expected Output:  The date and time in the specified format. This tests different formatting characters.
+
+3. **Date Only Format:**
+   - Input Format: `yyyy-MM-dd`
+   - Expected Output:  The date in the specified format (e.g., 2024-10-27). This tests omitting the time component.
+
+4. **Time Only Format:**
+   - Input Format: `HH:mm:ss`
+   - Expected Output: The time in the specified format (e.g., 10:30:00). This tests omitting the date component.
+
+
+5. **Invalid Format:**  (Corner Case)
+   - Input Format: `yyyy/MM/dd HHmmssSSS` (missing separators) or other invalid patterns like `yy/M/d` (incorrect number of characters).
+   - Expected Output: A `DateTimeParseException` should be thrown and handled gracefully.  You can add a `try-catch` block in your `getCurrentDateTime` function to catch this and perhaps return an error message or a default value.
+
+   

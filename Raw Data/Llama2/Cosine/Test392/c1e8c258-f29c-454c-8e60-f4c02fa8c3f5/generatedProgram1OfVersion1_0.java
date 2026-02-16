@@ -1,0 +1,33 @@
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet of strings
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Print the initial HashSet
+        System.out.println("Initial HashSet: " + hashSet);
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Append the element using add() -  HashSets don't have a specific "append" operation, 
+        // but add() effectively appends if the element isn't already present.
+        hashSet.add(elementToAppend);
+
+
+        // Print the updated HashSet
+        System.out.println("Updated HashSet: " + hashSet);
+
+
+         //Demonstrating that add() doesn't append if element is already there:
+        hashSet.add("Apple"); //Trying to add Apple again
+        System.out.println("HashSet after adding duplicate: " + hashSet); // No change, as Sets only hold unique elements.
+    }
+}

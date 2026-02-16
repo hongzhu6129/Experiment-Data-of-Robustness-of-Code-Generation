@@ -1,0 +1,41 @@
+import java.util.LinkedList;
+
+public class InsertAtFront {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+
+        // Add some initial elements
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+
+        System.out.println("Initial LinkedList: " + languages);
+
+
+        // Element to insert at the front
+        String newLanguage = "Kotlin";
+
+        // Insert at the beginning using addFirst()
+        languages.addFirst(newLanguage);
+
+        System.out.println("LinkedList after inserting at front: " + languages);
+
+
+         //Another example using integer list
+
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(2);
+        numbers.add(4);
+        numbers.add(6);
+        System.out.println("Initial numbers LinkedList:" + numbers);
+
+        int newNumber = 0;
+        numbers.addFirst(newNumber);
+        System.out.println("Numbers LinkedList after inserting at front: " + numbers);
+
+
+
+    }
+}

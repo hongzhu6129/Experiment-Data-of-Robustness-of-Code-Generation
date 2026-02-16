@@ -1,0 +1,83 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class RomanToInteger {
+
+    public static void main(String[] args) {
+        // Example Roman numerals and their corresponding integer values
+        String[] romanNumerals = {"III", "IV", "IX", "LVIII", "MCMXCIV", "DCXXI"};
+        int[] expectedIntegers = {3, 4, 9, 58, 1994, 621};
+
+        // Educational explanation
+        System.out.println("Converting Roman Numerals to Integers\n");
+        System.out.println("Roman numerals use letters to represent numbers.  The basic symbols are:");
+        System.out.println("I = 1\nV = 5\nX = 10\nL = 50\nC = 100\nD = 500\nM = 1000");
+        System.out.println("\nNumbers are formed by combining symbols, generally from largest to smallest.");
+        System.out.println("For example, LXXVI is 50 + 10 + 10 + 5 + 1 = 76");
+        System.out.println("However, there are subtractive cases:");
+        System.out.println("IV = 4 (not 6)\nIX = 9 (not 11)\nXL = 40\nXC = 90\nCD = 400\nCM = 900");
+        System.out.println("\nLet's convert some examples:\n");
+
+
+        for (int i = 0; i < romanNumerals.length; i++) {
+            String roman = romanNumerals[i];
+            int integer = romanToInt(roman);
+            System.out.println("Roman: " + roman + "  Integer: " + integer + "   (Expected: " + expectedIntegers[i] + ")");
+
+            // More detailed explanation for a few examples:
+            if (roman.equals("MCMXCIV")) {
+                explainConversion("MCMXCIV");
+            } else if (roman.equals("IX")) {
+                explainConversion("IX");
+            }
+
+        }
+
+
+    }
+
+
+    public static int romanToInt(String s) {
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currValue = romanMap.get(s.charAt(i));
+            if (currValue < prevValue) {
+                result -= currValue;
+            } else {
+                result += currValue;
+            }
+            prevValue = currValue;
+        }
+
+        return result;
+    }
+
+
+    public static void explainConversion(String roman) {
+        System.out.println("\nExplanation for " + roman + ":");
+        if (roman.equals("MCMXCIV")) {
+            System.out.println("M = 1000");
+            System.out.println("CM = 900 (C before M)");
+            System.out.println("XC = 90 (X before C)");
+            System.out.println("IV = 4 (I before V)");
+            System.out.println("1000 + 900 + 90 + 4 = 1994");
+        } else if (roman.equals("IX")) {
+            System.out.println("I before X means subtraction: 10 - 1 = 9");
+
+        } // Add other explanations as needed...
+        System.out.println("");
+
+    }
+}
+

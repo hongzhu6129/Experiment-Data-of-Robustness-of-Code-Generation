@@ -1,0 +1,58 @@
+public class AfterTen {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 10, 11, 12, 13};
+        printArray(createArrayAfterTen(arr1)); // Output: [11, 12, 13]
+
+        int[] arr2 = {1, 2, 3, 4, 5};
+        printArray(createArrayAfterTen(arr2)); // Output: []
+
+        int[] arr3 = {1, 2, 3, 10};
+        printArray(createArrayAfterTen(arr3)); // Output: []
+
+        int[] arr4 = {1, 10, 2, 3, 10, 4, 5, 10, 6, 7};
+        printArray(createArrayAfterTen(arr4)); // Output: [6, 7]
+
+        int[] arr5 = {10};
+        printArray(createArrayAfterTen(arr5)); // Output: []
+        
+        int[] arr6 = {};
+        printArray(createArrayAfterTen(arr6)); // Output: []
+    }
+
+    public static int[] createArrayAfterTen(int[] arr) {
+        int lastTenIndex = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                lastTenIndex = i;
+            }
+        }
+
+        if (lastTenIndex == -1 || lastTenIndex == arr.length - 1) {  //No 10 or 10 is the last element
+            return new int[0]; // Return empty array
+        }
+
+        int newArrayLength = arr.length - (lastTenIndex + 1);
+        int[] newArray = new int[newArrayLength];
+
+        for (int i = 0; i < newArrayLength; i++) {
+            newArray[i] = arr[lastTenIndex + 1 + i];
+        }
+
+        return newArray;
+    }
+
+
+    // Helper function to print an array (for demonstration purposes)
+    public static void printArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}

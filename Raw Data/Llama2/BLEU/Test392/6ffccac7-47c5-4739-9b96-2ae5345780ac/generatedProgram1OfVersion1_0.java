@@ -1,0 +1,23 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the starred section
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print("* ");
+            }
+            if (i % 2 == 0) {
+                System.out.print("    "); // Adjust spacing for even rows
+            } else {
+                System.out.print("     "); // Adjust spacing for odd rows
+            }
+
+            System.out.println("==================================");
+        }
+
+        // Print the striped section
+        for (int i = 0; i < 6; i++) {
+            System.out.println("============================================");
+        }
+    }
+}

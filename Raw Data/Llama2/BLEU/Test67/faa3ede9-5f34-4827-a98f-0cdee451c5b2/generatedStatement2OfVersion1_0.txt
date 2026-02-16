@@ -1,0 +1,28 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`trim()`:** The most likely cause of the "invalid literal" error is leading or trailing whitespace.  The `trim()` method removes this whitespace before parsing.
+
+2. **`try-catch`:**  This is crucial for handling `NumberFormatException`.  Without it, your program would crash.
+
+3. **Error Handling Options:** The code demonstrates four common ways to deal with the error:
+   - Default value:  Use a default if the input is invalid.
+   - Extract the number part:  If you expect a number within a larger string (e.g., "Value: 123"), use regular expressions or other string manipulation to isolate the numeric part.
+   - Reprompt:  If you're interacting with a user, ask them to re-enter the data.
+   - Log and terminate: If the error is severe and prevents your program from continuing, log it and exit.
+
+4. **Clear Error Message:**  The `System.err.println()` provides a helpful error message that includes the original input string.  This is very useful for debugging.
+
+5. **`replaceAll()`:** The improved code uses `replaceAll("[^0-9]", "")` to remove any non-digit characters. This is robust if you expect other characters might be mixed with the digits.  This makes the code more flexible than, for example, only removing `#` characters.
+
+
+**How to Use:**
+
+1. Save the code as `Main.java`.
+2. Compile: `javac Main.java`
+3. Run: `java Main`
+
+
+The output will either be the parsed integer or an error message indicating why the input string is invalid and potentially the recovered integer part if that was successful.

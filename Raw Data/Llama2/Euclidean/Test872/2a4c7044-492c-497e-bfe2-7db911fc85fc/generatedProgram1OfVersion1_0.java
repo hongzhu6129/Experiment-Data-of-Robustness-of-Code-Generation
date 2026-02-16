@@ -1,0 +1,66 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+
+public class StringToDateConverter {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the date string (e.g., yyyy-MM-dd, MM/dd/yyyy, MMM dd, yyyy):");
+        String dateString = scanner.nextLine();
+
+        // Try various common date formats
+        DateTimeFormatter[] formatters = {
+                DateTimeFormatter.ofPattern("yyyy-MM-dd"),
+                DateTimeFormatter.ofPattern("MM/dd/yyyy"),
+                DateTimeFormatter.ofPattern("MMM dd, yyyy"),
+                DateTimeFormatter.ofPattern("yyyy") // Year only
+        };
+
+
+        LocalDate date = null;
+        LocalDateTime dateTime = null;
+        LocalTime time = null;
+
+        for (DateTimeFormatter formatter : formatters) {
+            try {
+                date = LocalDate.parse(dateString, formatter);
+                System.out.println("Parsed date (LocalDate): " + date);
+                break; // Stop if parsing successful
+            } catch (DateTimeParseException e) {
+                // Try next format or continue to try time and datetime
+            }
+
+            try {
+                dateTime = LocalDateTime.parse(dateString, formatter);
+                System.out.println("Parsed date and time (LocalDateTime): " + dateTime);
+                break;
+            } catch (DateTimeParseException e) {
+                // Try next format
+            }
+
+             try {
+                time = LocalTime.parse(dateString, formatter);
+                System.out.println("Parsed time (LocalTime): " + time);
+                break;
+            } catch (DateTimeParseException e) {
+                // Try next format
+            }
+
+
+        }
+
+        if (date == null && dateTime == null && time == null) {
+            System.out.println("Invalid date format. Please use one of the supported formats.");
+        }
+
+        scanner.close();
+
+    }
+}

@@ -1,0 +1,46 @@
+public class CreateArrayAfter10 {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 4, 5, 6, 10, 7, 8, 9}; // Example array
+        createArrayAfterLast10(originalArray);
+
+
+        int[] originalArray2 = {1, 2, 3, 4, 5, 6, 7, 8, 9}; // Example with no 10
+        createArrayAfterLast10(originalArray2);
+
+        int[] originalArray3 = {10, 1, 2, 3, 10, 4, 5, 6}; // Example with 10 at the beginning
+        createArrayAfterLast10(originalArray3);
+    }
+
+
+    public static void createArrayAfterLast10(int[] originalArray) {
+        int last10Index = -1;
+
+        // Find the index of the last occurrence of 10
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                last10Index = i;
+            }
+        }
+
+        if (last10Index != -1 && last10Index < originalArray.length - 1) {
+            int newArrayLength = originalArray.length - (last10Index + 1);
+            int[] newArray = new int[newArrayLength];
+            for (int i = 0; i < newArrayLength; i++) {
+                newArray[i] = originalArray[last10Index + 1 + i];
+            }
+
+            // Print the new array (for verification)
+            System.out.print("New array: ");
+            for (int element : newArray) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        } else {
+            System.out.println("10 not found or is the last element. No new array created."); // Handle cases where 10 is not found or is the last element.
+        }
+    }
+}
+
+
+

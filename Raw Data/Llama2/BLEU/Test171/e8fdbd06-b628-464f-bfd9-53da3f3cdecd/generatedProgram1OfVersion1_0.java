@@ -1,0 +1,36 @@
+import java.util.TreeMap;
+
+public class TreeMapAssociation {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Associate values with keys
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+
+        // Print the TreeMap to verify the associations
+        System.out.println(treeMap); 
+
+
+        // Example of updating an existing key's value:
+        treeMap.put("Apple", 10); // Replaces the old value (1) with 10
+        System.out.println(treeMap);
+
+
+        // Example of checking if a key exists and retrieving its value:
+        if (treeMap.containsKey("Banana")) {
+            int value = treeMap.get("Banana");
+            System.out.println("Value associated with Banana: " + value);
+        }
+
+
+        // Example of removing a key-value pair
+        treeMap.remove("Orange");
+        System.out.println(treeMap);
+
+
+    }
+}

@@ -1,0 +1,80 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Format the date and time (you can customize the format)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+
+        // Display the formatted date and time
+        System.out.println("Current Date and Time: " + formattedDateTime);
+
+
+        // Example usage of other methods (replace with your actual implementations)
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int dayOfMonth = now.getDayOfMonth();
+
+        System.out.println("Day of week: " + dayNameOfWeek(dayOfMonth)); // Example
+        System.out.println("Leap years since 1970: " + numberOfLeapYearsSince1970(year)); // Example
+        // ... other method calls as needed ...
+    }
+
+
+
+
+    public static String dayNameOfWeek(int day) {
+        //  (Placeholder implementation - replace with actual logic)
+        return "Monday"; // Replace with correct day name logic
+    }
+
+
+    public static int numberOfLeapYearsSince1970(long year) {
+        // (Placeholder implementation - replace with actual logic)
+        return 0; //  Replace with correct leap year calculation
+    }
+
+    public static int getMonthFromDays(int days, int year) {
+        // Placeholder implementation
+        return 1;
+    }
+
+
+    public static int getNumOfDaysToReachThatMonth(int month, int year) {
+        // Placeholder implementation
+        return 0;
+    }
+
+    public static int getStartDay(int month, int year) {
+       // Placeholder implementation
+       return 0; 
+    }
+
+    public static int getTotalNumberOfDays(int month, int year) {
+       // Placeholder implementation
+       return 0;
+    }
+
+
+    public static int getNumberOfDaysInMonth(int month, int year) {
+        // Placeholder implementation
+        return 30; // Replace with correct logic
+    }
+
+    public static boolean isLeapYear(int year) {
+        // Placeholder implementation
+        return false; // Replace with correct logic
+    }
+
+    public static String getMonthName(int month) {
+        // Placeholder implementation
+        return "January"; // Replace with correct logic based on month
+    }
+
+
+}

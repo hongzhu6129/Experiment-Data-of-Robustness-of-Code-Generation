@@ -1,0 +1,28 @@
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+
+public class TimeInfo {
+
+    public static void main(String[] args) {
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+
+        // Or create a specific time
+        // LocalTime specificTime = LocalTime.of(15, 30, 45); // 3:30:45 PM
+
+
+        // Format the time for display
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a"); // Example: 03:30:45 PM
+        String formattedTime = currentTime.format(formatter);
+
+
+        // Print the time information
+        System.out.println("Current Time: " + formattedTime);
+        System.out.println("Hour: " + currentTime.getHour());  // 24-hour format
+        System.out.println("Minute: " + currentTime.getMinute());
+        System.out.println("Second: " + currentTime.getSecond());
+        System.out.println("Nanosecond: " + currentTime.getNano());
+        System.out.println("AM/PM: " + (currentTime.get(ChronoField.AMPM_OF_DAY) == 0 ? "AM" : "PM")); // 0 is AM, 1 is PM
+    }
+}

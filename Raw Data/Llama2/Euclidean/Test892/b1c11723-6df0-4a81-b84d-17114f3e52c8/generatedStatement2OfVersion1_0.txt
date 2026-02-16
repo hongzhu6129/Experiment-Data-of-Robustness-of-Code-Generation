@@ -1,0 +1,28 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  Using `m` and `n` for dimensions is standard practice and makes the code more readable.
+
+2. **Return an Array for Row and Column:**  The `Saddleback` method now returns an `int[]` containing the row and column indices of the target. This avoids using multiple `return` statements and handles the "not found" case gracefully.
+
+3. **"Not Found" Handling:**  The method returns `{-1, -1}` to signal that the target was not found.  The `main` method checks for this and prints an appropriate message.
+
+4. **Added Test Cases in `main`:** Included a second test case with a target value that is *not* in the array to demonstrate the "not found" handling.
+
+5. **Comments:** Added comments to explain the logic and purpose of different parts of the code.
+
+6. **Consistent Formatting:** Improved formatting for better readability.
+
+
+How the Saddleback Search Works:
+
+The Saddleback search starts at the top-right corner of the matrix.  It then compares the target value to the element at the current position:
+
+- If the target is equal to the element, the search is successful.
+- If the target is greater than the element, we move down to the next row (since values increase as we move down).
+- If the target is less than the element, we move left to the previous column (since values decrease as we move left).
+
+
+This process continues until either the target is found or we go out of bounds (meaning the target is not present in the matrix).  The algorithm is efficient because it eliminates a row or a column with each comparison.

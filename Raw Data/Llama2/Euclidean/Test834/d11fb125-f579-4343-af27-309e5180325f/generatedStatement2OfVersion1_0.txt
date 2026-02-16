@@ -1,0 +1,23 @@
+
+
+
+Explanation:
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles the edge case of an empty input array.
+   - `uniqueIndex` keeps track of where to place the next unique element. It starts at 1 because the first element is always unique initially.
+   - Iterates through the array from the second element (`i = 1`).
+   - If the current element (`nums[i]`) is different from the previous element (`nums[i-1]`), it's a unique element. So, we place it at `nums[uniqueIndex]` and increment `uniqueIndex`.
+   - Finally, returns `uniqueIndex`, which is the new length of the array containing only unique elements.
+
+2. **`main(String[] args)`:**
+   - Provides example usage of the `removeDuplicates` function with various test cases, including an empty array and an array with already unique elements.
+   - Prints the updated length and the modified array using `Arrays.copyOfRange` to display only the relevant part of the array (up to `len`).  This is important because the original array is modified in-place, but some elements after `len` might still contain old values that are not part of the unique portion of the array.
+
+
+Key Improvements:
+
+- **Handles empty array:** The code now correctly handles the case where the input array is empty.
+- **Clearer variable naming:** Using `uniqueIndex` instead of just `i` for the tracking index improves readability.
+- **Comprehensive test cases:** Demonstrates the function's behavior with different inputs, including edge cases.
+- **Output clarity:** Uses `Arrays.copyOfRange` to show the updated array correctly after duplicate removal.

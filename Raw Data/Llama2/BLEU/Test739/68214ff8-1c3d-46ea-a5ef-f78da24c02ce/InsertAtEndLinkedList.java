@@ -1,0 +1,37 @@
+import java.util.LinkedList;
+
+public class InsertAtEndLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (names)
+        LinkedList<String> names = new LinkedList<>();
+
+        // Add some initial names
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        // Element to insert at the end
+        String newElement = "David";
+
+        // Insert the new element at the end using add() 
+        names.add(newElement);
+
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + names);
+
+
+         //Example 2: Using addLast() explicitly (does the same thing as add() for LinkedList)
+        LinkedList<String> moreNames = new LinkedList<>();
+        moreNames.add("Eve");
+        moreNames.add("Frank");
+
+        String anotherNewName = "Grace";
+        moreNames.addLast(anotherNewName);  // Equivalent to moreNames.add(anotherNewName);
+
+        System.out.println("Another Updated LinkedList: " + moreNames);
+
+
+    }
+}

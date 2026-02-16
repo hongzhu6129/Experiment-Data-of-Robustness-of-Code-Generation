@@ -1,0 +1,55 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        // Specify the starting position (index)
+        int startPosition = 2; // Start iterating from the element at index 2 (Orange)
+
+
+        // Check if the start position is valid.
+        if (startPosition < 0 || startPosition >= linkedList.size()) {
+            System.out.println("Invalid start position.");
+            return; // Exit if the position is invalid
+        }
+
+
+        // Iterate through the LinkedList from the specified position using a ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+
+        System.out.println("Iterating from position " + startPosition + ":");
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        // Example iterating backwards from a position (demonstration)
+        int reverseStartPosition = 3;
+         if (reverseStartPosition < 0 || reverseStartPosition >= linkedList.size()) {
+            System.out.println("Invalid reverse start position.");
+            return;
+         }
+
+        ListIterator<String> reverseIterator = linkedList.listIterator(reverseStartPosition+1); //+1 to initially be *after* the element
+
+        System.out.println("\nIterating backwards from position " + reverseStartPosition + ":");
+
+        while (reverseIterator.hasPrevious()) {
+            System.out.println(reverseIterator.previous());
+        }
+
+
+    }
+}

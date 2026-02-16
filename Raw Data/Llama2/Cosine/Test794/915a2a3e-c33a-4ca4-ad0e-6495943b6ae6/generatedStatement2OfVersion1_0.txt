@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:** The code now correctly ensures that the pairs of cubes are distinct. This is crucial for finding numbers expressible as the sum of two cubes *in two different ways*.  The inner loops use `b < a` and `d > c` to avoid duplicate pairs like (1, 12) and (12, 1) or (9,10) and (10,9).
+
+2. **Efficiency:** The code includes checks (`a3 > n` and `sum > n`) to break out of loops early when the sums exceed `n`, making the search more efficient.
+
+3. **`count` Variable:** The `count` variable keeps track of how many different ways a sum can be expressed as the sum of two cubes.  We only print the result if `count` is at least 1 (or 2 depending on the problem's exact interpretation of "two or more"). This ensures that we only display numbers that meet the specific criteria.
+
+4. **Clearer Output:** The `println` statement now provides a more informative output, showing the number and the two different ways it can be expressed as the sum of two cubes.
+
+5. **Correct `n`:** The code initializes `n` to 1729 (Ramanujan's number), which is a known example of a number that can be expressed as the sum of two cubes in two different ways. You can change `n` to explore other numbers.
+
+6. **Simplified and Readable:** The code is now more concise and readable, making it easier to understand the logic and the steps involved in finding these special numbers.

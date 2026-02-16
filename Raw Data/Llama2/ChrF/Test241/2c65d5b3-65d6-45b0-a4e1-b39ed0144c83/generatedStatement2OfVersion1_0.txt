@@ -1,0 +1,53 @@
+
+
+**Test Cases:**
+
+Here are some test cases including corner cases to test the program:
+
+1. **Provided Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: 40
+   - Longitude 2: -74
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - Latitude 1: 90  (North Pole)
+   - Longitude 1: 0
+   - Latitude 2: -90 (South Pole)
+   - Longitude 2: 0 
+   - Expected Distance: ~20015.08 km (approximately Earth's half circumference)
+
+
+4. **Antipodes (opposite sides of the Earth):**
+   - Latitude 1: 40
+   - Longitude 1: -74
+   - Latitude 2: -40
+   - Longitude 2: 106  (180 degrees opposite longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's half circumference)
+
+
+5. **Points near the Prime Meridian and International Date Line:**
+   - Latitude 1: 0
+   - Longitude 1: 0.1  (near Prime Meridian)
+   - Latitude 2: 0
+   - Longitude 2: -179.9 (near International Date Line)
+   - Expected Distance:  A small distance (because these are close despite the large longitude difference)
+
+6. **Invalid Input:** (You should handle these in your code)
+   - Latitude outside -90 to +90 range.
+   - Longitude outside -180 to +180 range.  You could also make the longitude handling more robust by ensuring values wrap around correctly (e.g., -181 treated as 179) but this would add complexity.
+
+
+**How to test:**
+
+* **Manual Input:** Run the program and enter the test case values manually.
+* **Automated Testing (Recommended):**  Create unit tests using a testing framework like JUnit.  This allows you to run the tests automatically and verify the results against the expected values.  Here's a basic example using JUnit:
+

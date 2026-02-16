@@ -1,0 +1,13 @@
+
+
+
+**Key Improvements and Explanations:**
+
+* **JUnit Tests:**  Using JUnit provides a robust way to test the code.
+* **Accurate Time Comparison:** Using `ChronoUnit.MILLIS.between()` and allowing a small tolerance in the assertions addresses the issue of execution time affecting the test results. It's more reliable than direct string comparisons.
+* **Corner Case Consideration (Daylight Saving, Year Change):** I've highlighted how to think about testing corner cases related to time changes.  These require more advanced techniques like mocking the system clock, which are slightly more complex to set up but important for thorough testing.
+* **Invalid Format Handling:** The original code didn't handle invalid format strings.  The test cases and improved code example demonstrate handling `IllegalArgumentException`.
+* **Clearer Example in `main`:** The `main` method now includes a second example to show usage with a different format.
+
+
+This revised answer gives you a much more complete and robust way to test your `getCurrentDateTime` method, covering typical scenarios and providing guidance on how to approach corner case testing.  Remember to add the JUnit library to your project.
