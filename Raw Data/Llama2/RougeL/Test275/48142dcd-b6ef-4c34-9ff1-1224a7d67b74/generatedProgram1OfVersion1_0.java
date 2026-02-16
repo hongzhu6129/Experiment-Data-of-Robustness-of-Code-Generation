@@ -1,0 +1,31 @@
+import java.time.Year;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
+public class CurrentYearInfo {
+
+    public static void main(String[] args) {
+        // Get the current year (or you can specify a year)
+        Year year = Year.now(); // Or Year.of(2024) for a specific year
+
+
+        // Week-related information
+        WeekFields weekFields = WeekFields.of(Locale.getDefault()); // Use default locale for week definitions
+        int weekOfYear = year.get(weekFields.weekOfWeekBasedYear()); 
+        int weeksInYear = year.range(weekFields.weekOfWeekBasedYear()).getMaximum();
+
+        // Other year information
+        boolean isLeap = year.isLeap();
+        int dayOfYearLength = year.length(); // Total number of days in the year
+
+
+        // Output the information
+        System.out.println("Year: " + year.getValue());
+        System.out.println("Leap Year: " + isLeap);
+        System.out.println("Days in Year: " + dayOfYearLength);
+        System.out.println("Current Week of Year: " + weekOfYear);
+        System.out.println("Total Weeks in Year: " + weeksInYear);
+
+
+    }
+}

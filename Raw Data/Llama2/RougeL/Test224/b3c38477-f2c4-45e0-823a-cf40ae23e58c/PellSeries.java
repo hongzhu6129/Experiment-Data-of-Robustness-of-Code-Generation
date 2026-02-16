@@ -1,0 +1,20 @@
+public class PellSeries {
+
+    public static void main(String[] args) {
+        int n = 15; // Number of Pell numbers to print
+
+        // Print the first 15 Pell numbers
+        System.out.println("The first " + n + " Pell numbers are:");
+
+        int a = 0;
+        int b = 1;
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(a + " ");
+
+            int nextPell = 2 * b + a;
+            a = b;
+            b = nextPell;
+        }
+    }
+}

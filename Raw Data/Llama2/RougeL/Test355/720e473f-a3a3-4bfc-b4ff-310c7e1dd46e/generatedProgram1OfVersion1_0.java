@@ -1,0 +1,32 @@
+class Solution {
+    /**
+     * Converts an integer value to its absolute value.
+     *
+     * @param num The integer to convert.
+     * @return The absolute value of the integer.
+     */
+    public static int convert(int num) {
+        return Math.abs(num); // Use Math.abs() for simplicity and efficiency
+    }
+
+    /**
+     * Main method to demonstrate the conversion.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int num1 = -5;
+        int absNum1 = convert(num1);
+        System.out.println("Absolute value of " + num1 + " is: " + absNum1);
+
+        int num2 = 10;
+        int absNum2 = convert(num2);
+        System.out.println("Absolute value of " + num2 + " is: " + absNum2);
+
+        int num3 = 0;
+        int absNum3 = convert(num3);
+        System.out.println("Absolute value of " + num3 + " is: " + absNum3);
+
+
+    }
+}

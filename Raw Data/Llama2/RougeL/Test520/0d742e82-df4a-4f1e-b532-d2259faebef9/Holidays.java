@@ -1,0 +1,84 @@
+import java.time.LocalDate;
+import java.time.chrono.ChronoUnit;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Holidays {
+
+    private static final Set<LocalDate> holidays = new HashSet<>();
+
+    static {
+        // Add some sample holidays (you can customize these)
+        holidays.add(LocalDate.of(2024, 1, 1)); // New Year's Day
+        holidays.add(LocalDate.of(2024, 12, 25)); // Christmas Day
+        holidays.add(LocalDate.of(2024, 7, 4)); // Independence Day (US)
+        holidays.add(LocalDate.of(2024, 11, 28)); // Thanksgiving (US - 4th Thursday of November)
+
+        // Example of dynamically calculated holiday (e.g., Easter)
+        //  (This is a simplification - Easter calculation can be complex)
+        holidays.add(LocalDate.of(2024, 4, 21)); // Easter Sunday 2024
+        holidays.add(LocalDate.of(2024, 4, 19)); // Good Friday
+
+    }
+
+
+    public static void main(String[] args) {
+
+        // 1. Create a specific date object
+        LocalDate christmas = LocalDate.of(2024, 12, 25);
+        printHolidayStatus(christmas);
+
+
+        // 2. Check if a date is a holiday
+        LocalDate dateToCheck = LocalDate.of(2024, 7, 4);
+        printHolidayStatus(dateToCheck);
+
+
+        // 3. Example: Find the next holiday from a given date
+        LocalDate today = LocalDate.now();
+        LocalDate nextHoliday = findNextHoliday(today);
+
+        if (nextHoliday != null) {
+            long daysUntil = ChronoUnit.DAYS.between(today, nextHoliday);
+            System.out.println("The next holiday is " + nextHoliday.toString() + " in " + daysUntil + " days.");
+        } else {
+            System.out.println("No upcoming holidays found.");
+        }
+
+
+
+    }
+
+    private static void printHolidayStatus(LocalDate date) {
+        if (isHoliday(date)) {
+            System.out.println(date + " is a holiday!");
+        } else {
+            System.out.println(date + " is not a holiday.");
+        }
+    }
+
+
+
+    private static boolean isHoliday(LocalDate date) {
+        return holidays.contains(date);
+    }
+
+
+    private static LocalDate findNextHoliday(LocalDate fromDate) {
+        LocalDate nextHoliday = null;
+        long minDays = Long.MAX_VALUE; // Initialize with a large value
+
+        for (LocalDate holiday : holidays) {
+            if (holiday.isAfter(fromDate)) {
+                long daysBetween = ChronoUnit.DAYS.between(fromDate, holiday);
+                if (daysBetween < minDays) {
+                    minDays = daysBetween;
+                    nextHoliday = holiday;
+                }
+            }
+        }
+        return nextHoliday;
+    }
+
+
+}

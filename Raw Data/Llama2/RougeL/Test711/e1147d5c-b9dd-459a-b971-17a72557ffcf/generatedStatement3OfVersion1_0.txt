@@ -1,0 +1,14 @@
+bash
+#!/bin/bash
+
+java EvenOddChecker <<< 20; echo "Expected: 1"
+java EvenOddChecker <<< 15; echo "Expected: 0"
+java EvenOddChecker <<< 0; echo "Expected: 1"
+java EvenOddChecker <<< -2; echo "Expected: 1"
+java EvenOddChecker <<< -5; echo "Expected: 0"
+java EvenOddChecker <<< 2147483647; echo "Expected: 0"
+java EvenOddChecker <<< -2147483648; echo "Expected: 1"
+java EvenOddChecker <<< 1000000; echo "Expected: 1"
+java EvenOddChecker <<< 999999; echo "Expected: 0"
+
+

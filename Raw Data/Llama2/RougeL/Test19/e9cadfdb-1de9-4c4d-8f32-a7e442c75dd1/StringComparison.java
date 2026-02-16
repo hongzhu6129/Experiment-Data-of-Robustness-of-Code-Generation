@@ -1,0 +1,50 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "example string";
+        String str2 = "example string";
+        String str3 = "Example String";
+        String str4 = "another string";
+
+        // Method 1: Using equals() for case-sensitive comparison
+        System.out.println("Using equals():");
+        System.out.println(str1 + " equals " + str2 + ": " + str1.equals(str2)); // true
+        System.out.println(str1 + " equals " + str3 + ": " + str1.equals(str3)); // false
+        System.out.println(str1 + " equals " + str4 + ": " + str1.equals(str4)); // false
+
+        // Method 2: Using equalsIgnoreCase() for case-insensitive comparison
+        System.out.println("\nUsing equalsIgnoreCase():");
+        System.out.println(str1 + " equalsIgnoreCase " + str2 + ": " + str1.equalsIgnoreCase(str2)); // true
+        System.out.println(str1 + " equalsIgnoreCase " + str3 + ": " + str1.equalsIgnoreCase(str3)); // true
+        System.out.println(str1 + " equalsIgnoreCase " + str4 + ": " + str1.equalsIgnoreCase(str4)); // false
+
+        // Method 3: Using compareTo() for lexicographical comparison
+        System.out.println("\nUsing compareTo():");
+        System.out.println(str1 + " compareTo " + str2 + ": " + str1.compareTo(str2)); // 0 (equal)
+        System.out.println(str1 + " compareTo " + str3 + ": " + str1.compareTo(str3)); // 32 (difference in ASCII values)
+        System.out.println(str1 + " compareTo " + str4 + ": " + str1.compareTo(str4)); // -1 (str1 comes before str4)
+
+        // Method 4: Using compareToIgnoreCase() for case-insensitive lexicographical comparison
+        System.out.println("\nUsing compareToIgnoreCase():");
+        System.out.println(str1 + " compareToIgnoreCase " + str2 + ": " + str1.compareToIgnoreCase(str2)); // 0
+        System.out.println(str1 + " compareToIgnoreCase " + str3 + ": " + str1.compareToIgnoreCase(str3)); // 0
+        System.out.println(str1 + " compareToIgnoreCase " + str4 + ": " + str1.compareToIgnoreCase(str4)); // -1
+
+
+        // Method 5: startsWith and endsWith
+        String str5 = "This is a test string.";
+        System.out.println("\nUsing startsWith and endsWith:");
+        System.out.println(str5 + " startsWith \"This\": " + str5.startsWith("This")); // true
+        System.out.println(str5 + " endsWith \".\": " + str5.endsWith(".")); // true
+        System.out.println(str5 + " startsWith \"test\": " + str5.startsWith("test")); // false
+
+
+        //Method 6: contains
+         System.out.println("\nUsing contains:");
+         System.out.println(str5 + " contains \"test\": " + str5.contains("test")); // true
+         System.out.println(str5 + " contains \"xyz\": " + str5.contains("xyz")); // false
+
+
+
+    }
+}

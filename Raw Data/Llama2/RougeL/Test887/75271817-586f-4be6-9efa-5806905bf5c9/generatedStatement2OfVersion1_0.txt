@@ -1,0 +1,37 @@
+
+
+
+**Test Cases (including corner cases):**
+
+| Input (seconds) | Expected Output (HH:MM:SS) | Justification                                     |
+|-----------------|---------------------------|-------------------------------------------------|
+| 3661           | 01:01:01                   | General case: 1 hour, 1 minute, 1 second        |
+| 7200           | 02:00:00                   | Exact hours                                      |
+| 60             | 00:01:00                   | Exact minute                                     |
+| 5              | 00:00:05                   | Only seconds                                     |
+| 0              | 00:00:00                   | Zero seconds                                     |
+| -5             | Invalid input...            | Negative input (corner case)                    |
+| 86400          | 24:00:00                   | Full day (boundary case)                       |
+| Integer.MAX_VALUE | 596523:14:07              | Large input (checks for potential overflow issues) |
+
+
+**Explanation and Improvements:**
+
+1. **Input Validation:**  The code now checks for negative input and provides a clear error message. This is crucial for robustness.
+
+2. **Clear Error Message:**  The error message is informative, telling the user exactly what went wrong.
+
+3. **String Formatting:**  `String.format("%02d:%02d:%02d", hours, minutes, seconds)` ensures that hours, minutes, and seconds are always displayed with leading zeros if they are less than 10.  This makes the output consistently formatted.
+
+4. **Comprehensive Test Cases:** The test cases cover various scenarios, including:
+   - General cases
+   - Exact hour and minute boundaries
+   - Zero seconds
+   - Negative input (corner case)
+   - A full day (boundary case)
+   - A very large input (to test for potential integer overflow)
+
+5. **Handles Large Numbers:**  The code correctly handles large numbers like `Integer.MAX_VALUE` without overflow issues in the calculations. It will convert the maximum integer value to its corresponding hours, minutes, and seconds representation.
+
+
+This improved version is more robust, handles corner cases correctly, and provides clear output in a consistent format. It also demonstrates how to test the function thoroughly.

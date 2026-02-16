@@ -1,0 +1,45 @@
+import java.util.LinkedList;
+
+public class InsertAtFrontLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (names)
+        LinkedList<String> names = new LinkedList<>();
+
+        // Add some initial names
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+
+        // Element to insert at the front
+        String newElement = "David";
+
+        // Insert the new element at the front
+        names.addFirst(newElement); // Or names.push(newElement) - push is equivalent to addFirst
+
+        // Print the updated linked list
+        System.out.println(names); // Output: [David, Alice, Bob, Charlie]
+
+        // Example with an empty LinkedList
+        LinkedList<String> emptyNames = new LinkedList<>();
+        emptyNames.addFirst("Eve");
+        System.out.println(emptyNames); // Output: [Eve]
+
+
+
+        // More examples for clarity:
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        numbers.addFirst(0); // Insert 0 at the beginning
+        System.out.println(numbers); // Output: [0, 1, 2, 3]
+
+        numbers.push(-1);   // Using push (same as addFirst) to insert -1 at the beginning
+        System.out.println(numbers); // Output: [-1, 0, 1, 2, 3]
+
+
+
+    }
+}

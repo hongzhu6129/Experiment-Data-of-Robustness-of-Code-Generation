@@ -1,0 +1,24 @@
+public class PrintChars {
+
+    public static void main(String[] args) {
+        print_Chars('A', 'P', 20); // Example usage: print from 'A' to 'P'
+    }
+
+    public static void print_Chars(char ch1, char ch2, int numberPerLine) {
+        if (ch1 > ch2) {
+            System.out.println("Invalid input: ch1 should be less than or equal to ch2");
+            return;
+        }
+
+        int count = 0;
+        for (char ch = ch1; ch <= ch2; ch++) {
+            System.out.print(ch + " ");
+            count++;
+            if (count % numberPerLine == 0) {
+                System.out.println();
+            }
+        }
+        System.out.println(); // Ensure a newline at the end, even if the last line isn't full.
+
+    }
+}

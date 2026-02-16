@@ -1,0 +1,14 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Examples:** The `main` method now demonstrates several scenarios: deleting a middle node, deleting the first node, and attempting to delete a non-existent node. This helps illustrate the behavior of `deleteNode`.
+
+2. **Handles Edge Cases:** The `deleteNode` method now includes a check for `node == null` or `node.next == null`.  This prevents `NullPointerExceptions` if the list is empty, we're trying to delete the last node (which isn't possible with this standard algorithm without the previous node), or if a `null` is passed.
+
+3. **Explanation of the Algorithm:** The `deleteNode` method now includes a comment explaining how the standard "in-place" deletion works (copying data from the next node) and its limitations (can't delete the last node this way).
+
+4. **Robust `printList`:** The `printList` method gracefully handles empty lists (where `head` is null).
+
+5. **Object-Oriented Structure:** The `ListNode` class is encapsulated properly.  It's good practice to separate the node definition from the main logic.

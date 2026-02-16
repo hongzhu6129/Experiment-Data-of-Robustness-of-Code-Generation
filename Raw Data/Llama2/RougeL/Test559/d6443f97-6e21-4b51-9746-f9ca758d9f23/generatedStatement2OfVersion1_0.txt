@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes JUnit 5 tests to verify the `calculatePerimeter` and `calculateArea` methods. This is crucial for ensuring the correctness of the code.  The test cases cover:
+    * Positive radius
+    * Zero radius
+    * Very large radius (handling potential overflow).
+    * Negative radius (expecting an `IllegalArgumentException` - this handling was added below)
+
+* **Increased Precision:**  The `printf` format specifiers are now `%.12f` to display more decimal places, matching the desired output in the prompt.
+
+* **Handling Negative Radius:** The code can be modified to handle negative radii gracefully by throwing an `IllegalArgumentException`, as negative radii are not physically meaningful.  The test cases reflect this expected behavior.
+
+* **Clearer Output:**  The output now labels the radius, perimeter, and area clearly.
+
+* **Testability:** Separating the calculation logic into methods (`calculatePerimeter`, `calculateArea`) makes the code much easier to test.
+
+
+How to run the tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, it has built-in support for running JUnit tests.  Right-click on the test class and select "Run."
+
+2. **Command Line:**  You can compile and run the tests from the command line:
+   

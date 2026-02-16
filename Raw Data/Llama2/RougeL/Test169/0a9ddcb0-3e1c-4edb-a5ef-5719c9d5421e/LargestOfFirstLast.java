@@ -1,0 +1,29 @@
+public class LargestOfFirstLast {
+
+    public static void main(String[] args) {
+        int[] numbers = {10, 5, 25}; // Example array
+
+        int largest = 0;
+
+        if (numbers.length >= 3) {  // Check if the array has at least 3 elements
+            if (numbers[0] > numbers[numbers.length - 1]) {
+                largest = numbers[0];
+            } else {
+                largest = numbers[numbers.length - 1];
+            }
+            System.out.println("Largest of first and last elements: " + largest);
+        } else if (numbers.length == 2) {
+            if (numbers[0] > numbers[1]) {
+                largest = numbers[0];
+            } else {
+                largest = numbers[1];
+            }
+            System.out.println("Largest of first and last elements: " + largest);
+        } else if (numbers.length == 1){
+            largest = numbers[0];
+            System.out.println("Largest of first and last elements: " + largest);
+        } else {
+            System.out.println("Array must have at least one element.");
+        }
+    }
+}

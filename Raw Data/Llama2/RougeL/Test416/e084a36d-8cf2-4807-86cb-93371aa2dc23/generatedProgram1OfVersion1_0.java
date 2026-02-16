@@ -1,0 +1,24 @@
+import java.util.TreeMap;
+
+public class ClearTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some elements to the TreeMap
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Print the TreeMap before clearing
+        System.out.println("TreeMap before clearing: " + treeMap);
+
+        // Delete all elements from the TreeMap
+        treeMap.clear();
+
+        // Print the TreeMap after clearing
+        System.out.println("TreeMap after clearing: " + treeMap);
+    }
+}

@@ -1,0 +1,22 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **`TreeNode` Class:**  A clear definition of the `TreeNode` class is provided, making the code more organized.
+
+2. **`sortedArrayToBST(int[] nums)`:**  This method initiates the BST creation process by calling the recursive `creation` helper function.  It handles the base case of an empty or null input array.
+
+3. **`creation(int[] nums, int start, int end)`:** This recursive function is the core of the algorithm.
+   - It takes the `nums` array, `start` index, and `end` index as parameters.
+   - The `mid` element is calculated to ensure a balanced tree (minimal height).  We always select the middle element of the current subarray as the root.
+   - Recursive calls are made to build the left and right subtrees using the left and right halves of the current subarray.
+
+4. **`traverseTree(TreeNode node)`:** An inorder traversal is used to print the elements of the BST. Inorder traversal of a BST always prints the elements in ascending order (sorted order), demonstrating that we've correctly built the BST.
+
+5. **Example in `main`:** The `main` method now includes a sample sorted array and demonstrates how to call the `sortedArrayToBST` and `traverseTree` functions.
+
+
+**How it Maintains Minimal Height:**
+
+The key to maintaining minimal height (a balanced BST) is always selecting the middle element of the sorted subarray as the root of the current subtree. This effectively divides the remaining elements into two roughly equal halves for the left and right subtrees, leading to a balanced structure and minimal height.

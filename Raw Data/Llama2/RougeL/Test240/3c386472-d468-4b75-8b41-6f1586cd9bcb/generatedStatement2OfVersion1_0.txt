@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **Sorted Array:**  The algorithm relies on the input array being sorted. This allows us to efficiently check for duplicates by comparing adjacent elements.
+2. **In-Place Modification:** The `removeDuplicates` method modifies the original array directly. It doesn't create a new array.  The elements after `uniqueIndex` are not actually removed (in terms of memory allocation), but they are ignored.
+3. **`uniqueIndex`:** The `uniqueIndex` variable keeps track of the position where the next unique element should be placed.
+4. **Looping Logic:** The loop iterates from the second element (index 1) to the end of the array. Inside the loop:
+   - If the current element (`nums[i]`) is different from the last unique element (`nums[uniqueIndex]`), it means we've encountered a new unique element.
+   - We increment `uniqueIndex` to move to the next position for unique elements.
+   - We copy the new unique element (`nums[i]`) to `nums[uniqueIndex]`.
+5. **Return Value:** The function returns `uniqueIndex + 1`, which is the new length of the array after removing duplicates.
+6. **Handling Edge Cases:** The code includes checks for empty and null input arrays, ensuring it handles these cases gracefully.
+7. **Optional Printing:** The `main` method demonstrates how to use the `removeDuplicates` method and prints the new length.  The optional printing within `removeDuplicates` shows the effective part of the modified array.
+8. **Time and Space Complexity:** The algorithm has a time complexity of O(n) (linear) because it iterates through the array once. The space complexity is O(1) (constant) because it modifies the array in-place, without using extra space that scales with the input size.
+
+
+
+

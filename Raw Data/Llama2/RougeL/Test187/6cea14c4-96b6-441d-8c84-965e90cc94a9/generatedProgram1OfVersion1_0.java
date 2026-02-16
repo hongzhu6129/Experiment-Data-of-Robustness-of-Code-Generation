@@ -1,0 +1,39 @@
+import java.util.*;
+
+class DivideMinor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Read the minor and the number of equal parts
+        System.out.println("Enter the minor: ");
+        int minor = scanner.nextInt();
+
+        System.out.println("Enter the number of equal parts: ");
+        int k = scanner.nextInt();
+
+        // Check if the minor is valid
+        if (minor <= 0) {
+            System.out.println("Invalid minor: " + minor);
+            return;
+        }
+
+        // Check if the number of equal parts is valid
+        if (k <= 0) {
+            System.out.println("Invalid number of equal parts: " + k);
+            return;
+        }
+
+        // Divide the minor into k equal parts
+        int[] parts = new int[k];
+        for (int i = 0; i < k; i++) {
+            parts[i] = minor / k;
+        }
+
+        // Print the parts
+        System.out.println("The minor " + minor + " divided into " + k + " equal parts is: ");
+        for (int part : parts) {
+            System.out.println(part);
+        }
+    }
+}

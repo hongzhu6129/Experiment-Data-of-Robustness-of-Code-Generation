@@ -1,0 +1,20 @@
+import java.text.DecimalFormat;
+
+public class ThousandSeparator {
+
+    public static void main(String[] args) {
+        int number1 = 1234;
+        int number2 = 1234567;
+        int number3 = 1234567890;
+
+        System.out.println(validate(number1)); // Output: 1,234
+        System.out.println(validate(number2)); // Output: 1,234,567
+        System.out.println(validate(number3)); // Output: 1,234,567,890
+
+    }
+
+    public static String validate(int num) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(num);
+    }
+}

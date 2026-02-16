@@ -1,0 +1,76 @@
+import java.util.*;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        String str = "geeksforgeeks";
+        System.out.println("The first non-repeating character is: " + firstNonRepeatingCharacter(str));
+    }
+
+    public static char firstNonRepeatingCharacter(String str) {
+        // Create a HashMap to store the count of each character
+        HashMap<Character, Integer> charCountMap = new HashMap<>();
+
+        // Iterate over the string and update the count of each character
+        for (char ch : str.toCharArray()) {
+            if (charCountMap.containsKey(ch)) {
+                charCountMap.put(ch, charCountMap.get(ch) + 1);
+            } else {
+                charCountMap.put(ch, 1);
+            }
+        }
+
+        // Iterate over the string again and return the first character with count 1
+        for (char ch : str.toCharArray()) {
+            if (charCountMap.get(ch) == 1) {
+                return ch;
+            }
+        }
+
+        // Return a special character if no non-repeating character is found
+        return '*';
+    }
+
+    // Test cases
+    // ===========
+
+    // Test case 1: String with no non-repeating characters
+    // Expected output: '*'
+    public static void test1() {
+        String str = "aabbbcdddeee";
+        char result = firstNonRepeatingCharacter(str);
+        System.out.println("Test case 1: " + result);
+    }
+
+    // Test case 2: String with a single non-repeating character
+    // Expected output: 'a'
+    public static void test2() {
+        String str = "abcde";
+        char result = firstNonRepeatingCharacter(str);
+        System.out.println("Test case 2: " + result);
+    }
+
+    // Test case 3: String with multiple non-repeating characters
+    // Expected output: 'c'
+    public static void test3() {
+        String str = "abcdefghijk";
+        char result = firstNonRepeatingCharacter(str);
+        System.out.println("Test case 3: " + result);
+    }
+
+    // Test case 4: Empty string
+    // Expected output: '*'
+    public static void test4() {
+        String str = "";
+        char result = firstNonRepeatingCharacter(str);
+        System.out.println("Test case 4: " + result);
+    }
+
+    // Test case 5: String with all repeating characters
+    // Expected output: '*'
+    public static void test5() {
+        String str = "aaaaaa";
+        char result = firstNonRepeatingCharacter(str);
+        System.out.println("Test case 5: " + result);
+    }
+}

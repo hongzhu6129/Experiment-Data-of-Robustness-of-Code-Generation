@@ -1,0 +1,20 @@
+
+
+
+Here's how the code works within the constraints of a single `main` method:
+
+1. **Initialization:** 
+   - `n` stores the total number of coins.
+   - `rows` keeps track of the number of complete rows.
+   - `coinsUsed` tracks the total coins used so far.
+   - `currentRowCoins` stores the number of coins needed for the current row.
+
+2. **Calculate Rows:** The `while` loop determines the number of complete rows that can be formed using the given `n` coins, following the rule that the `k`-th row has `k` coins.
+
+3. **Print Staircase:** The nested `for` loops print the staircase structure. The outer loop iterates through each row, and the inner loop prints the required number of '*' characters (representing coins) for each row.
+
+4. **Handle Remaining Coins (Important):** The additional `if` block at the end checks if there are any coins left over (`coinsLeft > 0`).  This addresses cases where the input `n` doesn't perfectly create full rows (e.g., n=10). The remaining coins are printed on a new line.
+
+
+**Example Output (n=10):**
+

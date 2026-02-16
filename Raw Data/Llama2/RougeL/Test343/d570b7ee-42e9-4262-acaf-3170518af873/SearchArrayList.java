@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+        numbers.add(30);
+
+        // Element to search for
+        int searchElement = 15;
+
+        // Search for the element and print the result
+        if (numbers.contains(searchElement)) {
+            System.out.println(searchElement + " is present in the ArrayList.");
+            System.out.println("It is found at index: " + numbers.indexOf(searchElement)); // Added index information
+
+        } else {
+            System.out.println(searchElement + " is not present in the ArrayList.");
+        }
+
+
+        // Demonstrating search for a non-existent element
+        searchElement = 42; // A number we know isn't there
+
+         if (numbers.contains(searchElement)) {
+            System.out.println(searchElement + " is present in the ArrayList.");
+        } else {
+            System.out.println(searchElement + " is not present in the ArrayList.");
+        }
+    }
+}

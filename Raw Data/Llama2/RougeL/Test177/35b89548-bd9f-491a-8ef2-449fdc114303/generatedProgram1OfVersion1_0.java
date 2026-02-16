@@ -1,0 +1,38 @@
+public class SubstringExample {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        int start = 2;
+        int end = 7;
+
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String subStr = str.substring(start, end);
+            System.out.println("Substring: " + subStr); // Output: ogram
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+
+
+
+        // More examples
+        printSubstring("hello world", 1, 4); // Output: ell
+        printSubstring("Java", 0, 2); // Output: Ja
+        printSubstring("example", 3, 9); // Output: Invalid start or end positions.
+
+
+    }
+
+    //Helper function to encapsulate the logic and make main cleaner. This is NOT part of the requirement,
+    //but improves code organization and readability
+    // You could remove this if absolutely necessary and put the logic inside the other examples in main
+    public static void printSubstring(String str, int start, int end) {
+        if (start >= 0 && end <= str.length() && start <= end) {
+            String subStr = str.substring(start, end);
+            System.out.println("Substring: " + subStr); 
+        } else {
+            System.out.println("Invalid start or end positions.");
+        }
+    }
+
+}
+

@@ -1,0 +1,46 @@
+import java.util.LinkedList;
+
+public class LinkedListFormsAndPositions {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of strings (representing forms)
+        LinkedList<String> forms = new LinkedList<>();
+
+        // Add some forms to the list
+        forms.add("Circle");
+        forms.add("Square");
+        forms.add("Triangle");
+        forms.add("Rectangle");
+        forms.add("Pentagon");
+
+
+        // Display the forms and their positions
+        System.out.println("Forms and their positions in the linked list:");
+
+        for (int i = 0; i < forms.size(); i++) {
+            String form = forms.get(i);
+            System.out.println("Position " + i + ": " + form);
+        }
+
+
+        //Alternative using enhanced for loop (doesn't directly give position)
+        System.out.println("\nAlternative display (using enhanced for loop):");
+        int position = 0;
+        for(String form : forms) {
+            System.out.println("Position " + position + ": " + form);
+            position++;
+        }
+
+
+          // Another approach using ListIterator  (more flexible for traversal)
+        System.out.println("\nAnother approach using ListIterator:");
+        java.util.ListIterator<String> iterator = forms.listIterator();
+        while (iterator.hasNext()) {
+            int index = iterator.nextIndex(); // Get the index before moving to the next element
+            String form = iterator.next();
+            System.out.println("Position " + index + ": " + form);
+        }
+
+
+    }
+}

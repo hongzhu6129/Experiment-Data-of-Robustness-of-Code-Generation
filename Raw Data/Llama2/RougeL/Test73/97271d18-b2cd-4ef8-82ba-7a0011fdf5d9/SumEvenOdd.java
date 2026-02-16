@@ -1,0 +1,41 @@
+import java.util.List;
+import java.util.Arrays;
+
+public class SumEvenOdd {
+
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        int sumEven = numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        int sumOdd = numbers.stream()
+                .filter(n -> n % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println("Sum of even numbers: " + sumEven);
+        System.out.println("Sum of odd numbers: " + sumOdd);
+
+
+        // Example with a different list:
+        List<Integer> numbers2 = Arrays.asList(11, 12, 13, 14, 15, 16);
+         sumEven = numbers2.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+         sumOdd = numbers2.stream()
+                .filter(n -> n % 2 != 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+
+        System.out.println("Sum of even numbers (list 2): " + sumEven);
+        System.out.println("Sum of odd numbers (list 2): " + sumOdd);
+
+
+    }
+}

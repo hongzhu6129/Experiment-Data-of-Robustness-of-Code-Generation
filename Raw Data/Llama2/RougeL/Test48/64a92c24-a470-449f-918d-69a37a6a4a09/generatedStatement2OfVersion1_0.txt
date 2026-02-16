@@ -1,0 +1,31 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Dividend | Divisor | Expected Output | Notes                  |
+| -------- | ------- | --------------- | ---------------------- |
+| 10       | 3        | 1               | Basic positive case     |
+| 15       | 5        | 0               | Exact division         |
+| 7        | 9        | 7               | Divisor > Dividend     |
+| -10      | 3        | -1              | Negative Dividend     |
+| 10       | -3        | 1               | Negative Divisor      |
+| -10      | -3        | -1              | Both negative         |
+| 0        | 5        | 0               | Zero dividend          |
+| 10       | 1        | 0               | Divisor is 1           |
+| Integer.MAX_VALUE | 2     | 1              | Max value corner case |
+| Integer.MIN_VALUE | -1     | 0              | Min value corner case |
+| 10       | 0        | ArithmeticException | Divide by zero error  |
+
+
+
+**Explanation of corner case handling:**
+
+* **Divide by Zero:** The code explicitly throws an `ArithmeticException` if the divisor is zero.
+* **Negative Numbers:** The code now handles negative dividends and divisors correctly by using nested `modulus` calls and adjusting signs as needed to ensure correct calculation.  The approach is to convert all numbers to positive and then apply the appropriate sign based on the original signs of the dividend and divisor.
+* **Integer.MAX_VALUE / 2:**  Because integer division truncates towards zero, `Integer.MAX_VALUE / 2` will be a large positive integer, and subtracting the product of this and 2 from `Integer.MAX_VALUE` will result in 1 (the correct remainder).
+* **Integer.MIN_VALUE / -1:**  This can be tricky as `-Integer.MIN_VALUE` might overflow in two's complement representation. The code is designed to handle this because it never tries to calculate `-Integer.MIN_VALUE` explicitly. The modulus is correctly calculated as 0.
+
+
+This improved code with the comprehensive test cases addresses the corner cases more effectively and provides a robust solution for calculating modulus without the built-in operator.

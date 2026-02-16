@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Comparator Implementation:**  The `StringLengthComparator` is now a separate, nested static class. This makes the code more organized and reusable.  The `compare` method clearly compares strings based on their lengths using `Integer.compare` (more robust than simple subtraction).
+
+2. **Demonstrates Reverse Sorting:** The code now shows how to easily reverse the sort order using `Collections.reverseOrder()` (or the more modern `reversed()` directly on the Comparator) which is a much cleaner approach than modifying the `compare` method itself.
+
+3. **Informative Output:** The `println` statements clearly indicate what is being printed, making it easier to understand the output.
+
+4. **Adherence to Method Signature Requirements:**  The code strictly adheres to the requested method signatures (`main` and `compare`).
+
+
+How it works:
+
+* A `TreeMap` is created using a custom `Comparator` (`StringLengthComparator`).
+* The `StringLengthComparator`'s `compare` method determines the sorting order.  It compares the lengths of the two input strings.
+* When elements are added to the `TreeMap`, the `compare` method is used to maintain the sorted order based on string length.
+* The `reversed()` method provides an easy way to create a reverse-sorted TreeMap.

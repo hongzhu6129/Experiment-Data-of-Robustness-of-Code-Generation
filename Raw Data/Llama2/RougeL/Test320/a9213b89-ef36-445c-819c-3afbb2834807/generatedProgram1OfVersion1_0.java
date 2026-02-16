@@ -1,0 +1,27 @@
+import java.util.PriorityQueue;
+
+public class HammingNumbers {
+
+    public static void main(String[] args) {
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        pq.offer(1L);
+        long prev = 0;
+        System.out.print("First twenty Hamming numbers: ");
+        for (int i = 0; i < 20; i++) {
+            long current = pq.poll();
+            while (current == prev) { // Avoid duplicates
+                current = pq.poll();
+            }
+
+            System.out.print(current + " ");
+            pq.offer(current * 2);
+            pq.offer(current * 3);
+            pq.offer(current * 5);
+
+            prev = current;
+        }
+    }
+}
+
+
+

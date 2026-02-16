@@ -1,0 +1,18 @@
+public class Main {
+    public static void main(String[] args) {
+        long startTime = System.nanoTime();
+
+        // Code to measure execution time for
+        int sum = 0;
+        for (int i = 0; i < 1000000; i++) {
+            sum += i;
+        }
+        System.out.println("Sum: " + sum); // Print something to avoid optimization removing the loop
+
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+
+        System.out.println("Execution time in nanoseconds: " + duration);
+    }
+}

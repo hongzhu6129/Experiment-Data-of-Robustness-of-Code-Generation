@@ -1,0 +1,40 @@
+public class StringAdder {
+
+    public String addBySeparator(String str, String separator, int numTimes) {
+        if (numTimes <= 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder(str);
+        for (int i = 1; i < numTimes; i++) {
+            sb.append(separator).append(str);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        StringAdder adder = new StringAdder();
+
+        String str = "Hello";
+        String separator = "-";
+        int numTimes = 3;
+
+        String result = adder.addBySeparator(str, separator, numTimes);
+        System.out.println(result); // Output: Hello-Hello-Hello
+
+
+        str = "Test";
+        separator = "***";
+        numTimes = 2;
+        result = adder.addBySeparator(str, separator, numTimes);
+        System.out.println(result); // Output: Test***Test
+
+        result = adder.addBySeparator("Word", ", ", 0);  // Test with 0 repetitions
+        System.out.println(result); // Output: "" (empty string)
+
+        result = adder.addBySeparator("Single", " ", 1); // Test with 1 repetition
+        System.out.println(result); // Output: Single
+
+
+
+    }
+}

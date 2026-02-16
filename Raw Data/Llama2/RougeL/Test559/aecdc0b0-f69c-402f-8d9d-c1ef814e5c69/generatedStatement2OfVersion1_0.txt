@@ -1,0 +1,28 @@
+
+
+
+Key improvements and explanations:
+
+1. **JUnit Tests:**  The code now includes JUnit tests, which are crucial for verifying the correctness of the `calculatePerimeter` and `calculateArea` methods.
+
+2. **Corner Cases:** The tests cover important corner cases:
+   - Zero radius:  A circle with radius 0 should have 0 perimeter and 0 area.
+   - Very small radius:  Tests with a tiny radius (1E-10) are included to check for potential issues with very small numbers. The `delta` parameter in `assertEquals` is adjusted accordingly for these cases to handle potential floating-point inaccuracies.
+   - Large radius:  A test with a large radius (1.5E7) is added to check for potential overflow problems (which could occur if `float` was used instead of `double`).
+
+3. **Clearer Output:** The `main` method now uses `printf` to format the output to 12 decimal places for consistency with the expected values.
+
+4. **Tolerance in Assertions:** The `assertEquals` method in JUnit now uses a third argument ( `delta` or tolerance) in some cases. This is important when comparing floating-point numbers because tiny rounding errors can occur.
+
+
+How to Run the Tests:
+
+If you're using an IDE like IntelliJ or Eclipse, you can typically right-click the test class (`CircleCalculationsTest`) and select "Run 'CircleCalculationsTest'".
+
+If you're using the command line:
+1. Compile: `javac CircleCalculations.java CircleCalculationsTest.java`
+2. Run tests (assuming you have JUnit on your classpath): `java org.junit.platform.console.ConsoleLauncher --class-path . --scan-classpath`  (or use the appropriate command for your JUnit version)
+
+
+
+This improved version provides much better confidence in the correctness of the circle calculations due to the comprehensive test coverage.

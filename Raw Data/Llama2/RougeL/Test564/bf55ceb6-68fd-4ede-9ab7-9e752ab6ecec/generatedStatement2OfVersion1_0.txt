@@ -1,0 +1,29 @@
+
+
+
+Explanation and Improvements:
+
+1. **`main` Method:** The `main` method now simply calls a helper method `displayFirst10FermatNumbers()` to keep the code organized.
+
+2. **`displayFirst10FermatNumbers` Method:** This method handles the calculation and display of the Fermat numbers.
+
+3. **Loop for First 10:**  The `for` loop iterates from `n = 0` to `n = 9` (inclusive) to calculate the first 10 Fermat numbers.
+
+4. **Calculating Fermat Numbers:** Inside the loop, the Fermat number is calculated using the formula 2^(2^n) + 1. We use `Math.pow()` for exponentiation.
+
+5. **Handling Overflow:**  Fermat numbers grow very quickly. `long` can handle the first few, but beyond that, they overflow (become negative). The code checks for overflow using `if (fermatNumber < 0)` and displays "Overflow" if it occurs.
+
+6. **Output Format:**  The output now clearly labels each Fermat number with its corresponding 'n' value (e.g., "F(0) = 3", "F(1) = 5", etc.).
+
+7. **Explicit Casting:** Because `Math.pow()` returns a `double`, an explicit cast to `long` is necessary to store the result in the `fermatNumber` variable (and to allow for the overflow check).
+
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `FermatNumbers.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac FermatNumbers.java`
+3. **Run:**  `java FermatNumbers`
+
+
+The output will show the first few Fermat numbers, and then indicate "Overflow" for the larger ones that exceed the capacity of `long`.

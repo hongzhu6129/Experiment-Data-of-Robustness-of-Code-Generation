@@ -1,0 +1,39 @@
+
+
+
+**Explanation and How to Use:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedReader`:  Used for efficient reading of characters, arrays, and lines.
+   - `java.io.FileReader`: Used to read character files.
+   - `java.io.IOException`:  Handles potential input/output errors.
+
+2. **Specify file path:**
+   - Replace `"path/to/your/file.txt"` with the actual path to the file you want to read.  For example:  `"C:\\Users\\YourName\\Documents\\myFile.txt"` (Windows) or `"/home/yourname/documents/myFile.txt"` (Linux/macOS).  Make sure the file exists at the specified location.
+
+3. **Try-with-resources:**
+   - The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` and `FileReader` are automatically closed, even if an exception occurs.  This is crucial for preventing resource leaks.
+
+4. **Create BufferedReader:**
+   - `new FileReader(filePath)` creates a `FileReader` to read characters from the file.
+   - `new BufferedReader(fileReader)` wraps the `FileReader` in a `BufferedReader` for more efficient reading, especially when reading line by line.
+
+5. **Read lines in a loop:**
+   - `reader.readLine()` reads a single line of text from the file and returns it as a `String`. It returns `null` when the end of the file is reached.
+   - The `while` loop continues as long as `readLine()` returns a non-null value (meaning there are more lines to read).
+
+6. **Print each line:**
+   - `System.out.println(line);` prints the current line read from the file to the console.
+
+7. **Catch exceptions:**
+   - The `catch (IOException e)` block handles any potential `IOException` that might occur during file reading (e.g., if the file doesn't exist or there are permission issues).  It prints an error message to the console.
+
+
+**To compile and run:**
+
+1. **Save:** Save the code as `ReadFileLineByLine.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and run: `javac ReadFileLineByLine.java`
+3. **Run:**  `java ReadFileLineByLine`
+
+
+This will print the contents of your specified file to the console, line by line.  Remember to replace the placeholder file path with the correct path to your file.
