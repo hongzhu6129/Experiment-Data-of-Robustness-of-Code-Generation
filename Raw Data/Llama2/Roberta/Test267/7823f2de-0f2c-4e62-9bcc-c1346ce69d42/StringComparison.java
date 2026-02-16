@@ -1,0 +1,35 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "Hello"; // Example string 1
+        String str2 = "Hello"; // Example string 2
+        String str3 = new String("Hello"); // Another way to create a string
+        String str4 = "World"; // Example string with different content
+
+
+        // Method 1: Using .equals() (Recommended for content comparison)
+        System.out.println("Using .equals():");
+        System.out.println("str1 equals str2: " + str1.equals(str2)); // True - Content is the same
+        System.out.println("str1 equals str3: " + str1.equals(str3)); // True - Content is the same
+        System.out.println("str1 equals str4: " + str1.equals(str4)); // False - Content is different
+
+
+        // Method 2: Using == (Compares references, not always content)
+        System.out.println("\nUsing ==:");
+        System.out.println("str1 == str2: " + (str1 == str2)); // True - str1 and str2 refer to the same object in the string pool (due to string literal optimization)
+        System.out.println("str1 == str3: " + (str1 == str3)); // False - str1 and str3 are different objects (even though content is same)
+        System.out.println("str1 == str4: " + (str1 == str4)); // False - Content and references are different
+
+
+        // Demonstrating null handling with .equals()
+        String str5 = null;
+        System.out.println("\nNull Handling:");
+        // System.out.println(str5.equals(str1));  // This will throw a NullPointerException!
+        System.out.println(str1.equals(str5)); // This is safe and returns false
+
+
+        // Best Practice: Use .equals() for string content comparison
+        // Unless you specifically need to check if two string variables refer to the exact same object in memory.
+
+    }
+}

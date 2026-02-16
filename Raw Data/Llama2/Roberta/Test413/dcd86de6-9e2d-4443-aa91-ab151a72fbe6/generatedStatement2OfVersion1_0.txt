@@ -1,0 +1,17 @@
+
+
+
+**Explanation of the methods:**
+
+1. **`clear()`:** This is the most straightforward and efficient method to empty an `ArrayList`. It removes all elements from the list, leaving it with a size of 0. The underlying array is retained, so if you add elements again, it won't need to allocate a new array immediately, which can improve performance if you intend to reuse the list.
+
+2. **Creating a new `ArrayList`:**  This method creates a brand new `ArrayList` object and assigns it to the `fruits` variable. The previous `ArrayList` becomes eligible for garbage collection if no other references to it exist. This approach is less memory-efficient than `clear()` if you plan to reuse the `ArrayList` variable, as it involves creating a new object and discarding the old one.
+
+3. **`removeAll()`:**  This method removes all elements in the specified collection from the `ArrayList`.  While it works to empty the list when used as `removeAll(fruits)`, it's generally less efficient than `clear()` for simply emptying the list. `removeAll()` is more useful when you need to remove a specific subset of elements or remove elements based on a condition.
+
+
+**Which method to use:**
+
+* **In most cases, `clear()` is the preferred and most efficient way to empty an `ArrayList`.** It's simple, direct, and reuses the underlying array.
+* Use creating a new `ArrayList` only when you intentionally want to discard the old list completely and don't plan to reuse it.
+* Use `removeAll()` when you have a specific set of elements to remove or want to remove elements based on a condition.  It's not the optimal choice for simply emptying the entire list.

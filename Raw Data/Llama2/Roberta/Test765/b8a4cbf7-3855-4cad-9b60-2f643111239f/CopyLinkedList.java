@@ -1,0 +1,69 @@
+import java.util.LinkedList;
+
+public class CopyLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample linked list
+        LinkedList<String> originalList = new LinkedList<>();
+        originalList.add("Apple");
+        originalList.add("Banana");
+        originalList.add("Cherry");
+        originalList.add("Date");
+
+
+        // Method 1: Using the constructor (shallow copy)
+        LinkedList<String> copiedList1 = new LinkedList<>(originalList);
+
+
+        // Method 2: Using the addAll() method (shallow copy)
+        LinkedList<String> copiedList2 = new LinkedList<>();
+        copiedList2.addAll(originalList);
+
+        // Method 3: Manual deep copy (if your LinkedList contains mutable objects)
+        LinkedList<String> copiedList3 = new LinkedList<>();
+        for (String item : originalList) {
+            copiedList3.add(new String(item)); // Create new String objects
+        }
+
+
+        // Print the original and copied lists
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+        System.out.println("Copied List 2 (addAll()): " + copiedList2);
+        System.out.println("Copied List 3 (Deep Copy): " + copiedList3);
+
+
+
+        // Demonstrate the difference between shallow and deep copy 
+        // (important if your LinkedList stores objects and not primitives like String)
+
+        // Example with a LinkedList of mutable objects (StringBuilder)
+        LinkedList<StringBuilder> originalStringBuilderList = new LinkedList<>();
+        originalStringBuilderList.add(new StringBuilder("Apple"));
+        originalStringBuilderList.add(new StringBuilder("Banana"));
+
+        // Shallow copy (changes in the copy affect the original)
+        LinkedList<StringBuilder> shallowCopiedList = new LinkedList<>(originalStringBuilderList);
+
+        // Modify an element in the shallow copy
+        shallowCopiedList.get(0).append(" Pie");
+
+        System.out.println("\nOriginal StringBuilder List (after shallow copy modification): " + originalStringBuilderList);
+        System.out.println("Shallow Copied StringBuilder List: " + shallowCopiedList);
+
+        //Deep copy (changes in the copy do not affect the original)
+        LinkedList<StringBuilder> deepCopiedList = new LinkedList<>();
+        for(StringBuilder sb : originalStringBuilderList){
+            deepCopiedList.add(new StringBuilder(sb.toString()));
+        }
+
+        // Modify an element in the deep copy
+        deepCopiedList.get(0).append(" Juice");
+
+         System.out.println("\nOriginal StringBuilder List (after deep copy modification): " + originalStringBuilderList);
+        System.out.println("Deep Copied StringBuilder List: " + deepCopiedList);
+
+
+
+    }
+}

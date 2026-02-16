@@ -1,0 +1,27 @@
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        // a. -5 + 8 * 6
+        int resultA = -5 + 8 * 6;
+        System.out.println("-5 + 8 * 6 = " + resultA); // Output: 43
+
+        // b. (55+9) % 9
+        int resultB = (55 + 9) % 9;
+        System.out.println("(55+9) % 9 = " + resultB); // Output: 1
+
+        // c. 20 + -3*5 / 8
+        int resultC = 20 + -3 * 5 / 8; 
+        System.out.println("20 + -3*5 / 8 = " + resultC); // Output: 19  (integer division)
+
+        // d. 5 + 15 / 3 * 2 - 8 % 3
+        int resultD = 5 + 15 / 3 * 2 - 8 % 3;
+        System.out.println("5 + 15 / 3 * 2 - 8 % 3 = " + resultD); // Output: 13
+
+
+        System.out.println("\nSummary of Results:");
+        System.out.println("a: " + resultA); // 43
+        System.out.println("b: " + resultB); // 1
+        System.out.println("c: " + resultC); // 19
+        System.out.println("d: " + resultD); // 13
+    }
+}

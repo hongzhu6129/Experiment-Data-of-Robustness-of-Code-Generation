@@ -1,0 +1,19 @@
+
+
+- `maxDepth(1)`:
+  - `leftDepth = maxDepth(2)`
+  - `rightDepth = maxDepth(3)`
+- `maxDepth(2)`:
+  - `leftDepth = maxDepth(4) = 1` (4 is a leaf node)
+  - `rightDepth = maxDepth(5)` 
+- `maxDepth(5)`:
+   - `leftDepth = maxDepth(6) = 1`
+   - `rightDepth = maxDepth(null) = 0`
+   - returns `max(1, 0) + 1 = 2`
+- Back to `maxDepth(2)`: returns `max(1, 2) + 1 = 3`
+- `maxDepth(3)`: returns `1` (3 is a leaf node)
+- Back to `maxDepth(1)`: returns `max(3, 1) + 1 = 4`
+
+
+
+Therefore, the maximum depth is correctly calculated as 4.

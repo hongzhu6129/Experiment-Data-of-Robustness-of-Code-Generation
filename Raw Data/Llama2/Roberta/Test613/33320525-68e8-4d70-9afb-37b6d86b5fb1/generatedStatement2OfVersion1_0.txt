@@ -1,0 +1,12 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Edge Cases:**  The code now handles empty and null strings, returning '\0' in such cases. You might consider throwing an exception instead if that's more appropriate for your application.
+2. **HashMap for Efficiency:** Uses a `HashMap` to store character counts for efficient lookups.
+3. **Iterates through EntrySet:** Iterates through the `entrySet` of the `HashMap` for efficient retrieval of both keys (characters) and values (counts).
+4. **Clearer Variable Names:**  Uses more descriptive variable names like `minChar` and `minCount`.
+5. **Tie Handling:** If multiple characters have the same minimum occurrence, the code currently returns the *first* one encountered. If you need specific tie-breaking behavior (e.g., return the alphabetically smallest character), you would need to add extra logic.
+6. **Method Name:** The method name `MaxOccuringChar` is misleading now as it is calculating the minimum.  Change it to `MinOccuringChar` or `LeastFrequentChar` for clarity. (I've updated the code provided).
+7. **Comprehensive Test Cases:** Includes several test cases in `main` to demonstrate how it handles various scenarios, including ties.

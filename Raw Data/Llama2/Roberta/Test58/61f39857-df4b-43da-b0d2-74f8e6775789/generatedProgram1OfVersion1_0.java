@@ -1,0 +1,65 @@
+import java.util.TreeSet;
+
+public class LowerElementInTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+
+        // Element to find a lower comparable for
+        Integer element = 40;
+
+
+        // Get the element lower than the given element
+        Integer lowerElement = treeSet.lower(element);
+
+        // Print the result.  Handle the case where no lower element exists
+        if (lowerElement != null) {
+            System.out.println("Element lower than " + element + ": " + lowerElement);
+        } else {
+            System.out.println("No element lower than " + element + " found.");
+        }
+
+
+
+        //Another Example - String TreeSet
+
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("grape");
+        stringTreeSet.add("orange");
+
+
+        String searchString = "orange";
+        String lowerString = stringTreeSet.lower(searchString);
+
+        if (lowerString != null) {
+            System.out.println("String lower than " + searchString + ": " + lowerString);
+
+        } else {
+            System.out.println("No string lower than " + searchString + " found.");
+        }
+
+         searchString = "apple"; // Example with no lower element
+         lowerString = stringTreeSet.lower(searchString);
+
+        if (lowerString != null) {
+            System.out.println("String lower than " + searchString + ": " + lowerString);
+
+        } else {
+            System.out.println("No string lower than " + searchString + " found.");
+        }
+
+
+    }
+}

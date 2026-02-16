@@ -1,0 +1,27 @@
+import java.util.TreeMap;
+
+public class CopyTreeMap {
+
+    public static void main(String[] args) {
+        // Create a source TreeMap
+        TreeMap<String, Integer> sourceTreeMap = new TreeMap<>();
+        sourceTreeMap.put("Apple", 1);
+        sourceTreeMap.put("Banana", 2);
+        sourceTreeMap.put("Orange", 3);
+        sourceTreeMap.put("Grape", 4);
+
+        // Method 1: Using the constructor
+        TreeMap<String, Integer> copiedTreeMap1 = new TreeMap<>(sourceTreeMap);
+
+        // Method 2: Using putAll() method
+        TreeMap<String, Integer> copiedTreeMap2 = new TreeMap<>();
+        copiedTreeMap2.putAll(sourceTreeMap);
+
+
+        // Print the contents of the copied TreeMaps to verify
+        System.out.println("Copied TreeMap 1 (using constructor): " + copiedTreeMap1);
+        System.out.println("Copied TreeMap 2 (using putAll()): " + copiedTreeMap2);
+
+
+    }
+}

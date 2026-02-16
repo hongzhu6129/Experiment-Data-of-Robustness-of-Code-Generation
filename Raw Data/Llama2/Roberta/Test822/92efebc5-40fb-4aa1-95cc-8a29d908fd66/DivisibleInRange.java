@@ -1,0 +1,99 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DivisibleInRange {
+
+    public static int countDivisibleInRange(int start, int end, int divisor) {
+        if (divisor == 0) {
+            throw new IllegalArgumentException("Divisor cannot be zero.");
+        }
+
+        if (start > end) {
+            return 0; // Or throw an exception depending on requirements
+        }
+
+        int count = 0;
+        for (int i = start; i <= end; i++) {
+            if (i % divisor == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+
+    @Test
+    void testNormalCase() {
+        assertEquals(3, countDivisibleInRange(10, 20, 5));  // 10, 15, 20
+    }
+
+
+    @Test
+    void testStartGreaterThanEnd() {
+        assertEquals(0, countDivisibleInRange(20, 10, 5));
+    }
+
+    @Test
+    void testNegativeStartEnd() {
+        assertEquals(3, countDivisibleInRange(-20, -10, 5));  // -20, -15, -10
+    }
+
+    @Test
+    void testZeroDivisor() {
+        assertThrows(IllegalArgumentException.class, () -> countDivisibleInRange(1, 10, 0));
+    }
+
+    @Test
+    void testDivisibleByOne() {
+        assertEquals(11, countDivisibleInRange(1, 10, 1)); // all numbers divisible by 1
+    }
+
+    @Test
+    void testDivisibleByNegativeDivisor() {
+        assertEquals(3, countDivisibleInRange(10, 20, -5)); // 10, 15, 20 (sign doesn't affect divisibility count)
+    }
+
+    @Test
+    void testNoDivisibleNumbers() {
+        assertEquals(0, countDivisibleInRange(1, 10, 12)); // No numbers in range are divisible by 12
+    }
+
+    @Test
+    void testStartEqualsEndDivisible() {
+        assertEquals(1, countDivisibleInRange(10, 10, 5)); // Start and end are same and divisible
+    }
+
+    @Test
+    void testStartEqualsEndNotDivisible() {
+        assertEquals(0, countDivisibleInRange(11, 11, 5)); // Start and end are same and not divisible
+    }
+
+    @Test
+    void testLargeRange() {        
+        assertEquals(2000000, countDivisibleInRange(1, 20000000, 10)); // Test large range
+    }
+
+    @Test
+    void testWithBothNegativeValues() {
+        assertEquals(2, countDivisibleInRange(-10, -5, 5));
+    }
+
+
+
+
+    public static void main(String[] args) {
+        // Example usage:
+        int start = 10;
+        int end = 20;
+        int divisor = 5;
+        int count = countDivisibleInRange(start, end, divisor);
+        System.out.println("Number of values divisible by " + divisor + " in the range [" + start + ", " + end + "]: " + count);
+
+
+
+    }
+}
+
+
+

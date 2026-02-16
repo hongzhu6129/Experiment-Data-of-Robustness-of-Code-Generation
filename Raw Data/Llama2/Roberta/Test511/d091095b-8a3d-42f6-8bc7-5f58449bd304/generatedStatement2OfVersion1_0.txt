@@ -1,0 +1,28 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Clearer Variable Names:**  `m` and `n` are more descriptive than just `rows` and `cols` within the `Saddleback` method, especially as it's separated from `main`.
+* **Concise Return:** The `Saddleback` method directly returns an `int[]` instead of creating a temporary array outside the loop. This is slightly more efficient and cleaner.
+* **Error Handling in main():** The `main` method now checks the return value from `Saddleback` and prints an appropriate message if the target is not found.
+* **Comments:** Comments are added to explain the logic within the `Saddleback` search.
+* **Adherence to Method Signatures:** The code strictly follows the specified method signatures `main` and `Saddleback`.
+* **Example Usage in main():** The `main` method provides a sample 2D array and target value to demonstrate how to use the `Saddleback` method.
+
+
+
+
+
+
+How Saddleback Search Works:
+
+1. **Start at the top-right corner:**  Initialize `row` to 0 and `col` to `n-1`.
+
+2. **Compare and move:**
+   - If `matrix[row][col]` equals the `target`, you've found the element!
+   - If `matrix[row][col]` is less than the `target`, move down to the next row (increment `row`). This is because all elements in the current row will be smaller than the target.
+   - If `matrix[row][col]` is greater than the `target`, move left to the previous column (decrement `col`).  All elements in the current column below the current cell will be larger than the target.
+
+3. **Repeat:** Continue step 2 until you find the target or you go out of bounds (row becomes greater than or equal to `m`, or col becomes less than 0).  If you go out of bounds, it means the target is not present.

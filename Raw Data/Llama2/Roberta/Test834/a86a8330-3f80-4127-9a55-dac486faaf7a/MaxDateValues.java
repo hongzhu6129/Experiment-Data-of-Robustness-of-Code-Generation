@@ -1,0 +1,36 @@
+import java.util.Calendar;
+
+public class MaxDateValues {
+
+    public static void main(String[] args) {
+        Calendar calendar = Calendar.getInstance();
+
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH); // 0-indexed (0-11)
+        int currentWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int currentDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Maximum values
+        int maxYear = calendar.getActualMaximum(Calendar.YEAR); //  A very large value, effectively no limit in practice.
+        int maxMonth = calendar.getActualMaximum(Calendar.MONTH); // 11 (December)
+        int maxWeekOfYear = calendar.getActualMaximum(Calendar.WEEK_OF_YEAR); // 52 or 53 depending on the year
+        int maxDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH); // 28, 29, 30 or 31 depending on the month/year
+
+
+        System.out.println("Current Year: " + currentYear);
+        System.out.println("Maximum Year (effectively no limit in Calendar): " + maxYear);
+
+        System.out.println("Current Month (0-indexed): " + currentMonth);
+        System.out.println("Maximum Month (0-indexed): " + maxMonth);
+
+
+        System.out.println("Current Week of Year: " + currentWeekOfYear);
+        System.out.println("Maximum Week of Year: " + maxWeekOfYear);
+
+        System.out.println("Current Day of Month: " + currentDayOfMonth);
+        System.out.println("Maximum Day of Month: " + maxDayOfMonth);
+
+
+
+    }
+}

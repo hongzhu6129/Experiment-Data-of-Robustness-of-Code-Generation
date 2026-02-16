@@ -1,0 +1,42 @@
+public class StartsWithNumber {
+
+    public static void main(String[] args) {
+        String input1 = "123abc";
+        String input2 = "abc123";
+        String input3 = "1abc";
+        String input4 = "a1bc";
+
+        System.out.println(input1 + ": " + validate(input1)); // Expected: true
+        System.out.println(input2 + ": " + validate(input2)); // Expected: false
+        System.out.println(input3 + ": " + validate(input3)); // Expected: true
+        System.out.println(input4 + ": " + validate(input4)); // Expected: false
+
+        // Test with specific number
+        String specificNumber = "12";
+        System.out.println(input1 + " starts with " + specificNumber + ": " + validateWithSpecificNumber(input1, specificNumber)); // Expected: true for "123abc" and "12"
+
+        System.out.println(input3 + " starts with " + specificNumber + ": " + validateWithSpecificNumber(input3, specificNumber)); // Expected: false for "1abc" and "12"
+         System.out.println(input2 + " starts with " + specificNumber + ": " + validateWithSpecificNumber(input2, specificNumber)); // Expected: false for "abc123" and "12"
+
+
+    }
+
+    public static String validate(String input) {
+        if (input == null || input.isEmpty()) {
+            return "false"; // Handle null or empty input
+        }
+        return Character.isDigit(input.charAt(0)) ? "true" : "false";
+    }
+
+
+
+    // Overloaded method to check if a string starts with a specific number string
+    public static String validateWithSpecificNumber(String input, String specificNumber) {
+        if (input == null || input.isEmpty() || specificNumber == null || specificNumber.isEmpty()) {
+            return "false";
+        }
+
+        return input.startsWith(specificNumber) ? "true" : "false";
+    }
+
+}

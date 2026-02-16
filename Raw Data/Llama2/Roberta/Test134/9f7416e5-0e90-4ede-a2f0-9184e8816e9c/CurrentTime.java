@@ -1,0 +1,24 @@
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+
+public class CurrentTime {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Calculate the previous time (e.g., 5 seconds ago - adjust as needed)
+        LocalDateTime previous = now.minus(5, ChronoUnit.SECONDS); 
+
+        // Extract and display the time part only for both current and previous
+        LocalTime currentTime = now.toLocalTime();
+        LocalTime previousTime = previous.toLocalTime();
+
+
+        System.out.println("Current Time (without date): " + currentTime);
+        System.out.println("Previous Time (without date): " + previousTime);
+
+
+    }
+}

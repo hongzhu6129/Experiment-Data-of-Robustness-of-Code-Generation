@@ -1,0 +1,53 @@
+import java.util.TreeSet;
+
+public class RemoveFromTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        System.out.println("Original TreeSet: " + numbers);
+
+        // Element to remove
+        int elementToRemove = 30;
+
+        // Remove the element
+        boolean removed = numbers.remove(elementToRemove);
+
+        if (removed) {
+            System.out.println("Element " + elementToRemove + " removed successfully.");
+        } else {
+            System.out.println("Element " + elementToRemove + " not found in the TreeSet.");
+        }
+
+        System.out.println("TreeSet after removal: " + numbers);
+
+
+        //Example demonstrating removal when element might not exist
+         TreeSet<String> fruits = new TreeSet<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        System.out.println("\nOriginal TreeSet of fruits: " + fruits);
+
+        String fruitToRemove = "Grape"; // Grape is not in the set
+
+        boolean fruitRemoved = fruits.remove(fruitToRemove);
+
+        if (fruitRemoved) {
+            System.out.println("Fruit " + fruitToRemove + " removed successfully.");
+        } else {
+            System.out.println("Fruit " + fruitToRemove + " not found in the TreeSet.");
+        }
+
+        System.out.println("TreeSet of fruits after attempted removal: " + fruits);
+    }
+}

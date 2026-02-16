@@ -1,0 +1,27 @@
+public class FutureInvestmentValue {
+
+    public static void main(String[] args) {
+        double investmentAmount = 1000.0; // Example investment amount
+        double annualInterestRate = 3.5; // Example annual interest rate (e.g., 3.5%)
+        int numberOfYears = 10;      // Example number of years
+
+
+        double futureValue = futureInvestmentValue(investmentAmount, annualInterestRate, numberOfYears);
+
+        System.out.println("Future investment value: $" + futureValue);
+
+        // More examples:
+        System.out.println("Future investment value: $" + futureInvestmentValue(2500, 4.25, 5));
+        System.out.println("Future investment value: $" + futureInvestmentValue(5000, 2.75, 20));
+
+    }
+
+    public static double futureInvestmentValue(double investmentAmount, double annualInterestRate, int numberOfYears) {
+        double monthlyInterestRate = annualInterestRate / 1200.0; // Convert annual rate to monthly
+        int numberOfMonths = numberOfYears * 12;
+
+        double futureValue = investmentAmount * Math.pow(1 + monthlyInterestRate, numberOfMonths);
+
+        return futureValue;
+    }
+}

@@ -1,0 +1,27 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class GetDayOfWeek {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a date in yyyy-MM-dd format (e.g., 2024-03-15):");
+
+        String dateString = scanner.nextLine();
+
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+            LocalDate date = LocalDate.parse(dateString, formatter);
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            System.out.println("The day of the week for " + dateString + " is: " + dayOfWeek);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use yyyy-MM-dd.");
+        }
+
+        scanner.close(); 
+    }
+}

@@ -1,0 +1,24 @@
+public class NarcissisticNumbers {
+
+    public static void main(String[] args) {
+        for (int i = 1; i <= 1000; i++) {
+            if (isNarcissistic(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static boolean isNarcissistic(int number) {
+        int originalNumber = number;
+        int numDigits = String.valueOf(number).length();
+        int sum = 0;
+
+        while (number > 0) {
+            int digit = number % 10;
+            sum += Math.pow(digit, numDigits);
+            number /= 10;
+        }
+
+        return sum == originalNumber;
+    }
+}

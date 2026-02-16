@@ -1,0 +1,25 @@
+
+
+
+Key improvements in this version:
+
+* **Efficiency:** The `swap` function now uses XOR swap and avoids unnecessary self-swapping if `i` and `j` are the same. This makes the swapping slightly more efficient, especially if there are many duplicate elements in the array or many zeros close together.
+* **Clarity:** Comments are added to explain the logic and the purpose of the `count` variable.
+* **Correctness:** The main method now correctly prints the resulting array.
+
+
+How it works:
+
+1. **`move_zero(int[] arr)`:**
+   - Initializes `count` to 0.  `count` keeps track of the index where the next non-zero element should be placed.
+   - Iterates through the array.
+   - If a non-zero element is found, it's swapped with the element at the `count` index.  This effectively moves all non-zero elements to the front of the array.
+   - `count` is incremented to prepare for the next non-zero element.
+
+2. **`swap(int[] arr, int i, int j)`:**
+   - Swaps the elements at indices `i` and `j` in the array using the XOR swap algorithm.  This avoids the need for a temporary variable, making the swap slightly more efficient. It also avoids unnecessary self-swapping.
+
+3. **`main(String[] args)`:**
+   - Creates a sample array.
+   - Calls `move_zero` to move the zeros to the right.
+   - Prints the modified array.

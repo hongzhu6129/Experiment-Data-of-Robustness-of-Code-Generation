@@ -1,0 +1,48 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the program:
+
+1. **Provided Example:**
+   - Latitude 1: 25
+   - Longitude 1: 35
+   - Latitude 2: 35.5
+   - Longitude 2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - Latitude 1: 40
+   - Longitude 1: -74  (New York)
+   - Latitude 2: 40
+   - Longitude 2: -74  (New York)
+   - Expected Distance: 0 km
+
+3. **North and South Poles:**
+   - Latitude 1: 90   (North Pole)
+   - Longitude 1: 0
+   - Latitude 2: -90  (South Pole)
+   - Longitude 2: 0    (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite Sides of the Earth (Antipodes):**
+   - Latitude 1: 40
+   - Longitude 1: -74  (New York)
+   - Latitude 2: -40
+   - Longitude 2: 106  (Near Perth, Australia)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points near the Prime Meridian & 180th Meridian:**
+   - Latitude 1: 0
+   - Longitude 1: 0.1  (Just east of Prime Meridian)
+   - Latitude 2: 0
+   - Longitude 2: -179.9 (Just west of 180th Meridian)
+   - Expected Distance: A small value (because these points are close despite the longitude difference)
+
+6. **Invalid Input:**
+   - Try entering non-numeric values or latitudes outside the range -90 to +90. The program should handle this gracefully (ideally with error messages and prompting for re-entry or termination).
+
+
+
+**Improved Code with Input Validation:**
+

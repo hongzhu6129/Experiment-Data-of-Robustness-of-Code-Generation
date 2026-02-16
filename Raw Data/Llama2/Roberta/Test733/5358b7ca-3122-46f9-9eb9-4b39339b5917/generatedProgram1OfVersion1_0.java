@@ -1,0 +1,65 @@
+class Solution {
+    /**
+     * Rotates a string by a given offset (from left to right).
+     *
+     * @param str   The string to be rotated.
+     * @param offset The number of positions to rotate the string.
+     * @return The rotated string.
+     */
+    public String rotateString(String str, int offset) {
+        if (str == null || str.length() == 0) {
+            return str; // Handle empty or null input
+        }
+
+        offset = offset % str.length(); // Handle offsets larger than string length
+        char[] charArray = str.toCharArray();
+        
+        reverse(charArray, 0, charArray.length - offset - 1);
+        reverse(charArray, charArray.length - offset, charArray.length - 1);
+        reverse(charArray, 0, charArray.length - 1);
+        
+        return new String(charArray);
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String str1 = "abcdefg";
+        int offset1 = 3;
+        String rotatedStr1 = solution.rotateString(str1, offset1);
+        System.out.println("Rotated string 1: " + rotatedStr1); // Output: efgabcd
+
+        String str2 = "abcdefg";
+        int offset2 = 0;
+        String rotatedStr2 = solution.rotateString(str2, offset2);
+        System.out.println("Rotated string 2: " + rotatedStr2); // Output: abcdefg
+
+        String str3 = "abcdefg";
+        int offset3 = 10; // Larger offset than string length
+        String rotatedStr3 = solution.rotateString(str3, offset3);
+        System.out.println("Rotated string 3: " + rotatedStr3); // Output: efgabcd
+
+
+         String str4 = ""; // Empty string
+        int offset4 = 3; 
+        String rotatedStr4 = solution.rotateString(str4, offset4);
+        System.out.println("Rotated string 4: " + rotatedStr4); // Output: ""
+
+
+        String str5 = null; // Null String
+        int offset5 = 3; 
+        String rotatedStr5 = solution.rotateString(str5, offset5);
+        System.out.println("Rotated string 5: " + rotatedStr5); // Output: null
+    }
+
+    public void reverse(char[] str, int start, int end) {
+        while (start < end) {
+            char temp = str[start];
+            str[start] = str[end];
+            str[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}

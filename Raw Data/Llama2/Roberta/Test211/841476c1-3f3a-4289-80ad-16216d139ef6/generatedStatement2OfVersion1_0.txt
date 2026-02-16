@@ -1,0 +1,18 @@
+
+
+
+Key changes and explanations:
+
+1. **Interval Class:**  An `Interval` class is created to encapsulate the start and end times of an interval.  The `getStart()` and `getEnd()` methods are included as required.
+
+2. **Sorting:** The `merge()` method first sorts the intervals based on their start times using `Collections.sort()` and a custom `Comparator`. This is essential for the merging logic to work correctly.
+
+3. **Merging Logic:** The core merging logic iterates through the sorted intervals. `current` keeps track of the currently being merged interval.  If the next interval (`next`) overlaps with `current` (i.e. `current.getEnd() >= next.getStart()`), a new interval with updated end time is created. If they don't overlap, the `current` interval is added to the `merged` list and `current` is updated to `next`.
+
+4. **Adding the Last Interval:**  After the loop, the last `current` interval is added to the `merged` list.
+
+5. **Example in main():** The `main()` method demonstrates how to create `Interval` objects, add them to a list, and then call the `merge()` method. The output is printed to the console.
+
+
+
+This revised code adheres to the specified method signatures and effectively merges overlapping intervals.

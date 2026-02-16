@@ -1,0 +1,28 @@
+
+
+
+**Test Cases (including corner cases):**
+
+1. **Valid Octal Numbers:**
+   - Input: 123  Output: 53
+   - Input: 777  Output: 1FF
+   - Input: 10    Output: 8
+   - Input: 0     Output: 0  (Corner Case: Zero input)
+   - Input: 42    Output: 22
+   - Input: 700  Output: 1C0
+   - Input: 17777 Output: 3FFF (Largest 4-digit octal)
+
+
+2. **Invalid Octal Numbers:**
+   - Input: 800 (Contains digit '8')  Expected Output: Error message.
+   - Input: 91   (Contains digit '9')  Expected Output: Error message.
+   - Input: 12a (Contains non-digit 'a') Expected Output: Error message.
+   - Input: -12 (Negative sign not allowed) Expected Output: Error message (though technically caught by the isDigit check).
+   - Input: ""    (Empty string)       Expected Output: Error message (though technically caught by the loop condition preventing any calculation, resulting in "0").
+
+
+3. **Large Octal Numbers:**
+   - Input: 17777777777  Output: FFFFFFFF (Largest possible octal within int's limit converted to max hex value that fits within int)
+
+
+These test cases cover various scenarios, including valid conversions, common errors like invalid digits, the corner case of zero, and handling of a large input to test for potential overflow issues (though with `int`, very large octals will lose precision when converted to decimal).  Testing the error handling is particularly crucial to ensure the program handles invalid inputs gracefully.

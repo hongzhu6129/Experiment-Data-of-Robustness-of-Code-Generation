@@ -1,0 +1,83 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLastLinkedList {
+
+    public static void main(String[] args) {
+
+        // Create a sample LinkedList
+        LinkedList<String> languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Go");
+
+
+        System.out.println("Original LinkedList: " + languages);
+
+        // Check if the list is empty or has only one element
+        if (languages.isEmpty() || languages.size() == 1) {
+            languages.clear(); // Remove all if empty or only one element present.
+            System.out.println("Modified LinkedList (after removing first and last): " + languages);
+            return; // Exit early. Nothing more to do
+        }
+
+
+        // Remove the first element using removeFirst()
+        languages.removeFirst();
+
+        // Remove the last element using removeLast()
+        languages.removeLast();
+
+        System.out.println("Modified LinkedList (after removing first and last): " + languages);
+
+
+        // Demonstrating alternative ways (less efficient but show more concepts)
+        System.out.println("\nDemonstrating alternative removal methods:");
+
+        // Reset the list (for demonstration)
+        languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Go");
+
+        System.out.println("Original LinkedList: " + languages);
+
+        if (languages.isEmpty() || languages.size() == 1) {
+            languages.clear(); // Remove all if empty or only one element present.
+            System.out.println("Modified LinkedList (after removing first and last - alternative): " + languages);
+            return; // Exit early. Nothing more to do
+        }
+
+        // Remove the first element using remove(0) - index based removal
+        languages.remove(0);
+
+
+        // Remove the last element using remove(size - 1) - index based removal (important to recalculate size after removing the first)
+        languages.remove(languages.size() - 1);
+
+        System.out.println("Modified LinkedList (after removing first and last - alternative): " + languages);
+
+
+        // Using pollFirst() and pollLast()  - these return null if the list is empty instead of throwing an exception.
+        // Reset the list (for demonstration)
+        languages = new LinkedList<>();
+        languages.add("Java");
+        languages.add("Python");
+        languages.add("C++");
+        languages.add("JavaScript");
+        languages.add("Go");
+
+        System.out.println("\nDemonstrating pollFirst and pollLast:");
+        System.out.println("Original LinkedList: " + languages);
+
+        languages.pollFirst();
+        languages.pollLast();
+
+
+        System.out.println("Modified LinkedList (after pollFirst and pollLast): " + languages);
+
+    }
+}

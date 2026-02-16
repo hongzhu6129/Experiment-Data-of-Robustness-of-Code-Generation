@@ -1,0 +1,27 @@
+
+
+
+Explanation:
+
+1. **`allInterleavings(String str1, String str2, String current, Set<String> result)`:**
+   - This recursive method generates all possible interleavings.
+   - `str1` and `str2` are the input strings.
+   - `current` stores the interleaving being built.
+   - `result` is a Set to store unique interleavings (avoiding duplicates if input strings have repeated characters).
+
+2. **Base Case:**
+   - If both `str1` and `str2` are empty, it means we've formed a complete interleaving.  Add the `current` string to the `result` set.
+
+3. **Recursive Steps:**
+   - If `str1` is not empty, take the first character from `str1`, append it to `current`, and recursively call `allInterleavings` with the remaining part of `str1`.
+   - If `str2` is not empty, do the same, taking the first character from `str2`.
+
+4. **`main` Method:**
+   - Sets example input strings `str1` and `str2`.
+   - Creates a `HashSet` called `interleavings` to store the results.
+   - Calls `allInterleavings` to start the recursive process.
+   - Prints the generated interleavings.
+
+
+Example Output (for "AB" and "CD"):
+

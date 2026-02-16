@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class MoveString {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input strings
+        System.out.print("Enter the first string: ");
+        String str1 = scanner.nextLine();
+        System.out.print("Enter the second string: ");
+        String str2 = scanner.nextLine();
+
+        // Move the characters from str1 to str2
+        moveString(str1, str2);
+
+        // Print the resulting string
+        System.out.println("The resulting string is: " + str2);
+    }
+
+    public static void moveString(String str1, String str2) {
+        // Check if str1 is empty
+        if (str1.isEmpty()) {
+            return;
+        }
+
+        // Get the first character of str1
+        char ch = str1.charAt(0);
+
+        // Move the character to str2
+        str2 += ch;
+
+        // Remove the character from str1
+        str1 = str1.substring(1);
+
+        // Recursively move the remaining characters
+        moveString(str1, str2);
+    }
+}

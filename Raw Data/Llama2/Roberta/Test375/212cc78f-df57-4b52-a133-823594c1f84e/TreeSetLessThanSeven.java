@@ -1,0 +1,24 @@
+import java.util.TreeSet;
+
+public class TreeSetLessThanSeven {
+
+    public static void main(String[] args) {
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some numbers to the TreeSet
+        treeSet.add(2);
+        treeSet.add(9);
+        treeSet.add(5);
+        treeSet.add(1);
+        treeSet.add(12);
+        treeSet.add(6);
+
+        // Find numbers less than 7
+        TreeSet<Integer> lessThanSeven = (TreeSet<Integer>) treeSet.headSet(7);
+
+        // Print the numbers less than 7
+        System.out.println("Numbers less than 7: " + lessThanSeven);
+
+
+    }
+}

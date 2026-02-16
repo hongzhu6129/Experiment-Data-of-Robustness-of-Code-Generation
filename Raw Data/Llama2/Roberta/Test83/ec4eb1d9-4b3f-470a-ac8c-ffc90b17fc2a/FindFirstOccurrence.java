@@ -1,0 +1,57 @@
+public class FindFirstOccurrence {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 2, 6, 2};
+        int elementToFind = 2;
+        int firstOccurrence = -1;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == elementToFind) {
+                firstOccurrence = i;
+                break; // Exit the loop after the first occurrence is found
+            }
+        }
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " is not found in the array.");
+        }
+
+
+        // Example 2: Element not present
+        int[] arr2 = {10, 20, 30, 40};
+        int elementToFind2 = 50;
+        int firstOccurrence2 = -1;
+
+        for (int i = 0; i < arr2.length; i++) {
+            if (arr2[i] == elementToFind2) {
+                firstOccurrence2 = i;
+                break;
+            }
+        }
+        if (firstOccurrence2 != -1) {
+            System.out.println("First occurrence of " + elementToFind2 + " is at index: " + firstOccurrence2);
+        } else {
+            System.out.println(elementToFind2 + " is not found in the array.");
+        }
+
+
+        //Example 3: Empty Array
+         int[] arr3 = {};
+        int elementToFind3 = 5;
+        int firstOccurrence3 = -1;
+
+        for (int i = 0; i < arr3.length; i++) {
+            if (arr3[i] == elementToFind3) {
+                firstOccurrence3 = i;
+                break;
+            }
+        }
+        if (firstOccurrence3 != -1) {
+            System.out.println("First occurrence of " + elementToFind3 + " is at index: " + firstOccurrence3);
+        } else {
+            System.out.println(elementToFind3 + " is not found in the array.");
+        }
+    }
+}

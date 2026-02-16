@@ -1,0 +1,32 @@
+class LinearSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 80, 30, 60, 50, 110, 100, 130, 170};
+        int x = 110; // Element to be searched
+
+        int result = Linear_Search(arr, x);
+
+        if (result == -1)
+            System.out.println("Element is not present in array");
+        else
+            System.out.println("Element is present at index " + result);
+
+
+        x = 175; // Element to be searched (not present)
+        result = Linear_Search(arr, x);
+
+        if (result == -1)
+            System.out.println("Element is not present in array");
+        else
+            System.out.println("Element is present at index " + result);
+    }
+
+
+    private static int Linear_Search(int[] arr, int x) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+}

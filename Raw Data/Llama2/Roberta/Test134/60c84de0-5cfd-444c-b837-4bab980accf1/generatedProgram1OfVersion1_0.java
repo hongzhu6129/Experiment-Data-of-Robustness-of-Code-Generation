@@ -1,0 +1,20 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Customize the date format if needed
+        String formattedDate = currentDate.format(dateFormatter);
+        System.out.println("Current Date: " + formattedDate);
+
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss"); // Customize the time format if needed
+        String formattedTime = currentTime.format(timeFormatter);
+        System.out.println("Current Time: " + formattedTime);
+    }
+}

@@ -1,0 +1,44 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueFirstElement {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+        pq.add(9);
+
+        // Check if the PriorityQueue is empty
+        if (!pq.isEmpty()) {
+            // Retrieve and print the first element (smallest element)
+            Integer firstElement = pq.peek(); 
+            System.out.println("First element (smallest): " + firstElement);
+
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+
+
+
+       // Example demonstrating removing the first element:
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(5);
+        pq2.add(2);
+        pq2.add(8);
+
+        if (!pq2.isEmpty()) {
+            Integer firstElementRemoved = pq2.poll(); // Retrieves and removes the first element.
+            System.out.println("First element removed (smallest): " + firstElementRemoved);
+            System.out.println("Remaining elements in PriorityQueue: " + pq2);
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,16 @@
+
+
+
+Explanation:
+
+1. **Node Class:** Represents a node in the binary tree.  It has `data`, `left` child, and `right` child.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If `node` is `null` (empty tree or we've reached the end of a branch), the depth is 0.
+   - **Recursive Step:**
+     - Recursively calculate the `leftDepth` and `rightDepth` of the left and right subtrees.
+     - Return `1 + max(leftDepth, rightDepth)`.  We add 1 because the current node itself adds one level to the depth.  We take the maximum of the left and right depths because the depth of a tree is determined by its longest branch.
+
+3. **main(String[] args):**
+   - Creates sample binary trees to test the `maxDepth` method.
+   - Prints the calculated height/depth of the trees.

@@ -1,0 +1,28 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+
+public class CombineDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the current time
+        LocalTime currentTime = LocalTime.now();
+
+        // Combine date and time into a LocalDateTime object
+        LocalDateTime combinedDateTime = LocalDateTime.of(currentDate, currentTime);
+
+        // Print the combined date and time
+        System.out.println("Combined Date and Time: " + combinedDateTime);
+
+
+        // Example with specific date and time:
+        LocalDate specificDate = LocalDate.of(2024, 10, 26);
+        LocalTime specificTime = LocalTime.of(15, 30, 10); // 3:30:10 PM
+
+        LocalDateTime specificDateTime = LocalDateTime.of(specificDate, specificTime);
+        System.out.println("Specific Combined Date and Time: " + specificDateTime);
+    }
+}

@@ -1,0 +1,42 @@
+import java.util.LinkedList;
+
+public class EditFrontLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the list
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+
+        // Check if the list is empty before attempting to edit
+        if (!linkedList.isEmpty()) {
+            // Edit the element at the front (index 0)
+            linkedList.set(0, "Orange"); 
+
+            System.out.println("Modified LinkedList: " + linkedList);
+        } else {
+            System.out.println("The LinkedList is empty. Cannot edit.");
+        }
+
+
+        // Example showing what happens when you try to access an index that doesn't exist.
+         LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(10);
+        numbers.add(20);
+
+        try {
+           numbers.set(5, 100); // Trying to set element at index 5 (out of bounds)
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage()); // Catch and handle the exception
+        }
+
+
+
+    }
+}

@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1 | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2 | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 3 | 0 | 10 | 10 | -10 | 0 | 0 | 0 |
+| 4 | 7 | 0 | 7 | 7 | 0 | "Division by zero" | "Division by zero" |  *(Corner Case: Division by zero)*
+| 5 | 0 | 0 | 0 | 0 | 0 | "Division by zero" | "Division by zero" | *(Corner Case: Both numbers zero, division by zero)*
+| 6 | 10.5 | 2.5 | 13 | 8 | 26.25 | 4.2 | 0 | *(Handles decimals)*
+| 7 | -2.5 | -1.5 | -4 | -1 | 3.75 | 1.666... | -1  (approx, due to floating-point limitations)
+| 8 | Integer.MAX_VALUE | 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MAX_VALUE -1 | Integer.MAX_VALUE | Integer.MAX_VALUE | 0 | *(Corner Case: Integer overflow on addition/multiplication)*
+| 9 | Integer.MIN_VALUE | -1 | Integer.MIN_VALUE -1 (underflow) | Integer.MIN_VALUE + 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MIN_VALUE | 0|  *(Corner Case: Integer underflow/overflow)*
+
+
+
+**How to Run Test Cases:**
+
+While you could manually input these test cases, it's much more efficient (and less prone to errors) to automate testing.  Here are some ways:
+
+1. **Unit Testing (Recommended):** Use a testing framework like JUnit. Create a separate test class where you write test methods to assert the expected outputs against the actual outputs of your `ArithmeticOperations` class.
+
+2. **Input Redirection:** You can create a text file with the input values and redirect it to the standard input of your program.  For example:
+
+   

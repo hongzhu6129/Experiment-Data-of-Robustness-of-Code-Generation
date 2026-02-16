@@ -1,0 +1,16 @@
+
+
+
+Explanation:
+
+1. **Creating a Source TreeMap:**  We create a `TreeMap` called `sourceMap` and populate it with some key-value pairs.
+
+2. **Method 1: `putAll()` (Most Efficient):** The `putAll()` method is the simplest and most efficient way to copy a `TreeMap`. It adds all the mappings from the source map to the destination map.
+
+3. **Method 2: Constructor:** Using the `TreeMap(Map)` constructor creates a new `TreeMap` containing all the mappings from the source map.  This is also efficient, similar to `putAll()`.
+
+4. **Method 3: Iteration:** This method iterates through the keys of the source map using a `for-each` loop. Inside the loop, we get the value associated with each key and put the key-value pair into the destination map. While it works, it is less efficient than `putAll()` and the constructor approach, particularly for large maps.
+
+5. **Demonstrating Independence:** The code demonstrates that modifications to the original `sourceMap` (after copying) do *not* affect the copied maps created using `putAll()` or the constructor. This shows that the copies are independent of the original.
+
+6. **Shallow vs. Deep Copy (Important):**  The code explains the crucial distinction between shallow and deep copies. The `putAll()` method and constructor create *shallow* copies.  This means if your TreeMap's values are mutable objects (e.g., lists, other maps, custom objects), changes to the *contents* of those objects will be reflected in both the original *and* the copied maps. If you need a truly independent copy where modifications to the values in one map do not affect the other, you would need to create a *deep* copy by cloning each value object as well.  The example doesn't demonstrate deep copying as it requires specific cloning logic depending on the type of values you're storing.

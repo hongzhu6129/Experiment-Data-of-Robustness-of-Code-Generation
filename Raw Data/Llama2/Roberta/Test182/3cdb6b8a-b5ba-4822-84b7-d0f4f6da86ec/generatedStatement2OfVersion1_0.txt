@@ -1,0 +1,32 @@
+
+
+
+**Test Cases:**
+
+1. **Normal Case - Java Installed:**
+   - **Expected Output:** "Java is installed on your system."
+   - **How to Test:**  Run the program on a system where Java is correctly installed and configured (i.e., `java` is in the system's PATH).
+
+
+2. **Java Not Installed:**
+   - **Expected Output:** "Java is not installed or not accessible in your system's PATH."
+   - **How to Test:**  Run the program on a system where Java is genuinely not installed.  Alternatively, temporarily remove Java's bin directory from the system's PATH environment variable and then run the program.
+
+
+3. **Java Installed But Not in PATH:**
+   - **Expected Output:** "Java is not installed or not accessible in your system's PATH."
+   - **How to Test:** Temporarily modify your system's PATH environment variable to exclude the directory containing the Java executable (`java`). Then run the program.  This simulates the scenario where Java is installed but not configured correctly.
+
+
+4. **Java Executable Renamed:** (Corner case)
+   - **Expected Output:** "Java is not installed or not accessible in your system's PATH."
+   - **How to Test:** (If you're comfortable)  Temporarily rename the `java` executable in the Java bin directory to something else (e.g., `java_renamed`).  This tests the scenario where the expected executable name is not found.  **Remember to rename it back to `java` afterward!**
+
+
+5. **Permissions Issues:** (Corner case - less common but important)
+   - **Expected Output:** "Java is not installed or not accessible in your system's PATH."
+   - **How to Test:** (Advanced/requires admin privileges) Temporarily modify the file permissions on the `java` executable to deny execute access for the current user. This simulates the scenario where the user does not have sufficient permissions to run Java. **Remember to restore the original permissions afterward!**
+
+
+
+These test cases cover common installation and configuration scenarios, as well as some edge cases related to file names and permissions.  They help ensure the program accurately detects the presence and accessibility of Java on a variety of systems.  Remember to revert any temporary changes made to your system during testing, especially those involving permissions and executable renaming.

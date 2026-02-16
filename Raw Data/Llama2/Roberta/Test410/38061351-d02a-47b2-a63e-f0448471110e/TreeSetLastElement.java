@@ -1,0 +1,57 @@
+import java.util.TreeSet;
+
+public class TreeSetLastElement {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some elements
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Print the initial TreeSet
+        System.out.println("Initial TreeSet: " + treeSet);
+
+        // Retrieve the last element (largest)
+        Integer lastElement = treeSet.last(); 
+
+        if (lastElement != null) {  // Check for empty set to avoid NullPointerException
+            System.out.println("Last element: " + lastElement);
+
+            // Remove the last element
+            treeSet.remove(lastElement); // Or treeSet.pollLast();
+
+            // Print the TreeSet after removal
+            System.out.println("TreeSet after removing last element: " + treeSet);
+        } else {
+            System.out.println("TreeSet is empty. Cannot retrieve or remove the last element.");
+        }
+
+
+
+
+        // Example demonstrating pollLast() for retrieval and removal in one step:
+        TreeSet<Integer> anotherTreeSet = new TreeSet<>();
+        anotherTreeSet.add(5);
+        anotherTreeSet.add(15);
+        anotherTreeSet.add(25);
+
+
+        Integer last = anotherTreeSet.pollLast(); // Retrieves and removes the last element
+
+        if (last != null) {
+            System.out.println("\nUsing pollLast():");
+            System.out.println("Removed last element: " + last);
+            System.out.println("TreeSet after pollLast(): " + anotherTreeSet);
+
+        } else {
+            System.out.println("\nUsing pollLast(): TreeSet is empty.");
+        }
+    }
+}
+
+

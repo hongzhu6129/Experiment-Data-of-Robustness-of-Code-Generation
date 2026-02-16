@@ -1,0 +1,62 @@
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs to the TreeMap
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+
+        // Value to search for
+        int searchKey = 3;
+
+        // Search for the value using containsKey()
+        if (treeMap.containsKey(searchKey)) {
+            System.out.println("Value found for key " + searchKey + ": " + treeMap.get(searchKey));
+        } else {
+            System.out.println("Value not found for key " + searchKey);
+        }
+
+
+        // Search for a value that doesn't exist
+        searchKey = 6; 
+        if (treeMap.containsKey(searchKey)) {
+            System.out.println("Value found for key " + searchKey + ": " + treeMap.get(searchKey));
+        } else {
+            System.out.println("Value not found for key " + searchKey);
+        }
+
+
+        // Demonstrating searching for a value (using containsValue - less efficient generally)
+        String searchValue = "Three";
+        if (treeMap.containsValue(searchValue)) {
+            System.out.println("Value \"" + searchValue + "\" found in the TreeMap.");
+
+            //If you need the key associated with this value (less efficient)
+             for (Integer key : treeMap.keySet()) {
+                if (treeMap.get(key).equals(searchValue)) {
+                    System.out.println("Key associated with \"" + searchValue + "\": " + key);
+                    break;  // Stop after finding the first match
+                }
+            }
+
+
+        } else {
+            System.out.println("Value \"" + searchValue + "\" not found in the TreeMap.");
+        }
+
+
+        searchValue = "Six"; // Value not present
+        if (treeMap.containsValue(searchValue)) {
+            System.out.println("Value \"" + searchValue + "\" found in the TreeMap.");
+        } else {
+            System.out.println("Value \"" + searchValue + "\" not found in the TreeMap.");
+        }
+    }
+}

@@ -1,0 +1,22 @@
+
+
+
+Explanation and Educational Points:
+
+1. **TreeMap:** The `TreeMap` class in Java is a sorted map implementation based on a red-black tree.  This ensures that keys are always in sorted order, making it highly efficient for operations like finding the least key greater than a given value.
+
+2. **higherKey(K key):**  The `higherKey()` method is the core of the solution.  It directly returns the least key strictly greater than the given `key`. If no such key exists, it returns `null`.
+
+3. **Generics <K, V>:**  The method signature `public static <K, V> K getLeastKeyGreaterThan(...)` uses generics.  This allows the method to work with TreeMaps containing any type of key (`K`) and value (`V`), providing flexibility.
+
+4. **Example Usage:** The `main` method demonstrates how to use the `getLeastKeyGreaterThan()` method with different inputs and illustrates the expected outputs.  It shows how to handle the `null` return value when no greater key exists.
+
+5. **String Keys Example:** The code also includes an example where the TreeMap uses String keys, demonstrating the generic nature of the `getLeastKeyGreaterThan` method.
+
+
+How to Use:
+
+1. Create a `TreeMap` object.
+2. Populate the `TreeMap` with key-value pairs.
+3. Call `getLeastKeyGreaterThan()` with the `TreeMap` and the key you want to find the next greater key for.
+4. Handle the potential `null` return value if no greater key exists.

@@ -1,0 +1,32 @@
+public class SumOfSeven {
+
+    public static void main(String[] args) {
+        // Test data:  74 + 36 + ... (add 5 more numbers)
+        int num1 = 74;
+        int num2 = 36;
+        int num3 = 12;
+        int num4 = 5;
+        int num5 = 8;
+        int num6 = 20;
+        int num7 = 3;
+
+        int sum = num1 + num2 + num3 + num4 + num5 + num6 + num7;
+
+        System.out.println(num1 + " + " + num2 + " + " + num3 + " + " + num4 + " + " + num5 + " + " + num6 + " + " + num7 + ": " + sum);
+
+
+        //Alternatively, using an array (more flexible if you want to change the number of elements):
+        int[] numbers = {74, 36, 12, 5, 8, 20, 3};
+        int sum2 = 0;
+        String output = "";  //For nicely formatted output
+        for (int i = 0; i < numbers.length; i++) {
+            sum2 += numbers[i];
+            output += numbers[i];
+            if (i < numbers.length - 1) {
+                output += " + ";
+            }
+        }
+        System.out.println(output + ": " + sum2);
+
+    }
+}

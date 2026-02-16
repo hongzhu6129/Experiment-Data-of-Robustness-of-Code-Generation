@@ -1,0 +1,14 @@
+
+
+
+Key improvements and explanations:
+
+1. **0-based indexing:**  The crucial `n--` inside the loop.  Excel column titles are essentially a base-26 number system where A represents 0, B represents 1, and so on.  Decrementing `n` before the modulo operation correctly maps the integer input to this system.
+
+2. **StringBuilder for efficiency:** String concatenation within a loop is inefficient in Java.  Using `StringBuilder` significantly improves performance, especially for larger column numbers.
+
+3. **`insert(0, ch)`:** Characters are prepended (inserted at the beginning) to the `StringBuilder`. This is necessary because the calculation gives us the characters from right to left, but we want to build the string from left to right.
+
+4. **Clearer comments and variable names:** Enhanced readability for better understanding.
+
+5. **Comprehensive test cases in `main`:**  The `main` method includes several test cases to verify the correctness of the `Column` method, covering edge cases and different scenarios.

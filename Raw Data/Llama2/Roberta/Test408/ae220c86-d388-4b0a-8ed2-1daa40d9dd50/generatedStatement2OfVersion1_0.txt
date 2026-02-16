@@ -1,0 +1,19 @@
+
+
+**Test Cases:**
+
+While this program doesn't take any input, we can still think about "testing" in terms of verifying its output.  Since it's just printing a fixed face, the core test is to ensure the output is exactly as expected.  There aren't true "corner cases" in the traditional sense (like invalid inputs) because there *are* no inputs.
+
+However, we can think broader:
+
+1. **Correct Output:** Run the program and visually inspect the output to confirm it matches the intended "face" design.  Copy and paste the expected output into a text file and compare it with the program's output using a diff tool or by visually checking.  This is the primary test.
+
+2. **Character Encoding:**  While unlikely to be a problem with modern Java, you *could* test with different character encodings (e.g., UTF-8, UTF-16) on different platforms to be absolutely sure the characters are displayed consistently.  This is less of a concern if you stick to basic ASCII characters like in the given program.
+
+3. **Output Redirection:**  Test redirecting the output to a file. This checks that the program writes correctly to a different output stream.  You can do this from the command line (e.g., `java FacePrinter > output.txt`).  Then, compare the contents of `output.txt` to the expected output.
+
+4. **Integration (if applicable):**  If this face printing were part of a larger application, you would have integration tests to make sure that the `printFace()` method is called at the appropriate time and in the correct context within the larger program's logic.
+
+
+**Example of automated testing (using JUnit):**
+

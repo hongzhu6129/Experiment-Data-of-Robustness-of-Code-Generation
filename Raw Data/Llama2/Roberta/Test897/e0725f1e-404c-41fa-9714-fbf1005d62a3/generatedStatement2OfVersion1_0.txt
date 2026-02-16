@@ -1,0 +1,20 @@
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling:** The code now includes proper error handling using a `try-catch` block to catch `IOExceptions` that might occur during file reading.  If an error occurs, it prints an error message and returns `null` to indicate the failure.
+
+2. **Dynamic Sizing:** The `ArrayList` is used to store the lines initially because it can grow dynamically. We don't need to know the number of lines in the file beforehand.  Then, it's efficiently converted to a `String` array using `toArray(new String[0])`.
+
+3. **Whitespace Trimming:** `line.trim()` is used to remove any leading or trailing whitespace from each line read from the file, ensuring cleaner data in the array.
+
+4. **Clearer Output:** The output now explicitly labels the shopping list.
+
+5. **File Path:**  The file path is now a variable, making it easy to change.  Make sure to create a file named `shopping_list.txt` (or whatever you name it) in the same directory as your Java file, or provide the correct absolute path.
+
+
+**How to run:**
+
+1. **Save:** Save the code as `ReadFileToArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile:
+   

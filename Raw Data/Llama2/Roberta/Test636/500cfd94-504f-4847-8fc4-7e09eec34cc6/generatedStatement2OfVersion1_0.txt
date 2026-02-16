@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **Sorted Array:** The `removeDuplicates` method is designed for *sorted* arrays. This is a crucial prerequisite.  If the input array isn't sorted, the algorithm won't work correctly.
+
+2. **In-Place Modification:** The method modifies the input array directly (in-place) rather than creating a new one.  This is generally more memory-efficient, especially for large arrays.
+
+3. **Two Pointers:** The `uniqueIndex` and `i` variables act as two pointers. `uniqueIndex` keeps track of the position where the next unique element should be placed. `i` iterates through the array.
+
+4. **Duplicate Check:**  Inside the loop, `nums[i] != nums[uniqueIndex]` checks if the current element (`nums[i]`) is different from the last unique element encountered (`nums[uniqueIndex]`).  If they are different, it means we've found a new unique element.
+
+
+5. **Return Value:** The method returns the length of the updated array (the part containing the unique elements). The original array is modified so that the unique elements are at the beginning.
+
+6. **Handling Edge Cases:**  The code includes handling for empty (`{}`) and null arrays to prevent `NullPointerExceptions` or other errors. This is a good practice for robust code.
+
+
+7. **Main Method Examples:** The `main` method demonstrates how to use `removeDuplicates` with various examples, including arrays with duplicates, no duplicates, empty arrays, and null arrays.  The `Arrays.copyOfRange` method is used to print only the relevant part of the modified array (up to the returned length).  This prevents printing the "garbage" values that might be left in the array beyond the unique elements.

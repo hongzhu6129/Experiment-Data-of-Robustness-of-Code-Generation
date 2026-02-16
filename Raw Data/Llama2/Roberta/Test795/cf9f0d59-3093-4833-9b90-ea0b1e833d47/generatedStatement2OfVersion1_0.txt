@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now correctly handles empty (`{}`) and `null` arrays without throwing exceptions. This makes it more robust.
+
+2. **Clearer Variable Naming:**  `uniqueIndex` is more descriptive than just `i` or `j` for tracking the index of the last unique element.
+
+3. **In-Place Modification:** The `removeDuplicates` function modifies the input array `nums` in-place (as the original problem implicitly suggested).  The unique elements are placed at the beginning of the array.
+
+4. **Returns Length:** The function returns the length of the unique part of the array, which is the core requirement of the problem.
+
+5. **Illustrative `main` Method:** The `main` method now provides several example test cases, including edge cases, and clearly prints the updated length and the unique portion of the modified array using `Arrays.copyOfRange`.  This demonstrates how to use the function and interpret its results.
+
+
+**How it works:**
+
+The `removeDuplicates` function uses a single loop. `uniqueIndex` keeps track of the index where the next unique element should be placed.  We iterate through the array, and if we find an element that's different from the one at `uniqueIndex`, we increment `uniqueIndex` and copy the new unique element to that position. This overwrites any duplicates that may have been present earlier.  Finally, `uniqueIndex + 1` gives us the length of the unique portion.

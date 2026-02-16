@@ -1,0 +1,25 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Notes                                  |
+| --------- | -------- | -------- | --------------- | ------------------------------------- |
+| 1        | 5       | 10      | 50             | Positive integers                     |
+| 2        | -3      | 7       | -21            | Negative and positive integer         |
+| 3        | 0       | 15      | 0              | Multiplication by zero               |
+| 4        | -8      | -4      | 32             | Two negative integers                 |
+| 5        | 100000  | 100000 | 10000000000    | Large numbers (potential overflow with int) |
+| 6        | 9223372036854775807  | 1 | 9223372036854775807 | Long.MAX_VALUE * 1                 |
+| 7        | 9223372036854775807  | 2 | -2                | Long.MAX_VALUE * 2 (overflow)      |
+| 8        | -9223372036854775808  | -1 | 9223372036854775808 | Long.MIN_VALUE * -1 (overflow potential -  handled because the result IS Long.MIN_VALUE) |
+| 9 | 2147483647 | 2 | 4294967294 | Integer.MAX_VALUE * 2 (overflow if using int) |
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can run the program multiple times, entering the input values from the table and verifying the output.
+
+2. **Automated Testing (Recommended):**  A better approach is to use a testing framework like JUnit.  Here�s a basic example using JUnit 5:
+

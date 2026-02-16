@@ -1,0 +1,20 @@
+
+
+
+**Explanation:**
+
+1. **`main` Method:**
+   - Creates a sample `String` array.
+   - Prints the original array.
+   - Calls `sort_array_by_length` twice: once for ascending order (passing `true`) and once for descending order (passing `false`).
+   - Prints the sorted arrays.
+
+2. **`sort_array_by_length` Method:**
+   - Takes the `String` array (`arr`) and a boolean flag (`sort_asc_dsc`) as input.
+   - Uses `Arrays.sort()` with a custom `Comparator`.
+   - The `Comparator` compares strings based on their lengths using `Integer.compare(s1.length(), s2.length())`. This ensures correct handling of potential integer overflow if string lengths are very large.
+   - The `sort_asc_dsc` flag controls the sort order.  If `true` (ascending), the `comparisonResult` is returned directly. If `false` (descending), the result is negated (`-comparisonResult`) to reverse the comparison order.  This is a concise way to handle both ascending and descending sorts within the same `Comparator`.
+
+
+**Example Output:**
+

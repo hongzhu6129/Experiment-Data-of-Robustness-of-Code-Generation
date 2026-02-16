@@ -1,0 +1,32 @@
+public class HappyNumbers {
+
+    public static void main(String[] args) {
+        int count = 0;
+        long num = 1;
+
+        while (count < 10) {
+            if (happy_num(num)) {
+                System.out.print(num + " ");
+                count++;
+            }
+            num++;
+        }
+    }
+
+    public static boolean happy_num(long num) {
+        java.util.Set<Long> seen = new java.util.HashSet<>();
+
+        while (num != 1 && !seen.contains(num)) {
+            seen.add(num);
+            long sum = 0;
+            while (num > 0) {
+                long digit = num % 10;
+                sum += digit * digit;
+                num /= 10;
+            }
+            num = sum;
+        }
+
+        return num == 1;
+    }
+}
