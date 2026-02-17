@@ -1,0 +1,11 @@
+public class TrimWhitespace {
+
+    public static void main(String[] args) {
+        String stringWithWhitespace = "   Hello, World!    ";
+
+        // Trim leading and trailing whitespace
+        String trimmedString = stringWithWhitespace.trim();
+
+        System.out.println(trimmedString); 
+    }
+}

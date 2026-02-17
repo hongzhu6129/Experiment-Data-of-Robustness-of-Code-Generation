@@ -1,0 +1,30 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class DateTimeBeforeHours {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of hours: ");
+        int hours = scanner.nextInt();
+
+        System.out.print("Enter the number of minutes: ");
+        int minutes = scanner.nextInt();
+
+
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDateTime pastDateTime = now.minus(hours, ChronoUnit.HOURS).minus(minutes, ChronoUnit.MINUTES);
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = pastDateTime.format(formatter);
+
+        System.out.println("Date and time " + hours + " hours and " + minutes + " minutes ago: " + formattedDateTime);
+
+        scanner.close(); 
+    }
+}

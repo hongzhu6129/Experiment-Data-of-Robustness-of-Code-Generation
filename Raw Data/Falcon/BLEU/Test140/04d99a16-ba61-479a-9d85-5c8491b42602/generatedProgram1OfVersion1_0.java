@@ -1,0 +1,74 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class CheckItemsContainingAllChars {
+
+    static void checkExistance(String word, String itemsString) {
+        // Convert the items string to a list of strings (assuming comma-separated)
+        String[] itemsArray = itemsString.split(","); // Split by comma
+        List<String> items = Arrays.asList(itemsArray);
+
+
+        List<String> matchingItems = new ArrayList<>();
+
+        // Convert word to lowercase for case-insensitive comparison
+        word = word.toLowerCase();
+
+        for (String item : items) {
+            // Convert item to lowercase for case-insensitive comparison
+            item = item.toLowerCase();
+
+            boolean containsAllChars = true;
+            for (char c : word.toCharArray()) {
+                if (item.indexOf(c) == -1) { // Character not found in the item
+                    containsAllChars = false;
+                    break;
+                }
+            }
+
+            if (containsAllChars) {
+                matchingItems.add(item); // Add the original (case-preserved) item
+            }
+        }
+
+        if (matchingItems.isEmpty()) {
+            System.out.println("No items contain all characters of '" + word + "'");
+        } else {
+            System.out.println("Items containing all characters of '" + word + "': " + matchingItems);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage:
+        String word = "sun";
+        String items = "sunday,unsung,sunscreen,running,sunburnt";  // Comma-separated list
+        checkExistance(word, items);
+
+
+        word = "cat";
+        items = "scatter,act,bet,tactic";
+        checkExistance(word, items);
+
+        // Example with no matches and case insensitivity check
+        word = "dog";
+        items = "DoGmatic,frog,log";
+        checkExistance(word, items);
+
+
+        // Example with empty word
+        word = "";
+        items = "apple,banana,orange";
+        checkExistance(word, items);
+
+          // Example with no items
+        word = "test";
+        items = "";
+        checkExistance(word, items);
+
+
+
+
+    }
+}
+

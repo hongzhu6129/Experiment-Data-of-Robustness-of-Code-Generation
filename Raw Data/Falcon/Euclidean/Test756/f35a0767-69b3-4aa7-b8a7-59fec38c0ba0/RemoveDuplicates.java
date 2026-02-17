@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    /**
+     * Removes duplicates from a sorted integer array in-place and returns the new length.
+     *
+     * @param nums The sorted integer array.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueIndex = 0; // Index for placing unique elements
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[uniqueIndex]) {
+                uniqueIndex++;
+                nums[uniqueIndex] = nums[i];
+            }
+        }
+
+        return uniqueIndex + 1;
+    }
+
+    /**
+     * Main method to demonstrate the removeDuplicates function.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Array 1 - New Length: " + len1 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums1, 0, len1)));
+
+
+        int[] nums2 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("Array 2 - New Length: " + len2 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums2, 0, len2)));
+
+        // Test case with empty array
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+         System.out.println("Array 3 - New Length: " + len3 + ", Updated Array: " + Arrays.toString(Arrays.copyOfRange(nums3, 0, len3))); // Empty array handling
+         
+        // Test case with null array (important to avoid NullPointerException)
+         int[] nums4 = null;
+         int len4 = removeDuplicates(nums4);
+         System.out.println("Array 4 - New Length: " + len4); // Null array handling
+    }
+}

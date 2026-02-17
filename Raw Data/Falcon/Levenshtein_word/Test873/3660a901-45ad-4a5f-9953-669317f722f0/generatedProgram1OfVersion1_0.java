@@ -1,0 +1,40 @@
+public class LargestOfFirstAndLast {
+
+    public static void main(String[] args) {
+        int[] numbers = new int[3]; // Array of length 3
+
+        // Example usage:  You can change these values to test with different inputs
+        numbers[0] = 10;
+        numbers[1] = 5;
+        numbers[2] = 20;
+
+        int largest;
+
+        if (numbers[0] > numbers[2]) {
+            largest = numbers[0];
+        } else {
+            largest = numbers[2];
+        }
+
+
+        System.out.println("Largest of first and last elements: " + largest);
+
+
+        // Example usage with different values:
+         numbers[0] = 3;
+         numbers[1] = 7;  // Middle element doesn't matter for this problem
+         numbers[2] = 3;
+
+
+         if (numbers[0] > numbers[2]) {
+             largest = numbers[0];
+         } else {
+             largest = numbers[2];
+         }
+
+         System.out.println("Largest of first and last elements: " + largest);
+
+
+
+    }
+}

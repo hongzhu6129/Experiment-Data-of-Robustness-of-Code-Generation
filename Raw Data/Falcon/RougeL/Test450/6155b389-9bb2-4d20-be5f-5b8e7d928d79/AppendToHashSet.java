@@ -1,0 +1,38 @@
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Append the element.  HashSets don't have an "append" in the same way a List does.
+        //  You just add the element, and if it's not already present, it will be included
+        //  at the end (though HashSets don't guarantee a specific order).
+        hashSet.add(elementToAppend);
+
+
+        // Print the updated HashSet
+        System.out.println("Updated HashSet: " + hashSet);
+
+
+        // Example with an integer HashSet:
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        int numberToAdd = 4;
+        numbers.add(numberToAdd);
+
+        System.out.println("Updated Integer HashSet: " + numbers);
+    }
+}

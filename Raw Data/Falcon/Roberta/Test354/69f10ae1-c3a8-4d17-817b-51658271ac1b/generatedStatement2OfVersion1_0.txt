@@ -1,0 +1,61 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Antipodes (Opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points on the Equator, 180 degrees apart:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output:  A small value (as they are close despite the longitude difference)
+
+7. **Invalid Input (Latitudes):**  Test with latitudes > 90 or < -90. The program should ideally handle this gracefully (e.g., print an error message or throw an exception) as these are invalid geographical coordinates.
+
+8.  **Zero Longitude and Latitude:**
+    - lat1: 0
+    - lon1: 0
+    - lat2: 30
+    - lon2: 45
+    - Expected Output: Calculate and verify.
+
+
+
+By testing these cases, you ensure your program correctly calculates distances under various conditions and handles potential edge cases.  You might consider adding error handling (e.g., using `try-catch` blocks) to deal with invalid input gracefully.

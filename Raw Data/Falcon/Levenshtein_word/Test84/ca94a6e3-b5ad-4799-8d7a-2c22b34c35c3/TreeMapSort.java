@@ -1,0 +1,57 @@
+import java.util.Comparator;
+import java.util.TreeMap;
+
+public class TreeMapSort {
+
+    public static void main(String[] args) {
+        // Create a TreeMap with a custom comparator
+        TreeMap<String, Integer> treeMap = new TreeMap<>(new StringLengthComparator());
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+        treeMap.put("kiwi", 5);
+
+
+        // Print the sorted TreeMap
+        System.out.println("Sorted TreeMap by String length:");
+        System.out.println(treeMap);
+
+
+         TreeMap<String, Integer> reverseTreeMap = new TreeMap<>(new ReverseStringLengthComparator());
+        reverseTreeMap.putAll(treeMap); // Copy entries
+
+
+        System.out.println("\nSorted TreeMap in reverse order of String length:");
+        System.out.println(reverseTreeMap);
+
+
+    }
+
+
+
+
+}
+
+
+class StringLengthComparator implements Comparator<String> {
+
+
+    @Override
+    public int compare(String s1, String s2) {
+         return Integer.compare(s1.length(), s2.length()); // Compare based on string lengths
+    }
+}
+
+
+
+class ReverseStringLengthComparator implements Comparator<String> {
+
+
+    @Override
+    public int compare(String s1, String s2) {
+         return Integer.compare(s2.length(), s1.length());  //Reverse order
+    }
+}

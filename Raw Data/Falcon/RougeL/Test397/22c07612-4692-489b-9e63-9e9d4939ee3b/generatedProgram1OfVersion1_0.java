@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSecondElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of Strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Specify the element to replace with
+        String newFruit = "Mango";
+
+        // Replace the second element (index 1) if the list has at least 2 elements
+        if (fruits.size() >= 2) {
+            fruits.set(1, newFruit); 
+        } else {
+            System.out.println("The list does not have a second element to replace.");
+        }
+
+
+        // Print the updated ArrayList
+        System.out.println("Updated ArrayList: " + fruits);
+
+
+        // Example with an Integer ArrayList
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+
+        // Replace the second element (index 1) with 25
+        if (numbers.size() >= 2) {
+           numbers.set(1, 25);
+        } else {
+           System.out.println("The list does not have a second element to replace.");
+        }
+
+        System.out.println("Updated Integer ArrayList: " + numbers);
+
+
+
+        // Demonstrating edge case: empty list
+        List<String> emptyList = new ArrayList<>();
+
+         if (emptyList.size() >= 2) {
+            emptyList.set(1, "Something"); // This will not execute as the condition is false.
+        } else {
+            System.out.println("The empty list does not have a second element to replace.");
+        }
+        
+         System.out.println("Empty list:" + emptyList);
+
+        // Demonstrating edge case : list with one element
+         List<String> oneElementList = new ArrayList<>();
+         oneElementList.add("Lone element");
+
+         if (oneElementList.size() >= 2) {
+            oneElementList.set(1, "Something"); // This will not execute as the condition is false.
+        } else {
+            System.out.println("The one-element list does not have a second element to replace.");
+        }
+
+        System.out.println("One element list:" + oneElementList);
+    }
+}

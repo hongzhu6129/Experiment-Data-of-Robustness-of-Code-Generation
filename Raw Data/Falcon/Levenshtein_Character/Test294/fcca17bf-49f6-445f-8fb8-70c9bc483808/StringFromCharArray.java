@@ -1,0 +1,26 @@
+public class StringFromCharArray {
+
+    public static void main(String[] args) {
+
+        // Create a character array
+        char[] charArray = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!'};
+
+        // Create a String object from the character array
+        String str1 = new String(charArray);
+
+        // Print the string
+        System.out.println(str1);
+
+
+        // Example creating a string from a portion of the char array
+        String str2 = new String(charArray, 0, 5); // From index 0, take 5 characters
+
+        System.out.println(str2); // Prints "Hello"
+
+
+        // Another example for clarity:
+        char[] anotherArray = {'J', 'a', 'v', 'a'};
+        String str3 = new String(anotherArray);
+        System.out.println(str3); // Prints "Java"
+    }
+}

@@ -1,0 +1,24 @@
+
+
+
+Key improvements and explanations:
+
+1. **Using an array for input:**  The `swap` method now takes an `int[]` as input. This is a more robust way to modify values within a method and have the changes reflected outside.
+
+2. **Handling Edge Cases:**  The code now handles `null` or arrays smaller than 2 elements. This prevents `NullPointerException` or `ArrayIndexOutOfBoundsException`.
+
+3. **JUnit Tests:**  The code includes JUnit tests to cover various scenarios:
+   - `testSwap()`: General case.
+   - `testSwapZero()`: Swapping zeros.
+   - `testSwapNegative()`: Swapping a negative number.
+    - `testSwapNull()`: Handles null input.
+    - `testSwapEmptyArray()`: Handles empty arrays.
+    - `testSwapOneElementArray()`:  Handles arrays with only one element.
+
+
+4. **Main Method Demonstration and Overflow Example:** The `main` method demonstrates regular usage and *crucially* demonstrates what happens with potential overflow, highlighting the limitations of the addition/subtraction swap method.
+
+5. **Clearer Output:** The output in `main` is more informative.
+
+**Important Note about Arithmetic Overflow:**  The addition/subtraction swap method is susceptible to arithmetic overflow if the sum of the two numbers exceeds `Integer.MAX_VALUE` or goes below `Integer.MIN_VALUE`.  The example in `main` shows this and how you might handle it.  A safer approach for general integer swapping in Java is to use a temporary variable, even if it's slightly less "clever":
+

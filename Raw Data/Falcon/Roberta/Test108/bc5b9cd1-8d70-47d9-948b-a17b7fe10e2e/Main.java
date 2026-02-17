@@ -1,0 +1,29 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Get a Set view of the keys
+        Set<String> keys = myMap.keySet();
+
+        // Print the keys
+        System.out.println("Keys in the map:");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+
+        // Java 8+ streamlined approach using forEach:
+        System.out.println("\nKeys using Java 8+ forEach:");
+        keys.forEach(System.out::println);
+
+
+    }
+}

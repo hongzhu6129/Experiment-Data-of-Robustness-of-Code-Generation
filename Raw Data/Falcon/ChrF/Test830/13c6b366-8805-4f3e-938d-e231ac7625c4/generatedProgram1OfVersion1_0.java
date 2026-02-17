@@ -1,0 +1,70 @@
+import java.util.LinkedList;
+
+public class LinkedListPeek {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        // Retrieve the first element (head) using peek()
+        String firstElement = linkedList.peek(); 
+
+        // Retrieve the first element (head) using peekFirst() - same as peek()
+        String firstElementAgain = linkedList.peekFirst();
+
+        // Retrieve the last element using peekLast()
+        String lastElement = linkedList.peekLast();
+
+
+        // Print the retrieved elements and the list to show it's unchanged
+        if (firstElement != null) {
+            System.out.println("First element (peek()): " + firstElement);
+        } else {
+            System.out.println("The list is empty.");  // Handle empty list case
+        }
+
+         if (firstElementAgain != null) {
+            System.out.println("First element (peekFirst()): " + firstElementAgain);
+        } else {
+            System.out.println("The list is empty.");  // Handle empty list case
+        }
+
+
+        if (lastElement != null) {
+            System.out.println("Last element (peekLast()): " + lastElement);
+        }  else {
+            System.out.println("The list is empty.");  // Handle empty list case
+        }
+
+
+
+        System.out.println("Original LinkedList: " + linkedList);  // Verify list is not modified
+        
+
+        // Example demonstrating handling an empty list:
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        Integer peekResult = emptyList.peek();
+        if (peekResult == null) {
+            System.out.println("peek() on empty list returns null");
+        }
+
+
+       // Trying to access an element beyond the list size (will not work with peek)
+        // Use elementAt() with appropriate error handling instead.
+
+        try {
+           // String elementAtIndex = linkedList.peek(); // Incorrect � peek() only gets the first element
+            String elementAtIndex = linkedList.get(2);  // Use get() to access by index
+            System.out.println("Element at index 2: " + elementAtIndex);
+        } catch (IndexOutOfBoundsException e) {
+             System.out.println("Error: Index out of bounds.");
+        }
+
+    }
+}

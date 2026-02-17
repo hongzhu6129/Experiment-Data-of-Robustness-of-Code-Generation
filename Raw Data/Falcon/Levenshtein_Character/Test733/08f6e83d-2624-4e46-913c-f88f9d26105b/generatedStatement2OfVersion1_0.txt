@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes input validation to handle cases where `n` or `k` are negative, or where `k` is greater than `n`. It prints an appropriate error message in these situations.
+
+
+2. **Efficiency:** The `binomial_Coefficient` function is optimized to avoid unnecessary calculations and potential integer overflows:
+   - It uses the identity C(n, k) = C(n, n-k) to reduce computations when `k` is larger than `n/2`.
+   - It calculates the result iteratively, multiplying and dividing in each step to keep the intermediate values smaller and prevent overflows.
+
+
+3. **Clarity:** The code is formatted consistently and includes comments to explain the logic.
+
+
+4. **Resource Management:** The `Scanner` is closed at the end of the `main` method to release the resource.
+
+
+**Example Usage:**
+

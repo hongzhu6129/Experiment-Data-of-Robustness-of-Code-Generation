@@ -1,0 +1,18 @@
+
+
+
+Explanation and Improvements:
+
+1. **`isPerfectCube` Method:** A separate helper method `isPerfectCube` is created to encapsulate the cube-checking logic.  This makes the `main` method cleaner and more readable.
+
+2. **Handling Negative Numbers:** The `isPerfectCube` method now correctly handles negative numbers.  The cube of a negative number is negative, so we just need to check the cube of the absolute value.
+
+3. **Efficient Cube Root Calculation:** The code uses `Math.cbrt()` to calculate the cube root. This is more efficient than iterating or using `Math.pow()` with a fractional exponent.
+
+4. **Integer Check:** The result of `Math.cbrt()` is a `double`.  We cast the cube root to an `int` and then compare it to the original `double` value. If they are equal, it means the cube root was a whole number (an integer), and therefore the original number is a perfect cube.
+
+5. **Clearer Output:** The output message is more informative, stating whether the number "is" or "is not" a cube.
+
+6. **Input (Ideally):**  In a real application, you wouldn't hardcode the input.  You would use the `Scanner` class to read the number from the user.  For example:
+
+   

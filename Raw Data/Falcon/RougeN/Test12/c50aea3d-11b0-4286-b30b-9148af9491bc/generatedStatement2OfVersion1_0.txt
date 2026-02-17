@@ -1,0 +1,24 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Node Class:**  The `Node` class is now explicitly defined to represent the structure of a binary tree node.  This improves readability and maintainability.
+
+2. **Recursive Approach:** The `maxDepth` method uses recursion, which is the standard and elegant way to solve tree traversal problems.  It calculates the depth by recursively finding the maximum depth of the left and right subtrees and adding 1 for the current node.
+
+3. **Base Case:** The crucial base case `if (node == null)` handles empty trees or the end of a branch, preventing `NullPointerExceptions` and correctly returning 0 for these cases.
+
+4. **Example Usage in `main`:** The `main` method now includes a more complete example of tree creation and demonstrates how to use the `maxDepth` method.  I've added a second example tree (`root2`) to show how it handles different tree structures and an empty tree example (`root3`).
+
+
+How the recursive `maxDepth` method works:
+
+- **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+- **Recursive Step:**  Otherwise:
+    - Calculate the depth of the left subtree (`leftDepth`).
+    - Calculate the depth of the right subtree (`rightDepth`).
+    - Return the maximum of `leftDepth` and `rightDepth`, plus 1 (to account for the current node).
+
+
+This recursive process continues until it reaches the leaf nodes (where both left and right children are `null`), at which point the base case returns 0.  The depths are then combined as the recursion unwinds, correctly calculating the maximum depth of the tree.

@@ -1,0 +1,21 @@
+
+
+**Explanation and Key Improvements:**
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur if the file is not found or there are other reading issues. This makes the code more robust.
+
+2. **Helper Function:** The `readLinesFromFile` function is introduced to encapsulate the file reading logic.  This improves code organization and readability.
+
+3. **List to Array Conversion:** The code efficiently stores lines in an `ArrayList` first. `ArrayList` is dynamic, so we don't need to know the number of lines in advance.  Then, if you absolutely need an array, it converts the `ArrayList` to a `String[]` using `toArray()`.  Often, keeping it as a `List` is more flexible.
+
+4. **Clearer Comments:** The comments are more descriptive, explaining the purpose of each section of code.
+
+5. **File Path Variable:** The file path is stored in a variable, making it easier to change if needed.  Remember to change `"your_text_file.txt"` to the real path.
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `StoreTextInArray.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac StoreTextInArray.java`
+3. **Run:** After successful compilation, run the program using: `java StoreTextInArray`
+
+Make sure you create a text file named "your_text_file.txt" (or whatever you name it in the `filePath` variable) in the same directory as the Java file, and add some text to it.  The program will read the lines from this file and print them to the console.

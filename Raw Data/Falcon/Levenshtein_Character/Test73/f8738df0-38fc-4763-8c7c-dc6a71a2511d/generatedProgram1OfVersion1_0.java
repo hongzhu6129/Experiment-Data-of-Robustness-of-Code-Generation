@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SwapElements {
+
+    public static void main(String[] args) {
+        // Create an ArrayList
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        System.out.println("Original ArrayList: " + numbers);
+
+        // Swap elements at index 1 and 3 using Collections.swap()
+        int index1 = 1;
+        int index2 = 3;
+        
+        if (index1 >= 0 && index1 < numbers.size() && index2 >= 0 && index2 < numbers.size()) {  // Check for valid indices
+            Collections.swap(numbers, index1, index2);
+            System.out.println("ArrayList after swapping: " + numbers);
+        } else {
+            System.out.println("Invalid indices for swapping.");
+        }
+
+
+        //Alternatively, swap manually (without Collections.swap):
+
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("A");
+        strings.add("B");
+        strings.add("C");
+
+
+        System.out.println("Original String ArrayList: " + strings);
+        index1 = 0;
+        index2 = 2;
+
+         if (index1 >= 0 && index1 < strings.size() && index2 >= 0 && index2 < strings.size()) { // Check for valid indices
+            String temp = strings.get(index1);
+            strings.set(index1, strings.get(index2));
+            strings.set(index2, temp);
+
+             System.out.println("String ArrayList after manual swapping: " + strings);
+         } else {
+             System.out.println("Invalid indices for swapping.");
+         }
+    }
+}

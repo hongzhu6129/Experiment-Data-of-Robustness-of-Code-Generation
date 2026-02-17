@@ -1,0 +1,28 @@
+
+
+
+**Explanation and how it addresses the error:**
+
+The error "invalid literal for int() with base 10: '\r[|'" occurs when you try to convert a string that contains non-numeric characters (like '\r', '[', or '|') into an integer using `Integer.parseInt()`.
+
+This code addresses the problem in these ways:
+
+1. **`Scanner` with `nextLine()`:**  It uses a `Scanner` to read input line by line. `nextLine()` reads the entire line, including any whitespace or special characters like '\r' (carriage return) which are common causes of the error.
+
+2. **`trim()` and `split("\\s+")`:**  It uses `trim()` to remove leading/trailing whitespace from the line. Then, it splits the line into an array of strings based on whitespace using `split("\\s+")`.  This helps separate potential numeric strings from non-numeric characters that might be present in the input.
+
+3. **`try-catch` block for `NumberFormatException`:** The most crucial part. It encloses the `Integer.parseInt()` call within a `try-catch` block. If `parseInt()` encounters a non-numeric string, it throws a `NumberFormatException`.  The `catch` block handles this exception gracefully.  In this example, it prints an error message indicating the invalid input, but you can modify the `catch` block to handle the error in a way that's appropriate for your application (e.g., skip the invalid input, assign a default value, etc.).
+
+4. **Outer `try-catch` and `finally`:** An outer `try-catch` block and a `finally` block are included to handle any other potential exceptions and ensure that the `Scanner` is closed properly, even if errors occur.
+
+
+
+**How to use this code:**
+
+1. Save it as a `.java` file (e.g., `Main.java`).
+2. Compile it using a Java compiler: `javac Main.java`
+3. Run it: `java Main`
+
+You can then provide input either through the console or redirect input from a file: `java Main < input.txt`
+
+This improved code will now handle lines with problematic characters like '\r', '[', '|', or any other non-numeric characters robustly, preventing the `NumberFormatException` and providing a much more stable solution.

@@ -1,0 +1,39 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 5; i++) { // Loop for the starred section (5 rows)
+            for (int j = 0; j < 6; j++) { // 6 asterisks
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 18; j++) { // 18 equals signs
+                System.out.print("=");
+            }
+            System.out.println(); // Newline after each row
+        }
+
+
+        for (int i = 0; i < 4; i++) { // Loop for the starred section (4 rows)
+            for (int j = 0; j < 5; j++) { // 5 asterisks
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 18; j++) { // 18 equals signs
+                System.out.print("=");
+            }
+            System.out.println(); // Newline after each row
+        }
+
+
+        for (int i = 0; i < 6; i++) { // Loop for the striped section (6 rows)
+           System.out.print("==");
+            for (int j = 0; j < 24; j++) { // 24 equals signs
+                System.out.print("=");
+            }
+            System.out.println(); // Newline after each row
+        }
+
+
+    }
+}

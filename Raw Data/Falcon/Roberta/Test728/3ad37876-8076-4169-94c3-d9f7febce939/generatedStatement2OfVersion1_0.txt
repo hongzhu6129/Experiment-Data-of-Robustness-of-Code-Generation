@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **Sorted Matrix Property:**  The code leverages the fact that the matrix is sorted both row-wise and column-wise. This property is crucial for the Saddleback search algorithm to work efficiently.
+
+2. **Saddleback Search Strategy:** The search starts from the top-right corner of the matrix. In each step, it compares the current element `matrix[row][col]` with the `target`:
+   - If they are equal, the target is found.
+   - If `matrix[row][col]` is less than the `target`, we move down to the next row because all elements in the current row will be smaller than the `target`.
+   - If `matrix[row][col]` is greater than the `target`, we move left to the previous column because all elements in the current column below will be greater than the `target`.
+
+3. **Efficiency:** Saddleback search has a time complexity of O(m + n), where 'm' is the number of rows and 'n' is the number of columns. This is better than a linear search (O(m*n)) and also often better than binary search on each row or column individually.
+
+4. **Return Array:** The `Saddleback` function returns an integer array of size 2. The first element is the row index, and the second is the column index of the target. If the target is not found, it returns `{-1, -1}`.  This allows the `main` method to easily determine if the search was successful.
+
+5. **Example Usage:** The `main` method demonstrates how to use the `Saddleback` function and handles the cases where the target is found and not found.  It also includes an example with a target that is not present in the matrix to illustrate the handling of such cases.
+
+
+
+This revised explanation provides more educational context about the algorithm and its usage.  The code is also improved to handle the "not found" case gracefully.

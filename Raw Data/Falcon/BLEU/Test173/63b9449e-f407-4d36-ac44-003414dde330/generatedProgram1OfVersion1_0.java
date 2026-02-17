@@ -1,0 +1,56 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 4, 5, 6, 10, 7, 8, 9};
+        int lastIndexOf10 = -1;
+
+        // Find the last index of 10
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                lastIndexOf10 = i;
+            }
+        }
+
+        // If 10 is not found, print the original array or an empty array, handle as needed.
+        if (lastIndexOf10 == -1) {
+            System.out.println("10 not found in the array.");
+            //Option 1: Print original array
+            System.out.print("Original Array: ");
+            printArray(originalArray);
+
+           //Option 2: Create and print empty array (uncomment to use)
+            // int[] newArray = new int[0];
+            // System.out.print("New Array: ");
+            // printArray(newArray);
+
+            return; // Exit main
+        }
+
+        // Create a new array with elements after the last 10
+        int newArraySize = originalArray.length - lastIndexOf10 - 1;
+        int[] newArray = new int[newArraySize];
+        for (int i = 0; i < newArraySize; i++) {
+            newArray[i] = originalArray[lastIndexOf10 + 1 + i];
+        }
+
+        // Print the new array
+        System.out.print("New Array: ");
+        printArray(newArray);
+    }
+
+
+    // Helper function to print an array (for cleaner main method)
+    public static void printArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}
+
+
+
+

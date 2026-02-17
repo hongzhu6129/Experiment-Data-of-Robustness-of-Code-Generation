@@ -1,0 +1,25 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The most important addition is the use of JUnit to create proper test cases.  This allows for automated and repeatable testing.  The `RectangleTest` class demonstrates how to test both `getArea()` and `getPerimeter()` with various inputs, including:
+    * **Standard cases:**  Normal length and width values.
+    * **Edge cases:**  Zero length or zero width.
+    * **Corner case:** Zero length *and* zero width.
+    * **Extreme Case:**  Using `Double.MAX_VALUE`.
+
+* **Encapsulation:**  The `length` and `width` are now private instance variables, accessed through a constructor.  This is better practice than making them public.
+
+* **Clearer `main` Method:** The `main` method now demonstrates a few more examples, including a square and a long, thin rectangle, making the output a bit more illustrative.
+
+* **Handling of `Double.MAX_VALUE`:**  I added a test case to see how the code handles extreme large number which resulted in `Double.POSITIVE_INFINITY`. This is because of overflow of double data type.
+
+
+How to run the JUnit tests:
+
+1. **IDE:** If you are using an IDE like IntelliJ or Eclipse, you should be able to right-click on the `RectangleTest` class and select "Run 'RectangleTest'".
+
+2. **Command Line:** If you are using the command line, you'll need to have JUnit set up in your project. Compile both classes and then use a command like this (assuming you have JUnit on your classpath):
+
+   

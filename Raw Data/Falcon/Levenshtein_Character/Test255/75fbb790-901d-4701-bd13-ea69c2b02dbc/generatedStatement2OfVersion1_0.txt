@@ -1,0 +1,25 @@
+
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Initializes a sample 2D array `arr` (sorted row-wise and column-wise).
+   - Sets `m` (number of rows), `n` (number of columns), and `target` (the number to search for).
+   - Calls the `Saddleback` method to perform the search.
+   - Prints the result based on the return value of `Saddleback`.
+
+2. **`Saddleback` method:**
+   - Takes the 2D array, dimensions, and target as input.
+   - Initializes `row` to 0 (top row) and `col` to `n-1` (rightmost column).
+   - Enters a `while` loop that continues as long as `row` is within bounds and `col` is within bounds.
+   - Inside the loop:
+     - If `arr[row][col]` equals the `target`, the target is found, and its row and column indices are returned in an `int` array.
+     - If `arr[row][col]` is less than the `target`, it means the target must be in a lower row (since rows are sorted), so we increment `row`.
+     - If `arr[row][col]` is greater than the `target`, it means the target must be in a column to the left (since columns are sorted), so we decrement `col`.
+   - If the loop completes without finding the target, it means the target is not present, and an `int` array `{-1, -1}` is returned to indicate this.
+
+
+**Key Idea of Saddleback Search:**
+
+Saddleback search efficiently leverages the sorted nature of both rows and columns. By starting at the top-right corner and comparing the element with the target, you can eliminate either a row or a column in each step, narrowing down the search space effectively. This makes it faster than a linear search for sorted 2D arrays.

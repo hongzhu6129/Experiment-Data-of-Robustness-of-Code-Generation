@@ -1,0 +1,52 @@
+class Solution {
+    /**
+     * Checks if the characters immediately before and after a specified character are the same in a given string.
+     *
+     * @param str The input string.
+     * @return True if the characters before and after the specified character are the same, false otherwise.
+     */
+    public boolean leftAndRightSame(String str) {
+        if (str == null || str.length() < 3) {
+            return false; // String is too short to have characters before and after
+        }
+
+        char specifiedChar = str.charAt(str.length() / 2); // Use middle character as the specified character
+
+        int index = str.indexOf(specifiedChar);
+
+        if (index <= 0 || index >= str.length() - 1) {
+            return false; // Specified character is at the beginning or end, so no characters before or after
+        }
+
+
+        char charBefore = str.charAt(index - 1);
+        char charAfter = str.charAt(index + 1);
+
+        return charBefore == charAfter;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "aba";
+        System.out.println(solution.leftAndRightSame(str1)); // Output: true
+
+        String str2 = "xyx";
+        System.out.println(solution.leftAndRightSame(str2)); // Output: true
+
+        String str3 = "abc";
+        System.out.println(solution.leftAndRightSame(str3)); // Output: false
+
+        String str4 = "a";
+        System.out.println(solution.leftAndRightSame(str4)); // Output: false
+
+        String str5 = "ab";
+        System.out.println(solution.leftAndRightSame(str5)); // Output: false
+
+
+        String str6 = "12121";
+        System.out.println(solution.leftAndRightSame(str6)); // Output: true
+
+
+    }
+}

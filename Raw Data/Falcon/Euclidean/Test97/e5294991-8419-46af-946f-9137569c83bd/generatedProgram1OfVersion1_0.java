@@ -1,0 +1,64 @@
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class ClearNavigableSetKeys {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> navigableMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        navigableMap.put("apple", 1);
+        navigableMap.put("banana", 2);
+        navigableMap.put("orange", 3);
+        navigableMap.put("grape", 4);
+
+        // Get the NavigableSet of keys
+        NavigableSet<String> navigableKeySet = navigableMap.navigableKeySet();
+
+        // Print the original NavigableSet of keys
+        System.out.println("Original NavigableSet of keys: " + navigableKeySet);
+
+        // Clear the NavigableSet of keys (which also clears the map)
+        navigableKeySet.clear();
+
+
+        // Print the NavigableSet of keys after clearing
+        System.out.println("NavigableSet of keys after clearing: " + navigableKeySet);
+
+        // Print the map after clearing the keyset (demonstrates that clearing the keyset clears the map)
+        System.out.println("Map after clearing the keyset: " + navigableMap);
+
+        // Example using descendingKeySet() -  This also clears the map
+        // Repopulate for demonstration
+        navigableMap.put("apple", 1);
+        navigableMap.put("banana", 2);
+        navigableMap.put("orange", 3);
+        navigableMap.put("grape", 4);
+
+
+        NavigableSet<String> descendingKeySet = navigableMap.descendingKeySet();
+        System.out.println("Descending NavigableSet of keys before clearing: " + descendingKeySet);
+        descendingKeySet.clear();
+        System.out.println("Descending NavigableSet of keys after clearing: " + descendingKeySet);
+        System.out.println("Map after clearing the descending keyset: " + navigableMap);
+
+
+
+        // Demonstrate clearing keys from a regular Map (non-NavigableMap). 
+        //  Regular Map's keySet().clear() also clears the map.
+         Map<String, Integer> regularMap = new TreeMap<>();  // TreeMap for consistency, but any Map works
+
+        regularMap.put("apple", 1);
+        regularMap.put("banana", 2);
+
+
+        System.out.println("Regular Map before clearing: " + regularMap);
+        regularMap.keySet().clear();
+        System.out.println("Regular Map after clearing: " + regularMap);
+
+
+    }
+}

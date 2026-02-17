@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class TwentyLess {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input the second number: ");
+        int num2 = input.nextInt();
+
+        System.out.print("Input the third number: ");
+        int num3 = input.nextInt();
+
+        boolean result = isTwentyLess(num1, num2, num3);
+        System.out.println(result);
+        input.close();
+    }
+
+    private static boolean isTwentyLess(int num1, int num2, int num3) {
+        return (Math.abs(num1 - num2) >= 20 || Math.abs(num1 - num3) >= 20 || Math.abs(num2 - num3) >= 20);
+    }
+}

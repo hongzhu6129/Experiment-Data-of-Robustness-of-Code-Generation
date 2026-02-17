@@ -1,0 +1,50 @@
+import java.util.TreeMap;
+
+public class CeilingKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        int key1 = 4;
+        Integer ceilingKey1 = treeMap.ceilingKey(key1);
+        System.out.println("Ceiling key for " + key1 + ": " + ceilingKey1); // Output: 5
+
+        int key2 = 5;
+        Integer ceilingKey2 = treeMap.ceilingKey(key2);
+        System.out.println("Ceiling key for " + key2 + ": " + ceilingKey2); // Output: 5
+
+
+        int key3 = 10;
+        Integer ceilingKey3 = treeMap.ceilingKey(key3);
+        System.out.println("Ceiling key for " + key3 + ": " + ceilingKey3); // Output: null
+
+
+        // Example with String keys
+         TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String key4 = "apricot";
+        String ceilingKey4 = stringTreeMap.ceilingKey(key4);
+        System.out.println("Ceiling key for " + key4 + ": " + ceilingKey4); // Output: banana
+
+
+         String key5 = "apple";
+        String ceilingKey5 = stringTreeMap.ceilingKey(key5);
+        System.out.println("Ceiling key for " + key5 + ": " + ceilingKey5); // Output: apple
+
+        String key6 = "watermelon"; // Key greater than all existing keys
+        String ceilingKey6 = stringTreeMap.ceilingKey(key6);
+        System.out.println("Ceiling key for " + key6 + ": " + ceilingKey6); // Output: null
+
+
+
+    }
+}

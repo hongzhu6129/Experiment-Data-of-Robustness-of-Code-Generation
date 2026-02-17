@@ -1,0 +1,25 @@
+
+
+
+Explanation for handling command-line arguments:
+
+1. **`if (args.length == 2)`:** This checks if exactly two command-line arguments have been provided.  `args` is a String array holding the command-line arguments.
+
+2. **`try...catch` block:** This is essential for robust code.  `Integer.parseInt()` can throw a `NumberFormatException` if the provided arguments aren't valid integers (e.g., if the user enters "abc" instead of a number).  The `try...catch` block handles this potential error gracefully.
+
+3. **`Integer.parseInt(args[0])` and `Integer.parseInt(args[1])`:**  These lines attempt to convert the first and second command-line arguments (which are strings) into integers.
+
+4. **`System.out.println(arg1 + arg2)`:** If the conversion is successful, this line calculates and prints the sum.
+
+5. **`System.out.println("Invalid input...")`:**  If a `NumberFormatException` occurs, this line prints an error message to the console, informing the user about the incorrect input.
+
+
+To run with command-line arguments:
+
+1. **Compile:** `javac SumOfTwoNumbers.java`
+2. **Run:** `java SumOfTwoNumbers 74 36`  (Replace 74 and 36 with the desired numbers).  The output will be 110.
+
+
+
+The original part of the `main` method still demonstrates the sum calculation with the hardcoded test data (74 and 36) if no command-line arguments are provided.  This is helpful for initial testing and understanding.
+

@@ -1,0 +1,37 @@
+class Solution {
+    /**
+     * Computes the sum of digits in a long integer.
+     *
+     * @param n The integer whose digits are to be summed.
+     * @return The sum of the digits in n.
+     */
+    public static int sumDigits(long n) {
+        int sum = 0;
+        n = Math.abs(n); // Handle negative numbers
+
+        while (n > 0) {
+            sum += n % 10;  // Extract the last digit and add it to the sum
+            n /= 10;        // Remove the last digit from the number
+        }
+
+        return sum;
+    }
+
+
+    public static void main(String[] args) {
+        long num1 = 12345;
+        int sum1 = sumDigits(num1);
+        System.out.println("Sum of digits in " + num1 + " is: " + sum1); // Output: 15
+
+
+        long num2 = -9876;
+        int sum2 = sumDigits(num2);
+        System.out.println("Sum of digits in " + num2 + " is: " + sum2); // Output: 30
+
+         long num3 = 0;
+        int sum3 = sumDigits(num3);
+        System.out.println("Sum of digits in " + num3 + " is: " + sum3); // Output: 0
+
+
+    }
+}

@@ -1,0 +1,37 @@
+public class CheckTenExceedsTwenty {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {5, 10, 15, 25, 10, 30};
+        boolean result1 = tenExceedsTwenty(arr1);
+        System.out.println("Does 10 exceed 20 in arr1? " + result1); // Output: false
+
+        int[] arr2 = {10, 5, 25, 10, 30, 10};
+        boolean result2 = tenExceedsTwenty(arr2);
+        System.out.println("Does 10 exceed 20 in arr2? " + result2); // Output: false
+
+
+        int[] arr3 = {}; //Empty array
+        boolean result3 = tenExceedsTwenty(arr3);
+        System.out.println("Does 10 exceed 20 in arr3? " + result3); // Output: false
+
+        int[] arr4 = {10, 10, 10 , 22, 10, 10}; // 10 followed by a number > 20
+        boolean result4 = tenExceedsTwenty(arr4);
+        System.out.println("Does 10 exceed 20 in arr4? " + result4); // Output: true
+        
+
+    }
+
+    public static boolean tenExceedsTwenty(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                for (int j = i + 1; j < arr.length; j++) {  // Check subsequent elements
+                    if (arr[j] > 20) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false; // 10 was not found, or no number after 10 exceeds 20
+    }
+}

@@ -1,0 +1,24 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("a\ta^2\ta^3\ta^4"); // Print the header
+        System.out.println("1\t1\t1\t1");   // Print the first row
+        System.out.println("2\t4\t8\t16");  // Print the second row
+        System.out.println("3\t9\t27\t81"); // Print the third row
+        System.out.println("4\t16\t64\t256"); // Print the fourth row
+
+
+        // More flexible/scalable approach using loops (optional):
+        // This allows you to easily change the table size if needed
+
+        /*
+        int max = 4; // Change this value to adjust the table size
+        System.out.println("a\ta^2\ta^3\ta^4");
+        for (int a = 1; a <= max; a++) {
+            System.out.print(a + "\t");
+            System.out.print((int)Math.pow(a, 2) + "\t");
+            System.out.print((int)Math.pow(a, 3) + "\t");
+            System.out.println((int)Math.pow(a, 4));
+        }
+        */
+    }
+}

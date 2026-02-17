@@ -1,0 +1,32 @@
+import java.util.TreeMap;
+import java.util.Set;
+
+public class TreeMapKeys {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs to the TreeMap
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Get all keys from the TreeMap using keySet()
+        Set<String> keys = treeMap.keySet();
+
+        // Print the keys
+        System.out.println("Keys in the TreeMap:");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+
+        //Alternative using a lambda expression (Java 8+):
+        System.out.println("\nKeys using lambda:");
+        keys.forEach(System.out::println);
+
+
+    }
+}

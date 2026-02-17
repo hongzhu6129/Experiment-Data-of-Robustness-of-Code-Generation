@@ -1,0 +1,23 @@
+public class ExpressionCalculation {
+
+    public static void main(String[] args) {
+        // Calculate the expression ((25.5 * 3.5 - 3.5 * 3.5) / (40.5 - 4.5))
+        double result = (25.5 * 3.5 - 3.5 * 3.5) / (40.5 - 4.5);
+
+        // Print the result
+        System.out.println(result); // Output: 2.138888888888889
+
+        // Explanation:
+        System.out.println("\nExplanation:");
+        System.out.println("1. 25.5 * 3.5 = " + (25.5 * 3.5)); // 89.25
+        System.out.println("2. 3.5 * 3.5 = " + (3.5 * 3.5));   // 12.25
+        System.out.println("3. 89.25 - 12.25 = " + (89.25 - 12.25)); // 77.0
+        System.out.println("4. 40.5 - 4.5 = " + (40.5 - 4.5));     // 36.0
+        System.out.println("5. 77.0 / 36.0 = " + (77.0 / 36.0));   // 2.138888888888889
+
+
+        // You can also format the output to a specific number of decimal places:
+        System.out.printf("\nFormatted Output: %.2f\n", result); // Output: 2.14
+
+    }
+}

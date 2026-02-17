@@ -1,0 +1,15 @@
+
+
+
+
+Key improvements and explanations:
+
+1. **Clearer `sort` methods:** The overloaded `sort(int[], int)` simply calls the main `sort(int[])` method.  This is because the `n` (size) is easily obtained within the algorithm.  The code now explicitly handles the `n==1` or `null` edge cases, making it more robust.
+2. **Efficient Counting Sort:** The `countingSortByDigit` method is optimized. It uses `Arrays.fill` for zeroing the `count` array and `System.arraycopy` for efficiently copying elements back to the original array.
+3. **Correct digit extraction:** The code correctly extracts digits using `(arr[i] / exp) % 10`.
+4. **Descending loop:** The crucial descending loop for populating the `output` array is corrected to ensure stability in the radix sort.
+5. **Example usage in main:** The `main` method demonstrates how to use the `sort` function with sample arrays.  It includes an example using the `sort(int[], int)` overload, even though it's functionally equivalent to `sort(int[])` in this implementation.
+6. **Comments:**  I've added concise comments to explain the logic and purpose of each section of the code.
+
+
+This revised version addresses the issues of stability, correctness, and efficiency to provide a proper implementation of Radix Sort while adhering to the required method signatures.

@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **JUnit Tests:**  The code now uses JUnit 5 for testing. This makes the testing process much more organized and automated.
+
+2. **Comprehensive Test Cases:**
+   - **Positive Radius:** Tests with a standard positive radius (7.5).
+   - **Zero Radius:**  Tests the boundary case of a zero radius.
+   - **Negative Radius:**  These tests now correctly use `assertThrows` to check that `IllegalArgumentException` is thrown when a negative radius is provided.  This is crucial for robust code.
+   - **Very Large Radius:** Tests with `Double.MAX_VALUE` to check for potential overflow issues (results in Infinity).
+   - **Very Small Radius:** Tests with `Double.MIN_VALUE`  (a very small positive number) to see how the functions handle extremely small inputs. It utilizes a small tolerance in `assertEquals` for very small values because of potential rounding/precision issues when dealing with very small floating-point numbers.
+
+
+3. **Exception Handling (Recommended - not implemented in this example to keep it simple):** Although the tests now check for exceptions, it's best practice to handle `IllegalArgumentException` *within* your `calculatePerimeter` and `calculateArea` methods.  You could do something like this:
+
+   

@@ -1,0 +1,41 @@
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet
+        HashSet<String> hs = new HashSet<String>();
+
+        // Add elements to the HashSet
+        hs.add("Apple");
+        hs.add("Banana");
+        hs.add("Orange");
+        hs.add("Mango");
+        hs.add("Grapes");
+
+
+        // Method 1: Using an Iterator
+        System.out.println("Iterating using Iterator:");
+        Iterator<String> itr = hs.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+        System.out.println();
+
+
+        // Method 2: Enhanced for loop (for-each loop)
+        System.out.println("Iterating using enhanced for loop:");
+        for (String fruit : hs) {
+            System.out.println(fruit);
+        }
+        System.out.println();
+
+
+        // Method 3: Using a Java Stream (Java 8 and above)
+        System.out.println("Iterating using Java Stream:");
+        hs.stream().forEach(System.out::println); 
+
+    }
+}

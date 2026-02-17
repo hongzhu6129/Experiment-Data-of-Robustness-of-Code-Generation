@@ -1,0 +1,43 @@
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet of strings
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Append the element.  HashSet's add() method handles appending
+        // If the element is already present, it won't be added again, and add() will return false.
+        boolean isAdded = hashSet.add(elementToAppend);
+
+        // Print the updated HashSet
+        System.out.println("Updated HashSet: " + hashSet);
+
+
+        // Demonstrate that duplicates aren't added:
+        isAdded = hashSet.add("Apple"); // Trying to add "Apple" again
+
+        System.out.println("HashSet after attempting to add a duplicate: " + hashSet);
+        System.out.println("Was the duplicate added? " + isAdded); // isAdded will be false
+
+
+        // Example with Integers (to show it works with other data types):
+
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        numbers.add(40);  // Append 40
+
+        System.out.println("HashSet of Integers: " + numbers);
+    }
+}

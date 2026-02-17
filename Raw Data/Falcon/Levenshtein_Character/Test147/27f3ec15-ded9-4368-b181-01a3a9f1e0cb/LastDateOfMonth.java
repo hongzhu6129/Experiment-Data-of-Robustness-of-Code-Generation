@@ -1,0 +1,30 @@
+import java.time.LocalDate;
+import java.time.YearMonth;
+
+public class LastDateOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current year and month
+        YearMonth currentYearMonth = YearMonth.now();
+
+        // Get the last day of the current month
+        LocalDate lastDateOfMonth = currentYearMonth.atEndOfMonth();
+
+        // Print the last date
+        System.out.println("Last date of the month: " + lastDateOfMonth);
+
+
+        // Example for a specific year and month:
+        int year = 2024;
+        int month = 2; // February
+
+        YearMonth specificYearMonth = YearMonth.of(year, month);
+        LocalDate lastDateOfSpecificMonth = specificYearMonth.atEndOfMonth();
+        System.out.println("Last date of " + year + "-" + month + ": " + lastDateOfSpecificMonth);
+
+
+        // Another example, getting the last day of the following month from the current date:
+        LocalDate lastDayOfNextMonth = YearMonth.now().plusMonths(1).atEndOfMonth();
+        System.out.println("Last day of next month: " + lastDayOfNextMonth);
+    }
+}

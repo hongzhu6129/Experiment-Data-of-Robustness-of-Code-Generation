@@ -1,0 +1,27 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Star Section
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 30; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+
+
+        // Stripes Section
+        for (int i = 0; i < 6; i++) {
+            for (int k = 0; k < 38; k++){
+                System.out.print("=");
+
+            }
+            System.out.println();
+
+        }
+    }
+}

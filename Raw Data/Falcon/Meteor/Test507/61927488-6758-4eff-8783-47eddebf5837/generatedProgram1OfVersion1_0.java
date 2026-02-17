@@ -1,0 +1,20 @@
+public class PentagonalNumbers {
+
+    public static void main(String[] args) {
+        // Display the first 50 pentagonal numbers
+        displayPentagonalNumbers(50);
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+
+    public static void displayPentagonalNumbers(int count) {
+        for (int i = 1; i <= count; i++) {
+            System.out.printf("%7d ", getPentagonalNumber(i)); // %7d formats output for better readability
+            if (i % 10 == 0) {  // Print 10 numbers per line
+                System.out.println();
+            }
+        }
+    }
+}

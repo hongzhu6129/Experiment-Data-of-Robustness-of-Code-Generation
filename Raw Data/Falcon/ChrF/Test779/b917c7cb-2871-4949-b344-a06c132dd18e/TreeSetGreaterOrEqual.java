@@ -1,0 +1,47 @@
+import java.util.TreeSet;
+import java.util.SortedSet;
+
+public class TreeSetGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Given element
+        int givenElement = 30;
+
+
+        // Get the elements greater than or equal to the given element
+         SortedSet<Integer> greaterOrEqualElements = numbers.tailSet(givenElement);
+
+        // Print the results
+        System.out.println("Original TreeSet: " + numbers);
+        System.out.println("Elements greater than or equal to " + givenElement + ": " + greaterOrEqualElements);
+
+
+        // Example with a different given element
+        givenElement = 25;
+        greaterOrEqualElements = numbers.tailSet(givenElement);
+        System.out.println("Elements greater than or equal to " + givenElement + ": " + greaterOrEqualElements);
+
+
+          //Example with String TreeSet
+        TreeSet<String> strings = new TreeSet<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("orange");
+        strings.add("grape");
+
+        String givenString = "banana";
+
+         SortedSet<String> greaterOrEqualStrings = strings.tailSet(givenString);
+
+        System.out.println("Original TreeSet: " + strings);
+        System.out.println("Elements greater than or equal to " + givenString + ": " + greaterOrEqualStrings);
+    }
+}

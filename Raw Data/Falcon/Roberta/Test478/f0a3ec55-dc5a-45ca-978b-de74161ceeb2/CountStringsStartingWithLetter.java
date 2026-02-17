@@ -1,0 +1,36 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class CountStringsStartingWithLetter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple123", "banana456", "apple789", "orange101", "grape202", "apple303");
+        char startingLetter = 'a';
+
+        long count = strings.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count);
+
+
+        // Example with a list containing non-alphanumeric strings
+        List<String> strings2 = Arrays.asList("apple123", "banana456", "123apple",  "apple789", "orange101", "grape202", "apple303", "12345");
+        startingLetter = 'a';
+        long count2 = strings2.stream()
+                .filter(s -> s.startsWith(String.valueOf(startingLetter)))
+                .count();
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count2);
+
+
+         // Example with empty strings and nulls
+        List<String> strings3 = Arrays.asList("apple123", "", null, "apple789", "orange101", null, "apple303");
+        startingLetter = 'a';
+        long count3 = strings3.stream()
+               .filter(s -> s != null && s.startsWith(String.valueOf(startingLetter))) // Handle nulls safely
+                .count();
+
+        System.out.println("Number of strings starting with '" + startingLetter + "': " + count3);
+
+    }
+}

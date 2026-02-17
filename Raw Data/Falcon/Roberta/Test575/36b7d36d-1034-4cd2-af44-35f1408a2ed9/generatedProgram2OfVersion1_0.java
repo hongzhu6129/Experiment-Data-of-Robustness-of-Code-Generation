@@ -1,0 +1,3 @@
+int[] arr = {1, 23, 12, 9, 30, 2, 50};
+int k = 3;
+// ... (code from above) ...

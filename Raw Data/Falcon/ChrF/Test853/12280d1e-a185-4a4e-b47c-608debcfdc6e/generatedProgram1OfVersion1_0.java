@@ -1,0 +1,48 @@
+class Solution {
+    /**
+     * Finds the contiguous subarray within a one-dimensional array of numbers which has the largest sum.
+     *
+     * @param nums The input array of integers.
+     * @return The maximum sum of a contiguous subarray.
+     */
+    public static int max_SubArray(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0; // Handle empty or null input
+        }
+
+        int maxSoFar = nums[0];
+        int currentMax = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            currentMax = Math.max(nums[i], currentMax + nums[i]);
+            maxSoFar = Math.max(maxSoFar, currentMax);
+        }
+
+        return maxSoFar;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums1)); // Output: 6
+
+        int[] nums2 = {1};
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums2)); // Output: 1
+
+        int[] nums3 = {5, 4, -1, 7, 8};
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums3)); // Output: 23
+
+        int[] nums4 = {-1};
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums4)); // Output: -1
+
+
+        int[] nums5 = {}; //Empty array
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums5)); // Output: 0
+
+        // Test case with null input:
+        int[] nums6 = null;
+        System.out.println("Maximum subarray sum: " + max_SubArray(nums6)); // Output 0
+
+        
+
+    }
+}

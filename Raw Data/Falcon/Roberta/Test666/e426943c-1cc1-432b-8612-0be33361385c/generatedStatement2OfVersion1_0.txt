@@ -1,0 +1,25 @@
+
+
+
+This code addresses several key points for robust file comparison:
+
+1. **Command-line Arguments:** It expects two file paths as command-line arguments, making it easy to use.  It also includes error handling if the incorrect number of arguments is provided.
+
+2. **`try-with-resources`:** This ensures that the file readers are closed automatically, even if exceptions occur.
+
+3. **Line-by-Line Comparison:** It reads and compares the files line by line, which is efficient for large files.
+
+4. **Handling Different File Lengths:** The code correctly handles situations where one file is shorter than the other.
+
+5. **Lexicographical Comparison:** It uses `String.compareTo()` for accurate lexicographical comparison.
+
+6. **Clear Output:**  The program provides clear output indicating which file comes first lexicographically or if they are equal.
+
+7. **Error Handling:**  The `catch` block handles potential `IOExceptions` during file reading.
+
+
+To compile and run this code:
+
+1. Save it as `CompareFilesLexicographically.java`.
+2. Compile: `javac CompareFilesLexicographically.java`
+3. Run: `java CompareFilesLexicographically file1.txt file2.txt` (replace `file1.txt` and `file2.txt` with the actual file paths).

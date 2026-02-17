@@ -1,0 +1,26 @@
+
+
+
+**Test Cases:**
+
+* **Valid Octal Numbers:**
+    * Input: 123  Output: 53
+    * Input: 777  Output: 1FF
+    * Input: 10   Output: 8
+    * Input: 0    Output: 0 (Corner case:  zero)
+    * Input: 42  Output: 22
+
+
+* **Invalid Octal Numbers (Error Handling):**
+    * Input: 800 (Contains digit 8) Output: Invalid input: Invalid octal digit: 8
+    * Input: 91 (Contains digit 9) Output: Invalid input: Invalid octal digit: 9
+    * Input: 1A (Contains letter A) Output: Invalid input: Invalid octal digit: A
+    * Input: -10 (Negative sign)  Output: Invalid input: Invalid octal digit: -
+    * Input: 1 2 (Spaces within the number)  Output: (Likely a `NumberFormatException`, depending on how `Scanner` handles this. Best to treat as invalid)
+
+
+* **Large Octal Number:**
+    * Input: 17777777777 (Max octal value for a Java `int`) Output: 7FFFFFFF (Corresponding max hex value for `int`)
+
+
+These test cases cover different scenarios, including valid conversions, error handling for invalid octal inputs, and a boundary case (the maximum octal value representable by a Java `int`).  This helps ensure the correctness and robustness of the code.

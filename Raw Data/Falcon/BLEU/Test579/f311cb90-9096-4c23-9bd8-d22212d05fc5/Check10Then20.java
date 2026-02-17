@@ -1,0 +1,36 @@
+public class Check10Then20 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 10, 4, 20, 5};
+        int[] arr2 = {10, 2, 3, 4, 20};
+        int[] arr3 = {10, 2, 20, 4, 5};
+        int[] arr4 = {20, 10, 4, 5, 6};  // 20 before 10
+        int[] arr5 = {1, 2, 3, 4, 5}; // No 10 or 20
+        int[] arr6 = {1, 10, 3, 4, 5}; // 10 but no 20
+        int[] arr7 = {1, 2, 3, 4, 20}; // 20 but no 10
+
+
+        System.out.println("arr1: " + check10Then20(arr1)); // true
+        System.out.println("arr2: " + check10Then20(arr2)); // true
+        System.out.println("arr3: " + check10Then20(arr3)); // true
+        System.out.println("arr4: " + check10Then20(arr4)); // false
+        System.out.println("arr5: " + check10Then20(arr5)); // false
+        System.out.println("arr6: " + check10Then20(arr6)); // false
+        System.out.println("arr7: " + check10Then20(arr7)); // false
+
+    }
+
+
+    public static boolean check10Then20(int[] arr) {
+        boolean found10 = false;
+        for (int num : arr) {
+            if (num == 10) {
+                found10 = true;
+            }
+            if (found10 && num == 20) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

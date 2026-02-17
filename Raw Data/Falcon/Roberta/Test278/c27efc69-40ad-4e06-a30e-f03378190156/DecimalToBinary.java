@@ -1,0 +1,11 @@
+public class DecimalToBinary {
+
+    public static void main(String[] args) {
+        int decimalNumber = 5; // You can change this to any decimal number
+
+        String binaryNumber = Integer.toBinaryString(decimalNumber);
+
+        System.out.println("Input a decimal number: " + decimalNumber);
+        System.out.println("Binary number is: " + binaryNumber);
+    }
+}

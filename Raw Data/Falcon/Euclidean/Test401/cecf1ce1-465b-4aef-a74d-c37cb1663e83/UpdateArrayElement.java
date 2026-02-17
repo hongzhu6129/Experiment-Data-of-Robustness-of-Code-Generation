@@ -1,0 +1,59 @@
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] myArray = {1, 2, 3, 4, 5};
+        int indexToUpdate = 2; // Update the element at index 2 (which is currently 3)
+        int newValue = 10;
+
+        if (indexToUpdate >= 0 && indexToUpdate < myArray.length) {
+            myArray[indexToUpdate] = newValue;
+
+            // Print the updated array:
+            System.out.print("Updated array: ");
+            for (int i = 0; i < myArray.length; i++) {
+                System.out.print(myArray[i] + " ");
+            }
+            System.out.println(); // Add a newline for better formatting
+        } else {
+            System.out.println("Invalid index. Index must be between 0 and " + (myArray.length - 1));
+        }
+
+
+
+
+         // Example 2: Handling array creation and updates within main
+        int size = 5; // Example size.  You could take this as input as well.
+        int[] anotherArray = new int[size];
+
+
+        // Initialize (this step can be combined with the next if desired)
+        for (int i = 0; i < size; i++) {
+            anotherArray[i] = i * 2;  // Example initialization
+        }
+
+
+        // Update elements:
+        updateElement(anotherArray, 1, 100); // Update index 1 to 100
+        updateElement(anotherArray, 3, -5);  // Update index 3 to -5
+        updateElement(anotherArray, 7, 20); // Example of an out-of-bounds index
+
+
+        // Print anotherArray after updates
+         System.out.print("Updated anotherArray: ");
+        for (int i = 0; i < anotherArray.length; i++) {
+            System.out.print(anotherArray[i] + " ");
+        }
+        System.out.println();
+
+
+    }
+
+     public static void updateElement(int[] arr, int index, int newValue) {
+         if (index >= 0 && index < arr.length) {
+            arr[index] = newValue;
+        } else {
+            System.out.println("Invalid index for update: " + index);
+        }
+    }
+}

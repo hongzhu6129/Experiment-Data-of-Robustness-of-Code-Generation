@@ -1,0 +1,44 @@
+
+
+**Test Cases:**
+
+**1. Basic Test:**
+
+* **Expected Output Format:** `yyyy/MM/dd HH:mm:ss.SSS`
+* **Verification:** Run the program and visually check if the output matches the expected format.  Compare year, month, day, hour, minute, second, and milliseconds.
+
+**2. Time Zone Change Test (Corner Case):**
+
+* **Scenario:** Change the system's default time zone.  For example, if your system is set to EST, change it to UTC or another time zone.
+* **Expected Outcome:** The output should reflect the current date and time in the *new* time zone, still formatted according to `yyyy/MM/dd HH:mm:ss.SSS`.
+* **Verification:**  Manually calculate the expected time in the new time zone and compare it to the program's output.
+
+**3. Daylight Saving Time Transition Test (Corner Case):**
+
+* **Scenario:** Run the program shortly before and after a Daylight Saving Time transition (if applicable in your location).
+* **Expected Outcome:** The output should correctly reflect the time change, adjusting the hour accordingly while maintaining the correct date and format.
+* **Verification:** Note the time before the transition. Run the program after the transition.  Verify that the hour has changed by the expected amount (usually one hour).
+
+**4. Start/End of Year/Month/Day Test (Boundary Cases):**
+
+* **Scenarios:**
+    * Run the program on dates like December 31st, January 1st, the last day of February (28th or 29th), etc.
+    * Run the program at times like 23:59:59.999 and 00:00:00.000.
+* **Expected Outcome:**  The program should handle these boundary conditions correctly and output the correct date and time in the specified format.
+* **Verification:** Manually verify that the output is correct for these boundary dates and times.
+
+
+**5. Leap Year Test (Boundary Case):**
+
+* **Scenario:** Run the program during a leap year, specifically on February 29th.
+* **Expected Outcome:** The program should correctly display February 29th in the output.
+* **Verification:**  Ensure the output shows `02/29` for the month and day during a leap year.
+
+**Automated Testing (Recommended):**
+
+While manual testing is useful for initial verification, automated testing is crucial for thorough testing.  You can use JUnit or other testing frameworks to write unit tests that automatically validate the output against expected values for the different test cases.
+
+
+Example JUnit Test (using `assertEquals` for simplicity � more robust time comparisons are preferable in real-world testing):
+
+

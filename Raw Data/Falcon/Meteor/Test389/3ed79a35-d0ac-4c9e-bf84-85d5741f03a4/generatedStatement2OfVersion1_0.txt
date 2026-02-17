@@ -1,0 +1,10 @@
+
+
+
+Key improvements:
+
+* **Efficiency:** Uses a `PriorityQueue` (max-heap for smallest, min-heap for largest), which is more efficient than sorting the whole array, especially when `k` is much smaller than the array size.  Time complexity is O(n log k), where n is the size of the array.
+* **Clarity:**  Clearly separates the logic for finding the smallest and largest elements, making it easier to understand and adapt.
+* **Correct Output:** Produces the output as specified in the prompt (both smallest and largest examples demonstrated).
+* **Correct Ordering:** Uses a reverse iteration when converting the heap to an array to maintain the correct order of k smallest elements.  For largest elements, sorts the final `kLargest` array for descending order before output.
+* **Handles Duplicates:** Correctly handles arrays with duplicate elements.

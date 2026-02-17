@@ -1,0 +1,49 @@
+public class RemoveSubstring {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or handle nulls differently, e.g., return null or throw an exception
+        }
+
+        return mainString.replace(removeString, ""); 
+    }
+
+    public static void main(String[] args) {
+        RemoveSubstring remover = new RemoveSubstring();
+
+        String mainString1 = "This is a test string.";
+        String removeString1 = "is";
+        String result1 = remover.removeString(mainString1, removeString1);
+        System.out.println("Original String: \"" + mainString1 + "\"");
+        System.out.println("Remove String: \"" + removeString1 + "\"");
+        System.out.println("Result: \"" + result1 + "\""); // Output: Th a test string.
+
+        String mainString2 = "abababa";
+        String removeString2 = "aba";
+        String result2 = remover.removeString(mainString2, removeString2);
+        System.out.println("\nOriginal String: \"" + mainString2 + "\"");
+        System.out.println("Remove String: \"" + removeString2 + "\"");
+        System.out.println("Result: \"" + result2 + "\""); // Output: b
+
+
+        String mainString3 = "hello world hello";
+        String removeString3 = "hello";
+        String result3 = remover.removeString(mainString3, removeString3);
+        System.out.println("\nOriginal String: \"" + mainString3 + "\"");
+        System.out.println("Remove String: \"" + removeString3 + "\"");
+        System.out.println("Result: \"" + result3 + "\""); // Output: " world "
+
+
+
+          String mainString4 = null; // Test with null main string
+        String removeString4 = "test"; 
+        String result4 = remover.removeString(mainString4, removeString4);
+        System.out.println("\nOriginal String: \"" + mainString4 + "\"");
+        System.out.println("Remove String: \"" + removeString4 + "\"");
+        System.out.println("Result: \"" + result4 + "\""); // Output: null (or your chosen null handling)
+
+
+
+
+    }
+}

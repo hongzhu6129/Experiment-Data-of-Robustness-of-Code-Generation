@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class CloneArrayList {
+
+    public static void main(String[] args) {
+        // Create an original ArrayList
+        ArrayList<String> originalList = new ArrayList<>();
+        originalList.add("apple");
+        originalList.add("banana");
+        originalList.add("orange");
+
+        // Method 1: Using the constructor
+        ArrayList<String> clonedList1 = new ArrayList<>(originalList);
+
+        // Method 2: Using addAll()
+        ArrayList<String> clonedList2 = new ArrayList<>();
+        clonedList2.addAll(originalList);
+
+        // Method 3: Using Collections.copy() - Requires the destination list to be at least as large
+        ArrayList<String> clonedList3 = new ArrayList<>(Collections.nCopies(originalList.size(), "")); // pre-size the list
+        Collections.copy(clonedList3, originalList);
+
+
+
+        // Print the original and cloned lists
+        System.out.println("Original ArrayList: " + originalList);
+        System.out.println("Cloned ArrayList (Constructor): " + clonedList1);
+        System.out.println("Cloned ArrayList (addAll): " + clonedList2);
+        System.out.println("Cloned ArrayList (Collections.copy): " + clonedList3);
+
+
+
+        // Modify the original list to demonstrate that the clones are independent
+        originalList.remove("banana");
+        System.out.println("\nAfter modifying the original list:");
+        System.out.println("Original ArrayList: " + originalList);
+        System.out.println("Cloned ArrayList (Constructor): " + clonedList1);
+        System.out.println("Cloned ArrayList (addAll): " + clonedList2);
+        System.out.println("Cloned ArrayList (Collections.copy): " + clonedList3);
+
+    }
+}

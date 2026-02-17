@@ -1,0 +1,57 @@
+public class WordCounter {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        String[] words = text.split("\\s+"); // Split the text into words
+        int count = 0;
+
+        for (String word : words) {
+            // Remove trailing punctuation and convert to lowercase for case-insensitive comparison
+            String cleanedWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase(); 
+
+            if (!cleanedWord.isEmpty() && (cleanedWord.endsWith("m") || cleanedWord.endsWith("n"))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        WordCounter wc = new WordCounter();
+        String text1 = "Mum, son, and Ram went to roam.";
+        int count1 = wc.endWithmOrn(text1);
+        System.out.println("Text 1 Count: " + count1); // Output: 3
+
+        String text2 = "Programming in JAVA is fun, man!";
+        int count2 = wc.endWithmOrn(text2);
+        System.out.println("Text 2 Count: " + count2); // Output: 1
+
+
+        String text3 = null; // Test null input
+        int count3 = wc.endWithmOrn(text3);
+        System.out.println("Text 3 Count: " + count3); // Output: 0
+
+        String text4 = ""; // Test empty input
+        int count4 = wc.endWithmOrn(text4);
+        System.out.println("Text 4 Count: " + count4); // Output: 0
+
+        String text5 = "   "; // Test whitespace-only input
+        int count5 = wc.endWithmOrn(text5);
+        System.out.println("Text 5 Count: " + count5); // Output: 0
+
+        // Example with words ending in 'M' or 'N' (uppercase)
+        String text6 = "SAM, RUN, and PROGRAM";
+        int count6 = wc.endWithmOrn(text6);
+        System.out.println("Text 6 Count: " + count6); // Output: 2
+
+        String text7 = "exam, clean, open";
+        int count7 = wc.endWithmOrn(text7);
+        System.out.println("Text 7 Count: " + count7); // Output: 1
+
+
+    }
+}

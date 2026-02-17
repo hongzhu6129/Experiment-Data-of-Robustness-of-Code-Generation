@@ -1,0 +1,30 @@
+
+
+
+**Test Cases (including corner/edge cases):**
+
+1. **Radius = 7.5 (Given):** This is the provided test case. We verify that the calculated perimeter and area match the expected values.
+
+2. **Radius = 0:** This tests the boundary condition where the circle has zero radius.  The perimeter and area should both be 0.
+
+3. **Radius = 1:** A simple positive radius to check basic functionality.
+
+4. **Radius = 100 (Large Radius):** Tests with a large radius to ensure calculations are correct for larger values.
+
+5. **Radius = -1 (Invalid Input):** While mathematically not possible, test for negative radius.  The program could throw an exception or handle it gracefully (e.g., print an error message or use `Math.abs()` to make the radius positive before calculations).  The correct behavior depends on the requirements.
+
+6. **Radius = Double.MAX_VALUE:**  Tests the limit of the `double` data type.  This will check for potential overflow issues.
+
+
+
+**How to incorporate test cases:**
+
+You can add these test cases directly in your `main` method or, better yet, create a separate test function (like the provided `testCalculateCircle()`).  This keeps your test code separate from your main logic, making it more organized and maintainable.
+
+
+
+**Important Considerations:**
+
+* **Precision:** When comparing floating-point values (like perimeter and area), don't use `==`. Instead, use a tolerance (e.g., `Math.abs(a - b) < 1e-9`) as demonstrated in the `testCalculateCircle` function.
+* **Error Handling:** For negative radius input, you might want to include error handling (e.g., print an error message, use `Math.abs(radius)`, or throw an exception). The best approach depends on your requirements.
+* **Testability:**  Writing your code with testability in mind (e.g., using a separate test function) greatly improves its quality and maintainability.

@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class FutureInvestmentValue {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input the investment amount: ");
+        double investmentAmount = input.nextDouble();
+
+        System.out.print("Input the rate of interest: ");
+        double annualInterestRate = input.nextDouble();
+
+        System.out.print("Input number of years: ");
+        int numberOfYears = input.nextInt();
+
+        double futureValue = futureInvestmentValue(investmentAmount, annualInterestRate, numberOfYears);
+        System.out.println("Years    Future Value");
+        for (int i = 1; i <= numberOfYears; i++) {
+           double yearlyValue = futureInvestmentValue(investmentAmount, annualInterestRate, i);
+           System.out.printf("%-10d $%.2f\n", i, yearlyValue);
+        }
+
+
+    }
+
+    public static double futureInvestmentValue(double investmentAmount, double annualInterestRate, int numberOfYears) {
+        double monthlyInterestRate = annualInterestRate / 1200.0; // Convert to monthly and decimal
+        int numberOfMonths = numberOfYears * 12;
+
+        return investmentAmount * Math.pow(1 + monthlyInterestRate, numberOfMonths);
+    }
+}

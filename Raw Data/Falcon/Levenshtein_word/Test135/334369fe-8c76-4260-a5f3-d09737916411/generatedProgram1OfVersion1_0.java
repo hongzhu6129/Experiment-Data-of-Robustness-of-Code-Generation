@@ -1,0 +1,54 @@
+class Node {
+    int data;
+    Node left, right;
+
+    public Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class MaxDepthBinaryTree {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int leftDepth = maxDepth(node.left);
+        int rightDepth = maxDepth(node.right);
+
+        return Math.max(leftDepth, rightDepth) + 1; 
+    }
+
+    public static void main(String[] args) {
+        MaxDepthBinaryTree tree = new MaxDepthBinaryTree();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root));
+
+
+        // Test case 2:  A skewed tree
+        Node root2 = new Node(1);
+        root2.left = new Node(2);
+        root2.left.left = new Node(3);
+        root2.left.left.left = new Node(4);
+
+        System.out.println("Height of tree is : " + tree.maxDepth(root2));
+
+
+
+        //Test Case 3: Empty Tree
+        Node root3 = null;
+        System.out.println("Height of tree is : " + tree.maxDepth(root3));
+
+
+
+    }
+}

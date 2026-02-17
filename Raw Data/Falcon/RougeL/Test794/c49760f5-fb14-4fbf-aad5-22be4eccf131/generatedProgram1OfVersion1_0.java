@@ -1,0 +1,41 @@
+import java.util.Arrays;
+
+class Solution {
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Start with 1 as the first element is unique
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i]; // Overwrite duplicate with next unique element
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2, 3, 3, 3, 4, 5, 6, 7, 7};
+
+        System.out.println("Original array: " + Arrays.toString(nums1));
+        System.out.println("The length of the original array is: " + nums1.length);
+
+        int newLength = removeDuplicates(nums1);
+
+        System.out.print("After removing duplicates, the new array is: [");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums1[i]);
+            if (i < newLength - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+        System.out.println("After removing duplicates, the new length of the array is: " + newLength);
+
+
+    }
+}

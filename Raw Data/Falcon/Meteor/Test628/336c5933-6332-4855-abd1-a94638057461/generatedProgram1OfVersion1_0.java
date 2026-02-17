@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertAtFirst {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> colors = new ArrayList<>();
+
+        // Add some initial elements
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+
+        System.out.println("Original ArrayList: " + colors);
+
+        // Element to insert at the beginning
+        String newColor = "Yellow";
+
+        // Insert the element at the first position (index 0)
+        colors.add(0, newColor);
+
+
+        System.out.println("ArrayList after insertion: " + colors);
+
+
+
+         // Example with integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(2);
+        numbers.add(4);
+        numbers.add(6);
+
+        System.out.println("Original Integer ArrayList: " + numbers);
+        int newNumber = 1;
+        numbers.add(0, newNumber); //inserting at the beginning
+        System.out.println("Integer ArrayList after insertion: " + numbers);
+
+
+
+
+    }
+}

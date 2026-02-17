@@ -1,0 +1,18 @@
+
+
+
+Key improvements in this version:
+
+* **Handles Invalid IP Length:** It checks if the IP address has four parts.  If not, it returns "Invalid IP".
+* **Handles NumberFormatException:** It uses a `try-catch` block to handle the `NumberFormatException` that can occur if a part of the IP address isn't a valid integer (e.g., contains letters or is too large).  This makes the code more robust.
+* **Clearer Error Handling:** The `validate` method now returns "Invalid IP" when an error occurs, making it clearer to the caller that something went wrong.  (You could also choose to throw an exception instead of returning a string if you prefer.)
+* **More Efficient Leading Zero Removal:** Using `Integer.parseInt` and then converting back to a string is a standard and efficient way to remove leading zeros in Java.
+* **Uses Java Streams (Optional but Recommended):** Using Java streams (the `Arrays.stream().map().toArray()` part) makes the code a little more concise and can be more efficient for larger operations.  If you're not familiar with streams yet, you can replace that part with a regular loop.
+
+
+
+
+
+Example Output:
+
+

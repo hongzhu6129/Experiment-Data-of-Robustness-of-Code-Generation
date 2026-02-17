@@ -1,0 +1,26 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur if the file is not found or if there are other reading errors.  This is crucial for robust code.
+
+2. **Resource Management (try-with-resources):** The `BufferedReader` is used within a `try-with-resources` block. This ensures that the `BufferedReader` is automatically closed, even if an exception occurs.  This prevents resource leaks.
+
+3. **Dynamic Sizing (ArrayList):**  Using an `ArrayList` to store the lines is more efficient than using a fixed-size array because we don't know the number of lines in the file beforehand. The `ArrayList` grows dynamically as needed.
+
+4. **Conversion to Array (if needed):** If you absolutely need a String array, you can easily convert the `ArrayList` to an array after reading all lines.  This is demonstrated in the code.
+
+5. **Clearer Method:** The file reading logic is encapsulated in a separate `readLinesFromFile` method.  This improves code organization and readability.
+
+6. **Comments:**  The code is well-commented to explain the purpose of each section.
+
+
+**How to Use:**
+
+1. **Replace `"your_file_path.txt"`:**  Change this placeholder to the actual path of your text file.
+2. **Compile and Run:**  Compile and run the Java code. The contents of the file will be printed to the console.  You can then use the `linesArray` (if you converted to an array) or the `lines` List within the `main` method to process the file content further as needed.
+
+
+
+

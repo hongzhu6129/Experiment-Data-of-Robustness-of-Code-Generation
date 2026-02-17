@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class RoundFloat {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a float number: ");
+        float num = scanner.nextFloat();
+
+        float roundedNum = round_num(num);
+        System.out.println("Rounded value: " + roundedNum);
+        scanner.close();
+    }
+
+    public static float round_num(float num) {
+        return Math.round(num); // Uses Math.round to round to the nearest whole number.
+    }
+}

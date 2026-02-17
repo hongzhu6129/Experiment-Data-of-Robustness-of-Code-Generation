@@ -1,0 +1,39 @@
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+
+        String str = "Hello, World!";
+        int index1 = 7; // Get the character at index 7
+        int index2 = 13; // Attempt to get a character beyond the string length
+
+
+        try {
+            char charAtIndex1 = str.charAt(index1);
+            System.out.println("Character at index " + index1 + ": " + charAtIndex1);
+
+
+            char charAtIndex2 = str.charAt(index2); // This will throw an exception
+            System.out.println("Character at index " + index2 + ": " + charAtIndex2);
+
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Error: Index " + index2 + " is out of bounds for the string.");
+             System.err.println("String length: " + str.length());
+        }
+
+        // Example with user input (requires more robust handling in a real application)
+        if (args.length >= 2) {  // Check if two arguments are provided
+            try {
+                String userString = args[0];
+                int userIndex = Integer.parseInt(args[1]);
+
+                char userChar = userString.charAt(userIndex);
+                System.out.println("Character at index " + userIndex + " in \"" + userString + "\": " + userChar);
+            } catch (NumberFormatException e) {
+                System.err.println("Error: Invalid index. Please provide an integer.");
+            } catch (StringIndexOutOfBoundsException e) {
+                System.err.println("Error: Index is out of bounds for the provided string.");
+            }
+           
+        }
+    }
+}

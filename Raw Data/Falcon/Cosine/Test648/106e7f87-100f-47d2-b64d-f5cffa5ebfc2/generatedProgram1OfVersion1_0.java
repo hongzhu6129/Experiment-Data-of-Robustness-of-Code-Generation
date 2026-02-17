@@ -1,0 +1,27 @@
+import java.sql.Timestamp;
+import java.time.Instant;
+
+public class CurrentTimestamp {
+
+    public static void main(String[] args) {
+
+        // Method 1: Using java.sql.Timestamp
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println("Current Timestamp (java.sql.Timestamp): " + timestamp);
+
+
+        // Method 2: Using java.time.Instant (Java 8 and later - preferred)
+        Instant instant = Instant.now();
+        System.out.println("Current Timestamp (java.time.Instant): " + instant);
+
+
+        // If you need a formatted string representation:
+        //  You can use DateTimeFormatter with Instant or convert to LocalDateTime/ZonedDateTime
+
+        // Example (requires java.time.format.DateTimeFormatter):
+        //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        //  String formatted = instant.atZone(ZoneId.systemDefault()).format(formatter); 
+        //  System.out.println("Formatted Timestamp: " + formatted);
+
+    }
+}

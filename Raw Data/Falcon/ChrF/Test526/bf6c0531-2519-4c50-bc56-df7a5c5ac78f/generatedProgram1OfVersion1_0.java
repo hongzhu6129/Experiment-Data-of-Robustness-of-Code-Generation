@@ -1,0 +1,34 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class LinkedListPositions {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of names
+        LinkedList<String> names = new LinkedList<>();
+        names.add("Alice");
+        names.add("Bob");
+        names.add("Charlie");
+        names.add("David");
+        names.add("Eve");
+
+        // Display elements and their positions using a ListIterator
+        ListIterator<String> iterator = names.listIterator();
+        while (iterator.hasNext()) {
+            int position = iterator.nextIndex(); // Get the current position (0-indexed)
+            String name = iterator.next();       // Get the element at the current position and move to the next
+            System.out.println("Position: " + position + ", Name: " + name);
+        }
+
+
+        //Alternative method using a for loop and get():  Less efficient
+        /*
+        System.out.println("\nUsing get() method (less efficient):");
+        for (int i = 0; i < names.size(); i++) {
+            String name = names.get(i);
+            System.out.println("Position: " + i + ", Name: " + name);
+        }
+        */
+
+    }
+}

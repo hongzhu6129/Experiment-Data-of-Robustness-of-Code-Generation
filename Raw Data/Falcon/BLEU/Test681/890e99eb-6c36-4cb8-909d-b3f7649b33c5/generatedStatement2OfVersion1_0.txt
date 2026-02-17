@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Case (Partially):** The `deleteNode` method now includes a check: `if (node != null && node.next != null)`. This is ESSENTIAL. Without this, if you try to delete the last node, you'll get a `NullPointerException`.  The provided method signature *does not allow* a robust solution for deleting the last node, as we can't modify the `next` of the *previous* node.   The code now handles the case more gracefully by doing nothing if `node` is the last node, but it does not actually delete in this scenario. I've added an example in `main` to demonstrate this limitation.
+
+2. **Clearer Examples:**  The `main` method provides more examples, including one showing the attempt to delete the last node and the resulting behavior.
+
+3. **Comments:** Added comments to explain the logic and limitations.
+
+
+
+**How it Works (The Core Logic):**
+
+The `deleteNode` method works by copying the data from the *next* node into the current node and then updating the `next` pointer of the current node to skip over the next node. This effectively removes the next node while preserving the rest of the list's structure.  It's important to understand this method's limitation: it cannot delete the last node in the list.

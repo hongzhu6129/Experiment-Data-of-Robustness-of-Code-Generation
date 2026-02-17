@@ -1,0 +1,31 @@
+
+
+
+**Explanation and Educational Commentary:**
+
+1. **Saddleback Search Strategy:** The `Saddleback` algorithm efficiently searches a sorted 2D matrix.  It starts at the top-right corner (`row = 0`, `col = n-1`).  
+
+2. **Comparison and Movement:**  In each iteration:
+   - If the current element `matrix[row][col]` equals the `target`, the position is returned.
+   - If the current element is *smaller* than the target, we move *down* to the next row (`row++`) because elements increase as we go down.
+   - If the current element is *larger* than the target, we move *left* to the previous column (`col--`) because elements decrease as we go left.
+
+3. **Sorted Matrix Property:** The algorithm relies on the fact that the matrix is sorted both row-wise and column-wise. This allows us to eliminate entire rows or columns in each comparison, making the search more efficient than a linear scan.
+
+4. **Time Complexity:** The time complexity of Saddleback search is O(m + n), where 'm' is the number of rows and 'n' is the number of columns. In the worst case, we traverse along the boundary of the matrix.
+
+5. **Space Complexity:** The space complexity is O(1) because we are only using a few variables to store indices and the result.
+
+
+**Example Walkthrough (using the provided matrix and target 14):**
+
+1. Start at `matrix[0][4]` (value 15). 15 > 14, so move left.
+2. Now at `matrix[0][3]` (value 11). 11 < 14, so move down.
+3. Now at `matrix[1][3]` (value 12). 12 < 14, so move down.
+4. Now at `matrix[2][3]` (value 16). 16 > 14, so move left.
+5. Now at `matrix[2][2]` (value 9).  9 < 14, so move down.
+6. Now at `matrix[3][2]` (value 14). Found! Return (3, 2).
+
+
+
+This detailed explanation should help you understand the Saddleback search algorithm and how it works within the provided Java code structure.

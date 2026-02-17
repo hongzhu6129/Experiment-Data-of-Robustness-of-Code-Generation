@@ -1,0 +1,47 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 12345
+   - Expected Output: 15
+
+2. **Negative Number:**
+   - Input: -9876
+   - Expected Output: 30
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+4. **Single Digit Number:**
+   - Input: 7
+   - Expected Output: 7
+
+5. **Large Number:**
+   - Input: 1234567890
+   - Expected Output: 45
+
+6. **Number with Repeating Digits:**
+   - Input: 99999
+   - Expected Output: 45
+
+7. **Number with Zeroes in between:**
+   - Input: 1002003
+   - Expected Output: 6
+
+8. **Smallest Negative Number (Integer.MIN_VALUE):**  This is a special corner case. Because the absolute value of `Integer.MIN_VALUE` cannot be represented as a positive integer, taking the absolute value directly will cause an integer overflow. The program handles this by summing the digits iteratively, working with the negative value directly.
+   - Input: -2147483648
+   - Expected Output: 47 (The program should ideally handle this, but it might be platform-dependent and overflow could occur.)
+
+9. **Largest Positive Number (Integer.MAX_VALUE):**
+   - Input: 2147483647
+   - Expected Output: 46
+
+
+**How to Run the Test Cases:**
+
+1. **Manually:**  Enter each input value when prompted and verify the output against the expected output.
+
+2. **Automated Testing (Recommended):**  Create a separate test class (using JUnit or TestNG) to automate these test cases. This is the preferred way for robust testing. Example using JUnit:
+

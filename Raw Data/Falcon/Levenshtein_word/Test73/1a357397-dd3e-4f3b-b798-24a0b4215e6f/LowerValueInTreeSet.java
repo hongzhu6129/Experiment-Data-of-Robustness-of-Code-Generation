@@ -1,0 +1,46 @@
+import java.util.TreeSet;
+
+public class LowerValueInTreeSet {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        Integer givenElement = 35;
+
+        Integer lowerValue = treeSet.lower(givenElement);
+
+        if (lowerValue != null) {
+            System.out.println("Element lower than " + givenElement + ": " + lowerValue);
+        } else {
+            System.out.println("No element found lower than " + givenElement);
+        }
+
+
+
+        givenElement = 10; // Example with the smallest element
+        lowerValue = treeSet.lower(givenElement);
+
+        if (lowerValue != null) {
+             System.out.println("Element lower than " + givenElement + ": " + lowerValue);
+        } else {
+             System.out.println("No element found lower than " + givenElement);
+        }
+
+
+
+        givenElement = 60; // Example with element greater than largest
+         lowerValue = treeSet.lower(givenElement);
+
+        if (lowerValue != null) {
+             System.out.println("Element lower than " + givenElement + ": " + lowerValue);
+        } else {
+             System.out.println("No element found lower than " + givenElement);
+        }
+    }
+}

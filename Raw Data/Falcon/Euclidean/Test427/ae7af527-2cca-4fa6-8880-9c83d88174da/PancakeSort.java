@@ -1,0 +1,92 @@
+import java.util.Arrays;
+
+public class PancakeSort {
+
+    private int[] pancakes;
+
+    public PancakeSort(int[] arr) {
+        this.pancakes = arr;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(pancakes);
+    }
+
+    // Flips the array from index 0 to index i
+    public void flip(int i) {
+        int start = 0;
+        while (start < i) {
+            int temp = pancakes[start];
+            pancakes[start] = pancakes[i];
+            pancakes[i] = temp;
+            start++;
+            i--;
+        }
+    }
+
+    // Finds the index of the maximum element between indices start and end (inclusive)
+    private int findMaxIndex(int start, int end) {
+        int maxIndex = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (pancakes[i] > pancakes[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
+
+
+
+    //Sorts the subarray from startIndex to endIndex (inclusive) using Pancake Sort
+    public void sort(int startIndex, int endIndex) {
+         if (startIndex < 0 || endIndex >= pancakes.length || startIndex > endIndex) {
+            return; // Or throw an exception for invalid input
+        }
+        for (int currentSize = endIndex - startIndex + 1; currentSize > 1; currentSize--) {
+            int maxIndex = findMaxIndex(startIndex, startIndex + currentSize - 1);
+
+            if (maxIndex != startIndex + currentSize -1 ) { // Optimization: Avoid unnecessary flips
+                flip(maxIndex); // Bring max to the front of the current subarray
+                flip(startIndex + currentSize - 1); // Bring max to the end of the current subarray (correct position)
+
+            }
+
+        }
+    }
+
+
+
+    // Not used in Pancake Sort algorithm but required by prompt
+    public int[] minmax(int k) {
+        return new int[0]; //  Placeholder - not relevant to this problem
+    }
+
+
+
+    public static void main(String[] args) {
+        int[] arr = {5, 1, 3, 2, 4};
+        PancakeSort ps = new PancakeSort(arr);
+        System.out.println("Initial array: " + ps);
+        ps.sort(0, arr.length - 1);
+        System.out.println("Sorted array: " + ps);
+
+
+
+        int[] arr2 = {1,5,2,3,6,4};
+        PancakeSort ps2 = new PancakeSort(arr2);
+        System.out.println("Initial array2 : " + ps2);
+        ps2.sort(0, arr2.length-1);
+        System.out.println("Sorted array2 : " + ps2);
+
+
+
+
+         int[] arr3 = {3, 2, 4, 1};
+         PancakeSort ps3 = new PancakeSort(arr3);
+          System.out.println("Initial array3: " + ps3);
+          ps3.sort(0, arr3.length - 1);
+          System.out.println("Sorted array3: " + ps3);
+
+    }
+}

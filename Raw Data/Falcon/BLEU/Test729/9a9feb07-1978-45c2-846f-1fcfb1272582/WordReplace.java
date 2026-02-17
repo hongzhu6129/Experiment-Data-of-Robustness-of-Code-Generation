@@ -1,0 +1,18 @@
+public class WordReplace {
+
+    public String wordReplaceBy(String str) {
+        return str.replace(" is ", " is not ");
+    }
+
+    public static void main(String[] args) {
+        WordReplace wr = new WordReplace();
+        String str1 = "This is a test string.";
+        String str2 = "is This is another test string is"; // Test edge cases
+        String str3 = "This isis a tricky string";      // Test consecutive "is"
+
+        System.out.println(str1 + " => " + wr.wordReplaceBy(str1));
+        System.out.println(str2 + " => " + wr.wordReplaceBy(str2));
+        System.out.println(str3 + " => " + wr.wordReplaceBy(str3));
+
+    }
+}

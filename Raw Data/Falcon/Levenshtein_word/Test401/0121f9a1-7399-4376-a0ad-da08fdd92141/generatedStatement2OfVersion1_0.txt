@@ -1,0 +1,9 @@
+
+
+
+Key improvements in this version:
+
+* **Handles null and empty strings:**  The code now explicitly checks for `null` and empty strings for both `mainString` and `removeString` and handles them gracefully to avoid `NullPointerException` or other unexpected behavior.
+* **More comprehensive testing in `main()`:**  Added test cases to demonstrate how the function handles nulls, empty strings, and multiple occurrences of the string to be removed.
+* **Clearer output in `main()`:**  The output now clearly labels the original string and the result after removal, making it easier to understand the results.
+* **Efficiency:**  The `indexOf()` method within the loop starts its search from the beginning of the modified string each time.  While this works correctly, for very long strings and many removals, it could be slightly more efficient to use `replaceFirst()` or to adjust the starting index of the search in `indexOf()` after each removal, but this optimization isn't strictly necessary for most use cases.

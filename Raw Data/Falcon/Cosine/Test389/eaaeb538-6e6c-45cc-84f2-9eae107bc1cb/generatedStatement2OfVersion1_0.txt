@@ -1,0 +1,28 @@
+
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:** The most significant change is the inclusion of JUnit 5 tests.  Testing is crucial for verifying correctness, especially with calculations.  The `@Test` annotation marks the test methods.  `assertEquals()` checks for expected values.
+
+* **Test Cases:** The test cases now cover a range of scenarios:
+    * `testRadius7_5()`:  The original provided test case.
+    * `testRadiusZero()`: Corner case with radius 0.
+    * `testRadiusOne()`: Basic test with radius 1.
+    * `testNegativeRadius()`: Tests how the code handles invalid input (negative radius) - now throws and checks for an exception.  This is how you should handle negative radius � throw an exception because a negative radius doesn't make sense geometrically.
+    * `testLargeRadius()`: Tests with a large radius to check for potential issues with very large numbers or overflow.
+
+* **Double Comparison:**  When comparing floating-point numbers (doubles), use a `delta` in `assertEquals()` to account for tiny rounding errors.  The delta is the acceptable difference between the expected and actual values.
+
+
+* **Exception Handling (Negative Radius):** The provided solution doesn't handle a negative radius.  A robust solution should either throw an `IllegalArgumentException` (as I've implemented) or handle the negative value appropriately (e.g., taking the absolute value if the intention is to disregard the sign).
+
+
+How to run JUnit tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, right-click the class and select "Run 'CircleCalculations'" (or similar). The IDE will automatically run the JUnit tests.
+
+2. **Command Line (with Maven):** If you're using Maven: `mvn test`
+
+3. **Command Line (without build tools):** You'll need to include the JUnit jar files in your classpath and then use the `java` command to run the tests.  This is more complex; using an IDE or build tool is recommended.

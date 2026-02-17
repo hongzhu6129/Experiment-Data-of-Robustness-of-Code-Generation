@@ -1,0 +1,19 @@
+
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now includes comprehensive JUnit tests to verify the correctness of the `getArea()` and `getPerimeter()` methods.  Testing is crucial for robust code.
+* **Corner Cases:** The tests cover important corner cases:
+    * Zero length and/or width.
+    * Very large numbers (checking for potential `Infinity` results).
+    * Very small numbers (using a `delta` in `assertEquals` for floating-point comparisons).
+* **Error Handling (Optional):**  The example includes tests for negative length and width.  You can modify the `Rectangle` class to throw an `IllegalArgumentException` if negative dimensions are provided, making the class more robust. The tests have been adjusted to reflect this potential change.  You'll need to uncomment the exception throwing code in `Rectangle` if you want to enforce this rule.
+* **Clearer Main Method:** The `main` method provides simple examples of rectangle creation and output.
+* **Floating-point Comparisons:**  When comparing floating-point numbers (doubles), it's important to use a `delta` with `assertEquals` to account for potential small inaccuracies in calculations.
+
+
+
+
+To run the JUnit tests, you'll need to have JUnit 5 set up in your Java project.  Most IDEs (IntelliJ, Eclipse, NetBeans) have built-in support for JUnit.  You can also run JUnit tests from the command line using tools like Maven or Gradle.

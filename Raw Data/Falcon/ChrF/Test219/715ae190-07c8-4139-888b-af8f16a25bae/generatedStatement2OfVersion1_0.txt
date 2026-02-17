@@ -1,0 +1,35 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output |
+|---|---|---|---|---|
+| Positive Numbers | 10 | 20 | 30 | 20.0 |
+| Negative Numbers | -10 | -20 | -30 | -20.0 |
+| Mixed Positive and Negative | -5 | 15 | 25 | 11.666666666666666 |
+| Zero Included | 0 | 10 | 20 | 10.0 |
+| All Zeros | 0 | 0 | 0 | 0.0 |
+| Large Positive Numbers | 100000 | 200000 | 300000 | 200000.0 |
+| Large Negative Numbers | -100000 | -200000 | -300000 | -200000.0 |
+| Decimal Numbers | 2.5 | 5.7 | 8.9 | 5.7 |
+| Integer Overflow (Corner Case) | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE |  (Will likely result in an incorrect/overflowed average due to exceeding `double`'s capacity when summing; consider using `BigDecimal` for such large numbers if accuracy is paramount.) |
+| Integer Underflow (Corner Case) | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE | (Similar to overflow, might result in an incorrect average due to limitations of `double` when dealing with extremely large negative sums) |
+
+
+
+**How to Run the Tests (Manually):**
+
+1. **Compile:** Save the code as `AverageCalculator.java` and compile it using a Java compiler (e.g., `javac AverageCalculator.java`).
+2. **Run:** Execute the compiled class (e.g., `java AverageCalculator`).
+3. **Input:** Enter the test case input values when prompted.
+4. **Verify:** Check if the output matches the expected output for that test case.
+
+
+
+**Automated Testing (Recommended - using JUnit):**
+
+For more efficient and robust testing, use a testing framework like JUnit.  Here's a simple JUnit example:
+

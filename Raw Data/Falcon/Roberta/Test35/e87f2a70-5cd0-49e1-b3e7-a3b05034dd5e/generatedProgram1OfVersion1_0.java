@@ -1,0 +1,36 @@
+class Solution {
+
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if (str == null || str.length() <= 1) {
+            System.out.print(str);
+            return;
+        }
+
+        reverseString(str.substring(1));
+        System.out.print(str.charAt(0));
+    }
+
+    /**
+     * Main method to demonstrate the string reversal.
+     *
+     * @param args Command line arguments (not used).
+     */
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.reverseString("hello");  // Output: olleh
+        System.out.println();           // Add newline for clarity
+        solution.reverseString("world");  // Output: dlrow
+        System.out.println();           // Add newline for clarity
+        solution.reverseString("");       // Output: 
+        System.out.println();            // Add newline for clarity
+        solution.reverseString(null);      // Output: null
+         System.out.println();           // Add newline for clarity
+
+
+    }
+}

@@ -1,0 +1,25 @@
+JUnit version 4.13
+.E. is a directory.
+..E.Please provide a pathname as a command-line argument.
+
+Time: 0.365
+There were 2 failures:
+1) test1(testing_ChatGPT_on_java.CheckPathFile_ESTest)
+java.nio.file.InvalidPathException: Illegal char <*> at index 5: -$46q*]6L5
+	at sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
+	at sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
+	at sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
+	at sun.nio.fs.WindowsPath.parse(WindowsPath.java:94)
+	at sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:255)
+	at java.nio.file.Paths.get(Paths.java:84)
+	at testing_ChatGPT_on_java.CheckPathFile.main(CheckPathFile.java:16)
+	at testing_ChatGPT_on_java.CheckPathFile_ESTest.test1(CheckPathFile_ESTest.java:31)
+2) test3(testing_ChatGPT_on_java.CheckPathFile_ESTest)
+java.lang.AssertionError: Exception was not thrown in java.io.File but in sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:98): java.lang.NullPointerException
+	at org.evosuite.runtime.EvoAssertions.assertThrownBy(EvoAssertions.java:112)
+	at org.evosuite.runtime.EvoAssertions.verifyException(EvoAssertions.java:49)
+	at testing_ChatGPT_on_java.CheckPathFile_ESTest.test3(CheckPathFile_ESTest.java:54)
+
+FAILURES!!!
+Tests run: 5,  Failures: 2
+

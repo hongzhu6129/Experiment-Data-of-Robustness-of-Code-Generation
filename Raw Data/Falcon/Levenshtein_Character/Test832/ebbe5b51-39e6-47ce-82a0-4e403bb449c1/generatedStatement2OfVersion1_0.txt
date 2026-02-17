@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:**
+   - This helper method calculates the Fermat number for a given `n` using the formula 2^(2^n) + 1.
+   - It uses `Math.pow()` to calculate the powers.  Critically, it casts the result to `long` because Fermat numbers grow very large very quickly, exceeding the capacity of `int`.
+
+2. **`main` Method:**
+   - The `main` method now iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+   - It calls the `calculateFermatNumber` method for each `n`.
+   - The output is formatted to clearly show the value of `n` and the corresponding Fermat number (e.g., "F(0) = 3").
+
+3. **`long` Data Type:**
+   - The `long` data type is used to store the Fermat numbers because they can quickly become very large. Even `long` will only be able to hold the first few Fermat numbers accurately before overflow occurs.
+
+4. **Overflow Handling (for larger n):**
+   If you want to handle even larger values of `n`, you'll need to use `BigInteger`, as standard numeric types in Java won't be sufficient:
+
+

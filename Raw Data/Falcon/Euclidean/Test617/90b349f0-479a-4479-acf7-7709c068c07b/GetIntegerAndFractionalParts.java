@@ -1,0 +1,40 @@
+public class GetIntegerAndFractionalParts {
+
+    public static void main(String[] args) {
+        double doubleValue = 123.456;
+
+        // Get the integer part using casting
+        int integerPart = (int) doubleValue;
+
+        // Get the fractional part by subtracting the integer part
+        double fractionalPart = doubleValue - integerPart;
+
+        System.out.println("Double Value: " + doubleValue);
+        System.out.println("Integer Part: " + integerPart);
+        System.out.println("Fractional Part: " + fractionalPart);
+
+
+        // Demonstrating with another value and formatting the fractional part
+        doubleValue = -987.654;
+        integerPart = (int) doubleValue;
+        fractionalPart = doubleValue - integerPart;
+
+        System.out.println("\nDouble Value: " + doubleValue);
+        System.out.println("Integer Part: " + integerPart);
+        System.out.printf("Fractional Part: %.3f\n", fractionalPart); // Format to 3 decimal places
+
+        // Handling potential issues with very large numbers where casting might be imprecise:
+        doubleValue =  Double.MAX_VALUE * 0.5 ; //a large double
+        integerPart = (int) doubleValue;
+        fractionalPart = doubleValue - integerPart;
+
+        System.out.println("\nDouble Value (Large): " + doubleValue);
+        System.out.println("Integer Part (Large - potential inaccuracy with casting): " + integerPart);
+         //More accurate approach for large doubles using Math.floor:
+        double accurateIntegerPart = Math.floor(doubleValue);
+        double accurateFractionalPart = doubleValue - accurateIntegerPart;
+
+        System.out.println("Integer Part (Large - Math.floor): " + (long)accurateIntegerPart); //cast to long because the integer portion can be huge.
+        System.out.println("Fractional Part (Large - Math.floor): " + accurateFractionalPart);
+    }
+}

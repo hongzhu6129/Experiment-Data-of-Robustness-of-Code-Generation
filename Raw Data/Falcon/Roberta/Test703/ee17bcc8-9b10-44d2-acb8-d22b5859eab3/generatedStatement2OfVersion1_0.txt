@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+1. **Basic Functionality:**
+   - Run the program multiple times to verify that it consistently displays the current system time, updating with each execution.  Observe the seconds and milliseconds changing.
+
+2. **Format Validation:**
+   - Check that the output strictly adheres to the specified format "yyyy-MM-dd HH:mm:ss.SSS".  Verify year, month, day, hour, minute, second, and millisecond components are correctly displayed.  
+
+3. **Time Zone Handling (Implicit):**
+   - The `LocalDateTime.now()` method uses the system's default time zone.  Change your system's time zone settings and rerun the program.  Verify the output reflects the new time zone.
+
+4. **Daylight Saving Time Transition:**
+   - If possible, run the program immediately before and after a Daylight Saving Time transition to ensure the time is adjusted correctly.  This tests the underlying Java time libraries' DST handling.
+
+5. **Locale Sensitivity (Not applicable in this specific code):**
+   -  This particular code does not use locale-specific formatting. If you were to use locale-sensitive formatting, you would need to test with different locales to ensure correct formatting of dates and times according to those locales.
+
+
+**Corner Cases (These are more relevant if you are working with date/time manipulation or calculations, but less so for simply displaying the current time):**
+
+1. **Year 1 and Year 10000 (or beyond if supported):**
+    -  While not strictly corner cases for *displaying* the current time, if you were *manipulating* dates, you'd want to check handling of extreme years (e.g., adding or subtracting days/months/years that cross these boundaries).  Java's `LocalDateTime` handles a wide range of dates, but testing boundaries is good practice.
+
+2. **Leap Year:**
+    - If manipulating dates, ensure calculations involving February 29th in leap years and non-leap years are correct.  Again, less crucial for simply displaying the current time.
+
+3. **Start and End of Days/Months/Years:**
+    - When performing date/time arithmetic (not in this simple example), test with dates like January 1st, December 31st, the first and last day of a month, etc., to confirm correct handling of boundary conditions.
+
+**How to run tests (Example using JUnit - a Java testing framework):**
+

@@ -1,0 +1,55 @@
+public class HappyCharacter {
+
+    public boolean aCharacterIsHappy(String str) {
+        if (str == null || str.length() < 2) {
+            return false; // Empty or single-character strings can't have happy characters
+        }
+
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+
+            // Check left (if possible)
+            if (i > 0 && str.charAt(i - 1) == currentChar) {
+                return true;
+            }
+
+            // Check right (if possible)
+            if (i < str.length() - 1 && str.charAt(i + 1) == currentChar) {
+                return true;
+            }
+        }
+
+        return false; // No happy character found
+    }
+
+    public static void main(String[] args) {
+        HappyCharacter hc = new HappyCharacter();
+
+        String str1 = "aabc";
+        System.out.println(str1 + ": " + hc.aCharacterIsHappy(str1)); // Output: true (because of 'a')
+
+        String str2 = "abc";
+        System.out.println(str2 + ": " + hc.aCharacterIsHappy(str2)); // Output: false
+
+        String str3 = "aabbc";
+        System.out.println(str3 + ": " + hc.aCharacterIsHappy(str3)); // Output: true (because of 'a' and 'b')
+
+
+        String str4 = "abac";
+        System.out.println(str4 + ": " + hc.aCharacterIsHappy(str4)); // Output: true (because of 'a')
+
+
+        String str5 = null;
+        System.out.println(str5 + ": " + hc.aCharacterIsHappy(str5)); // Output: false
+
+
+        String str6 = "a";
+        System.out.println(str6 + ": " + hc.aCharacterIsHappy(str6)); // Output: false
+
+        String str7 = "";
+        System.out.println(str7 + ": " + hc.aCharacterIsHappy(str7)); // Output: false
+
+
+
+    }
+}

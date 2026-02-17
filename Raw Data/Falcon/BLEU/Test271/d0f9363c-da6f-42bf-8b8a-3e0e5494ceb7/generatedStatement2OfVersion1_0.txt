@@ -1,0 +1,14 @@
+
+
+
+Key improvements and explanations:
+
+* **Handles 53-week years:** The code now correctly handles years with 53 weeks by iterating up to week 53 and using a `try-catch` block to handle the potential `DateTimeException` that might occur if a year doesn't have a 53rd week.
+* **Locale-aware:**  Uses `WeekFields.of(Locale.getDefault())` to ensure the week calculations are correct based on the user's locale (as the first day of the week might be different in some regions).
+* **Clearer Output:**  The output now clearly indicates the week number along with the first and last days.
+* **Efficiency:**  The code advances `currentDate` to the end of the current week after each iteration. This makes the `with(weekOfYear)` calculation more efficient in subsequent iterations.  It avoids recalculating earlier weeks.
+* **Conciseness:**  Improved variable naming and formatting to make the code more readable.
+* **Robustness:** The `try-catch` ensures the program doesn't crash if a year doesn't have a 53rd week, it simply exits the loop gracefully.
+
+
+This improved version is more accurate, efficient, and robust in handling different week numbering scenarios.

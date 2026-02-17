@@ -1,0 +1,41 @@
+public class ReverseNumber {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int number = 12345;
+        int reversedNumber = reverseNumber(number);
+        System.out.println("Reversed number: " + reversedNumber); 
+
+        number = -6789;
+        reversedNumber = reverseNumber(number);
+        System.out.println("Reversed number: " + reversedNumber);
+
+        number = 1000; // Handling trailing zeros
+        reversedNumber = reverseNumber(number);
+        System.out.println("Reversed number: " + reversedNumber);
+
+        number = 0; // Handling zero
+        reversedNumber = reverseNumber(number);
+        System.out.println("Reversed number: " + reversedNumber);
+
+
+    }
+
+    public static int reverseNumber(int number) {
+        int reversed = 0;
+        boolean isNegative = false;
+
+        if (number < 0) {
+            isNegative = true;
+            number = -number; // Make positive for processing
+        }
+
+        while (number > 0) {
+            int digit = number % 10;
+            reversed = reversed * 10 + digit;
+            number /= 10;
+        }
+
+        return isNegative ? -reversed : reversed;
+    }
+}

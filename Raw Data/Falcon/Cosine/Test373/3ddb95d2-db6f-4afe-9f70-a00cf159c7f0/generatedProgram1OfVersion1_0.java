@@ -1,0 +1,31 @@
+public class StringManipulation {
+
+    public String minCat(String a, String b) {
+        int lenA = a.length();
+        int lenB = b.length();
+
+        if (lenA == lenB) {
+            return a + b;
+        } else if (lenA > lenB) {
+            return a.substring(lenA - lenB) + b;
+        } else {
+            return a + b.substring(lenB - lenA);
+        }
+    }
+
+    public static void main(String[] args) {
+        StringManipulation sm = new StringManipulation();
+
+        // Test cases
+        System.out.println(sm.minCat("Hello", "Hi")); // lloHi
+        System.out.println(sm.minCat("Hello", "java")); // ellojava
+        System.out.println(sm.minCat("java", "Hello")); // javaello
+        System.out.println(sm.minCat("abc", "x")); // cx
+        System.out.println(sm.minCat("x", "abc")); // xbc
+        System.out.println(sm.minCat("abc", "")); // abc  (Handles empty string case)
+        System.out.println(sm.minCat("", "abc")); // abc (Handles empty string case)
+
+
+
+    }
+}

@@ -1,0 +1,44 @@
+class Solution {
+    /**
+     * Java program to find a specific element in a given array of elements 
+     * using linear search.
+     */
+    public static void main(String[] args) {
+        int[] arr = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int target = 23;
+
+        int index = Linear_Search(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+
+        target = 100; // Test for an element not present
+        index = Linear_Search(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index: " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+    /**
+     * Performs a linear search on the given array to find the target element.
+     *
+     * @param arr    The array to search.
+     * @param target The element to search for.
+     * @return The index of the target element if found, -1 otherwise.
+     */
+    private static int Linear_Search(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}

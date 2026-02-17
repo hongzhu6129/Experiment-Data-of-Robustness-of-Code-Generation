@@ -1,0 +1,15 @@
+
+
+**Explanation and Improvements:**
+
+1. **Modulo Arithmetic:** The product of all alphabet characters is a very large number that will overflow the `long` data type in Java.  To handle this, we use modulo arithmetic. The problem doesn't explicitly state a modulo, but I've added a modulo of 10^9 + 7, which is a common practice in these kinds of problems to keep the result within a manageable range.  
+
+2. **Explicit Casting:**  We explicitly cast the `char` `c` to an `int` when multiplying it with the `composite`.  This is important because `char` is an unsigned 16-bit integer type in Java, while `int` is a signed 32-bit integer type. Without the cast, there's a risk of unexpected behavior or overflow during the multiplication, especially when dealing with larger character values.
+
+3. **Clarity:** The code is written for readability, with clear variable names and comments where needed.
+
+
+
+If you absolutely *don't* want to use modulo arithmetic (even though the result will overflow and become inaccurate for the full product), you can remove the modulo operation:
+
+

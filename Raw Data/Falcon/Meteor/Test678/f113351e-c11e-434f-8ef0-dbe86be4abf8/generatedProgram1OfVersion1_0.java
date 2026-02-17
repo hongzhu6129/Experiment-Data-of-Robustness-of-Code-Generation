@@ -1,0 +1,36 @@
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
+public class GreatestAndLeastKeyMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
+        map.put(8, "Eight");
+        map.put(3, "Three");
+
+
+        if (map.isEmpty()) {
+            System.out.println("Map is empty.");
+            return;
+        }
+
+        // Find the greatest and least keys
+        int greatestKey = Collections.max(map.keySet());
+        int leastKey = Collections.min(map.keySet());
+
+        // Get the values associated with the greatest and least keys
+        String greatestKeyValue = map.get(greatestKey);
+        String leastKeyValue = map.get(leastKey);
+
+        // Print the results
+        System.out.println("Greatest key: " + greatestKey + ", Value: " + greatestKeyValue);
+        System.out.println("Least key: " + leastKey + ", Value: " + leastKeyValue);
+
+
+    }
+}

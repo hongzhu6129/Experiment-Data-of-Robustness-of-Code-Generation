@@ -1,0 +1,31 @@
+public class StringConcatenation {
+
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = " World!";
+
+        // Method 1: Using the + operator
+        String concatenatedString1 = str1 + str2;
+        System.out.println("Concatenated string (using +): " + concatenatedString1);
+
+        // Method 2: Using the concat() method
+        String concatenatedString2 = str1.concat(str2);
+        System.out.println("Concatenated string (using concat()): " + concatenatedString2);
+
+
+        //Example with a "this" string (demonstrating it's just a normal string)
+        String thisString = "this "; // Note the space for clarity
+        String anotherString = "is a string.";
+
+         // Using +
+        String concatenatedString3 = thisString + anotherString;
+        System.out.println("Concatenated with 'this': " + concatenatedString3);
+
+        // Using concat()
+        String concatenatedString4 = thisString.concat(anotherString);
+        System.out.println("Concatenated with 'this' (concat): " + concatenatedString4);
+
+
+
+    }
+}

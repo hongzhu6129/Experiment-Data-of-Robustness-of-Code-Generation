@@ -1,0 +1,49 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueInMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, String> map = new HashMap<>();
+        map.put("apple", "red");
+        map.put("banana", "yellow");
+        map.put("grape", "purple");
+
+        // Value to search for
+        String valueToFind = "yellow";
+
+        // Check if the map contains the value using containsValue()
+        boolean containsValue = map.containsValue(valueToFind);
+
+        if (containsValue) {
+            System.out.println("The map contains the value: " + valueToFind);
+        } else {
+            System.out.println("The map does not contain the value: " + valueToFind);
+        }
+
+
+        // Another example illustrating that containsValue() checks *values* not keys.
+        valueToFind = "apple"; // "apple" is a *key*, not a value
+        containsValue = map.containsValue(valueToFind);
+
+         if (containsValue) {
+            System.out.println("The map contains the value: " + valueToFind);
+        } else {
+            System.out.println("The map does not contain the value: " + valueToFind);
+        }
+
+
+
+        // Demonstrating how null values are handled
+        map.put("kiwi", null); // Add a key with a null value
+
+        containsValue = map.containsValue(null);
+         if (containsValue) {
+            System.out.println("The map contains the value: null");
+        } else {
+            System.out.println("The map does not contain the value: null");
+        }
+
+    }
+}

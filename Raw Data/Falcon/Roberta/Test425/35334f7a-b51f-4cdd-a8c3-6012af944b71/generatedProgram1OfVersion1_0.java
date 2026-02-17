@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringSort {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("banana", "apple", "orange", "grape", "kiwi");
+
+        // Ascending order
+        List<String> ascendingOrder = strings.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending Order:");
+        ascendingOrder.forEach(System.out::println);
+
+
+        // Descending order
+        List<String> descendingOrder = strings.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+
+
+        System.out.println("\nDescending Order:");
+        descendingOrder.forEach(System.out::println);
+
+    }
+}

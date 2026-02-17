@@ -1,0 +1,94 @@
+import java.util.LinkedList;
+
+public class InsertAtEndLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert at the end
+        String elementToInsert = "Grape";
+
+        // Insert the element at the end
+        linkedList.add(elementToInsert); // LinkedList's add() method appends to the end by default
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + linkedList);
+
+
+        // Example with integers:
+        LinkedList<Integer> numberList = new LinkedList<>();
+        numberList.add(10);
+        numberList.add(20);
+        numberList.add(30);
+
+        int numToInsert = 40;
+        numberList.add(numToInsert); //or numberList.addLast(numToInsert);  addLast is equivalent to add
+
+        System.out.println("Updated Number List: " + numberList);
+
+
+
+        //Illustrating manual insertion (for learning about linked list internals)
+
+        // Create a sample linked list (manual node creation)
+        Node head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+
+        // Element to insert
+        int valueToInsert = 4;
+
+        // Call the insertAtEnd method
+        head = insertAtEnd(head, valueToInsert);
+
+        // Print the updated linked list
+        printLinkedList(head);
+
+
+    }
+
+    // Inner class representing a node in the linked list (for manual insertion example)
+    static class Node {
+        int data;
+        Node next;
+
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    // Method to insert a node at the end of the linked list (manual insertion example)
+    static Node insertAtEnd(Node head, int value) {
+        Node newNode = new Node(value);
+        if (head == null) {
+            return newNode; // If list is empty, the new node becomes the head
+        }
+
+        Node current = head;
+        while (current.next != null) {
+            current = current.next; // Traverse to the last node
+        }
+        current.next = newNode; // Append the new node
+        return head;
+    }
+
+        // Method to print the linked list (manual insertion example)
+    static void printLinkedList(Node head) {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+
+

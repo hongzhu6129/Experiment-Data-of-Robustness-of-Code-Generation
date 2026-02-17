@@ -1,0 +1,45 @@
+import java.util.TreeSet;
+
+public class TreeSetFirstLast {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add some elements
+        treeSet.add(5);
+        treeSet.add(2);
+        treeSet.add(8);
+        treeSet.add(1);
+        treeSet.add(9);
+
+        // Check if the TreeSet is empty before attempting to get elements
+        if (!treeSet.isEmpty()) {
+            // Get the first element
+            Integer firstElement = treeSet.first();
+            System.out.println("First element: " + firstElement);
+
+            // Get the last element
+            Integer lastElement = treeSet.last();
+            System.out.println("Last element: " + lastElement);
+        } else {
+            System.out.println("TreeSet is empty.");
+        }
+
+
+
+        // Example with Strings
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+
+        if (!stringTreeSet.isEmpty()) {
+            System.out.println("First string: " + stringTreeSet.first());
+            System.out.println("Last string: " + stringTreeSet.last());
+        } else {
+            System.out.println("String TreeSet is empty.");
+        }
+    }
+}

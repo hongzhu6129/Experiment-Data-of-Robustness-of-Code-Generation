@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Addressing "Exceeds Depth":**
+
+1. **`maxDepth(Node node)`:** This method recursively calculates the depth (or height) of the binary tree.
+2. **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+3. **Recursive Step:**  It calculates the depth of the left and right subtrees (`lDepth` and `rDepth`). The depth of the current node is 1 plus the maximum of its children's depths.
+
+**What is "Exceeds Depth"?**
+
+"Exceeds depth" isn't a standard term in computer science.  It's likely referring to situations where the tree's depth becomes very large, potentially causing issues like stack overflow errors (if the tree is very unbalanced and recursion is used) or performance problems.
+
+**How to handle potential "Exceeds Depth" problems:**
+
+* **Balanced Trees:** Use balanced tree structures (e.g., AVL trees, Red-Black trees) which guarantee a maximum depth of O(log n), where n is the number of nodes. This prevents excessively deep trees.
+* **Iterative Depth Calculation:** Instead of recursion, use an iterative approach (e.g., level order traversal using a queue) to calculate depth. This avoids stack overflow errors that can occur with very deep trees and recursion.
+* **Depth Limit:** If you have a specific depth limit in mind, you can modify the `maxDepth` function to stop recursion and return an appropriate value (e.g., -1 or throw an exception) when the limit is reached.
+
+
+**Example demonstrating "exceeds depth" (using a skewed tree):**
+
+The provided code now includes an example of a skewed tree (essentially a linked list).  As you add more nodes to the left in this example, the depth increases linearly.  This demonstrates a case where the depth might "exceed" a desirable limit.  You'll see a larger depth value for the skewed tree compared to a more balanced tree.

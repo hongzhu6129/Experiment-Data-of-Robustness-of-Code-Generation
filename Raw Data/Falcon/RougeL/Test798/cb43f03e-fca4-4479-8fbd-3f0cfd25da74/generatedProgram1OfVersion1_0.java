@@ -1,0 +1,45 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class LeastKeyGreaterThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        int key1 = 4;
+        Map.Entry<Integer, String> entry1 = getLeastKeyGreaterThanOrEqual(treeMap, key1);
+        System.out.println("For key " + key1 + ": " + entry1); // Expected: For key 4: 5=Five
+
+        int key2 = 7;
+        Map.Entry<Integer, String> entry2 = getLeastKeyGreaterThanOrEqual(treeMap, key2);
+        System.out.println("For key " + key2 + ": " + entry2); // Expected: For key 7: 7=Seven
+
+        int key3 = 10;
+        Map.Entry<Integer, String> entry3 = getLeastKeyGreaterThanOrEqual(treeMap, key3);
+        System.out.println("For key " + key3 + ": " + entry3); // Expected: For key 10: null
+
+
+        // Additional tests
+        TreeMap<Integer, String> emptyMap = new TreeMap<>();
+        int key4 = 5;
+        Map.Entry<Integer, String> entry4 = getLeastKeyGreaterThanOrEqual(emptyMap, key4);
+        System.out.println("For key " + key4 + " (empty map): " + entry4); // Expected: For key 5 (empty map): null
+
+    }
+
+
+    public static <K, V> Map.Entry<K, V> getLeastKeyGreaterThanOrEqual(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        return treeMap.ceilingEntry(key); 
+    }
+}

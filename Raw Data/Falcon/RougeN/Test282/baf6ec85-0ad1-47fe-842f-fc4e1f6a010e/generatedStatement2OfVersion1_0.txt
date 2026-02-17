@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`long` Data Type:** Fermat numbers grow very large very quickly.  Using `int` would lead to overflow errors very soon (after the 5th Fermat number). `long` allows us to represent larger integers, though even `long` will not be sufficient for all 10 Fermat numbers we want to display.
+
+2. **Casting to `long`:** `Math.pow()` returns a `double`.  We need to cast it to `long` to store it in our `fermatNumber` variable.  This casting is necessary because the result of the exponent can be bigger than integer max values.
+
+3. **Clarity and Formatting:**  The code is formatted for readability with comments explaining the steps. The output clearly indicates what is being displayed.
+
+4. **Limited Precision:** It is important to be aware of the limitations of floating-point arithmetic.  `double` has limited precision. For very large Fermat numbers (beyond the first few), the calculation using `Math.pow()` and `double` will start to lose accuracy.  Specialized libraries like `BigInteger` would be required to handle these very large numbers with perfect accuracy.
+
+
+**Output (showing the limitations of `double`):**
+

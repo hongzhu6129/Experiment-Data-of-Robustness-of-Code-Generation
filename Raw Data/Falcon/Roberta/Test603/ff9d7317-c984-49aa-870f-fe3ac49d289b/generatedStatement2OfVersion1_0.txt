@@ -1,0 +1,8 @@
+
+
+
+**Explanation and why `swap()` isn't used:**
+
+The most efficient way to move zeros to the right *without maintaining the relative order* of other elements is to iterate through the array once.  We maintain a `count` of non-zero elements encountered so far.  When we find a non-zero element, we place it at the `count` index and increment `count`.  After this pass, all non-zero elements will be at the beginning of the array.  We then fill the remaining portion of the array (from `count` to the end) with zeros. This approach has a time complexity of O(n).
+
+The `swap` method, while useful in many array manipulation scenarios, is not the most efficient choice for this specific problem. Using `swap` would involve potentially swapping elements multiple times, leading to a less efficient solution (potentially O(n^2) if you swapped zeros all the way to the end with each encounter). The provided solution avoids unnecessary swaps, resulting in improved performance.

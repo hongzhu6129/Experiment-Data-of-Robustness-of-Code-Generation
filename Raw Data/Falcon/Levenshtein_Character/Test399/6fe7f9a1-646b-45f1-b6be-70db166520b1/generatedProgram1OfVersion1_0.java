@@ -1,0 +1,52 @@
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Kaprekar numbers less than 1000:");
+        int count = 0;
+        for (int i = 1; i < 1000; i++) {
+            if (isKaprekar(i)) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+        System.out.println("\n" + count + " kaprekar numbers.");
+    }
+
+    private static boolean isKaprekar(int num) {
+        long square = (long) num * num;
+        String sqStr = String.valueOf(square);
+        int numDigits = sqStr.length();
+
+        for (int i = 1; i < numDigits; i++) {
+            String[] parts = split_num(sqStr, i);
+            if (parts[1].equals("0")) continue; //Avoid leading zero case like 0 + 9 for 3^2
+
+            try {
+                int right = Integer.parseInt(parts[1]);
+                int left = Integer.parseInt(parts[0]);
+            
+                if (right > 0 && (left + right) == num) {
+                    return true;
+                }
+            } catch (NumberFormatException e) {
+                // Handle potential parsing errors (e.g., empty strings).  This isn't strictly
+                // necessary for the provided range but is good practice in general.
+                return false; 
+            }
+        }
+        return false;
+    }
+
+    private static String[] split_num(String numStr, int index) {
+        String left = numStr.substring(0, index);
+        String right = numStr.substring(index);
+
+
+        if (left.isEmpty()) {
+            left = "0"; // handle cases where the left side is empty, like 1^2 = 1
+        }
+
+        return new String[]{left, right};
+
+    }
+}

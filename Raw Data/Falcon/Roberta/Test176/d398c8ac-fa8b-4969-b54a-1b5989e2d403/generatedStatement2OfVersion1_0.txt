@@ -1,0 +1,15 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Null Input:** The code now explicitly checks if the input `set` is `null` and returns `null` in that case to prevent a `NullPointerException`.
+
+2. **Uses `headSet()`:**  The most efficient way to get the elements strictly less than a key in a `TreeSet` is to use the `headSet(key)` method. This method returns a view of the portion of the set whose elements are strictly less than `key`.
+
+3. **Clearer Return Logic:** The code now directly returns the `subset` if it's not empty.  If the subset is empty (meaning there were no elements less than the key), it returns `null`.
+
+4. **Example Usage in `main()`:** The `main` method now includes several test cases to demonstrate the behavior of the function with different inputs, including an empty set and keys greater than, less than, and equal to elements in the set. This helps in thorough testing.
+
+
+This improved version is more robust, concise, and directly uses the capabilities of `TreeSet` for optimal efficiency. It also handles edge cases more effectively.

@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Comparator Implementation:** The `StringLengthComparator` is now a separate, named class that implements the `Comparator<String>` interface. This makes the code more readable and reusable.  The comparison logic is clearly encapsulated within the `compare` method.
+
+2. **`Integer.compare()`:**  Using `Integer.compare()` to compare the lengths is safer and handles potential edge cases (like integer overflow) better than manual subtraction.
+
+3. **Illustrative Examples:** The `main` method provides multiple examples:
+   - Sorting by string length (ascending).
+   - Sorting by string length (descending) using `reversed()`.  This demonstrates a concise way to reverse the sorting order.
+   - Case-insensitive sorting using a method reference (`String::compareToIgnoreCase`). This shows a more advanced but very useful technique.
+
+4. **`putAll()` for Copying:** The examples use `putAll()` to efficiently copy entries between TreeMaps, avoiding redundant `put()` calls.
+
+5. **Comments and Output:**  Clear comments and descriptive `println()` statements make it easy to understand the output and how the TreeMap is being sorted.
+
+This improved version is a better educational example as it demonstrates best practices for Comparator usage and provides more comprehensive sorting scenarios.

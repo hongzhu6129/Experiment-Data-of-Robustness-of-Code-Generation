@@ -1,0 +1,43 @@
+class Solution {
+    /**
+     * Checks if a number is a "lucky" number.
+     * A number is considered lucky if it contains only 4 or 7.
+     *
+     * @param n The number to check.
+     * @return True if the number is lucky, false otherwise.
+     */
+    public static boolean isLucky(int n) {
+        String s = String.valueOf(n);
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c != '4' && c != '7') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int num = 25;
+        if (isLucky(num)) {
+            System.out.println(num + " is lucky number?");
+        } else {
+            System.out.println(num + " is lucky number? false"); // Explicitly print "false"
+        }
+
+
+         num = 47;
+        if (isLucky(num)) {
+            System.out.println(num + " is lucky number?");
+        } else {
+            System.out.println(num + " is lucky number? false"); // Explicitly print "false"
+        }
+
+          num = 447;
+        if (isLucky(num)) {
+            System.out.println(num + " is lucky number?");
+        } else {
+            System.out.println(num + " is lucky number? false"); // Explicitly print "false"
+        }
+    }
+}

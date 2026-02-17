@@ -1,0 +1,38 @@
+import java.util.LinkedList;
+
+public class InsertAtPointLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Index where to insert (0-based)
+        int insertionIndex = 1;
+
+        // Insert the element at the specified index
+        if (insertionIndex >= 0 && insertionIndex <= linkedList.size()) {
+            linkedList.add(insertionIndex, elementToInsert);
+            System.out.println("Linked List after insertion: " + linkedList);
+        } else {
+            System.out.println("Invalid insertion index.");
+        }
+
+
+        // Example with an invalid index (out of bounds)
+        insertionIndex = 5; //  Index is greater than list size
+        if (insertionIndex >= 0 && insertionIndex <= linkedList.size()) {
+             linkedList.add(insertionIndex, "Mango"); // This won't execute because index is invalid
+            System.out.println("Linked List after insertion: " + linkedList);
+        } else {
+            System.out.println("Invalid insertion index.");
+        }
+    }
+}

@@ -1,0 +1,44 @@
+import java.util.HashSet;
+
+public class CloneHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> originalHashSet = new HashSet<>();
+
+        // Add elements to the original HashSet
+        originalHashSet.add("Apple");
+        originalHashSet.add("Banana");
+        originalHashSet.add("Orange");
+        originalHashSet.add("Mango");
+
+        // Clone the HashSet using the constructor
+        HashSet<String> clonedHashSet = new HashSet<>(originalHashSet);
+
+
+        // Print the original HashSet
+        System.out.println("Original HashSet: " + originalHashSet);
+
+        // Print the cloned HashSet
+        System.out.println("Cloned HashSet: " + clonedHashSet);
+
+
+        // Modify the cloned HashSet to demonstrate they are independent
+        clonedHashSet.remove("Banana");
+        clonedHashSet.add("Grape");
+
+
+        System.out.println("Original HashSet after modification to clone: " + originalHashSet);
+        System.out.println("Cloned HashSet after modification: " + clonedHashSet);
+
+        // Another cloning method using addAll:
+
+        HashSet<String> anotherClonedSet = new HashSet<>();
+        anotherClonedSet.addAll(originalHashSet);
+
+        System.out.println("Another Cloned HashSet (using addAll): " + anotherClonedSet);
+
+
+
+    }
+}

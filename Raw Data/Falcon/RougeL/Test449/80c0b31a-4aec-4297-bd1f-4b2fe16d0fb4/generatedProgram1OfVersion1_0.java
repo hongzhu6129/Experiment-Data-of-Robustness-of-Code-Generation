@@ -1,0 +1,54 @@
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+
+        Integer key1 = 25;
+        Integer result1 = getLeastKeyGreaterThanOrEqualTo(treeMap, key1);
+        System.out.println("Least key greater than or equal to " + key1 + ": " + result1); // Output: 30
+
+        Integer key2 = 10;
+        Integer result2 = getLeastKeyGreaterThanOrEqualTo(treeMap, key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + result2); // Output: 10
+
+        Integer key3 = 55;
+        Integer result3 = getLeastKeyGreaterThanOrEqualTo(treeMap, key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + result3); // Output: null
+
+
+
+        //Additional tests
+
+        TreeMap<Integer, String> emptyTreeMap = new TreeMap<>();
+        Integer key4 = 5;
+        Integer result4 = getLeastKeyGreaterThanOrEqualTo(emptyTreeMap, key4);
+        System.out.println("Least key greater than or equal to " + key4 + " in empty map: " + result4); // Output: null
+
+        TreeMap<Integer, String> singleTreeMap = new TreeMap<>();
+        singleTreeMap.put(100,"Hundred");
+        Integer key5 = 90;
+        Integer result5 = getLeastKeyGreaterThanOrEqualTo(singleTreeMap,key5);
+         System.out.println("Least key greater than or equal to " + key5 + " in singleTreeMap: " + result5); // Output: 100
+
+
+    }
+
+    public static <K, V> K getLeastKeyGreaterThanOrEqualTo(TreeMap<K, V> treeMap, K key) {
+
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+
+         return treeMap.ceilingKey(key);
+    }
+}

@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles only square matrices correctly (in-place):** The original `transpose()` method and the provided method signatures restrict us to modifying the array in place.  This works correctly *only for square matrices*.  The code now clearly demonstrates this limitation and provides a solution for non-square matrices.
+
+2. **`transposeNonSquare()` for Non-Square Matrices:**  A new method `transposeNonSquare()` is included. This method creates a *new* array of the correct dimensions for the transposed non-square matrix. This is necessary because transposing a non-square matrix in-place within the same array is not generally possible.
+
+3. **Clearer Explanation and Example:** The `main` method now includes an example with a non-square matrix to demonstrate the limitation of the in-place transposition and the correct way to handle non-square matrices using `transposeNonSquare()`.
+
+4. **Efficiency in `transpose()`:** The `transpose()` method (for square matrices) is now more efficient. The inner loop starts from `j = i + 1`.  This prevents unnecessary swaps (e.g., swapping an element with itself) and also avoids swapping elements twice (which would undo the transposition).
+
+5. **Clearer Comments:** Comments are added to explain the logic and limitations.
+
+6. **Use of `Arrays.toString()`:**  Using `Arrays.toString()` in `print_array()` makes printing the array much more convenient.
+
+
+
+This improved version addresses the limitations imposed by the required method signatures, provides a correct solution for non-square matrices, and is more efficient and clearly explained.

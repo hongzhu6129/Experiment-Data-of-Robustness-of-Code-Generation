@@ -1,0 +1,37 @@
+
+
+
+## Test Cases
+
+Here are some test cases, including corner and edge cases, to validate the Java program:
+
+**1. Basic Cases:**
+
+* **Input Range:** 1 to 100 (as specified)
+* **Expected Output:**  Correctly print numbers divisible by 3, 5, and both within this range.  For instance, should include 3, 6, 9... for divisible by 3; 5, 10, 15... for divisible by 5; and 15, 30, 45... for divisible by both.
+
+
+**2. Edge Cases:**
+
+* **Lower Bound (1):**  1 is not divisible by 3 or 5, so ensure it's not printed in any of the output lists.
+* **Upper Bound (100):** 100 is divisible by 5, so it should appear in the "divisible by 5" list. It's not divisible by 3, so shouldn't be in the "divisible by 3" or "divisible by both" lists.
+
+
+**3. Corner Cases (Empty/Invalid Inputs - Though less applicable for this specific problem since the range is hardcoded):**
+
+* **Empty Range (0 to 0 or similar):** Although not directly relevant with the current hardcoded `main` method, if you were to modify the program to accept input ranges, consider this case. It should gracefully handle it, perhaps by printing nothing or a message indicating an empty range.
+* **Negative Numbers:**  Again, if the program were modified to take input ranges, what if a negative number was entered? It should probably be handled as an error or ignored depending on the program's intended behavior.
+
+
+
+**4.  Numbers Divisible By Only One:**
+
+* Check if numbers like 9 (divisible by 3 but not 5) and 25 (divisible by 5 but not 3) are printed in the correct respective lists and *not* in the "divisible by both" list.
+
+
+**How to Test:**
+
+1. **Manual Inspection:** Run the code and visually check if the output matches the expected numbers for divisibility by 3, 5, and both within the 1 to 100 range.
+2. **Automated Tests (Recommended):** Use a testing framework like JUnit to write more robust tests.  You can create test methods that assert that the output contains (or does not contain) specific expected values. This makes testing more thorough and repeatable.  For example:
+
+

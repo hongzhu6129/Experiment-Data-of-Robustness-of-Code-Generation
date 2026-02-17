@@ -1,0 +1,52 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Example Case:**
+   - lat1: 25, lon1: 35
+   - lat2: 35.5, lon2: 25.5
+   - lat3: 10, lon3: -5
+   - Expected distance12: ~1480.08 km
+   - Expected distance13: ~2885.96 km
+   - Expected distance23: ~4273.05 km
+
+2. **Same Point:**
+   - lat1: 40, lon1: -70
+   - lat2: 40, lon2: -70
+   - lat3: 40, lon3: -70
+   - Expected distance12: 0 km
+   - Expected distance13: 0 km
+   - Expected distance23: 0 km
+
+3. **North/South Poles:**
+   - lat1: 90, lon1: 0  (North Pole)
+   - lat2: -90, lon2: 0 (South Pole) 
+   - lat3: 0, lon3: 0   (Equator)
+   - Expected distance12: ~20015.09 km (half the Earth's circumference)
+   - Expected distance13: ~10007.54 km (quarter of the Earth's circumference)
+   - Expected distance23: ~10007.54 km
+
+4. **Antipodes (opposite sides of the Earth):**
+   - lat1: 45, lon1: 20
+   - lat2: -45, lon2: -160
+   - lat3: 0, lon3: 90
+   - Expected distance12: ~20015.09 km (approximately the Earth's diameter)
+   - Expected distance (to illustrate varying distances with a 3rd point): ~Varies depending on lat3, lon3
+
+
+5. **Longitude wrapping (180/-180 degrees):**
+   - lat1: 0, lon1: 179
+   - lat2: 0, lon2: -179
+   - lat3: 0, lon3: 0
+   - Expected distance12: ~222.64 km (a short distance due to longitude wrap)
+   - Expected distance: ~Varies depending on lat3, lon3
+
+
+6. **Invalid Input (optional - you could add input validation to your code):**
+   - lat1: 91, lon1: 200  (Latitude out of range)
+
+
+By testing these different scenarios, you can verify that your `distance` function calculates distances accurately and handles edge cases correctly.  You can add error handling to your code to deal with invalid latitude/longitude input if needed.

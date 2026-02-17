@@ -1,0 +1,24 @@
+
+
+
+Explanation:
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty input arrays gracefully.
+   - Uses `uniqueIndex` to track the index where the next unique element should be placed.
+   - Iterates through the array starting from the second element (`i = 1`).
+   - If the current element `nums[i]` is different from the element at `nums[uniqueIndex]`, it means we've found a new unique element.  We increment `uniqueIndex` and copy the new unique element to `nums[uniqueIndex]`.
+   - Finally, returns `uniqueIndex + 1`, which represents the length of the updated array (containing only unique elements).
+
+2. **`main(String[] args)`:**
+   - Creates example arrays to test the `removeDuplicates` function.
+   - Prints the updated length and the updated array (using `Arrays.copyOfRange` to only print the relevant part of the array after removing duplicates.  The original array is modified in place).
+
+
+Key Improvements:
+
+- **Clearer Variable Names:**  `uniqueIndex` is more descriptive than just `i` or `j`.
+- **Handles Edge Cases:** The code now handles `null` and empty input arrays.
+- **In-Place Modification:** The function modifies the original array in place as requested, which is generally more efficient than creating a new array.
+- **Comprehensive Testing:** The `main` method includes tests with various scenarios (duplicates, empty array, null array, single-element array).
+- **Detailed Comments:**  The code is well-commented to explain the logic.

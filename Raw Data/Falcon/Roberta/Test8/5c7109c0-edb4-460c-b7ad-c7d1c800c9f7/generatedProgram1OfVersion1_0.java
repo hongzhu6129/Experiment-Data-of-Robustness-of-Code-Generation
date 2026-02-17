@@ -1,0 +1,64 @@
+import java.util.TreeSet;
+
+public class CompareTreeSets {
+
+    public static void main(String[] args) {
+        // Create two TreeSets
+        TreeSet<Integer> set1 = new TreeSet<>();
+        TreeSet<Integer> set2 = new TreeSet<>();
+
+        // Populate set1
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+        set1.add(4);
+        set1.add(5);
+
+        // Populate set2
+        set2.add(3);
+        set2.add(5);
+        set2.add(7);
+        set2.add(9);
+
+        // 1. Check if sets are equal
+        boolean isEqual = set1.equals(set2);
+        System.out.println("Are sets equal? " + isEqual); // Output: false
+
+
+        // 2. Find common elements (intersection)
+        TreeSet<Integer> intersection = new TreeSet<>(set1); // Create a copy to avoid modifying original
+        intersection.retainAll(set2);
+        System.out.println("Common elements: " + intersection); // Output: [3, 5]
+
+
+        // 3. Find the union of the sets
+        TreeSet<Integer> union = new TreeSet<>(set1);
+        union.addAll(set2);
+        System.out.println("Union of sets: " + union); // Output: [1, 2, 3, 4, 5, 7, 9]
+
+
+
+        // 4. Find the difference (elements in set1 but not in set2)
+        TreeSet<Integer> difference1 = new TreeSet<>(set1);
+        difference1.removeAll(set2);
+        System.out.println("Elements in set1 but not in set2: " + difference1); // Output: [1, 2, 4]
+
+        // 5. Find the difference (elements in set2 but not in set1)
+        TreeSet<Integer> difference2 = new TreeSet<>(set2);
+        difference2.removeAll(set1);
+        System.out.println("Elements in set2 but not in set1: " + difference2); // Output: [7, 9]
+
+
+        // 6. Check if set1 is a subset of set2
+        boolean isSubset1 = set2.containsAll(set1); 
+        System.out.println("Is set1 a subset of set2? " + isSubset1); // Output: false
+
+
+        // 7. Check if set2 is a subset of set1
+        boolean isSubset2 = set1.containsAll(set2);
+        System.out.println("Is set2 a subset of set1? " + isSubset2); // Output: false
+
+
+
+    }
+}

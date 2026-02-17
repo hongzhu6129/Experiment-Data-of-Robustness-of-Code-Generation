@@ -1,0 +1,16 @@
+
+
+**Key Improvements and Explanations:**
+
+* **JUnit Tests:**  Using JUnit provides a structured and robust way to test the code.
+* **Double Comparison with Delta:** When comparing floating-point numbers (doubles), always use a delta (a small tolerance) because of potential rounding errors.
+* **Corner Cases:**  The tests cover important corner cases:
+    * Zero radius.
+    * Negative radius (should ideally throw an `IllegalArgumentException`, which we now test).
+    * A large radius to check for potential overflow or other issues.
+* **Clearer Assertions:**  The `assertEquals` statements now include a delta and are more precise.
+* **Exception Handling Test:** Tests are included that check that the correct exceptions are thrown when a negative radius is provided.  This is critical for robust code.
+
+
+
+This revised answer provides a complete and testable solution with good coding practices.  Remember to add the JUnit library to your project to run these tests.  If you are using an IDE like IntelliJ or Eclipse, this is typically very straightforward.

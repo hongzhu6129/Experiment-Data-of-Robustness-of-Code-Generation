@@ -1,0 +1,45 @@
+import java.util.LinkedList;
+
+public class AppendLinkedList {
+
+    public static void main(String[] args) {
+        // Create a new LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+
+        // Element to append
+        String elementToAppend = "Orange";
+
+        // Append the element using add() - it adds to the end by default
+        linkedList.add(elementToAppend);
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + linkedList);
+
+
+
+        // Example with Integers:
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        int numberToAppend = 4;
+        numbers.add(numberToAppend);
+
+        System.out.println("Updated Integer LinkedList: " + numbers);
+
+
+        // Example appending a null (allowed in LinkedList):
+        LinkedList<String> listWithNull = new LinkedList<>();
+        listWithNull.add("First");
+        listWithNull.add(null); // Appending null
+        listWithNull.add("Third");
+
+        System.out.println("LinkedList with null: " + listWithNull);
+    }
+}

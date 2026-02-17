@@ -1,0 +1,60 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class RemoveHalfLinkedList {
+
+    public static void main(String[] args) {
+        // Example usage:
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+        linkedList.add(6);
+        linkedList.add(7);
+
+        System.out.println("Original LinkedList: " + linkedList);
+        removeHalf(linkedList);
+        System.out.println("LinkedList after removing half: " + linkedList);
+
+
+        linkedList.clear(); //Demonstrate for even length list
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+
+        System.out.println("Original LinkedList: " + linkedList);
+        removeHalf(linkedList);
+        System.out.println("LinkedList after removing half: " + linkedList);
+
+          linkedList.clear(); //Demonstrate for empty list
+          System.out.println("Original LinkedList: " + linkedList);
+          removeHalf(linkedList);
+          System.out.println("LinkedList after removing half: " + linkedList);
+
+
+    }
+
+    public static void removeHalf(LinkedList<Integer> linkedList) {
+        if (linkedList == null || linkedList.isEmpty()) {
+            return; // Nothing to remove
+        }
+
+        int size = linkedList.size();
+        int elementsToRemove = size / 2; // Integer division handles odd and even sizes
+
+
+        ListIterator<Integer> iterator = linkedList.listIterator();
+        int count = 0;
+
+         while (iterator.hasNext() && count < elementsToRemove) {
+             iterator.next(); // Move to the next element
+             iterator.remove(); // Remove the current element 
+             count++;
+         }
+
+
+    }
+}

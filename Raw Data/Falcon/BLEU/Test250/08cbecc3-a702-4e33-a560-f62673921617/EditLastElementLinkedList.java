@@ -1,0 +1,51 @@
+import java.util.LinkedList;
+
+public class EditLastElementLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Check if the list is empty to avoid exceptions
+        if (!linkedList.isEmpty()) {
+            // Edit the last element. Two approaches:
+            
+            // 1. Using set():  More efficient as it directly accesses the element.
+            int lastIndex = linkedList.size() - 1; 
+            linkedList.set(lastIndex, "Grape");
+
+
+            // 2. Using removeLast() and add(): Less efficient as it involves removal and addition.
+            // linkedList.removeLast(); 
+            // linkedList.add("Grape");
+
+
+            System.out.println("Modified LinkedList: " + linkedList);
+        } else {
+            System.out.println("LinkedList is empty. Cannot edit.");
+        }
+
+        // More comprehensive example with Integer types
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        System.out.println("Original Numbers LinkedList: " + numbers);
+
+        if (!numbers.isEmpty()) {
+             numbers.set(numbers.size() - 1, 10); // Change the last element (3) to 10.
+            System.out.println("Modified Numbers LinkedList: " + numbers);
+        } else {
+             System.out.println("Numbers LinkedList is empty. Cannot edit.");
+        }
+
+
+    }
+}

@@ -1,0 +1,20 @@
+
+
+
+
+Key improvements and explanations:
+
+1. **Efficiency Optimizations:**
+   - The code now includes `break` statements inside the loops to avoid unnecessary calculations. For instance, if `a^3` already exceeds `n`, there's no point in continuing the outer loop. Similarly, if `a^3 + b^3` exceeds `n`, the inner loops can be terminated early. This significantly speeds up the execution, especially for larger values of `n`.
+
+
+2. **Duplicate Pair Handling:**
+   - The innermost loop now starts `d` from `c + 1`.  This prevents counting the same pair (c, d) and (d, c) as two distinct solutions.
+
+3. **Clearer Output:** The `println` statement now includes `a`, `b`, `c`, and `d` in the output, making it easier to understand the pairs that sum to the Ramanujan number.
+
+4. **Duplicate Checking across 'b' values:**  The addition of `lastB` helps to avoid counting the same set of cubes as a solution just because the 'b' value changed in the second loop,  while 'a' stayed the same, yielding to same cubic sum.
+
+
+
+This revised version is more efficient and produces clearer output while addressing the potential duplicate counting issues.  It's designed to work correctly and more efficiently even with larger values of `n`.

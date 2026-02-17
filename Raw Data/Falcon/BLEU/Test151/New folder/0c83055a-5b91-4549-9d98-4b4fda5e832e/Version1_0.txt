@@ -1,0 +1,39 @@
+```java
+public class CountTwenties {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 20, 3, 4, 20, 6, 7, 20, 9, 10, 20, 12, 13, 20, 15, 16, 20, 18, 19, 20}; // Seven 20s, not adjacent
+        int[] arr2 = {1, 20, 20, 3, 4, 5, 6, 7, 8, 9}; // Adjacent 20s
+        int[] arr3 = {1, 20, 3, 4, 20, 6, 7, 20, 9, 10, 20, 12, 13, 20, 15, 16, 20, 18, 19}; // Only six 20s
+        int[] arr4 = {20, 1, 20, 3, 20, 4, 5, 20, 6, 7, 20, 8, 9, 20, 10, 20}; // Seven 20s, not adjacent (another example)
+
+
+
+        System.out.println("Array 1: " + checkTwenties(arr1)); // Should print true
+        System.out.println("Array 2: " + checkTwenties(arr2)); // Should print false
+        System.out.println("Array 3: " + checkTwenties(arr3)); // Should print false
+        System.out.println("Array 4: " + checkTwenties(arr4)); // Should print true
+
+
+
+    }
+
+    public static boolean checkTwenties(int[] arr) {
+        int count = 0;
+        boolean adjacent = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 20) {
+                count++;
+                if (i > 0 && arr[i - 1] == 20) {  // Check for adjacency
+                    adjacent = true;
+                    break; // No need to continue if adjacent 20s are found
+                }
+            }
+        }
+
+        return count == 7 && !adjacent;  // Return true if count is 7 AND no adjacent 20s found
+    }
+}
+
+```

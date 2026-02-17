@@ -1,0 +1,39 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the top part of the flag (stars and stripes)
+        for (int i = 0; i < 5; i++) {
+            // Print stars
+            for (int j = 0; j < 6; j++) {
+                if (i % 2 == 0) {
+                    System.out.print("* ");
+                } else {
+                   if(i==2 && j == 2){
+                        System.out.print("pct ");
+                    }
+                   else{
+                        System.out.print("* ");
+                    }
+                    
+                }
+            }
+            // Print stripes
+            System.out.print("==");
+            for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println(); // New line
+        }
+
+
+        // Print the bottom part of the flag (only stripes)
+        for (int i = 0; i < 6; i++) {
+            // Print stripes
+            System.out.print("==");
+            for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println(); // New line
+        }
+    }
+}

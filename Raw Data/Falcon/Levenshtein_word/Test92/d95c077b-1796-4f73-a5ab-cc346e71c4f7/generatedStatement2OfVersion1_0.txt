@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output |
+|---|---|---|
+| 1. Positive Numbers | 10, 20, 30 | 20.0 |
+| 2. Negative Numbers | -10, -20, -30 | -20.0 |
+| 3. Mixed Numbers | -5, 15, 20 | 10.0 |
+| 4. Zeroes | 0, 0, 0 | 0.0 |
+| 5. Large Numbers | 1000000, 2000000, 3000000 | 2000000.0 |
+| 6. Small Numbers | 0.001, 0.002, 0.003 | 0.002 |
+| 7. Decimal Numbers | 2.5, 5.7, 8.2 | 5.466666666666667 |
+| 8. Integer Overflow (Corner Case) | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | Overflow (Positive Infinity or large negative value due to how Java handles overflow. Will not throw an exception.)  |
+| 9. Integer Underflow (Corner Case) | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | Underflow (Negative Infinity or large positive value) |
+| 10. Double Max/Min (Corner Case) | Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE | Infinity |
+| 11. Double Max/Min and Zero | Double.MAX_VALUE, 0, 0 | Infinity |
+
+
+
+**How to Run Test Cases (Example with JUnit):**
+
+Although you can manually check these test cases, using a testing framework like JUnit is much more efficient and reliable.  Here's a basic JUnit example for testing the `calculateAverage` method:
+
+

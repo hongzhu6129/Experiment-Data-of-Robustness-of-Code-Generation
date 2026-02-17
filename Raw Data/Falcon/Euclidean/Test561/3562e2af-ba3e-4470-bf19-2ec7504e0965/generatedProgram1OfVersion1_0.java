@@ -1,0 +1,41 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "hello";
+        String str3 = new String("hello");
+        String str4 = "world";
+
+        // Method 1: Using equals() method (recommended for content comparison)
+        System.out.println("str1 equals str2: " + str1.equals(str2)); // true
+        System.out.println("str1 equals str3: " + str1.equals(str3)); // true
+        System.out.println("str1 equals str4: " + str1.equals(str4)); // false
+
+
+        // Method 2: Using == operator (compares references, not always content)
+        System.out.println("str1 == str2: " + (str1 == str2)); // true (because of string interning)
+        System.out.println("str1 == str3: " + (str1 == str3)); // false (different objects)
+        System.out.println("str1 == str4: " + (str1 == str4)); // false
+
+
+        // Demonstrating potential pitfalls of == with user input:
+
+        String str5 = new String(new char[] {'h','e','l','l','o'});  // Explicitly creating a new object
+
+        System.out.println("str1 equals str5: " + str1.equals(str5)); // true (content is the same)
+        System.out.println("str1 == str5: " + (str1 == str5));      // false (references are different)
+
+
+        // Example with user input (simulated):
+        String userInput1 = new String("hello");  // Imagine this came from user input
+        String userInput2 = new String("hello");  // Another user input, same content
+
+        System.out.println("userInput1 equals userInput2: " + userInput1.equals(userInput2)); // true
+        System.out.println("userInput1 == userInput2: " + (userInput1 == userInput2)); // false (likely, depends if string interning optimizes this specific case)
+
+
+
+        //Summary: Always use .equals() to compare string content.  Avoid == for strings
+        // unless you specifically want to check if the references are the same.
+    }
+}

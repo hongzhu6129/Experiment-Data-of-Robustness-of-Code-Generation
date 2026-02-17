@@ -1,0 +1,63 @@
+class Solution {
+    /**
+     * Creates a new string after removing a specified character from a given string,
+     * except for the first and last occurrences of the character.
+     *
+     * @param str The input string.
+     * @return The new string with the specified character removed (except first and last).
+     */
+    public String removeAllZ(String str) {
+        if (str == null || str.length() <= 2) {
+            return str;
+        }
+
+        char[] charArray = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+
+        int firstOccurrence = -1;
+        int lastOccurrence = -1;
+
+        // Find the first and last occurrences of 'z'
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] == 'z') {
+                if (firstOccurrence == -1) {
+                    firstOccurrence = i;
+                }
+                lastOccurrence = i;
+            }
+        }
+
+
+        for (int i = 0; i < charArray.length; i++) {
+            if (charArray[i] == 'z') {
+                if (i != firstOccurrence && i != lastOccurrence) {
+                    continue; // Skip 'z' if not the first or last occurrence
+                }
+            }
+            sb.append(charArray[i]);
+        }
+
+        return sb.toString();
+
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        System.out.println(solution.removeAllZ("zebrazone")); // Output: zebrazone
+        System.out.println(solution.removeAllZ("zzaabbz")); // Output: zzaabbz
+        System.out.println(solution.removeAllZ("zzz")); // Output: zzz  (Less than 2 characters or String is null)
+        System.out.println(solution.removeAllZ("zz")); // Output: zz
+        System.out.println(solution.removeAllZ("z"));   // Output: z
+        System.out.println(solution.removeAllZ(null));  // Output: null
+        System.out.println(solution.removeAllZ("This is a test"));  // This is a test
+
+
+        System.out.println(solution.removeAllZ("bazbazbaz"));  // Output: bazbazbaz
+        System.out.println(solution.removeAllZ("bazzzbazz"));  // Output: bazzzbazz
+
+
+    }
+}

@@ -1,0 +1,31 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Efficiency:** The original nested loop structure had a time complexity close to O(n^4).  This version incorporates several optimizations to reduce redundant calculations:
+   - `if (a3 > n) break;`:  Stops the loop if `a^3` exceeds `n`, as further calculations would be unnecessary.
+   - `if (a3 + b3 > n) break;`: Similar optimization for the sum of cubes.
+   - `b = a + 1`: Ensures that `b` is always greater than `a` to avoid duplicate pairs (e.g., 1^3 + 2^3 and 2^3 + 1^3).
+   -  `return;` exits after finding the first Ramanujan number. If you want to find *all* such numbers within the range, remove this `return` statement.
+
+
+2. **Clarity:** The code is more readable with better variable names and comments.
+
+3. **Correctness:** The condition `(a != c || b != d)` is crucial. It ensures that the two pairs of cubes are genuinely different (not just the same pair in a different order).
+
+
+4. **Flexibility:**  You can easily change the value of `n` to explore a different range.
+
+
+**How to compile and run:**
+
+1. Save the code as `Ramanujan.java`.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where you saved the file.
+4. Compile: `javac Ramanujan.java`
+5. Run: `java Ramanujan`
+
+
+The output for `n = 1729` will be:
+

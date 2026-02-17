@@ -1,0 +1,31 @@
+
+
+**Explanation and Key Improvements:**
+
+1. **`TreeMap` with `Comparator`:** The code uses a `TreeMap` which automatically sorts its keys.  The crucial part is providing a custom `Comparator` during the `TreeMap`'s construction.  This tells the `TreeMap` *how* to sort the keys.
+
+2. **`KeyComparator` Class:**  A separate nested class `KeyComparator` implements the `Comparator<String>` interface.  This is where the sorting logic resides.
+
+3. **`compare(String s1, String s2)` Method:** This method within the `KeyComparator` is the heart of the sorting. It receives two strings (`s1` and `s2`) and returns:
+   - a negative integer if `s1` should come before `s2`,
+   - a positive integer if `s1` should come after `s2`,
+   - zero if `s1` and `s2` are considered equal for sorting purposes.
+
+4. **Case-Insensitive Sorting:** The provided `compare` method uses `s1.compareToIgnoreCase(s2)` to achieve case-insensitive sorting.
+
+5. **Clear Example in `main`:** The `main` method demonstrates how to create the `TreeMap` with the custom comparator, add elements, and print the sorted map. The optional demonstration shows how to explicitly use the comparator.
+
+6. **Flexibility:** You can easily modify the `compare` method to implement different sorting logics (e.g., reverse order, sorting by length, etc.) without changing the rest of the code.
+
+
+
+**How to Compile and Run:**
+
+1. Save the code as `SortTreeMapKeys.java`.
+2. Compile: `javac SortTreeMapKeys.java`
+3. Run: `java SortTreeMapKeys`
+
+
+
+
+

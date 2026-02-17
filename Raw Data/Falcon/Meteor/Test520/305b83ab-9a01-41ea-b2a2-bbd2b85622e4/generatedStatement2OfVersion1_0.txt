@@ -1,0 +1,38 @@
+
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 255
+   - Expected Output: FF
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: 0  (This is a corner case. Make sure your code handles 0 correctly.)
+
+3. **Large Positive Number:**
+   - Input: 16777215  (This is FFFFFF in hex)
+   - Expected Output: FFFFFF
+
+4. **Negative Number:** (While technically decimal, Java's `nextInt()` handles negative numbers.  The output will be the two's complement representation in hexadecimal.)
+   - Input: -1
+   - Expected Output: FFFFFFFF (for a 32-bit integer)
+
+5. **Minimum Integer Value (Corner Case):**
+   - Input: -2147483648 (Integer.MIN_VALUE)
+   - Expected Output: 80000000
+
+
+**Explanation of Corner Cases and How the Code Handles Them:**
+
+* **Zero:** The `if (decimal == 0)` condition specifically handles the case where the input is zero, ensuring the output is "0".
+* **Negative Numbers:** Java uses two's complement representation for negative integers. The code correctly handles this by performing the modulo and division operations as usual. The resulting hexadecimal will be the two's complement representation.
+* **Minimum Integer Value:** This is a special corner case because its absolute value is one greater than the maximum positive integer value.  The two's complement representation of `Integer.MIN_VALUE` is `80000000`. The code correctly handles this edge case.
+
+
+**How to run the test cases:**
+
+1. **Manually:** Input the test case values when prompted by the program.
+2. **Automated Testing (Recommended - using JUnit for example):** Write unit tests using a testing framework like JUnit. This is a better practice for larger projects.  Here's a simple example with JUnit:
+

@@ -1,0 +1,39 @@
+import java.util.TreeSet;
+
+public class TreeSetLessThanSeven {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of integers
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some sample numbers
+        numbers.add(3);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.add(5);
+        numbers.add(9);
+        numbers.add(2);
+        numbers.add(6);
+        numbers.add(4);
+
+        // Find elements less than 7 using headSet()
+        TreeSet<Integer> lessThanSeven = new TreeSet<>(numbers.headSet(7));
+
+        // Print the elements less than 7
+        System.out.println("Elements less than 7: " + lessThanSeven);
+
+
+        // Alternatively, count the number of elements less than 7 directly:
+        int countLessThanSeven = numbers.headSet(7).size();
+        System.out.println("Number of elements less than 7: " + countLessThanSeven);
+
+        //You could also iterate and count if preferred (less efficient though):
+        int manualCount = 0;
+        for(Integer num : numbers) {
+            if (num < 7) {
+                manualCount++;
+            }
+        }
+        System.out.println("Number of elements less than 7 (manual count): " + manualCount);
+    }
+}

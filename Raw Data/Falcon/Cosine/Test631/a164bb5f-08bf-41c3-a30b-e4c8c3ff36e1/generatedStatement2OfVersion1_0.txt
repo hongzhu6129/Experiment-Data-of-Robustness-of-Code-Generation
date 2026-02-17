@@ -1,0 +1,49 @@
+
+
+**Test Cases:**
+
+1. **Positive Integer:**
+   - Input: `5`
+   - Expected Output: `615` (5 + 55 + 555)
+
+2. **Zero:**
+   - Input: `0`
+   - Expected Output: `0` (0 + 00 + 000)
+
+3. **Negative Integer:**
+   - Input: `-2`
+   - Expected Output: `-246` (-2 + -22 + -222)
+
+4. **Single Digit:**
+   - Input: `9`
+   - Expected Output: `1107` (9 + 99 + 999)
+
+5. **Multi-Digit:**
+    - Input: `123`
+    - Expected Output: `136656` (123 + 123123 + 123123123) // Note: potential overflow with very large numbers
+
+6. **Large Number (to check for potential overflow):**
+    - Input: `99999999`  (largest 8-digit number)
+    - Expected output: `11111110788888887`
+
+
+
+**Corner Cases:**
+
+1. **Invalid Input (Non-integer):**
+   - Input: `abc` or `1.5`
+   - Expected Output: `"Invalid input. Please enter an integer."` (The program should handle this gracefully and exit)
+
+
+
+**Explanation of Improvements in this version:**
+
+- **Input Validation:**  The code now checks if the input is a valid integer using `scanner.hasNextInt()`. This prevents the program from crashing if the user enters something that's not an integer.
+- **Clearer Comments:** The code is more clearly commented, explaining the logic.
+- **Closed Scanner:** The `scanner.close()` statement is added to release the resource held by the scanner.
+- **Handles potential overflow:**  The updated test cases include larger numbers to illustrate the potential for overflow if `n` is very large. For truly robust handling of very large numbers, you would need to use `BigInteger`.
+
+
+
+
+This improved version provides better error handling and is more robust. It also addresses the potential overflow issue highlighted in the previous response.

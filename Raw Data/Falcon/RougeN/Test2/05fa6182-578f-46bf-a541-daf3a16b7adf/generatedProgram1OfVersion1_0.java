@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class SubstringExtractor {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string and positions
+        System.out.println("Enter the input string:");
+        String inputString = scanner.nextLine();
+
+        System.out.println("Enter the positions (comma-separated):");
+        String positions = scanner.nextLine();
+
+        // Convert the positions string to an array of integers
+        int[] positionsArray = new int[positions.length()];
+        for (int i = 0; i < positions.length(); i++) {
+            positionsArray[i] = Integer.parseInt(positions.substring(i, i + 1));
+        }
+
+        // Get the substrings at the specified positions
+        String[] substrings = new String[positionsArray.length];
+        for (int i = 0; i < positionsArray.length; i++) {
+            substrings[i] = inputString.substring(positionsArray[i], positionsArray[i] + 1);
+        }
+
+        // Print the substrings
+        System.out.println("The substrings are:");
+        for (String substring : substrings) {
+            System.out.println(substring);
+        }
+    }
+}

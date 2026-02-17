@@ -1,0 +1,19 @@
+
+
+
+Key improvements:
+
+* **Efficiency:** Uses a two-pointer approach ( `left` and `right`) to efficiently partition the array in-place. This avoids unnecessary swaps and iterations.
+* **Correctness:**  Handles edge cases such as arrays with all positive, all negative, or empty arrays.
+* **Clarity:**  Uses meaningful variable names (`left`, `right`) and comments to explain the logic.
+* **Main Method for Testing:** Includes a `main` method with several test cases to demonstrate the functionality.  The output shows that the order of the negative and positive numbers within their respective sides is not guaranteed (and that's perfectly fine for the problem description).
+
+
+How it works:
+
+1. **Two Pointers:**  The `left` pointer starts at the beginning of the array, and the `right` pointer starts at the end.
+2. **Iteration and Swapping:** The `while` loop continues as long as `left` is less than `right`.  Inside the loop:
+   - The `left` pointer moves forward until it finds a positive number or reaches `right`.
+   - The `right` pointer moves backward until it finds a negative number or reaches `left`.
+   - If `left` is still less than `right` (meaning a positive number was found on the left and a negative on the right), the elements are swapped. Then both pointers are moved one step closer to the middle.
+3. **In-Place Partitioning:** This process effectively partitions the array into negative numbers on the left and positive numbers on the right.  No extra space is required.

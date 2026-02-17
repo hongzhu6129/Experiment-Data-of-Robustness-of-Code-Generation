@@ -1,0 +1,53 @@
+public class LongestZeroSequence {
+
+    public static void main(String[] args) {
+        int n = 1042; // Example integer
+
+        String binaryString = Integer.toBinaryString(n);
+
+        int maxLength = 0;
+        int currentLength = 0;
+
+        for (int i = 0; i < binaryString.length(); i++) {
+            if (binaryString.charAt(i) == '0') {
+                currentLength++;
+            } else {
+                maxLength = Math.max(maxLength, currentLength);
+                currentLength = 0;
+            }
+        }
+        maxLength = Math.max(maxLength, currentLength); // Check for trailing zeros
+
+
+        System.out.println("Longest sequence of zeros: " + maxLength);
+
+        //  More test cases:
+        test(1042);    // Expected: 2
+        test(529);     // Expected: 4
+        test(20);      // Expected: 1
+        test(15);      // Expected: 0
+        test(0);       // Expected: 1 (or 32 if counting leading zeros as in Integer.SIZE)  Clarify requirements if needed.
+        test(1);     // Expected:0
+        test(Integer.MAX_VALUE);// Expected:0
+        test(Integer.MIN_VALUE);// Expected: 0
+    }
+
+
+    // Helper method for testing (not part of the original problem, but good practice).
+    public static void test(int n) {
+        String binaryString = Integer.toBinaryString(n);
+        int maxLength = 0;
+        int currentLength = 0;
+        for (int i = 0; i < binaryString.length(); i++) {
+            if (binaryString.charAt(i) == '0') {
+                currentLength++;
+            } else {
+                maxLength = Math.max(maxLength, currentLength);
+                currentLength = 0;
+            }
+        }
+        maxLength = Math.max(maxLength, currentLength);
+        System.out.println("Input: " + n + ", Binary: " + binaryString + ", Longest sequence: " + maxLength);
+
+    }
+}

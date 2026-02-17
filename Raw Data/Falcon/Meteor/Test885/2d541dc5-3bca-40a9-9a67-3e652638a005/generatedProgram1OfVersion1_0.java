@@ -1,0 +1,64 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(8);
+        pq.add(3);
+        pq.add(6);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] arr1 = new Integer[pq.size()];
+        pq.toArray(arr1); 
+        System.out.println("Method 1: " + Arrays.toString(arr1));
+
+        // Restore original queue (as toArray() doesn't remove elements)  
+        pq.clear();      
+        pq.add(5);
+        pq.add(1);
+        pq.add(8);
+        pq.add(3);
+        pq.add(6);
+
+
+        // Method 2: Using toArray() with a zero-length array (more common)
+        Integer[] arr2 = pq.toArray(new Integer[0]);  // Or Integer[] arr2 = pq.toArray(new Integer[pq.size()]);       
+        System.out.println("Method 2: " + Arrays.toString(arr2));
+
+         // Restore original queue (as toArray() doesn't remove elements)
+        pq.clear();      
+        pq.add(5);
+        pq.add(1);
+        pq.add(8);
+        pq.add(3);
+        pq.add(6);
+
+
+
+        // Method 3: Iterating and adding to an array (less efficient, modifies the queue)
+        Integer[] arr3 = new Integer[pq.size()];
+        for (int i = 0; i < arr3.length; i++) {
+            arr3[i] = pq.poll(); // poll() removes the head
+        }
+        System.out.println("Method 3: " + Arrays.toString(arr3));
+
+
+        // Method 4: Stream API (Java 8+) - maintains the original queue and order isn't guaranteed
+        pq.clear();      
+        pq.add(5);
+        pq.add(1);
+        pq.add(8);
+        pq.add(3);
+        pq.add(6);
+
+
+        Integer[] arr4 = pq.stream().toArray(Integer[]::new);
+        System.out.println("Method 4 (Stream API): " + Arrays.toString(arr4)); // Order may vary
+
+    }
+}

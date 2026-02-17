@@ -1,0 +1,43 @@
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+public class DateComparison {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the date 1 year before and after the current date
+        LocalDate dateBeforeOneYear = currentDate.minus(Period.ofYears(1));
+        LocalDate dateAfterOneYear = currentDate.plus(Period.ofYears(1));
+
+        // Format the dates for output (optional, but makes it easier to read)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedCurrentDate = currentDate.format(formatter);
+        String formattedDateBeforeOneYear = dateBeforeOneYear.format(formatter);
+        String formattedDateAfterOneYear = dateAfterOneYear.format(formatter);
+
+        // Print the dates
+        System.out.println("Current Date: " + formattedCurrentDate);
+        System.out.println("Date 1 Year Before: " + formattedDateBeforeOneYear);
+        System.out.println("Date 1 Year After: " + formattedDateAfterOneYear);
+
+
+        // Comparisons (examples)
+
+        // Check if dateBeforeOneYear is before currentDate 
+        if (dateBeforeOneYear.isBefore(currentDate)) {
+            System.out.println(formattedDateBeforeOneYear + " is before " + formattedCurrentDate);
+        }
+
+        // Check if dateAfterOneYear is after currentDate
+        if (dateAfterOneYear.isAfter(currentDate)) {
+            System.out.println(formattedDateAfterOneYear + " is after " + formattedCurrentDate);
+        }
+
+         // Calculate the difference in years
+        int yearsDifference = Period.between(dateBeforeOneYear, dateAfterOneYear).getYears();
+        System.out.println("Difference in years between " + formattedDateBeforeOneYear + " and " + formattedDateAfterOneYear +": "+ yearsDifference); 
+    }
+}

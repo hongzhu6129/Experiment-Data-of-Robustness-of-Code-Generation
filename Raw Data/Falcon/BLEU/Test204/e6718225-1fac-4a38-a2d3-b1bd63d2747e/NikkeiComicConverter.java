@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class NikkeiComicConverter {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter the Nikkei comic text:");
+        String nikkeiText = scanner.nextLine();
+
+        // Convert the Nikkei comic text to a single alphabet
+        String alphabet = convertNikkeiComicToAlphabet(nikkeiText);
+
+        // Print the alphabet
+        System.out.println("The one-alphabet version of the Nikkei comic text is:");
+        System.out.println(alphabet);
+    }
+
+    private static String convertNikkeiComicToAlphabet(String nikkeiText) {
+        // Create an array to store the alphabet
+        char[] alphabet = new char[26];
+
+        // Iterate over the Nikkei comic text
+        for (int i = 0; i < nikkeiText.length(); i++) {
+            // Get the current character
+            char character = nikkeiText.charAt(i);
+
+            // Convert the character to lowercase
+            character = Character.toLowerCase(character);
+
+            // Get the index of the character in the alphabet
+            int index = character - 'a';
+
+            // Increment the count of the character in the alphabet
+            alphabet[index]++;
+        }
+
+        // Find the character with the highest count
+        char mostFrequentCharacter = 'a';
+        int highestCount = 0;
+        for (int i = 0; i < alphabet.length; i++) {
+            if (alphabet[i] > highestCount) {
+                highestCount = alphabet[i];
+                mostFrequentCharacter = (char) (i + 'a');
+            }
+        }
+
+        // Return the most frequent character
+        return String.valueOf(mostFrequentCharacter);
+    }
+
+    // Test cases
+    private static void testCases() {
+        // Test case 1: Empty string
+        String nikkeiText1 = "";
+        String alphabet1 = convertNikkeiComicToAlphabet(nikkeiText1);
+        System.out.println("Test case 1: Empty string");
+        System.out.println("Nikkei comic text: " + nikkeiText1);
+        System.out.println("Alphabet: " + alphabet1);
+
+        // Test case 2: Single character
+        String nikkeiText2 = "a";
+        String alphabet2 = convertNikkeiComicToAlphabet(nikkeiText2);
+        System.out.println("Test case 2: Single character");
+        System.out.println("Nikkei comic text: " + nikkeiText2);
+        System.out.println("Alphabet: " + alphabet2);
+
+        // Test case 3: Multiple characters
+        String nikkeiText3 = "abcde";
+        String alphabet3 = convertNikkeiComicToAlphabet(nikkeiText3);
+        System.out.println("Test case 3: Multiple characters");
+        System.out.println("Nikkei comic text: " + nikkeiText3);
+        System.out.println("Alphabet: " + alphabet3);
+
+        // Test case 4: Characters with different frequencies
+        String nikkeiText4 = "aaabbbbcccc";
+        String alphabet4 = convertNikkeiComicToAlphabet(nikkeiText4);
+        System.out.println("Test case 4: Characters with different frequencies");
+        System.out.println("Nikkei comic text: " + nikkeiText4);
+        System.out.println("Alphabet: " + alphabet4);
+
+        // Test case 5: Characters with the same frequency
+        String nikkeiText5 = "aabbccddee";
+        String alphabet5 = convertNikkeiComicToAlphabet(nikkeiText5);
+        System.out.println("Test case 5: Characters with the same frequency");
+        System.out.println("Nikkei comic text: " + nikkeiText5);
+        System.out.println("Alphabet: " + alphabet5);
+    }
+}

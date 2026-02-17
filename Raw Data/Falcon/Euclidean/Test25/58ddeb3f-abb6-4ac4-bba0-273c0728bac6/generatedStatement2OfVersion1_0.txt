@@ -1,0 +1,15 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Square Matrix Check:** The `transpose` method now checks if the matrix is square (rows == columns).  Transposing a non-square matrix in-place isn't directly possible because the dimensions change.  The code now prints a message and returns if the matrix isn't square.  You could choose to throw an exception instead if that's more appropriate for your application.
+
+2. **Efficient In-Place Transposition:**  The nested loop in `transpose` is optimized to avoid unnecessary swaps. The inner loop starts from `j = i + 1`. This prevents swapping elements twice and correctly transposes the matrix in place.
+
+3. **Clearer Output:** The `print_array` method is used to print both the original and transposed arrays, making the output easier to understand.
+
+4. **Example Usage:** The `main` method demonstrates how to use the `transpose` and `print_array` methods with a sample 2D array.
+
+
+This revised code addresses the potential issues with the original approach and provides a robust and efficient solution for transposing a square 2D array. If you need to transpose non-square arrays, you would need to create a new array with swapped dimensions to store the result.

@@ -1,0 +1,25 @@
+public class StringLength {
+
+    public static void main(String[] args) {
+        String str = "example string"; // Example string
+        int length = str.length();
+
+        System.out.println("The length of the string \"" + str + "\" is: " + length);
+
+
+        //  Additional Examples (you can uncomment to test):
+        //String str2 = ""; // Empty string
+        //System.out.println("The length of the string \"" + str2 + "\" is: " + str2.length()); 
+
+        //String str3 = " "; // String with a space
+        //System.out.println("The length of the string \"" + str3 + "\" is: " + str3.length());
+
+        //String str4 = null; // Null string - this will throw a NullPointerException if you try to get its length directly!
+        // if (str4 != null) { // Always check for null before accessing members of potentially null objects.
+        //     System.out.println("The length of the string \"" + str4 + "\" is: " + str4.length());
+        // } else {
+        //     System.out.println("The string is null.");
+        // }
+
+    }
+}

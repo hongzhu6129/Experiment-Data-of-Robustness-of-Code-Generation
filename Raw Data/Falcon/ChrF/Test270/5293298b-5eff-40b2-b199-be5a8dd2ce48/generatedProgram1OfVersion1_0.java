@@ -1,0 +1,56 @@
+import java.util.TreeSet;
+
+public class LowerElementInTreeSet {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> greenSet = new TreeSet<>();
+        greenSet.add(10);
+        greenSet.add(20);
+        greenSet.add(30);
+        greenSet.add(40);
+        greenSet.add(50);
+
+        int givenElement = 35;
+
+        Integer lowerElement = greenSet.lower(givenElement);
+
+        if (lowerElement != null) {
+            System.out.println("Lower element than " + givenElement + " in the green set: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + givenElement + " in the green set.");
+        }
+
+
+        givenElement = 15; // Example with no lower element
+        lowerElement = greenSet.lower(givenElement);
+
+         if (lowerElement != null) {
+            System.out.println("Lower element than " + givenElement + " in the green set: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + givenElement + " in the green set.");
+        }
+
+
+
+        givenElement = 5; // Example with the smallest element
+        lowerElement = greenSet.lower(givenElement);
+
+         if (lowerElement != null) {
+            System.out.println("Lower element than " + givenElement + " in the green set: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + givenElement + " in the green set.");
+        }
+
+
+
+         givenElement = 60; // Example with the largest element. Should return 50
+        lowerElement = greenSet.lower(givenElement);
+
+         if (lowerElement != null) {
+            System.out.println("Lower element than " + givenElement + " in the green set: " + lowerElement);
+        } else {
+            System.out.println("No element found lower than " + givenElement + " in the green set.");
+        }
+    }
+}

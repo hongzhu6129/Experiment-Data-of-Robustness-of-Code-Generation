@@ -1,0 +1,21 @@
+public class StringEnds {
+
+    public boolean anyStringAtEnd(String str1, String str2) {
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+
+        return str1.endsWith(str2) || str2.endsWith(str1);
+    }
+
+    public static void main(String[] args) {
+        StringEnds obj = new StringEnds();
+
+        System.out.println(obj.anyStringAtEnd("Python", "on")); // true
+        System.out.println(obj.anyStringAtEnd("Java", "script")); // false
+        System.out.println(obj.anyStringAtEnd("coding", "CODING")); // true
+        System.out.println(obj.anyStringAtEnd("abc", "bc")); // true
+        System.out.println(obj.anyStringAtEnd("ab", "AB")); // true
+
+
+    }
+}

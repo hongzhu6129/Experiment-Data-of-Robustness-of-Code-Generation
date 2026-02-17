@@ -1,0 +1,15 @@
+bash
+#!/bin/bash
+
+expected_output="  +'''''+\n | o  o |\n |  ^  |\n | '-' |\n +-----+"
+
+java FacePrinter > output.txt
+
+if diff output.txt <(echo "$expected_output"); then
+  echo "Test passed!"
+else
+  echo "Test failed!"
+  diff output.txt <(echo "$expected_output")  # Show the differences
+fi
+
+rm output.txt # Cleanup

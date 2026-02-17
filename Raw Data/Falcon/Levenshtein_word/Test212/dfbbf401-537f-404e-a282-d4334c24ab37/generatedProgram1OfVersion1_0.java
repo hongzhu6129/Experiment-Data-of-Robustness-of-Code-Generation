@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class MultiplyWithoutOperator {
+
+    public static int multiply(int num1, int num2) {
+        int result = 0;
+        int absNum2 = Math.abs(num2); // Handle negative numbers
+
+        for (int i = 0; i < absNum2; i++) {
+            result += num1;
+        }
+
+        if (num2 < 0) {
+            result = -result; // Adjust sign if num2 was negative
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input the first number: ");
+        int num1 = input.nextInt();
+        System.out.print("Input the second number: ");
+        int num2 = input.nextInt();
+
+        int product = multiply(num1, num2);
+        System.out.println("Result: " + product);
+        input.close();
+    }
+}

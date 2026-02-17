@@ -1,0 +1,130 @@
+```java
+import java.util.Scanner;
+
+public class FractionOperations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter the numerator of the first fraction:");
+        int num1 = input.nextInt();
+
+        System.out.println("Enter the denominator of the first fraction:");
+        int den1 = input.nextInt();
+
+        // Input validation for denominator (cannot be zero)
+        if (den1 == 0) {
+            System.out.println("Denominator cannot be zero. Exiting.");
+            return; 
+        }
+
+
+        System.out.println("Enter the numerator of the second fraction:");
+        int num2 = input.nextInt();
+
+        System.out.println("Enter the denominator of the second fraction:");
+        int den2 = input.nextInt();
+
+        // Input validation for denominator (cannot be zero)
+        if (den2 == 0) {
+            System.out.println("Denominator cannot be zero. Exiting.");
+            return;
+        }
+
+        // Addition
+        int addNum = num1 * den2 + num2 * den1;
+        int addDen = den1 * den2;
+        System.out.println("Addition: " + addNum + "/" + addDen);
+
+
+        // Subtraction
+        int subNum = num1 * den2 - num2 * den1;
+        int subDen = den1 * den2;
+        System.out.println("Subtraction: " + subNum + "/" + subDen);
+
+        // Multiplication
+        int mulNum = num1 * num2;
+        int mulDen = den1 * den2;
+        System.out.println("Multiplication: " + mulNum + "/" + mulDen);
+
+        // Division
+        if (num2 == 0) { // Handle division by zero
+            System.out.println("Division by zero error.");
+        } else {
+            int divNum = num1 * den2;
+            int divDen = den1 * num2;
+            System.out.println("Division: " + divNum + "/" + divDen);
+        }
+
+
+        // Remainder (for fractions, we'll interpret this as the remainder of the numerators when the denominators are equalized)
+        int remainderNum = (num1*den2) % (num2*den1); //Remainder of scaled numerators.
+        int remainderDen = den1*den2; // Common denominator
+        System.out.println("Remainder: " + remainderNum + "/" + remainderDen );
+
+
+        input.close();
+    }
+
+    // Optional:  A function to simplify fractions (Greatest Common Divisor)
+    public static int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+}
+
+
+
+
+```
+
+
+
+## Test Cases
+
+Here are some test cases, including corner cases:
+
+**1. Normal Cases:**
+
+* **Input:** num1=1, den1=2, num2=1, den2=3
+* **Expected Output:**
+    * Addition: 5/6
+    * Subtraction: 1/6
+    * Multiplication: 1/6
+    * Division: 3/2
+    * Remainder: 3/6
+
+
+* **Input:** num1=3, den1=4, num2=1, den2=2
+* **Expected Output:**
+    * Addition: 10/8
+    * Subtraction: 2/8
+    * Multiplication: 3/8
+    * Division: 6/4
+    * Remainder: -2/8
+
+
+**2. Corner Cases:**
+
+* **Zero Denominator:**  num1=1, den1=0, num2=1, den2=2  (and variations where den2 is 0)
+* **Expected Output:**  "Denominator cannot be zero. Exiting."
+
+* **Division by Zero:** num1=1, den1=2, num2=0, den2=3
+* **Expected Output:** "Division by zero error." (other operations should still calculate correctly)
+
+* **Large Numbers:** num1=10000, den1=20000, num2=5000, den2=10000 (to test for potential integer overflow �  consider using `long` data type if needed)
+
+* **Negative Numbers:** num1=-5, den1=2, num2=3, den2=-4 (test handling of negative numerators and denominators)
+
+* **Zero Numerators:** num1=0, den1=5, num2=3, den2=4 (and variations with num2=0)
+
+**3. Simplification (if implemented):**
+
+If you implement the `gcd` and fraction simplification, add tests to check if fractions are correctly reduced to their simplest form. For instance, 10/8 should simplify to 5/4.
+
+
+
+
+By running these test cases, you can thoroughly verify that your fraction calculator works correctly under different conditions.  Remember to consider using a testing framework like JUnit for more structured and automated testing as your program grows.

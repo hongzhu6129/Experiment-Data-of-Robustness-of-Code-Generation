@@ -1,0 +1,40 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases:
+
+1. **Valid Format:**
+   - Input Format: `yyyy/MM/dd HH:mm:ss.SSS`
+   - Expected Output: A date and time string in the specified format (e.g., 2024/10/27 10:30:00.123).  Check that the year, month, day, hour, minute, second, and milliseconds are correctly formatted.
+
+2. **Different Valid Formats:**
+   - Input Formats:  `yyyy-MM-dd`, `HH:mm:ss`, `MMMM dd, yyyy`, `E, MMM dd yyyy HH:mm:ss Z` (and others).
+   - Expected Output:  Correctly formatted strings for each format.  This tests the flexibility of the `DateTimeFormatter`.
+
+3. **Invalid Format:**
+   - Input Format: `yyyy/MM/dd HHmmssSSS` (missing separators).
+   - Expected Output:  A `DateTimeParseException` should be thrown and gracefully handled (you could modify the `getCurrentDateTime` method to catch this exception and return an error message or a default value if required).  This is a **corner case** testing how the program handles incorrect input.
+
+4. **Empty Format String:**
+   - Input Format: `""` (empty string)
+   - Expected Output: A `DateTimeParseException` or another appropriate exception/error message. This is a **corner case**.
+
+
+5. **Format with Extra Characters:**
+   - Input Format: `"yyyy/MM/dd HH:mm:ss.SSS  Extra Text"`
+   - Expected Output:  The date and time part should be correctly formatted, but the "Extra Text" should also appear in the output.  This tests how the formatter handles extra characters that are not format specifiers.
+
+
+
+6. **Single-digit values:** (Not a corner case, but good to test)
+    - Ensure the output correctly pads single digits with zeros (e.g., month 1 should be `01`, hour 5 should be `05`). For instance, the date 2024/1/2 5:7:8 should be output as `2024/01/02 05:07:08.000` if the format string is `yyyy/MM/dd HH:mm:ss.SSS`.
+
+7. **Leap Year:** (Not a corner case, but good to test)
+   - Test with a leap year date (e.g., February 29, 2024) to make sure it is handled correctly.
+
+
+**How to Run Tests (Example using JUnit):**
+
+If you are using an IDE like IntelliJ or Eclipse, you can easily create JUnit tests to automate these test cases.  Here's a basic example:
+

@@ -1,0 +1,45 @@
+public class PasswordValidator {
+
+    public static void main(String[] args) {
+        String password1 = "MyPassword123";
+        String password2 = "short";
+        String password3 = "MyLongPassword";
+        String password4 = "MyLongPassword1";
+        String password5 = "MyP@$$wOrd12";
+
+        System.out.println(password1 + ": " + is_Valid_Password(password1)); // true
+        System.out.println(password2 + ": " + is_Valid_Password(password2)); // false
+        System.out.println(password3 + ": " + is_Valid_Password(password3)); // false
+        System.out.println(password4 + ": " + is_Valid_Password(password4)); // false
+        System.out.println(password5 + ": " + is_Valid_Password(password5)); // false
+
+
+    }
+
+    public static boolean is_Valid_Password(String password) {
+        if (password.length() < 10) {
+            return false;
+        }
+
+        int digitCount = 0;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (!is_Letter(c) && !is_Numeric(c)) {
+                return false; // Contains invalid characters
+            }
+            if (is_Numeric(c)) {
+                digitCount++;
+            }
+        }
+
+        return digitCount >= 2;
+    }
+
+    public static boolean is_Letter(char c) {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    }
+
+    public static boolean is_Numeric(char c) {
+        return c >= '0' && c <= '9';
+    }
+}

@@ -1,0 +1,18 @@
+
+
+
+Explanation and Key Improvements:
+
+1. **Clearer Method Signature Adherence:** The code now strictly adheres to the required `public static void main` and `private static int[] Saddleback` method signatures.
+
+2. **Return an Array for Row and Column:** The `Saddleback` method returns an `int[]` containing the row and column indices of the target.  If the target is not found, it returns `{-1, -1}`.  This is a much cleaner and more standard way to return multiple values from a method.
+
+3. **Saddleback Search Algorithm:** The core logic is the Saddleback search.  It starts at the top-right corner of the matrix.  If the current element is smaller than the target, it moves down a row (because elements increase down the columns). If the current element is larger than the target, it moves left a column (because elements increase across the rows).  This efficiently eliminates portions of the matrix in each step.
+
+4. **Example Usage and Test Cases in `main`:** The `main` method demonstrates how to use the `Saddleback` method and includes test cases to verify that it works correctly, both when the target is found and when it's not present in the matrix.
+
+
+5. **Comments and Readability:**  Comments have been added to explain the code's logic, making it easier to understand. Variable names are also more descriptive.
+
+
+This improved version is more efficient, more robust (handles not-found cases correctly), and adheres to best practices in Java coding.

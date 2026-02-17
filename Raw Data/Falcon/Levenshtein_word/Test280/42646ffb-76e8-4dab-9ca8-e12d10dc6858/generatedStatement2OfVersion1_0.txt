@@ -1,0 +1,24 @@
+
+
+
+Explanation and Improvements:
+
+1. **Clearer Regex:** The regular expression is more robust and handles a wider range of valid phone number formats, including those with or without area code parentheses and hyphens, as well as numbers with an optional country code prefix (e.g., "+1-").
+
+2. **Concise Validation:** The `validate` method directly returns the result of `matcher.matches()`, making the code cleaner.
+
+3. **Example Usage:**  The `main` method demonstrates how to use the `validate` method with different phone number examples, including valid and invalid ones. This makes it easier to test and understand the functionality.
+
+4. **Handles Country Codes (Optional):** The regex now includes an optional part `(\\+\\d-)?` at the beginning to handle phone numbers with a country code prefix (like "+1-"). The `?` makes this part optional.
+
+5. **More Flexible Spacing:** The regex allows for a space or a hyphen between the number parts, making it more flexible.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `PhoneNumberValidator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac PhoneNumberValidator.java`
+3. **Run:** After successful compilation, run the program with: `java PhoneNumberValidator`
+
+
+This improved version provides better validation and handles more phone number formats, making it more practical for real-world scenarios.

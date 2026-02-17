@@ -1,0 +1,14 @@
+public class SumSeries {
+
+    public static void main(String[] args) {
+        int sum = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;
+        System.out.println(sum); 
+
+        // Alternatively, using a loop (more general approach):
+        int sumLoop = 0;
+        for (int i = 1; i <= 10; i++) {
+            sumLoop += i;
+        }
+        System.out.println(sumLoop); // Output will be the same (55)
+    }
+}

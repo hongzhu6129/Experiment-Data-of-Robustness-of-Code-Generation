@@ -1,0 +1,41 @@
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+        Integer key1 = 25;
+        Integer result1 = getLeastKeyGreaterThan(treeMap, key1);
+        System.out.println("Least key greater than " + key1 + ": " + result1); // Output: 30
+
+        Integer key2 = 55;
+        Integer result2 = getLeastKeyGreaterThan(treeMap, key2);
+        System.out.println("Least key greater than " + key2 + ": " + result2); // Output: null
+
+
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+        String key3 = "apricot";
+        String result3 = getLeastKeyGreaterThan(stringTreeMap, key3);
+        System.out.println("Least key greater than " + key3 + ": " + result3); // Output: banana
+
+        String key4 = "zucchini";
+        String result4 = getLeastKeyGreaterThan(stringTreeMap, key4);
+        System.out.println("Least key greater than " + key4 + ": " + result4); // Output: null
+
+    }
+
+    public static <K, V> K getLeastKeyGreaterThan(TreeMap<K, V> treeMap, K key) {
+        return treeMap.higherKey(key);
+    }
+}

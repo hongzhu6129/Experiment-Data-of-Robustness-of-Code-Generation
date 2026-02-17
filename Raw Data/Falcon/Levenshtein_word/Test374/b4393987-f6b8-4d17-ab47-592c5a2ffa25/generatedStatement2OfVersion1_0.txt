@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The `main` method now includes input validation to check if both `n` and `k` are positive. It prints an error message if they are not.
+2. **User Input:**  The program uses a `Scanner` to get the two positive numbers (n and k) from the user.
+3. **Clearer Output:** The output message is more informative, explicitly mentioning "binomial coefficient" and the input values.
+4. **Closed Scanner:**  The `scanner.close()` statement is added to release the resource held by the scanner.
+5. **Optimization in `binomial_Coefficient`:** The `if (k > n / 2)` condition is an optimization.  Calculating C(n, k) is the same as calculating C(n, n-k). This avoids unnecessary calculations when k is larger than n/2.
+6. **Clearer Variable Names:** I've kept the required method signature `binomial_Coefficient` but in a real application, a more descriptive name like `calculateBinomialCoefficient` would be preferred.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `LatinisationCoefficient.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac LatinisationCoefficient.java`
+3. **Run:** `java LatinisationCoefficient`
+
+
+The program will then prompt you to enter the two positive numbers.

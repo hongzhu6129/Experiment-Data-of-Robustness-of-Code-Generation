@@ -1,0 +1,23 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class EmptyMultiplicationSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet to store multiplication results (though any Set implementation would work).
+        Set<Integer> multiplicationSet = new HashSet<>();
+
+        // Add some sample values (you can modify this part as needed).
+        multiplicationSet.add(2 * 3);
+        multiplicationSet.add(5 * 7);
+        multiplicationSet.add(10 * 2);
+
+
+        System.out.println("Original set: " + multiplicationSet);
+
+        // Empty the set using the clear() method.
+        multiplicationSet.clear();
+
+        System.out.println("Set after clearing: " + multiplicationSet); 
+    }
+}

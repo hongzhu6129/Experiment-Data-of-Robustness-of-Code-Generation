@@ -1,0 +1,45 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the program:
+
+1. **Standard Case (Given):**
+   - `radius = 7.5`
+   - Expected Output:
+     - `fence is = 47.123889803847`
+     - `area is = 176.714586764426`
+
+2. **Zero Radius:**
+   - `radius = 0`
+   - Expected Output:
+     - `fence is = 0.0`
+     - `area is = 0.0`
+
+3. **Negative Radius (Invalid, but test for handling):**
+   - `radius = -5`  (The program should ideally handle this and perhaps print an error message or throw an exception since a negative radius is not physically meaningful.)
+   - Expected Behavior: Either an error message, an exception, or mathematically correct but nonsensical results (perimeter and area will be negative; this might require an absolute value in the formulas if you want only positive results).
+
+
+4. **Very Large Radius:**
+   - `radius = 1000000` (Tests for potential overflow or precision issues)
+   - Expected Output (check the order of magnitude to ensure the calculation is correct):  Calculate these beforehand and compare.
+
+5. **Small Radius:**
+    - `radius = 0.0001` (Tests for potential underflow or precision issues)
+    - Expected Output: Calculate these beforehand and compare.
+
+6. **Boundary Case (Close to double's maximum value):**
+    - `radius = Double.MAX_VALUE / 2` (Tests for potential overflow issues; be very careful with this case)
+    - Expected Behavior:  The program might throw an exception due to overflow during calculations. This is expected behavior, as `Double.MAX_VALUE` represents the largest possible double value.
+
+
+**How to Run the Tests:**
+
+* **Manual Input:** You can change the `radius` value in the code for each test case and run the program.
+
+* **Automated Testing (Recommended):** A better approach is to write unit tests using a testing framework like JUnit. This allows you to automate the testing process and easily check the results against expected values.
+
+
+
+

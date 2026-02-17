@@ -1,0 +1,30 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1  |
+| 3. Zero and Positive | 0 | 7 | 7 | -7 | 0 | 0 | 0 |
+| 4. Positive and Zero  | 8 | 0 | 8 | 8 | 0 | Division by zero error | Division by zero error |
+| 5. Zero and Zero | 0 | 0 | 0 | 0 | 0 | Division by zero error | Division by zero error |
+| 6. Large Numbers | 1000000 | 500000 | 1500000 | 500000 | 500000000000 | 2 | 0 |
+| 7. Decimal Numbers | 2.5 | 1.2 | 3.7 | 1.3 | 3 | 2.0833333333333335 | 0.1 |
+| 8. Integer and Decimal | 5 | 2.5 | 7.5 | 2.5 | 12.5 | 2 | 0 |
+| 9. Negative and Positive | -10 | 5 | -5 | -15 | -50 | -2 | 0 |
+| 10. Positive and Negative | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| 11.  MIN_VALUE and MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE | -1 | Integer.MIN_VALUE - Integer.MAX_VALUE (overflow) | (long)Integer.MIN_VALUE * Integer.MAX_VALUE | -1 (approx.)| Integer.MIN_VALUE|
+| 12. MAX_VALUE and MIN_VALUE | Integer.MAX_VALUE | Integer.MIN_VALUE | -1 | Integer.MAX_VALUE - Integer.MIN_VALUE (overflow) | (long)Integer.MAX_VALUE * Integer.MIN_VALUE | -1 (approx.) | Integer.MAX_VALUE |
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Cases 4 and 5):**  The code explicitly checks for division by zero and prints an appropriate error message. This prevents the program from crashing.  Test cases 4 and 5 verify this behavior.
+* **Large Numbers (Case 6):** Using `double` for the variables allows the program to handle larger numbers than `int` or `float`, although there might be some loss of precision with extremely large values. 
+* **Integer Overflow/Underflow (Cases 11 and 12):** When working with `int` or `long`, arithmetic operations can result in overflow (a value exceeding the maximum representable value) or underflow (a value below the minimum).  With `double`, overflow/underflow is less of a concern in these cases, as it will typically result in `Infinity` or `-Infinity`.  The expected results for case 11 and 12 require casting at least one operand to `long` to handle the large magnitude of the product.  Also note the potential overflow when calculating the difference between `Integer.MAX_VALUE` and `Integer.MIN_VALUE`.
+
+
+This set of test cases covers various scenarios and helps ensure the program's correctness and robustness. Remember to actually run these test cases through your program to verify it produces the expected outputs.  You could automate this process by writing unit tests (e.g., using JUnit).

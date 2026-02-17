@@ -1,0 +1,16 @@
+
+
+
+**Explanation and improvements:**
+
+1. **Direct Calculation (First Part):**  The first part of the code directly adds the two provided integer values (74 and 36) and prints their sum (110). This addresses the basic requirement of the problem.
+
+2. **Handling String Input (Second Part):** The second part demonstrates how to handle string input that *might* contain non-numeric characters (as suggested by the "74 h 36" example).  
+   - It uses `input.split("\\D+")` to split the string by any non-digit character. `\D+` is a regular expression that matches one or more non-digit characters. This creates an array of strings containing the numbers.
+   - It then uses `Integer.parseInt()` to convert the extracted string parts into integers.
+   - **Error Handling:** A `try-catch` block is added to handle potential `NumberFormatException` errors. This is essential because if the input string is not in the expected format (e.g., "abc h def"),  `Integer.parseInt()` would throw an exception. The `catch` block handles this gracefully by printing an "Invalid input format" message.
+   - **Input Validation:** An `if (parts.length >= 2)` check is added to make sure there are at least two numbers in the input string after the split. This avoids `ArrayIndexOutOfBoundsException` if the input is incomplete.
+
+
+
+This improved version is much more robust and can deal with different input scenarios, making it more practical.

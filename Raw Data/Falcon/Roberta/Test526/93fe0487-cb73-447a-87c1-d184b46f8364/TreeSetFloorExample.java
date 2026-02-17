@@ -1,0 +1,47 @@
+import java.util.TreeSet;
+
+public class TreeSetFloorExample {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Element to find the floor (largest element less than or equal to)
+        int target = 35;
+
+        // Get the floor of the target element
+        Integer floor = numbers.floor(target);
+
+        // Print the floor value
+        if (floor != null) {
+            System.out.println("Floor of " + target + ": " + floor);
+        } else {
+            System.out.println("No element less than or equal to " + target + " found.");
+        }
+
+         //Example with different target values
+        target = 20;
+        floor = numbers.floor(target);
+        if (floor != null) {
+            System.out.println("Floor of " + target + ": " + floor);
+        } else {
+            System.out.println("No element less than or equal to " + target + " found.");
+        }
+
+
+        target = 5;
+        floor = numbers.floor(target);
+        if (floor != null) {
+            System.out.println("Floor of " + target + ": " + floor);
+        } else {
+            System.out.println("No element less than or equal to " + target + " found.");
+        }
+    }
+}

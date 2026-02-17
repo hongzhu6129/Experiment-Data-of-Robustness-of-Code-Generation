@@ -1,0 +1,37 @@
+import java.util.Calendar;
+import java.util.Date;
+
+public class CreateDateWithCalendar {
+
+    public static void main(String[] args) {
+
+        // 1. Get an instance of the Calendar class. 
+        // This usually defaults to the current date and time in the system's default time zone.
+        Calendar calendar = Calendar.getInstance();
+
+
+        // 2. Optionally, set specific date and time components.  
+        // If you don't set them, the current date/time will be used.
+        calendar.set(Calendar.YEAR, 2024);         // Set the year
+        calendar.set(Calendar.MONTH, Calendar.OCTOBER); // Set the month (0-indexed: 0=January, 1=February, etc.)
+        calendar.set(Calendar.DAY_OF_MONTH, 26);   // Set the day of the month
+
+
+        // 3. Create a Date object from the Calendar instance.
+        Date date = calendar.getTime();
+
+
+        // 4. Print the date (optional).
+        System.out.println(date);
+
+
+        //  Example of setting a specific time:
+        calendar.set(Calendar.HOUR_OF_DAY, 10); // Set the hour (0-23)
+        calendar.set(Calendar.MINUTE, 30);      // Set the minute
+        calendar.set(Calendar.SECOND, 0);       // Set the second
+        date = calendar.getTime();
+        System.out.println(date);
+
+
+    }
+}

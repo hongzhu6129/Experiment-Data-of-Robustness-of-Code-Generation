@@ -1,0 +1,20 @@
+
+
+
+**Test Cases and Corner Cases:**
+
+Testing this kind of program is more about verification than finding bugs in the code itself (unless you suspect a problem with the underlying Java library).  You're primarily checking if the program accurately reflects the available charsets on the system it's running on.
+
+1. **Standard Output Check:**
+
+   - Run the program and visually inspect the output.  Does it list charsets that you expect to be available on your system (e.g., UTF-8, UTF-16, US-ASCII, ISO-8859-1)?
+
+2. **Comparison with System Information:**
+
+   - On some operating systems (like Linux), you can get a list of available charsets from system commands.  Compare the program's output with this list.  For example, on Linux, you might use `locale -a`.
+
+3. **Empty SortedMap (Hypothetical Corner Case):**
+
+   - While practically unlikely, you could simulate an empty `Charset.availableCharsets()` return value for a more rigorous unit test (though this depends on your testing framework):
+
+   

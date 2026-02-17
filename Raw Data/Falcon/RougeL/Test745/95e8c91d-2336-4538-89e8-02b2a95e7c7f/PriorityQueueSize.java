@@ -1,0 +1,24 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueSize {
+
+    public static void main(String[] args) {
+
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some elements
+        pq.offer(10);
+        pq.offer(20);
+        pq.offer(15);
+        pq.offer(5);
+        pq.offer(30);
+
+
+        // Get the size of the PriorityQueue
+        int size = pq.size();
+
+        // Print the size
+        System.out.println("The size of the priority queue is: " + size);
+    }
+}

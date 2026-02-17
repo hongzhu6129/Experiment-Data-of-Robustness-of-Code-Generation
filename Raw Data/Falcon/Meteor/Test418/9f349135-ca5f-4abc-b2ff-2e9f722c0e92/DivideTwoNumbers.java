@@ -1,0 +1,37 @@
+public class DivideTwoNumbers {
+
+    public static void main(String[] args) {
+
+        int numerator = 50;
+        int denominator = 3;
+
+        // Perform integer division
+        int result = numerator / denominator;
+
+        // Print the result to the console
+        System.out.println(numerator + "/" + denominator + ": " + result);
+
+
+        // Example with double for more precise division (optional)
+        double doubleNumerator = 50.0;
+        double doubleDenominator = 3.0;
+        double doubleResult = doubleNumerator / doubleDenominator;
+
+        System.out.println(doubleNumerator + "/" + doubleDenominator + ": " + doubleResult);
+
+
+        //Handling potential ArithmeticException (Divide by Zero) (Important)
+        try {
+            int zeroDenominator = 0;
+            int zeroResult = numerator / zeroDenominator; // This will throw an exception
+            System.out.println(numerator + "/" + zeroDenominator + ": " + zeroResult); //This won't execute
+
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,63 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to test the Java program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Coordinates:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+4. **Opposite sides of the Earth:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 180
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Near Antipodal Points (not exactly opposite but close):**
+    - lat1: 45
+    - lon1: -70
+    - lat2: -44.5 // Almost opposite latitude
+    - lon2: 111   // Roughly opposite longitude  (-70 + 180 = 110)
+    - Expected output: Close to, but slightly less than, Earth's circumference / 2
+
+6. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 20
+   - lat2: 0
+   - lon2: -160 
+   - Expected Output: ~17744.74 km
+
+
+7. **Invalid Input (Optional):**  You could add error handling to your program to test invalid input:
+   - lat1: 91 (out of range)
+   - ...
+
+
+
+**How to Run Test Cases:**
+
+You can manually enter these test cases into the console or (better yet) modify the Java program to accept command-line arguments or read inputs from a file to automate the testing process.  This would give you more consistent and efficient testing.  For example, you could create a text file with the test cases and then read them in one by one.
+
+
+Example of testing with file input (modify your `EarthDistance.java`):
+

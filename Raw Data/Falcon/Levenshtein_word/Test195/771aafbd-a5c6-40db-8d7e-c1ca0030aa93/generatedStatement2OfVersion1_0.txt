@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The code now explicitly handles `null` and empty input arrays, returning 0 in these cases.
+
+2. **Clearer Variable Names:**  `k` is used to represent the index of the next unique element, making the code easier to follow.
+
+3. **Efficient In-Place Modification:** The `removeDuplicates` method modifies the input array `nums` directly, moving unique elements to the front of the array.
+
+4. **Returns the Length of the Unique Subarray:** The method returns `k`, which represents the number of unique elements (and therefore the effective length of the updated array).
+
+5. **Illustrative `main` Method:** The `main` method demonstrates the usage of the `removeDuplicates` method with various test cases, including empty and null arrays.  It uses `Arrays.copyOfRange()` to print only the relevant part of the modified array (up to index `k`).
+
+
+**How it works:**
+
+The algorithm iterates through the sorted array. It maintains a pointer `k` to keep track of the position where the next unique element should be placed.  If the current element `nums[i]` is different from the previous element `nums[i-1]`, it's a unique element, so it's copied to `nums[k]`, and `k` is incremented. Finally, `k` is returned, indicating the length of the subarray containing the unique elements.

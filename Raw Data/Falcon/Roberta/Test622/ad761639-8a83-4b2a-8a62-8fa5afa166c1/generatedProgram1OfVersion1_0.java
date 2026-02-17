@@ -1,0 +1,59 @@
+public class SwapFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+
+        // Swap and create a new array
+        int[] swappedArray = swapFirstLastElements(originalArray);
+
+        // Print the original and swapped arrays
+        System.out.print("Original Array: ");
+        printArray(originalArray);
+
+        System.out.print("Swapped Array: ");
+        printArray(swappedArray);
+
+
+        //Another example with an array of length 1
+         int[] oneElementArray = {7};
+
+        // Swap and create a new array (in this case, it will be the same)
+        int[] swappedOneElementArray = swapFirstLastElements(oneElementArray);
+
+        // Print the original and swapped arrays
+        System.out.print("Original One-Element Array: ");
+        printArray(oneElementArray);
+
+        System.out.print("Swapped One-Element Array: ");
+        printArray(swappedOneElementArray);
+
+
+    }
+
+    public static int[] swapFirstLastElements(int[] arr) {
+        if (arr.length < 1) {
+            // Handle the case where the array is empty (or throw an exception)
+             System.out.println("Array must have at least one element."); // Or throw an exception
+            return arr; // Or return null, or an empty array, or throw an exception.
+        }
+
+        int[] newArray = arr.clone(); // Create a new array to avoid modifying the original
+        
+        if (newArray.length > 1) { // Only swap if there are at least two elements
+             int temp = newArray[0];
+             newArray[0] = newArray[newArray.length - 1];
+             newArray[newArray.length - 1] = temp;
+        }
+
+
+        return newArray;
+    }
+
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}

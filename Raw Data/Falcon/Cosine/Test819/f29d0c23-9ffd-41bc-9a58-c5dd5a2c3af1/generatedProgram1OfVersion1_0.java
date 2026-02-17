@@ -1,0 +1,35 @@
+import java.util.PriorityQueue;
+
+public class HammingNumbers {
+
+    public static void main(String[] args) {
+        int n = 20;
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        pq.add(1L);
+
+        long[] hammingNumbers = new long[n];
+        int count = 0;
+
+        while (count < n) {
+            long current = pq.poll();
+
+            // Avoid duplicates
+            if (count > 0 && current == hammingNumbers[count - 1]) {
+                continue;
+            }
+
+            hammingNumbers[count++] = current;
+
+            pq.add(current * 2);
+            pq.add(current * 3);
+            pq.add(current * 5);
+        }
+
+
+        System.out.print("First " + n + " Hamming numbers: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(hammingNumbers[i] + " ");
+        }
+        System.out.println(); // Add a newline for better formatting.
+    }
+}

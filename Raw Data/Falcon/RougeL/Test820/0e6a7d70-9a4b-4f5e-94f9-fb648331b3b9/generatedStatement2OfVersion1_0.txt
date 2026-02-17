@@ -1,0 +1,59 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74  (New York)
+   - lat2: 40
+   - lon2: -74  (New York)
+   - Expected Output: 0 km
+
+3. **Antipodes (Opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40 
+   - lon2: 106 (Near Perth, Australia - antipode of New York)
+   - Expected Output: ~20015.09 km (Approximately Earth's diameter which is correct for antipodes)
+
+4. **North Pole to Equator:**
+   - lat1: 90 (North Pole)
+   - lon1: 0  (Longitude doesn't matter at the poles)
+   - lat2: 0 (Equator)
+   - lon2: 0
+   - Expected Output: ~10007.54 km  (Quarter of Earth's circumference)
+
+5. **Longitude crossing the 180th meridian (International Date Line):**
+   - lat1: 10
+   - lon1: 170
+   - lat2: 10
+   - lon2: -170
+   - Expected Output: ~2226.49 km
+
+6. **Extreme Latitudes:**
+   - lat1: 90 (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km (Approximately Earth's diameter)
+
+7. **Invalid Inputs (Error Handling, not in the provided example code but good practice):**
+   - lat1: 100 (Latitude should be -90 to 90)
+   - lon1: -200 (Longitude should be -180 to 180) 
+   - The program should ideally handle these invalid inputs gracefully and either throw an exception or print an error message.
+
+
+**How to Run Tests:**
+
+You can manually test these cases by entering the values into the program. For more robust testing, consider using a unit testing framework like JUnit to automate the test execution and validation of results. This is particularly important for larger projects to ensure code changes don't introduce regressions. Example using JUnit (you'll need to add the JUnit library to your project):
+

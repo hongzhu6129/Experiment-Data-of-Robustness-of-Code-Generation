@@ -1,0 +1,24 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the stars and stripes section
+        for (int i = 0; i < 9; i++) {
+            // Print stars for odd rows
+            if (i % 2 == 0) {
+                for (int j = 0; j < 6; j++) {
+                    System.out.print("* ");
+                }
+            } else { // Print spaces for even rows
+                for (int j = 0; j < 6; j++) {
+                    System.out.print("  ");
+                }
+            }
+            System.out.print("==================================\n"); // Print the stripes
+        }
+
+        // Print the bottom stripes section
+        for (int i = 0; i < 6; i++) {
+            System.out.print("============================================\n");
+        }
+    }
+}

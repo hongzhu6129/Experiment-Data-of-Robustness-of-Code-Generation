@@ -1,0 +1,38 @@
+public class JavaPattern {
+
+    public static void main(String[] args) {
+        System.out.println("j    a   v     v  a");
+        System.out.println("j   a a   v   v  a a");
+        System.out.println("j  a   a   v v  a   a");
+        System.out.println("j a     a   v  a     a");
+        System.out.println("jj a   a   v  a     a");
+        System.out.println(" j a   a   v  a     a");
+        System.out.println("  j a a   v  a a");
+        System.out.println("  j a   v  a   ");
+
+// Improved formatting for a more accurate pattern
+
+        System.out.println(); // Add a separator for clarity
+        System.out.println("j        a   v     v  a");
+        System.out.println(" j      a a   v   v  a a");
+        System.out.println("  j    a   a   v v  a   a");
+        System.out.println("   j  a     a   v  a     a");
+        System.out.println("    jj      a   v  a     a");
+        System.out.println("     j      a   v  a     a");
+        System.out.println("j    a     a   v  a     a"); // corrected line 
+        System.out.println(" j   a   a     v  a   a  "); // corrected line
+        System.out.println("  j  a a       v  a a    "); // corrected line
+        System.out.println("   j a         v  a      "); // corrected line
+
+//Closest possible output to the requested pattern
+        System.out.println();//separator for clarity
+        System.out.println("j        a   v     v  a");
+        System.out.println(" j      a a   v   v  a a");
+        System.out.println("  j    a   a   v v  aaaaa");
+        System.out.println("   j  a     a   v  aaaaa");
+        System.out.println("    jj a   a   v  a     a");
+        System.out.println("     j      a   v  a     a");
+
+
+    }
+}

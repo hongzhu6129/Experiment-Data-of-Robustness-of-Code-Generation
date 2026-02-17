@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Null and Empty Input:** The code now gracefully handles `null` and empty strings by printing an empty string, avoiding `NullPointerException` or other unexpected behavior.
+
+2. **Uses `split("\\s+")`:**  This improvement uses a regular expression `\\s+` to split the string by one or more whitespace characters. This handles multiple spaces between words correctly.
+
+3. **Optional Word Order Reversal:**  The `Collections.reverse(words)` line is now included (but commented out initially). If you want to reverse the entire word order (e.g., "This is a test" becomes "test a is This"), uncomment this line.  The provided requirements ask for each *word* to be reversed, not the order of words.
+
+4. **`StringBuilder` for Efficiency:** Using `StringBuilder` is more efficient for string manipulation, especially when building strings iteratively, compared to repeatedly concatenating strings with `+`.
+
+5. **Trim Output:** The final output is trimmed using `.trim()` to remove any trailing space that might be added by the loop.
+
+6. **Clearer Method Name:**  `reverseEachWordInString` is a slightly more descriptive method name than the original suggestion.
+
+7. **Thorough Testing in `main`:** The `main` method includes test cases to demonstrate handling various scenarios, including null, empty, and strings with leading/trailing spaces.
+
+
+
+
+
+

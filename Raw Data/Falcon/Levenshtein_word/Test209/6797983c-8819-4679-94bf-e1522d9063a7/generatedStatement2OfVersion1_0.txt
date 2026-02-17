@@ -1,0 +1,27 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Character Counting Array:**  Uses `count[]` (size 256) to store the counts of characters smaller than the current character. This handles ASCII characters effectively.
+
+2. **Factorial Calculation:** The `makefactorial()` method calculates factorial efficiently.
+
+3. **Lexicographic Rank Calculation:**
+   - Iterates through the string.
+   - For each character:
+     - Calculates `mul` (remaining permutations).
+     - Adds `count[str.charAt(i) - 1] * mul` to the rank. This counts the permutations starting with smaller characters.
+     - Updates `count[]` to exclude the current character from further calculations.
+
+4. **Clearer Variable Names:**  Uses more descriptive variable names (e.g., `mul` instead of just `m`).
+
+5. **Example Cases in `main()`:** Includes multiple examples to demonstrate the functionality.
+
+6. **Comments:** Added comments to explain the logic.
+
+7. **ASCII Assumption:** The code assumes ASCII input.  If you need to handle a wider range of characters (e.g., Unicode), you'll need to adjust the `count[]` array size and the way characters are indexed. You could use a HashMap for a more general solution.
+
+
+**Example Output:**
+

@@ -1,0 +1,14 @@
+public class DivideTwoNumbers {
+
+    public static void main(String[] args) {
+
+        int numerator = 50;
+        int denominator = 3;
+
+        // Perform integer division
+        int result = numerator / denominator;
+
+        // Print the result to the console
+        System.out.println(numerator + "/" + denominator + ": " + result); 
+    }
+}

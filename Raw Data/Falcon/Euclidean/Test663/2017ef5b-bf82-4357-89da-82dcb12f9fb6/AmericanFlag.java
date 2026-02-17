@@ -1,0 +1,16 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section of the flag
+        for (int i = 0; i < 5; i++) {
+            System.out.print("* * * * * * ==================================\n");
+            System.out.print(" * * * * * ==================================\n");
+        }
+        System.out.print("* * * * * * ==================================\n");
+
+        // Print the solid red section of the flag
+        for (int i = 0; i < 6; i++) {
+            System.out.print("==============================================\n");
+        }
+    }
+}

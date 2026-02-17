@@ -1,0 +1,35 @@
+
+
+
+**Explanation:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedReader`: Used for efficient reading of character input streams.
+   - `java.io.FileReader`: Used to read character files.
+   - `java.io.IOException`: Handles potential input/output errors.
+
+2. **Specify the file path:**
+   - Replace `"path/to/your/coat.txt"` with the actual path to your coat text file.  Make sure the path is correct, or the program will throw an exception.
+
+3. **Use try-with-resources:**
+   - `try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))` creates a `BufferedReader` to read the file. The `try-with-resources` statement ensures that the `BufferedReader` and `FileReader` are automatically closed, even if an exception occurs. This prevents resource leaks.
+
+4. **Read the file line by line:**
+   - `String line;` declares a variable to store each line read from the file.
+   - `while ((line = reader.readLine()) != null)` reads each line of the file until the end is reached (`readLine()` returns `null` at the end of the file).
+
+5. **Print each line:**
+   - `System.out.println(line);` prints the current line to the console.
+
+6. **Handle exceptions:**
+   - The `catch (IOException e)` block catches any `IOException` that might occur during file reading (e.g., file not found, permissions issues) and prints an error message to the console.  This makes the program more robust.
+
+
+**To compile and run:**
+
+1. **Save:** Save the code as `ReadCoatTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac ReadCoatTextFile.java`
+3. **Run:**  `java ReadCoatTextFile`
+
+
+Make sure the "coat.txt" file exists at the specified path.  If you're running the code from an IDE, it might use the project's root directory as the starting point for relative paths.

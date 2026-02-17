@@ -1,0 +1,37 @@
+import java.util.TreeMap;
+
+public class RemoveGreatestKey {
+
+    public static void main(String[] args) {
+        // Create a TreeMap to store key-value pairs. TreeMap automatically sorts keys in ascending order.
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Add some sample data
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
+        map.put(4, "Four");
+        map.put(3, "Three");
+
+
+        if (!map.isEmpty()) {
+            // Get the largest key (lastKey in a TreeMap)
+            Integer largestKey = map.lastKey();
+
+            // Get the value associated with the largest key
+            String value = map.get(largestKey);
+
+            // Remove the entry with the largest key
+            map.remove(largestKey);
+
+
+            System.out.println("Removed key: " + largestKey);
+            System.out.println("Associated value: " + value);
+
+            System.out.println("Updated map: " + map);
+        } else {
+            System.out.println("The map is empty.");
+        }
+
+    }
+}

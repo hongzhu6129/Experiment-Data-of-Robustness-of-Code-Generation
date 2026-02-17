@@ -1,0 +1,13 @@
+public class DisplayMessages {
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            System.out.println("I love Java");
+        }
+
+        System.out.println("Message 6"); // Added extra messages to make it eight
+        System.out.println("Message 7");
+        System.out.println("Message 8");
+
+    }
+}

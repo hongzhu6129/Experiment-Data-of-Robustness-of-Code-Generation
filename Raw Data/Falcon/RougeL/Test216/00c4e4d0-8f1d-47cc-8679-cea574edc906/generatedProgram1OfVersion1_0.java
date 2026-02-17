@@ -1,0 +1,41 @@
+class Solution {
+    /**
+     * Counts the number of vowels (a, e, i, o, u) in a given string.
+     *
+     * @param str The input string.
+     * @return The number of vowels in the string.
+     */
+    public static int count_Vowels(String str) {
+        int count = 0;
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+
+        str = str.toLowerCase(); // Case-insensitive counting
+
+        for (char c : str.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String testString1 = "Hello World";
+        String testString2 = "AEIOU";
+        String testString3 = "rhythm";
+        String testString4 = "";
+        String testString5 = null;
+
+
+        System.out.println("Vowels in \"" + testString1 + "\": " + count_Vowels(testString1)); // Output: 3
+        System.out.println("Vowels in \"" + testString2 + "\": " + count_Vowels(testString2)); // Output: 5
+        System.out.println("Vowels in \"" + testString3 + "\": " + count_Vowels(testString3)); // Output: 0
+        System.out.println("Vowels in \"" + testString4 + "\": " + count_Vowels(testString4)); // Output: 0
+        System.out.println("Vowels in \"" + testString5 + "\": " + count_Vowels(testString5)); // Output: 0
+
+
+
+    }
+}

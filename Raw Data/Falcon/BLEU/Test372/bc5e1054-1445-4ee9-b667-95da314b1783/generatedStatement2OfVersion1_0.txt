@@ -1,0 +1,19 @@
+
+
+
+Explanation and Improvements:
+
+1. **Command-Line Arguments:** The code now takes the file paths as command-line arguments, making it more flexible.  It checks if exactly two arguments are provided and prints usage instructions if not.
+2. **Try-with-Resources:** Uses try-with-resources to ensure that the `BufferedReader` objects are closed automatically, even if exceptions occur. This prevents resource leaks.
+3. **Handles Different File Lengths:** The code correctly handles cases where one file is shorter than the other. It considers a shorter file to be lexicographically smaller.
+4. **Line-by-Line Comparison:** Reads and compares the files line by line using `readLine()`.
+5. **String.compareTo():** Uses the built-in `compareTo()` method of the `String` class to perform lexicographical comparison of lines.
+6. **Clear Output:** Provides clear output messages indicating which file comes first lexicographically or if they are equal.
+7. **Error Handling:** Includes a `try-catch` block to handle potential `IOExceptions` during file reading and prints an error message if any occur.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CompareFilesLexicographically.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac CompareFilesLexicographically.java`
+3. **Run:** Execute the compiled code with the file paths as arguments:  `java CompareFilesLexicographically file1.txt file2.txt` (Replace `file1.txt` and `file2.txt` with the actual paths to your files).

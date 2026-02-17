@@ -1,0 +1,10 @@
+
+
+
+Key improvements in this version:
+
+* **Handles edge cases:**  The `sort` method now explicitly handles `null` and empty input arrays, preventing potential `NullPointerException` errors.
+* **Clearer pivot selection:** Uses the middle element as the pivot to generally avoid worst-case scenarios (though it's not a guarantee).  `(lowerIndex + higherIndex) / 2` can potentially overflow for very large arrays, using `lowerIndex + (higherIndex - lowerIndex) / 2` is safer.
+* **Improved comments:** The comments explain the logic more thoroughly, particularly the partitioning process.
+* **More comprehensive testing in `main`:** Includes tests with an empty array and a `null` array to demonstrate the robustness of the code.
+* **Uses Arrays.toString():**  Prints the sorted array in a readable format.

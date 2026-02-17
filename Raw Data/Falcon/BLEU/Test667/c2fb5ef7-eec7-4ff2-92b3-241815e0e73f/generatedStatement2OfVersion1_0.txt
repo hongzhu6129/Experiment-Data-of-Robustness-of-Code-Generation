@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Key Concepts:**
+
+1. **Operator Precedence:** Java follows standard operator precedence rules (like PEMDAS/BODMAS). Multiplication, division, and modulo (%) have higher precedence than addition and subtraction.  Operations with the same precedence are evaluated left to right.
+
+2. **Integer Division:**  When you divide integers in Java, the result is also an integer. Any fractional part is truncated (discarded).  For example, `-3 * 5 / 8` evaluates to `-15 / 8`, which results in `-1` (the fractional part is dropped).
+
+3. **Modulo Operator (%):** The modulo operator gives you the remainder of a division.  `8 % 3` is 2 (8 divided by 3 leaves a remainder of 2).
+
+4. **Parentheses:** Use parentheses to control the order of operations.  In expression (b), the parentheses ensure that 55 and 9 are added before the modulo operation is performed.
+
+
+**How the Code Works for Each Expression:**
+
+* **a.** `-5 + 8 * 6`: Multiplication is done first (8 * 6 = 48), then the addition (-5 + 48 = 43).
+* **b.** `(55 + 9) % 9`:  Parentheses force the addition first (55 + 9 = 64), then the modulo operation (64 % 9 = 1).
+* **c.** `20 + -3 * 5 / 8`: Multiplication is done first (-3 * 5 = -15), then the division (-15 / 8 = -1 due to integer division), then the addition (20 + -1 = 19).
+* **d.** `5 + 15 / 3 * 2 - 8 % 3`: Division is done first (15 / 3 = 5), then the multiplication (5 * 2 = 10), then the modulo (8 % 3 = 2), and finally the addition and subtraction from left to right (5 + 10 - 2 = 13).

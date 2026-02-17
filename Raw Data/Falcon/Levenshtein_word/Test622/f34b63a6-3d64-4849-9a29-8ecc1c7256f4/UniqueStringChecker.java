@@ -1,0 +1,43 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueStringChecker {
+
+    /**
+     * Checks if a given string has all distinct characters.
+     *
+     * @param str The input string.
+     * @return True if the string has all unique characters, false otherwise.
+     */
+    public static boolean is_Unique_str(String str) {
+        if (str == null) {
+            return true; // Or throw an exception, depending on your requirements
+        }
+
+        Set<Character> seenChars = new HashSet<>();
+        for (char c : str.toCharArray()) {
+            if (seenChars.contains(c)) {
+                return false; // Found a duplicate character
+            }
+            seenChars.add(c);
+        }
+        return true; // All characters are unique
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcdefg";
+        String str2 = "abacdefg";
+        String str3 = ""; // Empty String
+        String str4 = null;  // Null String
+
+
+
+        System.out.println(str1 + ": " + is_Unique_str(str1)); // Output: true
+        System.out.println(str2 + ": " + is_Unique_str(str2)); // Output: false
+        System.out.println(str3 + ": " + is_Unique_str(str3)); // Output: true
+        System.out.println(str4 + ": " + is_Unique_str(str4)); // Output: true (or handle null as needed)
+
+
+
+    }
+}

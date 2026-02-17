@@ -1,0 +1,32 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class DueDateCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the due date from the user
+        System.out.println("Enter the due date (yyyy-MM-dd): ");
+        String dueDateString = scanner.nextLine();
+
+        // Parse the due date into a LocalDate object
+        LocalDate dueDate = LocalDate.parse(dueDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        // Calculate the difference between the due date and the current date
+        long daysBetween = java.time.temporal.ChronoUnit.DAYS.between(currentDate, dueDate);
+
+        // Print the number of days until the due date
+        if (daysBetween > 0) {
+            System.out.println("The due date is in " + daysBetween + " days.");
+        } else if (daysBetween == 0) {
+            System.out.println("The due date is today.");
+        } else {
+            System.out.println("The due date has passed.");
+        }
+    }
+}

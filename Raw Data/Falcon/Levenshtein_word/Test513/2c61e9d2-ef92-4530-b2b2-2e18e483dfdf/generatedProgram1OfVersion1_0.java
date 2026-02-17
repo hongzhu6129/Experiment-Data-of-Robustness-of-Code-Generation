@@ -1,0 +1,47 @@
+public class FirstOccurrence {
+
+    public static void main(String[] args) {
+
+        // Example usage:
+        int[] array1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int target1 = 5;
+        int result1 = findFirstOccurrence(array1, target1);
+        System.out.println("First occurrence of " + target1 + " in array1: " + result1); // Output: 4
+
+
+        int[] array2 = {1, 2, 3, 4, 5, 5, 5, 6, 7};
+        int target2 = 5;
+        int result2 = findFirstOccurrence(array2, target2);
+        System.out.println("First occurrence of " + target2 + " in array2: " + result2); // Output: 4
+
+
+        int[] array3 = {1, 2, 3, 4, 6, 7};
+        int target3 = 5;
+        int result3 = findFirstOccurrence(array3, target3);
+        System.out.println("First occurrence of " + target3 + " in array3: " + result3); // Output: -1
+
+
+        int[] array4 = {}; // Empty array
+        int target4 = 5;
+        int result4 = findFirstOccurrence(array4, target4);
+        System.out.println("First occurrence of " + target4 + " in array4: " + result4); // Output: -1
+
+        int[] array5 = null; // Null array (handle this case to prevent NullPointerExceptions)
+        int target5 = 5;
+        int result5 = findFirstOccurrence(array5, target5);
+        System.out.println("First occurrence of " + target5 + " in array5: " + result5); // Output: -1
+        
+    }
+
+    public static int findFirstOccurrence(int[] arr, int target) {
+        if (arr == null) { // Handle null array input
+            return -1;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                return i; // Return the index immediately upon finding the target
+            }
+        }
+        return -1; // Return -1 if the target is not found
+    }
+}

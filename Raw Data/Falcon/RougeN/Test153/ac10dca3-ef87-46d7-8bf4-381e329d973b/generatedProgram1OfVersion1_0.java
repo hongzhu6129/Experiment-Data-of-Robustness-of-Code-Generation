@@ -1,0 +1,45 @@
+import java.util.TreeMap;
+
+public class LeastKeyBenefit {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "A");
+        treeMap.put(20, "B");
+        treeMap.put(30, "C");
+        treeMap.put(40, "D");
+        treeMap.put(50, "E");
+
+        int key1 = 25;
+        String value1 = getLeastKeyBenefit(treeMap, key1);
+        System.out.println("For key " + key1 + ": " + value1); // Output: For key 25: B
+
+        int key2 = 15;
+        String value2 = getLeastKeyBenefit(treeMap, key2);
+        System.out.println("For key " + key2 + ": " + value2); // Output: For key 15: A
+
+        int key3 = 5;
+        String value3 = getLeastKeyBenefit(treeMap, key3);
+        System.out.println("For key " + key3 + ": " + value3); // Output: For key 5: null
+
+
+        int key4 = 55; // Key greater than all existing keys
+        String value4 = getLeastKeyBenefit(treeMap, key4);
+        System.out.println("For key " + key4 + ": " + value4); // Output: For key 55: E
+
+
+    }
+
+    public static <K extends Comparable<K>, V> V getLeastKeyBenefit(TreeMap<K, V> treeMap, K key) {
+        if (treeMap == null || treeMap.isEmpty()) {
+            return null;
+        }
+
+        K floorKey = treeMap.floorKey(key); // Find the greatest key less than or equal to the given key
+        
+        return (floorKey != null) ? treeMap.get(floorKey) : null;
+
+
+    }
+}

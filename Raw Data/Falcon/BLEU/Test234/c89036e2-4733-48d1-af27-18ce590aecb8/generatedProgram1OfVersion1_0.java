@@ -1,0 +1,64 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class HeadMapExample {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap. This is important because TreeMap implements NavigableMap which provides the headMap functionality.
+        // HashMap and other non-NavigableMap implementations do NOT have headMap.
+        NavigableMap<Integer, String> studentScores = new TreeMap<>();
+
+        // Populate the TreeMap with some sample data
+        studentScores.put(10, "Alice");
+        studentScores.put(20, "Bob");
+        studentScores.put(30, "Charlie");
+        studentScores.put(40, "David");
+        studentScores.put(50, "Eve");
+
+
+        // Get the portion of the map whose keys are strictly less than 35
+        int upperBoundKey = 35; 
+        NavigableMap<Integer, String> headMap = studentScores.headMap(upperBoundKey, false); // false for strictly less than
+
+        // Print the original map
+        System.out.println("Original Map: " + studentScores);
+
+        // Print the headMap
+        System.out.println("Head Map (keys < " + upperBoundKey + "): " + headMap);
+
+
+
+        // Example with a key that doesn't exist in the map
+        upperBoundKey = 25;
+        headMap = studentScores.headMap(upperBoundKey, false);
+        System.out.println("Head Map (keys < " + upperBoundKey + "): " + headMap);
+
+
+
+        // Example with inclusive headMap (less than or equal to)
+        upperBoundKey = 30;
+        NavigableMap<Integer, String> inclusiveHeadMap = studentScores.headMap(upperBoundKey, true); // true for inclusive
+        System.out.println("Inclusive Head Map (keys <= " + upperBoundKey + "): " + inclusiveHeadMap);
+
+
+
+
+        // Important Note about Modifications:
+        // Changes made to the headMap view are reflected in the original map, and vice versa.  Be careful!
+
+        headMap.remove(20); // Bob is removed from both headMap and studentScores
+
+        System.out.println("Original Map After Modification: " + studentScores);
+
+
+
+        // Create a sub-map by copying the headMap
+        // This creates a new, independent map; modifications won't affect the original.
+        NavigableMap<Integer, String> copiedHeadMap = new TreeMap<>(studentScores.headMap(40, false)); // copy to a new TreeMap
+        copiedHeadMap.put(5, "New Student"); // This won't affect studentScores
+        System.out.println("Copied HeadMap: " + copiedHeadMap);
+        System.out.println("Original Map (unchanged): " + studentScores);
+
+    }
+}

@@ -1,0 +1,49 @@
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+
+public class FirstNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String stream = "aabc";  // Expected output: a, a, b, c
+        findAndPrintFirstNonRepeating(stream);
+
+        stream = "geeksforgeeks"; // Expected output: g, e, e, k, s, f, o, r, g, e, k, s
+        findAndPrintFirstNonRepeating(stream);
+    }
+
+    public static void findAndPrintFirstNonRepeating(String stream) {
+        Map<Character, Integer> charCounts = new HashMap<>(); // Stores character counts
+        Queue<Character> inOrderChars = new LinkedList<>();   // Maintains order of appearance
+
+        for (char c : stream.toCharArray()) {
+            // Update character count
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+
+            // Add to queue if it's the first time we see the character
+            if (charCounts.get(c) == 1) {
+                inOrderChars.offer(c);
+            }
+
+            // Remove characters from the front of the queue if they are repeating
+            while (!inOrderChars.isEmpty() && charCounts.get(inOrderChars.peek()) > 1) {
+                inOrderChars.poll();
+            }
+
+            // Print the first non-repeating character or '-' if none
+            if (inOrderChars.isEmpty()) {
+                System.out.print("- ");
+            } else {
+                System.out.print(inOrderChars.peek() + " ");
+            }
+
+        }
+        System.out.println(); // Print a newline after processing the stream
+
+    }
+}
+
+
+

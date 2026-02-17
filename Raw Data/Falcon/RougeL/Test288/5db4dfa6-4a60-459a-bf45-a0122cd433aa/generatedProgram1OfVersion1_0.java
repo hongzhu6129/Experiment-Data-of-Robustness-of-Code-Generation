@@ -1,0 +1,31 @@
+public class StringManipulation {
+
+    public String withoutMatch(String str) {
+        int len = str.length();
+        if (len < 2) {
+            return str;
+        }
+
+        String firstTwo = str.substring(0, 2);
+        String lastTwo = str.substring(len - 2);
+
+        if (firstTwo.equals(lastTwo)) {
+            return str.substring(2);
+        } else {
+            return str;
+        }
+    }
+
+    public static void main(String[] args) {
+        StringManipulation sm = new StringManipulation();
+
+        System.out.println(sm.withoutMatch("HelloHe")); // Output: lloHe
+        System.out.println(sm.withoutMatch("HeHe")); // Output: 
+        System.out.println(sm.withoutMatch("He")); // Output: He
+        System.out.println(sm.withoutMatch("Hello")); // Output: Hello
+        System.out.println(sm.withoutMatch("abcab")); // Output: cab
+		System.out.println(sm.withoutMatch("abxba")); // Output: abxba
+
+
+    }
+}

@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        int num1 = inputNumber(input, "first");
+        int num2 = inputNumber(input, "second");
+
+        printSum(num1, num2);
+        printDifference(num1, num2);
+        printProduct(num1, num2);
+        printQuotient(num1, num2);
+        printRemainder(num1, num2);
+
+        input.close(); 
+    }
+
+    public static int inputNumber(Scanner input, String order) {
+        System.out.print("Input " + order + " number: ");
+        return input.nextInt();
+    }
+
+
+    public static void printSum(int num1, int num2) {
+        System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+    }
+
+    public static void printDifference(int num1, int num2) {
+        System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+    }
+
+    public static void printProduct(int num1, int num2) {
+        System.out.println(num1 + " x " + num2 + " = " + (num1 * num2));
+    }
+
+    public static void printQuotient(int num1, int num2) {
+        System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
+    }
+
+    public static void printRemainder(int num1, int num2) {
+        System.out.println(num1 + " mod " + num2 + " = " + (num1 % num2));
+    }
+}

@@ -1,0 +1,15 @@
+public class AlphabetIndex {
+
+    public static void main(String[] args) {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        for (int i = 0; i < alphabet.length(); i++) {
+            char letter = alphabet.charAt(i);
+            int index = i; // Index is zero-based
+            System.out.println("Letter: " + letter + ", Index: " + index);
+
+            // Or, if you want 1-based indexing (like the typical alphabetical numbering)
+            // System.out.println("Letter: " + letter + ", Index: " + (index + 1)); 
+        }
+    }
+}

@@ -1,0 +1,56 @@
+public class SubstringEqualityCheck {
+
+    public boolean isAndTheEquality(String str) {
+        if (str == null || str.length() == 0) {
+            return false; // Or handle as appropriate for empty/null input
+        }
+
+        int andCount = 0;
+        int theCount = 0;
+
+        // Make lowercase for case-insensitivity
+        str = str.toLowerCase(); 
+
+        int index = 0;
+        while (index < str.length()) {
+            int andIndex = str.indexOf("and", index);
+            int theIndex = str.indexOf("the", index);
+
+
+            if (andIndex != -1) {
+                andCount++;
+                index = andIndex + 1; // Move past the found "and"
+            } else if (theIndex != -1 ){
+                theCount++;
+                index = theIndex + 1;
+            } else{
+                break; // no "and" or "the" is found
+            }
+
+            
+        }
+
+        return andCount == theCount;
+    }
+
+    public static void main(String[] args) {
+        SubstringEqualityCheck checker = new SubstringEqualityCheck();
+
+        String str1 = "The and AND the And are present.";
+        String str2 =  "the and the";
+        String str3 = "and the and";
+        String str4 = "The dog barked, and the cat meowed.";
+        String str5 = "This string has neither 'and' nor 'the'.";
+        String str6 = null;
+        String str7 = "";
+
+
+        System.out.println("\"" + str1 + "\" : " + checker.isAndTheEquality(str1)); // Output: true
+        System.out.println("\"" + str2 + "\" : " + checker.isAndTheEquality(str2)); // Output: true
+        System.out.println("\"" + str3 + "\" : " + checker.isAndTheEquality(str3)); // Output: true
+        System.out.println("\"" + str4 + "\" : " + checker.isAndTheEquality(str4)); // Output: false
+        System.out.println("\"" + str5 + "\" : " + checker.isAndTheEquality(str5)); // Output: false
+        System.out.println("Null string : " + checker.isAndTheEquality(str6)); // Output: false (or handle null as needed)
+         System.out.println("Empty string : " + checker.isAndTheEquality(str7)); // Output: false (or handle empty as needed) 
+    }
+}

@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:** The code explicitly ensures that (a, b) and (c, d) are distinct pairs. This is crucial to meet the problem's requirement of "two (or more) *different* ways."  The loops and `if (c == b) continue;` condition handle this.
+2. **Optimization:** The `break` statements within the loops significantly improve efficiency.  There's no need to continue checking if `a^3`, `a^3 + b^3`, or `c^3` already exceeds `n`.
+3. **Clarity:** The code is formatted for better readability and includes comments to explain the logic.
+4. **Correctness:** The code now accurately finds the smallest such number (typically 1729).
+5. **`return` after finding a solution:**  The `return;` statement exits the `main` method as soon as a Ramanujan number is found, as per the problem's request to find *any* such number.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `Ramanujan.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac Ramanujan.java`
+3. **Run:** Execute the compiled program: `java Ramanujan`
+
+The output for `n = 1729` will be:
+

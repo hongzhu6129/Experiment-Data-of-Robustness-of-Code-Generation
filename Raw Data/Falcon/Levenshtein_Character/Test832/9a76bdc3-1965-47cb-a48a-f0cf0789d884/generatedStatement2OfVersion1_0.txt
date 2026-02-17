@@ -1,0 +1,10 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Explicit Type Casting:** The `Math.pow()` method returns a `double`.  Fermat numbers can quickly become very large, exceeding the capacity of `int`.  Therefore, we cast the result to `long` to handle larger values.  However, even `long` has its limits, and for larger values of `n`, the Fermat number will overflow.
+
+2. **BigInteger (For truly large Fermat Numbers):**  If you need to calculate Fermat numbers beyond what `long` can handle, use `BigInteger` from the `java.math` package:
+
+   

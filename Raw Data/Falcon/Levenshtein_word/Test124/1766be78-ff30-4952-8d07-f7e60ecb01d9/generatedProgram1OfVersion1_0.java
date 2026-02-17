@@ -1,0 +1,42 @@
+public class RemoveCharacter {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        char charToRemove = 'r';
+        String modifiedStr = remove_Character(str, charToRemove);
+        System.out.println(modifiedStr); // Output: pogaming
+
+        str = "hello world";
+        charToRemove = 'l';
+        modifiedStr = remove_Character(str, charToRemove);
+        System.out.println(modifiedStr); // Output: heo word
+
+        str = "banana";
+        charToRemove = 'a';
+        modifiedStr = remove_Character(str, charToRemove);
+        System.out.println(modifiedStr); // Output: bnn
+
+         str = ""; // Empty string
+        charToRemove = 'a';
+        modifiedStr = remove_Character(str, charToRemove);
+        System.out.println(modifiedStr); // Output: "" (empty string)
+
+        str = "apple";
+        charToRemove = 'z'; // Character not present
+        modifiedStr = remove_Character(str, charToRemove);
+        System.out.println(modifiedStr); // Output: apple
+
+
+    }
+
+    public static String remove_Character(String str, char charToRemove) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char currentChar = str.charAt(i);
+            if (currentChar != charToRemove) {
+                sb.append(currentChar);
+            }
+        }
+        return sb.toString();
+    }
+}

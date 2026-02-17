@@ -1,0 +1,8 @@
+
+
+
+Key Points:
+
+* `.equals()` method: Use this to compare the actual *content* of two strings.  It's the recommended way.
+* `==` operator:  Compares memory addresses or references, not content.  String interning (as with `str1` and `str2` in the example) can make it seem like `==` works for content comparison sometimes, but it's not reliable for this purpose.  Use `.equals()`.
+* Null safety: Be careful when comparing strings if one might be `null`. Using `.equals()` on a `null` string will throw a `NullPointerException`.  The example shows several ways to handle `null`s safely.  `Objects.equals()` (Java 7 and later) is a very convenient way to do null-safe comparisons.

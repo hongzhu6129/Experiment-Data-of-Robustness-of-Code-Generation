@@ -1,0 +1,22 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` method:** This helper method is introduced to encapsulate the Fermat number calculation. This makes the `main` method cleaner and easier to read.
+
+2. **Using `long`:**  Fermat numbers grow very rapidly. `int` will quickly overflow.  `long` is used to store the calculated numbers, which provides a larger range but still has limitations.
+
+3. **Explicit Casting:** `Math.pow()` returns a `double`. We explicitly cast the result to `long` because Fermat numbers are integers.
+
+4. **Output Formatting:** The output clearly labels each Fermat number with "F" and its corresponding 'n' value (F0, F1, F2, etc.).
+
+5. **Correct Formula:** The code accurately implements the formula 2^(2^n) + 1.
+
+
+
+**Limitations:**
+
+Even with `long`, Fermat numbers beyond F4 will exceed its capacity. For truly large Fermat numbers, you'd need to use `BigInteger` (which allows for arbitrary-precision integers).  Here's the version using `BigInteger`:
+
+

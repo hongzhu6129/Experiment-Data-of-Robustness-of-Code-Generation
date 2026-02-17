@@ -1,0 +1,25 @@
+public class BreadSubstring {
+
+    public String pickMiddleOfBread(String bread) {
+        int firstToast = bread.indexOf("toast");
+        int lastToast = bread.lastIndexOf("toast");
+
+        if (firstToast == -1 || lastToast == -1 || firstToast == lastToast) {
+            return ""; // "toast" doesn't exist or appears only once
+        }
+
+        return bread.substring(firstToast + "toast".length(), lastToast);
+    }
+
+    public static void main(String[] args) {
+        BreadSubstring bs = new BreadSubstring();
+
+        System.out.println(bs.pickMiddleOfBread("toastjamtoast")); // Output: jam
+        System.out.println(bs.pickMiddleOfBread("toastpeanutbuttertoast")); // Output: peanutbutter
+        System.out.println(bs.pickMiddleOfBread("toast")); // Output: 
+        System.out.println(bs.pickMiddleOfBread("toasttoast")); // Output: 
+        System.out.println(bs.pickMiddleOfBread("jamtoast")); // Output: 
+        System.out.println(bs.pickMiddleOfBread("toastjam")); // Output:
+        System.out.println(bs.pickMiddleOfBread("I like to eat toast with jam and toast.")); //Output: with jam and 
+    }
+}

@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class LinkedListElementCheck {
+
+    public static void main(String[] args) {
+        // Example usage:
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        int elementToFind = 3;
+        boolean found = checkIfElementExists(list, elementToFind);
+
+        if (found) {
+            System.out.println(elementToFind + " exists in the linked list.");
+        } else {
+            System.out.println(elementToFind + " does not exist in the linked list.");
+        }
+
+
+        elementToFind = 6; // Element not in the list
+        found = checkIfElementExists(list, elementToFind);
+
+         if (found) {
+            System.out.println(elementToFind + " exists in the linked list.");
+        } else {
+            System.out.println(elementToFind + " does not exist in the linked list.");
+        }
+    }
+
+
+
+    //Helper function to check for existence.  Put in main to avoid needing a separate method signature.
+    private static <T> boolean checkIfElementExists(LinkedList<T> list, T element) {
+        return list.contains(element); 
+    }
+}
+
+
+

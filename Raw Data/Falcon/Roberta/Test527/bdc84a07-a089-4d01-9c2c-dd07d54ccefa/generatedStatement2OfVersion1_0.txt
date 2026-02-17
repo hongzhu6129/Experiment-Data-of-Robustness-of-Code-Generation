@@ -1,0 +1,21 @@
+
+
+
+Explanation and key improvements:
+
+1. **Error Handling:** The code now includes proper error handling for the case where the filename is not provided as a command-line argument or if the file is not found. It uses `System.exit()` with appropriate status codes to indicate errors.
+2. **Word Validation:**  It uses a regular expression `[a-zA-Z]+` to ensure that only words starting with a letter (a-z or A-Z) are added to the list.  This addresses the requirement "the words must start with a letter."
+3. **Descending Sort:** `Collections.sort(words, Collections.reverseOrder());`  sorts the `ArrayList` in descending order directly.  
+4. **Clearer Output:** The `display()` method is used to print each word, which makes the code slightly more organized.
+5. **Try-with-resources:** The `Scanner` is used within a try-with-resources block to ensure that the file is closed properly, even if an exception occurs.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DescendingWords.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it: `javac DescendingWords.java`
+3. **Run:**  Execute the compiled code, providing the text file name as a command-line argument:  `java DescendingWords input.txt` (replace `input.txt` with the actual name of your text file).
+
+
+Example `input.txt`:
+

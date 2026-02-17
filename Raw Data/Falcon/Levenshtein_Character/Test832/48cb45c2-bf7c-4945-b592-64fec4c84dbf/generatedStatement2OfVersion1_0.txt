@@ -1,0 +1,11 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Data Type:**  Fermat numbers grow very rapidly.  `int` is too small to hold even the 5th Fermat number.  We must use `long` to store the results.  However, even `long` will overflow beyond the 9th Fermat Number.
+2. **Calculation:** The formula for a Fermat number is 2^(2^n) + 1.  We can calculate this directly using `Math.pow()` but need to be mindful of the order of operations.
+3. **Output:** The code now prints the first 10 Fermat numbers as requested.
+4. **Overflow Handling (Important):**  After the 9th Fermat number, `long` will overflow and produce incorrect results.  For a more robust solution, you would need to use `BigInteger` which can handle arbitrarily large integers. Here's an example of how to use `BigInteger`:
+
+

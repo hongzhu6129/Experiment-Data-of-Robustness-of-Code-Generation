@@ -1,0 +1,54 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class StringToDateAndTime {
+
+    public static void main(String[] args) {
+        // String to Date and Time
+        String dateTimeString = "2024-03-15T10:30:00"; // Example ISO-8601 format
+        try {
+            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString);
+            System.out.println("Converted DateTime: " + dateTime);
+
+            // Custom formatting
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Example custom format
+            LocalDateTime parsedDateTime = LocalDateTime.parse(dateTimeString, formatter); 
+            System.out.println("Parsed with custom format: " + parsedDateTime);
+
+
+
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date/time format: " + e.getMessage());
+        }
+
+
+        // Date and Time to String
+        LocalDateTime now = LocalDateTime.now();
+
+        // Default ISO-8601 format
+        String isoString = now.toString(); 
+        System.out.println("ISO-8601 String: " + isoString);
+
+
+        // Custom formatting
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("E, MMM dd yyyy HH:mm:ss a"); // Example
+        String formattedString = now.format(customFormatter);
+        System.out.println("Formatted String: " + formattedString);
+
+
+
+         //Handling another common date format
+        String dateString2 = "2024/03/15 10:30:00";
+        try {
+            DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime parsedDateTime2 = LocalDateTime.parse(dateString2, formatter2);
+            System.out.println("Parsed with another custom format: " + parsedDateTime2);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date/time format: " + e.getMessage());
+        }
+
+
+
+    }
+}

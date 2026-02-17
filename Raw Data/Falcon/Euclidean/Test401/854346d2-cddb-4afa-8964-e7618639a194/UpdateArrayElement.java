@@ -1,0 +1,40 @@
+import java.util.Arrays;
+
+public class UpdateArrayElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+
+        // 1. Initialize an array
+        int[] myArray = {1, 2, 3, 4, 5};
+
+        // 2. Define the index to update and the new value
+        int indexToUpdate = 2; // Update the element at index 2 (which is currently 3)
+        int newValue = 99;
+
+        // 3. Check if the index is valid
+        if (indexToUpdate >= 0 && indexToUpdate < myArray.length) {
+            // 4. Update the element
+            myArray[indexToUpdate] = newValue;
+
+            // 5. Print the updated array
+            System.out.println("Updated array: " + Arrays.toString(myArray)); // Output: [1, 2, 99, 4, 5]
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (myArray.length - 1));
+        }
+
+
+
+         // Another example with a String array:
+        String[] stringArray = {"apple", "banana", "orange"};
+        int stringIndexToUpdate = 1;
+        String newString = "grape";
+
+        if (stringIndexToUpdate >= 0 && stringIndexToUpdate < stringArray.length) {
+            stringArray[stringIndexToUpdate] = newString;
+            System.out.println("Updated string array: " + Arrays.toString(stringArray)); // Output: [apple, grape, orange]
+        } else {
+            System.out.println("Invalid index for string array.");
+        }
+    }
+}

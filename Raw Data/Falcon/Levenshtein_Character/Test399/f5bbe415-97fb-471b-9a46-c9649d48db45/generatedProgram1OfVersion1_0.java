@@ -1,0 +1,43 @@
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("Kaprekar numbers less than 1000:");
+        int count = 0;
+        for (int i = 1; i < 1000; i++) {
+            if (isKaprekar(i)) {
+                System.out.print(i + " ");
+                count++;
+            }
+        }
+        System.out.println("\n" + count + " kaprekar numbers.");
+    }
+
+    private static boolean isKaprekar(int num) {
+        long square = (long) num * num;
+        String sqStr = String.valueOf(square);
+        int numDigits = sqStr.length();
+
+        for (int i = 1; i < numDigits; i++) {
+            String[] parts = split_num(sqStr, i);
+            if (parts[1].length() > 0 && Integer.parseInt(parts[0]) + Integer.parseInt(parts[1]) == num && Integer.parseInt(parts[1]) != 0) { // Handle zero in second part
+                return true;
+
+            }
+        }
+        return false;
+    }
+
+    private static String[] split_num(String numStr, int splitIndex) {
+        String[] parts = new String[2];
+        parts[0] = numStr.substring(0, splitIndex);
+        parts[1] = numStr.substring(splitIndex);
+
+        //handle potential leading zeros in the first part after the split.  This primarily affects single-digit squares.
+        if (parts[0].length() > 0 && parts[0].charAt(0) == '0' && parts[0].length() > 1) {
+            return new String[]{"0", "0"}; //Effectively makes the test fail.
+        }
+
+
+        return parts;
+    }
+}

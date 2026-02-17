@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class ClothingHiddenStories {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        String input = scanner.nextLine();
+        String[] words = input.split(" ");
+
+        // Initialize the hidden story
+        StringBuilder hiddenStory = new StringBuilder();
+
+        // Iterate over the words
+        for (String word : words) {
+            // Check if the word is a number
+            if (isNumeric(word)) {
+                // Get the corresponding clothing item based on the number
+                String clothingItem = getClothingItem(Integer.parseInt(word));
+                // Add the clothing item to the hidden story
+                hiddenStory.append(clothingItem).append(" ");
+            }
+        }
+
+        // Print the hidden story
+        System.out.println(hiddenStory.toString());
+    }
+
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private static String getClothingItem(int number) {
+        switch (number) {
+            case 1:
+                return "Shirt";
+            case 2:
+                return "Pants";
+            case 3:
+                return "Dress";
+            case 4:
+                return "Skirt";
+            case 5:
+                return "Jacket";
+            default:
+                return "Unknown";
+        }
+    }
+}

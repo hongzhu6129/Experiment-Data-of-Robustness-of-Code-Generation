@@ -1,0 +1,42 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 255
+   - Expected Output: FF
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: 0  (Handles the zero case correctly)
+
+3. **Negative Number:**
+   - Input: -10 
+   - Expected Output: FFFFFFF6 (Java handles negative numbers using two's complement, so the output will be a large hexadecimal representation.  This tests how your code handles this situation. Some implementations might choose to throw an error for negative input.)
+
+4. **Large Number:**
+   - Input: 1234567890
+   - Expected Output: 499602D2
+
+5. **Small Number:**
+   - Input: 10
+   - Expected Output: A
+
+6. **Number with leading zeros (not in the input, but might occur internally):**
+    - Input: 16
+    - Expected Output: 10 (Ensure no unnecessary leading zeros in the output)
+
+7. **Max Integer:**
+    - Input: 2147483647 (Integer.MAX_VALUE)
+    - Expected Output: 7FFFFFFF
+
+
+**How to run the test cases:**
+
+1. **Manually:**  Enter each input value when prompted by the program and verify the output against the expected output.
+2. **Automated Testing (Recommended):**  You can use JUnit (a Java testing framework) to create automated tests. This is the preferred approach for larger projects because it makes testing more efficient and reliable.
+
+
+
+Example of a JUnit test (using JUnit 5):
+

@@ -1,0 +1,17 @@
+import java.time.ZoneId;
+import java.util.Set;
+
+public class TimeZones {
+
+    public static void main(String[] args) {
+        Set<String> allZones = ZoneId.getAvailableZoneIds();
+
+        System.out.println("All Time Zones (UTC/GMT):");
+
+        for (String zoneId : allZones) {
+            if (zoneId.contains("UTC") || zoneId.contains("GMT") ) { //Filter for UTC and GMT zones
+                System.out.println(zoneId);
+            }
+        }
+    }
+}

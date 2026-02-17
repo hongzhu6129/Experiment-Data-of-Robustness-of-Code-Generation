@@ -1,0 +1,31 @@
+
+
+
+Here's how this code works:
+
+1. **Initialization:**
+   - `n`:  Stores the total number of coins.
+   - `rows`: Keeps track of the number of complete rows formed.
+   - `coinsUsed`: Stores the number of coins already used in the staircase.
+   - `currentRowCoins`: Stores the number of coins needed for the current row (starts at 1).
+
+2. **Looping to Build Rows:**
+   - The `while` loop continues as long as there are enough coins to form the next row (`coinsUsed + currentRowCoins <= n`).
+   - Inside the loop:
+     - An inner `for` loop prints `currentRowCoins` number of "$" symbols (representing coins) for the current row.
+     - A newline is printed after each row.
+     - `coinsUsed` is updated.
+     - `currentRowCoins` is incremented to prepare for the next row.
+     - `rows` is incremented to count the complete rows.
+
+3. **Handling Remaining Coins:**
+   - After the `while` loop, there might be some remaining coins (`coinsUsed < n`). 
+   - An `if` statement handles this by printing the remaining coins on a new line.
+
+4. **Output:**
+   - The code prints the staircase shape.
+   - It also optionally prints the number of complete rows formed.
+
+
+**Example Output (n = 10):**
+

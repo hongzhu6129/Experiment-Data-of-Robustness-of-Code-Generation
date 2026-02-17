@@ -1,0 +1,32 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 5; i++) {
+            // Print the stars and stripes section
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" ================================");
+            System.out.println();
+        }
+
+        // Print the next two rows (slightly different pattern)
+        System.out.println(" * pct * * * ================================");
+         for (int i = 0; i < 3; i++) {
+            // Print the stars and stripes section
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" ================================");
+            System.out.println();
+        }
+
+
+        // Print the stripes section
+        for (int i = 0; i < 6; i++) {
+            System.out.print("===============================================");
+            System.out.println();
+        }
+    }
+}

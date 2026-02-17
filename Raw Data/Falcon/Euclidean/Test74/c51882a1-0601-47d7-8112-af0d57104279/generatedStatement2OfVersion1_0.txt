@@ -1,0 +1,23 @@
+
+
+
+Key Improvements and Explanations:
+
+1. **JUnit Tests:** The code now includes JUnit 5 tests, which are a standard way to write unit tests in Java. These tests cover different scenarios, including normal cases, squares, and corner cases (zero length/width, negative inputs).
+
+2. **Corner Case Handling:** The tests specifically address scenarios like zero length/width. You can extend this to handle other edge cases if necessary (very large numbers, etc.).  I have added tests for these and for decimal inputs too.
+
+3. **Exception Handling for Invalid Input (Improved):** I've added a more robust way to handle invalid input (negative length or width). The `Rectangle` constructor can now throw `IllegalArgumentException`. The tests check if these exceptions are correctly thrown when negative values are provided.  This prevents the creation of invalid `Rectangle` objects.  If you don't want to throw exceptions, you can set the values to zero or use `Math.abs()` to take the absolute value of the input, but throwing an exception is generally preferred as it explicitly indicates that the input was invalid.
+
+4. **Clearer Output:** The `main` method now provides more descriptive output, indicating when a square is being tested.
+
+5. **Testability:** The `Rectangle` class is now more testable because its methods (`getArea`, `getPerimeter`) are public.
+
+
+How to Run the Tests:
+
+If you are using an IDE like IntelliJ or Eclipse, you can usually right-click on the test class or methods and select "Run".  If you are using the command line and have JUnit 5 set up, you can use a command like `mvn test` (if you are using Maven) or `gradle test` (if you are using Gradle).
+
+
+
+This improved version is more robust, testable, and demonstrates good practices for handling corner cases and invalid input.

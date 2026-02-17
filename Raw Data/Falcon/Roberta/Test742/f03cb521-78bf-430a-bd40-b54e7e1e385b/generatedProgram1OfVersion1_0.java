@@ -1,0 +1,34 @@
+public class HammingNumbers {
+
+    public static void main(String[] args) {
+        int n = 20;
+        int[] hamming = new int[n];
+
+        hamming[0] = 1;
+        int i2 = 0, i3 = 0, i5 = 0;
+        int next2 = 2, next3 = 3, next5 = 5;
+
+        for (int i = 1; i < n; i++) {
+            int nextHamming = Math.min(next2, Math.min(next3, next5));
+            hamming[i] = nextHamming;
+
+            if (nextHamming == next2) {
+                i2++;
+                next2 = hamming[i2] * 2;
+            }
+            if (nextHamming == next3) {
+                i3++;
+                next3 = hamming[i3] * 3;
+            }
+            if (nextHamming == next5) {
+                i5++;
+                next5 = hamming[i5] * 5;
+            }
+        }
+
+        System.out.println("First " + n + " Hamming numbers:");
+        for (int i = 0; i < n; i++) {
+            System.out.print(hamming[i] + " ");
+        }
+    }
+}

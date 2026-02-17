@@ -1,0 +1,39 @@
+import java.util.LinkedList;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> days = new LinkedList<>();
+
+        // Insert at the beginning (first position)
+        days.addFirst("Sunday"); 
+        days.addFirst("Saturday");
+
+        // Insert at the end (last position)
+        days.addLast("Monday");
+        days.addLast("Tuesday");
+
+        // Print the LinkedList
+        System.out.println(days); 
+
+
+        //More examples for clarity:
+
+        // Insert "Wednesday" at the beginning
+        days.addFirst("Wednesday");
+
+        // Insert "Friday" at the end
+        days.addLast("Friday");
+
+
+        // Print the updated LinkedList
+        System.out.println(days);
+
+         // A more complex example illustrating insertion at specific index
+         days.add(2, "Thursday"); // insert "Thursday at index 2
+         System.out.println(days);
+
+
+    }
+}

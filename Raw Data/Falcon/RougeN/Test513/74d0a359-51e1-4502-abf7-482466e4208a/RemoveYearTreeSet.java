@@ -1,0 +1,53 @@
+import java.util.TreeSet;
+
+public class RemoveYearTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer representing years
+        TreeSet<Integer> years = new TreeSet<>();
+        years.add(2020);
+        years.add(2021);
+        years.add(2022);
+        years.add(2023);
+        years.add(2024);
+
+        // Specify the year to retrieve and remove
+        int yearToRemove = 2022;
+
+        // Check if the year exists in the TreeSet
+        if (years.contains(yearToRemove)) {
+            // Retrieve (print) the year
+            System.out.println("Retrieved year: " + yearToRemove);
+
+            // Remove the year
+            years.remove(yearToRemove);
+
+            System.out.println("TreeSet after removal: " + years);
+        } else {
+            System.out.println("Year " + yearToRemove + " not found in the TreeSet.");
+        }
+
+
+        //Example demonstrating retrieving and removing the first (earliest) year.
+        if (!years.isEmpty()) { // Check if the TreeSet is not empty
+            Integer firstYear = years.first();
+            System.out.println("First year (earliest): " + firstYear);
+            years.remove(firstYear);
+            System.out.println("TreeSet after removing first year: " + years);
+
+        }
+
+
+
+        //Example demonstrating retrieving and removing the last (latest) year
+        if (!years.isEmpty()) { // Check if the TreeSet is not empty after previous removals
+            Integer lastYear = years.last();
+            System.out.println("Last year (latest): " + lastYear);
+            years.remove(lastYear);
+            System.out.println("TreeSet after removing last year: " + years);
+        }
+
+
+
+    }
+}

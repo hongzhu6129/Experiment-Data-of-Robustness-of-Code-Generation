@@ -1,0 +1,24 @@
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. This is another test.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+        } else {
+            System.out.println("'" + subString + "' not found in the main string.");
+        }
+
+
+        // More examples:
+        System.out.println("Last index of 'is': " + mainString.lastIndexOf("is"));  // Output: 31
+        System.out.println("Last index of 'Z': " + mainString.lastIndexOf("Z")); // Output: -1 (not found)
+
+         // Demonstrating lastIndexOf(String str, int fromIndex)
+        int lastIndexFromIndex = mainString.lastIndexOf("is", 20); // Search backwards from index 20
+        System.out.println("Last index of 'is' starting from index 20: " + lastIndexFromIndex); // Output: 10
+    }
+}

@@ -1,0 +1,55 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (you can use other NavigableMap implementations)
+        NavigableMap<Integer, String> originalMap = new TreeMap<>();
+
+        // Populate the map with some data
+        originalMap.put(1, "One");
+        originalMap.put(2, "Two");
+        originalMap.put(3, "Three");
+        originalMap.put(4, "Four");
+        originalMap.put(5, "Five");
+        originalMap.put(6, "Six");
+
+
+        // Define the start and end keys for the submap
+        int startKey = 2; // Inclusive
+        int endKey = 5;   // Exclusive
+
+        // Get the submap using subMap()
+        NavigableMap<Integer, String> subMap = originalMap.subMap(startKey, true, endKey, false);
+
+
+        // Print the original map and the submap
+        System.out.println("Original Map: " + originalMap);
+        System.out.println("Submap: " + subMap);
+
+
+        // Example with String keys (important to note natural ordering for Strings)
+        NavigableMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("Apple", 1);
+        stringMap.put("Banana", 2);
+        stringMap.put("Orange", 3);
+        stringMap.put("Peach", 4);
+
+        String startString = "Banana"; // Inclusive
+        String endString = "Peach";   // Exclusive
+
+        NavigableMap<String, Integer> stringSubMap = stringMap.subMap(startString, true, endString, false);
+        System.out.println("\nString Map: " + stringMap);
+        System.out.println("String Submap: " + stringSubMap);
+
+
+        // Handling cases where the end key is not present:
+        endKey = 7; // This key doesn't exist
+        NavigableMap<Integer, String> subMap2 = originalMap.subMap(startKey, true, endKey, false);
+        System.out.println("\nSubmap (end key not present): " + subMap2); // Still works, goes up to the highest key < endKey
+
+
+
+    }
+}

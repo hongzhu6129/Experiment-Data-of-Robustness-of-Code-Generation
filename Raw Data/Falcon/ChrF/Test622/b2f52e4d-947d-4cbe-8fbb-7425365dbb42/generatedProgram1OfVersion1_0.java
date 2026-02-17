@@ -1,0 +1,31 @@
+public class PalindromeChecker {
+
+    public static void main(String[] args) {
+        int number = 121; // Example number, change as needed
+        boolean isPalindrome = checkPalindrome(number);
+        System.out.println(number + " is palindrome: " + isPalindrome);
+
+        number = 123; // Another example
+        isPalindrome = checkPalindrome(number);
+        System.out.println(number + " is palindrome: " + isPalindrome);
+
+
+         number = 1001; // Another example
+        isPalindrome = checkPalindrome(number);
+        System.out.println(number + " is palindrome: " + isPalindrome);
+
+    }
+
+    private static boolean checkPalindrome(int number) {
+        int originalNumber = number;
+        int reversedNumber = 0;
+
+        while (number > 0) {
+            int digit = number % 10;
+            reversedNumber = reversedNumber * 10 + digit;
+            number /= 10;
+        }
+
+        return originalNumber == reversedNumber;
+    }
+}

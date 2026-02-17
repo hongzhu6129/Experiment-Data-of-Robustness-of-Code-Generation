@@ -1,0 +1,35 @@
+public class PellSeries {
+
+    public static void main(String[] args) {
+        int n = 15; // Number of Pell numbers to print
+        printPellSeries(n);
+    }
+
+    public static void printPellSeries(int n) {
+        if (n <= 0) {
+            return; // Nothing to print
+        }
+
+        if (n == 1) {
+            System.out.print("0 ");
+            return;
+        }
+
+        if (n == 2) {
+            System.out.print("0 1 ");
+            return;
+        }
+
+        int a = 0;
+        int b = 1;
+        System.out.print(a + " " + b + " ");
+
+        for (int i = 3; i <= n; i++) {
+            int nextPell = 2 * b + a;
+            System.out.print(nextPell + " ");
+            a = b;
+            b = nextPell;
+        }
+        System.out.println(); // Print a newline at the end for cleaner output
+    }
+}

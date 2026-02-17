@@ -1,0 +1,41 @@
+public class CheckTenTwenty {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {1, 2, 10, 20, 3};
+        System.out.println("Array 1: " + check10then20(arr1)); // Output: true
+
+        int[] arr2 = {1, 2, 20, 10, 3};
+        System.out.println("Array 2: " + check10then20(arr2)); // Output: false
+
+        int[] arr3 = {1, 2, 10, 3, 20};
+        System.out.println("Array 3: " + check10then20(arr3)); // Output: true
+
+        int[] arr4 = {1, 2, 3, 4, 5};
+        System.out.println("Array 4: " + check10then20(arr4)); // Output: false
+
+
+        int[] arr5 = {10,20,10,20};
+        System.out.println("Array 5: " + check10then20(arr5)); // Output: true
+
+        int[] arr6 = {20,10,10,20};
+        System.out.println("Array 6: " + check10then20(arr6)); // Output: false
+
+        int[] arr7 = {10, 10, 20};
+        System.out.println("Array 7: " + check10then20(arr7)); // Output: true
+
+
+    }
+
+    public static boolean check10then20(int[] arr) {
+        boolean found10 = false;
+        for (int num : arr) {
+            if (num == 10) {
+                found10 = true;
+            } else if (found10 && num == 20) {
+                return true; 
+            }
+        }
+        return false;
+    }
+}

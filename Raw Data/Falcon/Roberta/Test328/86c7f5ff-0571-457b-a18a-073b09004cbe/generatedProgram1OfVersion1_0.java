@@ -1,0 +1,31 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringValidator {
+
+    public static void main(String[] args) {
+        String testString1 = "HelloWorld123_";
+        String testString2 = "HelloWorld!@#";
+        String testString3 = "12345_";
+        String testString4 = "____";
+        String testString5 = "";
+
+        System.out.println(testString1 + ": " + validate(testString1)); // Expected: true
+        System.out.println(testString2 + ": " + validate(testString2)); // Expected: false
+        System.out.println(testString3 + ": " + validate(testString3)); // Expected: true
+        System.out.println(testString4 + ": " + validate(testString4)); // Expected: true
+        System.out.println(testString5 + ": " + validate(testString5)); // Expected: true
+
+
+    }
+
+    public static String validate(String str) {
+        if (str == null || str.isEmpty()) {
+            return "true"; // Empty string considered valid
+        }
+
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]*$"); // Regex for alphanumeric and underscore
+        Matcher matcher = pattern.matcher(str);
+        return String.valueOf(matcher.matches());
+    }
+}

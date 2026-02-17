@@ -1,0 +1,34 @@
+public class IntegerDivision {
+
+    public static void main(String[] args) {
+        // Example 1: Basic integer division
+        int numerator1 = 10;
+        int denominator1 = 3;
+        int result1 = numerator1 / denominator1;
+        System.out.println(numerator1 + " / " + denominator1 + " = " + result1); // Output: 3 (truncates the decimal part)
+
+        // Example 2: Handling potential ArithmeticException (division by zero)
+        int numerator2 = 5;
+        int denominator2 = 0;
+        try {
+            int result2 = numerator2 / denominator2;
+            System.out.println(numerator2 + " / " + denominator2 + " = " + result2);
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+
+
+        // Example 3: Getting a floating-point result from integer division (casting)
+        int numerator3 = 7;
+        int denominator3 = 2;
+        double result3 = (double) numerator3 / denominator3; // Cast at least one operand to double
+        System.out.println(numerator3 + " / " + denominator3 + " = " + result3); // Output: 3.5
+
+        // Example 4: Using Math.floorDiv for explicit truncation 
+        int numerator4 = -7;
+        int denominator4 = 2;
+        int result4 = Math.floorDiv(numerator4, denominator4); // Rounds towards negative infinity
+        System.out.println(numerator4 + " / " + denominator4 + " (floorDiv) = " + result4); // Output: -4 (not -3)
+
+    }
+}

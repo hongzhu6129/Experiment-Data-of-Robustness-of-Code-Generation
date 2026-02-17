@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class LinkedListToArray {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        // Convert LinkedList to ArrayList using the constructor
+        List<String> arrayList = new ArrayList<>(linkedList);
+
+        // Print the ArrayList
+        System.out.println("ArrayList: " + arrayList);
+
+
+        //Another example showing conversion using addAll()
+        LinkedList<Integer> linkedList2 = new LinkedList<>();
+        linkedList2.add(1);
+        linkedList2.add(2);
+        linkedList2.add(3);
+
+        ArrayList<Integer> arrayList2 = new ArrayList<>();
+        arrayList2.addAll(linkedList2); // Adds all elements of linkedList2 to arrayList2
+
+        System.out.println("ArrayList 2: " + arrayList2);
+
+
+
+    }
+}

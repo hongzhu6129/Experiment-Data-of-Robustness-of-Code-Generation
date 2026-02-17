@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class RemoveDuplicatesFromList {
+
+    public static void main(String[] args) {
+        // Example usage:
+        List<Integer> listWithDuplicates = new ArrayList<>();
+        listWithDuplicates.add(1);
+        listWithDuplicates.add(2);
+        listWithDuplicates.add(3);
+        listWithDuplicates.add(2);
+        listWithDuplicates.add(4);
+        listWithDuplicates.add(1);
+        listWithDuplicates.add(5);
+
+
+        List<Integer> listWithoutDuplicates = removeDuplicates(listWithDuplicates);
+
+        System.out.println("List with duplicates: " + listWithDuplicates);
+        System.out.println("List without duplicates: " + listWithoutDuplicates);
+
+
+        //String example
+         List<String> stringListWithDuplicates = new ArrayList<>();
+        stringListWithDuplicates.add("apple");
+        stringListWithDuplicates.add("banana");
+        stringListWithDuplicates.add("orange");
+        stringListWithDuplicates.add("banana");
+        stringListWithDuplicates.add("grape");
+        stringListWithDuplicates.add("apple");
+
+
+        List<String> stringListWithoutDuplicates = removeDuplicates(stringListWithDuplicates);  // Using the generic method
+
+        System.out.println("List with duplicates: " + stringListWithDuplicates);
+        System.out.println("List without duplicates: " + stringListWithoutDuplicates);
+    }
+
+
+    public static <T> List<T> removeDuplicates(List<T> list) {
+        Set<T> seen = new HashSet<>();
+        List<T> result = new ArrayList<>();
+
+        for (T element : list) {
+            if (!seen.contains(element)) {
+                result.add(element);
+                seen.add(element);
+            }
+        }
+        return result;
+    }
+}

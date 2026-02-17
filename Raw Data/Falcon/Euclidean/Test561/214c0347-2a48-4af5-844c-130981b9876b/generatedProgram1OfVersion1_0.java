@@ -1,0 +1,45 @@
+public class StringShapeComparison {
+
+    public static void main(String[] args) {
+        String shape1 = "  *  \n *** \n*****";
+        String shape2 = "  *  \n *** \n*****";
+        String shape3 = "  * \n *** \n*****"; // Different leading whitespace
+        String shape4 = " * * \n *** \n*****"; // Different characters
+        String shape5 = "  *  \n *** \n *****"; // Different trailing whitespace
+
+
+        System.out.println("Shape 1 and Shape 2 are the same: " + compareShapes(shape1, shape2));
+        System.out.println("Shape 1 and Shape 3 are the same: " + compareShapes(shape1, shape3));
+        System.out.println("Shape 1 and Shape 4 are the same: " + compareShapes(shape1, shape4));
+        System.out.println("Shape 1 and Shape 5 are the same: " + compareShapes(shape1, shape5));
+
+    }
+
+
+    public static boolean compareShapes(String shape1, String shape2) {
+        // Normalize the strings to handle potential whitespace differences
+        String normalizedShape1 = normalizeShape(shape1);
+        String normalizedShape2 = normalizeShape(shape2);
+
+        return normalizedShape1.equals(normalizedShape2);
+
+    }
+
+
+    private static String normalizeShape(String shape) {
+        // 1. Split into lines
+        String[] lines = shape.split("\n");
+
+        // 2. Trim each line
+        for (int i = 0; i < lines.length; i++) {
+            lines[i] = lines[i].trim();
+        }
+
+        // 3. Rebuild the string
+        return String.join("\n", lines);
+
+    }
+
+
+
+}

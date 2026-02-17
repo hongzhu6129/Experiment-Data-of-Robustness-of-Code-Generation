@@ -1,0 +1,27 @@
+
+
+
+Explanation:
+
+1. **`main` method:**
+   - Takes sample IP addresses as input.
+   - Calls the `validate` method to remove leading zeros.
+   - Prints the original and validated IP addresses.
+
+2. **`validate` method:**
+   - Splits the input IP address string into parts based on the "." delimiter using `split("\\.")`.
+   - Uses a Java Stream to process each part:
+     - `map(Integer::parseInt)`: Converts each part to an integer. This automatically removes leading zeros. (e.g., "001" becomes 1, "010" becomes 10).
+     - `mapToObj(String::valueOf)`: Converts the integer back to a string.
+     - `collect(Collectors.joining("."))`: Joins the processed parts back together with "." as the delimiter to reconstruct the validated IP address string.
+
+
+Key improvements:
+
+- **Conciseness:**  Uses Java Streams for a more compact and readable solution.
+- **Correctness:** Handles all cases of leading zeros, including single-digit parts and all-zero parts.
+- **Clarity:**  Improved variable naming and comments for better understanding.  
+
+
+Example Usage:
+

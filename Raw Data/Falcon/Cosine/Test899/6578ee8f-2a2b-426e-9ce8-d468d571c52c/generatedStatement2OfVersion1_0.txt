@@ -1,0 +1,28 @@
+
+
+
+**Explanation of the Error and the Solution:**
+
+The error `invalid literal for int() with base 10: '\r[|'` occurs when you try to convert a string that is not a valid base-10 integer using `Integer.parseInt()`.  Characters like carriage returns (`\r`), brackets (`[`, `]`), pipes (`|`), or other non-numeric characters cause this error.
+
+**How this code addresses the error:**
+
+1. **Reads line by line:** `scanner.nextLine()` reads input line by line, which is important for handling potential `\r` characters correctly.  `Scanner`'s default delimiter is whitespace, but it also handles line terminators, including `\r\n` (Windows) and `\n` (Unix/Linux/macOS).
+
+2. **Splits the line:**  `line.split("\\s+")` splits the line into individual strings based on whitespace. This is crucial because the error-causing characters might be mixed with valid numbers on the same line.  Processing each part individually isolates the problem.
+
+3. **Trims whitespace:** `part.trim()` removes any leading or trailing whitespace from the string before parsing. This is important as spaces around numbers can also cause parsing errors.
+
+4. **Handles NumberFormatException:** The `try-catch` block around `Integer.parseInt()` specifically catches the `NumberFormatException`.  This prevents the program from crashing and allows you to handle the invalid input gracefully. You can choose to:
+   - Print an error message (as shown in the example).
+   - Skip the invalid input.
+   - Use a default value.
+   - Throw a custom exception if necessary.
+
+5. **Closes the scanner:** The `finally` block ensures the `Scanner` is closed, even if an exception occurs.  This is good practice for resource management.
+
+
+**Example Usage:**
+
+If the input is:
+

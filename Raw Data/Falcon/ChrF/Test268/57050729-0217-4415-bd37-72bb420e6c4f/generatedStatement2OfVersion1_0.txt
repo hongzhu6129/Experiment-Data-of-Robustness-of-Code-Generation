@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:** The `removeDuplicates` method now correctly handles empty arrays (`nums.length == 0`) and null input (`nums == null`) by returning 0.
+
+2. **In-Place Modification:**  The code modifies the original `nums` array directly (in-place), which is generally more efficient than creating a new array.
+
+3. **Clearer Variable Naming:**  `uniqueIndex` is used instead of just `i` to clearly indicate its purpose.
+
+4. **Concise Logic:** The core logic of comparing elements and moving unique elements remains efficient and easy to understand.
+
+5. **Comprehensive Main Method:**  The `main` method now includes multiple test cases (including edge cases) to demonstrate the function's behavior and uses `Arrays.copyOfRange` to print only the relevant part of the modified array after removing duplicates.  This prevents printing the trailing garbage values that might be present in the original array.
+
+
+**How it works:**
+
+The `removeDuplicates` function uses a two-pointer approach. `uniqueIndex` keeps track of the index where the next unique element should be placed.  The loop iterates through the array, and if the current element (`nums[i]`) is different from the element at `uniqueIndex`, it's copied to the `uniqueIndex + 1` position.  Finally, `uniqueIndex + 1` is returned, representing the new length of the array containing only unique elements.

@@ -1,0 +1,41 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class TailMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which keeps keys sorted)
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+        // Given key
+        int givenKey = 3;
+
+        // Get the portion of the map whose keys are greater than givenKey (inclusive)
+        SortedMap<Integer, String> tailMapInclusive = map.tailMap(givenKey);
+
+
+        // Get the portion of the map whose keys are strictly greater than givenKey
+        SortedMap<Integer, String> tailMapExclusive = map.tailMap(givenKey + 1); // Or map.tailMap(givenKey, false) in Java 1.6+
+
+
+        // Print the original map
+        System.out.println("Original Map: " + map);
+
+        // Print the tail map (inclusive)
+        System.out.println("Tail Map (inclusive): " + tailMapInclusive);
+
+        // Print the tail map (exclusive)
+        System.out.println("Tail Map (exclusive): " + tailMapExclusive);
+
+
+
+    }
+}

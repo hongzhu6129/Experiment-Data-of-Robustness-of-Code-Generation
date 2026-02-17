@@ -1,0 +1,31 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering normal, edge, and corner cases:
+
+| Test Case | Length | Width | Expected Area | Expected Perimeter | Notes                                 |
+|-----------|--------|-------|---------------|-------------------|--------------------------------------|
+| 1        | 5      | 10    | 50            | 30               | Normal case                          |
+| 2        | 0      | 10    | 0             | 20               | Edge case: Zero length              |
+| 3        | 5      | 0     | 0             | 10               | Edge case: Zero width               |
+| 4        | 0      | 0     | 0             | 0                | Corner case: Zero length and width |
+| 5        | 1.5    | 2.5    | 3.75          | 8                | Normal case with decimals           |
+| 6        | -5     | 10    | Exception     | Exception        | Corner case: Negative Length      | // Corrected test case
+| 7        | 5      | -10    | Exception     | Exception        | Corner case: Negative Width      | // Corrected test case
+| 8       | Double.MAX_VALUE | 1 | Double.MAX_VALUE | Infinity      | Edge Case: Max Value for Length (Perimeter overflows)|
+| 9       | 1 | Double.MAX_VALUE | Double.MAX_VALUE | Infinity      | Edge Case: Max Value for Width (Perimeter overflows)|
+| 10       | Double.MAX_VALUE | Double.MAX_VALUE | Infinity | Infinity | Corner Case: Max Value for Length and Width |
+
+
+
+
+**How to run the test cases (Manually):**
+
+1.  Compile the Java code: `javac Rectangle.java`
+2.  Run the code: `java Rectangle`
+3.  Enter the length and width values from the test cases when prompted.
+4.  Verify that the output matches the expected area and perimeter.
+
+**How to automate tests (using JUnit - example):**
+

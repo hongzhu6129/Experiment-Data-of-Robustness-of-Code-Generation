@@ -1,0 +1,65 @@
+class Solution {
+    /**
+     * Searches for a value (target) in an m x n matrix.
+     *
+     * @param matrix The m x n matrix to search within.
+     * @param target The value to search for.
+     * @return True if the target is found in the matrix, false otherwise.
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        int row = 0;
+        int col = cols - 1;
+
+        while (row < rows && col >= 0) {
+            if (matrix[row][col] == target) {
+                return true;
+            } else if (matrix[row][col] < target) {
+                row++;
+            } else {
+                col--;
+            }
+        }
+
+        return false;
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[][] matrix1 = {
+                {1, 4, 7, 11, 15},
+                {2, 5, 8, 12, 19},
+                {3, 6, 9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}
+        };
+
+        System.out.println(solution.searchMatrix(matrix1, 5)); // Output: true
+        System.out.println(solution.searchMatrix(matrix1, 20)); // Output: false
+
+
+        int[][] emptyMatrix = {};
+        System.out.println(solution.searchMatrix(emptyMatrix, 1)); // Output: false
+
+        int[][] nullMatrix = null;
+        System.out.println(solution.searchMatrix(nullMatrix, 1)); // Output: false
+
+
+         int[][] matrix2 = {{1}};
+        System.out.println(solution.searchMatrix(matrix2, 1)); // Output: true
+
+        int[][] matrix3 = {{1}, {3}};
+        System.out.println(solution.searchMatrix(matrix3, 3)); // Output: true
+
+
+    }
+}

@@ -1,0 +1,50 @@
+
+
+
+
+**Test Cases:**
+
+**1. Valid Binary Input:**
+
+* **Input:** `1101`
+* **Expected Output:** `'d'`
+
+* **Input:** `101010`
+* **Expected Output:** `'2a'`
+
+* **Input:** `11111111`
+* **Expected Output:** `'ff'`
+
+
+
+**2. Invalid Binary Input:**
+
+* **Input:** `10201` (Contains '2')
+* **Expected Output:** `Invalid binary input.`
+
+* **Input:** `111abc` (Contains letters)
+* **Expected Output:** `Invalid binary input.`
+
+* **Input:** `11 11` (Contains space)
+* **Expected Output:** `Invalid binary input.`
+
+
+**3. Edge Cases:**
+
+* **Input:** `0`
+* **Expected Output:** `'0'`
+
+* **Input:** `1`
+* **Expected Output:** `'1'`
+
+* **Input:** (empty string)
+* **Expected Output:**  (The program may behave differently depending on how `Scanner` handles empty input. Ideally, it should either prompt again for input or handle it as "0")
+
+
+**4. Large Binary Input:**
+
+* **Input:** `11111111111111111111111111111111` (32 bits, max for int)
+* **Expected Output:** `'ffffffff'`
+
+
+These test cases cover various scenarios, including valid and invalid binary inputs, and edge cases like 0, 1, and an empty string.  The large binary input test pushes the limits of an integer.  Testing with very large numbers (beyond what an `int` can hold)  would require using `long` or `BigInteger` in a more robust implementation if that's a requirement.

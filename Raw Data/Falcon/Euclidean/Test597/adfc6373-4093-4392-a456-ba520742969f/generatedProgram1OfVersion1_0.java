@@ -1,0 +1,42 @@
+public class StringConversions {
+
+    public static void main(String[] args) {
+        String str = "12345";
+        String decimalStr = "12345.6789";
+
+        try {
+            // Convert to int
+            int intValue = Integer.parseInt(str);
+            System.out.println("Integer value: " + intValue);
+
+            // Convert to long
+            long longValue = Long.parseLong(str);
+            System.out.println("Long value: " + longValue);
+
+            // Convert to float
+            float floatValue = Float.parseFloat(decimalStr);
+            System.out.println("Float value: " + floatValue);
+
+            // Convert to double
+            double doubleValue = Double.parseDouble(decimalStr);
+            System.out.println("Double value: " + doubleValue);
+
+
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid number format: " + e.getMessage());
+        }
+
+
+        // Demonstrating conversion with potential NumberFormatException
+        String invalidNumber = "abc";  // Not a valid number
+
+        try {
+            int invalidInt = Integer.parseInt(invalidNumber);
+        } catch (NumberFormatException e) {
+            System.err.println("Cannot convert 'abc' to an integer: " + e.getMessage());
+        }
+
+
+
+    }
+}

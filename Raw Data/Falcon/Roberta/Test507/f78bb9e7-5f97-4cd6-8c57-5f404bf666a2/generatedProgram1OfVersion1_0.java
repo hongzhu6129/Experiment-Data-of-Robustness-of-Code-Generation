@@ -1,0 +1,53 @@
+import java.util.TreeSet;
+
+public class TreeSetSize {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet
+        TreeSet<String> fruits = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        // Get the number of elements using the size() method
+        int numberOfElements = fruits.size();
+
+        // Print the number of elements
+        System.out.println("Number of elements in the TreeSet: " + numberOfElements);
+
+
+        // Demonstrating that duplicates are not counted
+        fruits.add("Apple"); // Adding a duplicate
+
+        System.out.println("Number of elements after adding a duplicate: " + fruits.size()); // Size remains the same
+
+        // Demonstrating removing elements and updating the size
+        fruits.remove("Banana");
+
+        System.out.println("Number of elements after removing \"Banana\": " + fruits.size());
+
+
+        // Example with an Integer TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(8);
+        numbers.add(1);
+
+        System.out.println("Number of elements in the Integer TreeSet: " + numbers.size());
+
+
+
+        // Showing what happens with an empty TreeSet
+         TreeSet<Double> emptySet = new TreeSet<>();
+         System.out.println("Size of an empty TreeSet: " + emptySet.size());
+
+
+    }
+}

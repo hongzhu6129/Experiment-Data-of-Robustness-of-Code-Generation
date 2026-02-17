@@ -1,0 +1,27 @@
+
+
+**Test Cases:**
+
+1. **Basic Case:**
+   - Input: {1, 2, 3, 4}
+   - Expected Output: 24 unique three-digit numbers (all permutations of 1, 2, 3, 4 taken 3 at a time) and a count of 24.
+
+2. **Repeated Digits:**  (This case is handled by the `if` condition in the code)
+   - Input: {1, 1, 2, 3} 
+   - Expected Output:  Should still produce unique numbers.  For example, 112 and 121 are different, but 111 wouldn't be included. The count would be less than 24 because of the repeated digit.
+
+3. **Empty Input:** (Corner Case)
+   - Input: {}
+   - Expected Output: No output, count = 0.
+
+4. **Input with fewer than 3 digits:** (Corner Case)
+   - Input: {1, 2}
+   - Expected Output: No output, count = 0 (since three-digit numbers cannot be formed).
+
+5. **Input with more than 4 unique digits:** (This case isn't strictly a corner case, but it's good to test)
+   - Input: {1, 2, 3, 4, 5}
+   - Expected Output:  60 unique numbers (5 * 4 * 3) and a count of 60. This tests the generality of the code beyond the initial 4-digit requirement.
+
+
+**How to Implement Tests (using JUnit as an example):**
+

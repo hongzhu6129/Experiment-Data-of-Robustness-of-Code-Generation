@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapAssociate {
+
+    public static void main(String[] args) {
+        // Create a HashMap object
+        Map<String, Integer> map = new HashMap<>();
+
+        // Associate values with keys using put()
+        map.put("apple", 1);
+        map.put("banana", 2);
+        map.put("orange", 3);
+
+
+        // Print the HashMap to verify the association
+        System.out.println(map);
+
+
+        // Example of updating a value for an existing key:
+        map.put("apple", 10);  // Updates the value associated with "apple" 
+        System.out.println(map);
+
+
+        // Another Example - associating a different data type
+        Map<Integer, String> anotherMap = new HashMap<>();
+        anotherMap.put(1, "One");
+        anotherMap.put(2, "Two");
+
+        System.out.println(anotherMap);
+
+
+    }
+}

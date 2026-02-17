@@ -1,0 +1,67 @@
+class Solution {
+    public static int prime_cell(int m, int n) {
+        int count1 = 0, count2 = 0;
+
+        // Count prime neighbors for cell (m, n)
+        for (int i = m - 1; i <= m + 1; i++) {
+            for (int j = n - 1; j <= n + 1; j++) {
+                if (i >= 0 && i < 10 && j >= 0 && j < 10 && Math.abs(m - i) + Math.abs(n - j) == 1 ) { // Check within bounds and direct neighbors
+                    int neighborCount = 0;
+                    for (int k = 2; k * k <= i; k++) {
+                        if (i % k == 0) {
+                            neighborCount++;
+                            break;
+                        }
+                    }
+					 for (int k = 2; k * k <= j; k++) {
+                        if (j % k == 0) {
+                            neighborCount++;
+                            break;
+                        }
+                    }
+                    if(i!=0&& j!=0 && neighborCount==0 ){
+						count1++;
+					}
+					else if(i!=0 && j!=0){
+                        count2++;
+                    }
+                }
+
+
+            }
+
+        }
+		return count1;
+
+    }
+
+
+    public static void main(String[] args) {
+        int m = 10; // Example dimension
+        boolean[][] a = new boolean[m][m];
+        
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+				if( i!=0 && j != 0){
+					int count1 =0;
+                // if i and j prime
+					if (prime_cell(i, j) > 1) {
+                    	a[i][j] = false;
+					}
+               		else
+                   	 	a[i][j] = true;
+				}
+				else{
+					a[i][j] = true;
+				}
+            }
+        }
+
+        // Print the first row (for the sample output)
+        for (int j = 0; j < m; j++) {
+            System.out.print(a[0][j] + " ");
+        }
+
+    }
+}

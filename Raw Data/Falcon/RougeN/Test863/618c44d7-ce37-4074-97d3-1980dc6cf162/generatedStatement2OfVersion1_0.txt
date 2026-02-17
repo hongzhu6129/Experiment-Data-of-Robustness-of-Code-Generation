@@ -1,0 +1,10 @@
+
+
+
+Key improvements and explanations:
+
+* **Clarity and Readability:** Added comments to explain the purpose of each section of the code.
+* **Cross-Platform Compatibility for Temp:** The original code only checked `TEMP`, which is Windows-specific. The updated code checks both `TEMP` and `TMP` to handle *nix systems (including macOS and Linux) correctly. It prints the appropriate one or a message if neither is found.
+* **Cross-Platform Compatibility for Username:** Similarly, it handles both `USERNAME` (Windows) and `USER` (*nix) to improve cross-platform compatibility for getting the username.
+* **Error Handling (for Environment Variables):**  Includes checks in case the environment variables aren't set. This prevents `NullPointerExceptions` and provides a more informative output.
+* **Best Practices:** Uses `System.getenv()` which is the preferred way to access environment variables in Java.

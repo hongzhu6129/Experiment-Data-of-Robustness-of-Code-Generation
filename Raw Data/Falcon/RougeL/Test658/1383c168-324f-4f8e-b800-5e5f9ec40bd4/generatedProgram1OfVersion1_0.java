@@ -1,0 +1,31 @@
+public class StringArray {
+
+    public static void main(String[] args) {
+        int n = 10; // Example: Create an array with 10 elements (0 to 9)
+        // You can change the value of 'n' to create an array of different lengths.
+
+        if (n <= 0) {
+            System.out.println("Array length must be greater than 0.");
+            return;
+        }
+
+
+        String[] stringArray = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            stringArray[i] = String.valueOf(i);
+        }
+
+        // Print the array elements to verify (Optional)
+        System.out.print("Created array: [");
+        for (int i = 0; i < n; i++) {
+            System.out.print(stringArray[i]);
+            if (i < n - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+
+    }
+}

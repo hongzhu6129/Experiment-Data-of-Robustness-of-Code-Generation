@@ -1,0 +1,20 @@
+public class Ramanujan {
+
+    public static void main(String[] args) {
+        int n = 1729; // Example: Find Ramanujan numbers up to 1729
+
+        for (int i = 1; i <= n; i++) {
+            int count = 0;
+            for (int a = 1; a <= Math.cbrt(i); a++) {
+                for (int b = a; b <= Math.cbrt(i); b++) { // Start b from a to avoid duplicates
+                    if (a * a * a + b * b * b == i) {
+                        count++;
+                    }
+                }
+            }
+            if (count >= 2) {
+                System.out.println(i);
+            }
+        }
+    }
+}

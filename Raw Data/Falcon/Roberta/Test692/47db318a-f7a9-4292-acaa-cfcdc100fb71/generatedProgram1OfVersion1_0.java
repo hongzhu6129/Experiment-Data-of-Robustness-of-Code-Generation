@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RemoveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a sample list
+        List<String> myList = new ArrayList<>();
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+
+        // Remove and return the first element
+        String firstElement = removeFirst(myList);
+
+        // Print the removed element and the updated list
+        if (firstElement != null) {
+            System.out.println("Removed element: " + firstElement);
+        }
+        System.out.println("Updated list: " + myList);
+
+
+        // Example with an empty list
+        List<Integer> emptyList = new ArrayList<>();
+        Integer removedFromEmpty = removeFirst(emptyList);
+        if(removedFromEmpty == null) {
+             System.out.println("Removed from empty list: null");
+        }
+        System.out.println("Empty list after removal: " + emptyList);
+
+
+    }
+
+    private static <T> T removeFirst(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return null; // Or throw an exception if appropriate for your use case
+        }
+        return list.remove(0);
+    }
+}
+

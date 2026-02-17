@@ -1,0 +1,21 @@
+
+
+
+Key improvements and explanations:
+
+1. **Use of a Set:** The `result` is now a `Set<String>` (specifically a `HashSet`).  This automatically handles duplicates, ensuring each interleaving is included only once, which is crucial for correctness.
+
+2. **Base Case:**  The base case of the recursion is when both input strings (`str1` and `str2`) are empty. At this point, the `current` string represents a complete interleaving and is added to the `result` set.
+
+3. **Recursive Calls:**  The code recursively calls `allInterleavings`:
+   - If `str1` is not empty, it takes the first character of `str1`, appends it to `current`, and recurses with the remaining part of `str1`.
+   - If `str2` is not empty, it does the same, but with the first character of `str2`.
+
+4. **Clear Explanation in `main`:** The `main` method now provides clearer examples and prints the results in a user-friendly format. The `interleavings` set is cleared between examples to avoid mixing results.
+
+5. **Handles Different String Lengths:** The code correctly handles cases where the input strings have different lengths.
+
+
+
+Example Output (for "AB" and "CD"):
+

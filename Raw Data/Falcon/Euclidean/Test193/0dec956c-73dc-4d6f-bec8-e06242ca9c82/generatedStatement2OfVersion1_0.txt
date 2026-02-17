@@ -1,0 +1,21 @@
+
+
+
+**Explanation:**
+
+1. **`polyEval(List<Double> coefficients, double x)`:**
+   - This method takes a list of coefficients (`coefficients`) representing the polynomial and the value of `x` at which to evaluate it.
+   - It initializes `result` to 0.
+   - It iterates through the coefficients from highest degree to lowest (backwards through the list).
+   - In each iteration, it multiplies the current `result` by `x` and adds the current coefficient. This implements the Horner's scheme as described in the prompt (the nested multiplication and addition).
+
+2. **`main(String[] args)`:**
+   - Creates a sample list of coefficients for the polynomial -19 + 7x - 4x^2 + 6x^3.
+   - Sets `x` to 3.
+   - Calls `polyEval` to evaluate the polynomial.
+   - Prints the result.
+
+
+**Horner's Scheme Efficiency:**
+
+Horner's scheme is efficient because it reduces the number of multiplications required to evaluate a polynomial.  The naive approach would involve calculating powers of `x` separately (x^2, x^3, etc.), which is more computationally expensive. Horner's scheme avoids these separate power calculations.

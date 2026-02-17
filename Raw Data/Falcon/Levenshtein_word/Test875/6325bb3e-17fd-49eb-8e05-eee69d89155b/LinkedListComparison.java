@@ -1,0 +1,103 @@
+import java.util.LinkedList;
+
+public class LinkedListComparison {
+
+    public static void main(String[] args) {
+        // Create two linked lists
+        LinkedList<Integer> list1 = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
+
+        // Populate list1
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        // Populate list2
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+        // 1. Using equals() method: Checks for content equality
+        System.out.println("Using equals():");
+        if (list1.equals(list2)) {
+            System.out.println("List 1 and List 2 are equal.");
+        } else {
+            System.out.println("List 1 and List 2 are not equal.");
+        }
+
+        // Modify list2 to demonstrate the difference
+        list2.add(4);
+
+        System.out.println("\nAfter adding an element to list2:");
+
+        // Demonstrate equals() again after modification
+        if (list1.equals(list2)) {
+            System.out.println("List 1 and List 2 are equal.");
+        } else {
+            System.out.println("List 1 and List 2 are not equal.");
+        }
+
+
+        // 2. Comparing sizes: Useful for a quick check before deep comparison
+        System.out.println("\nUsing size comparison:");
+        if (list1.size() == list2.size()) {
+            System.out.println("List 1 and List 2 have the same size."); // Won't be printed now
+        } else {
+            System.out.println("List 1 and List 2 have different sizes.");
+        }
+
+        // 3. Element-by-element comparison (Manual iteration)
+        System.out.println("\nUsing element-by-element comparison:");
+
+        boolean areEqual = list1.size() == list2.size(); // Initial assumption
+
+        if(areEqual) { // Only proceed if sizes are the same, avoid IndexOutOfBoundsException
+          for(int i = 0; i < list1.size(); i++){
+              if(!list1.get(i).equals(list2.get(i))){ // Compare elements at each index
+                  areEqual = false;
+                  break; // Exit loop early if a mismatch is found
+              }
+          }
+        }
+
+
+        if (areEqual) {
+            System.out.println("List 1 and List 2 are equal (element-wise)."); // Won't print after modification
+        } else {
+            System.out.println("List 1 and List 2 are not equal (element-wise).");
+        }
+
+
+
+        // 4. containsAll(): checks if one list contains all elements of another (order doesn't matter)
+        System.out.println("\nUsing containsAll():");
+
+        // Reset list2 for this demonstration
+        list2.clear();
+        list2.add(3);
+        list2.add(2);
+        list2.add(1);
+
+        if (list1.containsAll(list2)) {
+            System.out.println("List 1 contains all elements of List 2."); // True, even though order is different
+        }
+
+
+        // Add a duplicate to list2 to demonstrate behavior with duplicates
+        list2.add(2);
+
+        if (list1.containsAll(list2)) {
+            System.out.println("List 1 contains all elements of List 2 (with duplicates)."); // Still true!
+        }
+
+
+         // Add a new element to list 2 that isn't in list1
+         list2.add(5);
+         if (list1.containsAll(list2)) {
+            System.out.println("List 1 contains all elements of List 2 (with new element)."); // False now
+         } else {
+            System.out.println("List 1 does not contain all elements of List 2 (with new element)."); // Now this is printed
+         }
+
+    }
+}

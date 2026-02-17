@@ -1,0 +1,15 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Null Inputs:** The `removeString` method now checks for `null` inputs for both `mainString` and `removeString`.  This prevents `NullPointerExceptions`.  It currently returns the original string if either is null, but you could modify it to throw an exception if that's your preferred error handling.
+
+2. **Uses `String.replace()`:**  The most efficient way to remove all occurrences of a substring is to use the built-in `replace()` method.  This is cleaner and more performant than iterating or using `replaceAll` (which uses regular expressions and would need escaping if `removeString` contained special regex characters).
+
+3. **Clearer `main` Method:**  The `main` method demonstrates several test cases, including removing different substrings and handling cases with null or empty strings.  The output clearly shows the original string and the result after removal.
+
+4. **Adheres to Method Signature Requirements:** The code strictly follows the specified method signatures `public String removeString(String, String)` and `public static void main(String[])`.
+
+
+This improved version is more robust, efficient, and easier to understand.  It also provides a better demonstration of its usage in the `main` method.

@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterateArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+
+        // Method 1: Using a for loop with get() method
+        System.out.println("Using traditional for loop:");
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println(fruits.get(i));
+        }
+
+        System.out.println("\nUsing enhanced for loop (for-each loop):");
+        // Method 2: Using an enhanced for loop (for-each loop)
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+         System.out.println("\nUsing Java 8 forEach with Lambda:");
+        // Method 3: Using Java 8 forEach with Lambda expression
+        fruits.forEach(fruit -> System.out.println(fruit));
+
+
+
+        System.out.println("\nUsing an Iterator:");
+        //Method 4: Using an Iterator
+        java.util.Iterator<String> iterator = fruits.iterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+
+        System.out.println("\nUsing a ListIterator:");
+        // Method 5: Using a ListIterator (allows bidirectional traversal)
+        java.util.ListIterator<String> listIterator = fruits.listIterator();
+        System.out.println("Forward traversal:");
+        while (listIterator.hasNext()) {
+            System.out.println(listIterator.next());
+        }
+
+        System.out.println("\nBackward traversal:"); // Demonstrate backward traversal
+        while (listIterator.hasPrevious()) {
+            System.out.println(listIterator.previous());
+        }
+
+
+
+         System.out.println("\nUsing a while loop:");
+        //Method 6: Using a simple while loop
+        int i = 0;
+        while (i < fruits.size()) {
+            System.out.println(fruits.get(i));
+            i++;
+        }
+    }
+}

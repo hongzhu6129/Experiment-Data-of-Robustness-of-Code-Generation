@@ -1,0 +1,25 @@
+
+
+
+
+Explanation and Improvements:
+
+1. **Clearer Method Signature:** The `Saddleback` method signature now explicitly includes `m` and `n` (the dimensions of the array) for better readability and usage.
+
+2. **Return int[]:**  The method returns an `int[]` of size 2.  If the target is found, the array contains the row and column indices. If the target is not found, it returns `{-1, -1}`. This makes it easier for the calling code to handle both scenarios.
+
+3. **Enhanced Comments:**  The code is now well-commented to explain the logic and the purpose of different sections.
+
+4. **Example Usage in main:** The `main` method demonstrates how to use the `Saddleback` method and how to interpret the results. It also includes a test case where the target element is not present.
+
+5. **Boundary Checks:** The `while` loop condition `row < m && col >= 0` ensures that we don't go out of bounds of the array.
+
+How Saddleback Search Works:
+
+The Saddleback search algorithm is efficient for searching in a sorted 2D array.  It starts at the top-right corner of the matrix.
+
+- If the current element is equal to the target, the element is found.
+- If the current element is smaller than the target, move down to the next row (because the elements are sorted in ascending order within rows and columns).
+- If the current element is larger than the target, move left to the previous column.
+
+This approach eliminates a row or a column in each comparison, leading to a faster search than a linear scan of the entire 2D array.

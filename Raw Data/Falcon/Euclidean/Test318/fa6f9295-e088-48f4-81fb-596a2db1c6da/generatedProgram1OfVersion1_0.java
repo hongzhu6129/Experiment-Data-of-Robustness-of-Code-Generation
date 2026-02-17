@@ -1,0 +1,48 @@
+import java.util.TreeSet;
+
+public class TreeSetLower {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of Integer
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some elements
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+
+        // Get the element lower than 30
+        Integer lowerThan30 = numbers.lower(30);
+        System.out.println("Element lower than 30: " + lowerThan30); // Output: 20
+
+        // Get the element lower than 10 (which doesn't exist)
+        Integer lowerThan10 = numbers.lower(10);
+        System.out.println("Element lower than 10: " + lowerThan10); // Output: null
+
+
+        // Example with strings
+        TreeSet<String> strings = new TreeSet<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("grape");
+        strings.add("orange");
+
+        String lowerThanGrape = strings.lower("grape");
+        System.out.println("Element lower than grape: " + lowerThanGrape); // Output: banana
+
+
+
+        // Handle null cases safely (good practice)
+        Integer givenValue = 60; // Or any value
+        Integer lowerValue = numbers.lower(givenValue);
+
+        if (lowerValue != null) {
+            System.out.println("Element lower than " + givenValue + ": " + lowerValue);
+        } else {
+            System.out.println("No element found lower than " + givenValue);
+        }
+    }
+}

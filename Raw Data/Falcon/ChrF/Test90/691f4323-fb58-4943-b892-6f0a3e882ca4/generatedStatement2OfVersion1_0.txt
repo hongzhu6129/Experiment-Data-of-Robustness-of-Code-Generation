@@ -1,0 +1,35 @@
+
+
+
+**Explanation and How to Use:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedReader`: Used for efficient reading of characters from the file.
+   - `java.io.FileReader`: Used to create a stream that connects to the file.
+   - `java.io.IOException`:  Handles potential errors during file operations.
+
+2. **Specify the file path:**
+   - Change `"path/to/your/file.txt"` to the actual path of the text file you want to read.  For example, if your file is named `my_document.txt` and is located in the `documents` folder in your user directory, the path might be something like `"/Users/yourusername/documents/my_document.txt"` (on macOS/Linux) or `"C:\\Users\\yourusername\\Documents\\my_document.txt"` (on Windows).  You can also use relative paths if the file is in the same directory as your Java program.
+
+3. **Try-with-resources:**
+   - The `try (BufferedReader reader = ...)` syntax uses try-with-resources, which automatically closes the `BufferedReader` and `FileReader` after the `try` block completes, even if an exception occurs. This is important for proper resource management.
+
+4. **Create a BufferedReader:**
+   - `new BufferedReader(new FileReader(filePath))` creates a `BufferedReader` that reads from the file specified by `filePath`.
+
+5. **Read the file line by line:**
+   - `reader.readLine()` reads a single line from the file. It returns `null` when the end of the file is reached.
+   - The `while` loop continues reading lines until `readLine()` returns `null`.
+
+6. **Print each line:**
+   - `System.out.println(line);` prints the current line to the console.
+
+7. **Handle exceptions:**
+   - The `catch (IOException e)` block handles potential `IOExceptions` that might occur (e.g., if the file doesn't exist or there's a problem reading it).  It prints an error message to the console.
+
+
+**To compile and run:**
+
+1. **Save:** Save the code as a `.java` file (e.g., `ReadPlainCopyFile.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   

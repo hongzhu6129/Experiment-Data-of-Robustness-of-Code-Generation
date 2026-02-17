@@ -1,0 +1,13 @@
+
+
+
+**Explanation and Key Improvement:**
+
+The crucial aspect of the `deleteNode` function is that it *doesn't* require traversing the list from the head to find the node to delete. Instead, it directly receives the node to be deleted as input.  This is more efficient if you already have a reference to the node.
+
+**How `deleteNode` works (when not the tail):**
+
+1. **Copy the value:** It copies the value of the *next* node into the current node.
+2. **Skip the next node:** It then updates the `next` pointer of the current node to point to the node *after* the next node.  This effectively removes the original "next" node from the list.
+
+**Important Limitation:** This method *cannot* delete the tail node of the linked list.  If you attempt to do so, it will either do nothing (if the node is `null`) or throw a `NullPointerException` (if you try to access `node.next.val` when `node.next` is `null`).  If deleting the tail is a requirement, you *must* traverse the list from the head to the node before the tail and update its `next` pointer to `null`.

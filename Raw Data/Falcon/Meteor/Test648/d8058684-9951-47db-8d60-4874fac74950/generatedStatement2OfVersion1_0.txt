@@ -1,0 +1,32 @@
+
+
+
+**Test Cases (including corner cases):**
+
+| Start | End | Divisor | Expected Output |
+|---|---|---|---|
+| 1 | 10 | 2 | 5 |
+| 1 | 10 | 3 | 3 |
+| 1 | 10 | 1 | 10 |
+| 10 | 1 | 2 | 0 |  // Start > End
+| 1 | 10 | 0 | Exception: "Divisor cannot be zero." | // Divisor is 0
+| 2 | 2 | 2 | 1 | // Start == End, divisible
+| 2 | 2 | 3 | 0 |// Start == End, not divisible
+| -10 | -1 | 2 | 5 | // Negative range
+| -5 | 5 | 2 | 5 | // Range spanning zero
+| 1 | 10 | 11 | 0 | // No divisible numbers in range
+| 1 | Integer.MAX_VALUE | 1| Integer.MAX_VALUE | // Large Range - to test potential overflow (handled in improved code)
+| Integer.MIN_VALUE | Integer.MAX_VALUE | 2 |  Exception (potential overflow in older code � handled now)| //Extreme Range
+
+
+
+**Explanation of Improvements:**
+
+1. **Handling Zero Divisor:** The code now explicitly throws an `IllegalArgumentException` if the divisor is zero, preventing a division by zero error.
+
+2. **Handling Start > End:** The code returns 0 (or could throw an exception, based on the desired behavior) if `start` is greater than `end`, handling this case gracefully.
+
+3. **Improved Calculation (No Overflow):**  The original code `(end / divisor) - (start - 1) / divisor ` could have potential integer overflow issues if `end` or `start` were very large numbers. The improved version `(end - firstDivisible) / divisor + 1` eliminates the risk of overflow and makes the logic clearer.
+
+
+This revised code is more robust and correctly handles edge cases, making it more reliable. Remember to test your code thoroughly with a variety of inputs to ensure its correctness.

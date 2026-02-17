@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handle Zero Divisor:** The code now explicitly checks for a zero divisor and throws an `ArithmeticException` if encountered. This is crucial for robustness.
+
+2. **Handle Negative Numbers:**  The code correctly handles negative dividends and divisors. It ensures the modulus retains its mathematical meaning (always non-negative and less than the absolute value of the divisor). The most complex part is dealing with both negative dividend and divisor - be very careful with the sign if both are negative.
+
+3. **Repeated Subtraction Method:** This method is used for calculating the modulus.  It's simple and avoids the use of the modulus operator. It's reasonably efficient when the divisor is small. (For very large numbers and large divisors, a more efficient approach like the division algorithm would be preferred)
+
+4. **Test Cases:** The provided test cases cover several scenarios, including positive and negative inputs, zero dividend, zero divisor, and large numbers. The crucial corner cases with `Integer.MIN_VALUE` are also included because `-Integer.MIN_VALUE` results in overflow (it's equal to `Integer.MIN_VALUE` itself).
+
+**Key Improvements over just subtraction:**
+
+* **Correctness with negative numbers:** The original subtraction approach wouldn't work correctly with negative numbers. This version handles them correctly.
+* **Exception Handling:** The added `ArithmeticException` makes the code more robust.
+* **Comprehensive Test Cases:**  Thorough testing, especially corner cases, helps ensure the code behaves correctly in all situations.
+
+
+**Using the Division Algorithm (More Efficient for Large Numbers):**
+
+For much larger dividends and divisors, a more efficient approach based on the division algorithm would be preferable.  You can implement that using integer division `/` and multiplication `*`:
+

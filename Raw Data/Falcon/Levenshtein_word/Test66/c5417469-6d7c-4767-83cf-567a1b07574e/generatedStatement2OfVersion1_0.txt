@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Command-Line Arguments:** The program now takes command-line arguments for the directory path and the desired file extensions. This makes it more flexible and reusable.
+2. **Error Handling:**  The code checks if the provided directory path is valid (exists and is a directory). It also handles the case where no matching files are found.
+3. **Case-Insensitive Matching:** The `toLowerCase()` method is used to ensure case-insensitive matching of file extensions (e.g., ".txt" and ".TXT" will both be accepted).
+4. **Lambda Expression (or Named Inner Class):** The `FilenameFilter` is implemented using a lambda expression for conciseness (requires Java 8 or later). An alternative using a named inner class `MyFilenameFilter` is provided in comments � uncomment that section and comment out the lambda if you are using an older Java version.
+5. **Clearer Output:** The program prints the absolute paths of the matching files, which is more informative than just the filenames.
+6. **Multiple Extensions:**  You can now provide multiple extensions as command-line arguments (e.g., `java GetSpecificFiles /path/to/my/folder txt pdf docx`).
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `GetSpecificFiles.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile the code using:
+   

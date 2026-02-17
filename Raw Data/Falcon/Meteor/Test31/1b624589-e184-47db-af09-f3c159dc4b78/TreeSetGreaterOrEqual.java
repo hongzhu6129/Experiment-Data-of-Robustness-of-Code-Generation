@@ -1,0 +1,53 @@
+import java.util.TreeSet;
+
+public class TreeSetGreaterOrEqual {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+
+        // Example 1: Element present in the TreeSet
+        int element1 = 30;
+        Integer greaterOrEqual1 = treeSet.ceiling(element1);
+        if (greaterOrEqual1 != null) {
+            System.out.println("Element greater than or equal to " + element1 + ": " + greaterOrEqual1);
+        } else {
+            System.out.println("No element greater than or equal to " + element1 + " found.");
+        }
+
+        // Example 2: Element smaller than all elements in the TreeSet
+        int element2 = 5;
+        Integer greaterOrEqual2 = treeSet.ceiling(element2);
+        if (greaterOrEqual2 != null) {
+            System.out.println("Element greater than or equal to " + element2 + ": " + greaterOrEqual2);
+        } else {
+            System.out.println("No element greater than or equal to " + element2 + " found.");
+        }
+
+        // Example 3: Element larger than all elements in the TreeSet
+        int element3 = 60;
+        Integer greaterOrEqual3 = treeSet.ceiling(element3);
+        if (greaterOrEqual3 != null) {
+            System.out.println("Element greater than or equal to " + element3 + ": " + greaterOrEqual3);
+        } else {
+            System.out.println("No element greater than or equal to " + element3 + " found.");
+        }
+
+         // Example 4:  Element between two existing elements
+        int element4 = 25;
+        Integer greaterOrEqual4 = treeSet.ceiling(element4);
+        if (greaterOrEqual4 != null) {
+            System.out.println("Element greater than or equal to " + element4 + ": " + greaterOrEqual4);
+        } else {
+            System.out.println("No element greater than or equal to " + element4 + " found.");
+        }
+    }
+}

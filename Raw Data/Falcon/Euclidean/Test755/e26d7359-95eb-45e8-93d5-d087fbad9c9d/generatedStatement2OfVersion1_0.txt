@@ -1,0 +1,28 @@
+
+
+
+Explanation of Test Cases:
+
+* **`testDifferentLengths()`:**  Tests the core functionality with strings of different lengths.
+* **`testEmptyStrings()`:**  Checks the behavior with one or both strings being empty. This is a corner case.
+* **`testSameLengthStrings()`:**  Verifies that the function throws the `IllegalArgumentException` as expected when strings have the same length.  This is a crucial negative test case.
+* **`testWithSpaces()`:** Makes sure that spaces are handled correctly and not trimmed or otherwise modified.
+* **`testWithSpecialCharacters()`:** Includes special characters and long strings to test for any unexpected behavior related to character encoding or string length limits.
+
+
+
+Key Improvements in this version:
+
+* **JUnit Tests:** Using JUnit provides a more robust and organized way to test the code.
+* **Clearer Exception Handling:** The `IllegalArgumentException` clearly communicates the issue if the strings have the same length.
+* **Comprehensive Test Coverage:** The test cases now cover a wider range of scenarios, including edge cases and potential problem areas.
+* **Main Method Demonstration:** The `main` method demonstrates how to use the function and handle the potential exception.
+
+
+How to run the JUnit tests:
+
+1. **IDE:** If you are using an IDE like IntelliJ or Eclipse, you should be able to right-click on the test class or individual test methods and select "Run".
+
+2. **Command Line (with Maven):** If you are using Maven, navigate to the project directory in your terminal and run `mvn test`.
+
+3. **Command Line (without build tools):**  This is a bit more involved and depends on how your project is set up.  You'll need to make sure JUnit is on the classpath and then use the `java` command to run the test runner (e.g., `java org.junit.runner.JUnitCore StringCombinationTest`).

@@ -1,0 +1,47 @@
+public class PasswordValidator {
+
+    public static void main(String[] args) {
+        String password1 = "MyPassword12";
+        String password2 = "Short";
+        String password3 = "LongPasswordNoDigits";
+        String password4 = "LongPassword1Digit";
+        String password5 = "ValidPassword123";
+        String password6 = "ValidPassword!@#";
+
+
+        System.out.println("Is \"" + password1 + "\" valid? " + is_Valid_Password(password1)); // true
+        System.out.println("Is \"" + password2 + "\" valid? " + is_Valid_Password(password2)); // false
+        System.out.println("Is \"" + password3 + "\" valid? " + is_Valid_Password(password3)); // false
+        System.out.println("Is \"" + password4 + "\" valid? " + is_Valid_Password(password4)); // false
+        System.out.println("Is \"" + password5 + "\" valid? " + is_Valid_Password(password5)); // true
+        System.out.println("Is \"" + password6 + "\" valid? " + is_Valid_Password(password6)); // false
+
+    }
+
+    public static boolean is_Valid_Password(String password) {
+        if (password.length() < 10) {
+            return false;
+        }
+
+        int digitCount = 0;
+        for (int i = 0; i < password.length(); i++) {
+            char c = password.charAt(i);
+            if (!is_Letter(c) && !is_Numeric(c)) {
+                return false;
+            }
+            if (is_Numeric(c)) {
+                digitCount++;
+            }
+        }
+
+        return digitCount >= 2;
+    }
+
+    public static boolean is_Letter(char c) {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    }
+
+    public static boolean is_Numeric(char c) {
+        return c >= '0' && c <= '9';
+    }
+}

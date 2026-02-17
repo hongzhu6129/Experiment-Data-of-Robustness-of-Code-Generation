@@ -1,0 +1,8 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("a\ta^2\ta^3\ta^4");
+        for (int a = 1; a <= 4; a++) {
+            System.out.println(a + "\t" + (a * a) + "\t" + (a * a * a) + "\t" + (a * a * a * a));
+        }
+    }
+}

@@ -1,0 +1,58 @@
+public class SwapEquations {
+
+    public static void main(String[] args) {
+        // Define the equations as strings (you can adapt this to other representations if needed).
+        String equation1 = "2x + 3y = 7";
+        String equation2 = "5x - y = 9";
+
+        System.out.println("Original equations:");
+        System.out.println("Equation 1: " + equation1);
+        System.out.println("Equation 2: " + equation2);
+
+        // Swap the equations using a temporary variable
+        String temp = equation1;
+        equation1 = equation2;
+        equation2 = temp;
+
+        System.out.println("\nSwapped equations:");
+        System.out.println("Equation 1: " + equation1);
+        System.out.println("Equation 2: " + equation2);
+
+
+
+        // Example of swapping coefficients within an equation (more complex scenario):
+
+        // Assuming equations are in the format ax + by = c, parse and swap coefficients a and b
+        String equation3 = "4x + 7y = 10";
+
+
+        try {
+            String[] parts = equation3.split("=");  // Split by the equals sign
+            String leftSide = parts[0].trim();      // Get the left side of the equation
+
+
+            String[] terms = leftSide.split("\\+");  // Split by the plus sign (assuming + separates terms)
+
+            String term1 = terms[0].trim();
+            String term2 = terms[1].trim();
+
+            // Extract coefficients (assuming the format ax and by)
+            int a = Integer.parseInt(term1.replaceAll("[^\\d-]", "")); // Extracts the numerical part
+            int b = Integer.parseInt(term2.replaceAll("[^\\d-]", "")); 
+
+
+            // Reconstruct the equation with swapped coefficients
+            String swappedEquation = b + "x + " + a + "y = " + parts[1].trim();
+
+
+            System.out.println("\nEquation with swapped coefficients:");
+            System.out.println("Original: " + equation3);
+            System.out.println("Swapped: " + swappedEquation);
+
+        } catch (Exception e) {
+            System.err.println("Error parsing the equation. Please ensure it's in the correct format: ax + by = c");
+        }
+
+
+    }
+}

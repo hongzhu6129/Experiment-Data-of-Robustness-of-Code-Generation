@@ -1,0 +1,19 @@
+
+
+
+Explanation:
+
+1. **String Literals (Canonical by Default):** String literals (like `"hello"`) are automatically added to the String Constant Pool (SCP), a special memory area in the JVM.  This means they are, by definition, in their canonical form.
+
+2. **`new String()` (Non-Canonical):**  When you use the `new String("hello")` constructor, you create a new String object on the heap, even if a String with the same content already exists in the SCP. This new object is *not* the canonical representation.
+
+3. **`String.intern()` (Obtaining the Canonical Representation):** The `intern()` method is the key to getting the canonical representation of any String.  It works like this:
+   - It checks if the SCP already contains a String with the same content.
+   - If it does, `intern()` returns a reference to that existing String (the canonical representation).
+   - If it doesn't, it adds the current String to the SCP *and* returns a reference to it (now the canonical representation).
+
+
+The code demonstrates the difference between these scenarios and shows how `==` (reference comparison) can be used to illustrate whether two String variables refer to the same object in memory (i.e., the same canonical representation).
+
+
+Key Takeaway:  Use `String.intern()` whenever you need to ensure that you are working with the canonical representation of a String.  This is particularly useful in situations where you need to optimize for memory usage or perform efficient String comparisons (using `==` instead of `equals()` when appropriate).

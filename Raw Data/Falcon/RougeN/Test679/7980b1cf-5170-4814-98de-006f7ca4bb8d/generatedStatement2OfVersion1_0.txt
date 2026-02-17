@@ -1,0 +1,21 @@
+
+
+
+
+Key improvements and explanations:
+
+1. **Handles Negative Numbers Correctly:**  The code now correctly handles negative dividends and divisors.  It uses the logic that `a % b` has the same sign as `a`.
+
+2. **Zero Divisor Check:** The code includes a check for a zero divisor and throws an `ArithmeticException` if the divisor is zero, matching the behavior of the standard modulus operator.
+
+3. **Corner Case Tests:** The test cases include important corner cases like:
+   - Zero dividend
+   - Divisor of 1
+   - Divisor of 0 (exception handling)
+   - `Integer.MIN_VALUE` and `Integer.MAX_VALUE` as dividends (to test for potential overflow issues).
+
+4. **Clearer Code and Comments:** The code is more readable and has comments explaining the logic.
+
+5. **Efficiency:**  For very large dividends and small divisors, repeated subtraction can be inefficient. If you anticipate such scenarios, consider an optimization using division and multiplication:
+
+   

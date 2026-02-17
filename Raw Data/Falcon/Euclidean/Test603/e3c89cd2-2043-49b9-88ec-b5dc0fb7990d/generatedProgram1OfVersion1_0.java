@@ -1,0 +1,46 @@
+import java.util.TreeSet;
+
+public class TreeSetGreaterThanOrEqual {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int element1 = 25;
+        Integer greaterOrEqual1 = treeSet.ceiling(element1);
+        System.out.println("Element greater than or equal to " + element1 + ": " + greaterOrEqual1); // Output: 30
+
+        int element2 = 30;
+        Integer greaterOrEqual2 = treeSet.ceiling(element2);
+        System.out.println("Element greater than or equal to " + element2 + ": " + greaterOrEqual2); // Output: 30
+
+        int element3 = 60;
+        Integer greaterOrEqual3 = treeSet.ceiling(element3); 
+        System.out.println("Element greater than or equal to " + element3 + ": " + greaterOrEqual3); // Output: null (no element is greater than or equal to 60)
+
+
+        // Example with Strings (natural ordering)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("orange");
+
+        String str1 = "apricot";
+        String greaterOrEqualStr1 = stringTreeSet.ceiling(str1);
+        System.out.println("String greater than or equal to \"" + str1 + "\": \"" + greaterOrEqualStr1 + "\""); //banana
+
+
+        String str2 = "apple";
+        String greaterOrEqualStr2 = stringTreeSet.ceiling(str2);
+        System.out.println("String greater than or equal to \"" + str2 + "\": \"" + greaterOrEqualStr2 + "\""); //apple
+
+        String str3 = "zebra";
+        String greaterOrEqualStr3 = stringTreeSet.ceiling(str3);
+        System.out.println("String greater than or equal to \"" + str3 + "\": \"" + greaterOrEqualStr3 + "\""); // null
+    }
+}

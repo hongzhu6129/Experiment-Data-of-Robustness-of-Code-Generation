@@ -1,0 +1,41 @@
+import java.util.LinkedList;
+
+public class JoinLinkedLists {
+
+    public static void main(String[] args) {
+        // Create the first linked list.
+        LinkedList<String> list1 = new LinkedList<>();
+        list1.add("Apple");
+        list1.add("Banana");
+        list1.add("Cherry");
+
+        // Create the second linked list.
+        LinkedList<String> list2 = new LinkedList<>();
+        list2.add("Durian");
+        list2.add("Elderberry");
+        list2.add("Fig");
+
+
+        // Join list2 to the end of list1.  The addAll method is the most efficient.
+        list1.addAll(list2);
+
+        // Print the joined list.
+        System.out.println("Joined list (using addAll): " + list1);
+
+
+        // Demonstrate a second way to join, using an iterative approach.  First, reset list1.
+        list1 = new LinkedList<>();
+        list1.add("Apple");
+        list1.add("Banana");
+        list1.add("Cherry");
+
+        // Iterate through list2 and add each element to the end of list1.
+        for (String item : list2) {
+            list1.add(item);
+        }
+
+        // Print the joined list using the second method.
+        System.out.println("Joined list (using iterative add): " + list1);
+
+    }
+}

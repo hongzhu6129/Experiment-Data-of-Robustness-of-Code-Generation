@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`long` Data Type:**  Fermat numbers grow very rapidly.  Using `int` will lead to overflow very quickly. We use `long` to accommodate larger values, but even `long` has limits.
+
+2. **Overflow Handling:** The code now checks for overflow.  If the calculated `fermatNumber` becomes negative (a sign of overflow), a message is printed indicating that the number is too large.
+
+3. **Clear Output:** The output is formatted to be more readable, clearly indicating which Fermat number corresponds to which value of `n`.
+
+4. **Efficiency (minor):** `Math.pow(2, n)` is used.  We could slightly optimize by using bit-shifting (`1L << n`) to calculate powers of 2, but for small values of `n`, the difference in performance is negligible.  `Math.pow()` is more readable for this purpose.
+
+5. **BigInteger (for truly large Fermat Numbers):**  If you need to calculate Fermat numbers beyond what `long` can handle, you'll need to use `BigInteger`:
+
+   

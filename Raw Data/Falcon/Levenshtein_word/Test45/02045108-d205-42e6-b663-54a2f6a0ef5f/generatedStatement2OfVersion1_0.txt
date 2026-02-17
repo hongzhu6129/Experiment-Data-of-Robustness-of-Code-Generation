@@ -1,0 +1,22 @@
+
+
+
+**Explanation:**
+
+1. **`removeElement(int[] nums, int val)`:**
+   - This method iterates through the input array `nums`.
+   - `k` keeps track of the index where the next element *not equal* to `val` should be placed.
+   - If `nums[i]` is not equal to `val`, we copy it to `nums[k]` and increment `k`.  This effectively overwrites the elements equal to `val` with the elements that should be kept.
+   - Finally, `k` represents the number of elements in the modified array (excluding the removed elements), so we return it.
+
+2. **`main(String[] args)`:**
+   - Creates a sample array `nums` and the value to remove `val`.
+   - Prints the original array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the new length.
+   - Prints the updated array (only up to the `newLength` to avoid showing the unchanged elements beyond the "new" end of the array).
+
+
+**Key Improvement:**
+
+This version is more efficient because it does the removal in-place (directly modifying the input array) rather than creating a new array.  It's also clearer and easier to understand.  The original prompt specified the method signatures that had to be used, and this code adheres to those requirements.

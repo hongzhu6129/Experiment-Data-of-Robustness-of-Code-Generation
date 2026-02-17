@@ -1,0 +1,59 @@
+
+
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* Input: 10 20 30
+* Expected Output: The average is: 20.00
+
+**2. Decimal Numbers:**
+
+* Input: 2.5 5.7 8.2
+* Expected Output: The average is: 5.47
+
+**3. Negative Numbers:**
+
+* Input: -5 10 15
+* Expected Output: The average is: 6.67
+
+**4. Zero Values:**
+
+* Input: 0 0 0
+* Expected Output: The average is: 0.00
+
+**5. Large Numbers:**
+
+* Input: 1000000 2000000 3000000
+* Expected Output: The average is: 2000000.00
+
+
+**Corner Cases:**
+
+**6. Input with Non-Numeric Values:**
+
+* Input: a b c  (or 10 a 20)
+* Expected Output: Invalid input. Please enter numeric values.
+
+**7. Input with less than three values:**
+
+* Input: 10 20 (Press Enter)
+* The program will wait for the third input. It won't proceed until it receives three valid double values.
+
+**8.  Input with extra values (more than three):**
+* Input: 10 20 30 40
+* The program will take the first three numbers as input and ignore the rest. So, it will calculate the average of 10, 20, and 30.
+
+**9.  Input with very large or very small numbers close to the limits of double:**
+* Input: 1.7976931348623157E+308 -1.7976931348623157E+308 0 (Maximum positive and negative double values).  This will likely result in an Infinity or NaN (Not a Number) output depending on how the addition handles overflow/underflow.
+* Input:  Double.MIN_VALUE Double.MIN_VALUE Double.MIN_VALUE (The smallest positive double). This tests the handling of very small values.
+
+**How to Run the Test Cases:**
+
+1. Save the code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run: `java AverageCalculator`
+
+
+By testing with these various cases, you ensure your program behaves correctly under different conditions and is robust enough to handle unexpected inputs.

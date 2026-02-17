@@ -1,0 +1,15 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Handles Leading Zeroes:** The original logic had a flaw where splitting numbers like 9 could result in 0 + 9 being considered Kaprekar.  The added check `if (parts[1].equals("0")) continue;` prevents this by skipping cases where the second part is "0". This avoids issues when the second part has leading zeroes and gets parsed to a different value.
+
+2. **`long` for Square:** Using `long` for the square prevents potential overflow issues for larger numbers, though it's not strictly necessary within the 0-1000 range.
+
+3. **Clearer Output:** The output now explicitly states "Kaprekar numbers less than 1000:" to make the output more descriptive.
+
+4. **NumberFormatException Handling:**  The addition of a `try-catch` block within `isKaprekar` catches potential `NumberFormatException` that might occur if the numbers resulting from the split are too large to be parsed as integers. While this might not be an issue with the current range (0-1000), this is a good practice for robustness, especially if the range was to be extended.
+
+
+This revised code is more accurate and robust in identifying Kaprekar numbers within the specified range.

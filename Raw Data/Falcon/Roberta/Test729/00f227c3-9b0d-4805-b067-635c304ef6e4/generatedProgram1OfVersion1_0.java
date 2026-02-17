@@ -1,0 +1,49 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+
+        // Get the portion of the map whose keys are less than or equal to 3 (inclusive)
+        int key = 3;
+        boolean inclusive = true;
+        SortedMap<Integer, String> subMapInclusive = map.headMap(key, inclusive);
+        System.out.println("Submap (inclusive): " + subMapInclusive);
+
+
+        // Get the portion of the map whose keys are strictly less than 4 (exclusive)
+        key = 4;
+        inclusive = false; // Exclusive
+        SortedMap<Integer, String> subMapExclusive = map.headMap(key, inclusive);
+        System.out.println("Submap (exclusive): " + subMapExclusive);
+
+
+        // Example with a different key and inclusive
+        key = 2;
+        inclusive = true;
+        SortedMap<Integer, String> subMap2 = map.headMap(key, inclusive);
+        System.out.println("Submap 2 (inclusive): " + subMap2);
+
+         // Example with a non-existent key
+        key = 7; // Key greater than any existing key.
+        inclusive = true;
+        SortedMap<Integer, String> subMap3 = map.headMap(key, inclusive);  // Returns the whole map because all keys are less than 7.
+        System.out.println("Submap 3 (inclusive): " + subMap3);
+
+
+        //Example with the smallest key and inclusive.
+        key = 1;
+        inclusive = true; // Important: If inclusive is false with the smallest key, you get an empty map.
+        SortedMap<Integer, String> subMap4 = map.headMap(key, inclusive); //Contains only the entry with key 1
+        System.out.println("Submap 4 (inclusive): " + subMap4);
+
+    }
+}

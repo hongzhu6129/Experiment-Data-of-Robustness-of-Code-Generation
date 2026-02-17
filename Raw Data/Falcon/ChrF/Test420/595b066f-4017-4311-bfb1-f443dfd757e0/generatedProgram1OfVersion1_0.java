@@ -1,0 +1,42 @@
+import java.util.Arrays;
+
+public class StringDuplicateCounter {
+
+    static void CountCharacters(String str, int[] charCounts) {
+        str = str.toLowerCase(); // Case-insensitive counting
+        for (char c : str.toCharArray()) {
+            if (Character.isLetter(c)) { // Only count letters
+                charCounts[c - 'a']++;
+            }
+        }
+    }
+
+    static void showDuplicates(String str) {
+        int[] charCounts = new int[26]; // Assuming English alphabet
+        CountCharacters(str, charCounts);
+
+        System.out.print("Duplicate characters in \"" + str + "\": ");
+        boolean foundDuplicates = false;
+        for (int i = 0; i < 26; i++) {
+            if (charCounts[i] > 1) {
+                System.out.print((char) ('a' + i) + " ");  //print the duplicate character
+                foundDuplicates = true;
+            }
+        }
+
+        if (!foundDuplicates) {
+            System.out.print("No duplicates found.");
+        }
+        System.out.println(); // Add a newline for cleaner output
+    }
+
+    public static void main(String[] args) {
+        showDuplicates("Programming"); // Example usage: Output: g r m
+        showDuplicates("Java");       // Example usage: Output: a
+        showDuplicates("hello");      // Example usage: l
+        showDuplicates("world");      // Example usage: No duplicates found.
+
+
+    }
+}
+

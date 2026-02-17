@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Horner's Method:** The `polyEval` method efficiently implements Horner's method for polynomial evaluation. This method minimizes the number of multiplications required, making it faster than a naive approach.
+
+2. **Clearer Variable Names:**  Using `coefficients` instead of a generic list name like `a` improves code readability.
+
+3. **Double Precision:** Using `Double` for the coefficients and the result ensures better precision for floating-point calculations compared to using `int` or `float`.
+
+4. **Example in `main`:** The `main` method demonstrates how to use `polyEval` with a sample polynomial and x-value.  The output (124.0) verifies the correct calculation.
+
+5. **Reverse Iteration:** The loop in `polyEval` iterates through the coefficients from highest degree to lowest degree, which is necessary for Horner's method.
+
+6. **Error Handling (Optional):**  For production code, you might consider adding error handling to `polyEval` to check for an empty `coefficients` list.  For instance:
+
+   

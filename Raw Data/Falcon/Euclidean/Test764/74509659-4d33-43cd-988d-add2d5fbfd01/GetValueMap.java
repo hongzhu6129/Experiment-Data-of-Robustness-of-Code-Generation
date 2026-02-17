@@ -1,0 +1,39 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class GetValueMap {
+
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, String> capitalCities = new HashMap<>();
+
+        // Add some key-value pairs to the map
+        capitalCities.put("England", "London");
+        capitalCities.put("Germany", "Berlin");
+        capitalCities.put("Norway", "Oslo");
+        capitalCities.put("USA", "Washington D.C.");
+
+
+        // Get the value associated with a specific key
+        String capital = capitalCities.get("Germany"); 
+
+        // Print the value (or null if the key doesn't exist)
+        System.out.println("Capital of Germany: " + capital);
+
+        // Example of handling a missing key:
+        String capital2 = capitalCities.get("France");
+        if (capital2 == null) {
+            System.out.println("Capital of France not found in the map.");
+        } else {
+            System.out.println("Capital of France: " + capital2);
+        }
+
+
+
+        //  Demonstrating getOrDefault():
+        String capital3 = capitalCities.getOrDefault("France", "Unknown"); // Provides a default value if key is not found
+        System.out.println("Capital of France (using getOrDefault): " + capital3);
+
+
+    }
+}

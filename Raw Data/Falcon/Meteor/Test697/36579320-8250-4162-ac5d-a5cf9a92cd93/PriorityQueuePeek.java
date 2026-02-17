@@ -1,0 +1,63 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueuePeek {
+
+    public static void main(String[] args) {
+
+        // Create a PriorityQueue of Integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(5);
+        pq.add(2);
+        pq.add(8);
+        pq.add(1);
+        pq.add(9);
+
+
+        // Retrieve the first element (smallest) without removing it using peek()
+        Integer firstElement = pq.peek();
+
+        // Check if the PriorityQueue is empty before peeking
+        if (!pq.isEmpty()) {
+            System.out.println("First element (smallest): " + firstElement); 
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+
+
+        // Demonstrate retrieving and removing using poll()
+        Integer polledElement = pq.poll();  // Retrieves and removes the head
+
+         if (polledElement != null) { //check for null if the queue might be empty
+             System.out.println("Polled element (smallest and removed): " + polledElement);
+         }
+
+        // Print the updated PriorityQueue (after poll())
+        System.out.println("PriorityQueue after poll(): " + pq);
+
+
+
+        // Example with Strings (natural ordering)
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.add("banana");
+        stringPQ.add("apple");
+        stringPQ.add("orange");
+
+        String firstString = stringPQ.peek();
+        if(firstString != null) {
+            System.out.println("First string (lexicographically smallest): " + firstString);
+        }
+
+
+
+        // Example demonstrating behavior when PriorityQueue is empty
+        PriorityQueue<Integer> emptyPQ = new PriorityQueue<>();
+
+        Integer peekResultEmpty = emptyPQ.peek(); // Returns null if empty
+        System.out.println("Peek result from empty PriorityQueue: " + peekResultEmpty); // Output: null
+
+
+
+    }
+}

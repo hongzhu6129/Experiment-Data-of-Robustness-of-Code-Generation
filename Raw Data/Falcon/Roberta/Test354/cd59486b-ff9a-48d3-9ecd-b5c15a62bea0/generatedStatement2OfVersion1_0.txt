@@ -1,0 +1,54 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases, to thoroughly test the Java program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Distance: 0 km
+
+3. **North & South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at poles)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110  (180 degrees opposite longitude)
+   - Expected Distance: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+5. **Points near the Prime Meridian and International Date Line:**
+   - lat1: 0
+   - lon1: 0.1  (Near Prime Meridian)
+   - lat2: 0
+   - lon2: 179.9 (Near Date Line)
+   - Expected Distance:  A small distance (demonstrates handling the longitude wraparound).
+
+
+6. **Invalid Input (Optional):**
+   - lat1: "abc" (or any non-numeric input) � The program should handle this gracefully, either by throwing an exception or prompting the user for valid input.  You could add a `try-catch` block around the `input.nextDouble()` calls to do robust input validation.
+
+
+
+
+**How to Run the Tests:**
+
+You can manually enter these values into the program or, better yet, create a separate test class using a testing framework like JUnit to automate the test execution and verification of results.  JUnit allows you to define test methods for each case and use assertions (`assertEquals`) to check if the calculated distance matches the expected distance within a reasonable tolerance (due to floating-point calculations). Example of testing with JUnit will be below.
+

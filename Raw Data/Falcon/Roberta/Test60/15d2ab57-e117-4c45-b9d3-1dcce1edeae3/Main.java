@@ -1,0 +1,21 @@
+public class Main {
+
+    public static void main(String[] args) {
+
+        // Calculate and print the average of three numbers
+        double num1 = 10; // Example numbers, you can change these
+        double num2 = 20;
+        double num3 = 30;
+        double average = (num1 + num2 + num3) / 3;
+        System.out.println("The average of " + num1 + ", " + num2 + ", and " + num3 + " is: " + average);
+
+        // Calculate and print the area and perimeter of a rectangle
+        double width = 5.5;
+        double height = 8.5;
+        double area = width * height;
+        double perimeter = 2 * (width + height);
+        System.out.println("Area of the rectangle: " + area);
+        System.out.println("Perimeter of the rectangle: " + perimeter);
+
+    }
+}

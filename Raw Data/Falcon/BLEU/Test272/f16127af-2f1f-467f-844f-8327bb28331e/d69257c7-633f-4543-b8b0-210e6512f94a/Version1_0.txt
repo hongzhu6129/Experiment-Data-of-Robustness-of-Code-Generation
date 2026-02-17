@@ -1,0 +1,63 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference: " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder: " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            System.out.println("Remainder calculation not possible with zero divisor.");
+        }
+
+
+        input.close();
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Integers | -10 | -5 | -15 | -5 | 50 | 2.0 | 0.0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2.0 | 0.0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0.0 | 0.0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | Division by zero | Remainder not possible |  // Corner Case
+| 6. Decimal Numbers | 10.5 | 2.5 | 13.0 | 8.0 | 26.25 | 4.2 | 0.0 |
+| 7. Large Numbers | 100000 | 50000 | 150000 | 50000 | 5000000000.0 | 2.0 | 0.0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0.0 |
+| 9. Integer and Decimal | 10 | 2.5 | 12.5 | 7.5 | 25.0 | 4.0 | 0.0 |
+| 10. Negative Decimal | -10.5 | 2.5 | -8.0 | -13.0 | -26.25 | -4.2 | 0.0 |
+| 11.  Zero and Negative| 0 | -5 | -5 | 5 | 0 | 0.0 | 0.0 |
+
+
+**How to run the test cases:**
+
+You would ideally use a testing framework like JUnit to automate these tests.  However, you can manually test by:
+
+1.  **Inputting the values:**  Run the program multiple times, entering the `num1` and `num2` values from the test case table.
+2.  **Verifying the output:** Check if the program's output for sum, difference, product, quotient, and remainder matches the expected values in the table.  Pay particular attention to the division by zero corner case.
+
+
+This comprehensive set of test cases helps ensure your `ArithmeticOperations` program handles various inputs correctly, including potential error scenarios. Using a testing framework makes this process more efficient and robust for larger projects.
+

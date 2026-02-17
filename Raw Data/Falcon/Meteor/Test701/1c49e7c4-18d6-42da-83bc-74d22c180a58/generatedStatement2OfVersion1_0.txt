@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Saddleback Implementation:** The `Saddleback` method now more closely resembles a spiral traversal. It iteratively moves right, down, left, and up, checking for the target at each step.  (Although a true saddleback search isn't the most efficient way to search a *spiral* ordered matrix).
+
+2. **Boundary Checks:**  Added crucial boundary checks (`row < m`, `col < n`, `row >= 0`, `col >= 0`) within the loops to prevent `ArrayIndexOutOfBoundsException`.  These are essential when traversing near the edges of the 2D array.
+
+3. **Return Position Immediately:** The code now returns the `row` and `col` as soon as the target is found. This is more efficient than continuing the loop unnecessarily.
+
+4. **Target Not Found Handling:** The method returns `{-1, -1}` if the target is not found, making it easy for the `main` method to determine the search result.
+
+5. **Example Usage and Test Case:** The `main` method demonstrates how to use the `Saddleback` method and includes a test case with a target that is not present in the array to illustrate the "not found" handling.
+
+6. **Comments and Code Style:**  Added comments to explain the logic and improved the overall code style for better readability.
+
+
+This improved version addresses the issues in the previous responses and provides a more robust and correct solution for searching a spiral array.  While a true "saddleback search" usually implies searching a matrix where rows and columns are sorted, the logic here is adapted to follow the spiral pattern of the input array.  A more efficient approach for spiral arrays might be different, but this code adheres to the specified method signature requirements.

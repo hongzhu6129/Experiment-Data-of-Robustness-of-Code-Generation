@@ -1,0 +1,52 @@
+import java.util.TreeSet;
+
+public class RemoveLastTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of integers
+        TreeSet<Integer> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Print the original TreeSet
+        System.out.println("Original TreeSet: " + treeSet);
+
+        // Check if the TreeSet is empty
+        if (treeSet.isEmpty()) {
+            System.out.println("TreeSet is empty. Cannot remove the last element.");
+        } else {
+            // Get the last element (largest in a TreeSet of Integers)
+            Integer lastElement = treeSet.last();
+
+            // Remove the last element
+            treeSet.remove(lastElement);
+
+            // Print the TreeSet after removing the last element
+            System.out.println("TreeSet after removing last element: " + treeSet);
+
+
+        }
+
+
+        // Example with Strings (to demonstrate it works with other comparable types)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("Apple");
+        stringTreeSet.add("Banana");
+        stringTreeSet.add("Orange");
+
+        System.out.println("\nOriginal String TreeSet: " + stringTreeSet);
+
+         if (!stringTreeSet.isEmpty()) { // Using !isEmpty for conciseness
+             String lastString = stringTreeSet.last();
+             stringTreeSet.remove(lastString);
+             System.out.println("String TreeSet after removal: " + stringTreeSet);
+         } else {
+             System.out.println("String TreeSet is empty.");
+         }
+    }
+}

@@ -1,0 +1,37 @@
+
+
+
+**Test Cases:**
+
+**Valid Hexadecimal Inputs:**
+
+1. **Input:** `0`      **Expected Output:** `0` (Corner case: zero)
+2. **Input:** `1`      **Expected Output:** `1`
+3. **Input:** `A`      **Expected Output:** `12`
+4. **Input:** `f`      **Expected Output:** `17`
+5. **Input:** `1A`     **Expected Output:** `32`
+6. **Input:** `FF`     **Expected Output:** `377`
+7. **Input:** `100`    **Expected Output:** `400`
+8. **Input:** `7FFFFFFF` **Expected Output:** `3777777777` (Large positive number)
+9. **Input:**  `ffffffff` **Expected Output:** `17777777777` (Maximum unsigned int represented as hex)
+
+
+**Invalid Hexadecimal Inputs:**
+
+1. **Input:** `G`      **Expected Output:** `Invalid hexadecimal character: G`
+2. **Input:** `1G`     **Expected Output:** `Invalid hexadecimal character: G`
+3. **Input:** `-1A`    **Expected Output:** `Invalid hexadecimal character: -` (Negative sign is invalid)
+4. **Input:** `1A.5`   **Expected Output:** `Invalid hexadecimal character: .` (Decimal point is invalid)
+5. **Input:** ``       **Expected Output:** `Usage: java HexToOctal <hex_value>` (Empty input)
+6. **Input:** (multiple arguments) `A B`  **Expected Output:**  `Usage: java HexToOctal <hex_value>`
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `HexToOctal.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac HexToOctal.java`
+3. **Run:** Execute with an argument like this: `java HexToOctal FF` (Replace `FF` with the hexadecimal value you want to test.)
+
+
+This improved version handles various edge cases, including invalid characters, empty input, and provides clearer error messages.  It also correctly handles the input "0".  It avoids using methods other than `main`, as requested.

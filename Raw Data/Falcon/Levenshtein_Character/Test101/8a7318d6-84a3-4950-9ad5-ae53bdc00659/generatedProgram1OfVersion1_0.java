@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Add2083ToArray {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(100);
+
+        // Add 2083 to each element
+        for (int i = 0; i < numbers.size(); i++) {
+            numbers.set(i, numbers.get(i) + 2083);
+        }
+
+        // Print the updated ArrayList
+        System.out.println(numbers);
+
+
+        //Example using a different initial list and printing in a slightly different way
+        List<Integer> numbers2 = new ArrayList<>(List.of(-5, 0, 2000));  // Using List.of for concise initialization
+        for(int i = 0; i < numbers2.size(); i++){
+            numbers2.set(i, numbers2.get(i) + 2083);
+        }
+        System.out.print("[");
+        for (int i = 0; i < numbers2.size(); i++) {
+            System.out.print(numbers2.get(i));
+            if (i < numbers2.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+
+    }
+}

@@ -1,0 +1,27 @@
+
+
+**Test Cases (Corner Cases Included):**
+
+1. **Normal Case:** Java is installed and accessible via the system's PATH.  (Expected Output: "Java is installed on your system.")
+
+2. **Java Not Installed:** Java is not present on the system. (Expected Output: "Java is not installed or not accessible in your system's PATH.")
+
+3. **Java Installed but not in PATH:** Java is installed but the `java` executable is not in the system's PATH environment variable.  (Expected Output: "Java is not installed or not accessible in your system's PATH.")  *This is a crucial corner case*.
+
+4. **Java Version String Variations:**  Different Java distributions (OpenJDK, Oracle JDK, etc.) might have slightly different version strings. The code handles "java version" and "openjdk version" to address this. Test with different JDKs if possible.
+
+5. **No Output to Error Stream:** Some Java versions might write version information to standard output instead of error stream.  The code now checks the exit code ( `process.waitFor() == 0` ) to handle this case. This is an important addition.
+
+6. **Permissions Issues:**  The user might not have sufficient permissions to execute the `java` command (though this is less common on typical user accounts). (Expected Output: "Java is not installed or not accessible in your system's PATH.")
+
+**How to Test Corner Cases 3 and 6:**
+
+* **Corner Case 3 (Java not in PATH):**
+    1. Temporarily remove Java's bin directory from your system's PATH.  On Windows, this is usually in System Properties -> Environment Variables. On Linux/macOS, edit your shell's configuration file (e.g., `.bashrc`, `.zshrc`).
+    2. Run the Java program.
+    3. Restore the original PATH after testing.
+* **Corner Case 6 (Permissions Issues):** This is more difficult to simulate reliably. You could try creating a separate user account with restricted permissions, installing Java for that user, and then running the program under that account.
+
+
+
+This improved version of the program and the comprehensive test cases should ensure that you can reliably detect the presence (or absence) of a usable Java installation.

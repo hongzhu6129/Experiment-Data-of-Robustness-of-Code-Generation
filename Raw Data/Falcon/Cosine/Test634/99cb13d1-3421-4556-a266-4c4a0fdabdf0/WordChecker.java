@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class WordChecker {
+
+    static void checkExistance(String word, String item) {
+        boolean containsAllChars = true;
+        for (char c : word.toCharArray()) {
+            if (item.indexOf(c) == -1) {
+                containsAllChars = false;
+                break;
+            }
+        }
+        if (containsAllChars) {
+            System.out.println(item);
+        }
+    }
+
+    public static void main(String[] args) {
+        String word = "sun";
+        List<String> items = new ArrayList<>();
+        items.add("sunday");
+        items.add("unsung");
+        items.add("round");
+        items.add("sound");
+
+
+        System.out.println("Items containing all characters of '" + word + "':");
+        for (String item : items) {
+            checkExistance(word, item);
+        }
+    }
+}

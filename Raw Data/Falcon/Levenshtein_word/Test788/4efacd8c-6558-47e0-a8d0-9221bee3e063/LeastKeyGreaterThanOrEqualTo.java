@@ -1,0 +1,55 @@
+import java.util.TreeMap;
+
+public class LeastKeyGreaterThanOrEqualTo {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(10, "Ten");
+        treeMap.put(20, "Twenty");
+        treeMap.put(30, "Thirty");
+        treeMap.put(40, "Forty");
+        treeMap.put(50, "Fifty");
+
+
+        int key1 = 25;
+        Integer result1 = treeMap.ceilingKey(key1);
+        System.out.println("Least key greater than or equal to " + key1 + ": " + (result1 != null ? result1 : "No such key")); // Output: 30
+
+        int key2 = 10;
+        Integer result2 = treeMap.ceilingKey(key2);
+        System.out.println("Least key greater than or equal to " + key2 + ": " + (result2 != null ? result2 : "No such key")); // Output: 10
+
+        int key3 = 55;
+        Integer result3 = treeMap.ceilingKey(key3);
+        System.out.println("Least key greater than or equal to " + key3 + ": " + (result3 != null ? result3 : "No such key")); // Output: No such key
+
+
+         // Demonstrating "counterexample" (closest smaller key when there's no greater or equal)
+        if (result3 == null) {
+            Integer floorKey = treeMap.floorKey(key3); // Get the largest key smaller than key3
+            System.out.println("Counterexample (largest smaller key): " + (floorKey != null ? floorKey : "No smaller key either")); // Output: 50
+        }
+
+
+
+
+        // Additional examples with different data types (String keys):
+
+        TreeMap<String, Integer> stringTreeMap = new TreeMap<>();
+        stringTreeMap.put("apple", 1);
+        stringTreeMap.put("banana", 2);
+        stringTreeMap.put("orange", 3);
+
+
+        String key4 = "apricot";
+        String result4 = stringTreeMap.ceilingKey(key4);
+        System.out.println("Least key greater than or equal to " + key4 + ": " + (result4 != null ? result4 : "No such key")); // Output: banana
+
+        String key5 = "apple";
+        String result5 = stringTreeMap.ceilingKey(key5);
+        System.out.println("Least key greater than or equal to " + key5 + ": " + (result5 != null ? result5 : "No such key")); // Output: apple
+
+
+    }
+}

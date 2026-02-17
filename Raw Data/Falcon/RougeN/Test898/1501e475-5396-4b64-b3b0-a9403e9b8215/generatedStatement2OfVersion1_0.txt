@@ -1,0 +1,35 @@
+
+
+**Test Cases:**
+
+| Decimal Input | Expected Hexadecimal Output | Purpose of Test Case |
+|---|---|---|
+| 0 | 0 | Zero input |
+| 1 | 1 | Single digit input |
+| 9 | 9 | Highest single decimal digit |
+| 10 | a | Testing conversion to 'a' |
+| 15 | f | Testing conversion to 'f' |
+| 16 | 10 | Testing rollover to two hexadecimal digits |
+| 255 | ff | Maximum value for two hexadecimal digits  |
+| 256 | 100 | Testing rollover to three hexadecimal digits |
+| 4096 | 1000 | Testing a larger power of 16  |
+| -1 | ffffffff | Testing a negative number (will depend on system architecture - shows 32-bit two's complement representation on many) |
+| 2147483647 | 7fffffff | Testing the maximum positive integer value  |
+| Integer.MAX_VALUE | 7fffffff | Using Integer.MAX_VALUE directly |
+| Integer.MIN_VALUE | 80000000 | Using Integer.MIN_VALUE directly |
+
+
+
+**Explanation of Improvements in this Code:**
+
+* **Handles Zero:** Explicitly handles the case where the input decimal is 0.
+* **Efficient String Building:** Uses `StringBuilder` for more efficient string manipulation within the loop. `insert(0, ...)` is used to build the hexadecimal string from right to left directly, which is much more efficient than repeatedly prepending characters to a String.
+* **Clearer Conversion to Hex Characters:** Uses a more understandable way to convert remainder values 10-15 to 'a'-'f' by leveraging ASCII values.
+* **Comprehensive Test Cases:** Includes corner cases like 0, negative numbers, and the maximum/minimum integer values, as well as tests for different hexadecimal digit transitions.
+* **Resource Management:** Closes the `Scanner` to release the resource.
+
+
+
+
+
+This improved version addresses the inefficiencies of repeatedly concatenating strings and provides more robust handling of different input scenarios.  The test cases are designed to cover various scenarios and help ensure the correctness of the code.

@@ -1,0 +1,43 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class FillMapValue {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Specify the key and the value to fill
+        String keyToFill = "grape";
+        int fillValue = 10;
+
+        // Fill the value for the specified key. If the key doesn't exist, it's added.
+        myMap.put(keyToFill, fillValue);
+
+
+        // Print the updated map
+        System.out.println("Updated map: " + myMap);
+
+
+        // Example of filling an existing key
+        keyToFill = "banana";
+        fillValue = 20;
+        myMap.put(keyToFill, fillValue);
+        System.out.println("Updated map (after filling existing key): " + myMap);
+
+
+        // Using putIfAbsent to only fill if key doesn't exist
+         keyToFill = "mango";
+         fillValue = 30;
+         myMap.putIfAbsent(keyToFill, fillValue); // mango is added with value 30
+
+         keyToFill = "apple"; //apple already exists
+         fillValue = 100;
+         myMap.putIfAbsent(keyToFill, fillValue); // apple's value remains 1, not changed to 100
+
+         System.out.println("Updated map (after using putIfAbsent): " + myMap);
+    }
+}

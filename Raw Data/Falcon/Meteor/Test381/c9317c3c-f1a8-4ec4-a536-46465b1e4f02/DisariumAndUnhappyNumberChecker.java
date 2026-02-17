@@ -1,0 +1,55 @@
+public class DisariumAndUnhappyNumberChecker {
+
+    public static void main(String[] args) {
+        int num = 135; // You can change this to test different numbers
+
+        if (isDisarium(num)) {
+            System.out.println(num + " is a Disarium number.");
+        } else {
+            System.out.println(num + " is not a Disarium number.");
+        }
+
+
+        if (isUnhappy(num)) {
+            System.out.println(num + " is an Unhappy number.");
+        } else {
+            System.out.println(num + " is not an Unhappy number.");  // Could be happy or just not unhappy
+        }
+
+    }
+
+    public static boolean isDisarium(int num) {
+        String numStr = String.valueOf(num);
+        int length = numStr.length();
+        int sum = 0;
+
+        for (int i = 0; i < length; i++) {
+            int digit = Character.getNumericValue(numStr.charAt(i));
+            sum += Math.pow(digit, i + 1);
+        }
+
+        return sum == num;
+    }
+
+
+    public static boolean isUnhappy(int num) {
+        java.util.Set<Integer> seen = new java.util.HashSet<>();
+
+        while (num != 1 && !seen.contains(num)) {
+            seen.add(num);
+            num = sumOfSquaresOfDigits(num);
+        }
+
+        return num != 1;  // If it's not 1, it's unhappy.
+    }
+
+    private static int sumOfSquaresOfDigits(int num) {
+        int sum = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            sum += digit * digit;
+            num /= 10;
+        }
+        return sum;
+    }
+}

@@ -1,0 +1,51 @@
+public class StringCompare {
+
+    public static void main(String[] args) {
+        String str1 = "example string";
+        StringBuffer sb = new StringBuffer("example string");
+
+        // Method 1: Using String.valueOf() to convert StringBuffer to String
+        if (str1.equals(String.valueOf(sb))) {
+            System.out.println("The String and StringBuffer are equal (Method 1).");
+        } else {
+            System.out.println("The String and StringBuffer are not equal (Method 1).");
+        }
+
+
+        // Method 2: Using toString() method of StringBuffer (generally preferred)
+        if (str1.equals(sb.toString())) {
+            System.out.println("The String and StringBuffer are equal (Method 2).");
+        } else {
+            System.out.println("The String and StringBuffer are not equal (Method 2).");
+        }
+
+
+
+        // Demonstrating inequality:
+        sb.append(" - modified");
+
+        if (str1.equals(sb.toString())) {
+            System.out.println("The String and modified StringBuffer are equal.");
+        } else {
+            System.out.println("The String and modified StringBuffer are not equal.");
+        }
+
+
+
+        // Important Note regarding == operator (compares references, not content)
+        String str2 = "example string"; // str2 and str1 point to the same string literal in the string pool
+
+        if (str1 == str2) {  // This will be true because they refer to the same object
+            System.out.println("str1 and str2 are the same object (using ==).");
+        }
+
+        if (str1 == sb.toString()) { // This will be false because they are different objects, even if the content is the same initially
+            System.out.println("str1 and StringBuffer converted to String are the same object (using ==).");
+        } else {
+            System.out.println("str1 and StringBuffer converted to String are different objects (using ==).  Use .equals() to compare content.");
+
+        }
+
+
+    }
+}

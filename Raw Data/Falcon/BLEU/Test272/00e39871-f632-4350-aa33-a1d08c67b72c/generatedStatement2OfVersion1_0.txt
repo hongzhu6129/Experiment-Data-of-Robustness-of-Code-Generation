@@ -1,0 +1,32 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2 | 0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | Division by zero | Remainder by zero |
+| 6. Large Numbers | 100000 | 50000 | 150000 | 50000 | 5000000000 | 2 | 0 |
+| 7. Decimal Numbers | 10.5 | 2.5 | 13 | 8 | 26.25 | 4.2 | 0 |
+| 8. Integer and Decimal | 10 | 2.5 | 12.5 | 7.5 | 25 | 4 | 0 |
+| 9.  Negative Decimal | -10.5 | 2.5 | -8 | -13 | -26.25 | -4.2 | 0 |
+| 10. Very Small Decimals | 0.0001 | 0.0002 | 0.0003 | -0.0001 | 0.00000002 | 0.5 | 0|  
+| 11. Integer division with remainder | 17 | 5 | 22 | 12 | 85 | 3.4 | 2 |
+| 12. Negative division with remainder | -17 | 5 | -12 | -22 | -85 | -3.4 | -2 |
+| 13. Negative divisor with remainder | 17 | -5 | 12 | 22 | -85 | -3.4 | 2 |
+
+
+**Explanation of Corner Cases and their Handling:**
+
+* **Division by Zero (Test Case 5):** The code explicitly checks for division by zero and prints an appropriate message instead of throwing an `ArithmeticException`.
+* **Remainder by Zero (Test Case 5):**  Similar to division, the code handles remainder by zero with a message to prevent exceptions.
+* **Very Small Decimals (Test case 10):**  Included to check how the program handles potential floating-point precision issues.
+* **Remainders with different sign combinations (Test Cases 11, 12, 13):** The code uses the modulo operator `%`, which handles remainders differently with negative numbers compared to some other languages or mathematical definitions.  These test cases ensure you understand Java's specific remainder behavior.
+
+
+By running these test cases, you can verify that the program correctly performs the arithmetic operations and handles potential issues like division by zero and floating-point precision.  It's good practice to have a comprehensive set of tests when writing any program.

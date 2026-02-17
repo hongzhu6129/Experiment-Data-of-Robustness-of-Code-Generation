@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input first number: ");
+        int firstNumber = input.nextInt();
+
+        System.out.print("Input second number: ");
+        int secondNumber = input.nextInt();
+
+        int sum = add(firstNumber, secondNumber);
+        int difference = subtract(firstNumber, secondNumber);
+        int product = multiply(firstNumber, secondNumber);
+        int quotient = divide(firstNumber, secondNumber);  // Integer division
+        int remainder = findRemainder(firstNumber, secondNumber);
+
+        printResults(firstNumber, secondNumber, sum, difference, product, quotient, remainder);
+
+        input.close(); 
+    }
+
+    public static int add(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    public static int subtract(int num1, int num2) {
+        return num1 - num2;
+    }
+
+    public static int multiply(int num1, int num2) {
+        return num1 * num2;
+    }
+
+    public static int divide(int num1, int num2) {
+        return num1 / num2; 
+    }
+
+    public static int findRemainder(int num1, int num2) {
+        return num1 % num2;
+    }
+
+    public static void printResults(int num1, int num2, int sum, int difference, int product, int quotient, int remainder) {
+        System.out.println(num1 + " + " + num2 + " = " + sum);
+        System.out.println(num1 + " - " + num2 + " = " + difference);
+        System.out.println(num1 + " x " + num2 + " = " + product);
+        System.out.println(num1 + " / " + num2 + " = " + quotient);
+        System.out.println(num1 + " mod " + num2 + " = " + remainder);
+    }
+}

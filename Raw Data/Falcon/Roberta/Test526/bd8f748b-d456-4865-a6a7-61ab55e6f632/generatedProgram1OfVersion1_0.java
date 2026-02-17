@@ -1,0 +1,33 @@
+import java.util.TreeSet;
+
+public class TreeSetCeiling {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int element1 = 25;
+        Integer ceiling1 = treeSet.ceiling(element1);
+        System.out.println("Ceiling of " + element1 + ": " + ceiling1); // Output: 30
+
+
+        int element2 = 15;
+        Integer ceiling2 = treeSet.ceiling(element2); 
+        System.out.println("Ceiling of " + element2 + ": " + ceiling2); // Output: 20
+
+        int element3 = 60; // Element greater than all in set
+        Integer ceiling3 = treeSet.ceiling(element3);
+        System.out.println("Ceiling of " + element3 + ": " + ceiling3); // Output: null (no element greater or equal)
+
+         int element4 = 10; // Element present in the set
+        Integer ceiling4 = treeSet.ceiling(element4);
+        System.out.println("Ceiling of " + element4 + ": " + ceiling4); // Output: 10 (element itself)
+
+
+    }
+}

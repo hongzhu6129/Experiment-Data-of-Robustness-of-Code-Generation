@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clarity and Separation:** The code is now clearly divided into two sections: one for cosine calculation and one for Hamming numbers. This improves readability and organization.
+
+2. **Efficient Hamming Number Generation:**  The original approach of checking every number was very inefficient. This updated code uses a more efficient algorithm:
+   - It maintains three pointers (`i2`, `i3`, `i5`) to keep track of the next multiples of 2, 3, and 5 respectively.
+   - The next Hamming number is the minimum of these three multiples.
+   - The corresponding pointer is incremented, and the next multiple is calculated.
+   - This method avoids redundant calculations and generates Hamming numbers in ascending order much faster, especially for larger sets.
+
+
+3. **Long Data Type:**  Hamming numbers can grow large quickly. Using `long` instead of `int` prevents overflow issues, ensuring correctness for a larger range of Hamming numbers.
+
+4. **ArrayList for Hamming Numbers:** Using an `ArrayList` to store the Hamming numbers is more flexible than a fixed-size array, especially if you later decide to generate a different number of Hamming numbers.
+
+
+This revised version is much more efficient and robust for generating Hamming numbers and presents the results clearly alongside the cosine calculations.

@@ -1,0 +1,40 @@
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "World";
+        String str3 = "world";
+        String str4 = "Hello";
+
+        System.out.println("\"" + str1 + "\" ends with \"" + str2 + "\"? " + endsWith(str1, str2)); // True
+        System.out.println("\"" + str1 + "\" ends with \"" + str3 + "\"? " + endsWith(str1, str3)); // False (case-sensitive)
+        System.out.println("\"" + str1 + "\" ends with \"" + str4 + "\"? " + endsWith(str1, str4)); // False
+
+
+        // Demonstrating edge cases
+        System.out.println("\"" + str1 + "\" ends with \"\"? " + endsWith(str1,"")); //True
+        System.out.println("\"\" ends with \"" + str2 + "\"? " + endsWith("","World")); //False
+
+         // Demonstrating null handling (should ideally be handled more robustly in real applications)
+        System.out.println("Null handling:"); 
+        System.out.println("\"" + str1 + "\" ends with null? " + endsWith(str1, null)); // False
+        System.out.println("null ends with \"" + str2 + "\"? " + endsWith(null, str2)); // False (throws NullPointerException if not handled).
+        System.out.println("null ends with null? " + endsWith(null, null)); // False (throws NullPointerException if not handled).
+       
+    }
+
+    public static boolean endsWith(String str, String suffix) {
+        if (str == null || suffix == null) {  // Handle null inputs
+            return false;
+        }
+        
+        int strLen = str.length();
+        int suffixLen = suffix.length();
+
+        if (suffixLen > strLen) {
+            return false;  // Suffix longer than the main string
+        }
+
+        return str.substring(strLen - suffixLen).equals(suffix);
+    }
+}

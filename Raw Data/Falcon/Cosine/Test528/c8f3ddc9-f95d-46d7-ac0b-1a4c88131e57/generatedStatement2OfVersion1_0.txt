@@ -1,0 +1,59 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **General Case:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **Opposite Sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106  (approximately 180 degrees opposite longitude)
+   - Expected Output: ~20015.08 km (close to Earth's diameter * pi / 2 which is a great circle distance)
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0  (Longitude doesn't matter at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at poles)
+   - Expected Output: ~20015.08 km  (half the Earth's circumference)
+
+5. **Points near the Prime Meridian/International Date Line:**
+   - lat1: 0
+   - lon1: 179 
+   - lat2: 0
+   - lon2: -179
+   - Expected Output: ~222.65 km (relatively short distance because they're close despite the longitude difference)
+
+
+6. **Equator Cases:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (quarter of Earth's circumference at the Equator)
+
+7. **Invalid Input:**
+    - Test with non-numeric values for latitude and longitude. The program should handle this gracefully (e.g., by catching the `InputMismatchException` and displaying an error message).
+
+
+**How to Run the Test Cases:**
+
+You can either manually input these values when prompted by the program or modify the `main` method to run these tests automatically. For automated testing, it's a good idea to use a testing framework like JUnit.  Here's a basic example of how you could modify your code for an automated test:
+
+
+

@@ -1,0 +1,11 @@
+
+
+
+Key improvements and explanations:
+
+* **HashMap for Efficient Lookup:** Uses a `HashMap` to store the hexadecimal to binary mappings. This provides O(1) lookup time, making the conversion process more efficient.
+* **Handles Case:** Correctly handles both uppercase and lowercase hexadecimal letters (A-F and a-f).
+* **Error Handling:**  Includes basic error handling for invalid hex characters by printing an error message and returning -1.  A more robust solution might throw an exception.
+* **Clearer Code:** Uses more descriptive variable names and comments.
+* **Integer conversion (with limitations):**  Converts the resulting binary string to an integer. This is suitable for smaller hex values but note that the maximum possible `int` value in Java limits the size of hex strings you can convert this way. If you need to handle very large hex numbers, keep the binary representation as a `String`.  The code now handles potential overflow by catching NumberFormatException.
+* **Main Method Example:**  The main method shows a clear example of how to use the function, including an example hex input. I also added a comment to show how you'd get input using Scanner in a real application.

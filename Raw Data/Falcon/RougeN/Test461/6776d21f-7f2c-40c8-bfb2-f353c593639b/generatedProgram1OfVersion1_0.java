@@ -1,0 +1,72 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSecondElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Specify the element to replace with
+        String newFruit = "Mango";
+
+        // Replace the second element (index 1) if the list has at least 2 elements.
+        if (fruits.size() >= 2) {
+            fruits.set(1, newFruit); 
+        } else {
+            System.out.println("List does not have a second element to replace.");
+        }
+
+        // Print the updated ArrayList
+        System.out.println(fruits);
+
+
+        // Example with an Integer ArrayList
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        Integer newNumber = 25;
+
+        if(numbers.size() >= 2) {
+            numbers.set(1, newNumber);
+        }  else {
+            System.out.println("List does not have a second element to replace.");
+        }
+
+        System.out.println(numbers);
+
+
+
+        // Example with an empty list
+        List<String> emptyList = new ArrayList<>();
+        String newValue = "Test";
+
+        if (emptyList.size() >= 2) {
+            emptyList.set(1, newValue);
+        } else {
+            System.out.println("List does not have a second element to replace."); // This will be printed
+        }
+
+         System.out.println(emptyList); // Prints an empty list
+
+
+        //Example with a list having only one element.
+        List<String> oneElementList = new ArrayList<>();
+        oneElementList.add("First");
+        String newValue2 = "Second";
+
+        if (oneElementList.size() >= 2) {
+            oneElementList.set(1, newValue2);
+        } else {
+            System.out.println("List does not have a second element to replace."); //This will be printed
+        }
+
+         System.out.println(oneElementList); //Prints only ["First"]
+    }
+}

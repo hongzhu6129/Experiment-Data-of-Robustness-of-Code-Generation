@@ -1,0 +1,13 @@
+
+
+
+Key improvements and explanations of why the restrictions make the code less elegant:
+
+1. **Comparator within `merge()`:** Due to the restriction on allowed method signatures, a custom `Comparator` had to be created *inside* the `merge` method using an anonymous inner class. This is less reusable than defining a separate named `Comparator` class.
+
+2. **No separate `compare()` method:**  Normally, a `compareTo()` method would be added to the `Interval` class itself to make it `Comparable`.  The signature restriction prevents this, forcing the use of the less elegant `Comparator`.
+
+3. **Verbose Interval Access:** The `getStart()` and `getEnd()` methods are necessary because direct access to the `start` and `end` fields of `Interval` is prevented by the restrictions (assuming they are private, which is good practice).  This adds a bit of verbosity.
+
+
+These restrictions illustrate why common object-oriented practices (like implementing `Comparable`) are valuable for code clarity and reusability.  However, the code above fulfills the specific requirements of the prompt.

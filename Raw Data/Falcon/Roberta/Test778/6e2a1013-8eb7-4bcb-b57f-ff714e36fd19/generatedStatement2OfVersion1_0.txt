@@ -1,0 +1,12 @@
+
+
+
+Key improvements in this version:
+
+* **Clearer Output:**  Added a newline character (`\n`) to separate the UTC and GMT lists, making the output much easier to read.
+* **More Comprehensive GMT Search:** The GMT search now includes  `zoneId.contains("GMT")` to catch time zones like `America/Argentina/Buenos_Aires` which is listed as "GMT-3" in the `TimeZone.getDisplayName()` method (though its actual offset may vary due to DST). It also includes `Etc/GMT` which represents variations of GMT and `Zulu` which is an alternative name for GMT/UTC.
+* **Combined UTC handling:** Handles variations of UTC prefixes like `UTC`, `Etc/UTC` in a single loop.
+
+
+
+This revised code provides a more accurate and user-friendly presentation of the UTC and GMT time zones available in Java.

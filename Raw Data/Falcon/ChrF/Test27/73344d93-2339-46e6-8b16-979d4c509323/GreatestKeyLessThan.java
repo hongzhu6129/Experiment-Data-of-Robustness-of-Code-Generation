@@ -1,0 +1,31 @@
+import java.util.TreeMap;
+
+public class GreatestKeyLessThan {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+        Integer key1 = 6;
+        Integer key2 = 2;
+        Integer key3 = 0;
+        Integer key4 = 9; // Test case for when the given key is the largest
+
+
+        System.out.println("Greatest key less than " + key1 + ": " + getGreatestKeyLessThan(treeMap, key1)); // Output: 5
+        System.out.println("Greatest key less than " + key2 + ": " + getGreatestKeyLessThan(treeMap, key2)); // Output: 1
+        System.out.println("Greatest key less than " + key3 + ": " + getGreatestKeyLessThan(treeMap, key3)); // Output: null
+        System.out.println("Greatest key less than " + key4 + ": " + getGreatestKeyLessThan(treeMap, key4)); // Output: 7
+
+
+    }
+
+    public static <K, V> K getGreatestKeyLessThan(TreeMap<K, V> treeMap, K key) {
+       return treeMap.lowerKey(key);
+    }
+}

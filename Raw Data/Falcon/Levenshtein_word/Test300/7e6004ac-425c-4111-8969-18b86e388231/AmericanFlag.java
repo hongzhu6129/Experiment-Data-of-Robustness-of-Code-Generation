@@ -1,0 +1,33 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section
+        for (int i = 0; i < 5; i++) {
+            // Print stars
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.println("================================");
+
+            // Print stripes (alternate rows)
+            for (int j = 0; j < 4; j++) {
+                System.out.print("  "); // Two spaces for alignment
+            }
+            System.out.println("================================");
+         
+        }
+       //Print stars for last 4 lines
+        for (int i = 0; i < 4; i++) {
+             for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+             System.out.println("================================");
+         }
+        
+
+        // Print the bottom red stripes
+        for (int i = 0; i < 6; i++) {
+            System.out.println("=============================================");
+        }
+    }
+}

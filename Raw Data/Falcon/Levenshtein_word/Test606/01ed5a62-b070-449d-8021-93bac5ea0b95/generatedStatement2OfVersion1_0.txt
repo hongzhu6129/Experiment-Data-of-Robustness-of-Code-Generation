@@ -1,0 +1,30 @@
+
+
+**Test Cases:**
+
+| Test Case | num1 | num2 | Expected Output                                     |
+|-----------|------|------|-----------------------------------------------------|
+| 1        | 25   | 39   | 25 != 39<br>25 < 39<br>25 <= 39                    |
+| 2        | 39   | 25   | 39 != 25<br>39 > 25<br>39 >= 25                    |
+| 3        | 25   | 25   | 25 == 25<br>25 <= 25                               |  // Equal numbers
+| 4        | 0    | 10   | 0 != 10<br>0 < 10<br>0 <= 10                      |  // Zero and positive
+| 5        | -5   | 5    | -5 != 5<br>-5 < 5<br>-5 <= 5                       |  // Negative and positive
+| 6        | -10  | -5   | -10 != -5<br>-10 < -5<br>-10 <= -5                 |  // Two negative numbers
+| 7        | Integer.MAX_VALUE | Integer.MIN_VALUE | Integer.MAX_VALUE != Integer.MIN_VALUE <br>Integer.MAX_VALUE > Integer.MIN_VALUE <br>Integer.MAX_VALUE >= Integer.MIN_VALUE | // Max and Min Integer values (boundary/corner case)
+| 8        | Integer.MIN_VALUE | Integer.MAX_VALUE | Integer.MIN_VALUE != Integer.MAX_VALUE <br>Integer.MIN_VALUE < Integer.MAX_VALUE <br>Integer.MIN_VALUE <= Integer.MAX_VALUE | // Min and Max Integer values (boundary/corner case)
+| 9        | 0 | 0 | 0 == 0 <br> 0 <= 0 | // Both zero
+
+
+These test cases cover various scenarios including positive, negative, zero, equal values, and the boundary cases of `Integer.MAX_VALUE` and `Integer.MIN_VALUE`.  This helps ensure that your comparison logic is robust and handles all possible input combinations correctly.
+
+
+
+Key improvements in the code:
+
+* **Added `>=` comparison:**  The original code only checked `<=`. For completeness, the `>=` comparison has been added.
+* **Closed the scanner:** The `input.close()` statement has been included to release the system resources used by the scanner.  This is good practice to prevent resource leaks, especially in larger applications.
+* **Clearer output:**  The output now includes all relevant comparisons, making it easier to understand the results.
+
+
+
+This improved code and the comprehensive test cases will help you thoroughly test and validate your number comparison program.

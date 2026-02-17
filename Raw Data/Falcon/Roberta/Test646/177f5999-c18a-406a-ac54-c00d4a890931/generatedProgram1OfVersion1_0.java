@@ -1,0 +1,32 @@
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input number (replace with user input if needed)
+        int num = 8; 
+
+        // Check if the number is a perfect cube
+        if (isPerfectCube(num)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+
+    private static boolean isPerfectCube(int num) {
+        if (num < 0) {
+            return isPerfectCube(-num); // Handle negative numbers by checking the absolute value
+        } else if (num == 0) {
+            return true; // 0 is a perfect cube
+        }
+
+        // Efficiently check for cubes by iterating up to the cube root
+        for (int i = 1; i * i * i <= num; i++) {
+            if (i * i * i == num) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+}

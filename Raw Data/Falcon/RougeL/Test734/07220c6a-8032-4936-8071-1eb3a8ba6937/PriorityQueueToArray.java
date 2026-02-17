@@ -1,0 +1,44 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] array1 = new Integer[priorityQueue.size()];
+        priorityQueue.toArray(array1);
+        System.out.println("Method 1: " + Arrays.toString(array1));
+
+
+        // Method 2: Using toArray() without a pre-allocated array (less efficient)
+        Object[] array2 = priorityQueue.toArray();
+        Integer[] array3 = Arrays.copyOf(array2, array2.length, Integer[].class); //  Need to cast if you need a specific type like Integer[]
+        System.out.println("Method 2: " + Arrays.toString(array3));
+
+
+
+
+        // Note: The order of elements in the array might not reflect the priority queue order
+        // because toArray() doesn't guarantee any specific order for PriorityQueues.
+        // If you need to maintain the priority order, you can poll() elements one by one.
+
+        // Demonstration of maintaining priority order by polling:
+        PriorityQueue<Integer> pqCopy = new PriorityQueue<>(priorityQueue); // Create a copy to avoid modifying the original
+        Integer[] orderedArray = new Integer[pqCopy.size()];
+        for (int i = 0; i < orderedArray.length; i++) {
+            orderedArray[i] = pqCopy.poll(); // Poll retrieves and removes the smallest element
+        }
+        System.out.println("Ordered Array (by polling): " + Arrays.toString(orderedArray)); 
+
+    }
+}

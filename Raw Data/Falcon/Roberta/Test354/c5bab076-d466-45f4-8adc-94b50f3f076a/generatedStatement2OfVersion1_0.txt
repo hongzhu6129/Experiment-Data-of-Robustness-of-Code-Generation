@@ -1,0 +1,69 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Example Case (Provided):**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0
+   - Expected Output: ~20015.08 km  (approximately Earth's diameter)
+
+
+4. **Antipodes (Opposite sides of Earth):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106
+   - Expected Output: ~20015.08 km (approximately Earth's diameter)
+
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (approximately Earth's circumference / 4)
+
+
+6. **Points near the International Date Line:**
+   - lat1: 60
+   - lon1: 179
+   - lat2: 60
+   - lon2: -179 
+   - Expected Output: Relatively small distance (as they are close despite the longitude difference)
+
+7. **Invalid Input (Handle in your code):**
+   - lat1: "abc" (or any non-numeric input) � The program should handle this gracefully and not crash.  A `try-catch` block would be ideal.
+   - Latitudes outside the range -90 to +90.
+   - Longitudes outside the range -180 to +180.
+
+
+
+
+**How to Use the Test Cases:**
+
+*  You can manually input these values into your program to verify the results.
+*  For more robust testing, it's highly recommended to create a separate test class (using JUnit or TestNG, for example) and automate the execution of these test cases.  This makes testing much easier as your program grows.  An automated test suite will quickly catch regressions (bugs introduced by code changes).
+
+
+**Example of Automated Test (JUnit):**
+

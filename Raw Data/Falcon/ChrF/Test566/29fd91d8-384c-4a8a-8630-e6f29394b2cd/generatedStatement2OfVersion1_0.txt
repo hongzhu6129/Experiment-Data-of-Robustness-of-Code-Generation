@@ -1,0 +1,26 @@
+
+
+
+**Explanation of the error and the solution:**
+
+The error "invalid literal for int() with base 10: '\r[|'" occurs when you try to convert a string that is not a valid integer representation (in base 10) using `Integer.parseInt()`.  Characters like `\r` (carriage return), `[`, and `|` are not valid digits.
+
+The provided code addresses this in the following ways:
+
+1. **Reading Input Line by Line:** It uses `Scanner` to read input line by line, which is generally a better approach for handling user input or file reading.
+
+2. **Splitting the Line:**  The `line.split("\\s+")` splits each line into an array of strings, using whitespace as a delimiter. This allows you to process each potential number individually.  You can adjust the delimiter if your input uses something other than whitespace to separate numbers.
+
+3. **`try-catch` Block for Error Handling:**  The crucial part is the `try-catch` block inside the loop. It attempts to parse each `part` as an integer. If `Integer.parseInt()` encounters a non-numeric string, it throws a `NumberFormatException`.  The `catch` block catches this exception, allowing you to handle the error gracefully without crashing the program.  In this example, it prints an error message to the standard error stream (`System.err`).
+
+4. **Resource Management:** The `finally` block ensures that the `Scanner` is closed even if an exception occurs, which is important for releasing resources.
+
+**How to use it:**
+
+1. **Save:** Save the code as `Main.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac Main.java`
+3. **Run:** Execute the compiled code: `java Main`
+4. **Input:** You can then type or paste your input, including lines with invalid characters, into the console. The program will attempt to parse each part and print the parsed integers or error messages.  You can also redirect input from a file: `java Main < input.txt`
+
+
+This robust approach prevents your program from crashing when it encounters unexpected input.  You can customize the error handling within the `catch` block to suit your specific needs (e.g., skip invalid input, assign a default value, or terminate the program if a certain type of error is encountered).

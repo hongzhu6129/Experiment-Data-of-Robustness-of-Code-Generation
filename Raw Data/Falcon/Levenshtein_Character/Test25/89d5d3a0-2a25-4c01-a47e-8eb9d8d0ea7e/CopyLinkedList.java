@@ -1,0 +1,44 @@
+import java.util.LinkedList;
+
+public class CopyLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample linked list
+        LinkedList<String> originalList = new LinkedList<>();
+        originalList.add("Apple");
+        originalList.add("Banana");
+        originalList.add("Cherry");
+
+        // Method 1: Using the constructor (recommended for simplicity)
+        LinkedList<String> copiedList1 = new LinkedList<>(originalList);
+
+
+        // Method 2: Using addAll()
+        LinkedList<String> copiedList2 = new LinkedList<>();
+        copiedList2.addAll(originalList);
+
+
+        // Method 3: Manual copy (looping and adding elements)
+        LinkedList<String> copiedList3 = new LinkedList<>();
+        for (String item : originalList) {
+            copiedList3.add(item);
+        }
+
+
+
+        // Print the original and copied lists to demonstrate
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+        System.out.println("Copied List 2 (addAll): " + copiedList2);
+        System.out.println("Copied List 3 (Manual Copy): " + copiedList3);
+
+         //Demonstrate changes to copied lists don't affect the original
+
+        copiedList1.removeFirst(); //Remove "Apple" from copiedList1
+        System.out.println("\nAfter modification:");
+        System.out.println("Original List: " + originalList);
+        System.out.println("Copied List 1 (Constructor): " + copiedList1);
+
+
+    }
+}

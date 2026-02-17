@@ -1,0 +1,14 @@
+
+
+**Explanation and Improvements:**
+
+1. **Handles "is" Surrounded by Spaces:** The `replace(" is ", " is not ")` method specifically looks for "is" with spaces before and after it. This avoids incorrect replacements within words like "this."
+
+2. **Handles Null Input:**  The code now includes a check for `str == null` to gracefully handle cases where the input string is null.
+
+3. **More Comprehensive Testing in `main()`:** The `main` method now includes test cases that demonstrate the behavior with "is" at the beginning and end of the string, as well as when "is" is followed by other characters, and a test for null input. This helps ensure the code works correctly in various scenarios.
+
+4. **Clearer Output:**  The `main` method now prints both the original and replaced strings for each test case, making the output easier to understand.
+
+
+**Important Note:** If you need to replace *all* occurrences of "is" regardless of surrounding characters (e.g., "this" becomes "this not"), then use `str.replace("is", "is not")`. However, based on the problem description and examples provided, it seems like you want to target only the word "is" itself.

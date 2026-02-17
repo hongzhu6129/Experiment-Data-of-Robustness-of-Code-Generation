@@ -1,0 +1,24 @@
+
+
+
+Explanation:
+
+1. **`check20s(int[] arr)` method:**
+   - Takes an integer array `arr` as input.
+   - Initializes `count` to track the number of 20s and `adjacent` to track if any 20s are next to each other (both initially false).
+   - Iterates through the array:
+     - If an element is 20, increment `count`.
+     - If an element is 20 AND the previous element was also 20, set `adjacent` to `true` and `break` the loop (no need to continue checking).
+   - Returns `true` if and only if `count` is exactly 3 AND `adjacent` is `false` (meaning no adjacent 20s were found).  Otherwise, it returns `false`.
+
+2. **`main(String[] args)` method:**
+   - Creates several test arrays to demonstrate different scenarios.
+   - Calls `check20s()` for each array and prints the result.
+
+
+Key improvements in this version:
+
+- **Clarity and Readability:** The code is well-formatted and easy to understand. Variable names are descriptive (`count`, `adjacent`).
+- **Efficiency:** The loop breaks early if adjacent 20s are found, avoiding unnecessary iterations.
+- **Correctness:** It accurately handles all the required conditions (exactly three 20s, no adjacent 20s).
+- **Testability:**  The `main` method provides clear test cases to verify the function's behavior.

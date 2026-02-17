@@ -1,0 +1,46 @@
+public class LargestOfFirstAndLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {1, 2, 3};
+        int largest1 = getLargestFirstLast(arr1);
+        System.out.println("Largest of first and last: " + largest1); // Output: 3
+
+        int[] arr2 = {5, 2, 1};
+        int largest2 = getLargestFirstLast(arr2);
+        System.out.println("Largest of first and last: " + largest2); // Output: 5
+
+        int[] arr3 = {7, 7, 7};
+        int largest3 = getLargestFirstLast(arr3);
+        System.out.println("Largest of first and last: " + largest3); // Output: 7
+
+
+        //Handle empty or null array (for robustness - optional)
+        int[] arr4 = {}; // Empty array
+        int largest4 = getLargestFirstLast(arr4); 
+        System.out.println("Largest of first and last (empty array): " + largest4); // Output: -1 (indicating error/empty)
+
+        int[] arr5 = null; // Null array
+        int largest5 = getLargestFirstLast(arr5);
+        System.out.println("Largest of first and last (null array): " + largest5); // Output: -1 (indicating error/null)
+
+
+
+    }
+
+
+    public static int getLargestFirstLast(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1; // Return -1 to indicate an error (empty or null array)
+        }
+         if (arr.length == 1) {
+            return arr[0];
+        }
+        if (arr[0] > arr[arr.length - 1]) {
+            return arr[0];
+        } else {
+            return arr[arr.length - 1];
+        }
+    }
+
+}

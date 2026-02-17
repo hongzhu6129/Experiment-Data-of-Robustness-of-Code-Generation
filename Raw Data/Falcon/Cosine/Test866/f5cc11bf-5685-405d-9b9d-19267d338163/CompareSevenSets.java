@@ -1,0 +1,35 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class CompareSevenSets {
+
+    public static void main(String[] args) {
+        // Initialize seven sets with some sample data.
+        Set<Integer> set1 = new HashSet<>(Set.of(1, 2, 3, 4, 5));
+        Set<Integer> set2 = new HashSet<>(Set.of(2, 3, 4, 5, 6));
+        Set<Integer> set3 = new HashSet<>(Set.of(3, 4, 5, 6, 7));
+        Set<Integer> set4 = new HashSet<>(Set.of(2, 3, 4, 5, 8));
+        Set<Integer> set5 = new HashSet<>(Set.of(1, 2, 3, 4, 5));
+        Set<Integer> set6 = new HashSet<>(Set.of(2, 3, 4, 9));
+        Set<Integer> set7 = new HashSet<>(Set.of(2, 3, 4));
+
+
+        // Use the first set as the initial intersection set
+        Set<Integer> intersection = new HashSet<>(set1);
+
+
+        // Iteratively retain the common elements
+        intersection.retainAll(set2);
+        intersection.retainAll(set3);
+        intersection.retainAll(set4);
+        intersection.retainAll(set5);
+        intersection.retainAll(set6);
+        intersection.retainAll(set7);
+
+
+        // Print the resulting intersection (common elements)
+        System.out.println("Common elements in all seven sets: " + intersection);
+
+
+    }
+}

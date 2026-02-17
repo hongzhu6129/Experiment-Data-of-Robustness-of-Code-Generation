@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RetrieveElementArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Specify the index of the element to retrieve
+        int indexToRetrieve = 2;
+
+        // Check if the index is valid (within the bounds of the ArrayList)
+        if (indexToRetrieve >= 0 && indexToRetrieve < fruits.size()) {
+
+            // Retrieve the element at the specified index using the get() method
+            String retrievedFruit = fruits.get(indexToRetrieve);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + indexToRetrieve + ": " + retrievedFruit);
+
+
+            // Example with a different data type (Integer)
+            List<Integer> numbers = new ArrayList<>();
+            numbers.add(10);
+            numbers.add(20);
+            numbers.add(30);
+             
+            int indexToRetrieve2 = 1; // Retrieve element at index 1
+
+            if (indexToRetrieve2 >= 0 && indexToRetrieve2 < numbers.size()) {
+                Integer retrievedNumber = numbers.get(indexToRetrieve2);
+                System.out.println("Number at index " + indexToRetrieve2 + ": " + retrievedNumber);
+            } else {
+                System.out.println("Invalid index for numbers list.");
+            }
+
+        } else {
+            // Print an error message if the index is invalid
+            System.out.println("Invalid index. Index should be between 0 and " + (fruits.size() - 1)); // Inclusive of 0 and exclusive of size()
+        }
+
+
+        // Demonstrating what happens with an invalid index (IndexOutOfBoundsException)
+        try {
+            String outOfBoundsElement = fruits.get(10); // Trying to access index 10 which doesn't exist.
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage()); // Demonstrating handling the exception.
+        }
+    }
+}
+
+

@@ -1,0 +1,36 @@
+public class Check20s {
+
+    public static void main(String[] args) {
+        int[] arr1 = {20, 10, 30, 20, 5, 20}; // Valid
+        int[] arr2 = {20, 20, 10, 30, 20, 5}; // Invalid (two 20s together)
+        int[] arr3 = {20, 10, 30, 20, 5};    // Invalid (only two 20s)
+        int[] arr4 = {20, 10, 20, 20, 5, 20}; // Invalid (two 20s together and more than 3)
+        int[] arr5 = {1, 2, 3, 4, 5};         // Invalid (no 20s)
+
+        System.out.println("Array 1: " + check20s(arr1)); // True
+        System.out.println("Array 2: " + check20s(arr2)); // False
+        System.out.println("Array 3: " + check20s(arr3)); // False
+        System.out.println("Array 4: " + check20s(arr4)); // False
+        System.out.println("Array 5: " + check20s(arr5)); // False
+
+    }
+
+    public static boolean check20s(int[] arr) {
+        int count = 0;
+        boolean found20 = false;
+
+        for (int num : arr) {
+            if (num == 20) {
+                if (found20) {
+                    return false; // Two 20s next to each other
+                }
+                count++;
+                found20 = true;
+            } else {
+                found20 = false;
+            }
+        }
+
+        return count == 3;  // Return true if exactly three 20s were found, otherwise false
+    }
+}

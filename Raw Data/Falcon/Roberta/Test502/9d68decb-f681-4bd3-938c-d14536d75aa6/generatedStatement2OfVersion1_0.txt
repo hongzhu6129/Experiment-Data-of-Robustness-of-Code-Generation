@@ -1,0 +1,26 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Recursion:** The core of the solution is recursion.  The `multiply_two_nums` function calls itself with a smaller value of `b` until the base case (`b == 0`) is reached.
+
+2. **Handling Negative Numbers:** The code now correctly handles negative numbers by using the following logic:
+   - If `b` is negative, the function returns the negative of the product of `a` and `-b` (effectively handling the negative sign).
+
+3. **Base Case:** The base case `b == 0` stops the recursion and ensures the function doesn't run infinitely.
+
+4. **No Loops or Bitwise Operations:** The solution strictly adheres to the requirement of not using loops or bitwise operators.  The multiplication is achieved solely through repeated addition (using recursion).
+
+
+**How it works (example):**
+
+Let's say `a = 3` and `b = 4`:
+
+1. `multiply_two_nums(3, 4)`: `4 > 0`, so it returns `3 + multiply_two_nums(3, 3)`
+2. `multiply_two_nums(3, 3)`: `3 > 0`, so it returns `3 + multiply_two_nums(3, 2)`
+3. `multiply_two_nums(3, 2)`: `2 > 0`, so it returns `3 + multiply_two_nums(3, 1)`
+4. `multiply_two_nums(3, 1)`: `1 > 0`, so it returns `3 + multiply_two_nums(3, 0)`
+5. `multiply_two_nums(3, 0)`: `0 == 0`, so it returns `0`
+
+Substituting back up the chain, we get: 3 + 3 + 3 + 3 + 0 = 12, which is the correct product.

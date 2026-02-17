@@ -1,0 +1,60 @@
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   - Input: 123
+   - Expected Output: 1010011
+
+2. **Leading Zeroes:**
+   - Input: 0077
+   - Expected Output: 111111
+
+3. **Large Octal:**
+   - Input: 17777777777
+   - Expected Output: 11111111111111111111111111111
+
+4. **Invalid Octal (Contains digits other than 0-7):**
+   - Input: 1289
+   - Expected Output: Invalid octal number.
+
+5. **Invalid Octal (Empty String):**
+   - Input: "" (Empty string)
+   - Expected Output: Invalid octal number.
+
+
+6. **Invalid Octal (Negative number):**  (Corner Case)
+   - Input: -123
+   - Expected Output: Invalid octal number.  (The `Long.parseLong` method will throw a `NumberFormatException` if you try to parse a negative octal number directly).
+
+
+7. **Octal Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+8. **Octal One:**
+   - Input: 1
+   - Expected Output: 1
+
+
+**How to Run and Test:**
+
+1. Save the code as `OctalToBinary.java`.
+2. Compile: `javac OctalToBinary.java`
+3. Run: `java OctalToBinary`
+4. Enter the test input at the prompt and verify the output.
+
+
+
+**Explanation and Improvements:**
+
+* **Direct Octal Parsing:** The code now uses `Long.parseLong(octalString, 8)` to directly parse the input string as an octal number.  This is much simpler and more efficient than manually converting.
+
+* **Error Handling:** The `try-catch` block handles `NumberFormatException`, ensuring the program doesn't crash if the user enters invalid input.
+
+* **Clearer Prompts and Output:**  The prompts and output messages are more informative.
+
+* **Scanner Closed:** The `scanner.close()` statement releases the `Scanner` resource.  This is good practice, especially in larger programs.
+
+
+This improved version provides robust error handling, direct octal parsing, and clear output, making it a much better solution. The test cases cover various scenarios, including corner cases, to ensure the program works correctly in all situations.

@@ -1,0 +1,39 @@
+import java.util.Arrays;
+
+public class RemoveDuplicates {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        System.out.println(removeDuplicates(str)); // "progaming"
+
+        str = "hello";
+        System.out.println(removeDuplicates(str)); // "helo"
+
+        str = "aaabbbccc";
+        System.out.println(removeDuplicates(str)); // "abc"
+
+        str = "";
+        System.out.println(removeDuplicates(str)); // ""
+
+        str = "  ";
+        System.out.println(removeDuplicates(str)); // " "
+    }
+
+    public static String removeDuplicates(String str) {
+        if (str == null || str.length() == 0) {
+            return str;
+        }
+
+        char[] arr = str.toCharArray();
+        int writeIndex = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != arr[writeIndex]) {
+                arr[writeIndex + 1] = arr[i];
+                writeIndex++;
+            }
+        }
+
+        return new String(Arrays.copyOf(arr, writeIndex + 1));
+    }
+}

@@ -1,0 +1,48 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 5; i++) {
+            // Stars and Stripes section
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" ==================================");
+            System.out.println(); // New line after each row
+        }
+
+
+         for (int i = 0; i < 1; i++) {
+            // Stars and Stripes section
+            for (int j = 0; j < 3; j++) {
+                System.out.print("* ");
+            }
+                System.out.print(" pct ");
+             for (int j = 0; j < 2; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" ==================================");
+            System.out.println(); // New line after each row
+        }
+
+
+
+        for (int i = 0; i < 4; i++) {
+            // Stars and Stripes section
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" ==================================");
+            System.out.println(); // New line after each row
+        }
+
+
+
+
+        for (int i = 0; i < 6; i++) {
+            // Stripes only section
+            System.out.print("==============================================");
+            System.out.println(); // New line after each row
+        }
+    }
+}

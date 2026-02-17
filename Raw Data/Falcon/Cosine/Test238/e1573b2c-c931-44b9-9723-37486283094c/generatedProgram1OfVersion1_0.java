@@ -1,0 +1,65 @@
+import java.util.Arrays;
+
+class Solution {
+
+    /**
+     * Given a grid of size m x n, find the number of unique paths from the top-left corner to the bottom-right corner.
+     *
+     * @param obstacleGrid The grid of obstacles.
+     * @return The number of unique paths.
+     */
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+
+        if (obstacleGrid[0][0] == 1 || obstacleGrid[m - 1][n - 1] == 1) {
+            return 0; // No path if start or end is blocked
+        }
+
+
+        int[][] dp = new int[m][n];
+
+        // Initialize the first column
+        for (int i = 0; i < m; i++) {
+            if (obstacleGrid[i][0] == 1) {
+                break; // Stop if an obstacle is encountered
+            }
+            dp[i][0] = 1;
+        }
+
+        // Initialize the first row
+        for (int j = 0; j < n; j++) {
+            if (obstacleGrid[0][j] == 1) {
+                break; // Stop if an obstacle is encountered
+            }
+            dp[0][j] = 1;
+        }
+
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (obstacleGrid[i][j] == 0) {
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                } else {
+                    dp[i][j] = 0; // Path blocked
+                }
+            }
+        }
+
+
+        return dp[m - 1][n - 1];
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[][] obstacle_Grid = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+        int result = solution.uniquePathsWithObstacles(obstacle_Grid);
+        System.out.println("Unique paths from top-left corner to bottom-right corner of the said grid (considering some obstacles): " + result);
+
+         obstacle_Grid = new int[][]{{0,1},{0,0}};
+         result = solution.uniquePathsWithObstacles(obstacle_Grid);
+        System.out.println("Unique paths from top-left corner to bottom-right corner of the said grid (considering some obstacles): " + result);
+    }
+}

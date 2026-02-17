@@ -1,0 +1,22 @@
+
+
+
+Explanation and improvements over a simpler approach:
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `DateTimeParseException`. This prevents the program from crashing if the user enters an invalid date format.  It provides a user-friendly error message.
+
+2. **Clear User Input:** The program prompts the user to enter the date in a specific format (YYYY-MM-DD), making it easier for them to provide the correct input.
+
+3. **Standard Date/Time API:**  It uses the `java.time` API (introduced in Java 8).  This is the modern and preferred way to work with dates and times in Java. It's significantly better than older classes like `Date` and `Calendar`, which are more error-prone.
+
+4. **ISO 8601 Format and Parser:** The `DateTimeFormatter.ISO_DATE` ensures that the date is parsed correctly according to the international standard (YYYY-MM-DD).
+
+
+How to compile and run:
+
+1. **Save:** Save the code as a `.java` file (e.g., `DayOfWeekFinder.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using the Java compiler:  `javac DayOfWeekFinder.java`
+3. **Run:** After successful compilation, run the program: `java DayOfWeekFinder`
+
+
+The program will then prompt you to enter a date.  Enter a date in YYYY-MM-DD format, and it will output the corresponding day of the week.

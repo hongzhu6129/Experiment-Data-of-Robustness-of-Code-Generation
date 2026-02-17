@@ -1,0 +1,29 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class RetrieveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a queue (using LinkedList as an implementation)
+        Queue<String> improveQueue = new LinkedList<>();
+
+        // Add elements to the queue
+        improveQueue.offer("Element 1");
+        improveQueue.offer("Element 2");
+        improveQueue.offer("Element 3");
+
+        // Check if the queue is empty before retrieving the first element
+        if (!improveQueue.isEmpty()) {
+            String firstElement = improveQueue.peek(); // Retrieve the first element without removing it
+            System.out.println("First element: " + firstElement);
+
+            // Alternatively, use poll() to retrieve and remove the first element
+            // String firstElement = improveQueue.poll(); 
+            // System.out.println("First element (removed): " + firstElement);
+
+
+        } else {
+            System.out.println("The queue is empty.");
+        }
+    }
+}

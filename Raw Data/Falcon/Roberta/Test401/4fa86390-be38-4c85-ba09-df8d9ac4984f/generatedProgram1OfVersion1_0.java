@@ -1,0 +1,61 @@
+class Solution {
+    /**
+     * Checks if two given strings are rotations of each other.
+     *
+     * @param s1 The first string.
+     * @param s2 The second string.
+     * @return True if the strings are rotations of each other, false otherwise.
+     */
+    static boolean checkForRotation(String s1, String s2) {
+        if (s1 == null || s2 == null) {
+            return false;
+        }
+
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        if (s1.isEmpty() && s2.isEmpty()) {
+            return true; // Empty strings are considered rotations of each other
+        }
+        
+        String concatenated = s1 + s1;
+        return concatenated.contains(s2);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "waterbottle";
+        String str2 = "erbottlewat";
+
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+        str1 = "helloworld";
+        str2 = "worldhello";
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+        str1 = "abc";
+        str2 = "acb"; // Not a rotation
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+
+        // Test cases for edge conditions
+        System.out.println(checkForRotation(null, "abc")); // false
+        System.out.println(checkForRotation("abc", null)); // false
+        System.out.println(checkForRotation("", ""));        // true
+        System.out.println(checkForRotation("a", ""));      // false
+        System.out.println(checkForRotation("", "a"));      // false
+
+    }
+}

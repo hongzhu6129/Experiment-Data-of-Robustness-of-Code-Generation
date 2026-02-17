@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Method Name:** The method `tenExceedsTwenty` is more descriptive than just `check`.
+
+2. **Boolean Return:**  The method now returns a `boolean` (true or false), making it more straightforward to use the result.
+
+3. **Handles Cases Where 10 is Not Present:** The code now correctly handles cases where the number 10 is not in the array at all.  It returns `false` in these situations.
+
+4. **Improved Logic (Handles Multiple 10s Correctly):** The original logic was slightly flawed.  It would incorrectly return `true` if a 10 appeared *before* any number greater than 20, even if that larger number was not immediately after the 10.  The improved logic uses a `tenFound` flag to track whether a 10 has been encountered and only checks for numbers greater than 20 *after* a 10 has been found and correctly handles multiple occurrences of the number 10 by resetting the `tenFound` flag if a 10 is found but its subsequent number does not exceed 20.
+
+5. **Example Usage in `main`:** The `main` method demonstrates how to call the `tenExceedsTwenty` method and use its result.
+
+6. **Comments:**  Added comments to explain the code's logic.
+
+
+This improved version is more robust, easier to understand, and addresses the potential issues of the original code.

@@ -1,0 +1,47 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (TreeMap maintains sorted order of keys)
+        TreeMap<Integer, String> map = new TreeMap<>();
+
+        // Populate the map with some key-value pairs
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+        map.put(6, "Six");
+
+
+        // Key to define the upper bound (exclusive)
+        int givenKey = 4; 
+
+        // Get the submap containing keys strictly less than givenKey
+        SortedMap<Integer, String> subMap = map.headMap(givenKey);  // headMap is exclusive of the 'toKey'
+
+        // Print the submap
+        System.out.println("Original Map: " + map);
+        System.out.println("Submap with keys less than " + givenKey + ": " + subMap);
+
+
+
+        // Another Example with String keys
+        TreeMap<String, Integer> stringMap = new TreeMap<>();
+        stringMap.put("apple", 1);
+        stringMap.put("banana", 2);
+        stringMap.put("grape", 3);
+        stringMap.put("orange", 4);
+
+        String givenStringKey = "grape"; // Example string Key
+
+        SortedMap<String, Integer> stringSubMap = stringMap.headMap(givenStringKey);
+
+        System.out.println("\nOriginal String Map: " + stringMap);
+        System.out.println("String Submap with keys less than '" + givenStringKey + "': " + stringSubMap);
+
+
+    }
+}

@@ -1,0 +1,30 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to thoroughly test the program.  It's a good practice to include a range of inputs and expected outputs to ensure your code handles various scenarios correctly.  You could implement these in a formal testing framework like JUnit, but for demonstration, here's how you might structure them conceptually:
+
+
+| Test Case | Latitude 1 | Longitude 1 | Latitude 2 | Longitude 2 | Expected Distance (approx) | Notes |
+|---|---|---|---|---|---|---|
+| 1. Example Case | 25 | 35 | 35.5 | 25.5 | 1480.08 | Provided in the problem description |
+| 2. Same Point | 40.7128 | -74.0060 (NYC) | 40.7128 | -74.0060 (NYC) | 0 | Distance should be zero |
+| 3. North & South Poles | 90 | 0 | -90 | 0 | ~20015.09 |  Half the Earth's circumference |
+| 4. Opposite sides of Earth | 0 | 0 | 0 | 180 | ~20015.09 | Half the Earth's circumference |
+| 5. Near Antipodes (almost opposite sides)| 40 | -74 | -40 | 105 | ~19912 | Very close to max possible distance |
+| 6. Points on Equator | 0 | 20 | 0 | 50 | ~3336 | Distance along the equator  |
+| 7. Points on same meridian | 20 | 30 | 50 | 30  | ~3320 | Distance along the same longitude |
+| 8. Negative Coordinates| -34 | 18 | -25 | 20 | ~1106 |  Southern Hemisphere example |
+| 9. Coordinates crossing Prime Meridian | 0 | -5 | 0 | 5  | 1112 | Handles longitude wrapping correctly |
+| 10.  Coordinates near 180th Meridian| 10 | 175 | 10 | -175 | 1112 |Handles longitude wrapping near the International Date Line correctly |
+
+
+
+**How to Run Tests (informally):**
+
+1.  **Manually:** Input the test case values into your Java program and visually check if the output matches the expected distance.
+2.  **Automated Tests (Recommended - using JUnit or TestNG):**  Write test methods for each test case.  These methods would call your distance calculation function with the test inputs and use `assertEquals()` (or similar assertion methods) to check that the calculated distance is within an acceptable tolerance of the expected distance.  This approach is much more efficient and less error-prone for regression testing (making sure your code still works after you make changes).
+
+
+Example of a JUnit test (you would need to add the JUnit library to your project):
+

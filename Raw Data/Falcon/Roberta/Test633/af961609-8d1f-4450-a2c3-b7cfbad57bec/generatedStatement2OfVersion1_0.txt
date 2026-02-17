@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+   - Input: `101010`
+   - Expected Output: `Hexadecimal value: '2a'`
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+
+
+2. **Invalid Binary Input:**
+   - Input: `1102`  (Contains a '2')
+   - Expected Output: `Invalid binary input.`
+   - Input: `abc`
+   - Expected Output: `Invalid binary input.`
+   - Input: `101a10`
+   - Expected Output: `Invalid binary input.`
+
+3. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+   - Input: `0000`
+   - Expected Output: `Hexadecimal value: '0'`
+
+4. **Leading Zeros:**
+   - Input: `00011`
+   - Expected Output: `Hexadecimal value: '3'`
+
+
+5. **Large Binary Input:** (Tests for potential integer overflow if not handled carefully, though this code avoids that by using `Math.pow` which returns `double`)
+   - Input: `11111111111111111111111111111111` (32 ones)
+   - Expected Output: `Hexadecimal value: 'ffffffff'`
+
+
+
+These test cases cover various scenarios, including valid and invalid inputs, boundary cases (zero and large inputs), and inputs with leading zeros. This comprehensive testing helps ensure the correctness and robustness of the program.

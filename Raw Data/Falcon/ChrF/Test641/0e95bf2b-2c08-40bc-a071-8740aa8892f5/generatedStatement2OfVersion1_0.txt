@@ -1,0 +1,23 @@
+
+
+
+Explanation and Improvements:
+
+1. **Error Handling:**  The code now includes error handling for invalid input (negative numbers or k outside the valid range for binomial coefficients). It prints an error message and exits gracefully.
+
+2. **Latinisation Coefficient Formula:** The Latinisation coefficient, also known as the "stars and bars" problem (combinations with repetitions), is calculated using the formula C(n+k-1, k). The code now correctly implements this formula.
+
+3. **Optimized Binomial Coefficient Calculation:** The `binomial_Coefficient` function is optimized:
+   - It handles edge cases (k=0, k=n) efficiently.
+   - It uses the symmetry property C(n, k) = C(n, n-k) to reduce calculations.
+   - It calculates the result iteratively to avoid stack overflow issues for large inputs.
+
+4. **User Input:** The `main` method takes user input for `n` and `k` using a `Scanner`.
+
+5. **Clear Output:**  The program prints the Latinisation coefficient in a user-friendly format.
+
+6. **Resource Management:** The `Scanner` is closed at the end to release resources.
+
+
+Example Usage:
+

@@ -1,0 +1,40 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Example usage:
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+
+        Integer[] array = convertToArray(pq);
+
+        // Print the array elements
+        for (Integer element : array) {
+            System.out.print(element + " ");
+        }
+        System.out.println(); // Output: 1 3 5 10 
+
+        //Demonstrating that the original PriorityQueue remains unchanged
+        System.out.println("Original PriorityQueue:");
+         while (!pq.isEmpty()) {
+            System.out.print(pq.poll() + " "); //Output: 1 3 5 10
+        }
+    }
+
+
+
+    public static <T> T[] convertToArray(PriorityQueue<T> priorityQueue) {
+        // Create an array of the same type and size as the priority queue
+        T[] array = (T[]) java.lang.reflect.Array.newInstance(
+                priorityQueue.peek().getClass(), priorityQueue.size());
+
+        //Efficiently copy elements to the array without modifying the original PriorityQueue
+        priorityQueue.toArray(array);
+                
+        return array;
+    }
+}

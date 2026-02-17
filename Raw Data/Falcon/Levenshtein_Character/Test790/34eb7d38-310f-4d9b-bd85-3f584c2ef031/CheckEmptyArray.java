@@ -1,0 +1,33 @@
+public class CheckEmptyArray {
+
+    public static void main(String[] args) {
+
+        // Example arrays to test
+        String[] names1 = {}; // Empty array
+        String[] names2 = {"Alice", "Bob", "Charlie"}; // Non-empty array
+
+
+        System.out.println("Is names1 empty? " + isEmpty(names1)); // Output: true
+        System.out.println("Is names2 empty? " + isEmpty(names2)); // Output: false
+
+
+        // Additional test cases if needed:
+        String[] names3 = null; // Null array - handle this separately if required
+
+        // Check for null first to avoid NullPointerException
+        if (names3 == null) {
+            System.out.println("names3 is null"); 
+        } else {
+            System.out.println("Is names3 empty? " + isEmpty(names3)); // Would also be true if not null
+        }
+
+
+
+
+    }
+
+    // Helper method to check if an array is empty (or null-safe if needed)
+    private static boolean isEmpty(String[] arr) {
+        return arr == null || arr.length == 0;
+    }
+}

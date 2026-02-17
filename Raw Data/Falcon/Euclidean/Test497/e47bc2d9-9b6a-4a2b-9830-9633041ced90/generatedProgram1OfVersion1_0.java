@@ -1,0 +1,38 @@
+public class RamanujanNumbers {
+
+    public static void main(String[] args) {
+        int n = 10000; // Set the upper limit for the search
+
+        // Create an array to store the number of ways each number can be expressed as a sum of two cubes
+        int[] ways = new int[n + 1];
+
+        // Iterate through all possible pairs of cubes
+        for (int a = 1; a * a * a <= n; a++) {
+            for (int b = a; a * a * a + b * b * b <= n; b++) {
+                int sum = a * a * a + b * b * b;
+                ways[sum]++;
+            }
+        }
+
+        // Find the smallest Ramanujan number (taxi-cab number) within the specified range
+        for (int i = 1; i <= n; i++) {
+            if (ways[i] >= 2) { // If the number can be expressed in two or more ways
+                System.out.println("The smallest Ramanujan number (taxi-cab number) within 1 and " + n + " is: " + i);
+
+                // Print the different ways the number can be expressed as the sum of two cubes
+                System.out.print(i + " can be expressed as:");
+                for (int a = 1; a * a * a <= i; a++) {
+                    for (int b = a; a * a * a + b * b * b <= i; b++) {
+                        if (a * a * a + b * b * b == i) {
+                            System.out.print(" " + a + "^3 + " + b + "^3");
+                        }
+                    }
+                }
+                System.out.println();
+
+                return; // Exit after finding the first such number
+            }
+        }
+        System.out.println("No Ramanujan number found within the specified range.");
+    }
+}

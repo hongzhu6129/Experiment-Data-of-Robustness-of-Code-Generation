@@ -1,0 +1,37 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class PINValidator {
+
+    public static void main(String[] args) {
+        String pin1 = "1234";
+        String pin2 = "123456";
+        String pin3 = "12345678";
+        String pin4 = "12345";
+        String pin5 = "123";
+        String pin6 = "1234567";
+        String pin7 = "abcd";
+
+
+        System.out.println(pin1 + " : " + validate(pin1)); // true
+        System.out.println(pin2 + " : " + validate(pin2)); // true
+        System.out.println(pin3 + " : " + validate(pin3)); // true
+        System.out.println(pin4 + " : " + validate(pin4)); // false
+        System.out.println(pin5 + " : " + validate(pin5)); // false
+        System.out.println(pin6 + " : " + validate(pin6)); // false
+        System.out.println(pin7 + " : " + validate(pin7)); // false
+
+
+    }
+
+    public static boolean validate(String pin) {
+        if (pin == null) {
+            return false;
+        }
+
+        // Regular expression to check for only digits and length of 4, 6, or 8
+        Pattern pattern = Pattern.compile("^\\d{4}$|^\\d{6}$|^\\d{8}$"); 
+        Matcher matcher = pattern.matcher(pin);
+        return matcher.matches();
+    }
+}

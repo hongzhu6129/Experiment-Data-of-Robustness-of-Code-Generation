@@ -1,0 +1,46 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapSetView {
+
+    public static void main(String[] args) {
+        // Create a HashMap
+        Map<String, Integer> map = new HashMap<>();
+
+        // Add some mappings to the map
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+
+        // Get a set view of the mappings
+        Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+
+        // Print the set view
+        System.out.println("Set view of mappings:");
+        for (Map.Entry<String, Integer> entry : entrySet) {
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+
+
+        //Demonstrating mutability:  Changes through the Set view affect the original map.
+         //Remove a mapping through the entrySet
+        entrySet.remove(Map.entry("Banana", 2)); // Java 9 or later for Map.entry()
+
+       //Alternative removal (pre-Java 9 compatible) - iterate and remove 
+       //for (Iterator<Map.Entry<String, Integer>> it = entrySet.iterator(); it.hasNext(); ) {
+       //    Map.Entry<String, Integer> entry = it.next();
+       //    if (entry.getKey().equals("Banana")) {
+       //        it.remove();
+       //        break; // Important to avoid ConcurrentModificationException if removing only one element
+       //    }
+       //}
+
+
+
+        System.out.println("\nMap after removing Banana:");
+        for (Map.Entry<String, Integer> entry : entrySet) {  // Iterate and print again.
+            System.out.println(entry.getKey() + "=" + entry.getValue());
+        }
+    }
+}

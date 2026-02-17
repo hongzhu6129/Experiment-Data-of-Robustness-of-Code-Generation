@@ -1,0 +1,48 @@
+import java.util.LinkedList;
+import java.util.List;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Insert elements at specified positions
+        insertElements(linkedList, 1, List.of("Grape", "Mango")); // Insert at index 1
+        insertElements(linkedList, 0, List.of("Strawberry"));    // Insert at index 0 (beginning)
+        insertElements(linkedList, linkedList.size(), List.of("Watermelon")); // Insert at the end
+
+
+        System.out.println("LinkedList after insertions: " + linkedList);
+
+       //Example with int
+        LinkedList<Integer> intList = new LinkedList<>();
+        intList.add(1);
+        intList.add(3);
+
+        insertElements(intList,1, List.of(2)); //Insert at index 1
+
+
+        System.out.println("Integer LinkedList after insertion: " + intList);
+    }
+
+
+    private static <T> void insertElements(LinkedList<T> list, int index, List<T> elements) {
+        if (index < 0 || index > list.size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + list.size());
+        }
+
+
+        for (int i = 0; i < elements.size(); i++) {
+             list.add(index + i, elements.get(i)); // Efficient insertion using LinkedList's add(index, element)
+        }
+
+    }
+}

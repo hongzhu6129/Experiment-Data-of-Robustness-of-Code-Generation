@@ -1,0 +1,54 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings.
+        // By default, PriorityQueue uses natural ordering (alphabetical for Strings).
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+
+        // Method 1: Iterate using enhanced for loop (recommended as it avoids removing elements)
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+        // Method 2:  Iterate by removing elements (be careful, this empties the queue!)
+        // If you want to preserve the queue's contents after printing, 
+        // you should create a copy of the queue before using this method.  
+        /*
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll()); // Removes and returns the head
+        }
+        */
+
+
+        // Example using a custom Comparator (if you need a different ordering, e.g., by string length):
+        PriorityQueue<String> colorQueueByLength = new PriorityQueue<>(
+                (s1, s2) -> Integer.compare(s1.length(), s2.length())
+        );
+
+        colorQueueByLength.add("Red");
+        colorQueueByLength.add("Green");
+        colorQueueByLength.add("Blue");
+        colorQueueByLength.add("Yellow");
+        colorQueueByLength.add("Orange");
+
+        System.out.println("\nElements of the priority queue ordered by length:");
+        for (String color : colorQueueByLength) {
+            System.out.println(color);
+        }
+
+
+
+    }
+}

@@ -1,0 +1,15 @@
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber` Method:** This helper method takes an integer `n` and calculates the corresponding Fermat number using the formula 2^(2^n) + 1.  It's crucial to cast the result to `long` because Fermat numbers grow very quickly, and even the 5th Fermat number exceeds the capacity of an `int`.
+
+2. **Main Loop:** The `main` method now iterates from `n = 0` to `n = 9` (inclusive) to calculate and print the first 10 Fermat numbers.
+
+3. **Output Clarity:** Added a header "First 10 Fermat Numbers:" to make the output more understandable.
+
+4. **Data Type:**  Using `long` allows us to display more Fermat numbers correctly than `int` would. However, Fermat numbers grow incredibly fast, and even `long` won't be able to hold very large ones accurately (starting from the 10th). For truly large Fermat numbers, you would need to use `BigInteger`.
+
+
+**Example Usage and Output:**
+

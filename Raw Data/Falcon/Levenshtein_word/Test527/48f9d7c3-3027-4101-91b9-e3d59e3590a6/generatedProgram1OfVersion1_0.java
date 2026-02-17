@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class CompareArrayLists {
+
+    public static void main(String[] args) {
+        // Example ArrayLists
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+        ArrayList<Integer> list3 = new ArrayList<>();
+        list3.add(3);
+        list3.add(2);
+        list3.add(1);
+
+        ArrayList<Integer> list4 = new ArrayList<>();
+        list4.add(1);
+        list4.add(2);
+        list4.add(4);
+
+
+        // 1. Check for equality (order matters)
+        System.out.println("list1 equals list2: " + list1.equals(list2)); // Output: true
+        System.out.println("list1 equals list3: " + list1.equals(list3)); // Output: false
+        System.out.println("list1 equals list4: " + list1.equals(list4)); // Output: false
+
+
+        // 2. Check for equality (order doesn't matter - using sorted copies)
+        ArrayList<Integer> sortedList1 = new ArrayList<>(list1);
+        ArrayList<Integer> sortedList3 = new ArrayList<>(list3);
+        Collections.sort(sortedList1);
+        Collections.sort(sortedList3);
+
+        System.out.println("list1 equals list3 (ignoring order): " + sortedList1.equals(sortedList3)); // Output: true
+
+
+
+        // 3. Check if list1 contains all elements of list3 (order doesn't matter) - Alternative to sorting
+        System.out.println("list1 contains all elements of list3: " + list1.containsAll(list3)); // Output: true
+         System.out.println("list3 contains all elements of list1: " + list3.containsAll(list1)); // Output: true
+
+        // 4. Check for partial matches (e.g., if list1 contains any elements of list4)
+        boolean anyMatch = false;
+        for (Integer element : list4) {
+            if (list1.contains(element)) {
+                anyMatch = true;
+                break;  // Exit the loop early if a match is found
+            }
+        }
+        System.out.println("list1 contains any element of list4: " + anyMatch); // Output: true
+
+
+        //5. Check if lists have the same size and contents regardless of order.
+        boolean sameSizeAndContent = list1.size() == list3.size() && list1.containsAll(list3) && list3.containsAll(list1);
+        System.out.println("list1 and list3 have same size and contents (ignoring order): " + sameSizeAndContent); //true
+
+    }
+}

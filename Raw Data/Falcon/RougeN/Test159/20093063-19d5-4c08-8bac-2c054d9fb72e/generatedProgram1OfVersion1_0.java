@@ -1,0 +1,49 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueSize {
+
+    public static void main(String[] args) {
+
+        // Create a PriorityQueue of Integers
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(5);
+        pq.add(1);
+        pq.add(10);
+        pq.add(3);
+        pq.add(7);
+
+        // Get the size of the PriorityQueue using the size() method
+        int size = pq.size();
+
+        // Print the size to the console
+        System.out.println("The size of the priority queue is: " + size);
+
+
+        //Demonstrate that adding elements increases the size, and removing them decreases it:
+        pq.add(25);
+        System.out.println("Size after adding 25: " + pq.size());
+
+        pq.poll(); // Removes the smallest element (1 in this case)
+        System.out.println("Size after removing the smallest element : " + pq.size());
+
+
+
+        // Example with a different data type (String)
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.add("apple");
+        stringPQ.add("banana");
+        stringPQ.add("orange");
+
+        System.out.println("The size of the string priority queue is: " + stringPQ.size());
+
+
+
+        //Illustrate what happens when trying to get the size of an empty PriorityQueue:
+        PriorityQueue<Double> emptyPQ = new PriorityQueue<>();
+        System.out.println("Size of an empty priority queue: " + emptyPQ.size());
+
+
+    }
+}

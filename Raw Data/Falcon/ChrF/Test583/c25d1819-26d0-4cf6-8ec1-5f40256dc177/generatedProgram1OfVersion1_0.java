@@ -1,0 +1,29 @@
+import java.util.Random;
+
+public class ShuffleArray {
+
+    public static void main(String[] args) {
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Eve"};
+
+        // Create a Random object for shuffling
+        Random random = new Random();
+
+        // Shuffle the array using Fisher-Yates algorithm
+        for (int i = names.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1); // Generate a random index between 0 and i (inclusive)
+
+            // Swap names[i] and names[j]
+            String temp = names[i];
+            names[i] = names[j];
+            names[j] = temp;
+        }
+
+
+        // Print the shuffled array
+        System.out.print("Shuffled array: ");
+        for (String name : names) {
+            System.out.print(name + " ");
+        }
+        System.out.println(); // Add a newline for better formatting
+    }
+}

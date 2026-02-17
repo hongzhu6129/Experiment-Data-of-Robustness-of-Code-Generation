@@ -1,0 +1,18 @@
+public class StringReplacement {
+
+    public static void main(String[] args) {
+        String inputString = "I love python and python code. python is great for code.";
+        String outputString = validate(inputString);
+        System.out.println(outputString); 
+
+        inputString = "This has no python or code.";
+        outputString = validate(inputString);
+        System.out.println(outputString);
+    }
+
+    public static String validate(String input) {
+        String result = input.replace("python", "Java");
+        result = result.replace("code", "coding");
+        return result;
+    }
+}

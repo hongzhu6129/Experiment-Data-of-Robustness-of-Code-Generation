@@ -1,0 +1,33 @@
+public class CountZeroBits {
+
+    public static int countBitsTozeroBasedOnString(int n) {
+        String binaryString = Integer.toBinaryString(n);
+        int zeroCount = 0;
+        for (char bit : binaryString.toCharArray()) {
+            if (bit == '0') {
+                zeroCount++;
+            }
+        }
+        return zeroCount;
+    }
+
+    public static void main(String[] args) {
+        int n = 10; // Example usage
+        int zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+
+
+        n = 0; // Example usage:  test case with input 0
+        zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+
+
+        n = 15; // Example usage: Test case with no zero bits
+        zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+
+         n = -5; // Test case with negative number
+        zeroBits = countBitsTozeroBasedOnString(n);
+        System.out.println("Number of zero bits in " + n + " (binary: " + Integer.toBinaryString(n) + "): " + zeroBits);
+    }
+}

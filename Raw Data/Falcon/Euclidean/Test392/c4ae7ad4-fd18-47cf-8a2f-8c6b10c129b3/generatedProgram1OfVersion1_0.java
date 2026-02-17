@@ -1,0 +1,40 @@
+import java.util.Arrays;
+
+public class StringSplitter {
+
+    public static void main(String[] args) {
+        String str = "Hello World!";
+        int n = 3;
+        String[] parts = splitString(str, n);
+        System.out.println(Arrays.toString(parts)); // Output: [Hello, World!, ]
+    }
+
+    public static String[] splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            throw new IllegalArgumentException("The input string cannot be null or empty.");
+        }
+        if (n <= 0) {
+            throw new IllegalArgumentException("The number of parts must be a positive integer.");
+        }
+        if (n > str.length()) {
+            throw new IllegalArgumentException("The number of parts cannot be greater than the length of the string.");
+        }
+
+        int partSize = str.length() / n;
+        int remainder = str.length() % n;
+
+        String[] parts = new String[n];
+        int startIndex = 0;
+        int endIndex = partSize;
+        for (int i = 0; i < n; i++) {
+            if (i == n - 1) {
+                endIndex += remainder;
+            }
+            parts[i] = str.substring(startIndex, endIndex);
+            startIndex = endIndex;
+            endIndex += partSize;
+        }
+
+        return parts;
+    }
+}

@@ -1,0 +1,40 @@
+public class HexValidator {
+
+    public static void main(String[] args) {
+        String hex1 = "0x1A2B3C";
+        String hex2 = "0xGFD123";
+        String hex3 = "123456";
+        String hex4 = "0xFF";
+        String hex5 = "0x";
+        String hex6 = "0x12345"; // Odd length after "0x"
+
+        System.out.println(hex1 + ": " + validate(hex1));
+        System.out.println(hex2 + ": " + validate(hex2));
+        System.out.println(hex3 + ": " + validate(hex3));
+        System.out.println(hex4 + ": " + validate(hex4));
+        System.out.println(hex5 + ": " + validate(hex5));
+        System.out.println(hex6 + ": " + validate(hex6));
+
+
+
+    }
+
+    public static boolean validate(String hexCode) {
+        if (hexCode == null || hexCode.length() < 3 || !hexCode.startsWith("0x")) {
+            return false;
+        }
+
+        String hexDigits = hexCode.substring(2);
+        if (hexDigits.length() % 2 != 0){ //Check for odd length after "0x"
+            return false;
+        }
+
+        for (char c : hexDigits.toCharArray()) {
+            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

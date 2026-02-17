@@ -1,0 +1,53 @@
+class Node {
+    int data;
+    Node left, mid, right;
+
+    public Node(int item) {
+        data = item;
+        left = mid = right = null;
+    }
+}
+
+public class TernaryTreeMaxDepth {
+
+    public int maxDepth(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftDepth = maxDepth(node.left);
+            int midDepth = maxDepth(node.mid);
+            int rightDepth = maxDepth(node.right);
+
+            return Math.max(leftDepth, Math.max(midDepth, rightDepth)) + 1;
+        }
+    }
+
+    public static void main(String[] args) {
+        TernaryTreeMaxDepth tree = new TernaryTreeMaxDepth();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.mid = new Node(3);
+        root.right = new Node(4);
+        root.left.left = new Node(5);
+        root.left.mid = new Node(6);
+        root.left.right = new Node(7);
+
+
+        System.out.println("Max depth: " + tree.maxDepth(root)); // Output: 3
+
+
+        // Another example
+        Node root2 = null;
+        System.out.println("Max depth: " + tree.maxDepth(root2)); // Output: 0
+
+         // Another example
+        Node root3 = new Node(1);
+        root3.left = new Node(2);
+        root3.mid = new Node(3);
+        root3.left.mid = new Node(4);
+        root3.left.mid.left = new Node(5);
+
+        System.out.println("Max depth: " + tree.maxDepth(root3)); // Output: 4
+    }
+}
+

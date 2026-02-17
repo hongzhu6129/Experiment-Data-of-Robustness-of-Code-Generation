@@ -1,0 +1,37 @@
+
+
+
+Explanation:
+
+1. **Initialization:**
+   - `n`: Represents the total number of coins.
+   - `currentCoins`: Keeps track of the coins used so far.
+   - `currentFace`: Indicates the current face number (1, 2, 3, ...).
+   - `height`: Stores the height of the staircase.
+
+2. **Loop:** The `while` loop continues as long as we have coins left (`currentCoins < n`).
+   - `coinsNeeded`: Calculates the number of coins needed for the current face (which is equal to `currentFace`).
+   - **Check if enough coins:** Inside the loop, it checks if adding `coinsNeeded` coins to `currentCoins` will exceed the total number of coins (`n`).
+   - **If enough coins:** If there are enough coins, we increment `currentCoins`, increase the `height` (since we've completed a face), and move to the next face (`currentFace++`).
+   - **If not enough coins:** If we don't have enough coins to complete the current face, the loop breaks.
+
+3. **Output:**  Prints the `height` of the staircase.
+
+4. **Visual Representation (optional):** The nested loops after calculating the height are there to visually represent the staircase by printing "O" characters.  You can comment this part out if you only need the numerical height.
+
+
+Example (n = 10):
+
+The loop calculates:
+
+- Face 1: Needs 1 coin (Total coins used: 1)
+- Face 2: Needs 2 coins (Total coins used: 3)
+- Face 3: Needs 3 coins (Total coins used: 6)
+- Face 4: Needs 4 coins (Total coins used: 10)
+
+So, the height is 4.
+
+
+Output (including the visual representation):
+
+

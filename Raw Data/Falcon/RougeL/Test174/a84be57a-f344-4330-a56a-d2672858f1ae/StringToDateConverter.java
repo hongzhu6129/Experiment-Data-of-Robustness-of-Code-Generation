@@ -1,0 +1,68 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class StringToDateConverter {
+
+    public static void main(String[] args) {
+
+        // String to Date Conversion
+        String dateString = "2023-11-20"; // Example date string
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Define the date format
+
+        try {
+            Date date = dateFormat.parse(dateString);
+            System.out.println("Converted Date: " + date);
+
+
+            // Date to String Conversion
+            SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy"); // Define the output format
+            String convertedString = outputFormat.format(date); 
+            System.out.println("Converted String: " + convertedString);
+
+
+            //Demonstrating different formats
+            SimpleDateFormat anotherFormat = new SimpleDateFormat("dd/MM/yy");
+            String anotherString = anotherFormat.format(date);
+            System.out.println("Converted to another String format: " + anotherString);
+
+            Date dateFromAnotherString = anotherFormat.parse(anotherString);
+            System.out.println("Date parsed from another string: " + dateFromAnotherString);
+
+
+
+        } catch (ParseException e) {
+            System.out.println("Error parsing date: " + e.getMessage());
+        }
+
+
+         //Handling different date formats robustly
+        String[] dateStrings = {"2023-11-20", "11/20/23", "Nov 20, 2023"};
+        SimpleDateFormat[] formats = {
+                new SimpleDateFormat("yyyy-MM-dd"),
+                new SimpleDateFormat("MM/dd/yy"),
+                new SimpleDateFormat("MMM dd, yyyy")
+        };
+
+
+        for (String str : dateStrings) {
+            Date parsedDate = null;
+            for (SimpleDateFormat format : formats) {
+                try {
+                    parsedDate = format.parse(str);
+                    break; // Stop trying formats once a successful parse occurs
+                } catch (ParseException e) {
+                    // Ignore and try the next format
+                }
+            }
+
+            if (parsedDate != null) {
+                System.out.println("Successfully parsed: " + str + " to " + parsedDate);
+            } else {
+                System.out.println("Could not parse: " + str);
+            }
+        }
+
+
+    }
+}

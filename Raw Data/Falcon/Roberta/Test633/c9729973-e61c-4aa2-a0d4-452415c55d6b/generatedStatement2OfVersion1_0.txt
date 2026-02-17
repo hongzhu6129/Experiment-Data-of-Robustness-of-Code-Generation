@@ -1,0 +1,45 @@
+
+
+
+
+**Test Cases:**
+
+**Valid Inputs:**
+
+1. **Input:** `1101`
+   **Expected Output:** `Hexadecimal value: 'd'`
+
+2. **Input:** `101010`
+   **Expected Output:** `Hexadecimal value: '2a'`
+
+3. **Input:** `11111111`
+   **Expected Output:** `Hexadecimal value: 'ff'`
+
+4. **Input:** `10000000`
+   **Expected Output:** `Hexadecimal value: '80'`
+
+5. **Input:** `0` (Corner Case)
+   **Expected Output:** `Hexadecimal value: '0'`
+
+6. **Input:** `1` (Corner Case)
+   **Expected Output:** `Hexadecimal value: '1'`
+
+
+**Invalid Inputs:**
+
+1. **Input:** `1102` (Contains a digit other than 0 or 1)
+   **Expected Output:** `Invalid binary number.`
+
+2. **Input:** `abc` (Non-numeric characters)
+   **Expected Output:** `Invalid binary number.`
+
+3. **Input:** `111111111111111111111` (Very large number - potential overflow if we were using `Integer.parseInt()`, although this version handles it gracefully by processing the string directly)
+    **Expected Output:**  A valid, but potentially very long, hexadecimal string.
+
+
+4. **Input:** "" (Empty String - corner case)
+   **Expected Output:** `Hexadecimal value: '0'`
+
+
+
+This expanded set of test cases covers various scenarios, including valid binary inputs, invalid characters, corner cases (0, 1, empty string), and potential overflow situations. It's always good practice to thoroughly test your code with a variety of inputs to ensure its robustness.

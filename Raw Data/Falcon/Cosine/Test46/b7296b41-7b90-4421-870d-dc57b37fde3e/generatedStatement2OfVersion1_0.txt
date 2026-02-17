@@ -1,0 +1,24 @@
+
+
+
+**Explanation:**
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles `null` or empty arrays gracefully.
+   - Uses `uniqueIndex` to keep track of where the next unique element should be placed.
+   - Iterates through the array starting from the second element.
+   - If the current element (`nums[i]`) is different from the element at `uniqueIndex` (the last unique element encountered), increment `uniqueIndex` and copy `nums[i]` to `nums[uniqueIndex]`.
+   - Finally, returns `uniqueIndex + 1` which is the new length of the array with duplicates removed.
+
+2. **`main(String[] args)`:**
+   - Provides several test cases to demonstrate the functionality.
+   - `Arrays.copyOfRange` is used in `main` to print only the relevant part of the modified array (up to the new length). This is important because the original array is modified in-place, but the elements beyond the new length are not relevant.  Without `Arrays.copyOfRange`, the output would show the original array with the unmodified "garbage" values at the end.
+
+
+**Key improvements in this version:**
+
+- **Handles edge cases:**  Correctly handles `null` and empty input arrays.
+- **Clearer variable names:** `uniqueIndex` improves readability.
+- **In-place modification:** Modifies the input array directly, as requested.
+- **Thorough testing:**  Demonstrates the behavior with different input scenarios.
+- **Correct output:** Uses `Arrays.copyOfRange` in the `main` method to print only the updated portion of the array.

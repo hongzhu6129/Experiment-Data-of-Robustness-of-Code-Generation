@@ -1,0 +1,70 @@
+import java.util.HashSet;
+
+public class RemoveHashSetElements {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet of strings
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some elements to the HashSet
+        hashSet.add("apple");
+        hashSet.add("banana");
+        hashSet.add("cherry");
+        hashSet.add("date");
+
+        System.out.println("Original HashSet: " + hashSet);
+
+
+        // Method 1: Using clear() method (most efficient)
+        hashSet.clear(); 
+
+        System.out.println("HashSet after clear(): " + hashSet);
+
+
+
+        //  Re-populate the HashSet for demonstration of other methods
+        hashSet.add("apple");
+        hashSet.add("banana");
+        hashSet.add("cherry");
+        hashSet.add("date");
+
+
+        // Method 2: Removing elements individually using remove() (less efficient, especially for many elements)
+        hashSet.remove("banana");
+        System.out.println("HashSet after removing \"banana\": " + hashSet);
+
+
+         // Re-populate for the next example
+        hashSet.add("banana");
+
+
+        // Method 3: Using removeAll() to remove all elements present in another collection (useful for specific removals)
+        HashSet<String> toRemove = new HashSet<>();
+        toRemove.add("apple");
+        toRemove.add("date");
+
+        hashSet.removeAll(toRemove);  // Removes "apple" and "date"
+        System.out.println("HashSet after removing elements in toRemove: " + hashSet);
+
+
+        // Re-populate for the final example
+        hashSet.add("apple");
+        hashSet.add("date");
+
+
+
+
+        // Method 4: Iterating and removing (generally avoid � can lead to ConcurrentModificationException if not done carefully)
+        //  This is the least efficient and most prone to errors, so avoid it if possible.
+        //  We'll use an iterator for safe removal during iteration.
+        var iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            iterator.remove(); // Remove the current element using the iterator's remove()
+        }
+
+        System.out.println("HashSet after iterating and removing: " + hashSet); 
+
+    }
+}

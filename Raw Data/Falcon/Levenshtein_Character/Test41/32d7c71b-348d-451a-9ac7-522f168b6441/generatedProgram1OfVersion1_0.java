@@ -1,0 +1,58 @@
+public class StringChecker {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "Wor";
+        boolean result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+        str1 = "Hello World";
+        str2 = "wor";
+        result = test(str1, str2);
+        System.out.println(result); // Output: false
+
+
+        str1 = "Programming";
+        str2 = "gram";
+        result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+        str1 = "aabbcc";
+        str2 = "abc";
+        result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+         str1 = "aabbcc";
+        str2 = "abbc";
+        result = test(str1, str2);
+        System.out.println(result); // Output: true
+
+        str1 = "aabbcc";
+        str2 = "aabbc";  // Extra 'b'
+        result = test(str1, str2);
+        System.out.println(result); // Output: false
+    }
+
+    public static boolean test(String str1, String str2) {
+        // Create character arrays for efficient checking
+        char[] charArray1 = str1.toCharArray();
+        char[] charArray2 = str2.toCharArray();
+
+
+        for (char c2 : charArray2) {
+            boolean found = false;
+            for (int i = 0; i < charArray1.length; i++) {
+                if (charArray1[i] == c2) {
+                    // Mark the character as used (to handle duplicates correctly)
+                    charArray1[i] = '\0'; // Null character represents used
+                    found = true;
+                    break; // Move to the next character in str2
+                }
+            }
+            if (!found) {
+                return false; // Character not found in str1
+            }
+        }
+        return true; // All characters of str2 found in str1
+    }
+}

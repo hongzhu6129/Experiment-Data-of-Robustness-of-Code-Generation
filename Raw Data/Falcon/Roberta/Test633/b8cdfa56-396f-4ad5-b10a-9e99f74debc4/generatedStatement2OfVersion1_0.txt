@@ -1,0 +1,36 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Binary Input:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: 'd'`
+   - Input: `101010`
+   - Expected Output: `Hexadecimal value: '2a'`
+   - Input: `11111111`
+   - Expected Output: `Hexadecimal value: 'ff'`
+   - Input: `10000000`
+   - Expected Output: `Hexadecimal value: '80'`
+
+2. **Zero Input:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: '0'`
+
+3. **Invalid Input (Non-binary characters):**
+   - Input: `1102`
+   - Expected Output: `Invalid binary input.  Only 0 and 1 are allowed.`
+   - Input: `abc`
+   - Expected Output: `Invalid binary input.  Only 0 and 1 are allowed.`
+
+4. **Large Binary Input:**  (Tests potential overflow issues, though `long` can handle very large binary numbers)
+   - Input: `111111111111111111111111111111111111111111111111111111111111111`
+   - Expected Output: A very large hexadecimal number (or potential overflow exception if you use `int` instead of `long`).
+
+5. **Empty Input:**
+   - Input: `` (just press enter)
+   - Expected Output: `Invalid input. Please enter a valid binary number.` (because `Long.parseLong("")` throws a `NumberFormatException`)
+
+
+
+This improved version incorporates error handling for non-binary input and empty input, making it more robust. It also clarifies the handling of the zero input case and uses `long` to accommodate large binary numbers. The test cases cover a range of scenarios to ensure comprehensive testing.

@@ -1,0 +1,35 @@
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str = "Programming"; // Example string
+
+        if (str.length() > 3) {
+            String lastThree = str.substring(str.length() - 3);
+            String modifiedStr = lastThree + str + lastThree;
+            System.out.println(modifiedStr); // Output: ingProgramminging
+
+            // More examples
+            manipulateString("Hello");    // Output: lloHellollo
+            manipulateString("Python");   // Output: honPythonhon
+            manipulateString("Java");     // Output: avaJavaava
+            manipulateString("Code");     // Output: odeCodeode
+            manipulateString("a");       // No Output (string length less than 3)
+
+
+        }else {
+           System.out.println("String length should be more than 3");
+        }
+
+    }
+
+
+
+    //Helper function for clarity (not part of the original requirement for only main method)
+    public static void manipulateString(String str) {
+        if (str.length() > 3) {
+            String lastThree = str.substring(str.length() - 3);
+            String modifiedStr = lastThree + str + lastThree;
+            System.out.println(modifiedStr);
+        }
+    }
+}

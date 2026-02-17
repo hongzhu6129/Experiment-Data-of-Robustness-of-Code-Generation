@@ -1,0 +1,19 @@
+
+
+**Test Cases (Conceptual - since output is visual):**
+
+While you can't directly unit test the output of `System.out.println()` easily without more advanced techniques (e.g., capturing output streams), you can conceptually test by ensuring:
+
+1. **Correct Output:**  Visually inspect the output to confirm it resembles a face as intended by the design.
+
+2. **Character Accuracy:** Verify that the correct characters are used (e.g., `"` for the hair, `o` for the eyes, `^` for the nose, `-` for the mouth).  A small typo can ruin the face.
+
+3. **Spacing and Alignment:**  Ensure consistent spacing.  For example, the "hair" line should be centered above the "eyes" line, and the features should be correctly aligned within the face outline.
+
+4. **Platform Independence (Basic):**  Run the code on different operating systems (if possible) to check that the face displays consistently.  Character encoding differences can sometimes cause issues.
+
+
+**More Advanced Testing (If you wanted to go further):**
+
+If you really wanted automated testing, you'd need to redirect `System.out`.  Here's a basic example using `ByteArrayOutputStream`:
+

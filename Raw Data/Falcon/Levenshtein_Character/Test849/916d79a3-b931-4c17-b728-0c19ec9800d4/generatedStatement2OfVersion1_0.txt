@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations:
+
+* **Test Cases:**  The provided code includes a comprehensive set of JUnit 5 test cases.  These tests cover:
+    * **Positive Radius:**  The original example (radius 7.5).
+    * **Zero Radius:**  A boundary case.
+    * **Negative Radius:**  An invalid input; the tests check for an `IllegalArgumentException` (which you should add to the `calculatePerimeter` and `calculateArea` methods if you want truly robust code).
+    * **Very Large Radius:** Handling potential overflow with `Double.MAX_VALUE`.
+    * **Very Small Radius:**  Handling potential underflow and precision issues.
+* **JUnit 5:**  Using JUnit 5 provides a standard and robust way to write tests.  The `@Test` annotation marks test methods. Assertions like `assertEquals` verify the expected output.
+* **Delta for Floating-Point Comparisons:** When comparing floating-point numbers, you should almost never use exact equality (`==`).  Floating-point calculations have inherent limitations in precision. The `assertEquals` method with a third `delta` argument allows for a small tolerance in the comparison.
+
+
+How to handle Negative Radius in the `CircleCalculations` class (add this to make the tests pass fully):
+

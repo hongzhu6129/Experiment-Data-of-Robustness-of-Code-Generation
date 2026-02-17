@@ -1,0 +1,34 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Output |
+|---|---|---|---|
+| Positive Numbers | 10 | 5 | Sum: 15.0<br>Difference: 5.0<br>Product: 50.0<br>Quotient: 2.0<br>Remainder: 0.0 |
+| Negative Numbers | -10 | -5 | Sum: -15.0<br>Difference: -5.0<br>Product: 50.0<br>Quotient: 2.0<br>Remainder: 0.0 |
+| Mixed Signs | 10 | -5 | Sum: 5.0<br>Difference: 15.0<br>Product: -50.0<br>Quotient: -2.0<br>Remainder: 0.0 |
+| Zero as num2 (Division by Zero) | 10 | 0 | Sum: 10.0<br>Difference: 10.0<br>Product: 0.0<br>Division by zero is not allowed.<br>Remainder with zero divisor is not allowed. |
+| Zero as num1 | 0 | 5 | Sum: 5.0<br>Difference: -5.0<br>Product: 0.0<br>Quotient: 0.0<br>Remainder: 0.0 |
+| Both Zero | 0 | 0 | Sum: 0.0<br>Difference: 0.0<br>Product: 0.0<br>Division by zero is not allowed.<br>Remainder with zero divisor is not allowed. |
+| Large Numbers | 100000 | 5000 | Sum: 105000.0<br>Difference: 95000.0<br>Product: 5.0E8<br>Quotient: 20.0<br>Remainder: 0.0 |
+| Decimal Numbers | 10.5 | 2.5 | Sum: 13.0<br>Difference: 8.0<br>Product: 26.25<br>Quotient: 4.2<br>Remainder: 0.0 |
+
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by running the program and entering the input values.  For more automated testing, you could use JUnit (a Java testing framework).
+
+
+**Key Improvements in this Code:**
+
+* **Handles Division by Zero:**  The code now explicitly checks for division by zero and prints an appropriate message, preventing runtime errors.
+* **Uses `double` for More Precision:** Using `double` instead of `int` allows the program to handle decimal numbers correctly.
+* **Clearer Output:** The output is formatted to clearly label each operation's result.
+* **Resource Management:** The `Scanner` is closed using `input.close()` to release the resource.  This is good practice, especially in larger programs.
+
+
+
+This improved version is more robust and provides a better user experience.

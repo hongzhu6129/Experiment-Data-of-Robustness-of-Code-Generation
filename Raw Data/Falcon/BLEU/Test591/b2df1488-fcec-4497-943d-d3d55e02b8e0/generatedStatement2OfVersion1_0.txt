@@ -1,0 +1,41 @@
+
+
+**Test Cases:**
+
+1. **Positive Side Length:**
+   - Input: `5`
+   - Expected Output: `64.9519052838329` (approximately)
+
+2. **Zero Side Length:**
+   - Input: `0`
+   - Expected Output: `Side length must be positive.`
+
+3. **Negative Side Length:**
+   - Input: `-3`
+   - Expected Output: `Side length must be positive.`
+
+4. **Very Small Side Length:**
+   - Input: `0.001`
+   - Expected Output: `0.000002598076211353316` (approximately)  (Tests handling of small values)
+
+5. **Very Large Side Length:**
+   - Input: `10000`
+   - Expected Output: `259807621.1353316` (approximately) (Tests handling of large values)
+
+6. **Decimal Side Length:**
+   - Input: `2.5`
+   - Expected Output: `16.237976320958244` (approximately)
+
+**How to Run the Test Cases:**
+
+You can manually test these cases by running the Java program and entering the input values.  For more automated testing, you could use JUnit or other testing frameworks, but the question specifically restricts the solution to using only the `main` method.  Therefore, manual verification is the most direct way to check these test cases in this scenario.
+
+
+**Explanation of Corner Cases and Considerations:**
+
+* **Zero and Negative Side Lengths:**  A hexagon cannot have a side length of zero or less. The code explicitly checks for these invalid inputs and prints an error message.
+* **Very Small and Large Side Lengths:** These cases are important to check how the program handles potential floating-point precision issues and overflow or underflow errors.
+* **Decimal Side Length:** This ensures the program correctly calculates the area for non-integer inputs.
+
+
+This improved answer provides a more robust and well-tested solution while still adhering to the constraint of using only the `main` method.

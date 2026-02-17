@@ -1,0 +1,69 @@
+import java.util.LinkedList;
+
+public class LinkedListOccurrences {
+
+    public static void main(String[] args) {
+        // Example usage:
+        LinkedList<Integer> numbers = new LinkedList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(2);
+        numbers.add(4);
+        numbers.add(2);
+        numbers.add(5);
+
+        int target = 2;
+
+        int firstOccurrence = -1;
+        int lastOccurrence = -1;
+
+
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) == target) {
+                if (firstOccurrence == -1) {
+                    firstOccurrence = i;
+                }
+                lastOccurrence = i;
+            }
+        }
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + target + ": " + firstOccurrence);
+            System.out.println("Last occurrence of " + target + ": " + lastOccurrence);
+        } else {
+            System.out.println(target + " not found in the list.");
+        }
+
+
+         //Example 2: Demonstrating with strings
+        LinkedList<String> strings = new LinkedList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("orange");
+        strings.add("banana");
+        strings.add("grape");
+
+        String targetString = "banana";
+        firstOccurrence = -1;
+        lastOccurrence = -1;
+
+
+        for (int i = 0; i < strings.size(); i++) {
+            if (strings.get(i).equals(targetString)) { // Use .equals() for String comparison
+                if (firstOccurrence == -1) {
+                    firstOccurrence = i;
+                }
+                lastOccurrence = i;
+            }
+        }
+
+         if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + targetString + ": " + firstOccurrence);
+            System.out.println("Last occurrence of " + targetString + ": " + lastOccurrence);
+        } else {
+            System.out.println(targetString + " not found in the list.");
+        }
+
+    }
+}

@@ -1,0 +1,40 @@
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class MaxPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a maximum priority queue using Collections.reverseOrder()
+        PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder());
+
+        // Add some elements
+        maxPQ.add(5);
+        maxPQ.add(10);
+        maxPQ.add(1);
+        maxPQ.add(7);
+        maxPQ.add(3);
+
+        // Print the elements in descending order (maximum priority first)
+        System.out.println("Maximum Priority Queue elements:");
+        while (!maxPQ.isEmpty()) {
+            System.out.print(maxPQ.poll() + " "); 
+        }
+        System.out.println(); // Output: 10 7 5 3 1
+
+
+        // Example with strings:
+        PriorityQueue<String> stringMaxPQ = new PriorityQueue<>(Collections.reverseOrder());
+
+        stringMaxPQ.add("apple");
+        stringMaxPQ.add("banana");
+        stringMaxPQ.add("orange");
+        stringMaxPQ.add("grape");
+
+        System.out.println("String Maximum Priority Queue elements:");
+        while (!stringMaxPQ.isEmpty()) {
+            System.out.print(stringMaxPQ.poll() + " "); //Output: orange grape banana apple
+        }
+         System.out.println();
+
+    }
+}

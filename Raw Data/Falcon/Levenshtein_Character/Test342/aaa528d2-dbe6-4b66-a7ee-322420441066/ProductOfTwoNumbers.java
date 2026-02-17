@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class ProductOfTwoNumbers {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Input first number: ");
+        int num1 = input.nextInt();
+
+        System.out.print("Input second number: ");
+        int num2 = input.nextInt();
+
+        int product = num1 * num2;
+
+        System.out.println(num1 + " * " + num2 + " = " + product); 
+        //Corrected the output to show multiplication, not addition
+
+        input.close(); // Close the scanner to prevent resource leaks
+    }
+}

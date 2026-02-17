@@ -1,0 +1,44 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (default is natural ordering - alphabetical)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.offer("Red");
+        colorQueue.offer("Green");
+        colorQueue.offer("Blue");
+        colorQueue.offer("Yellow");
+        colorQueue.offer("Orange");
+
+
+        // Print the elements of the priority queue (Note: it doesn't print in insertion order)
+        System.out.println("Elements of the Priority Queue:");
+
+        // Method 1:  Iterating and removing (destructive)
+        // while (!colorQueue.isEmpty()) {
+        //    System.out.println(colorQueue.poll()); 
+        //}
+
+
+        // Method 2:  Iterating without removing (non-destructive) using enhanced for loop
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+         // Method 3: Using toString() (non-destructive)
+        // System.out.println(colorQueue); //  Similar output to Method 2
+
+
+        // Method 4: Iterating without removing (non-destructive) using iterator()
+
+        // Iterator<String> iterator = colorQueue.iterator();
+        // while (iterator.hasNext()) {
+        //     System.out.println(iterator.next());
+        // }
+
+
+    }
+}

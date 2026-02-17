@@ -1,0 +1,67 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class GetMapValue {
+
+    public static void main(String[] args) {
+
+        // Create a sample Map
+        Map<String, Integer> studentScores = new HashMap<>();
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+
+        // 1. Get value using get() method -  returns null if key not found
+        String keyToFind = "Bob";
+        Integer bobScore = studentScores.get(keyToFind);
+
+        if (bobScore != null) {
+            System.out.println("Score of " + keyToFind + ": " + bobScore);
+        } else {
+            System.out.println("Key '" + keyToFind + "' not found in the map.");
+        }
+
+
+        // 2.  getOrDefault() - provides a default value if key not found
+        String keyToFind2 = "David";  // Key not present
+        int defaultScore = 0;
+        int davidScore = studentScores.getOrDefault(keyToFind2, defaultScore);
+
+        System.out.println("Score of " + keyToFind2 + ": " + davidScore); // Output will be 0
+
+
+
+        // 3. Check for key existence before retrieving value (avoids NullPointerException)
+        String keyToFind3 = "Eve"; //Another key that's not in the map
+        if (studentScores.containsKey(keyToFind3)) {
+            int eveScore = studentScores.get(keyToFind3);
+            System.out.println("Score of " + keyToFind3 + ": " + eveScore);
+        } else {
+            System.out.println("Key '" + keyToFind3 + "' not found in the map.");
+        }
+
+
+
+        // Example demonstrating how null values are handled:
+
+        studentScores.put("Frank", null); // Frank's score is explicitly set to null
+
+        Integer frankScore = studentScores.get("Frank");
+
+        if (frankScore == null) {
+            System.out.println("Frank's score is null (either not present or explicitly set to null).");
+        }
+
+
+
+
+        // Iterating through the map and printing key-value pairs (optional, but useful)
+        System.out.println("\nAll student scores:");
+        for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+
+
+    }
+}

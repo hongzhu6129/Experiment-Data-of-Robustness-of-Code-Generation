@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Corrections:**
+
+1. **Even Length Logic:** The original prompt had a typo stating there would be *six* middle characters for an odd-length string; it should be *one* middle character for an *even* length string. The code is corrected to reflect this.  To get the correct middle character when the length is even, we need to use `len / 2 - 1` because string indices are zero-based.  For example, in "coding", 'd' is at index 2, and `6/2 -1` is `3-1 = 2`.
+
+2. **Odd Length Logic:** For odd length strings, `len / 2` correctly identifies the middle character's index.
+
+3. **`String.valueOf()`:** I've used `String.valueOf()` to convert the `char` returned by `str.charAt()` to a `String`. This is generally better practice than simply concatenating the character with an empty string because it handles potential `null` characters more gracefully.
+
+4. **Clearer Examples:**  I've added more examples in the `main` method to demonstrate the function with both even and odd length strings, which makes it easier to verify the logic.
+
+
+**Example Output:**
+

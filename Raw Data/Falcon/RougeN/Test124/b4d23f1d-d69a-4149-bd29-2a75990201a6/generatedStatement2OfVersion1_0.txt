@@ -1,0 +1,25 @@
+
+
+
+"Exceeds measuring" isn't standard terminology.  I've assumed you meant the *height* or *depth* of the binary tree.  The code calculates this using recursion.
+
+**Explanation:**
+
+1. **Node Class:** Represents a node in the binary tree.  It has `data` to store the value and `left` and `right` pointers to its children.
+
+2. **maxDepth(Node node):**
+   - **Base Case:** If the `node` is `null` (empty subtree), the depth is 0.
+   - **Recursive Step:**  It recursively calculates the depth of the left subtree (`lDepth`) and the right subtree (`rDepth`).  The depth of the current node is then 1 + the maximum of `lDepth` and `rDepth`.
+
+3. **main(String[] args):**
+   - Creates a `BinaryTreeMaxDepth` object.
+   - Constructs example binary trees.
+   - Calls `maxDepth()` to calculate and print the height/depth of the trees.
+
+
+**Key improvements in this code:**
+
+- **Clarity:** Uses clear variable names (`lDepth`, `rDepth`).
+- **Efficiency:**  Avoids unnecessary calculations.  The recursive calls are only made once for each subtree.
+- **Example Usage:** Includes example trees in `main()` to demonstrate how to use the code and verify the output.
+- **Handles `null`:** Correctly handles empty trees or subtrees.

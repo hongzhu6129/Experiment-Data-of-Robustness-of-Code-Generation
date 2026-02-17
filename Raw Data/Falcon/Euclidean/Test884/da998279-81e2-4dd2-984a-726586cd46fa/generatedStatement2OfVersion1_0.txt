@@ -1,0 +1,19 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **In-Place Modification:** The `removeDuplicates` method modifies the input array directly (in-place), which is memory-efficient.  It doesn't create a new array to store the unique elements.
+
+2. **Two Pointers:** The code uses a two-pointer approach.  `uniqueIndex` keeps track of the index where the next unique element should be placed.  The `i` pointer iterates through the array.
+
+3. **Sorted Array is Key:** This algorithm works efficiently because the input array is sorted.  If the array wasn't sorted, we would need a different approach (like using a `Set` to track unique elements).
+
+4. **Handling Edge Cases:** The code handles empty arrays (`nums.length == 0`) and null arrays (`nums == null`) to prevent errors.
+
+5. **Return Value:** The function returns the new length of the modified array (the number of unique elements), not the modified array itself (because it modifies the original array in place).
+
+6. **Printing the Modified Array:**  In the `main` method, `Arrays.copyOfRange()` is used to print only the relevant portion of the modified array (up to the new length). This is important because the original array might have some duplicate elements remaining at the end after removing duplicates.
+
+
+This example provides a clear and efficient implementation of removing duplicates from a sorted array in Java, along with explanations to help learners understand the logic and key concepts involved.

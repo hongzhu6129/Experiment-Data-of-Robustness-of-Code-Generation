@@ -1,0 +1,24 @@
+
+
+
+**Explanation:**
+
+1. **`Column(int n)` Method:**
+   - Takes an integer `n` (the column number) as input.
+   - Uses a `StringBuilder` to efficiently build the column name string.
+   - The core logic is in the `while` loop:
+     - It calculates the remainder (`rem`) when `n` is divided by 26 (since there are 26 letters).
+     - If `rem` is 0, it means we've reached a 'Z'.  We append 'Z', and since 'Z' represents a full cycle of 26, we decrement `n` by 1 after dividing by 26 to account for the 'Z'.
+     - Otherwise, we append the corresponding character by adding `rem - 1` to the ASCII value of 'A'.  Then, we divide `n` by 26 to continue to the next character.
+   - Finally, it reverses the `StringBuilder` (because we build the string from right to left) and converts it to a `String`.
+
+
+2. **`main` Method:**
+   - Provides test cases to demonstrate the `Column` method's functionality.  You can add more test cases as needed.
+
+
+**Key Improvements:**
+
+- **Handles Z properly:** The code now correctly handles cases where 'Z' is involved (e.g., 26, 52, 702).
+- **Uses `StringBuilder`:** `StringBuilder` is more efficient than string concatenation using `+` in a loop.
+- **Clearer Logic:** The code is slightly restructured to improve readability and clarity.

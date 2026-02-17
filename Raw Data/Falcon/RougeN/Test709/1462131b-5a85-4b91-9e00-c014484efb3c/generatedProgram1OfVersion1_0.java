@@ -1,0 +1,39 @@
+class Solution {
+    /**
+     * Given a positive integer, return its corresponding column title as appear in Excel sheet.
+     * For example:
+     * 1 -> A
+     * 2 -> B
+     * 3 -> C
+     * ...
+     * 26 -> Z
+     * 27 -> AA
+     * 28 -> AB
+     * ...
+     *
+     * @param n the column number (integer value)
+     * @return the excel column name that corresponds to the given column number
+     */
+    public static String Column(int n) {
+        StringBuilder sb = new StringBuilder();
+        while (n > 0) {
+            n--; // Adjust n to be 0-indexed for character calculation
+            char ch = (char) ('A' + n % 26);
+            sb.insert(0, ch);
+            n /= 26;
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("1: " + Column(1)); // Output: A
+        System.out.println("2: " + Column(2)); // Output: B
+        System.out.println("26: " + Column(26)); // Output: Z
+        System.out.println("27: " + Column(27)); // Output: AA
+        System.out.println("28: " + Column(28)); // Output: AB
+        System.out.println("52: " + Column(52)); // Output: AZ
+        System.out.println("702: " + Column(702)); // Output: ZZ
+        System.out.println("703: " + Column(703)); // Output: AAA
+
+    }
+}

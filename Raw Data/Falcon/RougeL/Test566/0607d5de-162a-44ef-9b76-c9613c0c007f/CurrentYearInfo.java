@@ -1,0 +1,34 @@
+import java.time.Year;
+import java.time.YearMonth;
+import java.time.LocalDate;
+import java.time.ZoneId;
+
+public class CurrentYearInfo {
+
+    public static void main(String[] args) {
+        // Get the current year
+        int currentYear = Year.now().getValue();
+
+        System.out.println("Current Year: " + currentYear);
+        System.out.println("Is Leap Year: " + Year.isLeap(currentYear)); // Check if leap year
+
+
+        // Demonstrating getting year from a specific date (optional - if you need it for a "given" year)
+        LocalDate specificDate = LocalDate.of(2024, 5, 10); // Example date
+        int yearFromDate = specificDate.getYear();
+        System.out.println("\nYear from specific date: " + yearFromDate);
+        System.out.println("Is Leap Year: " + Year.isLeap(yearFromDate));
+
+
+        // Get the current year and month (just an example - you can adapt it)
+        YearMonth currentYearMonth = YearMonth.now();
+        System.out.println("\nCurrent Year and Month: " + currentYearMonth);
+
+
+        // Get the current year in a specific time zone (if needed)
+        int yearInSpecificZone = Year.now(ZoneId.of("America/New_York")).getValue();
+        System.out.println("\nCurrent year in New York: " + yearInSpecificZone);
+
+
+    }
+}

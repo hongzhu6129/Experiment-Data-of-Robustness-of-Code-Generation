@@ -1,0 +1,31 @@
+
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Creates a sample 2D array `matrix`.
+   - Calls the `Saddleback` method to search for a target value.
+   - Prints the result indicating whether the target was found and its position.
+
+2. **`Saddleback` method:**
+   - Takes the matrix, its dimensions (m, n), and the target value as input.
+   - Initializes `row` to 0 (top row) and `col` to `n-1` (rightmost column). This is the starting point for the saddleback search.
+   - Enters a `while` loop that continues as long as `row` is within the matrix bounds and `col` is a valid column index.
+   - Inside the loop:
+     - If `matrix[row][col]` equals the `target`, the target is found, and its row and column indices are returned in an `int[]`.
+     - If `matrix[row][col]` is less than the `target`, it means the target must be in a row below (larger values), so `row` is incremented.
+     - If `matrix[row][col]` is greater than the `target`, it means the target must be in a column to the left (smaller values), so `col` is decremented.
+   - If the loop completes without finding the target, it means the target is not present in the matrix, and `{-1, -1}` is returned to indicate this.
+
+
+**Key Improvements:**
+
+- **Clearer Variable Names:**  Uses more descriptive variable names like `row`, `col`, `m`, `n` for better readability.
+- **Comments:**  Added comments to explain the logic and the steps taken within the code.
+- **Error Handling:** Returns `{-1, -1}` to explicitly signal when the target is not found, making the calling code more robust.
+- **Example Usage in `main`:** Demonstrates how to use the `Saddleback` method and handle its output.
+- **Test Cases:** Added a second test case in `main` to show how the code handles when the target is not found.
+
+
+This improved version is more efficient, readable, and handles edge cases correctly.

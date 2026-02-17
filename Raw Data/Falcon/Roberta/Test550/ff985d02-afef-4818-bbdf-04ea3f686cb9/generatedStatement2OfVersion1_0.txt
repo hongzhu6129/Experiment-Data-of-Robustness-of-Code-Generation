@@ -1,0 +1,32 @@
+
+
+
+**Test Cases:**
+
+1. **Regular Numbers:**
+   - a = 5, b = 10  (Expected: a = 10, b = 5)
+   - a = -3, b = 7   (Expected: a = 7, b = -3)
+
+2. **Zero Values:**
+   - a = 0, b = 5    (Expected: a = 5, b = 0)
+   - a = 0, b = 0    (Expected: a = 0, b = 0)
+   - a = 5, b = 0   (Expected: a = 0, b = 5)
+
+3. **Large Numbers (to test for potential overflow with the addition/subtraction method):**
+   - a = Integer.MAX_VALUE, b = Integer.MIN_VALUE  (Expected: a = Integer.MIN_VALUE, b = Integer.MAX_VALUE.  Check if using + and - leads to incorrect results due to overflow)
+   - a = Integer.MAX_VALUE -1, b = 1000 (Also checks close to limit cases).
+
+
+
+4. **Identical Numbers:**
+   - a = 5, b = 5 (Expected: a = 5, b = 5)
+
+
+**How to Run Test Cases:**
+
+You can manually input these values when prompted by the program.  For more automated testing, you would typically use a testing framework like JUnit.  With JUnit, you can write separate test methods to check each case and use assertions to verify the expected output against the actual output of the `swap` operation.
+
+
+
+**Example using JUnit (not in main method, as a separate test class):**
+

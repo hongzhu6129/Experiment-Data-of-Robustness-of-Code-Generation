@@ -1,0 +1,27 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SingleNumberFinder {
+
+    public static void main(String[] args) {
+        int[] nums = {10, 20, 10, 20, 30, 40, 40, 30, 50};
+        int singleNumber = getSingleNumber(nums);
+        System.out.println(singleNumber + " appears only once");
+    }
+
+    public static int getSingleNumber(int[] nums) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        for (int num : nums) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : nums) {
+            if (countMap.get(num) == 1) {
+                return num;
+            }
+        }
+
+        return -1; // Should not reach here if there's exactly one single number
+    }
+}

@@ -1,0 +1,53 @@
+public class GetCharAtIndex {
+
+    public static void main(String[] args) {
+
+        // Example 1:  Valid index
+        String str1 = "Hello, World!";
+        int index1 = 7;
+        try {
+            char charAtIndex1 = str1.charAt(index1);
+            System.out.println("Character at index " + index1 + " in \"" + str1 + "\" is: " + charAtIndex1);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Error: Index " + index1 + " is out of bounds for string \"" + str1 + "\"");
+        }
+
+        // Example 2: Index too large (out of bounds)
+        String str2 = "Java";
+        int index2 = 4; 
+        try {
+            char charAtIndex2 = str2.charAt(index2);
+            System.out.println("Character at index " + index2 + " in \"" + str2 + "\" is: " + charAtIndex2);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Error: Index " + index2 + " is out of bounds for string \"" + str2 + "\"");
+        }
+
+
+        // Example 3: Negative index (out of bounds)
+        String str3 = "Coding";
+        int index3 = -1;
+        try {
+            char charAtIndex3 = str3.charAt(index3);
+            System.out.println("Character at index " + index3 + " in \"" + str3 + "\" is: " + charAtIndex3);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Error: Index " + index3 + " is out of bounds for string \"" + str3 + "\"");
+        }
+
+        // Example 4: Empty string
+        String str4 = "";
+        int index4 = 0;
+        try {
+            char charAtIndex4 = str4.charAt(index4);
+            System.out.println("Character at index " + index4 + " in \"" + str4 + "\" is: " + charAtIndex4);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.err.println("Error: Index " + index4 + " is out of bounds for string \"" + str4 + "\"");
+        }
+
+
+
+        // Explaining StringIndexOutOfBoundsException
+        System.out.println("\nExplanation of StringIndexOutOfBoundsException:");
+        System.out.println("This exception occurs when you try to access a character at an index that is either negative or greater than or equal to the length of the string.");
+        System.out.println("It's important to always check that the index you're using is within the valid range (0 to string.length() - 1) to avoid this exception.");
+    }
+}

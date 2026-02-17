@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+
+public class PrintArrayListElementsByPosition {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        ArrayList<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Print the elements using their positions
+        System.out.println("Elements of the ArrayList:");
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println("Element at position " + i + ": " + fruits.get(i));
+        }
+    }
+}

@@ -1,0 +1,54 @@
+class Solution {
+    /**
+     * Given a string, return a new string without the first two characters. 
+     * Keep the first character if it is 'g' and keep the second character if it is 'h'.
+     *
+     * @param str The input string.
+     * @return The modified string.
+     */
+    public String exceptFirstTwo(String str) {
+        if (str == null || str.length() <= 2) {
+            if (str == null) return null; // Handle null input
+            StringBuilder sb = new StringBuilder();
+            if (str.length() > 0 && str.charAt(0) == 'g') {
+                sb.append('g');
+            }
+            if (str.length() > 1 && str.charAt(1) == 'h') {
+                sb.append('h');
+            }
+            return sb.toString();
+        }
+
+        StringBuilder result = new StringBuilder();
+        if (str.charAt(0) == 'g') {
+            result.append('g');
+        }
+        if (str.charAt(1) == 'h') {
+            result.append('h');
+        }
+        result.append(str.substring(2));
+        return result.toString();
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        System.out.println(solution.exceptFirstTwo("Hello")); // llo
+        System.out.println(solution.exceptFirstTwo("gHello")); // gllo
+        System.out.println(solution.exceptFirstTwo("hHello")); // hllo
+        System.out.println(solution.exceptFirstTwo("ghHello")); // ghllo
+        System.out.println(solution.exceptFirstTwo("He"));  // Empty string or ""
+        System.out.println(solution.exceptFirstTwo("H")); // Empty string ""
+        System.out.println(solution.exceptFirstTwo("")); // Empty String
+        System.out.println(solution.exceptFirstTwo(null)); // null (handles null input)
+
+
+        System.out.println(solution.exceptFirstTwo("ghi")); // ghi (because length is <= 2)
+        System.out.println(solution.exceptFirstTwo("gi")); // gi
+        System.out.println(solution.exceptFirstTwo("hi")); // hi
+
+
+    }
+}

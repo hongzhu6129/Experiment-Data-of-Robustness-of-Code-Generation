@@ -1,0 +1,45 @@
+public class CountWordsEndingMorN {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        String[] words = text.split("\\s+"); // Split the text into words
+        int count = 0;
+
+        for (String word : words) {
+            char lastChar = Character.toLowerCase(word.charAt(word.length() - 1));
+            if (lastChar == 'm' || lastChar == 'n') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        CountWordsEndingMorN counter = new CountWordsEndingMorN();
+
+        String text1 = "Sam Ham Jam exam";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 count: " + count1); // Output: 3
+
+        String text2 = "man men Ten pen";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 count: " + count2); // Output: 4
+
+        String text3 = "mum run gun fun";
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 count: " + count3); // Output: 2
+
+
+        String text4 = null; // Test null input
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 count: " + count4); // Output: 0
+
+        String text5 = " "; // Test empty input
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 count: " + count5); // Output: 0
+    }
+}

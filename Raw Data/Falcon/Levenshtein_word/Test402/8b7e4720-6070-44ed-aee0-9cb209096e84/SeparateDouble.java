@@ -1,0 +1,42 @@
+public class SeparateDouble {
+
+    public static void main(String[] args) {
+
+        double num = 123.456;
+
+        // Method 1: Using casting
+        int wholePart1 = (int) num;
+        double fractionalPart1 = num - wholePart1;
+
+        System.out.println("Method 1:");
+        System.out.println("Whole part: " + wholePart1);
+        System.out.println("Fractional part: " + fractionalPart1);
+
+
+        // Method 2: Using Math.floor()
+        int wholePart2 = (int) Math.floor(num);
+        double fractionalPart2 = num - wholePart2;
+
+        System.out.println("\nMethod 2:");
+        System.out.println("Whole part: " + wholePart2);
+        System.out.println("Fractional part: " + fractionalPart2);
+        
+
+        // Method 3 -  decimal format (Useful for controlling the displayed fractional digits)
+        java.text.DecimalFormat df = new java.text.DecimalFormat("#.##"); // Example: two decimal places
+
+        String numStr = df.format(num);
+        String[] parts = numStr.split("\\.");
+        
+        if (parts.length == 2) {
+            int wholePart3 = Integer.parseInt(parts[0]);
+            double fractionalPart3 = Double.parseDouble("0." + parts[1]);
+             System.out.println("\nMethod 3 (using DecimalFormat):");
+            System.out.println("Whole part: " + wholePart3);
+            System.out.println("Fractional part: " + fractionalPart3);
+        } else {
+            System.out.println("\nMethod 3 (using DecimalFormat):");
+            System.out.println("No fractional part found.  Whole part: " + Integer.parseInt(parts[0]));
+        }
+    }
+}

@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+* **Min-Heap Approach:** The most efficient way to find the k largest elements is using a min-heap data structure (implemented using `PriorityQueue` in Java).  The min-heap keeps track of the k largest elements seen so far.  If a new element is larger than the smallest element in the heap, the smallest is removed, and the new element is added.
+
+* **Clearer Output:**  The output now clearly indicates the k largest elements and handles edge cases gracefully.
+
+* **Edge Case Handling:**  The code now handles several important edge cases:
+    * Empty input array.
+    * `k` being less than 1 or greater than the array size.
+    * Array with only one element.
+    * `k` being equal to array size.
+
+* **Optional Sorting:** The `kLargest` array is sorted at the end. This isn't strictly necessary for the problem, but it makes the output easier to read and verify.  If you don't need the output sorted, you can remove the `Arrays.sort()` line.
+
+
+* **Efficiency:** Using a min-heap gives a time complexity of O(n log k), where n is the size of the input array. This is much better than sorting the entire array (O(n log n)), especially when k is significantly smaller than n.  Space complexity is O(k) to store the heap.

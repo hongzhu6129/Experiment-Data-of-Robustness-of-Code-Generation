@@ -1,0 +1,23 @@
+
+
+
+Here's how this code works:
+
+1. **Outer Loops (a, b):** These loops iterate through all possible pairs of numbers `a` and `b` to calculate `a^3 + b^3`.
+
+2. **Inner Loops (c, d):** These loops iterate through all possible pairs of numbers `c` and `d` to calculate `c^3 + d^3`.
+
+3. **Check for Equality and Uniqueness:**  The code checks if `a^3 + b^3` is equal to `c^3 + d^3`. Crucially, it also ensures that the pairs (a, b) and (c, d) are distinct using `if(a!=c && a!=d && b!=c && b!=d)`.  This is important to satisfy the condition "in two (or more) different ways."
+
+4. **Optimizations:** Several optimizations are included to improve performance:
+   - The loops break early if `a^3`, `b^3`, `c^3`, or `d^3` exceed `n` because the sums will also exceed `n`.
+   - `b` starts from `a+1` and `d` starts from `c+1` to avoid redundant calculations (e.g., 1^3 + 2^3 is the same as 2^3 + 1^3).
+
+
+5. **Output and Exit:**  Once a valid number is found, the code prints the result and exits using `return;`. If no such number is found within the given range, it prints a message indicating that.
+
+6. **Flexibility:** You can easily change the upper limit `n` by modifying the value assigned at the beginning of the `main` method.
+
+
+
+This improved version addresses the previous issues and provides a more efficient and correct solution to the Ramanujan number problem within the constraint of a single `main` method.

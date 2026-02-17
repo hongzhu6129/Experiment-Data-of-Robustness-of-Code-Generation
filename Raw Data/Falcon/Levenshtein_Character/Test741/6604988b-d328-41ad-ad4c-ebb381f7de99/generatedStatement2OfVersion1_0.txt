@@ -1,0 +1,15 @@
+
+
+**Explanation and Improvements:**
+
+1. **Command Line Arguments:** The code now reads the number to be checked from command-line arguments (using `args[]`). This is a more standard way to provide input to a Java program.
+2. **Error Handling:** It includes error handling (`try-catch`) to catch `NumberFormatException` in case the user provides invalid input (non-integer).
+3. **Efficient Cube Check (Binary Search):** The `isCube()` method now uses a binary search approach to determine if a number is a perfect cube. This is much more efficient than the brute-force method (looping through all possible cube roots) especially for larger numbers.
+4. **Handles Negative Numbers:** The code correctly handles negative numbers by taking the absolute value before performing the binary search. The cube root of a negative number is simply the negative of the cube root of its absolute value.
+5. **Integer Overflow Prevention:** The `mid` calculation in binary search uses `low + (high - low) / 2`  to avoid potential integer overflow if `low + high` exceeds the maximum integer value.
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `CubeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   

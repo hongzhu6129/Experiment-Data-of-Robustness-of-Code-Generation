@@ -1,0 +1,24 @@
+
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Takes a sample string `str`.
+   - Calls the `first_Uniq_Char` method to get the index of the first unique character.
+   - Prints the original string and the index.
+
+2. **`first_Uniq_Char` method:**
+   - Creates an integer array `charCount` of size 26 to store the frequency of each lowercase English alphabet character.  We are making this assumption to keep the solution within the character limit. A more robust approach is discussed below.
+   - Iterates through the input string `s`:
+     - For each character `c`, it increments the corresponding count in `charCount` based on its position in the alphabet ( `c - 'a'` converts the character to its alphabetical index 0-25).
+   - Iterates through the string `s` again:
+     - For each character, it checks if its count in `charCount` is equal to 1.
+     - If the count is 1 (meaning it's a unique character), the method returns the index `i`.
+   - If the loop completes without finding a unique character, it returns -1 (You can modify this to throw an exception or return a different value if needed).
+
+
+**More Robust Approach (handling all Unicode characters):**
+
+If you need to handle all possible Unicode characters, use a `HashMap` instead of a fixed-size array:
+

@@ -1,0 +1,39 @@
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. This is another test.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        System.out.println("Last index of '" + subString + "' is: " + lastIndex);
+
+
+        // Another example with a substring that doesn't exist
+        String subString2 = "xyz";
+        int lastIndex2 = mainString.lastIndexOf(subString2);
+        System.out.println("Last index of '" + subString2 + "' is: " + lastIndex2); // Output will be -1
+
+
+        //Example showing the use of fromIndex
+        int lastIndex3 = mainString.lastIndexOf(subString, 20); // Search from index 20 backwards
+        System.out.println("Last index of '" + subString + "' starting from index 20 is: " + lastIndex3); // Output will be 10
+
+
+        // Example with empty substring
+        String emptyString = "";
+        int lastIndexEmpty = mainString.lastIndexOf(emptyString);
+        System.out.println("Last index of '" + emptyString + "' is: " + lastIndexEmpty); // Output will be the length of mainString
+
+
+        // Example with null substring (throws NullPointerException)
+        String nullString = null;
+        try {
+            int lastIndexNull = mainString.lastIndexOf(nullString);
+            System.out.println("Last index of '" + nullString + "' is: " + lastIndexNull);
+        } catch (NullPointerException e) {
+            System.out.println("Searching for a null substring throws a NullPointerException.");
+        }
+
+    }
+}

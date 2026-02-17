@@ -1,0 +1,22 @@
+public class StringArray {
+
+    public static void main(String[] args) {
+        String[] arr = new String[37]; // 10 digits + 26 letters + "z0"
+
+        for (int i = 0; i < 10; i++) {
+            arr[i] = String.valueOf(i); 
+        }
+
+        for (int i = 0; i < 26; i++) {
+            arr[i + 10] = String.valueOf((char) ('a' + i));
+        }
+
+        arr[36] = "z0";
+
+
+        // Print the array (optional, for verification)
+        for (String s : arr) {
+            System.out.println(s);
+        }
+    }
+}

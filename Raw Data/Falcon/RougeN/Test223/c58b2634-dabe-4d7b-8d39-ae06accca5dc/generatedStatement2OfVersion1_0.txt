@@ -1,0 +1,24 @@
+
+
+
+Key improvements and explanations:
+
+* **Test Cases:**  The code now includes a comprehensive set of JUnit 5 test cases.  These tests cover:
+    * Positive radius (the original example).
+    * Zero radius (a boundary case).
+    * Negative radius (an invalid input � should ideally throw an exception, now handled).
+    * Very large radius (to check for potential overflow or inaccuracies).
+* **Exception Handling:** The `calculatePerimeter` and `calculateArea` methods now throw `IllegalArgumentException` if a negative radius is provided. This is crucial for robust code.  The tests check for this exception using `assertThrows`.
+* **Clearer Output:** The `main` method now labels the output values (radius, perimeter, area) for better readability.
+* **Delta for Comparisons:** The `assertEquals` assertions in the tests now use a `delta` value (the third argument).  This is important when comparing floating-point numbers, as they can have tiny inaccuracies due to the way they are represented. The delta specifies the allowed difference between the expected and actual values.  A larger delta was used for the very large radius tests because inaccuracies are magnified with larger numbers.
+
+
+
+
+To run the tests (assuming you have JUnit 5 set up in your project):
+
+1. Save the code as `CircleCalculations.java` and `CircleCalculationsTest.java` in the appropriate directory in your project (e.g., `src/main/java` and `src/test/java`, respectively, if using Maven).
+2. Compile and run the tests using your IDE or build tool (e.g., `mvn test`).
+
+
+This improved version provides much better error handling, testing, and overall robustness.

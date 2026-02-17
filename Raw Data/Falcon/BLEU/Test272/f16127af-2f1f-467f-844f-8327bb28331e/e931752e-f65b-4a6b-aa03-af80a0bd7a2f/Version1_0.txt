@@ -1,0 +1,106 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference (num1 - num2): " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient: " + (num1 / num2));
+            System.out.println("Remainder: " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            if (num1 == 0) { // Corner case: 0/0 - NaN for floating-point types
+                System.out.println("Remainder (0 % 0) is undefined for floating-point numbers.");
+            } else { // Corner case x / 0 - Infinity or -Infinity for floating-point types
+                System.out.println("Remainder (x % 0) is undefined for floating-point numbers when x != 0.");
+            }
+
+        }
+
+        input.close();
+    }
+}
+```
+
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** num1 = 10, num2 = 5
+   **Expected Output:**
+   Sum: 15.0
+   Difference: 5.0
+   Product: 50.0
+   Quotient: 2.0
+   Remainder: 0.0
+
+2. **Input:** num1 = -5, num2 = 2
+   **Expected Output:**
+   Sum: -3.0
+   Difference: -7.0
+   Product: -10.0
+   Quotient: -2.5
+   Remainder: -1.0
+
+3. **Input:** num1 = 7.5, num2 = 2.5
+   **Expected Output:**
+   Sum: 10.0
+   Difference: 5.0
+   Product: 18.75
+   Quotient: 3.0
+   Remainder: 0.0
+
+
+
+**Corner Cases:**
+
+4. **Division by Zero:** num1 = 10, num2 = 0
+   **Expected Output:**
+   Sum: 10.0
+   Difference: 10.0
+   Product: 0.0
+   Division by zero is not allowed.
+   Remainder (x % 0) is undefined for floating-point numbers when x != 0.
+
+
+5. **Zero divided by Zero:** num1 = 0, num2 = 0
+   **Expected Output:**
+   Sum: 0.0
+   Difference: 0.0
+   Product: 0.0
+   Division by zero is not allowed.
+   Remainder (0 % 0) is undefined for floating-point numbers.
+
+
+6. **Large Numbers:** num1 = Double.MAX_VALUE, num2 = 2  (Test for potential overflow)
+    **Expected Output (Approximate):**
+    Sum: 1.7976931348623157E308
+    Difference: 1.7976931348623157E308
+    Product: Infinity (potential)
+    Quotient: 8.988465674311579E307
+    Remainder: could be NaN or some other value depending on how the JVM handles remainder with very large floating-point numbers.  This case highlights the complexities of floating-point arithmetic.
+
+
+
+7. **Small numbers (close to zero):** num1 = 0.00000001, num2 = 0.00000002 (test for precision and underflow)
+    **Expected output**: (Verify calculations for accuracy)
+    // ... (Check if the results are as expected based on floating-point limitations)
+
+
+
+These test cases cover various scenarios, including normal operations, division by zero, and potential overflow/underflow issues.  They ensure the program handles different inputs correctly and demonstrates an understanding of potential issues with floating-point arithmetic.

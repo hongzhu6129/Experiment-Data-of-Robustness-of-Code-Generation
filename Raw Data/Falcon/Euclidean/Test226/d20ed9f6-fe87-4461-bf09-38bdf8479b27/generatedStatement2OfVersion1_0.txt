@@ -1,0 +1,23 @@
+
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Test Cases:** Comprehensive test cases are included, covering various scenarios: uppercase, lowercase, mixed case, empty string, numbers/symbols, spaces, and the crucial `null` string.
+2. **Null Handling:**  The `toLowercase` function now explicitly handles `null` input to prevent `NullPointerException`. It returns `null` if the input is `null`.  The `main` method uses a `try-catch` block to gracefully demonstrate the null handling.
+3. **Clearer Output:** The output format is improved to clearly show both the original and lowercase strings.
+4. **Efficiency:**  Using `StringBuilder` is more efficient than repeated string concatenation, especially for longer strings.
+5. **Comments:**  Comments are added to improve readability and explain the logic.
+6. **Adherence to prompt:** The code uses only the `main` method and the helper `toLowercase` function, as requested.  It avoids using other built-in string methods for converting to lowercase.
+
+
+
+**How the `toLowercase` Function Works:**
+
+* It first handles the `null` case.
+* It converts the string to a character array.
+* It iterates through the characters.
+* If a character is an uppercase letter (ASCII 'A' to 'Z'), it adds 32 to its ASCII value. This converts it to its lowercase equivalent.
+* Otherwise (if it's not an uppercase letter), it appends the character as is.
+* Finally, it returns the lowercase string built using the `StringBuilder`.

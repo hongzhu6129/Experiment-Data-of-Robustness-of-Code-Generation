@@ -1,0 +1,25 @@
+
+
+**Test Cases:**
+
+1. **Basic Test:** Check if the program correctly identifies numbers divisible by 3, 5, and both within the range 1 to 100.  For example, verify that 15, 30, 45, etc., are printed in the "divisible by both" section.
+
+2. **Boundary Cases:**
+   - **Lower Boundary:** Test with the number 1 (not divisible by 3 or 5).  It should not be printed in any of the output sections.
+   - **Upper Boundary:** Test with the number 100 (divisible by 5).  It should be printed in the "divisible by 5" section. 
+   - **Numbers close to boundaries divisible by 3, 5 or both:** For example 99 (divisible by 3), 95(divisible by 5), 90(divisible by both).
+
+3. **Edge Cases:**
+   - **Zero:** While not explicitly in the range, consider testing with 0.  It's technically divisible by both 3 and 5. You might expect it *not* to be included as the problem states "between 1 and 100."  This tests that you're using `>` and `<` and not `>=` and `<=`.
+   - **Negative Numbers:** Test with a few small negative numbers like -3, -5, and -15.  They should not be included. This tests the range restriction.
+
+
+**How to run the tests (Manually):**
+
+You can visually inspect the output of the program and compare it to the expected values.  For example, you should see 15, 30, 45, 60, 75, and 90 printed in the "divisible by both" section.
+
+
+**How to create more robust tests (using JUnit - Optional):**
+
+For more extensive and automated testing, use a testing framework like JUnit. Here's a simple example:
+

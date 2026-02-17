@@ -1,0 +1,74 @@
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class HashSetToTreeSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Banana");
+        hashSet.add("Apple");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Convert HashSet to TreeSet (which sorts elements naturally)
+        Set<String> treeSet = new TreeSet<>(hashSet); 
+
+        // Print the TreeSet (notice the sorted order)
+        System.out.println("TreeSet: " + treeSet);
+
+
+        // Example with Integers:
+        Set<Integer> hashSetNumbers = new HashSet<>();
+        hashSetNumbers.add(5);
+        hashSetNumbers.add(1);
+        hashSetNumbers.add(10);
+        hashSetNumbers.add(2);
+
+        Set<Integer> treeSetNumbers = new TreeSet<>(hashSetNumbers);
+        System.out.println("TreeSet of numbers: " + treeSetNumbers);
+
+
+        // Example with custom objects (requires implementing Comparable or using a Comparator)
+        Set<MyObject> hashSetObjects = new HashSet<>();
+        hashSetObjects.add(new MyObject("B", 2));
+        hashSetObjects.add(new MyObject("A", 1));
+        hashSetObjects.add(new MyObject("C", 3));
+
+
+        //Using a Comparator (For descending order based on name):
+        Set<MyObject> treeSetObjects = new TreeSet<>((obj1, obj2) -> obj2.getName().compareTo(obj1.getName()));  //Reverse alphabetical order
+        treeSetObjects.addAll(hashSetObjects);
+        System.out.println("TreeSet of MyObjects (sorted by name descending): " + treeSetObjects);
+
+
+
+    }
+
+
+}
+
+class MyObject {
+    private String name;
+    private int value;
+
+    public MyObject(String name, int value) {
+        this.name = name;
+        this.value = value;
+    }
+
+
+    public String getName() { return name; }
+
+
+    @Override
+    public String toString() {
+        return "{" + name + ", " + value + "}";
+    }
+
+
+}
+

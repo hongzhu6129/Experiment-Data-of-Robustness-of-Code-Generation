@@ -1,0 +1,18 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **HashSet for Cycle Detection:** The `seen` HashSet is crucial. It stores numbers encountered during the process. If we encounter a number already in `seen`, it means we're in a cycle, and the number is not happy.
+
+2. **Clearer While Loop Condition:** The `while` loop condition `n != 1 && !seen.contains(n)` combines the two stopping conditions: reaching 1 (happy) or entering a cycle (unhappy).
+
+3. **Digit Extraction:** The inner `while` loop efficiently extracts digits using the modulo operator (%) and integer division (/).
+
+4. **Concise Return:** The final `return n == 1;` directly returns whether the number ended up at 1.
+
+5. **Main Method with Examples:** The `main` method demonstrates how to use `isHappy_number` with sample inputs, including those mentioned in your original prompt and additional test cases for better coverage.
+
+
+This revised code is more efficient and easier to understand, adhering to the requested method signatures while effectively solving the happy number problem.  It addresses the potential infinite loop issue and provides clear examples.
+

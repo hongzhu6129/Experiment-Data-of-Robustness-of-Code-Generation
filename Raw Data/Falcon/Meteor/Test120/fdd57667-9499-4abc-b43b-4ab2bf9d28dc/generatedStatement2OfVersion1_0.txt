@@ -1,0 +1,17 @@
+
+
+
+This code demonstrates the concept of canonical representation using `String.intern()`. 
+
+* **String literals:**  Strings created using literals (like "Hello") are automatically stored in the String pool (also called the "interned" pool).
+* **`new String()`:** Creates a *new* String object in the heap, even if a string with the same content is already in the pool.
+* **`String.intern()`:**  Returns the canonical representation of a String. If the string pool already contains a string with the same sequence of characters, the `intern()` method returns a reference to the pooled object. Otherwise, the string is added to the pool, and a reference to the new pooled object is returned.
+
+
+**String Deduplication (Java 8u20 and later)**
+
+It's important to be aware that from Java 8 update 20 onwards, String deduplication has been introduced in the G1 garbage collector. This means that even strings created using `new String()` *might* eventually be moved to the String pool during garbage collection if the JVM determines it beneficial for memory optimization. This can lead to `==` comparisons returning true even when you might not expect it based on the older behavior.  The code includes examples to illustrate this.  Deduplication is a JVM implementation detail and its effect may vary.
+
+
+
+The key takeaway is that to guarantee you are working with the canonical representation of a string (and thus enable potential memory savings and ensure consistent behavior across different JVMs and versions), always use the `intern()` method.

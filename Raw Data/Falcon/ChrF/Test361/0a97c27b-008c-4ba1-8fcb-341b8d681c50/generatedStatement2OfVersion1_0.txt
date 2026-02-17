@@ -1,0 +1,13 @@
+
+
+
+Key Improvements:
+
+* **Clearer Hash Function:** The `hash` function is now more robust and distributes elements more evenly across buckets, even when the minimum value is 0.  It also handles the case where all elements are the same.
+* **Dynamic Bucket Count:**  The number of buckets is calculated dynamically based on the input size (using the square root as a heuristic, which often provides good performance).  You can adjust this logic if needed.
+* **Insertion Sort within Buckets:** Individual buckets are sorted using `Collections.sort()` (which effectively uses Insertion Sort for small lists or mergesort-like for larger ones), which tends to work well in practice for smaller sub-problems like we have within buckets.
+* **Handles Empty or Single-element Input:**  The `bucketSort` function gracefully handles the cases where the input array is empty or has only one element.
+* **Comments:** More comments added to explain the code's logic.
+
+
+This improved version addresses the potential issues and provides a more efficient and robust implementation of Bucket Sort.

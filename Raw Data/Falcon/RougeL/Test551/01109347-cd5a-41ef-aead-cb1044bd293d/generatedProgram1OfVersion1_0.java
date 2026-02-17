@@ -1,0 +1,59 @@
+public class LastComposite {
+
+    public static void main(String[] args) {
+        String text = "This is a test string with composite words like basketball and football.";
+        String lastComposite = findLastComposite(text);
+        if (lastComposite != null) {
+            System.out.println("Last composite word: " + lastComposite);
+        } else {
+            System.out.println("No composite word found.");
+        }
+
+        text = "No composite words here.";
+        lastComposite = findLastComposite(text);
+        if (lastComposite != null) {
+            System.out.println("Last composite word: " + lastComposite);
+        } else {
+            System.out.println("No composite word found.");
+        }
+    }
+
+    public static String findLastComposite(String text) {
+        if (text == null || text.isEmpty()) {
+            return null;
+        }
+
+        String[] words = text.split("\\s+"); // Split into words
+        String lastComposite = null;
+
+        for (int i = words.length - 1; i >= 0; i--) {  // Iterate backwards
+            if (isComposite(words[i])) {
+                lastComposite = words[i];
+                break; // Found the last one, so exit
+            }
+        }
+
+        return lastComposite;
+    }
+
+
+    public static boolean isComposite(String word) {
+        // Basic check if a word might be composite (contains a hyphen or more than one capital letter)
+        if (word == null || word.length() <= 1) {
+            return false;
+        }
+        
+        if(word.contains("-")) return true; // Hyphenated words are considered composite.
+
+        int capitalCount = 0;
+        for (char c : word.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                capitalCount++;
+                if (capitalCount > 1) return true;  // More than one capital often suggests composite
+            }
+        }
+        return false; // Could add more sophisticated composite word checks here if needed.
+
+
+    }
+}

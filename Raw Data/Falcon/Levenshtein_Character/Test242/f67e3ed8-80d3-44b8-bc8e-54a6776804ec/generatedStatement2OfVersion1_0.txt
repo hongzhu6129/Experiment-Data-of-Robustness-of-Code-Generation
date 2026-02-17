@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations:
+
+1. **Min-Heap Approach:**  A `PriorityQueue` in Java is used as a min-heap. This is the most efficient way to find the k largest elements.  The smallest element is always at the root of the heap. When the heap size exceeds `k`, we remove the smallest element, ensuring we always keep only the `k` largest seen so far.
+
+2. **Error Handling:**  Added checks for invalid input:
+   - `null` or empty input array
+   - `k` being less than or equal to 0.
+   - `k` being greater than the size of the input array.
+
+3. **Clearer Output:** The output message is now more informative, indicating the value of `k` and the resulting largest elements.
+
+4. **Conversion to Array (Optional):**  The `minHeap.toArray(new Integer[0])` line converts the PriorityQueue (which doesn't have a direct `toString()` for nice printing) into an array so we can use `Arrays.toString()` for clean output.
+
+5. **Example Usage with Edge Cases:** The `main` method demonstrates how to use the `findKLargest` method with different inputs, including a case with duplicate numbers and edge cases to demonstrate the error handling.

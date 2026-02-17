@@ -1,0 +1,32 @@
+public class AmericanFlag {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int j = 0; j < 24; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+        for (int j = 0; j < 4; j++) {
+            for (int k = 0; k < 6; k++){
+                System.out.print("* ");
+            }
+            System.out.print("==");
+            for (int k = 0; k < 24; k++) {
+                System.out.print("=");
+            }
+            System.out.println();            
+        }
+
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 34; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}

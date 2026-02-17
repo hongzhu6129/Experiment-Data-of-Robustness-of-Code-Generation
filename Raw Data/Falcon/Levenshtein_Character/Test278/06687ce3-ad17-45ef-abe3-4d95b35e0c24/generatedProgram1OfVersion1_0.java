@@ -1,0 +1,40 @@
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.Month;
+
+public class CombineDateTime {
+
+    public static void main(String[] args) {
+        // Example 1: Combining LocalDate and LocalTime
+        LocalDate date1 = LocalDate.of(2024, Month.OCTOBER, 26);
+        LocalTime time1 = LocalTime.of(10, 30, 15);
+        LocalDateTime dateTime1 = LocalDateTime.of(date1, time1);
+        System.out.println("Combined LocalDateTime 1: " + dateTime1);
+
+
+        // Example 2: Directly creating LocalDateTime
+        LocalDateTime dateTime2 = LocalDateTime.of(2023, 12, 5, 15, 45); // Year, month, day, hour, minute
+        System.out.println("Combined LocalDateTime 2: " + dateTime2);
+
+
+
+        // Example 3: Using individual components
+        int year = 2025;
+        int month = 2;  // February
+        int day = 18;
+        int hour = 8;
+        int minute = 0;
+        int second = 0;
+
+        LocalDateTime dateTime3 = LocalDateTime.of(year, month, day, hour, minute, second);
+        System.out.println("Combined LocalDateTime 3: " + dateTime3);
+
+
+
+        // Example 4:  Using Month enum (for better readability)
+        LocalDateTime dateTime4 = LocalDateTime.of(2022, Month.JUNE, 10, 12, 0);
+        System.out.println("Combined LocalDateTime 4: " + dateTime4);
+
+    }
+}

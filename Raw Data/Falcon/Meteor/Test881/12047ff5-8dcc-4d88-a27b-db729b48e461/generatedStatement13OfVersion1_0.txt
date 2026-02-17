@@ -1,0 +1,19 @@
+bash
+#!/bin/bash
+
+# Test cases
+inputs=(7 0 -5 10000 -10000)
+expected_outputs=("77" "0" "-55" "110000" "-110000")  # Check the last value of the table
+
+for i in "${!inputs[@]}"; do
+  input="${inputs[$i]}"
+  expected_output="${expected_outputs[$i]}"
+
+  actual_output=$(java MultiplicationTable <<< "$input" | tail -n 1 | awk '{print $NF}') # Get the last output value
+
+  if [ "$actual_output" == "$expected_output" ]; then
+    echo "Test case for input $input: PASSED"
+  else
+    echo "Test case for input $input: FAILED. Expected: $expected_output, Actual: $actual_output"
+  fi
+done

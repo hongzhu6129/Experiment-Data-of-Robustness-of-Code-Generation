@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class InsertAtFirst {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings
+        List<String> colors = new ArrayList<>();
+
+        // Add some initial elements (for demonstration)
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+
+        System.out.println("Initial ArrayList: " + colors);
+
+        // Element to insert at the beginning
+        String newColor = "Yellow";
+
+
+        // Method 1: Using add(int index, E element)
+        colors.add(0, newColor); // Inserts 'newColor' at index 0 (the beginning)
+
+        System.out.println("ArrayList after inserting at the beginning (Method 1): " + colors);
+
+
+        // Reset the ArrayList for demonstration of the second method (optional)
+        colors = new ArrayList<>(); // Create a new ArrayList
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("Blue");
+        
+
+        // Method 2: Create a new ArrayList, insert, then add all other elements
+        List<String> updatedColors = new ArrayList<>();
+        updatedColors.add(newColor);       // Add the new element first
+        updatedColors.addAll(colors);     // Add all elements from the original list
+
+        System.out.println("ArrayList after inserting at the beginning (Method 2): " + updatedColors);
+
+
+        // Important Note: Method 1 (add(int index, E element)) is generally more efficient, 
+        // especially for large ArrayLists, as it modifies the existing ArrayList in place. 
+        // Method 2 creates a new ArrayList, which involves copying elements, making it less efficient.
+    }
+}

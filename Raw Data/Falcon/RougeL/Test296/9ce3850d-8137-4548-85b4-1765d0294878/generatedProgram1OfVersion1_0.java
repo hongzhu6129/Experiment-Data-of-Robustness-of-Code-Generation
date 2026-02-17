@@ -1,0 +1,14 @@
+public class ExtractHalf {
+
+    public static void main(String[] args) {
+        String text = "pythonpyt";
+
+        if (text.length() % 2 == 0) {
+            int halfLength = text.length() / 2;
+            String secondHalf = text.substring(halfLength);
+            System.out.println(secondHalf); 
+        } else {
+            System.out.println("The string must have an even length.");
+        }
+    }
+}

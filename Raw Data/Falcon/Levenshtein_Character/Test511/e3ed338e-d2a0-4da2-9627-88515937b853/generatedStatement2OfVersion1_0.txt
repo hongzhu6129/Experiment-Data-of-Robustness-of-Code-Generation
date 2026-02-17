@@ -1,0 +1,55 @@
+
+
+
+**Test Cases:**
+
+**1. Normal Cases:**
+
+* **Input:** num1=1, den1=2, num2=1, den2=4
+* **Expected Output:**
+    Addition: 3/4 = 3/4
+    Subtraction: 1/4 = 1/4
+    Multiplication: 1/8 = 1/8
+    Division: 2/1 = 2/1
+    Remainder: 0
+
+* **Input:** num1=3, den1=5, num2=2, den2=3
+* **Expected Output:**
+    Addition: 19/15 = 19/15
+    Subtraction: -1/15 = -1/15
+    Multiplication: 6/15 = 2/5  (Simplified)
+    Division: 9/10 = 9/10
+    Remainder: 0
+
+
+
+**2. Corner Cases:**
+
+* **Zero Denominator:**
+* **Input:** num1=1, den1=2, num2=1, den2=0
+* **Expected Output:** Error: Denominator cannot be zero.
+
+* **Division by Zero:**
+* **Input:** num1=1, den1=2, num2=0, den2=4
+* **Expected Output:** Error: Cannot divide by zero.
+
+* **Large Numbers:** (To test for potential integer overflow issues - though less likely with fractions unless results get very large)
+* **Input:** num1=100000, den1=200000, num2=50000, den2=100000
+* **Expected Output:** (Check if calculations are correct and there's no overflow)
+
+* **Negative Numbers:**
+* **Input:** num1=-3, den1=5, num2=2, den2=3
+* **Expected Output:** (Verify correct handling of signs)
+
+
+* **Fractions equal to Integers:**
+* **Input:**  num1=4, den1=1, num2=2, den2=1
+* **Expected Output:** (Check for simplification to integers where appropriate)
+
+* **Improper fractions:**
+* **Input:**  num1=7, den1=3, num2=5, den2=2
+* **Expected Output:** (Calculations should be valid for improper fractions too).
+
+
+
+This improved version includes error handling, a helper function for simplification, and a wider range of test cases, especially targeting potential problem areas. Remember that Java now also provides the `BigInteger` and `BigDecimal` classes for arbitrary precision if you are working with extremely large numbers or require very precise decimal representation in your fractions.

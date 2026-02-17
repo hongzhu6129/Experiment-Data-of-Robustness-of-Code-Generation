@@ -1,0 +1,48 @@
+public class StringSearch {
+
+    public static void main(String[] args) {
+        String haystack = "hello world";
+        String needle = "world";
+        int index = strStr(haystack, needle);
+        System.out.println("Index: " + index); // Output: Index: 6
+
+        haystack = "aaaaa";
+        needle = "bba";
+        index = strStr(haystack, needle);
+        System.out.println("Index: " + index); // Output: Index: -1
+
+
+        haystack = "";
+        needle = "";
+        index = strStr(haystack, needle);
+        System.out.println("Index: " + index); // Output: Index: 0
+
+        haystack = "a";
+        needle = "a";
+        index = strStr(haystack, needle);
+        System.out.println("Index: " + index); // Output: Index: 0
+
+        
+        haystack = "mississippi";
+        needle = "issip";
+        index = strStr(haystack, needle);
+        System.out.println("Index: " + index); // Output: Index: 4
+
+
+
+    }
+
+    public static int strStr(String haystack, String needle) {
+        if (needle.isEmpty()) {
+            return 0; // Empty needle is always found at the beginning
+        }
+
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (haystack.substring(i, i + needle.length()).equals(needle)) {
+                return i;
+            }
+        }
+
+        return -1; // Needle not found
+    }
+}

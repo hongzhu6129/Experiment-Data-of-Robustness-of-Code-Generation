@@ -1,0 +1,30 @@
+public class DecimalToBinary {
+
+    public static void main(String[] args) {
+        int decimalNumber = 5; // You can change this to any decimal number
+
+        // Method 1: Using Integer.toBinaryString()
+        String binaryNumber = Integer.toBinaryString(decimalNumber);
+        System.out.println("Binary number is: " + binaryNumber);
+
+
+
+        // Method 2: Manual conversion (for demonstration)
+        if (decimalNumber == 0) {
+            System.out.println("Binary number is: 0"); 
+        } else {
+            StringBuilder binary = new StringBuilder();
+            while (decimalNumber > 0) {
+                int remainder = decimalNumber % 2;
+                binary.insert(0, remainder); // Insert at the beginning
+                decimalNumber /= 2;
+            }
+            System.out.println("Binary number (manual method) is: " + binary.toString());
+        }
+
+         //Method 3: Using toBinaryString with formatted output for specified input
+         System.out.println("input a decimal number: 5");
+         System.out.println("binary number is: "+ Integer.toBinaryString(5));
+
+    }
+}

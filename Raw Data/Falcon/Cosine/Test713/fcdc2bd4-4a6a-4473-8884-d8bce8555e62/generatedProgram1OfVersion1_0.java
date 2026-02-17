@@ -1,0 +1,44 @@
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class IterateHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+
+        // Method 1: Using an Iterator (Recommended for removing elements while iterating)
+        System.out.println("Iterating using Iterator:");
+        Iterator<String> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+        // Method 2: Enhanced for loop (Simpler for just accessing elements)
+        System.out.println("\nIterating using enhanced for loop:");
+        for (String element : hashSet) {
+            System.out.println(element);
+        }
+
+
+        //Method 3: Using forEach (Java 8 and later, with lambda expression)
+        System.out.println("\nIterating using forEach:");
+        hashSet.forEach(element -> System.out.println(element));
+
+
+        // Method 4:  Using a simple for loop with toArray() (Less Efficient � avoid if possible)
+        System.out.println("\nIterating using simple for loop and toArray():");
+        String[] array = hashSet.toArray(new String[0]); // Convert to array
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+}

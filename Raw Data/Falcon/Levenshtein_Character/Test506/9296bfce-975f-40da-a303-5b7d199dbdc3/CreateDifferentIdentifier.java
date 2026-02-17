@@ -1,0 +1,13 @@
+public class CreateDifferentIdentifier {
+
+    public static void main(String[] args) {
+        String str = "Hello World";
+
+        // Create a new identifier by appending a number to the end of the string
+        String newIdentifier = str + "1";
+
+        // Print the original string and the new identifier
+        System.out.println("Original string: " + str);
+        System.out.println("New identifier: " + newIdentifier);
+    }
+}

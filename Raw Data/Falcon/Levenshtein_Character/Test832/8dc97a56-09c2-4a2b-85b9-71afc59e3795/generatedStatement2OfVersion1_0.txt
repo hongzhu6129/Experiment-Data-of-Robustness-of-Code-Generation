@@ -1,0 +1,16 @@
+
+
+
+Explanation:
+
+1. **`public static void main(String[] args)`:** This is the entry point of the Java program.
+2. **`for (int n = 0; n < 10; n++)`:** This loop iterates 10 times to calculate the first 10 Fermat numbers.
+3. **`long fermatNumber = (long) (Math.pow(2, Math.pow(2, n))) + 1;`:**  This line calculates the Fermat number for the current value of `n`.
+   - `Math.pow(2, Math.pow(2, n))`: This calculates 2 raised to the power of (2 raised to the power of `n`), which is the core of the Fermat number formula.
+   - `(long)`:  This casts the result to `long` because Fermat numbers grow very quickly and can exceed the capacity of `int`.  Even `long` will only be able to accurately represent the first few Fermat numbers.
+   - `+ 1`: Finally, we add 1 to complete the Fermat number formula.
+4. **`System.out.println(fermatNumber);`:** This prints the calculated Fermat number to the console.
+
+
+Output (truncated due to large numbers):
+

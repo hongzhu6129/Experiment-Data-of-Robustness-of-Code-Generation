@@ -1,0 +1,53 @@
+import java.util.Arrays;
+
+public class ArraySearch {
+
+    public static void main(String[] args) {
+        // Example array of names
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Eve"};
+
+        // Element to search for
+        String searchName = "Charlie";
+
+        // Perform the search and print the result
+        boolean found = search(names, searchName);
+
+        if (found) {
+            System.out.println(searchName + " found in the array.");
+        } else {
+            System.out.println(searchName + " not found in the array.");
+        }
+
+
+
+        // Search for an element not present:
+        searchName = "Frank"; //Not in the array
+        found = search(names, searchName);
+
+        if (found) {
+            System.out.println(searchName + " found in the array.");
+        } else {
+            System.out.println(searchName + " not found in the array.");
+        }
+
+
+         // Demonstrating using Arrays.asList and contains (more concise approach)
+        searchName = "Bob";
+        if(Arrays.asList(names).contains(searchName)) {
+             System.out.println(searchName + " found using Arrays.asList().contains().");
+        } else {
+            System.out.println(searchName + " not found using Arrays.asList().contains().");
+        }
+
+    }
+
+    // Helper method to perform linear search (could also be done directly within main)
+    private static boolean search(String[] arr, String target) {
+        for (String name : arr) {
+            if (name.equals(target)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

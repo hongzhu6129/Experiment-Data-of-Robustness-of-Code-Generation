@@ -1,0 +1,25 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueuePeek {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+        pq.add(15);
+
+        // Retrieve the first element (head) without removing it using peek()
+        Integer firstElement = pq.peek();
+
+        // Print the first element
+        if (firstElement != null) {
+            System.out.println("First element (head) of the PriorityQueue: " + firstElement);
+        } else {
+            System.out.println("PriorityQueue is empty.");
+        }
+    }
+}

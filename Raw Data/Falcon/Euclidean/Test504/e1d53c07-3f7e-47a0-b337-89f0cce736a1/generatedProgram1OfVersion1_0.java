@@ -1,0 +1,51 @@
+public class CheckArray {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] array1 = {1, 5, 10, 25};
+        int[] array2 = {30, 15, 20, 5};
+        int[] array3 = {2, 4, 6, 8};
+
+        System.out.println("Array 1 contains 10 or 30: " + contains10or30(array1)); // Output: true
+        System.out.println("Array 2 contains 10 or 30: " + contains10or30(array2)); // Output: true
+        System.out.println("Array 3 contains 10 or 30: " + contains10or30(array3)); // Output: false
+
+
+        // Example showing how to handle null or empty arrays
+        int[] emptyArray = {};
+        int[] nullArray = null;
+
+        System.out.println("Empty Array contains 10 or 30: " + contains10or30(emptyArray)); // Output: false
+        System.out.println("Null Array contains 10 or 30: " + contains10or30(nullArray)); // Output: false
+
+
+
+        //Further examples for educational purposes
+
+        int[] array4 = {10}; // contains 10
+        int[] array5 = {30}; // contains 30
+        int [] array6 = {10,30}; // contains both
+
+
+        System.out.println("Array 4 contains 10 or 30: " + contains10or30(array4)); // Output: true
+        System.out.println("Array 5 contains 10 or 30: " + contains10or30(array5)); // Output: true
+        System.out.println("Array 6 contains 10 or 30: " + contains10or30(array6)); // Output: true
+
+    }
+
+
+    public static boolean contains10or30(int[] arr) {
+        // Handle null or empty array cases to prevent NullPointerException
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        for (int num : arr) {
+            if (num == 10 || num == 30) {
+                return true; // Found 10 or 30, so return true immediately
+            }
+        }
+
+        return false; // 10 or 30 not found in the array
+    }
+}

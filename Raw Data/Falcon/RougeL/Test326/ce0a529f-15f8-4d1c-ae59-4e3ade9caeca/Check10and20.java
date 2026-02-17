@@ -1,0 +1,38 @@
+public class Check10and20 {
+
+    public static void main(String[] args) {
+        int[] arr1 = {1, 10, 3, 4, 20};
+        check10and20(arr1); // Output: true
+
+        int[] arr2 = {1, 10, 3, 4};
+        check10and20(arr2); // Output: false
+
+        int[] arr3 = {1, 20, 3, 4};
+        check10and20(arr3); // Output: false
+
+        int[] arr4 = {1, 3, 4};
+        check10and20(arr4); // Output: false
+
+        int[] arr5 = {10,20, 10, 20};
+        check10and20(arr5);// Output: true
+
+
+
+    }
+
+    public static void check10and20(int[] arr) {
+        boolean found10 = false;
+        boolean found20After10 = false;
+
+        for (int num : arr) {
+            if (num == 10) {
+                found10 = true;
+            } else if (found10 && num == 20) {
+                found20After10 = true;
+                break; // No need to continue once 20 is found after 10
+            }
+        }
+
+        System.out.println(found20After10);
+    }
+}

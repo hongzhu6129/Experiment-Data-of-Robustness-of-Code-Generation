@@ -1,0 +1,30 @@
+import java.util.PriorityQueue;
+
+public class AddPriorityQueueElements {
+
+    public static void main(String[] args) {
+        // Create the first priority queue (source queue)
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        pq1.add(5);
+        pq1.add(1);
+        pq1.add(10);
+        pq1.add(3);
+
+        // Create the second priority queue (destination queue)
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(20); 
+        pq2.add(15);
+
+
+        // Add all elements from pq1 to pq2
+        pq2.addAll(pq1);
+
+
+        // Print the elements of pq2 (now containing elements from both queues)
+        System.out.println("Elements of pq2 after adding elements from pq1:");
+        while (!pq2.isEmpty()) {
+            System.out.print(pq2.poll() + " ");
+        }
+        System.out.println(); // Output: 1 3 5 10 15 20  (Order may vary slightly due to priority queue implementation)
+    }
+}

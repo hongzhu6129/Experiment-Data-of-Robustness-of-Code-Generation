@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | num3 | Expected Result |
+|---|---|---|---|---|
+| 1 | 23 | 32 | 43 | true |
+| 2 | 17 | 27 | 55 | true |
+| 3 | 1 | 11 | 21 | true |
+| 4 | 10 | 20 | 30 | true |  // Corner case: numbers ending in 0
+| 5 | 0 | 0 | 0 | true |  // Corner case: all zeros
+| 6 | 1 | 2 | 3 | false |
+| 7 | 12 | 23 | 34 | false |
+| 8 | 123 | 456 | 789 | false |
+| 9 | 100 | 201 | 302 | false | // Testing numbers with more than one digit where rightmost doesn't match
+| 10 |  5 | 15 | 105 | true | // Testing numbers with differing numbers of digits
+| 11 | 10 | 10 | 100 | true | // Another number of digit variation where rightmost two match
+
+
+**Explanation of Corner Cases:**
+
+* **Numbers ending in 0:**  Test case 4 checks if the code correctly handles numbers ending in 0.  The remainder when divided by 10 will be 0 for all of them, so the function should return `true`.
+* **All zeros:** Test case 5 is another important corner case. All numbers are 0, and the function should return `true`.
+* **Numbers with different numbers of digits:** Test cases 10 and 11 ensure the code isn't influenced by the overall magnitude of the number but focuses only on the rightmost digit.
+
+
+This set of test cases helps ensure the `function` and the main program logic are robust and handle a variety of inputs correctly.  You can run these test cases through your Java program to validate its correctness.

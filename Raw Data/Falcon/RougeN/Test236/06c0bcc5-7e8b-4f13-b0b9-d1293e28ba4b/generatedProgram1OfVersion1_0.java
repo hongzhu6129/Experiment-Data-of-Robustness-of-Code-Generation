@@ -1,0 +1,18 @@
+import java.math.BigInteger;
+
+public class BinaryAddition {
+
+    public static void main(String[] args) {
+        String binary1 = "10";
+        String binary2 = "11";
+
+        BigInteger num1 = new BigInteger(binary1, 2); // Convert binary strings to BigIntegers (base 2)
+        BigInteger num2 = new BigInteger(binary2, 2);
+
+        BigInteger sum = num1.add(num2); // Perform addition
+
+        String binarySum = sum.toString(2); // Convert the sum back to a binary string
+
+        System.out.println("Sum of two binary numbers: " + binarySum); 
+    }
+}

@@ -1,0 +1,53 @@
+public class BabylonianSquareRoot {
+
+    /**
+     * Calculates the square root of a non-negative number using the Babylonian method.
+     *
+     * @param number The non-negative number for which to calculate the square root.
+     * @return The approximate square root of the number. Returns -1 if the input is negative.
+     */
+    public static float square_Root(float number) {
+        if (number < 0) {
+            return -1; // Handle negative input (can also throw an exception)
+        }
+
+        if (number == 0) {
+            return 0; // Handle zero input
+        }
+
+        // Initial guess (can be improved)
+        float guess = number / 2.0f;
+
+        // Babylonian method iterations (adjust iterations for desired precision)
+        for (int i = 0; i < 10; i++) { // 10 iterations are usually sufficient
+            guess = (guess + number / guess) / 2.0f;
+        }
+
+        return guess;
+    }
+
+    public static void main(String[] args) {
+        float num1 = 9.0f;
+        float sqrt1 = square_Root(num1);
+        System.out.println("Square root of " + num1 + ": " + sqrt1); // Expected: 3.0
+
+        float num2 = 25.0f;
+        float sqrt2 = square_Root(num2);
+        System.out.println("Square root of " + num2 + ": " + sqrt2); // Expected: 5.0
+
+        float num3 = 2.0f;
+        float sqrt3 = square_Root(num3);
+        System.out.println("Square root of " + num3 + ": " + sqrt3); // Expected: ~1.414
+
+        float num4 = -4.0f; // Test negative input
+        float sqrt4 = square_Root(num4);
+        System.out.println("Square root of " + num4 + ": " + sqrt4); // Expected: -1
+
+
+        float num5 = 0.0f; // Test zero input
+        float sqrt5 = square_Root(num5);
+        System.out.println("Square root of " + num5 + ": " + sqrt5); // Expected: 0.0
+
+
+    }
+}

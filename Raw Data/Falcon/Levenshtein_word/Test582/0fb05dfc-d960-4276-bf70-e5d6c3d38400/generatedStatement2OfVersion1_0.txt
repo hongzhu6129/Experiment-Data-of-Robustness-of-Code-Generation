@@ -1,0 +1,36 @@
+
+
+**Test Cases:**
+
+| Input (n) | Expected Output |
+|---|---|
+| 12345 | 15 |
+| 0 | 0 |
+| -987 | 24 |  // Negative number
+| 9 | 9 |      // Single digit
+| 100 | 1 |    // Number with zeros
+| 9999 | 36 |   // Large number
+| Integer.MAX_VALUE (2147483647) | 46 | // Maximum integer
+| Integer.MIN_VALUE (-2147483648) | 47 | // Minimum integer (Note: Math.abs handles overflow)
+
+
+**Explanation of Test Cases & Corner Cases:**
+
+* **Positive numbers:** Standard test case to ensure correct calculation. (12345)
+* **Zero:** Checks the handling of zero. (0)
+* **Negative numbers:** Ensures the absolute value is used for the sum. (-987)
+* **Single digit:** Verifies correctness for single-digit inputs. (9)
+* **Numbers with zeros:** Confirms that zeros are handled correctly. (100)
+* **Large numbers:** Tests behavior with large inputs within the integer range. (9999)
+* **Integer.MAX_VALUE and Integer.MIN_VALUE:** These are important corner cases to check behavior at the boundaries of the integer data type.  The use of `Math.abs()` in the `function` correctly handles the potential overflow that could occur with `Integer.MIN_VALUE` if you tried to simply negate it.
+
+
+**How to Run the Code & Test Cases:**
+
+1. **Save:** Save the code as `SumOfDigits.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac SumOfDigits.java`
+3. **Run:** Run the compiled code using: `java SumOfDigits`
+4. **Input:** The program will prompt you to enter an integer.  Enter the test case values one by one and verify the output.
+
+
+This enhanced explanation and test cases should provide a thorough understanding of the code and its behavior. Remember to test code with a variety of inputs, including edge cases, to ensure its correctness and robustness.

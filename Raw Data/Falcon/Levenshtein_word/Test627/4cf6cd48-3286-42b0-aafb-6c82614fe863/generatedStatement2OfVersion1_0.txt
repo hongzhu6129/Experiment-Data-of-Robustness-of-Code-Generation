@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Square Matrix Check:**  The `transpose` method now checks if the input array is a square matrix (equal number of rows and columns). Transposing a non-square matrix in-place (modifying the original array directly) is not straightforward. The provided code handles this by printing an error message and returning if the matrix is not square.  A more robust approach would be to throw an exception.
+2. **Optimized Transposition:** The `transpose` method is optimized to avoid unnecessary swaps.  The inner loop starts from `j = i + 1`.  This is because we only need to swap the upper triangle of the matrix with the lower triangle.  Swapping elements twice would revert them back to their original positions.
+3. **Clearer Comments:** Added comments to explain the logic within the `transpose` method.
+4. **Enhanced Readability:**  Used more descriptive variable names (e.g., `n` instead of just a single-letter variable) and consistent formatting for better code readability.
+5. **In-Place Transposition:** The code performs in-place transposition, meaning the original `array` is modified directly.
+
+
+
+Example Usage and Output:
+
+

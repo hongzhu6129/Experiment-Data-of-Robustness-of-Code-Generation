@@ -1,0 +1,31 @@
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+        String str = "Hello, World!"; // Example string
+        int index = 7; // Index of the character to retrieve
+
+        if (index >= 0 && index < str.length()) {
+            char charAtIndex = str.charAt(index);
+            System.out.println("Character at index " + index + ": " + charAtIndex);
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (str.length() - 1));
+        }
+
+
+        // More examples:
+        String str2 = "Java Programming";
+
+        System.out.println("Character at index 0: " + str2.charAt(0));  // Output: J
+        System.out.println("Character at index 4: " + str2.charAt(4));  // Output: a
+        System.out.println("Character at index 10: " + str2.charAt(10)); // Output: r
+
+        // Demonstrating handling an invalid index:
+        int invalidIndex = 20;
+        if (invalidIndex >= 0 && invalidIndex < str2.length()) {
+            System.out.println("Character at index " + invalidIndex + ": " + str2.charAt(invalidIndex));
+        } else {
+            System.out.println("Invalid index: " + invalidIndex); // This will be printed
+        }
+
+    }
+}

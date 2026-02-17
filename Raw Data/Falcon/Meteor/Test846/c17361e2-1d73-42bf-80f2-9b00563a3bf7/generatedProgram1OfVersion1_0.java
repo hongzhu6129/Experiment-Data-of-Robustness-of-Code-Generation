@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class RemoveDuplicatesFromList {
+
+    public static void main(String[] args) {
+        // Example list with duplicate elements
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 3, 6, 4);
+
+        // Remove duplicates using distinct() and collect to a new list
+        List<Integer> distinctNumbers = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        // Print the list without duplicates
+        System.out.println("Original List: " + numbers);
+        System.out.println("List without duplicates: " + distinctNumbers);
+
+
+        // Example with Strings
+        List<String> words = Arrays.asList("apple", "banana", "orange", "apple", "grape", "banana");
+        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
+        System.out.println("Original List: " + words);
+        System.out.println("List without duplicates: " + distinctWords);
+
+
+    }
+}

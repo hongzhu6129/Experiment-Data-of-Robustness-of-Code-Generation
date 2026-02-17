@@ -1,0 +1,24 @@
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Append the element (HashSets don't have a specific "append" operation, adding does the same thing conceptually)
+        hashSet.add(elementToAppend);
+
+
+        // Print the updated HashSet
+        System.out.println("Updated HashSet: " + hashSet); 
+    }
+}

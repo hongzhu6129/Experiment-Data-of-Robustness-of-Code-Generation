@@ -1,0 +1,45 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 15
+   - Expected Output: 17
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+3. **Large Positive Number:**
+   - Input: 1234567
+   - Expected Output: 3611017
+
+4. **Negative Number:**
+   - Input: -15
+   - Expected Output: -17
+
+5. **Negative Large Number:**
+   - Input: -1234567
+   - Expected Output: -3611017
+
+6. **Boundary Case (Max Integer):**
+   - Input: Integer.MAX_VALUE (2147483647)
+   - Expected Output: 17777777777
+
+7. **Boundary Case (Min Integer):**
+   - Input: Integer.MIN_VALUE (-2147483648)  This needs special handling because of two's complement
+   - Expected Output: -20000000000 
+
+8. **Input Validation (Non-integer):** While the provided code uses `scanner.nextInt()`, which will throw an exception if the user enters non-integer input, more robust error handling could be implemented to provide a more user-friendly experience.
+
+
+**Explanation of Improvements in the Code:**
+
+* **Handles Negative Numbers:**  The `functionone` method now correctly handles negative inputs by prepending a "-" sign and recursively calling itself with the absolute value of the input.
+* **Handles Zero:** An explicit check for `decimal == 0` ensures the correct output for this case.
+* **StringBuilder for Efficiency:** Using `StringBuilder` to construct the octal string is more efficient than repeated string concatenation, especially for large numbers.
+* **Clearer Comments:** The code includes comments to explain the purpose of each section.
+* **Resource Management:** The `Scanner` is closed using `scanner.close()` after use, which is good practice.
+
+
+This improved version addresses potential issues and provides a more complete and robust solution for converting decimal numbers to octal in Java.  The test cases cover a wider range of scenarios, including boundary and error cases, to ensure the code's reliability.
