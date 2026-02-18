@@ -1,0 +1,13 @@
+
+
+
+Key improvements in this version:
+
+* **Handles Invalid Input:**  Checks for negative `n` and `k` and prints an appropriate message.
+* **Efficiency:** Uses the `k = n - k` optimization to reduce calculations when `k` is larger than `n/2`.
+* **Overflow Prevention:** The calculation `result = result * (n - i + 1) / i` is structured to avoid intermediate overflows that could occur if you calculated the numerator and denominator separately.  The division is performed within the loop, keeping the numbers smaller.
+* **Clearer User Interaction:**  Prompts the user for input and prints the result in a user-friendly format.
+* **Resource Management:** Closes the `Scanner` using `scanner.close()` to release the resource.
+
+
+This revised version is more robust, efficient, and presents a better user experience. It addresses potential errors and uses an efficient algorithm for calculating binomial coefficients.

@@ -1,0 +1,20 @@
+
+
+
+Explanation using TreeSet and lower():
+
+1. TreeSet: We use a `TreeSet` because it automatically stores elements in sorted order.  This is crucial for efficiently finding the lower element.
+
+2. lower() Method:  The `lower(E e)` method in `TreeSet` directly returns the greatest element in the set that is strictly less than the given element `e`.  If no such element exists, it returns `null`.
+
+3. Example Usage: The `main` method demonstrates how to add elements to the `TreeSet`, use `lower()` to find the lower element, and handle the case where no lower element is found.
+
+4. Custom Class Example: The code also includes an example of how to use a `TreeSet` with a custom class (`MyClass`).  Crucially, your custom class *must* implement the `Comparable` interface so that the `TreeSet` knows how to order the objects.  The `compareTo()` method in `MyClass` defines the sorting order based on the `value` field.
+
+
+Key improvements over using other methods:
+
+- Efficiency: `TreeSet.lower()` is highly efficient (logarithmic time complexity) due to the tree-based structure.
+- Directness: It provides the lower element directly without needing to iterate or manually search.
+- Correctness: It guarantees the correct result based on the natural ordering or a custom comparator.
+- Readability: The code is concise and easy to understand.

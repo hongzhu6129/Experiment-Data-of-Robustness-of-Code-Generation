@@ -1,0 +1,51 @@
+import java.util.TreeSet;
+
+public class RemoveFromTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Print the original TreeSet
+        System.out.println("Original TreeSet: " + numbers);
+
+        // Element to remove
+        int elementToRemove = 30;
+
+        // Remove the element
+        boolean removed = numbers.remove(elementToRemove);
+
+        // Print whether the element was removed
+        if (removed) {
+            System.out.println(elementToRemove + " was removed from the TreeSet.");
+        } else {
+            System.out.println(elementToRemove + " was not found in the TreeSet.");
+        }
+
+        // Print the updated TreeSet
+        System.out.println("Updated TreeSet: " + numbers);
+
+
+        // Example with a String TreeSet
+        TreeSet<String> fruits = new TreeSet<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+
+        System.out.println("\nOriginal fruits TreeSet: " + fruits);
+
+        String fruitToRemove = "Banana";
+        fruits.remove(fruitToRemove); // Case-sensitive removal
+
+        System.out.println("Updated fruits TreeSet: " + fruits);
+
+
+    }
+}

@@ -1,0 +1,29 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Integers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1.0 (or 1.0 depending on implementation. Java's remainder operator can produce negative results if the dividend is negative) |
+| 3. Mixed Signs | 8 | -3 | 5 | 11 | -24 | -2.666... | 2.0 |
+| 4. Zero as num1 | 0 | 7 | 7 | -7 | 0 | 0.0 | 0.0 |
+| 5. Zero as num2 | 12 | 0 | 12 | 12 | 0 | "Division by zero" | "Division by zero" |
+| 6. Both Zero | 0 | 0 | 0 | 0 | 0 | "Division by zero" | "Division by zero" |
+| 7. Large Numbers | 100000 | 5000 | 105000 | 95000 | 500000000 | 20.0 | 0.0 |
+| 8. Decimal Numbers | 5.2 | 2.1 | 7.3 | 3.1 | 10.92 | 2.476... | 0.52 (approximately)|
+| 9. Integer and Decimal | 10 | 2.5 | 12.5 | 7.5 | 25.0 | 4.0 | 0.0 |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Test Cases 5 and 6):**  Dividing by zero is undefined in mathematics. The program explicitly checks for this condition and prints an appropriate message.
+* **Remainder with Negative Numbers (Test Case 2):** The behavior of the remainder operator (%) with negative numbers can be a bit tricky. The sign of the result depends on the language.  In Java, the remainder operator keeps the sign of the dividend.
+* **Zero as num1 or num2 (Test Cases 4, 5, and 6):**  These test cases ensure that the program handles zero inputs correctly for all operations.
+
+
+
+This comprehensive set of test cases helps verify that the `ArithmeticOperations` program functions as expected under various conditions.  Remember to test your code thoroughly, especially when dealing with mathematical operations, to avoid unexpected behavior.

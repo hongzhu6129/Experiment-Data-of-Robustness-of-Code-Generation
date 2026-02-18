@@ -1,0 +1,49 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class PermutationWithoutRepetition {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        String str = scanner.nextLine();
+
+        // Convert the string to an array of characters
+        char[] chars = str.toCharArray();
+
+        // Sort the array of characters in ascending order
+        Arrays.sort(chars);
+
+        // Create a new string builder to store the permutations
+        StringBuilder permutations = new StringBuilder();
+
+        // Iterate over the array of characters
+        for (int i = 0; i < chars.length; i++) {
+
+            // If the current character is the same as the previous character, skip it
+            if (i > 0 && chars[i] == chars[i - 1]) {
+                continue;
+            }
+
+            // Create a new string by adding the current character to the end of the permutations string
+            String newPermutation = permutations.toString() + chars[i];
+
+            // Add the new permutation to the permutations string
+            permutations.append(newPermutation);
+
+            // Iterate over the remaining characters in the array
+            for (int j = i + 1; j < chars.length; j++) {
+
+                // Create a new string by adding the current character to the end of the new permutation
+                String newPermutation2 = newPermutation + chars[j];
+
+                // Add the new permutation to the permutations string
+                permutations.append(newPermutation2);
+            }
+        }
+
+        // Print the permutations string
+        System.out.println(permutations);
+    }
+}

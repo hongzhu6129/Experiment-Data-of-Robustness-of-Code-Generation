@@ -1,0 +1,38 @@
+public class Main {
+
+    public static void main(String[] args) {
+        int[] originalArray = {1, 2, 3, 10, 11, 12, 13, 10, 14, 15};
+        int lastIndexOfTen = -1;
+
+        // Find the last index of 10
+        for (int i = 0; i < originalArray.length; i++) {
+            if (originalArray[i] == 10) {
+                lastIndexOfTen = i;
+            }
+        }
+
+        // Create the new array if 10 exists
+        if (lastIndexOfTen != -1 && lastIndexOfTen < originalArray.length -1) { 
+            int newArrayLength = originalArray.length - (lastIndexOfTen + 1);
+            int[] newArray = new int[newArrayLength];
+            for (int i = 0; i < newArrayLength; i++) {
+                newArray[i] = originalArray[lastIndexOfTen + 1 + i];
+            }
+
+
+            // Print the new array
+            System.out.print("New Array: [");
+            for (int i = 0; i < newArray.length; i++) {
+                System.out.print(newArray[i]);
+                if (i < newArray.length - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+
+        } else {
+            System.out.println("No element after last 10 found.");
+
+        }
+    }
+}

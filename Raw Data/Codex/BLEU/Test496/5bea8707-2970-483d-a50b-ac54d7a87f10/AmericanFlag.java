@@ -1,0 +1,36 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the striped section of the flag
+        for (int i = 0; i < 5; i++) {
+            // Print stars
+            for (int j = 0; j < 6; j++) {
+                System.out.print("* ");
+            }
+            System.out.print(" "); // Space between stars and stripes
+            // Print stripes
+            for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println(); // New line
+             
+              for (int j = 0; j < 5; j++) {
+                System.out.print("* ");
+            }
+           System.out.print(" "); // Space between stars and stripes
+             for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println(); 
+        }
+
+
+        // Print the solid red section of the flag
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 20; j++) {
+                System.out.print("=");
+            }
+            System.out.println();
+        }
+    }
+}

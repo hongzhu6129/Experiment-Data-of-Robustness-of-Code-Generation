@@ -1,0 +1,38 @@
+
+
+
+**Explanation:**
+
+1. **Import necessary classes:**
+   - `java.io.BufferedWriter`:  Used for efficient writing to files.
+   - `java.io.FileWriter`:  Used to write character streams to files.
+   - `java.io.IOException`:  Handles potential file-related errors.
+
+2. **Specify file path and text:**
+   - `filePath`:  Stores the path to the file you want to append to. *Make sure this file exists.*  Replace `"existing_file.txt"` with the actual path.
+   - `textToAppend`: Stores the text you want to add to the file.  The `\n` adds a newline character at the end, so the appended text starts on a new line.
+
+3. **Use try-with-resources:**
+   - `try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { ... }`
+   - This creates a `BufferedWriter` and a `FileWriter` within the `try` block.  The `true` argument in `FileWriter(filePath, true)` is crucial; it tells Java to open the file in *append* mode instead of *overwrite* mode. The try-with-resources ensures that the `BufferedWriter` and `FileWriter` are automatically closed even if an error occurs, preventing resource leaks.
+
+4. **Write to the file:**
+   - `writer.write(textToAppend);` writes the text to the file.
+
+5. **Handle potential errors:**
+   - The `catch (IOException e)` block catches any `IOException` that might occur during file operations (e.g., the file doesn't exist, permissions issues). It prints an error message to the console.
+
+6. **Confirmation message:**
+   - `System.out.println("Text appended successfully!");` prints a success message if the operation completes without errors.
+
+
+**To use this code:**
+
+1. **Save:** Save the code as `AppendToFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac AppendToFile.java`
+3. **Run:** Execute the compiled code: `java AppendToFile`
+4. **Check the file:** Open `existing_file.txt` to see the appended text.
+
+
+**Important Note:** If the file `existing_file.txt` does not exist in the specified location, the `FileWriter` will create a new file with that name and write the text to it.  If you want the program to specifically append to an existing file and throw an error if the file doesn't exist, you would need to add a check to see if the file exists before attempting to open it in append mode.
+

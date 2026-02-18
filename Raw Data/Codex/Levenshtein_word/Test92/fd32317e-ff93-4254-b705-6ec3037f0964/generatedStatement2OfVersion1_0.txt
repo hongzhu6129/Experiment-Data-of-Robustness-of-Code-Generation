@@ -1,0 +1,54 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zero Included:**
+   - Input: 0, 10, 20
+   - Expected Output: 10.0
+
+4. **All Zeros:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.5, 7.5
+   - Expected Output: 5.166666666666667
+
+
+7. **Combination of Positive, Negative and Zero:**
+   - Input: -10, 0, 10
+   - Expected Output: 0.0
+
+8. **Integer Overflow (Corner Case):**  Though `double` can handle very large numbers, let's test near its limits.
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE
+   - Expected Output: Double.MAX_VALUE (or Infinity depending on how Java handles this specific overflow).
+
+9. **Underflow (Corner Case):** Similarly, test very small numbers.
+   - Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE
+   - Expected Output: Double.MIN_VALUE
+
+
+10. **Invalid Input (Corner Case):**
+    - Input: a, b, c  (or 10, 20, x)
+    - Expected Output: "Invalid input. Please enter numbers only."
+
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+While you could manually test, automated tests are better. Here's a JUnit example:
+

@@ -1,0 +1,42 @@
+public class FirstOccurrence {
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 12}; // Example array
+        int elementToFind = 5; // Element to search for
+
+        int firstOccurrence = -1; // Initialize to -1 to indicate not found
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == elementToFind) {
+                firstOccurrence = i;
+                break; // Exit the loop after the first occurrence is found
+            }
+        }
+
+        if (firstOccurrence != -1) {
+            System.out.println("First occurrence of " + elementToFind + " is at index: " + firstOccurrence);
+        } else {
+            System.out.println(elementToFind + " is not found in the array.");
+        }
+
+       //Example 2: Demonstrating when the element is not present:
+        int[] array2 = {1,2,3,4};
+        int elementToFind2 = 7;
+        int firstOccurrence2 = -1;
+
+         for (int i = 0; i < array2.length; i++) {
+            if (array2[i] == elementToFind2) {
+                firstOccurrence2 = i;
+                break; 
+            }
+        }
+
+        if (firstOccurrence2 != -1) {
+            System.out.println("First occurrence of " + elementToFind2 + " is at index: " + firstOccurrence2);
+        } else {
+            System.out.println(elementToFind2 + " is not found in the array.");
+        }
+
+
+    }
+}

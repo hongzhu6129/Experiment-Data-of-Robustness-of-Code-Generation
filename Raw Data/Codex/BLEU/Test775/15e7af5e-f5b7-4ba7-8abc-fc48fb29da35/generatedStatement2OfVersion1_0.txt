@@ -1,0 +1,23 @@
+
+
+
+**Explanation and improvements:**
+
+1. **Handles file not found:** The original solution assumed the files always exist. This improved version checks `file.exists()` and prints a message if the file isn't found. This is crucial for robust file handling.
+2. **Clearer output:** The output now includes "File not found" for missing files, making it more user-friendly.
+3. **Uses an array:**  Instead of hardcoding file paths directly into the `File` constructors, the code uses a `String` array to store the file paths. This makes it easier to manage multiple files and avoids repetitive code.
+4. **Correct file size:** The `file.length()` method accurately returns the file size in bytes.
+
+
+**To run this code:**
+
+1. **Save:** Save the code as `FileSizeChecker.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac FileSizeChecker.java`
+3. **Run:**  Execute the compiled code: `java FileSizeChecker`
+
+Remember to replace `/home/students/abc.txt` and `/home/students/test.txt` with the actual paths to the files you want to check.  If you're running this on Windows, use Windows-style paths (e.g., `C:\\Users\\YourName\\Documents\\abc.txt`).
+
+
+
+If you don't want to change the paths in the code every time, you can pass them as command-line arguments:
+

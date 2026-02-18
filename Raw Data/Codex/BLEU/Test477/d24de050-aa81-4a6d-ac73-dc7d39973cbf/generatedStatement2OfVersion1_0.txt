@@ -1,0 +1,34 @@
+
+
+
+**Test Cases:**
+
+| Binary Input | Expected Octal Output | Notes                                 |
+|--------------|----------------------|--------------------------------------|
+| "0"         | "0"                  | Corner case: Zero input               |
+| "1"         | "1"                  | Basic case                           |
+| "10"        | "2"                  | Basic case                           |
+| "11"        | "3"                  | Basic case                           |
+| "100"       | "4"                  | Basic case                           |
+| "111"       | "7"                  | Basic case                           |
+| "1000"      | "10"                 | Testing two-digit octal output       |
+| "1111"      | "17"                 | Testing two-digit octal output       |
+| "101010"    | "52"                 | Testing larger binary input          |
+| "11111111" | "377"                | Testing maximum 8-bit binary input  |
+| "10000000000"  | "2000" | Testing larger binary number (beyond 8-bit)|
+| "1111111111111111111111111111111" | "777777777777777777777" | Testing maximum 63-bit binary |
+| "abc"       | "Invalid binary number..." | Invalid input (non-binary characters)|
+| "123" | "Invalid binary number..." | Invalid input (non-binary characters)|
+| "" (empty string) | "Invalid binary number..." | Invalid input (empty string - NumberFormatException handled now)|
+
+
+
+**Explanation of Improvements:**
+
+* **Error Handling:** The code now includes robust error handling using a `try-catch` block to catch `NumberFormatException` if the user enters non-binary characters (like "abc" or "123"). This prevents the program from crashing and provides a helpful error message.
+* **Corner Case (Zero):**  Explicitly handles the corner case where the binary input is "0".
+* **Larger Binary Numbers:** The use of `long` allows the program to handle binary inputs that represent larger decimal and octal values, extending beyond the limits of `int`.
+* **Clearer Output:** The output message is now more informative.
+* **Closed Scanner:**  The `scanner.close()` statement is included to release the resource.
+
+This improved version is more robust, handles various scenarios correctly, and provides better user experience.  It also demonstrates good programming practices like error handling and handling corner cases.

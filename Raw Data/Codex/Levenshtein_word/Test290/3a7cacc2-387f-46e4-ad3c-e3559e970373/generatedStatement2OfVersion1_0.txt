@@ -1,0 +1,27 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes proper error handling for the case where the filename is not provided as a command-line argument or if the file is not found.  This makes the program more robust.
+
+2. **Regex for Letter Check:** The `word.matches("^[a-zA-Z].*")` uses a regular expression to ensure that only words starting with a letter (a-z or A-Z) are added to the list.  This fulfills the requirement of the problem statement.
+
+3. **Descending Sort:** `Collections.sort(words, Collections.reverseOrder());` sorts the `ArrayList` in descending order, as required.
+
+4. **`display()` Method:** The `display()` method now simply prints the word to the console.  This adheres to the specified method signature requirement.
+
+5. **Testability (Commented-out main):** I've included a second, commented-out `main` method that you can use for testing without needing command-line arguments. This can be helpful for development and debugging.  Just uncomment it and comment out the other `main` method.  Remember to comment it back out before submitting.
+
+6. **Try-with-resources:**  The `Scanner` is used within a try-with-resources block, which ensures that the file is closed automatically, even if an exception occurs.  This is best practice for resource management.
+
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `DescendingWords.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac DescendingWords.java`
+3. **Run:** Run the compiled code with the text file as a command-line argument: `java DescendingWords input.txt`  (Replace `input.txt` with the actual name of your text file).
+
+
+If you use the commented-out `main` method for testing, you won't need a command line argument.  Just compile and run: `java DescendingWords`

@@ -1,0 +1,40 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class StringLetterCheck {
+
+    public static void main(String[] args) {
+        System.out.println(test("programming", "program")); // true
+        System.out.println(test("Programming", "program")); // false (case-sensitive)
+        System.out.println(test("abc", "abcd"));        // false
+        System.out.println(test("aabbc", "abc"));       // true
+        System.out.println(test("", ""));               // true
+        System.out.println(test("abc", ""));           // true
+        System.out.println(test("", "abc"));           // false
+
+    }
+
+    public static boolean test(String str1, String str2) {
+        if (str2.length() == 0) {
+            return true; // Empty str2 is always present in str1
+        }
+        if (str1.length() == 0 && str2.length() > 0) {
+            return false; // Non-empty str2 cannot be in empty str1
+        }
+
+
+        Map<Character, Integer> charCounts1 = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            charCounts1.put(c, charCounts1.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : str2.toCharArray()) {
+            if (!charCounts1.containsKey(c) || charCounts1.get(c) == 0) {
+                return false;
+            }
+            charCounts1.put(c, charCounts1.get(c) - 1);
+        }
+
+        return true;
+    }
+}

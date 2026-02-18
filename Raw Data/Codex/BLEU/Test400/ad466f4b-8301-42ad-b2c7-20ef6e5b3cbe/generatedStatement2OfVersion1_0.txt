@@ -1,0 +1,14 @@
+
+
+
+Key improvements in this version:
+
+* **Handles `null` and empty input:**  The `endWithmOrn` method now checks for `null` or empty input strings and returns 0 appropriately.
+* **Regex for robustness:**  Instead of splitting by spaces and then checking the last character, it uses a regular expression `\\b\\w+[mnMN]\\b`.  This is more robust because:
+    * It handles words at the beginning and end of the string correctly.
+    * It handles multiple spaces between words.
+    * It handles punctuation correctly (words like "program." will be counted).  
+* **Word boundaries (`\\b`):**  The regex uses `\\b` (word boundary) to ensure that it only matches whole words. This prevents substrings like "mankind" from being counted.
+* **Case-insensitive matching (`[mnMN]`):**  The regex uses character class `[mnMN]` to match both lowercase and uppercase 'm' and 'n'.
+* **Clearer variable names:** Uses more descriptive variable names (e.g., `pattern`, `matcher`) for better readability.
+* **More test cases in `main`:**  Includes more test cases to demonstrate the handling of different scenarios including null, empty, and whitespace-only strings.

@@ -1,0 +1,23 @@
+class Solution {
+    /**
+     * Given two integers, return true if either one is 15 or if their sum or 
+     * difference is 15.
+     *
+     * @param a The first integer.
+     * @param b The second integer.
+     * @return True if either integer is 15 or their sum or difference is 15, 
+     *         false otherwise.
+     */
+    public static boolean calculate(int a, int b) {
+        return a == 15 || b == 15 || (a + b) == 15 || Math.abs(a - b) == 15;
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        System.out.println(calculate(10, 5));   // Output: true
+        System.out.println(calculate(15, 10));  // Output: true
+        System.out.println(calculate(7, 8));    // Output: true
+        System.out.println(calculate(10, 25));  // Output: true
+        System.out.println(calculate(1, 2));    // Output: false
+    }
+}

@@ -1,0 +1,14 @@
+
+
+
+Here's an explanation of the improvements:
+
+1. **Overflow Handling:** The code now includes a check for overflow. Fermat numbers grow extremely rapidly.  A `long` can only store up to 2<sup>63</sup>-1. After n=4, the Fermat numbers exceed this limit. The `if (fermatNumber > 0)` condition detects when the calculation has overflowed (resulting in a negative number or zero after wrapping around) and prints a message.
+
+2. **Explicit Casting:** The `(long)` cast is important to ensure that the result of `Math.pow()`, which returns a `double`, is converted to a `long` before being used in calculations.  This prevents potential precision issues.
+
+3. **Clearer Output:** The output is formatted more clearly, indicating which Fermat number corresponds to which value of `n`, especially in the case of overflow.
+
+
+
+This improved version handles the limitations of using the `long` data type for larger Fermat numbers more gracefully.  For truly large Fermat numbers (beyond what a `long` can represent), you would need to use `BigInteger`.

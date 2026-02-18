@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Two Pointers:** The `split_sorting_array` method uses two pointers, `left` and `right`, to traverse the array from opposite ends.
+
+2. **Efficient Swapping:** The `swap` method efficiently swaps elements in the array.
+
+3. **Handling Zero:**  This version correctly handles zeros.  Zeros are considered "positive" in this logic and will be moved to the right side. If you have a different requirement for zero, you'd adjust the conditions in the `while` loops.
+
+4. **Clearer Condition:** The `while (left < right)` condition ensures the loop terminates correctly and avoids unnecessary swaps.
+
+5. **Main Method with Examples:**  The `main` method demonstrates the function with a few examples, including one with zeros, to show various scenarios.
+
+
+
+**How it Works:**
+
+The algorithm iterates through the array using the `left` and `right` pointers.  It searches for a negative number from the right and a positive (or zero) number from the left. When both are found, and the `left` pointer is still to the left of the `right` pointer, the elements are swapped. This process continues until the `left` and `right` pointers cross, effectively partitioning the array into negative numbers on the left and non-negative numbers on the right.  The order of elements within each partition isn't necessarily maintained, but the split based on sign is achieved.

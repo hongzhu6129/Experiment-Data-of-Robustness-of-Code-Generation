@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class KaprekarNumbers {
+
+    public static void main(String[] args) {
+        List<Integer> kaprekarNumbers = findKaprekarNumbers(1000);
+
+        System.out.println("Kaprekar Numbers less than 1000:");
+        for (int num : kaprekarNumbers) {
+            long square = (long) num * num;
+            String squareStr = String.valueOf(square);
+            int numDigits = String.valueOf(num).length();
+
+
+            for (int i = 1; i < squareStr.length(); i++) {
+                long rightPart = Long.parseLong(squareStr.substring(i));
+                long leftPart = Long.parseLong(squareStr.substring(0, i));
+                
+
+                if (leftPart + rightPart == num && rightPart > 0 ) { // Ensure rightPart is not zero
+                     System.out.printf("%-8d %-9d %-30s\n", num, square, leftPart + " + " + rightPart);
+                    break; // Only print the first valid split for a Kaprekar number
+                }
+               
+            }
+            
+        }
+        System.out.println(kaprekarNumbers.size() + " Kaprekar numbers.");
+
+    }
+
+    public static List<Integer> findKaprekarNumbers(int limit) {
+        List<Integer> kaprekarNumbers = new ArrayList<>();
+
+        for (int i = 1; i < limit; i++) {
+            long square = (long) i * i;
+            String squareStr = String.valueOf(square);
+            int numDigits = String.valueOf(i).length();
+
+
+
+            for (int j = 1; j < squareStr.length(); j++) {
+                long rightPart = Long.parseLong(squareStr.substring(j));
+                long leftPart = Long.parseLong(squareStr.substring(0, j));
+
+
+               if (leftPart + rightPart == i && rightPart > 0) { // Condition to be Kaprekar
+                    kaprekarNumbers.add(i);
+                    break; // No need to check further splits for the same number
+                }
+            }
+        }
+        return kaprekarNumbers;
+    }
+}
+
+
+

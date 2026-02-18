@@ -1,0 +1,30 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double sum1 = 1.0;
+        double sign1 = -1.0;
+        for (double i = 3.0; i <= 11.0; i += 2.0) {
+            if(i == 9.0)
+                sign1 = 1.0;
+            else
+                sum1 += sign1 * (1.0 / i);
+                sign1 = sign1 * -1.0;
+                
+        }
+        double pi1 = 4.0 * sum1;
+
+        double sum2 = 1.0;
+        double sign2 = -1.0;
+        for (double i = 3.0; i <= 13.0; i += 2.0) {
+             if(i == 9.0)
+                sign2 = 1.0;
+             else
+                sum2 += sign2 * (1.0 / i);
+                sign2 = sign2 * -1.0;
+        }
+        double pi2 = 4.0 * sum2;
+
+        System.out.println("Result for 4 * (1 - (1/3) + (1/5) + (1/9) - (1/11)): " + pi1);
+        System.out.println("Result for 4 * (1 - (1/3) + (1/5) + (1/9) - (1/11) + (1/13)): " + pi2);
+    }
+}

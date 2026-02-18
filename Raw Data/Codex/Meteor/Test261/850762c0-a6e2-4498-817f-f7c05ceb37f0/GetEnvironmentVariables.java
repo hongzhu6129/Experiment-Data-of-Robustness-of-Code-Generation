@@ -1,0 +1,29 @@
+public class GetEnvironmentVariables {
+
+    public static void main(String[] args) {
+
+        String path = System.getenv("PATH");
+        String temp = System.getenv("TEMP");
+        String username = System.getenv("USERNAME"); // For Windows
+        if(username == null) username = System.getenv("USER"); // For *nix systems (Linux, macOS)
+
+
+        if (path != null) {
+            System.out.println("PATH: " + path);
+        } else {
+            System.out.println("PATH environment variable not found.");
+        }
+
+        if (temp != null) {
+            System.out.println("TEMP: " + temp);
+        } else {
+            System.out.println("TEMP environment variable not found.");
+        }
+
+        if (username != null) {
+            System.out.println("USERNAME/USER: " + username);
+        } else {
+            System.out.println("USERNAME/USER environment variable not found.");
+        }
+    }
+}

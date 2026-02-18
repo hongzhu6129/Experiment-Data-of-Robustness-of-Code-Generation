@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ShuffleArrayList {
+
+    public static void main(String[] args) {
+
+        // Create an ArrayList of strings (representing forms)
+        ArrayList<String> forms = new ArrayList<>();
+        forms.add("Form A");
+        forms.add("Form B");
+        forms.add("Form C");
+        forms.add("Form D");
+        forms.add("Form E");
+
+        // Print the original list
+        System.out.println("Original list: " + forms);
+
+        // Shuffle the ArrayList using Collections.shuffle()
+        Collections.shuffle(forms);
+
+        // Print the shuffled list
+        System.out.println("Shuffled list: " + forms);
+
+
+        // Example with integers:
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+         System.out.println("Original numbers: " + numbers);
+        Collections.shuffle(numbers);
+        System.out.println("Shuffled numbers: " + numbers);
+    }
+}

@@ -1,0 +1,40 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Octal Input:**
+   - Input: 123
+   - Expected Output: 53
+
+2. **Zero Input:**
+   - Input: 0
+   - Expected Output: 0  (Important to handle this explicitly)
+
+3. **Large Octal Input:**
+   - Input: 7777777
+   - Expected Output: FFFFFF
+
+4. **Invalid Octal Input (containing digits other than 0-7):**
+   - Input: 1283
+   - Expected Output: Error: Invalid octal digit: 8
+
+5. **Invalid Octal Input (containing letters):**
+   - Input: 1A3
+   - Expected Output: Error: Invalid octal digit: A
+
+6. **Invalid Octal Input (empty string):**
+   - Input:  (Just press enter)
+   - Expected behavior:  The program should ideally handle this gracefully without crashing.  A message like "Please enter a valid octal number" would be better than an exception. The current code prints 0 in this scenario due to the empty string check.
+
+
+**Explanation of Improvements in the Code:**
+
+* **Error Handling:** The code now includes a `try-catch` block to handle `IllegalArgumentException` which is thrown if the input is not a valid octal number. This prevents the program from crashing.
+* **Clear Error Message:**  The error message now specifies the invalid octal digit.
+* **Zero Handling:** The code explicitly handles the case where the octal input is 0, ensuring the output is also 0.
+* **Comments:** Added more comments to explain the logic.
+
+
+
+This improved version is more robust and user-friendly because it provides better error handling and clear feedback to the user.

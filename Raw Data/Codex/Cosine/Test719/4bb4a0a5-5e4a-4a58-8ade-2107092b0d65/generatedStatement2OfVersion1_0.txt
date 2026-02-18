@@ -1,0 +1,32 @@
+
+
+**Test Cases (including corner cases):**
+
+1. **Valid Input:**
+   - Length: 5, Width: 10  Expected: Area = 50, Perimeter = 30
+   - Length: 7.5, Width: 2.5 Expected: Area = 18.75, Perimeter = 20
+
+2. **Zero Input:**
+   - Length: 0, Width: 10  Expected: Area = 0, Perimeter = 20
+   - Length: 5, Width: 0 Expected: Area = 0, Perimeter = 10
+   - Length: 0, Width: 0 Expected: Area = 0, Perimeter = 0  (This is a degenerate rectangle � a point)
+
+3. **Negative Input (Invalid, should be handled):**
+   - Length: -5, Width: 10  Expected:  The program should handle this gracefully, perhaps by throwing an exception or printing an error message and exiting/prompting for valid input. The same applies to negative width or both negative.  In a real-world application, you might want to use absolute values or throw  `IllegalArgumentException` with a clear message.
+
+4. **Large Inputs (to check for potential overflow issues, though less likely with doubles):**
+   - Length: Double.MAX_VALUE, Width: 1  Expected: Area = Double.MAX_VALUE, Perimeter = Infinity (or Double.POSITIVE_INFINITY)
+   - Length: Double.MAX_VALUE, Width: Double.MAX_VALUE Expected: Area = Infinity, Perimeter = Infinity
+
+
+**How to Run the Tests (Manually):**
+
+1. Save the code as `Rectangle.java`.
+2. Compile: `javac Rectangle.java`
+3. Run: `java Rectangle`
+4. Enter the test values when prompted.
+
+**Automated Testing (JUnit - Best Practice):**
+
+For larger projects or professional development, automated tests using a testing framework like JUnit are strongly recommended.  Here's a simple example:
+

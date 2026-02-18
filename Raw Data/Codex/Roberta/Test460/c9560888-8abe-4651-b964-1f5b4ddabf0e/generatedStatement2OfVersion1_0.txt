@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+1. **Locale Handling:** The code now uses `WeekFields.of(Locale.US)` (or any other `Locale`) to correctly determine the first day of the week based on cultural conventions. This is essential for internationalization.  Change the `Locale` if your week starts on a different day (e.g., `Locale.FRANCE` for Monday).
+
+2. **Clearer Calculations:** The calculations for the first and last days of the week are more concise using `TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY)` and `plusDays(6)`.
+
+3. **Example for Multiple Weeks:** The code demonstrates how to calculate the first and last days for several subsequent weeks using a loop.
+
+4. **Output Formatting:** The output is formatted more clearly to show which week the dates belong to.
+
+5. **Comments:**  Comments explain the purpose of each section of code.
+
+
+How to use for different start-of-week days:
+
+* **Monday:** `WeekFields weekFields = WeekFields.of(Locale.FRANCE);` (or another locale where Monday is the first day of the week).  Then use `TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)`.
+* **Other days:** Adjust the `DayOfWeek` accordingly in the `TemporalAdjusters` (e.g., `DayOfWeek.TUESDAY`, `DayOfWeek.WEDNESDAY`, etc.).

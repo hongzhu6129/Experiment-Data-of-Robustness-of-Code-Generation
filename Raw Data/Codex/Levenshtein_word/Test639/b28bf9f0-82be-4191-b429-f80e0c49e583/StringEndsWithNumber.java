@@ -1,0 +1,30 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class StringEndsWithNumber {
+
+    public static void main(String[] args) {
+        String str1 = "Hello123";
+        String str2 = "HelloWorld";
+        String str3 = "123Hello";
+        String str4 = "Hello 123"; // Note the space
+        String str5 = "Hello";
+        String str6 = "123"; // Only numbers
+
+
+        System.out.println(str1 + ": " + validate(str1));
+        System.out.println(str2 + ": " + validate(str2));
+        System.out.println(str3 + ": " + validate(str3));
+        System.out.println(str4 + ": " + validate(str4));
+        System.out.println(str5 + ": " + validate(str5));
+        System.out.println(str6 + ": " + validate(str6));
+
+    }
+
+    public static String validate(String str) {
+        // Use a regular expression to check if the string ends with one or more digits.
+        Pattern pattern = Pattern.compile("\\d+$"); // \\d+ matches one or more digits, $ matches the end of the string
+        Matcher matcher = pattern.matcher(str);
+        return String.valueOf(matcher.find()); // matcher.find() returns true if a match is found, false otherwise.
+    }
+}

@@ -1,0 +1,32 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double piApproximation1 = 4.0 * (1.0 - (1.0/3.0) + (1.0/5.0) - (1.0/7.0) + (1.0/9.0) - (1.0/11.0));
+        double piApproximation2 = 4.0 * (1.0 - (1.0/3.0) + (1.0/5.0) - (1.0/7.0) + (1.0/9.0) - (1.0/11.0) + (1.0/13.0));
+
+        System.out.println("Approximation 1 (up to 1/11): " + piApproximation1);
+        System.out.println("Approximation 2 (up to 1/13): " + piApproximation2);
+
+
+        // More accurate version demonstrating the series to a higher term
+        double piApproximationAccurate = calculatePi(1000000); // Calculate with a million terms
+        System.out.println("More accurate approximation: " + piApproximationAccurate);
+
+
+    }
+
+
+    // This method demonstrates a more general approach to calculating Pi using the Leibniz formula.
+    public static double calculatePi(int numTerms) {
+        double pi = 0.0;
+        for (int i = 0; i < numTerms; i++) {
+            double term = 4.0 / (2.0 * i + 1.0);
+            if (i % 2 == 0) {
+                pi += term;
+            } else {
+                pi -= term;
+            }
+        }
+        return pi;
+    }
+}

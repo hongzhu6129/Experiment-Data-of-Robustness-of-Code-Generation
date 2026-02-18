@@ -1,0 +1,15 @@
+public class UraniumZoneOffsets {
+
+    public static void main(String[] args) {
+        // Define and print uranium zone offsets
+        System.out.println("Zone A: " + formatOffset(10));
+        System.out.println("Zone B: " + formatOffset(25));
+        System.out.println("Zone C: " + formatOffset(-5)); // Example of a negative offset
+        System.out.println("Zone D: " + formatOffset(0)); // Example of zero offset
+        System.out.println("Zone E: " + formatOffset(100)); 
+    }
+
+    private static String formatOffset(int offset) {
+        return String.format("%+d meters", offset);  // Format with "+" to explicitly show positive/negative sign
+    }
+}

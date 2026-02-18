@@ -1,0 +1,30 @@
+
+
+
+**How to compile and run:**
+
+1. **Save:** Save the code as `AverageCalculator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using: `javac AverageCalculator.java`
+3. **Run:**  Execute the compiled code with three numbers as arguments: `java AverageCalculator 10 20 30`  (replace 10, 20, and 30 with your desired numbers)
+
+
+
+**Explanation:**
+
+1. **Command-line Arguments:** The `String[] args` in the `main` method holds the command-line arguments passed to the program. `args[0]` is the first argument, `args[1]` the second, and so on.
+
+2. **Input Validation:** The code first checks if exactly three arguments are provided using `args.length`.  If not, it prints an error message and exits.
+
+3. **Error Handling (try-catch):**  The `try-catch` block handles potential `NumberFormatException` errors that can occur if the user enters non-numeric input. This prevents the program from crashing.
+
+4. **Parsing to Double:** `Double.parseDouble()` converts the string arguments (which are initially text) into double-precision floating-point numbers so we can perform calculations.
+
+5. **Calculation and Output:**  The average is calculated, and the result is printed to the console using `System.out.println()`.
+
+
+**Example Usage:**
+
+If you run the program like this: `java AverageCalculator 5 15 25`
+
+The output will be:
+`The average of 5.0, 15.0, and 25.0 is: 15.0`

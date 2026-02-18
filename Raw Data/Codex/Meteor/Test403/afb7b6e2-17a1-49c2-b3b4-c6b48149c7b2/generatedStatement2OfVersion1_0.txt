@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Key Differences:**
+
+* **`equals()`:**  This method compares the *content* of two strings. It's the **recommended way** to check if two strings have the same characters.
+
+* **`==`:** This operator compares *references*.  It checks if two string variables are pointing to the *same object* in memory.  
+    * With string *literals* (e.g., `"hello"`), Java often uses a process called "string interning" which puts identical literals in the same memory location for efficiency.  This is why `str1 == str2` is true in the example.
+    * However, when you use the `new` keyword to create string objects (like `str3`), new objects are always created, even if their content is the same as an existing string. So `str1 == str3` is false.
+    * **Therefore, avoid using `==` for general string comparison unless you specifically want to check if they are the same object.**
+
+* **`equalsIgnoreCase()`:** This method compares the content of two strings, ignoring case. "hello" and "Hello" would be considered equal using this method.
+
+
+**Best Practice:** Always use `equals()` for comparing string content unless you have a specific reason to check for reference equality using `==`.

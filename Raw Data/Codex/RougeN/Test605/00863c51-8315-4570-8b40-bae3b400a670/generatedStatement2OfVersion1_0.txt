@@ -1,0 +1,26 @@
+
+
+**Explanation and Improvements:**
+
+1. **Horner's Method:** The provided evaluation scheme is known as Horner's method, and the `polyEval` function directly implements it. It's an efficient way to evaluate polynomials.
+
+2. **Clearer Example:** The `main` method now demonstrates a clear example with a polynomial -19 + 7x - 4x^2 + 6x^3 and x = 3.  The coefficients are stored in a `List<Double>`.
+
+3. **Reverse Iteration:**  The `polyEval` function iterates through the coefficients list in reverse order (from highest power to constant term).  This is key to Horner's method.
+
+4. **Double Precision:** Using `Double` for both coefficients and `x` ensures better precision for floating-point calculations.
+
+5. **Comments:**  Added comments to explain the code's logic.
+
+
+**How Horner's Method Works (in `polyEval`):**
+
+Let's trace the example:
+
+- **Initial:** `result = 0`
+- **Iteration 1 (i=3):** `result = 0 * 3 + 6 = 6`
+- **Iteration 2 (i=2):** `result = 6 * 3 + (-4) = 14`
+- **Iteration 3 (i=1):** `result = 14 * 3 + 7 = 49`
+- **Iteration 4 (i=0):** `result = 49 * 3 + (-19) = 128`
+
+So, the final result is 128, which is the correct evaluation of the polynomial at x=3.

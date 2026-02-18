@@ -1,0 +1,14 @@
+
+
+
+Key improvements in this version:
+
+* **BigDecimal for Accuracy:** Uses `BigDecimal` to handle rounding, avoiding floating-point precision issues that can occur with `Math.round()` or `DecimalFormat`.
+* **HALF_UP Rounding:**  Uses `RoundingMode.HALF_UP` which is the standard rounding mode (rounds towards the nearest neighbor, and if equidistant, rounds away from zero).
+* **Error Handling:**  Includes a `try-catch` block to handle `NumberFormatException` which can occur if the program arguments provided by the user aren't valid numbers. Also handles `ArrayIndexOutOfBoundsException` if arguments are missing. This makes the program more robust.
+* **Clearer Example Usage:** Provides multiple examples demonstrating the function with different inputs, including negative numbers and rounding to 0 decimal places.
+* **User Input and Error Messages:** Accepts input from the command line (program arguments) for the number and decimal places. Provides helpful error messages and usage instructions if the input is invalid.
+* **Exit code:** Now uses `System.exit(1)` to signal an error when the input is incorrect. This allows scripts or other programs that call this Java program to detect and handle failures properly.
+
+
+This revised version addresses the limitations of using `DecimalFormat` or `Math.round()` and provides a more robust and accurate solution for rounding floating-point numbers.

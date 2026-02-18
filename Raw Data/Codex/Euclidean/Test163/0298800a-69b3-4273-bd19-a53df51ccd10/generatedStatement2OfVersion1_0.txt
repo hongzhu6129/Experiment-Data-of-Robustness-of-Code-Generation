@@ -1,0 +1,48 @@
+
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   Input: 255
+   Expected Output: FF
+
+2. **Zero:**
+   Input: 0
+   Expected Output: 0  (This is a corner case where the loop doesn't execute)
+
+3. **Negative Number:**  (Corner case)
+   Input: -1
+   Expected Output: FFFFFFFF (or similar representation depending on Java's handling of negative numbers and two's complement)  It's important to note that Java uses two's complement for negative numbers, so the hexadecimal representation will reflect this.
+
+4. **Large Positive Number:**
+   Input: 123456789
+   Expected Output: 75BCD15
+
+5. **Small Positive Number:**
+   Input: 10
+   Expected Output: A
+
+6. **One:** (Simple case, good for basic testing)
+   Input: 1
+   Expected Output: 1
+
+7. **Maximum Integer Value:** (Corner case)
+   Input: Integer.MAX_VALUE
+   Expected Output: 7FFFFFFF
+
+8. **Minimum Integer Value:** (Corner case)
+   Input: Integer.MIN_VALUE
+   Expected Output: 80000000
+
+
+
+
+**How to Run the Test Cases:**
+
+You can either:
+
+* **Manually:** Input each test case into the program and verify the output.
+* **Automated Testing (Recommended):**  Use a testing framework like JUnit to write automated tests.  This is the more robust and preferred way to test.  Here's a basic example of how to use JUnit (you would need to add the JUnit library to your project):
+
+

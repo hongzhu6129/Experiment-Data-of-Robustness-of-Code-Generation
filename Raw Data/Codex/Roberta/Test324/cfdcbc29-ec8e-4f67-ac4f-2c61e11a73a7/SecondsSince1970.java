@@ -1,0 +1,9 @@
+import java.time.Instant;
+
+public class SecondsSince1970 {
+
+    public static void main(String[] args) {
+        long seconds = Instant.now().getEpochSecond();
+        System.out.println("Seconds since January 1, 1970: " + seconds);
+    }
+}

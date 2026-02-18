@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:**  The code now includes input validation to check if `n` and `k` are non-negative.  This prevents unexpected behavior or crashes.
+
+2. **Efficiency (nCk = nC(n-k))**: The `binomial_Coefficient` method uses the property  `C(n, k) = C(n, n-k)` to reduce calculations when `k` is greater than `n/2`. This optimization significantly speeds up the process for larger values.
+
+3. **Overflow Prevention**: The calculation within the loop `result = result * (n - i + 1) / i;` is structured to minimize the risk of integer overflow. By multiplying by `(n - i + 1)` before dividing by `i`, we ensure that the intermediate results stay within the `long` data type's range for a wider range of inputs.
+
+4. **Clearer Comments**:  Comments have been added to explain the logic and purpose of different sections of the code.
+
+5. **Resource Management:**  The `Scanner` is closed using `scanner.close()` after use, which is good practice for resource management.
+
+
+Example Usage:
+

@@ -1,0 +1,60 @@
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class IterateFromPosition {
+
+    public static void main(String[] args) {
+        // Create a sample list
+        List<String> involvedList = new ArrayList<>();
+        involvedList.add("apple");
+        involvedList.add("banana");
+        involvedList.add("orange");
+        involvedList.add("grape");
+        involvedList.add("kiwi");
+
+
+        // Specify the starting position (e.g., index 2)
+        int startPosition = 2;
+
+        // Iterate through the list from the specified position using a ListIterator
+        ListIterator<String> iterator = involvedList.listIterator(startPosition);
+
+        System.out.println("Iterating from position " + startPosition + ":");
+
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+
+        // Example with error handling for invalid start position:
+
+        startPosition = 6; // Invalid position (out of bounds)
+
+        try {
+            iterator = involvedList.listIterator(startPosition); // This will throw IndexOutOfBoundsException
+
+            while (iterator.hasNext()) {
+                String element = iterator.next();
+                System.out.println(element);
+            }
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Invalid start position.  " + e.getMessage());
+        }
+
+         //Iterate backwards from a position
+        startPosition = 3;
+        ListIterator<String> reverseIterator = involvedList.listIterator(startPosition);
+
+        System.out.println("Iterating backwards from position " + startPosition + ":");
+
+        while (reverseIterator.hasPrevious()) {
+            String element = reverseIterator.previous();
+            System.out.println(element);
+        }
+
+
+    }
+}

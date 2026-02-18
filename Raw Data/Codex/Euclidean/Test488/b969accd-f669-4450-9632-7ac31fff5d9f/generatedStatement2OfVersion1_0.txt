@@ -1,0 +1,21 @@
+
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Casting to `double`:**  Crucially, we cast either the `numerator` or `denominator` (or both) to `double` *before* the division. This ensures floating-point division, which is necessary to get a more precise result before rounding.  Integer division truncates (discards the fractional part) which is why the cast is essential.
+
+2. **`Math.ceil()`:** This function rounds a `double` value *up* to the nearest integer.
+
+3. **Casting back to `int`:** After `Math.ceil()`, we cast the result back to `int` to get the final integer result.
+
+4. **Handling Negative Numbers:** The initial code was incorrect for negative numbers.  `Math.ceil()` will round them further away from zero.  To round �up� in the sense of towards zero for negative results, we must use `Math.floor()`. The code now includes a conditional check to correctly handle the rounding of negative results.
+
+5. **Helper Function (Optional):**  The `roundUp` function demonstrates how to encapsulate the rounding logic into a reusable method.  If you're working within the constraints of a `main` method, you'd place that logic directly inside `main`.
+
+6. **Zero Division Check:** The helper function now includes a check for division by zero and throws an `ArithmeticException`. This makes the code more robust.
+
+
+
+This improved version provides correct rounding for both positive and negative integer divisions and handles the important case of division by zero.

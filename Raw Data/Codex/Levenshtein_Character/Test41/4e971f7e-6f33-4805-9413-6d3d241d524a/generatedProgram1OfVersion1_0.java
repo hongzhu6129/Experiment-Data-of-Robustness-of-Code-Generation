@@ -1,0 +1,58 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class StringLetterCheck {
+
+    public static void main(String[] args) {
+        String str1 = "aabbcde";
+        String str2 = "abc";
+        System.out.println(test(str1, str2)); // Output: true
+
+        str1 = "aabbcde";
+        str2 = "abcc"; 
+        System.out.println(test(str1, str2)); // Output: false
+
+
+        str1 = "Aabbcde";
+        str2 = "abc";
+        System.out.println(test(str1, str2)); // Output: false (case-sensitive)
+
+
+        str1 = "aabbcde";
+        str2 = "AbC";
+        System.out.println(test(str1, str2)); // Output: false (case-sensitive)
+
+
+        str1 = "";
+        str2 = "";
+        System.out.println(test(str1, str2)); // Output: true
+        
+        str1 = "aabbcde";
+        str2 = "edcbaab";
+        System.out.println(test(str1, str2));  // Output: false
+
+    }
+
+    public static boolean test(String str1, String str2) {
+        Map<Character, Integer> charCounts1 = new HashMap<>();
+        Map<Character, Integer> charCounts2 = new HashMap<>();
+
+        for (char c : str1.toCharArray()) {
+            charCounts1.put(c, charCounts1.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : str2.toCharArray()) {
+            charCounts2.put(c, charCounts2.getOrDefault(c, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : charCounts2.entrySet()) {
+            char c = entry.getKey();
+            int count = entry.getValue();
+            if (!charCounts1.containsKey(c) || charCounts1.get(c) < count) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

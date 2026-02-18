@@ -1,0 +1,38 @@
+
+
+
+
+**Test Cases:**
+
+**Valid Octal Inputs:**
+
+1. **Input:** 123  **Expected Output:** 1010011
+2. **Input:** 777  **Expected Output:** 111111111
+3. **Input:** 0   **Expected Output:** 0
+4. **Input:** 10  **Expected Output:** 1000
+5. **Input:** 42  **Expected Output:** 100010
+
+
+
+**Invalid Octal Inputs (Corner/Edge Cases):**
+
+1. **Input:** 80 (Contains digit 8)  **Expected Output:** Error: Invalid octal digit: 8
+2. **Input:** 9 (Contains digit 9)  **Expected Output:** Error: Invalid octal digit: 9
+3. **Input:** -123 (Negative number) **Expected Output:** Error: Invalid octal digit: -  (It tries to parse character by character, so throws error on '-')
+4. **Input:** 12A (Contains non-octal character) **Expected Output:** Error: Invalid octal digit: A
+5. **Input:**  (Empty string) **Expected Output:**  Binary equivalent: 0 (The program now gracefully handles empty strings, treating them as 0) 
+6. **Input (Large number):** 777777777777777777  **Expected Output:**  (A very large binary number). Test this to check for potential overflow issues if you are concerned about them, though with `long` you have a wide range.
+
+
+
+**Explanation of Improvements:**
+
+* **Error Handling:** The `try-catch` block handles `NumberFormatException` to prevent the program from crashing when an invalid octal number is entered.  It provides informative error messages.
+* **Zero Handling:** The code now correctly handles the input "0". Previously it gave an empty string.
+* **Empty String Handling:** The code now gracefully handles empty string input, treating it as 0.
+* **Direct `char` to `int` conversion:** Simplified the digit extraction using the character code.
+* **Clearer comments:**  Added comments to improve readability.
+
+
+
+This improved version is more robust and user-friendly due to the error handling and special case handling. It also follows the constraint of using only the `main` method.

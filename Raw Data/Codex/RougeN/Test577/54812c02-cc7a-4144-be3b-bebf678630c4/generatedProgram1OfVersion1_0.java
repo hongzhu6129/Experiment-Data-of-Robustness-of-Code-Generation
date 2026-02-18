@@ -1,0 +1,30 @@
+public class ApproximatePi {
+
+    public static void main(String[] args) {
+        double sum1 = 1.0;
+        double sum2 = 1.0;
+
+        // Calculate the first series (up to 1/11)
+        sum1 -= (1.0 / 3.0);
+        sum1 += (1.0 / 5.0);
+        sum1 -= (1.0 / 7.0);
+        sum1 += (1.0 / 9.0);
+        sum1 -= (1.0 / 11.0);
+
+
+        // Calculate the second series (up to 1/13)
+        sum2 -= (1.0 / 3.0);
+        sum2 += (1.0 / 5.0);
+        sum2 -= (1.0 / 7.0);
+        sum2 += (1.0 / 9.0);
+        sum2 -= (1.0 / 11.0);
+        sum2 += (1.0 / 13.0);
+
+        double piApproximation1 = 4.0 * sum1;
+        double piApproximation2 = 4.0 * sum2;
+
+
+        System.out.println("Approximation 1 (up to 1/11): " + piApproximation1);
+        System.out.println("Approximation 2 (up to 1/13): " + piApproximation2);
+    }
+}

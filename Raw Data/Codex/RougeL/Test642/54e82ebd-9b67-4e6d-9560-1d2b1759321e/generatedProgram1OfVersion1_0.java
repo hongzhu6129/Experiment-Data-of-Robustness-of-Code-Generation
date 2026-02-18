@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        // Element to search for
+        int searchElement = 30;
+
+        // Search for the element using contains()
+        boolean found = numbers.contains(searchElement);
+
+        if (found) {
+            System.out.println(searchElement + " is found in the ArrayList.");
+        } else {
+            System.out.println(searchElement + " is not found in the ArrayList.");
+        }
+
+
+        // Example searching for an element that doesn't exist:
+        searchElement = 15; // Change the search element
+
+        found = numbers.contains(searchElement); 
+
+         if (found) {
+            System.out.println(searchElement + " is found in the ArrayList.");
+        } else {
+            System.out.println(searchElement + " is not found in the ArrayList.");
+        }
+    }
+}

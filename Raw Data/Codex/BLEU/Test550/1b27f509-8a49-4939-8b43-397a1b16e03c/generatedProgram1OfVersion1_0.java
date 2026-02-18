@@ -1,0 +1,57 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CopyMap {
+
+    public static void main(String[] args) {
+
+        // Create the source map
+        Map<String, Integer> sourceMap = new HashMap<>();
+        sourceMap.put("One", 1);
+        sourceMap.put("Two", 2);
+        sourceMap.put("Three", 3);
+
+        // Method 1: Using putAll() - The most straightforward way
+        Map<String, Integer> copiedMap1 = new HashMap<>();
+        copiedMap1.putAll(sourceMap); 
+
+        System.out.println("Copied Map 1 (putAll): " + copiedMap1);
+
+
+        // Method 2: Using the constructor -  Creates a new map with the same mappings as the source
+        Map<String, Integer> copiedMap2 = new HashMap<>(sourceMap);
+
+        System.out.println("Copied Map 2 (Constructor): " + copiedMap2);
+
+
+
+        // Method 3: Using entrySet() and a loop (for demonstration � less efficient)
+        Map<String, Integer> copiedMap3 = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : sourceMap.entrySet()) {
+            copiedMap3.put(entry.getKey(), entry.getValue());
+        }
+
+        System.out.println("Copied Map 3 (entrySet & loop): " + copiedMap3);
+
+
+        // Method 4: Java 8+ Stream API (functional approach) � more advanced
+        Map<String, Integer> copiedMap4 = sourceMap.entrySet().stream()
+                .collect(HashMap::new, (m, e) -> m.put(e.getKey(), e.getValue()), HashMap::putAll);
+
+        System.out.println("Copied Map 4 (Stream API): " + copiedMap4);
+
+
+
+        // Demonstrating that changes to the copied map don't affect the original (and vice-versa)
+        copiedMap1.put("Four", 4); // Modify the copied map
+        System.out.println("Original Map after modification to copy: " + sourceMap);
+        System.out.println("Copied Map 1 after modification: " + copiedMap1);
+
+
+
+       //Important Note about copying:
+       //These methods create *shallow copies*.  If the values in your map are mutable objects (like lists or other maps),
+       //modifying the values in the copied map *will* affect the original map's values.
+       //For a *deep copy* where changes to the values are isolated, you need to implement custom logic to copy the values themselves.
+    }
+}

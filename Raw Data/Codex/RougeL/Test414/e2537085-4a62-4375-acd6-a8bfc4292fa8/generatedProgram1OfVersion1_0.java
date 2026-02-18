@@ -1,0 +1,30 @@
+public class StartsWithNumber {
+
+    public static void main(String[] args) {
+        String testString1 = "123abc";
+        String testString2 = "abc123";
+        String testString3 = "123";
+        String testString4 = "abc";
+        String testString5 = "";
+        String testString6 = " 123abc"; // Starts with a space
+
+
+        System.out.println(testString1 + ": " + validate(testString1)); // Expected: true
+        System.out.println(testString2 + ": " + validate(testString2)); // Expected: false
+        System.out.println(testString3 + ": " + validate(testString3)); // Expected: true
+        System.out.println(testString4 + ": " + validate(testString4)); // Expected: false
+        System.out.println(testString5 + ": " + validate(testString5)); // Expected: false
+        System.out.println(testString6 + ": " + validate(testString6)); // Expected: false
+
+
+    }
+
+    public static String validate(String str) {
+        if (str == null || str.isEmpty()) {
+            return "false";
+        }
+
+        char firstChar = str.charAt(0);
+        return Character.isDigit(firstChar) ? "true" : "false"; 
+    }
+}

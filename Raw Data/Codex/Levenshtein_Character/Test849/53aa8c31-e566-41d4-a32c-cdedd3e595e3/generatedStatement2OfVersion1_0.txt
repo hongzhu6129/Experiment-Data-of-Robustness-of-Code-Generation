@@ -1,0 +1,22 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Encapsulation:** The `Circle` class now encapsulates the radius and calculation methods.  This is good object-oriented practice.
+* **Accuracy:**  Uses `Math.PI` for greater precision.
+* **Testing (JUnit):** The code now includes JUnit tests. This is crucial for verifying correctness, especially with floating-point calculations.  The `@Test` annotation marks test methods. `assertEquals` is used to assert expected values.  A small `delta` is used in `assertEquals` for floating-point comparisons to account for tiny rounding differences.
+* **Corner Cases in Tests:** The tests now cover important corner cases:
+    * Zero radius
+    * Very large radius
+    * Negative radius (expecting an `IllegalArgumentException` � you might want to add code to the `Circle` constructor to explicitly throw this exception).
+* **Clearer Output:** The `main` method prints the radius, perimeter, and area in a user-friendly way.
+
+To run the JUnit tests, you'll need to have a testing framework set up in your project (e.g., JUnit 5).  Most IDEs (like IntelliJ IDEA, Eclipse, NetBeans) have built-in support for running JUnit tests.
+
+
+
+If you really want to handle the negative radius case with an exception:
+
+

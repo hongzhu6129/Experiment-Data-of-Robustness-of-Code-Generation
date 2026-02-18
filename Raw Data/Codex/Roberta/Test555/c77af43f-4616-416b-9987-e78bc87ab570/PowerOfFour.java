@@ -1,0 +1,37 @@
+public class PowerOfFour {
+
+    public static void main(String[] args) {
+        int num1 = 64;
+        boolean isPowerOfFour_1 = isPowerOfFour(num1);
+        System.out.println(num1 + " is a power of 4: " + isPowerOfFour_1); // Output: true
+
+        int num2 = 6;
+        boolean isPowerOfFour_2 = isPowerOfFour(num2);
+        System.out.println(num2 + " is a power of 4: " + isPowerOfFour_2); // Output: false
+
+         int num3 = 0;
+        boolean isPowerOfFour_3 = isPowerOfFour(num3);
+        System.out.println(num3 + " is a power of 4: " + isPowerOfFour_3); // Output: false
+
+        int num4 = 1;
+        boolean isPowerOfFour_4 = isPowerOfFour(num4);
+        System.out.println(num4 + " is a power of 4: " + isPowerOfFour_4); // Output: true
+
+
+        int num5 = -16; // Test with negative number
+        boolean isPowerOfFour_5 = isPowerOfFour(num5);
+        System.out.println(num5 + " is a power of 4: " + isPowerOfFour_5); // Output: false
+    }
+
+    public static boolean isPowerOfFour(int num) {
+        if (num <= 0) { 
+            return false;
+        }
+
+        while (num % 4 == 0) {
+            num /= 4;
+        }
+
+        return num == 1;
+    }
+}

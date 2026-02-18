@@ -1,0 +1,72 @@
+import java.util.TreeSet;
+
+public class CompareTreeSets {
+
+    public static void main(String[] args) {
+        // Create two TreeSets
+        TreeSet<Integer> set1 = new TreeSet<>();
+        TreeSet<Integer> set2 = new TreeSet<>();
+
+        // Populate set1
+        set1.add(1);
+        set1.add(2);
+        set1.add(3);
+        set1.add(4);
+        set1.add(5);
+
+        // Populate set2
+        set2.add(3);
+        set2.add(4);
+        set2.add(5);
+        set2.add(6);
+        set2.add(7);
+
+
+        // 1. Check if sets are equal
+        boolean isEqual = set1.equals(set2);
+        System.out.println("Are sets equal? " + isEqual);
+
+
+        // 2. Find common elements (intersection)
+        TreeSet<Integer> intersection = new TreeSet<>(set1); // Create a copy to avoid modifying the original set
+        intersection.retainAll(set2); 
+        System.out.println("Common elements (intersection): " + intersection);
+
+
+        // 3. Find the union of the two sets
+        TreeSet<Integer> union = new TreeSet<>(set1);
+        union.addAll(set2);
+        System.out.println("Union of sets: " + union);
+
+
+        // 4. Find the difference (elements in set1 but not in set2)
+        TreeSet<Integer> difference1 = new TreeSet<>(set1);
+        difference1.removeAll(set2);
+        System.out.println("Elements in set1 but not in set2: " + difference1);
+
+        // 5. Find the difference (elements in set2 but not in set1)
+        TreeSet<Integer> difference2 = new TreeSet<>(set2);
+        difference2.removeAll(set1);
+        System.out.println("Elements in set2 but not in set1: " + difference2);
+
+
+        // Example with Strings (TreeSet maintains natural ordering)
+        TreeSet<String> stringSet1 = new TreeSet<>();
+        stringSet1.add("apple");
+        stringSet1.add("banana");
+        stringSet1.add("orange");
+
+        TreeSet<String> stringSet2 = new TreeSet<>();
+        stringSet2.add("banana");
+        stringSet2.add("grape");
+        stringSet2.add("orange");
+
+        System.out.println("String Set 1: " + stringSet1);
+        System.out.println("String Set 2: " + stringSet2);
+
+        TreeSet<String> stringIntersection = new TreeSet<>(stringSet1);
+        stringIntersection.retainAll(stringSet2);
+        System.out.println("String Intersection: " + stringIntersection);
+
+    }
+}

@@ -1,0 +1,46 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CountVowels {
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        int vowelCount = validate(inputString);
+        System.out.println("Number of vowels: " + vowelCount);
+
+        inputString = "AEIOUaeiou";
+        vowelCount = validate(inputString);
+        System.out.println("Number of vowels: " + vowelCount);
+
+
+        inputString = "This is a test string.";
+        vowelCount = validate(inputString);
+        System.out.println("Number of vowels: " + vowelCount);
+
+        inputString = ""; // Empty string
+        vowelCount = validate(inputString);
+        System.out.println("Number of vowels: " + vowelCount);
+
+
+        inputString = "rhythm"; // String without vowels
+        vowelCount = validate(inputString);
+        System.out.println("Number of vowels: " + vowelCount);
+
+
+    }
+
+    public static int validate(String inputString) {
+        int vowelCount = 0;
+        if (inputString != null) { // Handle null input
+            // Using a regular expression with a character class for vowels:
+            Pattern pattern = Pattern.compile("[aeiouAEIOU]"); // Case-insensitive
+            Matcher matcher = pattern.matcher(inputString);
+            while (matcher.find()) {
+                vowelCount++;
+            }
+        }
+        return vowelCount;
+
+
+    }
+}

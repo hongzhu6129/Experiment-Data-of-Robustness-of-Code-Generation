@@ -1,0 +1,50 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class PortionOfMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (sorted by keys)
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(3, "Three");
+        map.put(5, "Five");
+        map.put(7, "Seven");
+        map.put(9, "Nine");
+
+        int givenKey = 4;
+
+        // Get the portion of the map whose keys are greater than givenKey
+        SortedMap<Integer, String> subMap = map.tailMap(givenKey); 
+
+        // Print the submap
+        System.out.println("Portion of map with keys greater than " + givenKey + ": " + subMap);
+
+
+
+        //Example with a String key map
+        TreeMap<String, Integer> stringKeyMap = new TreeMap<>();
+        stringKeyMap.put("apple", 1);
+        stringKeyMap.put("banana", 2);
+        stringKeyMap.put("grape", 3);
+        stringKeyMap.put("orange", 4);
+
+        String givenStringKey = "banana";  // Inclusive
+
+        SortedMap<String, Integer> stringSubMapInclusive = stringKeyMap.tailMap(givenStringKey);
+
+         givenStringKey = "banana"; // Exclusive - Need to use the next key for exclusive behavior
+
+        // Find the smallest key strictly greater than givenStringKey for exclusive submap
+        String nextKey = stringKeyMap.higherKey(givenStringKey);
+        SortedMap<String, Integer> stringSubMapExclusive = (nextKey != null) ? stringKeyMap.tailMap(nextKey) : new TreeMap<>();
+
+
+
+        System.out.println("String Key Map (inclusive): " + stringSubMapInclusive);
+        System.out.println("String Key Map (exclusive): " + stringSubMapExclusive);
+
+
+
+    }
+}

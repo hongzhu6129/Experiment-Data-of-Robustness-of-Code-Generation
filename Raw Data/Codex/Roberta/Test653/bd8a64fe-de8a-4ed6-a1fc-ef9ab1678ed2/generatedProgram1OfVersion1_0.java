@@ -1,0 +1,14 @@
+public class AntiprismNumbers {
+
+    public static void main(String[] args) {
+        System.out.println("The first 50 antiprism numbers are:");
+        for (int i = 1; i <= 50; i++) {
+            int antiprismNumber = getPentagonalNumber(i); // Antiprism numbers are pentagonal numbers
+            System.out.print(antiprismNumber + " ");
+        }
+    }
+
+    public static int getPentagonalNumber(int n) {
+        return n * (3 * n - 1) / 2;
+    }
+}

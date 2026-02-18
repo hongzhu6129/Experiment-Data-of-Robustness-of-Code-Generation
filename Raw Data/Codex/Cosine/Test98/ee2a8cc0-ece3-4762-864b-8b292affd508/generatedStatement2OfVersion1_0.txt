@@ -1,0 +1,25 @@
+
+
+**Test Cases and Corner Cases (Conceptual - as direct output testing is tricky in unit tests):**
+
+While testing output directly is challenging in unit tests, we can focus on testing logical components if we break the face printing into smaller parts. Here's a conceptual approach with examples of situations to consider:
+
+1. **Empty String Components:**
+   - What if the string representing the eyes (`"o o"`) is empty?  Should it print empty spaces inside the eye sockets?
+   - What if the mouth (`"-"`) or nose (`"^"`) were empty? Should it still maintain the overall structure?
+
+2. **Whitespace Variations:**
+   - Test different spacing within the string components.  For example: `" o o "`,  `"o  o"`.  Does the face distort?  Should it be robust to these variations?
+
+3. **Character Encoding:**
+   - If the program were to handle more complex characters (e.g., for a winking face or different styles), ensure those characters render correctly. Consider UTF-8 encoding.
+
+4. **Larger Faces (Scalability - though not required for this simple case):**
+   - Although this face is small, imagine a scenario where you could specify the size (width/height).  How would the proportions and spacing be maintained? This explores potential scalability.
+
+5. **Component Replacement:**
+   - If the design allowed customization (again, an extension of the original problem), how would you handle replacing parts of the face?  For example, changing the eyes to `"* *"`.
+
+
+**Example of a (limited) JUnit Test (focus is on component creation):**
+

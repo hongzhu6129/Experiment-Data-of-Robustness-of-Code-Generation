@@ -1,0 +1,52 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueInsertion {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Integers (you can change the data type as needed)
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Insert elements into the PriorityQueue (smaller elements have higher priority by default)
+        pq.offer(30);
+        pq.offer(10);
+        pq.offer(20);
+        pq.offer(40);
+
+        System.out.println("PriorityQueue before insertion: " + pq);
+
+        // Element to insert
+        int elementToInsert = 15;
+
+        // Insert the new element � PriorityQueue automatically handles placement based on priority
+        pq.offer(elementToInsert); 
+
+        System.out.println("PriorityQueue after inserting " + elementToInsert + ": " + pq);
+
+
+        // Example with Strings (natural ordering - lexicographical)
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.offer("banana");
+        stringPQ.offer("apple");
+        stringPQ.offer("orange");
+
+        System.out.println("String PriorityQueue before insertion: " + stringPQ);
+        stringPQ.offer("grape");
+        System.out.println("String PriorityQueue after inserting \"grape\": " + stringPQ);
+
+
+
+        // Example with a custom Comparator (for reverse order of integers)
+        PriorityQueue<Integer> reverseOrderPQ = new PriorityQueue<>((a, b) -> b - a); // Reverse order comparator
+
+        reverseOrderPQ.offer(30);
+        reverseOrderPQ.offer(10);
+        reverseOrderPQ.offer(20);
+        reverseOrderPQ.offer(40);
+
+
+        System.out.println("Reverse Order PriorityQueue before insertion: " + reverseOrderPQ);
+        reverseOrderPQ.offer(15);
+        System.out.println("Reverse Order PriorityQueue after inserting 15: " + reverseOrderPQ);
+    }
+}
+

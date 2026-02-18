@@ -1,0 +1,29 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering normal scenarios, edge cases, and potential issues:
+
+| Test Case | Input 1 | Input 2 | Input 3 | Expected Output | Notes |
+|---|---|---|---|---|---|
+| Normal Case 1 | 10 | 20 | 30 | 20.0 |  |
+| Normal Case 2 | 1.5 | 2.5 | 3.5 | 2.5 |  Handles decimals |
+| Normal Case 3 | -5 | 0 | 5 | 0.0 | Handles negative and zero |
+| Edge Case 1 | Integer.MAX_VALUE | Integer.MAX_VALUE | Integer.MAX_VALUE |  Overflow/Infinity (or large incorrect value) | Tests overflow behavior.  Java `double` can handle this. |
+| Edge Case 2 | Integer.MIN_VALUE | Integer.MIN_VALUE | Integer.MIN_VALUE |  Underflow/Negative Infinity (or large incorrect negative value)| Tests underflow behavior. Java `double` can handle this. |
+| Edge Case 3 | Double.MAX_VALUE | 0 | 0 | Infinity or very large number | Tests behavior with extremely large values |
+| Edge Case 4 | Double.NaN | 10 | 20 | NaN |  Should handle NaN correctly. |
+| Edge Case 5 | 10 | Double.POSITIVE_INFINITY | 20 | Infinity |  Handles Infinity input. |
+| Edge Case 6 | 10 | Double.NEGATIVE_INFINITY | 20 | -Infinity | Handles Negative Infinity input. |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:**  You can manually run the program and enter the input values for each test case. Observe if the output matches the "Expected Output".
+
+2. **Automated Testing (Recommended):**  For more robust testing, use a testing framework like JUnit.  Here's an example of a JUnit test class:
+
+
+

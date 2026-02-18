@@ -1,0 +1,24 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the flag pattern
+        for (int i = 0; i < 9; i++) {
+            // Print stars and stripes section
+            if (i % 2 == 0) {
+                System.out.print("* * * * * * ");
+            } else {
+                if (i == 3) { // Adjust spacing for the "pct" row
+                    System.out.print("* * * pct * "); // Or System.out.print("* * * * * * ") to maintain star pattern
+                } else {
+                    System.out.print("* * * * * ");
+                }
+            }
+            System.out.println("==================================");
+        }
+
+        // Print the bottom stripes
+        for (int i = 0; i < 6; i++) {
+            System.out.println("==================================");
+        }
+    }
+}

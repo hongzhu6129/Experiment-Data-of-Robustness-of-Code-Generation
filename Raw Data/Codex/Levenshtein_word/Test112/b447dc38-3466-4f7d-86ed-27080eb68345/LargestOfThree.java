@@ -1,0 +1,55 @@
+public class LargestOfThree {
+
+    public static void main(String[] args) {
+        // Example array (even length)
+        int[] arr = {10, 5, 25, 15, 8, 20}; 
+
+        if (arr == null || arr.length == 0 || arr.length % 2 != 0) {
+            System.out.println("Invalid input array. Must be non-null, non-empty, and of even length.");
+            return;
+        }
+
+        int first = arr[0];
+        int last = arr[arr.length - 1];
+        int middle = arr[arr.length / 2 -1]; // Calculate middle index for even length
+
+
+        int largest = first; // Assume first is largest initially
+
+        if (last > largest) {
+            largest = last;
+        }
+
+        if (middle > largest) {
+            largest = middle;
+        }
+
+        System.out.println("Largest of first, last, and middle elements: " + largest);
+
+
+         // Example with different array
+        int[] arr2 = {2, 8, 1, 9, 4, 6};
+        if (arr2 == null || arr2.length == 0 || arr2.length % 2 != 0) {
+            System.out.println("Invalid input array. Must be non-null, non-empty, and of even length.");
+            return;
+        }
+         first = arr2[0];
+         last = arr2[arr2.length - 1];
+         middle = arr2[arr2.length / 2 -1 ];
+
+
+         largest = first; 
+
+        if (last > largest) {
+            largest = last;
+        }
+
+        if (middle > largest) {
+            largest = middle;
+        }
+
+        System.out.println("Largest of first, last, and middle elements (second array): " + largest);
+
+
+    }
+}

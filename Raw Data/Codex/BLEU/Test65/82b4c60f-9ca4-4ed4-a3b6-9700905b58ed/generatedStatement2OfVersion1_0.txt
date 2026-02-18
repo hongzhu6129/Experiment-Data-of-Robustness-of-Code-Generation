@@ -1,0 +1,61 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Same Coordinates:**
+   - Latitude 1: 40.7128
+   - Longitude 1: -74.0060 (New York)
+   - Latitude 2: 40.7128
+   - Longitude 2: -74.0060 (New York)
+   - Expected Distance: 0.0
+
+2. **North and South Poles:**
+   - Latitude 1: 90.0 (North Pole)
+   - Longitude 1: 0.0
+   - Latitude 2: -90.0 (South Pole)
+   - Longitude 2: 0.0 
+   - Expected Distance: ~20015.08 km (half the Earth's circumference)
+
+3. **Opposite sides of the Earth (Antipodes):**
+   - Latitude 1: 40.7128 (New York)
+   - Longitude 1: -74.0060
+   - Latitude 2: -40.7128
+   - Longitude 2: 105.9940  (Near Perth, Australia)
+   - Expected Distance: ~20015.08 km
+
+4. **Points on the Equator:**
+   - Latitude 1: 0.0
+   - Longitude 1: 0.0
+   - Latitude 2: 0.0
+   - Longitude 2: 90.0
+   - Expected Distance: ~10007.54 km (quarter of Earth's circumference)
+
+5. **Small Distance:**
+    - Latitude 1: 34.0522
+    - Longitude 1: -118.2437 (Los Angeles)
+    - Latitude 2: 34.0533
+    - Longitude 2: -118.2311 (Slightly offset)
+    - Expected Distance: A small value (calculate precisely)
+
+
+
+6. **Date Line Crossing (West to East):**
+    - Latitude 1: 0.0
+    - Longitude 1: 179.0
+    - Latitude 2: 0.0
+    - Longitude 2: -179.0
+    - Expected Distance: A small value (because they are close despite the longitude difference)
+
+
+7. **Date Line Crossing (East to West):**
+    - Latitude 1: 0.0
+    - Longitude 1: -179.0
+    - Latitude 2: 0.0
+    - Longitude 2: 179.0
+    - Expected Distance: A small value (same reasoning as above)
+
+
+
+These test cases will help ensure that your Java program correctly calculates the distance between two points on the Earth's surface, including cases where the points are close together, far apart, or on opposite sides of the Earth.  The date line crossing tests are especially important to check how your program handles those transitions. You can easily implement these test cases using JUnit or TestNG.

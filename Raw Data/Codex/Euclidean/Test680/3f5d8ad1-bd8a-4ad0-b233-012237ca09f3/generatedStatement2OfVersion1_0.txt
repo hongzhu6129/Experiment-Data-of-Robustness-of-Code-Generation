@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Educational Points:**
+
+1. **TreeMap:** We use `TreeMap` which is a sorted map implementation in Java.  This is crucial because it allows efficient retrieval of the least key greater than or equal to a given key.
+
+2. **ceilingKey():**  The `ceilingKey(K key)` method of `TreeMap` is the core of the solution.  It returns the least key greater than or equal to the given `key`, or `null` if no such key exists.
+
+3. **Generics <K, V>:**  The method `getKeyValueForLeastKeyGreaterThanOrEqualTo` uses generics `<K, V>` to make it work with various key-value types (e.g., Integer-String, String-Integer).  This is good practice for writing reusable code.
+
+4. **Map.Entry:**  Instead of just returning the value, we return a `Map.Entry<K, V>`. This is a better approach as it provides both the key and the value associated with the least key found. It also avoids potential issues if the value itself could be null.
+
+
+5. **Null Handling:**  The code includes checks for `null` or empty `treeMap` to prevent `NullPointerExceptions`.
+
+6. **Clear Example Usage:** The `main` method provides several test cases to demonstrate how the method works with different inputs and data types, making it easier to understand.
+
+
+
+This improved version is more robust, efficient, and provides a better learning experience by showcasing good practices and providing clear examples.

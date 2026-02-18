@@ -1,0 +1,48 @@
+class Solution {
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if ((str == null) || (str.length() <= 1)) {
+            System.out.print(str);
+        } else {
+            System.out.print(str.charAt(str.length() - 1));
+            reverseString(str.substring(0, str.length() - 1));
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "hello";
+        System.out.print("\"hello\" reversed is: \"");
+        solution.reverseString(str1);
+        System.out.println("\"");
+
+        String str2 = "world";
+        System.out.print("\"world\" reversed is: \"");
+        solution.reverseString(str2);
+        System.out.println("\"");
+
+
+        String str3 = null; // Test with null
+        System.out.print("\"null\" reversed is: \"");
+        solution.reverseString(str3);
+        System.out.println("\"");
+
+         String str4 = ""; // Test with empty string
+        System.out.print("\"\" reversed is: \"");
+        solution.reverseString(str4);
+        System.out.println("\"");
+
+        String str5 = "a"; // Test with single character string
+        System.out.print("\"a\" reversed is: \"");
+        solution.reverseString(str5);
+        System.out.println("\"");
+
+
+    }
+}

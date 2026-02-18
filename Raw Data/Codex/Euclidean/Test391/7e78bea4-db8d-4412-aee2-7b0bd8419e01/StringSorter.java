@@ -1,0 +1,47 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringSorter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "banana", "orange", "grape", "kiwi");
+
+        // Ascending sort
+        List<String> ascendingSorted = strings.stream()
+                .sorted() // Uses natural ordering (alphabetical for strings)
+                .collect(Collectors.toList());
+
+        System.out.println("Ascending order: " + ascendingSorted);
+
+
+        // Descending sort
+        List<String> descendingSorted = strings.stream()
+                .sorted(Comparator.reverseOrder()) // Reverse the natural order
+                .collect(Collectors.toList());
+
+
+        System.out.println("Descending order: " + descendingSorted);
+
+
+        // Example with a custom comparator (e.g., case-insensitive sorting)
+        List<String> caseInsensitiveAscending = strings.stream()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .collect(Collectors.toList());
+
+        System.out.println("Case-insensitive ascending: " + caseInsensitiveAscending);
+
+
+
+        //Another example with a custom comparator (e.g., by length then alphabetically)
+        List<String> lengthThenAlphabetical = strings.stream()
+                .sorted(Comparator.comparingInt(String::length).thenComparing(String.CASE_INSENSITIVE_ORDER))  // Sort by length first, then alphabetically if lengths are equal
+                .collect(Collectors.toList());
+
+         System.out.println("By length then alphabetical: " + lengthThenAlphabetical);
+
+
+
+    }
+}

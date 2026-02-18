@@ -1,0 +1,13 @@
+
+
+
+Key improvements and explanations:
+
+* **Test Cases:** The code now includes comprehensive JUnit 5 test cases covering various scenarios:
+    * Positive radius (the original example).
+    * Zero radius (a boundary case).
+    * Negative radius (an invalid input � expecting exceptions).
+    * Very large radius (checking for potential overflow or `Infinity`).
+    * Very small radius (close to zero, checking for accuracy and underflow).
+* **Exception Handling:**   The tests for negative radius now correctly use `assertThrows` to verify that an `IllegalArgumentException` (or similar) is thrown.  You should add the actual exception throwing into the `calculateArea` and `calculatePerimeter` methods if you want these tests to pass, because right now, they won't throw any exceptions with negative input.  For example:
+   

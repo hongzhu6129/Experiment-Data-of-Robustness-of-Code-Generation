@@ -1,0 +1,21 @@
+
+
+
+
+Explanation:
+
+1. **`removeElement(int[] nums, int val)`:**
+   - Initializes `k` to 0.  `k` will keep track of the index where we'll place the next element that's *not* equal to `val`.
+   - Iterates through the input array `nums`.
+   - Inside the loop, if the current element `nums[i]` is *not* equal to `val`, it's copied to the `k`-th position, and `k` is incremented.  This effectively overwrites elements equal to `val` with elements that are not.
+   - Finally, the function returns `k`, which represents the number of elements in the modified array (excluding the removed elements).
+
+2. **`main(String[] args)`:**
+   - Creates a sample array `nums` and sets the value to be removed (`val`).
+   - Prints the original array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the new length.
+   - (Optional) Prints the updated array using `Arrays.copyOfRange` to create a new array containing only the first `newLength` elements of the modified `nums` array. This is just for demonstration purposes; the problem itself only requires the length.
+
+
+Important Note: The `removeElement` function modifies the original array in-place.  It doesn't create a new array.  The elements beyond the `k`-th index in the modified array are not relevant (they are the original values that were supposed to be "removed").  That's why the optional printing of the updated array uses  `Arrays.copyOfRange` to create a new, correctly sized array.

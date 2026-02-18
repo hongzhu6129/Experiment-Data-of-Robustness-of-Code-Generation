@@ -1,0 +1,33 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -5 | -2 | -7 | -3 | 10 | 2.5 | -1.0 or 1.0 (remainder behavior can vary with negatives) |
+| 3. Zero and Positive | 0 | 8 | 8 | -8 | 0 | 0 | 0 |
+| 4. Positive and Zero | 12 | 0 | 12 | 12 | 0 | "Division by zero" | "Division by zero"|
+| 5. Zero and Zero | 0 | 0 | 0 | 0 | 0 | "Division by zero" | "Division by zero" |
+| 6. Large Numbers | 100000 | 50000 | 150000 | 50000 | 5000000000 | 2 | 0 |
+| 7. Decimal Numbers | 5.5 | 2.5 | 8 | 3 | 13.75 | 2.2 | 0 |
+| 8. Negative and Positive | -10 | 5 | -5 | -15 | -50 | -2 | 0|
+| 9. Positive and Negative | 10 | -5 | 5 | 15 | -50 | -2 | 0|
+| 10. Integer Overflow (Potential) | Integer.MAX_VALUE | 1 | Overflow Result (handled by Java) | Overflow Result | Overflow Result |  Overflow Result | Overflow Result |
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Test Cases 4 and 5):** Dividing by zero is undefined in mathematics. The program explicitly checks for this condition and prints an appropriate message.
+* **Zero Operations (Test Cases 3, 4, and 5):**  Involving zero in operations can sometimes lead to unexpected results if not handled correctly. These test cases ensure that operations with zero produce the correct output.
+* **Large Numbers (Test Case 6):**  Using large numbers helps test potential overflow issues, although Java handles integer overflow gracefully (it wraps around).
+* **Decimal Numbers (Test Case 7):** Using floating-point numbers helps ensure that the program handles decimal arithmetic correctly.
+* **Negative Numbers (Test Cases 2, 8 and 9):**  Operations with negative numbers need to be tested to ensure correct sign handling. The remainder operation's behavior with negative numbers can be a bit subtle, so it's important to test this.
+* **Integer Overflow (Test Case 10):** Although Java handles integer overflow by wrapping around, it's still a good practice to test with extremely large values to see how the program behaves.
+
+
+This comprehensive set of test cases helps verify the correctness and robustness of the `ArithmeticOperations` program.  You should run your Java code with these inputs and compare the actual output with the expected output to ensure that your program is working as intended.
+

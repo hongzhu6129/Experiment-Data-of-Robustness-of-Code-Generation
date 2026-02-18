@@ -1,0 +1,31 @@
+public class MultiplyArrays {
+
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {6, 7, 8, 9, 10};
+
+        // Check if arrays are of the same length.
+        if (array1.length != array2.length) {
+            System.out.println("Arrays must have the same length for element-wise multiplication.");
+            return; // Exit the program if lengths don't match
+        }
+
+        int[] result = new int[array1.length];
+
+        // Multiply corresponding elements and store in the result array.
+        for (int i = 0; i < array1.length; i++) {
+            result[i] = array1[i] * array2[i];
+        }
+
+
+        // Print the result array.
+        System.out.print("Resultant array: [");
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i]);
+            if (i < result.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}

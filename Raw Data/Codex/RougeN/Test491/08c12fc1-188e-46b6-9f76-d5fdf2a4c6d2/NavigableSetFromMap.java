@@ -1,0 +1,47 @@
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class NavigableSetFromMap {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> studentScores = new TreeMap<>();
+
+        // Add some entries to the map
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+        studentScores.put("David", 78);
+        studentScores.put("Eve", 88);
+
+
+        // Get a NavigableSet view of the keys
+        NavigableSet<String> studentNames = studentScores.navigableKeySet();
+
+        // Print the NavigableSet of keys
+        System.out.println("NavigableSet of student names: " + studentNames);
+
+
+        // Demonstrate some NavigableSet methods (optional)
+
+        System.out.println("First student name: " + studentNames.first());
+        System.out.println("Last student name: " + studentNames.last());
+
+        System.out.println("Student names in descending order: " + studentNames.descendingSet());
+
+
+        // Example: Get the student name lower than "Charlie"
+         String lowerThanCharlie = studentNames.lower("Charlie");
+         System.out.println("Student name lower than Charlie: " + lowerThanCharlie); // Output: Bob
+
+
+        // Example: Get the subset of student names from "Bob" (inclusive) to "Eve" (exclusive).
+        NavigableSet<String> subset = studentNames.subSet("Bob", true, "Eve", false);
+        System.out.println("Subset from Bob to Eve (exclusive): " + subset);  // Output: [Bob, Charlie, David]
+
+
+    }
+}

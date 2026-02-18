@@ -1,0 +1,75 @@
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+
+        // Search for a specific key
+        String keyToSearch = "banana";
+
+        // Check if the key exists using containsKey()
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key '" + keyToSearch + "' found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key '" + keyToSearch + "' not found.");
+        }
+
+
+        // Search for a key that doesn't exist
+        keyToSearch = "pineapple";
+
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key '" + keyToSearch + "' found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key '" + keyToSearch + "' not found.");
+        }
+
+
+         // Search for a value (less efficient, requires iteration)
+        int valueToSearch = 3;
+        String keyForValue = null;
+
+        for (String key : treeMap.keySet()) { // Iterate through keys
+            if (treeMap.get(key) == valueToSearch) {
+                keyForValue = key;
+                break;  // Exit loop once found
+            }
+        }
+
+
+        if (keyForValue != null) {
+            System.out.println("Value " + valueToSearch + " found for key: " + keyForValue);
+        } else {
+            System.out.println("Value " + valueToSearch + " not found.");
+        }
+
+         // Search for a value that doesn't exist 
+         valueToSearch = 10;
+         keyForValue = null; //reset
+
+         for (String key : treeMap.keySet()) { 
+             if (treeMap.get(key) == valueToSearch) {
+                 keyForValue = key;
+                 break;  
+             }
+         }
+ 
+
+         if (keyForValue != null) {
+             System.out.println("Value " + valueToSearch + " found for key: " + keyForValue);
+         } else {
+             System.out.println("Value " + valueToSearch + " not found.");
+         }
+
+
+
+    }
+}

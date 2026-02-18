@@ -1,0 +1,24 @@
+JUnit version 4.13
+.Original array: [7, 10, 4, 3, 20, 15]
+3th smallest element: 7
+3th largest element: 10
+
+Demonstrating (without full implementation) manual calculation (more efficient than fully sorting):
+For Kth Smallest (using a Max Heap - only showing concept):
+1. Build a Max Heap of the first k elements of the array.
+2. Iterate through the rest of the array. For each element:
+   - If the element is smaller than the root of the heap (largest in heap so far):
+     - Replace the root with the element and heapify.
+3. After iterating through the whole array, the root of the heap is the kth smallest element.
+
+For Kth Largest (using a Min Heap - only showing concept):
+1. Build a Min Heap of the first k elements of the array.
+2. Iterate through the rest of the array. For each element:
+   - If the element is larger than the root of the heap (smallest in heap so far):
+     - Replace the root with the element and heapify.
+3. After iterating through the whole array, the root of the heap is the kth largest element.
+.
+Time: 0.433
+
+OK (2 tests)
+

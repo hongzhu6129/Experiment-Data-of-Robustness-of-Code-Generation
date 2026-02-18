@@ -1,0 +1,47 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the star section
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (i == 4 && j == 2) {
+                    System.out.print("pct "); // Replace 'pct' with desired character/symbol
+                } else {
+                    System.out.print("* ");
+                }
+
+            }
+            System.out.print("==");
+            for (int k = 0; k < 20; k++) {
+                System.out.print("=");
+            }
+            System.out.println();  // Newline after each row
+
+            if (i % 2 == 0) {
+                for (int j = 0; j < 4; j++) {
+                    System.out.print("* ");
+                }
+
+                System.out.print("==");
+                for (int k = 0; k < 20; k++) {
+                    System.out.print("=");
+                }
+                System.out.println(); // New line
+            }
+        }
+
+
+        // Print the stripes section
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 30; j++) {
+                System.out.print("=");
+            }
+            System.out.println(); // Newline after each row
+
+        }
+
+    }
+}
+
+
+

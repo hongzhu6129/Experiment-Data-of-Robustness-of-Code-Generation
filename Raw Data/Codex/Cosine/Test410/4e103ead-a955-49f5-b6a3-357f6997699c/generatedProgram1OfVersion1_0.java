@@ -1,0 +1,35 @@
+import java.util.TreeSet;
+
+public class TreeSetIteration {
+
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet
+        treeSet.add("Apple");
+        treeSet.add("Banana");
+        treeSet.add("Orange");
+        treeSet.add("Grape");
+        treeSet.add("Mango");
+
+        // Iterate through the TreeSet using enhanced for loop (for-each loop)
+        System.out.println("Iterating using enhanced for loop:");
+        for (String fruit : treeSet) {
+            System.out.println(fruit);
+        }
+
+
+        //  Iterate using Java 8 streams and forEach
+        System.out.println("\nIterating using Java 8 streams and forEach:");
+        treeSet.forEach(System.out::println);
+
+
+        // Iterate using an Iterator 
+        System.out.println("\nIterating using an Iterator:");
+         java.util.Iterator<String> iterator = treeSet.iterator();
+         while(iterator.hasNext()) {
+             System.out.println(iterator.next());
+         }
+    }
+}

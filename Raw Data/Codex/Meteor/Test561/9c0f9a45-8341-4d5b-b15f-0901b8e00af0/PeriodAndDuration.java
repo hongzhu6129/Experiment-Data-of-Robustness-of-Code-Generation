@@ -1,0 +1,34 @@
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+public class PeriodAndDuration {
+
+    public static void main(String[] args) {
+        // Example of Period (Date-based)
+        LocalDate startDate = LocalDate.of(2023, 1, 1);
+        LocalDate endDate = LocalDate.of(2024, 2, 15);
+        Period period = Period.between(startDate, endDate);
+
+        System.out.println("Period (Date-based): " + periodToYMD(period));
+
+
+        // Example of Duration (Time-based)
+        Duration duration = Duration.ofDays(365).plusHours(6).plusMinutes(30).plusSeconds(15);
+        System.out.println("Duration (Time-based): " + duration);
+
+
+        //  You can also get a Duration from between two LocalDates/LocalTimes etc
+        Duration durationBetweenDates = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay());
+        System.out.println("Duration between dates: " + durationBetweenDates);
+
+
+
+    }
+
+    private static String periodToYMD(Period period) {
+        return period.getYears() + " years, " + period.getMonths() + " months, " + period.getDays() + " days";
+    }
+}
+

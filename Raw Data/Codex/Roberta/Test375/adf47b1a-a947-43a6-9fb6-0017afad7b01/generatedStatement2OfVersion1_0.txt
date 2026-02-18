@@ -1,0 +1,18 @@
+
+
+
+Here's how this code adheres to the prompt and addresses potential improvements:
+
+* **Method Signatures:**  Uses only `public static void allInterleavings(String, String, String, Set<String>)` and `public static void main(String[])` as requested.
+* **Recursion:**  The `allInterleavings` method uses recursion to explore all possible combinations.
+* **Base Case:** The recursion stops when both input strings (`str1` and `str2`) are empty.  At this point, the `current` string (which has accumulated the interleaved characters) is added to the `interleavings` set.
+* **Recursive Steps:**  The method makes recursive calls:
+    * If `str1` is not empty, it takes the first character of `str1`, adds it to `current`, and recurses with the rest of `str1`.
+    * If `str2` is not empty, it takes the first character of `str2`, adds it to `current`, and recurses with the rest of `str2`.
+* **Set for Uniqueness:** A `HashSet` is used to store the interleavings, ensuring that there are no duplicates (as different paths in the recursion might produce the same interleaving).
+* **Clear Output:** The `main` method demonstrates the usage and prints the results clearly.
+* **Efficiency:** While functional, this recursive approach can be optimized further for very long strings (using dynamic programming, for example, to avoid redundant calculations) if performance becomes critical. However, for reasonably sized strings, the recursive solution is often clear and sufficient.
+
+
+Example Output (for "AB" and "CD"):
+

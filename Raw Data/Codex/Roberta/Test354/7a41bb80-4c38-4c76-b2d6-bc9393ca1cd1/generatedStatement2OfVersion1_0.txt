@@ -1,0 +1,68 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected: 1480.0848451069087 km (approximately)
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected: 0 km
+
+3. **North & South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude doesn't matter at the poles)
+   - Expected: ~20015.08 km (half the Earth's circumference)
+
+4. **Opposite Sides of the Earth:**
+   - lat1: 0   (Equator)
+   - lon1: 0
+   - lat2: 0   (Equator)
+   - lon2: 180
+   - Expected: ~20015.08 km (half the Earth's circumference)
+
+
+
+5. **Close Points:**
+   - lat1: 40.7128
+   - lon1: -74.0060 (New York City)
+   - lat2: 34.0522
+   - lon2: -118.2437 (Los Angeles)
+   - Expected: ~3935.73 km (approximately) �  A realistic distance for a cross-country flight.
+
+
+6. **Points on the same longitude:**
+   - lat1: 30
+   - lon1: 70
+   - lat2: 60
+   - lon2: 70
+   - Expected Result: Should be accurate. This simplifies the formula as `cos(lon1 - lon2)` becomes 1.
+
+7. **Points on the same latitude:**
+    - lat1: 30
+    - lon1: 20
+    - lat2: 30
+    - lon2: 50
+    - Expected Result: Should be accurate.
+
+8. **Invalid Input (Boundary Conditions):**
+    - lat1: 91 (out of range for latitude)
+    - lon1: 190 (out of range for longitude). You can use `Double.isNaN()` or other checks to handle these incorrect inputs gracefully in your code if you want.
+
+
+
+
+**How to use the Test Cases:**
+
+You can modify the `main` method of the Java program to either hardcode these test cases or take them as input (interactively or from a file) and compare the calculated distance against the expected distance. This way, you can verify that your implementation is correct.  Using JUnit or other testing frameworks makes this testing process more organized and efficient.

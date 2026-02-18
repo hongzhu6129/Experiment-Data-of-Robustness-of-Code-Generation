@@ -1,0 +1,66 @@
+JUnit version 4.13
+.
+Before JDK 8:
+
+Date/Calendar case: Fri Feb 14 20:21:21 GMT 2014 <-> Fri Feb 14 20:21:21 GMT 2014
+Difference in milliseconds is: 0
+Difference in days is: 0
+
+Starting with JDK 8:
+
+LocalDate case: 2019-01-01 <-> 2020-03-01
+Difference as Period: 1y2m0d
+Difference in days is via between(): 425
+Difference in months is via between(): 14
+Difference in years is via between(): 1
+Difference in days is via until(): 425
+Difference in months is via until(): 14
+Difference in years is via until(): 1
+
+LocalDateTime case: 2019-01-01T22:15:15 <-> 2020-01-01T23:15:15
+Difference in minutes without zone: 525660
+Difference in hours without zone: 8761
+
+ZonedDateTime case:
+Europe/Bucharest: 2019-01-01T22:15:15+02:00[Europe/Bucharest] <-> Australia/Perth: 2019-01-02T05:15:15+08:00[Australia/Perth]
+Difference in minutes with zone (same instant): 60
+Difference in hours with zone (same instant): 1
+
+Europe/Bucharest: 2019-01-01T22:15:15+02:00[Europe/Bucharest] <-> Australia/Perth: 2020-01-01T23:15:15+08:00[Australia/Perth]
+Difference in minutes with zone (not same instant): 525300
+Difference in hours with zone: 8755
+..
+Before JDK 8:
+
+Date/Calendar case: Thu Jan 01 00:00:00 GMT 1970 <-> Thu Jan 01 00:00:00 GMT 1970
+Difference in milliseconds is: 0
+Difference in days is: 0
+
+Starting with JDK 8:
+
+LocalDate case: 2019-01-01 <-> 2020-03-01
+Difference as Period: 1y2m0d
+Difference in days is via between(): 425
+Difference in months is via between(): 14
+Difference in years is via between(): 1
+Difference in days is via until(): 425
+Difference in months is via until(): 14
+Difference in years is via until(): 1
+
+LocalDateTime case: 2019-01-01T22:15:15 <-> 2020-01-01T23:15:15
+Difference in minutes without zone: 525660
+Difference in hours without zone: 8761
+
+ZonedDateTime case:
+Europe/Bucharest: 2019-01-01T22:15:15+02:00[Europe/Bucharest] <-> Australia/Perth: 2019-01-02T05:15:15+08:00[Australia/Perth]
+Difference in minutes with zone (same instant): 60
+Difference in hours with zone (same instant): 1
+
+Europe/Bucharest: 2019-01-01T22:15:15+02:00[Europe/Bucharest] <-> Australia/Perth: 2020-01-01T23:15:15+08:00[Australia/Perth]
+Difference in minutes with zone (not same instant): 525300
+Difference in hours with zone: 8755
+
+Time: 0.365
+
+OK (3 tests)
+

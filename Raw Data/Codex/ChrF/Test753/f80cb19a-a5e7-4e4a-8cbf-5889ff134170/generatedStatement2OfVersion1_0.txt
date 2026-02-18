@@ -1,0 +1,19 @@
+
+
+**Explanation and Improvements:**
+
+1. **Command-line Argument:** The code now accepts the file path as a command-line argument. This makes it more flexible, so you don't have to hardcode the file path in the program.  Run it like this:  `java ReadFirstThreeLines myfile.txt`
+
+2. **Error Handling:** It includes a `try-catch` block to handle potential `IOExceptions` that might occur if the file doesn't exist or there are permission issues.  The error message is printed to `System.err` (standard error) to distinguish it from regular output.
+
+3. **End-of-File Check:** The code now checks for `null` after `reader.readLine()`. This handles cases where the file has fewer than three lines.  If the end of the file is reached before three lines are read, the loop breaks.
+
+4. **Try-with-resources:** The `BufferedReader` is used inside a try-with-resources block.  This ensures that the `BufferedReader` is automatically closed, even if exceptions occur, preventing resource leaks.
+
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadFirstThreeLines.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   

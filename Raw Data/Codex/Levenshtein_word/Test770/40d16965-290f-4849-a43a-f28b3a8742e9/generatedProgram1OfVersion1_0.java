@@ -1,0 +1,14 @@
+public class StringCopy {
+
+    public static void main(String[] args) {
+        String originalString = "Hello"; // Example string
+
+        if (originalString.length() < 3) {
+            System.out.println("The original string must be 3 or more characters long.");
+        } else {
+            String lastThreeChars = originalString.substring(originalString.length() - 3);
+            String repeatedString = lastThreeChars.repeat(4); 
+            System.out.println(repeatedString);
+        }
+    }
+}

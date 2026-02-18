@@ -1,0 +1,47 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckKeyInMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample map
+        Map<String, String> bookMap = new HashMap<>();
+        bookMap.put("ISBN123", "The Lord of the Rings");
+        bookMap.put("ISBN456", "The Hitchhiker's Guide to the Galaxy");
+        bookMap.put("ISBN789", "Pride and Prejudice");
+
+
+        // Test if the map contains specific keys
+        String key1 = "ISBN456";
+        String key2 = "ISBN999";  // A key that doesn't exist
+
+
+        // Method 1: Using containsKey() (most common and efficient)
+        if (bookMap.containsKey(key1)) {
+            System.out.println("The map contains the key: " + key1);
+            System.out.println("Value associated with " + key1 + ": " + bookMap.get(key1)); 
+        } else {
+            System.out.println("The map does not contain the key: " + key1);
+        }
+
+        if (bookMap.containsKey(key2)) {
+            System.out.println("The map contains the key: " + key2);
+        } else {
+            System.out.println("The map does not contain the key: " + key2);
+        }
+
+
+
+        // Method 2: Using get()  (Less efficient than containsKey())
+        //  get() returns null if the key is not found.
+        if (bookMap.get(key1) != null) {
+            System.out.println("The map contains the key (using get()): " + key1);
+             System.out.println("Value associated with " + key1 + ": " + bookMap.get(key1));
+        } else {
+            System.out.println("The map does not contain the key (using get()): " + key1);
+        }
+
+
+    }
+}

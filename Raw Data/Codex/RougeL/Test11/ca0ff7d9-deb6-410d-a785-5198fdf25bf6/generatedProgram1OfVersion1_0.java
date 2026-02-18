@@ -1,0 +1,43 @@
+public class CubeChecker {
+
+    public static void main(String[] args) {
+        // Input data (hardcoded for this example, could be read from user input)
+        int number = 8;
+
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+         // Test with another number
+        number = 27;  
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+
+
+        number = 10;
+        if (isCube(number)) {
+            System.out.println("Number is a cube.");
+        } else {
+            System.out.println("Number is not a cube.");
+        }
+    }
+
+    private static boolean isCube(int num) {
+        // Handle negative numbers (their cubes are negative).
+        if (num < 0) {
+            return isCube(-num); // Check the cube of its absolute value and negate the result
+        }
+
+        // Efficiently check for cubes using integer arithmetic
+        int cubeRoot = (int) Math.round(Math.cbrt(num));  // Calculate the integer cube root
+        return cubeRoot * cubeRoot * cubeRoot == num;    // Check if cubing the root gives the original number
+    }
+}
+
+
+

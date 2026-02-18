@@ -1,0 +1,13 @@
+
+
+
+Key improvements:
+
+* **Efficiency:**  Uses a two-pointer approach (left and right) which is more efficient than repeatedly shifting elements.  It iterates through the array only once.
+* **Correctness:** Handles the partitioning correctly, ensuring that all negatives are on the left and positives/zeros on the right.
+* **Clarity:** Uses meaningful variable names (`left`, `right`) to make the logic easier to follow.
+* **Main Method Examples:** Includes a `main` method with examples to demonstrate the functionality and test with different inputs including zeros.
+* **Adheres to method signature requirements:** Uses only the specified method signatures.
+
+
+The core logic is in `split_sorting_array`: the `left` pointer moves forward as long as it encounters negative numbers, and the `right` pointer moves backward as long as it encounters positive numbers. When both pointers stop, it means they've found elements that are in the wrong place, so they are swapped.  The process continues until the pointers cross. This ensures all negatives are moved to the left and positives/zeros to the right.

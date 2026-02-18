@@ -1,0 +1,32 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Format the date and time as "yyyy-MM-dd HH:mm:ss"
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+
+        System.out.println(formattedDateTime);
+
+
+        // Example of other format: "EEEE, MMMM dd, yyyy HH:mm:ss a" (e.g., "Tuesday, October 24, 2023 14:35:10 PM")
+        DateTimeFormatter anotherFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy HH:mm:ss a");
+        String anotherFormattedDateTime = currentDateTime.format(anotherFormatter);
+
+        System.out.println(anotherFormattedDateTime);
+
+
+         //Example of yet another format: "MM/dd/yy hh:mm a"  (e.g., "10/24/23 02:35 PM")
+        DateTimeFormatter yetAnotherFormatter = DateTimeFormatter.ofPattern("MM/dd/yy hh:mm a");
+        String yetAnotherFormattedDateTime = currentDateTime.format(yetAnotherFormatter);
+
+
+        System.out.println(yetAnotherFormattedDateTime);
+
+
+    }
+}

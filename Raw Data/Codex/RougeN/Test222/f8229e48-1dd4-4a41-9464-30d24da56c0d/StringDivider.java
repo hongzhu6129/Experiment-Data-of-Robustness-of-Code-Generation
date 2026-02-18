@@ -1,0 +1,74 @@
+import java.util.Arrays;
+
+public class StringDivider {
+
+    public static void main(String[] args) {
+        // Test cases
+        String[] testCases = {
+                "Hello World",
+                "Lorem ipsum dolor sit amet",
+                "1234567890",
+                "",
+                "a"
+        };
+
+        int[] nValues = {
+                2,
+                3,
+                4,
+                1,
+                2
+        };
+
+        // Iterate over the test cases
+        for (int i = 0; i < testCases.length; i++) {
+            String testCase = testCases[i];
+            int n = nValues[i];
+
+            // Divide the string into n equal parts
+            String[] parts = divideString(testCase, n);
+
+            // Print the results
+            System.out.println("Original string: " + testCase);
+            System.out.println("Number of parts: " + n);
+            System.out.println("Divided parts: " + Arrays.toString(parts));
+            System.out.println();
+        }
+    }
+
+    public static String[] divideString(String s, int n) {
+        // Check if the input is valid
+        if (s == null || s.isEmpty() || n <= 0) {
+            throw new IllegalArgumentException("Invalid input");
+        }
+
+        // Calculate the size of each part
+        int partSize = s.length() / n;
+
+        // Create an array to store the divided parts
+        String[] parts = new String[n];
+
+        // Iterate over the string and divide it into parts
+        int startIndex = 0;
+        for (int i = 0; i < n; i++) {
+            int endIndex = startIndex + partSize;
+
+            // Check if the end index is greater than the length of the string
+            if (endIndex > s.length()) {
+                endIndex = s.length();
+            }
+
+            // Get the part of the string from the start index to the end index
+            String part = s.substring(startIndex, endIndex);
+
+            // Store the part in the array
+            parts[i] = part;
+
+            // Update the start index for the next part
+            startIndex = endIndex;
+        }
+
+        // Return the array of divided parts
+        return parts;
+    }
+}

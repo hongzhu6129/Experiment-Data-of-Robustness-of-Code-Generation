@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class EmptyArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList
+        List<String> myList = new ArrayList<>();
+
+        // Add some elements (optional, just to demonstrate emptying)
+        myList.add("apple");
+        myList.add("banana");
+        myList.add("orange");
+
+        System.out.println("Original ArrayList: " + myList);
+
+        // Empty the ArrayList using clear()
+        myList.clear();
+
+
+        System.out.println("ArrayList after clearing: " + myList);
+
+
+
+       //Alternative way to empty an ArrayList (create a new empty list)
+        myList = new ArrayList<>(); //  Now myList refers to a brand new, empty ArrayList
+
+
+        System.out.println("ArrayList after creating a new empty list: " + myList);
+    }
+}

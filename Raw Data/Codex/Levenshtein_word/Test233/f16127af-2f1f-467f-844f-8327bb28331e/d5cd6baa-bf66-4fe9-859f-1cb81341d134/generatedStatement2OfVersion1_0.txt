@@ -1,0 +1,28 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference (num1 - num2) | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2.0 | 0.0 |
+| 2. Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2.0 | 0.0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2.0 | 0.0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0.0 | 0.0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | Division by zero | Division by zero |
+| 6.  Large Numbers | 1000000 | 500000 | 1500000 | 500000 | 500000000000 | 2.0 | 0.0 |
+| 7. Decimal Numbers | 10.5 | 2.5 | 13.0 | 8.0 | 26.25 | 4.2 | 0.0 |
+| 8. Integer Overflow (potential corner case - depends on data type) |  Integer.MAX_VALUE | 1 | Integer.MIN_VALUE (overflow) | Integer.MAX_VALUE - 1 |  Integer.MAX_VALUE |  Integer.MAX_VALUE (approx.) | 1.0 (or slightly different due to floating-point limitations) |
+| 9.  Integer Underflow (potential corner case)| Integer.MIN_VALUE | -1 | Integer.MAX_VALUE (underflow) | Integer.MIN_VALUE + 1  | -Integer.MIN_VALUE | Integer.MIN_VALUE | -1 |
+|10. Remainder with decimals| 10.7 | 3.2 | 13.9 | 7.5 | 34.24 | 3.34375 | 1.1 |
+
+
+**Explanation of Corner Cases and How the Code Handles Them:**
+
+* **Division by Zero:** The code explicitly checks for division by zero and prints an appropriate message instead of crashing. This is crucial for robustness.
+* **Integer Overflow/Underflow:** If you use `int` instead of `double`, test cases 8 and 9 become relevant.  Java handles integer overflow/underflow by "wrapping around".  This can lead to unexpected results if not carefully considered.  Using `double` (as in the provided code) significantly reduces the risk of this type of overflow/underflow because `double` has a much larger range.
+* **Floating-Point Precision:** Be mindful of floating-point limitations, especially when comparing results (as in automated tests).  Test case 10 and some results with `double` might show very small discrepancies due to how floating-point numbers are represented.
+
+
+When testing your code, it's a good practice to use a testing framework (like JUnit) which makes it easier to define these test cases and verify the output automatically.

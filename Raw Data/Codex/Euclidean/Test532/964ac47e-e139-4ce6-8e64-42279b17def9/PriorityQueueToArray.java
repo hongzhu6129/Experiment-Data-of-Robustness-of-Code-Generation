@@ -1,0 +1,54 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.offer(5);
+        priorityQueue.offer(1);
+        priorityQueue.offer(8);
+        priorityQueue.offer(3);
+        priorityQueue.offer(6);
+
+
+        // Method 1: Using toArray() with a pre-allocated array
+        Integer[] array1 = new Integer[priorityQueue.size()];
+        priorityQueue.toArray(array1);
+
+        System.out.println("Array 1 (using toArray with pre-allocated array): " + Arrays.toString(array1));
+
+        // Restore the priority queue (as toArray does *not* remove elements) - important for demonstrating Method 2 accurately!
+        PriorityQueue<Integer> restoredPriorityQueue = new PriorityQueue<>();
+        for (Integer element : array1) {
+            restoredPriorityQueue.offer(element);
+        }
+
+
+        // Method 2: Using toArray() with no argument followed by casting
+        Object[] array2 = restoredPriorityQueue.toArray();
+        Integer[] intArray2 = new Integer[array2.length];
+         // Manual casting since toArray() returns an Object array if no type is specified
+        for(int i = 0; i< array2.length; i++){
+            intArray2[i] = (Integer) array2[i]; // Cast each element
+        }
+
+
+        System.out.println("Array 2 (using toArray() with no argument and casting): " + Arrays.toString(intArray2));
+
+
+         //Method 3: Iterating through the PriorityQueue (less efficient but demonstrates another approach)
+        Integer[] array3 = new Integer[restoredPriorityQueue.size()];
+        int i = 0;
+        // Note: This consumes the queue!  If you need the queue afterwards, you'd need to copy it first
+        while (!restoredPriorityQueue.isEmpty()) {
+            array3[i++] = restoredPriorityQueue.poll();
+        }
+         System.out.println("Array 3 (iterating and polling): " + Arrays.toString(array3));
+
+
+    }
+}

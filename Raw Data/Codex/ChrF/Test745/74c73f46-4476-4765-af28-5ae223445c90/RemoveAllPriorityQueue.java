@@ -1,0 +1,40 @@
+import java.util.PriorityQueue;
+
+public class RemoveAllPriorityQueue {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add some elements to the PriorityQueue
+        pq.add(10);
+        pq.add(20);
+        pq.add(15);
+        pq.add(5);
+
+        System.out.println("Original PriorityQueue: " + pq);
+
+        // Remove all elements from the PriorityQueue
+        pq.clear();
+
+        System.out.println("PriorityQueue after removing all elements: " + pq);
+
+
+        // Example demonstrating removing elements individually using a while loop (alternative approach)
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+
+        // Add some elements
+        pq2.add(30);
+        pq2.add(40);
+        pq2.add(35);
+        pq2.add(25);
+        
+        System.out.println("Original PriorityQueue 2: " + pq2);
+
+        while (!pq2.isEmpty()) {
+            pq2.poll(); // Removes and returns the head of the queue
+        }
+
+        System.out.println("PriorityQueue 2 after removing elements individually: " + pq2);
+    }
+}

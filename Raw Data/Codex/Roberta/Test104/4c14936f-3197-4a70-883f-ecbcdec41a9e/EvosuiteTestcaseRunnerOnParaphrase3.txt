@@ -1,0 +1,22 @@
+JUnit version 4.13
+.Byte array (default charset): 48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 
+Byte array (UTF-8): 48 65 6C 6C 6F 2C 20 57 6F 72 6C 64 21 
+Byte array (UTF-16): FE FF 00 48 00 65 00 6C 00 6C 00 6F 00 2C 00 20 00 57 00 6F 00 72 00 6C 00 64 00 21 
+
+Explanation of Character Sets (Charsets):
+----------------------------------------
+A character set (charset) defines a mapping between characters (like letters, numbers, symbols) and their numerical representation (bytes).
+Different charsets use different mappings.  This is why specifying the charset is crucial, especially when dealing with text that contains characters outside the basic ASCII range.
+
+Examples:
+- UTF-8: A variable-length encoding that can represent characters from most of the world's languages. Commonly used for web pages and data exchange.
+- UTF-16:  A variable-length encoding that is well-suited for representing characters from various writing systems.  Java's internal string representation uses UTF-16.
+- ISO-8859-1: A single-byte encoding that covers Western European languages. 
+
+Important Note:
+When converting a String to a byte array using getBytes() without specifying a charset, the JVM's default charset is used.  This default charset can vary depending on the system's locale and configuration, which can lead to unexpected results when transferring or processing data across different systems. Therefore, always specify the desired charset when converting between Strings and byte arrays for better portability and consistency.
+.
+Time: 0.381
+
+OK (2 tests)
+

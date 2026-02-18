@@ -1,0 +1,11 @@
+
+
+**Important Considerations for Handling Corner/Error Cases:**
+
+* **Negative Radius:**  The code as provided doesn't explicitly handle negative radii.  You should add a check to throw an `IllegalArgumentException` or print an error message if the radius is negative.
+* **Overflow:**  For extremely large radii (like `Double.MAX_VALUE`), the calculations might overflow. Consider checking for these conditions or using `BigDecimal` for arbitrary precision if needed.
+* **Floating-point Comparisons:** Never directly compare floating-point numbers for equality using `==`.  Use a tolerance (delta) as shown in the JUnit example.
+
+
+
+By implementing these test cases and error handling, you'll make your program much more robust and reliable.

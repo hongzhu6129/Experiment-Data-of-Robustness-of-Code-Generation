@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseWordsInString {
+
+    public void reverseEachWordInString(String str) {
+        if (str == null || str.trim().isEmpty()) {
+            System.out.println("");  // Handle empty or null input
+            return;
+        }
+
+        List<String> words = Arrays.asList(str.split("\\s+")); // Split into words
+
+        // Reverse each word
+        for (int i = 0; i < words.size(); i++) {
+            String word = words.get(i);
+            String reversedWord = new StringBuilder(word).reverse().toString();
+            words.set(i, reversedWord);
+        }
+        
+        String reversedString = String.join(" ", words); // Join back with spaces
+
+        System.out.println(reversedString);
+    }
+
+
+    public static void main(String[] args) {
+        ReverseWordsInString reverser = new ReverseWordsInString();
+
+        reverser.reverseEachWordInString("This is a test string"); // Output: sihT si a tset gnirts
+        reverser.reverseEachWordInString("Hello World"); // Output: olleH dlroW
+        reverser.reverseEachWordInString(null); // Output: (empty line)
+        reverser.reverseEachWordInString(" "); // Output: (empty line)
+        reverser.reverseEachWordInString(" leading and trailing spaces "); // Output:  gnidael dna gnialriat secaps
+    }
+}
+
+
+

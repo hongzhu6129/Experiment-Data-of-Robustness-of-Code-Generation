@@ -1,0 +1,56 @@
+import java.util.Map;
+import java.util.TreeMap;
+
+public class GreatestAndLeastKeyMap {
+
+    public static void main(String[] args) {
+        // Example usage:
+        Map<Integer, String> map = new TreeMap<>(); // TreeMap automatically sorts keys
+
+        map.put(1, "One");
+        map.put(5, "Five");
+        map.put(2, "Two");
+        map.put(4, "Four");
+        map.put(3, "Three");
+
+
+        if (!map.isEmpty()) {
+            Integer greatestKey = map.keySet().stream().max(Integer::compare).get();
+            String greatestValue = map.get(greatestKey);
+
+            Integer leastKey = map.keySet().stream().min(Integer::compare).get();
+            String leastValue = map.get(leastKey);
+
+            System.out.println("Greatest Key-Value: " + greatestKey + " -> " + greatestValue);
+            System.out.println("Least Key-Value: " + leastKey + " -> " + leastValue);
+
+        } else {
+            System.out.println("Map is empty.");
+        }
+
+
+
+         // Example with different data types (String keys):
+        Map<String, Double> map2 = new TreeMap<>();
+
+        map2.put("Apple", 1.2);
+        map2.put("Banana", 0.8);
+        map2.put("Orange", 1.5);
+
+
+        if (!map2.isEmpty()) {
+            String greatestKey2 = map2.keySet().stream().max(String::compareTo).get();
+            Double greatestValue2 = map2.get(greatestKey2);
+
+
+            String leastKey2 = map2.keySet().stream().min(String::compareTo).get();
+            Double leastValue2 = map2.get(leastKey2);
+
+            System.out.println("Greatest Key-Value (String keys): " + greatestKey2 + " -> " + greatestValue2);
+            System.out.println("Least Key-Value (String keys): " + leastKey2 + " -> " + leastValue2);
+        } else {
+           System.out.println("Map2 is empty.");
+        }
+
+    }
+}

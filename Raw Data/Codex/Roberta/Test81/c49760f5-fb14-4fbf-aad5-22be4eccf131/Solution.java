@@ -1,0 +1,57 @@
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array of integers, find the length of the array after removing duplicate elements.
+     *
+     * @param nums The sorted array of integers.
+     * @return The length of the array after removing duplicates.
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int uniqueCount = 1; // Initialize with 1 as the first element is always unique.
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount] = nums[i]; // Overwrite duplicate with next unique element
+                uniqueCount++;
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2, 3, 3, 3, 4, 5, 6, 7, 7};
+        int len1 = removeDuplicates(nums1);
+        System.out.println("Original array: " + Arrays.toString(nums1));
+        System.out.println("The length of the original array is: " + nums1.length);
+        System.out.println("After removing duplicates, the new length of the array is: " + len1);
+
+        // Additional test case
+        int[] nums2 = {1, 2, 2, 3, 4, 4, 5};
+        int len2 = removeDuplicates(nums2);
+        System.out.println("\nOriginal array: " + Arrays.toString(nums2));
+        System.out.println("The length of the original array is: " + nums2.length);
+        System.out.println("After removing duplicates, the new length of the array is: " + len2);
+
+
+        // Empty array test case:
+        int[] nums3 = {};
+        int len3 = removeDuplicates(nums3);
+        System.out.println("\nOriginal array: " + Arrays.toString(nums3));
+        System.out.println("The length of the original array is: " + nums3.length);
+        System.out.println("After removing duplicates, the new length of the array is: " + len3);
+
+         // Null array test case:
+        int[] nums4 = null;
+        int len4 = removeDuplicates(nums4);
+        System.out.println("\nOriginal array: " + Arrays.toString(nums4)); // This will print null
+        // System.out.println("The length of the original array is: " + nums4.length); // This will throw a NullPointerException if uncommented
+        System.out.println("After removing duplicates, the new length of the array is: " + len4);
+
+    }
+}

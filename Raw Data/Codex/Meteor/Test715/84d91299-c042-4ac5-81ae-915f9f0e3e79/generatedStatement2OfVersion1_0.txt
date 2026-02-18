@@ -1,0 +1,12 @@
+
+
+
+Key improvements and explanations:
+
+* **Deep Copying in `permute`:**  The `arr.clone()` method is crucial. Without it, you're adding references to the *same* array to the `permutations` list. As the array gets modified during the permutation process, all references in the list would point to the final (likely unsorted) state of the array. Cloning ensures each permutation stored is a separate, independent array.
+* **Backtracking in `permute`:** The second `swap` call after the recursive `permute` call reverses the swap made earlier.  This is essential for backtracking and correctly generating all permutations.  It restores the array to its previous state before exploring the next branch of permutations.
+* **Clearer Return:**  The `pSort` function now returns `null` if a sorted array is not found (which shouldn't happen for normal integer arrays). This helps signal potential issues rather than silently failing.
+* **Efficiency Consideration (Important):** Permutation Sort is *extremely* inefficient for larger arrays.  The number of permutations grows factorially (n!), so even for arrays of modest size (e.g., 10 elements), it becomes computationally intractable.  This implementation is for demonstration purposes and should not be used for real-world sorting tasks.  Use more efficient algorithms like Merge Sort, Quick Sort, or the built-in `Arrays.sort()` for practical applications.
+
+
+This revised version addresses the critical correctness issue and provides a better understanding of how the permutation sort (while inefficient) should be implemented.

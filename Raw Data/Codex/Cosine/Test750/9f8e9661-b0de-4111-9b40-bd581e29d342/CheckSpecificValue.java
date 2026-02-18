@@ -1,0 +1,59 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckSpecificValue {
+
+    public static void main(String[] args) {
+        // Example usage:
+        Map<String, Integer> map1 = new HashMap<>();
+        map1.put("apple", 1);
+        map1.put("banana", 2);
+        map1.put("orange", 1); 
+
+        int valueToCheck = 1;
+        boolean containsOnlySpecifiedValue = checkOnlySpecificValue(map1, valueToCheck);
+        System.out.println("Map 1 contains only " + valueToCheck + ": " + containsOnlySpecifiedValue); // Output: false
+
+        Map<String, Integer> map2 = new HashMap<>();
+        map2.put("apple", 1);
+        map2.put("banana", 1);
+        map2.put("orange", 1);
+
+        containsOnlySpecifiedValue = checkOnlySpecificValue(map2, valueToCheck);
+        System.out.println("Map 2 contains only " + valueToCheck + ": " + containsOnlySpecifiedValue); // Output: true
+
+
+        Map<String, Integer> map3 = new HashMap<>(); // Empty map
+        containsOnlySpecifiedValue = checkOnlySpecificValue(map3, valueToCheck);
+        System.out.println("Map 3 contains only " + valueToCheck + ": " + containsOnlySpecifiedValue); // Output: true (An empty map trivially satisfies the condition)
+
+
+        Map<String, Integer> map4 = null; // Null map.  Handle this edge case to prevent NullPointerException
+        containsOnlySpecifiedValue = checkOnlySpecificValue(map4, valueToCheck);
+        System.out.println("Map 4 contains only " + valueToCheck + ": " + containsOnlySpecifiedValue); // Output: true
+
+
+
+
+    }
+
+    public static boolean checkOnlySpecificValue(Map<String, Integer> map, int value) {
+
+        if (map == null) { // Handle null map case
+            return true; 
+        }
+
+
+        if (map.isEmpty()) { // Handle empty map case
+            return true;
+        }
+
+
+        for (int val : map.values()) {
+            if (val != value) {
+                return false; // If any value is not the specified value, return false
+            }
+        }
+        return true; // If all values match, return true
+    }
+}

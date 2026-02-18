@@ -1,0 +1,58 @@
+public class JavaPattern {
+
+    public static void main(String[] args) {
+        System.out.println("j    a   v     v  a");
+        System.out.println("j   a a   v   v  a a");
+        System.out.println("j  a   a   v v  a   a");
+        System.out.println("jj a     a   v  a     a");
+        System.out.println("jjjj a       a  v  a       a");
+        System.out.println("jjjjjj a         a  v  a         a");
+        System.out.println("jj a           a  v  a           a");
+        System.out.println("j a             a  v  a             a");
+
+
+        /*  Alternate approach using formatted strings for more dynamic spacing
+
+        int maxA = 13; // Adjust as needed for different sizes
+
+        for (int i = 0; i < 8; i++) {
+            int jCount, aCount, vCount;
+
+            if (i == 0 || i == 7) { 
+                jCount = 1;
+                aCount = 1;
+                vCount = 1;
+            } else if (i == 1 || i == 6) {
+                jCount = 1;
+                aCount = 2;
+                vCount = 1;
+            } else if (i == 2 || i == 5) {
+                jCount = 1;
+                aCount = 3;
+                vCount = 1;
+            } else if (i == 3 || i == 4) { // Center rows
+                jCount = (i == 3) ? 2 : 4;
+                aCount = maxA;  // Maximum 'a's in the center
+                vCount = 1;
+            } else { // Default (shouldn't reach here)
+                jCount = 1; aCount = 1; vCount = 1;
+            }
+
+            String jStr = "j".repeat(jCount);
+            String aStr = "a".repeat(aCount);
+            String vStr = "v".repeat(vCount);
+
+
+            String spacesBetweenJandA = " ".repeat((maxA - aCount) / 2 + 1);
+            String spacesBetweenAandV = " ".repeat(3);  // Adjust spacing as needed
+            String spacesBetweenVandA = " ".repeat(2);
+          
+            System.out.println(String.format("%s%s%s%s%s%s%s", jStr, spacesBetweenJandA, aStr,spacesBetweenAandV,  vStr, spacesBetweenVandA, aStr) );
+
+
+        }
+
+        */
+
+    }
+}

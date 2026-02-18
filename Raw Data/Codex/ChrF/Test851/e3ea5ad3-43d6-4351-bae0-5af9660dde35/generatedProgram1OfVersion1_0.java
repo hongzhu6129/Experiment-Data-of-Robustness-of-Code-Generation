@@ -1,0 +1,37 @@
+public class KitKatPattern {
+
+    public String kitKatPattern(String str) {
+        if (str == null || str.length() < 3) {
+            return str;
+        }
+
+        StringBuilder result = new StringBuilder();
+        int i = 0;
+        while (i < str.length()) {
+            if (i + 2 < str.length() && str.charAt(i) == 'z' && str.charAt(i + 2) == 'g') {
+                result.append(str.charAt(i));
+                result.append(str.charAt(i + 2));
+                i += 3; // Skip the entire substring
+            } else {
+                result.append(str.charAt(i));
+                i++;
+            }
+        }
+        return result.toString();
+    }
+
+
+    public static void main(String[] args) {
+        KitKatPattern obj = new KitKatPattern();
+        System.out.println(obj.kitKatPattern("zzzggg")); // Output: zgz
+        System.out.println(obj.kitKatPattern("zzzg")); // Output: zzg
+        System.out.println(obj.kitKatPattern("zazg")); // Output: zag
+        System.out.println(obj.kitKatPattern("abzcafg")); // Output: abzcfg
+        System.out.println(obj.kitKatPattern("zzzzgg")); // Output: zzg
+        System.out.println(obj.kitKatPattern(null));     // Output: null
+        System.out.println(obj.kitKatPattern("z"));      // Output: z
+        System.out.println(obj.kitKatPattern("zg"));     // Output: zg
+        System.out.println(obj.kitKatPattern("azg")); // Output: ag
+
+    }
+}

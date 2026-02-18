@@ -1,0 +1,9 @@
+
+
+
+Key improvements in this version:
+
+* **ListIterator:**  Using a `ListIterator` is the most efficient way to traverse a `LinkedList` and get the index/position at the same time.  The `nextIndex()` method gives you the position *before* you advance to the next element using `next()`.
+* **Clarity:** The code is well-commented and explains the purpose of each part.
+* **Efficiency:** The `ListIterator` approach avoids the inefficiency of repeatedly calling `get(i)` on a LinkedList (which has O(n) complexity for each call where n is the index).  `ListIterator` provides O(1) access to the next element.
+* **Flexibility:** I've left the less efficient `get()`-based loop commented out, so you can compare the two approaches if desired.  It's good to understand the trade-offs.

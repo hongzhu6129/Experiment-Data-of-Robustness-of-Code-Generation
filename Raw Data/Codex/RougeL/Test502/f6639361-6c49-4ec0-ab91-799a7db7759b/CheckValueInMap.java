@@ -1,0 +1,98 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueInMap {
+
+    public static void main(String[] args) {
+
+        // Create a sample map
+        Map<String, Integer> studentGrades = new HashMap<>();
+        studentGrades.put("Alice", 90);
+        studentGrades.put("Bob", 85);
+        studentGrades.put("Charlie", 78);
+        studentGrades.put("David", 92);
+
+
+        // Value to search for
+        int targetGrade = 85;
+
+        // Method 1: Using containsValue() - Most straightforward
+        boolean containsValue = studentGrades.containsValue(targetGrade);
+
+        if (containsValue) {
+            System.out.println("The map contains the value: " + targetGrade);
+        } else {
+            System.out.println("The map does not contain the value: " + targetGrade);
+        }
+
+        // Method 2: Iterating through the values (demonstrative, less efficient)
+        boolean found = false;
+        for (int grade : studentGrades.values()) {
+            if (grade == targetGrade) {
+                found = true;
+                break;  // Exit loop once found
+            }
+        }
+
+        if (found) {
+            System.out.println("Found the value " + targetGrade + " (using iteration)");
+        } else {
+            System.out.println("Did not find the value " + targetGrade + " (using iteration)");
+        }
+
+
+
+        // Example with a value that doesn't exist
+        targetGrade = 99;
+        if (studentGrades.containsValue(targetGrade)) {
+            System.out.println("The map contains the value: " + targetGrade);
+        } else {
+            System.out.println("The map does not contain the value: " + targetGrade);
+        }
+
+
+
+
+        // Important Note about containsValue() with different data types:
+
+        Map<String, Double> productPrices = new HashMap<>();
+        productPrices.put("Laptop", 1200.50);
+        productPrices.put("Mouse", 25.99);
+
+        // Be careful with floating-point comparisons:
+        // Direct double comparison within containsValue() can be unreliable due to floating point precision
+        // double targetPrice = 1200.50;  // Might or might not work as expected due to floating-point precision
+
+       double targetPrice = 25.99;
+
+        if (productPrices.containsValue(targetPrice)) {   //This would be a risky comparison in a real application
+            System.out.println("Found price (double comparison): " + targetPrice);  // Might give unexpected results
+        } else {
+            System.out.println("Price (double comparison) NOT found: " + targetPrice);
+        }
+
+        // A safer approach with floating-point numbers is to check within a small tolerance:
+
+         targetPrice = 1200.50000001; //Example to show potential inaccuracy
+
+         boolean foundPrice = false;
+
+         double tolerance = 0.001; //Define a small tolerance
+        for (double price : productPrices.values()) {
+            if(Math.abs(targetPrice - price) < tolerance){
+                foundPrice = true;
+                break;
+            }
+
+        }
+        if(foundPrice){
+            System.out.println("Found price (within tolerance): "+ targetPrice);
+        }else {
+            System.out.println("Price (within tolerance) Not Found: "+ targetPrice);
+        }
+
+
+
+
+    }
+}

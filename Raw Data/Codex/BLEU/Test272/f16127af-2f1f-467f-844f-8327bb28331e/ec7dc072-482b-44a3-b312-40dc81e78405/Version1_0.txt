@@ -1,0 +1,77 @@
+```java
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the first number: ");
+        double num1 = input.nextDouble();
+
+        System.out.print("Enter the second number: ");
+        double num2 = input.nextDouble();
+
+        System.out.println("Sum: " + (num1 + num2));
+        System.out.println("Difference (num1 - num2): " + (num1 - num2));
+        System.out.println("Product: " + (num1 * num2));
+
+        if (num2 != 0) {
+            System.out.println("Quotient (num1 / num2): " + (num1 / num2));
+            System.out.println("Remainder (num1 % num2): " + (num1 % num2));
+        } else {
+            System.out.println("Division by zero is not allowed.");
+            System.out.println("Remainder by zero is not allowed.");
+        }
+
+        input.close(); 
+    }
+}
+```
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Output (Sum, Difference, Product, Quotient, Remainder) |
+|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | 15, 5, 50, 2.0, 0.0 |
+| 2. Negative Integers | -10 | -5 | -15, -5, 50, 2.0, 0.0 |
+| 3. Mixed Signs | 10 | -5 | 5, 15, -50, -2.0, 0.0 |
+| 4. Zero as num1 | 0 | 5 | 5, -5, 0, 0.0, 0.0 |
+| 5. Zero as num2 (Corner Case) | 10 | 0 | 10, 10, 0, "Division by zero is not allowed.", "Remainder by zero is not allowed." |
+| 6. Floating-Point Numbers | 10.5 | 2.5 | 13.0, 8.0, 26.25, 4.2, 0.0 |
+| 7. Large Numbers | 100000 | 100 | 100100, 99900, 1.0E7, 1000.0, 0.0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003, -0.001, 2.0E-6, 0.5, 0.001 |
+| 9. Integer Division | 7 | 3  | 10, 4, 21, 2.3333333333333335, 1.0 |
+| 10. Negative and Zero | -5 | 0 | -5, -5, 0, "Division by zero is not allowed.", "Remainder by zero is not allowed." |
+
+
+
+**How to Run Test Cases:**
+
+You can either manually enter these values when prompted by the program or (preferably) write a separate test class using a testing framework like JUnit to automate the testing process.  JUnit allows you to define these test cases in a structured way and easily verify the expected output against the actual output of your `ArithmeticOperations` class.
+
+
+**Example using JUnit (Highly Recommended):**
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ArithmeticOperationsTest {
+
+    @Test
+    void testPositiveIntegers() {
+        // ... (Set up input, call the methods, and assert the results)
+        assertEquals(15, ArithmeticOperations.add(10, 5)); // Example using a hypothetical add method
+        // ... (Similarly for other operations and test cases)
+    }
+
+    // ... other @Test methods for different test cases
+}
+```
+
+By using JUnit (or similar), you make your testing process more robust, repeatable, and easier to manage as your code grows.  You can also use parameterized tests to run the same test logic against multiple sets of input data, making your test code more concise and efficient.

@@ -1,0 +1,49 @@
+
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   - Input: 123
+   - Expected Output: Hexadecimal equivalent: 53
+
+2. **Leading Zeroes:**
+   - Input: 000123
+   - Expected Output: Hexadecimal equivalent: 53
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: Hexadecimal equivalent: 0
+
+4. **Large Octal:**
+   - Input: 7777777
+   - Expected Output: Hexadecimal equivalent: FFFFFF
+
+5. **Invalid Octal (containing digits greater than 7):**
+   - Input: 1283
+   - Expected Output: Invalid octal number.
+
+6. **Invalid Octal (containing non-digit characters):**
+   - Input: 12A3
+   - Expected Output: Invalid Input
+
+7. **Empty Input:**
+   - Input: ""  (Just press enter)
+    - Expected Output: Invalid Input (due to NumberFormatException when parsing an empty string).
+
+8. **Negative Input:** (This is unlikely given how the code requests input, but it's good to consider)
+   - Input: -123
+   - Expected Output: Invalid Input
+
+These test cases cover various scenarios, including valid octal numbers, leading zeros, zero input, large octal values, and invalid inputs (containing digits greater than 7 or non-digit characters).  The error handling will also catch cases where the input string cannot be parsed as a number at all.
+
+
+Key improvements in this version:
+
+- **Clearer Error Handling:**  Uses specific error messages and `return` statements to exit when invalid input is encountered. Catches NumberFormatException to handle cases where input is completely invalid.
+- **Handles Zero:** Correctly outputs "0" when the input is 0.
+- **Direct `char` to `int` conversion:**  Uses `octalStr.charAt(i) - '0'` for a slightly more efficient digit conversion.
+- **Comments:** Added explanations to make the code easier to understand.
+
+
+This refined version is more robust and handles a wider range of inputs.

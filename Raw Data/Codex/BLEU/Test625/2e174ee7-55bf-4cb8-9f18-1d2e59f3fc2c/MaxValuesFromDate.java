@@ -1,0 +1,42 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.WeekFields;
+
+public class MaxValuesFromDate {
+
+    public static void main(String[] args) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Maximum year (no limit practically, but we can get the current year)
+        int maxYear = currentDate.getYear();
+
+        // Maximum month (12)
+        int maxMonth = 12; // Months are fixed.
+
+        // Maximum week of year (depends on the week numbering system)
+        // Using ISO-8601 standard (week starts on Monday)
+        WeekFields weekFields = WeekFields.ISO;
+        int maxWeekOfYear = currentDate.with(TemporalAdjusters.lastDayOfYear()).get(weekFields.weekOfYear());
+
+        // If last week of year overlaps with next year use 52 or 53 based on current locale
+        if (currentDate.with(TemporalAdjusters.lastDayOfYear()).getDayOfWeek() == DayOfWeek.MONDAY
+            || currentDate.with(TemporalAdjusters.lastDayOfYear()).getDayOfWeek() == DayOfWeek.TUESDAY
+            || currentDate.with(TemporalAdjusters.lastDayOfYear()).getDayOfWeek() == DayOfWeek.WEDNESDAY
+            )
+        {
+            maxWeekOfYear = weekFields.weekOfYear().range().getMaximum();
+        }
+
+         // Maximum day of month (depends on the month)
+        int maxDayOfMonth = currentDate.with(TemporalAdjusters.lastDayOfMonth()).getDayOfMonth();
+
+
+
+        System.out.println("Current Date: " + currentDate);
+        System.out.println("Maximum Year: " + maxYear);
+        System.out.println("Maximum Month: " + maxMonth);
+        System.out.println("Maximum Week of Year: " + maxWeekOfYear);
+        System.out.println("Maximum Day of Month: " + maxDayOfMonth);
+    }
+}

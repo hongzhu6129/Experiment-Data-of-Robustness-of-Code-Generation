@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:** The code now ensures that `(a, b)` and `(c, d)` are distinct pairs by starting `b` from `a + 1` and `d` from `c + 1`. This prevents solutions like `1^3 + 1^3 = 1^3 + 1^3` or finding the same pair twice in reverse order (e.g.,  `1^3 + 12^3 = 9^3 + 10^3` and  `9^3 + 10^3 = 1^3 + 12^3`).
+
+2. **Optimizations:** The code includes `break` statements within the loops to avoid unnecessary calculations.  If `a^3`, `a^3 + b^3`, `c^3`, or `c^3 + d^3` exceeds `n`, the inner loops are terminated as there's no possibility of finding a solution within the given range.
+
+3. **Clearer Output:** The output is formatted to clearly display the number and the two different ways it can be expressed as the sum of two cubes.
+
+4. **Early Exit:**  The `return` statement exits the `main` method immediately after finding the first such number.  If you want to find *all* such numbers up to `n`, remove the `return` statement.
+
+5. **Correctness:** The condition `a != c && a != d` is crucial. Without it, you might get "solutions" where the same two cubes are just reordered, which doesn't fulfill the requirement of *different* ways.
+
+
+
+This revised code is more efficient, avoids redundant calculations, and produces the correct output for finding a number expressible as the sum of two cubes in two different ways within the range 1 to `n`.

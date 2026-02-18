@@ -1,0 +1,53 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CountWordsEndingMOrRap {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        // Use a regular expression to find words ending in 'm' or 'rap' (case-insensitive)
+        Pattern pattern = Pattern.compile("\\b\\w*(?i)(m|rap)\\b"); // \b for word boundaries
+        Matcher matcher = pattern.matcher(text);
+
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        CountWordsEndingMOrRap counter = new CountWordsEndingMOrRap();
+
+        String text1 = "ham program exam Ram program scrap trap wrap";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 Count: " + count1); // Expected output: 5 (ham, program, exam, program, trap)
+
+        String text2 = "This is a Sample teSt with some words ending in m or rap.";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 Count: " + count2);
+
+
+         String text3 =  "program scrap trap wrap m";
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 Count: " + count3); // Expected output: 5
+
+        String text4 = null;
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 Count (null): " + count4); // Expected output: 0
+
+
+        String text5 = "";
+        int count5 = counter.endWithmOrn(text5);
+        System.out.println("Text 5 Count (empty): " + count5); // Expected output: 0
+
+        String text6 = "   "; // Whitespace only
+        int count6 = counter.endWithmOrn(text6);
+        System.out.println("Text 6 Count (whitespace): " + count6); // Expected output: 0
+
+
+    }
+}

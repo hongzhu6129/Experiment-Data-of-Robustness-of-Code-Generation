@@ -1,0 +1,27 @@
+
+
+
+Explanation and Educational points about Lexicographical Comparison:
+
+1. **Character-by-Character Comparison:** Lexicographical comparison works like comparing words in a dictionary. It compares the files character by character.
+
+2. **Unicode Order:**  Java uses Unicode to represent characters.  The `compareTo()` method in the `String` class compares strings based on the Unicode values of their characters.
+
+3. **Shorter vs. Longer:** If one file is a prefix of the other (e.g., "apple" and "apples"), the shorter file comes first lexicographically.
+
+
+4.  **Line by Line:** The provided code compares files line by line. If all lines are equal up to a point where one file ends, the shorter file is considered lexicographically smaller.
+
+5. **`compareTo()` Return Value:**  The `compareTo()` method returns:
+   - A negative integer if the first string is lexicographically less than the second.
+   - Zero if the strings are lexicographically equal.
+   - A positive integer if the first string is lexicographically greater than the second.
+
+6. **File Handling:** The code uses `BufferedReader` for efficient reading of files.  The `try-with-resources` block ensures that files are closed properly even if exceptions occur.
+
+
+How to Compile and Run:
+
+1. **Save:** Save the code as `FileComparator.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:
+   

@@ -1,0 +1,30 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes robust error handling using a `try-catch` block. It checks for invalid octal digits (anything other than 0-7) and throws an `IllegalArgumentException` if found. This prevents unexpected behavior or crashes.
+
+2. **Handles Negative Input:** The code now explicitly checks for and handles negative octal numbers.  It parses the number as positive and then negates the final `numeral` value if necessary.
+
+3. **Clearer Output:** The output is formatted to clearly show the original octal input and the corresponding numeral result, including the negative sign where applicable.
+
+4. **Comprehensive Test Cases:** The `octalNumbers` array includes a more diverse set of test cases:
+   - Normal octal numbers
+   - Zero
+   - The largest possible 3-digit octal number
+   - Octal representation of 8 (to test conversion of powers of 8)
+   - Single-digit octal
+   - Large octal number
+   - Invalid octal input (containing non-octal digits)
+   - Negative octal numbers
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `OctalToNumeral.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:  `javac OctalToNumeral.java`
+3. **Run:**  `java OctalToNumeral`
+
+
+This improved version provides better error handling, handles more diverse input (including negative numbers), and uses clearer output for better understanding.  The comprehensive test cases help verify the correctness of the conversion logic.

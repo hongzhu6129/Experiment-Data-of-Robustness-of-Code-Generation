@@ -1,0 +1,76 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class CompareArrayLists {
+
+    public static void main(String[] args) {
+        // Example ArrayLists
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
+
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(1);
+        list2.add(2);
+        list2.add(3);
+
+        ArrayList<Integer> list3 = new ArrayList<>();
+        list3.add(3);
+        list3.add(2);
+        list3.add(1);
+
+        ArrayList<Integer> list4 = new ArrayList<>();
+        list4.add(1);
+        list4.add(2);
+        list4.add(4);
+
+
+        // 1. Check if lists are equal (order matters)
+        System.out.println("list1 equals list2: " + list1.equals(list2)); // Output: true
+        System.out.println("list1 equals list3: " + list1.equals(list3)); // Output: false
+        System.out.println("list1 equals list4: " + list1.equals(list4)); // Output: false
+
+
+        // 2. Check if lists contain the same elements (order doesn't matter)
+        Collections.sort(list3); // Sort list3 to match order of list1
+        System.out.println("list1 equals list3 (after sorting list3): " + list1.equals(list3)); // Output: true
+
+
+
+        // 3. Check if lists contain same elements regardless of duplicates or order (using frequency comparison)
+        ArrayList<String> list5 = new ArrayList<>();
+        list5.add("apple");
+        list5.add("banana");
+        list5.add("apple");
+
+        ArrayList<String> list6 = new ArrayList<>();
+        list6.add("banana");
+        list6.add("apple"); 
+        list6.add("apple");
+
+        ArrayList<String> list7 = new ArrayList<>();
+        list7.add("banana");
+        list7.add("apple"); 
+
+
+        Collections.sort(list5);
+        Collections.sort(list6);
+        Collections.sort(list7);
+
+        System.out.println("list5 equals list6 (frequency and after sorting): " + list5.equals(list6)); // Output: true
+        System.out.println("list5 equals list7 (frequency and after sorting): " + list5.equals(list7)); // Output: false
+
+
+
+
+        // 4. Check for partial matches (containsAll)
+        ArrayList<Integer> sublist = new ArrayList<>();
+        sublist.add(2);
+        sublist.add(3);
+
+        System.out.println("list1 containsAll elements of sublist: " + list1.containsAll(sublist)); // Output: true
+
+
+    }
+}

@@ -1,0 +1,20 @@
+
+
+
+Explanation:
+
+1. **`main` method:**
+   - The `main` method is the entry point of the Java program.
+   - It prints a header "First 10 Fermat Numbers".
+   - It then iterates from `n = 0` to `n = 9` (inclusive) to calculate and display the first 10 Fermat numbers.
+
+2. **`calculateFermatNumber` method:**
+   - This helper method takes an integer `n` as input.
+   - It calculates the Fermat number using the formula 2^(2^n) + 1.
+   - **Important:** We use `(long)` to cast the result to `long`. This is crucial because Fermat numbers grow very rapidly, and even the 5th Fermat number exceeds the capacity of an `int`.  Using `long` gives us more range, but even `long` will not be able to hold all 10 Fermat numbers as they get incredibly large very quickly.
+
+
+Output:
+
+The program will output the first few Fermat numbers accurately, but after the 5th one, the values will be incorrect due to overflowing the `long` data type. The output will look something like this (the incorrect values will vary based on how Java handles the overflow):
+

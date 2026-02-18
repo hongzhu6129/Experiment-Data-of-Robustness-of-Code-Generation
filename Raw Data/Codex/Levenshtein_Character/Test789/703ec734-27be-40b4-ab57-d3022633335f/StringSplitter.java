@@ -1,0 +1,51 @@
+public class StringSplitter {
+
+    static void splitString(String str, int n) {
+        if (str == null || str.isEmpty()) {
+            System.out.println("Input string is empty or null.");
+            return;
+        }
+
+        int len = str.length();
+        int charsPerPart = len / n;
+        int remainder = len % n;
+
+        if (remainder != 0) {
+            System.out.println("String cannot be divided into " + n + " equal parts.");
+            return;  // Or handle it differently, like distributing remainder across parts 
+        }
+
+        int startIndex = 0;
+        for (int i = 0; i < n; i++) {
+            int endIndex = startIndex + charsPerPart;
+            System.out.println(str.substring(startIndex, endIndex));
+            startIndex = endIndex;
+        }
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcdefghijklmnopqrstuvwxyz";
+        int n1 = 3;
+        System.out.println("Splitting '" + str1 + "' into " + n1 + " parts:");
+        splitString(str1, n1);
+
+
+        String str2 = "abcdefghijklm";
+        int n2 = 4;
+        System.out.println("\nSplitting '" + str2 + "' into " + n2 + " parts:");
+        splitString(str2, n2);
+
+
+         String str3 = null;
+        int n3 = 2;
+        System.out.println("\nSplitting '" + str3 + "' into " + n3 + " parts:");
+        splitString(str3, n3); // Test with null input
+
+        String str4 = "";
+        int n4 = 5;
+        System.out.println("\nSplitting '" + str4 + "' into " + n4 + " parts:");
+        splitString(str4, n4); // Test with empty input
+
+
+    }
+}

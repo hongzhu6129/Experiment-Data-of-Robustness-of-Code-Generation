@@ -1,0 +1,29 @@
+import java.util.TreeSet;
+
+public class NumbersLessThanSevenTreeSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet to store numbers. TreeSets automatically store elements in sorted order.
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some numbers to the TreeSet (including some greater than and less than 7)
+        numbers.add(3);
+        numbers.add(9);
+        numbers.add(1);
+        numbers.add(5);
+        numbers.add(12);
+        numbers.add(2);
+        numbers.add(7);  // Include 7 to demonstrate the exclusive nature of headSet
+
+
+        // Use the headSet method to get all numbers strictly less than 7.
+        TreeSet<Integer> lessThanSeven = new TreeSet<>(numbers.headSet(7));
+
+
+        // Print the numbers less than 7
+        System.out.println("Numbers less than 7: " + lessThanSeven);
+
+
+
+    }
+}

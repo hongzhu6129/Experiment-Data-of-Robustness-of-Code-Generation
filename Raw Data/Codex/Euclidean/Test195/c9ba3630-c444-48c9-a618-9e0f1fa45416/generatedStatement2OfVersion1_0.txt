@@ -1,0 +1,25 @@
+
+
+**Explanation and Improvements:**
+
+1. **Case-Insensitive Counting:** The `CountCharacters` method now converts the input string to lowercase using `str.toLowerCase()` to ensure that 'P' and 'p' are treated as the same character.
+
+2. **Letter-Only Counting:**  The `Character.isLetter(c)` check is added to `CountCharacters` to count only letters and ignore spaces, numbers, or other symbols.
+
+3. **Clearer Output:** The `showDuplicates` method now provides a more user-friendly output:
+   - It prints the input string within quotes.
+   - It handles the case where no duplicates are found, printing "No duplicates found."
+   - A newline is added after the output for better readability.
+
+4. **Efficiency:**  The `charCounts` array is now correctly sized to 26 (for the English alphabet) which is more efficient than using a larger `HashMap`.
+
+5. **Assumptions Stated:**  A comment in the `showDuplicates` method clearly states the assumption of lowercase English alphabets. This helps avoid potential issues if the input string contains characters outside this range.
+
+
+**How it Works:**
+
+1. **`CountCharacters`:** This method takes the input string and an integer array (`charCounts`). It iterates through the string, incrementing the count in `charCounts` for each character. The array index corresponds to the character's position in the alphabet (e.g., 'a' is at index 0, 'b' at index 1, etc.).
+
+2. **`showDuplicates`:** This method initializes the `charCounts` array.  It calls `CountCharacters` to populate the array with character counts. Then, it iterates through `charCounts`. If the count for any character is greater than 1, it prints that character as a duplicate.
+
+3. **`main`:** The `main` method demonstrates the functionality by calling `showDuplicates` with different example strings.

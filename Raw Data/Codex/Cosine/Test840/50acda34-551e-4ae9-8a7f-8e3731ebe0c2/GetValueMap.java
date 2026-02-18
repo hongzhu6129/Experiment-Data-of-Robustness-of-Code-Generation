@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class GetValueMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, Integer> myMap = new HashMap<>();
+        myMap.put("apple", 1);
+        myMap.put("banana", 2);
+        myMap.put("orange", 3);
+
+        // Specify the key to retrieve
+        String keyToGet = "banana";
+
+        // Get the value associated with the key
+        Integer value = myMap.get(keyToGet);
+
+        // Print the value (or a message if the key is not found)
+        if (value != null) {
+            System.out.println("The value for key '" + keyToGet + "' is: " + value);
+        } else {
+            System.out.println("Key '" + keyToGet + "' not found in the map.");
+        }
+
+
+        // Example getting a key that doesn't exist:
+        String nonExistentKey = "grape";
+        Integer nonExistentValue = myMap.get(nonExistentKey);
+
+        if (nonExistentValue != null) {
+            System.out.println("The value for key '" + nonExistentKey + "' is: " + nonExistentValue);
+        } else {
+            System.out.println("Key '" + nonExistentKey + "' not found in the map.");
+        }
+    }
+}

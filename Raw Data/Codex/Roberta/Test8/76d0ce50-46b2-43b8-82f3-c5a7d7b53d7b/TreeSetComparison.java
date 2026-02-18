@@ -1,0 +1,61 @@
+import java.util.TreeSet;
+
+public class TreeSetComparison {
+
+    public static void main(String[] args) {
+
+        // Create two TreeSets
+        TreeSet<String> set1 = new TreeSet<>();
+        TreeSet<String> set2 = new TreeSet<>();
+
+        // Populate set1
+        set1.add("apple");
+        set1.add("banana");
+        set1.add("orange");
+        set1.add("grape");
+
+        // Populate set2
+        set2.add("banana");
+        set2.add("orange");
+        set2.add("kiwi");
+        set2.add("mango");
+
+
+        // 1. Check if sets are equal
+        System.out.println("Are set1 and set2 equal? " + set1.equals(set2)); // Output: false (unless they contain the same elements)
+
+        // 2. Find the common elements (intersection)
+        TreeSet<String> intersection = new TreeSet<>(set1); // Create a copy of set1
+        intersection.retainAll(set2); // retainAll modifies intersection to keep only the elements also in set2
+        System.out.println("Common elements: " + intersection); // Output: [banana, orange]
+
+
+        // 3. Find the union of the two sets
+        TreeSet<String> union = new TreeSet<>(set1);
+        union.addAll(set2); // addAll adds all elements from set2 to union
+        System.out.println("Union of sets: " + union); // Output: [apple, banana, grape, kiwi, mango, orange]
+
+
+        // 4. Find the difference between set1 and set2 (elements in set1 but not in set2)
+        TreeSet<String> difference1 = new TreeSet<>(set1);
+        difference1.removeAll(set2); //removeAll removes all elements from difference1 that are also in set2
+        System.out.println("Elements in set1 but not in set2: " + difference1);  //Output: [apple, grape]
+
+
+        // 5. Find the difference between set2 and set1 (elements in set2 but not in set1)
+        TreeSet<String> difference2 = new TreeSet<>(set2);
+        difference2.removeAll(set1);
+        System.out.println("Elements in set2 but not in set1: " + difference2); // Output: [kiwi, mango]
+
+
+
+        // 6. Check if set1 is a subset of set2
+        System.out.println("Is set1 a subset of set2? " + set2.containsAll(set1)); // Output: false (unless set2 contains all elements of set1)
+
+        // 7. Check if set2 is a superset of set1
+        System.out.println("Is set2 a superset of set1? " + set2.containsAll(set1)); // Output: false  (unless set2 contains all elements of set1)
+
+        // Note:  TreeSets automatically store elements in sorted order (according to their natural ordering or a provided Comparator).
+        //       This is a key difference and advantage of TreeSets compared to HashSets, which do not guarantee any specific order.
+    }
+}

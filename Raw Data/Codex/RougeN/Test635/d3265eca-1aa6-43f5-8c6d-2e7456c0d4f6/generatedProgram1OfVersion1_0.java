@@ -1,0 +1,47 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        // Specify the starting position (index)
+        int startPosition = 2; // Start iterating from the 3rd element (index 2)
+
+
+        if (startPosition < 0 || startPosition >= linkedList.size()) {
+            System.out.println("Invalid start position.");
+            return; // Exit if the start position is out of bounds
+        }
+
+
+        // Iterate through the LinkedList from the specified position using a ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startPosition);
+
+        System.out.println("Elements starting from position " + startPosition + ":");
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+        // Example of iterating backwards from a position:
+         System.out.println("\nIterating backwards from position " + startPosition + ":");
+
+         // Reset the iterator to the start position if needed.
+         iterator = linkedList.listIterator(startPosition); 
+
+        while (iterator.hasPrevious()) {  // Check if there's a previous element
+            System.out.println(iterator.previous());
+        }
+
+
+
+    }
+}

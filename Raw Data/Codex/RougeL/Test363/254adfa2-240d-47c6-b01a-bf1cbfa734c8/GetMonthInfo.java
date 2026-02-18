@@ -1,0 +1,55 @@
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public class GetMonthInfo {
+
+    public static void main(String[] args) {
+        // Get information for the current month
+        LocalDate currentDate = LocalDate.now();
+        int currentMonthValue = currentDate.getMonthValue();
+        Month currentMonth = currentDate.getMonth();
+
+        System.out.println("Current Month Information:");
+        printMonthInfo(currentMonthValue, currentMonth);
+
+
+        // Get information for a specific month (e.g., February 2024)
+        int specificMonthValue = 2;  // February
+        int specificYear = 2024;
+
+        YearMonth specificYearMonth = YearMonth.of(specificYear, specificMonthValue);
+        Month specificMonth = specificYearMonth.getMonth();
+
+
+        System.out.println("\nSpecific Month Information (February 2024):");
+        printMonthInfo(specificMonthValue, specificMonth);
+
+
+
+
+        //Example to get information for a month provided as a String.
+        String monthYearString = "October 2023"; // Example input
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.ENGLISH);
+        YearMonth ymFromString = YearMonth.parse(monthYearString, formatter);
+        
+        System.out.println("\nSpecific Month Information from String (" + monthYearString + "):");
+        printMonthInfo(ymFromString.getMonthValue(), ymFromString.getMonth());
+        
+
+
+    }
+
+    private static void printMonthInfo(int monthValue, Month month) {
+        System.out.println("Month Number: " + monthValue);
+        System.out.println("Month Name (Full): " + month.getDisplayName(TextStyle.FULL, Locale.getDefault()));
+        System.out.println("Month Name (Short): " + month.getDisplayName(TextStyle.SHORT, Locale.getDefault()));
+        // Number of days can vary depending on the year, so we use YearMonth
+        System.out.println("Number of Days: " + YearMonth.of(LocalDate.now().getYear(), month).lengthOfMonth()); 
+        System.out.println("--------------------");
+    }
+}

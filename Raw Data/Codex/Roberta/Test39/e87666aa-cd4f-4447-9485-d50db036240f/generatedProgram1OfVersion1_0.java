@@ -1,0 +1,35 @@
+public class LargestOfFirstAndLast {
+
+    public static void main(String[] args) {
+
+        // Example array
+        int[] numbers = {10, 5, 25};
+
+        // Get the first and last elements
+        int first = numbers[0];
+        int last = numbers[numbers.length - 1];
+
+        // Find the largest using Math.max()
+        int largest = Math.max(first, last);
+
+
+        // Print the result
+        System.out.println("The largest element between the first and last is: " + largest);
+
+
+        // Example with different numbers for demonstration
+        int[] numbers2 = {50, 15, 20};
+        first = numbers2[0];
+        last = numbers2[numbers2.length -1];
+        largest = Math.max(first, last);
+        System.out.println("The largest element between the first and last is: " + largest);
+
+
+        // Example with equal first and last
+        int[] numbers3 = {30, 15, 30};
+        first = numbers3[0];
+        last = numbers3[numbers3.length -1];
+        largest = Math.max(first, last);
+        System.out.println("The largest element between the first and last is: " + largest);
+    }
+}

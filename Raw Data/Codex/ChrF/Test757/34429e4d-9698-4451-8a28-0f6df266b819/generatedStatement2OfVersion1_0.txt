@@ -1,0 +1,35 @@
+
+
+
+Explanation:
+
+1. **Import necessary classes:**
+   - `java.time.DayOfWeek`:  To get the day of the week.
+   - `java.time.LocalDate`: To represent dates.
+   - `java.time.format.DateTimeFormatter`: To parse date strings.
+   - `java.time.format.DateTimeParseException`: To handle invalid date formats.
+   - `java.util.Scanner`: To get user input.
+
+2. **Get user input:**
+   - Prompt the user to enter a date in YYYY-MM-DD format.
+   - Read the input using `scanner.nextLine()`.
+
+3. **Parse the date string:**
+   - Create a `DateTimeFormatter` with `DateTimeFormatter.ISO_DATE` to specify the expected format.
+   - Use `LocalDate.parse(dateString, formatter)` to convert the string into a `LocalDate` object.  This will throw a `DateTimeParseException` if the format is incorrect.
+
+4. **Get the day of the week:**
+   - Call `date.getDayOfWeek()` to get the `DayOfWeek` enum value.
+
+5. **Print the result:**
+   - Display the day of the week to the user.
+
+6. **Handle invalid input:**
+   - Use a `try-catch` block to catch `DateTimeParseException` and print an error message if the input is invalid.
+
+7. **Close the scanner:**
+   - `scanner.close()` releases the resources used by the scanner (good practice).
+
+
+Example Usage:
+

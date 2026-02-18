@@ -1,0 +1,49 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 10, 4, 5, 6};
+        int[] arr2 = {1, 2, 3, 4, 5, 6};
+        int[] arr3 = {1, 2, 3, 10, 10, 4, 5, 10, 6};
+        int[] arr4 = {1, 10, 2, 3, 10, 4, 5, 6};
+
+        printSophisticatedArray(arr1); // Output: [4, 5, 6]
+        printSophisticatedArray(arr2); // Output: []
+        printSophisticatedArray(arr3); // Output: [6]
+        printSophisticatedArray(arr4); // Output: [4, 5, 6]
+
+    }
+
+
+    public static void printSophisticatedArray(int[] arr) {
+        int lastIndexOf10 = -1;
+
+        // Find the index of the last occurrence of 10
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                lastIndexOf10 = i;
+            }
+        }
+
+        // If 10 is not found, print an empty array
+        if (lastIndexOf10 == -1) {
+            System.out.println("[]");
+            return;
+        }
+
+        // Create a new array containing elements after the last 10
+        int[] sophisticatedArray = new int[arr.length - lastIndexOf10 - 1];
+        for (int i = 0; i < sophisticatedArray.length; i++) {
+            sophisticatedArray[i] = arr[lastIndexOf10 + 1 + i];
+        }
+
+        // Print the sophisticated array
+        System.out.print("[");
+        for (int i = 0; i < sophisticatedArray.length; i++) {
+            System.out.print(sophisticatedArray[i]);
+            if (i < sophisticatedArray.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
+}

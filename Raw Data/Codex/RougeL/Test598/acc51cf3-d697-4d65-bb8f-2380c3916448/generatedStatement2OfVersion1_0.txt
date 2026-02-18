@@ -1,0 +1,24 @@
+
+
+
+Explanation:
+
+1. **`public static void main(String[] args)`:**
+   - This is the main method where the program execution begins.
+   - We create a `TreeMap` with a custom `Comparator` object.
+
+2. **`public int compare(String s1, String s2)` (inside StringComparator):**
+   - This method is part of the `Comparator` interface. It defines the logic for comparing two strings (`s1` and `s2`).
+   - In this example, `s2.compareTo(s1)` is used. The `compareTo()` method of String returns:
+     - A negative integer if `s2` is lexicographically less than `s1`.
+     - Zero if `s2` is equal to `s1`.
+     - A positive integer if `s2` is lexicographically greater than `s1`.
+   - By reversing the order in the `compareTo` call (using `s2` then `s1`), we ensure the keys are sorted in *descending* order in the `TreeMap`.
+
+
+Key improvements in this version:
+
+- **Clearer Explanation:**  Comments explain the code's purpose and the logic behind the comparison.
+- **Nested Comparator Class:** The `StringComparator` is now an inner class within the `TreeMapSortKeys` class, making it more organized.
+- **Example of Different Comparator:** The code now demonstrates how to create a `TreeMap` with a different `Comparator` (for ascending, case-insensitive sorting), illustrating flexibility.
+- **More Concise and Readable:**  Improved formatting and variable names enhance readability.

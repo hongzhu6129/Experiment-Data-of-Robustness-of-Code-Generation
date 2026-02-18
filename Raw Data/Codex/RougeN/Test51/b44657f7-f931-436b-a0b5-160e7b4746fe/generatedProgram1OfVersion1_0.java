@@ -1,0 +1,42 @@
+public class PQValidator {
+
+    public static void main(String[] args) {
+        String test1 = "pq";
+        String test2 = "p";
+        String test3 = "pqqq";
+        String test4 = "pqp";
+        String test5 = "q";
+        String test6 = "qp";
+        String test7 = "";
+        String test8 = "pqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"; // Long string of q's
+
+        System.out.println(test1 + ": " + validate(test1));
+        System.out.println(test2 + ": " + validate(test2));
+        System.out.println(test3 + ": " + validate(test3));
+        System.out.println(test4 + ": " + validate(test4));
+        System.out.println(test5 + ": " + validate(test5));
+        System.out.println(test6 + ": " + validate(test6));
+        System.out.println(test7 + ": " + validate(test7));
+        System.out.println(test8 + ": " + validate(test8));
+
+
+    }
+
+    public static String validate(String input) {
+        if (input == null || input.isEmpty()) {
+            return "Invalid";
+        }
+
+        if (input.charAt(0) != 'p') {
+            return "Invalid";
+        }
+
+        for (int i = 1; i < input.length(); i++) {
+            if (input.charAt(i) != 'q') {
+                return "Invalid";
+            }
+        }
+
+        return "Valid";
+    }
+}

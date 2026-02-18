@@ -1,0 +1,22 @@
+import java.util.PriorityQueue;
+
+public class CountPriorityQueueElements {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue (you can specify a comparator if needed for custom ordering)
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(10);
+        priorityQueue.add(3);
+        priorityQueue.add(7);
+
+        // Count the number of elements using the size() method
+        int elementCount = priorityQueue.size();
+
+        // Print the count
+        System.out.println("Number of elements in the priority queue: " + elementCount); 
+    }
+}

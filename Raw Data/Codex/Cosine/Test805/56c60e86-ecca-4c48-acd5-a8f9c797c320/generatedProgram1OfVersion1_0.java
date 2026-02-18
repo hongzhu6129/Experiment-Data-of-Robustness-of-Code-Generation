@@ -1,0 +1,32 @@
+public class ArrayCombination {
+
+    public static void main(String[] args) {
+
+        int[][] arrays = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9},
+                {10, 11, 12},
+                {13, 14, 15}
+        };
+
+        // We'll use the first two arrays for the new array.
+        int[] firstArray = arrays[0];
+        int[] secondArray = arrays[1];
+
+
+        int[] newArray = new int[2]; 
+        newArray[0] = firstArray[0]; // First element of the first array
+        newArray[1] = secondArray[secondArray.length - 1]; // Last element of the second array
+
+
+        System.out.print("New Array: [");
+        for (int i = 0; i < newArray.length; i++) {
+            System.out.print(newArray[i]);
+            if (i < newArray.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+}

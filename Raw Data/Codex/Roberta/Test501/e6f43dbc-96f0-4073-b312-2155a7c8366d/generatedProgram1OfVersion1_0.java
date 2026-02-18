@@ -1,0 +1,47 @@
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+
+        // Search for a specific key
+        String keyToSearch = "banana";
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key '" + keyToSearch + "' found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key '" + keyToSearch + "' not found.");
+        }
+
+
+        // Search for a specific value (less efficient as TreeMaps are optimized for key searches)
+        int valueToSearch = 3;
+        boolean valueFound = false;
+        for (String key : treeMap.keySet()) {
+            if (treeMap.get(key) == valueToSearch) {
+                System.out.println("Value " + valueToSearch + " found. Associated key: " + key);
+                valueFound = true;
+                break; // Exit the loop once the value is found
+            }
+        }
+        if (!valueFound) {
+            System.out.println("Value " + valueToSearch + " not found.");
+        }
+
+
+        //Using containsValue (Java 8+ recommended for value searching)
+        if(treeMap.containsValue(valueToSearch)) {
+            System.out.println("Value " + valueToSearch + " found (using containsValue).");
+        } else {
+            System.out.println("Value " + valueToSearch + " not found (using containsValue).");
+        }
+
+    }
+}

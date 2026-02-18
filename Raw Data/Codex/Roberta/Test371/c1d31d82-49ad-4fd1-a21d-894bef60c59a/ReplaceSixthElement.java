@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReplaceSixthElement {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        List<Integer> numbers = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+        numbers.add(6); // Element at index 5 (sixth element)
+        numbers.add(7);
+        numbers.add(8);
+
+        // Specify the new element to replace the sixth element
+        int newElement = 99;
+
+
+        // Check if the ArrayList has at least 6 elements before attempting replacement
+        if (numbers.size() >= 6) {
+            // Replace the sixth element (at index 5) with the new element
+            numbers.set(5, newElement); 
+
+            System.out.println("ArrayList after replacing the sixth element: " + numbers);
+
+        } else {
+            System.out.println("The ArrayList does not have a sixth element to replace.");
+        }
+
+
+         //Example with Strings (just to demonstrate flexibility)
+        List<String> strings = new ArrayList<>();
+        strings.add("apple");
+        strings.add("banana");
+        strings.add("cherry");
+        strings.add("date");
+        strings.add("elderberry");
+        strings.add("fig"); // sixth element
+
+        if(strings.size()>= 6) {
+            strings.set(5,  "grape");
+            System.out.println("ArrayList of strings after replacing the sixth element: " + strings);
+        } else {
+            System.out.println("The string ArrayList does not have a sixth element to replace.");
+
+        }
+    }
+}

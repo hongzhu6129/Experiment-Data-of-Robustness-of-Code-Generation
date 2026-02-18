@@ -1,0 +1,13 @@
+
+
+
+Key Points:
+
+* **ArrayList Size vs. Capacity:**  An ArrayList's `size` is the number of elements it currently holds.  Its `capacity` is the size of the underlying array that stores the elements. The capacity is usually larger than the size, allowing for efficient addition of new elements.  When the size reaches the capacity, the ArrayList automatically creates a larger array and copies the existing elements (which is a relatively expensive operation).
+
+* `ensureCapacity()` does not change the size of the ArrayList; it influences the *capacity*. Use it when you have a good estimate of how many elements you'll eventually add to avoid frequent resizing operations.
+
+* `add()` and `addAll()` increase the *size* (and may increase the capacity if needed).  `addAll()` is more efficient when adding multiple elements at once than calling `add()` repeatedly in a loop.
+
+
+This improved answer clarifies the distinction between size and capacity, demonstrates adding multiple elements using `addAll()`, and provides the `ensureCapacity()` method as a way to optimize performance.

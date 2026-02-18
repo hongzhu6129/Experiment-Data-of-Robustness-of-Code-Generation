@@ -1,0 +1,64 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompareArrayLists {
+
+    public static void main(String[] args) {
+        // Example ArrayLists
+        List<String> list1 = new ArrayList<>();
+        list1.add("apple");
+        list1.add("banana");
+        list1.add("orange");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("apple");
+        list2.add("banana");
+        list2.add("grape");
+
+
+        // 1. Check if lists are equal (same elements in the same order)
+        boolean areEqual = list1.equals(list2);
+        System.out.println("Lists are equal (order matters): " + areEqual);
+
+
+        // 2. Check if lists contain the same elements (order doesn't matter)
+        boolean sameElements = list1.containsAll(list2) && list2.containsAll(list1);
+        System.out.println("Lists contain the same elements (order doesn't matter): " + sameElements);
+
+        // 3. Find common elements
+        List<String> commonElements = new ArrayList<>(list1); // Create a copy to avoid modifying original list
+        commonElements.retainAll(list2); // retainAll keeps only the elements present in both lists
+        System.out.println("Common elements: " + commonElements);
+
+        // 4. Find differences (elements present in list1 but not in list2)
+        List<String> difference1 = new ArrayList<>(list1);
+        difference1.removeAll(list2);
+        System.out.println("Elements in list1 but not in list2: " + difference1);
+
+
+        // 5. Find differences (elements present in list2 but not in list1)
+        List<String> difference2 = new ArrayList<>(list2);
+        difference2.removeAll(list1);
+        System.out.println("Elements in list2 but not in list1: " + difference2);
+
+
+        // Example with Integer ArrayLists (demonstrating comparison of different data types)
+        List<Integer> numbers1 = new ArrayList<>();
+        numbers1.add(1);
+        numbers1.add(2);
+        numbers1.add(3);
+
+        List<Integer> numbers2 = new ArrayList<>();
+        numbers2.add(2);
+        numbers2.add(1);
+        numbers2.add(3);
+
+
+
+        boolean sameNumbersRegardlessOfOrder = numbers1.containsAll(numbers2) && numbers2.containsAll(numbers1);
+        System.out.println("Number lists contain same elements (order doesn't matter): " + sameNumbersRegardlessOfOrder);
+
+
+
+    }
+}

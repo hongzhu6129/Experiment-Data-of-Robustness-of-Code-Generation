@@ -1,0 +1,59 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLastLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> list = new LinkedList<>();
+        list.add("apple");
+        list.add("banana");
+        list.add("cherry");
+        list.add("date");
+        list.add("elderberry");
+
+        System.out.println("Original LinkedList: " + list);
+
+        // Check if the list is empty or has only one element
+        if (list.size() <= 1) {
+            list.clear(); // Clear the list if it's empty or has only one element
+        } else {
+            list.removeFirst(); // Remove the first element
+            list.removeLast();  // Remove the last element
+        }
+
+
+
+        System.out.println("Modified LinkedList: " + list);
+
+
+        // Example with an empty list
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        System.out.println("Original Empty List: " + emptyList);
+
+         if (emptyList.size() <= 1) {
+            emptyList.clear(); 
+        } else {
+            emptyList.removeFirst(); 
+            emptyList.removeLast();  
+        }
+
+        System.out.println("Modified Empty List: " + emptyList);
+
+
+        // Example with a single element list
+        LinkedList<Double> singleElementList = new LinkedList<>();
+        singleElementList.add(3.14);
+        System.out.println("Original Single Element List: " + singleElementList);
+
+        if (singleElementList.size() <= 1) {
+            singleElementList.clear(); 
+        } else {
+            singleElementList.removeFirst(); 
+            singleElementList.removeLast();  
+        }
+        System.out.println("Modified Single Element List: " + singleElementList);
+
+
+
+    }
+}

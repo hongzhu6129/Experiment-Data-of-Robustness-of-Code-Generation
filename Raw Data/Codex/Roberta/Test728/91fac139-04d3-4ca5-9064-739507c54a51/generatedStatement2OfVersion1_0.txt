@@ -1,0 +1,29 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Variable Names:**  `m` and `n` are more descriptive than just size variables.
+
+2. **Target Value:** I've added a `target` variable to make it easy to test with different values.
+
+3. **Return an Array for Coordinates:** The `Saddleback` method returns an `int[]` where the first element is the row and the second is the column. This is a much better approach than printing inside the function. It keeps the search logic separate from output.
+
+4. **Handling Target Not Found:** The code now correctly handles the case where the target is not found by returning `{-1, -1}`.
+
+5. **Comments:** Added comments to explain the algorithm's logic.
+
+6. **Example in `main`:**  The `main` method now provides a clear example of how to use the `Saddleback` function and how to interpret the results.
+
+
+
+**How Saddleback Search Works:**
+
+Saddleback search is efficient for sorted 2D arrays. It starts at the top-right corner and eliminates either a row or a column in each step:
+
+- **If `arr[row][col] < target`:**  Move down (increment `row`). The current row contains only smaller values than the target.
+- **If `arr[row][col] > target`:** Move left (decrement `col`). The current column contains only larger values than the target.
+- **If `arr[row][col] == target`:** Target found!  Return the `row` and `col`.
+
+
+This approach avoids unnecessary comparisons and effectively narrows down the search space.

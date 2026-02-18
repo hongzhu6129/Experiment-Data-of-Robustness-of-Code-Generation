@@ -1,0 +1,40 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class WordCounter {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        Pattern pattern = Pattern.compile("\\b\\w+[mnMN]\\b"); // Matches whole words ending in m or n (case-insensitive)
+        Matcher matcher = pattern.matcher(text);
+        int count = 0;
+        while (matcher.find()) {
+            count++;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        WordCounter counter = new WordCounter();
+        String text1 = "The program can determine which words in William's poem end with m or N.";
+        int count1 = counter.endWithmOrn(text1);
+        System.out.println("Text 1 count: " + count1); // Expected output: 3 (William's, poem, or) Note: "program" ends with "m" but doesn't have word boundary before it due to the full stop.
+
+        String text2 = "Tom and Sam went to the gym";
+        int count2 = counter.endWithmOrn(text2);
+        System.out.println("Text 2 count: " + count2); // Expected: 2
+
+        String text3 = null;
+        int count3 = counter.endWithmOrn(text3);
+        System.out.println("Text 3 count: " + count3); // Expected 0
+
+        String text4 = " ";
+        int count4 = counter.endWithmOrn(text4);
+        System.out.println("Text 4 count: " + count4); // Expected 0
+
+
+    }
+}

@@ -1,0 +1,31 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SecondNonRepeatingCharacter {
+
+    public static void main(String[] args) {
+        String str = "abcabcbb";
+        char result = findSecondNonRepeatingCharacter(str);
+        System.out.println("The second non-repeating character in '" + str + "' is '" + result + "'");
+    }
+
+    private static char findSecondNonRepeatingCharacter(String str) {
+        // Create a HashMap to store the character count
+        Map<Character, Integer> charCount = new HashMap<>();
+
+        // Iterate over the string and increment the character count
+        for (char c : str.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        // Iterate over the string again to find the second non-repeating character
+        for (char c : str.toCharArray()) {
+            if (charCount.get(c) == 2) {
+                return c;
+            }
+        }
+
+        // If no second non-repeating character is found, return '\0'
+        return '\0';
+    }
+}

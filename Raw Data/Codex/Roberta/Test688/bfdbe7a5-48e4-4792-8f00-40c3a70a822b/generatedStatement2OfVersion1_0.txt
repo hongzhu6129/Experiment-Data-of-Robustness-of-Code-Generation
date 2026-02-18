@@ -1,0 +1,20 @@
+
+
+
+**Explanation and improvements:**
+
+1. **Horner's Method:** The provided evaluation method `((((0)x+6)x+(-4))x+7)x+(-19)` is known as Horner's method.  It's an efficient way to evaluate polynomials.
+
+2. **Clearer Coefficient Handling:** The `main` method now explicitly creates a `List` of coefficients.  This makes it easy to change the polynomial being evaluated.  The coefficients are ordered from the constant term to the highest power.
+
+3. **Reverse Iteration:** The `polyEval` method iterates through the coefficients list in reverse (from highest power to constant). This is the core of Horner's method and allows the nested multiplication and addition to be performed efficiently.
+
+4. **Simplified Calculation:** The calculation within the loop `result = result * x + coefficients.get(i);` concisely implements Horner's method.  It avoids unnecessary intermediate variables.
+
+
+**How to use it:**
+
+1. **Change the coefficients:** Modify the `coefficients` list in the `main` method to evaluate a different polynomial.  Make sure the coefficients are in order from the constant term to the highest power of x.
+2. **Change x:**  Modify the `x` variable in the `main` method to evaluate the polynomial at a different value of x.
+
+This improved version is more readable, flexible, and efficient due to the direct implementation of Horner's method.

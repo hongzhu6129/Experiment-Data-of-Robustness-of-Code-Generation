@@ -1,0 +1,37 @@
+
+
+**Test Cases:**
+
+**1. Basic Test:**
+
+* **Expected Output Format:** `yyyy/MM/dd HH:mm:ss.SSS`  (e.g., 2024/01/20 15:30:45.123)
+* **Verification:** Check that the output string conforms to the specified date and time format.  You can visually inspect or use a regular expression for automated testing.
+
+**2. Single-Digit Values:**
+
+* **Purpose:**  Ensure correct padding with zeros for single-digit months, days, hours, minutes, seconds, and milliseconds.
+* **Example:**  If the current time is January 5th, 2:03:04.005, the output should be `2024/01/05 02:03:04.005`, not `2024/1/5 2:3:4.5`.
+* **How to Test:** Set the system time (if possible for testing) or mock `LocalDateTime.now()` to force single-digit values.
+
+**3. Time Zone Changes (Optional but Recommended):**
+
+* **Purpose:** Although the provided format doesn't include time zone, it's good practice to consider time zone changes, especially if the application might be deployed in different locations.
+* **How to Test:**  Change the system's time zone and run the program.  If you need to display the time zone, adjust the `DateTimeFormatter` accordingly.  If you want to ensure consistency regardless of time zone, use `Instant` instead of `LocalDateTime` and format accordingly.
+
+**4. Leap Year and Day Boundaries:**
+
+* **Purpose:** Verify correctness during leap years (February 29th) and at day/month/year boundaries.
+* **Example Test Cases:**
+    * February 29th during a leap year.
+    * December 31st rolling over to January 1st.
+    * End of a month with different numbers of days (e.g., January 31st to February 1st).
+* **How to Test:** Mock `LocalDateTime.now()` to return these specific dates.
+
+
+**5. Locale (Optional):**
+
+* **Purpose:** While the provided format is numeric and not affected by locale, if you were to use locale-specific formatting (e.g., month names), you should test with different locales.
+
+
+**Example using JUnit for test case 2 (single-digit values):**
+

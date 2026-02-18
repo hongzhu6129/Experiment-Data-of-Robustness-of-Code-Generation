@@ -1,0 +1,60 @@
+import java.util.LinkedList;
+
+public class LinkedListRemove {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+
+        // Demonstrating removing and returning elements at different indices
+        try {
+            String removedElement1 = removeAndReturn(linkedList, 2); // Remove and return element at index 2 (Orange)
+            System.out.println("Removed element at index 2: " + removedElement1);
+            System.out.println("LinkedList after removal: " + linkedList);
+
+            String removedElement2 = removeAndReturn(linkedList, 0); // Remove and return element at index 0 (Apple)
+            System.out.println("Removed element at index 0: " + removedElement2);
+            System.out.println("LinkedList after removal: " + linkedList);
+
+
+            String removedElement3 = removeAndReturn(linkedList, linkedList.size() -1); // Remove last
+            System.out.println("Removed element at last index: " + removedElement3);
+            System.out.println("LinkedList after removal: " + linkedList);
+
+
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+       // Example of handling IndexOutOfBoundsException:
+
+         try{
+             String removedElement4 = removeAndReturn(linkedList, 10); //Trying to remove element at index 10 (out of bounds)
+         } catch (IndexOutOfBoundsException e){
+             System.out.println("Error:" + e.getMessage());
+         }
+
+    }
+
+
+
+    public static <T> T removeAndReturn(LinkedList<T> list, int index) {
+        if (index < 0 || index >= list.size()) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + list.size());
+        }
+        return list.remove(index);
+    }
+}
+

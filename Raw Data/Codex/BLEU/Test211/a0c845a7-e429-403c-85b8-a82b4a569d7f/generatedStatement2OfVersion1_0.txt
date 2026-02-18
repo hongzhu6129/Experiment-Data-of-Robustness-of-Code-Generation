@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clear Method Signatures:**  The code adheres to the required `main` and `Saddleback` method signatures.
+
+2. **Saddleback Search Algorithm:**  The `Saddleback` method correctly implements the saddleback search (also sometimes called a "staircase search"). It starts at the top-right corner of the matrix and efficiently eliminates rows or columns based on the target value.
+
+3. **Return Array:** The `Saddleback` method returns an `int[]` containing the row and column index of the target.  If the target is not found, it returns `{-1, -1}` to indicate failure.  This is a much clearer way to handle search results than printing within the `Saddleback` method itself.
+
+4. **Example Usage in `main`:** The `main` method demonstrates how to use the `Saddleback` method and how to interpret the returned array. It also includes a test case where the target element is *not* present in the matrix.
+
+5. **Comments and Readability:** The code is well-commented to explain the logic and improve readability.
+
+
+**How Saddleback Search Works:**
+
+The algorithm leverages the sorted nature of the rows and columns.  By starting at the top-right:
+
+- If the current element is *smaller* than the target, the entire row can be eliminated because all elements to the left will also be smaller. We move down to the next row.
+- If the current element is *larger* than the target, the entire column can be eliminated because all elements below will also be larger. We move left to the previous column.
+- This process continues until the target is found or we exhaust the matrix.

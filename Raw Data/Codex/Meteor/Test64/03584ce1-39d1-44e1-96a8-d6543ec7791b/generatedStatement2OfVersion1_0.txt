@@ -1,0 +1,32 @@
+
+
+**Test Cases:**
+
+1. **Valid Input:**
+    * Input: `1101`
+    * Expected Output: `Hexadecimal value: 'd'`
+    * Input: `101101`
+    * Expected Output: `Hexadecimal value: '2d'`
+    * Input: `11111111`
+    * Expected Output: `Hexadecimal value: 'ff'`
+    * Input: `0`  (Corner case - single zero)
+    * Expected Output: `Hexadecimal value: '0'`
+
+2. **Invalid Input:**
+    * Input: `10201` (Contains a digit other than 0 or 1)
+    * Expected Output: `Invalid binary input.`
+    * Input: `1101a` (Contains a non-numeric character)
+    * Expected Output: `Invalid binary input.`
+    * Input: `` (Empty string � corner case)
+    * Expected Output: `Invalid binary input.` (The original code didn't handle this correctly. The provided improved code does)
+    * Input:  `11111111111111111111111111111111111111111111111` (Very long string, potentially causing overflow)
+    * Expected Output: Handles large values correctly, or a meaningful message about limitations if necessary (the current code will overflow and produce incorrect results - this is a further robustness improvement that could be made).
+
+
+3. **Leading Zeros:**  (Another corner case)
+    * Input: `00001101`
+    * Expected Output: `Hexadecimal value: 'd'` (Should correctly ignore leading zeros)
+
+
+
+These test cases cover different scenarios to ensure the program handles valid binary inputs correctly and produces appropriate error messages for invalid inputs. They also test some boundary conditions.   It's important to test code with both valid and invalid inputs to ensure robustness and catch potential issues.

@@ -1,0 +1,25 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Variable Names:**  Using `m` and `n` for dimensions is fine, but naming the array `arr` instead of `matrix` is more common in Java and slightly more descriptive.
+
+2. **Return an int[]:** The `Saddleback` method now returns an `int[]` of size 2. This is a better practice than relying on global variables.  If the target is found, the array contains the row and column indices. If not found, it returns `{-1, -1}`.
+
+3. **Error Handling:** The `main` method now checks the return value from `Saddleback` to print a "not found" message if appropriate.
+
+4. **Saddleback Search Logic:** The core logic of the `Saddleback` search remains efficient. It starts from the top-right corner and moves either down or left, eliminating a row or column with each comparison.  This takes advantage of the sorted nature of the matrix.
+
+5. **Example Usage:** The `main` method demonstrates how to use the `Saddleback` function with a sample 2D array and target value.
+
+
+**How Saddleback Search Works (in detail):**
+
+The key idea is to start at the top-right corner.
+
+* **If the current element is equal to the target:** You've found the target! Return its coordinates.
+* **If the current element is smaller than the target:** The target cannot be in the current row (because the row is sorted in ascending order). Move down to the next row.
+* **If the current element is larger than the target:**  The target cannot be in the current column (because the column is sorted in ascending order). Move left to the previous column.
+
+This process continues until either the target is found or you've exhausted the search space (i.e., you go out of bounds). Because you eliminate a row or column with each step, the search is efficient.

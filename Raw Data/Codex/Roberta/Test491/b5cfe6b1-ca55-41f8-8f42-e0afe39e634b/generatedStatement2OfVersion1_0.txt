@@ -1,0 +1,12 @@
+
+
+
+Key takeaways:
+
+1. **`equals()`:** The preferred way to compare the content of two strings.  It returns `true` if the strings contain the same sequence of characters, and `false` otherwise. It handles nulls safely (if you call `equals()` on a non-null string, it won't throw a `NullPointerException`).
+
+2. **`==`:** Compares references (memory locations). Use `==` only if you want to check if two string variables point to the exact same object in memory.  String literals (e.g., `"hello"`) are interned (stored in a special pool), so `str1 == str2` will be true in the example. However, when you use `new String("hello")`, a new object is created, so `str1 == str3` is `false`.
+
+3. **`compareTo()`:**  Performs a lexicographical comparison.  It returns 0 if the strings are equal, a negative value if the first string comes before the second in lexicographical order, and a positive value if the first string comes after the second.  Useful for sorting.
+
+4. **Null Handling:** Be cautious when using `equals()` with strings that could be null. It's safest to call `.equals()` on the string you know is *not* null.  The provided examples demonstrate safe ways to handle this.

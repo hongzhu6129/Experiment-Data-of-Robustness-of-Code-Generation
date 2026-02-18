@@ -1,0 +1,16 @@
+
+
+
+Explanation using `Instant`:
+
+1. **`Instant.now()`:** This gets the current time as an `Instant` object, which represents a point in time on the timeline.
+
+2. **`now.getEpochSecond()`:**  This method extracts the number of whole seconds that have elapsed since the "epoch," which is defined as January 1, 1970, 00:00:00 Coordinated Universal Time (UTC).
+
+Explanation using `System.currentTimeMillis()` (Alternate Method):
+
+1. **`System.currentTimeMillis()`:** This returns the current time in milliseconds since the epoch.
+2. **`millisecondsSinceEpoch / 1000`:**  We divide the result by 1000 to convert milliseconds to seconds.  This method is slightly less precise than using `Instant.getEpochSecond()` because it truncates any fractional seconds.
+
+
+Both methods achieve the same fundamental goal of calculating seconds since the epoch, but the `Instant` approach is generally preferred for its clarity and accuracy when dealing with time-related operations.

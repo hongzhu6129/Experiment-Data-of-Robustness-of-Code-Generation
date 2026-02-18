@@ -1,0 +1,15 @@
+
+
+**Explanation of Coupling and its use here:**
+
+* **Coupling:** In software engineering, coupling refers to the degree of interdependence between different parts (modules, classes, methods) of a program.  High coupling means strong interdependence, while low coupling means weak interdependence.
+
+* **Coupling in this example:** This example demonstrates a form of coupling because the `main` method directly creates an instance of the `StringReverser` class and calls its `reverseString` method.  The `main` method is *dependent* on the `StringReverser` class to perform the string reversal.
+
+* **Why this approach meets the requirement (even though the coupling is simple):**  The prompt explicitly states to use only the given method signatures.  This inherently creates a coupling because the `main` method *must* interact with an instance of the `StringReverser` class to use the `reverseString` method.  We cannot reverse the string directly within `main` due to the signature restrictions.
+
+* **How to reduce coupling (if the restrictions were lifted):** If we were allowed to modify the signatures, we could reduce coupling by making `reverseString` a `static` method. This would eliminate the need to create an instance of the `StringReverser` class in `main`.  We could simply call `StringReverser.reverseString("hello");` directly.
+
+
+**Important Note:** While the term "coupling" is used here to satisfy the prompt's requirement, it's worth noting that this is a very basic and inherent form of coupling.  The level of coupling in this small example isn't necessarily a concern in practice.  Discussions about reducing coupling usually become more relevant in larger, more complex software projects.
+

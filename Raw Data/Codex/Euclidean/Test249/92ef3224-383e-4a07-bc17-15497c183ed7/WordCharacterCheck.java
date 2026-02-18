@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class WordCharacterCheck {
+
+    static void checkExistance(String word, String availableCharacters) {
+        char[] wordChars = word.toLowerCase().toCharArray();
+        Arrays.sort(wordChars); 
+        char[] availableChars = availableCharacters.toLowerCase().toCharArray();
+        Arrays.sort(availableChars);
+
+
+        List<String> availableWords = new ArrayList<>();
+
+        // Iterate through possible words (in this simplified example, just one)
+            boolean canFormWord = true;
+            for (char wordChar : wordChars) {
+                if (Arrays.binarySearch(availableChars, wordChar) < 0) {
+                    canFormWord = false;
+                    break;
+                }
+            }
+            if (canFormWord) {
+                availableWords.add(word);
+            }
+
+        // Print the list of available words
+        System.out.println("Available words containing characters from '" + availableCharacters + "':");
+        if (availableWords.isEmpty()) {
+            System.out.println("None");
+        } else {
+            for (String availableWord : availableWords) {
+                System.out.println(availableWord);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        checkExistance("cat", "tac"); // Should print "cat"
+        checkExistance("bat", "cat"); // Should print None
+        checkExistance("too", "otortoise"); // should print too
+       checkExistance("apple","pale");  // Should print None (because there is only 1 'p' in "pale")
+    }
+}

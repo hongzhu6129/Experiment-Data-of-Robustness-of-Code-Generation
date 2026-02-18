@@ -1,0 +1,52 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class LastCompositeString {
+
+    public static void main(String[] args) {
+        String text = "This is a test string with composite123 and anotherComposite456";
+        String regex = "\\w+\\d+"; // Matches one or more word characters followed by one or more digits
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+
+        String lastComposite = null;
+        while (matcher.find()) {
+            lastComposite = matcher.group();
+        }
+
+        if (lastComposite != null) {
+            System.out.println("Last composite string: " + lastComposite); 
+        } else {
+            System.out.println("No composite string found.");
+        }
+
+
+        // Example 2: demonstrating no match
+        text = "This string has no composites";
+        matcher = pattern.matcher(text);
+        lastComposite = null;
+        while (matcher.find()) {
+            lastComposite = matcher.group();
+        }
+         if (lastComposite != null) {
+            System.out.println("Last composite string: " + lastComposite); 
+        } else {
+            System.out.println("No composite string found.");
+        }
+
+
+        // Example 3: Demonstrating multiple matches
+        text = "composite1 composite2 composite3";
+        matcher = pattern.matcher(text);
+        lastComposite = null;
+         while (matcher.find()) {
+            lastComposite = matcher.group();
+        }
+         if (lastComposite != null) {
+            System.out.println("Last composite string: " + lastComposite); 
+        } else {
+            System.out.println("No composite string found.");
+        }
+    }
+}

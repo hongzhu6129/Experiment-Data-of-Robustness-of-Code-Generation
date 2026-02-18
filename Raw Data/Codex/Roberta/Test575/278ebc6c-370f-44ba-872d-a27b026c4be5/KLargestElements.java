@@ -1,0 +1,76 @@
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 2, 7, 1, 15, 8, 3};
+        k = 4;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{1, 2, 3, 4, 5, 6, 7}; //Sorted already
+        k=3;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{7, 6, 5, 4, 3, 2, 1}; //Sorted in reverse
+        k=3;
+        findKLargest(arr, k);
+
+        arr = new int[]{1}; //Single element
+        k = 1;
+        findKLargest(arr, k);
+
+
+        arr = new int[]{1, 2}; //Two elements
+        k = 1;
+        findKLargest(arr, k);
+
+        arr = new int[]{1, 2}; //Two elements
+        k = 2;
+        findKLargest(arr, k);
+
+        arr = new int[]{1, 2, 3, 4, 5, 6, 7}; //k greater than array size
+        k = 10;
+        findKLargest(arr, k);
+
+
+
+
+    }
+
+    public static void findKLargest(int[] arr, int k) {
+        if (arr == null || arr.length == 0 || k <= 0) {
+            System.out.println("Invalid input.");
+            return;
+        }
+
+        //Using a min-heap ensures that the smallest element among the k largest is always at the top.
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        for (int num : arr) {
+            minHeap.offer(num); //Add element to the heap
+            if (minHeap.size() > k) {  // Remove smallest if heap size exceeds k
+                minHeap.poll();
+            }
+        }
+
+        // Print the k largest elements
+        System.out.print("K Largest Elements: ");
+        Integer[] result = minHeap.toArray(new Integer[0]); // Convert heap to array for sorted output.
+        Arrays.sort(result); //Sort the array in ascending order
+        for(int num : result)
+        {
+            System.out.print(num + " ");
+        }
+
+        System.out.println();
+    }
+}

@@ -1,0 +1,21 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes input validation to handle cases where `n` or `k` are negative.  It prints an appropriate message if the inputs are invalid.
+
+2. **Efficiency:**
+   - **Symmetry Optimization:** The code utilizes the property C(n, k) = C(n, n-k) to reduce calculations when `k` is greater than `n/2`.
+   - **Iterative Calculation:**  The binomial coefficient is calculated iteratively, which avoids the overhead of recursive calls and potential stack overflow errors for large values of `n` and `k`.  The multiplication and division within the loop are carefully ordered to prevent potential integer overflow issues.
+
+3. **Clarity:** The code is well-commented, making it easier to understand.  Variable names are more descriptive (e.g., `result` instead of just `res`).
+
+4. **Resource Management:** The `Scanner` is closed at the end using `scanner.close()` to release the resource.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `BinomialCoefficient.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using: `javac BinomialCoefficient.java`
+3. **Run:**  Execute the compiled code: `java BinomialCoefficient`  The program will prompt you to enter the values of `n` and `k`.

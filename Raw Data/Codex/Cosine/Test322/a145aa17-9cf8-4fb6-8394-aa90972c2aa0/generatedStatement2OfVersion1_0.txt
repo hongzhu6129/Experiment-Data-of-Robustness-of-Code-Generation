@@ -1,0 +1,28 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1. Positive Numbers | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2. Negative Numbers | -10 | -5 | -15 | -5 | 50 | 2 | 0 |
+| 3. Mixed Signs | 10 | -5 | 5 | 15 | -50 | -2 | 0 |
+| 4. Zero as num1 | 0 | 5 | 5 | -5 | 0 | 0 | 0 |
+| 5. Zero as num2 | 10 | 0 | 10 | 10 | 0 | "Division by zero" | N/A |  *(Corner Case)*
+| 6.  Decimal Numbers | 10.5 | 2.5 | 13.0 | 8.0 | 26.25 | 4.2 | 0.0 |
+| 7. Large Numbers | 1000000 | 1000 | 1001000 | 999000 | 1000000000 | 1000.0 | 0.0 |
+| 8. Small Numbers | 0.001 | 0.002 | 0.003 | -0.001 | 0.000002 | 0.5 | 0.0 |
+| 9. Integer Division | 10 | 3 | 13 | 7 | 30 | 3.3333333333333335 | 1.0 |
+
+
+**Explanation of Corner Cases:**
+
+* **Division by Zero (Test Case 5):**  Dividing by zero is undefined in mathematics and will cause an `ArithmeticException` in most programming languages. The provided code explicitly handles this by checking if `num2` is zero and printing an appropriate message. This prevents the program from crashing.
+
+
+**How to run these test cases:**
+
+While you can manually enter these values into the program,  a more systematic way to test is to use unit testing frameworks like JUnit. JUnit allows you to automate the testing process and verify the results programmatically.  Here's a simple example of a JUnit test:
+

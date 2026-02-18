@@ -1,0 +1,42 @@
+import java.time.Period;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+public class PeriodAndDuration {
+
+    public static void main(String[] args) {
+        // Example usage of Period (date-based)
+        LocalDate startDate = LocalDate.of(2023, 1, 1);
+        LocalDate endDate = LocalDate.of(2024, 2, 15);
+        Period period = Period.between(startDate, endDate);
+
+        System.out.println("Period between " + startDate + " and " + endDate + ": " + periodToYMD(period));
+
+
+
+        // Example usage of Duration (time-based)
+        LocalTime startTime = LocalTime.of(10, 30);
+        LocalTime endTime = LocalTime.of(14, 45);
+        Duration duration = Duration.between(startTime, endTime);
+
+        System.out.println("Duration between " + startTime + " and " + endTime + ": " + duration);
+
+
+        // Demonstrating formatting Period and Duration
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate newDate = startDate.plus(period);  // Add the period to the start date
+        System.out.println("New date after adding period: " + newDate.format(formatter));
+
+        LocalTime newTime = startTime.plus(duration); // Add the duration to the start time
+        System.out.println("New time after adding duration: " + newTime);
+
+
+
+    }
+
+    private static String periodToYMD(Period period) {
+        return period.getYears() + " years, " + period.getMonths() + " months, " + period.getDays() + " days";
+    }
+}

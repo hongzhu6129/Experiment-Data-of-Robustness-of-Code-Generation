@@ -1,0 +1,34 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors
+        colorQueue.offer("Red");
+        colorQueue.offer("Green");
+        colorQueue.offer("Blue");
+        colorQueue.offer("Yellow");
+        colorQueue.offer("Orange");
+
+
+        // Print the elements of the priority queue
+        System.out.println("Elements of the priority queue:");
+
+        // Iterate and print.  Be careful not to use colorQueue.poll() inside the loop's conditional
+        // as that would actually *remove* items from the queue.
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+
+        // Another way to iterate and print (removes elements!):
+        // System.out.println("\nElements (removing them one by one):");
+        // while (!colorQueue.isEmpty()) {
+        //     System.out.println(colorQueue.poll()); 
+        // } 
+    }
+}

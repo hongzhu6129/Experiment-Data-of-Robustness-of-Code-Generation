@@ -1,0 +1,72 @@
+class ExponentialSearch {
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53};
+        int target = 17;
+        int index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+        target = 18; // Test for an element not present
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+          target = 2; // Test for the first element
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+         target = 53; // Test for the last element
+        index = exponentialSearch(arr, target);
+
+        if (index != -1) {
+            System.out.println("Element " + target + " found at index " + index);
+        } else {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+    }
+
+    private static int exponentialSearch(int[] arr, int target) {
+        int n = arr.length;
+
+        if (arr[0] == target) {
+            return 0;
+        }
+
+        int i = 1;
+        while (i < n && arr[i] <= target) {
+            i *= 2;
+        }
+
+        // Perform binary search between arr[i/2] and min(i, n-1)
+        return binarySearch(arr, target, i / 2, Math.min(i, n - 1));
+    }
+
+    private static int binarySearch(int[] arr, int target, int low, int high) {
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+}

@@ -1,0 +1,22 @@
+
+
+
+Key Improvements:
+
+* **Clarity:**  Uses `GregorianCalendar` explicitly for better understanding.
+* **Accuracy:**  Corrected the explanation of `Calendar.MONTH` (it's 0-indexed).
+* **Completeness:** Added `minDayOfWeek` to cover all requested units (year, month, week, date, and implicitly day of week).
+* **Explanation:** Included comments explaining the meaning of each minimum value and any potential caveats.
+* **Conciseness:** Removed unnecessary intermediate variables.
+
+
+Explanation of Minimum Values:
+
+* **Minimum Year:**  The smallest year supported by the `Calendar` implementation (usually 1).
+* **Minimum Month:** Always 0 (representing January, since months are 0-indexed).
+* **Minimum Week of Year:** Usually 1, but could depend on locale and `Calendar` settings.  This is the smallest value for the week-of-year field.
+* **Minimum Day of Month:** Always 1 (the first day of the month).
+* **Minimum Day of Week:** Usually 1 (representing Sunday), but could be different based on `FIRST_DAY_OF_WEEK` settings (locale-dependent).  This is not the minimum date, but the minimum value allowed for day of the week.
+
+
+Important Note:  The `getMinimum()` method provides the minimum *possible* value for a field, not the minimum value *within the current month or year*. For example, `calendar.getMinimum(Calendar.DAY_OF_MONTH)` will always return 1, regardless of the month or year set in the calendar.

@@ -1,0 +1,32 @@
+
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Output |
+|---|---|---|---|
+| 1. Positive Integers | 10 | 5 | Sum: 15.0<br>Difference: 5.0<br>Product: 50.0<br>Quotient: 2.0<br>Remainder: 0.0 |
+| 2. Negative Integers | -10 | -5 | Sum: -15.0<br>Difference: -5.0<br>Product: 50.0<br>Quotient: 2.0<br>Remainder: 0.0 |
+| 3. Positive and Negative Integers | 10 | -5 | Sum: 5.0<br>Difference: 15.0<br>Product: -50.0<br>Quotient: -2.0<br>Remainder: 0.0 |
+| 4. Decimal Numbers | 10.5 | 2.5 | Sum: 13.0<br>Difference: 8.0<br>Product: 26.25<br>Quotient: 4.2<br>Remainder: 0.0 |
+| 5. Zero as num2 (Division by Zero) | 10 | 0 | Sum: 10.0<br>Difference: 10.0<br>Product: 0.0<br>Division by zero is not allowed.<br>Remainder by zero is not allowed. |
+| 6. Zero as num1 | 0 | 5 | Sum: 5.0<br>Difference: -5.0<br>Product: 0.0<br>Quotient: 0.0<br>Remainder: 0.0 |
+| 7. Both Zero | 0 | 0 | Sum: 0.0<br>Difference: 0.0<br>Product: 0.0<br>Division by zero is not allowed.<br>Remainder by zero is not allowed. |
+| 8. Large Numbers | 100000 | 5000 | Sum: 105000.0<br>Difference: 95000.0<br>Product: 5.0E8<br>Quotient: 20.0<br>Remainder: 0.0 |
+| 9. Small Decimal Numbers | 0.001 | 0.002 | Sum: 0.003<br>Difference: -0.001<br>Product: 2.0E-6<br>Quotient: 0.5<br>Remainder: 0.0 |
+
+
+
+**How to Run Test Cases:**
+
+You can manually test these cases by inputting the values when prompted by the program.  For more automated testing, you could use JUnit or a similar testing framework.  This would involve writing separate test methods for each case and using assertions to verify that the output matches the expected results.
+
+
+**Key Improvements in this Code:**
+
+* **Handles Division by Zero:** The code now explicitly checks for division by zero and prints an appropriate message instead of crashing.
+* **Uses `double` for More Precision:**  Using `double` allows for calculations involving decimal numbers.
+* **Clearer Output:** The output is formatted for better readability.
+* **Scanner Closed:** The `Scanner` is closed at the end to prevent resource leaks. This was missing in the original code.

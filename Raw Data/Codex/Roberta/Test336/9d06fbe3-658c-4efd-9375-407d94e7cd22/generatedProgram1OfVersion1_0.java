@@ -1,0 +1,56 @@
+import java.util.TreeSet;
+import java.util.Iterator;
+
+public class TreeSetIteration {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet
+        TreeSet<String> treeSet = new TreeSet<>();
+
+        // Add elements to the TreeSet (elements will be stored in sorted order)
+        treeSet.add("Apple");
+        treeSet.add("Banana");
+        treeSet.add("Orange");
+        treeSet.add("Grape");
+
+        System.out.println("Iterating through TreeSet using an Iterator:");
+
+        // Method 1: Using an Iterator
+        Iterator<String> iterator = treeSet.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println(element);
+        }
+
+
+        System.out.println("\nIterating through TreeSet using enhanced for loop (for-each loop):");
+
+        // Method 2: Using enhanced for loop (for-each loop)
+        for (String element : treeSet) {
+            System.out.println(element);
+        }
+
+
+        System.out.println("\nIterating through TreeSet using Java 8 streams and forEach:");
+        // Method 3: Using Java 8 streams and forEach (lambda expression)
+        treeSet.forEach(element -> System.out.println(element));
+
+
+
+        System.out.println("\nIterating in descending order using descendingIterator:");
+        // Iterating in descending order
+        Iterator<String> descendingIterator = treeSet.descendingIterator();
+        while (descendingIterator.hasNext()) {
+            String element = descendingIterator.next();
+            System.out.println(element);
+        }
+
+
+        System.out.println("\nIterating in descending order using descendingSet and forEach");
+        // Iterating in descending order using descendingSet and forEach:
+        treeSet.descendingSet().forEach(element -> System.out.println(element));
+
+
+    }
+}

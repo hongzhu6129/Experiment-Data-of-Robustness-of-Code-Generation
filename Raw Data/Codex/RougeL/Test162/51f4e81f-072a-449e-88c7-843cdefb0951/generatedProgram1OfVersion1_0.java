@@ -1,0 +1,41 @@
+public class FirstUniqueChar {
+
+    public static void main(String[] args) {
+        String str = "wresource";
+        int index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+        str = "aabbccddeeffg";
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+
+        str = "loveleetcode"; // Example with repeated unique characters
+        index = first_Uniq_Char(str);
+        System.out.println("Original String: " + str);
+        System.out.println("First unique character of the above: " + index);
+
+    }
+
+    public static int first_Uniq_Char(String s) {
+        int[] charCount = new int[26]; // Assuming only lowercase English alphabet
+
+        // Count the occurrences of each character
+        for (char c : s.toCharArray()) {
+            charCount[c - 'a']++;
+        }
+
+        // Find the index of the first character with a count of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        // This line should never be reached given the problem constraints 
+        // (at least one unique character exists).  Included for completeness.
+        return -1; 
+    }
+}

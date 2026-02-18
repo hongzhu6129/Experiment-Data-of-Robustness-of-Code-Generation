@@ -1,0 +1,38 @@
+import java.util.LinkedList;
+
+public class InsertAtFrontLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements (optional)
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Cherry");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to insert at the front
+        String elementToInsert = "Mango";
+
+        // Insert the element at the front
+        linkedList.addFirst(elementToInsert); //  or  linkedList.push(elementToInsert);
+
+
+        System.out.println("LinkedList after inserting at front: " + linkedList);
+
+
+         //Another Example (using Integer)
+         LinkedList<Integer> numbers = new LinkedList<>();
+         numbers.add(10);
+         numbers.add(20);
+
+         int numToInsert = 5;
+         numbers.addFirst(numToInsert);
+
+         System.out.println("Number List after inserting at front: " + numbers);
+
+
+    }
+}

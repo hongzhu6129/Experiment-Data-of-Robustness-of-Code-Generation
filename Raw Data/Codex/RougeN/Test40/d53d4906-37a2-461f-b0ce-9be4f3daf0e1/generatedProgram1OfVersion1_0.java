@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class InterleavingStrings {
+
+    public static void main(String[] args) {
+        String str1 = "AB";
+        String str2 = "CD";
+        List<String> interleavings = findInterleavings(str1, str2);
+        for (String interleaving : interleavings) {
+            System.out.println(interleaving);
+        }
+    }
+
+    public static List<String> findInterleavings(String str1, String str2) {
+        List<String> interleavings = new ArrayList<>();
+        findInterleavings(str1, str2, "", interleavings);
+        return interleavings;
+    }
+
+    private static void findInterleavings(String str1, String str2, String interleaving, List<String> interleavings) {
+        if (str1.isEmpty() && str2.isEmpty()) {
+            interleavings.add(interleaving);
+        } else if (!str1.isEmpty()) {
+            findInterleavings(str1.substring(1), str2, interleaving + str1.charAt(0), interleavings);
+        } else if (!str2.isEmpty()) {
+            findInterleavings(str1, str2.substring(1), interleaving + str2.charAt(0), interleavings);
+        }
+    }
+
+    // Test cases
+    public static void testCases() {
+        // Empty strings
+        String emptyStr1 = "";
+        String emptyStr2 = "";
+        List<String> emptyInterleavings = findInterleavings(emptyStr1, emptyStr2);
+        assert emptyInterleavings.isEmpty() : "Empty strings should have no interleavings";
+
+        // Single-character strings
+        String singleCharStr1 = "A";
+        String singleCharStr2 = "B";
+        List<String> singleCharInterleavings = findInterleavings(singleCharStr1, singleCharStr2);
+        assert singleCharInterleavings.size() == 2 : "Single-character strings should have 2 interleavings";
+        assert singleCharInterleavings.contains("AB") : "Interleavings should include 'AB'";
+        assert singleCharInterleavings.contains("BA") : "Interleavings should include 'BA'";
+
+        // Strings of different lengths
+        String longStr1 = "ABCD";
+        String shortStr2 = "EF";
+        List<String> differentLengthInterleavings = findInterleavings(longStr1, shortStr2);
+        assert differentLengthInterleavings.size() == 10 : "Strings of different lengths should have 10 interleavings";
+        assert differentLengthInterleavings.contains("AEBFC") : "Interleavings should include 'AEBFC'";
+        assert differentLengthInterleavings.contains("EAFBC") : "Interleavings should include 'EAFBC'";
+        assert differentLengthInterleavings.contains("ABFEC") : "Interleavings should include 'ABFEC'";
+        assert differentLengthInterleavings.contains("ABCFE") : "Interleavings should include 'ABCFE'";
+        assert differentLengthInterleavings.contains("AEFB") : "Interleavings should include 'AEFB'";
+
+        // Strings of equal lengths
+        String equalLengthStr1 = "AB";
+        String equalLengthStr2 = "CD";
+        List<String> equalLengthInterleavings = findInterleavings(equalLengthStr1, equalLengthStr2);
+        assert equalLengthInterleavings.size() == 4 : "Strings of equal lengths should have 4 interleavings";
+        assert equalLengthInterleavings.contains("ABCD") : "Interleavings should include 'ABCD'";
+        assert equalLengthInterleavings.contains("ACBD") : "Interleavings should include 'ACBD'";
+        assert equalLengthInterleavings.contains("CADB") : "Interleavings should include 'CADB'";
+        assert equalLengthInterleavings.contains("CDAB") : "Interleavings should include 'CDAB'";
+
+        // Strings with duplicate characters
+        String duplicateCharsStr1 = "AABB";
+        String duplicateCharsStr2 = "CCDD";
+        List<String> duplicateCharsInterleavings = findInterleavings(duplicateCharsStr1, duplicateCharsStr2);
+        assert duplicateCharsInterleavings.size() == 10 : "Strings with duplicate characters should have 10 interleavings";
+        assert duplicateCharsInterleavings.contains("ABCD") : "Interleavings should include 'ABCD'";
+        assert duplicateCharsInterleavings.contains("ACBD") : "Interleavings should include 'ACBD'";
+        assert duplicateCharsInterleavings.contains("CADB") : "Interleavings should include 'CADB'";
+        assert duplicateCharsInterleavings.contains("CDAB") : "Interleavings should include 'CDAB'";
+        assert duplicateCharsInterleavings.contains("ADCB") : "Interleavings should include 'ADCB'";
+    }
+}

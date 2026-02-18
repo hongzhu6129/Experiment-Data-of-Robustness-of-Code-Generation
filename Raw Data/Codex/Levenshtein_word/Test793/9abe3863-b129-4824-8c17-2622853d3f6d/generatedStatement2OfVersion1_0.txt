@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Handles Edge Cases:**  The `deleteNode` method now checks if the node is `null` or the last node.  Since the provided method signature doesn't give us access to the `head`,  we can't delete the last node directly (or the only node in a 1-element list).  The current code returns in those cases. You might want to throw an exception instead, depending on how you want to handle these scenarios.
+
+
+2. **Clearer Examples:** The `main` method now includes more examples: deleting a middle node, deleting the first node (demonstrates how to call the method), and deleting the last node case and explaining how it needs to be handled.
+
+
+3. **Comments:** Added comments to improve readability and explain the logic.
+
+
+4. **ListNode Class:** Included the `ListNode` class definition for completeness.
+
+
+**How to use `deleteNode` for last node (workaround):**
+
+Since you can't directly delete the last node using the given method signature, to effectively remove the last node, you would call `deleteNode` on the *second-to-last* node.  This will copy the value of the last node into the second-to-last node and then remove the last node's link.  The last node will become unreachable (effectively deleted, although it might still exist in memory if other references point to it).  The example with `head3` in the `main` method demonstrates this.

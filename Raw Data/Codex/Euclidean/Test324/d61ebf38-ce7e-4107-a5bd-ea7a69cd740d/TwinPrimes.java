@@ -1,0 +1,27 @@
+public class TwinPrimes {
+
+    public static void main(String[] args) {
+        System.out.println("Twin prime numbers less than 100:");
+        for (long i = 3; i < 100; i += 2) { // Optimize by checking only odd numbers after 2
+            if (is_Prime(i) && is_Prime(i + 2)) {
+                System.out.println("(" + i + ", " + (i + 2) + ")");
+            }
+        }
+    }
+
+    public static boolean is_Prime(long num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num <= 3) {
+            return true;
+        }
+        // Optimize further by checking divisibility only up to the square root of num
+        for (long i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}

@@ -1,0 +1,12 @@
+
+
+
+Explanation of the error and solution:
+
+The error "invalid literal for int() with base 10: 'sort,'" occurs when you try to convert a string that isn't a valid integer (in base 10) into an integer using `Integer.parseInt()`.  In the original prompt, the example seemed to be trying to sort an array containing the string "sort," which obviously can't be converted to an integer.
+
+The provided code addresses this in two ways:
+
+1. **Correct Example:** It shows how to create and sort a proper integer array (`arr1`) to demonstrate the correct usage of `bubbleSort`.
+
+2. **Error Handling:** It demonstrates how an array containing non-numeric strings (like `strArr`) could cause the error. The code then includes a `try-catch` block to handle the `NumberFormatException`. Inside the `try` block, `Integer.parseInt()` attempts the conversion. If the conversion fails, the `catch` block handles the error gracefully (in this example by printing an error message and assigning a default value of -1).  This prevents the program from crashing and demonstrates a way to deal with potentially bad input.  You could adapt the error handling to your specific needs (e.g., skip the invalid element, prompt the user for correct input, etc.).

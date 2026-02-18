@@ -1,0 +1,42 @@
+
+
+**Test Cases:**
+
+**1. Basic Case:**
+
+* **Input:**  `digits = {1, 2, 3, 4}` (as provided in the example)
+* **Expected Output:** 24 unique three-digit numbers (4 * 3 * 2 = 24 permutations) ranging from 123 to 432 (excluding numbers with repeated digits).  The output should also print the count as 24.
+
+
+**2.  Fewer Digits:**
+
+* **Input:** `digits = {1, 2, 3}`
+* **Expected Output:** 6 unique three-digit numbers (3 * 2 * 1 = 6) and the count as 6.
+
+
+**3. Repeated Digits (Corner Case):**
+
+* **Input:** `digits = {1, 2, 2, 4}`
+* **Expected Output:**  18 unique three-digit numbers.  Notice that although there's a repeated digit, we still generate unique three-digit numbers.  The count should be 18.  The combinations with the two '2's will be counted as distinct.  For example, 122 and 122 (where the two 2's are in different positions in the input array) will both be included if you don't have additional logic to remove them.  If you want to remove duplicates even if they arise from duplicate input, you'd need additional handling (like converting the numbers to strings and using a Set of strings).
+
+**4. Only One Digit (Corner Case):**
+
+* **Input:** `digits = {1, 1, 1, 1}`
+* **Expected Output:** 0 unique three-digit numbers and the count should be 0 because you cannot create any three-digit numbers without repeating digits.
+
+**5.  Empty Input (Corner Case):**
+
+* **Input:** `digits = {}` (empty array)
+* **Expected Output:**  0 unique three-digit numbers and the count should be 0.
+
+
+
+**How to Run Test Cases:**
+
+You can create a separate test class (e.g., using JUnit or TestNG) or simply modify the `main` method to run these tests.  For simple manual testing, you can change the `digits` array in the `main` method and run the program for each of the test cases above, visually verifying the output against the expected output.
+
+
+**Improved Code (Handling duplicate input digits, if needed):**
+
+If you want to ensure truly unique output even when there are repeated digits in the input, you could use a `Set<String>`:
+

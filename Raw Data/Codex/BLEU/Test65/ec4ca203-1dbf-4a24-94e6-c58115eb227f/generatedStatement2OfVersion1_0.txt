@@ -1,0 +1,62 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 45
+   - lon1: -75
+   - lat2: 45
+   - lon2: -75
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0 
+   - lat2: -90 (South Pole)
+   - lon2: 0  (Longitude doesn't matter at the poles)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Antipodes (Opposite sides of Earth):**
+   - lat1: 30
+   - lon1: 40
+   - lat2: -30
+   - lon2: -140  (180 degrees opposite longitude)
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 20
+   - lat2: 0
+   - lon2: 70
+   - Expected Output: ~5559.73 km
+
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 175
+   - lat2: 10
+   - lon2: -175
+   - Expected Output: ~1111.95 km (short distance across the date line)
+
+
+7. **Invalid Input (Handle appropriately):**
+   - lat1: "abc"  (or any non-numeric input)
+   - Test for proper error handling (e.g., using `try-catch` blocks).
+
+
+**How to Use the Test Cases:**
+
+1. **Manual Testing:** Enter these values into your program and verify the output matches the expected values.
+2. **Automated Testing (Recommended):**  Create unit tests using a testing framework like JUnit.  This will make testing more efficient and reliable.  Here's a very basic example of a JUnit test:
+

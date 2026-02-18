@@ -1,0 +1,24 @@
+public class SumOfTwoNumbers {
+
+    public static void main(String[] args) {
+        // Test data extraction and handling (assuming the format "number1 h number2")
+        String testData = "74 h 36"; // Replace with user input if needed
+        String[] parts = testData.split(" h ");
+
+        if (parts.length == 2) {
+            try {
+                int num1 = Integer.parseInt(parts[0]);
+                int num2 = Integer.parseInt(parts[1]);
+                int sum = num1 + num2;
+                System.out.println(sum); // Output: 110
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input format.  Please enter numbers separated by ' h '");
+            }
+        } else {
+            System.out.println("Invalid input format.  Please enter numbers separated by ' h '");
+        }
+
+
+    }
+}

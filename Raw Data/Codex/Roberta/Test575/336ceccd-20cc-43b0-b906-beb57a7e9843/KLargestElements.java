@@ -1,0 +1,56 @@
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+public class KLargestElements {
+
+    public static void main(String[] args) {
+        int[] arr = {1, 23, 12, 9, 30, 2, 50};
+        int k = 3;
+        findKLargest(arr, k);
+
+        arr = new int[]{11, 5, 23, 45, 1, 34, 78, 23, 56, 21};
+        k = 5;
+        findKLargest(arr, k);
+
+         arr = new int[]{5, 10, 15, 20}; // Test with a sorted array.
+         k = 2;
+         findKLargest(arr, k);
+
+         arr = new int[]{20, 15, 10, 5}; // Test with a reverse sorted array.
+         k = 2;
+         findKLargest(arr, k);
+    }
+
+
+
+    public static void findKLargest(int[] arr, int k) {
+        if (k <= 0 || k > arr.length) {
+            System.out.println("Invalid value of k.");
+            return;
+        }
+
+        // Use a min-heap (PriorityQueue in Java) to store the k largest elements.
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+
+        for (int num : arr) {
+            if (minHeap.size() < k) {
+                minHeap.offer(num);
+            } else if (num > minHeap.peek()) { // If current element is greater than the smallest in the heap
+                minHeap.poll(); // Remove the smallest
+                minHeap.offer(num); // Add the current element
+            }
+        }
+
+        // Print the k largest elements from the min-heap
+        System.out.print("K Largest elements: ");
+        Integer[] kLargestArray = minHeap.toArray(new Integer[0]);
+        Arrays.sort(kLargestArray); // Sort for consistent output order (optional)
+
+        for(int num : kLargestArray){
+            System.out.print(num + " ");
+        }
+
+        System.out.println(); 
+    }
+}

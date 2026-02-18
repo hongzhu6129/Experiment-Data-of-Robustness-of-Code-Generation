@@ -1,0 +1,17 @@
+
+
+**Explanation and Improvements:**
+
+1. **`calculateFermatNumber(int n)` Method:** This helper method keeps the `main` method cleaner and encapsulates the Fermat number calculation logic.
+
+2. **Using `long`:**  Fermat numbers grow very rapidly.  `int` will overflow quickly.  While `long` also has limits, it can handle the first few Fermat numbers.
+
+3. **Clarity and Formatting:** The code is formatted for readability with clear comments.  The output is labeled to indicate what the numbers represent.
+
+4. **Correct Calculation:** The formula for Fermat numbers is correctly implemented as 2<sup>(2<sup>n</sup>)</sup> + 1.
+
+
+**Important Note about Larger Fermat Numbers:**
+
+Even `long` will not be able to hold Fermat numbers beyond the first few.  For larger values of `n`, you would need to use `BigInteger` (if arbitrary precision is required):
+

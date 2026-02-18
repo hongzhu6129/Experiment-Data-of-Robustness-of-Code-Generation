@@ -1,0 +1,62 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0  (Longitude is irrelevant at the poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0   (Longitude is irrelevant at the poles)
+   - Expected Output: ~20015.08 km (approximately the Earth's circumference/2)
+
+
+4. **Antipodal Points (opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -74 (New York)
+   - lat2: -40
+   - lon2: 106 (Near Perth, Australia)
+   - Expected Output:  ~20015 km (approximately half Earth's circumference)
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km  (approximately Earth's circumference/4)
+
+6. **Points near the International Date Line:**
+    - lat1: 10
+    - lon1: 179  (Just west of the date line)
+    - lat2: 10
+    - lon2: -179 (Just east of the date line)
+    - Expected Output: A small distance (because these points are close even though their longitudes appear far apart).
+
+
+7. **Invalid Input:**
+   - Test with non-numeric inputs (e.g., "abc") to ensure your program handles them gracefully (e.g., by displaying an error message or prompting the user to enter a valid number).
+
+
+
+**How to Use the Test Cases:**
+
+You can create a separate test class (using JUnit or TestNG) to automate the testing process.  Or, you can manually enter these values into your program and check if the output matches the expected distance.
+
+
+
+This comprehensive set of test cases will help ensure your program is correct and robust.  Remember to handle potential exceptions like invalid input.

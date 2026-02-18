@@ -1,0 +1,33 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class LinkedListToArray {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+
+        // Convert LinkedList to ArrayList
+        ArrayList<String> arrayList = new ArrayList<>(linkedList);
+
+
+        // Print the ArrayList (Optional: to verify the conversion)
+        System.out.println("ArrayList: " + arrayList);
+
+
+        //Example with Integers:
+        LinkedList<Integer> linkedListInt = new LinkedList<>();
+        linkedListInt.add(1);
+        linkedListInt.add(2);
+        linkedListInt.add(3);
+
+        ArrayList<Integer> arrayListInt = new ArrayList<>(linkedListInt);
+        System.out.println("ArrayList of Integers: " + arrayListInt);
+
+
+    }
+}

@@ -1,0 +1,19 @@
+public class MatrixPrinter {
+
+    public static void main(String[] args) {
+        // Example usage: Print a 5x5 matrix
+        printMatrix(5); 
+
+        // Example usage: Print a 3x3 matrix
+        printMatrix(3);
+    }
+
+    public static void printMatrix(int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("+ "); // Print the "+" character and a space
+            }
+            System.out.println(); // Move to the next line after each row
+        }
+    }
+}

@@ -1,0 +1,48 @@
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        int givenElement = 35;
+        Integer floorElement = treeSet.floor(givenElement);
+
+        if (floorElement != null) {
+            System.out.println("The greatest element less than or equal to " + givenElement + " is: " + floorElement);
+        } else {
+            System.out.println("No element less than or equal to " + givenElement + " found in the TreeSet.");
+        }
+
+        // More examples:
+        System.out.println("Floor of 15: " + treeSet.floor(15)); // Output: 10
+        System.out.println("Floor of 30: " + treeSet.floor(30)); // Output: 30
+        System.out.println("Floor of 5: " + treeSet.floor(5));  // Output: null
+        System.out.println("Floor of 60: " + treeSet.floor(60)); // Output: 50
+
+
+        // Example with other data types (e.g., String)
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+        stringTreeSet.add("date");
+
+        String givenString = "cranberry";
+        String floorString = stringTreeSet.floor(givenString);
+
+        if (floorString != null) {
+             System.out.println("The greatest string less than or equal to \"" + givenString + "\" is: \"" + floorString + "\""); 
+        } else {
+            System.out.println("No string less than or equal to \"" + givenString + "\" found in the TreeSet.");
+        }
+
+
+    }
+}

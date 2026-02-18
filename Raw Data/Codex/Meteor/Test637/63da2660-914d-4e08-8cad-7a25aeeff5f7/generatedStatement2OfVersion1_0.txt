@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles 0 Remainder Correctly:** The code now explicitly handles the case where `n % 26` is 0 (which corresponds to 'Z'). It appends "Z", and crucially, it decrements `n` by `(n / 26) - 1` to avoid off-by-one errors.
+
+2. **Uses StringBuilder for Efficiency:**  String concatenation using `+` repeatedly within a loop is inefficient. `StringBuilder` is much more performant, especially for larger column numbers.
+
+3. **Reverses the String:**  The characters are appended in reverse order due to the way the modulo operation works. `StringBuilder.reverse()` efficiently corrects this.
+
+4. **Clearer Variable Names:**  Using `columnName` instead of just `c` enhances readability.
+
+5. **More Comprehensive Test Cases:** The `main` method now includes several test cases to demonstrate the code's correctness, including edge cases like 26, 52, 701, and 702.
+
+
+
+This revised version addresses the core logic flaw, improves efficiency, and enhances clarity and testability, making it a robust solution for the Excel column naming problem.

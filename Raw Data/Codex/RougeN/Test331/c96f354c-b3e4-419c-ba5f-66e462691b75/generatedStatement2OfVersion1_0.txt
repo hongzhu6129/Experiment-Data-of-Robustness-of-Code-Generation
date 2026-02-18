@@ -1,0 +1,47 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zeroes:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -5, 10, 5
+   - Expected Output: 3.3333333333333335  (or similar, due to floating-point representation)
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 5.7, 8.2
+   - Expected Output: 5.466666666666667 (or similar)
+
+7. **Corner Case: Very Large Numbers (potential overflow with integers, but should work with doubles):**
+    - Input: Double.MAX_VALUE, Double.MAX_VALUE / 2, Double.MAX_VALUE / 4
+    - Expected Output:  A very large number (approximately 1.2E308).  Be aware that calculations close to the limits of `double` can have reduced precision.
+
+8.  **Corner Case: Very Small Numbers (close to zero):**
+    - Input: 0.0000001, 0.0000002, 0.0000003
+    - Expected Output: 2.0E-7 (or similar)
+
+
+
+**How to run the test cases:**
+
+1. **Manually:** You can run the program multiple times, entering each set of input values.  Compare the output with the expected output.
+
+2. **Using JUnit (or other testing framework):**  For more robust testing, it's highly recommended to use a testing framework like JUnit.  Here's a simple JUnit example (you'll need to add JUnit to your project):
+
+

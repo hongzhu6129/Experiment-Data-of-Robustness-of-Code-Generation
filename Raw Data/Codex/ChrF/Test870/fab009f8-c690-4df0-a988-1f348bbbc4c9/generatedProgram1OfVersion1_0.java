@@ -1,0 +1,13 @@
+public class ExtractFirstHalf {
+
+    public static void main(String[] args) {
+        String inputString = "pythonpyt";
+
+        if (inputString.length() % 2 == 0) {
+            String firstHalf = inputString.substring(0, inputString.length() / 2);
+            System.out.println(firstHalf); 
+        } else {
+            System.out.println("Input string is not of even length.");
+        }
+    }
+}

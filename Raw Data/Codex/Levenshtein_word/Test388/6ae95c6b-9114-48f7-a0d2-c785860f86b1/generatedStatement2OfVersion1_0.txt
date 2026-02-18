@@ -1,0 +1,35 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | a     | b     | c     | abc   | Expected Result |
+| --------- | ----- | ----- | ----- | ----- | -------------- |
+| 1        | 1     | 2     | 3     | false | true           |
+| 2        | 3     | 2     | 1     | false | false          |
+| 3        | 1     | 1     | 2     | false | false          |
+| 4        | 1     | 2     | 2     | false | false          |
+| 5        | 2     | 1     | 3     | false | false          |  // b is not > a
+| 6        | 1     | 2     | 3     | true  | true           | // abc is true, condition b > a is ignored
+| 7        | 3     | 2     | 3     | true  | false          | // abc is true, but c is not > b
+| 8        | 3     | 2     | 1     | true  | false          | // abc is true, but c is not > b
+| 9        | -5    | 0     | 5     | false | true           |  // Handling negative numbers
+| 10       | -5   | 0     | 5    | true | true           |  // Handling negative numbers with abc true
+| 11       | Integer.MAX_VALUE | Integer.MAX_VALUE -1 | Integer.MAX_VALUE | false | true  |  // Handling large positive numbers
+| 12       | Integer.MIN_VALUE | Integer.MIN_VALUE + 1 | Integer.MIN_VALUE + 2 | false | true  | // Handling large negative numbers.
+| 13       | Integer.MAX_VALUE | Integer.MAX_VALUE - 1 | Integer.MAX_VALUE | true | true | // Handling large positive numbers, abc true
+| 14        | 1     | Integer.MAX_VALUE | Integer.MIN_VALUE | true | false | // Corner case: c < b despite abc being true. Demonstrates that c>b check still happens
+
+
+These test cases cover:
+
+* **Normal cases:** Where `b > a` and `c > b` are both true or false.
+* **`abc` is true cases:**  Verifying the logic when `abc` is true.
+* **Equality cases:** Where `a`, `b`, and/or `c` are equal.
+* **Negative number cases:** To ensure correct behavior with negative inputs.
+* **Large number cases:**  Using `Integer.MAX_VALUE` and `Integer.MIN_VALUE` to test behavior near the limits of integer representation. This helps catch potential overflow issues.
+
+
+
+This improved answer provides more comprehensive test cases, including corner cases and clear explanations, making it easier to understand and test the program's logic thoroughly. Remember to run these test cases through your `main` method or use a testing framework (like JUnit) for automated testing.

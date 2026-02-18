@@ -1,0 +1,43 @@
+import java.util.TreeSet;
+
+public class AddTreeSetToAnother {
+
+    public static void main(String[] args) {
+        // Create the first TreeSet
+        TreeSet<String> treeSet1 = new TreeSet<>();
+        treeSet1.add("Apple");
+        treeSet1.add("Banana");
+        treeSet1.add("Cherry");
+
+        // Create the second TreeSet
+        TreeSet<String> treeSet2 = new TreeSet<>();
+        treeSet2.add("Date");
+        treeSet2.add("Fig");
+        treeSet2.add("Grape");
+
+
+        // Add all elements of treeSet1 to treeSet2
+        treeSet2.addAll(treeSet1);
+
+
+        // Print the updated treeSet2
+        System.out.println("TreeSet2 after adding elements from TreeSet1: " + treeSet2);
+
+
+        //Example with Integer
+        TreeSet<Integer> numbers1 = new TreeSet<>();
+        numbers1.add(1);
+        numbers1.add(3);
+        numbers1.add(5);
+
+        TreeSet<Integer> numbers2 = new TreeSet<>();
+        numbers2.add(2);
+        numbers2.add(4);
+        numbers2.add(6);
+
+
+        numbers2.addAll(numbers1);
+        System.out.println("Numbers2 after adding elements from Numbers1: " + numbers2);
+
+    }
+}

@@ -1,0 +1,30 @@
+class Solution {
+    /**
+     * Checks if every digit of a given integer is even.
+     *
+     * @param n The integer to check.
+     * @return True if every digit is even, false otherwise.
+     */
+    public static boolean test(int n) {
+        String numStr = String.valueOf(Math.abs(n)); // Handle negative numbers
+
+        for (int i = 0; i < numStr.length(); i++) {
+            int digit = Character.getNumericValue(numStr.charAt(i));
+            if (digit % 2 != 0) { // Check if the digit is odd
+                return false; // If any digit is odd, return false
+            }
+        }
+
+        return true; // All digits are even 
+    }
+
+    public static void main(String[] args) {
+        System.out.println(test(2468)); // Output: true
+        System.out.println(test(24681)); // Output: false
+        System.out.println(test(1357)); // Output: false
+        System.out.println(test(2460)); // Output: true
+        System.out.println(test(-246));  // Output: true
+        System.out.println(test(-245));  // Output: false
+
+    }
+}

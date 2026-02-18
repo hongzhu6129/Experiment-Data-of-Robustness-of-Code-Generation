@@ -1,0 +1,44 @@
+import java.util.PriorityQueue;
+
+public class RemoveHalfPriorityQueue {
+
+    public static void main(String[] args) {
+        // Example usage:
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+        pq.add(15);
+        pq.add(30);
+
+        System.out.println("Original Priority Queue: " + pq);
+
+        removeHalf(pq);
+
+        System.out.println("Priority Queue after removing half: " + pq);
+
+
+        //Another Example
+        PriorityQueue<String> stringPQ = new PriorityQueue<>();
+        stringPQ.add("apple");
+        stringPQ.add("banana");
+        stringPQ.add("orange");
+        stringPQ.add("grape");
+
+
+        System.out.println("Original String Priority Queue: " + stringPQ);
+
+        removeHalf(stringPQ);
+
+        System.out.println("String Priority Queue after removing half: " + stringPQ);
+    }
+
+
+    private static <T> void removeHalf(PriorityQueue<T> pq) {
+        int halfSize = pq.size() / 2; // Calculate half the size, integer division handles odd sizes
+
+        for (int i = 0; i < halfSize; i++) {
+            pq.poll(); // Remove elements one by one from the head (smallest element)
+        }
+    }
+}

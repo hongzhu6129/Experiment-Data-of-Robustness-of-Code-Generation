@@ -1,0 +1,31 @@
+public class StringRemover {
+
+    public String removeString(String mainString, String removeString) {
+        if (mainString == null || removeString == null) {
+            return mainString; // Or throw an exception, handle as needed
+        }
+
+        return mainString.replace(removeString, "");
+    }
+
+    public static void main(String[] args) {
+        StringRemover remover = new StringRemover();
+
+        String mainString = "applebananaappleorangebanana";
+        String removeString = "apple";
+
+        String result = remover.removeString(mainString, removeString);
+
+        System.out.println(result); // Output: bananabananaorangebanana
+
+
+        // More test cases:
+        System.out.println(remover.removeString("hello world", "world")); // Output: hello 
+        System.out.println(remover.removeString("test", "test"));  // Output: "" (empty string)
+        System.out.println(remover.removeString("abc", "d")); // Output: abc (no change if removeString not found)
+        System.out.println(remover.removeString(null, "test")); // Output: null  (Handles null input gracefully)
+        System.out.println(remover.removeString("test", null)); // Output: test (Handles null input gracefully)
+
+
+    }
+}

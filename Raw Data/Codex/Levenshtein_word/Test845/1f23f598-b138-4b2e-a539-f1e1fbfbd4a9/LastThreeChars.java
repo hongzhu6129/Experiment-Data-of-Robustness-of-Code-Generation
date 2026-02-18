@@ -1,0 +1,36 @@
+public class LastThreeChars {
+
+    public static void main(String[] args) {
+        String str = "programming"; // Example string
+
+        if (str.length() > 3) {
+            String lastThree = str.substring(str.length() - 3);
+            String modifiedStr = lastThree + str + lastThree;
+            System.out.println(modifiedStr); // Output: ingprogramminging
+        
+
+
+            str = "Python"; // Example string
+        
+            if (str.length() > 3) {
+                 lastThree = str.substring(str.length() - 3);
+                 modifiedStr = lastThree + str + lastThree;
+                System.out.println(modifiedStr); // Output: honPythonhon
+            } else {
+                System.out.println("String length is not greater than 3");
+            }
+
+            str = "Hi"; // Example string. This will trigger the "else" condition
+            if(str.length() > 3){
+                lastThree = str.substring(str.length()-3);
+                modifiedStr = lastThree + str + lastThree;
+                System.out.println(modifiedStr);
+            } else {
+                System.out.println("String length is not greater than 3");
+            }
+
+        } else {
+            System.out.println("String length is not greater than 3");
+        }
+    }
+}

@@ -1,0 +1,21 @@
+
+
+
+**Explanation:**
+
+1. **`addOne(int[] digits)`:**
+   - Iterates through the digits array from right to left.
+   - Adds `carry` (initially 1) to the current digit.
+   - Updates the current digit with `sum % 10`.
+   - Updates `carry` with `sum / 10`.
+   - If `carry` becomes 0, it means no further changes are needed, and the function returns the modified `digits` array.
+
+2. **Handling Carry:**
+   - If after processing all digits, `carry` is still 1, it indicates we need to create a new array of size `n + 1`, put 1 at the beginning, and return the new array.  (The remaining digits will be 0, which is the default value in a newly created `int` array in Java, so copying is optional.)
+
+3. **`main()` method:**
+   - Contains several test cases to demonstrate the function's behavior with different inputs.
+   - Prints the results using `Arrays.toString()` for easy visualization.
+
+4. **`longest_seq()` method:**
+   - A dummy implementation of this method is included only because the prompt required its signature.  It's not used in the solution for this particular problem (adding one to an array of digits).

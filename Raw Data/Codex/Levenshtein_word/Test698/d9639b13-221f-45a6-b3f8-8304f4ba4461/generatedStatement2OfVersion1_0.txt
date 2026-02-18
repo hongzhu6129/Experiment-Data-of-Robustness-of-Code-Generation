@@ -1,0 +1,29 @@
+
+
+**Explanation and How to Fix the Error:**
+
+The error "invalid literal for int() with base 10: 'buzz'" occurs when you try to convert a string that doesn't represent a valid integer (in base 10, the usual decimal system) into an integer using `Integer.parseInt()`.
+
+**The Key to Fixing It:  Exception Handling**
+
+1. **`try...catch` Block:** The most robust way to handle this is to wrap your `Integer.parseInt()` call in a `try...catch` block.  This way, if a `NumberFormatException` is thrown (because the string is not a valid integer), you can gracefully handle the error instead of the program crashing.
+
+2. **Handling the Error:** Inside the `catch` block, you have several options:
+   - Print an error message (as shown in the example).
+   - Ask the user to re-enter the input.
+   - Assign a default value if the input is invalid.
+   - Log the error for debugging purposes.
+   - Exit the program if the invalid input makes further execution impossible.
+
+
+**Example Scenarios and Solutions**
+
+* **User input:** If you're getting the string from user input, inform the user that they entered an invalid number and prompt them to try again.
+* **Reading from a file:** If you're reading data from a file, you might log the error, skip the invalid line, or stop processing the file depending on your needs.
+* **Command-line arguments:**  If a command-line argument is expected to be an integer,  you can display a usage message and exit if the argument is invalid.
+
+
+**Prevention:**
+
+* **Input Validation:**  Before calling `Integer.parseInt()`, you can perform input validation to check if the string contains only digits (and possibly a leading minus sign for negative numbers).  Regular expressions or methods like `Character.isDigit()` can be useful for this.  However, `try-catch` is generally preferred for this specific type of conversion because it directly handles the exception that `parseInt()` throws.  Input validation is more beneficial when you have more complex rules before even attempting the conversion.
+

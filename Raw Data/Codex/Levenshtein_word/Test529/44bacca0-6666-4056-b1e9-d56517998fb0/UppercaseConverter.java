@@ -1,0 +1,19 @@
+public class UppercaseConverter {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String inputString = "Hello, World!";
+        String uppercaseString = inputString.toUpperCase();
+        System.out.println("Original string: " + inputString);
+        System.out.println("Uppercase string: " + uppercaseString);
+
+
+        // You can also get input from command-line arguments:
+        if (args.length > 0) {
+            for (String arg : args) {
+                String uppercaseArg = arg.toUpperCase();
+                System.out.println("Uppercase argument: " + uppercaseArg);
+            }
+        } 
+    }
+}

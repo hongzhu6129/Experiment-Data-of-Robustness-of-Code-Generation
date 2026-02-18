@@ -1,0 +1,39 @@
+class Solution {
+    /**
+     * Creates a new string with each character from the input string repeated twice.
+     *
+     * @param str The input string.
+     * @return A new string with each character repeated twice.
+     */
+    public String repeatAllTwice(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            sb.append(c);
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String str1 = "hello";
+        String result1 = solution.repeatAllTwice(str1);
+        System.out.println(result1); // Output: hheelllloo
+
+        String str2 = "abc";
+        String result2 = solution.repeatAllTwice(str2);
+        System.out.println(result2); // Output: aabbcc
+
+
+        String str3 = "";
+        String result3 = solution.repeatAllTwice(str3);
+        System.out.println(result3); // Output: (empty string)
+
+
+
+        String str4 = "12345";
+        String result4 = solution.repeatAllTwice(str4);
+        System.out.println(result4); // Output: 1122334455
+    }
+}

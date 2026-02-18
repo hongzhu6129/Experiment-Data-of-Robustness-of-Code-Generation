@@ -1,0 +1,31 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class DateExceeds {
+
+    public static void main(String[] args) {
+        // Get the current date and time using the default calendar (GregorianCalendar)
+        Calendar calendar = new GregorianCalendar();
+
+        // Get the current year, month, week of year, and day of month
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH); // Note: Month is 0-indexed (0 = January)
+        int currentWeekOfYear = calendar.get(Calendar.WEEK_OF_YEAR);
+        int currentDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Calculate the "exceeds" values.  Interpreting "exceeds" to mean 
+        // "the amount by which the current value exceeds the minimum possible value."
+        int yearExceeds = currentYear - 1; // Years start at 1 (though not in Gregorian calendar, but conceptually)
+        int monthExceeds = currentMonth;   // Months are 0-indexed, so the current month *is* the exceeds value.
+        int weekExceeds = currentWeekOfYear - 1; // Weeks of year start at 1.
+        int dayExceeds = currentDayOfMonth - 1; // Days of month start at 1.
+
+
+        // Print the results
+        System.out.println("Current Date Information:");
+        System.out.println("Year: " + currentYear + ", Exceeds: " + yearExceeds);
+        System.out.println("Month: " + (currentMonth + 1) + ", Exceeds: " + monthExceeds); // Add 1 to month for human readability
+        System.out.println("Week of Year: " + currentWeekOfYear + ", Exceeds: " + weekExceeds);
+        System.out.println("Day of Month: " + currentDayOfMonth + ", Exceeds: " + dayExceeds);
+    }
+}

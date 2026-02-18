@@ -1,0 +1,19 @@
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The code now includes a `try-catch` block to handle potential `IOExceptions` that might occur during file reading (e.g., if the file doesn't exist).  This makes the program more robust. It prints an informative error message to the console if a problem is encountered.
+2. **Resource Management (try-with-resources):** The `BufferedReader` is declared within a `try-with-resources` statement. This ensures that the `BufferedReader` is automatically closed, even if exceptions occur. This prevents resource leaks.
+3. **Clearer File Path:** The `filePath` variable is used to store the path to the text file, making the code more readable and easier to modify.  **Remember to replace `"path/to/your/file.txt"` with the actual path to your file.**
+4. **Line-by-Line Reading:** The `readLine()` method is used to read the file one line at a time. This is generally more efficient than reading the entire file into memory at once, especially for large files.
+5. **Processing Each Line:** Inside the `while` loop, you have flexibility in how you process each `line` read from the file.  The example code prints the line to the console, but you could modify it to perform other operations like storing the lines in a list, searching for specific text, or performing data analysis.
+
+
+
+**How to Run:**
+
+1. **Save:** Save the code as a `.java` file (e.g., `ReadPlainTextFile.java`).
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler: `javac ReadPlainTextFile.java`
+3. **Run:** Execute the compiled code: `java ReadPlainTextFile`
+
+Make sure the text file you specify in `filePath` exists in the correct location relative to where you run the Java program.  If the file is in the same directory as the `.java` file, you can just use the file name (e.g., `"myFile.txt"`).  If it's in a different directory, provide the full or relative path.

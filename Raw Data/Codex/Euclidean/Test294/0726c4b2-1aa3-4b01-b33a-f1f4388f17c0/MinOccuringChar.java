@@ -1,0 +1,56 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class MinOccuringChar {
+
+    static char MaxOccuringChar(String str) {
+        if (str == null || str.isEmpty()) {
+            return '\0'; // Return null character for empty or null string
+        }
+
+        Map<Character, Integer> charCounts = new HashMap<>();
+        for (char c : str.toCharArray()) {
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+        }
+
+        char minChar = str.charAt(0);
+        int minCount = Integer.MAX_VALUE;
+
+
+        for (Map.Entry<Character, Integer> entry : charCounts.entrySet()) {
+             if (entry.getValue() < minCount) {
+                minCount = entry.getValue();
+                minChar = entry.getKey();
+            }
+        }
+
+        return minChar;
+    }
+
+    public static void main(String[] args) {
+        String str1 = "abcabcabc";
+        char minChar1 = MaxOccuringChar(str1);
+        System.out.println("Least frequent character in \"" + str1 + "\": " + minChar1);
+
+
+        String str2 = "apple";
+        char minChar2 = MaxOccuringChar(str2);
+        System.out.println("Least frequent character in \"" + str2 + "\": " + minChar2);
+
+        String str3 = ""; // Empty string
+        char minChar3 = MaxOccuringChar(str3);
+        System.out.println("Least frequent character in \"" + str3 + "\": " + minChar3);
+
+
+
+        String str4 = null; // null string
+        char minChar4 = MaxOccuringChar(str4);
+        System.out.println("Least frequent character in \"" + str4 + "\": " + minChar4);
+
+
+         String str5 = "aabbccddeeffg"; // All characters occur twice except 'g'
+        char minChar5 = MaxOccuringChar(str5);
+        System.out.println("Least frequent character in \"" + str5 + "\": " + minChar5);
+
+    }
+}

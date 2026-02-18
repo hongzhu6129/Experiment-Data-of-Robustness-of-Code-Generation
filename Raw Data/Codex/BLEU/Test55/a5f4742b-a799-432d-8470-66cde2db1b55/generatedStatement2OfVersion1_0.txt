@@ -1,0 +1,35 @@
+
+
+
+**Explanation:**
+
+1. **Method 1 (Using `Integer.toOctalString()`):**
+   - This is the simplest and most recommended approach. Java's built-in `Integer.toOctalString()` method directly converts a decimal integer to its octal string representation.
+
+2. **Method 2 (Manual Conversion):**
+   - This method demonstrates the logic behind the conversion:
+     - Repeatedly take the modulo (%) of the decimal number by 8 to get the last digit in the octal representation.
+     - Divide the decimal number by 8 to move to the next digit.
+     - Multiply the octal digit by powers of 10 (represented by `i`) and accumulate the result.
+   - **Note:** For very large numbers, using string concatenation (e.g., with `StringBuilder`) is more efficient than multiplying by powers of 10.
+
+3. **User Input Handling:**
+   - The code now includes a section to take a decimal number as command-line input.  
+   - It uses `args.length` to check if any input is provided.
+   - `Integer.parseInt()` converts the input string to an integer.  
+   - **Important:**  It includes a `try-catch` block to handle potential `NumberFormatException` if the user enters non-integer input.  This is essential for robust code.
+
+
+**How to Run:**
+
+1. **From the command line:**
+   - Compile: `javac DecimalToOctal.java`
+   - Run with input: `java DecimalToOctal 255` (replace 255 with any decimal number)
+   - Run without input (uses the default 15): `java DecimalToOctal`
+
+2. **In an IDE:**
+   - Create a Java project and copy the code into a `.java` file.
+   - Run the `main` method. You can provide command-line arguments in the IDE's run configuration settings.
+
+
+

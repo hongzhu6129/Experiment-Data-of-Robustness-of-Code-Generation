@@ -1,0 +1,33 @@
+class Solution {
+    public static void main(String[] args) {
+        int count = 0;
+        long num = 0;
+
+        while (count < 15) {
+            if (is_narc_dec_num(num)) {
+                System.out.println(num);
+                count++;
+            }
+            num++;
+        }
+    }
+
+
+    public static boolean is_narc_dec_num(long num) {
+        if (num < 0) {
+            return false; 
+        }
+
+        long originalNum = num;
+        int numDigits = String.valueOf(num).length();
+        long sum = 0;
+
+        while (num > 0) {
+            long digit = num % 10;
+            sum += Math.pow(digit, numDigits);
+            num /= 10;
+        }
+
+        return sum == originalNum;
+    }
+}

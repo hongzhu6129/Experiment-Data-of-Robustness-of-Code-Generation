@@ -1,0 +1,11 @@
+public class ComputeExpressions {
+
+    public static void main(String[] args) {
+        double result1 = 7.5 % 6.5 - 4.5 * 3 / 47.5 - 5.5;
+        System.out.println(result1);
+
+        // If the intention was (7.5 % 6.5) - (4.5 * 3) / (47.5 - 5.5) then:
+        double result2 = (7.5 % 6.5) - (4.5 * 3) / (47.5 - 5.5);
+        System.out.println(result2);
+    }
+}

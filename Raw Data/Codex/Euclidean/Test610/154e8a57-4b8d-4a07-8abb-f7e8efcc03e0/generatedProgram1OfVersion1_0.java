@@ -1,0 +1,46 @@
+import java.util.Arrays;
+
+public class RetrieveFromArray {
+
+    public static void main(String[] args) {
+        // Example usage:
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Eve"};
+        int indexToRetrieve = 2; // Retrieve element at index 2 (Charlie)
+
+
+        if (indexToRetrieve >= 0 && indexToRetrieve < names.length) {
+            String retrievedElement = names[indexToRetrieve];
+            System.out.println("Element at index " + indexToRetrieve + ": " + retrievedElement);
+
+
+            //Alternative using Arrays.asList and get.  Less efficient in general, 
+            // but shows another approach.  Note that Arrays.asList creates a fixed-size
+            // list backed by the original array.  Changing the array changes the list
+            // and vice-versa.
+            try {
+                String retrievedElement2 = Arrays.asList(names).get(indexToRetrieve);
+                System.out.println("Element at index " + indexToRetrieve + " (using List): " + retrievedElement2);
+
+
+            } catch (IndexOutOfBoundsException e) { // Handle potential exception
+                System.out.println("Error (List method): Invalid index: " + indexToRetrieve);
+            }
+
+        } else {
+            System.out.println("Error: Invalid index: " + indexToRetrieve);
+        }
+
+
+
+         //Example with an int array:
+          int[] numbers = {10, 20, 30, 40, 50};
+           int indexToRetrieve2 = 1;
+
+            if (indexToRetrieve2 >= 0 && indexToRetrieve2 < numbers.length) {
+                 int retrievedNumber = numbers[indexToRetrieve2];
+                System.out.println("Element at index " + indexToRetrieve2 + ": " + retrievedNumber);
+             } else {
+                 System.out.println("Error: Invalid index: " + indexToRetrieve2);
+             }
+    }
+}

@@ -1,0 +1,32 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StringCaseConverter {
+
+    public static void main(String[] args) {
+        List<String> strings = Arrays.asList("apple", "banana", "Orange", "GRAPE");
+
+        // Convert to uppercase
+        List<String> uppercaseStrings = strings.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+
+        System.out.println("Uppercase: " + uppercaseStrings);
+
+        // Convert to lowercase
+        List<String> lowercaseStrings = strings.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+
+        System.out.println("Lowercase: " + lowercaseStrings);
+
+
+        // Demonstrating conditional conversion (e.g., based on string length)
+        List<String> conditionallyConvertedStrings = strings.stream()
+                .map(s -> s.length() > 5 ? s.toUpperCase() : s.toLowerCase())
+                .collect(Collectors.toList());
+
+        System.out.println("Conditional Conversion: " + conditionallyConvertedStrings);
+    }
+}

@@ -1,0 +1,15 @@
+
+
+
+**Explanation:**
+
+The error "invalid literal for int() with base 10: '3.0'" arises because you're trying to convert a string that represents a floating-point number (3.0) directly into an integer using `Integer.parseInt()`.  `Integer.parseInt()` expects a string that represents a whole number (no decimal point).
+
+The solution uses a `try-catch` block to handle the `NumberFormatException` that occurs when `Integer.parseInt()` fails. Inside the `catch` block, it prints the desired output: "python tutorial 3.0.python tutorial 3.0 ".
+
+
+**Alternative (if you want to get the integer part of the floating-point number):**
+
+If the goal is to extract the integer part of the floating-point number represented by the string, you can first parse it as a `double` and then cast to an `int`:
+
+

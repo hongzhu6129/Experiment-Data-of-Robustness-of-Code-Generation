@@ -1,0 +1,28 @@
+
+
+**Explanation:**
+
+1. **`public static void main(String[] args)`:**
+   - This is the entry point of the Java program.
+   - We create a `TreeMap` object using a custom `Comparator` called `MyComparator`.
+
+2. **`public static class MyComparator implements Comparator<String>`:**
+   - This inner class implements the `Comparator` interface, which allows us to define custom sorting logic for strings.
+   - The `compare(String str1, String str2)` method is the heart of the comparator.  It takes two strings as input and returns:
+     - A negative integer if `str1` is less than `str2`.
+     - Zero if `str1` is equal to `str2`.
+     - A positive integer if `str1` is greater than `str2`.
+
+3. **`return str2.compareTo(str1);`**
+   - This line uses the built-in `compareTo()` method of the `String` class but reverses the comparison to achieve descending alphabetical order.  If you want ascending order, use `return str1.compareTo(str2);`
+
+4. **TreeMap Construction:**
+   - `TreeMap<String, Integer> treeMap = new TreeMap<>(new MyComparator());` creates the `TreeMap` and passes an instance of our custom comparator to it.  This ensures that the `TreeMap` will use our sorting logic to order the keys.
+
+5. **Adding elements and printing:**
+   - We add key-value pairs to the `TreeMap`.
+   - Finally, we print the `TreeMap`. Because it's sorted according to the comparator, the output will show the keys in descending alphabetical order.
+
+
+**Output:**
+

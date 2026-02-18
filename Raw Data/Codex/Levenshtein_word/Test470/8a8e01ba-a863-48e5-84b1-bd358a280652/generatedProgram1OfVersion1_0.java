@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class CanonicalProportional {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+
+        // Convert the string to lowercase to make it case insensitive
+        String lowerCaseStr = str.toLowerCase();
+
+        // Initialize a character array to store the canonical proportional string
+        char[] canonicalProportional = new char[lowerCaseStr.length()];
+
+        // Get the frequency of each character in the string
+        int[] frequency = new int[26];
+        for (int i = 0; i < lowerCaseStr.length(); i++) {
+            char ch = lowerCaseStr.charAt(i);
+            int index = ch - 'a';
+            frequency[index]++;
+        }
+
+        // Sort the frequency array in descending order
+        int[] sortedFrequency = frequency.clone();
+        for (int i = 0; i < sortedFrequency.length - 1; i++) {
+            for (int j = i + 1; j < sortedFrequency.length; j++) {
+                if (sortedFrequency[i] < sortedFrequency[j]) {
+                    int temp = sortedFrequency[i];
+                    sortedFrequency[i] = sortedFrequency[j];
+                    sortedFrequency[j] = temp;
+                }
+            }
+        }
+
+        // Build the canonical proportional string
+        int index = 0;
+        for (int i = 0; i < sortedFrequency.length; i++) {
+            if (sortedFrequency[i] > 0) {
+                char ch = (char) (i + 'a');
+                for (int j = 0; j < frequency[i]; j++) {
+                    canonicalProportional[index++] = ch;
+                }
+            }
+        }
+
+        // Print the canonical proportional string
+        System.out.println("Canonical proportional string: " + new String(canonicalProportional));
+    }
+}

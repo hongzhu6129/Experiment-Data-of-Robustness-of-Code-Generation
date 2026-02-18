@@ -1,0 +1,51 @@
+import java.util.LinkedList;
+
+public class RemoveLinkedListElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
+        linkedList.add(4);
+        linkedList.add(5);
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Element to remove (e.g., 3)
+        int elementToRemove = 3;
+
+        // Remove the first occurrence of the element using removeFirstOccurrence()
+        boolean removed = linkedList.removeFirstOccurrence(Integer.valueOf(elementToRemove)); // Autoboxing
+
+        if (removed) {
+            System.out.println("LinkedList after removing " + elementToRemove + ": " + linkedList);
+        } else {
+            System.out.println(elementToRemove + " not found in the LinkedList.");
+        }
+
+
+        // Example removing by index:
+        LinkedList<Integer> linkedList2 = new LinkedList<>();
+        linkedList2.add(10);
+        linkedList2.add(20);
+        linkedList2.add(30);
+        linkedList2.add(40);
+
+        System.out.println("\nOriginal LinkedList2: " + linkedList2);
+        int indexToRemove = 1; //Remove element at index 1 (which is 20)
+
+
+        try {
+            Integer removedElement = linkedList2.remove(indexToRemove);
+            System.out.println("LinkedList2 after removing element at index " + indexToRemove + ": " + linkedList2);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid index.  Index: " + indexToRemove + ", Size: " + linkedList2.size());
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,48 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Collection;
+
+public class MapValuesView {
+
+    public static void main(String[] args) {
+
+        // Create a sample HashMap
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+        map.put("Grape", 4);
+
+
+        // Get a Collection view of the values
+        Collection<Integer> values = map.values();
+
+        // Print the values
+        System.out.println("Values in the map:");
+        for (Integer value : values) {
+            System.out.println(value);
+        }
+
+
+        // Demonstrate that changes to the collection affect the map (and vice versa)
+
+         //Adding to the collection view: Usually discouraged because it can break the map if the map doesn't allow duplicate keys.
+        // Commenting this part because we are only accessing the collection, not modifying
+        //if (map instanceof HashMap) {
+        //    values.add(5); // If the map is a HashMap, adding to values is allowed.
+        //}
+
+
+        values.remove(2); // Removing 2 from the collection view
+        System.out.println("\nMap after removing 2 from the values collection:");
+        System.out.println(map);  // Notice "Banana" (which had value 2) is gone.
+
+
+        map.put("Mango", 5); // Adding a new entry to the map
+        System.out.println("\nValues after adding \"Mango\":5 to the map:");
+        for(Integer val : values) { // The values collection now reflects this change.
+            System.out.println(val);
+        }
+
+    }
+}

@@ -1,0 +1,25 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner/edge cases:
+
+| Test Case | Input (num1, num2, num3) | Expected Output | Explanation |
+|---|---|---|---|
+| 1 | 10, 20, 30 | 20.0 | Standard positive numbers |
+| 2 | -5, 0, 5 | 0.0 | Including negative and zero |
+| 3 | 0, 0, 0 | 0.0 | All zeros |
+| 4 | 1.5, 2.5, 3.0 | 2.3333333333333335 |  Floating-point numbers |
+| 5 | Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE | 7.15827882E9 | Large positive integers (potential overflow if not using doubles)|
+| 6 | Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE | -7.15827883E9 |  Large negative integers |
+| 7 | Double.MAX_VALUE, Double.MAX_VALUE, 0 | Infinity | Handling Infinity |
+| 8 | Double.NaN, 1, 2 | NaN | Handling NaN (Not a Number) |
+
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering the input values for each test case and verifying the output against the expected output.
+
+2. **Automated Testing (Recommended):**  A better approach is to use a testing framework like JUnit. Here's an example of how you would write a JUnit test for the `calculateAverage` method:
+

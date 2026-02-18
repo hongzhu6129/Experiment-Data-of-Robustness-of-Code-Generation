@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Comparator Implementation:** The `TimelineComparator` class implements the `Comparator<String>` interface. This is crucial for custom sorting.
+
+2. **compare Method:** The `compare(String s1, String s2)` method now uses `s1.compareTo(s2)`.  This leverages the natural lexicographical ordering of strings, which works well for date and time strings in the format "YYYY-MM-DD" or "YYYY-MM-DD HH:mm".  If you need more complex date/time parsing (e.g., handling different formats or time zones), you should use `java.time` classes (like `LocalDateTime`) and their corresponding `compareTo` methods.
+
+3. **TreeMap with Comparator:** The `TreeMap` is initialized with the custom comparator: `TreeMap<>(new SortTreeTimeline().new TimelineComparator());`. This tells the `TreeMap` to use our `TimelineComparator` to sort the keys.
+
+4. **Example Usage:** The `main` method demonstrates how to add entries to the `TreeMap` and then iterate through the sorted keys to print the timeline.
+
+5. **Inner Class:**  The `TimelineComparator` is defined as an inner class for better organization and encapsulation.  You could also make it a separate top-level class or a static nested class.
+
+
+**Handling More Complex Date/Time Formats:**
+
+If you need to sort by more complex or varying date/time formats, you should use Java's `java.time` classes (e.g., `LocalDateTime`, `ZonedDateTime`) and parse the strings into these objects.  Then, within your `compare` method, you can use the `compareTo` methods provided by these date/time objects for accurate sorting. Example:
+

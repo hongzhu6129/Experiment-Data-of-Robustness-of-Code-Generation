@@ -1,0 +1,58 @@
+
+
+
+**Test Cases:**
+
+**1. Normal Case:**
+
+* Input: 10, 20, 30
+* Expected Output: 20.0
+
+**2. Decimal Numbers:**
+
+* Input: 10.5, 20.5, 30
+* Expected Output: 20.333333333333332
+
+**3. Negative Numbers:**
+
+* Input: -10, 20, -30
+* Expected Output: -6.666666666666667
+
+**4. Zero Values:**
+
+* Input: 0, 0, 0
+* Expected Output: 0.0
+
+**5. Large Numbers:**
+
+* Input: 1000000, 2000000, 3000000
+* Expected Output: 2000000.0
+
+
+**Corner Cases:**
+
+**6.  Input with Non-Numeric Values:**
+
+* Input: 10, abc, 30
+* Expected Output: "Invalid input. Please enter valid numbers."  (Error message due to invalid input)
+
+**7. Overflow (Less likely with doubles but theoretically possible with extremely large numbers):**
+
+* Input: Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE 
+* Expected Output: Infinity  (or an exception depending on how Java handles overflow in this specific context)
+
+**8. Underflow (very small numbers):**
+
+* Input: Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE
+* Expected Output: A very small number close to zero (demonstrates handling of very small values).
+
+
+
+**How to run the test cases:**
+
+1.  Save the code as `AverageOfPartNumbers.java`.
+2.  Compile the code: `javac AverageOfPartNumbers.java`
+3.  Run the code: `java AverageOfPartNumbers`
+4.  Enter the input values when prompted.
+
+For automated testing, you would typically use a testing framework like JUnit to define these test cases more formally and run them automatically.  The above examples are designed to be tested manually.

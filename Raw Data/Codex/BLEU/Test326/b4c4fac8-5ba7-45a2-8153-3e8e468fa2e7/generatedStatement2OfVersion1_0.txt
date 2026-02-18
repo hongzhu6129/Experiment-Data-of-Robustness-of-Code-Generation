@@ -1,0 +1,30 @@
+
+
+
+**Explanation of the core logic:**
+
+The formula `(numerator + denominator - 1) / denominator` effectively rounds up the result of integer division.  Here's why:
+
+1. **Adding `denominator - 1`:** This ensures that even if the division is perfectly even, the result gets bumped up to the next integer if the numerator isn't a multiple of the denominator.  
+
+2. **Integer Division `/`:** Integer division truncates any fractional part.
+
+
+**Example Breakdown:**
+
+Let's take `17 / 5`:
+
+* Standard integer division: `17 / 5 = 3` (the remainder is discarded)
+
+* Rounded up: `(17 + 5 - 1) / 5 = 21 / 5 = 4`
+
+**Handling Negative Numerators:**
+
+For negative numerators, be aware that this method rounds *towards zero*.  If you need to round "up" in the sense of away from zero (e.g., -5 / 2 should round to -3), you'll need to use a slightly different approach with `Math.ceil()`.  See the alternative solution below if this is your requirement.
+
+
+
+**Alternative Solution using `Math.ceil()` (for rounding away from zero with negatives):**
+
+If you need the rounding to behave differently with negative numbers (rounding away from zero), you'll need to use floating-point math and `Math.ceil()`:
+

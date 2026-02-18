@@ -1,0 +1,55 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: `10 20 30`
+   - Expected Output: `20.0`
+
+2. **Decimal Numbers:**
+   - Input: `2.5 5.7 8.2`
+   - Expected Output: `5.466666666666667`
+
+3. **Negative Numbers:**
+   - Input: `-5 10 15`
+   - Expected Output: `6.666666666666667`
+
+4. **Zero as Input:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Combination of Positive, Negative, and Zero:**
+   - Input: `-10 0 10`
+   - Expected Output: `0.0`
+
+7. **Corner Case: Integer Overflow (Potential Issue):**
+   - Input: `2147483647 2147483647 2147483647` (Integer.MAX_VALUE three times)
+   - Expected Output:  `2.147483647E9` (Doubles handle larger values, so while integers might overflow, the double calculation will likely produce a result. You could check for potential overflow if using `int` instead of `double` in your `calculateAverage` method.)
+
+
+8. **Invalid Input:**
+   - Input: `10 abc 20`
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+9. **Invalid Input (Empty Input):**  Press enter without providing numbers.
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+
+
+**How to Run the Test Cases:**
+
+1. Save the code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run: `java AverageCalculator`
+4. Enter the input values when prompted.
+
+For the invalid input cases, you'll see the error message printed.  For the valid cases, compare the program's output with the expected output.
+
+
+This comprehensive set of test cases ensures your program works correctly under different conditions, including corner cases and error handling. Remember to always test your code thoroughly before deploying it!

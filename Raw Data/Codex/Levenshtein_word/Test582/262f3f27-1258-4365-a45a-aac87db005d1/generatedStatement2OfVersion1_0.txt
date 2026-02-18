@@ -1,0 +1,44 @@
+
+
+**Test Cases:**
+
+1. **Positive Number:**
+   - Input: 12345
+   - Expected Output: 15
+
+2. **Negative Number:**
+   - Input: -9876
+   - Expected Output: 30
+
+3. **Zero:**
+   - Input: 0
+   - Expected Output: 0
+
+4. **Single Digit:**
+   - Input: 7
+   - Expected Output: 7
+
+5. **Large Number:**
+   - Input: 1234567890
+   - Expected Output: 45
+
+6. **Number with repeating digits:**
+   - Input: 99999
+   - Expected Output: 45
+
+7. **Number with zeros in between:**  
+   - Input: 1002003
+   - Expected Output: 6
+
+
+
+**Explanation of Corner Cases and how they are handled:**
+
+* **Negative Numbers:** The `Math.abs(n)` function within the `function` method handles negative numbers by taking their absolute value before calculating the sum of digits. This ensures that the sum is calculated correctly regardless of the sign.
+
+* **Zero:** The `while (n > 0)` loop condition correctly handles the case where the input is zero. The loop will not execute, and the initial value of `sum` (which is 0) will be returned.
+
+* **Single Digit:**  The loop will execute only once, adding the single digit to the sum and then exiting. This handles single-digit inputs correctly.
+
+
+This improved version provides clear handling of various scenarios, including negative numbers and zero, making it more robust and reliable. The test cases cover a range of inputs to ensure comprehensive testing.

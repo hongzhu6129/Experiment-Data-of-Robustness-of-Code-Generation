@@ -1,0 +1,36 @@
+
+
+
+
+**Explanation and Test Cases:**
+
+1. **`getCurrentDateTime(String format)`:** This method takes a format string as input and returns the current date and time formatted according to that string.  It uses `LocalDateTime.now()` to get the current date and time and `DateTimeFormatter` to format the output.
+
+2. **`main` Method and Test Cases:** The `main` method demonstrates how to use the `getCurrentDateTime` function and includes several test cases:
+   - **Standard Formats:** Tests with various formats, including the example format, date only, time only, and formats with/without separators.
+   - **Full Date and Time:**  Tests a format with the day of the week and AM/PM marker.
+   - **Shortened Version:** Tests a format with shortened year, month, day, hour, minute, and second.
+   - **Abbreviated Month:** Tests a format with abbreviated month name (e.g., Jan, Feb).
+   - **Invalid Format:**  A crucial corner case.  This test uses an invalid format string.  The `try-catch` block demonstrates how to handle the `DateTimeParseException` (or more generally `IllegalArgumentException`) that will be thrown in this case. The test is considered "passed" if the exception is correctly caught.
+
+
+**How to run:**
+
+1. Save the code as `CurrentDateTime.java`.
+2. Compile: `javac CurrentDateTime.java`
+3. Run: `java CurrentDateTime`
+
+
+**Output will vary depending on the current date and time, but it will follow the specified formats in the test cases.**  The invalid format test should print an error message indicating the format is invalid and that the exception was caught as expected.
+
+
+**Key Improvements in this revised answer:**
+
+- **Clearer test cases:** The `test()` method makes it much easier to add and understand test cases.
+- **Exception Handling:** Robust handling of `DateTimeParseException` using a `try-catch` block, specifically for the invalid format test case. This ensures the program doesn't crash and correctly identifies the error.
+- **More Comprehensive Test Cases:** Covers a wider range of formats and includes important corner cases like invalid formats.
+- **Adherence to best practices:** Uses `LocalDateTime` for date and time operations, which is the recommended approach in modern Java.
+
+
+
+This improved version addresses the feedback and provides a more complete and robust solution.

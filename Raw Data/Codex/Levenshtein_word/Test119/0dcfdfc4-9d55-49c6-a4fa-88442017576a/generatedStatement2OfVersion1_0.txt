@@ -1,0 +1,20 @@
+
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Logic:** The code now directly calculates the absolute differences between all pairs of numbers and finds the minimum of these differences.  It then checks if this minimum difference is less than or equal to 20.
+
+2. **Junit Tests:** The inclusion of JUnit tests is crucial for verifying the correctness of the code, especially for corner cases. The `@Test` annotation and assertions like `assertTrue` and `assertFalse` make testing systematic and easy to automate.
+
+3. **Corner Case Handling:**  The test cases now cover important corner cases, including negative numbers, and situations involving `Integer.MAX_VALUE` and `Integer.MIN_VALUE`. Note that subtracting `Integer.MAX_VALUE` and `Integer.MIN_VALUE` directly can lead to overflow, so be careful when designing tests around these values (or avoid such combinations in your application logic if possible). It is usually best to deal with potential overflow by avoiding the subtraction if possible.
+
+4. **Boundary Testing:** The tests also include values around the critical value of 20 (21 and 22) to make sure the comparison logic works correctly at the boundary.
+
+5. **Zero Case:** Added a test case to cover the situation when all inputs are zero.
+
+
+How to run the tests:
+
+If you are using an IDE like IntelliJ or Eclipse, you can typically right-click on the test class or method and choose "Run."  If you are using the command line and have JUnit set up in your project, you can use a command like `java -cp <classpath> org.junit.runner.JUnitCore LessThan20`. The `<classpath>` should include the path to your compiled code and the JUnit library.

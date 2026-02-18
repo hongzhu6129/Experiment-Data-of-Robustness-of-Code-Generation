@@ -1,0 +1,40 @@
+import java.util.LinkedList;
+
+public class CheckLinkedListEmpty {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList1 = new LinkedList<>();
+
+        // Check if the LinkedList is empty
+        if (linkedList1.isEmpty()) {
+            System.out.println("LinkedList is empty.");
+        } else {
+            System.out.println("LinkedList is not empty.");
+        }
+
+
+        // Create a LinkedList with elements
+        LinkedList<String> linkedList2 = new LinkedList<>();
+        linkedList2.add("Apple");
+        linkedList2.add("Banana");
+        linkedList2.add("Orange");
+
+        // Check if the LinkedList is empty
+        if (linkedList2.isEmpty()) {
+            System.out.println("LinkedList is empty.");
+        } else {
+            System.out.println("LinkedList is not empty.");
+        }
+
+         // another way using size() method (though isEmpty() is generally preferred for clarity):
+
+        LinkedList<Integer> linkedList3 = new LinkedList<>();
+
+        if (linkedList3.size() == 0) {
+            System.out.println("LinkedList is empty (using size()).");
+        } else {
+            System.out.println("LinkedList is not empty (using size()).");
+        }
+    }
+}

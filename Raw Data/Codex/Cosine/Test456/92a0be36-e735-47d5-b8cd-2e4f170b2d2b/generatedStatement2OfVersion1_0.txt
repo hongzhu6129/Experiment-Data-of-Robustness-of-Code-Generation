@@ -1,0 +1,16 @@
+
+
+
+Key improvements:
+
+* **Min-Heap Approach:**  Using `PriorityQueue` (which implements a min-heap) provides an efficient way to track the k largest elements.
+* **Handles Edge Cases:**  Includes checks for `k <= 0`, empty/null arrays, and cases where `k` is larger than the array's size.
+* **Clear Output:** Prints a descriptive message indicating the k largest elements.
+* **Sorted Output (Optional):** The code now sorts the `k` largest elements in descending order before printing, making the output easier to read.  This is done by converting the `PriorityQueue` to an `Integer` array and then sorting it using `Arrays.sort()`.  If you don't need sorted output, you can directly iterate through the `PriorityQueue` using an iterator or remove elements one by one using `poll()` until it's empty.
+
+
+How the Min-Heap works:
+
+1. **Min-Heap Property:** A min-heap keeps the smallest element at the root.
+2. **Tracking k Largest:**  As we iterate through the input array, we add elements to the min-heap. If the heap size exceeds `k`, we remove the smallest element (the root). This ensures that the heap always contains the `k` largest elements seen so far.
+3. **Final Result:** After processing the entire input array, the elements remaining in the min-heap are the `k` largest elements.

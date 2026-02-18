@@ -1,0 +1,49 @@
+import java.util.TreeSet;
+
+public class TreeSetLessThanSeven {
+
+    public static void main(String[] args) {
+
+        // Create a TreeSet of Integer objects
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        // Add some numbers to the TreeSet
+        numbers.add(2);
+        numbers.add(9);
+        numbers.add(5);
+        numbers.add(1);
+        numbers.add(12);
+        numbers.add(7); // 7 itself won't be included as we're looking for strictly less than 7
+        numbers.add(3);
+
+
+        // Method 1: Using headSet()  (Most efficient for TreeSets)
+        System.out.println("Numbers less than 7 (using headSet): " + numbers.headSet(7));
+
+
+        // Method 2: Using enhanced for loop and conditional check
+        System.out.print("Numbers less than 7 (using loop): ");
+        for (int number : numbers) {
+            if (number < 7) {
+                System.out.print(number + " ");
+            }
+        }
+        System.out.println(); // New line for better output formatting
+
+
+        // Method 3: Using Java Streams (Java 8 and above) - more advanced
+        System.out.print("Numbers less than 7 (using streams): ");
+        numbers.stream()
+               .filter(n -> n < 7)
+               .forEach(n -> System.out.print(n + " "));
+        System.out.println();
+
+        // Explanation of headSet():
+        /*
+        The headSet(K toElement) method of TreeSet returns a view of the portion of this set whose elements are strictly less than toElement.  
+        It's very efficient because TreeSets are sorted, so it can quickly determine the appropriate subset. 
+        */
+
+
+    }
+}

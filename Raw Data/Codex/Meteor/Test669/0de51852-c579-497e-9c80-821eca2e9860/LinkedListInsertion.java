@@ -1,0 +1,20 @@
+import java.util.LinkedList;
+
+public class LinkedListInsertion {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> forms = new LinkedList<>();
+
+        // Insert at the beginning (first position)
+        forms.addFirst("Form A"); 
+        forms.addFirst("Form B");
+
+        // Insert at the end (last position)
+        forms.addLast("Form C");
+        forms.addLast("Form D");
+
+        // Print the LinkedList to verify
+        System.out.println(forms); // Output: [Form B, Form A, Form C, Form D]
+    }
+}

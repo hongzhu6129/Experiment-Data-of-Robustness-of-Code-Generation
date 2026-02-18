@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Solution {
+
+    public static void check(String s) {
+        if (s.length() <= 1) {
+            System.out.println(s);
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while (i < s.length()) {
+            char currentChar = s.charAt(i);
+            int j = i + 1;
+            while (j < s.length() && s.charAt(j) == currentChar) {
+                j++;
+            }
+            if (j == i + 1) {
+                sb.append(currentChar);
+            }
+            i = j;
+        }
+
+        if (sb.length() == s.length()) { // No adjacent duplicates were removed.
+            System.out.println(s);
+        }
+         else{
+            check(sb.toString());
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        check(s);
+        sc.close();
+
+    }
+}

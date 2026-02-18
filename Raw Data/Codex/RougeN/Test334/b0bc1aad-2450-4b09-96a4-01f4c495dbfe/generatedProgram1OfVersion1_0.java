@@ -1,0 +1,54 @@
+import java.util.Random;
+
+public class BogoSort {
+
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 8, 1, 9, 4};
+        System.out.println("Unsorted array:");
+        display1D(arr);
+
+        BogoSort bs = new BogoSort();
+        bs.bogo(arr);
+
+        System.out.println("Sorted array:");
+        display1D(arr);
+    }
+
+    void bogo(int[] arr) {
+        while (!isSorted(arr)) {
+            shuffle(arr);
+        }
+    }
+
+    void shuffle(int[] arr) {
+        Random rand = new Random();
+        for (int i = arr.length - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1);
+            swap(arr, i, j);
+        }
+    }
+
+    void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    boolean isSorted(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void display1D(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+
+

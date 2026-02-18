@@ -1,0 +1,101 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class Rectangle {
+    double length;
+    double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double getArea() {
+        return length * width;
+    }
+
+    public double getPerimeter() {
+        return 2 * (length + width);
+    }
+
+    public static void main(String[] args) {
+        Rectangle rect1 = new Rectangle(5, 10);
+        System.out.println("Area: " + rect1.getArea());
+        System.out.println("Perimeter: " + rect1.getPerimeter());
+
+
+        Rectangle rect2 = new Rectangle(7, 7); // Square
+        System.out.println("Area: " + rect2.getArea());
+        System.out.println("Perimeter: " + rect2.getPerimeter());
+    }
+}
+
+class RectangleTest {
+    @Test
+    void testNormalRectangle() {
+        Rectangle rect = new Rectangle(5, 10);
+        assertEquals(50, rect.getArea());
+        assertEquals(30, rect.getPerimeter());
+    }
+
+    @Test
+    void testSquare() {
+        Rectangle rect = new Rectangle(7, 7);
+        assertEquals(49, rect.getArea());
+        assertEquals(28, rect.getPerimeter());
+    }
+
+
+    @Test
+    void testZeroLength() {
+        Rectangle rect = new Rectangle(0, 10);
+        assertEquals(0, rect.getArea());
+        assertEquals(20, rect.getPerimeter());
+    }
+
+    @Test
+    void testZeroWidth() {
+        Rectangle rect = new Rectangle(5, 0);
+        assertEquals(0, rect.getArea());
+        assertEquals(10, rect.getPerimeter());
+    }
+
+    @Test
+    void testZeroLengthAndWidth() { // Corner case: Both zero
+        Rectangle rect = new Rectangle(0, 0);
+        assertEquals(0, rect.getArea());
+        assertEquals(0, rect.getPerimeter());
+    }
+
+
+
+    @Test
+    void testNegativeLength() {
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(-5, 10)); // Expecting exception
+    }
+
+     @Test
+    void testNegativeWidth() {
+        assertThrows(IllegalArgumentException.class, () -> new Rectangle(5, -10)); // Expecting exception
+    }
+
+    @Test
+    void testLargeNumbers(){
+        Rectangle rect = new Rectangle(Double.MAX_VALUE/2, Double.MAX_VALUE/2);
+        assertEquals(Double.POSITIVE_INFINITY, rect.getArea()); // Check for overflow
+        assertEquals(Double.POSITIVE_INFINITY, rect.getPerimeter());
+    }
+
+    // Add a test for very small numbers (close to zero but not zero).
+
+    @Test
+    void testSmallNumbers(){
+        Rectangle rect = new Rectangle(0.0000001, 0.0000001);
+        assertEquals(1.0E-14, rect.getArea());
+        assertEquals(4.0E-7, rect.getPerimeter());
+
+
+    }
+
+
+}

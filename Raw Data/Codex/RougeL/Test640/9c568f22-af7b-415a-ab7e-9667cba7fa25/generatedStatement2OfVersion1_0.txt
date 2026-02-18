@@ -1,0 +1,29 @@
+
+
+
+Explanation and improvements in this version:
+
+1. **Try-with-resources:**  Uses try-with-resources for both `FileWriter` and `FileReader` to ensure that the files are closed automatically, even if exceptions occur. This is crucial for preventing resource leaks.
+
+2. **User Input Loop:**  The code now takes multiple lines of input from the user until they type "quit".  This allows for more practical text entry.
+
+3. **Newlines:** Adds `writer.newLine()` to write a newline character after each line of input, so the output file is correctly formatted.
+
+4. **Error Handling:** Includes more informative error messages using `e.getMessage()` to help with debugging.
+
+5. **Scanner Closure:**  Closes the `Scanner` explicitly to release the resource.
+
+6. **Clearer Output:**  Improved the output messages to be more user-friendly.
+
+7. **Single `main` Method:** All the code is contained within the `main` method as requested.  
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `TextFileReadWrite.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile using:  `javac TextFileReadWrite.java`
+3. **Run:** Run the compiled code: `java TextFileReadWrite`
+
+
+
+The program will then prompt you to enter text, write it to "mytextfile.txt", and then read the contents of the file back to the console.

@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Method Signature Adherence:** The code strictly adheres to the requested method signatures: `public static void main(String[])` and `private static int[] Saddleback(int[][], int, int, int)`.
+
+2. **Saddleback Search Implementation:** The `Saddleback` method correctly implements the saddleback search algorithm. It starts at the top-right corner of the matrix and efficiently eliminates either a row or a column in each step.
+
+3. **Return Value:**  The `Saddleback` method returns an `int[]` where the first element is the row index and the second element is the column index. If the target is not found, it returns `{-1, -1}` to indicate failure.
+
+4. **Example Usage in main():** The `main` method demonstrates how to use the `Saddleback` method with a sample 2D array and target value.  It also handles the case where the target isn't found.
+
+5. **Added test case:** A second test case is added with a target value that isn't present in the matrix. This demonstrates that the code handles the "not found" condition correctly.
+
+
+How Saddleback Search Works:
+
+The algorithm starts at the top-right corner of the matrix.  In each step:
+
+- If the current element is equal to the target, the search is successful.
+- If the current element is smaller than the target, the entire row can be eliminated as all elements to the left are also smaller.  Move down to the next row.
+- If the current element is larger than the target, the entire column can be eliminated as all elements below are also larger. Move left to the previous column.
+
+
+This process continues until the target is found or the search goes out of bounds, indicating that the target is not present.

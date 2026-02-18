@@ -1,0 +1,43 @@
+import java.util.LinkedList;
+
+public class LinkedListInsertEnd {
+
+    public static void main(String[] args) {
+        // Create a LinkedList of Strings
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some initial elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert at the end
+        String newElement = "Grape";
+
+        // Insert the element at the end using add()
+        linkedList.add(newElement);
+
+        // Print the updated LinkedList
+        System.out.println("Updated LinkedList: " + linkedList);
+
+
+        // Example with integer LinkedList:
+        LinkedList<Integer> intList = new LinkedList<>();
+        intList.add(10);
+        intList.add(20);
+        intList.add(30);
+
+        int newInt = 40; 
+        intList.add(newInt);
+
+        System.out.println("Updated Integer LinkedList: " + intList);
+
+
+        //Demonstrating adding a null element (allowed in LinkedList)
+         linkedList.add(null);
+         System.out.println("LinkedList after adding null: " + linkedList);
+
+
+
+    }
+}

@@ -1,0 +1,57 @@
+import java.util.Arrays;
+
+public class RemoveElement {
+
+    public static int removeElement(int[] nums, int val) {
+        int k = 0; // Variable to track the length of the new array
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 6, 7, 6, 2};
+        int val = 6;
+        System.out.println("Original array: " + Arrays.toString(nums));
+
+
+        int newLength = removeElement(nums, val);
+
+        System.out.print("New array: [");
+        for (int i = 0; i < newLength; i++) {
+            System.out.print(nums[i]);
+            if (i < newLength - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
+
+        System.out.println("Length of the new array is: " + newLength);
+
+
+
+        //Example 2
+         int[] nums2 = {3, 2, 2, 3};
+         int val2 = 3;
+         System.out.println("\nOriginal array: " + Arrays.toString(nums2));
+
+         int newLength2 = removeElement(nums2, val2);
+         System.out.print("New array: [");
+        for (int i = 0; i < newLength2; i++) {
+            System.out.print(nums2[i]);
+            if (i < newLength2 - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+         System.out.println("Length of the new array is: " + newLength2);
+
+
+    }
+}

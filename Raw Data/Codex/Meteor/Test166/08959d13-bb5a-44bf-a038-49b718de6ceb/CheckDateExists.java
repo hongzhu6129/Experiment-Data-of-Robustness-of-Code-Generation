@@ -1,0 +1,62 @@
+import java.util.Calendar;
+import java.util.Date;
+
+public class CheckDateExists {
+
+    public static void main(String[] args) {
+        // Create a Calendar instance
+        Calendar calendar = Calendar.getInstance();
+
+        // Set the date (e.g., February 30th, 2024 - an invalid date)
+        calendar.set(2024, Calendar.FEBRUARY, 30); // Month is 0-indexed (0=January, 1=February, etc.)
+
+        // Get the resulting date.  The Calendar will automatically adjust to a valid date 
+        // (March 1st in this case, since 2024 is a leap year)
+        Date date = calendar.getTime();
+
+        // Print the actual date after adjustment
+        System.out.println("Adjusted date: " + date);
+
+        // Demonstrate creating a valid date
+        calendar.set(2024, Calendar.MARCH, 1);
+        date = calendar.getTime();
+        System.out.println("Valid date: " + date);
+
+
+
+        // Example showing how you could technically create a Date representing Feb 30th
+        // BUT Calendar will NOT use that date internally - it will adjust it:
+
+        calendar.clear(); // Clear any existing date/time values
+        calendar.set(Calendar.YEAR, 2024);
+        calendar.set(Calendar.MONTH, Calendar.FEBRUARY); // February
+        calendar.set(Calendar.DAY_OF_MONTH, 30); // Try setting to the 30th (invalid)
+
+        Date invalidDateAttempt = calendar.getTime();
+        System.out.println("Date after attempting to set Feb 30th: " + invalidDateAttempt); // Will be March 1st or 2nd
+
+        // Preferred way to check for date validity BEFORE creating the Date object:
+        // Check against the maximum possible days in the month you are setting:
+
+         calendar.set(Calendar.YEAR, 2024);
+         calendar.set(Calendar.MONTH, Calendar.FEBRUARY); 
+
+         int maxDaysInFebruary = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+         int dayToSet = 30; // Example
+
+         if(dayToSet > maxDaysInFebruary){
+             System.out.println("Invalid day for February 2024. Maximum days: " + maxDaysInFebruary);
+
+             // Here, you would handle the invalid date appropriately, perhaps by
+             // setting to the max day, throwing an exception, or asking the user
+             // for a valid date.
+         } else {
+             calendar.set(Calendar.DAY_OF_MONTH, dayToSet); // Safe to set now
+             Date validDate = calendar.getTime();
+             System.out.println("Valid date: " + validDate);
+         }
+
+
+    }
+}

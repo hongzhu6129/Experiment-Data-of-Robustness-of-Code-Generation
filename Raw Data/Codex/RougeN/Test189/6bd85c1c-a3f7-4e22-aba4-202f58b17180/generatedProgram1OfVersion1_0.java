@@ -1,0 +1,65 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeFormatterExample {
+
+    public static String formatDateTime(LocalDateTime dateTime) {
+        // Define the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+        return dateTime.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        String formattedDateTime = formatDateTime(now);
+        System.out.println("Now: " + formattedDateTime);
+
+
+        // Test cases
+        testDateTimeFormatter();
+    }
+
+
+    public static void testDateTimeFormatter() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+
+        // Test case 1: Normal date and time
+        LocalDateTime dateTime1 = LocalDateTime.of(2024, 1, 31, 12, 30, 45, 123456789);
+        String expected1 = "2024/01/31 12:30:45.123";
+        String actual1 = formatDateTime(dateTime1);
+        assert expected1.equals(actual1) : "Test case 1 failed. Expected: " + expected1 + ", Actual: " + actual1;
+
+        // Test case 2: Single-digit month and day
+        LocalDateTime dateTime2 = LocalDateTime.of(2023, 5, 6, 1, 2, 3, 456000000);
+        String expected2 = "2023/05/06 01:02:03.456";
+        String actual2 = formatDateTime(dateTime2);
+        assert expected2.equals(actual2) : "Test case 2 failed. Expected: " + expected2 + ", Actual: " + actual2;
+
+
+
+        // Test case 3: Start and end of a day
+        LocalDateTime dateTime3 = LocalDateTime.of(2023, 12, 31, 23, 59, 59, 999999999);
+        String expected3 = "2023/12/31 23:59:59.999";
+        String actual3 = formatDateTime(dateTime3);
+        assert expected3.equals(actual3) : "Test case 3 failed. Expected: " + expected3 + ", Actual: " + actual3;
+
+        LocalDateTime dateTime4 = LocalDateTime.of(2024, 1, 1, 0, 0, 0, 0);
+        String expected4 = "2024/01/01 00:00:00.000";
+        String actual4 = formatDateTime(dateTime4);
+        assert expected4.equals(actual4) : "Test case 4 failed. Expected: " + expected4 + ", Actual: " + actual4;
+
+        // Test case 5: Leap year
+        LocalDateTime dateTime5 = LocalDateTime.of(2024, 2, 29, 10, 15, 20, 555555555); // 2024 is a leap year
+        String expected5 = "2024/02/29 10:15:20.555";
+        String actual5 = formatDateTime(dateTime5);
+        assert expected5.equals(actual5) : "Test case 5 failed. Expected: " + expected5 + ", Actual: " + actual5;
+
+
+
+
+        System.out.println("All test cases passed.");
+
+
+    }
+}

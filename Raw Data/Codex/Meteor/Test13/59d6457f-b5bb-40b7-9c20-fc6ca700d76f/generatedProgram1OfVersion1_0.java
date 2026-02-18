@@ -1,0 +1,29 @@
+import java.util.UUID;
+
+public class DistinctIdentifier {
+
+    public static void main(String[] args) {
+        // Generate a distinct identifier for a given string
+        String str = "Hello, World!";
+        String identifier = UUID.nameUUIDFromBytes(str.getBytes()).toString();
+        System.out.println("Identifier: " + identifier);
+
+        // Test cases
+        String[] testCases = {"", " ", "a", "12345", "Hello, World!"};
+        for (String testCase : testCases) {
+            String testIdentifier = UUID.nameUUIDFromBytes(testCase.getBytes()).toString();
+            System.out.println("Identifier for " + testCase + ": " + testIdentifier);
+        }
+
+        // Corner cases
+        String emptyString = "";
+        String nullString = null;
+        String veryLongString = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lacus eget nunc tincidunt laoreet. Curabitur eget consectetur nunc. Maecenas eget lacus eget nunc tincidunt laoreet. Curabitur eget consectetur nunc. Maecenas eget lacus eget nunc tincidunt laoreet. Curabitur eget consectetur nunc. Maecenas eget lacus eget nunc tincidunt laoreet. Curabitur eget consectetur nunc.";
+        String identifierForEmptyString = UUID.nameUUIDFromBytes(emptyString.getBytes()).toString();
+        String identifierForNullString = UUID.nameUUIDFromBytes(nullString.getBytes()).toString();
+        String identifierForVeryLongString = UUID.nameUUIDFromBytes(veryLongString.getBytes()).toString();
+        System.out.println("Identifier for empty string: " + identifierForEmptyString);
+        System.out.println("Identifier for null string: " + identifierForNullString);
+        System.out.println("Identifier for very long string: " + identifierForVeryLongString);
+    }
+}

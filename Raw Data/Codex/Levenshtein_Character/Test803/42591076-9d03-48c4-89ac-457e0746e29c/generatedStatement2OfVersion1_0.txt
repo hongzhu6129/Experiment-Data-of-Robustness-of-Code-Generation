@@ -1,0 +1,14 @@
+
+
+
+Key Improvements and Explanations:
+
+1. **Handles Non-Square Arrays:** The original code only worked correctly for square matrices (same number of rows and columns).  The updated code now demonstrates how to transpose a non-square array by creating a new array of the transposed dimensions and then copying the elements.  Direct in-place transposition is only possible for square arrays.
+
+2. **Clearer Output:** Added labels ("Original Array," "Transposed Array") to make the output easier to understand, especially when demonstrating the non-square example.
+
+3. **Efficient In-Place Transpose (for square matrices):** The `transpose` method now performs the transpose in place for square matrices, which is more memory-efficient. The key is that we only iterate through the upper triangle (or lower triangle) of the matrix to avoid swapping elements back. The loop `for (int j = i + 1; j < cols; j++)` ensures this optimized swapping.
+
+4. **Example Usage with Non-Square Array:** The `main` method now includes an example with a non-square array to show how the separate transposed array creation works.
+
+5. **Comments:** Added comments to explain the logic and limitations (like the in-place transpose only working for square matrices).

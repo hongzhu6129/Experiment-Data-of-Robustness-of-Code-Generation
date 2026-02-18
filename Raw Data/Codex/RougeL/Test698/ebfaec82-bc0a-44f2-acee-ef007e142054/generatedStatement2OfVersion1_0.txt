@@ -1,0 +1,23 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Variable Names:**  Used `m` and `n` for rows and columns, respectively, for better readability.
+2. **Return an Array:** The `Saddleback` method now returns an `int[]` containing the row and column index.  If the target is not found, it returns `{-1, -1}`. This is a standard way to signal a failed search.
+3. **Error Handling:** The `main` method now checks the return value from `Saddleback` and prints an appropriate message.
+4. **Example Usage:** The `main` method provides a sample matrix and demonstrates how to use the `Saddleback` method. It also includes a test case where the target is *not* present.
+5. **Comments:** Added comments to explain the logic and purpose of different parts of the code.
+
+
+**How the Saddleback Search Works**
+
+The algorithm starts at the top-right corner of the matrix.
+
+* **If the current element is equal to the target:** The target is found, and its position is returned.
+* **If the current element is smaller than the target:** The target cannot be in the current row (since the row is sorted in ascending order). Move to the next row.
+* **If the current element is larger than the target:**  The target cannot be in the current column (since the column is sorted in ascending order). Move to the previous column.
+
+
+This process continues until the target is found or the boundaries of the matrix are reached (indicating that the target is not present).  The time complexity of this search is O(m + n), where 'm' is the number of rows, and 'n' is the number of columns.  It's more efficient than a full linear search in a 2D array.
+

@@ -1,0 +1,38 @@
+public class StringComparison {
+
+    public static void main(String[] args) {
+        String str1 = "Hello"; // Example string 1
+        String str2 = "Hello"; // Example string 2
+        String str3 = new String("Hello"); // Another way to create a string
+        String str4 = "World"; // Example string that's different
+
+        // Method 1: Using .equals() (recommended for content comparison)
+        System.out.println("str1.equals(str2): " + str1.equals(str2)); // Output: true
+        System.out.println("str1.equals(str3): " + str1.equals(str3)); // Output: true
+        System.out.println("str1.equals(str4): " + str1.equals(str4)); // Output: false
+
+
+        // Method 2: Using == (checks for reference equality)
+        System.out.println("str1 == str2: " + (str1 == str2)); // Output: true (because of String pool optimization)
+        System.out.println("str1 == str3: " + (str1 == str3)); // Output: false (str3 is a different object)
+        System.out.println("str1 == str4: " + (str1 == str4)); // Output: false
+
+
+
+        // Illustrating further the difference between == and .equals():
+        String str5 = "Java";
+        String str6 = new String("Java").intern(); // "intern()" adds the string to the String pool
+
+        System.out.println("str5 == str6: " + (str5 == str6)); // Output: true (because of .intern())
+        System.out.println("str5.equals(str6): " + str5.equals(str6)); // Output: true (content is the same)
+
+        // Explanation:
+        /*
+        *  .equals() compares the content of the strings. It checks if the characters in both strings are the same.
+        *  == compares the memory addresses of the string objects.  If two strings are created with string literals 
+        *  (e.g., String str1 = "Hello";) and have the same content, they often refer to the same object in the 
+        *  "String pool" due to Java's optimization. If strings are created using the "new" keyword, they are 
+        *  distinct objects, even if their content is the same. This is why str1 == str3 is false.
+        */
+    }
+}

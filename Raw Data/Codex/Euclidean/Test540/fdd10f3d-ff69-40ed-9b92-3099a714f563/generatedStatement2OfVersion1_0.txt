@@ -1,0 +1,49 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner and edge cases:
+
+1. **Positive Single Digit:**
+   - Input: `5`
+   - Expected Output: `615`  (5 + 55 + 555)
+
+2. **Positive Double Digit:**
+   - Input: `12`
+   - Expected Output: `1332` (12 + 1212 + 121212)
+
+3. **Zero:**
+   - Input: `0`
+   - Expected Output: `0`
+
+4. **Negative Single Digit:**
+   - Input: `-3`
+   - Expected Output: `-369` (-3 + -33 + -333)
+
+5. **Negative Double Digit:**
+   - Input: `-15`
+   - Expected Output: `-1665` (-15 + -1515 + -151515)
+
+6. **Large Positive Number (to test for potential overflow with int):**
+   - Input: `9999`
+   - Expected Output: `111088889`
+
+7. **Large Negative Number (to test for potential overflow with int):**
+   - Input: `-9999`
+   - Expected Output: `-111088889`
+
+8. **Invalid Input (Non-integer):**
+   - Input: `abc`
+   - Expected Output: `"Invalid input. Please enter an integer."`
+
+
+**Explanation of Improvements:**
+
+* **Input Validation:**  The code now includes input validation to check if the user enters a valid integer.  If not, it prints an error message and exits gracefully. This prevents unexpected behavior or crashes.
+* **Handles Overflow:** The use of `long` instead of `int` for the calculations prevents potential integer overflow issues, especially when dealing with larger input numbers. The calculations and the return type of `calculateNNN` have been changed to `long`.
+* **Clearer Variable Names:** The variable names (`nn`, `nnn`) are more descriptive of the values they hold.
+* **Function for Calculation:** The calculation logic is now encapsulated in a separate function `calculateNNN`, which makes the code more organized and reusable.
+* **Scanner Closed:** The `scanner.close()` statement is added to release the resource.
+
+
+This improved version is more robust, handles potential errors, and is more efficient for larger input values.  It also follows best practices for code structure and clarity.

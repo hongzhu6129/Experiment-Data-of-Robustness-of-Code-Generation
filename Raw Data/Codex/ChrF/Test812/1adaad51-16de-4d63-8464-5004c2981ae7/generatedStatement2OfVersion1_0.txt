@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+1. **JUnit Tests:**  The code now uses JUnit 5 for proper unit testing. This is the standard way to test Java code and provides a much more robust and organized approach than simply printing test results to the console.
+
+2. **Comprehensive Test Cases:** The tests cover a wider range of scenarios, including:
+   - Positive numbers
+   - Zero
+   - Negative numbers
+   - Large numbers (close to `Integer.MAX_VALUE`)
+   - Overflow cases (demonstrating how to handle potential overflow situations)
+
+3. **Clearer Test Structure:** Each test case is now a separate `@Test` method, making the tests more readable and easier to understand.
+
+4. **Assertions:** The tests use JUnit's `assertEquals()` method to verify the expected output against the actual output of the `multiply()` method.
+
+5. **Overflow Handling:** The code now includes tests that demonstrate potential integer overflow issues. It's essential to be aware of these when working with integer multiplication in Java, as the results can wrap around unexpectedly. The tests that are expected to overflow are commented out as they would fail otherwise, you would need to use `long` to handle such large numbers.
+
+
+How to run the tests:
+
+1. **IDE (e.g., IntelliJ, Eclipse):** If you're using an IDE, it will have built-in support for running JUnit tests.  Right-click on the test class or method and select "Run".
+2. **Command Line:**  You can compile and run the tests from the command line using the following commands (assuming you have JUnit 5 on your classpath):
+   

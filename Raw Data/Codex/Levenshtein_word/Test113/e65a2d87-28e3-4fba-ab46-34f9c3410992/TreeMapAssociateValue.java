@@ -1,0 +1,36 @@
+import java.util.TreeMap;
+
+public class TreeMapAssociateValue {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Associate values with keys
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+
+        // Print the TreeMap to verify the association
+        System.out.println("TreeMap: " + treeMap);
+
+
+        //Example of overwriting an existing key's value:
+        treeMap.put("Apple", 10); // The value associated with "Apple" is now 10
+
+        System.out.println("TreeMap after update: " + treeMap);
+
+
+        // Example demonstrating null values and keys (allowed for values, *not* generally for keys unless specifically configured)
+         treeMap.put("Grape", null); // Null value is allowed.
+
+        try{
+            treeMap.put(null, 5); // Null key will often throw a NullPointerException (depends on TreeMap configuration)
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException caught (as expected, usually): " + e.getMessage());
+        }
+
+
+
+    }
+}

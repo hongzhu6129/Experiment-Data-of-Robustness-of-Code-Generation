@@ -1,0 +1,29 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Using an array for input:** This is a more robust way to handle swapping within a function because Java passes arguments by value. Modifying the array elements within the function will reflect these changes outside the function.
+
+* **Handling Edge Cases:**  The `swap` function now explicitly handles `null` and single-element arrays without throwing exceptions. This is essential for robust code.
+
+* **Comprehensive Test Cases:** The JUnit tests cover several crucial scenarios:
+    * Regular positive numbers
+    * Negative and zero values
+    * `Integer.MAX_VALUE` and `Integer.MIN_VALUE` (to check for potential overflows, although the addition/subtraction method handles it well due to Java's use of two's complement).
+    * Null array and single-element array
+    * Cases that might cause overflow (although two's complement handles it)
+
+* **Clearer `main` method:** The `main` method now demonstrates basic usage.
+
+* **No Bitwise XOR:** While XOR is an elegant solution, the addition/subtraction method is often clearer for beginners and avoids any confusion about bitwise operations.  The addition/subtraction method also avoids potential overflow issues that *could* arise with XOR (though less likely in Java than C/C++).
+
+
+
+How to Run the Tests:
+
+1. **IDE (e.g., IntelliJ, Eclipse):** If you're using an IDE, it will usually have built-in support for JUnit. You should be able to right-click the test class and select "Run 'SwapVariablesTest'".
+
+2. **Command Line:**  If you're compiling and running from the command line:
+   

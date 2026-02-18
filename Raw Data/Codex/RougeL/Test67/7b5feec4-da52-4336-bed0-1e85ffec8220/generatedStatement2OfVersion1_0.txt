@@ -1,0 +1,28 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`calculateCatalanFromPascal(int n)`:**
+   - Handles invalid input (n < 0).
+   - Handles the base case (n=0) for the Catalan sequence directly (returns 1).
+   - Calls `generatePascalTriangle()` to get the relevant Pascal's triangle rows.
+   - Extracts the Catalan number using the formula `pascal[2n][n] / (n + 1)`.
+
+2. **`generatePascalTriangle(int rows)`:**
+   - Creates a 2D array to store Pascal's triangle.
+   - Initializes the first and last elements of each row to 1.
+   - Calculates the other elements using the Pascal's triangle rule (sum of two elements above).
+
+3. **`main()` method:**
+   - Loops `n` times (where `n` is the desired number of Catalan numbers to print).
+   - Calls `calculateCatalanFromPascal()` for each `i` from 0 to `n-1`.
+   - Prints the Catalan numbers with appropriate labels.
+
+
+
+This improved code is more efficient and robust because:
+
+- It avoids redundant calculations. The Pascal's triangle is generated only once for the maximum number of rows required.
+- It handles edge cases (n=0 and invalid input).
+- The logic for generating Pascal's triangle and extracting the Catalan numbers is separated into clear, reusable functions.

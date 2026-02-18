@@ -1,0 +1,17 @@
+
+
+
+
+Key improvements and explanations:
+
+* **Min-Heap for Efficiency:** Using `PriorityQueue` (which implements a min-heap) makes finding the `p` largest elements efficient.  The smallest element among the `p` largest is always at the top of the heap.  This is O(n log p) time complexity.
+* **Handles Edge Cases:** The code includes checks for:
+    * `p` being larger than the array size.
+    * Empty input array.
+    * `p` being zero or negative.
+* **Clearer Output:** Prints the result in a formatted array using `Arrays.toString()` making it easier to read.
+* **Correct Ordering of Results:**  The results are extracted from the heap in reverse order to ensure they are in descending order (largest to smallest).
+* **Example Usages:**  Included multiple example calls in `main` to demonstrate usage with different inputs and edge cases.
+
+
+This improved version provides better error handling, efficiency, and output clarity compared to directly sorting the entire array.  It's the preferred approach for finding the `p` largest elements, especially when `p` is significantly smaller than the array size.

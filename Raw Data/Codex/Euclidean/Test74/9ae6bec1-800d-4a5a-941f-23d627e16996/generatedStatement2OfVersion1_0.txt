@@ -1,0 +1,26 @@
+
+
+
+Key improvements and explanations:
+
+* **JUnit Tests:**  The code now uses JUnit 5 for testing, which is the standard way to write unit tests in Java. This makes the tests more organized, easier to run, and provides more informative output.
+* **Comprehensive Test Cases:**
+    * **Positive Dimensions:**  Tests with regular positive length and width.
+    * **Square:** Tests the case where length and width are equal (a square is a special case of a rectangle).
+    * **Zero Length/Width:**  These are important corner cases.  The area should be 0, but the perimeter can still be calculated.
+    * **Negative Length/Width:** Tests for invalid input.  The revised code now throws `IllegalArgumentException` for negative dimensions making the intent clear and handling the edge case more robustly.
+    * **Large Numbers:** Tests how the code handles potentially very large values for length and width.
+    * **Decimal Dimensions:**  Tests the code's ability to handle floating-point numbers.
+* **Exception Handling (IllegalArgumentException):**  The constructor now throws `IllegalArgumentException` if a negative length or width is provided.  This is good practice as it prevents the creation of invalid `Rectangle` objects.  The tests now use `assertThrows` to verify this behavior.
+* **Clearer Output in `main`:**  The `main` method now prints output in a more user-friendly format, clearly indicating which rectangle the output refers to.
+
+
+How to run the JUnit tests:
+
+1. **IDE:** If you're using an IDE like IntelliJ or Eclipse, you should be able to right-click on the `RectangleTest` class and select "Run 'RectangleTest'".
+2. **Command Line (with Maven):** If you're using Maven, navigate to the project directory in your terminal and run `mvn test`.
+3. **Command Line (without build tools):**  You'll need to ensure JUnit is on your classpath. This is more complex without a build tool, so using Maven or Gradle is strongly recommended.
+
+
+
+This improved version provides much better testing and error handling, making it a more robust and reliable solution.

@@ -1,0 +1,50 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CheckValueMap {
+
+    public static void main(String[] args) {
+        // Create a sample map
+        Map<String, String> bookMap = new HashMap<>();
+        bookMap.put("978-0321765723", "Effective Java");
+        bookMap.put("978-0596009205", "Head First Java");
+        bookMap.put("978-1492078209", "Modern Java in Action");
+
+
+        // Value to search for
+        String valueToFind = "Effective Java";
+
+        // Check if the map contains the value and print the result.
+        boolean containsValue = bookMap.containsValue(valueToFind);
+        System.out.println("Map contains value '" + valueToFind + "': " + containsValue);
+
+
+
+        // Example demonstrating how to find the key associated with a value (if it exists)
+        String keyForValue = findKeyByValue(bookMap, valueToFind);
+        if (keyForValue != null) {
+            System.out.println("Key for value '" + valueToFind + "': " + keyForValue);
+        } else {
+            System.out.println("Value '" + valueToFind + "' not found in map.");
+        }
+
+
+
+        // Another example, searching for a value that isn't present
+        String absentValue = "Java Concurrency in Practice";
+        System.out.println("Map contains value '" + absentValue + "': " + bookMap.containsValue(absentValue));
+
+    }
+
+
+    // Helper function to find the key associated with a value.  This demonstrates
+    // how to iterate and search based on values if you need to retrieve the key.
+    public static String findKeyByValue(Map<String, String> map, String value) {
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null; // Value not found
+    }
+}

@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+
+        // Get a Set view of the keys
+        Set<String> keys = map.keySet();
+
+        // Print the keys
+        System.out.println("Keys in the map:");
+        for (String key : keys) {
+            System.out.println(key);
+        }
+
+
+         // Example of using the keySet for other operations
+        if (keys.contains("Banana")) {
+            System.out.println("Banana is present in the map.");
+        }
+
+        System.out.println("Number of keys: " + keys.size());
+    }
+}

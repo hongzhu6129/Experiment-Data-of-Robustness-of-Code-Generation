@@ -1,0 +1,26 @@
+public class Log2Floor {
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("Usage: java Log2Floor <integer>");
+            return;
+        }
+
+        try {
+            int n = Integer.parseInt(args[0]);
+
+            if (n <= 0) {
+                System.out.println("Input must be a positive integer.");
+                return;
+            }
+
+            int result = (int) (Math.log(n) / Math.log(2)); // Efficient calculation of floor(log2(n))
+
+            System.out.println(result);
+
+
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter an integer.");
+        }
+    }
+}

@@ -1,0 +1,39 @@
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ShuffleLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Shuffle the LinkedList using Collections.shuffle()
+        Collections.shuffle(linkedList);
+
+
+        System.out.println("Shuffled LinkedList: " + linkedList);
+
+
+
+        // Example with Integers
+
+         LinkedList<Integer> numbers = new LinkedList<>();
+        for (int i = 1; i <= 10; i++) {
+            numbers.add(i);
+        }
+
+        System.out.println("Original numbers: " + numbers);
+        Collections.shuffle(numbers);
+        System.out.println("Shuffled numbers: " + numbers);
+
+
+    }
+}

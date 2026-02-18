@@ -1,0 +1,37 @@
+public class LastIndexOfString {
+
+    public static void main(String[] args) {
+        String mainString = "This is a test string. This is another test.";
+        String subString = "test";
+
+        int lastIndex = mainString.lastIndexOf(subString);
+
+        if (lastIndex != -1) {
+            System.out.println("Last index of \"" + subString + "\" is: " + lastIndex);
+        } else {
+            System.out.println("\"" + subString + "\" not found in the string.");
+        }
+
+
+        // Example with a character
+        char charToFind = 's';
+        int lastIndexOfChar = mainString.lastIndexOf(charToFind);
+        if (lastIndexOfChar != -1) {
+            System.out.println("Last index of '" + charToFind + "' is: " + lastIndexOfChar);
+        } else {
+            System.out.println("'" + charToFind + "' not found in the string.");
+        }
+        
+        // Demonstrating lastIndexOf with fromIndex
+        int lastIndexFromIndex = mainString.lastIndexOf(subString, 20); // Search before index 20
+         if (lastIndexFromIndex != -1) {
+            System.out.println("Last index of \"" + subString + "\" before index 20 is: " + lastIndexFromIndex);
+        } else {
+            System.out.println("\"" + subString + "\" not found in the string before index 20.");
+        }
+
+
+
+
+    }
+}

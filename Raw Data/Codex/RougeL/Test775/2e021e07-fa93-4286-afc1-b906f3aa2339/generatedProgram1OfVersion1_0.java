@@ -1,0 +1,32 @@
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
+
+public class FirstAndLastDayOfMonth {
+
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Get the first day of the current month
+        LocalDate firstDayOfMonth = currentDate.with(TemporalAdjusters.firstDayOfMonth());
+
+        // Get the last day of the current month
+        LocalDate lastDayOfMonth = currentDate.with(TemporalAdjusters.lastDayOfMonth());
+
+        // Print the first and last days
+        System.out.println("First day of the month: " + firstDayOfMonth);
+        System.out.println("Last day of the month: " + lastDayOfMonth);
+
+
+        //Example to get first and last day of a specific month/year
+        int year = 2024;
+        int month = 2; // February
+
+        LocalDate specificDate = LocalDate.of(year, month, 1); // Day 1 is irrelevant, it's just a starting point
+        LocalDate firstDayOfSpecificMonth = specificDate.with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate lastDayOfSpecificMonth = specificDate.with(TemporalAdjusters.lastDayOfMonth());
+
+         System.out.println("First day of February 2024: " + firstDayOfSpecificMonth);
+         System.out.println("Last day of February 2024: " + lastDayOfSpecificMonth);
+    }
+}

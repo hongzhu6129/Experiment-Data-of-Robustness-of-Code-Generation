@@ -1,0 +1,37 @@
+class Solution {
+    /**
+     * Given three integers, return true if one is the middle point between the other two integers, otherwise false.
+     *
+     * @param a first integer
+     * @param b second integer
+     * @param c third integer
+     * @return true if one is the middle point between the other two integers, otherwise false
+     */
+    public static boolean test(int a, int b, int c) {
+        if ((a <= b && b <= c) || (c <= b && b <= a)) {
+            return true;
+        } else if ((a <= c && c <= b) || (b <= c && c <= a)) {
+            return true;
+
+        } else if ((b <= a && a <= c) || (c <= a && a <= b)) {
+            return true;
+
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(test(2, 4, 6)); // Output: true
+        System.out.println(test(4, 6, 2)); // Output: true
+        System.out.println(test(2, 6, 4)); // Output: true
+        System.out.println(test(6, 4, 2)); // Output: true
+        System.out.println(test(4, 2, 6)); // Output: true
+        System.out.println(test(6, 2, 4)); // Output: true
+
+
+        System.out.println(test(2, 2, 6)); // Output: false
+        System.out.println(test(2, 6, 6)); // Output: false
+        System.out.println(test(2, 6, 1)); // Output: false
+
+    }
+}

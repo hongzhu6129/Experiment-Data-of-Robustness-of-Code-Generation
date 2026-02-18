@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RetrieveElementArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Specify the index of the element to retrieve
+        int index = 2;
+
+        try {
+            // Retrieve the element at the specified index
+            String element = fruits.get(index);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + index + ": " + element);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid index. Index should be between 0 and " + (fruits.size() - 1));
+        }
+
+
+
+        // Example with an invalid index (out of bounds)
+
+         index = 10; //Invalid Index
+
+        try {
+            // Retrieve the element at the specified index (this will throw an exception)
+            String element = fruits.get(index);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + index + ": " + element);  //This won't be reached
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid index. Index should be between 0 and " + (fruits.size() - 1));
+        }
+
+
+
+    }
+}

@@ -1,0 +1,42 @@
+public class CapitalizeFirstLetter {
+
+    public static void main(String[] args) {
+        String sentence = "the quick brown fox jumps over the lazy dog.";
+        String capitalizedSentence = "";
+
+        // Iterate through each word in the sentence
+        String[] words = sentence.split(" ");
+        for (String word : words) {
+            // Capitalize the first letter of each word
+            if (!word.isEmpty()) {  // Handle potential empty words
+                String firstLetter = word.substring(0, 1).toUpperCase();
+                String restOfWord = word.substring(1);
+                capitalizedSentence += firstLetter + restOfWord + " ";
+            }
+        }
+
+        // Remove the trailing space and print the capitalized sentence
+        System.out.println(capitalizedSentence.trim());
+
+
+        // Example with multiple sentences:
+        String multipleSentences = "the quick brown fox jumps over the lazy dog. the quick brown fox jumps over the lazy dog.";
+        String capitalizedMultipleSentences = "";
+
+        // Split into sentences first (based on punctuation)
+        String[] sentences = multipleSentences.split("[.?!]"); // Split based on period, question mark, or exclamation mark
+        for (String s : sentences) {
+            String capitalizedSentencePart = "";
+            String[] wordsInSentence = s.trim().split(" "); // Trim to avoid empty words
+            for (String word : wordsInSentence) {
+                if (!word.isEmpty()) {
+                    String firstLetter = word.substring(0, 1).toUpperCase();
+                    String restOfWord = word.substring(1);
+                    capitalizedSentencePart += firstLetter + restOfWord + " ";
+                }
+            }
+            capitalizedMultipleSentences += capitalizedSentencePart.trim() + ". "; // Add back the period and space
+        }
+        System.out.println(capitalizedMultipleSentences.trim()); // Remove trailing space
+    }
+}

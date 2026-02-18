@@ -1,0 +1,30 @@
+
+
+
+
+Key improvements and explanations of the test cases:
+
+* **JUnit 5:**  The test cases now use JUnit 5 (Jupiter), which is the current best practice for Java testing.  This requires the `org.junit.jupiter.api` import.
+
+* **`assertThrows()`:** Handles the expected exceptions for invalid input (null or empty strings).  This is crucial for robust testing.
+
+* **Clearer Test Names:** Test names are more descriptive, making it easier to understand what each test is verifying.
+
+* **Corner Cases:** The tests cover various corner cases:
+    * Both strings having only one character.
+    * One string having only one character, the other longer.
+    * Empty strings.
+    * Null strings.
+
+* **Additional Character Types**: Added tests to include special characters, numbers, and Unicode characters to ensure the function handles different input types correctly.
+
+
+**How to run these tests:**
+
+1. **IDE (IntelliJ, Eclipse, etc.):**  Right-click on the test class or individual test methods and choose "Run".  Your IDE should have JUnit support built-in.
+
+2. **Command Line (with Maven or Gradle):** Use the appropriate build command to run the tests (e.g., `mvn test` or `./gradlew test`).  Make sure you have JUnit 5 as a dependency in your project.
+
+
+
+This revised version provides a much more comprehensive set of tests, ensuring the `concatenateWithoutFirstChar` function works correctly under various conditions, including the critical edge cases.

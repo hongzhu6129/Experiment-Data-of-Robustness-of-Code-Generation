@@ -1,0 +1,48 @@
+
+
+**Test Cases:**
+
+1. **Valid Single Digit:**
+   - Input: 5
+   - Expected Output: n+nn+nnn = 615
+
+2. **Zero:**
+   - Input: 0
+   - Expected Output: n+nn+nnn = 0  (Corner case)
+
+3. **Maximum Single Digit:**
+   - Input: 9
+   - Expected Output: n+nn+nnn = 1107 (Corner Case)
+
+
+4. **Negative Input:**
+   - Input: -2
+   - Expected Output: Please enter a single-digit integer (0-9). (Error handling)
+
+
+5. **Two-Digit Input:**
+   - Input: 12
+   - Expected Output: Please enter a single-digit integer (0-9). (Error handling)
+
+6. **Non-Numeric Input:**
+   - Input: abc
+   - Expected Output: Invalid input. Please enter an integer. (Error handling)
+
+
+**Explanation of the Corner/Edge Cases:**
+
+* **Zero:**  Testing with zero helps ensure that the program handles the smallest possible valid input correctly. The arithmetic operations should still produce the correct output (0).
+* **Maximum Single Digit (9):** Testing with 9 checks for potential integer overflow issues if the calculation `nnn` results in a number too large to be stored as an integer. Although the restricted input prevents this with the current code, it's a good test case to keep if the input restrictions are ever removed.
+* **Negative Input & Two-Digit Input**:  These are important to test the input validation part of the program. The program should reject invalid input gracefully and provide an informative error message.
+* **Non-Numeric Input**: This tests the robustness of the input handling to unexpected input types. The `try...catch` block ensures the program does not crash in these scenarios.
+
+
+
+
+This improved response provides:
+
+* **Clearer code comments:** Explaining the purpose of each part of the code.
+* **Comprehensive test cases:** Including corner cases and error handling scenarios.
+* **Explanation of the test cases:**  Justifying why each test case is included.
+* **Input validation:** Prevents integer overflow and handles invalid inputs gracefully.
+* **Resource management:** Closes the `Scanner` object to prevent resource leaks.

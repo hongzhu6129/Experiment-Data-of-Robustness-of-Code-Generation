@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+* **Min-Heap for Efficiency:** Uses `PriorityQueue` (a min-heap implementation in Java) which makes finding the k largest elements very efficient, especially for large arrays.  The time complexity is O(n log k), where n is the array size.
+* **Handles Edge Cases:** Added handling for `null` or empty arrays and invalid `k` values (e.g. `k <= 0`,  `k > array.length`).
+* **Clearer Output:**  Prints a message if the array is empty. Sorts the final k elements before printing so the output is in ascending order.  Added newlines to separate outputs for different test cases.
+* **More Test Cases:**  Includes test cases with duplicates, negative numbers, `k` larger than the array size, and an empty array to ensure robustness.
+* **Comments:** Added comments explaining the logic.
+* **Conciseness:**  The code remains concise and focused, using the requested `main` method only.
+
+
+How the Min-Heap approach works:
+
+1. **Add elements:** We iterate through the array and add each element to the min-heap.
+2. **Maintain size k:** If the heap's size becomes greater than `k`, we remove the smallest element (the root of the min-heap). This ensures that we always keep only the `k` largest elements seen so far in the heap.
+3. **Final result:** After processing all elements, the min-heap will contain the `k` largest elements from the original array.

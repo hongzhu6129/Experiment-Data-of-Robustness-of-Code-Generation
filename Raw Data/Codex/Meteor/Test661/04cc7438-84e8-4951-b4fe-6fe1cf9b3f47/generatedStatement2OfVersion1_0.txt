@@ -1,0 +1,22 @@
+
+
+
+Key improvements and explanations:
+
+1. **Interval Class:** Encapsulates the start and end of an interval.  The `toString()` method makes printing the results easier.
+
+2. **Comparator for Sorting:**  The `Collections.sort()` method now uses a `Comparator` to sort intervals based on their start times, which is crucial for the merging logic. This addresses a significant flaw in earlier responses.
+
+3. **Merging Logic:** The merging logic is now corrected. It iterates through the sorted intervals, merging overlapping intervals by updating the `current` interval's end. If intervals don't overlap, the `current` interval is added to the `mergedIntervals` list.
+
+4. **Handling the Last Interval:** The code now correctly adds the last `current` interval after the loop completes, ensuring no intervals are missed.
+
+5. **Clearer Variable Names:** More descriptive variable names (`current`, `next`) improve readability.
+
+6. **Example Usage in `main()`:**  Demonstrates how to create, merge, and print the intervals. I added an overlapping interval [17, 20] to test the merging logic more thoroughly.
+
+7. **Handles Edge Cases:** The `merge` method now handles `null` or empty input gracefully.
+
+
+
+This revised version is a much more robust and correct solution to the overlapping intervals problem, adhering to the given method signature constraints.

@@ -1,0 +1,28 @@
+public class AlphabetIndex {
+
+    public static void main(String[] args) {
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        for (int i = 0; i < alphabet.length(); i++) {
+            char character = alphabet.charAt(i);
+            int index = alphabet.indexOf(character);
+            System.out.println("Character: " + character + ", Index: " + index);
+
+        }
+
+
+        // Demonstrating how to find index case-insensitively
+        String mixedCase = "AbCdEfGhIjKlMnOpQrStUvWxYz";
+        for (int i = 0; i < mixedCase.length(); i++) {
+            char mixedChar = mixedCase.charAt(i);
+            int index = alphabet.indexOf(Character.toLowerCase(mixedChar)); // Convert to lowercase for search
+            if(index != -1) { //Handle characters not in the alphabet
+                System.out.println("Character: " + mixedChar + ", Index: " + index);
+            } else {
+                System.out.println("Character: " + mixedChar + ", Not found in the alphabet");
+            }
+        }
+
+
+    }
+}

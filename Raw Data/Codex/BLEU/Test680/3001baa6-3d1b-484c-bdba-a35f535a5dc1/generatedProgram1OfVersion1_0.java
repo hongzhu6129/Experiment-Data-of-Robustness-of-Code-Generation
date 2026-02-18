@@ -1,0 +1,67 @@
+class Solution {
+    /**
+     * Checks if two given strings are rotations of each other.
+     *
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return True if the strings are rotations of each other, false otherwise.
+     */
+    static boolean checkForRotation(String str1, String str2) {
+        if (str1 == null || str2 == null || str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Concatenate str1 with itself
+        String concatenatedStr1 = str1 + str1;
+
+        // Check if str2 is a substring of the concatenated string
+        return concatenatedStr1.contains(str2);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "waterbottle";
+        String str2 = "erbottlewat";
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+        str1 = "hello";
+        str2 = "llohe";
+         if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+
+        str1 = "hello";
+        str2 = "helol"; 
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+
+        str1 = "";
+        str2 = ""; 
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+         str1 = null;
+        str2 = ""; 
+        if (checkForRotation(str1, str2)) {
+            System.out.println(str1 + " and " + str2 + " are rotations of each other.");
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not rotations of each other.");
+        }
+
+
+
+    }
+}

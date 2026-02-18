@@ -1,0 +1,16 @@
+
+
+
+Key changes and explanations for adhering to the restrictions:
+
+1. **Comparator using `compare(Interval, Interval)`:**  A custom `Comparator` is created and used with `Collections.sort()`.  Inside the `compare` method, we directly use `i1.getStart() - i2.getStart()` for comparison, adhering to the signature restrictions and avoiding a lambda expression or separate named Comparator class.
+
+
+2. **No Helper Methods:** The code is structured to perform the merging logic directly within the `merge` method without relying on any helper functions.
+
+3. **Use of Provided Getters:** The provided `getStart()` and `getEnd()` methods are consistently used to access the `start` and `end` fields of the `Interval` objects.
+
+4. **Clear `main` Method:** The `main` method demonstrates how to create and merge a sample list of `Interval` objects and prints the merged intervals.
+
+
+This revised code adheres strictly to the provided method signature restrictions while effectively merging overlapping intervals.

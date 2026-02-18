@@ -1,0 +1,24 @@
+
+
+
+Explanation:
+
+1. **`main` method:**
+   - Contains example arrays to test the `check20s` method.
+   - Prints the results for each test case.
+
+2. **`check20s` method:**
+   - Takes an integer array `arr` as input.
+   - Initializes `count` to track the number of 20s and `adjacent` to track if adjacent 20s are found.
+   - Iterates through the array:
+     - If the current element is 20, increment the `count`.
+     - Check if the current index is greater than 0 (to avoid out-of-bounds access) and if the previous element was also 20. If so, set `adjacent` to `true` and `break` the loop (as we've already determined the condition is false).
+   - Finally, returns `true` only if `count` is exactly 3 AND `adjacent` is `false`.  This ensures both conditions are met.
+
+
+Key Improvements over previous versions:
+
+- **Efficiency:** The `break` statement in the loop stops processing as soon as adjacent 20s are found, making it more efficient.
+- **Clarity:**  The code is more concise and easier to understand.
+- **Correctness:**  Addresses the edge cases and correctly handles various scenarios.
+- **Complete examples in `main`:**  Provides more thorough testing within the `main` method.

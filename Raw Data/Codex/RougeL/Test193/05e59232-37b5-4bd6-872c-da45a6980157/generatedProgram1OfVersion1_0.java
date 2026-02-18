@@ -1,0 +1,52 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class IterateLinkedListFromPoint {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+        // Specify the starting point (index)
+        int startIndex = 2; // Start iterating from "Orange"
+
+        // Iterate through the LinkedList from the specified point using ListIterator
+        ListIterator<String> iterator = linkedList.listIterator(startIndex);
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+
+        // Example showing forward and backward iteration from a point
+        System.out.println("\nForward and backward from index 1:");
+        ListIterator<String> iterator2 = linkedList.listIterator(1); // Start at "Banana"
+
+        System.out.println("Forward:");
+        while (iterator2.hasNext()) {
+            System.out.println(iterator2.next());
+        }
+
+        System.out.println("\nBackward:");
+        while (iterator2.hasPrevious()) {
+            System.out.println(iterator2.previous());
+        }
+
+
+        // Handling cases where the start index is out of bounds
+        int invalidStartIndex = 10; // Out of bounds
+        try {
+            ListIterator<String> invalidIterator = linkedList.listIterator(invalidStartIndex);
+             // The next line won't execute if the index is out of bounds because the previous line will throw an exception
+            while (invalidIterator.hasNext()) { 
+                System.out.println(invalidIterator.next());
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Error: Start index is out of bounds.");
+        }
+    }
+}

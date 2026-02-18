@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RemoveThirdElement {
+
+    public static void main(String[] args) {
+        // Example usage:
+        List<String> myList = new ArrayList<>();
+        myList.add("Apple");
+        myList.add("Banana");
+        myList.add("Orange");
+        myList.add("Grape");
+        myList.add("Mango");
+
+        removeThirdElement(myList);
+
+        System.out.println(myList); // Output: [Apple, Banana, Grape, Mango]
+
+
+        // Another example with fewer elements:
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+
+        removeThirdElement(numbers); // Nothing removed as there's no third element
+
+        System.out.println(numbers); // Output: [1, 2]
+
+
+         // Another example with exactly three elements:
+        List<Double> doubles = new ArrayList<>();
+        doubles.add(1.1);
+        doubles.add(2.2);
+        doubles.add(3.3);
+
+        removeThirdElement(doubles);
+
+        System.out.println(doubles); // Output: [1.1, 2.2]
+
+    }
+
+    private static <T> void removeThirdElement(List<T> list) {
+        if (list.size() >= 3) {
+            list.remove(2); // Remove the element at index 2 (the third element)
+        }
+    }
+}

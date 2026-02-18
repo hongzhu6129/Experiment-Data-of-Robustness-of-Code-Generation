@@ -1,0 +1,29 @@
+
+
+
+**Explanation and Horner's Method:**
+
+1. **Horner's Method:** The `polyEval` method implements Horner's method, an efficient way to evaluate polynomials. It reduces the number of multiplications required compared to the straightforward approach.
+
+2. **Innermost Brackets First:** The code mimics the evaluation from the innermost brackets outward. Let's trace the example with coefficients -19, 7, -4, and 6, and x = 3:
+
+   - **Initialization:** `result = 0`
+   - **First Coefficient (6):** `result = (0 * 3) + 6 = 6`
+   - **Second Coefficient (-4):** `result = (6 * 3) + (-4) = 18 - 4 = 14`
+   - **Third Coefficient (7):** `result = (14 * 3) + 7 = 42 + 7 = 49`
+   - **Fourth Coefficient (-19):** `result = (49 * 3) + (-19) = 147 - 19 = 128`
+
+3. **Reverse Order of Coefficients:** Notice that the coefficients are stored in the `List` in *reverse* order of the powers of x.  This is crucial for Horner's method to work correctly. The constant term comes first, followed by the coefficient of x, then x^2, and so on.
+
+4. **Efficiency:** Horner's method is more efficient because it minimizes the number of multiplications, which are generally more computationally expensive than additions.
+
+
+**How to Run:**
+
+1. Save the code as `PolynomialEvaluation.java`.
+2. Compile: `javac PolynomialEvaluation.java`
+3. Run: `java PolynomialEvaluation`
+
+
+The output will be:
+

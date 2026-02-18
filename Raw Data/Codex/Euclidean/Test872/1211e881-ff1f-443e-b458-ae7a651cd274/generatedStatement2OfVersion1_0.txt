@@ -1,0 +1,27 @@
+
+
+
+Key improvements and explanations:
+
+1. **Clearer Variable Names:**  `m` and `n` are more descriptive than just using `matrix.length` and `matrix[0].length` repeatedly inside the `Saddleback` method.
+
+2. **Return an `int[]`:** Returning an `int[]` to store both row and column is more standard practice and easier to handle than separate variables.
+
+3. **Error Handling:**  The code now returns `{-1, -1}` if the target is not found, which allows `main` to check and provide a "not found" message.
+
+4. **Saddleback Search Logic:** The core logic of the `Saddleback` function correctly implements the search algorithm. It starts at the top-right corner and efficiently eliminates rows or columns based on the comparison with the target.
+
+5. **Example Usage and Testing:** The `main` method demonstrates how to use the `Saddleback` method and includes an example with a value that's *not* in the matrix to show the error handling.
+
+
+How the Saddleback Search Works:
+
+The algorithm is efficient because it leverages the sorted nature of the matrix:
+
+- **Start at top-right:** This position gives you maximum information about the rest of the matrix.
+- **Compare to target:**
+    - **If equal:** You found the target.
+    - **If target is greater:** The entire current row is smaller than the target, so move down (increment `row`).
+    - **If target is smaller:** The entire current column is larger than the target, so move left (decrement `col`).
+
+This process continues until the target is found, or you go out of the matrix bounds (meaning the target isn't present).  It avoids unnecessary comparisons and has a time complexity of O(m + n), which is much better than a linear search through all elements.

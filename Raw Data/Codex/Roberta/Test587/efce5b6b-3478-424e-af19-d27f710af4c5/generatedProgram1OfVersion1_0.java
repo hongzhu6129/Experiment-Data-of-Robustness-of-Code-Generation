@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class RemoveFalseElements {
+
+    public static void main(String[] args) {
+        List<Boolean> booleanList = new ArrayList<>();
+        booleanList.add(true);
+        booleanList.add(false);
+        booleanList.add(true);
+        booleanList.add(false);
+        booleanList.add(false);
+        booleanList.add(true);
+
+
+        // Remove false elements using streams and collect to a new list
+        List<Boolean> trueList = booleanList.stream()
+                .filter(b -> b) // Keep only true elements
+                .collect(Collectors.toList());
+
+        System.out.println("Original List: " + booleanList);
+        System.out.println("List with false elements removed: " + trueList);
+
+
+        // Alternatively, modify the original list in place (if that is the desired behavior)
+         booleanList.removeIf(b -> !b); // Removes elements that evaluate to false.
+        System.out.println("Original list modified in-place: " + booleanList);
+
+
+        // Example with other data types, treating null and specific values as "falsey"
+
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(0); // Treat 0 as falsey
+        numbers.add(1);
+        numbers.add(null); // Treat null as falsey
+        numbers.add(2);
+        numbers.add(0);
+        numbers.add(3);
+
+         List<Integer> filteredNumbers = numbers.stream()
+                .filter(n -> n != null && n != 0) // Define your "truthy" condition
+                .collect(Collectors.toList());
+
+        System.out.println("Original number List: " + numbers);
+        System.out.println("Filtered number list: " + filteredNumbers);
+    }
+}

@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Generics:** The `tailSet` method now uses generics `<T>` to work with any data type that can be stored in a `TreeSet` (e.g., Integer, String, Double, etc.), making it more versatile.
+
+2. **Copy of the TreeSet:** The `tailSet` method now creates a *copy* of the tail set using `new TreeSet<>(set.tailSet(fromElement))`. This prevents modifications to the returned set from affecting the original `TreeSet`, which is important for data integrity.
+
+3. **Clearer Example Usage:**  The `main` method now includes multiple examples demonstrating the behavior with different `givenElement` values, including cases where the element is present in the set, greater than all elements, and in between existing elements.
+
+4. **Output is More Informative:**  The output now clearly shows the original `TreeSet` and the resulting `tailSet` for each example, making it easier to understand the behavior.
+
+
+
+This revised code addresses the potential issue of modifying the original `TreeSet` and provides a more robust and reusable solution.

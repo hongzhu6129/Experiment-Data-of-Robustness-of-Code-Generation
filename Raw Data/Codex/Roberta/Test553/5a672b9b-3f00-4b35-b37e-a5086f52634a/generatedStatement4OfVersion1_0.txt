@@ -1,0 +1,12 @@
+
+
+
+Explanation:
+
+1. **TreeMap:** We use a `TreeMap` because it automatically stores keys in sorted order, which makes it efficient to find the greatest key less than or equal to a given key.
+2. **floorKey():** The crucial method is `treeMap.floorKey(givenKey)`.  This method returns the greatest key less than or equal to `givenKey`. If no such key exists (e.g., if `givenKey` is smaller than all keys in the map), it returns `null`.
+3. **Handling null:** We check if the result of `floorKey()` is `null` to avoid a `NullPointerException` when trying to access the value associated with the key.
+4. **Example Usage:**  The `main` method demonstrates how to use `floorKey()` with several example keys, including cases where the given key is present in the map, greater than all keys, and smaller than all keys.  The `printResult()` method neatly handles displaying the output.
+
+
+This improved version is more concise, efficient, and correctly handles edge cases where the key may not be present in the `TreeMap`. It also provides clearer output with helpful explanations.

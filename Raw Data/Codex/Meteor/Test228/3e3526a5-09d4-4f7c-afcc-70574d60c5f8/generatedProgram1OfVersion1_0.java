@@ -1,0 +1,28 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the stars and stripes section
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) { // Rows with stars
+                for (int j = 0; j < 6; j++) {
+                    System.out.print("* ");
+                }
+            } else { // Rows without stars
+                for (int j = 0; j < 5; j++) {
+                    System.out.print("* ");
+                }
+                if(i == 3) {
+                    System.out.print("pct "); // Typo in original example, kept for accuracy
+                }
+            }
+            System.out.print("==================================");
+            System.out.println();
+        }
+
+        // Print the red stripes section
+        for (int i = 0; i < 6; i++) {
+            System.out.print("==================================");
+            System.out.println();
+        }
+    }
+}

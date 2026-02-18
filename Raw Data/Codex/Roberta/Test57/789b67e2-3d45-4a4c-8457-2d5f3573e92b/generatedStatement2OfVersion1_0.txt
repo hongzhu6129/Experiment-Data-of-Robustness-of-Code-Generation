@@ -1,0 +1,15 @@
+
+
+
+Key improvements and explanations:
+
+1. **Distinct Pairs:**  The inner loops now start from `a+1` and `c+1` respectively to ensure that we are considering distinct pairs of cubes (e.g., (1, 12) and (12, 1) are considered the same).  This is crucial for the problem's requirements.
+2. **Optimizations:** Several `break` statements have been added to the loops to avoid unnecessary calculations.  We stop checking when `a^3`, `sum`, or `c^3` exceeds `n`, as we are only interested in sums up to `n`.  This greatly improves efficiency.
+3. **Clearer Output:** The code now prints the number that satisfies the condition *and* shows the different ways it can be expressed as a sum of two cubes.
+4. **Exit after Finding the First:** The `return;` statement exits the `main` method immediately after finding the first such number, as the problem only asks for *any* number that meets the criteria.
+5. **Correct Count:** The `count` variable is properly initialized and incremented to ensure an accurate count of the number of ways a sum can be expressed.
+6. **`n` as a Variable:** `n` is now declared as a variable, making it easy to change the upper limit if needed.
+
+
+
+This improved version is much more efficient, provides clearer output, and adheres more strictly to the problem's requirements.

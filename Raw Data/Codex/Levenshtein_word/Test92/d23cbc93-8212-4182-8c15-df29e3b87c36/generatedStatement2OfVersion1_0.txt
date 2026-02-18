@@ -1,0 +1,46 @@
+
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - Input: 10 20 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5 0 5
+   - Expected Output: 0.0
+
+3. **Large Numbers:**
+   - Input: 1000000000 2000000000 3000000000  (Close to Integer.MAX_VALUE)
+   - Expected Output: 2.0E9 (or similar scientific notation representing 2 billion)
+
+4. **Zeroes:**
+   - Input: 0 0 0
+   - Expected Output: 0.0
+
+5. **Mixed Positive and Negative:**
+   - Input: -10 20 -30
+   - Expected Output: -6.666666666666667
+
+6. **Integer Overflow (Corner Case):**
+   - Input: Integer.MAX_VALUE Integer.MAX_VALUE Integer.MAX_VALUE
+   - Expected Output: Will likely result in an incorrect average due to overflow. This demonstrates the limitations of using `int` for potentially very large numbers.  Consider using `long` if very large sums are expected.
+
+
+
+7. **Input Mismatch (Corner Case):**
+   - Input: 10 a 20  (Non-integer input)
+   - Expected Output: "Invalid input. Please enter integers only."
+
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:**  You can run the program and manually enter the input values for each test case to verify the output.
+2. **Automated Testing (Recommended):**  Create a separate test class (e.g., using JUnit) to automate the testing process. Here's a simple JUnit example:
+
+   

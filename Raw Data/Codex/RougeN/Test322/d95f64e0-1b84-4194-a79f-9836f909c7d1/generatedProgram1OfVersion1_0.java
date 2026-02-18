@@ -1,0 +1,45 @@
+public class WordCounter {
+
+    public int endWithmOrn(String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return 0;
+        }
+
+        String[] words = text.split("\\s+"); // Split the text into words
+        int count = 0;
+
+        for (String word : words) {
+            char lastChar = Character.toLowerCase(word.charAt(word.length() - 1));
+            if (lastChar == 'm' || lastChar == 'n') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        WordCounter wc = new WordCounter();
+
+        String text1 = "Mum Son Sam";
+        int count1 = wc.endWithmOrn(text1);
+        System.out.println("Text 1 Count: " + count1); // Output: 3
+
+
+        String text2 = "The programming language is Java exam";
+        int count2 = wc.endWithmOrn(text2);
+        System.out.println("Text 2 Count: " + count2); // Output: 1
+
+        String text3 = null;  // Test null input
+        int count3 = wc.endWithmOrn(text3);
+        System.out.println("Text 3 Count (null): " + count3); // Output: 0
+
+         String text4 = "  "; // Test empty string
+        int count4 = wc.endWithmOrn(text4);
+        System.out.println("Text 4 Count (empty): " + count4); // Output: 0
+
+          String text5 = "Man, Woman, Person, Camera, TV";
+        int count5 = wc.endWithmOrn(text5);
+        System.out.println("Text 5 Count : " + count5); // Output: 2
+    }
+}

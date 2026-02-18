@@ -1,0 +1,20 @@
+
+
+
+Here's how the code works given the constraints of the method signatures:
+
+1. **`main(String[] args)`:**
+   - This is the entry point of the program. 
+   - It initializes the `inputString` with the string you want permutations for.
+   - It calls `permutationWithRepeation` to start the permutation process.
+
+2. **`permutationWithRepeation(String inputString)`:**
+   - This method initiates the recursive process.  It calls `showPermutation` with the input string and an empty string representing the current permutation being built.
+
+3. **`showPermutation(String inputString, String currentPermutation)`:**
+   - This is the recursive method that generates the permutations.
+   - **Base Case:** If the `currentPermutation` reaches the length of the `inputString`, it means a full permutation has been formed, so it's printed.
+   - **Recursive Step:** It iterates through the `inputString`. In each iteration, it adds a character from `inputString` to the `currentPermutation` and makes a recursive call to `showPermutation`. This explores all possible combinations with repetition.
+
+**Example Output (for input "abc"):**
+

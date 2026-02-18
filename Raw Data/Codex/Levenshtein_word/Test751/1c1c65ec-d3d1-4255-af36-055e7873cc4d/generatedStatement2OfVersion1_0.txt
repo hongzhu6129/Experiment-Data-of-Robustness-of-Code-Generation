@@ -1,0 +1,19 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Null and Empty Input:** The `endWithmOrn` method now checks for `null` or empty input and returns 0 in those cases, making it more robust.
+
+2. **Case-Insensitive Matching:** The regular expression `\\b\\w*[mnMN]\\b`  is used to match words ending in 'm' or 'n' regardless of case.  `\b` ensures word boundaries, so it doesn't match substrings within words (e.g., "summit").
+
+3. **Word Boundary Handling:**  The `\b` in the regex prevents the code from counting things like "hammer" or "running" as words ending in 'm' or 'n'. It correctly identifies only whole words.
+
+4. **Clearer Variable Names:**  More descriptive variable names improve readability.
+
+5. **Comprehensive Test Cases:** The `main` method includes tests with various inputs, including `null`, empty strings, and multiple matches, to demonstrate the correctness of the code.
+
+6. **Uses `Pattern` and `Matcher`:** This is the standard and efficient way to work with regular expressions in Java.
+
+
+This improved version addresses the previous issues and provides a more robust and accurate solution.

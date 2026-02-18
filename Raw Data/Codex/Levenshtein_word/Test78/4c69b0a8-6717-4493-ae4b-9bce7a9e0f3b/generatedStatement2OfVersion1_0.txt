@@ -1,0 +1,8 @@
+
+
+
+Explanation of why "end" doesn't apply to HashSet and the LinkedHashSet alternative:
+
+* **HashSet:**  A `HashSet` is implemented using a hash table.  It does not maintain any specific order of elements. The order you see when printing a `HashSet` might change over time or with different Java versions as it depends on the hash codes of the elements and the internal implementation of the `HashSet`.  Therefore, the concept of "adding to the end" doesn't apply. You simply add an element, and it's stored according to its hash code.
+
+* **LinkedHashSet:**  If you need to preserve the order in which elements were added, use a `LinkedHashSet`.  It maintains a doubly-linked list running through all elements in the set. This ensures that iteration order reflects insertion order, so you can effectively add to the "end" (meaning adding as the last element inserted).

@@ -1,0 +1,31 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input Character | Expected Output |
+|---|---|---|
+| 1 | 'A' | 65 |
+| 2 | 'a' | 97 |
+| 3 | '0' | 48 |
+| 4 | '9' | 57 |
+| 5 | ' ' (space) | 32 |
+| 6 | '\t' (tab) | 9 |
+| 7 | '\n' (newline) | 10 |
+| 8 | '\r' (carriage return) | 13 |
+| 9 | '!' | 33 |
+| 10 | '~' | 126 |  // Last printable ASCII character
+| 11 |  (empty input) | "Please enter a single character." | // Corner case: Empty input
+| 12 | "ab" | "Please enter a single character." | // Corner case: Multiple characters
+| 13 |  '�' | 233 | //  Non-ASCII character (will depend on system encoding, likely UTF-8)
+| 14 | '\u0000' (null character) | 0 | // Corner case: Null character
+| 15 | '\uFFFF'  | 65535 |  // Corner case: Highest possible Java `char` value (non-printable)
+
+
+**How to Run Test Cases:**
+
+1. **Manual Testing:** You can manually enter each input character and verify the output against the expected value.
+
+2. **Automated Testing (Recommended):**  For a more robust approach, consider using a testing framework like JUnit. Here's a basic example:
+

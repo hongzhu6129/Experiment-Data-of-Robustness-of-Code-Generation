@@ -1,0 +1,22 @@
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class NumberFormatter {
+
+    public static void main(String[] args) {
+        int number1 = 1234567890;
+        int number2 = 12345;
+        int number3 = 123;
+
+        System.out.println(validate(number1)); // Output: 1,234,567,890
+        System.out.println(validate(number2)); // Output: 12,345
+        System.out.println(validate(number3)); // Output: 123
+    }
+
+    public static String validate(int number) {
+        // Use NumberFormat to format the number with thousand separators
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US); 
+        return numberFormat.format(number);
+
+    }
+}

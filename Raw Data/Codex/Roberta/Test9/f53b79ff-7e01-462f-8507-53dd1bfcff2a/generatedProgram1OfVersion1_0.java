@@ -1,0 +1,56 @@
+import java.util.PriorityQueue;
+
+public class MergePriorityQueues {
+
+    public static void main(String[] args) {
+
+        // Example usage:
+        PriorityQueue<Integer> pq1 = new PriorityQueue<>();
+        pq1.add(5);
+        pq1.add(1);
+        pq1.add(10);
+        pq1.add(3);
+
+
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+        pq2.add(8);
+        pq2.add(2);
+        pq2.add(6);
+
+
+        // Add all elements of pq1 to pq2
+        addAllElements(pq1, pq2);
+
+        // Print the merged priority queue (pq2)
+        System.out.println("Merged PriorityQueue (pq2): " + pq2);
+
+
+
+        // Example 2 with String elements:
+        PriorityQueue<String> stringPq1 = new PriorityQueue<>();
+        stringPq1.add("apple");
+        stringPq1.add("banana");
+        stringPq1.add("orange");
+
+
+        PriorityQueue<String> stringPq2 = new PriorityQueue<>();
+        stringPq2.add("grape");
+        stringPq2.add("kiwi");
+
+        addAllElements(stringPq1, stringPq2);
+
+        System.out.println("Merged String PriorityQueue (stringPq2): " + stringPq2);
+    }
+
+    // Generic method to add all elements from one PriorityQueue to another
+    private static <T> void addAllElements(PriorityQueue<T> source, PriorityQueue<T> destination) {
+        for (T element : source) { //Iterate through source
+            destination.add(element); // Add to destination
+        }
+
+        /*  Alternative approach using addAll(): This is usually more efficient
+            destination.addAll(source); 
+         */
+    }
+
+}

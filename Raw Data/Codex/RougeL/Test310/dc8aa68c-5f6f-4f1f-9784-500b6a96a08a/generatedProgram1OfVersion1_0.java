@@ -1,0 +1,38 @@
+class Solution {
+
+    void print_number(int n) {
+        String[] words = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        if (n >= 0 && n <= 9) {
+            System.out.print(words[n] + " ");
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        int num = scanner.nextInt();
+
+        int sumOfDigits = 0;
+        int temp = num;
+        while (temp > 0) {
+            sumOfDigits += temp % 10;
+            temp /= 10;
+        }
+
+        temp = sumOfDigits;
+        while (temp > 0) {
+            sol.print_number(temp % 10);
+            temp /= 10;
+        }
+
+        if (sumOfDigits == 0) {
+            sol.print_number(0);
+        }
+        System.out.println(); // Add a newline for better output formatting
+
+        scanner.close();
+
+
+    }
+}

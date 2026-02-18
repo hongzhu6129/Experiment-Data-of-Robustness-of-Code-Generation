@@ -1,0 +1,51 @@
+class Solution {
+    public static void main(String[] args) {
+        String str1 = "python";
+        String str2 = "java";
+
+        System.out.println(function(str1, str2)); // Output: pava
+
+        str1 = "";
+        str2 = "";
+        System.out.println(function(str1, str2)); // Output: ##
+
+        str1 = "a";
+        str2 = "b";
+        System.out.println(function(str1, str2)); // Output: ab
+
+        str1 = "ab";
+        str2 = "cd";
+        System.out.println(function(str1, str2));  // Output: ad
+
+        str1 = "a";
+        str2 = "";
+        System.out.println(function(str1, str2)); // Output: a#
+
+        str1 = "";
+        str2 = "b";
+        System.out.println(function(str1, str2)); // Output: #b
+
+
+    }
+
+    public static String function(String str1, String str2) {
+        char first;
+        char last;
+
+        if (str1.length() == 0) {
+            first = '#';
+        } else {
+            first = str1.charAt(0);
+        }
+
+        if (str2.length() == 0) {
+            last = '#';
+        } else {
+            last = str2.charAt(str2.length() - 1);
+        }
+
+        return String.valueOf(first) + String.valueOf(last);
+
+
+    }
+}

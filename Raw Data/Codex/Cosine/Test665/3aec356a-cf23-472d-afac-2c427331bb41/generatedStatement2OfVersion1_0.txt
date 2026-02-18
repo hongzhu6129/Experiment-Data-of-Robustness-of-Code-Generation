@@ -1,0 +1,20 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Command-line Arguments:** The code now accepts the string and index as command-line arguments.  This makes it more flexible. If no arguments are provided, it uses default values.
+2. **Error Handling:** It includes error handling for `NumberFormatException` in case the user provides a non-numeric index.
+3. **Index Validation:** It checks if the index is valid (within the bounds of the string) and prints an error message if it's not.
+4. **`codePointBefore()`:** It correctly uses `codePointBefore(index)` to get the Unicode code point of the character *before* the specified index.  This handles supplementary characters (like emojis) that are represented by surrogate pairs.
+5. **Clear Output:** The output clearly displays the character, its Unicode code point, and the index used.
+6. **Test Cases:** The `test()` function (not required by the prompt, but highly recommended) helps demonstrate the code's behavior with various inputs, including edge cases and a string with a supplementary character.
+
+
+**How to Run (with command-line arguments):**
+
+1. **Compile:** `javac GetCharacterBeforeIndex.java`
+2. **Run:** `java GetCharacterBeforeIndex "YourStringHere" 10`  (Replace `"YourStringHere"` and `10` with your desired string and index).
+
+
+If you don't provide command-line arguments, the code will use the default values "Hello World!" and index 6.

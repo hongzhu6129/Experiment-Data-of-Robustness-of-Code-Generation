@@ -1,0 +1,68 @@
+public class SubstringCounter {
+
+    public int substringCounting(String text) {
+        int count = 0;
+        if (text == null || text.length() < 4) {
+            return 0;
+        }
+
+        // Count occurrences of "life"
+        count += countOccurrences(text, "life");
+
+        // Count occurrences of "li?e" (where ? is any character)
+        for (int i = 0; i <= text.length() - 4; i++) {
+            if (text.substring(i, i + 2).equals("li") && text.charAt(i + 3) == 'e') {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int countOccurrences(String text, String substring) {
+        int count = 0;
+        int index = text.indexOf(substring);
+        while (index != -1) {
+            count++;
+            index = text.indexOf(substring, index + 1);
+        }
+        return count;
+    }
+
+
+    public static void main(String[] args) {
+        SubstringCounter counter = new SubstringCounter();
+
+        String text1 = "life is beautiful, enjoy life.";
+        int count1 = counter.substringCounting(text1);
+        System.out.println("String: \"" + text1 + "\"");
+        System.out.println("Count: " + count1); // Output: 3 (life appears twice, li?e once - "like")
+
+
+        String text2 = "live life like a king.";
+        int count2 = counter.substringCounting(text2);
+        System.out.println("String: \"" + text2 + "\"");
+        System.out.println("Count: " + count2); // Output: 2 (life once, like/li?e once)
+
+
+        String text3 = "This is the life.";
+        int count3 = counter.substringCounting(text3);        
+        System.out.println("String: \"" + text3 + "\"");
+        System.out.println("Count: " + count3); // Output: 1
+
+
+
+        String text4 = null; // Testing null input
+        int count4 = counter.substringCounting(text4);        
+        System.out.println("String: \"" + text4 + "\"");
+        System.out.println("Count: " + count4); // Output: 0
+
+         String text5 = ""; // Testing empty input
+        int count5 = counter.substringCounting(text5);        
+        System.out.println("String: \"" + text5 + "\"");
+        System.out.println("Count: " + count5); // Output: 0
+
+
+    }
+}
+

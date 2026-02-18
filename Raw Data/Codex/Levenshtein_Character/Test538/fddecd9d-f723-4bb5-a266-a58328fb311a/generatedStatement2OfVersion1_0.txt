@@ -1,0 +1,17 @@
+
+
+
+
+Key improvements and explanations of the test cases:
+
+* **JUnit Tests:**  The code now uses JUnit 5 for testing.  This makes the tests much more organized and easier to run. You'll need to add a JUnit dependency to your project.  (e.g., in Maven or Gradle).
+* **Handling Invalid Input:** The tests demonstrate how to handle potentially invalid input like negative lengths or widths. I've used JUnit 5's `assertThrows()` to check that the constructor throws an `IllegalArgumentException` when given negative dimensions.   This is better practice than using `if` statements in the `getArea()` or `getPerimeter()` methods to check for negative values because those methods should focus on their core calculations. The constructor is responsible for validating the input. You could also use assertions within the constructor instead of throwing exceptions if you prefer.
+* **Corner Cases:** The tests cover these corner cases:
+    * Zero length/width:  Tests how the program behaves when one or both dimensions are zero.
+    * Square: A square is a special case of a rectangle and should be tested explicitly.
+* **Positive Values:** Standard test cases with positive length and width.
+* **Clearer Output:** The `main` method now prints the results in a more readable format.
+* **Exception Handling Demonstrated:**  The tests show how to handle `IllegalArgumentException` (or you could adapt it to use assertions directly in the constructor).
+
+
+To run the JUnit tests, you'll need a testing framework set up in your IDE or build tool.  Many IDEs (like IntelliJ, Eclipse) have built-in support for running JUnit tests.  If you're using a build tool like Maven or Gradle, you'll need to include the JUnit dependency in your project configuration.

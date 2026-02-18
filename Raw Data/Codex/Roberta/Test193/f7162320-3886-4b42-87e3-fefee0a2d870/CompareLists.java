@@ -1,0 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompareLists {
+
+    public static void main(String[] args) {
+        // Example lists (replace with your actual lists)
+        List<String> list1 = new ArrayList<>();
+        list1.add("apple");
+        list1.add("banana");
+        list1.add("orange");
+
+        List<String> list2 = new ArrayList<>();
+        list2.add("banana");
+        list2.add("orange");
+        list2.add("grape");
+
+
+        // 1. Check if lists are equal (same elements in the same order)
+        boolean areEqual = list1.equals(list2);
+        System.out.println("Lists are equal: " + areEqual);
+
+
+        // 2. Check if lists contain the same elements (regardless of order)
+        boolean sameElements = list1.containsAll(list2) && list2.containsAll(list1);
+        System.out.println("Lists contain the same elements: " + sameElements);
+
+
+        // 3. Find common elements
+        List<String> commonElements = new ArrayList<>(list1); // Create a copy to avoid modifying list1
+        commonElements.retainAll(list2); 
+        System.out.println("Common elements: " + commonElements);
+
+
+
+        // 4. Find elements unique to list1
+        List<String> uniqueToList1 = new ArrayList<>(list1);
+        uniqueToList1.removeAll(list2);
+        System.out.println("Elements unique to list1: " + uniqueToList1);
+
+        // 5. Find elements unique to list2
+        List<String> uniqueToList2 = new ArrayList<>(list2);
+        uniqueToList2.removeAll(list1);
+        System.out.println("Elements unique to list2: " + uniqueToList2);
+
+
+
+        // Example with Integers (or any other comparable type)
+        List<Integer> numbers1 = new ArrayList<>();
+        numbers1.add(1);
+        numbers1.add(2);
+        numbers1.add(3);
+
+        List<Integer> numbers2 = new ArrayList<>();
+        numbers2.add(3);
+        numbers2.add(4);
+        numbers2.add(1);
+
+
+
+        // Comparing integer lists (same logic as with Strings)
+        boolean sameNumbers = numbers1.containsAll(numbers2) && numbers2.containsAll(numbers1);
+        System.out.println("Integer lists contain the same elements: " + sameNumbers);
+
+        List<Integer> commonNumbers = new ArrayList<>(numbers1);
+        commonNumbers.retainAll(numbers2);
+        System.out.println("Common numbers: " + commonNumbers);        
+
+    }
+}

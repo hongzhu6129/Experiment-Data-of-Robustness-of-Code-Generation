@@ -1,0 +1,43 @@
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30    **Expected Output:** 20.0
+2. **Input:** 1.5, 2.5, 3.5  **Expected Output:** 2.5
+3. **Input:** -5, 0, 5      **Expected Output:** 0.0
+
+**Edge/Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:**  (Should handle potential overflow gracefully; may print Infinity or the maximum double value)
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE   **Expected Output:** (Should handle potential underflow; may print -Infinity or the minimum double value)
+6. **Input:** 0, 0, 0         **Expected Output:** 0.0
+7. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE  **Expected Output:** Infinity (Expected behavior for double overflow)
+8. **Input:** -Double.MAX_VALUE, -Double.MAX_VALUE, -Double.MAX_VALUE **Expected Output:** -Infinity (Expected behavior for double underflow)
+9. **Input:** Double.NaN, 1, 2  **Expected Output:** NaN (Any calculation involving NaN results in NaN)
+10. **Input:** 1, Double.POSITIVE_INFINITY, 2  **Expected Output:** Infinity
+
+**Invalid Input Cases:**
+
+11. **Input:** 1, a, 2       **Expected Output:** "Invalid input. Please enter numbers only."  (Program should handle non-numeric input gracefully.)
+12. **Input:** 1, 2         **Expected Output:**  "Invalid input. Please enter numbers only." (Program should handle insufficient input)
+13. **Input:** 1, 2, 3, 4    **Expected Output:** (Ideally, the program should prompt only for three numbers or handle extra input gracefully.) � The provided code will only read the first three numbers and ignore the fourth.
+
+
+
+
+**How to Run the Test Cases:**
+
+You can run these test cases manually by entering the input values when prompted.  For a more automated testing approach, consider using JUnit or TestNG, popular Java testing frameworks.  These frameworks allow you to write test methods that automatically check the output of your `calculateAverage` function against expected values.
+
+
+**Key Improvements in the Code:**
+
+* **Input Validation:** The code now includes a `try-catch` block to handle `InputMismatchException`. This prevents the program from crashing if the user enters non-numeric input.
+* **Resource Management:** The `Scanner` is closed in a `finally` block to ensure resources are released even if an exception occurs.
+* **Clearer Error Message:** The error message is more informative, guiding the user on the correct input format.
+* **Testability:**  The `calculateAverage` method is now a separate function, making it easier to write unit tests for it.
+
+
+This revised code is more robust and handles a wider range of input scenarios, making it a more practical and reliable solution.

@@ -1,0 +1,30 @@
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MinValuesFromDate {
+
+    public static void main(String[] args) {
+        // Get an instance of the default calendar (GregorianCalendar)
+        Calendar calendar = new GregorianCalendar(); 
+
+        // Get the minimum values allowed for different fields
+        int minYear = calendar.getMinimum(Calendar.YEAR);
+        int minMonth = calendar.getMinimum(Calendar.MONTH);  // Note: Month starts from 0 (January)
+        int minDayOfWeek = calendar.getMinimum(Calendar.DAY_OF_WEEK); // Sunday=1, Monday=2, ..., Saturday=7
+        int minDate = calendar.getMinimum(Calendar.DATE); // Minimum day of the month (always 1)
+
+
+        System.out.println("Minimum Year: " + minYear);
+        System.out.println("Minimum Month (0-indexed): " + minMonth);  // Output will be 0 (January)
+        System.out.println("Minimum Day of Week (1-indexed, Sunday=1): " + minDayOfWeek); // Output will be 1
+        System.out.println("Minimum Date: " + minDate);
+
+        // To get the actual minimum year for the current calendar system:
+        // The GregorianCalendar's minimum year is 1.
+        // However, internally, the Gregorian cut-over can affect how dates before the cut-over are calculated.
+        // The effective minimum year supported might be GREGOIAN_CUTOVER minus a small amount (often 1582).
+        // But simply calling  calendar.getMinimum(Calendar.YEAR); returns 1.
+
+         System.out.println("Effective minimum year (Gregorian cutover dependent): " + calendar.getActualMinimum(Calendar.YEAR));
+    }
+}

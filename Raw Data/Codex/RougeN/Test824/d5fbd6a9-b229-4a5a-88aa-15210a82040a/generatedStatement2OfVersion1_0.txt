@@ -1,0 +1,32 @@
+
+
+**Test Cases (Conceptual - since visual output is being tested):**
+
+1. **Basic Functionality:** Run the program and visually verify that the face is printed correctly as shown in the code's expected output. This tests the core printing logic.
+
+
+2. **Character Encoding:**  Run the program on different systems/terminals with varying character encodings. Ensure the face renders consistently.  Some characters like the quotes (" ") might not display correctly in certain encodings. If issues are observed, you might consider using more standard ASCII characters for better portability (e.g., using ' instead of ").
+
+
+3. **Output Redirection:** Redirect the program's output to a file (e.g., `java FacePrinter > face.txt`). Verify the face is correctly written to the file, maintaining the structure and characters. This tests the output stream handling.
+
+
+4. **System.out Manipulation:**  Although less of a "corner case" for this simple example, in a larger application using `System.out`, other parts of the code might inadvertently change the output stream settings (e.g., using `System.setOut()`). In such a context, test the `printFace()` function to ensure it behaves as expected even if `System.out` is reconfigured elsewhere in the program.
+
+
+5. **Concurrency (Advanced - not applicable in this simple case but relevant if output was shared):** If the `printFace()` function were used in a multi-threaded environment where multiple threads might try to write to `System.out` simultaneously, you would need to test for race conditions. This would involve having multiple threads call `printFace()` concurrently and verifying that the output isn't garbled or interleaved incorrectly. (This requires synchronization mechanisms not present in this basic program but important to consider if output is a shared resource.)
+
+
+
+
+
+
+**How to Run and Redirect Output:**
+
+1. **Save:** Save the code as `FacePrinter.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Compile using: `javac FacePrinter.java`
+3. **Run:**  `java FacePrinter`
+4. **Redirect Output:** `java FacePrinter > face.txt` (This will save the output to a file named `face.txt`).
+
+
+By running these tests, you can be confident that your `printFace()` function behaves correctly under various conditions, including basic functionality, character encoding variations, and output stream manipulation. While this program is simple, these testing principles are fundamental and apply to more complex Java programs as well.

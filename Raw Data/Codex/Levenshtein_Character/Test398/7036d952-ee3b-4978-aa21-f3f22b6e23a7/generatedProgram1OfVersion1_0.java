@@ -1,0 +1,25 @@
+import java.util.TreeSet;
+
+public class AddTreeSetElements {
+
+    public static void main(String[] args) {
+        // Create the source TreeSet
+        TreeSet<String> sourceSet = new TreeSet<>();
+        sourceSet.add("Apple");
+        sourceSet.add("Banana");
+        sourceSet.add("Orange");
+        sourceSet.add("Grape");
+
+        // Create the destination TreeSet
+        TreeSet<String> destinationSet = new TreeSet<>();
+        destinationSet.add("Mango"); // Add some initial elements if needed
+
+
+        // Add all elements from sourceSet to destinationSet
+        destinationSet.addAll(sourceSet);
+
+
+        // Print the destination TreeSet to verify
+        System.out.println("Destination TreeSet after adding elements: " + destinationSet);
+    }
+}

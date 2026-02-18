@@ -1,0 +1,46 @@
+import java.util.TreeSet;
+
+public class TreeSetFloor {
+
+    public static void main(String[] args) {
+        // Create a TreeSet and populate it with some elements
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(10);
+        treeSet.add(20);
+        treeSet.add(30);
+        treeSet.add(40);
+        treeSet.add(50);
+
+        // Element to find the floor (greatest element less than or equal to)
+        int element = 35;
+
+        // Get the floor of the element
+        Integer floor = treeSet.floor(element);
+
+        // Print the floor
+        if (floor != null) {
+            System.out.println("Floor of " + element + " is: " + floor);
+        } else {
+            System.out.println("No element less than or equal to " + element + " found.");
+        }
+
+
+        // More Examples:
+        System.out.println("Floor of 20: " + treeSet.floor(20));  // Output: 20
+        System.out.println("Floor of 55: " + treeSet.floor(55));  // Output: 50
+        System.out.println("Floor of 5: " + treeSet.floor(5));   // Output: null
+
+
+        // Example with strings (natural ordering):
+        TreeSet<String> stringTreeSet = new TreeSet<>();
+        stringTreeSet.add("apple");
+        stringTreeSet.add("banana");
+        stringTreeSet.add("cherry");
+        stringTreeSet.add("date");
+
+        System.out.println("Floor of 'cranberry': " + stringTreeSet.floor("cranberry")); // Output: banana
+        System.out.println("Floor of 'date': " + stringTreeSet.floor("date")); // Output: date
+
+
+    }
+}

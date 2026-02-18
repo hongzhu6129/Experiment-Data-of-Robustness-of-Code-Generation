@@ -1,0 +1,13 @@
+
+
+
+Key improvements and explanations:
+
+* **Testability:** The calculations are now in separate functions (`calculatePerimeter`, `calculateArea`), making them easily testable.
+* **Test Cases (using JUnit 5):**  The `CircleCalculationsTest` class demonstrates how to write unit tests. The test cases cover:
+    * Positive radius (the original example)
+    * Zero radius (a boundary case)
+    * Very large radius to check for potential `Double.POSITIVE_INFINITY`.
+    * Negative radius which should result in an `IllegalArgumentException` (you should handle this appropriately in your `calculatePerimeter` and `calculateArea` methods if negative radii are not allowed).  I've demonstrated how to test for exceptions.
+* **Exception Handling:**  Although the current code does not throw exceptions for negative input, the tests now *expect*  `IllegalArgumentException` if a negative radius is passed.  Modify the `calculatePerimeter` and `calculateArea` methods  to throw the exceptions if needed in your application:
+   

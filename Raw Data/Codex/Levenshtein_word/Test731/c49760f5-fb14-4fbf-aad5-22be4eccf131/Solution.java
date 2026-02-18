@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+class Solution {
+    /**
+     * Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+     *
+     * @param nums sorted array of integers
+     * @return the new length of the array after removing duplicates
+     */
+    static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int k = 1; // Initialize k to 1 as the first element is always unique
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) { // Check if the current element is different from the previous
+                nums[k] = nums[i]; // If different, add it to the unique part of the array
+                k++; // Increment k (the new length)
+            }
+        }
+        return k;
+    }
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 1, 2, 3, 3, 3, 4, 5, 6, 7, 7};
+        System.out.println("Original array: " + Arrays.toString(nums1));
+        System.out.println("The length of the original array is: " + nums1.length);
+        int newLength1 = removeDuplicates(nums1);
+        System.out.println("After removing duplicates, the new length of the array is: " + newLength1);
+
+
+
+    }
+}

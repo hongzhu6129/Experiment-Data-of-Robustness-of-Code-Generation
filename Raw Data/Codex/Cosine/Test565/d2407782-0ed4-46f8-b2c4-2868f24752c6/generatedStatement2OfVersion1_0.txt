@@ -1,0 +1,15 @@
+
+
+**Explanation and Improvements:**
+
+1. **`isPrime()` helper function:**  This function efficiently checks if a number is prime. It handles the base cases (n <= 1) and optimizes the loop by only checking divisors up to the square root of `n`.
+
+2. **`prime_cell()` function:** This function now uses the `isPrime()` helper to determine the value of each cell.  It returns 0 for false and 1 for true to be consistent with the boolean values later assigned.
+
+3. **`main()` function:**
+   - It creates a 2D boolean array `a` of size `m x m`. You can modify `m` to change the array's dimensions.
+   - It iterates through the array using nested loops, calling `prime_cell()` to determine the value of each cell `a[i][j]`. The result (0 or 1) is then converted to a boolean value (false or true) using  `prime_cell(i, j) == 1`.
+   - It prints the boolean values with spaces in between. A newline is added at the end for cleaner output.
+
+**Example Output (with `m = 3`):**
+

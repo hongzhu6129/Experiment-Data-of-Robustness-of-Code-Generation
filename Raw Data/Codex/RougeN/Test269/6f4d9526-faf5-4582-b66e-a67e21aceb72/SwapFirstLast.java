@@ -1,0 +1,66 @@
+public class SwapFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+        int[] swappedArray = swapFirstAndLast(originalArray);
+
+        // Print the original and swapped arrays
+        System.out.print("Original Array: ");
+        printArray(originalArray);
+        System.out.print("Swapped Array: ");
+        printArray(swappedArray);
+
+
+
+        int[] originalArray2 = {10}; // Example with a single element
+        int[] swappedArray2 = swapFirstAndLast(originalArray2);
+
+        System.out.print("Original Array: ");
+        printArray(originalArray2);  // Should print 10
+        System.out.print("Swapped Array: ");
+        printArray(swappedArray2); // Should print 10 (no change as only one element)
+
+
+
+        int[] originalArray3 = {7, 8, 9, 10, 11, 12}; // Example with an even number of elements
+        int[] swappedArray3 = swapFirstAndLast(originalArray3);
+
+        System.out.print("Original Array: ");
+        printArray(originalArray3); 
+        System.out.print("Swapped Array: ");
+        printArray(swappedArray3);
+
+
+    }
+
+    public static int[] swapFirstAndLast(int[] arr) {
+        if (arr == null || arr.length < 1) {
+            return arr; // Handle invalid input or return a new empty array as needed.
+        }
+
+        int[] newArray = new int[arr.length]; // Create a new array to avoid modifying the original
+        for (int i = 0; i < arr.length; i++) {
+            newArray[i] = arr[i];
+        }
+
+
+        if (arr.length > 1) { // Only swap if the array has at least 2 elements
+            int temp = newArray[0];
+            newArray[0] = newArray[newArray.length - 1];
+            newArray[newArray.length - 1] = temp;
+        }
+
+        return newArray;
+    }
+
+    // Helper function to print the array (for demonstration purposes)
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
+
+

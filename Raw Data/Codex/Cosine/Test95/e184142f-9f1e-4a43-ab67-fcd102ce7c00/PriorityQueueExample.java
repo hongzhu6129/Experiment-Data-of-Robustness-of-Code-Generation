@@ -1,0 +1,40 @@
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue of Strings (colors)
+        PriorityQueue<String> colorQueue = new PriorityQueue<>();
+
+        // Add some colors to the queue
+        colorQueue.add("Red");
+        colorQueue.add("Green");
+        colorQueue.add("Blue");
+        colorQueue.add("Yellow");
+        colorQueue.add("Orange");
+
+
+        // Print out the elements of the queue
+        System.out.println("Elements of the priority queue:");
+        
+        // Method 1: Iterating using a while loop and poll() (destructive)
+        /*
+        while (!colorQueue.isEmpty()) {
+            System.out.println(colorQueue.poll());  // poll() retrieves and removes the head
+        }
+        */
+
+        // Method 2: Iterating using a for-each loop (non-destructive) - preferred
+        for (String color : colorQueue) {
+            System.out.println(color);
+        }
+
+
+
+        // Method 3: Using Java 8 Stream API (non-destructive)
+        /*
+        System.out.println("Elements using Stream API:");
+        colorQueue.stream().forEach(System.out::println);
+        */
+    }
+}

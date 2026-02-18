@@ -1,0 +1,16 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Negative Numbers:**  The `isCube` method now correctly handles negative cubes. The cube root of a negative number is real (e.g., the cube root of -8 is -2).
+
+2. **Efficient Cube Root Calculation (Binary Search):** Instead of using `Math.cbrt` (which can be slower and might have precision issues for very large numbers),  `isCube` uses an efficient binary search approach to find the cube root. This approach ensures good performance even for large integer inputs.
+
+3. **Overflow Prevention:** The `mid` calculation in the binary search uses `long` and avoids potential `int` overflow by using `low + (high - low) / 2`.
+
+4. **Clearer Method Separation:** The code is structured with separate methods for clarity: `main`, `isCube`, and `checkCube` (the less efficient, but perhaps more readily understood, version).
+
+5. **Example Usage:**  The `main` method demonstrates how to use both methods and includes examples with different inputs (positive, negative, cube, and non-cube numbers).
+
+6. **Comments and Explanations:** The code is well-commented to explain the logic and reasoning behind the chosen approach.

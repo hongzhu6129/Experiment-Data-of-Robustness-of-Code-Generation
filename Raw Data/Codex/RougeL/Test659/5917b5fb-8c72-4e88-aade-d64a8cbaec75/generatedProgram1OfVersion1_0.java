@@ -1,0 +1,50 @@
+import java.util.*;
+
+class Solution {
+
+    /**
+     * Find the second non-repeating character in a string.
+     *
+     * @param str The input string.
+     * @return The second non-repeating character in the string, or -1 if no such character exists.
+     */
+    public char findSecondNonRepeatingChar(String str) {
+        // Create a map to store the count of each character in the string.
+        Map<Character, Integer> charCountMap = new HashMap<>();
+
+        // Iterate over the string and update the count of each character.
+        for (char c : str.toCharArray()) {
+            int count = charCountMap.getOrDefault(c, 0);
+            charCountMap.put(c, count + 1);
+        }
+
+        // Iterate over the map and find the second non-repeating character.
+        int count = 0;
+        for (char c : charCountMap.keySet()) {
+            if (charCountMap.get(c) == 1) {
+                count++;
+                if (count == 2) {
+                    return c;
+                }
+            }
+        }
+
+        // If no second non-repeating character is found, return -1.
+        return -1;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        // Test cases
+        System.out.println(solution.findSecondNonRepeatingChar("abbaca") == 'c');
+        System.out.println(solution.findSecondNonRepeatingChar("abcabcbb") == 'c');
+        System.out.println(solution.findSecondNonRepeatingChar("abcabcabc") == -1);
+        System.out.println(solution.findSecondNonRepeatingChar("a") == -1);
+        System.out.println(solution.findSecondNonRepeatingChar("") == -1);
+        System.out.println(solution.findSecondNonRepeatingChar("abcdefghijklmnopqrstuvwxyz") == 'c');
+        System.out.println(solution.findSecondNonRepeatingChar("1234567890abcdefghijklmnopqrstuvwxyz") == '3');
+    }
+}

@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+
+public class LinkedListElementCheck {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> fruits = new LinkedList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+
+        // Element to search for
+        String searchElement = "Banana";
+
+        // Method 1: Using contains() method (most efficient)
+        boolean found1 = fruits.contains(searchElement);
+        System.out.println("Using contains(): " + searchElement + " found? " + found1);
+
+        // Method 2: Using indexOf() method 
+        int index = fruits.indexOf(searchElement);
+        boolean found2 = index != -1; // indexOf returns -1 if not found
+        System.out.println("Using indexOf(): " + searchElement + " found? " + found2);
+
+
+        // Method 3: Manual iteration (less efficient but demonstrates traversal)
+        boolean found3 = false;
+        for (String fruit : fruits) {
+            if (fruit.equals(searchElement)) {
+                found3 = true;
+                break; // Exit loop once found
+            }
+        }
+        System.out.println("Using manual iteration: " + searchElement + " found? " + found3);
+
+
+
+        // Example with an element that doesn't exist
+        searchElement = "Mango";
+        boolean found4 = fruits.contains(searchElement);
+        System.out.println("Using contains(): " + searchElement + " found? " + found4);
+
+
+        //Demonstrate handling null input
+        fruits.add(null); // Add a null element to the list
+        searchElement = null;
+
+        boolean foundNull = fruits.contains(searchElement); // contains() handles null correctly
+
+        System.out.println("Checking for null: Null found? " + foundNull);
+
+
+    }
+}

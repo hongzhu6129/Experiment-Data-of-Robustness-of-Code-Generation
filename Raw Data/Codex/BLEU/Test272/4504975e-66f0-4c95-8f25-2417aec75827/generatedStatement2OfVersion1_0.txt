@@ -1,0 +1,29 @@
+
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1 | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2 | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 3 | 0 | 10 | 10 | -10 | 0 | 0 | 0 |
+| 4 | 7 | 0 | 7 | 7 | 0 | Division by zero | Remainder not possible |  *(Corner Case: Division by zero)*
+| 5 | 0 | 0 | 0 | 0 | 0 | Division by zero | Remainder not possible | *(Corner Case: Both numbers are zero)*
+| 6 | 15.5 | 2.5 | 18.0 | 13.0 | 38.75 | 6.2 | 0 | *(Floating-point numbers)*
+| 7 | -8.2 | -2 | -10.2 | -6.2 | 16.4 | 4.1 | 0 | *(Negative floating-point numbers)*
+| 8 | Integer.MAX_VALUE | 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MAX_VALUE - 1 | Integer.MAX_VALUE | Integer.MAX_VALUE | 0 | *(Corner Case: Integer Overflow)*
+| 9 | Integer.MIN_VALUE | -1 | Integer.MIN_VALUE - 1 (underflow) | Integer.MIN_VALUE + 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MIN_VALUE | 0 | *(Corner Case: Integer Underflow/Overflow)*
+
+
+
+**Explanation of Corner Cases:**
+
+* **Division by zero:**  Dividing by zero is undefined in mathematics and will cause an `ArithmeticException` in most programming languages if not handled. The provided code now explicitly checks for this and prints an appropriate message.
+* **Both numbers are zero:** While 0/0 is also undefined, the code handles it gracefully with the same division-by-zero check.
+* **Integer overflow/underflow:**  Java's `int` type has a limited range. If the result of an arithmetic operation exceeds this range, overflow or underflow occurs.  The result wraps around (e.g., `Integer.MAX_VALUE + 1` becomes `Integer.MIN_VALUE`).  Test cases 8 and 9 are designed to check how your program behaves in these overflow/underflow situations.  You'll likely see unexpected results (the wrong number).  If you need to handle very large numbers, consider using `long` or `BigInteger`.
+
+
+This expanded set of test cases and explanations should thoroughly test the `ArithmeticOperations` program and help you identify potential issues.  It's crucial to consider edge cases and potential errors when designing robust software.

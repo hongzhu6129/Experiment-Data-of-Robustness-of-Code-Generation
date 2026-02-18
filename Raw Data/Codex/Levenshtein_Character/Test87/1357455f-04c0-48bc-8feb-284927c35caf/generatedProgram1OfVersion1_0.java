@@ -1,0 +1,43 @@
+class Solution {
+    /**
+     * Given a string of any length, return a new string that is the middle
+     * character(s).
+     *
+     * Note:
+     *  - If the length of the string is odd, there will be two middle characters.
+     *  - If the length of the string is even, there will be one middle character.
+     *
+     * Examples:
+     * ----------
+     * middle("abc") == "b"
+     * middle("abcd") == "bc"
+     * middle("abcde") == "c"
+     * middle("abcdef") == "cd"
+     * middle("abcdefgh") == "de"
+     *
+     * Args:
+     *     str (str): input string
+     *
+     * Returns:
+     *     str: middle character(s)
+     */
+    public static String middle(String str) {
+        int len = str.length();
+        int mid = len / 2;
+
+        if (len % 2 == 0) {
+            return str.substring(mid - 1, mid + 1);
+        } else {
+            return str.substring(mid, mid + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(middle("abc"));     // Output: b
+        System.out.println(middle("abcd"));    // Output: bc
+        System.out.println(middle("abcde"));   // Output: c
+        System.out.println(middle("abcdef"));  // Output: cd
+        System.out.println(middle("abcdefgh")); // Output: de
+
+    }
+}

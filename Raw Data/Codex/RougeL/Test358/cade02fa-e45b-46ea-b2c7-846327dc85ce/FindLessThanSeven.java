@@ -1,0 +1,38 @@
+import java.util.TreeSet;
+
+public class FindLessThanSeven {
+
+    public static void main(String[] args) {
+        // Create a TreeSet of integers
+        TreeSet<Integer> numbers = new TreeSet<>();
+        numbers.add(2);
+        numbers.add(9);
+        numbers.add(5);
+        numbers.add(1);
+        numbers.add(7);
+        numbers.add(12);
+        numbers.add(3);
+
+        // Find numbers less than 7
+        TreeSet<Integer> lessThanSeven = (TreeSet<Integer>) numbers.headSet(7);
+
+        // Print the numbers less than 7
+        System.out.println("Numbers less than 7: " + lessThanSeven);
+
+
+        // Example with an empty TreeSet
+        TreeSet<Integer> emptySet = new TreeSet<>();
+        TreeSet<Integer> lessThanSevenEmpty = (TreeSet<Integer>) emptySet.headSet(7);
+        System.out.println("Numbers less than 7 in an empty set: " + lessThanSevenEmpty);
+
+        // Example where no numbers are less than 7
+         TreeSet<Integer> allGreaterThanSeven = new TreeSet<>();
+         allGreaterThanSeven.add(8);
+         allGreaterThanSeven.add(9);
+         allGreaterThanSeven.add(10);
+         TreeSet<Integer> lessThanSevenNone = (TreeSet<Integer>) allGreaterThanSeven.headSet(7);
+         System.out.println("Numbers less than 7 when all are greater: " + lessThanSevenNone);
+
+
+    }
+}

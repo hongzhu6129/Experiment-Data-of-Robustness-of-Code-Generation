@@ -1,0 +1,48 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to thoroughly test the `calculateAverage` method:
+
+1. **Normal Case:**
+   - Input: 10, 20, 30
+   - Expected Output: 20.0
+
+2. **Negative Numbers:**
+   - Input: -5, -10, -15
+   - Expected Output: -10.0
+
+3. **Zero Values:**
+   - Input: 0, 0, 0
+   - Expected Output: 0.0
+
+4. **Mixed Positive and Negative:**
+   - Input: -5, 10, 5
+   - Expected Output: 3.3333333333333335 (or similar due to floating-point representation)
+
+5. **Large Numbers:**
+   - Input: 1000000, 2000000, 3000000
+   - Expected Output: 2000000.0
+
+6. **Decimal Numbers:**
+   - Input: 2.5, 3.7, 1.8
+   - Expected Output: 2.6666666666666665 (or similar)
+
+7. **Edge Case - Very Large Numbers (potential overflow with integers, but handled correctly with doubles):**
+   - Input: Double.MAX_VALUE, Double.MAX_VALUE/2, Double.MAX_VALUE/4
+   - Expected Output: A very large number (approximately  1.157920892373162E+308 / 1.333... which should not overflow a `double`)
+
+8. **Edge Case - Very Small Numbers (close to zero):**
+   - Input: 0.0000001, 0.0000002, 0.0000003
+   - Expected Output: 2.0E-7
+
+
+
+**How to Run Test Cases (Manually):**
+
+You can manually enter these values when prompted by the program.
+
+**How to Run Test Cases (Using JUnit - recommended for larger projects):**
+
+JUnit is a Java unit testing framework.  Here's an example of how you could write a JUnit test class for the `calculateAverage` method:
+

@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class GreenSetSize {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet to represent the green set.
+        Set<String> greenSet = new HashSet<>();
+
+        // Add some elements (representing green items, perhaps)
+        greenSet.add("apple");
+        greenSet.add("lime");
+        greenSet.add("grass");
+        greenSet.add("spinach");
+        greenSet.add("apple"); // Adding a duplicate, which will be ignored by the Set
+
+        // Get the number of elements using the size() method.
+        int numberOfElements = greenSet.size();
+
+        // Print the size of the green set.
+        System.out.println("The number of elements in the green set is: " + numberOfElements); 
+    }
+}

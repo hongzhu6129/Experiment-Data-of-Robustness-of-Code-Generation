@@ -1,0 +1,40 @@
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a sample HashMap
+        Map<String, Integer> map = new HashMap<>();
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Orange", 3);
+        map.put("Grape", 4);
+
+        // Get a Collection view of the values
+        Collection<Integer> values = map.values();
+
+        // Print the values
+        System.out.println("Values in the map:");
+        for (Integer value : values) {
+            System.out.println(value);
+        }
+
+
+        //Demonstrate that changes to the collection reflect in the map (and vice-versa)
+        System.out.println("\nDemonstrating linked nature:");
+
+        System.out.println("Original map: " + map);
+        values.remove(2); // Remove the value 2 from the collection view
+        System.out.println("Map after removing 2 from the collection view: " + map);
+
+
+        map.put("Mango", 5); //Add to the original map
+        System.out.println("Collection view after adding to the map: " + values);
+
+
+        values.clear();  // Clearing the collection view
+        System.out.println("Map after clearing the collection view: " + map); //Original map will also be cleared
+
+    }
+}

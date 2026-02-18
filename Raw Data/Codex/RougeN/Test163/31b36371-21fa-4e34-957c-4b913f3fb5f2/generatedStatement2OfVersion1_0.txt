@@ -1,0 +1,42 @@
+
+
+
+
+**Test Cases:**
+
+**Valid Inputs:**
+
+1.  **Input:** 1101
+    **Expected Output:** 'd'
+
+2.  **Input:** 101010
+    **Expected Output:** '2a'
+
+3.  **Input:** 11111111
+    **Expected Output:** 'ff'
+
+4.  **Input:** 0
+    **Expected Output:** '0'  (Important corner case)
+
+5.  **Input:** 10000000  (A power of 2)
+    **Expected Output:** '80'
+
+
+**Invalid/Corner Cases:**
+
+1.  **Input:** 1234  (Non-binary digits)
+    **Expected Output:** Invalid binary number. Please enter a string containing only 0s and 1s.
+
+2.  **Input:** 111a11  (Non-binary character)
+    **Expected Output:** Invalid binary number. Please enter a string containing only 0s and 1s.
+
+3.  **Input:** (Empty string)
+    **Expected Output:**  '0'  (Could be handled to give an "Invalid input" message, depending on your requirements). It currently produces a '0' since the `decimal` value remains at 0.
+
+4.  **Input:** -1101 (Negative binary - not normally considered valid unless you are working with a specific representation like two's complement)
+    **Expected Output:** Invalid binary number. Please enter a string containing only 0s and 1s.
+
+5.  **Input:**  A very large binary number that might exceed `int`'s capacity (e.g., a string of many '1's).  This is a more advanced test case but important to consider for robustness. You could add a check for the `Integer.MAX_VALUE` or use `long` if necessary.
+
+
+This comprehensive set of test cases helps you verify that your program handles both normal conversions and various error conditions correctly.  It's good practice to always test your code with a variety of inputs, including edge cases and invalid inputs, to ensure its reliability.

@@ -1,0 +1,20 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes input validation. It checks if `n` and `k` are non-negative, and if `k` is within the valid range (0 to `n`).  It prints an appropriate message if the input is invalid.
+
+2. **Efficiency:** The `binomial_Coefficient` method is optimized:
+   - It handles the base cases (k=0, k=n) directly.
+   - It uses the symmetry property `C(n, k) = C(n, n-k)` to reduce calculations when `k > n/2`.
+   - It calculates the result iteratively to avoid unnecessary multiplications and divisions. The formula `result = result * (n - i + 1) / i` is crucial for preventing intermediate overflows that can occur if you calculate factorials separately.
+
+3. **Clarity and Readability:**  The code is well-commented, making it easier to understand.  Variable names are more descriptive.
+
+4. **Resource Management:** The `Scanner` is closed using `scanner.close()` to release the resource.
+
+
+
+Example Usage:
+

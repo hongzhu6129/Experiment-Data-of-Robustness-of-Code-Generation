@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Comments and Explanation:** The code includes detailed comments to explain the logic and the limitations of the `deleteNode` method, particularly regarding deleting the last node.
+
+2. **Handles Edge Cases:** The `deleteNode` function now explicitly handles the case where the node to be deleted is `null` or the last node in the list. It prints a message instead of crashing and explains why this method is not suitable for deleting the last node. This is important from an educational perspective.
+
+3. **More Comprehensive Example Usage in `main`:**  The `main` method now demonstrates multiple scenarios: deleting a middle node, deleting a node closer to the beginning and attempts to delete the last node, and clearly shows the output for each case, highlighting the limitation of this approach for the last node.
+
+4. **ListNode Class:** The `ListNode` class is included within the code for completeness and ease of understanding.
+
+**Why This Method Doesn't Work for the Last Node**
+
+This method relies on copying the data from the *next* node to the current node and then updating the `next` pointer to skip the next node.  If the current node is the *last* node, there is no "next" node to copy data from, and we can't simply make `node.next = null` because that only removes the reference *from the node we're deleting*�the previous node's `next` pointer would still be pointing to the node we tried to delete.  To delete the last node correctly, you *must* have access to the second-to-last node.
+
+
+**How to Delete the Last Node Correctly**
+
+To delete the last node, you need to iterate through the list until you find the second-to-last node.  Then set the `next` pointer of the second-to-last node to `null`. This requires a slightly different approach and cannot be done with only the provided method signatures.

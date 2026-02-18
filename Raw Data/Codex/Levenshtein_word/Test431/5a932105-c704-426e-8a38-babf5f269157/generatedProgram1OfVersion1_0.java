@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class GetElementFromArraylist {
+
+    public static void main(String[] args) {
+        // Example usage:
+        List<String> stringList = new ArrayList<>(Arrays.asList("Red", "Green", "Orange", "White", "Black"));
+        int indexToRetrieve = 2; // We want to get the element at index 2 (Orange)
+
+        try {
+            String retrievedElement = stringList.get(indexToRetrieve);
+            System.out.println("Element at index " + indexToRetrieve + ": " + retrievedElement);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid index.  Index " + indexToRetrieve + " is out of bounds.");
+        }
+
+
+        List<Integer> integerList = new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50));
+        indexToRetrieve = 0; // Get the element at index 0
+
+        try {
+            Integer retrievedInteger = integerList.get(indexToRetrieve);
+            System.out.println("Element at index " + indexToRetrieve + ": " + retrievedInteger);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: Invalid index. Index " + indexToRetrieve + " is out of bounds.");
+        }
+
+
+        // Example demonstrating out of bounds index:
+        indexToRetrieve = 100; // This will cause an IndexOutOfBoundsException
+        try {
+            String element = stringList.get(indexToRetrieve); // This line will throw the exception
+            System.out.println(element); // This line will not be reached
+        } catch (IndexOutOfBoundsException e) {
+             System.out.println("Error: Invalid index. Index " + indexToRetrieve + " is out of bounds.");
+        }
+    }
+}

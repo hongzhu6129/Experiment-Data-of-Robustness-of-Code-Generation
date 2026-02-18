@@ -1,0 +1,34 @@
+class Solution {
+
+    /**
+     * Reverses a string using recursion.
+     *
+     * @param str The string to reverse.
+     */
+    void reverseString(String str) {
+        if (str == null || str.length() <= 1) {
+            System.out.print(str); // Base case: print the string if it's empty or has one char
+            return; 
+        }
+
+        // Recursive step: print the last character and reverse the remaining substring
+        System.out.print(str.charAt(str.length() - 1));
+        reverseString(str.substring(0, str.length() - 1)); 
+    }
+
+
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.reverseString("hello"); // Output: olleh
+        System.out.println(); // New line for clarity
+        solution.reverseString("world"); // Output: dlrow
+        System.out.println();
+        solution.reverseString("");      // Output: (nothing, handles empty string)
+        System.out.println();
+        solution.reverseString("a");     // Output: a
+        System.out.println();
+        solution.reverseString(null);     // Output: (nothing, handles null)
+
+    }
+}

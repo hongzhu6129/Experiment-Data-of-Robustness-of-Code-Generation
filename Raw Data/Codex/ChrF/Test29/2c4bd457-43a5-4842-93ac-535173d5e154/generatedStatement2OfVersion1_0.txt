@@ -1,0 +1,10 @@
+
+
+
+Key improvements and explanations:
+
+* **Multiple methods demonstrated:** The code shows three common ways to copy a map: `putAll()`, looping with `put()`, and using the Stream API. `putAll()` is generally the most concise and efficient.
+* **Clearer output:**  The `println` statements clearly label each copied map and demonstrate the effects (or lack thereof) of modifying the copy.
+* **Shallow Copy Demonstration:** The code explicitly shows that modifying the copied map (e.g., adding a new entry) does *not* affect the original source map.  This highlights that these methods create a *shallow* copy. This means the map structure is copied, but if the values are objects (rather than primitives like `Integer` used here),  the *references* to those objects are copied, not the objects themselves. Changes *within* a referenced object would be reflected in both maps.
+* **Stream API Example:**  While `putAll()` is usually sufficient, the Stream API example provides a foundation for more complex copying scenarios where you might want to filter entries, transform values, etc., during the copy process.  It is included for completeness.
+* **Comments:**  The code is well-commented to explain each approach and important concepts like shallow copying.

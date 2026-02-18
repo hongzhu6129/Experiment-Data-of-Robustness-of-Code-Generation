@@ -1,0 +1,55 @@
+import java.util.Arrays;
+
+public class LongestIncreasingSubsequence {
+
+    /**
+     * Finds the length of the longest increasing continuous subsequence in a given array of integers.
+     *
+     * @param nums The input array of integers.
+     * @return The length of the longest increasing continuous subsequence.
+     */
+    public static int longest_seq(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        int maxLength = 1;
+        int currentLength = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i - 1]) {
+                currentLength++;
+            } else {
+                maxLength = Math.max(maxLength, currentLength);
+                currentLength = 1;
+            }
+        }
+
+        return Math.max(maxLength, currentLength); // Check one last time after the loop
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums1 = {1, 3, 5, 4, 7};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums1) + ": " + longest_seq(nums1)); // Output: 3 (1, 3, 5)
+
+        int[] nums2 = {2, 2, 2, 2, 2};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums2) + ": " + longest_seq(nums2)); // Output: 1
+
+        int[] nums3 = {1, 2, 3, 4, 5};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums3) + ": " + longest_seq(nums3)); // Output: 5
+
+
+        int[] nums4 = {5, 4, 3, 2, 1};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums4) + ": " + longest_seq(nums4)); // Output: 1
+
+        int[] nums5 = {};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums5) + ": " + longest_seq(nums5)); // Output: 0
+
+        int[] nums6 = {1, 3, 5, 7, 2, 4, 6, 8};
+        System.out.println("Longest increasing continuous subsequence length for " + Arrays.toString(nums6) + ": " + longest_seq(nums6)); // Output: 4 (1,3,5,7 or 2,4,6,8)
+
+
+
+    }
+}

@@ -1,0 +1,53 @@
+import java.util.TreeMap;
+
+public class CopyTreeMap {
+
+    public static void main(String[] args) {
+
+        // Creating a source TreeMap
+        TreeMap<String, Integer> sourceTreeMap = new TreeMap<>();
+        sourceTreeMap.put("Apple", 1);
+        sourceTreeMap.put("Banana", 2);
+        sourceTreeMap.put("Orange", 3);
+        sourceTreeMap.put("Grape", 4);
+
+        // Method 1: Using the putAll() method (most efficient)
+        TreeMap<String, Integer> copiedTreeMap1 = new TreeMap<>();
+        copiedTreeMap1.putAll(sourceTreeMap);
+
+        System.out.println("Copied TreeMap 1 (putAll): " + copiedTreeMap1);
+
+
+        // Method 2: Using the constructor (creates a shallow copy)
+        TreeMap<String, Integer> copiedTreeMap2 = new TreeMap<>(sourceTreeMap);
+
+        System.out.println("Copied TreeMap 2 (constructor): " + copiedTreeMap2);
+
+
+        // Method 3: Iterating and putting each entry (less efficient)
+        TreeMap<String, Integer> copiedTreeMap3 = new TreeMap<>();
+        for (String key : sourceTreeMap.keySet()) {
+            copiedTreeMap3.put(key, sourceTreeMap.get(key));
+        }
+
+        System.out.println("Copied TreeMap 3 (iteration): " + copiedTreeMap3);
+
+
+
+        // Demonstrating shallow copy behavior (important consideration)
+        // Modifying the original TreeMap affects the copy created using the constructor or putAll
+        sourceTreeMap.put("Mango", 5); // Modify the original
+
+        System.out.println("Original TreeMap after modification: " + sourceTreeMap);
+        System.out.println("Copied TreeMap 1 (putAll) after original modification: " + copiedTreeMap1);
+        System.out.println("Copied TreeMap 2 (constructor) after original modification: " + copiedTreeMap2); 
+        // copiedTreeMap2 will *not* contain Mango because changes to the original
+        // after the copy was created are not reflected in copiedTreeMap2
+
+        // If you need a deep copy (changes to original do *not* affect copy)
+        // you'll need to clone the objects being stored in the TreeMap
+        // if they are mutable (e.g., custom objects, not primitives like Integer).
+
+
+    }
+}

@@ -1,0 +1,38 @@
+
+
+**Test Cases:**
+
+1. **Standard Case:**
+   - `start = 1`, `end = 100` (as in the original prompt)  Expected output should include numbers like 3, 5, 6, 9, 10, 12, 15... for respective divisibility.
+
+2. **Start equals End:**
+   - `start = 50`, `end = 50`  If 50 is divisible by 3, 5 or both it should be printed in the respective section. Otherwise, nothing should be printed for that section.
+
+3. **Start greater than End:**
+   - `start = 100`, `end = 1`  The function should print an error message like "Invalid input: start should be less than or equal to end."
+
+4. **Negative Numbers:**
+   - `start = -50`, `end = 50`  Should correctly handle negative numbers and divisibility checks.
+
+5. **Zero:**
+   - `start = -5`, `end = 5`  Should correctly handle zero, which is divisible by both 3 and 5.
+
+6. **Large Range:**
+   - `start = 1`, `end = 1000`  (Test with a larger range to ensure efficiency)
+
+7. **Boundaries:**
+   - `start = 1`, `end = 2` (Tests the lower boundary where neither 3 nor 5 are included)
+   - `start = 99`, `end = 101` (Test around the multiples to ensure no off-by-one errors)
+
+
+
+**How to run the test cases:**
+
+You can either:
+
+- **Manually test:** Change the `start` and `end` values in the `main` method and run the code.
+- **Write Unit Tests (Recommended):** Use a testing framework like JUnit to create automated tests for each case. This is the preferred method for robust testing, especially as your programs get more complex.
+
+
+Example of a JUnit test (you'll need to add the JUnit library to your project):
+

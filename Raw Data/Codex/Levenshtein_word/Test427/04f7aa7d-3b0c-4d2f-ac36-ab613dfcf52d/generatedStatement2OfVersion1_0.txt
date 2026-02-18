@@ -1,0 +1,60 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases, to thoroughly test the program:
+
+1. **Provided Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -70
+   - lat2: 40
+   - lon2: -70
+   - Expected Output: 0 km
+
+3. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0
+   - lat2: -90 (South Pole)
+   - lon2: 0 
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+4. **Opposite sides of the Earth (Antipodes):**
+   - lat1: 40
+   - lon1: -70
+   - lat2: -40
+   - lon2: 110 
+   - Expected Output: ~20015.08 km (approximately Earth's circumference / 2)
+
+5. **Points on the Equator, 90 degrees apart:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km  (approximately Earth's circumference / 4)
+
+6. **Points near the International Date Line (Longitude 180/-180):**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Output: A small distance (the shortest distance is across the date line).
+
+7. **Invalid Input:**  Test with non-numeric input or latitudes outside the range -90 to +90 to ensure your program handles these gracefully (e.g., prints an error message or uses exception handling).
+
+
+
+**How to run the test cases:**
+
+You can either manually input these values into the program multiple times or, better yet, create a separate test class (using a testing framework like JUnit) to automate these tests. Automated testing is highly recommended for more complex programs.
+
+
+
+
+This improved version addresses the corner cases and provides a more robust solution.  The test cases will help ensure your calculations are accurate for various scenarios. Remember to convert latitude and longitude to radians before using them in the formula.

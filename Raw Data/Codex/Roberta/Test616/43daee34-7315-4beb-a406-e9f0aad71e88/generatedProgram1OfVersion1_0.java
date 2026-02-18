@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLastLinkedList {
+
+    public static void main(String[] args) {
+        // Create a sample LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Check if the list is empty or has only one element.
+        if (linkedList.size() <= 1) {
+            linkedList.clear(); // Remove all elements if it's empty or has only one.
+        } else {
+            linkedList.removeFirst(); // Remove the first element
+            linkedList.removeLast();  // Remove the last element
+        }
+
+
+        System.out.println("Modified LinkedList: " + linkedList);
+
+
+        // Example 2: Empty list
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        System.out.println("Original Empty List: " + emptyList);
+        if (emptyList.size() <= 1) {
+            emptyList.clear();
+        } else {
+            emptyList.removeFirst();
+            emptyList.removeLast();
+        }
+        System.out.println("Modified Empty List: " + emptyList);
+
+
+
+         // Example 3: One element list
+        LinkedList<Double> oneElementList = new LinkedList<>();
+        oneElementList.add(3.14);
+        System.out.println("Original One Element List: " + oneElementList);
+         if (oneElementList.size() <= 1) {
+            oneElementList.clear();
+        } else {
+            oneElementList.removeFirst();
+            oneElementList.removeLast();
+        }
+        System.out.println("Modified One Element List: " + oneElementList);
+    }
+}

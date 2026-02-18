@@ -1,0 +1,16 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Comprehensive Matching:**  The original prompt asked for "UTC" and "GMT."  However, there are variations like "Etc/UTC", "Etc/GMT",  "GMT+1",  "UTC+2" etc. The code now includes a more comprehensive check (`startsWith`, `equals`, and `contains`) to capture these variations. This ensures a wider range of relevant time zones are displayed.
+
+2. **Raw Offset Information:** The code now displays the raw offset of each time zone in milliseconds. This is useful for understanding the difference between the time zone and UTC/GMT. For example, "GMT+2" would have a raw offset of 7200000 milliseconds (2 hours * 60 minutes * 60 seconds * 1000 milliseconds).
+
+3. **Clarity and Readability:** The code is formatted for better readability and includes comments to explain the logic.
+
+4. **Efficiency:**  Using `startsWith`, `equals` and `contains`,  along with || (OR) operator, keeps string checking efficient in the loop.
+
+
+
+This improved version provides a more complete and informative list of UTC and GMT-related time zones, making it more practical for real-world use cases.

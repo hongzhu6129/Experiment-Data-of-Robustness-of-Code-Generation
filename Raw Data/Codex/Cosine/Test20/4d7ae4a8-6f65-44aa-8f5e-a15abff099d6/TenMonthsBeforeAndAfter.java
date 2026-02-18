@@ -1,0 +1,20 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class TenMonthsBeforeAndAfter {
+
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+
+        LocalDate tenMonthsAgo = today.minusMonths(10);
+        LocalDate tenMonthsLater = today.plusMonths(10);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Customize format if needed
+
+        System.out.println("Today: " + today.format(formatter));
+        System.out.println("10 months ago: " + tenMonthsAgo.format(formatter));
+        System.out.println("10 months later: " + tenMonthsLater.format(formatter));
+
+
+    }
+}

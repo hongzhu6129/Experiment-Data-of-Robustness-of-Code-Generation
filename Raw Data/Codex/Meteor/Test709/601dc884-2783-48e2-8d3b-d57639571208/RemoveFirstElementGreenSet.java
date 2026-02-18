@@ -1,0 +1,32 @@
+import java.util.TreeSet;
+
+public class RemoveFirstElementGreenSet {
+
+    public static void main(String[] args) {
+        // Create a TreeSet (which is a sorted set) to represent the "green set"
+        TreeSet<String> greenSet = new TreeSet<>();
+
+        // Add some elements (assuming strings for simplicity)
+        greenSet.add("Lime");
+        greenSet.add("Emerald");
+        greenSet.add("Jade");
+        greenSet.add("Forest");
+
+        // Check if the set is empty before attempting to remove
+        if (!greenSet.isEmpty()) {
+            // Retrieve the first element (smallest element in a TreeSet)
+            String firstElement = greenSet.first();
+
+            // Remove the first element
+            greenSet.remove(firstElement);
+
+            // Print the removed element and the updated set
+            System.out.println("Removed element: " + firstElement);
+            System.out.println("Updated green set: " + greenSet);
+        } else {
+            System.out.println("The green set is empty.");
+        }
+
+
+    }
+}

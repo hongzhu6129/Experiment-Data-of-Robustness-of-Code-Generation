@@ -1,0 +1,80 @@
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+
+        // Populate the TreeMap with some key-value pairs
+        treeMap.put(1, "Apple");
+        treeMap.put(5, "Banana");
+        treeMap.put(3, "Orange");
+        treeMap.put(2, "Grape");
+        treeMap.put(4, "Mango");
+
+        // Value to search for
+        int searchKey = 3;
+
+        // 1. Using containsKey() to check if a key exists
+        if (treeMap.containsKey(searchKey)) {
+            System.out.println("Key " + searchKey + " found in the TreeMap.");
+        } else {
+            System.out.println("Key " + searchKey + " not found in the TreeMap.");
+        }
+
+
+        // 2. Using get() to retrieve the value associated with a key
+        String value = treeMap.get(searchKey);
+
+        if (value != null) {
+            System.out.println("Value associated with key " + searchKey + ": " + value);
+        } else {
+            System.out.println("No value found for key " + searchKey);
+        }
+
+
+
+        // 3. Demonstrating search in a sub-map (range search) - finding elements between 2 and 4 (inclusive).
+        System.out.println("Elements between 2 (inclusive) and 5 (exclusive): " + treeMap.subMap(2, 5));
+
+
+        //4.  floorKey() & ceilingKey() examples
+        int key = 2;
+
+        Integer floorKey = treeMap.floorKey(key);  // Greatest key less than or equal to the given key
+        if(floorKey != null) {
+            System.out.println("Floor key for " + key + ": " + floorKey);
+        } else {
+            System.out.println("No floor key found for " + key);
+        }
+
+        Integer ceilingKey = treeMap.ceilingKey(key); // Smallest key greater than or equal to the given key
+        if (ceilingKey != null) {
+           System.out.println("Ceiling key for " + key + ": " + ceilingKey);
+        } else {
+            System.out.println("No ceiling key found for " + key);
+        }
+
+
+
+        //5.  higherKey() and lowerKey()
+        key = 3;
+        Integer higherKey = treeMap.higherKey(key); // Smallest key strictly greater than given key
+        if(higherKey != null) {
+            System.out.println("Higher key for " + key + ": " + higherKey);
+        }  else {
+            System.out.println("No higher key found for " + key);
+        }
+
+
+        Integer lowerKey = treeMap.lowerKey(key); // Greatest key strictly less than given key
+        if (lowerKey != null) {
+            System.out.println("Lower key for " + key + ": " + lowerKey);
+        } else {
+           System.out.println("No lower key found for " + key);
+        }
+
+    }
+}

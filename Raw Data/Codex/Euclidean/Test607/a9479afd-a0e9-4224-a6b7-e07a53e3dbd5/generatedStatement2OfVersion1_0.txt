@@ -1,0 +1,16 @@
+
+
+
+**Explanation:**
+
+1. **Convert Double to String:**  The `String.valueOf()` method converts the double value to its string representation.  This is necessary because the regular expression operations work on strings.
+
+2. **Regular Expression:**  The core of the validation is done using a regular expression. 
+   - `[^a-zA-Z0-9.]`: This pattern matches any character that is *not* a lowercase letter (a-z), an uppercase letter (A-Z), a digit (0-9), or a decimal point (.). The `^` inside the square brackets negates the character set.
+   - `matcher.replaceAll("")`: This replaces all matching characters (i.e., the non-alphanumeric characters) with an empty string, effectively removing them.
+
+3. **Method Signatures:** The code adheres to the specified method signatures: `public static void main(String[] args)` and `public static String validate(String str)`.
+
+
+**Example Output:**
+

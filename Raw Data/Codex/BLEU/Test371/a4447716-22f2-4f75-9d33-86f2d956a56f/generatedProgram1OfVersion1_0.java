@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class GetCharacterAtIndex {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the input string
+        System.out.println("Enter the string: ");
+        String str = scanner.nextLine();
+
+        // Get the index of the character to be retrieved
+        System.out.println("Enter the index of the character to be retrieved: ");
+        int index = scanner.nextInt();
+
+        // Handle corner cases
+        if (index < 0 || index >= str.length()) {
+            System.out.println("Invalid index");
+            return;
+        }
+
+        // Get the character at the given index
+        char character = str.charAt(index);
+
+        // Print the character
+        System.out.println("The character at index " + index + " is: " + character);
+    }
+}

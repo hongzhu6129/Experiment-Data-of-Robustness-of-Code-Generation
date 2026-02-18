@@ -1,0 +1,21 @@
+
+
+**Test Cases:**
+
+1. **Basic Case:**  Using digits 1, 2, 3, 4 (as in the original prompt).  Verify that all 24 unique combinations are generated and the count is 24.
+
+2. **Repeated Digits:** Use an input array with repeated digits like {1, 1, 2, 3}.  Verify that only the unique three-digit numbers are generated (e.g., 112, 113, 121, 123, 131, 132, 211, 213, 231, 311, 312, 321) and the count reflects this.
+
+3. **Fewer Digits:**  Use an input array with fewer than four digits, e.g., {1, 2, 3}. This will reduce the number of unique combinations.  Ensure the correct count and combinations are generated.
+
+4. **More Digits:** Use an input array with more than four digits (e.g., {1, 2, 3, 4, 5}). This increases the possible combinations. Test that the program handles this correctly.
+
+5. **Zero Included:** Use an input array that includes zero, e.g., {0, 1, 2, 3}. Pay close attention to numbers where zero is the leading digit (e.g. 012). These should still be counted (as 12) but stored and displayed as three-digit numbers (e.g., using String formatting: String.format("%03d", number)).
+
+6. **Negative Numbers:**  Include negative numbers in the input array, e.g., {-1, 2, 3, 4}.  Ensure the program handles this correctly (generates negative three-digit numbers).
+
+7. **Empty Array:** Use an empty input array `{}`. This is a corner case.  The program should gracefully handle this and report a count of 0.
+
+
+**Example of a JUnit Test (using JUnit 5):**
+

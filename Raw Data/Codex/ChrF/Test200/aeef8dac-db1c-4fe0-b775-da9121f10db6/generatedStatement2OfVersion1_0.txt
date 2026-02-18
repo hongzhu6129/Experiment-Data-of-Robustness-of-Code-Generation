@@ -1,0 +1,37 @@
+
+
+
+
+**Test Cases:**
+
+1. **Valid Octal:**
+   - Input: 123
+   - Expected Output: Hexadecimal equivalent: 53
+
+2. **Leading Zero:**
+   - Input: 0123
+   - Expected Output: Hexadecimal equivalent: 53  (Leading zeros should be ignored)
+
+3. **Large Octal:**
+   - Input: 77777777
+   - Expected Output:  Hexadecimal equivalent: 7FFFFFFF (Tests handling of larger numbers)
+
+4. **Zero:**
+   - Input: 0
+   - Expected Output: Hexadecimal equivalent: 0
+
+
+5. **Invalid Input (containing other characters):**
+   - Input: 12A3
+   - Expected Output: Invalid octal number: Contains characters other than 0-7.
+
+6. **Invalid Input (Empty String):**
+    - Input: "" (just press enter)
+    - Expected output:  Hexadecimal equivalent: 0 (should treat as zero)
+
+7. **Very Large number (potential overflow):**
+   - Input:  A very long string of 7s (e.g., more than 10 '7's)
+   - Expected output: Invalid input: Number too large. (The program should be able to handle and report the overflow) 
+
+
+These test cases cover valid octal numbers, leading zeros, large numbers, zero, and error conditions such as invalid characters and potential integer overflow due to very large inputs. They ensure the program correctly converts octal to hexadecimal and handles various input scenarios robustly.

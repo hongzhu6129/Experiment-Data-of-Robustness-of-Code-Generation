@@ -1,0 +1,31 @@
+public class DoubleParts {
+
+    public static void main(String[] args) {
+
+        double num = 123.456;
+
+        // Get the whole number part
+        int wholePart = (int) num;
+
+        // Get the fractional part
+        double fractionalPart = num - wholePart;
+
+
+        System.out.println("Original Number: " + num);
+        System.out.println("Whole Number Part: " + wholePart);
+        System.out.println("Fractional Part: " + fractionalPart);
+
+
+        // Example with a negative double
+        double negativeNum = -789.012;
+        int wholePartNegative = (int) negativeNum;
+        double fractionalPartNegative = negativeNum - wholePartNegative;
+
+        System.out.println("\nOriginal Number (negative): " + negativeNum);
+        System.out.println("Whole Number Part (negative): " + wholePartNegative);
+        System.out.println("Fractional Part (negative): " + fractionalPartNegative);
+
+
+
+    }
+}

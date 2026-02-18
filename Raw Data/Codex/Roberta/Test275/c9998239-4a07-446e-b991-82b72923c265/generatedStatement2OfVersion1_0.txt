@@ -1,0 +1,44 @@
+
+
+**Test Cases (including corner cases):**
+
+1. **Valid Octal Numbers:**
+   - Input: 123
+   - Expected Output: 83
+   - Input: 777
+   - Expected Output: 511
+   - Input: 0
+   - Expected Output: 0
+   - Input: 10
+   - Expected Output: 8
+
+2. **Invalid Octal Numbers:**
+   - Input: 80  (contains digit 8)
+   - Expected Output: Error: Invalid octal digit: 8
+   - Input: 999 (contains digit 9)
+   - Expected Output: Error: Invalid octal digit: 9
+   - Input: 12A (contains non-digit character)
+   - Expected Output: Error: Invalid octal digit: A
+   - Input: -123 (negative number - although mathematically representable,  octal input is usually considered unsigned)
+   - Expected Output: Error: Invalid octal digit: -
+
+3. **Edge Cases:**
+   - Input:  (empty string)
+   - Expected Output: Decimal equivalent: 0  (Handles empty input gracefully)
+   - Input:  (whitespace) � it's good to test how the program deals with unexpected whitespace. 
+   - Expected Output: Decimal equivalent: 0
+   - Input: A very large octal number (e.g., 777777777777777777777) � this can be used to check for potential integer overflow issues (although the code uses `long` to minimize that risk).  An error message or unexpected behavior would highlight this.
+
+
+**Explanation of Improvements:**
+
+* **Error Handling:** The code now includes a `try-catch` block to handle `IllegalArgumentException` if an invalid octal digit is encountered. This makes the code more robust.  A more general `Exception` catch is added to handle other unforeseen errors.
+* **Input Validation:** Inside the loop, each character is explicitly checked to ensure it's a valid octal digit (0-7).
+* **Clear Error Messages:**  More informative error messages are printed to the console to help the user understand the issue.
+* **Handles Empty Input:** The code now handles an empty input string gracefully by returning 0.
+* **Scanner Closed:** The `scanner.close()` is added to release the resource.
+* **Comments:** Added comments to improve readability and explain the logic.
+
+
+
+This revised version is significantly more robust and provides a better learning experience for users exploring octal-to-decimal conversion in Java.  It demonstrates good coding practices by including error handling and input validation.

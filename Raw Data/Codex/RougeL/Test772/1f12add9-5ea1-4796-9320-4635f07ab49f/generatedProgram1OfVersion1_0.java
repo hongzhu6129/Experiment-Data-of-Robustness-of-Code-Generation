@@ -1,0 +1,30 @@
+public class StringManipulation {
+
+    public static void main(String[] args) {
+        String inputString = "HelloWorld"; // Example input string
+
+        if (inputString.length() > 3) {
+            String lastThreeChars = inputString.substring(inputString.length() - 3);
+            String modifiedString = lastThreeChars + inputString + lastThreeChars;
+            System.out.println(modifiedString); // Output: rldHelloWorldrld
+
+             inputString = "Programming"; // Example input string
+            lastThreeChars = inputString.substring(inputString.length() - 3);
+            modifiedString = lastThreeChars + inputString + lastThreeChars;
+            System.out.println(modifiedString);  //Output: ingProgramminging
+        } else {
+            System.out.println("String length must be greater than 3.");
+        }
+
+
+         inputString = "Hi"; // Example input string - too short
+        if (inputString.length() > 3) {
+            String lastThreeChars = inputString.substring(inputString.length() - 3);
+            String modifiedString = lastThreeChars + inputString + lastThreeChars;
+            System.out.println(modifiedString);
+        } else {
+            System.out.println("String length must be greater than 3."); // This will be printed
+        }
+
+    }
+}

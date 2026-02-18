@@ -1,0 +1,30 @@
+public class RemoveDuplicateChars {
+
+    public static void main(String[] args) {
+        String str = "programming";
+        String result = removeDuplicateChars(str);
+        System.out.println(result); // Output: progamin
+
+        str = "abcabcabc";
+        result = removeDuplicateChars(str);
+        System.out.println(result); // Output: abc
+
+        str = "banana";
+        result = removeDuplicateChars(str);
+        System.out.println(result); // Output: ban
+    }
+
+    private static String removeDuplicateChars(String str) {
+        StringBuilder sb = new StringBuilder();
+        boolean[] seen = new boolean[256]; // Assuming ASCII characters
+
+        for (char c : str.toCharArray()) {
+            if (!seen[c]) {
+                sb.append(c);
+                seen[c] = true;
+            }
+        }
+
+        return sb.toString();
+    }
+}

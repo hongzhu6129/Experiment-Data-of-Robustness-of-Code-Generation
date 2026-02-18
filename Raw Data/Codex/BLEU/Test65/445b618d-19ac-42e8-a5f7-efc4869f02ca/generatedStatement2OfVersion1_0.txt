@@ -1,0 +1,52 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+1. **Original Example:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Distance: ~1480.08 km
+
+2. **Same Point:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Distance: 0 km
+
+3. **Antipodal Points (Opposite sides of the Earth):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106 
+   - Expected Distance: ~20015.09 km (approximately Earth's diameter)
+
+4. **North and South Poles:**
+   - lat1: 90  (North Pole)
+   - lon1: 0  (Longitude is irrelevant at the poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0 (Longitude is irrelevant at the poles)
+   - Expected Distance: ~20015.09 km
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Distance: ~10007.54 km (approximately 1/4 Earth's circumference)
+
+
+6. **Points near the International Date Line:**
+   - lat1: 10
+   - lon1: 179
+   - lat2: 10
+   - lon2: -179
+   - Expected Distance: ~222.64 km  (should be a small distance)
+
+7. **Invalid Input (e.g., latitude > 90):** The program should ideally handle invalid inputs gracefully, either by throwing an exception or printing an error message. You could enhance the code with input validation:
+
+   

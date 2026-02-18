@@ -1,0 +1,10 @@
+
+
+
+Key improvements in this version:
+
+* **Handles nulls:**  Correctly compares null strings and avoids `NullPointerExceptions`. Nulls are considered equal to each other, and not equal to any non-null string.
+* **Handles empty strings:** Properly handles empty strings as well.  Empty strings are considered equal.
+* **Normalization:** Removes whitespace: The `replaceAll("\\s+", "")` method is used to remove *all* whitespace characters (spaces, tabs, newlines) and consolidate the strings to only contain the essential characters of the "shape."  This way, differences in formatting or extra spaces won't cause a false negative.
+* **Trim:** Leading/trailing whitespace is trimmed from the strings before normalization to prevent differences there from affecting the comparison.
+* **Clearer and more robust:**  The code is easier to understand and less likely to have unexpected behavior.

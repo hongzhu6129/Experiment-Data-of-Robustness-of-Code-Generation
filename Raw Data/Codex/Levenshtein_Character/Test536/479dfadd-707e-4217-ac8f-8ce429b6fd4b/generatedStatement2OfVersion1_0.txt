@@ -1,0 +1,21 @@
+
+
+
+Explanation:
+
+1. **`removeDuplicates(int[] nums)`:**
+   - Handles edge cases: empty or null array.
+   - Uses `uniqueIndex` to track the position to place the next unique element.
+   - Iterates through the array starting from the second element.
+   - If the current element is different from the element at `uniqueIndex`, it means we've found a new unique element. We increment `uniqueIndex` and copy the current element to the `uniqueIndex` position.
+   - Finally, returns `uniqueIndex + 1` which is the new length of the array (number of unique elements).
+
+2. **`main(String[] args)`:**
+   - Provides test cases to demonstrate the functionality.
+   - `Arrays.copyOf(nums, len)` is used to print only the relevant part of the array after removing duplicates, as the original array's size remains unchanged, but elements beyond `len` are no longer relevant.
+
+
+
+
+
+

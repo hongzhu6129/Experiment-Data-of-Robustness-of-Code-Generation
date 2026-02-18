@@ -1,0 +1,14 @@
+
+
+
+Key improvements and explanations in this revised code:
+
+1. **Handles Empty List:**  It includes a check using `!names.isEmpty()` to ensure the LinkedList is not empty before trying to retrieve the first element. This prevents `NoSuchElementException` if you try to get the first element of an empty list.
+
+2. **`peekFirst()` vs. `getFirst()`:**  Both methods retrieve the first element without removing it.  However, `peekFirst()` returns `null` if the list is empty, while `getFirst()` throws a `NoSuchElementException`.  `peekFirst()` is generally preferred for its safer handling of empty lists.  The code demonstrates both, but comments out the `getFirst()` example on an empty list to avoid the exception.
+
+3. **Clearer Output:**  The output now explicitly confirms that the element was *not* removed from the LinkedList, making the demonstration more complete.
+
+4. **Example with Empty List:**  The code now includes an example showing how `peekFirst()` handles empty lists by returning `null`.  It also shows (as a commented-out example) how `getFirst()` throws an exception with an empty list, emphasizing why `peekFirst()` is often preferred.
+
+5. **Comments:** The code includes more comments to explain the choices and demonstrate good practice.

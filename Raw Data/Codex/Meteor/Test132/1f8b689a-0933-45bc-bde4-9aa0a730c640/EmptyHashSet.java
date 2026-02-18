@@ -1,0 +1,20 @@
+import java.util.HashSet;
+
+public class EmptyHashSet {
+
+    public static void main(String[] args) {
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        System.out.println("HashSet before emptying: " + hashSet);
+
+        // Empty the HashSet using the clear() method
+        hashSet.clear();
+
+        System.out.println("HashSet after emptying: " + hashSet);
+    }
+}

@@ -1,0 +1,26 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference (num1-num2)| Expected Product | Expected Quotient | Expected Remainder |
+|---|---|---|---|---|---|---|---|
+| 1 | 10 | 5 | 15 | 5 | 50 | 2 | 0 |
+| 2 | -5 | 2 | -3 | -7 | -10 | -2.5 | -1 |
+| 3 | 0 | 10 | 10 | -10 | 0 | 0 | 0 |
+| 4 | 7.5 | 2.5 | 10 | 5 | 18.75 | 3 | 0 |
+| 5 | 10 | 0 | 10 | 10 | 0 | Division by zero | Remainder by zero |  // Corner case: Division by zero
+| 6 | 0 | 0 | 0 | 0 | 0 | Division by zero | Remainder by zero | // Corner case: Both numbers are zero and division by zero.
+| 7 | Integer.MAX_VALUE | 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MAX_VALUE - 1 | Integer.MAX_VALUE | Integer.MAX_VALUE | 0 | // Corner case: Integer overflow on sum and product
+| 8 | Integer.MIN_VALUE | -1 | Integer.MIN_VALUE - 1 (underflow) | Integer.MIN_VALUE + 1 | Integer.MAX_VALUE + 1 (overflow)| Integer.MAX_VALUE + 1 (overflow) | 0 | //Corner case: Integer underflow/overflow
+
+
+**Explanation of Corner Cases and How the Code Handles Them:**
+
+* **Division by Zero:**  The code explicitly checks for division by zero using an `if` statement. If `num2` is zero, it prints an error message instead of performing the division or remainder operation. This prevents the program from crashing with an `ArithmeticException`.
+* **Zero as Input:** The code handles zero as input for either or both numbers correctly, performing the operations and giving mathematically correct results or the relevant "Division by zero" messages.
+* **Integer Overflow/Underflow:** Test cases 7 and 8 demonstrate scenarios where operations might result in integer overflow (the result is larger than the maximum integer value) or underflow (smaller than the minimum integer value).  Java does not throw an exception in these cases for floating point arithmetic (double).  For integer arithmetic, an overflow or underflow would result in "wrapping" (e.g., `Integer.MAX_VALUE + 1` becomes `Integer.MIN_VALUE`).  Using `double` avoids this in this particular program.
+
+
+This improved version of the code and the comprehensive test cases help ensure the program's correctness and robustness.  Make sure to use this expanded set of tests to validate the program's behavior.

@@ -1,0 +1,25 @@
+public class ExtractFirstHalf {
+
+    public static void main(String[] args) {
+        String str = "Python"; // Test Data
+
+        if (str.length() % 2 == 0) { // Check if the string length is even
+            int halfLength = str.length() / 2;
+            String firstHalf = str.substring(0, halfLength);
+            System.out.println(firstHalf);
+        } else {
+            System.out.println("String length is not even.");
+        }
+
+
+        // Additional test case from provided prompt
+        str = "Pyt";
+        if (str.length() % 2 == 0) { // Check if the string length is even
+            int halfLength = str.length() / 2;
+            String firstHalf = str.substring(0, halfLength);
+            System.out.println(firstHalf);
+        } else {
+            System.out.println("String length is not even.");  // Output for "Pyt"
+        }
+    }
+}

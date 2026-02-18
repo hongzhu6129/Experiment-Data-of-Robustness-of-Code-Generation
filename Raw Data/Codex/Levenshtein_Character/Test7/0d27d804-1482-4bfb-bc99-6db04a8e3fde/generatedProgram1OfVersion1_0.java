@@ -1,0 +1,45 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class HexCodeValidator {
+
+    public static void main(String[] args) {
+        String[] hexCodes = {
+                "#FF0000", // Red
+                "008000",  // Green
+                "#0000FF", // Blue
+                "#FFA500", // Orange
+                "123456",  // Valid 6-digit hex without #
+                "F0F8FF",  // Alice Blue
+                "#FFFFF",   // Invalid length
+                "#GGG000", // Invalid characters
+                "12345",   // Invalid length
+                "#1234567" // Invalid length
+        };
+
+        for (String hexCode : hexCodes) {
+            if (validate(hexCode)) {
+                System.out.println(hexCode + " is a valid hex code.");
+            } else {
+                System.out.println(hexCode + " is not a valid hex code.");
+            }
+        }
+    }
+
+    public static boolean validate(String hexCode) {
+        if (hexCode == null || hexCode.isEmpty()) {
+            return false;
+        }
+
+        // Regular expression to match a valid hex code
+        // Allows for # at the beginning (optional) and 3 or 6 hex characters.
+        String regex = "^#?([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(hexCode);
+        return matcher.matches();
+    }
+}
+
+
+

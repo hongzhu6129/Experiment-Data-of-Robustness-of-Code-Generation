@@ -1,0 +1,31 @@
+
+
+
+Explanation and Key Improvements:
+
+1. **Handles 0 Remainder Correctly:** The core logic now accurately deals with the case where `n % 26` is 0.  This is crucial for representing numbers like 26, 52, etc. (which should be Z, AZ, etc.).  It appends "Z" and adjusts `n` by subtracting 1 before dividing by 26.
+
+2. **StringBuilder for Efficiency:** Using `StringBuilder` is significantly more efficient than repeated string concatenation (using `+`) within a loop.
+
+3. **Clearer Variable Names:**  `columnName` is a more descriptive name than just `colName`.
+
+4. **Reverse at the End:** Appending characters to the `StringBuilder` and then reversing at the end is a standard and efficient way to build the column name string.
+
+5. **Comprehensive Test Cases:**  The `main` method now includes test cases that demonstrate the correct handling of various input values, especially those around multiples of 26.
+
+
+How it works (example: n = 701):
+
+1. **n = 701:**
+   - 701 % 26 = 25
+   - columnName = "Y"
+   - n = 701 / 26 = 26
+
+2. **n = 26:**
+   - 26 % 26 = 0
+   - columnName = "YZ"  (Z appended)
+   - n = (26 / 26) - 1 = 0
+
+3. **n = 0:** Loop terminates.
+
+4. **Reverse:**  "YZ" becomes "ZY".  The final result is "ZY".

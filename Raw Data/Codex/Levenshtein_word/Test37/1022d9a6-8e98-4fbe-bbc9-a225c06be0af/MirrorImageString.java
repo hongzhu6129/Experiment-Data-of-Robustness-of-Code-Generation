@@ -1,0 +1,43 @@
+public class MirrorImageString {
+
+    public String endsWithMirrorImage(String str) {
+        if (str == null || str.length() <= 1) {
+            return str; // Empty or single-char strings are their own mirror images
+        }
+
+        int len = str.length();
+        int maxLength = 0;
+        String longestMirror = "";
+
+        for (int i = 1; i <= len; i++) { // Iterate through possible prefix/suffix lengths
+            String prefix = str.substring(0, i);
+            String suffix = str.substring(len - i);
+
+            if (isMirrorImage(prefix, suffix)) {
+                if (prefix.length() > maxLength) {
+                    maxLength = prefix.length();
+                    longestMirror = prefix;
+                }
+            }
+        }
+        return longestMirror;
+    }
+
+
+    private boolean isMirrorImage(String s1, String s2) {
+        return new StringBuilder(s1).reverse().toString().equals(s2);
+    }
+
+    public static void main(String[] args) {
+        MirrorImageString mirror = new MirrorImageString();
+
+        System.out.println(mirror.endsWithMirrorImage("abxyzba")); // Output: ab
+        System.out.println(mirror.endsWithMirrorImage("aba"));  // Output: aba
+        System.out.println(mirror.endsWithMirrorImage("x"));     // Output: x
+        System.out.println(mirror.endsWithMirrorImage(""));      // Output: 
+        System.out.println(mirror.endsWithMirrorImage("abca"));   // Output: a
+         System.out.println(mirror.endsWithMirrorImage("abaaba")); // Output: abaaba
+        System.out.println(mirror.endsWithMirrorImage("abaxyzzyxf")); // Output: a
+
+    }
+}

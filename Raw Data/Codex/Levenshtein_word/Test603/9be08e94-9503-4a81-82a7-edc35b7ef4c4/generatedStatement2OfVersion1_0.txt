@@ -1,0 +1,28 @@
+
+
+
+Key improvements in this version:
+
+* **Handles exceptions gracefully:** The code now uses a `try-catch` block to handle potential `IOExceptions`.  This prevents the program from crashing and provides a user-friendly error message.
+* **Preserves original line breaks:** The `newLine()` method is used to ensure that the original line breaks in the input file are maintained in the output file.
+* **Creates a new output file:**  Instead of overwriting the original file, the emblazoned text is written to a new file with the extension ".emblazoned". This protects the original data.
+* **Uses `try-with-resources`:** This ensures that the `BufferedReader` and `BufferedWriter` are closed automatically, even if an exception occurs. This prevents resource leaks.
+* **Prompts for user input:**  The program now prompts the user for the file path and the text to emblazon, making it more interactive.
+* **Closes the scanner:** Prevents resource leaks.
+
+
+
+**How to compile and run:**
+
+1. Save the code as `EmblazonText.java`.
+2. Compile: `javac EmblazonText.java`
+3. Run: `java EmblazonText`
+
+
+The program will then ask you for the file path and the text to emblazon.  The output will be written to a new file with the ".emblazoned" extension.
+
+
+Example:
+
+If your existing file (`myFile.txt`) contains:
+

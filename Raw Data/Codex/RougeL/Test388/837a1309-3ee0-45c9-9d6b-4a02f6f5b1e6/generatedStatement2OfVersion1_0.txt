@@ -1,0 +1,17 @@
+
+
+
+Key improvements:
+
+- **Handles element not found:**  Checks if `remove()` returns `true` (meaning the element was found and removed). If not, it prints a message that the element wasn't found.
+- **Clearer explanation:** Added comments to explain the logic.
+- **Example with Custom Objects:** Demonstrates how to "edit" (replace) objects within a PriorityQueue using a `Comparator` and iterating (as there's no direct equivalent of `remove(object)` based on the comparator logic).  Crucially, it shows how to implement `equals()` to ensure comparison/removal works based on the object's properties and not reference equality.
+- **Efficiency note:** The code highlights that editing custom objects, especially in larger PriorityQueues, is less efficient because of the need for iteration.  There are potentially more efficient approaches (using a different data structure altogether if frequent "edits" are required) depending on the specific use case.
+- Includes the crucial `break` statement after the edit in the custom object example to prevent a `ConcurrentModificationException`.
+
+
+
+
+
+
+

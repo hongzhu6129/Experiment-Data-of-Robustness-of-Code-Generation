@@ -1,0 +1,54 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class GetValueFromMap {
+
+    public static void main(String[] args) {
+
+        // 1. Create a Map
+        Map<String, Integer> studentScores = new HashMap<>();
+
+        // 2. Add key-value pairs to the Map
+        studentScores.put("Alice", 90);
+        studentScores.put("Bob", 85);
+        studentScores.put("Charlie", 95);
+
+        // 3. Get the value associated with a specific key using get()
+        String keyToFind = "Bob";
+        Integer bobScore = studentScores.get(keyToFind);
+
+
+        // 4. Check if the key exists before accessing the value (to avoid NullPointerException)
+        if (studentScores.containsKey(keyToFind)) {
+            System.out.println("The score of " + keyToFind + " is: " + bobScore);
+        } else {
+            System.out.println("Key '" + keyToFind + "' not found in the map.");
+        }
+
+
+
+        // Example:  Trying to get a value for a key that doesn't exist
+        String nonExistentKey = "David";
+        Integer davidScore = studentScores.get(nonExistentKey); // davidScore will be null
+
+        if (davidScore != null) {
+            System.out.println("The score of " + nonExistentKey + " is: " + davidScore);
+        } else {
+            System.out.println("Key '" + nonExistentKey + "' not found in the map.");  // This will be printed
+        }
+
+
+        // 5.  Using getOrDefault() to provide a default value if the key is not found
+        int defaultScore = -1; // The default value to return if the key isn't found
+        int eveScore = studentScores.getOrDefault("Eve", defaultScore);
+        System.out.println("The score of Eve is (using getOrDefault): " + eveScore); // Output: -1
+
+
+        // Example with a key that DOES exist, using getOrDefault()
+        int aliceScoreDefault = studentScores.getOrDefault("Alice", defaultScore);
+        System.out.println("Alice's score (getOrDefault):" + aliceScoreDefault); // Output: 90 (the real score)
+
+
+
+    }
+}

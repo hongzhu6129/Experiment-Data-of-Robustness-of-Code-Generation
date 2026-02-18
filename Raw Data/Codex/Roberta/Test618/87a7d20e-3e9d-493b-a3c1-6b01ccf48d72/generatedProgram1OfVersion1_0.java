@@ -1,0 +1,63 @@
+public class AmericanFlag {
+
+    public static void main(String[] args) {
+        // Print the stars and stripes section
+        for (int i = 0; i < 6; i++) {
+            // Print the stars
+            for (int j = 0; j < 4; j++) {
+                System.out.print("* ");
+            }
+            if (i % 2 == 0) { // Alternate spacing for stars
+                System.out.print("   ");
+            } else {
+                System.out.print("    ");
+
+            }
+           
+
+            System.out.print("=="); // Start of the stripes section
+
+            for (int k = 0; k < 20; k++) { // Stripe length
+                 System.out.print("=");
+
+            }
+            System.out.println(); // New line for next row
+        }
+        
+           for (int i = 0; i < 3; i++) {
+            // Print the stars
+            for (int j = 0; j < 5; j++) {
+                System.out.print("* ");
+            }
+            if (i % 2 == 0) { // Alternate spacing for stars
+               
+            } else {
+                 System.out.print(" ");
+
+            }
+           
+
+            System.out.print("=="); // Start of the stripes section
+
+            for (int k = 0; k < 20; k++) { // Stripe length
+                 System.out.print("=");
+
+            }
+            System.out.println(); // New line for next row
+        }
+
+        // Print the stripes only section
+        for (int i = 0; i < 6; i++) {
+
+            System.out.print("=="); // Start of the stripes section
+
+            for (int k = 0; k < 20; k++) { // Stripe length
+                System.out.print("=");
+            }
+
+            System.out.println(); // New line for next row
+        }
+
+
+    }
+}

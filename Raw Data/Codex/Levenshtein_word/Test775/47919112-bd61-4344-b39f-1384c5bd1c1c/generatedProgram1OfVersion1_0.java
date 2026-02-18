@@ -1,0 +1,82 @@
+class Solution {
+    /**
+     * Rotates a string by a given offset.
+     *
+     * @param str   The string to rotate.
+     * @param offset The number of positions to rotate the string.
+     */
+    public void rotateString(String str, int offset) {
+        char[] charArray = str.toCharArray();
+        int len = charArray.length;
+
+        // Normalize the offset to be within the string length
+        offset = offset % len;
+        if (offset < 0) {
+            offset += len; // Handle negative offsets
+        }
+
+        // Reverse the entire string
+        reverse(charArray, 0, len - 1);
+        // Reverse the first 'offset' characters
+        reverse(charArray, 0, offset - 1);
+        // Reverse the remaining characters
+        reverse(charArray, offset, len - 1);
+
+
+         String rotatedString = new String(charArray);
+         System.out.println(rotatedString);
+
+
+    }
+
+    /**
+     * Reverses a portion of a character array in-place.
+     *
+     * @param arr The character array.
+     * @param start The starting index (inclusive).
+     * @param end   The ending index (inclusive).
+     */
+    public void reverse(char[] arr, int start, int end) {
+        while (start < end) {
+            char temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        String str1 = "abcdefg";
+        int offset1 = 2;
+        solution.rotateString(str1, offset1);  // Output: fgabcde
+
+        String str2 = "abcdefg";
+        int offset2 = -2;  // Rotate left
+        solution.rotateString(str2, offset2);  // Output: fgabcde
+
+
+
+        String str3 = "abcdefg";
+        int offset3 = 0; 
+        solution.rotateString(str3, offset3); // Output: abcdefg
+
+        String str4 = ""; // Empty string
+        int offset4 = 2;
+        solution.rotateString(str4, offset4); // Output: 
+
+
+        String str5 = "abcdefg";
+        int offset5 = 7; // Offset equal to string length
+        solution.rotateString(str5, offset5); // Output: abcdefg
+
+
+
+        String str6 = "abcdefg";
+        int offset6 = 9; // Offset greater than string length
+        solution.rotateString(str6, offset6); // Output: bcdefga (equivalent to offset 2)
+
+
+    }
+}

@@ -1,0 +1,45 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class LongestSubstringWithoutQuotes {
+
+    static void longestSubstring(String str) {
+        if (str == null || str.isEmpty()) {
+            System.out.println(0);
+            return;
+        }
+
+        int maxLength = 0;
+        int start = 0;
+        int end = 0;
+
+        while (start < str.length()) {
+            if (str.charAt(start) == '"') {  // Skip quote characters
+                start++;
+                continue;
+            }
+
+            end = start;
+            while (end < str.length() && str.charAt(end) != '"') {
+                end++;
+            }
+
+            maxLength = Math.max(maxLength, end - start);
+            start = end + (end < str.length() && str.charAt(end) == '"' ? 1 : 0); // Move past the quote if present
+        }
+
+        System.out.println(maxLength);
+    }
+
+    public static void main(String[] args) {
+        longestSubstring("abcdefgh"); // Output: 8
+        longestSubstring("ab\"cdef\"gh"); // Output: 2
+        longestSubstring("\"abcdefgh\""); // Output: 0
+        longestSubstring("ab\"cd\"ef\"gh\""); // Output: 2
+        longestSubstring(""); // Output: 0
+        longestSubstring(null); // Output: 0
+        longestSubstring("abc\"def"); // Output: 3
+
+
+    }
+}

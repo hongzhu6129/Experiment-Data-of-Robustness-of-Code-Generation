@@ -1,0 +1,21 @@
+
+
+
+Explanation and improvements in this version:
+
+1. **Error Handling:**  Includes a `try-catch` block to handle potential `IOExceptions` during file reading, providing a more robust solution.  It prints an informative error message if a problem occurs.
+
+2. **Command-Line Arguments:** The program now accepts the file names as command-line arguments, making it more practical to use. It checks for the correct number of arguments and prints usage instructions if needed.
+
+3. **Handles Different File Lengths:**  Addresses the case where one file is shorter than the other. After the loop, it checks if either `line1` or `line2` is null (indicating the end of one file) and sets `comparisonResult` appropriately.
+
+4. **Clearer Output:** Provides more descriptive output messages indicating which file comes first lexicographically or if they are equal.
+
+5. **Resource Management (try-with-resources):**  Uses try-with-resources to ensure that the `BufferedReader` objects are closed automatically, even if exceptions occur.  This is best practice for resource management.
+
+
+How to compile and run:
+
+1. **Save:** Save the code as `CompareFilesLexicographically.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using:
+   

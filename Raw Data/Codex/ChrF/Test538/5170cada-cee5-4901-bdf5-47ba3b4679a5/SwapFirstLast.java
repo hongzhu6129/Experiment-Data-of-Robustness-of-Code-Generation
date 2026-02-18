@@ -1,0 +1,39 @@
+public class SwapFirstLast {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] originalArray = {1, 2, 3, 4, 5};
+
+        if (originalArray.length < 1) {
+            System.out.println("Array length must be at least 1.");
+            return; // Exit if the array is too short.
+        }
+        
+        int[] newArray = new int[originalArray.length];
+
+        // Copy elements to the new array
+        for(int i=0; i < originalArray.length; i++){
+            newArray[i] = originalArray[i];
+        }
+
+        // Swap the first and last elements in the newArray
+        int temp = newArray[0];
+        newArray[0] = newArray[newArray.length - 1];
+        newArray[newArray.length - 1] = temp;
+
+        // Print the original and new arrays
+        System.out.print("Original Array: ");
+        printArray(originalArray);
+        System.out.print("New Array: ");
+        printArray(newArray); 
+
+    }
+
+    // Helper function to print an array
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}

@@ -1,0 +1,11 @@
+
+
+
+Key Improvements:
+
+* **Handles Null/Empty Input:** The `validate` method now gracefully handles null or empty input strings by returning the original string.
+* **StringBuilder for Efficiency:**  Using `StringBuilder` for string manipulation is much more efficient than repeated string concatenation, especially in loops. 
+* **Clearer Diphthong Checking:** The diphthong check is now more organized and easier to expand with additional diphthongs if needed.  I've added "oi" as an example.
+* **Case-Insensitive Check:** The `.equalsIgnoreCase()` method is used to handle diphthongs regardless of case (e.g., "AE", "ae", "Ae").
+* **Skip Next Character:** After replacing a diphthong, the code correctly skips the next character (which was the second part of the diphthong) to avoid processing it again.
+* **Example Usage in `main`:** The `main` method now demonstrates usage with a couple of different input strings and replacement characters, including the "oi" diphthong.

@@ -1,0 +1,20 @@
+
+
+
+**Explanation:**
+
+1. **`removeElement(int[] nums, int val)`:**
+   - Initializes `k` to 0. `k` will track the index of the next position to place a non-`val` element.
+   - Iterates through the input array `nums`.
+   - If the current element `nums[i]` is *not* equal to `val`, it copies that element to the `k`th position.  Then it increments `k`. This effectively overwrites any occurrences of `val` with the elements that should be kept.
+   - Returns the final value of `k`, which is the new length of the array (containing only elements not equal to `val`).
+
+2. **`main(String[] args)`:**
+   - Creates a sample array `nums` and sets the value to remove (`val`).
+   - Prints the original array.
+   - Calls `removeElement` to modify the array and get the new length.
+   - Prints the new length.
+   - Prints the modified array (up to the `newLength`).  The elements after `newLength` are still in the array, but they are no longer considered part of the "new" array after the removal operation.
+
+
+**Key Idea:** The algorithm doesn't actually delete elements from the array (Java arrays have a fixed size). It moves the desired elements to the beginning of the array and then returns the new effective length. This is an efficient in-place modification.

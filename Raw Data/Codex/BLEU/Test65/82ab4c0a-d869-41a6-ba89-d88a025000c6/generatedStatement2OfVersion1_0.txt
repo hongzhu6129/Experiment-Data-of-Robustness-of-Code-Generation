@@ -1,0 +1,64 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering various scenarios, including corner cases:
+
+1. **Normal Case:**
+   - lat1: 25
+   - lon1: 35
+   - lat2: 35.5
+   - lon2: 25.5
+   - Expected Output: ~1480.08 km (as given in the problem)
+
+2. **Same Coordinates:**
+   - lat1: 40
+   - lon1: -74
+   - lat2: 40
+   - lon2: -74
+   - Expected Output: 0 km
+
+3. **Antipodal Points (Opposite sides of Earth):**
+   - lat1: 40
+   - lon1: -74
+   - lat2: -40
+   - lon2: 106 
+   - Expected Output: ~20015.09 km  (approximately Earth's diameter)
+
+
+4. **North and South Poles:**
+   - lat1: 90 (North Pole)
+   - lon1: 0   (Longitude is irrelevant at poles)
+   - lat2: -90 (South Pole)
+   - lon2: 0   (Longitude is irrelevant at poles)
+   - Expected Output: ~20015.09 km (approximately Earth's diameter)
+
+
+5. **Points on the Equator:**
+   - lat1: 0
+   - lon1: 0
+   - lat2: 0
+   - lon2: 90
+   - Expected Output: ~10007.54 km (approximately one-quarter of Earth's circumference)
+
+6. **Points near the International Date Line:**
+   - lat1: 35
+   - lon1: 179
+   - lat2: 35
+   - lon2: -179
+   - Expected Output: ~222.65 km (relatively small distance because they are close despite being on opposite sides of the date line)
+
+7. **Invalid Input (Latitude out of range):**
+   - lat1: 100 (invalid)
+   - lon1: 0
+   - lat2: 0
+   - lon2: 0
+   - Expected Behavior:  The program should ideally handle this gracefully.  A `try-catch` block could be added to catch `IllegalArgumentException` if `Math.acos()` receives an invalid argument (outside -1 to 1), or you could validate the input before the calculation.
+
+8. **Zero Longitude and near the poles:**
+   - lat1: 89.9  (close to the north pole)
+   - lon1: 0
+   - lat2: 89.5 (close to the north pole)
+   - lon2: 180  (on the opposite side, but due to being close to the pole, the distance will be relatively small)
+
+These test cases cover various scenarios, including corner cases like poles, antipodal points, and points near the date line, to ensure the formula and the Java code handle them correctly.  Including input validation can further improve the robustness of your program.

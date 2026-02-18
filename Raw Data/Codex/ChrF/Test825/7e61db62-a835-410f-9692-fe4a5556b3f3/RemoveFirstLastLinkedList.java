@@ -1,0 +1,66 @@
+import java.util.LinkedList;
+
+public class RemoveFirstLastLinkedList {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add elements to the LinkedList
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+        linkedList.add("Grape");
+        linkedList.add("Mango");
+
+
+        // Print the original LinkedList
+        System.out.println("Original LinkedList: " + linkedList);
+
+        // Check if the list is empty or has only one element
+        if (linkedList.size() <= 1) {
+            linkedList.clear(); // Or handle it differently based on your requirements
+        } else {
+            // Remove the first element
+            linkedList.removeFirst();
+
+            // Remove the last element
+            linkedList.removeLast();
+        }
+
+
+
+        // Print the modified LinkedList
+        System.out.println("Modified LinkedList: " + linkedList);
+
+
+
+         // Test cases for edge conditions
+
+
+        // Empty list
+        LinkedList<String> emptyList = new LinkedList<>();
+        System.out.println("Original Empty List: " + emptyList);
+        if (emptyList.size() <= 1) {
+            emptyList.clear(); 
+        } else {
+            emptyList.removeFirst();
+            emptyList.removeLast();
+        }
+        System.out.println("Modified Empty List: " + emptyList);
+
+
+        // List with one element
+        LinkedList<String> oneElementList = new LinkedList<>();
+        oneElementList.add("Single");
+        System.out.println("Original One Element List: " + oneElementList);
+         if (oneElementList.size() <= 1) {
+            oneElementList.clear(); 
+        } else {
+            oneElementList.removeFirst();
+            oneElementList.removeLast();
+        }
+        System.out.println("Modified One Element List: " + oneElementList);
+
+    }
+}

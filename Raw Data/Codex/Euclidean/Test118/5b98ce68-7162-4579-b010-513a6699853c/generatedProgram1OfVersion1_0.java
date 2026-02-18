@@ -1,0 +1,42 @@
+import java.util.LinkedList;
+
+public class LinkedListFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Check if the list is empty
+        if (linkedList.isEmpty()) {
+            System.out.println("The linked list is empty.");
+        } else {
+            // Get the first element (without removing it) using peek() or getFirst()
+            String firstElement = linkedList.peek(); // or linkedList.getFirst();  Both work the same if the list is not empty.
+
+            System.out.println("The first element is: " + firstElement);
+
+
+            // Demonstrate that peek() / getFirst() doesn't remove the element
+            System.out.println("The linked list after peek()/getFirst(): " + linkedList);
+        }
+
+
+        // Example with an empty list:
+        LinkedList<Integer> emptyList = new LinkedList<>();
+        if (emptyList.isEmpty()) {
+             System.out.println("The empty list is empty."); // This will print.
+        } else {
+            // Using peek() on an empty list returns null; getFirst() throws NoSuchElementException
+            Integer first = emptyList.peek(); 
+            if (first == null) {
+                System.out.println("The empty list has no first element (peek() returned null).");
+            }
+        }
+
+    }
+}

@@ -1,0 +1,30 @@
+
+
+
+**Explanation:**
+
+1. **Initialization:**
+   - `n`: Stores the total number of coins.
+   - `currentRow`: Keeps track of the current row number (starts from 1).
+   - `coinsInRow`: Counts the number of coins placed in the current row.
+   - `coinsUsed`: Tracks the total number of coins used so far.
+
+2. **Outer Loop (while):**
+   - Continues as long as `coinsUsed` is less than `n` (we still have coins to place).
+
+3. **Inner Loop (for):**
+   - Iterates `currentRow` times (to place `currentRow` coins in the current row).
+   - **Conditional Check:** Inside the inner loop, we check `coinsUsed < n` to ensure we don't try to place more coins than available.
+   - **Print and Update:** If we have coins left, print an asterisk (`*`) representing a coin, increment `coinsUsed` and `coinsInRow`.
+   - **Break:** If we run out of coins, `break` out of the inner loop.
+
+4. **Newline:**
+   - After the inner loop, if `coinsInRow > 0` (meaning we placed coins in the current row), print a newline to move to the next row. This avoids printing extra newlines if the inner loop is broken due to insufficient coins.
+
+5. **Increment and Reset:**
+   - Increment `currentRow` to prepare for the next row.
+   - Reset `coinsInRow` to 0.
+
+
+**Example Output (n = 10):**
+

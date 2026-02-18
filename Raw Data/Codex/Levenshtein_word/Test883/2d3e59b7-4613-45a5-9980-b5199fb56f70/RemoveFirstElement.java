@@ -1,0 +1,48 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class RemoveFirstElement {
+
+    public static void main(String[] args) {
+        // Create a LinkedList (which implements Queue)
+        Queue<String> queue = new LinkedList<>();
+
+        // Add some elements to the queue
+        queue.offer("Apple");
+        queue.offer("Banana");
+        queue.offer("Cherry");
+        queue.offer("Date");
+
+
+        // Display the original queue
+        System.out.println("Original Queue: " + queue);
+
+
+        // Retrieve and remove the first element (head)
+        String firstElement = queue.poll();
+
+
+        // Display the first element (if it existed)
+        if (firstElement != null) {
+            System.out.println("Removed element: " + firstElement);
+        } else {
+            System.out.println("The queue was empty.");
+        }
+
+
+        // Display the updated queue
+        System.out.println("Queue after removal: " + queue);
+
+
+        // Example with an initially empty queue:
+        Queue<Integer> emptyQueue = new LinkedList<>();
+        Integer removedFromEmpty = emptyQueue.poll();
+        if (removedFromEmpty != null) {
+            System.out.println("Removed from empty: " + removedFromEmpty);
+        } else {
+            System.out.println("Empty queue is still empty after poll().");
+        }
+
+
+    }
+}

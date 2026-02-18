@@ -1,0 +1,39 @@
+
+
+
+**Test Cases:**
+
+**1. Basic Test:**
+
+* **Expected Output:**  Output should show the current time and the time one hour prior, formatted as "yyyy/MM/dd HH:mm:ss.SSS".  Verify visually that the times are correct and the previous time is indeed one hour earlier.
+
+**2. Daylight Savings Time Transition (Spring Forward):**
+
+* **Test Setup:** Run the program just before the DST transition (e.g., 1:59 AM on the day of the switch).  Then run it again just after the transition (e.g., 3:01 AM).
+* **Expected Output:** The previous time calculation should still be correct, accounting for the "missing" hour.  The difference between "now" and "previous time" should still be one hour.
+
+**3. Daylight Savings Time Transition (Fall Back):**
+
+* **Test Setup:** Run the program just before the DST transition (e.g., 1:59 AM on the day of the switch).  Then run it again just after the transition (e.g., 1:01 AM � note the time goes back).
+* **Expected Output:**  The previous time should correctly reflect the "repeated" hour. The difference between "now" and "previous time" should still be one hour.
+
+**4. Start of a new year/month/day:**
+
+* **Test Setup:** Run the program very close to midnight on December 31st, or at the end of any month/day.
+* **Expected Output:** The previous time calculation should correctly roll over to the previous day/month/year.
+
+**5. Edge Case - First Hour of the Day:**
+
+* **Test Setup:** Run the program shortly after midnight (e.g., 00:05).
+* **Expected Output:**  The previous time should correctly calculate the time in the previous day (23:05 on the previous day).
+
+
+
+**How to Run Test Cases 2, 3, and 4:**
+
+It's difficult to perfectly simulate DST transitions or new year/month changes without manipulating the system clock (which isn't recommended).  The best approach is to run your program close to these transition times and manually verify the output.  For more robust testing, you could use a mocking library to simulate the `LocalDateTime.now()` call and provide specific date/time values.
+
+
+**Example using JUnit for a simple test (Basic Test and Edge Case Test):**
+
+

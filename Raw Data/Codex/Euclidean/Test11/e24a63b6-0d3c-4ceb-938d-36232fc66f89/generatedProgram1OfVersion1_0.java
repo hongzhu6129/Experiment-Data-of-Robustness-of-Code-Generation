@@ -1,0 +1,37 @@
+class Solution {
+    /**
+     * Given an integer, display the factors of 3 in that integer.
+     * For example:
+     * test(12) -> 3
+     * test(15) -> 3
+     * test(18) -> 3, 3
+     * test(20) -> 
+     */
+    public static void main(String[] args) {
+        test(12);
+        test(15);
+        test(18);
+        test(20);
+        test(27); // Example with three factors of 3
+    }
+
+    public static void test(int n) {
+        int count = 0;
+        while (n > 0 && n % 3 == 0) {
+            count++;
+            n /= 3;
+        }
+
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                System.out.print("3");
+                if (i < count - 1) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        } else {
+            System.out.println(); // Print a newline for cases with no factors of 3
+        }
+    }
+}

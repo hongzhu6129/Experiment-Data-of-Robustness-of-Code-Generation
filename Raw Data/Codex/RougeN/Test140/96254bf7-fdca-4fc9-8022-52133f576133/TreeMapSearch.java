@@ -1,0 +1,53 @@
+import java.util.TreeMap;
+
+public class TreeMapSearch {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+        // Add some key-value pairs
+        treeMap.put("apple", 1);
+        treeMap.put("banana", 2);
+        treeMap.put("orange", 3);
+        treeMap.put("grape", 4);
+
+        // Key to search for
+        String keyToSearch = "orange";
+
+        // Check if the key exists
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key '" + keyToSearch + "' found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key '" + keyToSearch + "' not found in the TreeMap.");
+        }
+
+
+        // Example searching for a key that doesn't exist
+        keyToSearch = "pineapple";
+
+        if (treeMap.containsKey(keyToSearch)) {
+            System.out.println("Key '" + keyToSearch + "' found. Value: " + treeMap.get(keyToSearch));
+        } else {
+            System.out.println("Key '" + keyToSearch + "' not found in the TreeMap.");
+        }
+
+
+        // Using get() directly (returns null if key not found)
+        Integer value = treeMap.get("banana");
+        if (value != null) {
+            System.out.println("Key 'banana' found. Value: " + value);
+        } else {
+            System.out.println("Key 'banana' not found in the TreeMap.");
+
+        }
+
+           value = treeMap.get("mango"); // Key not present
+        if (value != null) {
+            System.out.println("Key 'mango' found. Value: " + value);
+        } else {
+            System.out.println("Key 'mango' not found in the TreeMap.");
+
+        }
+    }
+}

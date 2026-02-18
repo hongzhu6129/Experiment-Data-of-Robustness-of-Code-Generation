@@ -1,0 +1,31 @@
+class Solution {
+    /**
+     * Given an integer value, convert it to an absolute value.
+     *
+     * @param n The integer value to convert.
+     * @return The absolute value of n.
+     */
+    public static int convert(int n) {
+        if (n < 0) {
+            return -n;
+        }
+        return n;
+    }
+
+    public static void main(String[] args) {
+        int n = -5;
+        int absoluteValue = convert(n);
+        System.out.println(absoluteValue); // Output: 5
+
+
+        n = 10;
+        absoluteValue = convert(n);
+        System.out.println(absoluteValue); // Output: 10
+
+
+        n = 0;
+        absoluteValue = convert(n);
+        System.out.println(absoluteValue); // Output: 0
+
+    }
+}

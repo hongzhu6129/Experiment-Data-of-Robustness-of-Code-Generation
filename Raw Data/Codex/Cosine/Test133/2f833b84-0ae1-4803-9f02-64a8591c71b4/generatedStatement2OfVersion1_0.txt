@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Character Counting Array:**  Uses an `int[] count` of size 256 (for ASCII characters) to efficiently count character occurrences. This avoids repeated iterations through the string.
+
+2. **Cumulative Counts:** Calculates cumulative counts in the `count` array. This helps in directly calculating the number of smaller characters.
+
+3. **Factorial Calculation:** The `makefactorial` method is used to calculate factorials efficiently.
+
+4. **Simplified Rank Calculation:** The rank calculation loop is simplified using the cumulative counts and the factorial.
+
+5. **Handling Duplicates (Important):** The code now correctly handles strings with duplicate characters. After processing each character,  the counts of all characters smaller than or equal to the current character are decremented. This ensures that we don't overcount permutations.
+
+6. **Clarity and Comments:** Added comments to explain the logic and the purpose of each section.
+
+7. **Example Cases:** Included a few more examples in `main` to demonstrate the correctness.
+
+
+This improved version addresses the duplicate character issue, is more efficient, and is easier to understand.

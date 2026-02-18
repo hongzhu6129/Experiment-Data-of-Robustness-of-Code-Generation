@@ -1,0 +1,44 @@
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "World";
+        String str3 = "Java";
+
+        // Using endsWith() method
+        boolean endsWithStr2 = str1.endsWith(str2);
+        boolean endsWithStr3 = str1.endsWith(str3);
+
+        System.out.println("\"" + str1 + "\" ends with \"" + str2 + "\"? " + endsWithStr2);
+        System.out.println("\"" + str1 + "\" ends with \"" + str3 + "\"? " + endsWithStr3);
+
+
+
+        // Demonstrating without endsWith() for educational purposes
+        // (Less efficient, but shows string manipulation)
+        String str4 = "This is a test string";
+        String str5 = "string";
+
+        boolean endsWithStr5 = false;
+        if (str4.length() >= str5.length()) {
+            endsWithStr5 = str4.substring(str4.length() - str5.length()).equals(str5);
+        }
+        System.out.println("\"" + str4 + "\" ends with \"" + str5 + "\"? " + endsWithStr5);
+
+
+        // Handling null and empty strings
+         String str6 = null;
+         String str7 = "";
+         String str8 = "Example";
+
+         // These examples demonstrate safe ways to check for null or empty
+         // to avoid NullPointerExceptions.
+         System.out.println("\"" + str8 + "\" ends with \"" + str7 + "\"? " + (str8 != null && str8.endsWith(str7))); // True because all strings end with an empty string
+         System.out.println("\"" + str6 + "\" ends with \"" + str7 + "\"? " + (str6 != null && str6.endsWith(str7)));  // False because str6 is null
+         System.out.println("\"" + str7 + "\" ends with \"" + str8 + "\"? " + (str7 != null && str7.endsWith(str8))); // False because str7 is shorter than str8
+
+
+
+
+    }
+}

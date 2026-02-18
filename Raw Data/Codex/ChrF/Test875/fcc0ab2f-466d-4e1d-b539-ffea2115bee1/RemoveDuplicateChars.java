@@ -1,0 +1,50 @@
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemoveDuplicateChars {
+
+    public static void main(String[] args) {
+        String inputString = "programming";
+        String result = removeDuplicateChars(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("String after removing duplicates: " + result);
+
+
+        inputString = "aabcdddeffg"; // Example 2
+        result = removeDuplicateChars(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("String after removing duplicates: " + result);
+
+        inputString = "";  // Example 3 - Empty string
+        result = removeDuplicateChars(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("String after removing duplicates: " + result);
+
+
+        inputString = "aaaa";  // Example 4 - All same character
+        result = removeDuplicateChars(inputString);
+        System.out.println("Original string: " + inputString);
+        System.out.println("String after removing duplicates: " + result);
+
+
+
+    }
+
+    private static String removeDuplicateChars(String str) {
+        if (str == null || str.isEmpty()) { // Handle null or empty input
+            return str;
+        }
+
+        // Use a LinkedHashSet to maintain insertion order and remove duplicates
+        Set<Character> seenChars = new LinkedHashSet<>();
+        StringBuilder result = new StringBuilder();
+
+        for (char c : str.toCharArray()) {
+            if (seenChars.add(c)) { // add() returns true if element wasn't already present
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+}

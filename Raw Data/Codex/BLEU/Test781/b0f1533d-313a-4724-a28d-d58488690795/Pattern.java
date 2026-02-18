@@ -1,0 +1,11 @@
+public class Pattern {
+
+    public static void main(String[] args) {
+        System.out.println("j    a   v     v  a");
+        System.out.println("j   a a   v   v  a a");
+        System.out.println("j  a   a   v v  a   a");
+        System.out.println("jj aaaaa   v  aaaaa");
+        System.out.println(" jj a   a   v a   a");
+       // System.out.println("     a a        a a"); // The trailing "( a a" in the prompt seems like a typo.  This line adds the trailing characters, but I commented it out assuming it's unwanted. uncomment if needed.
+    }
+}

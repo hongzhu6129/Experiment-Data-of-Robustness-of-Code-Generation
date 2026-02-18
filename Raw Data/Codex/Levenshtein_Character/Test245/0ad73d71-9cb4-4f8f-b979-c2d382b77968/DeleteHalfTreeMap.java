@@ -1,0 +1,54 @@
+import java.util.TreeMap;
+
+public class DeleteHalfTreeMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+        treeMap.put(6, "Six");
+
+        System.out.println("Original TreeMap: " + treeMap);
+
+
+        int initialSize = treeMap.size();
+        int elementsToRemove = initialSize / 2; // Calculate half the size
+
+
+        // Remove elements.  Iterating directly while removing can be problematic, 
+        // so we create a copy of the keys.
+        Integer[] keys = treeMap.keySet().toArray(new Integer[0]);
+
+        for (int i = 0; i < elementsToRemove && i < keys.length; i++) { //safeguard against empty map
+            treeMap.remove(keys[i]);
+        }
+
+
+        System.out.println("TreeMap after removing half the elements: " + treeMap);
+
+
+         // Example 2:  Removing the larger half (demonstrates a different approach using the lastKey method)
+        treeMap.clear(); // Clear for the next example
+        treeMap.put(1, "One");
+        treeMap.put(2, "Two");
+        treeMap.put(3, "Three");
+        treeMap.put(4, "Four");
+        treeMap.put(5, "Five");
+
+        System.out.println("\nOriginal TreeMap (Example 2): " + treeMap);
+
+        initialSize = treeMap.size();
+        elementsToRemove = (int) Math.ceil(initialSize / 2.0); // Half rounded up
+
+        for(int i = 0; i < elementsToRemove && !treeMap.isEmpty(); i++) {
+            treeMap.remove(treeMap.lastKey()); // Remove from the end (largest key)
+        }
+        System.out.println("TreeMap after removing larger half: " + treeMap);
+
+
+    }
+}

@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class IterateArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Method 1: Using a for loop (index-based)
+        System.out.println("Using for loop (index-based):");
+        for (int i = 0; i < fruits.size(); i++) {
+            System.out.println(fruits.get(i));
+        }
+
+        // Method 2: Using an enhanced for loop (for-each loop)
+        System.out.println("\nUsing enhanced for loop:");
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        // Method 3: Using a while loop (index-based)
+        System.out.println("\nUsing while loop:");
+        int i = 0;
+        while (i < fruits.size()) {
+            System.out.println(fruits.get(i));
+            i++;
+        }
+
+
+        // Method 4: Using Java 8 streams and forEach
+        System.out.println("\nUsing Java 8 streams and forEach:");
+        fruits.stream().forEach(System.out::println);
+
+
+        // Example with an ArrayList of Integers (to show it works with other types)
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        System.out.println("\nIterating through an ArrayList of Integers:");
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+
+
+
+    }
+}

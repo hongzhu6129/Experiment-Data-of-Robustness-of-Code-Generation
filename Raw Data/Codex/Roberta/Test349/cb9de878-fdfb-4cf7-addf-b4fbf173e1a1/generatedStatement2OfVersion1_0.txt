@@ -1,0 +1,50 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner/edge cases:
+
+1. **Normal Case:**
+   - Input: `10 20 30`
+   - Expected Output: `20.0`
+
+2. **Decimal Numbers:**
+   - Input: `2.5 5.7 8.8`
+   - Expected Output: `5.666666666666667`
+
+3. **Negative Numbers:**
+   - Input: `-5 10 15`
+   - Expected Output: `6.666666666666667`
+
+4. **All Zeros:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Combination of Positive, Negative, and Zero:**
+   - Input: `-10 0 10`
+   - Expected Output: `0.0`
+
+
+
+7. **Invalid Input (Edge Case):**
+   - Input: `10 a 20`
+   - Expected Output: `"Invalid input. Please enter numbers only."`
+
+8. **Overflow (Edge Case - less likely with doubles but good to consider with integers):**  If you were using `int` instead of `double`, extremely large numbers could lead to overflow. Since we're using `double`, the range is much larger and overflow is less of a concern.  However, you could still test with `Double.MAX_VALUE`, `Double.MIN_VALUE` and see how the program handles very large or very small doubles that approach Infinity or -Infinity.
+   - Input: `Double.MAX_VALUE Double.MAX_VALUE Double.MAX_VALUE` (or similar using `MIN_VALUE`)
+   - Expected Output: `Infinity` (or possibly an exception depending on how Java handles this specific overflow scenario)
+
+
+
+**How to run the test cases (using command-line):**
+
+1. Save the code as `AverageCalculator.java`.
+2. Compile: `javac AverageCalculator.java`
+3. Run with input redirection: `java AverageCalculator < test_case.txt`
+
+Where `test_case.txt` contains the input numbers, one set per line, like this:
+

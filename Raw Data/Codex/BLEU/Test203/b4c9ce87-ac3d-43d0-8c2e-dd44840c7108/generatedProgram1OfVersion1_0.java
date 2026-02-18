@@ -1,0 +1,77 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<Integer, String> studentScores = new TreeMap<>();
+
+        // Populate the map with some sample data
+        studentScores.put(10, "Alice");
+        studentScores.put(20, "Bob");
+        studentScores.put(30, "Charlie");
+        studentScores.put(40, "David");
+        studentScores.put(50, "Eve");
+        studentScores.put(60, "Frank");
+
+        // Define the start and end keys for the submap
+        int startKey = 20; // Inclusive
+        int endKey = 50;   // Exclusive
+
+        // Method 1: subMap (inclusive start, exclusive end)
+        NavigableMap<Integer, String> subMap1 = studentScores.subMap(startKey, true, endKey, false);
+
+        System.out.println("Submap (inclusive start, exclusive end):");
+        printMap(subMap1); // Output: {20=Bob, 30=Charlie, 40=David}
+
+
+
+        // Method 2: headMap (keys less than or equal to a given key)
+        NavigableMap<Integer, String> subMap2 = studentScores.headMap(endKey, false); // Exclusive end
+
+
+        if (startKey > studentScores.firstKey()) { // Avoid unnecessary subMap if startKey is the first key
+             subMap2 = subMap2.tailMap(startKey, true); // Inclusive start
+        }
+
+        System.out.println("\nSubmap using headMap and tailMap (inclusive start, exclusive end):");
+        printMap(subMap2);  // Output: {20=Bob, 30=Charlie, 40=David}
+
+
+
+
+        // Method 3: tailMap (keys greater than or equal to a given key) combined with headMap
+        NavigableMap<Integer, String> subMap3 = studentScores.tailMap(startKey, true);  // inclusive start
+
+        if (endKey < studentScores.lastKey()) { //Avoid unnecessary subMap if endKey is the last key
+            subMap3 = subMap3.headMap(endKey, false); // Exclusive end
+        }
+
+
+        System.out.println("\nSubmap using tailMap and headMap (inclusive start, exclusive end):");
+        printMap(subMap3); // Output: {20=Bob, 30=Charlie, 40=David}
+
+
+        // Important Note: Changes to the submap affect the original map!
+        subMap1.put(25, "Zara");  // This will also add Zara to the original studentScores map
+
+
+        System.out.println("\nOriginal map after modification through submap:");
+        printMap(studentScores); //  Notice Zara has been added.
+
+
+
+    }
+
+
+    // Helper function to print the map
+    public static void printMap(NavigableMap<Integer, String> map) {
+        for (Integer key : map.keySet()) {
+            System.out.println(key + "=" + map.get(key));
+        }
+    }
+
+}
+
+

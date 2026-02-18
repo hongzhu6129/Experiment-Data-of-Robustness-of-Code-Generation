@@ -1,0 +1,30 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Horner's Method:** The core of the efficient polynomial evaluation is Horner's method.  It minimizes the number of multiplications. The code implements this method within the `polyEval` function.
+
+2. **Clearer Variable Names:**  I've used more descriptive variable names (`coefficients`, `x`, `result`) to enhance readability.
+
+3. **Example Usage in `main`:** The `main` method demonstrates how to use the `polyEval` function with sample coefficients and x values. This makes the code easier to understand and test.
+
+4. **Flexibility:** The code now accepts a `List<Double>` of coefficients. This allows it to handle polynomials of any degree (as long as they fit in memory).
+
+5. **Comments:**  Added comments to explain the logic and purpose of the code segments.
+
+6. **Error Handling (Optional):**  For a more robust solution, you could add error handling (e.g., checking if the `coefficients` list is empty).
+
+
+**How Horner's Method Works (in the code):**
+
+Let's take the polynomial -19 + 7x - 4x^2 + 6x^3 and x = 3:
+
+1. **Initialization:** `result = 0.0`
+
+2. **Loop 1 (i = 3):** `result = 0.0 * 3 + 6 = 6`
+3. **Loop 2 (i = 2):** `result = 6 * 3 + (-4) = 14`
+4. **Loop 3 (i = 1):** `result = 14 * 3 + 7 = 49`
+5. **Loop 4 (i = 0):** `result = 49 * 3 + (-19) = 128`
+
+Therefore, the final result is 32.  This is equivalent to the nested parentheses evaluation but much more efficient.

@@ -1,0 +1,28 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SingleNumberFinder {
+
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 10, 20, 30, 40, 40, 30, 50};
+        int singleNumber = getSingleNumber(arr);
+        System.out.println(singleNumber + " appears only once");
+    }
+
+    public static int getSingleNumber(int[] arr) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+
+        // This should ideally never be reached given the problem constraints
+        return -1; 
+    }
+}

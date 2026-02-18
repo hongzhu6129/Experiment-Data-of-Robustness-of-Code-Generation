@@ -1,0 +1,28 @@
+
+
+**Test Cases:**
+
+Here are some test cases covering normal scenarios and corner/edge cases:
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30  **Expected Output:** 20.0
+2. **Input:** 5.5, 10.5, 15.0  **Expected Output:** 10.333333333333334
+3. **Input:** -5, 0, 5  **Expected Output:** 0.0
+
+**Edge/Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  **Expected Output:**  (Will likely overflow and give an incorrect result � this tests overflow handling)
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE **Expected Output:** (Will likely underflow and give an incorrect result � tests underflow handling)
+6. **Input:** Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE **Expected Output:** Double.POSITIVE_INFINITY (Correct behavior according to floating-point arithmetic rules)
+7. **Input:** Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE **Expected Output:**  A very small positive double near zero.
+8. **Input:** 0, 0, 0  **Expected Output:** 0.0
+9. **Input:** -10, -20, -30 **Expected Output:** -20.0
+
+
+
+**How to Run the Test Cases (Example using JUnit):**
+
+While you can manually check the outputs, a more robust approach is to use a testing framework like JUnit. Here�s how you might structure a JUnit test class:
+
+

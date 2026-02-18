@@ -1,0 +1,42 @@
+import java.util.PriorityQueue;
+import java.util.Arrays;
+
+public class PriorityQueueToArray {
+
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+        // Add elements to the PriorityQueue
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(8);
+        priorityQueue.add(3);
+        priorityQueue.add(6);
+
+        // Convert the PriorityQueue to an array using toArray()
+        Integer[] arr1 = priorityQueue.toArray(new Integer[0]); // Recommended approach
+
+        // Alternatively (less efficient, especially for large queues):
+        // Create an array of the correct size
+        Integer[] arr2 = new Integer[priorityQueue.size()]; 
+        // Iterate through the PriorityQueue and populate the array (note: this *doesn't* preserve priority order)
+        int i = 0;
+        for (Integer element : priorityQueue) {
+            arr2[i++] = element;
+        }
+
+
+        // Print the arrays
+        System.out.println("Array 1 (using toArray with generics): " + Arrays.toString(arr1));
+        System.out.println("Array 2 (using iteration): " + Arrays.toString(arr2));
+
+
+        // Demonstrate that iterating through PriorityQueue doesn't reflect priority order
+        System.out.print("PriorityQueue elements (natural order retrieval): ");
+         while (!priorityQueue.isEmpty()) {
+            System.out.print(priorityQueue.poll() + " "); // poll retrieves and removes head (smallest element)
+        }
+        System.out.println();
+    }
+}

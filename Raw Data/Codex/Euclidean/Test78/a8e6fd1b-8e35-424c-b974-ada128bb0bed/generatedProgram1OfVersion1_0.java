@@ -1,0 +1,61 @@
+class Solution {
+    /**
+     * Given two strings, haystack and needle, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+     *
+     * Example 1:
+     * Input: haystack = "sadbutsad", needle = "sad"
+     * Output: 0
+     * Explanation: "sad" occurs at index 0 and 6.
+     * The first occurrence is at index 0, so we return 0.
+     *
+     * Example 2:
+     * Input: haystack = "leetcode", needle = "leeto"
+     * Output: -1
+     * Explanation: "leeto" did not occur in "leetcode", so we return -1.
+     *
+     * Constraints:
+     * 1 <= haystack.length, needle.length <= 104
+     * haystack and needle consist of only lowercase English characters.
+     */
+    public int strStr(String haystack, String needle) {
+        if (needle.isEmpty()) {
+            return 0;
+        }
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            if (haystack.substring(i, i + needle.length()).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String haystack1 = "sadbutsad";
+        String needle1 = "sad";
+        int result1 = solution.strStr(haystack1, needle1);
+        System.out.println("Result 1: " + result1); // Expected: 0
+
+        String haystack2 = "leetcode";
+        String needle2 = "leeto";
+        int result2 = solution.strStr(haystack2, needle2);
+        System.out.println("Result 2: " + result2); // Expected: -1
+
+
+        String haystack3 = "hello";
+        String needle3 = "";
+        int result3 = solution.strStr(haystack3, needle3);
+        System.out.println("Result 3: " + result3); // Expected: 0
+
+        String haystack4 = "aaa";
+        String needle4 = "aaaa";
+        int result4 = solution.strStr(haystack4, needle4);
+        System.out.println("Result 4: " + result4); // Expected: -1
+
+        String haystack5 = "";
+        String needle5 = "";
+        int result5 = solution.strStr(haystack5, needle5);
+        System.out.println("Result 5: " + result5); // Expected: 0        
+    }
+}

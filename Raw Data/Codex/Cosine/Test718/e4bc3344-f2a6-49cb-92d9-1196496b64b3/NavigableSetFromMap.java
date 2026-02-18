@@ -1,0 +1,44 @@
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.NavigableSet;
+import java.util.TreeMap;
+
+public class NavigableSetFromMap {
+
+    public static void main(String[] args) {
+
+        // Create a TreeMap (which implements NavigableMap)
+        NavigableMap<String, Integer> studentScores = new TreeMap<>();
+
+        // Populate the map
+        studentScores.put("Alice", 95);
+        studentScores.put("Bob", 88);
+        studentScores.put("Charlie", 75);
+        studentScores.put("David", 92);
+        studentScores.put("Eve", 85);
+
+        // Get a NavigableSet view of the keys
+        NavigableSet<String> studentNames = studentScores.navigableKeySet();
+
+        // Print the NavigableSet
+        System.out.println("NavigableSet of student names: " + studentNames);
+
+        // Demonstrate some NavigableSet operations (optional)
+        System.out.println("First student (alphabetically): " + studentNames.first());
+        System.out.println("Last student (alphabetically): " + studentNames.last());
+        System.out.println("Students before 'David' (exclusive): " + studentNames.headSet("David", false)); 
+        System.out.println("Students from 'Bob' to 'Eve' (inclusive): " + studentNames.subSet("Bob", true, "Eve", true));
+
+
+        // Example with a regular Map (HashMap - which does not implement NavigableMap directly)
+        Map<Integer, String> productPrices = new TreeMap<>(); // Using TreeMap for demonstration, even though not strictly necessary forkeySet()
+        productPrices.put(1, "Laptop");
+        productPrices.put(2, "Mouse");
+        productPrices.put(3, "Keyboard");
+
+        // Get a regular Set view of the keys (not NavigableSet)
+        java.util.Set<Integer> productIds = productPrices.keySet(); 
+        System.out.println("Set of product IDs: " + productIds); // This is a regular Set, not a NavigableSet.
+
+    }
+}

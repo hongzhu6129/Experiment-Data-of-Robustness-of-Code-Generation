@@ -1,0 +1,38 @@
+public class MergeSortedArrays {
+
+    public static void main(String[] args) {
+        int[] array1 = {1, 2, 3, 4};
+        int[] array2 = {2, 5, 7, 8};
+
+        int n1 = array1.length;
+        int n2 = array2.length;
+        int[] result = new int[n1 + n2];
+
+        int i = 0, j = 0, k = 0;
+
+        while (i < n1 && j < n2) {
+            if (array1[i] <= array2[j]) {
+                result[k++] = array1[i++];
+            } else {
+                result[k++] = array2[j++];
+            }
+        }
+
+        while (i < n1) {
+            result[k++] = array1[i++];
+        }
+
+        while (j < n2) {
+            result[k++] = array2[j++];
+        }
+
+        System.out.print("result = [");
+        for (int l = 0; l < result.length; l++) {
+            System.out.print(result[l]);
+            if (l < result.length - 1) {
+                System.out.print(",");
+            }
+        }
+        System.out.println("]");
+    }
+}

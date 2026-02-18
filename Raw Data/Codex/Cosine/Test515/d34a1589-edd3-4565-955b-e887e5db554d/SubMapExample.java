@@ -1,0 +1,58 @@
+import java.util.NavigableMap;
+import java.util.TreeMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (NavigableMap implementation)
+        NavigableMap<Integer, String> originalMap = new TreeMap<>();
+
+        // Populate the map with some data
+        originalMap.put(1, "One");
+        originalMap.put(2, "Two");
+        originalMap.put(3, "Three");
+        originalMap.put(4, "Four");
+        originalMap.put(5, "Five");
+        originalMap.put(6, "Six");
+        originalMap.put(7, "Seven");
+
+
+        // Define the start and end keys for the submap (inclusive)
+        int startKey = 2;
+        int endKey = 5;
+
+
+        // Get the submap.  The submap is backed by originalMap,
+        // so changes in the submap are reflected in the original map, and vice-versa.
+        NavigableMap<Integer, String> subMap = originalMap.subMap(startKey, true, endKey, true);
+
+
+        // Print the submap
+        System.out.println("Submap (inclusive):");
+        printMap(subMap);
+
+        // Demonstrate that changes in the submap affect the original map
+        subMap.put(3, "Three Modified");
+        System.out.println("\nOriginal map after modification through submap:");
+        printMap(originalMap);
+
+        //  Example of an exclusive submap:
+        NavigableMap<Integer, String> exclusiveSubMap = originalMap.subMap(startKey, false, endKey, false);
+        System.out.println("\nSubmap (exclusive):");
+        printMap(exclusiveSubMap);
+
+
+        // Example handling edge cases:
+        try {
+            NavigableMap<Integer, String> invalidSubMap = originalMap.subMap(5, true, 2, true); // Throws IllegalArgumentException
+        } catch (IllegalArgumentException e) {
+            System.out.println("\nCaught expected exception: " + e.getMessage()); // fromKey > toKey
+        }
+    }
+
+    private static void printMap(NavigableMap<Integer, String> map) {
+        for (Integer key : map.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + map.get(key));
+        }
+    }
+}

@@ -1,0 +1,24 @@
+
+
+**Test Cases:**
+
+These test cases are more about verifying the *behavior* and output of the code than unit testing specific functions (as the core functionality relies on the Java library).  You'd typically observe the output and check for expected patterns.
+
+1. **Basic Functionality:**
+   - Run the program and verify that it prints a list of charset names and their display names.  The output should be substantial, reflecting the numerous available charsets.
+
+2. **Alias Check:**
+   - Verify that for charsets with aliases (e.g., "UTF-8"), the aliases are correctly printed.
+
+3. **Platform Independence (As Much as Possible):**
+    -  Run the code on different operating systems (Windows, macOS, Linux) or Java environments (different JDK versions) to observe if there are any variations in the reported charsets.  While the core charsets should be consistent, some platform-specific charsets might appear or disappear.
+
+4. **Empty Map (Corner Case - Highly Unlikely):**
+   - While extremely unlikely, you could simulate a scenario where `Charset.availableCharsets()` returns an empty map (perhaps by mocking or manipulating the system environment in a test).  Your code should gracefully handle this by printing "Total available charsets: 0" and not throwing exceptions.  (This is more of a theoretical test for robustness.)
+
+5. **Charset Name Case-Insensitivity:**
+   - Although `Charset.availableCharsets()` returns a `SortedMap` (typically case-sensitive), charset names themselves should be handled in a case-insensitive manner.  You could add a test where you try to retrieve a charset using different capitalization (e.g., "UTF-8" vs. "utf-8") and verify that it returns the same `Charset` object.  (This confirms that the underlying `Charset` lookup mechanism is case-insensitive).
+
+
+Example of a small additional test demonstrating case-insensitivity (put this in your `main` method):
+

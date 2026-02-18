@@ -1,0 +1,14 @@
+
+
+
+Key Improvements:
+
+1. **Handles Edge Cases:** The code now correctly handles empty (`{}`) and `null` input arrays. It returns 0 for both and avoids `NullPointerExceptions`.
+2. **Clearer Output:**  The `main` method uses `Arrays.copyOfRange()` to print only the updated portion of the array after removing duplicates.  This makes the output much easier to understand.
+3. **More Test Cases:** Added more test cases in `main` (empty and null arrays) to demonstrate robust handling.
+4. **Comments:**  Improved code comments for better readability and explanation.
+
+
+How it works:
+
+The `removeDuplicates` method uses a two-pointer approach. `k` keeps track of the index where the next unique element should be placed, and `i` iterates through the array. When a new unique element is encountered (`nums[i] != nums[i - 1]`), it's copied to the `k` position, and `k` is incremented.  This effectively overwrites duplicate elements. Finally, `k` is returned, which represents the new length of the array with only unique elements.

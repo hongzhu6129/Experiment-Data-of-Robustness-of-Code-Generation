@@ -1,0 +1,18 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:** The code now includes input validation to check if `n` and `k` are non-negative.  It prints an error message if they are negative.
+
+2. **Efficiency:** The  `if (k > n / 2)`  condition optimizes the calculation.  The binomial coefficient C(n, k) is equal to C(n, n-k).  By ensuring that `k` is always the smaller of the two, we reduce the number of iterations in the loop.
+
+3. **Clarity and Readability:** Comments have been added to explain the logic and the purpose of the optimization.  Variable names are more descriptive (`result` instead of just `res`).
+
+4. **User Input:**  The `main` method now uses a `Scanner` to get input from the user, making the program interactive.
+
+5. **Integer Overflow Handling (Important):**  The multiplication within the loop is performed carefully to avoid integer overflow as much as possible.  By multiplying by `(n - i + 1)` before dividing by `i`, we ensure we're always dividing by the smallest possible value, reducing the risk of exceeding the limits of `long`.  However, for very large `n` and `k`, `long` could still overflow.  If truly massive numbers are required, consider using `BigInteger`.
+
+
+Example Usage:
+

@@ -1,0 +1,26 @@
+
+
+
+Explanation:
+
+1. **Create a TreeSet:** We create a `TreeSet` of strings.  TreeSets automatically store elements in sorted order (natural ordering for Strings, or using a Comparator).
+
+2. **Add Elements:** We add some strings to the `TreeSet`.
+
+3. **Check for Empty Set:** Before attempting to retrieve or remove elements, it's crucial to check if the `TreeSet` is empty using `isEmpty()`. This prevents `NoSuchElementException` if you try to get the first element from an empty set.
+
+4. **Retrieve First Element:**  `treeSet.first()` returns the first (smallest) element in the `TreeSet`.
+
+5. **Remove First Element:** `treeSet.remove(firstElement)` removes the specified element from the `TreeSet`.
+
+6. **Print Results:** We print the retrieved element and the modified `TreeSet`.
+
+7. **`pollFirst()` Demonstration:** The code also demonstrates the `pollFirst()` method, which retrieves and removes the first element in one step. It returns `null` if the `TreeSet` is empty, providing a convenient way to handle empty sets.
+
+
+Key improvements in this version:
+
+- **Empty Set Handling:**  The code now explicitly checks for an empty `TreeSet` before retrieving or removing elements, preventing potential exceptions.
+- **`pollFirst()` Example:** The code shows how to use `pollFirst()` for a more concise way to get and remove the first element, including handling the empty set case.
+- **Clearer Explanations:** The comments and explanations are more detailed, making the educational aspect stronger.
+- **More Robust:** By handling edge cases (empty sets), the code is more robust and less prone to errors.

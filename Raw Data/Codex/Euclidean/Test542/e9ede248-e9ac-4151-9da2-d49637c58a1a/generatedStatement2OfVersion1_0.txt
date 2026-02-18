@@ -1,0 +1,28 @@
+
+
+
+**Explanation:**
+
+1. **`main` method:**
+   - Contains several test strings to demonstrate the `validate` method.
+   - Prints the result of the validation for each test string.
+
+2. **`validate` method:**
+   - Takes a `String` as input.
+   - Handles `null` or empty input strings (you can modify this part to throw an exception or return a different value if needed).
+   - **Uses a regular expression:** The core of the validation is the `str.matches("^-?[0-9]+(\\.[0-9]+)?.*")`  part. Let's break down this regular expression:
+     - `^`: Matches the beginning of the string.
+     - `-?`: Matches an optional minus sign (for negative numbers).
+     - `[0-9]+`: Matches one or more digits.
+     - `(\\.[0-9]+)?`: This part is optional (because of the `?`). It matches a decimal point followed by one or more digits.  The `\\.` escapes the dot because `.` has a special meaning in regular expressions.
+     - `.*`: Matches any remaining characters after the initial number (or decimal number).  This allows the string to have other characters after the number.
+
+   - `String.valueOf(...)`:  Converts the boolean result of the `matches()` method to a string ("true" or "false").
+
+
+**Key Improvements:**
+
+- **Handles decimals:** The regular expression now correctly identifies strings that start with decimal numbers (e.g., "1.23abc").
+- **Handles negative numbers:**  The regular expression now correctly identifies strings that start with negative numbers (e.g., "-123abc").
+- **Clearer regular expression:**  The use of `^-?` makes the negative number handling more explicit.
+- **Handles `null` or empty input:** The method now handles these cases, preventing potential `NullPointerExceptions`.

@@ -1,0 +1,63 @@
+import java.util.TreeMap;
+import java.util.SortedMap;
+
+public class SubMapExample {
+
+    public static void main(String[] args) {
+        // Create a TreeMap (you can use other SortedMap implementations too)
+        TreeMap<String, Integer> map = new TreeMap<>();
+
+        // Populate the map with some data
+        map.put("Apple", 1);
+        map.put("Banana", 2);
+        map.put("Cherry", 3);
+        map.put("Date", 4);
+        map.put("Fig", 5);
+        map.put("Grape", 6);
+
+
+        // Define the start and end keys for the submap (inclusive)
+        String fromKey = "Cherry";  
+        String toKey = "Fig";
+
+
+        // Get the submap using subMap()
+        SortedMap<String, Integer> subMap = map.subMap(fromKey, true, toKey, true);  // Inclusive
+
+
+         // Print the original map
+        System.out.println("Original Map: " + map);
+
+        // Print the submap
+        System.out.println("Submap: " + subMap);
+
+
+
+
+        // Example with exclusive end key
+        SortedMap<String, Integer> subMapExclusive = map.subMap(fromKey, true, toKey, false); // Exclusive end
+
+        System.out.println("Submap (Exclusive End): " + subMapExclusive); // Won't include "Fig"
+
+
+
+
+        // Handle cases where keys might not be present
+        String fromKey2 = "Banana";
+        String toKey2 = "Kiwi"; // Not in the map
+
+        SortedMap<String, Integer> subMap2 = map.subMap(fromKey2, true, toKey2, true); // Will go up to the last key
+
+        System.out.println("Submap with non-existent end key: " + subMap2); // Will contain "Grape" as the last
+
+
+
+        // What if the fromKey is greater than the toKey (or they are equal and exclusive)
+        try {
+            SortedMap<String, Integer> invalidSubMap = map.subMap("Fig", true, "Cherry", true); //IllegalArgumentException
+            System.out.println("Invalid submap:" + invalidSubMap); // Will not reach here because of the exception.
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage()); //  fromKey is greater than or equal to toKey
+        }
+    }
+}

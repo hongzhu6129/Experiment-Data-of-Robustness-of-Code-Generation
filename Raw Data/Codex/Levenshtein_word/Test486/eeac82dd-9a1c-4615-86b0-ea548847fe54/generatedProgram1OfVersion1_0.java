@@ -1,0 +1,78 @@
+class Node {
+    char data;
+    Node left, right;
+
+    Node(char item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+public class SubtreeCheck {
+
+    // Method signature to check if tree2 is a subtree of tree1
+    public static boolean isSubtree(Node t1, Node t2) {
+
+        // Base Cases: 
+        if (t2 == null) {
+            return true; // An empty tree is always a subtree
+        }
+
+        if (t1 == null) {
+            return false; // t1 is empty but t2 is not, so t2 cannot be a subtree
+        }
+
+        // Check if t2 is identical to a subtree starting at the root of t1
+        if (areIdentical(t1, t2)) {
+            return true; 
+        }
+
+        // Recursively check the left and right subtrees of t1
+        return isSubtree(t1.left, t2) || isSubtree(t1.right, t2);
+    }
+
+
+    // Method signature to check if two trees are identical
+    public static boolean areIdentical(Node root1, Node root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+
+
+        return (root1.data == root2.data &&
+                areIdentical(root1.left, root2.left) &&
+                areIdentical(root1.right, root2.right));
+
+    }
+
+    public static void main(String args[]) {
+        // Construct the larger tree (t1)
+        Node t1 = new Node('x');
+        t1.left = new Node('x');
+        t1.right = new Node('y');
+        t1.left.left = new Node('z');
+
+
+
+        // Construct the smaller tree (t2)
+        Node t2 = new Node('x');
+        t2.left = new Node('y');
+        t2.right= new Node('z');
+
+
+        System.out.println("original strings: xxyz yxzx " + isSubtree(t1, t2));
+
+        //Example 2 where t2 IS a subtree of t1
+        Node t3 = new Node('x');
+        t3.left = new Node('z');
+
+        System.out.println("original strings: xxyz xz " + isSubtree(t1, t3));
+
+
+
+    }
+}

@@ -1,0 +1,24 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **`is_Prime(long n)` Efficiency:** The `is_Prime` method is optimized by:
+   - Checking only up to the square root of `n` in the loop. If a number has a divisor greater than its square root, it must also have a divisor smaller than its square root.
+   - Handling the base cases `n <= 1` effectively.
+
+2. **`findTwinPrimes(int limit)` Optimization:**
+   - The loop starts at 3 and increments by 2. Since twin primes are pairs of prime numbers that differ by 2, we only need to check odd numbers (except for the special case of (3, 5)). This significantly reduces the number of primality tests needed.
+   - It calls `is_Prime()` twice within the loop.  
+
+3. **Clarity:**  The code now includes a `findTwinPrimes` function to separate the logic of finding twin primes from the `main` method, improving readability.  Output is clearly labeled.
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `TwinPrimes.java`.
+2. **Compile:** Open a terminal or command prompt and navigate to the directory where you saved the file. Then compile using: `javac TwinPrimes.java`
+3. **Run:**  Execute the compiled code: `java TwinPrimes`
+
+The output will be:
+

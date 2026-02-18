@@ -1,0 +1,39 @@
+
+
+**Test Cases:**
+
+1. **Valid Binary Number:**
+   - Input: `1101`
+   - Expected Output: `Hexadecimal value: d`
+
+2. **Valid Binary Number with Leading Zeros:**
+   - Input: `0001101`
+   - Expected Output: `Hexadecimal value: d`
+
+3. **Binary Number with only Zeros:**
+   - Input: `0`
+   - Expected Output: `Hexadecimal value: 0`
+
+4. **Empty Input:**
+   - Input: `` (just press enter)
+   - Expected Output: `Invalid input.` (This handles the `NumberFormatException` gracefully)
+
+5. **Invalid Binary Number (contains characters other than 0 or 1):**
+   - Input: `110a1`
+   - Expected Output: `Invalid binary number.`
+
+6. **Large Binary Number:**
+   - Input: `1111111111111111` (16 ones, equivalent to 65535 in decimal, FFFF in hex)
+   - Expected Output: `Hexadecimal value: ffff`
+
+7. **Very Large Binary Number (to test for potential overflow issues, though `int` should handle this):**
+  - Input: `11111111111111111111111111111111` (32 ones)
+  - Expected Output:  `Hexadecimal value: ffffffff`
+
+
+8. **Boundary case (largest possible binary input for int):**
+   - Input:  A string of 31 '1's.
+   - Expected Output: `Hexadecimal value: 7fffffff`
+
+
+These test cases cover a range of scenarios, including valid inputs, invalid inputs, boundary conditions, and edge cases, ensuring that the program is robust and handles various situations correctly.  Remember to run your program with these inputs to verify its behavior.

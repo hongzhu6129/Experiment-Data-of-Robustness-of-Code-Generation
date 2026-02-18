@@ -1,0 +1,55 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+public class HashSetToArray {
+
+    public static void main(String[] args) {
+
+        // 1. Create a HashSet
+        Set<String> hashSet = new HashSet<>();
+        hashSet.add("apple");
+        hashSet.add("banana");
+        hashSet.add("orange");
+        hashSet.add("grape");
+
+        System.out.println("HashSet: " + hashSet);
+
+        // 2. Convert HashSet to an array using toArray() with type parameter
+        String[] stringArray = hashSet.toArray(new String[0]); 
+
+        System.out.println("String Array (using toArray() with type parameter): " + Arrays.toString(stringArray));
+
+
+        // 3. Convert HashSet to an array using toArray() without type parameter (less safe)
+        Object[] objectArray = hashSet.toArray(); // Returns an Object[]
+
+        System.out.println("Object Array (using toArray() without type parameter): " + Arrays.toString(objectArray));
+
+
+        // 4.  Manually copy elements to an array (demonstration - less efficient)
+        String[] manualArray = new String[hashSet.size()];
+        int i = 0;
+        for (String fruit : hashSet) {
+            manualArray[i++] = fruit;
+        }
+
+        System.out.println("String Array (manual copy): " + Arrays.toString(manualArray));
+
+
+        // Example with Integers:
+        Set<Integer> integerHashSet = new HashSet<>();
+        integerHashSet.add(1);
+        integerHashSet.add(2);
+        integerHashSet.add(3);
+
+        Integer[] integerArray = integerHashSet.toArray(new Integer[0]); // Note Integer[] for the type
+        System.out.println("Integer Array: " + Arrays.toString(integerArray));
+
+
+        //Important Note:  The preferred and safest method is using toArray(T[] a) with the type parameter
+        // as shown in examples 2 and the integer example. It ensures type safety and avoids unnecessary casting.
+
+
+    }
+}

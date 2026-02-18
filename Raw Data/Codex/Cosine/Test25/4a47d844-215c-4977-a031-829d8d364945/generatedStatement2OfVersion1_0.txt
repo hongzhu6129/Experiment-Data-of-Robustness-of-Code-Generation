@@ -1,0 +1,14 @@
+
+
+
+**Explanation and Improvements:**
+
+1. **Clearer Output:** The code now uses `System.out.println` for regular output and `System.err.println` for error messages.  This makes it easier to distinguish between successful information retrieval and potential problems.
+2. **Robust Check using `java -version`:**  Simply printing system properties doesn't guarantee that Java is *actually* runnable from the command line. The added `try-catch` block attempts to execute `java -version`.  This is a much more reliable way to verify that Java is properly installed and configured in the environment's `PATH`.
+3. **Error Handling:**  The `try-catch` block handles potential exceptions during the execution of `java -version`.  It now provides a more informative error message if the check fails.
+4. **Exit Code Check:** The code checks the exit code of the `java -version` process.  An exit code of 0 typically means success, while a non-zero exit code indicates an error. This provides additional information about the potential issue.
+
+
+
+
+This revised version is much more comprehensive and robust than simply printing system properties, giving you a more accurate assessment of whether Java is properly installed and readily available for use on your system.

@@ -1,0 +1,26 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Clearer Variable Names:** Using `m` and `n` for rows and columns makes the code more readable.
+
+2. **Return an Array:**  The `Saddleback` method returns an `int[]` to represent the row and column index. This is more structured than printing directly within the method. A `{-1, -1}` return value indicates that the target was not found.
+
+3. **Boundary Checks:** The `while` loop condition `row < m && col >= 0` prevents out-of-bounds errors.
+
+4. **Concise Return:** The `return new int[]{row, col};`  is a compact way to return the result.
+
+5. **Example Usage in `main`:** The `main` method demonstrates how to call `Saddleback` and interpret the results, including handling the case where the target is not found. It also provides a sample matrix and tests with a target that is present and one that is not present.
+
+
+**How Saddleback Search Works:**
+
+Saddleback search starts at the top-right corner of the matrix. It then compares the target with the current element:
+
+- If they are equal, the target is found.
+- If the target is greater, move down to the next row (because the current row can only contain smaller values).
+- If the target is smaller, move left to the previous column (because the current column can only contain larger values).
+
+
+This process continues until the target is found or the boundaries of the matrix are reached.  The time complexity of saddleback search is O(m + n) where 'm' is number of rows and 'n' is number of columns. This is because in worst-case scenario, you might have to traverse an entire row and an entire column to find the target or to determine that the target is not present.

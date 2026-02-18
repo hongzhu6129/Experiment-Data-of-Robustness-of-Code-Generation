@@ -1,0 +1,41 @@
+
+
+**Test Cases:**
+
+Here are some test cases, including corner cases, to thoroughly test the `calculateAverage` method and the overall program:
+
+1. **Normal Case:**
+   - Input: `10 20 30`
+   - Expected Output: `20.0`
+
+2. **Zeroes:**
+   - Input: `0 0 0`
+   - Expected Output: `0.0`
+
+3. **Negative Numbers:**
+   - Input: `-10 -20 -30`
+   - Expected Output: `-20.0`
+
+4. **Mixed Positive and Negative:**
+   - Input: `-10 20 -30`
+   - Expected Output: `-6.666666666666667`  (or similar due to floating-point representation)
+
+5. **Large Numbers:**
+   - Input: `1000000 2000000 3000000`
+   - Expected Output: `2000000.0`
+
+6. **Decimal Numbers:**
+   - Input: `2.5 5.7 8.9`
+   - Expected Output: `5.7`
+
+7. **Corner Case: Very Large Numbers (Potential Overflow for Integers):**
+   - Input: `2147483647 2147483647 2147483647` (Max Integer value three times)
+   - Expected Output: `2.147483647E9` (Because we are using doubles, we avoid integer overflow)
+
+
+**How to Run the Test Cases:**
+
+1. **Manual Testing:** You can run the program multiple times, entering each set of test inputs manually and checking the output against the expected output.
+
+2. **Automated Testing (Recommended):**  JUnit (or other testing frameworks) are the standard way to automate testing in Java. Here�s a basic JUnit example:
+

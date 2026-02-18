@@ -1,0 +1,26 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | Input 1 | Input 2 | Expected Output | Reason/Corner Case |
+|---|---|---|---|---|
+| 1 | 5 | 3 | 15 | Basic positive multiplication |
+| 2 | -2 | 4 | -8 | Multiplication with a negative number |
+| 3 | 0 | 10 | 0 | Multiplication with zero |
+| 4 | 7 | 0 | 0 | Multiplication with zero |
+| 5 | -5 | -6 | 30 | Multiplication of two negative numbers |
+| 6 | 999999999 | 999999999 | 999999998000000001 | Large numbers (demonstrates why `long` is preferred over `int`) |
+| 7 | Long.MAX_VALUE | 1 | 9223372036854775807 | Boundary condition (maximum long value) |
+| 8 | Long.MIN_VALUE | -1 | -9223372036854775808 | Boundary condition (minimum long value times -1, be mindful of overflow potential) |
+| 9 | Long.MAX_VALUE | 2 | -2 | Overflow (product exceeds `long`'s maximum value) |
+| 10 | Long.MIN_VALUE | 2 | 0 | Overflow (product exceeds `long`'s minimum value) | 
+| 11 | 123456789 | 987654321 | 121932631112635269 | Large number multiplication resulting in a valid long |
+
+
+
+**How to Run Test Cases:**
+
+While you could manually input these values, a more robust approach is to use a testing framework like JUnit. Here's a simple example of how you might use JUnit:
+

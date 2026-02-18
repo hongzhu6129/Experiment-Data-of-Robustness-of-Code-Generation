@@ -1,0 +1,63 @@
+import java.util.HashSet;
+
+public class AppendToHashSet {
+
+    public static void main(String[] args) {
+
+        // Create a HashSet of strings
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add some initial elements
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+
+        System.out.println("Initial HashSet: " + hashSet);
+
+        // Element to append
+        String elementToAppend = "Grape";
+
+        // Appending to a HashSet is simply adding the element. 
+        //  If the element already exists, the add() method will return false and the set remains unchanged.
+        boolean isAdded = hashSet.add(elementToAppend);
+
+        if (isAdded) {
+            System.out.println("Element '" + elementToAppend + "' appended successfully.");
+        } else {
+            System.out.println("Element '" + elementToAppend + "' already exists in the HashSet.");
+        }
+
+        System.out.println("HashSet after appending: " + hashSet);
+
+
+
+        // Example with an integer HashSet
+        HashSet<Integer> numbers = new HashSet<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+
+        System.out.println("\nInitial Integer HashSet: " + numbers);
+
+        int numberToAppend = 4;
+        boolean numberAdded = numbers.add(numberToAppend);
+
+         if (numberAdded) {
+            System.out.println("Element '" + numberToAppend + "' appended successfully.");
+        } else {
+            System.out.println("Element '" + numberToAppend + "' already exists in the HashSet.");
+        }
+
+
+        System.out.println("Integer HashSet after appending: " + numbers);
+
+        //Trying to add a duplicate:
+        numberAdded = numbers.add(4); // Try to add 4 again
+        if (numberAdded) {
+            System.out.println("Element '4' appended successfully.");
+        } else {
+            System.out.println("Element '4' already exists in the HashSet."); //This will be printed
+        }
+        System.out.println("Integer HashSet after attempting to add a duplicate : " + numbers);
+    }
+}

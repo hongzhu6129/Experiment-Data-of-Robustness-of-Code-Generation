@@ -1,0 +1,20 @@
+import java.util.TreeMap;
+import java.util.HashMap;
+
+public class CopyTreeMapToHashMap {
+
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        treeMap.put("Apple", 1);
+        treeMap.put("Banana", 2);
+        treeMap.put("Orange", 3);
+        treeMap.put("Grape", 4);
+
+        // Copy TreeMap content to a HashMap
+        HashMap<String, Integer> hashMap = new HashMap<>(treeMap); // Using the constructor is the most efficient way
+
+        // Print the HashMap to verify the copy
+        System.out.println("HashMap: " + hashMap); 
+    }
+}

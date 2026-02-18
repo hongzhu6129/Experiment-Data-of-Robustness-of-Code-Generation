@@ -1,0 +1,17 @@
+
+
+**Explanation and Improvements:**
+
+1. **Error Handling:** The `main` method now includes input validation to check if `n` and `k` are non-negative.  This prevents unexpected behavior or crashes.
+
+2. **Efficiency in `binomial_Coefficient`:**
+   - **Range Check:** The function first checks if `k` is within the valid range (0 to n). If not, it returns 0, as the binomial coefficient is defined as 0 in such cases.
+   - **Base Cases:**  Handles the base cases `k=0` and `k=n` directly, returning 1.
+   - **Symmetry Optimization:** The code now includes the optimization `k = n - k` if `k > n/2`. This takes advantage of the symmetry property of binomial coefficients (C(n, k) = C(n, n-k)) to reduce the number of iterations in the loop, improving efficiency, especially for larger values of `n` and `k`.
+   - **Iterative Calculation:** The core calculation is done iteratively, which is more efficient in terms of memory than a recursive approach, particularly for large values of `n` and `k` (avoids stack overflow errors).  It also uses the multiplicative formula to calculate efficiently within the loop, minimizing the chance of integer overflow.
+
+
+3. **Resource Management:**  The `Scanner` is closed using `scanner.close()` after its use to release system resources.
+
+
+This improved version is more robust, handles edge cases correctly, and calculates the binomial coefficient more efficiently.

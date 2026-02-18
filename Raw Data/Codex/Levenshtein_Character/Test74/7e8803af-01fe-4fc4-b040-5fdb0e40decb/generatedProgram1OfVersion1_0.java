@@ -1,0 +1,69 @@
+import java.util.TreeMap;
+import java.util.Map;
+
+public class FillMapPortion {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> map = new TreeMap<>();
+        map.put(1, "One");
+        map.put(2, "Two");
+        map.put(3, "Three");
+        map.put(4, "Four");
+        map.put(5, "Five");
+
+        int key = 3;
+        boolean inclusive = true; 
+        fillMapPortion(map, key, inclusive, "Filled");
+
+
+        // Print the updated map
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+
+        //Example 2 (exclusive)
+        TreeMap<Integer, String> map2 = new TreeMap<>();
+        map2.put(1, "One");
+        map2.put(2, "Two");
+        map2.put(3, "Three");
+        map2.put(4, "Four");
+        map2.put(5, "Five");
+
+
+         key = 3;
+         inclusive = false;
+        fillMapPortion(map2, key, inclusive, "Filled");
+
+         // Print the updated map
+        for (Map.Entry<Integer, String> entry : map2.entrySet()) {
+            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+    }
+
+
+    public static void fillMapPortion(TreeMap<Integer, String> map, int key, boolean inclusive, String fillValue) {
+
+        if (map == null || map.isEmpty()) {
+            return; // Nothing to do if the map is null or empty.
+        }
+
+
+        TreeMap<Integer, String> subMap;
+
+
+        if (inclusive) {
+             subMap = (TreeMap<Integer, String>) map.headMap(key +1 ); // Inclusive: Use headMap with  key+1
+        } else {
+             subMap = (TreeMap<Integer, String>) map.headMap(key); //Exclusive: Use headMap with key
+        }
+
+        if(subMap != null){
+             for (Integer k : subMap.keySet()) {  // Iterate over a *copy* of the keys
+                 subMap.put(k, fillValue);  //Directly modify the original map. Using the subMap here would cause a ConcurrentModificationException
+             }
+        }
+
+    }
+}

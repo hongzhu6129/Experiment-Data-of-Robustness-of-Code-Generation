@@ -1,0 +1,30 @@
+
+
+
+**Explanation of Improvements and Test Cases:**
+
+1. **Handles Zero:** The original code had a potential issue if the input was 0. The improved version explicitly handles this case.
+
+2. **StringBuilder for Efficiency:**  Using `StringBuilder` is more efficient than string concatenation within a loop, especially for larger numbers.
+
+3. **Comprehensive Test Cases:** The test cases cover:
+   - Zero input
+   - Small positive numbers
+   - Numbers that are powers of 8
+   - Larger positive numbers
+   - The maximum integer value (a good boundary test)
+   - Negative numbers (even though not explicitly required, testing for edge cases and unexpected inputs is a good habit)
+
+
+4. **JUnit 5:** The tests are written using JUnit 5, a standard Java testing framework. This makes the tests easy to run and automate.  You'll need to add the JUnit 5 library to your project to run these tests.  (Most IDEs have built-in support for adding testing libraries).
+
+5. **Clear Assertions:** The test cases use `assertEquals` to clearly state the expected output for each input.
+
+6. **Handles Negative Inputs Correctly**: The code and tests now correctly manage negative inputs by preserving the sign.
+
+
+To run the tests:
+
+1. Make sure you have JUnit 5 set up in your project.
+2. Compile both the `DecimalToOctal.java` and `DecimalToOctalTest.java` files.
+3. Run the tests using your IDE's testing framework or via the command line with a tool like Maven or Gradle.

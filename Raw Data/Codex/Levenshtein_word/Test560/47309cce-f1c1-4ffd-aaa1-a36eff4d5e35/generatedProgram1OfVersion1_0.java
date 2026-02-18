@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class AutomorphicNumber {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int num = input.nextInt();
+
+        if (isAutomorphic(num)) {
+            System.out.println("Automorphic number.");
+        } else {
+            System.out.println("Not an automorphic number.");
+        }
+        input.close();
+    }
+
+    private static boolean isAutomorphic(int num) {
+        int square = num * num;
+        String numStr = String.valueOf(num);
+        String squareStr = String.valueOf(square);
+
+        return squareStr.endsWith(numStr);
+    }
+}

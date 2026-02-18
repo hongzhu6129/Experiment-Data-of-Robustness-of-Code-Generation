@@ -1,0 +1,54 @@
+import java.util.LinkedList;
+
+public class LinkedListSearch {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add(10);
+        linkedList.add(20);
+        linkedList.add(30);
+        linkedList.add(40);
+        linkedList.add(50);
+
+
+        // Element to search for
+        int elementToSearch = 30;
+
+        // Check if the element exists using contains()
+        if (linkedList.contains(elementToSearch)) {
+            System.out.println(elementToSearch + " exists in the linked list.");
+        } else {
+            System.out.println(elementToSearch + " does not exist in the linked list.");
+        }
+
+        // Search for another element
+        elementToSearch = 60; 
+
+        if (linkedList.contains(elementToSearch)) {
+            System.out.println(elementToSearch + " exists in the linked list.");
+        } else {
+            System.out.println(elementToSearch + " does not exist in the linked list.");
+        }
+
+
+        // Demonstrate manual search (alternative to contains())
+        elementToSearch = 40;
+        boolean found = false;
+        for (Integer num : linkedList) {
+            if (num == elementToSearch) {
+                found = true;
+                break;  // Exit loop once found
+            }
+        }
+
+        if (found) {
+            System.out.println("(Manual Search) " + elementToSearch + " exists in the linked list.");
+        } else {
+            System.out.println("(Manual Search) " + elementToSearch + " does not exist in the linked list.");
+        }
+
+    }
+}

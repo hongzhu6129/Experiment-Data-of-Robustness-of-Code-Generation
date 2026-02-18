@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations:
+
+1. **Error Handling:**  Added checks for invalid input (null array, empty array, k <= 0).  Also handles cases where `k` is larger than the array's size.
+
+2. **Min-Heap Approach (Priority Queue):** This is the more efficient way to find the k largest elements, especially for large datasets. It has a time complexity of O(n log k). The code uses a `PriorityQueue` (which is a min-heap implementation in Java) to keep track of the k largest elements seen so far.
+
+3. **Sorting Approach (Included as a comment):** The sorting approach is provided as a commented-out alternative. It's easier to understand but has a time complexity of O(n log n), making it less efficient than the min-heap approach for larger `k` values.
+
+4. **Clearer Output:** Converts the `PriorityQueue` to an `Integer[]` before printing to get the elements in a predictable order and makes it easier to sort the output for better presentation (descending order).  The sorting of output from the heap is optional but good practice for presentation.
+
+5. **Comprehensive Examples:**  Included examples with sorted arrays, reverse-sorted arrays, and arrays with duplicate values to demonstrate robustness.
+
+
+This revised code is much more robust, efficient, and provides a clear demonstration of how to find the k largest elements in a Java array using best practices.

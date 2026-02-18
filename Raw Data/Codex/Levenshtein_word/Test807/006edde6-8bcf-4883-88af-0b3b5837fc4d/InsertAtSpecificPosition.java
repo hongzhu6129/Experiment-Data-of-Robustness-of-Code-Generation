@@ -1,0 +1,73 @@
+import java.util.LinkedList;
+
+public class InsertAtSpecificPosition {
+
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> linkedList = new LinkedList<>();
+
+        // Add some elements
+        linkedList.add("Apple");
+        linkedList.add("Banana");
+        linkedList.add("Orange");
+
+        // Element to insert
+        String elementToInsert = "Grape";
+
+        // Position to insert (0-indexed)
+        int positionToInsert = 1;
+
+
+        try {
+            // Insert the element at the specified position
+            linkedList.add(positionToInsert, elementToInsert);
+
+            // Print the updated LinkedList
+            System.out.println("Updated LinkedList: " + linkedList);
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Invalid position. Position should be between 0 and " + linkedList.size());
+        }
+
+
+        // Example with an invalid position (out of bounds)
+        positionToInsert = 5; // Invalid position
+        try {
+
+            linkedList.add(positionToInsert, "Mango"); // This will throw an IndexOutOfBoundsException
+
+            System.out.println("This won't be printed."); // This line won't be reached
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Invalid position. Position should be between 0 and " + linkedList.size());
+
+        }
+
+
+        // Example inserting at the beginning (position 0)
+        positionToInsert = 0;
+        try {
+            linkedList.add(positionToInsert, "Strawberry");
+            System.out.println("Updated LinkedList: " + linkedList);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Invalid position. Position should be between 0 and " + linkedList.size());
+
+        }
+
+
+
+        // Example inserting at the end (position size())
+        positionToInsert = linkedList.size();
+        try {
+            linkedList.add(positionToInsert, "Watermelon"); // Inserting at the end
+            System.out.println("Updated LinkedList: " + linkedList);
+
+
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Invalid position. Position should be between 0 and " + linkedList.size());
+
+        }
+    }
+}

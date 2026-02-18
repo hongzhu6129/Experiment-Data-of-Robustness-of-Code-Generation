@@ -1,0 +1,47 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class CurrentDateTime {
+
+    public static void main(String[] args) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        // Define the desired format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        // Format the date and time
+        String formattedDateTime = now.format(formatter);
+
+        // Print the formatted date and time
+        System.out.println("Current Date and Time: " + formattedDateTime);
+
+
+        // Demonstrating some other common formats:
+
+        // Format for date only
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String formattedDate = now.format(dateFormatter);
+        System.out.println("Current Date: " + formattedDate);
+
+
+        // Format for time only (24-hour format)
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = now.format(timeFormatter);
+        System.out.println("Current Time (24-hour): " + formattedTime);
+
+
+        // Format for time only (12-hour format with AM/PM)
+        DateTimeFormatter timeFormatter12Hour = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        String formattedTime12Hour = now.format(timeFormatter12Hour);
+        System.out.println("Current Time (12-hour): " + formattedTime12Hour);
+
+
+        //  Custom format with day of the week and month name
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("EEEE, MMMM dd, yyyy HH:mm:ss");
+        String customFormattedDateTime = now.format(customFormatter);
+        System.out.println("Custom Format: " + customFormattedDateTime);
+
+
+    }
+}

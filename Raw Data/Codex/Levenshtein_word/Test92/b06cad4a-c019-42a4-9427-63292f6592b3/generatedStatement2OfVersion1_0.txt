@@ -1,0 +1,59 @@
+
+
+**Test Cases:**
+
+**Normal Cases:**
+
+1. **Input:** 10, 20, 30
+   **Expected Output:** 20.0
+
+2. **Input:** 1, 2, 3
+   **Expected Output:** 2.0
+
+3. **Input:** 100, 200, 300
+   **Expected Output:** 200.0
+
+**Corner Cases:**
+
+4. **Input:** Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE  (Test for potential overflow)
+   **Expected Output:**  2.147483647E9 (or a very large positive number, may vary slightly due to floating-point precision)
+
+
+5. **Input:** Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE (Test for potential underflow)
+   **Expected Output:** -2.147483648E9 (or a very large negative number)
+
+6. **Input:** 0, 0, 0  (All zeros)
+   **Expected Output:** 0.0
+
+7. **Input:** -10, -20, -30 (Negative numbers)
+   **Expected Output:** -20.0
+
+
+
+**Invalid Input Cases:**
+
+8. **Input:** 10, 20, a (Non-integer input)
+   **Expected Output:** "Invalid input. Please enter integers only."  (Error message)
+
+9. **Input:** 10, 20  (Too few inputs)
+    **Expected Output:**  The program might throw a `NoSuchElementException` because the `nextInt()` method will be called when there's no more integer input.
+
+
+**How to Run the Tests:**
+
+1. **Compile:**  `javac AveragePartNumbers.java`
+2. **Run:** `java AveragePartNumbers`
+3. Enter the test case inputs at the prompt.
+
+
+**Key Improvements in the Code:**
+
+* **Error Handling:** The `try-catch` block handles potential `InputMismatchException` if the user enters non-integer input.  The `finally` block ensures the scanner is closed even if an exception occurs.
+* **Explicit Casting:** The `calculateAverage` method explicitly casts the sum to `double` before dividing to ensure accurate average calculation.
+* **Clearer Prompts and Output:** Improved the prompts and output messages to make the program more user-friendly.
+* **Testability:**  The separation of the `calculateAverage` method makes the code easier to test with different input combinations.
+
+
+
+
+

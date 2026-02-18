@@ -1,0 +1,28 @@
+
+
+**Test Cases:**
+
+Here's a set of test cases covering various scenarios, including corner cases:
+
+| Test Case | num1 | num2 | Expected Sum | Expected Difference | Expected Product | Expected Quotient | Expected Remainder | Notes                                  |
+| --------- | ---- | ---- | ------------ | ------------------ | --------------- | ---------------- | ----------------- | ------------------------------------- |
+| 1        | 10   | 5    | 15           | 5                  | 50              | 2               | 0                 | Basic positive integers              |
+| 2        | -5   | 2    | -3           | -7                 | -10             | -2.5            | -1                | Negative and positive integers          |
+| 3        | 0    | 7    | 7            | -7                 | 0              | 0               | 0                 | Zero as input                       |
+| 4        | 15   | 0    | 15           | 15                 | 0              | N/A             | N/A              | Division by zero (handled in code) |
+| 5        | 7.5  | 2.5  | 10.0         | 5.0                | 18.75          | 3.0             | 0.0               | Floating-point numbers               |
+| 6        | -3.2 | -1.6 | -4.8         | -1.6                | 5.12           | 2.0             | 0.0               | Negative floating-point numbers      |
+| 7        | Integer.MAX_VALUE | 1 | Integer.MAX_VALUE + 1 (overflow) | Integer.MAX_VALUE -1 | Integer.MAX_VALUE | Integer.MAX_VALUE | 0 | Integer overflow test |
+| 8 | Integer.MIN_VALUE | -1 | Integer.MIN_VALUE - 1 (overflow) | Integer.MIN_VALUE + 1 | -Integer.MIN_VALUE (overflow) | -Integer.MIN_VALUE (overflow) | 0 | Integer underflow test |
+| 9 | Double.MAX_VALUE | 2 | Double.POSITIVE_INFINITY | Double.MAX_VALUE - 2 | Double.POSITIVE_INFINITY | Double.POSITIVE_INFINITY | NaN | Double Overflow |
+| 10 | Double.MIN_VALUE | Double.MIN_VALUE | Double.MIN_VALUE * 2 | 0 | Double.MIN_VALUE * Double.MIN_VALUE | 1.0 | 0 | Double underflow |
+
+
+
+**How to run the test cases:**
+
+You could either manually enter these values when prompted by the program or, for a more automated approach, you could create a separate testing class using a testing framework like JUnit.  JUnit allows you to write structured tests and verify the expected outputs against the actual outputs of your `ArithmeticOperations` class.  This is a better practice for larger projects.
+
+
+Example of a very basic JUnit test (requires adding JUnit to your project):
+

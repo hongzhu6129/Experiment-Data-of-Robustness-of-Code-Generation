@@ -1,0 +1,32 @@
+public class StringToByteArray {
+
+    public static void main(String[] args) {
+        String str = "This is a sample string.";
+
+        // Method 1: Using getBytes() with default charset
+        byte[] byteArray1 = str.getBytes();
+        System.out.print("Byte array (default charset): ");
+        printByteArray(byteArray1);
+
+        // Method 2: Using getBytes() with specified charset (UTF-8)
+        try {
+            byte[] byteArray2 = str.getBytes("UTF-8");
+            System.out.print("Byte array (UTF-8): ");
+            printByteArray(byteArray2);
+
+        } catch (java.io.UnsupportedEncodingException e) {
+            System.out.println("Unsupported encoding: UTF-8"); // Should not happen as UTF-8 is built-in
+        }
+
+
+    }
+
+
+    // Helper function to print the byte array in a readable format
+    public static void printByteArray(byte[] byteArray) {
+        for (byte b : byteArray) {
+            System.out.print(b + " ");
+        }
+        System.out.println();
+    }
+}

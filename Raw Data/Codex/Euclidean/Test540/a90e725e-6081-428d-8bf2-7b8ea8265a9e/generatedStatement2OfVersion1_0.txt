@@ -1,0 +1,23 @@
+
+
+**Test Cases:**
+
+| Input (n) | Expected Output | Explanation |
+|---|---|---|
+| 1 | 123 | 1 + 11 + 111 = 123 |
+| 2 | 246 | 2 + 22 + 222 = 246 |
+| 7 | 855 | 7 + 77 + 777 = 855 |
+| 9 | 1107 | 9 + 99 + 999 = 1107 |
+| -1 | -123 | -1 + (-11) + (-111) = -123 |
+| -5 | -615 | -5 + (-55) + (-555) = -615 |
+
+
+
+**Corner Cases:**
+
+* **Zero Input (0):** The code explicitly checks for this case and prints an error message because the problem statement specifies a non-zero input.
+* **Large Input (e.g., 999):** The calculation will still work correctly unless the `result` exceeds the `int` data type's maximum value (2,147,483,647), in which case integer overflow will occur. Consider using `long` if you expect very large inputs.
+* **Negative Input:**  The code handles negative inputs correctly.
+* **Non-Integer Input:**  The `scanner.nextInt()` method will throw an `InputMismatchException` if the user enters a non-integer value.  You could add a `try-catch` block to handle this exception more gracefully if desired.  For example:
+
+

@@ -1,0 +1,10 @@
+public class Pattern {
+
+    public static void main(String[] args) {
+        System.out.println("n  a  v  v  a");
+        System.out.println("n a v v a j a");
+        System.out.println("a a v v a a j j a");
+        System.out.println("aaaa v v aaaa jj a");
+        System.out.println("a a v a a");
+    }
+}

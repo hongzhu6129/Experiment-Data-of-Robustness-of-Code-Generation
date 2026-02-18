@@ -1,0 +1,27 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class GreenSetLessThanSeven {
+
+    public static void main(String[] args) {
+        // Create a sample "green" set (using HashSet for efficiency)
+        Set<Integer> greenSet = new HashSet<>();
+        greenSet.add(2);
+        greenSet.add(9);
+        greenSet.add(5);
+        greenSet.add(1);
+        greenSet.add(12);
+        greenSet.add(6);
+
+
+        // Find and print numbers less than 7
+        System.out.print("Numbers less than 7 in the green set: ");
+        for (int number : greenSet) {
+            if (number < 7) {
+                System.out.print(number + " ");
+            }
+        }
+        System.out.println(); // Add a newline for cleaner output
+
+    }
+}

@@ -1,0 +1,23 @@
+
+
+**Explanation and Improvements:**
+
+1. **File Handling:** The code now reads the text from a file named "input.txt".  **Important:** Replace `"input.txt"` with the actual path to your file.
+2. **Error Handling:**  A `try-catch` block handles potential `IOExceptions` during file reading.  If an error occurs, an error message is printed, and an empty string is returned.
+3. **Splitting Words:** The `line.split("\\s+")` splits the line into words based on whitespace (spaces, tabs, newlines).
+4. **Handling Non-Alphabetic Characters:**  `word.replaceAll("[^a-zA-Z]", "")` removes any non-alphabetic characters from the words (punctuation, numbers, etc.) to ensure accurate length comparisons.
+5. **Multiple Longest Words:** The code now correctly handles cases where there are multiple words with the same maximum length. They are all added to the `longestWords` list.
+6. **Empty Words:** The code also avoids adding empty words (that might result after removing non-alphabetic characters) to the list of longest words using `!word.isEmpty()`.
+7. **Clear List When a Longer Word is Found:**  The `longestWords` list is cleared when a word longer than the current `maxLength` is found to ensure that the list only contains the longest word(s).
+8. **Returning a String:** The `findLongestWords()` method now returns a comma-separated string of the longest words.
+
+
+
+**How to Use:**
+
+1. **Create `input.txt`:** Create a text file named "input.txt" (or whatever you named it in the code) in the same directory as your Java file. Put the text you want to analyze in this file.
+2. **Compile and Run:** Compile and run the Java code. The longest word(s) will be printed to the console.
+
+
+Example `input.txt`:
+

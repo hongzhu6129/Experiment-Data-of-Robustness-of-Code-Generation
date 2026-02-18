@@ -1,0 +1,18 @@
+public class StringEndsWith {
+
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "World";
+        String str3 = "Java";
+
+
+        System.out.println("\"" + str1 + "\" ends with \"" + str2 + "\"? " + str1.endsWith(str2)); // Output: true
+        System.out.println("\"" + str1 + "\" ends with \"" + str3 + "\"? " + str1.endsWith(str3)); // Output: false
+
+        //  More examples for demonstration
+        System.out.println("\"" + "This is a test" + "\" ends with \"" + "test" + "\"? " + "This is a test".endsWith("test")); //true
+        System.out.println("\"" + "This is a test" + "\" ends with \"" + "Test" + "\"? " + "This is a test".endsWith("Test")); //false (case-sensitive)
+        System.out.println("\"" + "apple" + "\" ends with \"" + "" + "\"? " + "apple".endsWith("")); // true (empty string is always a suffix)
+
+    }
+}

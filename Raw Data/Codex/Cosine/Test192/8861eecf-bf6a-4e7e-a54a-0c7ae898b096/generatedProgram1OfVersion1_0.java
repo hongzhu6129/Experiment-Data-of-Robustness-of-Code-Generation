@@ -1,0 +1,43 @@
+public class StringManipulation {
+
+    public String kitKatPattern(String str) {
+        int n = str.length();
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < n; i++) {
+            if (i + 2 < n && str.charAt(i) == 'z' && str.charAt(i + 2) == 'g') {
+                result.append(str.charAt(i));
+                result.append(str.charAt(i + 2));
+                i += 2; // Skip the processed substring
+            } else {
+                result.append(str.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        StringManipulation sm = new StringManipulation();
+
+        String str1 = "abzfgxyz";
+        System.out.println(sm.kitKatPattern(str1)); // Output: abzgyz
+
+        String str2 = "zfgabzfg";
+        System.out.println(sm.kitKatPattern(str2)); // Output: zgabzg
+
+        String str3 = "zzgzg";
+        System.out.println(sm.kitKatPattern(str3)); // Output: zgz
+
+        String str4 = "zzzzg";
+        System.out.println(sm.kitKatPattern(str4));  // Output: zzgz
+
+
+        String str5 =  "zxzgz"; // No change if second character is not between z and g.
+        System.out.println(sm.kitKatPattern(str5)); // Output zxzgz
+          
+        String str6 =  "zazgz"; // Removes 'a'
+        System.out.println(sm.kitKatPattern(str6)); // Output: zzgz
+
+
+    }
+}

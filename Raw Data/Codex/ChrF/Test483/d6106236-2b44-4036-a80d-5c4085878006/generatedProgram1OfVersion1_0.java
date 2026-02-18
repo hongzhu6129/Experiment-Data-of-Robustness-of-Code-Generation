@@ -1,0 +1,44 @@
+public class AdjacentNumberCheck {
+
+    public static void main(String[] args) {
+        // Example usage:
+        int[] arr1 = {1, 2, 3, 2, 5, 2, 7, 2};
+        int num1 = 2;
+        System.out.println("Array 1 contains " + num1 + " in every adjacent pair: " + checkAdjacent(arr1, num1)); // Output: true
+
+        int[] arr2 = {1, 2, 3, 4, 5, 6};
+        int num2 = 3;
+        System.out.println("Array 2 contains " + num2 + " in every adjacent pair: " + checkAdjacent(arr2, num2)); // Output: false
+
+        int[] arr3 = {2, 1, 2, 3, 2, 4, 2};  // Example with uneven distribution
+        int num3 = 2;
+        System.out.println("Array 3 contains " + num3 + " in every adjacent pair: " + checkAdjacent(arr3, num3)); // Output: false
+
+        int[] arr4 = {}; // Empty array
+        int num4 = 5;
+        System.out.println("Array 4 contains " + num4 + " in every adjacent pair: " + checkAdjacent(arr4, num4)); // Output: true (vacuously true - no pairs to check)
+        
+
+        int[] arr5 = {1}; // Single element array
+        int num5 = 1;
+        System.out.println("Array 5 contains " + num5 + " in every adjacent pair: " + checkAdjacent(arr5, num5)); // Output: true (vacuously true)
+    }
+
+
+    public static boolean checkAdjacent(int[] arr, int num) {
+        if (arr.length <= 1) { //Empty or single element array � vacuously true
+            return true; 
+        }
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] != num && arr[i + 1] != num) {
+                return false; // Neither element in the pair is the specified number
+            }
+        }
+
+        return true; // The specified number appears in every adjacent pair
+    }
+}
+
+
+

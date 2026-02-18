@@ -1,0 +1,28 @@
+import java.util.TreeMap;
+
+public class HigherKey {
+
+    public static void main(String[] args) {
+        // Example usage:
+        TreeMap<Integer, String> treeMap = new TreeMap<>();
+        treeMap.put(1, "One");
+        treeMap.put(3, "Three");
+        treeMap.put(5, "Five");
+        treeMap.put(7, "Seven");
+        treeMap.put(9, "Nine");
+
+
+        System.out.println("Higher key than 4: " + higherKey(treeMap, 4)); // Output: 5
+        System.out.println("Higher key than 1: " + higherKey(treeMap, 1)); // Output: 3
+        System.out.println("Higher key than 9: " + higherKey(treeMap, 9)); // Output: null
+        System.out.println("Higher key than 0: " + higherKey(treeMap, 0)); // Output: 1
+        System.out.println("Higher key than 6: " + higherKey(treeMap, 6)); // Output: 7
+
+    }
+
+
+    public static <K, V> K higherKey(TreeMap<K, V> treeMap, K key) {
+        return treeMap.higherKey(key);
+
+    }
+}

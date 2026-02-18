@@ -1,0 +1,21 @@
+
+
+
+**Explanation and Key Improvements:**
+
+1. **Try-with-resources:** The `try (BufferedReader reader = ...)` syntax ensures that the `BufferedReader` is automatically closed even if an exception occurs.  This is crucial for proper resource management.
+
+2. **Error Handling:** The `catch (IOException e)` block handles potential `IOExceptions` that might occur during file reading (e.g., file not found).  It prints an error message to the console, providing helpful feedback to the user.
+
+3. **Clearer File Path:**  The code now uses a variable `filePath` to store the path to the file. This makes it easier to change the file path without modifying multiple parts of the code.  Remember to replace `"path/to/your/file.txt"` with the actual path.
+
+4. **Line-by-Line Reading:** The `while` loop reads the file line by line using `reader.readLine()`.  This is more efficient than reading the entire file into memory at once, especially for large files.
+
+5. **Processing Each Line:** Inside the loop, `System.out.println(line);` prints each line to the console. You can replace this with any other processing you need to do with each line of the file (e.g., storing it in a list, performing calculations, etc.).
+
+
+**How to Compile and Run:**
+
+1. **Save:** Save the code as `ReadPlainTextFile.java`.
+2. **Compile:** Open a terminal or command prompt, navigate to the directory where you saved the file, and compile it using the Java compiler:
+   

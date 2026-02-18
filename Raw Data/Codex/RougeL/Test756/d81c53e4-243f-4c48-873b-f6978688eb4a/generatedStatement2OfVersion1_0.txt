@@ -1,0 +1,17 @@
+
+
+
+Key improvements and explanations:
+
+1. **Handles Null and Empty Input:**  The `endWithmOrn` method now correctly handles cases where the input `text` is `null` or an empty string, returning 0 in those situations.
+
+2. **Word Boundary Matching (`\\b`):**  The regular expression now includes word boundaries (`\\b`). This ensures that it only matches whole words ending in "m" or "n". Without word boundaries, it would count substrings like "man" within "mandate."
+
+3. **Case-Insensitive Matching:**  The regular expression uses `[mnMN]` to match both lowercase and uppercase "m" and "n" directly, making it more concise.
+
+4. **Clearer Variable Names:** Using more descriptive variable names like `count` and `text` improves code readability.
+
+5. **More Comprehensive Testing in `main`:** The `main` method now includes test cases for null input, empty strings, and single-letter words to demonstrate the robustness of the solution.
+
+
+This revised code provides a more accurate, robust, and efficient solution for counting words ending in "m" or "n" in Java.

@@ -1,0 +1,44 @@
+import java.util.HashSet;
+import java.util.TreeSet;
+
+public class HashSetToTreeSet {
+
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> hashSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        hashSet.add("Apple");
+        hashSet.add("Banana");
+        hashSet.add("Orange");
+        hashSet.add("Grape");
+        hashSet.add("Mango");
+
+
+        // Convert HashSet to TreeSet (natural ordering)
+        TreeSet<String> treeSet = new TreeSet<>(hashSet);
+
+        // Print the TreeSet (elements will be sorted)
+        System.out.println("TreeSet (natural ordering): " + treeSet);
+
+
+        // Example with custom Comparator (reverse order, for illustration)
+        TreeSet<String> reverseTreeSet = new TreeSet<>((s1, s2) -> s2.compareTo(s1)); // Reverse alphabetical
+        reverseTreeSet.addAll(hashSet);  // Add elements from hashSet
+
+        System.out.println("TreeSet (reverse ordering): " + reverseTreeSet);
+
+
+
+        // Example with Integers:
+         HashSet<Integer> integerHashSet = new HashSet<>();
+         integerHashSet.add(5);
+         integerHashSet.add(2);
+         integerHashSet.add(8);
+         integerHashSet.add(1);
+
+         TreeSet<Integer> integerTreeSet = new TreeSet<>(integerHashSet);
+
+         System.out.println("TreeSet of Integers (natural ordering): " + integerTreeSet);
+    }
+}

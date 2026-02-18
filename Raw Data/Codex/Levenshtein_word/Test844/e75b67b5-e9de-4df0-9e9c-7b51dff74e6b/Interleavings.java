@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Interleavings {
+
+    public static void main(String[] args) {
+        String s1 = "ab";
+        String s2 = "cd";
+        List<String> interleavings = getInterleavings(s1, s2);
+        System.out.println("Interleavings of " + s1 + " and " + s2 + ": " + interleavings);
+
+        s1 = "abc";
+        s2 = "def";
+        interleavings = getInterleavings(s1, s2);
+        System.out.println("Interleavings of " + s1 + " and " + s2 + ": " + interleavings);
+
+        s1 = "";
+        s2 = "def";
+        interleavings = getInterleavings(s1, s2);
+        System.out.println("Interleavings of " + s1 + " and " + s2 + ": " + interleavings);
+
+        s1 = "abc";
+        s2 = "";
+        interleavings = getInterleavings(s1, s2);
+        System.out.println("Interleavings of " + s1 + " and " + s2 + ": " + interleavings);
+
+        s1 = "ab";
+        s2 = "cd";
+        interleavings = getInterleavings(s1, s2);
+        System.out.println("Interleavings of " + s1 + " and " + s2 + ": " + interleavings);
+    }
+
+    public static List<String> getInterleavings(String s1, String s2) {
+        List<String> interleavings = new ArrayList<>();
+        getInterleavings(s1, s2, "", interleavings);
+        return interleavings;
+    }
+
+    private static void getInterleavings(String s1, String s2, String interleaving, List<String> interleavings) {
+        if (s1.isEmpty() && s2.isEmpty()) {
+            interleavings.add(interleaving);
+        } else {
+            if (!s1.isEmpty()) {
+                getInterleavings(s1.substring(1), s2, interleaving + s1.charAt(0), interleavings);
+            }
+            if (!s2.isEmpty()) {
+                getInterleavings(s1, s2.substring(1), interleaving + s2.charAt(0), interleavings);
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class RetrieveElementArrayList {
+
+    public static void main(String[] args) {
+        // Create an ArrayList of strings
+        List<String> fruits = new ArrayList<>();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grape");
+        fruits.add("Mango");
+
+        // Specify the index of the element to retrieve
+        int index = 2; 
+
+        // Check if the index is valid
+        if (index >= 0 && index < fruits.size()) {
+            // Retrieve the element at the specified index
+            String element = fruits.get(index);
+
+            // Print the retrieved element
+            System.out.println("Element at index " + index + ": " + element); 
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (fruits.size() - 1));
+        }
+
+
+        // Example with an integer ArrayList
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(25);
+        numbers.add(5);
+        numbers.add(15);
+
+        index = 1;
+
+        if (index >= 0 && index < numbers.size()) {
+            Integer number = numbers.get(index);
+            System.out.println("Element at index " + index + ": " + number);
+        } else {
+            System.out.println("Invalid index. Index should be between 0 and " + (numbers.size() - 1));
+        }
+    }
+}

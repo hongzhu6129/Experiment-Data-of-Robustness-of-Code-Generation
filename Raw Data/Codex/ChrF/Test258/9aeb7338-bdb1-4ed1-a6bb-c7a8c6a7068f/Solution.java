@@ -1,0 +1,43 @@
+class Solution {
+
+    /**
+     * Counts the number of zero bits in the binary representation of an integer.
+     *
+     * @param n The integer to convert to binary and count zero bits.
+     * @return The number of zero bits in the binary representation of n.
+     */
+    public static int countBitsTozeroBasedOnString(int n) {
+        String binaryString = Integer.toBinaryString(n);
+        int zeroCount = 0;
+        for (char bit : binaryString.toCharArray()) {
+            if (bit == '0') {
+                zeroCount++;
+            }
+        }
+        return zeroCount;
+    }
+
+    public static void main(String[] args) {
+        int num = 25; // Example input
+
+        String binary = Integer.toBinaryString(num);
+        int zeroBits = countBitsTozeroBasedOnString(num);
+
+
+        System.out.println("Input first number: " + num);
+        System.out.println("Binary representation of " + num + " is: " + binary);
+        System.out.println("Number of zero bits: " + zeroBits);
+
+        // Example with user input (uncomment to use):
+        /*
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input first number: ");
+        int num = scanner.nextInt();
+        String binary = Integer.toBinaryString(num);
+        int zeroBits = countBitsTozeroBasedOnString(num);
+        System.out.println("Binary representation of " + num + " is: " + binary);
+        System.out.println("Number of zero bits: " + zeroBits);
+        scanner.close(); 
+        */
+    }
+}
